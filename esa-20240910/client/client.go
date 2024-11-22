@@ -1111,6 +1111,11 @@ func (s *WafTimerWeeklyPeriodsDailyPeriods) SetStart(v string) *WafTimerWeeklyPe
 }
 
 type HttpDeliveryHeaderParamValue struct {
+	// The static variable.
+	//
+	// example:
+	//
+	// alicdn
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 
@@ -1128,6 +1133,11 @@ func (s *HttpDeliveryHeaderParamValue) SetStaticValue(v string) *HttpDeliveryHea
 }
 
 type HttpDeliveryQueryParamValue struct {
+	// The static variable.
+	//
+	// example:
+	//
+	// alicdn
 	StaticValue *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 }
 
@@ -1145,10 +1155,13 @@ func (s *HttpDeliveryQueryParamValue) SetStaticValue(v string) *HttpDeliveryQuer
 }
 
 type FieldContentValue struct {
+	// The sequence number of the fields.
+	//
 	// example:
 	//
 	// 1
-	SortOrder *int64                        `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The fields.
 	FieldList []*FieldContentValueFieldList `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
 }
 
@@ -1171,27 +1184,40 @@ func (s *FieldContentValue) SetFieldList(v []*FieldContentValueFieldList) *Field
 }
 
 type FieldContentValueFieldList struct {
+	// The field name.
+	//
 	// example:
 	//
 	// ClientIp
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The description of the field in English.
+	//
 	// example:
 	//
 	// IP address of the client.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the field in Chinese.
 	DescriptionCn *string `json:"DescriptionCn,omitempty" xml:"DescriptionCn,omitempty"`
+	// The category of the field.
+	//
 	// example:
 	//
 	// Client
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The data type of the field.
+	//
 	// example:
 	//
 	// String
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The sequence number of the field.
+	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Indicates whether the field is available by default.
+	//
 	// example:
 	//
 	// true
@@ -1242,8 +1268,10 @@ func (s *FieldContentValueFieldList) SetIsDefault(v bool) *FieldContentValueFiel
 }
 
 type QuotaListItemsValue struct {
-	Enable *bool           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Value  *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Indicates whether the item type is configured in the custom list.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The format restrictions for the item type in the custom list.
+	Value *WafQuotaString `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s QuotaListItemsValue) String() string {
@@ -1265,7 +1293,9 @@ func (s *QuotaListItemsValue) SetValue(v *WafQuotaString) *QuotaListItemsValue {
 }
 
 type QuotaPageContentTypesValue struct {
-	Enable        *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether the custom error pages of the Content-Type are configured.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The maximum length of the custom error pages of the Content-Type.
 	ContentLength *WafQuotaInteger `json:"ContentLength,omitempty" xml:"ContentLength,omitempty"`
 }
 
@@ -1288,12 +1318,16 @@ func (s *QuotaPageContentTypesValue) SetContentLength(v *WafQuotaInteger) *Quota
 }
 
 type ActivateClientCertificateRequest struct {
+	// The certificate ID, which can be obtained by calling the [ListClientCertificates](https://help.aliyun.com/document_detail/2852848.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1321,18 +1355,26 @@ func (s *ActivateClientCertificateRequest) SetSiteId(v int64) *ActivateClientCer
 }
 
 type ActivateClientCertificateResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -1397,8 +1439,12 @@ func (s *ActivateClientCertificateResponse) SetBody(v *ActivateClientCertificate
 }
 
 type BatchCreateRecordsRequest struct {
+	// The list of DNS records to be created.
+	//
 	// This parameter is required.
 	RecordList []*BatchCreateRecordsRequestRecordList `json:"RecordList,omitempty" xml:"RecordList,omitempty" type:"Repeated"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1427,10 +1473,20 @@ func (s *BatchCreateRecordsRequest) SetSiteId(v int64) *BatchCreateRecordsReques
 
 type BatchCreateRecordsRequestRecordList struct {
 	AuthConf *BatchCreateRecordsRequestRecordListAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	// The business scenario of the record for acceleration. Valid values:
+	//
+	// 	- **image_video**
+	//
+	// 	- **api**
+	//
+	// 	- **web**
+	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The DNS information of the record. Enter fields based on the record type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1441,28 +1497,54 @@ type BatchCreateRecordsRequestRecordList struct {
 	//
 	// }
 	Data *BatchCreateRecordsRequestRecordListData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The record name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The DNS type of the record.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1561,58 +1643,86 @@ func (s *BatchCreateRecordsRequestRecordListAuthConf) SetVersion(v string) *Batc
 }
 
 type BatchCreateRecordsRequestRecordListData struct {
+	// The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
+	//
 	// example:
 	//
 	// 0
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. Applicable to SSHFP records.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The Flag for a CAA record indicates its priority and how it is processed. Valid values: 0 to 255.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
+	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
+	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 2
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The tag of a CAA record, which indicates its specific type and purpose, such as issue, issuewild, and iodef.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
+	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The record value or part of the record content. A/AAAA: the IP address being pointed to. CNAME: the target domain name being pointed to. MX: valid target mail server domain name. TXT: valid text string. CAA: valid certificate authority domain name. SRV: valid target host domain name. URI: valid URI string.
+	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record. Valid values: 0 to 65,535. Applicable to SRV and URI records.
+	//
 	// example:
 	//
 	// 0
@@ -1698,8 +1808,12 @@ func (s *BatchCreateRecordsRequestRecordListData) SetWeight(v int32) *BatchCreat
 }
 
 type BatchCreateRecordsShrinkRequest struct {
+	// The list of DNS records to be created.
+	//
 	// This parameter is required.
 	RecordListShrink *string `json:"RecordList,omitempty" xml:"RecordList,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1727,7 +1841,10 @@ func (s *BatchCreateRecordsShrinkRequest) SetSiteId(v int64) *BatchCreateRecords
 }
 
 type BatchCreateRecordsResponseBody struct {
+	// The records that have been created and failed to be created.
 	RecordResultList *BatchCreateRecordsResponseBodyRecordResultList `json:"RecordResultList,omitempty" xml:"RecordResultList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2430E05E-1340-5773-B5E1-B743929F46F2
@@ -1753,8 +1870,12 @@ func (s *BatchCreateRecordsResponseBody) SetRequestId(v string) *BatchCreateReco
 }
 
 type BatchCreateRecordsResponseBodyRecordResultList struct {
-	Failed  []*BatchCreateRecordsResponseBodyRecordResultListFailed  `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Repeated"`
+	// The records that failed to be created.
+	Failed []*BatchCreateRecordsResponseBodyRecordResultListFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Repeated"`
+	// The records that have been created.
 	Success []*BatchCreateRecordsResponseBodyRecordResultListSuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Repeated"`
+	// The total number of returned records.
+	//
 	// example:
 	//
 	// 20
@@ -1785,35 +1906,72 @@ func (s *BatchCreateRecordsResponseBodyRecordResultList) SetTotalCount(v int32) 
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListFailed struct {
+	// The business scenario of the record for acceleration. Valid values:
+	//
+	// 	- **image_video**
+	//
+	// 	- **api**
+	//
+	// 	- **web**
+	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The DNS information about the record, which contains various types of record values and their related attributes.
+	//
 	// example:
 	//
 	// {"value":"2.2.2.2"}
-	Data        *BatchCreateRecordsResponseBodyRecordResultListFailedData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Description *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Data *BatchCreateRecordsResponseBodyRecordResultListFailedData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
+	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The origin type of the CNAME record. This field is left empty for other types of records. The type of the origin server. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 60
@@ -1874,58 +2032,102 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListFailed) SetTtl(v int32) *
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListFailedData struct {
+	// The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
+	//
 	// example:
 	//
 	// 0
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. Applicable to SSHFP records.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. Indicates its priority and handling method, used in CAA records.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
+	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// RSA
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port number of the record, associated with the SRV record. Exclusive to SRV records.
+	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Applicable to MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// Indicates its priority and handling method, used in CAA records.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
+	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+	//
+	// 	- **A/AAAA**: the IP addresses. IP addresses are separated by commas (,). There is at least one IPv4 address.
+	//
+	// 	- **CNAME**: the mapped domain name.
+	//
+	// 	- **NS**: the nameservers for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the target mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record. Applicable to SRV and URI records.
+	//
 	// example:
 	//
 	// 0
@@ -2011,38 +2213,76 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListFailedData) SetWeight(v i
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListSuccess struct {
+	// The business scenario of the record for acceleration. Valid values:
+	//
+	// 	- **image_video**
+	//
+	// 	- **api**
+	//
+	// 	- **web**
+	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The DNS record information.
+	//
 	// example:
 	//
 	// {"value":"1.1.1.1"}
 	Data *BatchCreateRecordsResponseBodyRecordResultListSuccessData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The result description.
+	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
+	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The origin type of the CNAME record. This field is left empty for other types of records. The type of the origin server. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 60
@@ -2103,58 +2343,102 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListSuccess) SetTtl(v int32) 
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListSuccessData struct {
+	// The encryption algorithm used for the record. Valid values: 0 to 255. Applicable to CERT and SSHFP records.
+	//
 	// example:
 	//
 	// 0
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. Applicable to CERT, SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. Applicable to SSHFP records.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. Indicates its priority and handling method, used in CAA records.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record. Valid values: 0 to 65535. Applicable to CERT records.
+	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
+	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Applicable to MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The label of a CAA record, which indicates its specific type and purpose, such as issue, issuewild, and iodef.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
+	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record. Valid values: 0 to 255. Applicable to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+	//
+	// 	- **A/AAAA**: the IP addresses. Multiple IPs are separated by commas (,). There is at least one IPv4 address.
+	//
+	// 	- **CNAME**: the mapped domain name.
+	//
+	// 	- **NS**: the nameservers for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the target mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record. Valid values: 0 to 65535. Applicable to SRV and URI records.
+	//
 	// example:
 	//
 	// 0
@@ -2269,16 +2553,27 @@ func (s *BatchCreateRecordsResponse) SetBody(v *BatchCreateRecordsResponseBody) 
 }
 
 type BatchCreateWafRulesRequest struct {
+	// The configurations of the rules.
 	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
-	Phase  *string             `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The configurations shared by multiple rules.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -2316,16 +2611,27 @@ func (s *BatchCreateWafRulesRequest) SetSiteVersion(v int32) *BatchCreateWafRule
 }
 
 type BatchCreateWafRulesShrinkRequest struct {
+	// The configurations of the rules.
 	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
-	Phase        *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The configurations shared by multiple rules.
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -2363,14 +2669,20 @@ func (s *BatchCreateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchCreateW
 }
 
 type BatchCreateWafRulesResponseBody struct {
+	// The IDs of the WAF rules.[](~~2850237~~)
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RulesetId *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The ID of the WAF ruleset.[](~~2850233~~)
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
 }
 
 func (s BatchCreateWafRulesResponseBody) String() string {
@@ -2426,8 +2738,12 @@ func (s *BatchCreateWafRulesResponse) SetBody(v *BatchCreateWafRulesResponseBody
 }
 
 type BatchDeleteKvRequest struct {
+	// The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
+	//
 	// This parameter is required.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2455,8 +2771,12 @@ func (s *BatchDeleteKvRequest) SetNamespace(v string) *BatchDeleteKvRequest {
 }
 
 type BatchDeleteKvShrinkRequest struct {
+	// The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
+	//
 	// This parameter is required.
 	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2484,13 +2804,15 @@ func (s *BatchDeleteKvShrinkRequest) SetNamespace(v string) *BatchDeleteKvShrink
 }
 
 type BatchDeleteKvResponseBody struct {
+	// The keys that failed to be deleted.
 	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that are deleted.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 
@@ -2547,12 +2869,16 @@ func (s *BatchDeleteKvResponse) SetBody(v *BatchDeleteKvResponseBody) *BatchDele
 }
 
 type BatchDeleteKvWithHighCapacityRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pairs that you want to delete. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2580,12 +2906,16 @@ func (s *BatchDeleteKvWithHighCapacityRequest) SetUrl(v string) *BatchDeleteKvWi
 }
 
 type BatchDeleteKvWithHighCapacityAdvanceRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pairs that you want to delete. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2613,13 +2943,15 @@ func (s *BatchDeleteKvWithHighCapacityAdvanceRequest) SetUrlObject(v io.Reader) 
 }
 
 type BatchDeleteKvWithHighCapacityResponseBody struct {
+	// The keys that failed to be deleted.
 	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that are deleted.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 
@@ -2676,14 +3008,20 @@ func (s *BatchDeleteKvWithHighCapacityResponse) SetBody(v *BatchDeleteKvWithHigh
 }
 
 type BatchGetExpressionFieldsRequest struct {
+	// The regular expressions.
+	//
 	// example:
 	//
 	// http_bot
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1
@@ -2714,10 +3052,14 @@ func (s *BatchGetExpressionFieldsRequest) SetSiteId(v int64) *BatchGetExpression
 }
 
 type BatchGetExpressionFieldsRequestExpressions struct {
+	// The content of the regular expression.
+	//
 	// example:
 	//
 	// ip.src eq 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The ID of the regular expression.
+	//
 	// example:
 	//
 	// 1
@@ -2743,14 +3085,20 @@ func (s *BatchGetExpressionFieldsRequestExpressions) SetId(v int64) *BatchGetExp
 }
 
 type BatchGetExpressionFieldsShrinkRequest struct {
+	// The regular expressions.
+	//
 	// example:
 	//
 	// http_bot
 	ExpressionsShrink *string `json:"Expressions,omitempty" xml:"Expressions,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1
@@ -2781,8 +3129,9 @@ func (s *BatchGetExpressionFieldsShrinkRequest) SetSiteId(v int64) *BatchGetExpr
 }
 
 type BatchGetExpressionFieldsResponseBody struct {
+	// The fields that match the regular expressions.
 	Fields []*BatchGetExpressionFieldsResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2809,7 +3158,10 @@ func (s *BatchGetExpressionFieldsResponseBody) SetRequestId(v string) *BatchGetE
 }
 
 type BatchGetExpressionFieldsResponseBodyFields struct {
+	// The fields that match the regular expression.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The ID of the regular expression, which corresponds to the expression ID in the request parameter.
+	//
 	// example:
 	//
 	// 1
@@ -2864,8 +3216,12 @@ func (s *BatchGetExpressionFieldsResponse) SetBody(v *BatchGetExpressionFieldsRe
 }
 
 type BatchPutKvRequest struct {
+	// The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+	//
 	// This parameter is required.
 	KvList []*BatchPutKvRequestKvList `json:"KvList,omitempty" xml:"KvList,omitempty" type:"Repeated"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2893,20 +3249,28 @@ func (s *BatchPutKvRequest) SetNamespace(v string) *BatchPutKvRequest {
 }
 
 type BatchPutKvRequestKvList struct {
+	// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
 	// example:
 	//
 	// 1690081381
 	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
 	// example:
 	//
 	// 3600
 	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key content.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2944,8 +3308,12 @@ func (s *BatchPutKvRequestKvList) SetValue(v string) *BatchPutKvRequestKvList {
 }
 
 type BatchPutKvShrinkRequest struct {
+	// The key-value pairs that you want to configure at a time. The total size can be up to 2 MB (2 × 1000 × 1000).
+	//
 	// This parameter is required.
 	KvListShrink *string `json:"KvList,omitempty" xml:"KvList,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2973,13 +3341,15 @@ func (s *BatchPutKvShrinkRequest) SetNamespace(v string) *BatchPutKvShrinkReques
 }
 
 type BatchPutKvResponseBody struct {
+	// The keys that failed to be written.
 	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that were written.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 
@@ -3036,12 +3406,16 @@ func (s *BatchPutKvResponse) SetBody(v *BatchPutKvResponseBody) *BatchPutKvRespo
 }
 
 type BatchPutKvWithHighCapacityRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pairs that you want to configure. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3069,12 +3443,16 @@ func (s *BatchPutKvWithHighCapacityRequest) SetUrl(v string) *BatchPutKvWithHigh
 }
 
 type BatchPutKvWithHighCapacityAdvanceRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pairs that you want to configure. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3102,13 +3480,15 @@ func (s *BatchPutKvWithHighCapacityAdvanceRequest) SetUrlObject(v io.Reader) *Ba
 }
 
 type BatchPutKvWithHighCapacityResponseBody struct {
+	// The keys that failed to be written.
 	FailKeys []*string `json:"FailKeys,omitempty" xml:"FailKeys,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The keys that were written.
 	SuccessKeys []*string `json:"SuccessKeys,omitempty" xml:"SuccessKeys,omitempty" type:"Repeated"`
 }
 
@@ -3165,20 +3545,33 @@ func (s *BatchPutKvWithHighCapacityResponse) SetBody(v *BatchPutKvWithHighCapaci
 }
 
 type BatchUpdateWafRulesRequest struct {
+	// The configurations of rules.
 	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// example:
 	//
 	// 10000001
-	RulesetId *int64              `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	Shared    *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The configurations shared by multiple rules.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -3221,20 +3614,33 @@ func (s *BatchUpdateWafRulesRequest) SetSiteVersion(v int32) *BatchUpdateWafRule
 }
 
 type BatchUpdateWafRulesShrinkRequest struct {
+	// The configurations of rules.
 	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// example:
 	//
 	// 10000001
-	RulesetId    *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The configurations shared by multiple rules.
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -3277,7 +3683,7 @@ func (s *BatchUpdateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchUpdateW
 }
 
 type BatchUpdateWafRulesResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3328,17 +3734,41 @@ func (s *BatchUpdateWafRulesResponse) SetBody(v *BatchUpdateWafRulesResponseBody
 }
 
 type BlockObjectRequest struct {
+	// The content to block.
+	//
 	// This parameter is required.
-	Content   []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	Extension *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	Maxage    *int32    `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
+	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The blocking period that you can extend. Set the value to 2year.
+	//
+	// example:
+	//
+	// 2year
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
+	//
+	// example:
+	//
+	// 864000
+	Maxage *int32 `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BlockObject
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type. Valid values:
+	//
+	// 	- **block**
+	//
+	// 	- **unblock**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// block
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3376,17 +3806,41 @@ func (s *BlockObjectRequest) SetType(v string) *BlockObjectRequest {
 }
 
 type BlockObjectShrinkRequest struct {
+	// The content to block.
+	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Extension     *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	Maxage        *int32  `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
+	// The blocking period that you can extend. Set the value to 2year.
+	//
+	// example:
+	//
+	// 2year
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
+	//
+	// example:
+	//
+	// 864000
+	Maxage *int32 `json:"Maxage,omitempty" xml:"Maxage,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// BlockObject
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type. Valid values:
+	//
+	// 	- **block**
+	//
+	// 	- **unblock**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// block
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3424,9 +3878,18 @@ func (s *BlockObjectShrinkRequest) SetType(v string) *BlockObjectShrinkRequest {
 }
 
 type BlockObjectResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The blocking task ID.
+	//
+	// example:
+	//
+	// 15940956620
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BlockObjectResponseBody) String() string {
@@ -3478,6 +3941,8 @@ func (s *BlockObjectResponse) SetBody(v *BlockObjectResponseBody) *BlockObjectRe
 
 type ChangeResourceGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group to which you want to move the website.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3485,6 +3950,8 @@ type ChangeResourceGroupRequest struct {
 	// rg-axxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 123456****
@@ -3520,7 +3987,7 @@ func (s *ChangeResourceGroupRequest) SetSiteId(v int64) *ChangeResourceGroupRequ
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3571,6 +4038,8 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckSiteNameRequest struct {
+	// The website name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3593,19 +4062,46 @@ func (s *CheckSiteNameRequest) SetSiteName(v string) *CheckSiteNameRequest {
 }
 
 type CheckSiteNameResponseBody struct {
+	// The description of the verification result. Valid values:
+	//
+	// 	- **success**: The verification is successful.
+	//
+	// 	- **Site.AlreadyExist**: The website domain name has already been added.
+	//
+	// 	- **Site.InvalidName**: Invalid website domain name.
+	//
+	// 	- **Site.SubSiteUnavailable**: Subdomains are not allowed.
+	//
+	// 	- **Site.InternalError**: An internal error occurs.
+	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether a subdomain is specified. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
-	IsSubSite *bool   `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
-	Messeage  *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
+	IsSubSite *bool `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
+	// The verification message.
+	Messeage *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
+	// Indicates whether the verification passed.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
@@ -3675,12 +4171,16 @@ func (s *CheckSiteNameResponse) SetBody(v *CheckSiteNameResponseBody) *CheckSite
 }
 
 type CheckSiteProjectNameRequest struct {
+	// The name of the real-time log delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_log
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 12312312213212
@@ -3706,18 +4206,30 @@ func (s *CheckSiteProjectNameRequest) SetSiteId(v int64) *CheckSiteProjectNameRe
 }
 
 type CheckSiteProjectNameResponseBody struct {
+	// Indicates whether the task name is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The result description.
+	//
 	// example:
 	//
 	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the real-time log delivery task.
+	//
 	// example:
 	//
 	// dcdn_waf_userAccount_log
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
@@ -3782,6 +4294,8 @@ func (s *CheckSiteProjectNameResponse) SetBody(v *CheckSiteProjectNameResponseBo
 }
 
 type CheckUserProjectNameRequest struct {
+	// The name of the real-time log delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3804,18 +4318,30 @@ func (s *CheckUserProjectNameRequest) SetProjectName(v string) *CheckUserProject
 }
 
 type CheckUserProjectNameResponseBody struct {
+	// Indicates whether the name is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The reason why the name passed or failed the check.
+	//
 	// example:
 	//
 	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the real-time log delivery task.
+	//
 	// example:
 	//
 	// ali-dcdn-log-56
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
@@ -3880,7 +4406,14 @@ func (s *CheckUserProjectNameResponse) SetBody(v *CheckUserProjectNameResponseBo
 }
 
 type CommitRoutineStagingCodeRequest struct {
+	// The description of the code version.
+	//
+	// example:
+	//
+	// description of this code ver
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// The routine name.
+	//
 	// example:
 	//
 	// CommitRoutineStagingCode
@@ -3906,8 +4439,17 @@ func (s *CommitRoutineStagingCodeRequest) SetName(v string) *CommitRoutineStagin
 }
 
 type CommitRoutineStagingCodeResponseBody struct {
+	// The version number of the newly generated code.
+	//
+	// example:
+	//
+	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3959,28 +4501,44 @@ func (s *CommitRoutineStagingCodeResponse) SetBody(v *CommitRoutineStagingCodeRe
 }
 
 type CreateCustomScenePolicyRequest struct {
+	// The time when the policy expires.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-11-07T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The policy name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// 7096621098****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-11-07T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the policy template. Valid value:
+	//
+	// 	- **promotion**: major events.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4023,29 +4581,44 @@ func (s *CreateCustomScenePolicyRequest) SetTemplate(v string) *CreateCustomScen
 }
 
 type CreateCustomScenePolicyResponseBody struct {
+	// The time when the policy expires.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-11-07T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The policy name.
+	//
 	// example:
 	//
 	// test
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of websites associated.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-11-07T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the policy template.
+	//
 	// example:
 	//
 	// promotion
@@ -4125,62 +4698,108 @@ func (s *CreateCustomScenePolicyResponse) SetBody(v *CreateCustomScenePolicyResp
 }
 
 type CreateEdgeContainerAppRequest struct {
+	// The number of consecutive failed health checks required for an application to be considered as unhealthy. Valid values: 1 to 10. Default value: 5.
+	//
 	// example:
 	//
 	// 3
 	HealthCheckFailTimes *int32 `json:"HealthCheckFailTimes,omitempty" xml:"HealthCheckFailTimes,omitempty"`
+	// The domain name that is used for health checks. This parameter is empty by default.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	// The HTTP status code returned for a successful health check. Valid values:
+	//
+	// 	- **http_2xx*	- (default)
+	//
+	// 	- **http_3xx**
+	//
 	// example:
 	//
 	// http_2xx
 	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1*	- to **50**. Default value: **5**.
+	//
 	// example:
 	//
 	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The HTTP request method for health checks. Valid values:
+	//
+	// 	- **HEAD*	- (default): requests the headers of the resource.
+	//
+	// 	- **GET**: requests the specified resource and returns both the headers and entity body.
+	//
 	// example:
 	//
 	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The port used for health checks. Valid values: 1 to 65535. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
+	//
 	// example:
 	//
 	// 2
 	HealthCheckSuccTimes *int32 `json:"HealthCheckSuccTimes,omitempty" xml:"HealthCheckSuccTimes,omitempty"`
+	// The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.\\
+	//
+	// Valid values: **1*	- to **100**.\\
+	//
+	// Default value: **3**.
+	//
 	// example:
 	//
 	// 5
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The health check type. By default, this parameter is left empty.
+	//
+	// Valid values:
+	//
+	// 	- **l4**: Layer 4 health check.
+	//
+	// 	- **l7**: Layer 7 health check.
+	//
 	// example:
 	//
 	// l7
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The URI used for health checks. The URI must be **1*	- to **80*	- characters in length. Default value: "/".
+	//
 	// example:
 	//
 	// /health_check
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remarks. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The server port. Valid values: 1 to 65535.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 80
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4268,10 +4887,14 @@ func (s *CreateEdgeContainerAppRequest) SetTargetPort(v int32) *CreateEdgeContai
 }
 
 type CreateEdgeContainerAppResponseBody struct {
+	// The ID of the application that is created.
+	//
 	// example:
 	//
 	// app-880688675783794688
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -4326,18 +4949,24 @@ func (s *CreateEdgeContainerAppResponse) SetBody(v *CreateEdgeContainerAppRespon
 }
 
 type CreateEdgeContainerAppRecordRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The associated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 5407498413****
@@ -4368,6 +4997,8 @@ func (s *CreateEdgeContainerAppRecordRequest) SetSiteId(v int64) *CreateEdgeCont
 }
 
 type CreateEdgeContainerAppRecordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -5077,10 +5708,14 @@ func (s *CreateEdgeContainerAppVersionResponse) SetBody(v *CreateEdgeContainerAp
 }
 
 type CreateKvNamespaceRequest struct {
+	// The description of the namespace.
+	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5108,22 +5743,40 @@ func (s *CreateKvNamespaceRequest) SetNamespace(v string) *CreateKvNamespaceRequ
 }
 
 type CreateKvNamespaceResponseBody struct {
+	// The description of the namespace.
+	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// 657717877171818496
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- **online**: working as expected.
+	//
+	// 	- **delete**: pending deletion.
+	//
+	// 	- **deleting**: being deleted.
+	//
+	// 	- **deleted**: deleted.
+	//
 	// example:
 	//
 	// online
@@ -5193,18 +5846,26 @@ func (s *CreateKvNamespaceResponse) SetBody(v *CreateKvNamespaceResponseBody) *C
 }
 
 type CreateListRequest struct {
+	// The description of the list that you want to create.
+	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The items in the list that you want to create.
+	//
 	// example:
 	//
 	// a custom list
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the list that you want to create.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The name of the list that you want to create.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5242,18 +5903,26 @@ func (s *CreateListRequest) SetName(v string) *CreateListRequest {
 }
 
 type CreateListShrinkRequest struct {
+	// The description of the list that you want to create.
+	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The items in the list that you want to create.
+	//
 	// example:
 	//
 	// a custom list
 	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	// The type of the list that you want to create.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The name of the list that you want to create.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5291,11 +5960,13 @@ func (s *CreateListShrinkRequest) SetName(v string) *CreateListShrinkRequest {
 }
 
 type CreateListResponseBody struct {
+	// The ID of the custom list.[](~~2850217~~)
+	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -5350,21 +6021,104 @@ func (s *CreateListResponse) SetBody(v *CreateListResponseBody) *CreateListRespo
 	return s
 }
 
+type CreateOriginProtectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateOriginProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginProtectionRequest) SetSiteId(v int64) *CreateOriginProtectionRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateOriginProtectionResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOriginProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginProtectionResponseBody) SetRequestId(v string) *CreateOriginProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOriginProtectionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOriginProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOriginProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginProtectionResponse) SetHeaders(v map[string]*string) *CreateOriginProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOriginProtectionResponse) SetStatusCode(v int32) *CreateOriginProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOriginProtectionResponse) SetBody(v *CreateOriginProtectionResponseBody) *CreateOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePageRequest struct {
+	// The Base64-encoded page content. Example: "PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=", which indicates "hello page".
+	//
 	// example:
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The Content-Type field in the HTTP header. Valid values:
+	//
+	// 	- text/html
+	//
+	// 	- application/json
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The description of the page.
+	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the custom error page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5402,11 +6156,13 @@ func (s *CreatePageRequest) SetName(v string) *CreatePageRequest {
 }
 
 type CreatePageResponseBody struct {
+	// The ID of the custom error page.[](~~2850223~~)
+	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -5462,17 +6218,28 @@ func (s *CreatePageResponse) SetBody(v *CreatePageResponseBody) *CreatePageRespo
 }
 
 type CreateRecordRequest struct {
+	// The origin authentication information of the CNAME record.
 	AuthConf *CreateRecordRequestAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// 业务场景
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **image_video**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comment of the record. The maximum length is 100 characters.
+	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5482,15 +6249,28 @@ type CreateRecordRequest struct {
 	//     "value":"2.2.2.2"
 	//
 	// }
-	Data       *CreateRecordRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HostPolicy *string                  `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// 是否代理加速
+	Data *CreateRecordRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	//
+	// 	- **follow_hostname**: Follow the host record.
+	//
+	// 	- **follow_origin_domain**: match the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
+	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// 记录名称
+	// The record name.
 	//
 	// This parameter is required.
 	//
@@ -5498,21 +6278,39 @@ type CreateRecordRequest struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// 记录类型
+	// The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
 	//
 	// This parameter is required.
 	//
@@ -5586,22 +6384,46 @@ func (s *CreateRecordRequest) SetType(v string) *CreateRecordRequest {
 }
 
 type CreateRecordRequestAuthConf struct {
+	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
+	//
 	// example:
 	//
 	// u0Nkg5gBK*******QF5wvKMM504JUHt
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+	//
+	// 	- **public**: public read. Select this value when the origin type is OSS or S3 and the origin access is public read.
+	//
+	// 	- **private**: private read. Select this value when the origin type is S3 and the origin access is private read.
+	//
+	// 	- **private_same_account**: private read under the same account. Select this value when the origin type is OSS, the origins belong to the same Alibaba Cloud account, and the origins have private read access.
+	//
+	// 	- **private_cross_account**: private read cross accounts. Select this value when the origin type is OSS, the origins belong to different Alibaba Cloud accounts, and the origins have private read access.
+	//
 	// example:
 	//
 	// private
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	//
 	// example:
 	//
 	// VIxuvJSA2S03f******kp208dy5w7
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+	//
+	// 	- **v2**
+	//
+	// 	- **v4**
+	//
+	// If you leave this parameter empty, the default value v4 is used.
+	//
 	// example:
 	//
 	// v4
@@ -5642,58 +6464,108 @@ func (s *CreateRecordRequestAuthConf) SetVersion(v string) *CreateRecordRequestA
 }
 
 type CreateRecordRequestData struct {
+	// The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+	//
 	// example:
 	//
 	// 1
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
+	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 1
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
+	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 1
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
+	//
+	// 	- **issue**: indicates that a CA is authorized to issue a certificate for the domain name. This is usually followed by the domain name of the CA.
+	//
+	// 	- **issuewild**: indicates that a CA is authorized to issue a wildcard certificate (such as \\*.example.com) for the domain name.
+	//
+	// 	- **iodef**: specifies a URI to receive reports about CAA record violations.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+	//
 	// example:
 	//
 	// RSA
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 1
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+	//
+	// 	- **A/AAAA**: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
+	//
+	// 	- **CNAME**: the target domain name.
+	//
+	// 	- **NS**: the name servers for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the target mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
+	//
 	// example:
 	//
 	// 0
@@ -5779,17 +6651,28 @@ func (s *CreateRecordRequestData) SetWeight(v int32) *CreateRecordRequestData {
 }
 
 type CreateRecordShrinkRequest struct {
+	// The origin authentication information of the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	// 业务场景
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **image_video**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comment of the record. The maximum length is 100 characters.
+	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html) .
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5800,14 +6683,27 @@ type CreateRecordShrinkRequest struct {
 	//
 	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	//
+	// 	- **follow_hostname**: Follow the host record.
+	//
+	// 	- **follow_origin_domain**: match the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// 是否代理加速
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// 记录名称
+	// The record name.
 	//
 	// This parameter is required.
 	//
@@ -5815,21 +6711,39 @@ type CreateRecordShrinkRequest struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// 记录类型
+	// The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
 	//
 	// This parameter is required.
 	//
@@ -5903,10 +6817,14 @@ func (s *CreateRecordShrinkRequest) SetType(v string) *CreateRecordShrinkRequest
 }
 
 type CreateRecordResponseBody struct {
+	// The record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
@@ -5961,14 +6879,20 @@ func (s *CreateRecordResponse) SetBody(v *CreateRecordResponseBody) *CreateRecor
 }
 
 type CreateRoutineRequest struct {
+	// The routine description.
+	//
 	// example:
 	//
 	// the description of this routine
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The routine name, which must be unique in the same account.
+	//
 	// example:
 	//
 	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The specification of the routine.
+	//
 	// example:
 	//
 	// 5ms
@@ -5999,12 +6923,14 @@ func (s *CreateRoutineRequest) SetSpecName(v string) *CreateRoutineRequest {
 }
 
 type CreateRoutineResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// OK
@@ -6059,12 +6985,24 @@ func (s *CreateRoutineResponse) SetBody(v *CreateRoutineResponseBody) *CreateRou
 }
 
 type CreateRoutineRelatedRecordRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// CreateRoutineRelatedRecord
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The record name.
+	//
+	// example:
+	//
+	// test-record-1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s CreateRoutineRelatedRecordRequest) String() string {
@@ -6091,9 +7029,18 @@ func (s *CreateRoutineRelatedRecordRequest) SetSiteId(v int64) *CreateRoutineRel
 }
 
 type CreateRoutineRelatedRecordResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateRoutineRelatedRecordResponseBody) String() string {
@@ -6144,12 +7091,24 @@ func (s *CreateRoutineRelatedRecordResponse) SetBody(v *CreateRoutineRelatedReco
 }
 
 type CreateRoutineRelatedRouteRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// CreateRoutineRelatedRoute
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Route  *string `json:"Route,omitempty" xml:"Route,omitempty"`
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The route.
+	//
+	// example:
+	//
+	// *.example.com/path1*
+	Route *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s CreateRoutineRelatedRouteRequest) String() string {
@@ -6176,9 +7135,18 @@ func (s *CreateRoutineRelatedRouteRequest) SetSiteId(v int64) *CreateRoutineRela
 }
 
 type CreateRoutineRelatedRouteResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateRoutineRelatedRouteResponseBody) String() string {
@@ -6229,8 +7197,12 @@ func (s *CreateRoutineRelatedRouteResponse) SetBody(v *CreateRoutineRelatedRoute
 }
 
 type CreateScheduledPreloadExecutionsRequest struct {
+	// The scheduled prefetch plans to create.
+	//
 	// This parameter is required.
 	Executions []*CreateScheduledPreloadExecutionsRequestExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
+	// The ID of the prefetch task, which is generated by calling the [CreateScheduledPreloadJob](https://help.aliyun.com/document_detail/2850459.html) operation.
+	//
 	// example:
 	//
 	// CreateScheduledPreloadExecutions
@@ -6256,11 +7228,33 @@ func (s *CreateScheduledPreloadExecutionsRequest) SetId(v string) *CreateSchedul
 }
 
 type CreateScheduledPreloadExecutionsRequestExecutions struct {
+	// The end time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-04T02:02:09Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
 	// This parameter is required.
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6293,8 +7287,12 @@ func (s *CreateScheduledPreloadExecutionsRequestExecutions) SetStartTime(v strin
 }
 
 type CreateScheduledPreloadExecutionsShrinkRequest struct {
+	// The scheduled prefetch plans to create.
+	//
 	// This parameter is required.
 	ExecutionsShrink *string `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The ID of the prefetch task, which is generated by calling the [CreateScheduledPreloadJob](https://help.aliyun.com/document_detail/2850459.html) operation.
+	//
 	// example:
 	//
 	// CreateScheduledPreloadExecutions
@@ -6320,13 +7318,30 @@ func (s *CreateScheduledPreloadExecutionsShrinkRequest) SetId(v string) *CreateS
 }
 
 type CreateScheduledPreloadExecutionsResponseBody struct {
+	// The information about prefetch plans that failed to be created.
 	FailedExecutions []*CreateScheduledPreloadExecutionsResponseBodyFailedExecutions `json:"FailedExecutions,omitempty" xml:"FailedExecutions,omitempty" type:"Repeated"`
-	FailedMessages   []*string                                                       `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessCount      *int32                                                           `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The information about plan failures.
+	FailedMessages []*string `json:"FailedMessages,omitempty" xml:"FailedMessages,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of prefetch plans that are created.
+	//
+	// example:
+	//
+	// 12
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The information about created prefetch plans.
 	SuccessExecutions []*CreateScheduledPreloadExecutionsResponseBodySuccessExecutions `json:"SuccessExecutions,omitempty" xml:"SuccessExecutions,omitempty" type:"Repeated"`
-	TotalCount        *int32                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of new plans requested.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBody) String() string {
@@ -6368,14 +7383,64 @@ func (s *CreateScheduledPreloadExecutionsResponseBody) SetTotalCount(v int32) *C
 }
 
 type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {
-	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-03T02:43:35Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 66599bd7397885b43804901c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-02T02:43:35Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBodyFailedExecutions) String() string {
@@ -6427,14 +7492,64 @@ func (s *CreateScheduledPreloadExecutionsResponseBodyFailedExecutions) SetStatus
 }
 
 type CreateScheduledPreloadExecutionsResponseBodySuccessExecutions struct {
-	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-03T02:43:35Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 66599bd7397885b43804901c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plans.
+	//
+	// example:
+	//
+	// 2024-06-02T02:43:35Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateScheduledPreloadExecutionsResponseBodySuccessExecutions) String() string {
@@ -6515,17 +7630,49 @@ func (s *CreateScheduledPreloadExecutionsResponse) SetBody(v *CreateScheduledPre
 }
 
 type CreateScheduledPreloadJobRequest struct {
+	// The method to submit URLs to be prefetched.
+	//
+	// Valid values:
+	//
+	// 	- **textBox**
+	//
+	// 	- **oss**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss
 	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	// The name of the scheduled prefetch task.
+	//
 	// This parameter is required.
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The URL of the OSS object that stores the URLs to be prefetched.
+	//
+	// example:
+	//
+	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
-	SiteId  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	//
+	// example:
+	//
+	// 190007158391808
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The URLs to be prefetched. This parameter is required if you set InsertWay to textBox.
+	//
+	// example:
+	//
+	// http://testurl.com/a.txt
+	//
+	// http://testurl.com/b.txt
 	UrlList *string `json:"UrlList,omitempty" xml:"UrlList,omitempty"`
 }
 
@@ -6563,22 +7710,104 @@ func (s *CreateScheduledPreloadJobRequest) SetUrlList(v string) *CreateScheduled
 }
 
 type CreateScheduledPreloadJobResponseBody struct {
-	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreatedAt     *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Domains       *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	ErrorInfo     *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2023-06-05T10:04:20+0800
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The domain names to be prefetched.
+	//
+	// example:
+	//
+	// testurl.com
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// The error message. Multiple error messages are separated by commas (,). Valid values:
+	//
+	// 	- **InvalidUrl**: The URL format is invalid.
+	//
+	// 	- **InvalidDomain**: The domain name fails the domain ownership verification.
+	//
+	// 	- **QuotaExcess**: the quota limit has been reached.
+	//
+	// 	- **OtherErrors**: other errors.
+	//
+	// example:
+	//
+	// InvalidDomain
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+	//
+	// example:
+	//
+	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InsertWay     *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	TaskSubmitted *int32  `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UrlCount      *int32  `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	UrlSubmitted  *int32  `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
+	// The ID of the URL list file, which can be used during downloads.
+	//
+	// example:
+	//
+	// 665d3b48621bccf3fe29e1a7
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the scheduled prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method to submit the URLs to be prefetched.
+	//
+	// example:
+	//
+	// oss
+	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247B78
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 190007158391808
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The number of submitted prefetch tasks.
+	//
+	// example:
+	//
+	// 1
+	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
+	// The task type (refresh or preload).
+	//
+	// example:
+	//
+	// preload
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of URLs.
+	//
+	// example:
+	//
+	// 2
+	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
+	// The number of submitted URLs.
+	//
+	// example:
+	//
+	// 1
+	UrlSubmitted *int32 `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
 }
 
 func (s CreateScheduledPreloadJobResponseBody) String() string {
@@ -6694,29 +7923,47 @@ func (s *CreateScheduledPreloadJobResponse) SetBody(v *CreateScheduledPreloadJob
 }
 
 type CreateSiteRequest struct {
+	// The DNS setup. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The instance ID, which can be obtained by calling the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation. Specify at least one of the instance ID and website ID. If you specify both of them, the instance ID is used.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dbaudit-cn-nwy349jdb03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource group. If you leave this parameter empty, the system uses the default resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmw4znnok****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 记录名称
+	// The website name.
 	//
 	// This parameter is required.
 	//
@@ -6760,18 +8007,26 @@ func (s *CreateSiteRequest) SetSiteName(v string) *CreateSiteRequest {
 }
 
 type CreateSiteResponseBody struct {
+	// The nameservers assigned by ESA. The values are separated by commas (,). This parameter is returned if you set AccessType to NS. In this case, you must change the nameservers of your domain to the assigned ones. Then, you can verify the domain ownership and activate your website.
+	//
 	// example:
 	//
 	// ns1.example.com,ns2.example.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The verification code for the website. If you set AccessType to CNAME, you need to add a TXT record whose hostname is **_esaauth.[websiteDomainName]*	- and record value is the value of VerifyCode to the DNS records of your domain. ****Then, you can verify the domain ownership and activate your website.
+	//
 	// example:
 	//
 	// verify_aah9dioasmov****
@@ -6836,9 +8091,14 @@ func (s *CreateSiteResponse) SetBody(v *CreateSiteResponseBody) *CreateSiteRespo
 }
 
 type CreateSiteCustomLogRequest struct {
-	Cookies         []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
-	RequestHeaders  []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The cookie fields.
+	Cookies []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
+	// The request header fields.
+	RequestHeaders []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The response header fields.
 	ResponseHeaders []*string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 11223
@@ -6874,9 +8134,14 @@ func (s *CreateSiteCustomLogRequest) SetSiteId(v int64) *CreateSiteCustomLogRequ
 }
 
 type CreateSiteCustomLogShrinkRequest struct {
-	CookiesShrink         *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	RequestHeadersShrink  *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The cookie fields.
+	CookiesShrink *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// The request header fields.
+	RequestHeadersShrink *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The response header fields.
 	ResponseHeadersShrink *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 11223
@@ -6912,7 +8177,7 @@ func (s *CreateSiteCustomLogShrinkRequest) SetSiteId(v int64) *CreateSiteCustomL
 }
 
 type CreateSiteCustomLogResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -6963,45 +8228,88 @@ func (s *CreateSiteCustomLogResponse) SetBody(v *CreateSiteCustomLogResponseBody
 }
 
 type CreateSiteDeliveryTaskRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- **dcdn_log_access_l1*	- (default): access logs.
+	//
+	// 	- **dcdn_log_er**: Edge Routine logs.
+	//
+	// 	- **dcdn_log_waf**: firewall logs.
+	//
+	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- oversea: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 	- sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 	- http: HTTP server.
+	//
+	// 	- aws3: Amazon Simple Storage Service (S3).
+	//
+	// 	- oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 	- kafka: Kafka.
+	//
+	// 	- aws3cmpt: S3-compatible storage service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields, which are separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_agent,ip_adress,ip_port
-	FieldName     *string                                     `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	HttpDelivery  *CreateSiteDeliveryTaskRequestHttpDelivery  `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The configurations for delivery to an HTTP server.
+	HttpDelivery *CreateSiteDeliveryTaskRequestHttpDelivery `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery to Kafka.
 	KafkaDelivery *CreateSiteDeliveryTaskRequestKafkaDelivery `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty" type:"Struct"`
-	OssDelivery   *CreateSiteDeliveryTaskRequestOssDelivery   `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
-	S3Delivery    *CreateSiteDeliveryTaskRequestS3Delivery    `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
+	// The configurations for delivery to OSS.
+	OssDelivery *CreateSiteDeliveryTaskRequestOssDelivery `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	S3Delivery *CreateSiteDeliveryTaskRequestS3Delivery `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12312312112***
-	SiteId      *int64                                    `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The configurations for delivery to SLS.
 	SlsDelivery *CreateSiteDeliveryTaskRequestSlsDelivery `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty" type:"Struct"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7079,18 +8387,66 @@ func (s *CreateSiteDeliveryTaskRequest) SetTaskName(v string) *CreateSiteDeliver
 }
 
 type CreateSiteDeliveryTaskRequestHttpDelivery struct {
-	Compress          *string                                                     `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	DestUrl           *string                                                     `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
-	HeaderParam       map[string]*HttpDeliveryHeaderParamValue                    `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
-	LogBodyPrefix     *string                                                     `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
-	LogBodySuffix     *string                                                     `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
-	MaxBatchMB        *int64                                                      `json:"MaxBatchMB,omitempty" xml:"MaxBatchMB,omitempty"`
-	MaxBatchSize      *int64                                                      `json:"MaxBatchSize,omitempty" xml:"MaxBatchSize,omitempty"`
-	MaxRetry          *int64                                                      `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	QueryParam        map[string]*HttpDeliveryQueryParamValue                     `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
-	StandardAuthOn    *bool                                                       `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
+	// The compression method. By default, data is not compressed.
+	//
+	// example:
+	//
+	// gzip
+	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	// The address of the HTTP server.
+	//
+	// example:
+	//
+	// http://xxx.aliyun.com/v1/log/upload
+	DestUrl *string `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
+	// The custom headers.
+	HeaderParam map[string]*HttpDeliveryHeaderParamValue `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
+	// The prefix of the log delivery package.
+	//
+	// example:
+	//
+	// cdnVersion:1.0
+	LogBodyPrefix *string `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
+	// The suffix of the log delivery package.
+	//
+	// example:
+	//
+	// cdnVersion:1.0
+	LogBodySuffix *string `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
+	// The maximum size of data for each delivery. Unit: MB.
+	//
+	// example:
+	//
+	// 5
+	MaxBatchMB *int64 `json:"MaxBatchMB,omitempty" xml:"MaxBatchMB,omitempty"`
+	// The maximum number of entries for each delivery.
+	//
+	// example:
+	//
+	// 1000
+	MaxBatchSize *int64 `json:"MaxBatchSize,omitempty" xml:"MaxBatchSize,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxRetry *int64 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// The custom query parameters.
+	QueryParam map[string]*HttpDeliveryQueryParamValue `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
+	// Specifies whether to use server authentication.
+	//
+	// example:
+	//
+	// true
+	StandardAuthOn *bool `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
+	// The authentication configurations.
 	StandardAuthParam *CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam `json:"StandardAuthParam,omitempty" xml:"StandardAuthParam,omitempty" type:"Struct"`
-	TransformTimeout  *int64                                                      `json:"TransformTimeout,omitempty" xml:"TransformTimeout,omitempty"`
+	// The timeout period. Unit: seconds.
+	//
+	// example:
+	//
+	// 10
+	TransformTimeout *int64 `json:"TransformTimeout,omitempty" xml:"TransformTimeout,omitempty"`
 }
 
 func (s CreateSiteDeliveryTaskRequestHttpDelivery) String() string {
@@ -7162,9 +8518,26 @@ func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetTransformTimeout(v int64)
 }
 
 type CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam struct {
-	ExpiredTime *int32  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	UrlPath     *string `json:"UrlPath,omitempty" xml:"UrlPath,omitempty"`
+	// The validity period of the signature.
+	//
+	// >  The value must be greater than 0. We recommend that you specify a value that is greater than 300.
+	//
+	// example:
+	//
+	// 300
+	ExpiredTime *int32 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The private key.
+	//
+	// example:
+	//
+	// ***
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The URI path for server authentication.
+	//
+	// example:
+	//
+	// v1/log/upload
+	UrlPath *string `json:"UrlPath,omitempty" xml:"UrlPath,omitempty"`
 }
 
 func (s CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam) String() string {
@@ -7191,17 +8564,50 @@ func (s *CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam) SetUrlPath(
 }
 
 type CreateSiteDeliveryTaskRequestKafkaDelivery struct {
-	Balancer *string   `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
-	Brokers  []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
+	// The load balancing method.
+	//
+	// example:
+	//
+	// kafka.LeastBytes
+	Balancer *string `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
+	// The brokers.
+	Brokers []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
+	// The compression method.
+	//
 	// example:
 	//
 	// gzip
-	Compress      *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	// The encryption method.
+	//
+	// example:
+	//
+	// plain
 	MachanismType *string `json:"MachanismType,omitempty" xml:"MachanismType,omitempty"`
-	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	UserAuth      *bool   `json:"UserAuth,omitempty" xml:"UserAuth,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The password.
+	//
+	// example:
+	//
+	// ***
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The topic.
+	//
+	// example:
+	//
+	// dqc_test2
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Specifies whether to enable authentication.
+	//
+	// example:
+	//
+	// true
+	UserAuth *bool `json:"UserAuth,omitempty" xml:"UserAuth,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xxx
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateSiteDeliveryTaskRequestKafkaDelivery) String() string {
@@ -7253,12 +8659,26 @@ func (s *CreateSiteDeliveryTaskRequestKafkaDelivery) SetUserName(v string) *Crea
 }
 
 type CreateSiteDeliveryTaskRequestOssDelivery struct {
-	Aliuid     *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1234***
+	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// test_rlog
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The prefix of the path in which you want to store logs.
+	//
 	// example:
 	//
 	// logriver-test/log
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The region in which the bucket is located.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -7294,12 +8714,47 @@ func (s *CreateSiteDeliveryTaskRequestOssDelivery) SetRegion(v string) *CreateSi
 }
 
 type CreateSiteDeliveryTaskRequestS3Delivery struct {
-	AccessKey            *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	BucketPath           *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	PrefixPath           *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	S3Cmpt               *bool   `json:"S3Cmpt,omitempty" xml:"S3Cmpt,omitempty"`
+	// The access key ID of your Amazon S3 account.
+	//
+	// example:
+	//
+	// LTAIKh***
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The directory in the bucket.
+	//
+	// example:
+	//
+	// logriver-test/log
+	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	// The endpoint. This parameter is required when the S3Cmpt parameter is set to true.
+	//
+	// example:
+	//
+	// https://s3.oss-cn-hangzhou.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The prefix of the path in which you want to store logs.
+	//
+	// example:
+	//
+	// logriver-test/log
+	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The region ID of the service.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether the service is compatible with Amazon S3.
+	//
+	// example:
+	//
+	// true
+	S3Cmpt *bool `json:"S3Cmpt,omitempty" xml:"S3Cmpt,omitempty"`
+	// The secret access key of your Amazon S3 account.
+	//
+	// example:
+	//
+	// LDSIKh***
 	SecretKey            *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	ServerSideEncryption *bool   `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
 	VertifyType          *string `json:"VertifyType,omitempty" xml:"VertifyType,omitempty"`
@@ -7359,9 +8814,24 @@ func (s *CreateSiteDeliveryTaskRequestS3Delivery) SetVertifyType(v string) *Crea
 }
 
 type CreateSiteDeliveryTaskRequestSlsDelivery struct {
+	// The name of the Logstore.
+	//
+	// example:
+	//
+	// accesslog-test
 	SLSLogStore *string `json:"SLSLogStore,omitempty" xml:"SLSLogStore,omitempty"`
-	SLSProject  *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	SLSRegion   *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	// The name of the SLS project.
+	//
+	// example:
+	//
+	// dcdn-test20240417
+	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
+	// The region in which the SLS project resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
 }
 
 func (s CreateSiteDeliveryTaskRequestSlsDelivery) String() string {
@@ -7388,45 +8858,88 @@ func (s *CreateSiteDeliveryTaskRequestSlsDelivery) SetSLSRegion(v string) *Creat
 }
 
 type CreateSiteDeliveryTaskShrinkRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- **dcdn_log_access_l1*	- (default): access logs.
+	//
+	// 	- **dcdn_log_er**: Edge Routine logs.
+	//
+	// 	- **dcdn_log_waf**: firewall logs.
+	//
+	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- oversea: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 	- sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 	- http: HTTP server.
+	//
+	// 	- aws3: Amazon Simple Storage Service (S3).
+	//
+	// 	- oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 	- kafka: Kafka.
+	//
+	// 	- aws3cmpt: S3-compatible storage service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate. Default value: 0.
+	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields, which are separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_agent,ip_adress,ip_port
-	FieldName           *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	HttpDeliveryShrink  *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The configurations for delivery to an HTTP server.
+	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
+	// The configurations for delivery to Kafka.
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	OssDeliveryShrink   *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	S3DeliveryShrink    *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
+	// The configurations for delivery to OSS.
+	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
+	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12312312112***
-	SiteId            *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The configurations for delivery to SLS.
 	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7504,20 +9017,30 @@ func (s *CreateSiteDeliveryTaskShrinkRequest) SetTaskName(v string) *CreateSiteD
 }
 
 type CreateSiteDeliveryTaskResponseBody struct {
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- oversea: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9358E852-992D-5BC7-8BD7-975CA02773A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.[](~~2850189~~)
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// er-oss
@@ -7581,40 +9104,2786 @@ func (s *CreateSiteDeliveryTaskResponse) SetBody(v *CreateSiteDeliveryTaskRespon
 	return s
 }
 
+type CreateSiteFunctionRequest struct {
+	CacheReserve                        []*CreateSiteFunctionRequestCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	CacheRules                          []*CreateSiteFunctionRequestCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	CacheTags                           []*CreateSiteFunctionRequestCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	CnameFlattening                     []*CreateSiteFunctionRequestCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	CompressionRules                    []*CreateSiteFunctionRequestCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization             []*CreateSiteFunctionRequestCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	DevelopmentMode                     []*CreateSiteFunctionRequestDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	HttpRequestHeaderModificationRules  []*CreateSiteFunctionRequestHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpResponseHeaderModificationRules []*CreateSiteFunctionRequestHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpsApplicationConfiguration       []*CreateSiteFunctionRequestHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
+	HttpsBasicConfiguration             []*CreateSiteFunctionRequestHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
+	ImageTransform                      []*CreateSiteFunctionRequestImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	Ipv6                                []*CreateSiteFunctionRequestIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	ManagedTransforms                   []*CreateSiteFunctionRequestManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization                 []*CreateSiteFunctionRequestNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	OriginProtection                    []*CreateSiteFunctionRequestOriginProtection                    `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty" type:"Repeated"`
+	OriginRules                         []*CreateSiteFunctionRequestOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	RedirectRules                       []*CreateSiteFunctionRequestRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	RewriteUrlRules                     []*CreateSiteFunctionRequestRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	SeoBypass                           []*CreateSiteFunctionRequestSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateSiteFunction
+	SiteId            *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteNameExclusive []*CreateSiteFunctionRequestSiteNameExclusive `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
+	SitePause         []*CreateSiteFunctionRequestSitePause         `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	SiteVersion       *int32                                        `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	TieredCache       []*CreateSiteFunctionRequestTieredCache       `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+}
+
+func (s CreateSiteFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequest) SetCacheReserve(v []*CreateSiteFunctionRequestCacheReserve) *CreateSiteFunctionRequest {
+	s.CacheReserve = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetCacheRules(v []*CreateSiteFunctionRequestCacheRules) *CreateSiteFunctionRequest {
+	s.CacheRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetCacheTags(v []*CreateSiteFunctionRequestCacheTags) *CreateSiteFunctionRequest {
+	s.CacheTags = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetCnameFlattening(v []*CreateSiteFunctionRequestCnameFlattening) *CreateSiteFunctionRequest {
+	s.CnameFlattening = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetCompressionRules(v []*CreateSiteFunctionRequestCompressionRules) *CreateSiteFunctionRequest {
+	s.CompressionRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetCrossBorderOptimization(v []*CreateSiteFunctionRequestCrossBorderOptimization) *CreateSiteFunctionRequest {
+	s.CrossBorderOptimization = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetDevelopmentMode(v []*CreateSiteFunctionRequestDevelopmentMode) *CreateSiteFunctionRequest {
+	s.DevelopmentMode = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetHttpRequestHeaderModificationRules(v []*CreateSiteFunctionRequestHttpRequestHeaderModificationRules) *CreateSiteFunctionRequest {
+	s.HttpRequestHeaderModificationRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetHttpResponseHeaderModificationRules(v []*CreateSiteFunctionRequestHttpResponseHeaderModificationRules) *CreateSiteFunctionRequest {
+	s.HttpResponseHeaderModificationRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetHttpsApplicationConfiguration(v []*CreateSiteFunctionRequestHttpsApplicationConfiguration) *CreateSiteFunctionRequest {
+	s.HttpsApplicationConfiguration = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetHttpsBasicConfiguration(v []*CreateSiteFunctionRequestHttpsBasicConfiguration) *CreateSiteFunctionRequest {
+	s.HttpsBasicConfiguration = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetImageTransform(v []*CreateSiteFunctionRequestImageTransform) *CreateSiteFunctionRequest {
+	s.ImageTransform = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetIpv6(v []*CreateSiteFunctionRequestIpv6) *CreateSiteFunctionRequest {
+	s.Ipv6 = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetManagedTransforms(v []*CreateSiteFunctionRequestManagedTransforms) *CreateSiteFunctionRequest {
+	s.ManagedTransforms = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetNetworkOptimization(v []*CreateSiteFunctionRequestNetworkOptimization) *CreateSiteFunctionRequest {
+	s.NetworkOptimization = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetOriginProtection(v []*CreateSiteFunctionRequestOriginProtection) *CreateSiteFunctionRequest {
+	s.OriginProtection = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetOriginRules(v []*CreateSiteFunctionRequestOriginRules) *CreateSiteFunctionRequest {
+	s.OriginRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetRedirectRules(v []*CreateSiteFunctionRequestRedirectRules) *CreateSiteFunctionRequest {
+	s.RedirectRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetRewriteUrlRules(v []*CreateSiteFunctionRequestRewriteUrlRules) *CreateSiteFunctionRequest {
+	s.RewriteUrlRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetSeoBypass(v []*CreateSiteFunctionRequestSeoBypass) *CreateSiteFunctionRequest {
+	s.SeoBypass = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetSiteId(v int64) *CreateSiteFunctionRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetSiteNameExclusive(v []*CreateSiteFunctionRequestSiteNameExclusive) *CreateSiteFunctionRequest {
+	s.SiteNameExclusive = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetSitePause(v []*CreateSiteFunctionRequestSitePause) *CreateSiteFunctionRequest {
+	s.SitePause = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetSiteVersion(v int32) *CreateSiteFunctionRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequest) SetTieredCache(v []*CreateSiteFunctionRequestTieredCache) *CreateSiteFunctionRequest {
+	s.TieredCache = v
+	return s
+}
+
+type CreateSiteFunctionRequestCacheReserve struct {
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCacheReserve) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCacheReserve) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCacheReserve) SetEnable(v string) *CreateSiteFunctionRequestCacheReserve {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheReserve) SetInstanceId(v string) *CreateSiteFunctionRequestCacheReserve {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateSiteFunctionRequestCacheRules struct {
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCacheRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCacheRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetAdditionalCacheablePorts(v string) *CreateSiteFunctionRequestCacheRules {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetBrowserCacheMode(v string) *CreateSiteFunctionRequestCacheRules {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetBrowserCacheTtl(v string) *CreateSiteFunctionRequestCacheRules {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetBypassCache(v string) *CreateSiteFunctionRequestCacheRules {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetCacheDeceptionArmor(v string) *CreateSiteFunctionRequestCacheRules {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetCacheReserveEligibility(v string) *CreateSiteFunctionRequestCacheRules {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetCheckPresenceCookie(v string) *CreateSiteFunctionRequestCacheRules {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetCheckPresenceHeader(v string) *CreateSiteFunctionRequestCacheRules {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetEdgeCacheMode(v string) *CreateSiteFunctionRequestCacheRules {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetEdgeCacheTtl(v string) *CreateSiteFunctionRequestCacheRules {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetEdgeStatusCodeCacheTtl(v string) *CreateSiteFunctionRequestCacheRules {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetIncludeCookie(v string) *CreateSiteFunctionRequestCacheRules {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetIncludeHeader(v string) *CreateSiteFunctionRequestCacheRules {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetQueryString(v string) *CreateSiteFunctionRequestCacheRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetQueryStringMode(v string) *CreateSiteFunctionRequestCacheRules {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetRule(v string) *CreateSiteFunctionRequestCacheRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetRuleEnable(v string) *CreateSiteFunctionRequestCacheRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetRuleName(v string) *CreateSiteFunctionRequestCacheRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetServeStale(v string) *CreateSiteFunctionRequestCacheRules {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetSortQueryStringForCache(v string) *CreateSiteFunctionRequestCacheRules {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetUserDeviceType(v string) *CreateSiteFunctionRequestCacheRules {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetUserGeo(v string) *CreateSiteFunctionRequestCacheRules {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheRules) SetUserLanguage(v string) *CreateSiteFunctionRequestCacheRules {
+	s.UserLanguage = &v
+	return s
+}
+
+type CreateSiteFunctionRequestCacheTags struct {
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCacheTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCacheTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCacheTags) SetCaseInsensitive(v string) *CreateSiteFunctionRequestCacheTags {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCacheTags) SetTagName(v string) *CreateSiteFunctionRequestCacheTags {
+	s.TagName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestCnameFlattening struct {
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCnameFlattening) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCnameFlattening) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCnameFlattening) SetFlattenMode(v string) *CreateSiteFunctionRequestCnameFlattening {
+	s.FlattenMode = &v
+	return s
+}
+
+type CreateSiteFunctionRequestCompressionRules struct {
+	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCompressionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCompressionRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCompressionRules) SetBrotli(v string) *CreateSiteFunctionRequestCompressionRules {
+	s.Brotli = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCompressionRules) SetGzip(v string) *CreateSiteFunctionRequestCompressionRules {
+	s.Gzip = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCompressionRules) SetRule(v string) *CreateSiteFunctionRequestCompressionRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCompressionRules) SetRuleEnable(v string) *CreateSiteFunctionRequestCompressionRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestCompressionRules) SetRuleName(v string) *CreateSiteFunctionRequestCompressionRules {
+	s.RuleName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestCrossBorderOptimization struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestCrossBorderOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestCrossBorderOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestCrossBorderOptimization) SetEnable(v string) *CreateSiteFunctionRequestCrossBorderOptimization {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestDevelopmentMode struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestDevelopmentMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestDevelopmentMode) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestDevelopmentMode) SetEnable(v string) *CreateSiteFunctionRequestDevelopmentMode {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpRequestHeaderModificationRules struct {
+	RequestHeaderModification []*CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	Rule                      *string                                                                                 `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                *string                                                                                 `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                  *string                                                                                 `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRequestHeaderModification(v []*CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) *CreateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRule(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRuleEnable(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRuleName(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetName(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetOperation(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetValue(v string) *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpResponseHeaderModificationRules struct {
+	ResponseHeaderModification []*CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	Rule                       *string                                                                                   `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                 *string                                                                                   `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                   *string                                                                                   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRules) SetResponseHeaderModification(v []*CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) *CreateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRule(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRuleEnable(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRuleName(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetName(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetOperation(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetValue(v string) *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpsApplicationConfiguration struct {
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpsApplicationConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpsApplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvc(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcClear(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcMa(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcPersist(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHsts(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.Hsts = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsIncludeSubdomains(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsMaxAge(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsPreload(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHttpsForce(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetHttpsForceCode(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetRule(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetRuleEnable(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetRuleName(v string) *CreateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestHttpsBasicConfiguration struct {
+	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestHttpsBasicConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestHttpsBasicConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetCiphersuite(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetCiphersuiteGroup(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetHttp2(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Http2 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetHttp3(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Http3 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetHttps(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Https = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetOcspStapling(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetRule(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetRuleEnable(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetRuleName(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetTls10(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetTls11(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetTls12(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetTls13(v string) *CreateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls13 = &v
+	return s
+}
+
+type CreateSiteFunctionRequestImageTransform struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestImageTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestImageTransform) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestImageTransform) SetEnable(v string) *CreateSiteFunctionRequestImageTransform {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestIpv6 struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestIpv6) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestIpv6) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestIpv6) SetEnable(v string) *CreateSiteFunctionRequestIpv6 {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestManagedTransforms struct {
+	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
+	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestManagedTransforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestManagedTransforms) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestManagedTransforms) SetAddClientGeolocationHeaders(v string) *CreateSiteFunctionRequestManagedTransforms {
+	s.AddClientGeolocationHeaders = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestManagedTransforms) SetAddRealClientIpHeader(v string) *CreateSiteFunctionRequestManagedTransforms {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+type CreateSiteFunctionRequestNetworkOptimization struct {
+	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestNetworkOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestNetworkOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetGrpc(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.Grpc = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetHttp2Origin(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetRule(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetRuleEnable(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetRuleName(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetSmartRouting(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetUploadMaxFilesize(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestNetworkOptimization) SetWebsocket(v string) *CreateSiteFunctionRequestNetworkOptimization {
+	s.Websocket = &v
+	return s
+}
+
+type CreateSiteFunctionRequestOriginProtection struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestOriginProtection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestOriginProtection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestOriginProtection) SetEnable(v string) *CreateSiteFunctionRequestOriginProtection {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestOriginRules struct {
+	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestOriginRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestOriginRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetDnsRecord(v string) *CreateSiteFunctionRequestOriginRules {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetOriginHost(v string) *CreateSiteFunctionRequestOriginRules {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetOriginHttpPort(v string) *CreateSiteFunctionRequestOriginRules {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetOriginHttpsPort(v string) *CreateSiteFunctionRequestOriginRules {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetOriginScheme(v string) *CreateSiteFunctionRequestOriginRules {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetOriginSni(v string) *CreateSiteFunctionRequestOriginRules {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetRange(v string) *CreateSiteFunctionRequestOriginRules {
+	s.Range = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetRule(v string) *CreateSiteFunctionRequestOriginRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetRuleEnable(v string) *CreateSiteFunctionRequestOriginRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestOriginRules) SetRuleName(v string) *CreateSiteFunctionRequestOriginRules {
+	s.RuleName = &v
+	return s
+}
+
+type CreateSiteFunctionRequestRedirectRules struct {
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestRedirectRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestRedirectRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetReserveQueryString(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetRule(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetRuleEnable(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetRuleName(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetStatusCode(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetTargetUrl(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRedirectRules) SetType(v string) *CreateSiteFunctionRequestRedirectRules {
+	s.Type = &v
+	return s
+}
+
+type CreateSiteFunctionRequestRewriteUrlRules struct {
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestRewriteUrlRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestRewriteUrlRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetQueryString(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetRewriteQueryStringType(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetRewriteUriType(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetRule(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetRuleEnable(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetRuleName(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionRequestRewriteUrlRules) SetUri(v string) *CreateSiteFunctionRequestRewriteUrlRules {
+	s.Uri = &v
+	return s
+}
+
+type CreateSiteFunctionRequestSeoBypass struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestSeoBypass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestSeoBypass) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestSeoBypass) SetEnable(v string) *CreateSiteFunctionRequestSeoBypass {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestSiteNameExclusive struct {
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestSiteNameExclusive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestSiteNameExclusive) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestSiteNameExclusive) SetEnable(v string) *CreateSiteFunctionRequestSiteNameExclusive {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionRequestSitePause struct {
+	Paused *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestSitePause) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestSitePause) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestSitePause) SetPaused(v string) *CreateSiteFunctionRequestSitePause {
+	s.Paused = &v
+	return s
+}
+
+type CreateSiteFunctionRequestTieredCache struct {
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+}
+
+func (s CreateSiteFunctionRequestTieredCache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionRequestTieredCache) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionRequestTieredCache) SetCacheArchitectureMode(v string) *CreateSiteFunctionRequestTieredCache {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+type CreateSiteFunctionShrinkRequest struct {
+	CacheReserveShrink                        *string `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty"`
+	CacheRulesShrink                          *string `json:"CacheRules,omitempty" xml:"CacheRules,omitempty"`
+	CacheTagsShrink                           *string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty"`
+	CnameFlatteningShrink                     *string `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty"`
+	CompressionRulesShrink                    *string `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty"`
+	CrossBorderOptimizationShrink             *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
+	DevelopmentModeShrink                     *string `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty"`
+	HttpRequestHeaderModificationRulesShrink  *string `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty"`
+	HttpResponseHeaderModificationRulesShrink *string `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty"`
+	HttpsApplicationConfigurationShrink       *string `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty"`
+	HttpsBasicConfigurationShrink             *string `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty"`
+	ImageTransformShrink                      *string `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty"`
+	Ipv6Shrink                                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	ManagedTransformsShrink                   *string `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty"`
+	NetworkOptimizationShrink                 *string `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty"`
+	OriginProtectionShrink                    *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
+	OriginRulesShrink                         *string `json:"OriginRules,omitempty" xml:"OriginRules,omitempty"`
+	RedirectRulesShrink                       *string `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty"`
+	RewriteUrlRulesShrink                     *string `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty"`
+	SeoBypassShrink                           *string `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateSiteFunction
+	SiteId                  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteNameExclusiveShrink *string `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty"`
+	SitePauseShrink         *string `json:"SitePause,omitempty" xml:"SitePause,omitempty"`
+	SiteVersion             *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	TieredCacheShrink       *string `json:"TieredCache,omitempty" xml:"TieredCache,omitempty"`
+}
+
+func (s CreateSiteFunctionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCacheReserveShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CacheReserveShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCacheRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CacheRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCacheTagsShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CacheTagsShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCnameFlatteningShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CnameFlatteningShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCompressionRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CompressionRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetCrossBorderOptimizationShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.CrossBorderOptimizationShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetDevelopmentModeShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.DevelopmentModeShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetHttpRequestHeaderModificationRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.HttpRequestHeaderModificationRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetHttpResponseHeaderModificationRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.HttpResponseHeaderModificationRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetHttpsApplicationConfigurationShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.HttpsApplicationConfigurationShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetHttpsBasicConfigurationShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.HttpsBasicConfigurationShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetImageTransformShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.ImageTransformShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetIpv6Shrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.Ipv6Shrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetManagedTransformsShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.ManagedTransformsShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetNetworkOptimizationShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.NetworkOptimizationShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetOriginProtectionShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.OriginProtectionShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetOriginRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.OriginRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetRedirectRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.RedirectRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetRewriteUrlRulesShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.RewriteUrlRulesShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetSeoBypassShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.SeoBypassShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetSiteId(v int64) *CreateSiteFunctionShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetSiteNameExclusiveShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.SiteNameExclusiveShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetSitePauseShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.SitePauseShrink = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetSiteVersion(v int32) *CreateSiteFunctionShrinkRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+func (s *CreateSiteFunctionShrinkRequest) SetTieredCacheShrink(v string) *CreateSiteFunctionShrinkRequest {
+	s.TieredCacheShrink = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBody struct {
+	Configs *CreateSiteFunctionResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBody) SetConfigs(v *CreateSiteFunctionResponseBodyConfigs) *CreateSiteFunctionResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBody) SetRequestId(v string) *CreateSiteFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigs struct {
+	CacheReserve                        []*CreateSiteFunctionResponseBodyConfigsCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	CacheRules                          []*CreateSiteFunctionResponseBodyConfigsCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	CacheTags                           []*CreateSiteFunctionResponseBodyConfigsCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	CnameFlattening                     []*CreateSiteFunctionResponseBodyConfigsCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	CompressionRules                    []*CreateSiteFunctionResponseBodyConfigsCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization             []*CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	DevelopmentMode                     []*CreateSiteFunctionResponseBodyConfigsDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	HttpRequestHeaderModificationRules  []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpResponseHeaderModificationRules []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpsApplicationConfiguration       []*CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
+	HttpsBasicConfiguration             []*CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
+	ImageTransform                      []*CreateSiteFunctionResponseBodyConfigsImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	Ipv6                                []*CreateSiteFunctionResponseBodyConfigsIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	ManagedTransforms                   []*CreateSiteFunctionResponseBodyConfigsManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization                 []*CreateSiteFunctionResponseBodyConfigsNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	OriginRules                         []*CreateSiteFunctionResponseBodyConfigsOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	RedirectRules                       []*CreateSiteFunctionResponseBodyConfigsRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	RewriteUrlRules                     []*CreateSiteFunctionResponseBodyConfigsRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	SeoBypass                           []*CreateSiteFunctionResponseBodyConfigsSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	SiteNameExclusive                   []*CreateSiteFunctionResponseBodyConfigsSiteNameExclusive                   `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
+	SitePause                           []*CreateSiteFunctionResponseBodyConfigsSitePause                           `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	TieredCache                         []*CreateSiteFunctionResponseBodyConfigsTieredCache                         `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCacheReserve(v []*CreateSiteFunctionResponseBodyConfigsCacheReserve) *CreateSiteFunctionResponseBodyConfigs {
+	s.CacheReserve = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCacheRules(v []*CreateSiteFunctionResponseBodyConfigsCacheRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.CacheRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCacheTags(v []*CreateSiteFunctionResponseBodyConfigsCacheTags) *CreateSiteFunctionResponseBodyConfigs {
+	s.CacheTags = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCnameFlattening(v []*CreateSiteFunctionResponseBodyConfigsCnameFlattening) *CreateSiteFunctionResponseBodyConfigs {
+	s.CnameFlattening = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCompressionRules(v []*CreateSiteFunctionResponseBodyConfigsCompressionRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.CompressionRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetCrossBorderOptimization(v []*CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) *CreateSiteFunctionResponseBodyConfigs {
+	s.CrossBorderOptimization = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetDevelopmentMode(v []*CreateSiteFunctionResponseBodyConfigsDevelopmentMode) *CreateSiteFunctionResponseBodyConfigs {
+	s.DevelopmentMode = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetHttpRequestHeaderModificationRules(v []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.HttpRequestHeaderModificationRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetHttpResponseHeaderModificationRules(v []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.HttpResponseHeaderModificationRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetHttpsApplicationConfiguration(v []*CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) *CreateSiteFunctionResponseBodyConfigs {
+	s.HttpsApplicationConfiguration = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetHttpsBasicConfiguration(v []*CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) *CreateSiteFunctionResponseBodyConfigs {
+	s.HttpsBasicConfiguration = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetImageTransform(v []*CreateSiteFunctionResponseBodyConfigsImageTransform) *CreateSiteFunctionResponseBodyConfigs {
+	s.ImageTransform = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetIpv6(v []*CreateSiteFunctionResponseBodyConfigsIpv6) *CreateSiteFunctionResponseBodyConfigs {
+	s.Ipv6 = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetManagedTransforms(v []*CreateSiteFunctionResponseBodyConfigsManagedTransforms) *CreateSiteFunctionResponseBodyConfigs {
+	s.ManagedTransforms = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetNetworkOptimization(v []*CreateSiteFunctionResponseBodyConfigsNetworkOptimization) *CreateSiteFunctionResponseBodyConfigs {
+	s.NetworkOptimization = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetOriginRules(v []*CreateSiteFunctionResponseBodyConfigsOriginRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.OriginRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetRedirectRules(v []*CreateSiteFunctionResponseBodyConfigsRedirectRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.RedirectRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetRewriteUrlRules(v []*CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) *CreateSiteFunctionResponseBodyConfigs {
+	s.RewriteUrlRules = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetSeoBypass(v []*CreateSiteFunctionResponseBodyConfigsSeoBypass) *CreateSiteFunctionResponseBodyConfigs {
+	s.SeoBypass = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetSiteNameExclusive(v []*CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) *CreateSiteFunctionResponseBodyConfigs {
+	s.SiteNameExclusive = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetSitePause(v []*CreateSiteFunctionResponseBodyConfigsSitePause) *CreateSiteFunctionResponseBodyConfigs {
+	s.SitePause = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigs) SetTieredCache(v []*CreateSiteFunctionResponseBodyConfigsTieredCache) *CreateSiteFunctionResponseBodyConfigs {
+	s.TieredCache = v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCacheReserve struct {
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheReserve) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheReserve) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheReserve) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCacheReserve {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheReserve) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsCacheReserve {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheReserve) SetInstanceId(v string) *CreateSiteFunctionResponseBodyConfigsCacheReserve {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCacheRules struct {
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	ConfigId                 *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                 *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetAdditionalCacheablePorts(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetBrowserCacheMode(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetBrowserCacheTtl(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetBypassCache(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetCacheDeceptionArmor(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetCacheReserveEligibility(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetCheckPresenceCookie(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetCheckPresenceHeader(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetEdgeCacheMode(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetEdgeCacheTtl(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetEdgeStatusCodeCacheTtl(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetIncludeCookie(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetIncludeHeader(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetQueryString(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetQueryStringMode(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetServeStale(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetSortQueryStringForCache(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetUserDeviceType(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetUserGeo(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetUserLanguage(v string) *CreateSiteFunctionResponseBodyConfigsCacheRules {
+	s.UserLanguage = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCacheTags struct {
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCacheTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheTags) SetCaseInsensitive(v string) *CreateSiteFunctionResponseBodyConfigsCacheTags {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheTags) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCacheTags {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheTags) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsCacheTags {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCacheTags) SetTagName(v string) *CreateSiteFunctionResponseBodyConfigsCacheTags {
+	s.TagName = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCnameFlattening struct {
+	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	Sequence    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCnameFlattening) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCnameFlattening) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCnameFlattening) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCnameFlattening {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCnameFlattening) SetFlattenMode(v string) *CreateSiteFunctionResponseBodyConfigsCnameFlattening {
+	s.FlattenMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCnameFlattening) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsCnameFlattening {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCompressionRules struct {
+	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence   *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCompressionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCompressionRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetBrotli(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.Brotli = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetGzip(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.Gzip = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsCompressionRules {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization {
+	s.Enable = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsDevelopmentMode struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsDevelopmentMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsDevelopmentMode) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsDevelopmentMode) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsDevelopmentMode {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsDevelopmentMode) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsDevelopmentMode {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsDevelopmentMode) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsDevelopmentMode {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules struct {
+	ConfigId                  *int64                                                                                              `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	RequestHeaderModification []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	Rule                      *string                                                                                             `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                *string                                                                                             `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                  *string                                                                                             `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                  *string                                                                                             `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetRequestHeaderModification(v []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetName(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetOperation(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetValue(v string) *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules struct {
+	ConfigId                   *int64                                                                                                `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ResponseHeaderModification []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	Rule                       *string                                                                                               `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                 *string                                                                                               `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                   *string                                                                                               `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                   *string                                                                                               `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetResponseHeaderModification(v []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetName(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetOperation(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetValue(v string) *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration struct {
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvc(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcClear(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcMa(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcPersist(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHsts(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Hsts = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHstsIncludeSubdomains(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHstsMaxAge(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHstsPreload(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHttpsForce(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetHttpsForceCode(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration struct {
+	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence         *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetCiphersuite(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetCiphersuiteGroup(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetHttp2(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Http2 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetHttp3(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Http3 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetHttps(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Https = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetOcspStapling(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetTls10(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetTls11(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetTls12(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetTls13(v string) *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls13 = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsImageTransform struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsImageTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsImageTransform) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsImageTransform) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsImageTransform {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsImageTransform) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsImageTransform {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsImageTransform) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsImageTransform {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsIpv6 struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsIpv6) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsIpv6) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsIpv6) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsIpv6 {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsIpv6) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsIpv6 {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsIpv6) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsIpv6 {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsManagedTransforms struct {
+	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
+	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	ConfigId                    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence                    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsManagedTransforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsManagedTransforms) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsManagedTransforms) SetAddClientGeolocationHeaders(v string) *CreateSiteFunctionResponseBodyConfigsManagedTransforms {
+	s.AddClientGeolocationHeaders = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsManagedTransforms) SetAddRealClientIpHeader(v string) *CreateSiteFunctionResponseBodyConfigsManagedTransforms {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsManagedTransforms) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsManagedTransforms {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsManagedTransforms) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsManagedTransforms {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsNetworkOptimization struct {
+	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence          *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsNetworkOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsNetworkOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetGrpc(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.Grpc = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetHttp2Origin(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetSmartRouting(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetUploadMaxFilesize(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetWebsocket(v string) *CreateSiteFunctionResponseBodyConfigsNetworkOptimization {
+	s.Websocket = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsOriginRules struct {
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsOriginRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsOriginRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetDnsRecord(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetOriginHost(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetOriginHttpPort(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetOriginHttpsPort(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetOriginScheme(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetOriginSni(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetRange(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.Range = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsOriginRules {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsRedirectRules struct {
+	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence           *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsRedirectRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsRedirectRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetReserveQueryString(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetStatusCode(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetTargetUrl(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetType(v string) *CreateSiteFunctionResponseBodyConfigsRedirectRules {
+	s.Type = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsRewriteUrlRules struct {
+	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence               *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetQueryString(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetRewriteQueryStringType(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetRewriteUriType(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetRule(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetRuleEnable(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetRuleName(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetUri(v string) *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules {
+	s.Uri = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsSeoBypass struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSeoBypass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSeoBypass) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSeoBypass) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsSeoBypass {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSeoBypass) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsSeoBypass {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSeoBypass) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsSeoBypass {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsSiteNameExclusive struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) SetEnable(v string) *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsSitePause struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Paused   *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSitePause) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsSitePause) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSitePause) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsSitePause {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSitePause) SetPaused(v string) *CreateSiteFunctionResponseBodyConfigsSitePause {
+	s.Paused = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsSitePause) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsSitePause {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponseBodyConfigsTieredCache struct {
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsTieredCache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponseBodyConfigsTieredCache) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsTieredCache) SetCacheArchitectureMode(v string) *CreateSiteFunctionResponseBodyConfigsTieredCache {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsTieredCache) SetConfigId(v int64) *CreateSiteFunctionResponseBodyConfigsTieredCache {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponseBodyConfigsTieredCache) SetSequence(v string) *CreateSiteFunctionResponseBodyConfigsTieredCache {
+	s.Sequence = &v
+	return s
+}
+
+type CreateSiteFunctionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSiteFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSiteFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSiteFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSiteFunctionResponse) SetHeaders(v map[string]*string) *CreateSiteFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSiteFunctionResponse) SetStatusCode(v int32) *CreateSiteFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSiteFunctionResponse) SetBody(v *CreateSiteFunctionResponseBody) *CreateSiteFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserDeliveryTaskRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- sg: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 1.  sls: Alibaba Cloud SLS.
+	//
+	// 2.  http: HTTP server.
+	//
+	// 3.  aws3: Amazon S3.
+	//
+	// 4.  oss: Alibaba Cloud OSS.
+	//
+	// 5.  kafka: Kafka.
+	//
+	// 6.  aws3cmpt: S3-compatible storage service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log field. If you specify multiple fields, separate them with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_agent,ip_address,ip_port
-	FieldName     *string                                     `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	HttpDelivery  *CreateUserDeliveryTaskRequestHttpDelivery  `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The configurations for delivery to an HTTP server.
+	HttpDelivery *CreateUserDeliveryTaskRequestHttpDelivery `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery to Kafka.
 	KafkaDelivery *CreateUserDeliveryTaskRequestKafkaDelivery `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty" type:"Struct"`
-	OssDelivery   *CreateUserDeliveryTaskRequestOssDelivery   `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
-	S3Delivery    *CreateUserDeliveryTaskRequestS3Delivery    `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
-	SlsDelivery   *CreateUserDeliveryTaskRequestSlsDelivery   `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery to OSS.
+	OssDelivery *CreateUserDeliveryTaskRequestOssDelivery `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty" type:"Struct"`
+	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	S3Delivery *CreateUserDeliveryTaskRequestS3Delivery `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty" type:"Struct"`
+	// The configurations for delivery to SLS.
+	SlsDelivery *CreateUserDeliveryTaskRequestSlsDelivery `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty" type:"Struct"`
+	// The task name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7687,25 +11956,108 @@ func (s *CreateUserDeliveryTaskRequest) SetTaskName(v string) *CreateUserDeliver
 }
 
 type CreateUserDeliveryTaskRequestHttpDelivery struct {
-	Compress          *string                                                     `json:"Compress,omitempty" xml:"Compress,omitempty"`
-	DestUrl           *string                                                     `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
-	HeaderParam       map[string]*HttpDeliveryHeaderParamValue                    `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
-	LastLogSplit      *string                                                     `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
-	LogBodyPrefix     *string                                                     `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
-	LogBodySuffix     *string                                                     `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
-	LogSplit          *string                                                     `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
-	LogSplitWords     *string                                                     `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
-	MaxBackoffMS      *int64                                                      `json:"MaxBackoffMS,omitempty" xml:"MaxBackoffMS,omitempty"`
-	MaxBatchMB        *int64                                                      `json:"MaxBatchMB,omitempty" xml:"MaxBatchMB,omitempty"`
-	MaxBatchSize      *int64                                                      `json:"MaxBatchSize,omitempty" xml:"MaxBatchSize,omitempty"`
-	MaxRetry          *int64                                                      `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
-	MinBackoffMS      *int64                                                      `json:"MinBackoffMS,omitempty" xml:"MinBackoffMS,omitempty"`
-	QueryParam        map[string]*HttpDeliveryQueryParamValue                     `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
-	ResponseBodyKey   *string                                                     `json:"ResponseBodyKey,omitempty" xml:"ResponseBodyKey,omitempty"`
-	StandardAuthOn    *bool                                                       `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
+	// The compression method.
+	//
+	// example:
+	//
+	// gzip
+	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	// The address of the HTTP server.
+	//
+	// example:
+	//
+	// http://xxx.aliyun.com/v1/log/upload
+	DestUrl *string `json:"DestUrl,omitempty" xml:"DestUrl,omitempty"`
+	// The custom headers.
+	HeaderParam map[string]*HttpDeliveryHeaderParamValue `json:"HeaderParam,omitempty" xml:"HeaderParam,omitempty"`
+	// The ending separator.
+	//
+	// example:
+	//
+	// \\n
+	LastLogSplit *string `json:"LastLogSplit,omitempty" xml:"LastLogSplit,omitempty"`
+	// The prefix of the log delivery package.
+	//
+	// example:
+	//
+	// cdnVersion:1.0
+	LogBodyPrefix *string `json:"LogBodyPrefix,omitempty" xml:"LogBodyPrefix,omitempty"`
+	// The suffix of the log delivery package.
+	//
+	// example:
+	//
+	// cdnVersion:1.0
+	LogBodySuffix *string `json:"LogBodySuffix,omitempty" xml:"LogBodySuffix,omitempty"`
+	// Specifies whether to enable log splitting. Default value: true.
+	//
+	// example:
+	//
+	// true
+	LogSplit *string `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
+	// The log separator.
+	//
+	// example:
+	//
+	// \\n
+	LogSplitWords *string `json:"LogSplitWords,omitempty" xml:"LogSplitWords,omitempty"`
+	// The maximum backoff time. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1000
+	MaxBackoffMS *int64 `json:"MaxBackoffMS,omitempty" xml:"MaxBackoffMS,omitempty"`
+	// The maximum size of data for each delivery. Unit: MB.
+	//
+	// example:
+	//
+	// 5
+	MaxBatchMB *int64 `json:"MaxBatchMB,omitempty" xml:"MaxBatchMB,omitempty"`
+	// The maximum number of entries for each delivery.
+	//
+	// example:
+	//
+	// 1000
+	MaxBatchSize *int64 `json:"MaxBatchSize,omitempty" xml:"MaxBatchSize,omitempty"`
+	// The maximum number of retries.
+	//
+	// example:
+	//
+	// 3
+	MaxRetry *int64 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// The minimum backoff time. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 100
+	MinBackoffMS *int64 `json:"MinBackoffMS,omitempty" xml:"MinBackoffMS,omitempty"`
+	// The custom query parameters.
+	QueryParam map[string]*HttpDeliveryQueryParamValue `json:"QueryParam,omitempty" xml:"QueryParam,omitempty"`
+	// The response field key used for success check.
+	//
+	// example:
+	//
+	// err_code
+	ResponseBodyKey *string `json:"ResponseBodyKey,omitempty" xml:"ResponseBodyKey,omitempty"`
+	// Specifies whether to use server authentication.
+	//
+	// example:
+	//
+	// true
+	StandardAuthOn *bool `json:"StandardAuthOn,omitempty" xml:"StandardAuthOn,omitempty"`
+	// The authentication configurations.
 	StandardAuthParam *CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam `json:"StandardAuthParam,omitempty" xml:"StandardAuthParam,omitempty" type:"Struct"`
-	SuccessCode       *int64                                                      `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
-	TransformTimeout  *int64                                                      `json:"TransformTimeout,omitempty" xml:"TransformTimeout,omitempty"`
+	// The custom code for a success.
+	//
+	// example:
+	//
+	// 200
+	SuccessCode *int64 `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
+	// The timeout period. Unit: seconds.
+	//
+	// example:
+	//
+	// 10
+	TransformTimeout *int64 `json:"TransformTimeout,omitempty" xml:"TransformTimeout,omitempty"`
 }
 
 func (s CreateUserDeliveryTaskRequestHttpDelivery) String() string {
@@ -7812,9 +12164,24 @@ func (s *CreateUserDeliveryTaskRequestHttpDelivery) SetTransformTimeout(v int64)
 }
 
 type CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam struct {
-	ExpiredTime *int32  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	UrlPath     *string `json:"UrlPath,omitempty" xml:"UrlPath,omitempty"`
+	// The validity period of the signature.
+	//
+	// example:
+	//
+	// 300
+	ExpiredTime *int32 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The private key.
+	//
+	// example:
+	//
+	// xxxx
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The URL path.
+	//
+	// example:
+	//
+	// v1/log/upload
+	UrlPath *string `json:"UrlPath,omitempty" xml:"UrlPath,omitempty"`
 }
 
 func (s CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam) String() string {
@@ -7841,17 +12208,50 @@ func (s *CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam) SetUrlPath(
 }
 
 type CreateUserDeliveryTaskRequestKafkaDelivery struct {
-	Balancer *string   `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
-	Brokers  []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
+	// The load balancing method.
+	//
+	// example:
+	//
+	// kafka.LeastBytes
+	Balancer *string `json:"Balancer,omitempty" xml:"Balancer,omitempty"`
+	// The brokers.
+	Brokers []*string `json:"Brokers,omitempty" xml:"Brokers,omitempty" type:"Repeated"`
+	// The compression method. By default, data is not compressed.
+	//
 	// example:
 	//
 	// gzip
-	Compress      *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	Compress *string `json:"Compress,omitempty" xml:"Compress,omitempty"`
+	// The encryption method.
+	//
+	// example:
+	//
+	// plain
 	MachanismType *string `json:"MachanismType,omitempty" xml:"MachanismType,omitempty"`
-	Password      *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	UserAuth      *bool   `json:"UserAuth,omitempty" xml:"UserAuth,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The password.
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The topic.
+	//
+	// example:
+	//
+	// dqc_test2
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// Specifies whether to enable authentication.
+	//
+	// example:
+	//
+	// true
+	UserAuth *bool `json:"UserAuth,omitempty" xml:"UserAuth,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// xxx
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserDeliveryTaskRequestKafkaDelivery) String() string {
@@ -7903,12 +12303,26 @@ func (s *CreateUserDeliveryTaskRequestKafkaDelivery) SetUserName(v string) *Crea
 }
 
 type CreateUserDeliveryTaskRequestOssDelivery struct {
-	Aliuid     *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1234***
+	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// test_rlog
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The prefix of the path in which you want to store logs.
+	//
 	// example:
 	//
 	// logriver-test/log
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The region in which the bucket is located.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -7944,12 +12358,47 @@ func (s *CreateUserDeliveryTaskRequestOssDelivery) SetRegion(v string) *CreateUs
 }
 
 type CreateUserDeliveryTaskRequestS3Delivery struct {
-	AccessKey            *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	BucketPath           *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
-	Endpoint             *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	PrefixPath           *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	S3Cmpt               *bool   `json:"S3Cmpt,omitempty" xml:"S3Cmpt,omitempty"`
+	// The access key ID of your Amazon S3 account.
+	//
+	// example:
+	//
+	// g0f46623ll0g0
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The directory in the bucket.
+	//
+	// example:
+	//
+	// logriver-test/log
+	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	// The endpoint.
+	//
+	// example:
+	//
+	// https://s3.oss-cn-hangzhou.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The prefix of the path in which you want to store logs.
+	//
+	// example:
+	//
+	// logriver-test/log
+	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The region ID of the service.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether the service is compatible with Amazon S3.
+	//
+	// example:
+	//
+	// true
+	S3Cmpt *bool `json:"S3Cmpt,omitempty" xml:"S3Cmpt,omitempty"`
+	// The secret access key of your Amazon S3 account.
+	//
+	// example:
+	//
+	// ***
 	SecretKey            *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	ServerSideEncryption *bool   `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
 	VertifyType          *string `json:"VertifyType,omitempty" xml:"VertifyType,omitempty"`
@@ -8009,9 +12458,24 @@ func (s *CreateUserDeliveryTaskRequestS3Delivery) SetVertifyType(v string) *Crea
 }
 
 type CreateUserDeliveryTaskRequestSlsDelivery struct {
+	// The name of the SLS Logstore.
+	//
+	// example:
+	//
+	// accesslog-test
 	SLSLogStore *string `json:"SLSLogStore,omitempty" xml:"SLSLogStore,omitempty"`
-	SLSProject  *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
-	SLSRegion   *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	// The name of the SLS project.
+	//
+	// example:
+	//
+	// dcdn-test20240417
+	SLSProject *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
+	// The region in which the SLS project resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	SLSRegion *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
 }
 
 func (s CreateUserDeliveryTaskRequestSlsDelivery) String() string {
@@ -8038,39 +12502,80 @@ func (s *CreateUserDeliveryTaskRequestSlsDelivery) SetSLSRegion(v string) *Creat
 }
 
 type CreateUserDeliveryTaskShrinkRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- sg: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 1.  sls: Alibaba Cloud SLS.
+	//
+	// 2.  http: HTTP server.
+	//
+	// 3.  aws3: Amazon S3.
+	//
+	// 4.  oss: Alibaba Cloud OSS.
+	//
+	// 5.  kafka: Kafka.
+	//
+	// 6.  aws3cmpt: S3-compatible storage service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log field. If you specify multiple fields, separate them with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_agent,ip_address,ip_port
-	FieldName           *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	HttpDeliveryShrink  *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The configurations for delivery to an HTTP server.
+	HttpDeliveryShrink *string `json:"HttpDelivery,omitempty" xml:"HttpDelivery,omitempty"`
+	// The configurations for delivery to Kafka.
 	KafkaDeliveryShrink *string `json:"KafkaDelivery,omitempty" xml:"KafkaDelivery,omitempty"`
-	OssDeliveryShrink   *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
-	S3DeliveryShrink    *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
-	SlsDeliveryShrink   *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
+	// The configurations for delivery to OSS.
+	OssDeliveryShrink *string `json:"OssDelivery,omitempty" xml:"OssDelivery,omitempty"`
+	// The configurations for delivery to Amazon S3 or an S3-compatible service.
+	S3DeliveryShrink *string `json:"S3Delivery,omitempty" xml:"S3Delivery,omitempty"`
+	// The configurations for delivery to SLS.
+	SlsDeliveryShrink *string `json:"SlsDelivery,omitempty" xml:"SlsDelivery,omitempty"`
+	// The task name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8143,20 +12648,30 @@ func (s *CreateUserDeliveryTaskShrinkRequest) SetTaskName(v string) *CreateUserD
 }
 
 type CreateUserDeliveryTaskResponseBody struct {
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- sg: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2CCD40B1-3F20-5FF0-8A67-E3F34B87744F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the delivery task.
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// er-http
@@ -8221,19 +12736,29 @@ func (s *CreateUserDeliveryTaskResponse) SetBody(v *CreateUserDeliveryTaskRespon
 }
 
 type CreateWafRuleRequest struct {
+	// The configuration of the rule that you want to create.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The WAF rule category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -8266,19 +12791,29 @@ func (s *CreateWafRuleRequest) SetSiteVersion(v int32) *CreateWafRuleRequest {
 }
 
 type CreateWafRuleShrinkRequest struct {
+	// The configuration of the rule that you want to create.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The WAF rule category.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -8311,14 +12846,24 @@ func (s *CreateWafRuleShrinkRequest) SetSiteVersion(v int32) *CreateWafRuleShrin
 }
 
 type CreateWafRuleResponseBody struct {
+	// The ID of the WAF rule.[](~~2850237~~)
+	//
+	// example:
+	//
+	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RulesetId *int64  `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The ID of the WAF ruleset.[](~~2850233~~)
+	//
+	// example:
+	//
+	// 10000001
+	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
 }
 
 func (s CreateWafRuleResponseBody) String() string {
@@ -8979,99 +13524,182 @@ func (s *CreateWaitingRoomResponse) SetBody(v *CreateWaitingRoomResponseBody) *C
 }
 
 type CreateWaitingRoomEventRequest struct {
+	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// Hello%20world!
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the waiting room.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to disable session renewal. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Specifies whether to enable the waiting room. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The end time of the event. This value is a UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1719849600
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The name of the waiting room event.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waitingroom_example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Specifies whether to enable pre-queuing.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
+	// The start time for pre-queuing.
+	//
 	// example:
 	//
 	// 1719763200
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 202
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// Specifies whether to enable random queuing.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time of the event. This value is a UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1719763200
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The maximum number of active users.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// example:
 	//
 	// 6a51d5bc6460887abd1291dc7d4db28b
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9189,6 +13817,8 @@ func (s *CreateWaitingRoomEventRequest) SetWaitingRoomType(v string) *CreateWait
 }
 
 type CreateWaitingRoomEventResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
@@ -9238,30 +13868,44 @@ func (s *CreateWaitingRoomEventResponse) SetBody(v *CreateWaitingRoomEventRespon
 }
 
 type CreateWaitingRoomRuleRequest struct {
+	// The rule content, which is a policy or conditional expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waitingroom_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room to be bypassed.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9304,6 +13948,8 @@ func (s *CreateWaitingRoomRuleRequest) SetWaitingRoomId(v string) *CreateWaiting
 }
 
 type CreateWaitingRoomRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
@@ -9353,6 +13999,8 @@ func (s *CreateWaitingRoomRuleResponse) SetBody(v *CreateWaitingRoomRuleResponse
 }
 
 type DeleteCustomScenePolicyRequest struct {
+	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9375,11 +14023,13 @@ func (s *DeleteCustomScenePolicyRequest) SetPolicyId(v int64) *DeleteCustomScene
 }
 
 type DeleteCustomScenePolicyResponseBody struct {
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -9435,6 +14085,8 @@ func (s *DeleteCustomScenePolicyResponse) SetBody(v *DeleteCustomScenePolicyResp
 }
 
 type DeleteEdgeContainerAppRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// app-1232321454***
@@ -9455,12 +14107,14 @@ func (s *DeleteEdgeContainerAppRequest) SetAppId(v string) *DeleteEdgeContainerA
 }
 
 type DeleteEdgeContainerAppResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the deletion is successful.
+	//
 	// example:
 	//
 	// ok
@@ -9515,18 +14169,24 @@ func (s *DeleteEdgeContainerAppResponse) SetBody(v *DeleteEdgeContainerAppRespon
 }
 
 type DeleteEdgeContainerAppRecordRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The associated domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 5407498413****
@@ -9557,6 +14217,8 @@ func (s *DeleteEdgeContainerAppRecordRequest) SetSiteId(v int64) *DeleteEdgeCont
 }
 
 type DeleteEdgeContainerAppRecordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -9606,12 +14268,16 @@ func (s *DeleteEdgeContainerAppRecordResponse) SetBody(v *DeleteEdgeContainerApp
 }
 
 type DeleteEdgeContainerAppVersionRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-96253477062511****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the version that you want to delete. To obtain the version ID, call the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9639,7 +14305,7 @@ func (s *DeleteEdgeContainerAppVersionRequest) SetVersionId(v string) *DeleteEdg
 }
 
 type DeleteEdgeContainerAppVersionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -9690,12 +14356,16 @@ func (s *DeleteEdgeContainerAppVersionResponse) SetBody(v *DeleteEdgeContainerAp
 }
 
 type DeleteKvRequest struct {
+	// The name of the key that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9723,7 +14393,7 @@ func (s *DeleteKvRequest) SetNamespace(v string) *DeleteKvRequest {
 }
 
 type DeleteKvResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -9774,6 +14444,8 @@ func (s *DeleteKvResponse) SetBody(v *DeleteKvResponseBody) *DeleteKvResponse {
 }
 
 type DeleteKvNamespaceRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9796,6 +14468,8 @@ func (s *DeleteKvNamespaceRequest) SetNamespace(v string) *DeleteKvNamespaceRequ
 }
 
 type DeleteKvNamespaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
@@ -9845,6 +14519,8 @@ func (s *DeleteKvNamespaceResponse) SetBody(v *DeleteKvNamespaceResponseBody) *D
 }
 
 type DeleteListRequest struct {
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9867,7 +14543,7 @@ func (s *DeleteListRequest) SetId(v int64) *DeleteListRequest {
 }
 
 type DeleteListResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -9917,7 +14593,80 @@ func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListRespo
 	return s
 }
 
+type DeleteOriginProtectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteOriginProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginProtectionRequest) SetSiteId(v int64) *DeleteOriginProtectionRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteOriginProtectionResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOriginProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginProtectionResponseBody) SetRequestId(v string) *DeleteOriginProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOriginProtectionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOriginProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOriginProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginProtectionResponse) SetHeaders(v map[string]*string) *DeleteOriginProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOriginProtectionResponse) SetStatusCode(v int32) *DeleteOriginProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOriginProtectionResponse) SetBody(v *DeleteOriginProtectionResponseBody) *DeleteOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePageRequest struct {
+	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9940,11 +14689,13 @@ func (s *DeletePageRequest) SetId(v int64) *DeletePageRequest {
 }
 
 type DeletePageResponseBody struct {
+	// The ID of the custom error page.[](~~2850223~~)
+	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10000,7 +14751,13 @@ func (s *DeletePageResponse) SetBody(v *DeletePageResponseBody) *DeletePageRespo
 }
 
 type DeleteRecordRequest struct {
+	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 }
 
@@ -10018,7 +14775,7 @@ func (s *DeleteRecordRequest) SetRecordId(v int64) *DeleteRecordRequest {
 }
 
 type DeleteRecordResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10069,6 +14826,8 @@ func (s *DeleteRecordResponse) SetBody(v *DeleteRecordResponseBody) *DeleteRecor
 }
 
 type DeleteRoutineRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// test-routine1
@@ -10089,12 +14848,14 @@ func (s *DeleteRoutineRequest) SetName(v string) *DeleteRoutineRequest {
 }
 
 type DeleteRoutineResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// OK
@@ -10149,10 +14910,14 @@ func (s *DeleteRoutineResponse) SetBody(v *DeleteRoutineResponseBody) *DeleteRou
 }
 
 type DeleteRoutineCodeVersionRequest struct {
+	// The code version.
+	//
 	// example:
 	//
 	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The routine name.
+	//
 	// example:
 	//
 	// test-routine1
@@ -10178,12 +14943,14 @@ func (s *DeleteRoutineCodeVersionRequest) SetName(v string) *DeleteRoutineCodeVe
 }
 
 type DeleteRoutineCodeVersionResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// OK
@@ -10238,13 +15005,30 @@ func (s *DeleteRoutineCodeVersionResponse) SetBody(v *DeleteRoutineCodeVersionRe
 }
 
 type DeleteRoutineRelatedRecordRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// DeleteRoutineRelatedRecord
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The record ID.
+	//
+	// example:
+	//
+	// 12345
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
+	// example:
+	//
+	// test-xxx.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 12345
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DeleteRoutineRelatedRecordRequest) String() string {
@@ -10276,13 +15060,22 @@ func (s *DeleteRoutineRelatedRecordRequest) SetSiteId(v int64) *DeleteRoutineRel
 }
 
 type DeleteRoutineRelatedRecordResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// 	- OK
+	//
+	// 	- Fail
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteRoutineRelatedRecordResponseBody) String() string {
@@ -10333,13 +15126,30 @@ func (s *DeleteRoutineRelatedRecordResponse) SetBody(v *DeleteRoutineRelatedReco
 }
 
 type DeleteRoutineRelatedRouteRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// DeleteRoutineRelatedRoute
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Route   *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The route URL.
+	//
+	// example:
+	//
+	// *.example.com/path1*
+	Route *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// 0c3b82a3d1524e9f750da11d0cc0be0a
 	RouteId *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	SiteId  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s DeleteRoutineRelatedRouteRequest) String() string {
@@ -10371,9 +15181,18 @@ func (s *DeleteRoutineRelatedRouteRequest) SetSiteId(v int64) *DeleteRoutineRela
 }
 
 type DeleteRoutineRelatedRouteResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the operation is successful.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteRoutineRelatedRouteResponseBody) String() string {
@@ -10424,6 +15243,8 @@ func (s *DeleteRoutineRelatedRouteResponse) SetBody(v *DeleteRoutineRelatedRoute
 }
 
 type DeleteScheduledPreloadExecutionRequest struct {
+	// The ID of the prefetch plan.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10446,7 +15267,11 @@ func (s *DeleteScheduledPreloadExecutionRequest) SetId(v string) *DeleteSchedule
 }
 
 type DeleteScheduledPreloadExecutionResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10493,6 +15318,8 @@ func (s *DeleteScheduledPreloadExecutionResponse) SetBody(v *DeleteScheduledPrel
 }
 
 type DeleteScheduledPreloadJobRequest struct {
+	// The ID of the scheduled prefetch task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10515,7 +15342,11 @@ func (s *DeleteScheduledPreloadJobRequest) SetId(v string) *DeleteScheduledPrelo
 }
 
 type DeleteScheduledPreloadJobResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10564,6 +15395,8 @@ func (s *DeleteScheduledPreloadJobResponse) SetBody(v *DeleteScheduledPreloadJob
 type DeleteSiteRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1234567890123
@@ -10594,6 +15427,8 @@ func (s *DeleteSiteRequest) SetSiteId(v int64) *DeleteSiteRequest {
 }
 
 type DeleteSiteResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247B78
@@ -10643,12 +15478,16 @@ func (s *DeleteSiteResponse) SetBody(v *DeleteSiteResponseBody) *DeleteSiteRespo
 }
 
 type DeleteSiteDeliveryTaskRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10676,7 +15515,7 @@ func (s *DeleteSiteDeliveryTaskRequest) SetTaskName(v string) *DeleteSiteDeliver
 }
 
 type DeleteSiteDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10726,7 +15565,93 @@ func (s *DeleteSiteDeliveryTaskResponse) SetBody(v *DeleteSiteDeliveryTaskRespon
 	return s
 }
 
+type DeleteSiteFunctionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 33793140540****,33793140540****
+	ConfigIds *string `json:"ConfigIds,omitempty" xml:"ConfigIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 611133661****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteSiteFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteFunctionRequest) SetConfigIds(v string) *DeleteSiteFunctionRequest {
+	s.ConfigIds = &v
+	return s
+}
+
+func (s *DeleteSiteFunctionRequest) SetSiteId(v int64) *DeleteSiteFunctionRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteSiteFunctionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSiteFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteFunctionResponseBody) SetRequestId(v string) *DeleteSiteFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSiteFunctionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSiteFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSiteFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSiteFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSiteFunctionResponse) SetHeaders(v map[string]*string) *DeleteSiteFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSiteFunctionResponse) SetStatusCode(v int32) *DeleteSiteFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSiteFunctionResponse) SetBody(v *DeleteSiteFunctionResponseBody) *DeleteSiteFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserDeliveryTaskRequest struct {
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10749,7 +15674,7 @@ func (s *DeleteUserDeliveryTaskRequest) SetTaskName(v string) *DeleteUserDeliver
 }
 
 type DeleteUserDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10800,18 +15725,24 @@ func (s *DeleteUserDeliveryTaskResponse) SetBody(v *DeleteUserDeliveryTaskRespon
 }
 
 type DeleteWafRuleRequest struct {
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -10842,7 +15773,7 @@ func (s *DeleteWafRuleRequest) SetSiteVersion(v int32) *DeleteWafRuleRequest {
 }
 
 type DeleteWafRuleResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10893,16 +15824,22 @@ func (s *DeleteWafRuleResponse) SetBody(v *DeleteWafRuleResponseBody) *DeleteWaf
 }
 
 type DeleteWafRulesetRequest struct {
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -10933,7 +15870,7 @@ func (s *DeleteWafRulesetRequest) SetSiteVersion(v int32) *DeleteWafRulesetReque
 }
 
 type DeleteWafRulesetResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -10984,12 +15921,16 @@ func (s *DeleteWafRulesetResponse) SetBody(v *DeleteWafRulesetResponseBody) *Del
 }
 
 type DeleteWaitingRoomRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The waiting room ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11017,6 +15958,8 @@ func (s *DeleteWaitingRoomRequest) SetWaitingRoomId(v string) *DeleteWaitingRoom
 }
 
 type DeleteWaitingRoomResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
@@ -11066,12 +16009,16 @@ func (s *DeleteWaitingRoomResponse) SetBody(v *DeleteWaitingRoomResponseBody) *D
 }
 
 type DeleteWaitingRoomEventRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room event.
+	//
 	// example:
 	//
 	// 302909890***
@@ -11097,6 +16044,8 @@ func (s *DeleteWaitingRoomEventRequest) SetWaitingRoomEventId(v int64) *DeleteWa
 }
 
 type DeleteWaitingRoomEventResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
@@ -11146,12 +16095,16 @@ func (s *DeleteWaitingRoomEventResponse) SetBody(v *DeleteWaitingRoomEventRespon
 }
 
 type DeleteWaitingRoomRuleRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room bypass rule.
+	//
 	// example:
 	//
 	// 3672886****
@@ -11177,6 +16130,8 @@ func (s *DeleteWaitingRoomRuleRequest) SetWaitingRoomRuleId(v int64) *DeleteWait
 }
 
 type DeleteWaitingRoomRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
@@ -11226,16 +16181,22 @@ func (s *DeleteWaitingRoomRuleResponse) SetBody(v *DeleteWaitingRoomRuleResponse
 }
 
 type DescribeCustomScenePoliciesRequest struct {
+	// The page number. Valid values: 1 to 100000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 5, 10, and 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the policy, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// example:
 	//
 	// 1234****
@@ -11266,25 +16227,34 @@ func (s *DescribeCustomScenePoliciesRequest) SetPolicyId(v int64) *DescribeCusto
 }
 
 type DescribeCustomScenePoliciesResponseBody struct {
+	// The scenario-specific policies.
 	DataModule []*DescribeCustomScenePoliciesResponseBodyDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The policy quota.
+	//
 	// example:
 	//
 	// 10
 	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -11330,27 +16300,54 @@ func (s *DescribeCustomScenePoliciesResponseBody) SetTotalCount(v int32) *Descri
 }
 
 type DescribeCustomScenePoliciesResponseBodyDataModule struct {
+	// The time when the policy expires.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-03-06T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the scenario-specific policy.
+	//
 	// example:
 	//
 	// test
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of websites that are associated with the policy.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1234****
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-03-04T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// 	- **Disabled**
+	//
+	// 	- **Pending**
+	//
+	// 	- **Running**
+	//
+	// 	- **Expired**
+	//
 	// example:
 	//
 	// Expired
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the policy template. Valid value:
+	//
+	// 	- **promotion**: major events.
+	//
 	// example:
 	//
 	// promotion
@@ -11430,31 +16427,55 @@ func (s *DescribeCustomScenePoliciesResponse) SetBody(v *DescribeCustomScenePoli
 }
 
 type DescribeDDoSAllEventListRequest struct {
+	// The end of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time range is 31 days.
+	//
+	// If you do not configure this parameter, the current time is used as the end of the time range to query.
+	//
 	// example:
 	//
 	// 2023-02-22T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of DDoS attacks to query. Valid values:
+	//
+	// 	- **web-cc**: web resource exhaustion attacks.
+	//
+	// 	- **cc**: connection flood attacks.
+	//
+	// 	- **traffic**: volumetric attacks.
+	//
+	// Default value: web-cc.
+	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The page number. Valid values: **1*	- to **100000**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**. Valid values: 5, 10, and 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// A short description of struct
+	// The beginning of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -11503,25 +16524,34 @@ func (s *DescribeDDoSAllEventListRequest) SetStartTime(v string) *DescribeDDoSAl
 }
 
 type DescribeDDoSAllEventListResponseBody struct {
+	// The DDoS attack events.
 	DataList []*DescribeDDoSAllEventListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// D73A4243-CFBD-5110-876F-09237E77ECBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -11567,44 +16597,74 @@ func (s *DescribeDDoSAllEventListResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDDoSAllEventListResponseBodyDataList struct {
+	// The peak of volumetric attacks. Unit: bit/s.
+	//
 	// example:
 	//
 	// 800
 	Bps      *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The peak of connection flood attacks. Unit: connections per seconds (CPS).
+	//
 	// example:
 	//
 	// 50
 	Cps *int64 `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	// The time when the DDoS attack ends.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-12T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The attack event ID.
+	//
 	// example:
 	//
 	// web-cc_1
 	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	EventResult *string `json:"EventResult,omitempty" xml:"EventResult,omitempty"`
+	// The type of DDoS attacks that was queried. Valid values:
+	//
+	// 	- **web-cc**: web resource exhaustion attacks.
+	//
+	// 	- **cc**: connection flood attacks.
+	//
+	// 	- **traffic**: volumetric attacks.
+	//
 	// example:
 	//
 	// web-cc
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The peak of volumetric attacks. Unit: packets per second (PPS).
+	//
 	// example:
 	//
 	// 12000
 	Pps *int64 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// The peak QPS of web resource exhaustion attacks.
+	//
 	// example:
 	//
 	// 7692
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The time when the DDoS attack starts.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-12T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The attack target.
+	//
 	// example:
 	//
 	// example.com
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the web resource exhaustion attack target.
+	//
 	// example:
 	//
 	// 000000000155****
@@ -11709,6 +16769,8 @@ func (s *DescribeDDoSAllEventListResponse) SetBody(v *DescribeDDoSAllEventListRe
 }
 
 type DescribeHttpDDoSAttackIntelligentProtectionRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11731,20 +16793,38 @@ func (s *DescribeHttpDDoSAttackIntelligentProtectionRequest) SetSiteId(v int64) 
 }
 
 type DescribeHttpDDoSAttackIntelligentProtectionResponseBody struct {
+	// The mode of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **observe**: alert.
+	//
+	// 	- **defense**: block.
+	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
+	// The level of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **level0**: very loose.
+	//
+	// 	- **level30**: loose.
+	//
+	// 	- **level60**: normal.
+	//
+	// 	- **level90**: strict.
+	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -11809,6 +16889,8 @@ func (s *DescribeHttpDDoSAttackIntelligentProtectionResponse) SetBody(v *Describ
 }
 
 type DescribeHttpDDoSAttackProtectionRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11831,16 +16913,28 @@ func (s *DescribeHttpDDoSAttackProtectionRequest) SetSiteId(v int64) *DescribeHt
 }
 
 type DescribeHttpDDoSAttackProtectionResponseBody struct {
+	// The level of HTTP DDoS attack protection. Valid values:
+	//
+	// 	- **very weak**: very loose.
+	//
+	// 	- **weak**: loose.
+	//
+	// 	- **default**: normal.
+	//
+	// 	- **hard**: strict.
+	//
 	// example:
 	//
 	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 35C66C7B-671H-4297-9187-2C4477247A78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -11900,10 +16994,18 @@ func (s *DescribeHttpDDoSAttackProtectionResponse) SetBody(v *DescribeHttpDDoSAt
 }
 
 type DescribeKvAccountStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether Edge KV is activated for the Alibaba Cloud account.
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
 	// example:
 	//
 	// online
@@ -11958,30 +17060,52 @@ func (s *DescribeKvAccountStatusResponse) SetBody(v *DescribeKvAccountStatusResp
 }
 
 type DescribePreloadTasksRequest struct {
+	// The content to prefetch. Exact match is supported.
+	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2023-03-23T06:23:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Valid values: **1*	- to **100000**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-03-22T17:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is running.
+	//
+	// 	- **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Complete
@@ -12032,19 +17156,28 @@ func (s *DescribePreloadTasksRequest) SetStatus(v string) *DescribePreloadTasksR
 }
 
 type DescribePreloadTasksResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*DescribePreloadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*DescribePreloadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 83
@@ -12085,26 +17218,50 @@ func (s *DescribePreloadTasksResponseBody) SetTotalCount(v int64) *DescribePrelo
 }
 
 type DescribePreloadTasksResponseBodyTasks struct {
+	// The prefetched content.
+	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=2
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2023-03-28 14:28:57
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned upon a prefetch task failure. Valid values:
+	//
+	// 	- **Internal Error**
+	//
+	// 	- **Origin Timeout**
+	//
+	// 	- **Origin Return StatusCode 5XX**
+	//
 	// example:
 	//
 	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The progress of the task, in percentage.
+	//
 	// example:
 	//
 	// 100%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The task status.
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the queried task.
+	//
 	// example:
 	//
 	// 1597854579687428
@@ -12179,34 +17336,70 @@ func (s *DescribePreloadTasksResponse) SetBody(v *DescribePreloadTasksResponseBo
 }
 
 type DescribePurgeTasksRequest struct {
+	// The content to purge. Exact match is supported.
+	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2022-11-18T15:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Valid values: 1 to 100000.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-11-16T05:33:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
 	// example:
 	//
 	// file
@@ -12262,19 +17455,28 @@ func (s *DescribePurgeTasksRequest) SetType(v string) *DescribePurgeTasksRequest
 }
 
 type DescribePurgeTasksResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*DescribePurgeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*DescribePurgeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -12315,30 +17517,62 @@ func (s *DescribePurgeTasksResponseBody) SetTotalCount(v int64) *DescribePurgeTa
 }
 
 type DescribePurgeTasksResponseBodyTasks struct {
+	// The purged content.
+	//
 	// example:
 	//
 	// http://a.com/1.jpg?b=1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2023-07-26T01:56:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error description returned when the purge task failed.
+	//
 	// example:
 	//
 	// Internal Error
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The progress of the task, in percentage.
+	//
 	// example:
 	//
 	// 100%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// The task status.
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 16346513304
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the purge task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
 	// example:
 	//
 	// file
@@ -12418,6 +17652,8 @@ func (s *DescribePurgeTasksResponse) SetBody(v *DescribePurgeTasksResponseBody) 
 }
 
 type DisableCustomScenePolicyRequest struct {
+	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12440,11 +17676,13 @@ func (s *DisableCustomScenePolicyRequest) SetPolicyId(v int64) *DisableCustomSce
 }
 
 type DisableCustomScenePolicyResponseBody struct {
+	// The ID of the disabled policy.
+	//
 	// example:
 	//
 	// 100001
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -12500,11 +17738,19 @@ func (s *DisableCustomScenePolicyResponse) SetBody(v *DisableCustomScenePolicyRe
 }
 
 type EditSiteWafSettingsRequest struct {
+	// The WAF configuration of the website in the JSON format.
 	Settings *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -12532,11 +17778,19 @@ func (s *EditSiteWafSettingsRequest) SetSiteVersion(v int32) *EditSiteWafSetting
 }
 
 type EditSiteWafSettingsShrinkRequest struct {
+	// The WAF configuration of the website in the JSON format.
 	SettingsShrink *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -12564,7 +17818,7 @@ func (s *EditSiteWafSettingsShrinkRequest) SetSiteVersion(v int32) *EditSiteWafS
 }
 
 type EditSiteWafSettingsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -12615,6 +17869,8 @@ func (s *EditSiteWafSettingsResponse) SetBody(v *EditSiteWafSettingsResponseBody
 }
 
 type EnableCustomScenePolicyRequest struct {
+	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12637,11 +17893,13 @@ func (s *EnableCustomScenePolicyRequest) SetPolicyId(v int64) *EnableCustomScene
 }
 
 type EnableCustomScenePolicyResponseBody struct {
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -12697,6 +17955,8 @@ func (s *EnableCustomScenePolicyResponse) SetBody(v *EnableCustomScenePolicyResp
 }
 
 type ExportRecordsRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 1234567890123
@@ -12717,11 +17977,13 @@ func (s *ExportRecordsRequest) SetSiteId(v int64) *ExportRecordsRequest {
 }
 
 type ExportRecordsResponseBody struct {
+	// The exported DNS records.
+	//
 	// example:
 	//
 	// ;; site:example.com.\\n;; Exported:2024-01-24 15:54:35\\n\\n;; A Records\\na1.example.com. 30 IN A 1.1.1.1 direct\\na2.example.com. 30 IN A 1.1.1.1 direct\\na3.example.com. 30 IN A 1.1.1.1 direct\\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -12777,9 +18039,15 @@ func (s *ExportRecordsResponse) SetBody(v *ExportRecordsResponseBody) *ExportRec
 }
 
 type GetCacheReserveSpecificationResponseBody struct {
+	// The capacities of cache reserve instances that can be created.
 	CacheReserveCapacity []*string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty" type:"Repeated"`
-	CacheReserveRegion   []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
-	// Id of the request
+	// The regions in which cache reserve instances can be created.
+	CacheReserveRegion []*string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12836,6 +18104,8 @@ func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecifi
 }
 
 type GetEdgeContainerAppRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12858,7 +18128,10 @@ func (s *GetEdgeContainerAppRequest) SetAppId(v string) *GetEdgeContainerAppRequ
 }
 
 type GetEdgeContainerAppResponseBody struct {
+	// The basic information about the application.
 	App *GetEdgeContainerAppResponseBodyApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
@@ -12884,51 +18157,86 @@ func (s *GetEdgeContainerAppResponseBody) SetRequestId(v string) *GetEdgeContain
 }
 
 type GetEdgeContainerAppResponseBodyApp struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the application was created.
+	//
 	// example:
 	//
 	// 2023-07-25T05:58:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name that is associated with the application. If no domain name is associated with the application, the value is an empty string.
+	//
 	// example:
 	//
 	// www.1feel.cn
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the gateway. Valid values:
+	//
+	// 	- l7: Layer 7 gateway.
+	//
+	// 	- l4: Layer 4 gateway.
+	//
 	// example:
 	//
 	// l7
-	GatewayType *string                                        `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The information about health checks.
 	HealthCheck *GetEdgeContainerAppResponseBodyAppHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	// The application name.
+	//
 	// example:
 	//
 	// test-app1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether QUIC is enabled.
+	//
 	// example:
 	//
 	// false
 	QuicCid *string `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
+	// The remarks about the application.
+	//
 	// example:
 	//
 	// test app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The server port. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 80
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// The status of the application. Valid values:
+	//
+	// 	- creating: The application is being created.
+	//
+	// 	- failed: The application failed to be created.
+	//
+	// 	- created: The application is created.
+	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 80
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-03-26T02:35:58Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The number of versions of the application.
+	//
 	// example:
 	//
 	// 1
@@ -13009,42 +18317,66 @@ func (s *GetEdgeContainerAppResponseBodyApp) SetVersionCount(v int32) *GetEdgeCo
 }
 
 type GetEdgeContainerAppResponseBodyAppHealthCheck struct {
+	// The number of consecutive failed health checks required for an application to be considered as unhealthy.
+	//
 	// example:
 	//
 	// 5
 	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The domain name that is used for health checks.
+	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The range of health check status codes that indicate successful health checks.
+	//
 	// example:
 	//
 	// http_2xx
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The interval between health checks. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The HTTP method that the health check request uses.
+	//
 	// example:
 	//
 	// HEAD
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The health check port.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The number of consecutive successful health checks required for an application to be considered as healthy.
+	//
 	// example:
 	//
 	// 3
 	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
+	// The timeout period of the health check. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The health check type. Valid values:
+	//
+	// 	- l7
+	//
+	// 	- l4
+	//
 	// example:
 	//
 	// l7
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The health check URL.
+	//
 	// example:
 	//
 	// /health_check
@@ -13139,12 +18471,16 @@ func (s *GetEdgeContainerAppResponse) SetBody(v *GetEdgeContainerAppResponseBody
 }
 
 type GetEdgeContainerAppStatusRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The release environment. Valid values: prod and staging.
+	//
 	// example:
 	//
 	// staging
@@ -13170,7 +18506,10 @@ func (s *GetEdgeContainerAppStatusRequest) SetPublishEnv(v string) *GetEdgeConta
 }
 
 type GetEdgeContainerAppStatusResponseBody struct {
+	// The status of the application.
 	AppStatus *GetEdgeContainerAppStatusResponseBodyAppStatus `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247B78
@@ -13196,53 +18535,114 @@ func (s *GetEdgeContainerAppStatusResponseBody) SetRequestId(v string) *GetEdgeC
 }
 
 type GetEdgeContainerAppStatusResponseBodyAppStatus struct {
+	// The base version of the application.
+	//
 	// example:
 	//
 	// ver-123123123123****
 	BaseLineVersion *string `json:"BaseLineVersion,omitempty" xml:"BaseLineVersion,omitempty"`
+	// The deployment status of the application.
+	//
+	// 	- **undeploy**: The application is not deployed.
+	//
+	// 	- **deploying**: The application is being deployed.
+	//
+	// 	- **deployed**: The application is deployed.
+	//
+	// 	- **undeploying**: The deployment is being canceled.
+	//
 	// example:
 	//
 	// undeploy
 	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
+	// The time when the application was deployed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-07-25T05:58:05Z
 	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// The release version of the application.
+	//
 	// example:
 	//
 	// ver-123123123123****
 	DeployedVersion *string `json:"DeployedVersion,omitempty" xml:"DeployedVersion,omitempty"`
+	// The expected release percentage of the application.
+	//
 	// example:
 	//
 	// 50%
 	ExpectPercentage *int32 `json:"ExpectPercentage,omitempty" xml:"ExpectPercentage,omitempty"`
-	FullRelease      *bool  `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+	//
+	// example:
+	//
+	// true
+	FullRelease *bool `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// The environment to which the application was released. Valid values:
+	//
+	// 	- **prod**: the production environment.
+	//
+	// 	- **staging**: the staging environment.
+	//
 	// example:
 	//
 	// prod
 	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	// The release percentage of the application.
+	//
 	// example:
 	//
 	// 50%
 	PublishPercentage *int32 `json:"PublishPercentage,omitempty" xml:"PublishPercentage,omitempty"`
+	// The release status of the application. Valid values:
+	//
+	// 	- **publishing**
+	//
+	// 	- **published**
+	//
+	// 	- **rollbacking**
+	//
+	// 	- **rollbacked**
+	//
 	// example:
 	//
 	// pubishing
 	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The time when the application was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-07-25T05:58:05Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// Specifies how the version is released. Valid values:
+	//
+	// 	- percentage: releases the version by percentage.
+	//
+	// 	- region: releases the version by region.
+	//
+	// If you do not specify this parameter, the version is released by percentage by default.
+	//
+	// example:
+	//
+	// percentage
 	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// The release version of the application.
+	//
 	// example:
 	//
 	// ver-123123123123****
-	PublishingVersion *string                                                `json:"PublishingVersion,omitempty" xml:"PublishingVersion,omitempty"`
-	Regions           *GetEdgeContainerAppStatusResponseBodyAppStatusRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	PublishingVersion *string `json:"PublishingVersion,omitempty" xml:"PublishingVersion,omitempty"`
+	// The regions to which the version is released.
+	Regions *GetEdgeContainerAppStatusResponseBodyAppStatusRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The time when the last rollback was performed.
+	//
 	// example:
 	//
 	// 2024-07-25T05:58:05Z
 	RollbackTime *string `json:"RollbackTime,omitempty" xml:"RollbackTime,omitempty"`
+	// The time when the application deployment was canceled. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-07-25T05:58:05Z
@@ -13379,12 +18779,16 @@ func (s *GetEdgeContainerAppStatusResponse) SetBody(v *GetEdgeContainerAppStatus
 }
 
 type GetEdgeContainerAppVersionRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The version ID, which can be obtained by calling the [ListEdgeContainerAppVersions](~~ListEdgeContainerAppVersions~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13412,11 +18816,14 @@ func (s *GetEdgeContainerAppVersionRequest) SetVersionId(v string) *GetEdgeConta
 }
 
 type GetEdgeContainerAppVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Version   *GetEdgeContainerAppVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the version.
+	Version *GetEdgeContainerAppVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
 }
 
 func (s GetEdgeContainerAppVersionResponseBody) String() string {
@@ -13438,39 +18845,64 @@ func (s *GetEdgeContainerAppVersionResponseBody) SetVersion(v *GetEdgeContainerA
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersion struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-88068867578379****
-	AppId      *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The container images deployed for this version.
 	Containers []*GetEdgeContainerAppVersionResponseBodyVersionContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The time when the version was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-07-01T09:32:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-07-25T04:58:05Z
 	LastPublishTime *string `json:"LastPublishTime,omitempty" xml:"LastPublishTime,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-11-14T02:04:03Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// aaa
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The status of the current version. Valid values:
+	//
+	// 	- created: The version is created.
+	//
+	// 	- failed: The version failed to be created.
+	//
+	// 	- creating: The version is being created.
+	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-12-03T10:52:52Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the created version.
+	//
 	// example:
 	//
 	// ver-87962637161651****
@@ -13536,48 +18968,71 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetVersionId(v string) *
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
+	// The information about the Container Registry image.
 	ACRImageInfo *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
+	// The arguments that are passed to the container startup command.
+	//
 	// example:
 	//
 	// -c /path/config.toml
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The command that is used to start the container.
+	//
 	// example:
 	//
 	// sh abc.sh 1 2 3
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The environment variables.
+	//
 	// example:
 	//
 	// ENV=prod
 	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// The image address.
+	//
 	// example:
 	//
 	// nginx:1.14.0
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// Indicates whether the image is a Container Registry image.
+	//
 	// example:
 	//
 	// false
 	IsACRImage *bool `json:"IsACRImage,omitempty" xml:"IsACRImage,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// version01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`. If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"touch\\",\\"/home/admin/checkpoststartV1\\"]}}
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The command that is run before the container is stopped.
+	//
 	// example:
 	//
 	// sh prestop.sh "echo hello world"
-	PreStop      *string                                                              `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The probe content.
 	ProbeContent *GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// The probe type.
+	//
 	// example:
 	//
 	// httpGet
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// The compute specification.
+	//
 	// example:
 	//
 	// 1C2G
-	Spec    *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The storage capacity of the container. Valid values: 0.5G, 10G, 20G, and 30G.
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 }
 
@@ -13655,38 +19110,56 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetStorage(v s
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct {
+	// The domain name of the Container Registry image.
+	//
 	// example:
 	//
 	// *.mooc.seewo.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the Container Registry instance.
+	//
 	// example:
 	//
 	// xcdn-9ak2thl14z5s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the image is an enterprise-level image.
+	//
 	// example:
 	//
 	// false
 	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the image repository.
+	//
 	// example:
 	//
 	// crr-zeu0xyk28alyxozh
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	//
 	// example:
 	//
 	// test_1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the image repository belongs.
+	//
 	// example:
 	//
 	// wpy1
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test-healthy-100-soa-1710987653
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The URL of the Container Registry image tag.
+	//
 	// example:
 	//
 	// registry-vpc.cn-shenzhen.aliyuncs.com/lihetech/easywits_server_exam:3.40.2
@@ -13747,46 +19220,68 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo) Se
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainersProbeContent struct {
+	// The probe command.
+	//
 	// example:
 	//
 	// sh test.sh
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The domain name that is used for health checks.
+	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The request headers that are included in the container health check request.
+	//
 	// example:
 	//
 	// [{\\"Content-Type\\":\\"application/json
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// The latency for container probe initialization.
+	//
 	// example:
 	//
 	// 20
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The path of the container health check.
+	//
 	// example:
 	//
 	// /health_check
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The interval between container health checks.
+	//
 	// example:
 	//
 	// 5
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The port of the container health check. Valid values: **1*	- to **65535**.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol that the container health check request uses.
+	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// The timeout period of the container health check.
+	//
 	// example:
 	//
 	// 5
@@ -13886,6 +19381,8 @@ func (s *GetEdgeContainerAppVersionResponse) SetBody(v *GetEdgeContainerAppVersi
 }
 
 type GetEdgeContainerDeployRegionsRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// GetEdgeContainerDeployRegions
@@ -13906,8 +19403,13 @@ func (s *GetEdgeContainerDeployRegionsRequest) SetAppId(v string) *GetEdgeContai
 }
 
 type GetEdgeContainerDeployRegionsResponseBody struct {
+	// The regions.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13959,12 +19461,16 @@ func (s *GetEdgeContainerDeployRegionsResponse) SetBody(v *GetEdgeContainerDeplo
 }
 
 type GetEdgeContainerLogsRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The number of log entries to output.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13992,8 +19498,9 @@ func (s *GetEdgeContainerLogsRequest) SetLines(v int32) *GetEdgeContainerLogsReq
 }
 
 type GetEdgeContainerLogsResponseBody struct {
+	// The logs.
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -14049,6 +19556,8 @@ func (s *GetEdgeContainerLogsResponse) SetBody(v *GetEdgeContainerLogsResponseBo
 }
 
 type GetEdgeContainerStagingDeployStatusRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// GetEdgeContainerStagingDeployStatus
@@ -14069,15 +19578,74 @@ func (s *GetEdgeContainerStagingDeployStatusRequest) SetAppId(v string) *GetEdge
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBody struct {
-	ContainersReady   *string                                                         `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
-	CreationTimestamp *string                                                         `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	Initialized       *string                                                         `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	Phase             *string                                                         `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	PodRestartState   *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
-	Ready             *string                                                         `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RequestId         *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduled         *string                                                         `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
-	VIPs              []*string                                                       `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
+	// Indicates whether the container is ready.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	ContainersReady *string `json:"ContainersReady,omitempty" xml:"ContainersReady,omitempty"`
+	// The time when the container was created. The value is a timestamp.
+	//
+	// example:
+	//
+	// 2024-09-24T06:46:35Z
+	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
+	// The initialization status of the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Initialized *string `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
+	// The status of the container in the staging environment.
+	//
+	// 	- NoContainer: created.
+	//
+	// 	- Running: running.
+	//
+	// 	- Failed: abnormal.
+	//
+	// example:
+	//
+	// Running
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The details of container restart.
+	PodRestartState *GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState `json:"PodRestartState,omitempty" xml:"PodRestartState,omitempty" type:"Struct"`
+	// Indicates whether domain names are associated with the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Ready *string `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2F2C992B-3FE2-5EBB-A61F-F9DD4EB257DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scheduling status of the container.
+	//
+	// 	- ok
+	//
+	// 	- unready
+	//
+	// example:
+	//
+	// ok
+	Scheduled *string `json:"Scheduled,omitempty" xml:"Scheduled,omitempty"`
+	// The virtual IP addresses.
+	VIPs []*string `json:"VIPs,omitempty" xml:"VIPs,omitempty" type:"Repeated"`
 }
 
 func (s GetEdgeContainerStagingDeployStatusResponseBody) String() string {
@@ -14134,8 +19702,18 @@ func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetVIPs(v []*string) *
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState struct {
+	// The reason for the last restart.
+	//
+	// example:
+	//
+	// OOMKilled
 	LastTerminatedReason *string `json:"LastTerminatedReason,omitempty" xml:"LastTerminatedReason,omitempty"`
-	RestartCount         *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// The number of times that the container restarted.
+	//
+	// example:
+	//
+	// 1
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
 }
 
 func (s GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState) String() string {
@@ -14186,6 +19764,8 @@ func (s *GetEdgeContainerStagingDeployStatusResponse) SetBody(v *GetEdgeContaine
 }
 
 type GetEdgeContainerTerminalRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// app-88068867578379****
@@ -14206,32 +19786,44 @@ func (s *GetEdgeContainerTerminalRequest) SetAppId(v string) *GetEdgeContainerTe
 }
 
 type GetEdgeContainerTerminalResponseBody struct {
+	// The cluster name.
+	//
 	// example:
 	//
 	// c497b44c2a59f4ae0bd2826edc40a2c6e
 	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The container name.
+	//
 	// example:
 	//
 	// worker0
 	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// ns1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the container group.
+	//
 	// example:
 	//
 	// 1775b9e0-8463-457e-89e8-fb7b6d125b2e
 	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// af22f4xxxxxxxxxxxxxxxxxx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The information about the shared token.
+	//
 	// example:
 	//
 	// af22f4-xxxxx-xxxx-xxxx-xxxx
@@ -14334,16 +19926,34 @@ func (s *GetErServiceRequest) SetSecurityToken(v string) *GetErServiceRequest {
 }
 
 type GetErServiceResponseBody struct {
+	// The billing mode. Valid values:
+	//
+	// 	- er_paymode: billed for customers on the China site.
+	//
+	// 	- er_freemode: free for customers on the China site.
+	//
+	// 	- er_paymodeintl: billed for customers on the International site.
+	//
+	// 	- err_freemodeintl: free for customers on the International site
+	//
 	// example:
 	//
 	// er_paymode
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service status. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Running
+	//
+	// 	- NotOpened
+	//
 	// example:
 	//
 	// Running
@@ -14403,16 +20013,22 @@ func (s *GetErServiceResponse) SetBody(v *GetErServiceResponseBody) *GetErServic
 }
 
 type GetKvRequest struct {
+	// Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
+	//
 	// example:
 	//
 	// true
 	Base64 *bool `json:"Base64,omitempty" xml:"Base64,omitempty"`
+	// The key name for the query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14445,10 +20061,14 @@ func (s *GetKvRequest) SetNamespace(v string) *GetKvRequest {
 }
 
 type GetKvResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The value of the key.
+	//
 	// example:
 	//
 	// test_value
@@ -14503,35 +20123,56 @@ func (s *GetKvResponse) SetBody(v *GetKvResponseBody) *GetKvResponse {
 }
 
 type GetKvAccountResponseBody struct {
+	// The available capacity of all namespaces in the account. Unit: bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The available capacity of all namespaces in the account.
+	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The used capacity of all namespaces in the account. Unit: bytes.
+	//
 	// example:
 	//
 	// 10048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	// The used capacity of all namespaces in the account.
+	//
 	// example:
 	//
 	// 100 MB
-	CapacityUsedString *string                                  `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
-	NamespaceList      []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// The namespaces in the account.
+	NamespaceList []*GetKvAccountResponseBodyNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	// The maximum number of namespaces that can be created in the account.
+	//
 	// example:
 	//
 	// 10
 	NamespaceQuota *int32 `json:"NamespaceQuota,omitempty" xml:"NamespaceQuota,omitempty"`
+	// The number of created namespaces that store key-value data in the account.
+	//
 	// example:
 	//
 	// 1
 	NamespaceUsed *int32 `json:"NamespaceUsed,omitempty" xml:"NamespaceUsed,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether Edge KV is activated for the Alibaba Cloud account.
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
 	// example:
 	//
 	// online
@@ -14592,34 +20233,58 @@ func (s *GetKvAccountResponseBody) SetStatus(v string) *GetKvAccountResponseBody
 }
 
 type GetKvAccountResponseBodyNamespaceList struct {
+	// The available capacity of the namespace. Unit: bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The available capacity of the namespace.
+	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The used capacity of the namespace. Unit: bytes.
+	//
 	// example:
 	//
 	// 100048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	// The used capacity of the namespace.
+	//
 	// example:
 	//
 	// 100 MB
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// The description of the namespace.
+	//
 	// example:
 	//
 	// the first namespace
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// 643355322374688768
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- **online**: normal.
+	//
+	// 	- **delete**: pending deletion.
+	//
+	// 	- **deleting**: being deleted.
+	//
+	// 	- **deleted**: deleted.
+	//
 	// example:
 	//
 	// online
@@ -14704,6 +20369,8 @@ func (s *GetKvAccountResponse) SetBody(v *GetKvAccountResponseBody) *GetKvAccoun
 }
 
 type GetKvNamespaceRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14726,38 +20393,64 @@ func (s *GetKvNamespaceRequest) SetNamespace(v string) *GetKvNamespaceRequest {
 }
 
 type GetKvNamespaceResponseBody struct {
+	// The available capacity of the namespace. Unit: bytes.
+	//
 	// example:
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The available capacity of the namespace.
+	//
 	// example:
 	//
 	// 1 GB
 	CapacityString *string `json:"CapacityString,omitempty" xml:"CapacityString,omitempty"`
+	// The used capacity of the namespace. Unit: bytes.
+	//
 	// example:
 	//
 	// 10048576
 	CapacityUsed *int64 `json:"CapacityUsed,omitempty" xml:"CapacityUsed,omitempty"`
+	// The used capacity of the namespace.
+	//
 	// example:
 	//
 	// 100 MB
 	CapacityUsedString *string `json:"CapacityUsedString,omitempty" xml:"CapacityUsedString,omitempty"`
+	// The description of the namespace.
+	//
 	// example:
 	//
 	// this is a test namespace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// 643355322374688768
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- **online**: working as expected.
+	//
+	// 	- **delete**: pending deletion.
+	//
+	// 	- **deleting**: being deleted.
+	//
+	// 	- **deleted**: deleted.
+	//
 	// example:
 	//
 	// online
@@ -14847,6 +20540,8 @@ func (s *GetKvNamespaceResponse) SetBody(v *GetKvNamespaceResponseBody) *GetKvNa
 }
 
 type GetListRequest struct {
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
 	// example:
 	//
 	// 40000001
@@ -14867,24 +20562,27 @@ func (s *GetListRequest) SetId(v int64) *GetListRequest {
 }
 
 type GetListResponseBody struct {
-	// 自定义响应页面描述
+	// The description of the custom list.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 自定义响应页面ID
+	// The ID of the custom list.[](~~2850217~~)
 	//
 	// example:
 	//
 	// 40000001
-	Id    *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The items in the custom list, which are displayed as an array.
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The type of the custom list.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// 自定义响应页面名称
+	// The name of the custom list.
 	//
 	// This parameter is required.
 	//
@@ -14892,12 +20590,14 @@ type GetListResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the custom list was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -14976,7 +20676,276 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 	return s
 }
 
+type GetOriginProtectionRequest struct {
+	// example:
+	//
+	// 123456789****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionRequest) SetSiteId(v int64) *GetOriginProtectionRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginProtectionResponseBody struct {
+	CurrentIPWhitelist *GetOriginProtectionResponseBodyCurrentIPWhitelist `json:"CurrentIPWhitelist,omitempty" xml:"CurrentIPWhitelist,omitempty" type:"Struct"`
+	DiffIPWhitelist    *GetOriginProtectionResponseBodyDiffIPWhitelist    `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
+	LatestIPWhitelist  *GetOriginProtectionResponseBodyLatestIPWhitelist  `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	NeedUpdate *bool `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
+	// example:
+	//
+	// on
+	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	// example:
+	//
+	// on
+	OriginProtection *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBody) SetCurrentIPWhitelist(v *GetOriginProtectionResponseBodyCurrentIPWhitelist) *GetOriginProtectionResponseBody {
+	s.CurrentIPWhitelist = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetDiffIPWhitelist(v *GetOriginProtectionResponseBodyDiffIPWhitelist) *GetOriginProtectionResponseBody {
+	s.DiffIPWhitelist = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetLatestIPWhitelist(v *GetOriginProtectionResponseBodyLatestIPWhitelist) *GetOriginProtectionResponseBody {
+	s.LatestIPWhitelist = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetNeedUpdate(v bool) *GetOriginProtectionResponseBody {
+	s.NeedUpdate = &v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetOriginConverge(v string) *GetOriginProtectionResponseBody {
+	s.OriginConverge = &v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetOriginProtection(v string) *GetOriginProtectionResponseBody {
+	s.OriginProtection = &v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetRequestId(v string) *GetOriginProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBody) SetSiteId(v int64) *GetOriginProtectionResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginProtectionResponseBodyCurrentIPWhitelist struct {
+	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginProtectionResponseBodyCurrentIPWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyCurrentIPWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyCurrentIPWhitelist) SetIPv4(v []*string) *GetOriginProtectionResponseBodyCurrentIPWhitelist {
+	s.IPv4 = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyCurrentIPWhitelist) SetIPv6(v []*string) *GetOriginProtectionResponseBodyCurrentIPWhitelist {
+	s.IPv6 = v
+	return s
+}
+
+type GetOriginProtectionResponseBodyDiffIPWhitelist struct {
+	AddedIPWhitelist    *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist    `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
+	NoChangeIpWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist `json:"NoChangeIpWhitelist,omitempty" xml:"NoChangeIpWhitelist,omitempty" type:"Struct"`
+	RemovedIPWhitelist  *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist  `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) SetAddedIPWhitelist(v *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) *GetOriginProtectionResponseBodyDiffIPWhitelist {
+	s.AddedIPWhitelist = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) SetNoChangeIpWhitelist(v *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) *GetOriginProtectionResponseBodyDiffIPWhitelist {
+	s.NoChangeIpWhitelist = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) SetRemovedIPWhitelist(v *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) *GetOriginProtectionResponseBodyDiffIPWhitelist {
+	s.RemovedIPWhitelist = v
+	return s
+}
+
+type GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist struct {
+	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) SetIPv4(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist {
+	s.IPv4 = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) SetIPv6(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist {
+	s.IPv6 = v
+	return s
+}
+
+type GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist struct {
+	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) SetIPv4(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist {
+	s.IPv4 = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) SetIPv6(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist {
+	s.IPv6 = v
+	return s
+}
+
+type GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist struct {
+	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) SetIPv4(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist {
+	s.IPv4 = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) SetIPv6(v []*string) *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist {
+	s.IPv6 = v
+	return s
+}
+
+type GetOriginProtectionResponseBodyLatestIPWhitelist struct {
+	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginProtectionResponseBodyLatestIPWhitelist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponseBodyLatestIPWhitelist) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponseBodyLatestIPWhitelist) SetIPv4(v []*string) *GetOriginProtectionResponseBodyLatestIPWhitelist {
+	s.IPv4 = v
+	return s
+}
+
+func (s *GetOriginProtectionResponseBodyLatestIPWhitelist) SetIPv6(v []*string) *GetOriginProtectionResponseBodyLatestIPWhitelist {
+	s.IPv6 = v
+	return s
+}
+
+type GetOriginProtectionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginProtectionResponse) SetHeaders(v map[string]*string) *GetOriginProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginProtectionResponse) SetStatusCode(v int32) *GetOriginProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginProtectionResponse) SetBody(v *GetOriginProtectionResponseBody) *GetOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
 type GetPageRequest struct {
+	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	//
 	// example:
 	//
 	// 50000001
@@ -14997,7 +20966,7 @@ func (s *GetPageRequest) SetId(v int64) *GetPageRequest {
 }
 
 type GetPageResponseBody struct {
-	// 自定义响应页面内容BASE64编码
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	//
 	// This parameter is required.
 	//
@@ -15005,7 +20974,7 @@ type GetPageResponseBody struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 自定义响应页面内容类型
+	// The Content-Type field in the HTTP header.
 	//
 	// This parameter is required.
 	//
@@ -15013,23 +20982,25 @@ type GetPageResponseBody struct {
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 自定义响应页面描述
+	// The description of the custom error page.
 	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 自定义响应页面ID
+	// The ID of the custom error page.[](~~2850223~~)
 	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the custom response page.
+	//
 	// example:
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// 自定义响应页面名称
+	// The name of the custom response page.
 	//
 	// This parameter is required.
 	//
@@ -15037,12 +21008,14 @@ type GetPageResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the custom error page was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -15127,10 +21100,26 @@ func (s *GetPageResponse) SetBody(v *GetPageResponseBody) *GetPageResponse {
 }
 
 type GetPurgeQuotaRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type of the purge task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
 	// example:
 	//
 	// file
@@ -15156,16 +21145,20 @@ func (s *GetPurgeQuotaRequest) SetType(v string) *GetPurgeQuotaRequest {
 }
 
 type GetPurgeQuotaResponseBody struct {
+	// The total quota.
+	//
 	// example:
 	//
 	// 100000
 	Quota *string `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The quota usage.
+	//
 	// example:
 	//
 	// 10
@@ -15225,6 +21218,16 @@ func (s *GetPurgeQuotaResponse) SetBody(v *GetPurgeQuotaResponseBody) *GetPurgeQ
 }
 
 type GetRealtimeDeliveryFieldRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- **dcdn_log_access_l1*	- (default): access logs.
+	//
+	// 	- **dcdn_log_er**: Edge Routine logs.
+	//
+	// 	- **dcdn_log_waf**: firewall logs.
+	//
+	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15247,8 +21250,9 @@ func (s *GetRealtimeDeliveryFieldRequest) SetBusinessType(v string) *GetRealtime
 }
 
 type GetRealtimeDeliveryFieldResponseBody struct {
+	// The fields returned.
 	FieldContent map[string]*FieldContentValue `json:"FieldContent,omitempty" xml:"FieldContent,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -15722,6 +21726,8 @@ func (s *GetRecordResponse) SetBody(v *GetRecordResponseBody) *GetRecordResponse
 }
 
 type GetRoutineRequest struct {
+	// The routine name.
+	//
 	// example:
 	//
 	// GetRoutine
@@ -15742,14 +21748,37 @@ func (s *GetRoutineRequest) SetName(v string) *GetRoutineRequest {
 }
 
 type GetRoutineResponseBody struct {
-	CodeVersions         []*GetRoutineResponseBodyCodeVersions   `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	CreateTime           *string                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DefaultRelatedRecord *string                                 `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	Description          *string                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	Envs                 []*GetRoutineResponseBodyEnvs           `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
-	RelatedRecords       []*GetRoutineResponseBodyRelatedRecords `json:"RelatedRecords,omitempty" xml:"RelatedRecords,omitempty" type:"Repeated"`
-	RelatedRoutes        []*GetRoutineResponseBodyRelatedRoutes  `json:"RelatedRoutes,omitempty" xml:"RelatedRoutes,omitempty" type:"Repeated"`
-	// Id of the request
+	// The code versions.
+	CodeVersions []*GetRoutineResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
+	// The time when the routine was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:21Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The default record name to access.
+	//
+	// example:
+	//
+	// routine1.example.com
+	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
+	// The description of the routine.
+	//
+	// example:
+	//
+	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the environments.
+	Envs []*GetRoutineResponseBodyEnvs `json:"Envs,omitempty" xml:"Envs,omitempty" type:"Repeated"`
+	// The records associated with the routine.
+	RelatedRecords []*GetRoutineResponseBodyRelatedRecords `json:"RelatedRecords,omitempty" xml:"RelatedRecords,omitempty" type:"Repeated"`
+	// The routes associated with the routine.
+	RelatedRoutes []*GetRoutineResponseBodyRelatedRoutes `json:"RelatedRoutes,omitempty" xml:"RelatedRoutes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15802,9 +21831,24 @@ func (s *GetRoutineResponseBody) SetRequestId(v string) *GetRoutineResponseBody 
 }
 
 type GetRoutineResponseBodyCodeVersions struct {
+	// The description of the code version.
+	//
+	// example:
+	//
+	// test ver code desc
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	CodeVersion     *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The code version.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The time when the code version was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:21Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 }
 
 func (s GetRoutineResponseBodyCodeVersions) String() string {
@@ -15831,11 +21875,32 @@ func (s *GetRoutineResponseBodyCodeVersions) SetCreateTime(v string) *GetRoutine
 }
 
 type GetRoutineResponseBodyEnvs struct {
-	CanaryAreaList    []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
-	CanaryCodeVersion *string   `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
-	CodeVersion       *string   `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	Env               *string   `json:"Env,omitempty" xml:"Env,omitempty"`
-	SpecName          *string   `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// The regions for canary release.
+	CanaryAreaList []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
+	// The version number for canary release.
+	//
+	// example:
+	//
+	// 1710120201067577628
+	CanaryCodeVersion *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	// The version number of the code in the environment.
+	//
+	// example:
+	//
+	// 1710120201067577628
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The environment type.
+	//
+	// example:
+	//
+	// production
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The specification.
+	//
+	// example:
+	//
+	// 5ms
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s GetRoutineResponseBodyEnvs) String() string {
@@ -15872,10 +21937,30 @@ func (s *GetRoutineResponseBodyEnvs) SetSpecName(v string) *GetRoutineResponseBo
 }
 
 type GetRoutineResponseBodyRelatedRecords struct {
-	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record ID.
+	//
+	// example:
+	//
+	// 509348423011904
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
+	// example:
+	//
+	// test-record-1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	SiteId     *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
 func (s GetRoutineResponseBodyRelatedRecords) String() string {
@@ -15907,9 +21992,29 @@ func (s *GetRoutineResponseBodyRelatedRecords) SetSiteName(v string) *GetRoutine
 }
 
 type GetRoutineResponseBodyRelatedRoutes struct {
-	Route    *string `json:"Route,omitempty" xml:"Route,omitempty"`
-	RouteId  *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The route.
+	//
+	// example:
+	//
+	// *.example.com/path1*
+	Route *string `json:"Route,omitempty" xml:"Route,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// d501cb8a2c951f32922d260040780c06
+	RouteId *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
@@ -15971,7 +22076,14 @@ func (s *GetRoutineResponse) SetBody(v *GetRoutineResponseBody) *GetRoutineRespo
 }
 
 type GetRoutineStagingCodeUploadInfoRequest struct {
+	// The code description.
+	//
+	// example:
+	//
+	// the description of code
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// The routine name.
+	//
 	// example:
 	//
 	// GetRoutineStagingCodeUploadInfo
@@ -15997,9 +22109,39 @@ func (s *GetRoutineStagingCodeUploadInfoRequest) SetName(v string) *GetRoutineSt
 }
 
 type GetRoutineStagingCodeUploadInfoResponseBody struct {
-	CodeVersion   *string                `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The code version.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The configuration information that can be used to upload to OSS.
+	//
+	// example:
+	//
+	// {
+	//
+	//             "Url": "http://oss_fake_bucket_url",
+	//
+	//             "OSSAccessKeyId": "xxx",
+	//
+	//             "key": "site_er_js/hello.1418586423220543.unstable.js",
+	//
+	//             "callback": "xxx==",
+	//
+	//             "x:codeDescription": "xxx=",
+	//
+	//             "policy": "xxx",
+	//
+	//             "Signature": "xxx="
+	//
+	// }
 	OssPostConfig map[string]interface{} `json:"OssPostConfig,omitempty" xml:"OssPostConfig,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16056,8 +22198,13 @@ func (s *GetRoutineStagingCodeUploadInfoResponse) SetBody(v *GetRoutineStagingCo
 }
 
 type GetRoutineStagingEnvIpResponseBody struct {
+	// The IPv4 addresses.
 	IPV4 []*string `json:"IPV4,omitempty" xml:"IPV4,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16109,10 +22256,16 @@ func (s *GetRoutineStagingEnvIpResponse) SetBody(v *GetRoutineStagingEnvIpRespon
 }
 
 type GetRoutineUserInfoResponseBody struct {
-	// Id of the request
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Routines   []*GetRoutineUserInfoResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
-	Subdomains []*string                                 `json:"Subdomains,omitempty" xml:"Subdomains,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routines.
+	Routines []*GetRoutineUserInfoResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
+	// The subdomains.
+	Subdomains []*string `json:"Subdomains,omitempty" xml:"Subdomains,omitempty" type:"Repeated"`
 }
 
 func (s GetRoutineUserInfoResponseBody) String() string {
@@ -16139,8 +22292,23 @@ func (s *GetRoutineUserInfoResponseBody) SetSubdomains(v []*string) *GetRoutineU
 }
 
 type GetRoutineUserInfoResponseBodyRoutines struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the routine was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:02.883361712Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The routine description, which is Base64-encoded.
+	//
+	// example:
+	//
+	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The routine name.
+	//
+	// example:
+	//
+	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 }
 
@@ -16197,6 +22365,8 @@ func (s *GetRoutineUserInfoResponse) SetBody(v *GetRoutineUserInfoResponseBody) 
 }
 
 type GetScheduledPreloadJobRequest struct {
+	// The ID of the scheduled prefetch task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16219,22 +22389,96 @@ func (s *GetScheduledPreloadJobRequest) SetId(v string) *GetScheduledPreloadJobR
 }
 
 type GetScheduledPreloadJobResponseBody struct {
-	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreatedAt     *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Domains       *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	ErrorInfo     *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2024-06-02T02:23:26Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The domain names to be prefetched.
+	//
+	// example:
+	//
+	// testurl.com
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// The error message that is returned.
+	//
+	// example:
+	//
+	// invalid domain:test.com
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+	//
+	// example:
+	//
+	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InsertWay     *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	TaskSubmitted *int32  `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UrlCount      *int32  `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	UrlSubmitted  *int32  `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
+	// The ID of the URL list file, which can be used during downloads.
+	//
+	// example:
+	//
+	// 665d3b48621bccf3fe29e1a7
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method to submit the URLs to be prefetched.
+	//
+	// example:
+	//
+	// oss
+	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 190007158391808
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The number of submitted prefetch tasks.
+	//
+	// example:
+	//
+	// 1
+	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
+	// The task type. Valid values: refresh and preload.
+	//
+	// example:
+	//
+	// preload
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of URLs.
+	//
+	// example:
+	//
+	// 2
+	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
+	// The number of submitted URLs.
+	//
+	// example:
+	//
+	// 1
+	UrlSubmitted *int32 `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
 }
 
 func (s GetScheduledPreloadJobResponseBody) String() string {
@@ -16350,6 +22594,8 @@ func (s *GetScheduledPreloadJobResponse) SetBody(v *GetScheduledPreloadJobRespon
 }
 
 type GetSiteRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16372,12 +22618,13 @@ func (s *GetSiteRequest) SetSiteId(v int64) *GetSiteRequest {
 }
 
 type GetSiteResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried website information.
 	SiteModel *GetSiteResponseBodySiteModel `json:"SiteModel,omitempty" xml:"SiteModel,omitempty" type:"Struct"`
 }
 
@@ -16400,67 +22647,118 @@ func (s *GetSiteResponseBody) SetSiteModel(v *GetSiteResponseBodySiteModel) *Get
 }
 
 type GetSiteResponseBodySiteModel struct {
+	// The DNS setup option for the website. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland.
+	//
+	// 	- **global**: global.
+	//
+	// 	- **overseas**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The time when the WEBsite was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The plan ID.
+	//
 	// example:
 	//
 	// cas-merge-q6h0bv
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The nameservers assigned to the website domain. They are separated by commas (,).
+	//
 	// example:
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	// The plan name.
+	//
 	// example:
 	//
 	// plan-168777532****
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The specification of the plan associated with the website.
+	//
 	// example:
 	//
 	// normal
 	PlanSpecName *string `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
+	// The ID of your Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aek26g6i6se****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website status. Valid values:
+	//
+	// 	- **pending**: The website is to be configured.
+	//
+	// 	- **active**: The website is active.
+	//
+	// 	- **offline**: The website is suspended.
+	//
+	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
+	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the website.
+	//
 	// example:
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The time when the WEBsite was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
-	UpdateTime   *string            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The information about custom nameservers of the website domain. The key is a custom nameserver name, and the value is the IP address of the custom nameserver. Multiple IP addresses are separated by commas (,).
 	VanityNSList map[string]*string `json:"VanityNSList,omitempty" xml:"VanityNSList,omitempty"`
+	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// The status of version management. If true is returned, version management is enabled for the website.
+	//
 	// example:
 	//
 	// true
@@ -16590,6 +22888,8 @@ func (s *GetSiteResponse) SetBody(v *GetSiteResponseBody) *GetSiteResponse {
 }
 
 type GetSiteCurrentNSRequest struct {
+	// The website ID. It can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16612,7 +22912,10 @@ func (s *GetSiteCurrentNSRequest) SetSiteId(v int64) *GetSiteCurrentNSRequest {
 }
 
 type GetSiteCurrentNSResponseBody struct {
+	// The nameservers of the website.
 	NSList []*string `json:"NSList,omitempty" xml:"NSList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2430E05E-1340-5773-B5E1-B743929F46F2
@@ -16667,6 +22970,8 @@ func (s *GetSiteCurrentNSResponse) SetBody(v *GetSiteCurrentNSResponseBody) *Get
 }
 
 type GetSiteCustomLogRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16689,21 +22994,28 @@ func (s *GetSiteCustomLogRequest) SetSiteId(v int64) *GetSiteCustomLogRequest {
 }
 
 type GetSiteCustomLogResponseBody struct {
+	// The ID of the custom log field configuration.
+	//
 	// example:
 	//
 	// 6befa4aa-2a94-4f51-a245-295787192d2c
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether the custom configuration exists.
+	//
 	// example:
 	//
 	// true
-	IsExist        *bool                                       `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	IsExist *bool `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	// The custom fields.
 	LogCustomField *GetSiteCustomLogResponseBodyLogCustomField `json:"LogCustomField,omitempty" xml:"LogCustomField,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 6befa4aa-2a94-4f51-a245-295787192d2c
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 167026711***
@@ -16744,8 +23056,11 @@ func (s *GetSiteCustomLogResponseBody) SetSiteId(v int64) *GetSiteCustomLogRespo
 }
 
 type GetSiteCustomLogResponseBodyLogCustomField struct {
-	Cookies         []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
-	RequestHeaders  []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The cookie fields.
+	Cookies []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
+	// The request header fields.
+	RequestHeaders []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The response header fields.
 	ResponseHeaders []*string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 }
 
@@ -16802,10 +23117,14 @@ func (s *GetSiteCustomLogResponse) SetBody(v *GetSiteCustomLogResponseBody) *Get
 }
 
 type GetSiteDeliveryTaskRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 123456***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16833,52 +23152,102 @@ func (s *GetSiteDeliveryTaskRequest) SetTaskName(v string) *GetSiteDeliveryTaskR
 }
 
 type GetSiteDeliveryTaskResponseBody struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 1.  cn: the Chinese mainland.
+	//
+	// 2.  sg: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 2.  http: HTTP server.
+	//
+	// 3.  aws3: Amazon Simple Storage Service (S3).
+	//
+	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 5.  kafka: Kafka.
+	//
+	// 6.  aws3cmpt: S3-compatible storage service.
+	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate.
+	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields.
+	//
 	// example:
 	//
 	// Client,UserAgent
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
+	// The filtering rules.
+	//
 	// example:
 	//
 	// []
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery configuration.
+	//
 	// example:
 	//
 	// {\\"Region\\": \\"cn-hangzhou\\", \\"Endpoint\\": \\"https://***.oss-cn-hangzhou.aliyuncs.com\\", \\"BucketPath\\": \\"hjy-test002/online-logs\\"}
 	SinkConfig interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// test.***.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The status of the delivery task.
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// cdn-test-task
@@ -16983,12 +23352,24 @@ func (s *GetSiteDeliveryTaskResponse) SetBody(v *GetSiteDeliveryTaskResponseBody
 }
 
 type GetSiteLogDeliveryQuotaRequest struct {
+	// The log category. Valid values:
+	//
+	// 1.  dcdn_log_access_l1 (default): access logs.
+	//
+	// 2.  dcdn_log_er: Edge Routine logs.
+	//
+	// 3.  dcdn_log_waf: firewall logs.
+	//
+	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17016,20 +23397,34 @@ func (s *GetSiteLogDeliveryQuotaRequest) SetSiteId(v int64) *GetSiteLogDeliveryQ
 }
 
 type GetSiteLogDeliveryQuotaResponseBody struct {
+	// The log category. Valid values:
+	//
+	// 1.  dcdn_log_access_l1 (default): access logs.
+	//
+	// 2.  dcdn_log_er: Edge Routine logs.
+	//
+	// 3.  dcdn_log_waf: firewall logs.
+	//
+	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The remaining quota.
+	//
 	// example:
 	//
 	// 3
 	FreeQuota *int64 `json:"FreeQuota,omitempty" xml:"FreeQuota,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4C14840EF0EAAB6D97CDE0C5F6554ACE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -17094,10 +23489,17 @@ func (s *GetSiteLogDeliveryQuotaResponse) SetBody(v *GetSiteLogDeliveryQuotaResp
 }
 
 type GetSiteWafSettingsRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -17120,9 +23522,14 @@ func (s *GetSiteWafSettingsRequest) SetSiteVersion(v int32) *GetSiteWafSettingsR
 }
 
 type GetSiteWafSettingsResponseBody struct {
-	// Id of the request
-	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Settings  *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The WAF configurations of the website.
+	Settings *WafSiteSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
 }
 
 func (s GetSiteWafSettingsResponseBody) String() string {
@@ -17173,10 +23580,14 @@ func (s *GetSiteWafSettingsResponse) SetBody(v *GetSiteWafSettingsResponseBody) 
 }
 
 type GetUploadTaskRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/435925.html) operation.
+	//
 	// example:
 	//
 	// 159253299357****
@@ -17202,16 +23613,32 @@ func (s *GetUploadTaskRequest) SetUploadId(v int64) *GetUploadTaskRequest {
 }
 
 type GetUploadTaskResponseBody struct {
+	// The error message returned when the file upload task failed.
+	//
 	// example:
 	//
 	// invalid url
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A52****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
+	// 	- **INIT**: The task is being initialized.
+	//
+	// 	- **activacted**: The task is activated.
+	//
+	// 	- **running**: The task is running.
+	//
+	// 	- **success**: The task is successful.
+	//
+	// 	- **partial**: The task is partially successful.
+	//
+	// 	- **fail**: The task failed.
+	//
 	// example:
 	//
 	// running
@@ -17271,6 +23698,8 @@ func (s *GetUploadTaskResponse) SetBody(v *GetUploadTaskResponseBody) *GetUpload
 }
 
 type GetUserDeliveryTaskRequest struct {
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17293,44 +23722,86 @@ func (s *GetUserDeliveryTaskRequest) SetTaskName(v string) *GetUserDeliveryTaskR
 }
 
 type GetUserDeliveryTaskResponseBody struct {
+	// The log category. Valid values:
+	//
+	// 	- **dcdn_log_access_l1*	- (default): access logs.
+	//
+	// 	- **dcdn_log_er**: Edge Routine logs.
+	//
+	// 	- **dcdn_log_waf**: firewall logs.
+	//
+	// 	- **dcdn_log_ipa**: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- sg: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 	- sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 	- http: HTTP server.
+	//
+	// 	- aws3: Amazon Simple Storage Service (S3).
+	//
+	// 	- oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 	- kafka: Kafka.
+	//
+	// 	- aws3cmpt: S3-compatible storage service.
+	//
 	// example:
 	//
 	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The discard rate.
+	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The fields.
+	//
 	// example:
 	//
 	// ClientRequestID,ClientRequestHost
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
+	// The filtering rules.
+	//
 	// example:
 	//
 	// [{"ClientSSLProtocol": {"equals": ["TLSv1.3"]}}]
 	FilterRules *string `json:"FilterRules,omitempty" xml:"FilterRules,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 7072132a-bd3c-46a6-9e81-aba3e0e3f861
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery configuration.
+	//
 	// example:
 	//
 	// {\\"Project\\": \\"er-online-hjy-pro\\", \\"Logstore\\": \\"er-online-hjy-log\\", \\"Region\\": \\"cn-hangzhou\\", \\"Endpoint\\": \\"cn-hangzhou.log.aliyuncs.com\\", \\"Aliuid\\": \\"1077912128805410\\"}
 	SinkConfig interface{} `json:"SinkConfig,omitempty" xml:"SinkConfig,omitempty"`
+	// The status of the delivery task.
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// testoss11
@@ -17425,6 +23896,16 @@ func (s *GetUserDeliveryTaskResponse) SetBody(v *GetUserDeliveryTaskResponseBody
 }
 
 type GetUserLogDeliveryQuotaRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17447,15 +23928,27 @@ func (s *GetUserLogDeliveryQuotaRequest) SetBusinessType(v string) *GetUserLogDe
 }
 
 type GetUserLogDeliveryQuotaResponseBody struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The remaining quota.
+	//
 	// example:
 	//
 	// 3
 	FreeQuota *int64 `json:"FreeQuota,omitempty" xml:"FreeQuota,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -17516,12 +24009,14 @@ func (s *GetUserLogDeliveryQuotaResponse) SetBody(v *GetUserLogDeliveryQuotaResp
 }
 
 type GetWafBotAppKeyResponseBody struct {
-	// APP key
+	// The application key.
 	//
 	// example:
 	//
 	// example_appkey
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -17576,18 +24071,26 @@ func (s *GetWafBotAppKeyResponse) SetBody(v *GetWafBotAppKeyResponseBody) *GetWa
 }
 
 type GetWafFilterRequest struct {
+	// The WAF rule category to which the filter conditions to query belong.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The condition for matching incoming requests.
+	//
 	// example:
 	//
 	// characteristics
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// http_custom_cc
@@ -17623,8 +24126,9 @@ func (s *GetWafFilterRequest) SetType(v string) *GetWafFilterRequest {
 }
 
 type GetWafFilterResponseBody struct {
+	// The returned match conditions.
 	Filter *GetWafFilterResponseBodyFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -17651,15 +24155,22 @@ func (s *GetWafFilterResponseBody) SetRequestId(v string) *GetWafFilterResponseB
 }
 
 type GetWafFilterResponseBodyFilter struct {
+	// The matched objects and related properties.
 	Fields []*GetWafFilterResponseBodyFilterFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The condition for matching incoming requests.
+	//
 	// example:
 	//
 	// characteristics
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// http_custom_cc
@@ -17695,17 +24206,30 @@ func (s *GetWafFilterResponseBodyFilter) SetType(v string) *GetWafFilterResponse
 }
 
 type GetWafFilterResponseBodyFilterFields struct {
+	// The field for matched objects in the system.
+	//
 	// example:
 	//
 	// http.request.headers
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label of the matched object.
+	//
 	// example:
 	//
 	// Header
-	Label    *string                                       `json:"Label,omitempty" xml:"Label,omitempty"`
-	Logics   []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The logical conditions.
+	Logics []*GetWafFilterResponseBodyFilterFieldsLogics `json:"Logics,omitempty" xml:"Logics,omitempty" type:"Repeated"`
+	// The selector, which defines how to select a matched object.
 	Selector *GetWafFilterResponseBodyFilterFieldsSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
-	Sub      *bool                                         `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// Indicates whether the matched object contains a subfield.
+	//
+	// example:
+	//
+	// true
+	Sub *bool `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The tip on how to enter a subfield.
+	//
 	// example:
 	//
 	// e.g. Content-Type
@@ -17751,31 +24275,61 @@ func (s *GetWafFilterResponseBodyFilterFields) SetSubTip(v string) *GetWafFilter
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogics struct {
+	// A custom attribute. For example, this parameter can specify whether the value is case-sensitive.
+	//
 	// example:
 	//
 	// 1
 	Attributes *int32 `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The type of the value input box. Valid values:
+	//
+	// 	- select:single
+	//
+	// 	- select:multi
+	//
+	// 	- input:single
+	//
+	// 	- input:multi
+	//
 	// example:
 	//
 	// input:single
-	Kind     *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Negative *bool   `json:"Negative,omitempty" xml:"Negative,omitempty"`
+	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// Indicates whether the match result is inverted.
+	Negative *bool `json:"Negative,omitempty" xml:"Negative,omitempty"`
+	// The displayed matching characters.
+	//
 	// example:
 	//
 	// Does not equal
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The matching characters in the system.
+	//
 	// example:
 	//
 	// eq
 	Symbol *string `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	// The tip on how to enter a valid value that is required by the rules.
+	//
 	// example:
 	//
 	// e.g. image/jpeg
 	Tip *string `json:"Tip,omitempty" xml:"Tip,omitempty"`
+	// The type of the value. Valid values:
+	//
+	// 	- integer
+	//
+	// 	- integer_slice
+	//
+	// 	- string
+	//
+	// 	- string_slice
+	//
 	// example:
 	//
 	// string
-	Type      *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The validator, which defines the validation rules for a value.
 	Validator *GetWafFilterResponseBodyFilterFieldsLogicsValidator `json:"Validator,omitempty" xml:"Validator,omitempty" type:"Struct"`
 }
 
@@ -17828,16 +24382,22 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetValidator(v *GetWafFilte
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogicsValidator struct {
+	// The error message when the validation fails.
+	//
 	// example:
 	//
 	// Enter a valid expression
-	ErrMsg *string          `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// The length of the value.
 	Length *WafQuotaInteger `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The regular expression pattern of the value, which is used to validate strings.
+	//
 	// example:
 	//
 	// ^example$
-	Pattern *string          `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	Range   *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The range of the value, which is used to validate numbers.
+	Range *WafQuotaInteger `json:"Range,omitempty" xml:"Range,omitempty"`
 }
 
 func (s GetWafFilterResponseBodyFilterFieldsLogicsValidator) String() string {
@@ -17869,7 +24429,10 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogicsValidator) SetRange(v *WafQuo
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelector struct {
+	// The data. This parameter is available only when the value of the Kind parameter is data.
 	Data []*GetWafFilterResponseBodyFilterFieldsSelectorData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The type of selector. Valid values: data and others.
+	//
 	// example:
 	//
 	// data
@@ -17895,10 +24458,14 @@ func (s *GetWafFilterResponseBodyFilterFieldsSelector) SetKind(v string) *GetWaf
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelectorData struct {
+	// The label of the data.
+	//
 	// example:
 	//
 	// China
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The value of the data.
+	//
 	// example:
 	//
 	// CN
@@ -17953,6 +24520,16 @@ func (s *GetWafFilterResponse) SetBody(v *GetWafFilterResponseBody) *GetWafFilte
 }
 
 type GetWafQuotaRequest struct {
+	// The type of WAF resources. Valid values:
+	//
+	// 	- managed_rules_group: the managed rule group.
+	//
+	// 	- list: the custom list.
+	//
+	// 	- page: the custom error page.
+	//
+	// 	- scene_policy: the scenario-specific policy.
+	//
 	// example:
 	//
 	// page
@@ -17973,8 +24550,9 @@ func (s *GetWafQuotaRequest) SetPaths(v string) *GetWafQuotaRequest {
 }
 
 type GetWafQuotaResponseBody struct {
+	// The quota information returned.
 	Quota *GetWafQuotaResponseBodyQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -18001,10 +24579,14 @@ func (s *GetWafQuotaResponseBody) SetRequestId(v string) *GetWafQuotaResponseBod
 }
 
 type GetWafQuotaResponseBodyQuota struct {
-	List              *GetWafQuotaResponseBodyQuotaList              `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	// The quota information about custom lists.
+	List *GetWafQuotaResponseBodyQuotaList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	// The quota information about WAF managed rule groups.
 	ManagedRulesGroup *GetWafQuotaResponseBodyQuotaManagedRulesGroup `json:"ManagedRulesGroup,omitempty" xml:"ManagedRulesGroup,omitempty" type:"Struct"`
-	Page              *GetWafQuotaResponseBodyQuotaPage              `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	ScenePolicy       *GetWafQuotaResponseBodyQuotaScenePolicy       `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
+	// The quota information about custom error pages.
+	Page *GetWafQuotaResponseBodyQuotaPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The quota information about scenario-specific policies.
+	ScenePolicy *GetWafQuotaResponseBodyQuotaScenePolicy `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
 }
 
 func (s GetWafQuotaResponseBodyQuota) String() string {
@@ -18036,11 +24618,16 @@ func (s *GetWafQuotaResponseBodyQuota) SetScenePolicy(v *GetWafQuotaResponseBody
 }
 
 type GetWafQuotaResponseBodyQuotaList struct {
-	Enable             *bool                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Items              map[string]*QuotaListItemsValue `json:"Items,omitempty" xml:"Items,omitempty"`
-	NumberItemsPerList *WafQuotaInteger                `json:"NumberItemsPerList,omitempty" xml:"NumberItemsPerList,omitempty"`
-	NumberItemsTotal   *WafQuotaInteger                `json:"NumberItemsTotal,omitempty" xml:"NumberItemsTotal,omitempty"`
-	NumberTotal        *WafQuotaInteger                `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
+	// Indicates whether custom lists are enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The quota information about all item types in the custom lists.
+	Items map[string]*QuotaListItemsValue `json:"Items,omitempty" xml:"Items,omitempty"`
+	// The maximum number of items in each custom list.
+	NumberItemsPerList *WafQuotaInteger `json:"NumberItemsPerList,omitempty" xml:"NumberItemsPerList,omitempty"`
+	// The maximum number of items in all custom lists.
+	NumberItemsTotal *WafQuotaInteger `json:"NumberItemsTotal,omitempty" xml:"NumberItemsTotal,omitempty"`
+	// The maximum number of custom lists.
+	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
 func (s GetWafQuotaResponseBodyQuotaList) String() string {
@@ -18077,7 +24664,9 @@ func (s *GetWafQuotaResponseBodyQuotaList) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 type GetWafQuotaResponseBodyQuotaManagedRulesGroup struct {
-	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether the WAF managed rule group is enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The maximum number of WAF managed rule groups.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -18100,9 +24689,12 @@ func (s *GetWafQuotaResponseBodyQuotaManagedRulesGroup) SetNumberTotal(v *WafQuo
 }
 
 type GetWafQuotaResponseBodyQuotaPage struct {
+	// The quota information about custom error pages of all Content-Types.
 	ContentTypes map[string]*QuotaPageContentTypesValue `json:"ContentTypes,omitempty" xml:"ContentTypes,omitempty"`
-	Enable       *bool                                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	NumberTotal  *WafQuotaInteger                       `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
+	// Indicates whether custom error pages are enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The maximum number of custom error pages.
+	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
 func (s GetWafQuotaResponseBodyQuotaPage) String() string {
@@ -18129,7 +24721,9 @@ func (s *GetWafQuotaResponseBodyQuotaPage) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 type GetWafQuotaResponseBodyQuotaScenePolicy struct {
-	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether scenario-specific policies are enabled.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The maximum number of scenario-specific policies.
 	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
 }
 
@@ -18181,12 +24775,16 @@ func (s *GetWafQuotaResponse) SetBody(v *GetWafQuotaResponseBody) *GetWafQuotaRe
 }
 
 type GetWafRuleRequest struct {
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18214,14 +24812,15 @@ func (s *GetWafRuleRequest) SetSiteId(v int64) *GetWafRuleRequest {
 }
 
 type GetWafRuleResponseBody struct {
+	// The configuration of the rule.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// 自定义响应页面ID
+	// The ID of the WAF rule.[](~~2850237~~)
 	//
 	// example:
 	//
 	// 2000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 自定义响应页面名称
+	// The rule name.
 	//
 	// This parameter is required.
 	//
@@ -18229,7 +24828,7 @@ type GetWafRuleResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 自定义响应页面内容类型
+	// The WAF rule category.
 	//
 	// This parameter is required.
 	//
@@ -18237,20 +24836,26 @@ type GetWafRuleResponseBody struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The order of the rule in the ruleset.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the rule was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -18335,14 +24940,20 @@ func (s *GetWafRuleResponse) SetBody(v *GetWafRuleResponseBody) *GetWafRuleRespo
 }
 
 type GetWafRulesetRequest struct {
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The WAF rule category of rulesets to query.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
@@ -18373,13 +24984,13 @@ func (s *GetWafRulesetRequest) SetSiteId(v int64) *GetWafRulesetRequest {
 }
 
 type GetWafRulesetResponseBody struct {
-	// 自定义响应页面ID
+	// The ruleset ID.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 自定义响应页面名称
+	// The ruleset name.
 	//
 	// This parameter is required.
 	//
@@ -18387,7 +24998,7 @@ type GetWafRulesetResponseBody struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 自定义响应页面内容类型
+	// The WAF rule category of the ruleset.
 	//
 	// This parameter is required.
 	//
@@ -18395,18 +25006,24 @@ type GetWafRulesetResponseBody struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*WafRuleConfig    `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	Shared    *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule configurations in the ruleset.
+	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The configurations shared by the rules in the ruleset.
+	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
+	// The ruleset status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the ruleset was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -18491,11 +25108,54 @@ func (s *GetWafRulesetResponse) SetBody(v *GetWafRulesetResponseBody) *GetWafRul
 }
 
 type ListCacheReserveInstancesRequest struct {
+	// The ID of the cache reserve instance.
+	//
+	// example:
+	//
+	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SortOrder  *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The criterion by which you want to sort the queried instances. Valid values:
+	//
+	// 	- ExpireTime: sorts the instances by the time when the instances expire.
+	//
+	// 	- CreateTime: sorts the instances by the time when the instances were purchased.
+	//
+	// example:
+	//
+	// ExpireTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The order by which you want to sort the queried instances. Valid values:
+	//
+	// 	- asc: in ascending order.
+	//
+	// 	- desc: in descending order.
+	//
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- online: The instance is in service.
+	//
+	// 	- offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The instance is released.
+	//
+	// 	- overdue: The instance is stopped due to overdue payments.
+	//
 	// if can be null:
 	// false
 	//
@@ -18544,13 +25204,38 @@ func (s *ListCacheReserveInstancesRequest) SetStatus(v string) *ListCacheReserve
 }
 
 type ListCacheReserveInstancesResponseBody struct {
+	// The cache reserve instances.
 	InstanceInfo []*ListCacheReserveInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	PageNumber   *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
+	//
+	// example:
+	//
+	// 500
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 65C66B7B-671A-8297-9187-2R5477247B76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s ListCacheReserveInstancesResponseBody) String() string {
@@ -18592,13 +25277,56 @@ func (s *ListCacheReserveInstancesResponseBody) SetTotalPage(v int32) *ListCache
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {
+	// The capacity of the cache reserve instance. Unit: GB.
+	//
+	// example:
+	//
+	// 512000
 	CacheReserveCapacity *string `json:"CacheReserveCapacity,omitempty" xml:"CacheReserveCapacity,omitempty"`
-	CacheReserveRegion   *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region in which the cache reserve instance resides.
+	//
+	// example:
+	//
+	// HK
+	CacheReserveRegion *string `json:"CacheReserveRegion,omitempty" xml:"CacheReserveRegion,omitempty"`
+	// The time when the cache reserve instance was purchased.
+	//
+	// example:
+	//
+	// 2024-04-12T05:41:51Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The subscription period of the cache reserve instance. Unit: months.
+	//
+	// example:
+	//
+	// 3
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The time when the cache reserve instance expires.
+	//
+	// example:
+	//
+	// 2024-10-05T16:00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the cache reserve instance.
+	//
+	// example:
+	//
+	// sp-xcdn-96wblslz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the cache reserve instance. Valid values:
+	//
+	// 	- online: The instance is in service.
+	//
+	// 	- offline: The instance has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The instance is released.
+	//
+	// 	- overdue: The service was stopped due to overdue payments.
+	//
+	// example:
+	//
+	// online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCacheReserveInstancesResponseBodyInstanceInfo) String() string {
@@ -18998,28 +25726,48 @@ func (s *ListClientCertificatesResponse) SetBody(v *ListClientCertificatesRespon
 }
 
 type ListEdgeContainerAppRecordsRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The sorting field. Valid values:
+	//
+	// 	- CreateTime: the time when the domain name was associated.
+	//
+	// 	- CreateTime: the time when the domain name was last modified.
+	//
 	// example:
 	//
 	// CreateTime
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// 	- ASC: in ascending order.
+	//
+	// 	- DESC: in descending order.
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Valid values: **1*	- to **100000**. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that is used for the search.
+	//
 	// example:
 	//
 	// ver-1006157458290860032
@@ -19065,19 +25813,28 @@ func (s *ListEdgeContainerAppRecordsRequest) SetSearchKey(v string) *ListEdgeCon
 }
 
 type ListEdgeContainerAppRecordsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListEdgeContainerAppRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details about the associated domain names.
+	Records []*ListEdgeContainerAppRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of domain names that are associated with the specified application.
+	//
 	// example:
 	//
 	// 2
@@ -19118,38 +25875,56 @@ func (s *ListEdgeContainerAppRecordsResponseBody) SetTotalCount(v int32) *ListEd
 }
 
 type ListEdgeContainerAppRecordsResponseBodyRecords struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The CNAME of the associated domain name.
+	//
 	// example:
 	//
 	// kdxceo****.yun****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The configuration ID of the associated domain name.
+	//
 	// example:
 	//
 	// 27522948436****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The record ID of the associated domain name.
+	//
 	// example:
 	//
 	// 266****
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The associated domain name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The scheduling domain ID of the associated domain name.
+	//
 	// example:
 	//
 	// 123456
 	SchemdId *int32 `json:"SchemdId,omitempty" xml:"SchemdId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The time when the scheduling domain ID or CNAME was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-12-22T08:32:02Z
@@ -19239,32 +26014,56 @@ func (s *ListEdgeContainerAppRecordsResponse) SetBody(v *ListEdgeContainerAppRec
 }
 
 type ListEdgeContainerAppVersionsRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The sorting field. Valid values:
+	//
+	// 	- Name: the version name.
+	//
+	// 	- CreateTime: the time when the version was created.
+	//
+	// 	- UpdateTime: the time when the version was last modified.
+	//
 	// example:
 	//
 	// Name
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// 	- ASC: in ascending order.
+	//
+	// 	- DESC: in descending order.
+	//
 	// example:
 	//
 	// DESC
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword used for the search.
+	//
 	// example:
 	//
 	// ver-100568263967926****
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The parameter used for fuzzy search. Valid values: VersionId and Name.
+	//
 	// example:
 	//
 	// VersionId
@@ -19315,23 +26114,32 @@ func (s *ListEdgeContainerAppVersionsRequest) SetSearchType(v string) *ListEdgeC
 }
 
 type ListEdgeContainerAppVersionsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20
-	TotalCount *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Versions   []*ListEdgeContainerAppVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The versions.
+	Versions []*ListEdgeContainerAppVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListEdgeContainerAppVersionsResponseBody) String() string {
@@ -19368,39 +26176,64 @@ func (s *ListEdgeContainerAppVersionsResponseBody) SetVersions(v []*ListEdgeCont
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersions struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-88068867578379****
-	AppId      *string                                                       `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The containers in the version.
 	Containers []*ListEdgeContainerAppVersionsResponseBodyVersionsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The time when the version was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2022-11-10T02:53:16Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the version was last released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-10T02:48:36Z
 	LastPublishTime *string `json:"LastPublishTime,omitempty" xml:"LastPublishTime,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// version01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the version was released. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-02-10T02:48:36Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test version
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The status of the current version. Valid values:
+	//
+	// 	- **created**
+	//
+	// 	- **failed**
+	//
+	// 	- **creating**
+	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the version was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-04-16 10:51:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The version ID.
+	//
 	// example:
 	//
 	// ver-87962637161651****
@@ -19466,39 +26299,60 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetVersionId(v string
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
+	// The arguments that are passed to the container startup command.
+	//
 	// example:
 	//
 	// -c a=1
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The command that is used to start the container.
+	//
 	// example:
 	//
 	// openresty -g \\"daemon off;\\"
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The environment variables of the container.
+	//
 	// example:
 	//
 	// ENV=prod
 	EnvVariables *string `json:"EnvVariables,omitempty" xml:"EnvVariables,omitempty"`
+	// The address of the container image.
+	//
 	// example:
 	//
 	// nginx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The container name.
+	//
 	// example:
 	//
 	// container1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The command that is run before the container is started. Format: `{"exec":{"command":["cat","/etc/group"\\]}}`.
+	//
+	// If you want to cancel this configuration, set the parameter value to `""` or `{}`. If you do not specify this parameter, this configuration is ignored.
+	//
 	// example:
 	//
 	// {\\"exec\\":{\\"command\\":[\\"bash\\",\\"-c\\",\\"cd /home/admin/
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	// The command that is run before the container is stopped.
+	//
 	// example:
 	//
 	// sh stop.sh
-	PreStop      *string                                                                 `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
+	// The container probe content.
 	ProbeContent *ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent `json:"ProbeContent,omitempty" xml:"ProbeContent,omitempty" type:"Struct"`
+	// The probe type of the container.
+	//
 	// example:
 	//
 	// httpGet
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
+	// The compute specification of the container.
+	//
 	// example:
 	//
 	// 1C2G
@@ -19564,46 +26418,68 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetSpec(v s
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent struct {
+	// The probe command.
+	//
 	// example:
 	//
 	// openresty -g  "daemon off;
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The number of consecutive failed health checks required for a container to be considered as unhealthy.
+	//
 	// example:
 	//
 	// 3
 	FailureThreshold *int32 `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	// The domain name that is used for health checks.
+	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The request headers that are included in the container health check request.
+	//
 	// example:
 	//
 	// {\\"Content-Type\\":\\"application/json\\"}
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
+	// The latency for container probe initialization.
+	//
 	// example:
 	//
 	// 10
 	InitialDelaySeconds *int32 `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	// The path of the container health check.
+	//
 	// example:
 	//
 	// /health_check
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The interval between container health checks.
+	//
 	// example:
 	//
 	// 5
 	PeriodSeconds *int32 `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	// The port of the container health check.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol that the container health check request uses.
+	//
 	// example:
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// The number of consecutive successful health checks required for a container to be considered as healthy.
+	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
+	// The timeout period of the container health check.
+	//
 	// example:
 	//
 	// 30
@@ -19703,26 +26579,52 @@ func (s *ListEdgeContainerAppVersionsResponse) SetBody(v *ListEdgeContainerAppVe
 }
 
 type ListEdgeContainerAppsRequest struct {
+	// The sorting field. This parameter is left empty by default. Valid values:
+	//
+	// 	- Name: the version name.
+	//
+	// 	- CreateTime: the time when the version was created.
+	//
+	// 	- UpdateTime: the time when the version was last modified.
+	//
 	// example:
 	//
 	// CreateTime
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
+	// The order in which you want to sort the query results. This parameter is left empty by default. Valid values:
+	//
+	// 	- ASC: in ascending order.
+	//
+	// 	- DESC: in descending order.
+	//
 	// example:
 	//
 	// Asc
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The page number. Default value: **1**. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **20**. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword.
+	//
 	// example:
 	//
 	// ver-1005682639679266816
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The search criterion based on which you want to perform fuzzy search. Valid values:
+	//
+	// 	- Appid: the application ID.
+	//
+	// 	- Name: the application name.
+	//
 	// example:
 	//
 	// Appid
@@ -19768,19 +26670,28 @@ func (s *ListEdgeContainerAppsRequest) SetSearchType(v string) *ListEdgeContaine
 }
 
 type ListEdgeContainerAppsResponseBody struct {
+	// The queried applications.
 	Apps []*ListEdgeContainerAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// The page number. Default value: **1**. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2430E05E-1340-5773-B5E1-B743929F46F2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
@@ -19821,52 +26732,92 @@ func (s *ListEdgeContainerAppsResponseBody) SetTotalCount(v int32) *ListEdgeCont
 }
 
 type ListEdgeContainerAppsResponseBodyApps struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The time when the version was created.
+	//
 	// example:
 	//
 	// 2022-12-01T16:16:27.418298794+08:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The domain name associated with the application.
+	//
 	// example:
 	//
 	// test.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the gateway. Valid values:
+	//
+	// 	- l7: Layer 7 gateway.
+	//
+	// 	- l4: Layer 4 gateway.
+	//
 	// example:
 	//
 	// l7
-	GatewayType *string                                           `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The information about health checks.
 	HealthCheck *ListEdgeContainerAppsResponseBodyAppsHealthCheck `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty" type:"Struct"`
+	// The application name.
+	//
 	// example:
 	//
 	// app-test
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The progress of the application creation task in percentage.
+	//
+	// example:
+	//
+	// 100
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// Indicates whether QUIC is enabled.
+	//
 	// example:
 	//
 	// false
 	QuicCid *string `json:"QuicCid,omitempty" xml:"QuicCid,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The server port. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 80
 	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// The status of the application. Valid values:
+	//
+	// 	- creating: The application is being created.
+	//
+	// 	- failed: The application failed to be created.
+	//
+	// 	- created: The application is created.
+	//
 	// example:
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The backend port, which is also the service port of the application. Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 80
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The time when the application was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-11-15T12:11:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The number of versions of the application.
+	//
 	// example:
 	//
 	// 10
@@ -19952,42 +26903,66 @@ func (s *ListEdgeContainerAppsResponseBodyApps) SetVersionCount(v int32) *ListEd
 }
 
 type ListEdgeContainerAppsResponseBodyAppsHealthCheck struct {
+	// The number of consecutive failed health checks for an application to be considered unhealthy.
+	//
 	// example:
 	//
 	// 5
 	FailTimes *int32 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The domain name that is used for health checks.
+	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The range of health check status codes that indicate successful health checks.
+	//
 	// example:
 	//
 	// http_2XX
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The interval between health checks. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The HTTP method used for health checks.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The health check port.
+	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The number of consecutive successful health checks for an application to be considered healthy.
+	//
 	// example:
 	//
 	// 1
 	SuccTimes *int32 `json:"SuccTimes,omitempty" xml:"SuccTimes,omitempty"`
+	// The timeout period of health checks. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The type of health checks. Valid values:
+	//
+	// 	- l7
+	//
+	// 	- l4
+	//
 	// example:
 	//
 	// l7
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The health check URL.
+	//
 	// example:
 	//
 	// /health_check
@@ -20082,22 +27057,40 @@ func (s *ListEdgeContainerAppsResponse) SetBody(v *ListEdgeContainerAppsResponse
 }
 
 type ListEdgeContainerRecordsRequest struct {
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The match mode to filter the record names:
+	//
+	// 	- **fuzzy**
+	//
+	// 	- **prefix**
+	//
+	// 	- **suffix**
+	//
+	// 	- **exact*	- (default)
+	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20140,21 +27133,28 @@ func (s *ListEdgeContainerRecordsRequest) SetSiteId(v int64) *ListEdgeContainerR
 }
 
 type ListEdgeContainerRecordsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListEdgeContainerRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The records.
+	Records []*ListEdgeContainerRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 50
@@ -20195,26 +27195,38 @@ func (s *ListEdgeContainerRecordsResponseBody) SetTotalCount(v int32) *ListEdgeC
 }
 
 type ListEdgeContainerRecordsResponseBodyRecords struct {
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured.
+	//
 	// example:
 	//
 	// a.example.com.cnamezone.com
 	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2021-12-22T08:32:02Z
@@ -20289,25 +27301,34 @@ func (s *ListEdgeContainerRecordsResponse) SetBody(v *ListEdgeContainerRecordsRe
 }
 
 type ListEdgeRoutinePlansResponseBody struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The plans.
 	PlanInfo []*ListEdgeRoutinePlansResponseBodyPlanInfo `json:"PlanInfo,omitempty" xml:"PlanInfo,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -20353,26 +27374,46 @@ func (s *ListEdgeRoutinePlansResponseBody) SetTotalPage(v int32) *ListEdgeRoutin
 }
 
 type ListEdgeRoutinePlansResponseBodyPlanInfo struct {
+	// The billing method. Valid values:
+	//
+	// 	- PREPAY: subscription.
+	//
+	// 	- POSTPAY: pay-as-you-go.
+	//
 	// example:
 	//
 	// POSTPAY
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
+	// The maximum number of versions that each routine supports.
+	//
 	// example:
 	//
 	// 20
 	ErRoutineCodeVersionQuota *string `json:"ErRoutineCodeVersionQuota,omitempty" xml:"ErRoutineCodeVersionQuota,omitempty"`
+	// The maximum of routines that can be created.
+	//
 	// example:
 	//
 	// 100
 	ErRoutineQuota *string `json:"ErRoutineQuota,omitempty" xml:"ErRoutineQuota,omitempty"`
+	// The maximum number of websites with which each routine can be associated.
+	//
 	// example:
 	//
 	// 100
 	ErRoutineRouteSiteCountQuota *string `json:"ErRoutineRouteSiteCountQuota,omitempty" xml:"ErRoutineRouteSiteCountQuota,omitempty"`
+	// The payment method. Valid values:
+	//
+	// 	- er_free
+	//
+	// 	- er_pay
+	//
 	// example:
 	//
 	// er_free
 	PaymentMethod *string `json:"PaymentMethod,omitempty" xml:"PaymentMethod,omitempty"`
+	// The plan name.
+	//
 	// example:
 	//
 	// test_plan
@@ -20447,22 +27488,40 @@ func (s *ListEdgeRoutinePlansResponse) SetBody(v *ListEdgeRoutinePlansResponseBo
 }
 
 type ListEdgeRoutineRecordsRequest struct {
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The match mode to filter the record names.
+	//
+	// 	- **fuzzy**: fuzzy match.
+	//
+	// 	- **prefix**: match by prefix.
+	//
+	// 	- **suffix**: match by suffix.
+	//
+	// 	- **exact*	- (default): exact match .
+	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20505,21 +27564,28 @@ func (s *ListEdgeRoutineRecordsRequest) SetSiteId(v int64) *ListEdgeRoutineRecor
 }
 
 type ListEdgeRoutineRecordsResponseBody struct {
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListEdgeRoutineRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Id of the request
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of records.
+	Records []*ListEdgeRoutineRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 121
@@ -20560,26 +27626,38 @@ func (s *ListEdgeRoutineRecordsResponseBody) SetTotalCount(v int32) *ListEdgeRou
 }
 
 type ListEdgeRoutineRecordsResponseBodyRecords struct {
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	//
 	// example:
 	//
 	// a.example.com.cnamezone.com
 	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 5407498413****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-22T08:32:02Z
@@ -20654,16 +27732,198 @@ func (s *ListEdgeRoutineRecordsResponse) SetBody(v *ListEdgeRoutineRecordsRespon
 }
 
 type ListInstanceQuotasRequest struct {
+	// The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The quota names in the plan. Separate multiple names with commas (,). Valid values:
+	//
+	// 	- **waf:phase:http_anti_scan:actions**: the actions in WAF scan protection rules.
+	//
+	// 	- **waf:phase:http_bot:actions**: all actions in WAF bot management rules.
+	//
+	// 	- **waf:phase:http_bot:http_custom_cc_dev:characteristic:fields**: the statistical objects for the custom device-based throttling in WAF bot management rules.
+	//
+	// 	- **waf:phase:http_bot:http_custom_cc_ip:characteristic:fields**: the statistical objects for the custom IP address-based throttling in WAF bot management rules.
+	//
+	// 	- ****waf:phase:http_bot:match:symbols****: the match operators in WAF bot management rules.
+	//
+	// 	- **waf:phase:http_bot:http_custom_cc:characteristic:fields**: the statistical objects for the custom session-based throttling in WAF bot management rules.
+	//
+	// 	- **waf:phase:http_bot:match:fields**: the match fields in WAF bot management rules.
+	//
+	// 	- **waf:phase:http_whitelist:match:symbols**: the match operators in WAF whitelist rules.
+	//
+	// 	- **waf:phase:http_whitelist:match:fields**: the match fields in WAF whitelist rules.
+	//
+	// 	- **waf:phase:http_anti_scan:http_directory_traversal:characteristic:fields**: the statistical objects for directory traversal blocking in WAF scan protection rules.
+	//
+	// 	- **waf:phase:http_anti_scan:http_high_frequency:characteristic:fields**: the statistical objects for high-frequency scanning blocking in WAF scan protection rules.
+	//
+	// 	- **waf:phase:http_anti_scan:match:symbols**: the match operators in WAF scan protection rules.
+	//
+	// 	- **waf:phase:http_anti_scan:match:fields**: the match fields in WAF scan protection rules.
+	//
+	// 	- **waf:phase:http_managed:actions**: the actions in WAF managed rules.
+	//
+	// 	- **waf:phase:http_managed:group:reference:ids**: the referenced rule groups in WAF managed rules.
+	//
+	// 	- **waf:phase:http_ratelimit:actions**: the actions in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_ratelimit:ttls**: the action durations in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_ratelimit:intervals**: the statistical durations in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_ratelimit:http_ratelimit:characteristic:fields**: the match characteristics in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_ratelimit:match:symbols**: the match operators in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_ratelimit:match:fields**: the match fields in WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_custom:actions**: the actions in custom WAF rules.
+	//
+	// 	- **waf:phase:http_custom:match:symbols**: the match operators in custom WAF rules.
+	//
+	// 	- **waf:phase:http_custom:match:fields**: the match fields in custom WAF rules.
+	//
+	// 	- **waiting_room|queuing_method**: the queuing method in Waiting Room.
+	//
+	// 	- **origin_rules|origin_scheme**: the origin protocol in origin rules.
+	//
+	// 	- **origin_rules|origin_sni**: the origin Server Name Indication (SNI) in origin rules.
+	//
+	// 	- **origin_rules|origin_host**: the origin host in origin rules.
+	//
+	// 	- **fourlayeracceleration**: TCP/UDP proxy.
+	//
+	// 	- **rtlog_service**: the availability to collect real-time logs.
+	//
+	// 	- **dashboard_traffic**: the value-added capability of traffic analytics.
+	//
+	// 	- **custom_name_server**: the availability to configure custom nameservers.
+	//
+	// 	- **waf:phase:http_bot:enable**: the availability to enable WAF bot management.
+	//
+	// 	- **waf:phase:http_whitelist:enable**: the availability to configure WAF whitelist rules.
+	//
+	// 	- **instantlog**: the availability to collect instant logs.
+	//
+	// 	- **waf:phase:http_anti_scan:enable**: the availability to enable WAF scan protection.
+	//
+	// 	- **waf:phase:http_managed:group:reference:enable**: the availability to configure reference rule groups in WAF managed rules.
+	//
+	// 	- **waf:phase:http_managed:enable**: the availability to configure WAF managed rules.
+	//
+	// 	- **waf:phase:http_ratelimit:on_hit:enable**: the availability to configure whether to apply rate limiting to all requests that hit the cache.
+	//
+	// 	- **ddos**: DDoS mitigation.
+	//
+	// 	- **waf:phase:http_ratelimit:enable**: the availability to configure WAF rate limiting.
+	//
+	// 	- **waf:phase:http_custom:enable**: the availability to configure custom WAF rules.
+	//
+	// 	- **waf:phase:all:page:reference:enable**: the availability to configure custom error pages.
+	//
+	// 	- **rules_support_regex**: the support for regular expressions in rules engine.
+	//
+	// 	- **waiting_room_event**: scheduled events in Waiting Room.
+	//
+	// 	- **waiting_room_rule**: the availability to allow requests to bypass the waiting room.
+	//
+	// 	- **waiting_room|json_response**: the availability to enable JSON response in Waiting Room.
+	//
+	// 	- **waiting_room|disable_session_renewal**: the availability to disable session renewal in Waiting Room.
+	//
+	// 	- **origin_rules|dns_record**: DNS records in origin rules.
+	//
+	// 	- **managed_transforms|add_client_geolocation_headers**: the availability to configure whether to add geolocation headers in transform rules.
+	//
+	// 	- **tiered_cache|regional_enable**: regional tiered cache.
+	//
+	// 	- **real_client_ip_header**: the availability to configure whether to add the real IP address of a client to the request header.
+	//
+	// 	- **data_timerange**: minute-level time range for data query.
+	//
+	// 	- **cache_rules|edge_cache_ttl**: POP cache TTL.
+	//
+	// 	- **cache_rules|browser_cache_ttl**: browser cache TTL.
+	//
+	// 	- **fourLayerRecordCount**: the maximum number of records of websites for which TCP/UDP acceleration is enabled.
+	//
+	// 	- **waitingroomRuleCount**: the maximum number of rules per waiting room.
+	//
+	// 	- **waitingroomEventCount**: the maximum number of events per waiting room.
+	//
+	// 	- **waitingroom_custom_pathhost**: the availability to configure the hostname and path in Waiting Room.
+	//
+	// 	- **er_routers**: Edge Routine routes.
+	//
+	// 	- **cache_rules|rule_quota**: the maximum number of cache rules.
+	//
+	// 	- **configuration_rules|rule_quota**: the maximum number of configuration rules.
+	//
+	// 	- **redirect_rules|rule_quota**: the redirect rules.
+	//
+	// 	- **compression_rules|rule_quota**: the maximum number of compression rules.
+	//
+	// 	- **origin_rules|rule_quota**: the maximum number of origin rules.
+	//
+	// 	- **waf:phase:http_bot:rulesets_per_instance:less_than_or_equal**: the maximum number of rulesets in WAF bot management per plan.
+	//
+	// 	- **waf:phase:http_whitelist:rules_per_instance:less_than_or_equal**: the maximum number of WAF whitelist rules per plan.
+	//
+	// 	- **rtlog_quota**: the maximum number of real-time log delivery tasks.
+	//
+	// 	- **waf:phase:http_anti_scan:rulesets_per_instance:less_than_or_equal**: the maximum number of rulesets in WAF scan protection per plan.
+	//
+	// 	- **ddos_instance**: the number of Anti-DDoS Proxy instances.
+	//
+	// 	- **waf:phase:http_ratelimit:rules_per_instance:less_than_or_equal**: the maximum number of WAF rate limiting rules.
+	//
+	// 	- **waf:phase:http_custom:rules_per_instance:less_than_or_equal**: the maximum number of custom WAF rules per plan.
+	//
+	// 	- **ruleNestedConditionalCount**: the number of nested layers in a rule.
+	//
+	// 	- **waiting_room_rule**: Waiting Room.
+	//
+	// 	- **transition_rule**: the maximum number of transform rules.
+	//
+	// 	- **customHttpCert**: the maximum number of custom certificates.
+	//
+	// 	- **free_cert**: the maximum number of free certificates.
+	//
+	// 	- **preload**: prefetch.
+	//
+	// 	- **refresh_cache_tag**: purge by cache tag.
+	//
+	// 	- **refresh_ignore_param**: purge by URL with specified parameters ignored.
+	//
+	// 	- **refresh_directory**: purge by directory.
+	//
+	// 	- **refresh_hostname**: purge by hostname.
+	//
+	// 	- **refresh_all**: purge all cache.
+	//
+	// 	- **refresh_file**: purge by URL.
+	//
+	// 	- **wildcard**: the maximum number of wildcard domains.
+	//
+	// 	- **recordCount**: the maximum number of Layer 7 records.
+	//
+	// 	- **siteCount**: the maximum number of websites that can be associated with the plan.
+	//
+	// 	- **https|rule_quota**: the maximum number of SSL/TLS rules.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// preload, free_cert
 	QuotaNames *string `json:"QuotaNames,omitempty" xml:"QuotaNames,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// if can be null:
 	// false
 	//
@@ -20697,17 +27957,28 @@ func (s *ListInstanceQuotasRequest) SetSiteId(v int64) *ListInstanceQuotasReques
 }
 
 type ListInstanceQuotasResponseBody struct {
+	// The plan ID.
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
-	InstanceId *string                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Quotas     []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// Id of the request
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The quotas in the plan.
+	Quotas []*ListInstanceQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247B78
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The plan status. Valid values:
+	//
+	// 	- online: The plan is in service.
+	//
+	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The plan is released.
+	//
 	// example:
 	//
 	// online
@@ -20743,14 +28014,30 @@ func (s *ListInstanceQuotasResponseBody) SetStatus(v string) *ListInstanceQuotas
 }
 
 type ListInstanceQuotasResponseBodyQuotas struct {
+	// The quota name.
+	//
 	// example:
 	//
 	// customHttpCert
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// The quota value.
+	//
 	// example:
 	//
 	// 10
 	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	// The threshold type of the quota. Valid values:
+	//
+	// 	- value: enumerates the values of the quota.
+	//
+	// 	- bool: specifies whether the quota is available.
+	//
+	// 	- num: the upper limit of the quota.
+	//
+	// 	- range: the value range for the quota.
+	//
+	// 	- custom: other types than the preceding four quota threshold types.
+	//
 	// example:
 	//
 	// bool
@@ -20810,16 +28097,40 @@ func (s *ListInstanceQuotasResponse) SetBody(v *ListInstanceQuotasResponseBody) 
 }
 
 type ListInstanceQuotasWithUsageRequest struct {
+	// The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The quota names in the plan. Separate the quota names with commas (,). You can query up to 10 quota names at a time. Valid values:
+	//
+	// 	- **customHttpCert**: the custom certificates.
+	//
+	// 	- **transition_rule**: the transform rules.
+	//
+	// 	- **waiting_room**: the waiting rooms.
+	//
+	// 	- **https|rule_quota**: the SSL/TLS rules.
+	//
+	// 	- **cache_rules|rule_quota**: the cache rules.
+	//
+	// 	- **configuration_rules|rule_quota**: the configuration rules.
+	//
+	// 	- **redirect_rules|rule_quota**: the redirect rules.
+	//
+	// 	- **compression_rules|rule_quota**: the compression rules.
+	//
+	// 	- **origin_rules|rule_quota**: the origin rules.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customHttpCert
 	QuotaNames *string `json:"QuotaNames,omitempty" xml:"QuotaNames,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// if can be null:
 	// false
 	//
@@ -20853,17 +28164,28 @@ func (s *ListInstanceQuotasWithUsageRequest) SetSiteId(v int64) *ListInstanceQuo
 }
 
 type ListInstanceQuotasWithUsageResponseBody struct {
+	// The plan ID.[](~~2850189~~)
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
-	InstanceId *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Quotas     []*ListInstanceQuotasWithUsageResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// Id of the request
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The quotas and their actual usage in the plan.
+	Quotas []*ListInstanceQuotasWithUsageResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The plan status. Valid values:
+	//
+	// 	- online: The plan is in service.
+	//
+	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The plan is released.
+	//
 	// example:
 	//
 	// online
@@ -20899,15 +28221,22 @@ func (s *ListInstanceQuotasWithUsageResponseBody) SetStatus(v string) *ListInsta
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotas struct {
+	// The quota name.
+	//
 	// example:
 	//
 	// redirect_rules|rule_quota
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// The quota value.
+	//
 	// example:
 	//
 	// 10
-	QuotaValue *string                                                   `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
-	SiteUsage  []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	QuotaValue *string `json:"QuotaValue,omitempty" xml:"QuotaValue,omitempty"`
+	// The usage of the quota in each website associated with the plan.
+	SiteUsage []*ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	// The quota usage.
+	//
 	// example:
 	//
 	// 3
@@ -20943,14 +28272,20 @@ func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetUsage(v string) *List
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage struct {
+	// The website ID.
+	//
 	// example:
 	//
 	// 34818329392****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// test.top
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The quota usage of the website.
+	//
 	// example:
 	//
 	// 1
@@ -21010,20 +28345,28 @@ func (s *ListInstanceQuotasWithUsageResponse) SetBody(v *ListInstanceQuotasWithU
 }
 
 type ListKvsRequest struct {
+	// The name of the namespace that you specify when you call the [CreatevNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number. The product of PageNumber and PageSize cannot exceed 50,000.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 50. Maximum value: 100.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The prefix to query.
+	//
 	// example:
 	//
 	// prefix-
@@ -21059,19 +28402,28 @@ func (s *ListKvsRequest) SetPrefix(v string) *ListKvsRequest {
 }
 
 type ListKvsResponseBody struct {
+	// The key-value pairs.
 	Keys []*ListKvsResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 100
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1024
@@ -21112,10 +28464,14 @@ func (s *ListKvsResponseBody) SetTotalCount(v int32) *ListKvsResponseBody {
 }
 
 type ListKvsResponseBodyKeys struct {
+	// The key name.
+	//
 	// example:
 	//
 	// Key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the key was last updated.
+	//
 	// example:
 	//
 	// 2021-12-13T07:46:03Z
@@ -21170,14 +28526,20 @@ func (s *ListKvsResponse) SetBody(v *ListKvsResponseBody) *ListKvsResponse {
 }
 
 type ListListsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query arguments in the JSON format, which contain filter conditions.
+	//
 	// example:
 	//
 	// ListLists
@@ -21208,15 +28570,26 @@ func (s *ListListsRequest) SetQueryArgs(v *ListListsRequestQueryArgs) *ListLists
 }
 
 type ListListsRequestQueryArgs struct {
+	// Specifies whether to sort the returned data in descending order.
+	//
+	// example:
+	//
+	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The list description for fuzzy search.
+	//
 	// example:
 	//
 	// a custom list
 	DescriptionLike *string `json:"DescriptionLike,omitempty" xml:"DescriptionLike,omitempty"`
+	// The list ID for fuzzy search.
+	//
 	// example:
 	//
 	// 40000001
 	IdLike *string `json:"IdLike,omitempty" xml:"IdLike,omitempty"`
+	// The list content for fuzzy search.
+	//
 	// example:
 	//
 	// 10.1.1.1
@@ -21225,14 +28598,20 @@ type ListListsRequestQueryArgs struct {
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The list name and content for fuzzy search.
+	//
 	// example:
 	//
 	// 10.1.1.1
 	NameItemLike *string `json:"NameItemLike,omitempty" xml:"NameItemLike,omitempty"`
+	// The list name for fuzzy search.
+	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// The column by which you want to sort the returned data.
+	//
 	// example:
 	//
 	// id
@@ -21288,14 +28667,20 @@ func (s *ListListsRequestQueryArgs) SetOrderBy(v string) *ListListsRequestQueryA
 }
 
 type ListListsShrinkRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query arguments in the JSON format, which contain filter conditions.
+	//
 	// example:
 	//
 	// ListLists
@@ -21326,25 +28711,34 @@ func (s *ListListsShrinkRequest) SetQueryArgsShrink(v string) *ListListsShrinkRe
 }
 
 type ListListsResponseBody struct {
+	// The array that contains list information, including list data after paging.
 	Lists []*ListListsResponseBodyLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of filtered lists.
+	//
 	// example:
 	//
 	// 5
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of created lists.
+	//
 	// example:
 	//
 	// 10
@@ -21390,28 +28784,38 @@ func (s *ListListsResponseBody) SetUsage(v int64) *ListListsResponseBody {
 }
 
 type ListListsResponseBodyLists struct {
-	// 自定义响应页面描述
+	// The list description.
 	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list.[](~~2850217~~)
+	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list type.
+	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The length of the list information array, which indicates how many items the list contains.
+	//
 	// example:
 	//
 	// 100
 	Length *int64 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The list name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the list was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -21486,10 +28890,14 @@ func (s *ListListsResponse) SetBody(v *ListListsResponseBody) *ListListsResponse
 }
 
 type ListLoadBalancerRegionsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1024
@@ -21515,25 +28923,34 @@ func (s *ListLoadBalancerRegionsRequest) SetPageSize(v int32) *ListLoadBalancerR
 }
 
 type ListLoadBalancerRegionsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1024
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Regions  []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The regions.
+	Regions []*ListLoadBalancerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 81A5E222-24BF-17EF-9E80-A68D9B8F363D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -21579,16 +28996,22 @@ func (s *ListLoadBalancerRegionsResponseBody) SetTotalPage(v int32) *ListLoadBal
 }
 
 type ListLoadBalancerRegionsResponseBodyRegions struct {
+	// The Chinese name of the region.
 	RegionCnName *string `json:"RegionCnName,omitempty" xml:"RegionCnName,omitempty"`
+	// The code of the region.
+	//
 	// example:
 	//
 	// SEAS
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The English name of the region.
+	//
 	// example:
 	//
 	// South East Asia
-	RegionEnName *string                                                 `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
-	SubRegions   []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
+	RegionEnName *string `json:"RegionEnName,omitempty" xml:"RegionEnName,omitempty"`
+	// The subregions of the region.
+	SubRegions []*ListLoadBalancerRegionsResponseBodyRegionsSubRegions `json:"SubRegions,omitempty" xml:"SubRegions,omitempty" type:"Repeated"`
 }
 
 func (s ListLoadBalancerRegionsResponseBodyRegions) String() string {
@@ -21620,11 +29043,16 @@ func (s *ListLoadBalancerRegionsResponseBodyRegions) SetSubRegions(v []*ListLoad
 }
 
 type ListLoadBalancerRegionsResponseBodyRegionsSubRegions struct {
+	// The Chinese name of the region.
 	SubRegionCnName *string `json:"SubRegionCnName,omitempty" xml:"SubRegionCnName,omitempty"`
+	// The code of the subregion.
+	//
 	// example:
 	//
 	// ID
 	SubRegionCode *string `json:"SubRegionCode,omitempty" xml:"SubRegionCode,omitempty"`
+	// The English name of the subregion.
+	//
 	// example:
 	//
 	// Indonesia
@@ -21684,10 +29112,14 @@ func (s *ListLoadBalancerRegionsResponse) SetBody(v *ListLoadBalancerRegionsResp
 }
 
 type ListManagedRulesGroupsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
@@ -21713,21 +29145,28 @@ func (s *ListManagedRulesGroupsRequest) SetPageSize(v int32) *ListManagedRulesGr
 }
 
 type ListManagedRulesGroupsResponseBody struct {
+	// The information about the managed rule groups.
 	ManagedRulesGroups []*ListManagedRulesGroupsResponseBodyManagedRulesGroups `json:"ManagedRulesGroups,omitempty" xml:"ManagedRulesGroups,omitempty" type:"Repeated"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of managed rule groups returned.
+	//
 	// example:
 	//
 	// 5
@@ -21768,10 +29207,14 @@ func (s *ListManagedRulesGroupsResponseBody) SetTotalCount(v int32) *ListManaged
 }
 
 type ListManagedRulesGroupsResponseBodyManagedRulesGroups struct {
+	// The name of the managed rule group.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of rules in the managed rule group.
+	//
 	// example:
 	//
 	// 1000
@@ -21826,10 +29269,14 @@ func (s *ListManagedRulesGroupsResponse) SetBody(v *ListManagedRulesGroupsRespon
 }
 
 type ListPagesRequest struct {
+	// The page number. Valid values: **1 to 100000**. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
@@ -21855,25 +29302,34 @@ func (s *ListPagesRequest) SetPageSize(v int32) *ListPagesRequest {
 }
 
 type ListPagesResponseBody struct {
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Pages    []*ListPagesResponseBodyPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
-	// Id of the request
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The custom error pages. Each element in the array contains error page-specific information.
+	Pages []*ListPagesResponseBodyPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of custom error pages after filtering.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of custom error pages that you created.
+	//
 	// example:
 	//
 	// 10
@@ -21919,7 +29375,7 @@ func (s *ListPagesResponseBody) SetUsage(v int64) *ListPagesResponseBody {
 }
 
 type ListPagesResponseBodyPages struct {
-	// 自定义响应页面内容BASE64编码
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	//
 	// This parameter is required.
 	//
@@ -21927,7 +29383,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 自定义响应页面内容类型
+	// The Content-Type field in the HTTP header.
 	//
 	// This parameter is required.
 	//
@@ -21935,24 +29391,32 @@ type ListPagesResponseBodyPages struct {
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// 自定义响应页面描述
+	// The description of the custom error page.
 	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom error page.[](~~2850223~~)
+	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The type of the custom error page.
+	//
 	// example:
 	//
 	// custom
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	// The name of the custom error page.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the custom error page was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -22032,40 +29496,86 @@ func (s *ListPagesResponse) SetBody(v *ListPagesResponseBody) *ListPagesResponse
 }
 
 type ListRecordsRequest struct {
+	// The business scenario of the record for acceleration. Valid values:
+	//
+	// 	- **image_video**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
+	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters by whether the record is proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The match mode to search for the record name. Default value: exact. Valid values:
+	//
+	// 	- **prefix**: match by prefix.
+	//
+	// 	- **suffix**: match by suffix.
+	//
+	// 	- **exact**: exact match.
+	//
+	// 	- **fuzzy**: fuzzy match.
+	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
+	// The record name. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The DNS record type.
+	//
 	// example:
 	//
 	// CNAME
@@ -22126,21 +29636,28 @@ func (s *ListRecordsRequest) SetType(v string) *ListRecordsRequest {
 }
 
 type ListRecordsResponseBody struct {
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*ListRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Id of the request
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see Add DNS records.
+	Records []*ListRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 20
@@ -22181,60 +29698,120 @@ func (s *ListRecordsResponseBody) SetTotalCount(v int32) *ListRecordsResponseBod
 }
 
 type ListRecordsResponseBodyRecords struct {
+	// The origin authentication information of the CNAME record.
 	AuthConf *ListRecordsResponseBodyRecordsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	// The business scenario of the record for acceleration. Valid values:
+	//
+	// 	- **image_video**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
+	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comments of the record.
+	//
 	// example:
 	//
 	// this is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The DNS record information. Different types of records contain different information.
+	//
 	// example:
 	//
 	// {"value":"1.1.1.1"}
-	Data       *ListRecordsResponseBodyRecordsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HostPolicy *string                             `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	Data *ListRecordsResponseBodyRecordsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. Valid values:
+	//
+	// 	- follow_hostname: matches the requested domain name.
+	//
+	// 	- follow_origin_domain: matches the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
+	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	// Indicates whether the record is proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	//
 	// example:
 	//
 	// a.example.com.cnamezone.com
 	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The origin type for the CNAME record. This parameter is returned when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is returned by default.
+	//
 	// example:
 	//
 	// OSS
 	RecordSourceType *string `json:"RecordSourceType,omitempty" xml:"RecordSourceType,omitempty"`
+	// The DNS type of the record, such as **A/AAAA, CNAME, and TXT**.
+	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 30
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-06-07T10:02:59Z
@@ -22330,22 +29907,46 @@ func (s *ListRecordsResponseBodyRecords) SetUpdateTime(v string) *ListRecordsRes
 }
 
 type ListRecordsResponseBodyRecordsAuthConf struct {
+	// The access key of the account to which the origin server belongs. This value is returned when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
+	//
 	// example:
 	//
 	// u0Nkg5gBK***QF5wvKMM504JUHt
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, the authentication type of the origin must be specified. Valid values:
+	//
+	// 	- **public**: public read. This value is returned when the origin is a public OSS or S3 bucket.
+	//
+	// 	- **private**: private read. This value is returned when the origin is a private S3 bucket.
+	//
+	// 	- **private_same_account**: private read under the same account. This value is returned when the origin is a private OSS bucket in your Alibaba Cloud account.
+	//
+	// 	- **private_cross_account**: private read across accounts. This value is returned when the origin is a private OSS bucket in a different Alibaba Cloud account.
+	//
 	// example:
 	//
 	// private
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin. This parameter is returned if the origin type is S3. You can get the region information from the official website of Amazon S3.
+	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The secret access key of the account to which the origin server belongs. This value is returned when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	//
 	// example:
 	//
 	// VIxuvJSA2S03f***kp208dy5w7
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The version of the signature algorithm. This value is returned when the origin type is S3 and AuthType is private. Valid values:
+	//
+	// 	- **v2**
+	//
+	// 	- **v4**
+	//
+	// If this parameter is left empty, the default value v4 is used.
+	//
 	// example:
 	//
 	// v4
@@ -22386,58 +29987,102 @@ func (s *ListRecordsResponseBodyRecordsAuthConf) SetVersion(v string) *ListRecor
 }
 
 type ListRecordsResponseBodyRecordsData struct {
+	// The encryption algorithm used for the record. Valid values: 0 to 255. Exclusive to CERT and SSHFP records.
+	//
 	// example:
 	//
 	// 0
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. Exclusive to CERT, SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. Exclusive to SSHFP records.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed. Valid values: 0 to 255. Exclusive to CAA records.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record. Valid values: 0 to 65535. Exclusive to CERT records.
+	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate. Valid values: 0 to 255. Exclusive to SMIMEA and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record. Valid values: 0 to 65535. Exclusive to SRV records.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. Exclusive to MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 0
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key. Valid values: 0 to 255. Exclusive to SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The tag of the record. The Tag of a CAA record indicate its specific type and usage. Exclusive to CAA records.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
+	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record. Valid values: 0 to 255. Exclusive to SMIMEA, and TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Record value or part of the record content. This value is returned when the record is A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI. It has different meanings based on types of records:
+	//
+	// 	- **A/AAAA**: the IP addresses. IP addresses are separated by commas (,). There is at least one IPv4 address.
+	//
+	// 	- **CNAME**: the pointed/mapped domain name.
+	//
+	// 	- **NS**: the nameservers for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
 	// example:
 	//
 	// CNAME
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record. Valid values: 0 to 65535. Exclusive to SRV and URI records.
+	//
 	// example:
 	//
 	// 0
@@ -22552,8 +30197,9 @@ func (s *ListRecordsResponse) SetBody(v *ListRecordsResponseBody) *ListRecordsRe
 }
 
 type ListRoutineCanaryAreasResponseBody struct {
+	// The regions for canary release.
 	CanaryAreas []*string `json:"CanaryAreas,omitempty" xml:"CanaryAreas,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -22609,9 +30255,14 @@ func (s *ListRoutineCanaryAreasResponse) SetBody(v *ListRoutineCanaryAreasRespon
 }
 
 type ListRoutineOptionalSpecsResponseBody struct {
-	// Id of the request
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Specs     []*ListRoutineOptionalSpecsResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1234567890ABCDEF01234567890ABCDEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The available specifications.
+	Specs []*ListRoutineOptionalSpecsResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
 }
 
 func (s ListRoutineOptionalSpecsResponseBody) String() string {
@@ -22633,8 +30284,22 @@ func (s *ListRoutineOptionalSpecsResponseBody) SetSpecs(v []*ListRoutineOptional
 }
 
 type ListRoutineOptionalSpecsResponseBodySpecs struct {
-	IsAvailable *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	SpecName    *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// Indicates whether the specification is available. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The specification name.
+	//
+	// example:
+	//
+	// 5ms
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s ListRoutineOptionalSpecsResponseBodySpecs) String() string {
@@ -22685,6 +30350,8 @@ func (s *ListRoutineOptionalSpecsResponse) SetBody(v *ListRoutineOptionalSpecsRe
 }
 
 type ListScheduledPreloadExecutionsRequest struct {
+	// The ID of the scheduled prefetch task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22707,10 +30374,20 @@ func (s *ListScheduledPreloadExecutionsRequest) SetId(v string) *ListScheduledPr
 }
 
 type ListScheduledPreloadExecutionsResponseBody struct {
+	// The information about prefetch plans returned.
 	Executions []*ListScheduledPreloadExecutionsResponseBodyExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListScheduledPreloadExecutionsResponseBody) String() string {
@@ -22737,14 +30414,64 @@ func (s *ListScheduledPreloadExecutionsResponseBody) SetTotalCount(v int32) *Lis
 }
 
 type ListScheduledPreloadExecutionsResponseBodyExecutions struct {
-	AliUid    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 66599bd7397885b43804901c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution in the plan. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListScheduledPreloadExecutionsResponseBodyExecutions) String() string {
@@ -22825,15 +30552,37 @@ func (s *ListScheduledPreloadExecutionsResponse) SetBody(v *ListScheduledPreload
 }
 
 type ListScheduledPreloadJobsRequest struct {
-	EndTime    *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time for querying the task creation time range. Specify the timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1717225277000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ListScheduledPreloadJobs
-	SiteId    *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The beginning of the task creation time range to query. Specify the timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1717225276000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -22871,9 +30620,19 @@ func (s *ListScheduledPreloadJobsRequest) SetStartTime(v int64) *ListScheduledPr
 }
 
 type ListScheduledPreloadJobsResponseBody struct {
+	// The list of the prefetch tasks.
 	Jobs []*ListScheduledPreloadJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of tasks returned.
+	//
+	// example:
+	//
+	// 5
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22901,20 +30660,90 @@ func (s *ListScheduledPreloadJobsResponseBody) SetTotalCount(v string) *ListSche
 }
 
 type ListScheduledPreloadJobsResponseBodyJobs struct {
-	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreatedAt     *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Domains       *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	ErrorInfo     *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2024-06-01T08:53:13Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The domain names to be prefetched.
+	//
+	// example:
+	//
+	// testurl.com
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// The error message that is returned.
+	//
+	// example:
+	//
+	// invalid domain:test.com
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+	//
+	// example:
+	//
+	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InsertWay     *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	TaskSubmitted *int32  `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UrlCount      *int32  `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	UrlSubmitted  *int32  `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
+	// The ID of the URL list file, which can be used during downloads.
+	//
+	// example:
+	//
+	// 665d3b48621bccf3fe29e1a7
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method to submit the URLs to be prefetched.
+	//
+	// example:
+	//
+	// oss
+	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 190007158391808
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The number of submitted prefetch tasks.
+	//
+	// example:
+	//
+	// 1
+	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
+	// The task type. Valid values: refresh and preload.
+	//
+	// example:
+	//
+	// preload
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of URLs.
+	//
+	// example:
+	//
+	// 2
+	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
+	// The number of submitted URLs.
+	//
+	// example:
+	//
+	// 1
+	UrlSubmitted *int32 `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
 }
 
 func (s ListScheduledPreloadJobsResponseBodyJobs) String() string {
@@ -23025,18 +30854,34 @@ func (s *ListScheduledPreloadJobsResponse) SetBody(v *ListScheduledPreloadJobsRe
 }
 
 type ListSiteDeliveryTasksRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -23074,21 +30919,28 @@ func (s *ListSiteDeliveryTasksRequest) SetSiteId(v int64) *ListSiteDeliveryTasks
 }
 
 type ListSiteDeliveryTasksResponseBody struct {
+	// The page number. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListSiteDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery tasks.
+	Tasks []*ListSiteDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of log delivery tasks.
+	//
 	// example:
 	//
 	// 20
@@ -23129,22 +30981,60 @@ func (s *ListSiteDeliveryTasksResponseBody) SetTotalCount(v int32) *ListSiteDeli
 }
 
 type ListSiteDeliveryTasksResponseBodyTasks struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 	- cn: the Chinese mainland.
+	//
+	// 	- sg: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The destination of the delivery. Valid values:
+	//
+	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+	//
+	// 2.  http: HTTP server.
+	//
+	// 3.  aws3: Amazon Simple Storage Service (S3).
+	//
+	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+	//
+	// 5.  kafka: Kafka.
+	//
+	// 6.  aws3cmpt: S3-compatible storage service.
+	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The status of the delivery task.
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// cdn-test-task
@@ -23213,38 +31103,1590 @@ func (s *ListSiteDeliveryTasksResponse) SetBody(v *ListSiteDeliveryTasksResponse
 	return s
 }
 
+type ListSiteFunctionsRequest struct {
+	ConfigId     *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigType   *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RuleName     *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ListSiteFunctions
+	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListSiteFunctionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsRequest) SetConfigId(v int64) *ListSiteFunctionsRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetConfigType(v string) *ListSiteFunctionsRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetFunctionName(v string) *ListSiteFunctionsRequest {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetPageNumber(v int32) *ListSiteFunctionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetPageSize(v int32) *ListSiteFunctionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetRuleName(v string) *ListSiteFunctionsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetSiteId(v int64) *ListSiteFunctionsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsRequest) SetSiteVersion(v int32) *ListSiteFunctionsRequest {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBody struct {
+	Configs    *ListSiteFunctionsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage  *int32  `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBody) SetConfigs(v *ListSiteFunctionsResponseBodyConfigs) *ListSiteFunctionsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBody) SetPageNumber(v int32) *ListSiteFunctionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBody) SetPageSize(v int32) *ListSiteFunctionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBody) SetRequestId(v string) *ListSiteFunctionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBody) SetTotalCount(v int32) *ListSiteFunctionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBody) SetTotalPage(v int32) *ListSiteFunctionsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigs struct {
+	CacheReserve                        []*ListSiteFunctionsResponseBodyConfigsCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	CacheRules                          []*ListSiteFunctionsResponseBodyConfigsCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	CacheTags                           []*ListSiteFunctionsResponseBodyConfigsCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	CnameFlattening                     []*ListSiteFunctionsResponseBodyConfigsCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	CompressionRules                    []*ListSiteFunctionsResponseBodyConfigsCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization             []*ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	DevelopmentMode                     []*ListSiteFunctionsResponseBodyConfigsDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	HttpRequestHeaderModificationRules  []*ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpResponseHeaderModificationRules []*ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpsApplicationConfiguration       []*ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
+	HttpsBasicConfiguration             []*ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
+	ImageTransform                      []*ListSiteFunctionsResponseBodyConfigsImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	Ipv6                                []*ListSiteFunctionsResponseBodyConfigsIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	ManagedTransforms                   []*ListSiteFunctionsResponseBodyConfigsManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization                 []*ListSiteFunctionsResponseBodyConfigsNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	OriginRules                         []*ListSiteFunctionsResponseBodyConfigsOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	RedirectRules                       []*ListSiteFunctionsResponseBodyConfigsRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	RewriteUrlRules                     []*ListSiteFunctionsResponseBodyConfigsRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	SeoBypass                           []*ListSiteFunctionsResponseBodyConfigsSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	SiteNameExclusive                   []*ListSiteFunctionsResponseBodyConfigsSiteNameExclusive                   `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
+	SitePause                           []*ListSiteFunctionsResponseBodyConfigsSitePause                           `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	TieredCache                         []*ListSiteFunctionsResponseBodyConfigsTieredCache                         `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCacheReserve(v []*ListSiteFunctionsResponseBodyConfigsCacheReserve) *ListSiteFunctionsResponseBodyConfigs {
+	s.CacheReserve = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCacheRules(v []*ListSiteFunctionsResponseBodyConfigsCacheRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.CacheRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCacheTags(v []*ListSiteFunctionsResponseBodyConfigsCacheTags) *ListSiteFunctionsResponseBodyConfigs {
+	s.CacheTags = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCnameFlattening(v []*ListSiteFunctionsResponseBodyConfigsCnameFlattening) *ListSiteFunctionsResponseBodyConfigs {
+	s.CnameFlattening = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCompressionRules(v []*ListSiteFunctionsResponseBodyConfigsCompressionRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.CompressionRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetCrossBorderOptimization(v []*ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) *ListSiteFunctionsResponseBodyConfigs {
+	s.CrossBorderOptimization = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetDevelopmentMode(v []*ListSiteFunctionsResponseBodyConfigsDevelopmentMode) *ListSiteFunctionsResponseBodyConfigs {
+	s.DevelopmentMode = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetHttpRequestHeaderModificationRules(v []*ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.HttpRequestHeaderModificationRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetHttpResponseHeaderModificationRules(v []*ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.HttpResponseHeaderModificationRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetHttpsApplicationConfiguration(v []*ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) *ListSiteFunctionsResponseBodyConfigs {
+	s.HttpsApplicationConfiguration = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetHttpsBasicConfiguration(v []*ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) *ListSiteFunctionsResponseBodyConfigs {
+	s.HttpsBasicConfiguration = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetImageTransform(v []*ListSiteFunctionsResponseBodyConfigsImageTransform) *ListSiteFunctionsResponseBodyConfigs {
+	s.ImageTransform = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetIpv6(v []*ListSiteFunctionsResponseBodyConfigsIpv6) *ListSiteFunctionsResponseBodyConfigs {
+	s.Ipv6 = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetManagedTransforms(v []*ListSiteFunctionsResponseBodyConfigsManagedTransforms) *ListSiteFunctionsResponseBodyConfigs {
+	s.ManagedTransforms = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetNetworkOptimization(v []*ListSiteFunctionsResponseBodyConfigsNetworkOptimization) *ListSiteFunctionsResponseBodyConfigs {
+	s.NetworkOptimization = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetOriginRules(v []*ListSiteFunctionsResponseBodyConfigsOriginRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.OriginRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetRedirectRules(v []*ListSiteFunctionsResponseBodyConfigsRedirectRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.RedirectRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetRewriteUrlRules(v []*ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) *ListSiteFunctionsResponseBodyConfigs {
+	s.RewriteUrlRules = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetSeoBypass(v []*ListSiteFunctionsResponseBodyConfigsSeoBypass) *ListSiteFunctionsResponseBodyConfigs {
+	s.SeoBypass = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetSiteNameExclusive(v []*ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) *ListSiteFunctionsResponseBodyConfigs {
+	s.SiteNameExclusive = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetSitePause(v []*ListSiteFunctionsResponseBodyConfigsSitePause) *ListSiteFunctionsResponseBodyConfigs {
+	s.SitePause = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigs) SetTieredCache(v []*ListSiteFunctionsResponseBodyConfigsTieredCache) *ListSiteFunctionsResponseBodyConfigs {
+	s.TieredCache = v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCacheReserve struct {
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheReserve) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheReserve) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheReserve) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCacheReserve {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheReserve) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsCacheReserve {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheReserve) SetInstanceId(v string) *ListSiteFunctionsResponseBodyConfigsCacheReserve {
+	s.InstanceId = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCacheRules struct {
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	ConfigId                 *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                 *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetAdditionalCacheablePorts(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetBrowserCacheMode(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetBrowserCacheTtl(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetBypassCache(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetCacheDeceptionArmor(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetCacheReserveEligibility(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetCheckPresenceCookie(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetCheckPresenceHeader(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetEdgeCacheMode(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetEdgeCacheTtl(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetEdgeStatusCodeCacheTtl(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetIncludeCookie(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetIncludeHeader(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetQueryString(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetQueryStringMode(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetServeStale(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetSortQueryStringForCache(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetUserDeviceType(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetUserGeo(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheRules) SetUserLanguage(v string) *ListSiteFunctionsResponseBodyConfigsCacheRules {
+	s.UserLanguage = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCacheTags struct {
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCacheTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheTags) SetCaseInsensitive(v string) *ListSiteFunctionsResponseBodyConfigsCacheTags {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheTags) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCacheTags {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheTags) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsCacheTags {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCacheTags) SetTagName(v string) *ListSiteFunctionsResponseBodyConfigsCacheTags {
+	s.TagName = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCnameFlattening struct {
+	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+	Sequence    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCnameFlattening) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCnameFlattening) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCnameFlattening) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCnameFlattening {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCnameFlattening) SetFlattenMode(v string) *ListSiteFunctionsResponseBodyConfigsCnameFlattening {
+	s.FlattenMode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCnameFlattening) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsCnameFlattening {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCompressionRules struct {
+	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence   *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCompressionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCompressionRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetBrotli(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.Brotli = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetGzip(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.Gzip = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCompressionRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsCompressionRules {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsDevelopmentMode struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsDevelopmentMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsDevelopmentMode) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsDevelopmentMode) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsDevelopmentMode {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsDevelopmentMode) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsDevelopmentMode {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsDevelopmentMode) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsDevelopmentMode {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules struct {
+	ConfigId                  *int64                                                                                             `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	RequestHeaderModification []*ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	Rule                      *string                                                                                            `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                *string                                                                                            `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                  *string                                                                                            `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                  *string                                                                                            `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetRequestHeaderModification(v []*ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetName(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetOperation(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) SetValue(v string) *ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules struct {
+	ConfigId                   *int64                                                                                               `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ResponseHeaderModification []*ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	Rule                       *string                                                                                              `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                 *string                                                                                              `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                   *string                                                                                              `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence                   *string                                                                                              `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetResponseHeaderModification(v []*ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetName(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetOperation(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) SetValue(v string) *ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration struct {
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvc(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcClear(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcMa(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetAltSvcPersist(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHsts(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Hsts = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHstsIncludeSubdomains(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHstsMaxAge(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHstsPreload(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHttpsForce(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetHttpsForceCode(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration struct {
+	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence         *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetCiphersuite(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetCiphersuiteGroup(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetHttp2(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Http2 = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetHttp3(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Http3 = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetHttps(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Https = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetOcspStapling(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetTls10(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetTls11(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetTls12(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration) SetTls13(v string) *ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration {
+	s.Tls13 = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsImageTransform struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsImageTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsImageTransform) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsImageTransform) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsImageTransform {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsImageTransform) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsImageTransform {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsImageTransform) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsImageTransform {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsIpv6 struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsIpv6) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsIpv6) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsIpv6) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsIpv6 {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsIpv6) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsIpv6 {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsIpv6) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsIpv6 {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsManagedTransforms struct {
+	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
+	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	ConfigId                    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence                    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsManagedTransforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsManagedTransforms) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsManagedTransforms) SetAddClientGeolocationHeaders(v string) *ListSiteFunctionsResponseBodyConfigsManagedTransforms {
+	s.AddClientGeolocationHeaders = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsManagedTransforms) SetAddRealClientIpHeader(v string) *ListSiteFunctionsResponseBodyConfigsManagedTransforms {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsManagedTransforms) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsManagedTransforms {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsManagedTransforms) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsManagedTransforms {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsNetworkOptimization struct {
+	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence          *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsNetworkOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsNetworkOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetGrpc(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.Grpc = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetHttp2Origin(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetSmartRouting(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetUploadMaxFilesize(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsNetworkOptimization) SetWebsocket(v string) *ListSiteFunctionsResponseBodyConfigsNetworkOptimization {
+	s.Websocket = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsOriginRules struct {
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsOriginRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsOriginRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetDnsRecord(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetOriginHost(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetOriginHttpPort(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetOriginHttpsPort(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetOriginScheme(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetOriginSni(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetRange(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.Range = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsOriginRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsOriginRules {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsRedirectRules struct {
+	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence           *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsRedirectRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsRedirectRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetReserveQueryString(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetStatusCode(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetTargetUrl(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRedirectRules) SetType(v string) *ListSiteFunctionsResponseBodyConfigsRedirectRules {
+	s.Type = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsRewriteUrlRules struct {
+	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Sequence               *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetQueryString(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetRewriteQueryStringType(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetRewriteUriType(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetRule(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetRuleEnable(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetRuleName(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules) SetUri(v string) *ListSiteFunctionsResponseBodyConfigsRewriteUrlRules {
+	s.Uri = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsSeoBypass struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSeoBypass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSeoBypass) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSeoBypass) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsSeoBypass {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSeoBypass) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsSeoBypass {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSeoBypass) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsSeoBypass {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsSiteNameExclusive struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) SetEnable(v string) *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsSiteNameExclusive {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsSitePause struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Paused   *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSitePause) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsSitePause) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSitePause) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsSitePause {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSitePause) SetPaused(v string) *ListSiteFunctionsResponseBodyConfigsSitePause {
+	s.Paused = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsSitePause) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsSitePause {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponseBodyConfigsTieredCache struct {
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsTieredCache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponseBodyConfigsTieredCache) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsTieredCache) SetCacheArchitectureMode(v string) *ListSiteFunctionsResponseBodyConfigsTieredCache {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsTieredCache) SetConfigId(v int64) *ListSiteFunctionsResponseBodyConfigsTieredCache {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponseBodyConfigsTieredCache) SetSequence(v string) *ListSiteFunctionsResponseBodyConfigsTieredCache {
+	s.Sequence = &v
+	return s
+}
+
+type ListSiteFunctionsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSiteFunctionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSiteFunctionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteFunctionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteFunctionsResponse) SetHeaders(v map[string]*string) *ListSiteFunctionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSiteFunctionsResponse) SetStatusCode(v int32) *ListSiteFunctionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSiteFunctionsResponse) SetBody(v *ListSiteFunctionsResponseBody) *ListSiteFunctionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListSitesRequest struct {
+	// The DNS setup. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
+	// example:
+	//
+	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Coverage   *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// global
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**.
+	//
 	// example:
 	//
 	// 20
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The plan type. Valid values:
+	//
+	// 	- **basicplan**: Entrance (coming soon)
+	//
+	// 	- **standardplan**: Pro
+	//
+	// 	- **advancedplan**: Premium
+	//
+	// 	- **enterpriseplan**: Enterprise
+	//
+	// example:
+	//
+	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
+	// The ID of the resource group. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website name. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The match mode to search for the website name. Default value: exact. Valid values:
+	//
+	// 	- **prefix**: match by prefix.
+	//
+	// 	- **suffix**: match by suffix.
+	//
+	// 	- **exact**: exact match.
+	//
+	// 	- **fuzzy**: fuzzy match.
+	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
+	// The website status. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// pending
-	Status    *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag filtering rule.
 	TagFilter []*ListSitesRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
 }
 
@@ -23312,10 +32754,14 @@ func (s *ListSitesRequest) SetTagFilter(v []*ListSitesRequestTagFilter) *ListSit
 }
 
 type ListSitesRequestTagFilter struct {
+	// The tag key. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// aaa
@@ -23341,37 +32787,93 @@ func (s *ListSitesRequestTagFilter) SetValue(v string) *ListSitesRequestTagFilte
 }
 
 type ListSitesShrinkRequest struct {
+	// The DNS setup. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
+	// example:
+	//
+	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Coverage   *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
+	// example:
+	//
+	// global
+	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+	//
 	// example:
 	//
 	// false
 	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **500**.
+	//
 	// example:
 	//
 	// 20
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The plan type. Valid values:
+	//
+	// 	- **basicplan**: Entrance (coming soon)
+	//
+	// 	- **standardplan**: Pro
+	//
+	// 	- **advancedplan**: Premium
+	//
+	// 	- **enterpriseplan**: Enterprise
+	//
+	// example:
+	//
+	// basicplan
 	PlanSubscribeType *string `json:"PlanSubscribeType,omitempty" xml:"PlanSubscribeType,omitempty"`
+	// The ID of the resource group. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// rg-aekzd3styujvyei
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website name. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The match mode to search for the website name. Default value: exact. Valid values:
+	//
+	// 	- **prefix**: match by prefix.
+	//
+	// 	- **suffix**: match by suffix.
+	//
+	// 	- **exact**: exact match.
+	//
+	// 	- **fuzzy**: fuzzy match.
+	//
 	// example:
 	//
 	// fuzzy
 	SiteSearchType *string `json:"SiteSearchType,omitempty" xml:"SiteSearchType,omitempty"`
+	// The website status. This parameter specifies a filter condition for the query.
+	//
 	// example:
 	//
 	// pending
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag filtering rule.
 	TagFilterShrink *string `json:"TagFilter,omitempty" xml:"TagFilter,omitempty"`
 }
 
@@ -23439,21 +32941,28 @@ func (s *ListSitesShrinkRequest) SetTagFilterShrink(v string) *ListSitesShrinkRe
 }
 
 type ListSitesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of websites per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sites     []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried websites.
+	Sites []*ListSitesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	// The total number of websites.
+	//
 	// example:
 	//
 	// 40
@@ -23494,62 +33003,110 @@ func (s *ListSitesResponseBody) SetTotalCount(v int32) *ListSitesResponseBody {
 }
 
 type ListSitesResponseBodySites struct {
+	// The DNS setup for the website. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	//
 	// example:
 	//
 	// example.cname.com
 	CnameZone *string `json:"CnameZone,omitempty" xml:"CnameZone,omitempty"`
+	// The service location for the website. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
 	// example:
 	//
 	// domestic
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the plan associated with the website.
+	//
 	// example:
 	//
 	// onBvtlmIyeXLbiDw81F9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The nameservers assigned to the website domain, which are separated by commas (,).
+	//
 	// example:
 	//
 	// male1-1.ialicdn.com,female1-1.ialicdn.com
 	NameServerList *string `json:"NameServerList,omitempty" xml:"NameServerList,omitempty"`
+	// The plan name.
+	//
 	// example:
 	//
 	// plan-168656498****
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	// The plan associated with the website.
+	//
 	// example:
 	//
 	// normal
 	PlanSpecName *string `json:"PlanSpecName,omitempty" xml:"PlanSpecName,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aek26g6i6se6pna
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website status. Valid values:
+	//
+	// 	- **pending**: The website is to be configured.
+	//
+	// 	- **active**: The website is active.
+	//
+	// 	- **offline**: The website is suspended.
+	//
+	// 	- **moved**: The website has been added and verified by another Alibaba Cloud account.
+	//
 	// example:
 	//
 	// pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags of the website.
+	//
 	// example:
 	//
 	// {"tag1":"value1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-12-24T02:01:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+	//
 	// example:
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
@@ -23669,16 +33226,22 @@ func (s *ListSitesResponse) SetBody(v *ListSitesResponseBody) *ListSitesResponse
 }
 
 type ListTagResourcesRequest struct {
+	// The maximum number of tags to return.
+	//
 	// example:
 	//
 	// 20
 	MaxItem *int32 `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// >  This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 要创建并绑定标签的资源所在的地域ID。
+	// The ID of the region where the resources reside.
 	//
 	// This parameter is required.
 	//
@@ -23686,16 +33249,19 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
+	// The website information. Valid values of he number of website IDs: **1*	- to **50**.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// site
-	ResourceType  *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag           []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// A list of tags. You can enter up to 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -23747,13 +33313,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// 标签键
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
+	// The tag value.
 	//
 	// example:
 	//
@@ -23780,15 +33346,22 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAYwsxxxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags of the resource.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 16
@@ -23824,18 +33397,26 @@ func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesR
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// example.com
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// site
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value
@@ -23900,18 +33481,34 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUploadTasksRequest struct {
+	// The time when the task ends. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2019-12-06T12:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The time when the task starts. Specify the time in the YYYY-MM-DDThh:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2018-11-29T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **file**: purges the cache by file URL.
+	//
+	// 	- **preload**: prefetches files.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
+	//
 	// example:
 	//
 	// file
@@ -23947,13 +33544,14 @@ func (s *ListUploadTasksRequest) SetType(v string) *ListUploadTasksRequest {
 }
 
 type ListUploadTasksResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6D****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListUploadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The file upload tasks.
+	Tasks []*ListUploadTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListUploadTasksResponseBody) String() string {
@@ -23975,30 +33573,66 @@ func (s *ListUploadTasksResponseBody) SetTasks(v []*ListUploadTasksResponseBodyT
 }
 
 type ListUploadTasksResponseBodyTasks struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2023-07-26T01:56:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned when the file upload task failed.
+	//
 	// example:
 	//
 	// invalid url
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The error code. Multiple error codes are separated by commas (,).
+	//
+	// 	- **InvalidUrl**: The URL format is incorrect.
+	//
+	// 	- **InvalidDomain**: The domain ownership fails to be verified.
+	//
+	// 	- **QuotaExcess**: The quota limit has been reached.
+	//
+	// 	- **OtherErrors**: Other errors.
+	//
 	// example:
 	//
 	// InvalidUrl,InvalidDomain
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The task status.
+	//
+	// 	- **Complete**: The task is complete.
+	//
+	// 	- **Refreshing**: The task is in progress.
+	//
+	// 	- **Failed**: The task failed.
+	//
 	// example:
 	//
 	// Complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- **file**: purges the cache by file URL.
+	//
+	// 	- **preload**: prefetches files.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreparams**: purges the cache by URL with specified parameters ignored.
+	//
 	// example:
 	//
 	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the file upload task.
+	//
 	// example:
 	//
 	// 159253299357****
 	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The name of the file upload task.
+	//
 	// example:
 	//
 	// purge_file_task
@@ -24078,14 +33712,28 @@ func (s *ListUploadTasksResponse) SetBody(v *ListUploadTasksResponseBody) *ListU
 }
 
 type ListUserDeliveryTasksRequest struct {
+	// The log category. Valid values:
+	//
+	// 1.  dcdn_log_access_l1 (default): access logs.
+	//
+	// 2.  dcdn_log_er: Edge Routine logs.
+	//
+	// 3.  dcdn_log_waf: firewall logs.
+	//
+	// 4.  dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_access_l1
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
@@ -24116,21 +33764,28 @@ func (s *ListUserDeliveryTasksRequest) SetPageSize(v int64) *ListUserDeliveryTas
 }
 
 type ListUserDeliveryTasksResponseBody struct {
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 1f94c47f-3a1a-4f69-8d6c-bfeee1b49aab
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListUserDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The delivery tasks.
+	Tasks []*ListUserDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of delivery tasks.
+	//
 	// example:
 	//
 	// 68
@@ -24171,22 +33826,36 @@ func (s *ListUserDeliveryTasksResponseBody) SetTotalCount(v int32) *ListUserDeli
 }
 
 type ListUserDeliveryTasksResponseBodyTasks struct {
+	// The log category.
+	//
 	// example:
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The data center. Valid values:
+	//
+	// 1.  cn: the Chinese mainland.
+	//
+	// 2.  sg: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
+	// The delivery destination.
+	//
 	// example:
 	//
 	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The status of the delivery task.
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// testoss11
@@ -24256,30 +33925,64 @@ func (s *ListUserDeliveryTasksResponse) SetBody(v *ListUserDeliveryTasksResponse
 }
 
 type ListUserRatePlanInstancesRequest struct {
+	// Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
+	//
+	// 	- true: queries only the plans that have remaining quota for associating websites.
+	//
+	// 	- false: queries all plans in your account.
+	//
 	// example:
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
+	// The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. Valid values: **1*	- to **100000**. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
+	//
+	// 	- CreateTime: the time when the plans were purchased.
+	//
+	// 	- ExpireTime: the time when the plans expire.
+	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The order in which you want to sort the query results. Default value: desc. Valid values:
+	//
+	// 	- asc: in ascending order.
+	//
+	// 	- desc: in descending order.
+	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The plan status. Valid values:
+	//
+	// 	- online: The plan is in service.
+	//
+	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The plan is released.
+	//
+	// 	- overdue: The plan is stopped due to overdue payments.
+	//
 	// if can be null:
 	// false
 	//
@@ -24333,25 +34036,34 @@ func (s *ListUserRatePlanInstancesRequest) SetStatus(v string) *ListUserRatePlan
 }
 
 type ListUserRatePlanInstancesResponseBody struct {
+	// The queried plans.
 	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-3C82-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 68
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -24397,15 +34109,31 @@ func (s *ListUserRatePlanInstancesResponseBody) SetTotalPage(v int32) *ListUserR
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
+	// The billing method. Valid values:
+	//
+	// 	- PREPAY: subscription.
+	//
+	// 	- POSTPAY: pay-as-you-go.
+	//
 	// example:
 	//
 	// PREPAY
 	BillingMode      *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
 	BotInstanceLevel *string `json:"BotInstanceLevel,omitempty" xml:"BotInstanceLevel,omitempty"`
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+	//
+	// 	- domestic: the Chinese mainland.
+	//
+	// 	- overseas: outside the Chinese mainland.
+	//
+	// 	- global: global.
+	//
 	// example:
 	//
 	// domestic,overseas
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
+	// The time when the plan was purchased.
+	//
 	// example:
 	//
 	// YYYY-MM-DDThh:mm:ssZ
@@ -24414,38 +34142,63 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
 	DdosBurstableOverseasProtection *string `json:"DdosBurstableOverseasProtection,omitempty" xml:"DdosBurstableOverseasProtection,omitempty"`
 	DdosInstanceLevel               *string `json:"DdosInstanceLevel,omitempty" xml:"DdosInstanceLevel,omitempty"`
+	// The subscription duration of the plan. Unit: month.
+	//
 	// example:
 	//
 	// 3
 	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
 	EdgeWafRequest    *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
+	// The time when the plan expires.
+	//
 	// example:
 	//
 	// YYYY-MM-DDThh:mm:ssZ
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The plan ID.
+	//
 	// example:
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Layer4Traffic     *string `json:"Layer4Traffic,omitempty" xml:"Layer4Traffic,omitempty"`
 	Layer4TrafficIntl *string `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
+	// The plan name.
+	//
 	// example:
 	//
 	// basic
 	PlanName    *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
 	PlanTraffic *string `json:"PlanTraffic,omitempty" xml:"PlanTraffic,omitempty"`
+	// The plan type. Valid values:
+	//
+	// 	- normal
+	//
+	// 	- enterprise
+	//
 	// example:
 	//
 	// normal
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The maximum number of websites that can be associated with the plan.
+	//
 	// example:
 	//
 	// 1
-	SiteQuota           *string                                                   `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	SiteQuota *string `json:"SiteQuota,omitempty" xml:"SiteQuota,omitempty"`
+	// The websites that have been associated with the plan.
 	Sites               []*ListUserRatePlanInstancesResponseBodyInstanceInfoSites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 	SmartRoutingRequest *string                                                   `json:"SmartRoutingRequest,omitempty" xml:"SmartRoutingRequest,omitempty"`
 	StaticRequest       *string                                                   `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
+	// The plan status. Valid values:
+	//
+	// 	- online: The plan is in service.
+	//
+	// 	- offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
+	//
+	// 	- disable: The plan is released.
+	//
 	// example:
 	//
 	// online
@@ -24576,14 +34329,28 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetStatus(v string) 
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The website status. Valid values:
+	//
+	// 	- pending: The website is to be configured.
+	//
+	// 	- active: The website is active.
+	//
+	// 	- offline: The website is suspended.
+	//
+	// 	- moved: The website has been added and verified by another Alibaba Cloud account.
+	//
 	// example:
 	//
 	// pending
@@ -24643,32 +34410,69 @@ func (s *ListUserRatePlanInstancesResponse) SetBody(v *ListUserRatePlanInstances
 }
 
 type ListWafManagedRulesRequest struct {
+	// The attack type. Valid values:
+	//
+	// 	- SQL injection
+	//
+	// 	- Cross-site scripting
+	//
+	// 	- Code execution
+	//
+	// 	- CRLF
+	//
+	// 	- Local file inclusion
+	//
+	// 	- Remote file inclusion
+	//
+	// 	- webshell
+	//
+	// 	- Cross-site request forgery
+	//
+	// 	- Others
+	//
+	// 	- SEMA
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// 	- **en**: English.
+	//
+	// 	- **zh**: Chinese.
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize        *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProtectionLevel *int32                               `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	QueryArgs       *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The query conditions.
+	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24726,15 +34530,22 @@ func (s *ListWafManagedRulesRequest) SetSiteId(v int64) *ListWafManagedRulesRequ
 }
 
 type ListWafManagedRulesRequestQueryArgs struct {
+	// The action that you want WAF to perform on requests that match the rule.
+	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The rule ID or name for fuzzy search.
+	//
 	// example:
 	//
 	// example
-	IdNameLike       *string  `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
+	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
+	// The protection levels of the rules.
 	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
+	// The status.
+	//
 	// example:
 	//
 	// on
@@ -24770,32 +34581,69 @@ func (s *ListWafManagedRulesRequestQueryArgs) SetStatus(v string) *ListWafManage
 }
 
 type ListWafManagedRulesShrinkRequest struct {
+	// The attack type. Valid values:
+	//
+	// 	- SQL injection
+	//
+	// 	- Cross-site scripting
+	//
+	// 	- Code execution
+	//
+	// 	- CRLF
+	//
+	// 	- Local file inclusion
+	//
+	// 	- Remote file inclusion
+	//
+	// 	- webshell
+	//
+	// 	- Cross-site request forgery
+	//
+	// 	- Others
+	//
+	// 	- SEMA
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// 	- **en**: English.
+	//
+	// 	- **zh**: Chinese.
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProtectionLevel *int32  `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The query conditions.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24853,19 +34701,28 @@ func (s *ListWafManagedRulesShrinkRequest) SetSiteId(v int64) *ListWafManagedRul
 }
 
 type ListWafManagedRulesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The managed rules.
+	Rules []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of filtered rules.
+	//
 	// example:
 	//
 	// 20
@@ -24906,19 +34763,28 @@ func (s *ListWafManagedRulesResponseBody) SetTotalCount(v int64) *ListWafManaged
 }
 
 type ListWafManagedRulesResponseBodyRules struct {
+	// The action that WAF performs on requests that match the managed rule.
+	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The ID of the managed rule.
+	//
 	// example:
 	//
 	// 100001
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the managed rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protection level of the managed rule.
+	//
 	// example:
 	//
 	// 1
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The status of the protection rule.
+	//
 	// example:
 	//
 	// on
@@ -24988,12 +34854,19 @@ func (s *ListWafManagedRulesResponse) SetBody(v *ListWafManagedRulesResponseBody
 }
 
 type ListWafPhasesRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 }
 
@@ -25016,8 +34889,9 @@ func (s *ListWafPhasesRequest) SetSiteVersion(v int32) *ListWafPhasesRequest {
 }
 
 type ListWafPhasesResponseBody struct {
+	// The WAF rule categories.
 	Phases []*ListWafPhasesResponseBodyPhases `json:"Phases,omitempty" xml:"Phases,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -25044,7 +34918,13 @@ func (s *ListWafPhasesResponseBody) SetRequestId(v string) *ListWafPhasesRespons
 }
 
 type ListWafPhasesResponseBodyPhases struct {
-	Phase    *string                                    `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The name of the WAF rule category.
+	//
+	// example:
+	//
+	// http_custom
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The WAF rulesets.
 	Rulesets []*ListWafPhasesResponseBodyPhasesRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
 }
 
@@ -25067,9 +34947,21 @@ func (s *ListWafPhasesResponseBodyPhases) SetRulesets(v []*ListWafPhasesResponse
 }
 
 type ListWafPhasesResponseBodyPhasesRulesets struct {
-	Id     *int64              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name   *string             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Rules  []*WafRuleConfig    `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The ID of the WAF ruleset.[](~~2850233~~)
+	//
+	// example:
+	//
+	// 10000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the WAF ruleset.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The rule configurations in the WAF ruleset.
+	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The configurations shared by the rules in the WAF ruleset.
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 }
 
@@ -25131,28 +35023,40 @@ func (s *ListWafPhasesResponse) SetBody(v *ListWafPhasesResponseBody) *ListWafPh
 }
 
 type ListWafRulesRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// http_custom
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The WAF rule category. You can filter rules of a specific category.
+	//
 	// example:
 	//
 	// 0
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The filter conditions.
+	//
 	// example:
 	//
 	// http_custom
 	QueryArgs *ListWafRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -25198,27 +35102,44 @@ func (s *ListWafRulesRequest) SetSiteVersion(v int32) *ListWafRulesRequest {
 }
 
 type ListWafRulesRequestQueryArgs struct {
+	// Specifies whether to sort the returned data in descending order.
+	//
+	// example:
+	//
+	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The ID of a WAF rule for exact search.
+	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID or name of a WAF rule for fuzzy search.
+	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
+	// The name of a WAF rule for fuzzy search.
+	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// The column by which you want to sort the returned data.
+	//
 	// example:
 	//
 	// position
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The ID of a WAF ruleset for exact search.
+	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The status of a WAF rule for exact search.
+	//
 	// example:
 	//
 	// on
@@ -25269,28 +35190,40 @@ func (s *ListWafRulesRequestQueryArgs) SetStatus(v string) *ListWafRulesRequestQ
 }
 
 type ListWafRulesShrinkRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// http_custom
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The WAF rule category. You can filter rules of a specific category.
+	//
 	// example:
 	//
 	// 0
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The filter conditions.
+	//
 	// example:
 	//
 	// http_custom
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -25336,27 +35269,40 @@ func (s *ListWafRulesShrinkRequest) SetSiteVersion(v int32) *ListWafRulesShrinkR
 }
 
 type ListWafRulesResponseBody struct {
+	// The rule usage of the instance that corresponds to the website in the WAF rule category.
+	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rules returned.
+	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The rule usage of the website.
+	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// The total number of filtered rules.
+	//
 	// example:
 	//
 	// 20
@@ -25407,47 +35353,72 @@ func (s *ListWafRulesResponseBody) SetTotalCount(v int64) *ListWafRulesResponseB
 }
 
 type ListWafRulesResponseBodyRules struct {
+	// The action triggered when requests match conditions defined in the rule.
+	//
 	// example:
 	//
 	// deny
-	Action                *string        `json:"Action,omitempty" xml:"Action,omitempty"`
-	CharacteristicsFields []*string      `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
-	Config                *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	Fields                []*string      `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The fields in rate limiting rules.
+	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
+	// The configuration of the rule.
+	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The fields in the rule.
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The position of the rule in the ruleset.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The ruleset ID.
+	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
+	// The skip scope applied when requests match conditions defined in the whitelist rule.
+	//
 	// example:
 	//
 	// part
 	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// on
-	Status *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Timer  *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The skipped WAF rule categories when requests match conditions defined in the whitelist rule.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The time when the rule takes effect.
+	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	// The WAF rule type.
+	//
 	// example:
 	//
 	// http_custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the rule was modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -25567,26 +35538,38 @@ func (s *ListWafRulesResponse) SetBody(v *ListWafRulesResponseBody) *ListWafRule
 }
 
 type ListWafRulesetsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The WAF rule category of rulesets to query.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The query arguments in the JSON format, which contain filter conditions.
+	//
 	// example:
 	//
 	// http_bot
 	QueryArgs *ListWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -25632,15 +35615,22 @@ func (s *ListWafRulesetsRequest) SetSiteVersion(v int32) *ListWafRulesetsRequest
 }
 
 type ListWafRulesetsRequestQueryArgs struct {
+	// The ruleset ID, ruleset name, rule ID, or rule name for fuzzy search.
+	//
 	// example:
 	//
 	// example
 	AnyLike *string `json:"AnyLike,omitempty" xml:"AnyLike,omitempty"`
-	Desc    *bool   `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Specifies whether to sort the returned data in descending order.
+	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The ruleset name for fuzzy search.
+	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
+	// The column by which you want to sort the returned data.
+	//
 	// example:
 	//
 	// id
@@ -25676,26 +35666,38 @@ func (s *ListWafRulesetsRequestQueryArgs) SetOrderBy(v string) *ListWafRulesetsR
 }
 
 type ListWafRulesetsShrinkRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The WAF rule category of rulesets to query.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The query arguments in the JSON format, which contain filter conditions.
+	//
 	// example:
 	//
 	// http_bot
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
@@ -25741,29 +35743,40 @@ func (s *ListWafRulesetsShrinkRequest) SetSiteVersion(v int32) *ListWafRulesetsS
 }
 
 type ListWafRulesetsResponseBody struct {
+	// The number of WAF rulesets that are used by the instance in the WAF rule category.
+	//
 	// example:
 	//
 	// 10
 	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rulesets  []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the rulesets.
+	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
+	// The number of WAF rulesets that are used by the website in the WAF rule category.
+	//
 	// example:
 	//
 	// 5
 	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+	// The total number of filtered rulesets.
+	//
 	// example:
 	//
 	// 5
@@ -25814,28 +35827,42 @@ func (s *ListWafRulesetsResponseBody) SetTotalCount(v int64) *ListWafRulesetsRes
 }
 
 type ListWafRulesetsResponseBodyRulesets struct {
+	// The matched objects.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// The ID of the WAF ruleset.[](~~2850233~~)
+	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ruleset name.
+	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The ruleset status.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the protection target in the http_bot rule category.
+	//
 	// example:
 	//
 	// web
-	Target *string   `json:"Target,omitempty" xml:"Target,omitempty"`
-	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The types of rules.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// The time when the ruleset was last modified.
+	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -25920,12 +35947,24 @@ func (s *ListWafRulesetsResponse) SetBody(v *ListWafRulesetsResponseBody) *ListW
 }
 
 type ListWafTemplateRulesRequest struct {
+	// The WAF rule category, which is used to filter template rules of a specific category.
+	//
 	// example:
 	//
 	// http_anti_scan
-	Phase     *string                               `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The query parameter, which is used to filter template rules based on criteria such as the rule type.
+	//
+	// example:
+	//
+	// http_anti_scan
 	QueryArgs *ListWafTemplateRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	SiteId    *int64                                `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListWafTemplateRulesRequest) String() string {
@@ -25952,6 +35991,8 @@ func (s *ListWafTemplateRulesRequest) SetSiteId(v int64) *ListWafTemplateRulesRe
 }
 
 type ListWafTemplateRulesRequestQueryArgs struct {
+	// The rule type.
+	//
 	// example:
 	//
 	// http_directory_traversal
@@ -25972,12 +36013,24 @@ func (s *ListWafTemplateRulesRequestQueryArgs) SetType(v string) *ListWafTemplat
 }
 
 type ListWafTemplateRulesShrinkRequest struct {
+	// The WAF rule category, which is used to filter template rules of a specific category.
+	//
 	// example:
 	//
 	// http_anti_scan
-	Phase           *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The query parameter, which is used to filter template rules based on criteria such as the rule type.
+	//
+	// example:
+	//
+	// http_anti_scan
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	SiteId          *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// 站点ID，可通过调用[ListSites](https://help.aliyun.com/document_detail/2850189.html)接口获取。
+	//
+	// example:
+	//
+	// 1
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ListWafTemplateRulesShrinkRequest) String() string {
@@ -26004,13 +36057,14 @@ func (s *ListWafTemplateRulesShrinkRequest) SetSiteId(v int64) *ListWafTemplateR
 }
 
 type ListWafTemplateRulesResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned template rules.
+	Rules []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s ListWafTemplateRulesResponseBody) String() string {
@@ -26032,19 +36086,28 @@ func (s *ListWafTemplateRulesResponseBody) SetRules(v []*ListWafTemplateRulesRes
 }
 
 type ListWafTemplateRulesResponseBodyRules struct {
+	// The configuration of the rule.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// HTTP Directory Traversal Rule [Template]
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// http_directory_traversal
@@ -26114,10 +36177,14 @@ func (s *ListWafTemplateRulesResponse) SetBody(v *ListWafTemplateRulesResponseBo
 }
 
 type ListWafUsageOfRulesRequest struct {
+	// The WAF rule category.
+	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// ListWafUsageOfRules
@@ -26143,13 +36210,14 @@ func (s *ListWafUsageOfRulesRequest) SetSiteId(v int64) *ListWafUsageOfRulesRequ
 }
 
 type ListWafUsageOfRulesResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sites     []*ListWafUsageOfRulesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The usage details of WAF rules of the website.
+	Sites []*ListWafUsageOfRulesResponseBodySites `json:"Sites,omitempty" xml:"Sites,omitempty" type:"Repeated"`
 }
 
 func (s ListWafUsageOfRulesResponseBody) String() string {
@@ -26171,14 +36239,20 @@ func (s *ListWafUsageOfRulesResponseBody) SetSites(v []*ListWafUsageOfRulesRespo
 }
 
 type ListWafUsageOfRulesResponseBodySites struct {
+	// The website ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The usage of WAF rules or WAF rulesets.
+	//
 	// example:
 	//
 	// 1
@@ -26238,16 +36312,22 @@ func (s *ListWafUsageOfRulesResponse) SetBody(v *ListWafUsageOfRulesResponseBody
 }
 
 type ListWaitingRoomEventsRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room event. This parameter is optional. You can specify this parameter to query a specific waiting room event.
+	//
 	// example:
 	//
 	// 89677721098****
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
+	// The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26280,12 +36360,13 @@ func (s *ListWaitingRoomEventsRequest) SetWaitingRoomId(v string) *ListWaitingRo
 }
 
 type ListWaitingRoomEventsResponseBody struct {
-	// Id of the request
+	// The request ID, which is used to trace a call.
 	//
 	// example:
 	//
 	// f3c3700a-4c0f-4a24-b576-fd7dbf9e7c55
-	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the waiting room events.
 	WaitingRoomEvents []*ListWaitingRoomEventsResponseBodyWaitingRoomEvents `json:"WaitingRoomEvents,omitempty" xml:"WaitingRoomEvents,omitempty" type:"Repeated"`
 }
 
@@ -26308,79 +36389,162 @@ func (s *ListWaitingRoomEventsResponseBody) SetWaitingRoomEvents(v []*ListWaitin
 }
 
 type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
+	// The content of the custom waiting room page. This parameter is returned when the waiting room type is set to custom. The content is URL-encoded.
+	//
 	// example:
 	//
 	// html-yets-maqi1111
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	// The event description.
+	//
 	// example:
 	//
 	// terraform-example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether session renewal is disabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// off
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// The event status. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The end time of the event. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1719814497
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// off
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom event name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// example:
 	//
 	// 11
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Indicates whether pre-queuing is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
+	// The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
+	//
 	// example:
 	//
 	// 1719814097
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// example:
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// Indicates whether random queuing is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// example:
 	//
 	// 3
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The start time of the event. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1719814398
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The maximum number of active users.
+	//
 	// example:
 	//
 	// 22
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The unique ID of the waiting room event.
+	//
 	// example:
 	//
 	// 89677721098****
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
+	// The ID of the waiting room associated with the event.
+	//
 	// example:
 	//
 	// 5c938a045c9ca46607163d34966****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -26525,22 +36689,30 @@ func (s *ListWaitingRoomEventsResponse) SetBody(v *ListWaitingRoomEventsResponse
 }
 
 type ListWaitingRoomRulesRequest struct {
+	// Optional. The rule name, which can be used to query a specific bypass rule.
+	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room to be bypassed, which can be obtained by calling the [ListWatingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6a51d5bc6460887abd129****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// Optional. The rule ID, which can be used to query a specific rule.
+	//
 	// example:
 	//
 	// 37286782688****
@@ -26576,12 +36748,13 @@ func (s *ListWaitingRoomRulesRequest) SetWaitingRoomRuleId(v int64) *ListWaiting
 }
 
 type ListWaitingRoomRulesResponseBody struct {
-	// Id of the request
+	// The request ID, which is used to trace a call.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The waiting room bypass rules.
 	WaitingRoomRules []*ListWaitingRoomRulesResponseBodyWaitingRoomRules `json:"WaitingRoomRules,omitempty" xml:"WaitingRoomRules,omitempty" type:"Repeated"`
 }
 
@@ -26604,18 +36777,30 @@ func (s *ListWaitingRoomRulesResponseBody) SetWaitingRoomRules(v []*ListWaitingR
 }
 
 type ListWaitingRoomRulesResponseBodyWaitingRoomRules struct {
+	// The rule content, which is a policy or conditional expression.
+	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// ip
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 37286782688****
@@ -26680,12 +36865,16 @@ func (s *ListWaitingRoomRulesResponse) SetBody(v *ListWaitingRoomRulesResponseBo
 }
 
 type ListWaitingRoomsRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 120876698010528
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room. Specify this parameter to query the information about a specific waiting room.
+	//
 	// example:
 	//
 	// 6a51d5bc6460887abd1291dc7d4d****
@@ -26711,12 +36900,13 @@ func (s *ListWaitingRoomsRequest) SetWaitingRoomId(v string) *ListWaitingRoomsRe
 }
 
 type ListWaitingRoomsResponseBody struct {
-	// Id of the request
+	// The request ID, which is used to trace a call.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The waiting rooms.
 	WaitingRooms []*ListWaitingRoomsResponseBodyWaitingRooms `json:"WaitingRooms,omitempty" xml:"WaitingRooms,omitempty" type:"Repeated"`
 }
 
@@ -26739,58 +36929,128 @@ func (s *ListWaitingRoomsResponseBody) SetWaitingRooms(v []*ListWaitingRoomsResp
 }
 
 type ListWaitingRoomsResponseBodyWaitingRooms struct {
+	// The name of the custom cookie.
+	//
 	// example:
 	//
 	// __aliwaitingroom_example
-	CookieName     *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the waiting room.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether session renewal is disabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Indicates whether the waiting room is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
-	Enable          *string                                                    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The hostname and path.
 	HostNameAndPath []*ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
+	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the waiting room.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// example:
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Indicates whether all requests must be queued. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// example:
 	//
 	// 3600
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The maximum number of active users.
+	//
 	// example:
 	//
 	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The unique ID of the waiting room.
+	//
 	// example:
 	//
 	// 6a51d5bc6460887abd1291dc7d4d****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// default
@@ -26891,14 +37151,20 @@ func (s *ListWaitingRoomsResponseBodyWaitingRooms) SetWaitingRoomType(v string) 
 }
 
 type ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The path.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The subdomain.
+	//
 	// example:
 	//
 	// test.
@@ -26958,8 +37224,12 @@ func (s *ListWaitingRoomsResponse) SetBody(v *ListWaitingRoomsResponseBody) *Lis
 }
 
 type PreloadCachesRequest struct {
-	Content []*string          `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The files to be prefetched.
+	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// By default, prefetch requests include the Accept-Encoding:gzip header. If you want a prefetch request to include other headers or implement multi-replica prefetch, you can specify a custom prefetch header by configuring the Headers parameter.
 	Headers map[string]*string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
@@ -26990,8 +37260,12 @@ func (s *PreloadCachesRequest) SetSiteId(v int64) *PreloadCachesRequest {
 }
 
 type PreloadCachesShrinkRequest struct {
+	// The files to be prefetched.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// By default, prefetch requests include the Accept-Encoding:gzip header. If you want a prefetch request to include other headers or implement multi-replica prefetch, you can specify a custom prefetch header by configuring the Headers parameter.
 	HeadersShrink *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
@@ -27022,12 +37296,14 @@ func (s *PreloadCachesShrinkRequest) SetSiteId(v int64) *PreloadCachesShrinkRequ
 }
 
 type PreloadCachesResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The prefetch task ID.
+	//
 	// example:
 	//
 	// 16401427840
@@ -27082,33 +37358,68 @@ func (s *PreloadCachesResponse) SetBody(v *PreloadCachesResponseBody) *PreloadCa
 }
 
 type PublishEdgeContainerAppVersionRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FullRelease *bool   `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+	//
+	// example:
+	//
+	// true
+	FullRelease *bool `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// The release percentage. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The environment to which you want to release the version. Valid values:
+	//
+	// 	- prod: the production environment.
+	//
+	// 	- staging: the staging environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prod
-	PublishEnv  *string   `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
-	PublishType *string   `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
-	Regions     []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	// Specifies how the version is released. Valid values:
+	//
+	// 	- percentage: releases the version by percentage.
+	//
+	// 	- region: releases the version by region.
+	//
+	// If you do not specify this parameter, the version is released by percentage by default.
+	//
+	// example:
+	//
+	// percentage
+	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// The regions to which the version is released.
+	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The remarks. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test publish app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-06-05T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The version ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27171,33 +37482,68 @@ func (s *PublishEdgeContainerAppVersionRequest) SetVersionId(v string) *PublishE
 }
 
 type PublishEdgeContainerAppVersionShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	FullRelease *bool   `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Specifies whether to fully release the version. This parameter takes effect only when PublishType is set to region.
+	//
+	// example:
+	//
+	// true
+	FullRelease *bool `json:"FullRelease,omitempty" xml:"FullRelease,omitempty"`
+	// The release percentage. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The environment to which you want to release the version. Valid values:
+	//
+	// 	- prod: the production environment.
+	//
+	// 	- staging: the staging environment.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prod
-	PublishEnv    *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
-	PublishType   *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	PublishEnv *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	// Specifies how the version is released. Valid values:
+	//
+	// 	- percentage: releases the version by percentage.
+	//
+	// 	- region: releases the version by region.
+	//
+	// If you do not specify this parameter, the version is released by percentage by default.
+	//
+	// example:
+	//
+	// percentage
+	PublishType *string `json:"PublishType,omitempty" xml:"PublishType,omitempty"`
+	// The regions to which the version is released.
 	RegionsShrink *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The remarks. This parameter is empty by default.
+	//
 	// example:
 	//
 	// test publish app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The time when the application version starts to be released. If you do not specify this parameter, the current time is used by default.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-06-05T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The version ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27260,6 +37606,8 @@ func (s *PublishEdgeContainerAppVersionShrinkRequest) SetVersionId(v string) *Pu
 }
 
 type PublishEdgeContainerAppVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -27309,10 +37657,28 @@ func (s *PublishEdgeContainerAppVersionResponse) SetBody(v *PublishEdgeContainer
 }
 
 type PublishRoutineCodeVersionRequest struct {
-	CanaryAreaList    []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
-	CanaryCodeVersion *string   `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
-	CodeVersion       *string   `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	Env               *string   `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The regions for canary release.
+	CanaryAreaList []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
+	// The version number for canary release.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CanaryCodeVersion *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	// The code version to be released.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The environment name.
+	//
+	// example:
+	//
+	// production
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The routine name.
+	//
 	// example:
 	//
 	// PublishRoutineCodeVersion
@@ -27353,10 +37719,28 @@ func (s *PublishRoutineCodeVersionRequest) SetName(v string) *PublishRoutineCode
 }
 
 type PublishRoutineCodeVersionShrinkRequest struct {
+	// The regions for canary release.
 	CanaryAreaListShrink *string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty"`
-	CanaryCodeVersion    *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
-	CodeVersion          *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	Env                  *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The version number for canary release.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CanaryCodeVersion *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
+	// The code version to be released.
+	//
+	// example:
+	//
+	// 1710120201067203242
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The environment name.
+	//
+	// example:
+	//
+	// production
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// The routine name.
+	//
 	// example:
 	//
 	// PublishRoutineCodeVersion
@@ -27397,8 +37781,17 @@ func (s *PublishRoutineCodeVersionShrinkRequest) SetName(v string) *PublishRouti
 }
 
 type PublishRoutineCodeVersionResponseBody struct {
+	// The code version.
+	//
+	// example:
+	//
+	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27450,19 +37843,46 @@ func (s *PublishRoutineCodeVersionResponse) SetBody(v *PublishRoutineCodeVersion
 }
 
 type PurgeCachesRequest struct {
+	// The content to purge.
 	Content *PurgeCachesRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
+	//
 	// example:
 	//
 	// true
 	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
+	// Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+	//
+	// 	- **true**: purges all resources in the directory.
+	//
+	// 	- **false**: purges only changed resources in the directory.
+	//
+	// >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
+	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type of the purge task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27505,11 +37925,18 @@ func (s *PurgeCachesRequest) SetType(v string) *PurgeCachesRequest {
 }
 
 type PurgeCachesRequestContent struct {
-	CacheTags    []*string     `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	Directories  []*string     `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	Files        []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	Hostnames    []*string     `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	IgnoreParams []*string     `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
+	// The cache tags that are used to purge the cache. This parameter is required if Type is set to cachetag.
+	CacheTags []*string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	// The directories that are used to purge the cache. This parameter is required if Type is set to directory.
+	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
+	// The files to purge. This parameter is required if Type is set to file.
+	Files []interface{} `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The hostnames that are used to purge the cache. This parameter is required if Type is set to hostname.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The file URLs with parameters ignored that are used to purge the cache. This parameter is required if Type is set to ignoreParams.
+	IgnoreParams []*string `json:"IgnoreParams,omitempty" xml:"IgnoreParams,omitempty" type:"Repeated"`
+	// Specifies whether to purge all cache of the website. Default value: false. The value is true when Type is set to purgeall.
+	//
 	// example:
 	//
 	// true
@@ -27555,19 +37982,46 @@ func (s *PurgeCachesRequestContent) SetPurgeAll(v bool) *PurgeCachesRequestConte
 }
 
 type PurgeCachesShrinkRequest struct {
+	// The content to purge.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Specifies whether to purge cached resources for edge computing. For example, purge the resources cached by the CacheAPI operation of Edge Routine.
+	//
 	// example:
 	//
 	// true
 	EdgeComputePurge *bool `json:"EdgeComputePurge,omitempty" xml:"EdgeComputePurge,omitempty"`
+	// Specifies whether to purge resources in a directory if the resources requested are different from the resources on the origin server. Default value: false.
+	//
+	// 	- **true**: purges all resources in the directory.
+	//
+	// 	- **false**: purges only changed resources in the directory.
+	//
+	// >  This configuration takes effect for the following purge task types: directory, cachetag, ignoreParams, hostname, and purgeall.
+	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type of the purge task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **cachetag**: purges the cache by cache tag.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specific parameters ignored. This option ignores the question mark (?) and parameters after the question mark (?) in a request URL and purges the cache. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specified parameters. If the URLs match, the POPs purge the cached resources.
+	//
+	// 	- **hostname**: purges the cache by hostname.
+	//
+	// 	- **purgeall**: purges all cache.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27610,12 +38064,14 @@ func (s *PurgeCachesShrinkRequest) SetType(v string) *PurgeCachesShrinkRequest {
 }
 
 type PurgeCachesResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID, which is generated after you create a task.
+	//
 	// example:
 	//
 	// 15940956620
@@ -27670,30 +38126,42 @@ func (s *PurgeCachesResponse) SetBody(v *PurgeCachesResponseBody) *PurgeCachesRe
 }
 
 type PutKvRequest struct {
+	// Specifies whether the content of the key is Base64-encoded. Set this parameter to true if you want to store the key content in binary format. When this parameter is set to true, the Value parameter must be Base64-encoded.
+	//
 	// example:
 	//
 	// true
 	Base64 *bool `json:"Base64,omitempty" xml:"Base64,omitempty"`
+	// The time when the key-value pair expires, which cannot be earlier than the current time. The value is a timestamp in seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
 	// example:
 	//
 	// 1690081381
 	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The relative expiration time. Unit: seconds. If you specify both Expiration and ExpirationTtl, only ExpirationTtl takes effect.
+	//
 	// example:
 	//
 	// 3600
 	ExpirationTtl *int64 `json:"ExpirationTtl,omitempty" xml:"ExpirationTtl,omitempty"`
+	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The content of the key, which can be up to 2 MB (2 × 1000 × 1000). If the content is larger than 2 MB, call [PutKvWithHighCapacity](https://help.aliyun.com/document_detail/2850486.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27741,16 +38209,20 @@ func (s *PutKvRequest) SetValue(v string) *PutKvRequest {
 }
 
 type PutKvResponseBody struct {
+	// The length of the value in the key-value pair.
+	//
 	// example:
 	//
 	// 4
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
+	//
 	// example:
 	//
 	// test
@@ -27810,18 +38282,24 @@ func (s *PutKvResponse) SetBody(v *PutKvResponseBody) *PutKvResponse {
 }
 
 type PutKvWithHighCapacityRequest struct {
+	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namesapce
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pair that you want to upload. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27854,18 +38332,24 @@ func (s *PutKvWithHighCapacityRequest) SetUrl(v string) *PutKvWithHighCapacityRe
 }
 
 type PutKvWithHighCapacityAdvanceRequest struct {
+	// The key name. The name can be up to 512 characters in length and cannot contain spaces or backslashes (\\\\).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test_namesapce
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The download URL of the key-value pair that you want to upload. This parameter is automatically filled in when you use the SDK to call the operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27898,16 +38382,20 @@ func (s *PutKvWithHighCapacityAdvanceRequest) SetUrlObject(v io.Reader) *PutKvWi
 }
 
 type PutKvWithHighCapacityResponseBody struct {
+	// The length of the value in the key-value pair.
+	//
 	// example:
 	//
 	// 4
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the key. If the content has more than 256 characters in length, the system displays the first 100 and the last 100 characters, and omits the middle part.
+	//
 	// example:
 	//
 	// test
@@ -27967,6 +38455,8 @@ func (s *PutKvWithHighCapacityResponse) SetBody(v *PutKvWithHighCapacityResponse
 }
 
 type RebuildEdgeContainerAppStagingEnvRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// app-88068867578379****
@@ -27987,7 +38477,7 @@ func (s *RebuildEdgeContainerAppStagingEnvRequest) SetAppId(v string) *RebuildEd
 }
 
 type RebuildEdgeContainerAppStagingEnvResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -28038,6 +38528,8 @@ func (s *RebuildEdgeContainerAppStagingEnvResponse) SetBody(v *RebuildEdgeContai
 }
 
 type ResetScheduledPreloadJobRequest struct {
+	// The ID of the scheduled prefetch task.
+	//
 	// example:
 	//
 	// ResetScheduledPreloadJob
@@ -28058,22 +38550,96 @@ func (s *ResetScheduledPreloadJobRequest) SetId(v string) *ResetScheduledPreload
 }
 
 type ResetScheduledPreloadJobResponseBody struct {
-	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreatedAt     *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Domains       *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
-	ErrorInfo     *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the SQL task was created.
+	//
+	// example:
+	//
+	// 2024-06-02T02:23:26Z
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The domain names to be prefetched.
+	//
+	// example:
+	//
+	// testurl.com
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// The error message that is returned.
+	//
+	// example:
+	//
+	// invalid domain:test.com
+	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	// The URL of the OSS object that stores a list of URLs that failed the conditional check for prefetching.
+	//
+	// example:
+	//
+	// https://xxxobject.oss-cn-reginon.aliyuncs.com/9d91_xxxxxxxxxxx_158bb6e0f97c477791209bb46bd599f7
 	FailedFileOss *string `json:"FailedFileOss,omitempty" xml:"FailedFileOss,omitempty"`
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InsertWay     *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SiteId        *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	TaskSubmitted *int32  `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
-	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UrlCount      *int32  `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
-	UrlSubmitted  *int32  `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
+	// The ID of the URL list file, which can be used during downloads.
+	//
+	// example:
+	//
+	// 665d3b48621bccf3fe29e1a7
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method to submit the URLs to be prefetched.
+	//
+	// example:
+	//
+	// oss
+	InsertWay *string `json:"InsertWay,omitempty" xml:"InsertWay,omitempty"`
+	// The delivery project name.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 190007158391808
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The number of submitted prefetch tasks.
+	//
+	// example:
+	//
+	// 1
+	TaskSubmitted *int32 `json:"TaskSubmitted,omitempty" xml:"TaskSubmitted,omitempty"`
+	// The task type. Valid values: refresh and preload.
+	//
+	// example:
+	//
+	// preload
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of URLs.
+	//
+	// example:
+	//
+	// 2
+	UrlCount *int32 `json:"UrlCount,omitempty" xml:"UrlCount,omitempty"`
+	// The number of submitted URLs.
+	//
+	// example:
+	//
+	// 1
+	UrlSubmitted *int32 `json:"UrlSubmitted,omitempty" xml:"UrlSubmitted,omitempty"`
 }
 
 func (s ResetScheduledPreloadJobResponseBody) String() string {
@@ -28189,16 +38755,22 @@ func (s *ResetScheduledPreloadJobResponse) SetBody(v *ResetScheduledPreloadJobRe
 }
 
 type RollbackEdgeContainerAppVersionRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test rollback app
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	// The ID of version that you want to roll back.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28231,6 +38803,8 @@ func (s *RollbackEdgeContainerAppVersionRequest) SetVersionId(v string) *Rollbac
 }
 
 type RollbackEdgeContainerAppVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
@@ -28280,44 +38854,66 @@ func (s *RollbackEdgeContainerAppVersionResponse) SetBody(v *RollbackEdgeContain
 }
 
 type SetCertificateRequest struct {
+	// The certificate ID on Certificate Management Service.
+	//
 	// example:
 	//
 	// 30000478
 	CasId *int64 `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate ID on ESA.
+	//
 	// example:
 	//
 	// 30001303
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private key of the certificate.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The certificate type. Valid values:
+	//
+	// 	- cas: a certificate purchased by using Certificate Management Service.
+	//
+	// 	- upload: a custom certificate that you upload.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cas
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Specifies whether to update the certificate.
+	//
 	// example:
 	//
 	// true
@@ -28388,7 +38984,7 @@ func (s *SetCertificateRequest) SetUpdate(v bool) *SetCertificateRequest {
 }
 
 type SetCertificateResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -28439,18 +39035,36 @@ func (s *SetCertificateResponse) SetBody(v *SetCertificateResponseBody) *SetCert
 }
 
 type SetHttpDDoSAttackIntelligentProtectionRequest struct {
+	// The mode of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **observe**: alert.
+	//
+	// 	- **defense**: block.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
+	// The level of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **level0**: very loose.
+	//
+	// 	- **level30**: loose.
+	//
+	// 	- **level60**: normal.
+	//
+	// 	- **level90**: strict.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28483,20 +39097,38 @@ func (s *SetHttpDDoSAttackIntelligentProtectionRequest) SetSiteId(v int64) *SetH
 }
 
 type SetHttpDDoSAttackIntelligentProtectionResponseBody struct {
+	// The mode of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **observe**: alert.
+	//
+	// 	- **defense**: block.
+	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
+	// The level of smart HTTP DDoS protection. Valid values:
+	//
+	// 	- **level0**: very loose.
+	//
+	// 	- **level30**: loose.
+	//
+	// 	- **level60**: normal.
+	//
+	// 	- **level90**: strict.
+	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 156A6B-677B1A-4297B7-9187B7-2B44792
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -28561,12 +39193,24 @@ func (s *SetHttpDDoSAttackIntelligentProtectionResponse) SetBody(v *SetHttpDDoSA
 }
 
 type SetHttpDDoSAttackProtectionRequest struct {
+	// The level of HTTP DDoS attack protection. Valid values:
+	//
+	// 	- **very weak**: very loose.
+	//
+	// 	- **weak**: loose.
+	//
+	// 	- **default**: normal.
+	//
+	// 	- **hard**: strict.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28594,16 +39238,20 @@ func (s *SetHttpDDoSAttackProtectionRequest) SetSiteId(v int64) *SetHttpDDoSAtta
 }
 
 type SetHttpDDoSAttackProtectionResponseBody struct {
+	// The level of HTTP DDoS attack protection.
+	//
 	// example:
 	//
 	// default
 	GlobalMode *string `json:"GlobalMode,omitempty" xml:"GlobalMode,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -28663,6 +39311,8 @@ func (s *SetHttpDDoSAttackProtectionResponse) SetBody(v *SetHttpDDoSAttackProtec
 }
 
 type StartScheduledPreloadExecutionRequest struct {
+	// The ID of the prefetch plan.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28685,19 +39335,70 @@ func (s *StartScheduledPreloadExecutionRequest) SetId(v string) *StartScheduledP
 }
 
 type StartScheduledPreloadExecutionResponseBody struct {
-	AliUid  *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 665d3b48621bccf3fe29e1a7
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 65C66B7B-671A-8297-9187-2R5477247B76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s StartScheduledPreloadExecutionResponseBody) String() string {
@@ -28783,6 +39484,8 @@ func (s *StartScheduledPreloadExecutionResponse) SetBody(v *StartScheduledPreloa
 }
 
 type StopScheduledPreloadExecutionRequest struct {
+	// The ID of the prefetch plan.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28805,16 +39508,70 @@ func (s *StopScheduledPreloadExecutionRequest) SetId(v string) *StopScheduledPre
 }
 
 type StopScheduledPreloadExecutionResponseBody struct {
-	AliUid   *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 66599bd7397885b43804901c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution in the plan. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// stopped
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s StopScheduledPreloadExecutionResponseBody) String() string {
@@ -28900,14 +39657,20 @@ func (s *StopScheduledPreloadExecutionResponse) SetBody(v *StopScheduledPreloadE
 }
 
 type UntagResourcesRequest struct {
-	// 是否全部删除，只针对TagKey.N为空时有效
+	// Specifies whether to remove all tags. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// Default value: **false**.
 	//
 	// example:
 	//
 	// false
 	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// 要创建并绑定标签的资源所在的地域ID。
+	// The ID of the region where the resources reside. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
 	//
@@ -28915,18 +39678,21 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
+	// The ID of resource N. Valid values of N: **1*	- to **50**.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// site
-	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SecurityToken *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	TagKey        []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The key of tag N to remove from the resource. Valid values of N: **1*	- to **20**.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -28973,6 +39739,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 85H66C7B-671A-4297-9187-2C4477247A74
@@ -29022,34 +39790,52 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCustomScenePolicyRequest struct {
+	// The time when the policy expires.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-04-03T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The policy name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// 123456****
 	Objects *string `json:"Objects,omitempty" xml:"Objects,omitempty"`
+	// The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-04-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the policy template. Valid value:
+	//
+	// 	- **promotion**: major events.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29097,29 +39883,46 @@ func (s *UpdateCustomScenePolicyRequest) SetTemplate(v string) *UpdateCustomScen
 }
 
 type UpdateCustomScenePolicyResponseBody struct {
+	// The time when the policy expires.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-04-03T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The policy name.
+	//
 	// example:
 	//
 	// test
-	Name    *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IDs of websites associated.
 	Objects []*string `json:"Objects,omitempty" xml:"Objects,omitempty" type:"Repeated"`
+	// The policy ID.
+	//
 	// example:
 	//
 	// 1
 	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the policy takes effect.
+	//
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-04-03T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the policy template. Valid value:
+	//
+	// 	- **promotion**: major events.
+	//
 	// example:
 	//
 	// promotion
@@ -29199,12 +40002,16 @@ func (s *UpdateCustomScenePolicyResponse) SetBody(v *UpdateCustomScenePolicyResp
 }
 
 type UpdateKvNamespaceRequest struct {
+	// The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ns1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The new name of the namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29232,22 +40039,40 @@ func (s *UpdateKvNamespaceRequest) SetTitle(v string) *UpdateKvNamespaceRequest 
 }
 
 type UpdateKvNamespaceResponseBody struct {
+	// The description of the namespace.
+	//
 	// example:
 	//
 	// this is a test ns.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The updated name of the namespace.
+	//
 	// example:
 	//
 	// new_ns1
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// 643355322374688768
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the namespace. Valid values:
+	//
+	// 	- **online**: normal.
+	//
+	// 	- **delete**: pending deletion.
+	//
+	// 	- **deleting**: being deleted.
+	//
+	// 	- **deleted**: deleted.
+	//
 	// example:
 	//
 	// online
@@ -29317,20 +40142,28 @@ func (s *UpdateKvNamespaceResponse) SetBody(v *UpdateKvNamespaceResponseBody) *U
 }
 
 type UpdateListRequest struct {
+	// The new description of the list.
+	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The items in the updated list. The value is a JSON array.
+	//
 	// example:
 	//
 	// a custom list
 	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The new name of the list.
+	//
 	// example:
 	//
 	// example
@@ -29366,20 +40199,28 @@ func (s *UpdateListRequest) SetName(v string) *UpdateListRequest {
 }
 
 type UpdateListShrinkRequest struct {
+	// The new description of the list.
+	//
 	// example:
 	//
 	// a custom list
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom list, which can be obtained by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 40000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The items in the updated list. The value is a JSON array.
+	//
 	// example:
 	//
 	// a custom list
 	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	// The new name of the list.
+	//
 	// example:
 	//
 	// example
@@ -29415,6 +40256,8 @@ func (s *UpdateListShrinkRequest) SetName(v string) *UpdateListShrinkRequest {
 }
 
 type UpdateListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -29463,29 +40306,196 @@ func (s *UpdateListResponse) SetBody(v *UpdateListResponseBody) *UpdateListRespo
 	return s
 }
 
+type UpdateOriginProtectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateOriginProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionRequest) SetOriginConverge(v string) *UpdateOriginProtectionRequest {
+	s.OriginConverge = &v
+	return s
+}
+
+func (s *UpdateOriginProtectionRequest) SetSiteId(v int64) *UpdateOriginProtectionRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateOriginProtectionResponseBody struct {
+	// example:
+	//
+	// 4C6B5E5A-42FC-5DF2-986C-4DAAE3C55086
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateOriginProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionResponseBody) SetRequestId(v string) *UpdateOriginProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateOriginProtectionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateOriginProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateOriginProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionResponse) SetHeaders(v map[string]*string) *UpdateOriginProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOriginProtectionResponse) SetStatusCode(v int32) *UpdateOriginProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateOriginProtectionResponse) SetBody(v *UpdateOriginProtectionResponseBody) *UpdateOriginProtectionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateOriginProtectionIpWhiteListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateOriginProtectionIpWhiteListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionIpWhiteListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionIpWhiteListRequest) SetSiteId(v int64) *UpdateOriginProtectionIpWhiteListRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateOriginProtectionIpWhiteListResponseBody struct {
+	// example:
+	//
+	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateOriginProtectionIpWhiteListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionIpWhiteListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionIpWhiteListResponseBody) SetRequestId(v string) *UpdateOriginProtectionIpWhiteListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateOriginProtectionIpWhiteListResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateOriginProtectionIpWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateOriginProtectionIpWhiteListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginProtectionIpWhiteListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginProtectionIpWhiteListResponse) SetHeaders(v map[string]*string) *UpdateOriginProtectionIpWhiteListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOriginProtectionIpWhiteListResponse) SetStatusCode(v int32) *UpdateOriginProtectionIpWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateOriginProtectionIpWhiteListResponse) SetBody(v *UpdateOriginProtectionIpWhiteListResponseBody) *UpdateOriginProtectionIpWhiteListResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePageRequest struct {
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PGh0bWw+aGVsbG8gcGFnZTwvaHRtbD4=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The Content-Type field in the HTTP header. Valid values:
+	//
+	// 	- text/html
+	//
+	// 	- application/json
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The description of the custom error page.
+	//
 	// example:
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the custom error page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29528,7 +40538,7 @@ func (s *UpdatePageRequest) SetName(v string) *UpdatePageRequest {
 }
 
 type UpdatePageResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -29579,18 +40589,90 @@ func (s *UpdatePageResponse) SetBody(v *UpdatePageResponseBody) *UpdatePageRespo
 }
 
 type UpdateRecordRequest struct {
+	// The origin authentication information of the CNAME record.
 	AuthConf *UpdateRecordRequestAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	BizName  *string                      `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	Comment  *string                      `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **video_image**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
+	//
+	// example:
+	//
+	// web
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comments of the record.
+	//
+	// example:
+	//
+	// This is a remark.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	//
 	// This parameter is required.
-	Data       *UpdateRecordRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HostPolicy *string                  `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// 是否代理加速
+	//
+	// example:
+	//
+	// {
+	//
+	//     "value":"2.2.2.2"
+	//
+	// }
+	Data *UpdateRecordRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	//
+	// 	- **follow_hostname**: match the requested domain name.
+	//
+	// 	- **follow_origin_domain**: match the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
+	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	//
 	// This parameter is required.
-	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	//
+	// example:
+	//
+	// 1234567890123
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The type of the origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS*	- : OSS origin.
+	//
+	// 	- **S3*	- : S3 origin.
+	//
+	// 	- **LB**: Load Balancer origin.
+	//
+	// 	- **OP**: origin in an origin pool.
+	//
+	// 	- **Domain**: common domain name.
+	//
+	// If you leave the parameter empty or set its value as null, the default is Domain, which is common domain name.
+	//
+	// example:
+	//
+	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Ttl        *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	//
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s UpdateRecordRequest) String() string {
@@ -29647,11 +40729,48 @@ func (s *UpdateRecordRequest) SetTtl(v int32) *UpdateRecordRequest {
 }
 
 type UpdateRecordRequestAuthConf struct {
+	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	//
+	// example:
+	//
+	// VIxuvJSA2S03f******kp208dy5w7
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
+	//
+	// 	- **public**: public read. Select this value when the origin type is OSS or S3 and the origin access is public read.
+	//
+	// 	- **private**: private read. Select this value when the origin type is S3 and the origin access is private read.
+	//
+	// 	- **private_same_account**: private read under the same account. Select this value when the origin type is OSS, the origins belong to the same Alibaba Cloud account, and the origins have private read access.
+	//
+	// example:
+	//
+	// private
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+	//
+	// 	- **v2**
+	//
+	// 	- **v4**
+	//
+	// If you leave this parameter empty, the default value v4 is used.
+	//
+	// example:
+	//
+	// v2
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	//
+	// example:
+	//
+	// u0Nkg5gBK*******QF5wvKMM504JUHt
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+	//
+	// example:
+	//
+	// us-east-1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdateRecordRequestAuthConf) String() string {
@@ -29688,20 +40807,106 @@ func (s *UpdateRecordRequestAuthConf) SetVersion(v string) *UpdateRecordRequestA
 }
 
 type UpdateRecordRequestData struct {
-	Algorithm    *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Certificate  *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	Fingerprint  *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Flag         *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	MatchingType *int32  `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Selector     *int32  `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Type         *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Usage        *int32  `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+	//
+	// example:
+	//
+	// 0
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+	//
+	// example:
+	//
+	// dGVzdGFkYWxrcw==
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+	//
+	// example:
+	//
+	// abcdef1234567890
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+	//
+	// example:
+	//
+	// 128
+	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record, specified within the range of 0 to 65,535. This parameter is required when you add a CAA record.
+	//
+	// example:
+	//
+	// 0
+	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
+	// example:
+	//
+	// 0
+	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
+	//
+	// example:
+	//
+	// 0
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+	//
+	// example:
+	//
+	// 10
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
+	// example:
+	//
+	// 0
+	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+	//
+	// example:
+	//
+	// issue
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+	//
+	// example:
+	//
+	// 0
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
+	// example:
+	//
+	// 0
+	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
+	//
+	// 	- **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+	//
+	// 	- **CNAME**: the target domain name.
+	//
+	// 	- **NS**: the name servers for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the target mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
+	// example:
+	//
+	// example.com
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
+	//
+	// example:
+	//
+	// 0
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateRecordRequestData) String() string {
@@ -29783,18 +40988,90 @@ func (s *UpdateRecordRequestData) SetWeight(v int32) *UpdateRecordRequestData {
 }
 
 type UpdateRecordShrinkRequest struct {
+	// The origin authentication information of the CNAME record.
 	AuthConfShrink *string `json:"AuthConf,omitempty" xml:"AuthConf,omitempty"`
-	BizName        *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **video_image**: video and image.
+	//
+	// 	- **api**: API.
+	//
+	// 	- **web**: web page.
+	//
+	// example:
+	//
+	// web
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comments of the record.
+	//
+	// example:
+	//
+	// This is a remark.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "value":"2.2.2.2"
+	//
+	// }
 	DataShrink *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
+	//
+	// 	- **follow_hostname**: match the requested domain name.
+	//
+	// 	- **follow_origin_domain**: match the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	// 是否代理加速
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	//
 	// This parameter is required.
-	RecordId   *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	//
+	// example:
+	//
+	// 1234567890123
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The type of the origin for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS*	- : OSS origin.
+	//
+	// 	- **S3*	- : S3 origin.
+	//
+	// 	- **LB**: Load Balancer origin.
+	//
+	// 	- **OP**: origin in an origin pool.
+	//
+	// 	- **Domain**: common domain name.
+	//
+	// If you leave the parameter empty or set its value as null, the default is Domain, which is common domain name.
+	//
+	// example:
+	//
+	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Ttl        *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	//
+	// example:
+	//
+	// 30
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s UpdateRecordShrinkRequest) String() string {
@@ -29851,6 +41128,11 @@ func (s *UpdateRecordShrinkRequest) SetTtl(v int32) *UpdateRecordShrinkRequest {
 }
 
 type UpdateRecordResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29897,15 +41179,37 @@ func (s *UpdateRecordResponse) SetBody(v *UpdateRecordResponseBody) *UpdateRecor
 }
 
 type UpdateScheduledPreloadExecutionRequest struct {
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UpdateScheduledPreloadExecution
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -29943,16 +41247,70 @@ func (s *UpdateScheduledPreloadExecutionRequest) SetStartTime(v string) *UpdateS
 }
 
 type UpdateScheduledPreloadExecutionResponseBody struct {
-	AliUid   *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 15685865xxx14622
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The end time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T18:10:48.849+08:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the prefetch plan.
+	//
+	// example:
+	//
+	// 66599bd7397885b43804901c
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time interval between each batch execution. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the prefetch task.
+	//
+	// example:
+	//
+	// 665d3af3621bccf3fe29e1a4
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SliceLen  *int32  `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The number of URLs prefetched in each batch.
+	//
+	// example:
+	//
+	// 10
+	SliceLen *int32 `json:"SliceLen,omitempty" xml:"SliceLen,omitempty"`
+	// The start time of the prefetch plan.
+	//
+	// example:
+	//
+	// 2024-05-31T17:10:48.849+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the prefetch plan. Valid values:
+	//
+	// 	- **waiting**
+	//
+	// 	- **running**
+	//
+	// 	- **finished**
+	//
+	// 	- **failed**
+	//
+	// 	- **stopped**
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateScheduledPreloadExecutionResponseBody) String() string {
@@ -30038,12 +41396,20 @@ func (s *UpdateScheduledPreloadExecutionResponse) SetBody(v *UpdateScheduledPrel
 }
 
 type UpdateSiteAccessTypeRequest struct {
+	// The new DNS setup of the website. Valid values:
+	//
+	// 	- **NS**
+	//
+	// 	- **CNAME**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NS
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30071,7 +41437,7 @@ func (s *UpdateSiteAccessTypeRequest) SetSiteId(v int64) *UpdateSiteAccessTypeRe
 }
 
 type UpdateSiteAccessTypeResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -30122,12 +41488,22 @@ func (s *UpdateSiteAccessTypeResponse) SetBody(v *UpdateSiteAccessTypeResponseBo
 }
 
 type UpdateSiteCoverageRequest struct {
+	// The desired service location. Valid values:
+	//
+	// 	- **domestic**: the Chinese mainland
+	//
+	// 	- **global**: global
+	//
+	// 	- **overseas**: outside the Chinese mainland
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// global
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30155,6 +41531,8 @@ func (s *UpdateSiteCoverageRequest) SetSiteId(v int64) *UpdateSiteCoverageReques
 }
 
 type UpdateSiteCoverageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
@@ -30204,8 +41582,11 @@ func (s *UpdateSiteCoverageResponse) SetBody(v *UpdateSiteCoverageResponseBody) 
 }
 
 type UpdateSiteCustomLogRequest struct {
-	Cookies         []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
-	RequestHeaders  []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The cookie fields.
+	Cookies []*string `json:"Cookies,omitempty" xml:"Cookies,omitempty" type:"Repeated"`
+	// The request header fields.
+	RequestHeaders []*string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// The response header fields.
 	ResponseHeaders []*string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
 	// site id
 	//
@@ -30244,8 +41625,11 @@ func (s *UpdateSiteCustomLogRequest) SetSiteId(v int64) *UpdateSiteCustomLogRequ
 }
 
 type UpdateSiteCustomLogShrinkRequest struct {
-	CookiesShrink         *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	RequestHeadersShrink  *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The cookie fields.
+	CookiesShrink *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// The request header fields.
+	RequestHeadersShrink *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	// The response header fields.
 	ResponseHeadersShrink *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
 	// site id
 	//
@@ -30284,7 +41668,7 @@ func (s *UpdateSiteCustomLogShrinkRequest) SetSiteId(v int64) *UpdateSiteCustomL
 }
 
 type UpdateSiteCustomLogResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -30335,24 +41719,42 @@ func (s *UpdateSiteCustomLogResponse) SetBody(v *UpdateSiteCustomLogResponseBody
 }
 
 type UpdateSiteDeliveryTaskRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The discard rate.
+	//
 	// example:
 	//
 	// 0.0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields that you want to include in real-time logs to be delivered. Separate the log fields with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ClientIP,UserAgent
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30395,7 +41797,7 @@ func (s *UpdateSiteDeliveryTaskRequest) SetTaskName(v string) *UpdateSiteDeliver
 }
 
 type UpdateSiteDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -30446,16 +41848,22 @@ func (s *UpdateSiteDeliveryTaskResponse) SetBody(v *UpdateSiteDeliveryTaskRespon
 }
 
 type UpdateSiteDeliveryTaskStatusRequest struct {
+	// Specifies whether to enable the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// online
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30488,16 +41896,24 @@ func (s *UpdateSiteDeliveryTaskStatusRequest) SetTaskName(v string) *UpdateSiteD
 }
 
 type UpdateSiteDeliveryTaskStatusResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the delivery task. Valid values:
+	//
+	// 	- **online**
+	//
+	// 	- **offline**
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// cdn-test-task
@@ -30556,13 +41972,1458 @@ func (s *UpdateSiteDeliveryTaskStatusResponse) SetBody(v *UpdateSiteDeliveryTask
 	return s
 }
 
+type UpdateSiteFunctionRequest struct {
+	CacheReserve                        []*UpdateSiteFunctionRequestCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	CacheRules                          []*UpdateSiteFunctionRequestCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	CacheTags                           []*UpdateSiteFunctionRequestCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	CnameFlattening                     []*UpdateSiteFunctionRequestCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	CompressionRules                    []*UpdateSiteFunctionRequestCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization             []*UpdateSiteFunctionRequestCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	DevelopmentMode                     []*UpdateSiteFunctionRequestDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	HttpRequestHeaderModificationRules  []*UpdateSiteFunctionRequestHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpResponseHeaderModificationRules []*UpdateSiteFunctionRequestHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
+	HttpsApplicationConfiguration       []*UpdateSiteFunctionRequestHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
+	HttpsBasicConfiguration             []*UpdateSiteFunctionRequestHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
+	ImageTransform                      []*UpdateSiteFunctionRequestImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	Ipv6                                []*UpdateSiteFunctionRequestIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	ManagedTransforms                   []*UpdateSiteFunctionRequestManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization                 []*UpdateSiteFunctionRequestNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	OriginRules                         []*UpdateSiteFunctionRequestOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	RedirectRules                       []*UpdateSiteFunctionRequestRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	RewriteUrlRules                     []*UpdateSiteFunctionRequestRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	SeoBypass                           []*UpdateSiteFunctionRequestSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateSiteFunction
+	SiteId            *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteNameExclusive []*UpdateSiteFunctionRequestSiteNameExclusive `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
+	SitePause         []*UpdateSiteFunctionRequestSitePause         `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	TieredCache       []*UpdateSiteFunctionRequestTieredCache       `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+}
+
+func (s UpdateSiteFunctionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequest) SetCacheReserve(v []*UpdateSiteFunctionRequestCacheReserve) *UpdateSiteFunctionRequest {
+	s.CacheReserve = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetCacheRules(v []*UpdateSiteFunctionRequestCacheRules) *UpdateSiteFunctionRequest {
+	s.CacheRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetCacheTags(v []*UpdateSiteFunctionRequestCacheTags) *UpdateSiteFunctionRequest {
+	s.CacheTags = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetCnameFlattening(v []*UpdateSiteFunctionRequestCnameFlattening) *UpdateSiteFunctionRequest {
+	s.CnameFlattening = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetCompressionRules(v []*UpdateSiteFunctionRequestCompressionRules) *UpdateSiteFunctionRequest {
+	s.CompressionRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetCrossBorderOptimization(v []*UpdateSiteFunctionRequestCrossBorderOptimization) *UpdateSiteFunctionRequest {
+	s.CrossBorderOptimization = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetDevelopmentMode(v []*UpdateSiteFunctionRequestDevelopmentMode) *UpdateSiteFunctionRequest {
+	s.DevelopmentMode = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetHttpRequestHeaderModificationRules(v []*UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) *UpdateSiteFunctionRequest {
+	s.HttpRequestHeaderModificationRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetHttpResponseHeaderModificationRules(v []*UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) *UpdateSiteFunctionRequest {
+	s.HttpResponseHeaderModificationRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetHttpsApplicationConfiguration(v []*UpdateSiteFunctionRequestHttpsApplicationConfiguration) *UpdateSiteFunctionRequest {
+	s.HttpsApplicationConfiguration = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetHttpsBasicConfiguration(v []*UpdateSiteFunctionRequestHttpsBasicConfiguration) *UpdateSiteFunctionRequest {
+	s.HttpsBasicConfiguration = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetImageTransform(v []*UpdateSiteFunctionRequestImageTransform) *UpdateSiteFunctionRequest {
+	s.ImageTransform = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetIpv6(v []*UpdateSiteFunctionRequestIpv6) *UpdateSiteFunctionRequest {
+	s.Ipv6 = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetManagedTransforms(v []*UpdateSiteFunctionRequestManagedTransforms) *UpdateSiteFunctionRequest {
+	s.ManagedTransforms = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetNetworkOptimization(v []*UpdateSiteFunctionRequestNetworkOptimization) *UpdateSiteFunctionRequest {
+	s.NetworkOptimization = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetOriginRules(v []*UpdateSiteFunctionRequestOriginRules) *UpdateSiteFunctionRequest {
+	s.OriginRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetRedirectRules(v []*UpdateSiteFunctionRequestRedirectRules) *UpdateSiteFunctionRequest {
+	s.RedirectRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetRewriteUrlRules(v []*UpdateSiteFunctionRequestRewriteUrlRules) *UpdateSiteFunctionRequest {
+	s.RewriteUrlRules = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetSeoBypass(v []*UpdateSiteFunctionRequestSeoBypass) *UpdateSiteFunctionRequest {
+	s.SeoBypass = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetSiteId(v int64) *UpdateSiteFunctionRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetSiteNameExclusive(v []*UpdateSiteFunctionRequestSiteNameExclusive) *UpdateSiteFunctionRequest {
+	s.SiteNameExclusive = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetSitePause(v []*UpdateSiteFunctionRequestSitePause) *UpdateSiteFunctionRequest {
+	s.SitePause = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequest) SetTieredCache(v []*UpdateSiteFunctionRequestTieredCache) *UpdateSiteFunctionRequest {
+	s.TieredCache = v
+	return s
+}
+
+type UpdateSiteFunctionRequestCacheReserve struct {
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCacheReserve) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCacheReserve) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCacheReserve) SetConfigId(v int64) *UpdateSiteFunctionRequestCacheReserve {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheReserve) SetEnable(v string) *UpdateSiteFunctionRequestCacheReserve {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheReserve) SetInstanceId(v string) *UpdateSiteFunctionRequestCacheReserve {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestCacheRules struct {
+	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
+	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	ConfigId                 *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCacheRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCacheRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetAdditionalCacheablePorts(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.AdditionalCacheablePorts = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetBrowserCacheMode(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.BrowserCacheMode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetBrowserCacheTtl(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.BrowserCacheTtl = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetBypassCache(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.BypassCache = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetCacheDeceptionArmor(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.CacheDeceptionArmor = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetCacheReserveEligibility(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.CacheReserveEligibility = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetCheckPresenceCookie(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.CheckPresenceCookie = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetCheckPresenceHeader(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.CheckPresenceHeader = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetConfigId(v int64) *UpdateSiteFunctionRequestCacheRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetEdgeCacheMode(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.EdgeCacheMode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetEdgeCacheTtl(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.EdgeCacheTtl = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetEdgeStatusCodeCacheTtl(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.EdgeStatusCodeCacheTtl = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetIncludeCookie(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.IncludeCookie = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetIncludeHeader(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.IncludeHeader = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetQueryString(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetQueryStringMode(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.QueryStringMode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetRule(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetRuleName(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetServeStale(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.ServeStale = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetSortQueryStringForCache(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.SortQueryStringForCache = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetUserDeviceType(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.UserDeviceType = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetUserGeo(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.UserGeo = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheRules) SetUserLanguage(v string) *UpdateSiteFunctionRequestCacheRules {
+	s.UserLanguage = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestCacheTags struct {
+	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCacheTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCacheTags) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCacheTags) SetCaseInsensitive(v string) *UpdateSiteFunctionRequestCacheTags {
+	s.CaseInsensitive = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheTags) SetConfigId(v int64) *UpdateSiteFunctionRequestCacheTags {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCacheTags) SetTagName(v string) *UpdateSiteFunctionRequestCacheTags {
+	s.TagName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestCnameFlattening struct {
+	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCnameFlattening) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCnameFlattening) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCnameFlattening) SetConfigId(v int64) *UpdateSiteFunctionRequestCnameFlattening {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCnameFlattening) SetFlattenMode(v string) *UpdateSiteFunctionRequestCnameFlattening {
+	s.FlattenMode = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestCompressionRules struct {
+	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCompressionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCompressionRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetBrotli(v string) *UpdateSiteFunctionRequestCompressionRules {
+	s.Brotli = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetConfigId(v int64) *UpdateSiteFunctionRequestCompressionRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetGzip(v string) *UpdateSiteFunctionRequestCompressionRules {
+	s.Gzip = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetRule(v string) *UpdateSiteFunctionRequestCompressionRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestCompressionRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCompressionRules) SetRuleName(v string) *UpdateSiteFunctionRequestCompressionRules {
+	s.RuleName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestCrossBorderOptimization struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestCrossBorderOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestCrossBorderOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestCrossBorderOptimization) SetConfigId(v int64) *UpdateSiteFunctionRequestCrossBorderOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestCrossBorderOptimization) SetEnable(v string) *UpdateSiteFunctionRequestCrossBorderOptimization {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestDevelopmentMode struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestDevelopmentMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestDevelopmentMode) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestDevelopmentMode) SetConfigId(v int64) *UpdateSiteFunctionRequestDevelopmentMode {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestDevelopmentMode) SetEnable(v string) *UpdateSiteFunctionRequestDevelopmentMode {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpRequestHeaderModificationRules struct {
+	ConfigId                  *int64                                                                                  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	RequestHeaderModification []*UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
+	Rule                      *string                                                                                 `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                *string                                                                                 `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                  *string                                                                                 `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) SetConfigId(v int64) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRequestHeaderModification(v []*UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RequestHeaderModification = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRule(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRuleName(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetName(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetOperation(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) SetValue(v string) *UpdateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpResponseHeaderModificationRules struct {
+	ConfigId                   *int64                                                                                    `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ResponseHeaderModification []*UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	Rule                       *string                                                                                   `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable                 *string                                                                                   `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName                   *string                                                                                   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) SetConfigId(v int64) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) SetResponseHeaderModification(v []*UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.ResponseHeaderModification = v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRule(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRuleName(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRules {
+	s.RuleName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetName(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetOperation(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) SetValue(v string) *UpdateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification {
+	s.Value = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpsApplicationConfiguration struct {
+	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
+	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpsApplicationConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpsApplicationConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvc(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvc = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcClear(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcClear = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcMa(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcMa = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetAltSvcPersist(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.AltSvcPersist = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetConfigId(v int64) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHsts(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.Hsts = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsIncludeSubdomains(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsIncludeSubdomains = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsMaxAge(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsMaxAge = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHstsPreload(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HstsPreload = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHttpsForce(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HttpsForce = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetHttpsForceCode(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.HttpsForceCode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetRule(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetRuleEnable(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsApplicationConfiguration) SetRuleName(v string) *UpdateSiteFunctionRequestHttpsApplicationConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestHttpsBasicConfiguration struct {
+	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
+	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestHttpsBasicConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestHttpsBasicConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetCiphersuite(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Ciphersuite = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetCiphersuiteGroup(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.CiphersuiteGroup = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetConfigId(v int64) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetHttp2(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Http2 = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetHttp3(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Http3 = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetHttps(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Https = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetOcspStapling(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.OcspStapling = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetRule(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetRuleEnable(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetRuleName(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetTls10(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls10 = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetTls11(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls11 = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetTls12(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls12 = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestHttpsBasicConfiguration) SetTls13(v string) *UpdateSiteFunctionRequestHttpsBasicConfiguration {
+	s.Tls13 = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestImageTransform struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestImageTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestImageTransform) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestImageTransform) SetConfigId(v int64) *UpdateSiteFunctionRequestImageTransform {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestImageTransform) SetEnable(v string) *UpdateSiteFunctionRequestImageTransform {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestIpv6 struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestIpv6) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestIpv6) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestIpv6) SetConfigId(v int64) *UpdateSiteFunctionRequestIpv6 {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestIpv6) SetEnable(v string) *UpdateSiteFunctionRequestIpv6 {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestManagedTransforms struct {
+	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
+	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	ConfigId                    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestManagedTransforms) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestManagedTransforms) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestManagedTransforms) SetAddClientGeolocationHeaders(v string) *UpdateSiteFunctionRequestManagedTransforms {
+	s.AddClientGeolocationHeaders = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestManagedTransforms) SetAddRealClientIpHeader(v string) *UpdateSiteFunctionRequestManagedTransforms {
+	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestManagedTransforms) SetConfigId(v int64) *UpdateSiteFunctionRequestManagedTransforms {
+	s.ConfigId = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestNetworkOptimization struct {
+	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
+	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestNetworkOptimization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestNetworkOptimization) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetConfigId(v int64) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetGrpc(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.Grpc = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetHttp2Origin(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.Http2Origin = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetRule(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetRuleEnable(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetRuleName(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetSmartRouting(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.SmartRouting = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetUploadMaxFilesize(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.UploadMaxFilesize = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestNetworkOptimization) SetWebsocket(v string) *UpdateSiteFunctionRequestNetworkOptimization {
+	s.Websocket = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestOriginRules struct {
+	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
+	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestOriginRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestOriginRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetConfigId(v int64) *UpdateSiteFunctionRequestOriginRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetDnsRecord(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.DnsRecord = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetOriginHost(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetOriginHttpPort(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.OriginHttpPort = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetOriginHttpsPort(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.OriginHttpsPort = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetOriginScheme(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.OriginScheme = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetOriginSni(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.OriginSni = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetRange(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.Range = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetRule(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestOriginRules) SetRuleName(v string) *UpdateSiteFunctionRequestOriginRules {
+	s.RuleName = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestRedirectRules struct {
+	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
+	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestRedirectRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestRedirectRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetConfigId(v int64) *UpdateSiteFunctionRequestRedirectRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetReserveQueryString(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.ReserveQueryString = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetRule(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetRuleName(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetStatusCode(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetTargetUrl(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRedirectRules) SetType(v string) *UpdateSiteFunctionRequestRedirectRules {
+	s.Type = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestRewriteUrlRules struct {
+	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
+	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestRewriteUrlRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestRewriteUrlRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetConfigId(v int64) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetQueryString(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.QueryString = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetRewriteQueryStringType(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.RewriteQueryStringType = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetRewriteUriType(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.RewriteUriType = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetRule(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetRuleEnable(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.RuleEnable = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetRuleName(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestRewriteUrlRules) SetUri(v string) *UpdateSiteFunctionRequestRewriteUrlRules {
+	s.Uri = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestSeoBypass struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestSeoBypass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestSeoBypass) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestSeoBypass) SetConfigId(v int64) *UpdateSiteFunctionRequestSeoBypass {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestSeoBypass) SetEnable(v string) *UpdateSiteFunctionRequestSeoBypass {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestSiteNameExclusive struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestSiteNameExclusive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestSiteNameExclusive) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestSiteNameExclusive) SetConfigId(v int64) *UpdateSiteFunctionRequestSiteNameExclusive {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestSiteNameExclusive) SetEnable(v string) *UpdateSiteFunctionRequestSiteNameExclusive {
+	s.Enable = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestSitePause struct {
+	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	Paused   *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestSitePause) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestSitePause) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestSitePause) SetConfigId(v int64) *UpdateSiteFunctionRequestSitePause {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestSitePause) SetPaused(v string) *UpdateSiteFunctionRequestSitePause {
+	s.Paused = &v
+	return s
+}
+
+type UpdateSiteFunctionRequestTieredCache struct {
+	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
+	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+}
+
+func (s UpdateSiteFunctionRequestTieredCache) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionRequestTieredCache) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionRequestTieredCache) SetCacheArchitectureMode(v string) *UpdateSiteFunctionRequestTieredCache {
+	s.CacheArchitectureMode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionRequestTieredCache) SetConfigId(v int64) *UpdateSiteFunctionRequestTieredCache {
+	s.ConfigId = &v
+	return s
+}
+
+type UpdateSiteFunctionShrinkRequest struct {
+	CacheReserveShrink                        *string `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty"`
+	CacheRulesShrink                          *string `json:"CacheRules,omitempty" xml:"CacheRules,omitempty"`
+	CacheTagsShrink                           *string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty"`
+	CnameFlatteningShrink                     *string `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty"`
+	CompressionRulesShrink                    *string `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty"`
+	CrossBorderOptimizationShrink             *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
+	DevelopmentModeShrink                     *string `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty"`
+	HttpRequestHeaderModificationRulesShrink  *string `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty"`
+	HttpResponseHeaderModificationRulesShrink *string `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty"`
+	HttpsApplicationConfigurationShrink       *string `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty"`
+	HttpsBasicConfigurationShrink             *string `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty"`
+	ImageTransformShrink                      *string `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty"`
+	Ipv6Shrink                                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	ManagedTransformsShrink                   *string `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty"`
+	NetworkOptimizationShrink                 *string `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty"`
+	OriginRulesShrink                         *string `json:"OriginRules,omitempty" xml:"OriginRules,omitempty"`
+	RedirectRulesShrink                       *string `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty"`
+	RewriteUrlRulesShrink                     *string `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty"`
+	SeoBypassShrink                           *string `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateSiteFunction
+	SiteId                  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteNameExclusiveShrink *string `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty"`
+	SitePauseShrink         *string `json:"SitePause,omitempty" xml:"SitePause,omitempty"`
+	TieredCacheShrink       *string `json:"TieredCache,omitempty" xml:"TieredCache,omitempty"`
+}
+
+func (s UpdateSiteFunctionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCacheReserveShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CacheReserveShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCacheRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CacheRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCacheTagsShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CacheTagsShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCnameFlatteningShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CnameFlatteningShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCompressionRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CompressionRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetCrossBorderOptimizationShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.CrossBorderOptimizationShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetDevelopmentModeShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.DevelopmentModeShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetHttpRequestHeaderModificationRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.HttpRequestHeaderModificationRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetHttpResponseHeaderModificationRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.HttpResponseHeaderModificationRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetHttpsApplicationConfigurationShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.HttpsApplicationConfigurationShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetHttpsBasicConfigurationShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.HttpsBasicConfigurationShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetImageTransformShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.ImageTransformShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetIpv6Shrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.Ipv6Shrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetManagedTransformsShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.ManagedTransformsShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetNetworkOptimizationShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.NetworkOptimizationShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetOriginRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.OriginRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetRedirectRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.RedirectRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetRewriteUrlRulesShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.RewriteUrlRulesShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetSeoBypassShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.SeoBypassShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetSiteId(v int64) *UpdateSiteFunctionShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetSiteNameExclusiveShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.SiteNameExclusiveShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetSitePauseShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.SitePauseShrink = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionShrinkRequest) SetTieredCacheShrink(v string) *UpdateSiteFunctionShrinkRequest {
+	s.TieredCacheShrink = &v
+	return s
+}
+
+type UpdateSiteFunctionResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSiteFunctionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionResponseBody) SetRequestId(v string) *UpdateSiteFunctionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSiteFunctionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSiteFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSiteFunctionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSiteFunctionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSiteFunctionResponse) SetHeaders(v map[string]*string) *UpdateSiteFunctionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSiteFunctionResponse) SetStatusCode(v int32) *UpdateSiteFunctionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSiteFunctionResponse) SetBody(v *UpdateSiteFunctionResponseBody) *UpdateSiteFunctionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSiteVanityNSRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The custom nameserver names. You can specify two to five custom nameserver names. Separate multiple names with commas (,).
+	//
 	// example:
 	//
 	// ns1.example.com,ns2.example.com
@@ -30588,7 +43449,7 @@ func (s *UpdateSiteVanityNSRequest) SetVanityNSList(v string) *UpdateSiteVanityN
 }
 
 type UpdateSiteVanityNSResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -30639,20 +43500,36 @@ func (s *UpdateSiteVanityNSResponse) SetBody(v *UpdateSiteVanityNSResponseBody) 
 }
 
 type UpdateUserDeliveryTaskRequest struct {
+	// The log category. Valid values:
+	//
+	// 	- dcdn_log_access_l1 (default): access logs.
+	//
+	// 	- dcdn_log_er: Edge Routine logs.
+	//
+	// 	- dcdn_log_waf: firewall logs.
+	//
+	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	//
 	// example:
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The discard rate. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	DiscardRate *float32 `json:"DiscardRate,omitempty" xml:"DiscardRate,omitempty"`
+	// The log fields that you want to include in logs to be delivered. Separate the log fields with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ClientRequestID,ClientRequestHost
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30690,7 +43567,7 @@ func (s *UpdateUserDeliveryTaskRequest) SetTaskName(v string) *UpdateUserDeliver
 }
 
 type UpdateUserDeliveryTaskResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -30741,12 +43618,16 @@ func (s *UpdateUserDeliveryTaskResponse) SetBody(v *UpdateUserDeliveryTaskRespon
 }
 
 type UpdateUserDeliveryTaskStatusRequest struct {
+	// Enables or disables the delivery task. Valid values: online and offline.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// online
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The name of the delivery task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30774,16 +43655,20 @@ func (s *UpdateUserDeliveryTaskStatusRequest) SetTaskName(v string) *UpdateUserD
 }
 
 type UpdateUserDeliveryTaskStatusResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the delivery task.
+	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the delivery task.
+	//
 	// example:
 	//
 	// test_project
@@ -30843,24 +43728,38 @@ func (s *UpdateUserDeliveryTaskStatusResponse) SetBody(v *UpdateUserDeliveryTask
 }
 
 type UpdateWafRuleRequest struct {
+	// The configuration of the rule.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The order of the rule in the ruleset.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The status of the rule.
+	//
 	// example:
 	//
 	// on
@@ -30906,24 +43805,38 @@ func (s *UpdateWafRuleRequest) SetStatus(v string) *UpdateWafRuleRequest {
 }
 
 type UpdateWafRuleShrinkRequest struct {
+	// The configuration of the rule.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The order of the rule in the ruleset.
+	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	SiteId      *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
+	// example:
+	//
+	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The status of the rule.
+	//
 	// example:
 	//
 	// on
@@ -30969,7 +43882,14 @@ func (s *UpdateWafRuleShrinkRequest) SetStatus(v string) *UpdateWafRuleShrinkReq
 }
 
 type UpdateWafRuleResponseBody struct {
+	// The ID of the WAF rule.[](~~2850237~~)
+	//
+	// example:
+	//
+	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -31024,20 +43944,28 @@ func (s *UpdateWafRuleResponse) SetBody(v *UpdateWafRuleResponseBody) *UpdateWaf
 }
 
 type UpdateWafRulesetRequest struct {
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version of the website.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// The status to which you want to change the ruleset.
+	//
 	// example:
 	//
 	// on
@@ -31073,6 +44001,8 @@ func (s *UpdateWafRulesetRequest) SetStatus(v string) *UpdateWafRulesetRequest {
 }
 
 type UpdateWafRulesetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -31122,69 +44052,142 @@ func (s *UpdateWafRulesetResponse) SetBody(v *UpdateWafRulesetResponseBody) *Upd
 }
 
 type UpdateWaitingRoomRequest struct {
+	// The name of the custom cookie.
+	//
 	// example:
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// Hello%20world!
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the waiting room.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to disable session renewal. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Specifies whether to enable the waiting room. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
-	Enable          *string                                    `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The hostname and path.
 	HostNameAndPath []*UpdateWaitingRoomRequestHostNameAndPath `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty" type:"Repeated"`
+	// Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the waiting room.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// example:
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Specifies whether to queue all requests. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The maximum number of active users.
+	//
 	// example:
 	//
 	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6a51d5bc6460887abd129****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// default
@@ -31290,14 +44293,20 @@ func (s *UpdateWaitingRoomRequest) SetWaitingRoomType(v string) *UpdateWaitingRo
 }
 
 type UpdateWaitingRoomRequestHostNameAndPath struct {
+	// The domain name.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The probe path.
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The subdomain.
+	//
 	// example:
 	//
 	// test.
@@ -31328,69 +44337,142 @@ func (s *UpdateWaitingRoomRequestHostNameAndPath) SetSubdomain(v string) *Update
 }
 
 type UpdateWaitingRoomShrinkRequest struct {
+	// The name of the custom cookie.
+	//
 	// example:
 	//
 	// __aliwaitingroom_example
 	CookieName *string `json:"CookieName,omitempty" xml:"CookieName,omitempty"`
+	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// Hello%20world!
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the waiting room.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to disable session renewal. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Specifies whether to enable the waiting room. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
-	Enable                *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The hostname and path.
 	HostNameAndPathShrink *string `json:"HostNameAndPath,omitempty" xml:"HostNameAndPath,omitempty"`
+	// Specifies whether to enable JSON response. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The language of the waiting room page. You must specify this parameter if you set WaitingRoomType to default. Valid values:
+	//
+	// 	- enus: English.
+	//
+	// 	- zhcn: Simplified Chinese.
+	//
+	// 	- zhhk: Traditional Chinese.
+	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the waiting room.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// example:
 	//
 	// 200
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Specifies whether to queue all requests. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	QueueAllEnable *string `json:"QueueAllEnable,omitempty" xml:"QueueAllEnable,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: Users are blocked from reaching the origin.
+	//
 	// example:
 	//
 	// random
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7096621098****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The maximum number of active users.
+	//
 	// example:
 	//
 	// 300
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6a51d5bc6460887abd129****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// default
@@ -31496,6 +44578,8 @@ func (s *UpdateWaitingRoomShrinkRequest) SetWaitingRoomType(v string) *UpdateWai
 }
 
 type UpdateWaitingRoomResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0195619f-eab3-4a66-ac00-ed53d913e72e
@@ -31545,81 +44629,164 @@ func (s *UpdateWaitingRoomResponse) SetBody(v *UpdateWaitingRoomResponseBody) *U
 }
 
 type UpdateWaitingRoomEventRequest struct {
+	// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+	//
 	// example:
 	//
 	// html-yets-maqi1111
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
+	// The description of the waiting room.
+	//
 	// example:
 	//
 	// http://yywyyw.com
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to disable session renewal. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// off
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
+	// Specifies whether to enable the waiting room event. Valid values:
+	//
+	// 	- `on`
+	//
+	// 	- `off`
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The end time of the event. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1719849600
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to enable JSON response. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// off
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
+	// The default language. Valid values:
+	//
+	// 	- `enus`: English.
+	//
+	// 	- `zhcn`: Simplified Chinese.
+	//
+	// 	- `zhhk`: Traditional Chinese.
+	//
 	// example:
 	//
 	// enus
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the waiting room event.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The maximum number of new users per minute.
+	//
 	// example:
 	//
 	// 300
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
+	// Specifies whether to enable pre-queuing.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
+	// The start time for pre-queuing.
+	//
 	// example:
 	//
 	// 1719763200
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
+	// The queuing method. Valid values:
+	//
+	// 	- random: Users gain access to the origin randomly, regardless of the arrival time.
+	//
+	// 	- fifo: Users gain access to the origin in order of arrival.
+	//
+	// 	- passthrough: Users pass through the waiting room and go straight to the origin.
+	//
+	// 	- reject-all: All requests are blocked from accessing the origin.
+	//
 	// example:
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
+	// The HTTP status code to return while a user is in the queue. Valid values:
+	//
+	// 	- 200
+	//
+	// 	- 202
+	//
+	// 	- 429
+	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
+	// Specifies whether to enable random queuing.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
+	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The start time of the event. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1719763200
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The maximum number of active users.
+	//
 	// example:
 	//
 	// 200
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
+	// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
+	//
 	// example:
 	//
 	// 89677721098****
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
+	// The type of the waiting room. Valid values:
+	//
+	// 	- default
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -31735,6 +44902,8 @@ func (s *UpdateWaitingRoomEventRequest) SetWaitingRoomType(v string) *UpdateWait
 }
 
 type UpdateWaitingRoomEventResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0195619f-eab3-4a66-ac00-ed53d913e72e
@@ -31784,30 +44953,44 @@ func (s *UpdateWaitingRoomEventResponse) SetBody(v *UpdateWaitingRoomEventRespon
 }
 
 type UpdateWaitingRoomRuleRequest struct {
+	// The rule content, which is a policy or conditional expression.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The ID of the waiting room bypass rule that you want to update. You can call [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) to obtain the ID.
+	//
 	// example:
 	//
 	// 8987739839****
@@ -31848,6 +45031,8 @@ func (s *UpdateWaitingRoomRuleRequest) SetWaitingRoomRuleId(v int64) *UpdateWait
 }
 
 type UpdateWaitingRoomRuleResponseBody struct {
+	// The request ID, which is used to trace a call.
+	//
 	// example:
 	//
 	// 9bfe9d95-7bf6-469d-a628-ed7bc9f25073
@@ -31897,24 +45082,40 @@ func (s *UpdateWaitingRoomRuleResponse) SetBody(v *UpdateWaitingRoomRuleResponse
 }
 
 type UploadFileRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type of the purge or prefetch task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **preload**: prefetches the file.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the upload task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// purge_task_2024_11_11
 	UploadTaskName *string `json:"UploadTaskName,omitempty" xml:"UploadTaskName,omitempty"`
+	// The OSS URL of the file that contains resources to be purged or prefetched.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31952,24 +45153,40 @@ func (s *UploadFileRequest) SetUrl(v string) *UploadFileRequest {
 }
 
 type UploadFileAdvanceRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The type of the purge or prefetch task. Valid values:
+	//
+	// 	- **file*	- (default): purges the cache by file.
+	//
+	// 	- **preload**: prefetches the file.
+	//
+	// 	- **directory**: purges the cache by directory.
+	//
+	// 	- **ignoreParams**: purges the cache by URL with specified parameters ignored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// file
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the upload task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// purge_task_2024_11_11
 	UploadTaskName *string `json:"UploadTaskName,omitempty" xml:"UploadTaskName,omitempty"`
+	// The OSS URL of the file that contains resources to be purged or prefetched.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32007,12 +45224,14 @@ func (s *UploadFileAdvanceRequest) SetUrlObject(v io.Reader) *UploadFileAdvanceR
 }
 
 type UploadFileResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the file upload task. You can use this ID for task submission or query subsequently.
+	//
 	// example:
 	//
 	// 159253299357****
@@ -32067,6 +45286,8 @@ func (s *UploadFileResponse) SetBody(v *UploadFileResponseBody) *UploadFileRespo
 }
 
 type VerifySiteRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32089,10 +45310,18 @@ func (s *VerifySiteRequest) SetSiteId(v int64) *VerifySiteRequest {
 }
 
 type VerifySiteResponseBody struct {
+	// Indicates whether the verification passed. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 65C66B7B-671A-8297-9187-2R5477247B76
@@ -32195,7 +45424,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 激活客户端证书
+// Activates a client certificate.
 //
 // @param request - ActivateClientCertificateRequest
 //
@@ -32233,7 +45462,7 @@ func (client *Client) ActivateClientCertificateWithOptions(request *ActivateClie
 
 // Summary:
 //
-// 激活客户端证书
+// Activates a client certificate.
 //
 // @param request - ActivateClientCertificateRequest
 //
@@ -32251,7 +45480,13 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 
 // Summary:
 //
-// 创建记录
+// Adds DNS records of different record types at a time..
+//
+// Description:
+//
+// This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+//
+// Successful and failed records along with error messages are listed in the response.
 //
 // @param tmpReq - BatchCreateRecordsRequest
 //
@@ -32303,7 +45538,13 @@ func (client *Client) BatchCreateRecordsWithOptions(tmpReq *BatchCreateRecordsRe
 
 // Summary:
 //
-// 创建记录
+// Adds DNS records of different record types at a time..
+//
+// Description:
+//
+// This operation allows you to create or update multiple DNS records at a time. It is suitable for managing a large number of DNS configurations. Supported record types include but are not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. The operation allows you to configure the priority, flag, tag, and weight for DNS records. In addition, for specific types of records, such as CERT, SSHFP, SMIMEA, and TLSA, advanced settings such as certificate information and encryption algorithms are also supported.
+//
+// Successful and failed records along with error messages are listed in the response.
 //
 // @param request - BatchCreateRecordsRequest
 //
@@ -32321,7 +45562,7 @@ func (client *Client) BatchCreateRecords(request *BatchCreateRecordsRequest) (_r
 
 // Summary:
 //
-// 批量创建WAF规则
+// Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
 //
 // @param tmpReq - BatchCreateWafRulesRequest
 //
@@ -32391,7 +45632,7 @@ func (client *Client) BatchCreateWafRulesWithOptions(tmpReq *BatchCreateWafRules
 
 // Summary:
 //
-// 批量创建WAF规则
+// Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
 //
 // @param request - BatchCreateWafRulesRequest
 //
@@ -32409,7 +45650,7 @@ func (client *Client) BatchCreateWafRules(request *BatchCreateWafRulesRequest) (
 
 // Summary:
 //
-// 批量删除Namespace的key-value对
+// Deletes key-value pairs from a namespace at a time based on keys.
 //
 // @param tmpReq - BatchDeleteKvRequest
 //
@@ -32463,7 +45704,7 @@ func (client *Client) BatchDeleteKvWithOptions(tmpReq *BatchDeleteKvRequest, run
 
 // Summary:
 //
-// 批量删除Namespace的key-value对
+// Deletes key-value pairs from a namespace at a time based on keys.
 //
 // @param request - BatchDeleteKvRequest
 //
@@ -32481,7 +45722,79 @@ func (client *Client) BatchDeleteKv(request *BatchDeleteKvRequest) (_result *Bat
 
 // Summary:
 //
-// 批量删除Namespace下的KV队，支持大body的上传，上限100M
+// Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestBatchDeleteWithHighCapacity() error {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for deleting key-value pairs at a time.
+//
+//     	namespace := "test_batch_put"
+//
+//     	rawReq := BatchDeleteKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     	}
+//
+//     	for i := 0; i < 10000; i++ {
+//
+//     		key := fmt.Sprintf("test_key_%d", i)
+//
+//     		rawReq.Keys = append(rawReq.Keys, &key)
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+//
+//     	reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		UrlObject: bytes.NewReader(payload),
+//
+//     	}
+//
+//     	resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -32527,7 +45840,79 @@ func (client *Client) BatchDeleteKvWithHighCapacityWithOptions(request *BatchDel
 
 // Summary:
 //
-// 批量删除Namespace下的KV队，支持大body的上传，上限100M
+// Deletes multiple key-value pairs from a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html). For small request bodies, we recommend that you use [BatchDeleteKv](https://help.aliyun.com/document_detail/2850204.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchDeleteKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestBatchDeleteWithHighCapacity() error {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for deleting key-value pairs at a time.
+//
+//     	namespace := "test_batch_put"
+//
+//     	rawReq := BatchDeleteKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     	}
+//
+//     	for i := 0; i < 10000; i++ {
+//
+//     		key := fmt.Sprintf("test_key_%d", i)
+//
+//     		rawReq.Keys = append(rawReq.Keys, &key)
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the BatchDeleteKvWithHighCapacity operation for deletion.
+//
+//     	reqHighCapacity := BatchDeleteKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		UrlObject: bytes.NewReader(payload),
+//
+//     	}
+//
+//     	resp, err := cli.BatchDeleteKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - BatchDeleteKvWithHighCapacityRequest
 //
@@ -32656,7 +46041,7 @@ func (client *Client) BatchDeleteKvWithHighCapacityAdvance(request *BatchDeleteK
 
 // Summary:
 //
-// 批量获取表达式的匹配项
+// Batch queries the objects that match specific expressions.
 //
 // @param tmpReq - BatchGetExpressionFieldsRequest
 //
@@ -32714,7 +46099,7 @@ func (client *Client) BatchGetExpressionFieldsWithOptions(tmpReq *BatchGetExpres
 
 // Summary:
 //
-// 批量获取表达式的匹配项
+// Batch queries the objects that match specific expressions.
 //
 // @param request - BatchGetExpressionFieldsRequest
 //
@@ -32732,7 +46117,7 @@ func (client *Client) BatchGetExpressionFields(request *BatchGetExpressionFields
 
 // Summary:
 //
-// 批量设置Namespace的key-value对
+// Configures key-value pairs for a namespace at a time based on specified keys.
 //
 // @param tmpReq - BatchPutKvRequest
 //
@@ -32786,7 +46171,7 @@ func (client *Client) BatchPutKvWithOptions(tmpReq *BatchPutKvRequest, runtime *
 
 // Summary:
 //
-// 批量设置Namespace的key-value对
+// Configures key-value pairs for a namespace at a time based on specified keys.
 //
 // @param request - BatchPutKvRequest
 //
@@ -32804,7 +46189,95 @@ func (client *Client) BatchPutKv(request *BatchPutKvRequest) (_result *BatchPutK
 
 // Summary:
 //
-// 批量设置Namespace的key-value对，支持最大100M的请求体
+// Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestBatchPutKvWithHighCapacity() error {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for uploading key-value pairs at a time.
+//
+//     	namespace := "test_batch_put"
+//
+//     	numKv := 10000
+//
+//     	kvList := make([]*BatchPutKvRequestKvList, numKv)
+//
+//     	test_value := strings.Repeat("a", 10*1024)
+//
+//     	for i := 0; i < numKv; i++ {
+//
+//     		key := fmt.Sprintf("test_key_%d", i)
+//
+//     		value := test_value
+//
+//     		kvList[i] = &BatchPutKvRequestKvList{
+//
+//     			Key:   &key,
+//
+//     			Value: &value,
+//
+//     		}
+//
+//     	}
+//
+//     	rawReq := BatchPutKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		KvList:    kvList,
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+//
+//     	reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		UrlObject: bytes.NewReader(payload),
+//
+//     	}
+//
+//     	resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -32850,7 +46323,95 @@ func (client *Client) BatchPutKvWithHighCapacityWithOptions(request *BatchPutKvW
 
 // Summary:
 //
-// 批量设置Namespace的key-value对，支持最大100M的请求体
+// Configures key-value pairs for a namespace at a time based on specified keys. The request body can be up to 100 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html). For small request bodies, we recommend that you use [BatchPutKv](https://help.aliyun.com/document_detail/2850203.html) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and BatchPutKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestBatchPutKvWithHighCapacity() error {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for uploading key-value pairs at a time.
+//
+//     	namespace := "test_batch_put"
+//
+//     	numKv := 10000
+//
+//     	kvList := make([]*BatchPutKvRequestKvList, numKv)
+//
+//     	test_value := strings.Repeat("a", 10*1024)
+//
+//     	for i := 0; i < numKv; i++ {
+//
+//     		key := fmt.Sprintf("test_key_%d", i)
+//
+//     		value := test_value
+//
+//     		kvList[i] = &BatchPutKvRequestKvList{
+//
+//     			Key:   &key,
+//
+//     			Value: &value,
+//
+//     		}
+//
+//     	}
+//
+//     	rawReq := BatchPutKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		KvList:    kvList,
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the BatchPutKvWithHighCapacity operation for upload.
+//
+//     	reqHighCapacity := BatchPutKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		UrlObject: bytes.NewReader(payload),
+//
+//     	}
+//
+//     	resp, err := cli.BatchPutKvWithHighCapacityAdvance(&reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - BatchPutKvWithHighCapacityRequest
 //
@@ -32979,7 +46540,7 @@ func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithH
 
 // Summary:
 //
-// 批量修改WAF规则
+// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
 //
 // @param tmpReq - BatchUpdateWafRulesRequest
 //
@@ -33053,7 +46614,7 @@ func (client *Client) BatchUpdateWafRulesWithOptions(tmpReq *BatchUpdateWafRules
 
 // Summary:
 //
-// 批量修改WAF规则
+// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
 //
 // @param request - BatchUpdateWafRulesRequest
 //
@@ -33071,7 +46632,7 @@ func (client *Client) BatchUpdateWafRules(request *BatchUpdateWafRulesRequest) (
 
 // Summary:
 //
-// URL封禁
+// Blocks URLs.
 //
 // @param tmpReq - BlockObjectRequest
 //
@@ -33135,7 +46696,7 @@ func (client *Client) BlockObjectWithOptions(tmpReq *BlockObjectRequest, runtime
 
 // Summary:
 //
-// URL封禁
+// Blocks URLs.
 //
 // @param request - BlockObjectRequest
 //
@@ -33153,7 +46714,7 @@ func (client *Client) BlockObject(request *BlockObjectRequest) (_result *BlockOb
 
 // Summary:
 //
-// 修改站点的企业资源组
+// Moves a website from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -33207,7 +46768,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 修改站点的企业资源组
+// Moves a website from one resource group to another.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -33225,7 +46786,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 校验站点名称是否可用
+// Checks whether a specified website name is available.
 //
 // @param request - CheckSiteNameRequest
 //
@@ -33267,7 +46828,7 @@ func (client *Client) CheckSiteNameWithOptions(request *CheckSiteNameRequest, ru
 
 // Summary:
 //
-// 校验站点名称是否可用
+// Checks whether a specified website name is available.
 //
 // @param request - CheckSiteNameRequest
 //
@@ -33285,7 +46846,7 @@ func (client *Client) CheckSiteName(request *CheckSiteNameRequest) (_result *Che
 
 // Summary:
 //
-// 实时日志任务投递名检查
+// Checks the name of a real-time log delivery task.
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -33323,7 +46884,7 @@ func (client *Client) CheckSiteProjectNameWithOptions(request *CheckSiteProjectN
 
 // Summary:
 //
-// 实时日志任务投递名检查
+// Checks the name of a real-time log delivery task.
 //
 // @param request - CheckSiteProjectNameRequest
 //
@@ -33341,7 +46902,7 @@ func (client *Client) CheckSiteProjectName(request *CheckSiteProjectNameRequest)
 
 // Summary:
 //
-// 实时日志用户任务投递名检查
+// Checks the name of a real-time log delivery task by account.
 //
 // @param request - CheckUserProjectNameRequest
 //
@@ -33379,7 +46940,7 @@ func (client *Client) CheckUserProjectNameWithOptions(request *CheckUserProjectN
 
 // Summary:
 //
-// 实时日志用户任务投递名检查
+// Checks the name of a real-time log delivery task by account.
 //
 // @param request - CheckUserProjectNameRequest
 //
@@ -33397,7 +46958,7 @@ func (client *Client) CheckUserProjectName(request *CheckUserProjectNameRequest)
 
 // Summary:
 //
-// 提交Routine测试版本代码
+// Commits the unstable code in the staging environment to generate an official code version.
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -33443,7 +47004,7 @@ func (client *Client) CommitRoutineStagingCodeWithOptions(request *CommitRoutine
 
 // Summary:
 //
-// 提交Routine测试版本代码
+// Commits the unstable code in the staging environment to generate an official code version.
 //
 // @param request - CommitRoutineStagingCodeRequest
 //
@@ -33461,7 +47022,7 @@ func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCode
 
 // Summary:
 //
-// 创建定制场景策略
+// Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -33519,7 +47080,7 @@ func (client *Client) CreateCustomScenePolicyWithOptions(request *CreateCustomSc
 
 // Summary:
 //
-// 创建定制场景策略
+// Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
 //
 // @param request - CreateCustomScenePolicyRequest
 //
@@ -33537,7 +47098,7 @@ func (client *Client) CreateCustomScenePolicy(request *CreateCustomScenePolicyRe
 
 // Summary:
 //
-// 创建边缘容器的应用
+// Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -33631,7 +47192,7 @@ func (client *Client) CreateEdgeContainerAppWithOptions(request *CreateEdgeConta
 
 // Summary:
 //
-// 创建边缘容器的应用
+// Creates a containerized application. You can deploy and release a version of the application across points of presence (POPs).
 //
 // @param request - CreateEdgeContainerAppRequest
 //
@@ -33649,7 +47210,7 @@ func (client *Client) CreateEdgeContainerApp(request *CreateEdgeContainerAppRequ
 
 // Summary:
 //
-// 创建一个边缘容器应用的域名记录
+// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -33699,7 +47260,7 @@ func (client *Client) CreateEdgeContainerAppRecordWithOptions(request *CreateEdg
 
 // Summary:
 //
-// 创建一个边缘容器应用的域名记录
+// Associates a domain name with a containerized application. This way, requests destined for the associated domain name are forwarded to the application.
 //
 // @param request - CreateEdgeContainerAppRecordRequest
 //
@@ -33795,7 +47356,7 @@ func (client *Client) CreateEdgeContainerAppVersion(request *CreateEdgeContainer
 
 // Summary:
 //
-// 添加Namespace
+// Create a namespace in your Alibaba Cloud account.
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -33841,7 +47402,7 @@ func (client *Client) CreateKvNamespaceWithOptions(request *CreateKvNamespaceReq
 
 // Summary:
 //
-// 添加Namespace
+// Create a namespace in your Alibaba Cloud account.
 //
 // @param request - CreateKvNamespaceRequest
 //
@@ -33859,7 +47420,7 @@ func (client *Client) CreateKvNamespace(request *CreateKvNamespaceRequest) (_res
 
 // Summary:
 //
-// 创建自定义列表
+// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
 //
 // @param tmpReq - CreateListRequest
 //
@@ -33919,7 +47480,7 @@ func (client *Client) CreateListWithOptions(tmpReq *CreateListRequest, runtime *
 
 // Summary:
 //
-// 创建自定义列表
+// Creates a list. Lists are used for the referencing of values in the rules engine to implement complex logic and control in security policies.
 //
 // @param request - CreateListRequest
 //
@@ -33937,7 +47498,67 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 
 // Summary:
 //
-// 调用CreatePage创建自定义响应页面
+// 开启源站防护
+//
+// @param request - CreateOriginProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOriginProtectionResponse
+func (client *Client) CreateOriginProtectionWithOptions(request *CreateOriginProtectionRequest, runtime *util.RuntimeOptions) (_result *CreateOriginProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOriginProtection"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOriginProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启源站防护
+//
+// @param request - CreateOriginProtectionRequest
+//
+// @return CreateOriginProtectionResponse
+func (client *Client) CreateOriginProtection(request *CreateOriginProtectionRequest) (_result *CreateOriginProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOriginProtectionResponse{}
+	_body, _err := client.CreateOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
 //
 // @param request - CreatePageRequest
 //
@@ -33991,7 +47612,7 @@ func (client *Client) CreatePageWithOptions(request *CreatePageRequest, runtime 
 
 // Summary:
 //
-// 调用CreatePage创建自定义响应页面
+// Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
 //
 // @param request - CreatePageRequest
 //
@@ -34009,7 +47630,7 @@ func (client *Client) CreatePage(request *CreatePageRequest) (_result *CreatePag
 
 // Summary:
 //
-// 创建记录
+// Creates a DNS record for a specific website.
 //
 // @param tmpReq - CreateRecordRequest
 //
@@ -34101,7 +47722,7 @@ func (client *Client) CreateRecordWithOptions(tmpReq *CreateRecordRequest, runti
 
 // Summary:
 //
-// 创建记录
+// Creates a DNS record for a specific website.
 //
 // @param request - CreateRecordRequest
 //
@@ -34119,7 +47740,7 @@ func (client *Client) CreateRecord(request *CreateRecordRequest) (_result *Creat
 
 // Summary:
 //
-// 创建routine
+// Creates a routine.
 //
 // @param request - CreateRoutineRequest
 //
@@ -34169,7 +47790,7 @@ func (client *Client) CreateRoutineWithOptions(request *CreateRoutineRequest, ru
 
 // Summary:
 //
-// 创建routine
+// Creates a routine.
 //
 // @param request - CreateRoutineRequest
 //
@@ -34187,7 +47808,7 @@ func (client *Client) CreateRoutine(request *CreateRoutineRequest) (_result *Cre
 
 // Summary:
 //
-// 添加Routine关联域名
+// Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -34237,7 +47858,7 @@ func (client *Client) CreateRoutineRelatedRecordWithOptions(request *CreateRouti
 
 // Summary:
 //
-// 添加Routine关联域名
+// Adds a record to map a domain that is associated with a routine. This record is used to trigger the associated routine code.
 //
 // @param request - CreateRoutineRelatedRecordRequest
 //
@@ -34255,7 +47876,7 @@ func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRe
 
 // Summary:
 //
-// 添加Routine关联路由
+// Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
 //
 // @param request - CreateRoutineRelatedRouteRequest
 //
@@ -34305,7 +47926,7 @@ func (client *Client) CreateRoutineRelatedRouteWithOptions(request *CreateRoutin
 
 // Summary:
 //
-// 添加Routine关联路由
+// Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
 //
 // @param request - CreateRoutineRelatedRouteRequest
 //
@@ -34323,7 +47944,7 @@ func (client *Client) CreateRoutineRelatedRoute(request *CreateRoutineRelatedRou
 
 // Summary:
 //
-// 批量新增定时预热任务的计划
+// Creates scheduled prefetch plans.
 //
 // @param tmpReq - CreateScheduledPreloadExecutionsRequest
 //
@@ -34377,7 +47998,7 @@ func (client *Client) CreateScheduledPreloadExecutionsWithOptions(tmpReq *Create
 
 // Summary:
 //
-// 批量新增定时预热任务的计划
+// Creates scheduled prefetch plans.
 //
 // @param request - CreateScheduledPreloadExecutionsRequest
 //
@@ -34395,7 +48016,7 @@ func (client *Client) CreateScheduledPreloadExecutions(request *CreateScheduledP
 
 // Summary:
 //
-// 新增定时预热任务
+// Adds a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -34453,7 +48074,7 @@ func (client *Client) CreateScheduledPreloadJobWithOptions(request *CreateSchedu
 
 // Summary:
 //
-// 新增定时预热任务
+// Adds a scheduled prefetch task.
 //
 // @param request - CreateScheduledPreloadJobRequest
 //
@@ -34471,7 +48092,13 @@ func (client *Client) CreateScheduledPreloadJob(request *CreateScheduledPreloadJ
 
 // Summary:
 //
-// 创建站点
+// Adds a website.
+//
+// Description:
+//
+//   Make sure that you have an available plan before you add a website.
+//
+// 	- Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
 //
 // @param request - CreateSiteRequest
 //
@@ -34529,7 +48156,13 @@ func (client *Client) CreateSiteWithOptions(request *CreateSiteRequest, runtime 
 
 // Summary:
 //
-// 创建站点
+// Adds a website.
+//
+// Description:
+//
+//   Make sure that you have an available plan before you add a website.
+//
+// 	- Make sure that your website domain name has an ICP filing if the location you want to specify covers the Chinese mainland.
 //
 // @param request - CreateSiteRequest
 //
@@ -34547,7 +48180,15 @@ func (client *Client) CreateSite(request *CreateSiteRequest) (_result *CreateSit
 
 // Summary:
 //
-// 新建自定义字段
+// Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+//
+// Description:
+//
+//   **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+//
+// 	- **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+//
+// 	- **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
 //
 // @param tmpReq - CreateSiteCustomLogRequest
 //
@@ -34615,7 +48256,15 @@ func (client *Client) CreateSiteCustomLogWithOptions(tmpReq *CreateSiteCustomLog
 
 // Summary:
 //
-// 新建自定义字段
+// Adds the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
+//
+// Description:
+//
+//   **Custom field limits**: The key name of a custom field can contain only letters, digits, underscores (_), and spaces. The key name cannot contain other characters. Otherwise, errors may occur.
+//
+// 	- **Parameter passing**: Submit `SiteId`, `RequestHeaders`, `ResponseHeaders`, and `Cookies` by using `formData`. Each array element matches a custom field name.
+//
+// 	- **(Required) SiteId**: Although `SiteId` is not marked as required in the Required column, you must specify a website ID by using this parameter when you can call this API operation.
 //
 // @param request - CreateSiteCustomLogRequest
 //
@@ -34633,7 +48282,7 @@ func (client *Client) CreateSiteCustomLog(request *CreateSiteCustomLogRequest) (
 
 // Summary:
 //
-// 新建一个任务投递
+// Creates a real-time log delivery task.
 //
 // @param tmpReq - CreateSiteDeliveryTaskRequest
 //
@@ -34741,7 +48390,7 @@ func (client *Client) CreateSiteDeliveryTaskWithOptions(tmpReq *CreateSiteDelive
 
 // Summary:
 //
-// 新建一个任务投递
+// Creates a real-time log delivery task.
 //
 // @param request - CreateSiteDeliveryTaskRequest
 //
@@ -34759,7 +48408,277 @@ func (client *Client) CreateSiteDeliveryTask(request *CreateSiteDeliveryTaskRequ
 
 // Summary:
 //
-// 新建一个用户粒度任务投递
+// 新增站点功能配置
+//
+// @param tmpReq - CreateSiteFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSiteFunctionResponse
+func (client *Client) CreateSiteFunctionWithOptions(tmpReq *CreateSiteFunctionRequest, runtime *util.RuntimeOptions) (_result *CreateSiteFunctionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSiteFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheReserve)) {
+		request.CacheReserveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheReserve, tea.String("CacheReserve"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheRules)) {
+		request.CacheRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheRules, tea.String("CacheRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheTags)) {
+		request.CacheTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheTags, tea.String("CacheTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CnameFlattening)) {
+		request.CnameFlatteningShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CnameFlattening, tea.String("CnameFlattening"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CompressionRules)) {
+		request.CompressionRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CompressionRules, tea.String("CompressionRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CrossBorderOptimization)) {
+		request.CrossBorderOptimizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CrossBorderOptimization, tea.String("CrossBorderOptimization"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DevelopmentMode)) {
+		request.DevelopmentModeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DevelopmentMode, tea.String("DevelopmentMode"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpRequestHeaderModificationRules)) {
+		request.HttpRequestHeaderModificationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpRequestHeaderModificationRules, tea.String("HttpRequestHeaderModificationRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpResponseHeaderModificationRules)) {
+		request.HttpResponseHeaderModificationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpResponseHeaderModificationRules, tea.String("HttpResponseHeaderModificationRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpsApplicationConfiguration)) {
+		request.HttpsApplicationConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpsApplicationConfiguration, tea.String("HttpsApplicationConfiguration"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpsBasicConfiguration)) {
+		request.HttpsBasicConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpsBasicConfiguration, tea.String("HttpsBasicConfiguration"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImageTransform)) {
+		request.ImageTransformShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageTransform, tea.String("ImageTransform"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ipv6)) {
+		request.Ipv6Shrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ipv6, tea.String("Ipv6"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ManagedTransforms)) {
+		request.ManagedTransformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ManagedTransforms, tea.String("ManagedTransforms"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NetworkOptimization)) {
+		request.NetworkOptimizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkOptimization, tea.String("NetworkOptimization"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OriginProtection)) {
+		request.OriginProtectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OriginProtection, tea.String("OriginProtection"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OriginRules)) {
+		request.OriginRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OriginRules, tea.String("OriginRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectRules)) {
+		request.RedirectRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectRules, tea.String("RedirectRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RewriteUrlRules)) {
+		request.RewriteUrlRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RewriteUrlRules, tea.String("RewriteUrlRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SeoBypass)) {
+		request.SeoBypassShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SeoBypass, tea.String("SeoBypass"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SiteNameExclusive)) {
+		request.SiteNameExclusiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteNameExclusive, tea.String("SiteNameExclusive"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SitePause)) {
+		request.SitePauseShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SitePause, tea.String("SitePause"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TieredCache)) {
+		request.TieredCacheShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TieredCache, tea.String("TieredCache"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheReserveShrink)) {
+		query["CacheReserve"] = request.CacheReserveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheRulesShrink)) {
+		query["CacheRules"] = request.CacheRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheTagsShrink)) {
+		query["CacheTags"] = request.CacheTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CnameFlatteningShrink)) {
+		query["CnameFlattening"] = request.CnameFlatteningShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompressionRulesShrink)) {
+		query["CompressionRules"] = request.CompressionRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossBorderOptimizationShrink)) {
+		query["CrossBorderOptimization"] = request.CrossBorderOptimizationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevelopmentModeShrink)) {
+		query["DevelopmentMode"] = request.DevelopmentModeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpRequestHeaderModificationRulesShrink)) {
+		query["HttpRequestHeaderModificationRules"] = request.HttpRequestHeaderModificationRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpResponseHeaderModificationRulesShrink)) {
+		query["HttpResponseHeaderModificationRules"] = request.HttpResponseHeaderModificationRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsApplicationConfigurationShrink)) {
+		query["HttpsApplicationConfiguration"] = request.HttpsApplicationConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsBasicConfigurationShrink)) {
+		query["HttpsBasicConfiguration"] = request.HttpsBasicConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTransformShrink)) {
+		query["ImageTransform"] = request.ImageTransformShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Shrink)) {
+		query["Ipv6"] = request.Ipv6Shrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagedTransformsShrink)) {
+		query["ManagedTransforms"] = request.ManagedTransformsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkOptimizationShrink)) {
+		query["NetworkOptimization"] = request.NetworkOptimizationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginProtectionShrink)) {
+		query["OriginProtection"] = request.OriginProtectionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginRulesShrink)) {
+		query["OriginRules"] = request.OriginRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectRulesShrink)) {
+		query["RedirectRules"] = request.RedirectRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteUrlRulesShrink)) {
+		query["RewriteUrlRules"] = request.RewriteUrlRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeoBypassShrink)) {
+		query["SeoBypass"] = request.SeoBypassShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteNameExclusiveShrink)) {
+		query["SiteNameExclusive"] = request.SiteNameExclusiveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SitePauseShrink)) {
+		query["SitePause"] = request.SitePauseShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TieredCacheShrink)) {
+		query["TieredCache"] = request.TieredCacheShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSiteFunction"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSiteFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增站点功能配置
+//
+// @param request - CreateSiteFunctionRequest
+//
+// @return CreateSiteFunctionResponse
+func (client *Client) CreateSiteFunction(request *CreateSiteFunctionRequest) (_result *CreateSiteFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSiteFunctionResponse{}
+	_body, _err := client.CreateSiteFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a log delivery task to ship logs to the specified destination.
+//
+// Description:
+//
+// This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+//
+// 	- **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+//
+// 	- **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+//
+// 	- **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+//
+// ## [](#)Precautions
+//
+// 	- Make sure that you have sufficient permissions to perform delivery tasks.
+//
+// 	- If you enable encryption or authentication, properly configure corresponding parameters.
+//
+// 	- Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+//
+// 	- Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
 //
 // @param tmpReq - CreateUserDeliveryTaskRequest
 //
@@ -34863,7 +48782,27 @@ func (client *Client) CreateUserDeliveryTaskWithOptions(tmpReq *CreateUserDelive
 
 // Summary:
 //
-// 新建一个用户粒度任务投递
+// Creates a log delivery task to ship logs to the specified destination.
+//
+// Description:
+//
+// This API operation allows you to deliver logs to destinations such as Simple Log Service (SLS), HTTP servers, Object Storage Service (OSS), Amazon Simple Storage Service (S3), and Kafka. You can specify the task name, log fields to deliver, data center, discard rate, delivery type, and delivery details.
+//
+// 	- **Field filtering**: Use the `FieldName` parameter to specify log fields to deliver.
+//
+// 	- **Filtering rules**: Use the `FilterRules` parameter to pre-process and filter log data.
+//
+// 	- **Diverse delivery destinations**: Logs can be delivered to different destinations. Configuration parameters vary with delivery destinations.
+//
+// ## [](#)Precautions
+//
+// 	- Make sure that you have sufficient permissions to perform delivery tasks.
+//
+// 	- If you enable encryption or authentication, properly configure corresponding parameters.
+//
+// 	- Verify the syntax of `FilterRules` to make sure that filtering logic works as expected.
+//
+// 	- Specify advanced settings such as the number of retries and timeout period based on your needs to have optimal delivery efficiency and stability.
 //
 // @param request - CreateUserDeliveryTaskRequest
 //
@@ -34881,7 +48820,7 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 
 // Summary:
 //
-// 创建WAF规则
+// Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
 //
 // @param tmpReq - CreateWafRuleRequest
 //
@@ -34943,7 +48882,7 @@ func (client *Client) CreateWafRuleWithOptions(tmpReq *CreateWafRuleRequest, run
 
 // Summary:
 //
-// 创建WAF规则
+// Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
 //
 // @param request - CreateWafRuleRequest
 //
@@ -35091,7 +49030,7 @@ func (client *Client) CreateWaitingRoom(request *CreateWaitingRoomRequest) (_res
 
 // Summary:
 //
-// 创建等候室事件
+// Creates a waiting room event.
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -35209,7 +49148,7 @@ func (client *Client) CreateWaitingRoomEventWithOptions(request *CreateWaitingRo
 
 // Summary:
 //
-// 创建等候室事件
+// Creates a waiting room event.
 //
 // @param request - CreateWaitingRoomEventRequest
 //
@@ -35227,7 +49166,7 @@ func (client *Client) CreateWaitingRoomEvent(request *CreateWaitingRoomEventRequ
 
 // Summary:
 //
-// 创建等候室规则
+// Creates a waiting room bypass rule.
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -35285,7 +49224,7 @@ func (client *Client) CreateWaitingRoomRuleWithOptions(request *CreateWaitingRoo
 
 // Summary:
 //
-// 创建等候室规则
+// Creates a waiting room bypass rule.
 //
 // @param request - CreateWaitingRoomRuleRequest
 //
@@ -35303,7 +49242,7 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 
 // Summary:
 //
-// 删除定制场景策略
+// Deletes a scenario-specific custom policy.
 //
 // @param request - DeleteCustomScenePolicyRequest
 //
@@ -35345,7 +49284,7 @@ func (client *Client) DeleteCustomScenePolicyWithOptions(request *DeleteCustomSc
 
 // Summary:
 //
-// 删除定制场景策略
+// Deletes a scenario-specific custom policy.
 //
 // @param request - DeleteCustomScenePolicyRequest
 //
@@ -35363,7 +49302,7 @@ func (client *Client) DeleteCustomScenePolicy(request *DeleteCustomScenePolicyRe
 
 // Summary:
 //
-// 删除边缘容器的应用
+// Deletes a containerized application.
 //
 // @param request - DeleteEdgeContainerAppRequest
 //
@@ -35405,7 +49344,7 @@ func (client *Client) DeleteEdgeContainerAppWithOptions(request *DeleteEdgeConta
 
 // Summary:
 //
-// 删除边缘容器的应用
+// Deletes a containerized application.
 //
 // @param request - DeleteEdgeContainerAppRequest
 //
@@ -35423,7 +49362,7 @@ func (client *Client) DeleteEdgeContainerApp(request *DeleteEdgeContainerAppRequ
 
 // Summary:
 //
-// 删除一个边缘容器应用的域名记录
+// Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -35473,7 +49412,7 @@ func (client *Client) DeleteEdgeContainerAppRecordWithOptions(request *DeleteEdg
 
 // Summary:
 //
-// 删除一个边缘容器应用的域名记录
+// Disassociates a domain name from a containerized application. After the dissociation, you can no longer use the domain name to access the containerized application.
 //
 // @param request - DeleteEdgeContainerAppRecordRequest
 //
@@ -35491,7 +49430,7 @@ func (client *Client) DeleteEdgeContainerAppRecord(request *DeleteEdgeContainerA
 
 // Summary:
 //
-// 删除边缘容器应用的版本
+// Deletes a version of a containerized application.
 //
 // @param request - DeleteEdgeContainerAppVersionRequest
 //
@@ -35537,7 +49476,7 @@ func (client *Client) DeleteEdgeContainerAppVersionWithOptions(request *DeleteEd
 
 // Summary:
 //
-// 删除边缘容器应用的版本
+// Deletes a version of a containerized application.
 //
 // @param request - DeleteEdgeContainerAppVersionRequest
 //
@@ -35555,7 +49494,7 @@ func (client *Client) DeleteEdgeContainerAppVersion(request *DeleteEdgeContainer
 
 // Summary:
 //
-// 删除Namespace的Key-Value对
+// Deletes a key-value pair from a namespace.
 //
 // @param request - DeleteKvRequest
 //
@@ -35593,7 +49532,7 @@ func (client *Client) DeleteKvWithOptions(request *DeleteKvRequest, runtime *uti
 
 // Summary:
 //
-// 删除Namespace的Key-Value对
+// Deletes a key-value pair from a namespace.
 //
 // @param request - DeleteKvRequest
 //
@@ -35611,7 +49550,7 @@ func (client *Client) DeleteKv(request *DeleteKvRequest) (_result *DeleteKvRespo
 
 // Summary:
 //
-// 删除Namespace
+// Deletes a namespace from an Alibaba Cloud account.
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -35653,7 +49592,7 @@ func (client *Client) DeleteKvNamespaceWithOptions(request *DeleteKvNamespaceReq
 
 // Summary:
 //
-// 删除Namespace
+// Deletes a namespace from an Alibaba Cloud account.
 //
 // @param request - DeleteKvNamespaceRequest
 //
@@ -35671,7 +49610,7 @@ func (client *Client) DeleteKvNamespace(request *DeleteKvNamespaceRequest) (_res
 
 // Summary:
 //
-// 删除自定义列表
+// Deletes a custom list that is no longer needed.
 //
 // @param request - DeleteListRequest
 //
@@ -35713,7 +49652,7 @@ func (client *Client) DeleteListWithOptions(request *DeleteListRequest, runtime 
 
 // Summary:
 //
-// 删除自定义列表
+// Deletes a custom list that is no longer needed.
 //
 // @param request - DeleteListRequest
 //
@@ -35731,7 +49670,67 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 
 // Summary:
 //
-// 删除自定义响应页面
+// 关闭源站防护功能
+//
+// @param request - DeleteOriginProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOriginProtectionResponse
+func (client *Client) DeleteOriginProtectionWithOptions(request *DeleteOriginProtectionRequest, runtime *util.RuntimeOptions) (_result *DeleteOriginProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOriginProtection"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteOriginProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭源站防护功能
+//
+// @param request - DeleteOriginProtectionRequest
+//
+// @return DeleteOriginProtectionResponse
+func (client *Client) DeleteOriginProtection(request *DeleteOriginProtectionRequest) (_result *DeleteOriginProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOriginProtectionResponse{}
+	_body, _err := client.DeleteOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a custom error page that is no longer needed.
 //
 // @param request - DeletePageRequest
 //
@@ -35773,7 +49772,7 @@ func (client *Client) DeletePageWithOptions(request *DeletePageRequest, runtime 
 
 // Summary:
 //
-// 删除自定义响应页面
+// Deletes a custom error page that is no longer needed.
 //
 // @param request - DeletePageRequest
 //
@@ -35791,7 +49790,7 @@ func (client *Client) DeletePage(request *DeletePageRequest) (_result *DeletePag
 
 // Summary:
 //
-// 删除记录
+// Deletes a DNS record of a website based on the specified RecordId.
 //
 // @param request - DeleteRecordRequest
 //
@@ -35833,7 +49832,7 @@ func (client *Client) DeleteRecordWithOptions(request *DeleteRecordRequest, runt
 
 // Summary:
 //
-// 删除记录
+// Deletes a DNS record of a website based on the specified RecordId.
 //
 // @param request - DeleteRecordRequest
 //
@@ -35851,7 +49850,7 @@ func (client *Client) DeleteRecord(request *DeleteRecordRequest) (_result *Delet
 
 // Summary:
 //
-// 删除Routine
+// Deletes a routine in Edge Routine.
 //
 // @param request - DeleteRoutineRequest
 //
@@ -35893,7 +49892,7 @@ func (client *Client) DeleteRoutineWithOptions(request *DeleteRoutineRequest, ru
 
 // Summary:
 //
-// 删除Routine
+// Deletes a routine in Edge Routine.
 //
 // @param request - DeleteRoutineRequest
 //
@@ -35911,7 +49910,7 @@ func (client *Client) DeleteRoutine(request *DeleteRoutineRequest) (_result *Del
 
 // Summary:
 //
-// 删除Routine某版本代码
+// Deletes a code version of a routine.
 //
 // @param request - DeleteRoutineCodeVersionRequest
 //
@@ -35957,7 +49956,7 @@ func (client *Client) DeleteRoutineCodeVersionWithOptions(request *DeleteRoutine
 
 // Summary:
 //
-// 删除Routine某版本代码
+// Deletes a code version of a routine.
 //
 // @param request - DeleteRoutineCodeVersionRequest
 //
@@ -35975,7 +49974,7 @@ func (client *Client) DeleteRoutineCodeVersion(request *DeleteRoutineCodeVersion
 
 // Summary:
 //
-// 删除Routine关联域名
+// Deletes a record that is associated with a routine.
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -36031,7 +50030,7 @@ func (client *Client) DeleteRoutineRelatedRecordWithOptions(request *DeleteRouti
 
 // Summary:
 //
-// 删除Routine关联域名
+// Deletes a record that is associated with a routine.
 //
 // @param request - DeleteRoutineRelatedRecordRequest
 //
@@ -36049,7 +50048,7 @@ func (client *Client) DeleteRoutineRelatedRecord(request *DeleteRoutineRelatedRe
 
 // Summary:
 //
-// 删除Routine关联路由
+// Deletes a route that is associated with a routine.
 //
 // @param request - DeleteRoutineRelatedRouteRequest
 //
@@ -36103,7 +50102,7 @@ func (client *Client) DeleteRoutineRelatedRouteWithOptions(request *DeleteRoutin
 
 // Summary:
 //
-// 删除Routine关联路由
+// Deletes a route that is associated with a routine.
 //
 // @param request - DeleteRoutineRelatedRouteRequest
 //
@@ -36121,7 +50120,7 @@ func (client *Client) DeleteRoutineRelatedRoute(request *DeleteRoutineRelatedRou
 
 // Summary:
 //
-// 删除单个定时预热计划
+// Deletes a scheduled prefetch plan based on the plan ID.
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -36163,7 +50162,7 @@ func (client *Client) DeleteScheduledPreloadExecutionWithOptions(request *Delete
 
 // Summary:
 //
-// 删除单个定时预热计划
+// Deletes a scheduled prefetch plan based on the plan ID.
 //
 // @param request - DeleteScheduledPreloadExecutionRequest
 //
@@ -36181,7 +50180,7 @@ func (client *Client) DeleteScheduledPreloadExecution(request *DeleteScheduledPr
 
 // Summary:
 //
-// 删除指定定时预热任务
+// Deletes a specified scheduled prefetch task based on the task ID.
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -36223,7 +50222,7 @@ func (client *Client) DeleteScheduledPreloadJobWithOptions(request *DeleteSchedu
 
 // Summary:
 //
-// 删除指定定时预热任务
+// Deletes a specified scheduled prefetch task based on the task ID.
 //
 // @param request - DeleteScheduledPreloadJobRequest
 //
@@ -36241,7 +50240,7 @@ func (client *Client) DeleteScheduledPreloadJob(request *DeleteScheduledPreloadJ
 
 // Summary:
 //
-// 删除站点
+// Deletes a website based on the specified website ID.
 //
 // @param request - DeleteSiteRequest
 //
@@ -36291,7 +50290,7 @@ func (client *Client) DeleteSiteWithOptions(request *DeleteSiteRequest, runtime 
 
 // Summary:
 //
-// 删除站点
+// Deletes a website based on the specified website ID.
 //
 // @param request - DeleteSiteRequest
 //
@@ -36309,7 +50308,7 @@ func (client *Client) DeleteSite(request *DeleteSiteRequest) (_result *DeleteSit
 
 // Summary:
 //
-// 删除一个任务投递
+// Deletes a real-time log delivery task.
 //
 // @param request - DeleteSiteDeliveryTaskRequest
 //
@@ -36355,7 +50354,7 @@ func (client *Client) DeleteSiteDeliveryTaskWithOptions(request *DeleteSiteDeliv
 
 // Summary:
 //
-// 删除一个任务投递
+// Deletes a real-time log delivery task.
 //
 // @param request - DeleteSiteDeliveryTaskRequest
 //
@@ -36373,7 +50372,81 @@ func (client *Client) DeleteSiteDeliveryTask(request *DeleteSiteDeliveryTaskRequ
 
 // Summary:
 //
-// 删除一个用户任务投递
+// 删除站点配置
+//
+// @param request - DeleteSiteFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSiteFunctionResponse
+func (client *Client) DeleteSiteFunctionWithOptions(request *DeleteSiteFunctionRequest, runtime *util.RuntimeOptions) (_result *DeleteSiteFunctionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigIds)) {
+		query["ConfigIds"] = request.ConfigIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSiteFunction"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSiteFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除站点配置
+//
+// @param request - DeleteSiteFunctionRequest
+//
+// @return DeleteSiteFunctionResponse
+func (client *Client) DeleteSiteFunction(request *DeleteSiteFunctionRequest) (_result *DeleteSiteFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSiteFunctionResponse{}
+	_body, _err := client.DeleteSiteFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a log delivery task from your Alibaba Cloud account.
+//
+// Description:
+//
+// *****>
+//
+// 	- Deleted tasks cannot be restored. Proceed with caution.
+//
+// 	- To call this operation, you must have an account that has the required permissions.
+//
+// 	- The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
 //
 // @param request - DeleteUserDeliveryTaskRequest
 //
@@ -36415,7 +50488,17 @@ func (client *Client) DeleteUserDeliveryTaskWithOptions(request *DeleteUserDeliv
 
 // Summary:
 //
-// 删除一个用户任务投递
+// Deletes a log delivery task from your Alibaba Cloud account.
+//
+// Description:
+//
+// *****>
+//
+// 	- Deleted tasks cannot be restored. Proceed with caution.
+//
+// 	- To call this operation, you must have an account that has the required permissions.
+//
+// 	- The returned `RequestId` value can be used to track the request processing progress and troubleshoot issues.
 //
 // @param request - DeleteUserDeliveryTaskRequest
 //
@@ -36433,7 +50516,7 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 
 // Summary:
 //
-// 删除WAF规则
+// Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
 //
 // @param request - DeleteWafRuleRequest
 //
@@ -36485,7 +50568,7 @@ func (client *Client) DeleteWafRuleWithOptions(request *DeleteWafRuleRequest, ru
 
 // Summary:
 //
-// 删除WAF规则
+// Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
 //
 // @param request - DeleteWafRuleRequest
 //
@@ -36503,7 +50586,7 @@ func (client *Client) DeleteWafRule(request *DeleteWafRuleRequest) (_result *Del
 
 // Summary:
 //
-// 删除WAF规则集
+// Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
 //
 // @param request - DeleteWafRulesetRequest
 //
@@ -36555,7 +50638,7 @@ func (client *Client) DeleteWafRulesetWithOptions(request *DeleteWafRulesetReque
 
 // Summary:
 //
-// 删除WAF规则集
+// Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
 //
 // @param request - DeleteWafRulesetRequest
 //
@@ -36573,7 +50656,7 @@ func (client *Client) DeleteWafRuleset(request *DeleteWafRulesetRequest) (_resul
 
 // Summary:
 //
-// 删除等候室
+// Deletes a waiting room.
 //
 // @param request - DeleteWaitingRoomRequest
 //
@@ -36619,7 +50702,7 @@ func (client *Client) DeleteWaitingRoomWithOptions(request *DeleteWaitingRoomReq
 
 // Summary:
 //
-// 删除等候室
+// Deletes a waiting room.
 //
 // @param request - DeleteWaitingRoomRequest
 //
@@ -36637,7 +50720,7 @@ func (client *Client) DeleteWaitingRoom(request *DeleteWaitingRoomRequest) (_res
 
 // Summary:
 //
-// 删除等候室事件
+// Deletes a waiting room event.
 //
 // @param request - DeleteWaitingRoomEventRequest
 //
@@ -36683,7 +50766,7 @@ func (client *Client) DeleteWaitingRoomEventWithOptions(request *DeleteWaitingRo
 
 // Summary:
 //
-// 删除等候室事件
+// Deletes a waiting room event.
 //
 // @param request - DeleteWaitingRoomEventRequest
 //
@@ -36701,7 +50784,7 @@ func (client *Client) DeleteWaitingRoomEvent(request *DeleteWaitingRoomEventRequ
 
 // Summary:
 //
-// 删除等候室规则
+// Deletes a waiting room bypass rule.
 //
 // @param request - DeleteWaitingRoomRuleRequest
 //
@@ -36747,7 +50830,7 @@ func (client *Client) DeleteWaitingRoomRuleWithOptions(request *DeleteWaitingRoo
 
 // Summary:
 //
-// 删除等候室规则
+// Deletes a waiting room bypass rule.
 //
 // @param request - DeleteWaitingRoomRuleRequest
 //
@@ -36765,7 +50848,7 @@ func (client *Client) DeleteWaitingRoomRule(request *DeleteWaitingRoomRuleReques
 
 // Summary:
 //
-// 查询定制场景策略配置
+// Queries the configurations of a scenario-specific policy.
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -36815,7 +50898,7 @@ func (client *Client) DescribeCustomScenePoliciesWithOptions(request *DescribeCu
 
 // Summary:
 //
-// 查询定制场景策略配置
+// Queries the configurations of a scenario-specific policy.
 //
 // @param request - DescribeCustomScenePoliciesRequest
 //
@@ -36833,7 +50916,7 @@ func (client *Client) DescribeCustomScenePolicies(request *DescribeCustomScenePo
 
 // Summary:
 //
-// 攻击分析-查询攻击事件列表
+// Queries DDoS attack events.
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -36895,7 +50978,7 @@ func (client *Client) DescribeDDoSAllEventListWithOptions(request *DescribeDDoSA
 
 // Summary:
 //
-// 攻击分析-查询攻击事件列表
+// Queries DDoS attack events.
 //
 // @param request - DescribeDDoSAllEventListRequest
 //
@@ -36913,7 +50996,7 @@ func (client *Client) DescribeDDoSAllEventList(request *DescribeDDoSAllEventList
 
 // Summary:
 //
-// 查询HTTP DDoS智能防护配置信息
+// Queries the configuration of smart HTTP DDoS protection for a website.
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -36955,7 +51038,7 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtectionWithOptions(req
 
 // Summary:
 //
-// 查询HTTP DDoS智能防护配置信息
+// Queries the configuration of smart HTTP DDoS protection for a website.
 //
 // @param request - DescribeHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -36973,7 +51056,7 @@ func (client *Client) DescribeHttpDDoSAttackIntelligentProtection(request *Descr
 
 // Summary:
 //
-// 查询HTTP DDoS攻击防护配置信息
+// Queries the configurations of HTTP DDoS attack protection.
 //
 // @param request - DescribeHttpDDoSAttackProtectionRequest
 //
@@ -37015,7 +51098,7 @@ func (client *Client) DescribeHttpDDoSAttackProtectionWithOptions(request *Descr
 
 // Summary:
 //
-// 查询HTTP DDoS攻击防护配置信息
+// Queries the configurations of HTTP DDoS attack protection.
 //
 // @param request - DescribeHttpDDoSAttackProtectionRequest
 //
@@ -37033,7 +51116,7 @@ func (client *Client) DescribeHttpDDoSAttackProtection(request *DescribeHttpDDoS
 
 // Summary:
 //
-// 查询账户的KV状态信
+// Queries whether Edge KV is activated in your Alibaba Cloud account.
 //
 // @param request - DescribeKvAccountStatusRequest
 //
@@ -37064,7 +51147,7 @@ func (client *Client) DescribeKvAccountStatusWithOptions(runtime *util.RuntimeOp
 
 // Summary:
 //
-// 查询账户的KV状态信
+// Queries whether Edge KV is activated in your Alibaba Cloud account.
 //
 // @return DescribeKvAccountStatusResponse
 func (client *Client) DescribeKvAccountStatus() (_result *DescribeKvAccountStatusResponse, _err error) {
@@ -37080,7 +51163,7 @@ func (client *Client) DescribeKvAccountStatus() (_result *DescribeKvAccountStatu
 
 // Summary:
 //
-// 预热任务查询接口
+// Queries the details of prefetch tasks by time, task status, or prefetch URL.
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -37118,7 +51201,7 @@ func (client *Client) DescribePreloadTasksWithOptions(request *DescribePreloadTa
 
 // Summary:
 //
-// 预热任务查询接口
+// Queries the details of prefetch tasks by time, task status, or prefetch URL.
 //
 // @param request - DescribePreloadTasksRequest
 //
@@ -37136,7 +51219,7 @@ func (client *Client) DescribePreloadTasks(request *DescribePreloadTasksRequest)
 
 // Summary:
 //
-// 刷新任务查询接口
+// Queries the details of purge tasks.
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -37174,7 +51257,7 @@ func (client *Client) DescribePurgeTasksWithOptions(request *DescribePurgeTasksR
 
 // Summary:
 //
-// 刷新任务查询接口
+// Queries the details of purge tasks.
 //
 // @param request - DescribePurgeTasksRequest
 //
@@ -37192,7 +51275,7 @@ func (client *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (_r
 
 // Summary:
 //
-// 禁用定制场景策略
+// Disables a scenario-specific policy.
 //
 // @param request - DisableCustomScenePolicyRequest
 //
@@ -37234,7 +51317,7 @@ func (client *Client) DisableCustomScenePolicyWithOptions(request *DisableCustom
 
 // Summary:
 //
-// 禁用定制场景策略
+// Disables a scenario-specific policy.
 //
 // @param request - DisableCustomScenePolicyRequest
 //
@@ -37252,7 +51335,7 @@ func (client *Client) DisableCustomScenePolicy(request *DisableCustomScenePolicy
 
 // Summary:
 //
-// 编辑站点WAF配置
+// Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
 //
 // @param tmpReq - EditSiteWafSettingsRequest
 //
@@ -37310,7 +51393,7 @@ func (client *Client) EditSiteWafSettingsWithOptions(tmpReq *EditSiteWafSettings
 
 // Summary:
 //
-// 编辑站点WAF配置
+// Modifies the Web Application Firewall (WAF) configuration of a website, such as the client IP address that is identified by WAF.
 //
 // @param request - EditSiteWafSettingsRequest
 //
@@ -37328,7 +51411,7 @@ func (client *Client) EditSiteWafSettings(request *EditSiteWafSettingsRequest) (
 
 // Summary:
 //
-// 启动定制场景策略
+// Enables a scenario-specific policy.
 //
 // @param request - EnableCustomScenePolicyRequest
 //
@@ -37370,7 +51453,7 @@ func (client *Client) EnableCustomScenePolicyWithOptions(request *EnableCustomSc
 
 // Summary:
 //
-// 启动定制场景策略
+// Enables a scenario-specific policy.
 //
 // @param request - EnableCustomScenePolicyRequest
 //
@@ -37388,7 +51471,7 @@ func (client *Client) EnableCustomScenePolicy(request *EnableCustomScenePolicyRe
 
 // Summary:
 //
-// 导出记录
+// Exports all DNS records of a website domain as a TXT file.
 //
 // @param request - ExportRecordsRequest
 //
@@ -37426,7 +51509,7 @@ func (client *Client) ExportRecordsWithOptions(request *ExportRecordsRequest, ru
 
 // Summary:
 //
-// 导出记录
+// Exports all DNS records of a website domain as a TXT file.
 //
 // @param request - ExportRecordsRequest
 //
@@ -37444,7 +51527,7 @@ func (client *Client) ExportRecords(request *ExportRecordsRequest) (_result *Exp
 
 // Summary:
 //
-// 查询缓存保持实例规格
+// Queries the available specifications of cache reserve instances.
 //
 // @param request - GetCacheReserveSpecificationRequest
 //
@@ -37475,7 +51558,7 @@ func (client *Client) GetCacheReserveSpecificationWithOptions(runtime *util.Runt
 
 // Summary:
 //
-// 查询缓存保持实例规格
+// Queries the available specifications of cache reserve instances.
 //
 // @return GetCacheReserveSpecificationResponse
 func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSpecificationResponse, _err error) {
@@ -37491,7 +51574,7 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
-// 获取边缘容器应用信息
+// Queries the information about a containerized application, including basic application configurations and health check configurations.
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -37533,7 +51616,7 @@ func (client *Client) GetEdgeContainerAppWithOptions(request *GetEdgeContainerAp
 
 // Summary:
 //
-// 获取边缘容器应用信息
+// Queries the information about a containerized application, including basic application configurations and health check configurations.
 //
 // @param request - GetEdgeContainerAppRequest
 //
@@ -37551,7 +51634,7 @@ func (client *Client) GetEdgeContainerApp(request *GetEdgeContainerAppRequest) (
 
 // Summary:
 //
-// 获取边缘容器应用的状态信息
+// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -37597,7 +51680,7 @@ func (client *Client) GetEdgeContainerAppStatusWithOptions(request *GetEdgeConta
 
 // Summary:
 //
-// 获取边缘容器应用的状态信息
+// Queries the status information about a containerized application, including the deployment, release, and rollback of the application.
 //
 // @param request - GetEdgeContainerAppStatusRequest
 //
@@ -37615,7 +51698,7 @@ func (client *Client) GetEdgeContainerAppStatus(request *GetEdgeContainerAppStat
 
 // Summary:
 //
-// 获取边缘容器应用的某个版本信息
+// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -37653,7 +51736,7 @@ func (client *Client) GetEdgeContainerAppVersionWithOptions(request *GetEdgeCont
 
 // Summary:
 //
-// 获取边缘容器应用的某个版本信息
+// Queries the information about a version of a containerized application. You can select an application version to release based on the version information.
 //
 // @param request - GetEdgeContainerAppVersionRequest
 //
@@ -37671,7 +51754,7 @@ func (client *Client) GetEdgeContainerAppVersion(request *GetEdgeContainerAppVer
 
 // Summary:
 //
-// 获取边缘容器应用部署区域
+// Queries regions where a containerized application is deployed based on the application ID.
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -37709,7 +51792,7 @@ func (client *Client) GetEdgeContainerDeployRegionsWithOptions(request *GetEdgeC
 
 // Summary:
 //
-// 获取边缘容器应用部署区域
+// Queries regions where a containerized application is deployed based on the application ID.
 //
 // @param request - GetEdgeContainerDeployRegionsRequest
 //
@@ -37727,7 +51810,7 @@ func (client *Client) GetEdgeContainerDeployRegions(request *GetEdgeContainerDep
 
 // Summary:
 //
-// 获取边缘容器日志信息
+// Queries Edge Container logs.
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -37765,7 +51848,7 @@ func (client *Client) GetEdgeContainerLogsWithOptions(request *GetEdgeContainerL
 
 // Summary:
 //
-// 获取边缘容器日志信息
+// Queries Edge Container logs.
 //
 // @param request - GetEdgeContainerLogsRequest
 //
@@ -37783,7 +51866,7 @@ func (client *Client) GetEdgeContainerLogs(request *GetEdgeContainerLogsRequest)
 
 // Summary:
 //
-// 获取应用测试环境部署状态
+// Queries the deployment status of an application in the staging environment by using the application ID.
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -37821,7 +51904,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatusWithOptions(request *Ge
 
 // Summary:
 //
-// 获取应用测试环境部署状态
+// Queries the deployment status of an application in the staging environment by using the application ID.
 //
 // @param request - GetEdgeContainerStagingDeployStatusRequest
 //
@@ -37839,7 +51922,7 @@ func (client *Client) GetEdgeContainerStagingDeployStatus(request *GetEdgeContai
 
 // Summary:
 //
-// 获取边缘容器应用终端信息
+// Queries the terminal information of a containerized application.
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -37881,7 +51964,7 @@ func (client *Client) GetEdgeContainerTerminalWithOptions(request *GetEdgeContai
 
 // Summary:
 //
-// 获取边缘容器应用终端信息
+// Queries the terminal information of a containerized application.
 //
 // @param request - GetEdgeContainerTerminalRequest
 //
@@ -37899,7 +51982,7 @@ func (client *Client) GetEdgeContainerTerminal(request *GetEdgeContainerTerminal
 
 // Summary:
 //
-// GetErService
+// Checks the status of Edge Routine.
 //
 // @param request - GetErServiceRequest
 //
@@ -37937,7 +52020,7 @@ func (client *Client) GetErServiceWithOptions(request *GetErServiceRequest, runt
 
 // Summary:
 //
-// GetErService
+// Checks the status of Edge Routine.
 //
 // @param request - GetErServiceRequest
 //
@@ -37955,7 +52038,7 @@ func (client *Client) GetErService(request *GetErServiceRequest) (_result *GetEr
 
 // Summary:
 //
-// 查询Key-Value对的某个Key值
+// Queries the value of a key in a key-value pair.
 //
 // @param request - GetKvRequest
 //
@@ -37993,7 +52076,7 @@ func (client *Client) GetKvWithOptions(request *GetKvRequest, runtime *util.Runt
 
 // Summary:
 //
-// 查询Key-Value对的某个Key值
+// Queries the value of a key in a key-value pair.
 //
 // @param request - GetKvRequest
 //
@@ -38011,7 +52094,7 @@ func (client *Client) GetKv(request *GetKvRequest) (_result *GetKvResponse, _err
 
 // Summary:
 //
-// 列出账号下的NS
+// Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
 //
 // @param request - GetKvAccountRequest
 //
@@ -38042,7 +52125,7 @@ func (client *Client) GetKvAccountWithOptions(runtime *util.RuntimeOptions) (_re
 
 // Summary:
 //
-// 列出账号下的NS
+// Queries the Edge KV usage in your Alibaba Cloud account, including the information about all namespaces.
 //
 // @return GetKvAccountResponse
 func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error) {
@@ -38058,7 +52141,7 @@ func (client *Client) GetKvAccount() (_result *GetKvAccountResponse, _err error)
 
 // Summary:
 //
-// 查询Namespace信息
+// Queries the information about a namespace in your Alibaba Cloud account.
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -38096,7 +52179,7 @@ func (client *Client) GetKvNamespaceWithOptions(request *GetKvNamespaceRequest, 
 
 // Summary:
 //
-// 查询Namespace信息
+// Queries the information about a namespace in your Alibaba Cloud account.
 //
 // @param request - GetKvNamespaceRequest
 //
@@ -38114,7 +52197,7 @@ func (client *Client) GetKvNamespace(request *GetKvNamespaceRequest) (_result *G
 
 // Summary:
 //
-// 获取单个自定义列表
+// Queries the details of a custom list, such as the name, description, type, and content.
 //
 // @param request - GetListRequest
 //
@@ -38156,7 +52239,7 @@ func (client *Client) GetListWithOptions(request *GetListRequest, runtime *util.
 
 // Summary:
 //
-// 获取单个自定义列表
+// Queries the details of a custom list, such as the name, description, type, and content.
 //
 // @param request - GetListRequest
 //
@@ -38174,7 +52257,63 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 
 // Summary:
 //
-// 获取单个自定义响应页面详情
+// 查询站点源站防护相关配置，查看回源IP白名单信息
+//
+// @param request - GetOriginProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginProtectionResponse
+func (client *Client) GetOriginProtectionWithOptions(request *GetOriginProtectionRequest, runtime *util.RuntimeOptions) (_result *GetOriginProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginProtection"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOriginProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点源站防护相关配置，查看回源IP白名单信息
+//
+// @param request - GetOriginProtectionRequest
+//
+// @return GetOriginProtectionResponse
+func (client *Client) GetOriginProtection(request *GetOriginProtectionRequest) (_result *GetOriginProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginProtectionResponse{}
+	_body, _err := client.GetOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a custom error page based on the error page ID.
 //
 // @param request - GetPageRequest
 //
@@ -38216,7 +52355,7 @@ func (client *Client) GetPageWithOptions(request *GetPageRequest, runtime *util.
 
 // Summary:
 //
-// 获取单个自定义响应页面详情
+// Queries the details of a custom error page based on the error page ID.
 //
 // @param request - GetPageRequest
 //
@@ -38234,7 +52373,7 @@ func (client *Client) GetPage(request *GetPageRequest) (_result *GetPageResponse
 
 // Summary:
 //
-// 获取刷新Quota
+// Queries the quotas and quota usage for different cache purge options.
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -38272,7 +52411,7 @@ func (client *Client) GetPurgeQuotaWithOptions(request *GetPurgeQuotaRequest, ru
 
 // Summary:
 //
-// 获取刷新Quota
+// Queries the quotas and quota usage for different cache purge options.
 //
 // @param request - GetPurgeQuotaRequest
 //
@@ -38290,7 +52429,7 @@ func (client *Client) GetPurgeQuota(request *GetPurgeQuotaRequest) (_result *Get
 
 // Summary:
 //
-// ub日志字段列表接口
+// Queries the fields in real-time logs based on the log category.
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -38328,7 +52467,7 @@ func (client *Client) GetRealtimeDeliveryFieldWithOptions(request *GetRealtimeDe
 
 // Summary:
 //
-// ub日志字段列表接口
+// Queries the fields in real-time logs based on the log category.
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -38402,7 +52541,7 @@ func (client *Client) GetRecord(request *GetRecordRequest) (_result *GetRecordRe
 
 // Summary:
 //
-// 查询Routine配置信息
+// Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
 //
 // @param request - GetRoutineRequest
 //
@@ -38444,7 +52583,7 @@ func (client *Client) GetRoutineWithOptions(request *GetRoutineRequest, runtime 
 
 // Summary:
 //
-// 查询Routine配置信息
+// Queries the configurations of a routine, including the code versions and the configurations of the environments, associated domain names, and associated routes.
 //
 // @param request - GetRoutineRequest
 //
@@ -38462,7 +52601,13 @@ func (client *Client) GetRoutine(request *GetRoutineRequest) (_result *GetRoutin
 
 // Summary:
 //
-// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+// Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+//
+// Description:
+//
+//   Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+//
+// 	- A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
 //
 // @param request - GetRoutineStagingCodeUploadInfoRequest
 //
@@ -38508,7 +52653,13 @@ func (client *Client) GetRoutineStagingCodeUploadInfoWithOptions(request *GetRou
 
 // Summary:
 //
-// 上传Routine的测试版本代码, 返回上传代码到OSS的参数
+// Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
+//
+// Description:
+//
+//   Every time the code of a routine is released to the staging environment, a version number is generated. Such code is for tests only.
+//
+// 	- A routine can retain a maximum of 10 code versions. If the number of versions reaches the limit, you must call the DeleteRoutineCodeRevision operation to delete unwanted versions.
 //
 // @param request - GetRoutineStagingCodeUploadInfoRequest
 //
@@ -38526,7 +52677,7 @@ func (client *Client) GetRoutineStagingCodeUploadInfo(request *GetRoutineStaging
 
 // Summary:
 //
-// 查询边缘函数测试环境IP
+// Queries the IP addresses of staging environments for Edge Routine.
 //
 // @param request - GetRoutineStagingEnvIpRequest
 //
@@ -38557,7 +52708,7 @@ func (client *Client) GetRoutineStagingEnvIpWithOptions(runtime *util.RuntimeOpt
 
 // Summary:
 //
-// 查询边缘函数测试环境IP
+// Queries the IP addresses of staging environments for Edge Routine.
 //
 // @return GetRoutineStagingEnvIpResponse
 func (client *Client) GetRoutineStagingEnvIp() (_result *GetRoutineStagingEnvIpResponse, _err error) {
@@ -38573,7 +52724,7 @@ func (client *Client) GetRoutineStagingEnvIp() (_result *GetRoutineStagingEnvIpR
 
 // Summary:
 //
-// 查询用户的Routine列表
+// Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
 //
 // @param request - GetRoutineUserInfoRequest
 //
@@ -38604,7 +52755,7 @@ func (client *Client) GetRoutineUserInfoWithOptions(runtime *util.RuntimeOptions
 
 // Summary:
 //
-// 查询用户的Routine列表
+// Queries the Edge Routine information in your Alibaba Cloud account, including the associated subdomain and created routines.
 //
 // @return GetRoutineUserInfoResponse
 func (client *Client) GetRoutineUserInfo() (_result *GetRoutineUserInfoResponse, _err error) {
@@ -38620,7 +52771,7 @@ func (client *Client) GetRoutineUserInfo() (_result *GetRoutineUserInfoResponse,
 
 // Summary:
 //
-// 查询单个定时预热任务
+// Queries a specified scheduled prefetch task based on the task ID.
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -38658,7 +52809,7 @@ func (client *Client) GetScheduledPreloadJobWithOptions(request *GetScheduledPre
 
 // Summary:
 //
-// 查询单个定时预热任务
+// Queries a specified scheduled prefetch task based on the task ID.
 //
 // @param request - GetScheduledPreloadJobRequest
 //
@@ -38676,7 +52827,7 @@ func (client *Client) GetScheduledPreloadJob(request *GetScheduledPreloadJobRequ
 
 // Summary:
 //
-// 查询单个站点信息
+// Queries information about a website based on the website ID.
 //
 // @param request - GetSiteRequest
 //
@@ -38714,7 +52865,7 @@ func (client *Client) GetSiteWithOptions(request *GetSiteRequest, runtime *util.
 
 // Summary:
 //
-// 查询单个站点信息
+// Queries information about a website based on the website ID.
 //
 // @param request - GetSiteRequest
 //
@@ -38732,7 +52883,7 @@ func (client *Client) GetSite(request *GetSiteRequest) (_result *GetSiteResponse
 
 // Summary:
 //
-// 查询当前NS列表
+// Queries the nameservers configured for a website.
 //
 // @param request - GetSiteCurrentNSRequest
 //
@@ -38770,7 +52921,7 @@ func (client *Client) GetSiteCurrentNSWithOptions(request *GetSiteCurrentNSReque
 
 // Summary:
 //
-// 查询当前NS列表
+// Queries the nameservers configured for a website.
 //
 // @param request - GetSiteCurrentNSRequest
 //
@@ -38788,7 +52939,15 @@ func (client *Client) GetSiteCurrentNS(request *GetSiteCurrentNSRequest) (_resul
 
 // Summary:
 //
-// 获取自定义字段
+// Queries the configuration of custom log fields for a website.
+//
+// Description:
+//
+//   **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+//
+// 	- **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+//
+// 	- ****
 //
 // @param request - GetSiteCustomLogRequest
 //
@@ -38826,7 +52985,15 @@ func (client *Client) GetSiteCustomLogWithOptions(request *GetSiteCustomLogReque
 
 // Summary:
 //
-// 获取自定义字段
+// Queries the configuration of custom log fields for a website.
+//
+// Description:
+//
+//   **Description**: You can call this operation to query the configuration of custom log fields for a website, including custom fields in request headers, response headers, and cookies.
+//
+// 	- **Scenarios**: You can call this operation in scenarios where you need to obtain specific HTTP headers or cookie information for log analysis.
+//
+// 	- ****
 //
 // @param request - GetSiteCustomLogRequest
 //
@@ -38844,7 +53011,7 @@ func (client *Client) GetSiteCustomLog(request *GetSiteCustomLogRequest) (_resul
 
 // Summary:
 //
-// 获取一个实时日志任务投递
+// Queries a real-time log delivery task.
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -38882,7 +53049,7 @@ func (client *Client) GetSiteDeliveryTaskWithOptions(request *GetSiteDeliveryTas
 
 // Summary:
 //
-// 获取一个实时日志任务投递
+// Queries a real-time log delivery task.
 //
 // @param request - GetSiteDeliveryTaskRequest
 //
@@ -38900,7 +53067,23 @@ func (client *Client) GetSiteDeliveryTask(request *GetSiteDeliveryTaskRequest) (
 
 // Summary:
 //
-// 获取日志投递任务quota数
+// Queries the remaining quota for delivering a specific category of real-time logs in a website.
+//
+// Description:
+//
+// You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+//
+// **Take note of the following parameters:**
+//
+// 	- ``
+//
+// 	- `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+//
+// 	- `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+//
+// **Response:**
+//
+// 	- If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
 //
 // @param request - GetSiteLogDeliveryQuotaRequest
 //
@@ -38938,7 +53121,23 @@ func (client *Client) GetSiteLogDeliveryQuotaWithOptions(request *GetSiteLogDeli
 
 // Summary:
 //
-// 获取日志投递任务quota数
+// Queries the remaining quota for delivering a specific category of real-time logs in a website.
+//
+// Description:
+//
+// You can call this operation to query the remaining quota for delivering a specific category of real-time logs in a website within an Alibaba Cloud account. This is essential for monitoring and managing your log delivery capacity to ensure that logs can be delivered to the destination and prevent data loss or latency caused by insufficient quota.
+//
+// **Take note of the following parameters:**
+//
+// 	- ``
+//
+// 	- `BusinessType` is required. You must specify a log category to obtain the corresponding quota information.
+//
+// 	- `SiteId` specifies the ID of a website, which must be a valid integer that corresponds to a website that you configured on Alibaba Cloud.
+//
+// **Response:**
+//
+// 	- If a request is successful, the system returns the remaining log delivery quota (`FreeQuota`), request ID (`RequestId`), website ID (`SiteId`), and log category (`BusinessType`). You can confirm and record the returned data.
 //
 // @param request - GetSiteLogDeliveryQuotaRequest
 //
@@ -38956,7 +53155,7 @@ func (client *Client) GetSiteLogDeliveryQuota(request *GetSiteLogDeliveryQuotaRe
 
 // Summary:
 //
-// 获取站点WAF配置
+// Queries the Web Application Firewall (WAF) configurations of a website.
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -39002,7 +53201,7 @@ func (client *Client) GetSiteWafSettingsWithOptions(request *GetSiteWafSettingsR
 
 // Summary:
 //
-// 获取站点WAF配置
+// Queries the Web Application Firewall (WAF) configurations of a website.
 //
 // @param request - GetSiteWafSettingsRequest
 //
@@ -39020,7 +53219,7 @@ func (client *Client) GetSiteWafSettings(request *GetSiteWafSettingsRequest) (_r
 
 // Summary:
 //
-// 文件上传任务查询接口
+// Queries the execution status and running information of a file upload task based on the task ID.
 //
 // @param request - GetUploadTaskRequest
 //
@@ -39058,7 +53257,7 @@ func (client *Client) GetUploadTaskWithOptions(request *GetUploadTaskRequest, ru
 
 // Summary:
 //
-// 文件上传任务查询接口
+// Queries the execution status and running information of a file upload task based on the task ID.
 //
 // @param request - GetUploadTaskRequest
 //
@@ -39076,7 +53275,15 @@ func (client *Client) GetUploadTask(request *GetUploadTaskRequest) (_result *Get
 
 // Summary:
 //
-// 获取一个用户粒度任务投递
+// Queries the information about a log delivery task by account.
+//
+// Description:
+//
+//   This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****
+//
+// 	- You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****
+//
+// 	- ****````
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -39114,7 +53321,15 @@ func (client *Client) GetUserDeliveryTaskWithOptions(request *GetUserDeliveryTas
 
 // Summary:
 //
-// 获取一个用户粒度任务投递
+// Queries the information about a log delivery task by account.
+//
+// Description:
+//
+//   This API operation queries the details of a delivery task, including the task name, discard rate, region, log category, status, delivery destination, configuration, and filtering rules.****
+//
+// 	- You can call this operation to query detailed information about a log delivery task to analyze log processing efficiency or troubleshoot delivery problems.****
+//
+// 	- ****````
 //
 // @param request - GetUserDeliveryTaskRequest
 //
@@ -39132,7 +53347,11 @@ func (client *Client) GetUserDeliveryTask(request *GetUserDeliveryTaskRequest) (
 
 // Summary:
 //
-// 获取日志投递任务用户quota数
+// Queries the remaining log delivery quota of each log category in your account.
+//
+// Description:
+//
+// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -39170,7 +53389,11 @@ func (client *Client) GetUserLogDeliveryQuotaWithOptions(request *GetUserLogDeli
 
 // Summary:
 //
-// 获取日志投递任务用户quota数
+// Queries the remaining log delivery quota of each log category in your account.
+//
+// Description:
+//
+// This operation allows you to query the remaining real-time log delivery quota of each log category in your Alibaba Cloud account. You must provide your Alibaba Cloud account ID (aliUid) and log category (BusinessType). The system then returns the remaining quota of the log category to help you track the usage.
 //
 // @param request - GetUserLogDeliveryQuotaRequest
 //
@@ -39186,6 +53409,10 @@ func (client *Client) GetUserLogDeliveryQuota(request *GetUserLogDeliveryQuotaRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+//
 // @param request - GetWafBotAppKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39213,6 +53440,10 @@ func (client *Client) GetWafBotAppKeyWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the application key (AppKey) that is used for authentication and data exchange in bot behavior detection in Web Application Firewall (WAF).
+//
 // @return GetWafBotAppKeyResponse
 func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -39227,7 +53458,7 @@ func (client *Client) GetWafBotAppKey() (_result *GetWafBotAppKeyResponse, _err 
 
 // Summary:
 //
-// 将匹配项转换为表达式
+// Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
 //
 // @param request - GetWafFilterRequest
 //
@@ -39281,7 +53512,7 @@ func (client *Client) GetWafFilterWithOptions(request *GetWafFilterRequest, runt
 
 // Summary:
 //
-// 将匹配项转换为表达式
+// Queries the conditions for matching incoming requests that are configured in a WAF rule category for a website. These conditions define how WAF detects and processes different types of requests.
 //
 // @param request - GetWafFilterRequest
 //
@@ -39299,7 +53530,7 @@ func (client *Client) GetWafFilter(request *GetWafFilterRequest) (_result *GetWa
 
 // Summary:
 //
-// 获取WAF配额详情
+// Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
 //
 // @param request - GetWafQuotaRequest
 //
@@ -39341,7 +53572,7 @@ func (client *Client) GetWafQuotaWithOptions(request *GetWafQuotaRequest, runtim
 
 // Summary:
 //
-// 获取WAF配额详情
+// Queries the quotas of Web Application Firewall (WAF) resources, such as managed rule groups, custom lists, custom error pages, and scenario-specific policies.
 //
 // @param request - GetWafQuotaRequest
 //
@@ -39359,7 +53590,7 @@ func (client *Client) GetWafQuota(request *GetWafQuotaRequest) (_result *GetWafQ
 
 // Summary:
 //
-// 获取单个WAF规则详情
+// Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
 //
 // @param request - GetWafRuleRequest
 //
@@ -39405,7 +53636,7 @@ func (client *Client) GetWafRuleWithOptions(request *GetWafRuleRequest, runtime 
 
 // Summary:
 //
-// 获取单个WAF规则详情
+// Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
 //
 // @param request - GetWafRuleRequest
 //
@@ -39423,7 +53654,7 @@ func (client *Client) GetWafRule(request *GetWafRuleRequest) (_result *GetWafRul
 
 // Summary:
 //
-// 获取WAF规则集详情
+// Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
 //
 // @param request - GetWafRulesetRequest
 //
@@ -39473,7 +53704,7 @@ func (client *Client) GetWafRulesetWithOptions(request *GetWafRulesetRequest, ru
 
 // Summary:
 //
-// 获取WAF规则集详情
+// Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
 //
 // @param request - GetWafRulesetRequest
 //
@@ -39491,7 +53722,7 @@ func (client *Client) GetWafRuleset(request *GetWafRulesetRequest) (_result *Get
 
 // Summary:
 //
-// 查询缓存保持实例列表
+// Queries the cache reserve instances in your Alibaba Cloud account.
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -39529,7 +53760,7 @@ func (client *Client) ListCacheReserveInstancesWithOptions(request *ListCacheRes
 
 // Summary:
 //
-// 查询缓存保持实例列表
+// Queries the cache reserve instances in your Alibaba Cloud account.
 //
 // @param request - ListCacheReserveInstancesRequest
 //
@@ -39603,7 +53834,7 @@ func (client *Client) ListClientCertificates(request *ListClientCertificatesRequ
 
 // Summary:
 //
-// 获取一个边缘容器应用的全部域名记录
+// Lists domain names that are associated with a containerized application.
 //
 // @param request - ListEdgeContainerAppRecordsRequest
 //
@@ -39641,7 +53872,7 @@ func (client *Client) ListEdgeContainerAppRecordsWithOptions(request *ListEdgeCo
 
 // Summary:
 //
-// 获取一个边缘容器应用的全部域名记录
+// Lists domain names that are associated with a containerized application.
 //
 // @param request - ListEdgeContainerAppRecordsRequest
 //
@@ -39659,7 +53890,7 @@ func (client *Client) ListEdgeContainerAppRecords(request *ListEdgeContainerAppR
 
 // Summary:
 //
-// 获取边缘容器应用的全部版本信息
+// Lists versions of all containerized applications.
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -39697,7 +53928,7 @@ func (client *Client) ListEdgeContainerAppVersionsWithOptions(request *ListEdgeC
 
 // Summary:
 //
-// 获取边缘容器应用的全部版本信息
+// Lists versions of all containerized applications.
 //
 // @param request - ListEdgeContainerAppVersionsRequest
 //
@@ -39715,7 +53946,7 @@ func (client *Client) ListEdgeContainerAppVersions(request *ListEdgeContainerApp
 
 // Summary:
 //
-// 获取用户全部边缘容器应用
+// Queries all containerized applications in your Alibaba Cloud account.
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -39777,7 +54008,7 @@ func (client *Client) ListEdgeContainerAppsWithOptions(request *ListEdgeContaine
 
 // Summary:
 //
-// 获取用户全部边缘容器应用
+// Queries all containerized applications in your Alibaba Cloud account.
 //
 // @param request - ListEdgeContainerAppsRequest
 //
@@ -39795,7 +54026,7 @@ func (client *Client) ListEdgeContainerApps(request *ListEdgeContainerAppsReques
 
 // Summary:
 //
-// 查询站点的边缘容器记录
+// Queries the records that are associated with Edge Container for a website.
 //
 // @param request - ListEdgeContainerRecordsRequest
 //
@@ -39833,7 +54064,7 @@ func (client *Client) ListEdgeContainerRecordsWithOptions(request *ListEdgeConta
 
 // Summary:
 //
-// 查询站点的边缘容器记录
+// Queries the records that are associated with Edge Container for a website.
 //
 // @param request - ListEdgeContainerRecordsRequest
 //
@@ -39851,7 +54082,7 @@ func (client *Client) ListEdgeContainerRecords(request *ListEdgeContainerRecords
 
 // Summary:
 //
-// 查询用户可购买的边缘函数的套餐
+// Queries Edge Routine plans.
 //
 // @param request - ListEdgeRoutinePlansRequest
 //
@@ -39882,7 +54113,7 @@ func (client *Client) ListEdgeRoutinePlansWithOptions(runtime *util.RuntimeOptio
 
 // Summary:
 //
-// 查询用户可购买的边缘函数的套餐
+// Queries Edge Routine plans.
 //
 // @return ListEdgeRoutinePlansResponse
 func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansResponse, _err error) {
@@ -39898,7 +54129,11 @@ func (client *Client) ListEdgeRoutinePlans() (_result *ListEdgeRoutinePlansRespo
 
 // Summary:
 //
-// 查询站点的边缘路由记录
+// Queries the records that are associated with Edge Routine routes for a website.
+//
+// Description:
+//
+// >  You can call this operation 100 times per second.
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -39936,7 +54171,11 @@ func (client *Client) ListEdgeRoutineRecordsWithOptions(request *ListEdgeRoutine
 
 // Summary:
 //
-// 查询站点的边缘路由记录
+// Queries the records that are associated with Edge Routine routes for a website.
+//
+// Description:
+//
+// >  You can call this operation 100 times per second.
 //
 // @param request - ListEdgeRoutineRecordsRequest
 //
@@ -39954,7 +54193,7 @@ func (client *Client) ListEdgeRoutineRecords(request *ListEdgeRoutineRecordsRequ
 
 // Summary:
 //
-// 查询实例或者站点的quota值
+// Queries the quota details in a subscription plan.
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -39992,7 +54231,7 @@ func (client *Client) ListInstanceQuotasWithOptions(request *ListInstanceQuotasR
 
 // Summary:
 //
-// 查询实例或者站点的quota值
+// Queries the quota details in a subscription plan.
 //
 // @param request - ListInstanceQuotasRequest
 //
@@ -40010,7 +54249,7 @@ func (client *Client) ListInstanceQuotas(request *ListInstanceQuotasRequest) (_r
 
 // Summary:
 //
-// 查询功能quota和用量
+// Queries quotas and the actual usage in a plan based on the website or plan ID.
 //
 // @param request - ListInstanceQuotasWithUsageRequest
 //
@@ -40048,7 +54287,7 @@ func (client *Client) ListInstanceQuotasWithUsageWithOptions(request *ListInstan
 
 // Summary:
 //
-// 查询功能quota和用量
+// Queries quotas and the actual usage in a plan based on the website or plan ID.
 //
 // @param request - ListInstanceQuotasWithUsageRequest
 //
@@ -40066,7 +54305,7 @@ func (client *Client) ListInstanceQuotasWithUsage(request *ListInstanceQuotasWit
 
 // Summary:
 //
-// 遍历Namespace的Key值
+// Lists all key-value pairs in a namespace in your Alibaba Cloud account.
 //
 // @param request - ListKvsRequest
 //
@@ -40104,7 +54343,7 @@ func (client *Client) ListKvsWithOptions(request *ListKvsRequest, runtime *util.
 
 // Summary:
 //
-// 遍历Namespace的Key值
+// Lists all key-value pairs in a namespace in your Alibaba Cloud account.
 //
 // @param request - ListKvsRequest
 //
@@ -40122,7 +54361,7 @@ func (client *Client) ListKvs(request *ListKvsRequest) (_result *ListKvsResponse
 
 // Summary:
 //
-// 列举自定义列表
+// Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
 //
 // @param tmpReq - ListListsRequest
 //
@@ -40178,7 +54417,7 @@ func (client *Client) ListListsWithOptions(tmpReq *ListListsRequest, runtime *ut
 
 // Summary:
 //
-// 列举自定义列表
+// Queries all custom lists and their details in an Alibaba Cloud account. You can specify query arguments to filter the results and display the returned lists by page.
 //
 // @param request - ListListsRequest
 //
@@ -40196,7 +54435,11 @@ func (client *Client) ListLists(request *ListListsRequest) (_result *ListListsRe
 
 // Summary:
 //
-// 查询负载均衡区域列表
+// Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+//
+// Description:
+//
+// When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -40234,7 +54477,11 @@ func (client *Client) ListLoadBalancerRegionsWithOptions(request *ListLoadBalanc
 
 // Summary:
 //
-// 查询负载均衡区域列表
+// Queries the information that can be used to configure a traffic steering policy based on the originating country or region for a load balancer, such as the code and code descriptions of the regions and subregions of the load balancer.
+//
+// Description:
+//
+// When you call an operation to create a traffic steering policy based on the originating country or region for a load balancer, you can use the code of a region or subregion to specify traffic that is sent from the region or subregion.
 //
 // @param request - ListLoadBalancerRegionsRequest
 //
@@ -40252,7 +54499,7 @@ func (client *Client) ListLoadBalancerRegions(request *ListLoadBalancerRegionsRe
 
 // Summary:
 //
-// 列举自定义托管规则组
+// Queries all WAF managed rule groups in your Alibaba Cloud account.
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -40298,7 +54545,7 @@ func (client *Client) ListManagedRulesGroupsWithOptions(request *ListManagedRule
 
 // Summary:
 //
-// 列举自定义托管规则组
+// Queries all WAF managed rule groups in your Alibaba Cloud account.
 //
 // @param request - ListManagedRulesGroupsRequest
 //
@@ -40316,7 +54563,7 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 
 // Summary:
 //
-// 列举自定义响应页面
+// Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
 //
 // @param request - ListPagesRequest
 //
@@ -40362,7 +54609,7 @@ func (client *Client) ListPagesWithOptions(request *ListPagesRequest, runtime *u
 
 // Summary:
 //
-// 列举自定义响应页面
+// Lists all custom error pages that you created. You can define the page number and the number of entries per page to display the response.
 //
 // @param request - ListPagesRequest
 //
@@ -40380,7 +54627,11 @@ func (client *Client) ListPages(request *ListPagesRequest) (_result *ListPagesRe
 
 // Summary:
 //
-// 查询站点下的记录列表
+// Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+//
+// Description:
+//
+// The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
 //
 // @param request - ListRecordsRequest
 //
@@ -40418,7 +54669,11 @@ func (client *Client) ListRecordsWithOptions(request *ListRecordsRequest, runtim
 
 // Summary:
 //
-// 查询站点下的记录列表
+// Queries a list of Domain Name System (DNS) records of a website, including the record value, priority, and authentication configurations. Supports filtering by specifying parameters such as RecordName and RecordMatchType.
+//
+// Description:
+//
+// The DNS records related to Edge Container, Edge Routine, and TCP/UDP proxy are not returned in this operation.
 //
 // @param request - ListRecordsRequest
 //
@@ -40436,7 +54691,7 @@ func (client *Client) ListRecords(request *ListRecordsRequest) (_result *ListRec
 
 // Summary:
 //
-// 查询Routine灰度环境列表
+// Lists the regions to which Edge Routine code can be released for canary deployment.
 //
 // @param request - ListRoutineCanaryAreasRequest
 //
@@ -40467,7 +54722,7 @@ func (client *Client) ListRoutineCanaryAreasWithOptions(runtime *util.RuntimeOpt
 
 // Summary:
 //
-// 查询Routine灰度环境列表
+// Lists the regions to which Edge Routine code can be released for canary deployment.
 //
 // @return ListRoutineCanaryAreasResponse
 func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasResponse, _err error) {
@@ -40483,7 +54738,11 @@ func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasR
 
 // Summary:
 //
-// 查询Routine可选择规格列表
+// Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+//
+// Description:
+//
+// You can call this operation to query the specifications that you can select for a routine.
 //
 // @param request - ListRoutineOptionalSpecsRequest
 //
@@ -40514,7 +54773,11 @@ func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeO
 
 // Summary:
 //
-// 查询Routine可选择规格列表
+// Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+//
+// Description:
+//
+// You can call this operation to query the specifications that you can select for a routine.
 //
 // @return ListRoutineOptionalSpecsResponse
 func (client *Client) ListRoutineOptionalSpecs() (_result *ListRoutineOptionalSpecsResponse, _err error) {
@@ -40530,7 +54793,7 @@ func (client *Client) ListRoutineOptionalSpecs() (_result *ListRoutineOptionalSp
 
 // Summary:
 //
-// 列出指定任务下的执行计划
+// Lists the plans in a scheduled prefetch task by task ID.
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -40568,7 +54831,7 @@ func (client *Client) ListScheduledPreloadExecutionsWithOptions(request *ListSch
 
 // Summary:
 //
-// 列出指定任务下的执行计划
+// Lists the plans in a scheduled prefetch task by task ID.
 //
 // @param request - ListScheduledPreloadExecutionsRequest
 //
@@ -40586,7 +54849,7 @@ func (client *Client) ListScheduledPreloadExecutions(request *ListScheduledPrelo
 
 // Summary:
 //
-// 列出定时预热任务列表
+// Queries the scheduled prefetch tasks for a website.
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -40624,7 +54887,7 @@ func (client *Client) ListScheduledPreloadJobsWithOptions(request *ListScheduled
 
 // Summary:
 //
-// 列出定时预热任务列表
+// Queries the scheduled prefetch tasks for a website.
 //
 // @param request - ListScheduledPreloadJobsRequest
 //
@@ -40642,7 +54905,7 @@ func (client *Client) ListScheduledPreloadJobs(request *ListScheduledPreloadJobs
 
 // Summary:
 //
-// 列出全部任务投递
+// Lists all log delivery tasks that are in progress.
 //
 // @param request - ListSiteDeliveryTasksRequest
 //
@@ -40680,7 +54943,7 @@ func (client *Client) ListSiteDeliveryTasksWithOptions(request *ListSiteDelivery
 
 // Summary:
 //
-// 列出全部任务投递
+// Lists all log delivery tasks that are in progress.
 //
 // @param request - ListSiteDeliveryTasksRequest
 //
@@ -40698,7 +54961,63 @@ func (client *Client) ListSiteDeliveryTasks(request *ListSiteDeliveryTasksReques
 
 // Summary:
 //
-// 查询站点列表
+// 查询站点配置
+//
+// @param request - ListSiteFunctionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSiteFunctionsResponse
+func (client *Client) ListSiteFunctionsWithOptions(request *ListSiteFunctionsRequest, runtime *util.RuntimeOptions) (_result *ListSiteFunctionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSiteFunctions"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSiteFunctionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点配置
+//
+// @param request - ListSiteFunctionsRequest
+//
+// @return ListSiteFunctionsResponse
+func (client *Client) ListSiteFunctions(request *ListSiteFunctionsRequest) (_result *ListSiteFunctionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSiteFunctionsResponse{}
+	_body, _err := client.ListSiteFunctionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about websites in your account, such as the name, status, and configuration of each website.
 //
 // @param tmpReq - ListSitesRequest
 //
@@ -40742,7 +55061,7 @@ func (client *Client) ListSitesWithOptions(tmpReq *ListSitesRequest, runtime *ut
 
 // Summary:
 //
-// 查询站点列表
+// Queries the information about websites in your account, such as the name, status, and configuration of each website.
 //
 // @param request - ListSitesRequest
 //
@@ -40760,7 +55079,7 @@ func (client *Client) ListSites(request *ListSitesRequest) (_result *ListSitesRe
 
 // Summary:
 //
-// 查询云资源已经绑定的标签列表
+// Queries tags based on the region ID and resource type.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -40830,7 +55149,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询云资源已经绑定的标签列表
+// Queries tags based on the region ID and resource type.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -40848,7 +55167,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 获取文件上传任务
+// Queries the execution status and running information of file upload tasks based on the task time and type.
 //
 // @param request - ListUploadTasksRequest
 //
@@ -40886,7 +55205,7 @@ func (client *Client) ListUploadTasksWithOptions(request *ListUploadTasksRequest
 
 // Summary:
 //
-// 获取文件上传任务
+// Queries the execution status and running information of file upload tasks based on the task time and type.
 //
 // @param request - ListUploadTasksRequest
 //
@@ -40904,7 +55223,7 @@ func (client *Client) ListUploadTasks(request *ListUploadTasksRequest) (_result 
 
 // Summary:
 //
-// 列出用户全部任务投递
+// Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
 //
 // @param request - ListUserDeliveryTasksRequest
 //
@@ -40942,7 +55261,7 @@ func (client *Client) ListUserDeliveryTasksWithOptions(request *ListUserDelivery
 
 // Summary:
 //
-// 列出用户全部任务投递
+// Queries all delivery tasks in your Alibaba Cloud account by page. You can filter the delivery tasks by the category of the delivered real-time logs.
 //
 // @param request - ListUserDeliveryTasksRequest
 //
@@ -40960,7 +55279,7 @@ func (client *Client) ListUserDeliveryTasks(request *ListUserDeliveryTasksReques
 
 // Summary:
 //
-// 查询该用户下可用的已购套餐实例
+// Queries the plans that you purchased and the details of the plans.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -40998,7 +55317,7 @@ func (client *Client) ListUserRatePlanInstancesWithOptions(request *ListUserRate
 
 // Summary:
 //
-// 查询该用户下可用的已购套餐实例
+// Queries the plans that you purchased and the details of the plans.
 //
 // @param request - ListUserRatePlanInstancesRequest
 //
@@ -41016,7 +55335,7 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 
 // Summary:
 //
-// 列举WAF托管规则
+// Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
 //
 // @param tmpReq - ListWafManagedRulesRequest
 //
@@ -41092,7 +55411,7 @@ func (client *Client) ListWafManagedRulesWithOptions(tmpReq *ListWafManagedRules
 
 // Summary:
 //
-// 列举WAF托管规则
+// Lists all Web Application Firewall (WAF) managed rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
 //
 // @param request - ListWafManagedRulesRequest
 //
@@ -41110,7 +55429,7 @@ func (client *Client) ListWafManagedRules(request *ListWafManagedRulesRequest) (
 
 // Summary:
 //
-// 列举WAF阶段
+// Queries the WAF rule categories that are applied to a website and related rulesets.
 //
 // @param request - ListWafPhasesRequest
 //
@@ -41156,7 +55475,7 @@ func (client *Client) ListWafPhasesWithOptions(request *ListWafPhasesRequest, ru
 
 // Summary:
 //
-// 列举WAF阶段
+// Queries the WAF rule categories that are applied to a website and related rulesets.
 //
 // @param request - ListWafPhasesRequest
 //
@@ -41174,7 +55493,7 @@ func (client *Client) ListWafPhases(request *ListWafPhasesRequest) (_result *Lis
 
 // Summary:
 //
-// 列举WAF规则
+// Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
 //
 // @param tmpReq - ListWafRulesRequest
 //
@@ -41242,7 +55561,7 @@ func (client *Client) ListWafRulesWithOptions(tmpReq *ListWafRulesRequest, runti
 
 // Summary:
 //
-// 列举WAF规则
+// Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
 //
 // @param request - ListWafRulesRequest
 //
@@ -41260,7 +55579,7 @@ func (client *Client) ListWafRules(request *ListWafRulesRequest) (_result *ListW
 
 // Summary:
 //
-// 列举WAF规则集
+// Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
 //
 // @param tmpReq - ListWafRulesetsRequest
 //
@@ -41328,7 +55647,7 @@ func (client *Client) ListWafRulesetsWithOptions(tmpReq *ListWafRulesetsRequest,
 
 // Summary:
 //
-// 列举WAF规则集
+// Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
 //
 // @param request - ListWafRulesetsRequest
 //
@@ -41346,7 +55665,7 @@ func (client *Client) ListWafRulesets(request *ListWafRulesetsRequest) (_result 
 
 // Summary:
 //
-// 列举WAF模板规则
+// Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
 //
 // @param tmpReq - ListWafTemplateRulesRequest
 //
@@ -41402,7 +55721,7 @@ func (client *Client) ListWafTemplateRulesWithOptions(tmpReq *ListWafTemplateRul
 
 // Summary:
 //
-// 列举WAF模板规则
+// Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
 //
 // @param request - ListWafTemplateRulesRequest
 //
@@ -41420,7 +55739,7 @@ func (client *Client) ListWafTemplateRules(request *ListWafTemplateRulesRequest)
 
 // Summary:
 //
-// 列举WAF规则使用情况
+// Queries the usage details of WAF rules.
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -41466,7 +55785,7 @@ func (client *Client) ListWafUsageOfRulesWithOptions(request *ListWafUsageOfRule
 
 // Summary:
 //
-// 列举WAF规则使用情况
+// Queries the usage details of WAF rules.
 //
 // @param request - ListWafUsageOfRulesRequest
 //
@@ -41484,7 +55803,11 @@ func (client *Client) ListWafUsageOfRules(request *ListWafUsageOfRulesRequest) (
 
 // Summary:
 //
-// 查询等候室事件
+// Queries the information about waiting room events for a waiting room.
+//
+// Description:
+//
+// You can call this operation to query details of all waiting room events related to a waiting room in a website.
 //
 // @param request - ListWaitingRoomEventsRequest
 //
@@ -41522,7 +55845,11 @@ func (client *Client) ListWaitingRoomEventsWithOptions(request *ListWaitingRoomE
 
 // Summary:
 //
-// 查询等候室事件
+// Queries the information about waiting room events for a waiting room.
+//
+// Description:
+//
+// You can call this operation to query details of all waiting room events related to a waiting room in a website.
 //
 // @param request - ListWaitingRoomEventsRequest
 //
@@ -41540,7 +55867,11 @@ func (client *Client) ListWaitingRoomEvents(request *ListWaitingRoomEventsReques
 
 // Summary:
 //
-// 查询等候室绕过规则
+// Queries the waiting room bypass rules configured for a waiting room.
+//
+// Description:
+//
+// You can call this operation to query the waiting room bypass rules that are associated with a website.
 //
 // @param request - ListWaitingRoomRulesRequest
 //
@@ -41578,7 +55909,11 @@ func (client *Client) ListWaitingRoomRulesWithOptions(request *ListWaitingRoomRu
 
 // Summary:
 //
-// 查询等候室绕过规则
+// Queries the waiting room bypass rules configured for a waiting room.
+//
+// Description:
+//
+// You can call this operation to query the waiting room bypass rules that are associated with a website.
 //
 // @param request - ListWaitingRoomRulesRequest
 //
@@ -41596,7 +55931,11 @@ func (client *Client) ListWaitingRoomRules(request *ListWaitingRoomRulesRequest)
 
 // Summary:
 //
-// 查询等候室
+// Queries the information about all waiting rooms in a website.
+//
+// Description:
+//
+// You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -41634,7 +55973,11 @@ func (client *Client) ListWaitingRoomsWithOptions(request *ListWaitingRoomsReque
 
 // Summary:
 //
-// 查询等候室
+// Queries the information about all waiting rooms in a website.
+//
+// Description:
+//
+// You can call this operation to query detailed configurations about all waiting rooms in a website, including the status, name, and queuing rules of each waiting room.
 //
 // @param request - ListWaitingRoomsRequest
 //
@@ -41652,7 +55995,7 @@ func (client *Client) ListWaitingRooms(request *ListWaitingRoomsRequest) (_resul
 
 // Summary:
 //
-// 缓存预热
+// Prefetches cache.
 //
 // @param tmpReq - PreloadCachesRequest
 //
@@ -41712,7 +56055,7 @@ func (client *Client) PreloadCachesWithOptions(tmpReq *PreloadCachesRequest, run
 
 // Summary:
 //
-// 缓存预热
+// Prefetches cache.
 //
 // @param request - PreloadCachesRequest
 //
@@ -41730,7 +56073,7 @@ func (client *Client) PreloadCaches(request *PreloadCachesRequest) (_result *Pre
 
 // Summary:
 //
-// 发布边缘容器应用的某个版本
+// Releases a specific version of a containerized application. You can call this operation to iterate an application.
 //
 // @param tmpReq - PublishEdgeContainerAppVersionRequest
 //
@@ -41812,7 +56155,7 @@ func (client *Client) PublishEdgeContainerAppVersionWithOptions(tmpReq *PublishE
 
 // Summary:
 //
-// 发布边缘容器应用的某个版本
+// Releases a specific version of a containerized application. You can call this operation to iterate an application.
 //
 // @param request - PublishEdgeContainerAppVersionRequest
 //
@@ -41830,7 +56173,7 @@ func (client *Client) PublishEdgeContainerAppVersion(request *PublishEdgeContain
 
 // Summary:
 //
-// 发布Routine某版本代码
+// Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
 //
 // @param tmpReq - PublishRoutineCodeVersionRequest
 //
@@ -41894,7 +56237,7 @@ func (client *Client) PublishRoutineCodeVersionWithOptions(tmpReq *PublishRoutin
 
 // Summary:
 //
-// 发布Routine某版本代码
+// Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
 //
 // @param request - PublishRoutineCodeVersionRequest
 //
@@ -41912,7 +56255,7 @@ func (client *Client) PublishRoutineCodeVersion(request *PublishRoutineCodeVersi
 
 // Summary:
 //
-// 缓存刷新
+// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -41976,7 +56319,7 @@ func (client *Client) PurgeCachesWithOptions(tmpReq *PurgeCachesRequest, runtime
 
 // Summary:
 //
-// 缓存刷新
+// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
 //
 // @param request - PurgeCachesRequest
 //
@@ -41994,7 +56337,7 @@ func (client *Client) PurgeCaches(request *PurgeCachesRequest) (_result *PurgeCa
 
 // Summary:
 //
-// 设置Namespace的Key-Value对
+// Configures a key-value pair for a namespace. The request body can be up to 2 MB.
 //
 // @param request - PutKvRequest
 //
@@ -42058,7 +56401,7 @@ func (client *Client) PutKvWithOptions(request *PutKvRequest, runtime *util.Runt
 
 // Summary:
 //
-// 设置Namespace的Key-Value对
+// Configures a key-value pair for a namespace. The request body can be up to 2 MB.
 //
 // @param request - PutKvRequest
 //
@@ -42076,7 +56419,81 @@ func (client *Client) PutKv(request *PutKvRequest) (_result *PutKvResponse, _err
 
 // Summary:
 //
-// 设置Namespace的Key-Value对，支持最大25M的Body
+// Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestPutKvWithHighCapacity() {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for uploading key-value pairs.
+//
+//     	namespace := "test-put-kv"
+//
+//     	key := "test_PutKvWithHighCapacity_0"
+//
+//     	value := strings.Repeat("t", 10*1024*1024)
+//
+//     	rawReq := &PutKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		Key:       &key,
+//
+//     		Value:     &value,
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+//
+//     	reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		Key:       &key,
+//
+//     		UrlObject: bytes.NewReader([]byte(payload)),
+//
+//     	}
+//
+//     	resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -42126,7 +56543,81 @@ func (client *Client) PutKvWithHighCapacityWithOptions(request *PutKvWithHighCap
 
 // Summary:
 //
-// 设置Namespace的Key-Value对，支持最大25M的Body
+// Configures a large key-value pair for a namespace. The request body can be up to 25 MB.
+//
+// Description:
+//
+// This operation allows you to upload a larger request body than by using [PutKv](~~PutKv~~). For small request bodies, we recommend that you use [PutKv](~~PutKv~~) to minimize the server processing time. This operation must be called by using SDKs. The following sample code uses the Golang SDK and PutKvWithHighCapacityAdvance to call the operation.
+//
+//     func TestPutKvWithHighCapacity() {
+//
+//     	// Initialize the configurations.
+//
+//     	cfg := new(openapi.Config)
+//
+//     	cfg.SetAccessKeyId("xxxxxxxxx")
+//
+//     	cfg.SetAccessKeySecret("xxxxxxxxxx")
+//
+//     	cli, err := NewClient(cfg)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	runtime := &util.RuntimeOptions{}
+//
+//     	// Construct a request for uploading key-value pairs.
+//
+//     	namespace := "test-put-kv"
+//
+//     	key := "test_PutKvWithHighCapacity_0"
+//
+//     	value := strings.Repeat("t", 10*1024*1024)
+//
+//     	rawReq := &PutKvRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		Key:       &key,
+//
+//     		Value:     &value,
+//
+//     	}
+//
+//     	payload, err := json.Marshal(rawReq)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	// If the payload is greater than 2 MB, call the PutKvWithHighCapacity operation for upload.
+//
+//     	reqHighCapacity := &PutKvWithHighCapacityAdvanceRequest{
+//
+//     		Namespace: &namespace,
+//
+//     		Key:       &key,
+//
+//     		UrlObject: bytes.NewReader([]byte(payload)),
+//
+//     	}
+//
+//     	resp, err := cli.PutKvWithHighCapacityAdvance(reqHighCapacity, runtime)
+//
+//     	if err != nil {
+//
+//     		return err
+//
+//     	}
+//
+//     	return nil
+//
+//     }
 //
 // @param request - PutKvWithHighCapacityRequest
 //
@@ -42255,7 +56746,7 @@ func (client *Client) PutKvWithHighCapacityAdvance(request *PutKvWithHighCapacit
 
 // Summary:
 //
-// 重建边缘容器应用的测试环境
+// Rebuilds the staging environment for containerized applications.
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -42297,7 +56788,7 @@ func (client *Client) RebuildEdgeContainerAppStagingEnvWithOptions(request *Rebu
 
 // Summary:
 //
-// 重建边缘容器应用的测试环境
+// Rebuilds the staging environment for containerized applications.
 //
 // @param request - RebuildEdgeContainerAppStagingEnvRequest
 //
@@ -42315,7 +56806,7 @@ func (client *Client) RebuildEdgeContainerAppStagingEnv(request *RebuildEdgeCont
 
 // Summary:
 //
-// 重置定时预热任务的进度，从头开始预热
+// Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -42357,7 +56848,7 @@ func (client *Client) ResetScheduledPreloadJobWithOptions(request *ResetSchedule
 
 // Summary:
 //
-// 重置定时预热任务的进度，从头开始预热
+// Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
 //
 // @param request - ResetScheduledPreloadJobRequest
 //
@@ -42375,7 +56866,7 @@ func (client *Client) ResetScheduledPreloadJob(request *ResetScheduledPreloadJob
 
 // Summary:
 //
-// 回滚边缘容器应用的某个版本
+// Rolls back a version of a containerized application.
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
 //
@@ -42427,7 +56918,7 @@ func (client *Client) RollbackEdgeContainerAppVersionWithOptions(request *Rollba
 
 // Summary:
 //
-// 回滚边缘容器应用的某个版本
+// Rolls back a version of a containerized application.
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
 //
@@ -42445,7 +56936,7 @@ func (client *Client) RollbackEdgeContainerAppVersion(request *RollbackEdgeConta
 
 // Summary:
 //
-// 设置证书
+// Configures whether to enable certificates and update certificate information for a website.
 //
 // @param request - SetCertificateRequest
 //
@@ -42529,7 +57020,7 @@ func (client *Client) SetCertificateWithOptions(request *SetCertificateRequest, 
 
 // Summary:
 //
-// 设置证书
+// Configures whether to enable certificates and update certificate information for a website.
 //
 // @param request - SetCertificateRequest
 //
@@ -42547,7 +57038,7 @@ func (client *Client) SetCertificate(request *SetCertificateRequest) (_result *S
 
 // Summary:
 //
-// 设置HTTP DDoS智能防护配置信息
+// Configures smart HTTP DDoS protection.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -42597,7 +57088,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtectionWithOptions(request 
 
 // Summary:
 //
-// 设置HTTP DDoS智能防护配置信息
+// Configures smart HTTP DDoS protection.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
 //
@@ -42615,7 +57106,7 @@ func (client *Client) SetHttpDDoSAttackIntelligentProtection(request *SetHttpDDo
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护配置信息
+// Configures HTTP DDoS attack protection for a website.
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -42661,7 +57152,7 @@ func (client *Client) SetHttpDDoSAttackProtectionWithOptions(request *SetHttpDDo
 
 // Summary:
 //
-// 设置HTTP DDoS攻击防护配置信息
+// Configures HTTP DDoS attack protection for a website.
 //
 // @param request - SetHttpDDoSAttackProtectionRequest
 //
@@ -42679,7 +57170,7 @@ func (client *Client) SetHttpDDoSAttackProtection(request *SetHttpDDoSAttackProt
 
 // Summary:
 //
-// 开始单个定时预热计划
+// Starts a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -42721,7 +57212,7 @@ func (client *Client) StartScheduledPreloadExecutionWithOptions(request *StartSc
 
 // Summary:
 //
-// 开始单个定时预热计划
+// Starts a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StartScheduledPreloadExecutionRequest
 //
@@ -42739,7 +57230,7 @@ func (client *Client) StartScheduledPreloadExecution(request *StartScheduledPrel
 
 // Summary:
 //
-// 停止单个定时预热计划
+// Stops a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -42781,7 +57272,7 @@ func (client *Client) StopScheduledPreloadExecutionWithOptions(request *StopSche
 
 // Summary:
 //
-// 停止单个定时预热计划
+// Stops a scheduled prefetch plan based on the plan ID.
 //
 // @param request - StopScheduledPreloadExecutionRequest
 //
@@ -42799,7 +57290,7 @@ func (client *Client) StopScheduledPreloadExecution(request *StopScheduledPreloa
 
 // Summary:
 //
-// 为资源列表统一解绑标签
+// Deletes a resource tag based on a specified resource ID.
 //
 // @param request - UntagResourcesRequest
 //
@@ -42865,7 +57356,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 为资源列表统一解绑标签
+// Deletes a resource tag based on a specified resource ID.
 //
 // @param request - UntagResourcesRequest
 //
@@ -42883,7 +57374,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改定制场景策略
+// Modifies the configurations of a custom scenario-specific policy.
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -42945,7 +57436,7 @@ func (client *Client) UpdateCustomScenePolicyWithOptions(request *UpdateCustomSc
 
 // Summary:
 //
-// 修改定制场景策略
+// Modifies the configurations of a custom scenario-specific policy.
 //
 // @param request - UpdateCustomScenePolicyRequest
 //
@@ -42963,7 +57454,7 @@ func (client *Client) UpdateCustomScenePolicy(request *UpdateCustomScenePolicyRe
 
 // Summary:
 //
-// 重命名账号下的Namespace
+// Updates the name of a namespace in Edge KV.
 //
 // @param request - UpdateKvNamespaceRequest
 //
@@ -43009,7 +57500,7 @@ func (client *Client) UpdateKvNamespaceWithOptions(request *UpdateKvNamespaceReq
 
 // Summary:
 //
-// 重命名账号下的Namespace
+// Updates the name of a namespace in Edge KV.
 //
 // @param request - UpdateKvNamespaceRequest
 //
@@ -43027,7 +57518,7 @@ func (client *Client) UpdateKvNamespace(request *UpdateKvNamespaceRequest) (_res
 
 // Summary:
 //
-// 更新自定义列表
+// Updates a custom list.
 //
 // @param tmpReq - UpdateListRequest
 //
@@ -43087,7 +57578,7 @@ func (client *Client) UpdateListWithOptions(tmpReq *UpdateListRequest, runtime *
 
 // Summary:
 //
-// 更新自定义列表
+// Updates a custom list.
 //
 // @param request - UpdateListRequest
 //
@@ -43105,7 +57596,131 @@ func (client *Client) UpdateList(request *UpdateListRequest) (_result *UpdateLis
 
 // Summary:
 //
-// 更新自定义响应页面
+// 修改源站防护
+//
+// @param request - UpdateOriginProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOriginProtectionResponse
+func (client *Client) UpdateOriginProtectionWithOptions(request *UpdateOriginProtectionRequest, runtime *util.RuntimeOptions) (_result *UpdateOriginProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OriginConverge)) {
+		query["OriginConverge"] = request.OriginConverge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOriginProtection"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateOriginProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改源站防护
+//
+// @param request - UpdateOriginProtectionRequest
+//
+// @return UpdateOriginProtectionResponse
+func (client *Client) UpdateOriginProtection(request *UpdateOriginProtectionRequest) (_result *UpdateOriginProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateOriginProtectionResponse{}
+	_body, _err := client.UpdateOriginProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 确认更新站点回源IP白名单到最新版本
+//
+// @param request - UpdateOriginProtectionIpWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOriginProtectionIpWhiteListResponse
+func (client *Client) UpdateOriginProtectionIpWhiteListWithOptions(request *UpdateOriginProtectionIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *UpdateOriginProtectionIpWhiteListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOriginProtectionIpWhiteList"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateOriginProtectionIpWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 确认更新站点回源IP白名单到最新版本
+//
+// @param request - UpdateOriginProtectionIpWhiteListRequest
+//
+// @return UpdateOriginProtectionIpWhiteListResponse
+func (client *Client) UpdateOriginProtectionIpWhiteList(request *UpdateOriginProtectionIpWhiteListRequest) (_result *UpdateOriginProtectionIpWhiteListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateOriginProtectionIpWhiteListResponse{}
+	_body, _err := client.UpdateOriginProtectionIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
 //
 // @param request - UpdatePageRequest
 //
@@ -43163,7 +57778,7 @@ func (client *Client) UpdatePageWithOptions(request *UpdatePageRequest, runtime 
 
 // Summary:
 //
-// 更新自定义响应页面
+// Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
 //
 // @param request - UpdatePageRequest
 //
@@ -43181,7 +57796,23 @@ func (client *Client) UpdatePage(request *UpdatePageRequest) (_result *UpdatePag
 
 // Summary:
 //
-// 更新记录
+// Updates multiple types of DNS records and origin authentication configurations.
+//
+// Description:
+//
+// This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+//
+// ### [](#)Usage notes
+//
+// 	- The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+//
+// 	- You must specify a priority (Priority) for some record types, such as MX and SRV.
+//
+// 	- You must specify specific fields such as Flag and Tag for CAA records.
+//
+// 	- When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+//
+// 	- If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
 //
 // @param tmpReq - UpdateRecordRequest
 //
@@ -43265,7 +57896,23 @@ func (client *Client) UpdateRecordWithOptions(tmpReq *UpdateRecordRequest, runti
 
 // Summary:
 //
-// 更新记录
+// Updates multiple types of DNS records and origin authentication configurations.
+//
+// Description:
+//
+// This operation allows you to update multiple types of DNS records, including but not limited to A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI. You can modify the record content by providing the necessary fields such as Value, Priority, and Flag. For origins added in CNAME records such as OSS and S3, the API enables you to configure authentication details to ensure secure access.
+//
+// ### [](#)Usage notes
+//
+// 	- The record value (Value) must match the record type. For example, the CNAME record should correspond to the target domain name.
+//
+// 	- You must specify a priority (Priority) for some record types, such as MX and SRV.
+//
+// 	- You must specify specific fields such as Flag and Tag for CAA records.
+//
+// 	- When you update security records such as CERT and SSHFP, you must accurately set fields such as Type and Algorithm.
+//
+// 	- If your origin type is OSS or S3, configure the authentication details in AuthConf based on the permissions.
 //
 // @param request - UpdateRecordRequest
 //
@@ -43283,7 +57930,7 @@ func (client *Client) UpdateRecord(request *UpdateRecordRequest) (_result *Updat
 
 // Summary:
 //
-// 更新单个定时预热计划
+// Updates a scheduled prefetch plan based on the plan ID.
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -43343,7 +57990,7 @@ func (client *Client) UpdateScheduledPreloadExecutionWithOptions(request *Update
 
 // Summary:
 //
-// 更新单个定时预热计划
+// Updates a scheduled prefetch plan based on the plan ID.
 //
 // @param request - UpdateScheduledPreloadExecutionRequest
 //
@@ -43361,7 +58008,15 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 
 // Summary:
 //
-// 修改站点接入方式
+// Converts the DNS setup option of a website.
+//
+// Description:
+//
+// When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+//
+// 	- Make sure that the website has only proxied A/AAAA and CNAME records.
+//
+// 	- Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -43407,7 +58062,15 @@ func (client *Client) UpdateSiteAccessTypeWithOptions(request *UpdateSiteAccessT
 
 // Summary:
 //
-// 修改站点接入方式
+// Converts the DNS setup option of a website.
+//
+// Description:
+//
+// When you change the DNS setup of a website from NS to CNAME, take note of the following items:
+//
+// 	- Make sure that the website has only proxied A/AAAA and CNAME records.
+//
+// 	- Make sure that ESA proxy is not disabled for the website and custom nameservers are not configured.
 //
 // @param request - UpdateSiteAccessTypeRequest
 //
@@ -43425,7 +58088,7 @@ func (client *Client) UpdateSiteAccessType(request *UpdateSiteAccessTypeRequest)
 
 // Summary:
 //
-// 更新站点加速区域
+// Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -43471,7 +58134,7 @@ func (client *Client) UpdateSiteCoverageWithOptions(request *UpdateSiteCoverageR
 
 // Summary:
 //
-// 更新站点加速区域
+// Modifies the service location for a single website. This updates the acceleration configuration of the website to adapt to changes in traffic distribution, and improve user experience in specific regions.
 //
 // @param request - UpdateSiteCoverageRequest
 //
@@ -43489,7 +58152,7 @@ func (client *Client) UpdateSiteCoverage(request *UpdateSiteCoverageRequest) (_r
 
 // Summary:
 //
-// 修改自定义字段
+// Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
 //
 // @param tmpReq - UpdateSiteCustomLogRequest
 //
@@ -43557,7 +58220,7 @@ func (client *Client) UpdateSiteCustomLogWithOptions(tmpReq *UpdateSiteCustomLog
 
 // Summary:
 //
-// 修改自定义字段
+// Modifies the configuration of custom request header, response header, and cookie fields that are used to capture logs of a website.
 //
 // @param request - UpdateSiteCustomLogRequest
 //
@@ -43575,7 +58238,7 @@ func (client *Client) UpdateSiteCustomLog(request *UpdateSiteCustomLogRequest) (
 
 // Summary:
 //
-// 修改一个任务投递
+// Modifies a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //
@@ -43633,7 +58296,7 @@ func (client *Client) UpdateSiteDeliveryTaskWithOptions(request *UpdateSiteDeliv
 
 // Summary:
 //
-// 修改一个任务投递
+// Modifies a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskRequest
 //
@@ -43651,7 +58314,7 @@ func (client *Client) UpdateSiteDeliveryTask(request *UpdateSiteDeliveryTaskRequ
 
 // Summary:
 //
-// 上下线一个任务投递
+// Changes the status of a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskStatusRequest
 //
@@ -43689,7 +58352,7 @@ func (client *Client) UpdateSiteDeliveryTaskStatusWithOptions(request *UpdateSit
 
 // Summary:
 //
-// 上下线一个任务投递
+// Changes the status of a real-time log delivery task.
 //
 // @param request - UpdateSiteDeliveryTaskStatusRequest
 //
@@ -43707,7 +58370,245 @@ func (client *Client) UpdateSiteDeliveryTaskStatus(request *UpdateSiteDeliveryTa
 
 // Summary:
 //
-// 修改站点自定义NS
+// 修改站点配置
+//
+// @param tmpReq - UpdateSiteFunctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSiteFunctionResponse
+func (client *Client) UpdateSiteFunctionWithOptions(tmpReq *UpdateSiteFunctionRequest, runtime *util.RuntimeOptions) (_result *UpdateSiteFunctionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSiteFunctionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheReserve)) {
+		request.CacheReserveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheReserve, tea.String("CacheReserve"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheRules)) {
+		request.CacheRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheRules, tea.String("CacheRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CacheTags)) {
+		request.CacheTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheTags, tea.String("CacheTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CnameFlattening)) {
+		request.CnameFlatteningShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CnameFlattening, tea.String("CnameFlattening"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CompressionRules)) {
+		request.CompressionRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CompressionRules, tea.String("CompressionRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CrossBorderOptimization)) {
+		request.CrossBorderOptimizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CrossBorderOptimization, tea.String("CrossBorderOptimization"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DevelopmentMode)) {
+		request.DevelopmentModeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DevelopmentMode, tea.String("DevelopmentMode"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpRequestHeaderModificationRules)) {
+		request.HttpRequestHeaderModificationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpRequestHeaderModificationRules, tea.String("HttpRequestHeaderModificationRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpResponseHeaderModificationRules)) {
+		request.HttpResponseHeaderModificationRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpResponseHeaderModificationRules, tea.String("HttpResponseHeaderModificationRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpsApplicationConfiguration)) {
+		request.HttpsApplicationConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpsApplicationConfiguration, tea.String("HttpsApplicationConfiguration"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HttpsBasicConfiguration)) {
+		request.HttpsBasicConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HttpsBasicConfiguration, tea.String("HttpsBasicConfiguration"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ImageTransform)) {
+		request.ImageTransformShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageTransform, tea.String("ImageTransform"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ipv6)) {
+		request.Ipv6Shrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ipv6, tea.String("Ipv6"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ManagedTransforms)) {
+		request.ManagedTransformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ManagedTransforms, tea.String("ManagedTransforms"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.NetworkOptimization)) {
+		request.NetworkOptimizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkOptimization, tea.String("NetworkOptimization"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OriginRules)) {
+		request.OriginRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OriginRules, tea.String("OriginRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RedirectRules)) {
+		request.RedirectRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RedirectRules, tea.String("RedirectRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RewriteUrlRules)) {
+		request.RewriteUrlRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RewriteUrlRules, tea.String("RewriteUrlRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SeoBypass)) {
+		request.SeoBypassShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SeoBypass, tea.String("SeoBypass"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SiteNameExclusive)) {
+		request.SiteNameExclusiveShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteNameExclusive, tea.String("SiteNameExclusive"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SitePause)) {
+		request.SitePauseShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SitePause, tea.String("SitePause"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TieredCache)) {
+		request.TieredCacheShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TieredCache, tea.String("TieredCache"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheReserveShrink)) {
+		query["CacheReserve"] = request.CacheReserveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheRulesShrink)) {
+		query["CacheRules"] = request.CacheRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheTagsShrink)) {
+		query["CacheTags"] = request.CacheTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CnameFlatteningShrink)) {
+		query["CnameFlattening"] = request.CnameFlatteningShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompressionRulesShrink)) {
+		query["CompressionRules"] = request.CompressionRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossBorderOptimizationShrink)) {
+		query["CrossBorderOptimization"] = request.CrossBorderOptimizationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevelopmentModeShrink)) {
+		query["DevelopmentMode"] = request.DevelopmentModeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpRequestHeaderModificationRulesShrink)) {
+		query["HttpRequestHeaderModificationRules"] = request.HttpRequestHeaderModificationRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpResponseHeaderModificationRulesShrink)) {
+		query["HttpResponseHeaderModificationRules"] = request.HttpResponseHeaderModificationRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsApplicationConfigurationShrink)) {
+		query["HttpsApplicationConfiguration"] = request.HttpsApplicationConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsBasicConfigurationShrink)) {
+		query["HttpsBasicConfiguration"] = request.HttpsBasicConfigurationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageTransformShrink)) {
+		query["ImageTransform"] = request.ImageTransformShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Shrink)) {
+		query["Ipv6"] = request.Ipv6Shrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagedTransformsShrink)) {
+		query["ManagedTransforms"] = request.ManagedTransformsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkOptimizationShrink)) {
+		query["NetworkOptimization"] = request.NetworkOptimizationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginRulesShrink)) {
+		query["OriginRules"] = request.OriginRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectRulesShrink)) {
+		query["RedirectRules"] = request.RedirectRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteUrlRulesShrink)) {
+		query["RewriteUrlRules"] = request.RewriteUrlRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeoBypassShrink)) {
+		query["SeoBypass"] = request.SeoBypassShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteNameExclusiveShrink)) {
+		query["SiteNameExclusive"] = request.SiteNameExclusiveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SitePauseShrink)) {
+		query["SitePause"] = request.SitePauseShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TieredCacheShrink)) {
+		query["TieredCache"] = request.TieredCacheShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSiteFunction"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSiteFunctionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改站点配置
+//
+// @param request - UpdateSiteFunctionRequest
+//
+// @return UpdateSiteFunctionResponse
+func (client *Client) UpdateSiteFunction(request *UpdateSiteFunctionRequest) (_result *UpdateSiteFunctionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSiteFunctionResponse{}
+	_body, _err := client.UpdateSiteFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the custom nameserver names for a single website.
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -43753,7 +58654,7 @@ func (client *Client) UpdateSiteVanityNSWithOptions(request *UpdateSiteVanityNSR
 
 // Summary:
 //
-// 修改站点自定义NS
+// Updates the custom nameserver names for a single website.
 //
 // @param request - UpdateSiteVanityNSRequest
 //
@@ -43771,7 +58672,7 @@ func (client *Client) UpdateSiteVanityNS(request *UpdateSiteVanityNSRequest) (_r
 
 // Summary:
 //
-// 修改一个用户粒度任务投递
+// Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //
@@ -43825,7 +58726,7 @@ func (client *Client) UpdateUserDeliveryTaskWithOptions(request *UpdateUserDeliv
 
 // Summary:
 //
-// 修改一个用户粒度任务投递
+// Modifies the configurations of a delivery task, including the task name, log field, log category, and discard rate.
 //
 // @param request - UpdateUserDeliveryTaskRequest
 //
@@ -43843,7 +58744,13 @@ func (client *Client) UpdateUserDeliveryTask(request *UpdateUserDeliveryTaskRequ
 
 // Summary:
 //
-// 上下线一个用户任务投递
+// Changes the status of a delivery task in your Alibaba Cloud account.
+//
+// Description:
+//
+// ## [](#)
+//
+// You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
 //
 // @param request - UpdateUserDeliveryTaskStatusRequest
 //
@@ -43881,7 +58788,13 @@ func (client *Client) UpdateUserDeliveryTaskStatusWithOptions(request *UpdateUse
 
 // Summary:
 //
-// 上下线一个用户任务投递
+// Changes the status of a delivery task in your Alibaba Cloud account.
+//
+// Description:
+//
+// ## [](#)
+//
+// You can call this operation to enable or disable a delivery task by using TaskName and Method. The response includes the most recent status and operation result details of the task.
 //
 // @param request - UpdateUserDeliveryTaskStatusRequest
 //
@@ -43899,7 +58812,7 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 
 // Summary:
 //
-// 更新WAF规则页面
+// Modifies the configuration or status of a Web Application Firewall (WAF) rule.
 //
 // @param tmpReq - UpdateWafRuleRequest
 //
@@ -43969,7 +58882,7 @@ func (client *Client) UpdateWafRuleWithOptions(tmpReq *UpdateWafRuleRequest, run
 
 // Summary:
 //
-// 更新WAF规则页面
+// Modifies the configuration or status of a Web Application Firewall (WAF) rule.
 //
 // @param request - UpdateWafRuleRequest
 //
@@ -43987,7 +58900,7 @@ func (client *Client) UpdateWafRule(request *UpdateWafRuleRequest) (_result *Upd
 
 // Summary:
 //
-// 更新WAF规则集
+// Updates a WAF ruleset based on its ID.
 //
 // @param request - UpdateWafRulesetRequest
 //
@@ -44043,7 +58956,7 @@ func (client *Client) UpdateWafRulesetWithOptions(request *UpdateWafRulesetReque
 
 // Summary:
 //
-// 更新WAF规则集
+// Updates a WAF ruleset based on its ID.
 //
 // @param request - UpdateWafRulesetRequest
 //
@@ -44061,7 +58974,7 @@ func (client *Client) UpdateWafRuleset(request *UpdateWafRulesetRequest) (_resul
 
 // Summary:
 //
-// 修改等候室
+// Modifies the configurations of a waiting room.
 //
 // @param tmpReq - UpdateWaitingRoomRequest
 //
@@ -44177,7 +59090,7 @@ func (client *Client) UpdateWaitingRoomWithOptions(tmpReq *UpdateWaitingRoomRequ
 
 // Summary:
 //
-// 修改等候室
+// Modifies the configurations of a waiting room.
 //
 // @param request - UpdateWaitingRoomRequest
 //
@@ -44195,7 +59108,7 @@ func (client *Client) UpdateWaitingRoom(request *UpdateWaitingRoomRequest) (_res
 
 // Summary:
 //
-// 修改等候室事件
+// Modifies the configurations of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -44313,7 +59226,7 @@ func (client *Client) UpdateWaitingRoomEventWithOptions(request *UpdateWaitingRo
 
 // Summary:
 //
-// 修改等候室事件
+// Modifies the configurations of a waiting room event.
 //
 // @param request - UpdateWaitingRoomEventRequest
 //
@@ -44331,7 +59244,11 @@ func (client *Client) UpdateWaitingRoomEvent(request *UpdateWaitingRoomEventRequ
 
 // Summary:
 //
-// 修改等候室规则
+// Updates the configurations of a waiting room bypass rule for a website.
+//
+// Description:
+//
+// You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -44389,7 +59306,11 @@ func (client *Client) UpdateWaitingRoomRuleWithOptions(request *UpdateWaitingRoo
 
 // Summary:
 //
-// 修改等候室规则
+// Updates the configurations of a waiting room bypass rule for a website.
+//
+// Description:
+//
+// You can call this API operation to modify the configurations of a waiting room bypass rule for your website, including the rule name, status, and rule content.
 //
 // @param request - UpdateWaitingRoomRuleRequest
 //
@@ -44407,7 +59328,15 @@ func (client *Client) UpdateWaitingRoomRule(request *UpdateWaitingRoomRuleReques
 
 // Summary:
 //
-// 缓存刷新文件上传
+// Uploads the file that contains resources to be purged or prefetched.
+//
+// Description:
+//
+// >
+//
+// 	- The file can be up to 10 MB in size.
+//
+// 	- After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
 //
 // @param request - UploadFileRequest
 //
@@ -44461,7 +59390,15 @@ func (client *Client) UploadFileWithOptions(request *UploadFileRequest, runtime 
 
 // Summary:
 //
-// 缓存刷新文件上传
+// Uploads the file that contains resources to be purged or prefetched.
+//
+// Description:
+//
+// >
+//
+// 	- The file can be up to 10 MB in size.
+//
+// 	- After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
 //
 // @param request - UploadFileRequest
 //
@@ -44590,7 +59527,13 @@ func (client *Client) UploadFileAdvance(request *UploadFileAdvanceRequest, runti
 
 // Summary:
 //
-// 校验站点的归属
+// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+//
+// Description:
+//
+// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+//
+// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
 //
 // @param request - VerifySiteRequest
 //
@@ -44632,7 +59575,13 @@ func (client *Client) VerifySiteWithOptions(request *VerifySiteRequest, runtime 
 
 // Summary:
 //
-// 校验站点的归属
+// Verifies the ownership of a website domain. Websites that pass the verification are automatically activated.
+//
+// Description:
+//
+// 1.  For a website connected by using NS setup, this operation verifies whether the nameservers of the website are the nameservers assigned by Alibaba Cloud.
+//
+// 2.  For a website connected by using CNAME setup, this operation verifies whether the website has a TXT record whose hostname is  _esaauth.[websiteDomainName] and record value is the value of VerifyCode to the DNS records of your domain. You can see the VerifyCode field in the site information.
 //
 // @param request - VerifySiteRequest
 //
