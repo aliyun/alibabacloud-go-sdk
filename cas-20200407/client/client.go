@@ -3269,6 +3269,8 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// ---BEGIN CERTIFICATE----- MIIF...... -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The certificate chain.
+	CertChain []*GetUserCertificateDetailResponseBodyCertChain `json:"CertChain,omitempty" xml:"CertChain,omitempty" type:"Repeated"`
 	// The unique identifier of the certificate. The value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
 	//
 	// example:
@@ -3341,7 +3343,7 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// 121345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID.
+	// The instance ID of the resource.
 	//
 	// example:
 	//
@@ -3401,13 +3403,13 @@ type GetUserCertificateDetailResponseBody struct {
 	//
 	// *.com
 	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	// The certificate serial No.
+	// The serial number of the certificate.
 	//
 	// example:
 	//
 	// 06ea4879591ddf84e6c8b6ba43607ccf
 	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
-	// The certificate sha2 value.
+	// The SHA-2 value of the certificate.
 	//
 	// example:
 	//
@@ -3461,6 +3463,11 @@ func (s *GetUserCertificateDetailResponseBody) SetBuyInAliyun(v bool) *GetUserCe
 
 func (s *GetUserCertificateDetailResponseBody) SetCert(v string) *GetUserCertificateDetailResponseBody {
 	s.Cert = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetCertChain(v []*GetUserCertificateDetailResponseBodyCertChain) *GetUserCertificateDetailResponseBody {
+	s.CertChain = v
 	return s
 }
 
@@ -3586,6 +3593,72 @@ func (s *GetUserCertificateDetailResponseBody) SetSignPrivateKey(v string) *GetU
 
 func (s *GetUserCertificateDetailResponseBody) SetStartDate(v string) *GetUserCertificateDetailResponseBody {
 	s.StartDate = &v
+	return s
+}
+
+type GetUserCertificateDetailResponseBodyCertChain struct {
+	// The common name of the certificate.
+	//
+	// example:
+	//
+	// test
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The common name of the issuer.
+	//
+	// example:
+	//
+	// Encryption Everywhere DV TLS CA - G2
+	IssuerCommonName *string `json:"IssuerCommonName,omitempty" xml:"IssuerCommonName,omitempty"`
+	// The end of the validity period of the certificate.
+	//
+	// example:
+	//
+	// 17322613180000
+	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The beginning of the validity period of the certificate.
+	//
+	// example:
+	//
+	// 17322633180000
+	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The remaining days of the certificate validity period.
+	//
+	// example:
+	//
+	// 1000
+	RemainDay *int32 `json:"RemainDay,omitempty" xml:"RemainDay,omitempty"`
+}
+
+func (s GetUserCertificateDetailResponseBodyCertChain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserCertificateDetailResponseBodyCertChain) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserCertificateDetailResponseBodyCertChain) SetCommonName(v string) *GetUserCertificateDetailResponseBodyCertChain {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyCertChain) SetIssuerCommonName(v string) *GetUserCertificateDetailResponseBodyCertChain {
+	s.IssuerCommonName = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyCertChain) SetNotAfter(v int64) *GetUserCertificateDetailResponseBodyCertChain {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyCertChain) SetNotBefore(v int64) *GetUserCertificateDetailResponseBodyCertChain {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyCertChain) SetRemainDay(v int32) *GetUserCertificateDetailResponseBodyCertChain {
+	s.RemainDay = &v
 	return s
 }
 
@@ -4450,20 +4523,83 @@ func (s *ListCloudAccessResponse) SetBody(v *ListCloudAccessResponseBody) *ListC
 }
 
 type ListCloudResourcesRequest struct {
+	// The certificate IDs.
 	CertIds []*int64 `json:"CertIds,omitempty" xml:"CertIds,omitempty" type:"Repeated"`
 	// The cloud service provider.
 	//
 	// Valid values:
 	//
-	// 	- Tencent: Tencent Cloud
+	// 	- Tencent
 	//
-	// 	- aliyun: Alibaba Cloud
+	// 	- Huawei
+	//
+	// 	- Aws
+	//
+	// 	- aliyun
 	//
 	// example:
 	//
 	// Tencent
 	CloudName *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
-	// The cloud service. Only Content Delivery Network (CDN) is supported for Tencent Cloud.
+	// The cloud service.
+	//
+	// Valid values when CloudName is set to aliyun:
+	//
+	// 	- SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
+	//
+	// 	- LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
+	//
+	// 	- webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
+	//
+	// 	- VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
+	//
+	// 	- CR: Container Registry. This value is available only on the China site (aliyun.com).
+	//
+	// 	- DCDN: Dynamic Content Delivery Network (DCDN).
+	//
+	// 	- DDOS: Anti-DDoS.
+	//
+	// 	- CDN: Alibaba Cloud CDN (CDN).
+	//
+	// 	- ALB: Application Load Balancer (ALB).
+	//
+	// 	- APIGateway: API Gateway.
+	//
+	// 	- FC: Function Compute.
+	//
+	// 	- GA: Global Accelerator (GA).
+	//
+	// 	- MSE: Microservices Engine (MSE).
+	//
+	// 	- NLB: Network Load Balancer (NLB).
+	//
+	// 	- OSS: Object Storage Service (OSS).
+	//
+	// 	- SAE: Serverless App Engine (SAE).
+	//
+	// 	- WAF: Web Application Firewall (WAF).
+	//
+	// Valid values when CloudName is set to Tencent:
+	//
+	// 	- TencentCDN: Content Delivery Network (CDN).
+	//
+	// 	- TencentCLB: CLB.
+	//
+	// 	- TencentWAF: WAF.
+	//
+	// Valid value when CloudName is set to Huawei:
+	//
+	// 	- HuaweiCDN: CDN.
+	//
+	// Valid values when CloudName is set to Aws:
+	//
+	// 	- AwsCloudFront: Amazon CloudFront.
+	//
+	// 	- AwsCLB: CLB.
+	//
+	// 	- AwsALB: ALB.
+	//
+	// 	- AwsNLB: NLB.
 	//
 	// example:
 	//
@@ -4475,19 +4611,19 @@ type ListCloudResourcesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The domain name bound to the cloud resource.
+	// The keyword of the domain name or instance ID bound to the cloud resource.
 	//
 	// example:
 	//
 	// cert-instanceId
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The AccessKey ID used to access cloud resources.
+	// The AccessKey ID that is used to access cloud resources.
 	//
 	// example:
 	//
 	// 21
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The number of revoked certificates per page. Default value: **20**.
+	// The number of entries per page. Default value: **20**.
 	//
 	// example:
 	//
@@ -4539,20 +4675,83 @@ func (s *ListCloudResourcesRequest) SetShowSize(v int32) *ListCloudResourcesRequ
 }
 
 type ListCloudResourcesShrinkRequest struct {
+	// The certificate IDs.
 	CertIdsShrink *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
 	// The cloud service provider.
 	//
 	// Valid values:
 	//
-	// 	- Tencent: Tencent Cloud
+	// 	- Tencent
 	//
-	// 	- aliyun: Alibaba Cloud
+	// 	- Huawei
+	//
+	// 	- Aws
+	//
+	// 	- aliyun
 	//
 	// example:
 	//
 	// Tencent
 	CloudName *string `json:"CloudName,omitempty" xml:"CloudName,omitempty"`
-	// The cloud service. Only Content Delivery Network (CDN) is supported for Tencent Cloud.
+	// The cloud service.
+	//
+	// Valid values when CloudName is set to aliyun:
+	//
+	// 	- SLB: Classic Load Balancer (CLB). This value is available only on the China site (aliyun.com).
+	//
+	// 	- LIVE: ApsaraVideo Live. This value is available only on the China site (aliyun.com).
+	//
+	// 	- webHosting: Cloud Web Hosting. This value is available only on the China site (aliyun.com).
+	//
+	// 	- VOD: ApsaraVideo VOD. This value is available only on the China site (aliyun.com).
+	//
+	// 	- CR: Container Registry. This value is available only on the China site (aliyun.com).
+	//
+	// 	- DCDN: Dynamic Content Delivery Network (DCDN).
+	//
+	// 	- DDOS: Anti-DDoS.
+	//
+	// 	- CDN: Alibaba Cloud CDN (CDN).
+	//
+	// 	- ALB: Application Load Balancer (ALB).
+	//
+	// 	- APIGateway: API Gateway.
+	//
+	// 	- FC: Function Compute.
+	//
+	// 	- GA: Global Accelerator (GA).
+	//
+	// 	- MSE: Microservices Engine (MSE).
+	//
+	// 	- NLB: Network Load Balancer (NLB).
+	//
+	// 	- OSS: Object Storage Service (OSS).
+	//
+	// 	- SAE: Serverless App Engine (SAE).
+	//
+	// 	- WAF: Web Application Firewall (WAF).
+	//
+	// Valid values when CloudName is set to Tencent:
+	//
+	// 	- TencentCDN: Content Delivery Network (CDN).
+	//
+	// 	- TencentCLB: CLB.
+	//
+	// 	- TencentWAF: WAF.
+	//
+	// Valid value when CloudName is set to Huawei:
+	//
+	// 	- HuaweiCDN: CDN.
+	//
+	// Valid values when CloudName is set to Aws:
+	//
+	// 	- AwsCloudFront: Amazon CloudFront.
+	//
+	// 	- AwsCLB: CLB.
+	//
+	// 	- AwsALB: ALB.
+	//
+	// 	- AwsNLB: NLB.
 	//
 	// example:
 	//
@@ -4564,19 +4763,19 @@ type ListCloudResourcesShrinkRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The domain name bound to the cloud resource.
+	// The keyword of the domain name or instance ID bound to the cloud resource.
 	//
 	// example:
 	//
 	// cert-instanceId
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The AccessKey ID used to access cloud resources.
+	// The AccessKey ID that is used to access cloud resources.
 	//
 	// example:
 	//
 	// 21
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The number of revoked certificates per page. Default value: **20**.
+	// The number of entries per page. Default value: **20**.
 	//
 	// example:
 	//
@@ -4634,7 +4833,7 @@ type ListCloudResourcesResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The response parameters.
+	// The data returned for the request.
 	Data []*ListCloudResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -4642,7 +4841,7 @@ type ListCloudResourcesResponseBody struct {
 	//
 	// 12345678-1234-1234-1234-123456789ABC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of certificate authority (CA) certificates per page. Default value: **20**.
+	// The number of entries per page. Default value: **20**.
 	//
 	// example:
 	//
@@ -4714,19 +4913,25 @@ type ListCloudResourcesResponseBodyData struct {
 	//
 	// 1706259520000
 	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The AccessKey ID used to access cloud resources.
+	// The AccessKey ID that is used to access cloud resources.
 	//
-	// >  This parameter is required only when you deploy certificates to services of multiple clouds.
+	// >  This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
 	//
 	// example:
 	//
 	// 1234
 	CloudAccessId *string `json:"CloudAccessId,omitempty" xml:"CloudAccessId,omitempty"`
-	// The cloud service provider of the cloud resource. Valid values:
+	// The cloud service provider.
 	//
-	// 	- **aliyun**: Alibaba Cloud
+	// Valid values:
 	//
-	// 	- **Tencent**: Tencent Cloud
+	// 	- Tencent
+	//
+	// 	- Huawei
+	//
+	// 	- Aws
+	//
+	// 	- aliyun
 	//
 	// example:
 	//
@@ -4764,9 +4969,9 @@ type ListCloudResourcesResponseBodyData struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether HTTPS is enabled for the cloud resource. Valid values:
 	//
-	// 	- **1**: yes
+	// 	- **1**: yes.
 	//
-	// 	- **0**: no
+	// 	- **0**: no.
 	//
 	// example:
 	//
