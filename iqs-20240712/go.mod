@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/iqs-20240712
+module github.com/alibabacloud-go/iqs-20240712/v2
 
 go 1.14
 
