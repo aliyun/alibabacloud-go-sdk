@@ -8523,7 +8523,7 @@ func (s *SetRunningPlanResponse) SetBody(v *SetRunningPlanResponseBody) *SetRunn
 }
 
 type SubmitDocumentAnalyzeJobRequest struct {
-	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	AnalysisType *string `json:"analysisType,omitempty" xml:"analysisType,omitempty"`
 	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
@@ -8550,8 +8550,8 @@ func (s SubmitDocumentAnalyzeJobRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitDocumentAnalyzeJobRequest) SetDataType(v string) *SubmitDocumentAnalyzeJobRequest {
-	s.DataType = &v
+func (s *SubmitDocumentAnalyzeJobRequest) SetAnalysisType(v string) *SubmitDocumentAnalyzeJobRequest {
+	s.AnalysisType = &v
 	return s
 }
 
@@ -8576,7 +8576,7 @@ func (s *SubmitDocumentAnalyzeJobRequest) SetTemplateId(v string) *SubmitDocumen
 }
 
 type SubmitDocumentAnalyzeJobAdvanceRequest struct {
-	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	AnalysisType *string `json:"analysisType,omitempty" xml:"analysisType,omitempty"`
 	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
@@ -8603,8 +8603,8 @@ func (s SubmitDocumentAnalyzeJobAdvanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *SubmitDocumentAnalyzeJobAdvanceRequest) SetDataType(v string) *SubmitDocumentAnalyzeJobAdvanceRequest {
-	s.DataType = &v
+func (s *SubmitDocumentAnalyzeJobAdvanceRequest) SetAnalysisType(v string) *SubmitDocumentAnalyzeJobAdvanceRequest {
+	s.AnalysisType = &v
 	return s
 }
 
@@ -11571,8 +11571,8 @@ func (client *Client) SubmitDocumentAnalyzeJobWithOptions(request *SubmitDocumen
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DataType)) {
-		query["dataType"] = request.DataType
+	if !tea.BoolValue(util.IsUnset(request.AnalysisType)) {
+		query["analysisType"] = request.AnalysisType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
