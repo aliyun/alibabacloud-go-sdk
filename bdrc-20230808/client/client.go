@@ -677,6 +677,10 @@ func (s *DescribeProductsResponse) SetBody(v *DescribeProductsResponseBody) *Des
 type DescribeResourcesRequest struct {
 	// example:
 	//
+	// LRS
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	// example:
+	//
 	// rule-000c***yc9
 	FailedRuleTemplate *string `json:"FailedRuleTemplate,omitempty" xml:"FailedRuleTemplate,omitempty"`
 	// example:
@@ -703,6 +707,10 @@ type DescribeResourcesRequest struct {
 	//
 	// ASC
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// example:
+	//
+	// ARCHIVE
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 }
 
 func (s DescribeResourcesRequest) String() string {
@@ -711,6 +719,11 @@ func (s DescribeResourcesRequest) String() string {
 
 func (s DescribeResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourcesRequest) SetDataRedundancyType(v string) *DescribeResourcesRequest {
+	s.DataRedundancyType = &v
+	return s
 }
 
 func (s *DescribeResourcesRequest) SetFailedRuleTemplate(v string) *DescribeResourcesRequest {
@@ -745,6 +758,11 @@ func (s *DescribeResourcesRequest) SetSortBy(v string) *DescribeResourcesRequest
 
 func (s *DescribeResourcesRequest) SetSortOrder(v string) *DescribeResourcesRequest {
 	s.SortOrder = &v
+	return s
+}
+
+func (s *DescribeResourcesRequest) SetStorageClass(v string) *DescribeResourcesRequest {
+	s.StorageClass = &v
 	return s
 }
 
@@ -834,7 +852,8 @@ type DescribeResourcesResponseBodyDataContent struct {
 	// example:
 	//
 	// 1697798340
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
 	// example:
 	//
 	// 0
@@ -886,7 +905,8 @@ type DescribeResourcesResponseBodyDataContent struct {
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// example:
 	//
 	// 0
@@ -934,6 +954,11 @@ func (s *DescribeResourcesResponseBodyDataContent) SetColdArchiveDataSize(v int6
 
 func (s *DescribeResourcesResponseBodyDataContent) SetCreateTime(v int64) *DescribeResourcesResponseBodyDataContent {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeResourcesResponseBodyDataContent) SetDataRedundancyType(v string) *DescribeResourcesResponseBodyDataContent {
+	s.DataRedundancyType = &v
 	return s
 }
 
@@ -999,6 +1024,11 @@ func (s *DescribeResourcesResponseBodyDataContent) SetStandardDataSize(v int64) 
 
 func (s *DescribeResourcesResponseBodyDataContent) SetStatus(v string) *DescribeResourcesResponseBodyDataContent {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeResourcesResponseBodyDataContent) SetStorageClass(v string) *DescribeResourcesResponseBodyDataContent {
+	s.StorageClass = &v
 	return s
 }
 
@@ -1843,7 +1873,8 @@ type DescribeTopRiskyResourcesResponseBodyDataContent struct {
 	// example:
 	//
 	// 1697798340
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
 	// example:
 	//
 	// true
@@ -1895,7 +1926,8 @@ type DescribeTopRiskyResourcesResponseBodyDataContent struct {
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// example:
 	//
 	// 0
@@ -1943,6 +1975,11 @@ func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetColdArchiveDataSiz
 
 func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetCreateTime(v int64) *DescribeTopRiskyResourcesResponseBodyDataContent {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetDataRedundancyType(v string) *DescribeTopRiskyResourcesResponseBodyDataContent {
+	s.DataRedundancyType = &v
 	return s
 }
 
@@ -2008,6 +2045,11 @@ func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetStandardDataSize(v
 
 func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetStatus(v string) *DescribeTopRiskyResourcesResponseBodyDataContent {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeTopRiskyResourcesResponseBodyDataContent) SetStorageClass(v string) *DescribeTopRiskyResourcesResponseBodyDataContent {
+	s.StorageClass = &v
 	return s
 }
 
@@ -2862,6 +2904,10 @@ func (client *Client) DescribeResourcesWithOptions(request *DescribeResourcesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataRedundancyType)) {
+		query["DataRedundancyType"] = request.DataRedundancyType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FailedRuleTemplate)) {
 		query["FailedRuleTemplate"] = request.FailedRuleTemplate
 	}
@@ -2888,6 +2934,10 @@ func (client *Client) DescribeResourcesWithOptions(request *DescribeResourcesReq
 
 	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
 		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageClass)) {
+		query["StorageClass"] = request.StorageClass
 	}
 
 	req := &openapi.OpenApiRequest{
