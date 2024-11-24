@@ -2558,7 +2558,8 @@ type GetConnectionTicketRequest struct {
 	// example:
 	//
 	// cd45e873-650d-4d70-acb9-f996187a****
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string                          `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Tag       []*GetConnectionTicketRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c638****
@@ -2634,6 +2635,11 @@ func (s *GetConnectionTicketRequest) SetSessionId(v string) *GetConnectionTicket
 	return s
 }
 
+func (s *GetConnectionTicketRequest) SetTag(v []*GetConnectionTicketRequestTag) *GetConnectionTicketRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketRequest {
 	s.TaskId = &v
 	return s
@@ -2641,6 +2647,29 @@ func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketReq
 
 func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketRequest {
 	s.Uuid = &v
+	return s
+}
+
+type GetConnectionTicketRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetConnectionTicketRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionTicketRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionTicketRequestTag) SetKey(v string) *GetConnectionTicketRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequestTag) SetValue(v string) *GetConnectionTicketRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -6511,6 +6540,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
