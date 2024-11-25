@@ -294,6 +294,7 @@ type BicyclingDirectionNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
@@ -320,6 +321,11 @@ func (s *BicyclingDirectionNovaResponseBody) SetErrorCode(v int32) *BicyclingDir
 
 func (s *BicyclingDirectionNovaResponseBody) SetErrorMessage(v string) *BicyclingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BicyclingDirectionNovaResponseBody) SetRequestId(v string) *BicyclingDirectionNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -758,6 +764,7 @@ type DrivingDirectionNovaResponseBody struct {
 	//
 	// Access was denied, message: No such namespace namespaces/general-perf-cn-shenzhen-e-default.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// true
@@ -784,6 +791,11 @@ func (s *DrivingDirectionNovaResponseBody) SetErrorCode(v int32) *DrivingDirecti
 
 func (s *DrivingDirectionNovaResponseBody) SetErrorMessage(v string) *DrivingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DrivingDirectionNovaResponseBody) SetRequestId(v string) *DrivingDirectionNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1442,6 +1454,7 @@ type ElectrobikeDirectionNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
@@ -1468,6 +1481,11 @@ func (s *ElectrobikeDirectionNovaResponseBody) SetErrorCode(v int32) *Electrobik
 
 func (s *ElectrobikeDirectionNovaResponseBody) SetErrorMessage(v string) *ElectrobikeDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ElectrobikeDirectionNovaResponseBody) SetRequestId(v string) *ElectrobikeDirectionNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1830,6 +1848,7 @@ type GeoCodeResponseBody struct {
 	//
 	// Pop sign mismatch, please check log.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
@@ -1856,6 +1875,11 @@ func (s *GeoCodeResponseBody) SetErrorCode(v int32) *GeoCodeResponseBody {
 
 func (s *GeoCodeResponseBody) SetErrorMessage(v string) *GeoCodeResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GeoCodeResponseBody) SetRequestId(v string) *GeoCodeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2083,6 +2107,7 @@ type NearbySearchNovaResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
@@ -2109,6 +2134,11 @@ func (s *NearbySearchNovaResponseBody) SetErrorCode(v int32) *NearbySearchNovaRe
 
 func (s *NearbySearchNovaResponseBody) SetErrorMessage(v string) *NearbySearchNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *NearbySearchNovaResponseBody) SetRequestId(v string) *NearbySearchNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2434,6 +2464,7 @@ type PlaceSearchNovaResponseBody struct {
 	//
 	// Access was denied, message: Unauthorized.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// true
@@ -2460,6 +2491,11 @@ func (s *PlaceSearchNovaResponseBody) SetErrorCode(v int32) *PlaceSearchNovaResp
 
 func (s *PlaceSearchNovaResponseBody) SetErrorMessage(v string) *PlaceSearchNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PlaceSearchNovaResponseBody) SetRequestId(v string) *PlaceSearchNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2758,6 +2794,7 @@ type RgeoCodeResponseBody struct {
 	// success
 	ErrorCode    *int32  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
@@ -2784,6 +2821,11 @@ func (s *RgeoCodeResponseBody) SetErrorCode(v int32) *RgeoCodeResponseBody {
 
 func (s *RgeoCodeResponseBody) SetErrorMessage(v string) *RgeoCodeResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RgeoCodeResponseBody) SetRequestId(v string) *RgeoCodeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3134,6 +3176,7 @@ type TransitIntegratedDirectionResponseBody struct {
 	//
 	// <title>502 Bad Gateway</title>
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// true
@@ -3160,6 +3203,11 @@ func (s *TransitIntegratedDirectionResponseBody) SetErrorCode(v int32) *TransitI
 
 func (s *TransitIntegratedDirectionResponseBody) SetErrorMessage(v string) *TransitIntegratedDirectionResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBody) SetRequestId(v string) *TransitIntegratedDirectionResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -4456,6 +4504,7 @@ type WalkingDirectionNovaResponseBody struct {
 	//
 	// Access was denied
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// true
@@ -4482,6 +4531,11 @@ func (s *WalkingDirectionNovaResponseBody) SetErrorCode(v int32) *WalkingDirecti
 
 func (s *WalkingDirectionNovaResponseBody) SetErrorMessage(v string) *WalkingDirectionNovaResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *WalkingDirectionNovaResponseBody) SetRequestId(v string) *WalkingDirectionNovaResponseBody {
+	s.RequestId = &v
 	return s
 }
 
