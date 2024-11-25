@@ -11,10 +11,12 @@ import (
 
 type Artifact struct {
 	// This parameter is required.
-	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	BizId         *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	CatagoryBizId *string `json:"catagoryBizId,omitempty" xml:"catagoryBizId,omitempty"`
 	// This parameter is required.
 	Creator    *int64      `json:"creator,omitempty" xml:"creator,omitempty"`
 	Credential *Credential `json:"credential,omitempty" xml:"credential,omitempty"`
+	FullPath   []*string   `json:"fullPath,omitempty" xml:"fullPath,omitempty" type:"Repeated"`
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
 	// This parameter is required.
@@ -40,6 +42,11 @@ func (s *Artifact) SetBizId(v string) *Artifact {
 	return s
 }
 
+func (s *Artifact) SetCatagoryBizId(v string) *Artifact {
+	s.CatagoryBizId = &v
+	return s
+}
+
 func (s *Artifact) SetCreator(v int64) *Artifact {
 	s.Creator = &v
 	return s
@@ -47,6 +54,11 @@ func (s *Artifact) SetCreator(v int64) *Artifact {
 
 func (s *Artifact) SetCredential(v *Credential) *Artifact {
 	s.Credential = v
+	return s
+}
+
+func (s *Artifact) SetFullPath(v []*string) *Artifact {
+	s.FullPath = v
 	return s
 }
 
@@ -570,16 +582,18 @@ type Task struct {
 	CategoryBizId *string `json:"categoryBizId,omitempty" xml:"categoryBizId,omitempty"`
 	Content       *string `json:"content,omitempty" xml:"content,omitempty"`
 	// This parameter is required.
-	Creator                *int64    `json:"creator,omitempty" xml:"creator,omitempty"`
-	DefaultCatalogId       *string   `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
-	DefaultDatabase        *string   `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
-	DefaultResourceQueueId *string   `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
-	DefaultSqlComputeId    *string   `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
-	DeploymentId           *string   `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	ExtraArtifactIds       []*string `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
-	ExtraSparkSubmitParams *string   `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
-	Files                  []*string `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	Fusion                 *bool     `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Creator                *int64          `json:"creator,omitempty" xml:"creator,omitempty"`
+	Credential             *TaskCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
+	DefaultCatalogId       *string         `json:"defaultCatalogId,omitempty" xml:"defaultCatalogId,omitempty"`
+	DefaultDatabase        *string         `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	DefaultResourceQueueId *string         `json:"defaultResourceQueueId,omitempty" xml:"defaultResourceQueueId,omitempty"`
+	DefaultSqlComputeId    *string         `json:"defaultSqlComputeId,omitempty" xml:"defaultSqlComputeId,omitempty"`
+	DeploymentId           *string         `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	EnvironmentId          *string         `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ExtraArtifactIds       []*string       `json:"extraArtifactIds,omitempty" xml:"extraArtifactIds,omitempty" type:"Repeated"`
+	ExtraSparkSubmitParams *string         `json:"extraSparkSubmitParams,omitempty" xml:"extraSparkSubmitParams,omitempty"`
+	Files                  []*string       `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	Fusion                 *bool           `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// This parameter is required.
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
 	// This parameter is required.
@@ -660,6 +674,11 @@ func (s *Task) SetCreator(v int64) *Task {
 	return s
 }
 
+func (s *Task) SetCredential(v *TaskCredential) *Task {
+	s.Credential = v
+	return s
+}
+
 func (s *Task) SetDefaultCatalogId(v string) *Task {
 	s.DefaultCatalogId = &v
 	return s
@@ -682,6 +701,11 @@ func (s *Task) SetDefaultSqlComputeId(v string) *Task {
 
 func (s *Task) SetDeploymentId(v string) *Task {
 	s.DeploymentId = &v
+	return s
+}
+
+func (s *Task) SetEnvironmentId(v string) *Task {
+	s.EnvironmentId = &v
 	return s
 }
 
@@ -822,6 +846,65 @@ func (s *Task) SetTimeout(v int32) *Task {
 
 func (s *Task) SetType(v string) *Task {
 	s.Type = &v
+	return s
+}
+
+type TaskCredential struct {
+	AccessId      *string `json:"accessId,omitempty" xml:"accessId,omitempty"`
+	AccessUrl     *string `json:"accessUrl,omitempty" xml:"accessUrl,omitempty"`
+	Expire        *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Host          *string `json:"host,omitempty" xml:"host,omitempty"`
+	Path          *string `json:"path,omitempty" xml:"path,omitempty"`
+	Policy        *string `json:"policy,omitempty" xml:"policy,omitempty"`
+	SecurityToken *string `json:"securityToken,omitempty" xml:"securityToken,omitempty"`
+	Signature     *string `json:"signature,omitempty" xml:"signature,omitempty"`
+}
+
+func (s TaskCredential) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskCredential) GoString() string {
+	return s.String()
+}
+
+func (s *TaskCredential) SetAccessId(v string) *TaskCredential {
+	s.AccessId = &v
+	return s
+}
+
+func (s *TaskCredential) SetAccessUrl(v string) *TaskCredential {
+	s.AccessUrl = &v
+	return s
+}
+
+func (s *TaskCredential) SetExpire(v int64) *TaskCredential {
+	s.Expire = &v
+	return s
+}
+
+func (s *TaskCredential) SetHost(v string) *TaskCredential {
+	s.Host = &v
+	return s
+}
+
+func (s *TaskCredential) SetPath(v string) *TaskCredential {
+	s.Path = &v
+	return s
+}
+
+func (s *TaskCredential) SetPolicy(v string) *TaskCredential {
+	s.Policy = &v
+	return s
+}
+
+func (s *TaskCredential) SetSecurityToken(v string) *TaskCredential {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *TaskCredential) SetSignature(v string) *TaskCredential {
+	s.Signature = &v
 	return s
 }
 
@@ -1284,7 +1367,7 @@ type CreateSqlStatementRequest struct {
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The SQL compute ID. You can create an SQL compute in the workspace created in EMR Serverless Spark.
+	// The SQL session ID. You can create an SQL session in the workspace created in EMR Serverless Spark.
 	//
 	// example:
 	//
@@ -1488,7 +1571,8 @@ type GetJobRunResponseBodyJobRun struct {
 	// example:
 	//
 	// 1684119314000
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime       *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// The timeout period of the job.
 	//
 	// example:
@@ -1585,6 +1669,11 @@ func (s *GetJobRunResponseBodyJobRun) SetDisplayReleaseVersion(v string) *GetJob
 
 func (s *GetJobRunResponseBodyJobRun) SetEndTime(v int64) *GetJobRunResponseBodyJobRun {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetEnvironmentId(v string) *GetJobRunResponseBodyJobRun {
+	s.EnvironmentId = &v
 	return s
 }
 
@@ -1802,7 +1891,8 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	// example:
 	//
 	// your.domain.com
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	DomainInner *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
 	// example:
 	//
 	// TSK-xxxxxxxx
@@ -1814,7 +1904,8 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	// example:
 	//
 	// false
-	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion    *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// example:
 	//
 	// SQL
@@ -1839,6 +1930,7 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	//
 	// 1234abcd-12ab-34cd-56ef-1234567890ab
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	StartTime        *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// 作业状态。
 	//
 	// example:
@@ -1901,6 +1993,11 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetDomain(v string) *GetSe
 	return s
 }
 
+func (s *GetSessionClusterResponseBodySessionCluster) SetDomainInner(v string) *GetSessionClusterResponseBodySessionCluster {
+	s.DomainInner = &v
+	return s
+}
+
 func (s *GetSessionClusterResponseBodySessionCluster) SetDraftId(v string) *GetSessionClusterResponseBodySessionCluster {
 	s.DraftId = &v
 	return s
@@ -1913,6 +2010,11 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetEnvId(v string) *GetSes
 
 func (s *GetSessionClusterResponseBodySessionCluster) SetFusion(v bool) *GetSessionClusterResponseBodySessionCluster {
 	s.Fusion = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetGmtCreate(v int64) *GetSessionClusterResponseBodySessionCluster {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -1938,6 +2040,11 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetReleaseVersion(v string
 
 func (s *GetSessionClusterResponseBodySessionCluster) SetSessionClusterId(v string) *GetSessionClusterResponseBodySessionCluster {
 	s.SessionClusterId = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetStartTime(v int64) *GetSessionClusterResponseBodySessionCluster {
+	s.StartTime = &v
 	return s
 }
 
@@ -2311,12 +2418,13 @@ func (s *GetSqlStatementResponse) SetBody(v *GetSqlStatementResponseBody) *GetSq
 }
 
 type GrantRoleToUsersRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
 	// example:
 	//
 	// acs:emr::w-975bcfda9625****:role/Owner
-	RoleArn  *string   `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// The user ARNs.
 	UserArns []*string `json:"userArns,omitempty" xml:"userArns,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -3668,6 +3776,7 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// The version of the Spark engine.
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	Domain                *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	DomainInner           *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
 	// The ID of the job that is associated with the session.
 	//
 	// example:
@@ -3679,7 +3788,8 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// example:
 	//
 	// false
-	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion    *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The session type.
 	//
 	// Valid values:
@@ -3718,6 +3828,7 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// sc-123131
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
+	StartTime        *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The status of the session.
 	//
 	// example:
@@ -3732,7 +3843,7 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// 123131
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The name of the user.
+	// The username.
 	//
 	// example:
 	//
@@ -3785,6 +3896,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetDomain(v string) *Li
 	return s
 }
 
+func (s *ListSessionClustersResponseBodySessionClusters) SetDomainInner(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.DomainInner = &v
+	return s
+}
+
 func (s *ListSessionClustersResponseBodySessionClusters) SetDraftId(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.DraftId = &v
 	return s
@@ -3792,6 +3908,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetDraftId(v string) *L
 
 func (s *ListSessionClustersResponseBodySessionClusters) SetFusion(v bool) *ListSessionClustersResponseBodySessionClusters {
 	s.Fusion = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetGmtCreate(v int64) *ListSessionClustersResponseBodySessionClusters {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -3817,6 +3938,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetReleaseVersion(v str
 
 func (s *ListSessionClustersResponseBodySessionClusters) SetSessionClusterId(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.SessionClusterId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetStartTime(v int64) *ListSessionClustersResponseBodySessionClusters {
+	s.StartTime = &v
 	return s
 }
 
@@ -3857,13 +3983,13 @@ type ListSessionClustersResponseBodySessionClustersApplicationConfigs struct {
 	//
 	// spark-default.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
-	// The key of the configuration item.
+	// The key of the configuration.
 	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
 	// example:
 	//
@@ -5977,7 +6103,7 @@ func (client *Client) ListJobRuns(workspaceId *string, request *ListJobRunsReque
 
 // Summary:
 //
-// 获取日志内容
+// Obtains the log content.
 //
 // @param request - ListLogContentsRequest
 //
@@ -6034,7 +6160,7 @@ func (client *Client) ListLogContentsWithOptions(workspaceId *string, request *L
 
 // Summary:
 //
-// 获取日志内容
+// Obtains the log content.
 //
 // @param request - ListLogContentsRequest
 //
@@ -6133,7 +6259,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// Queries a list of sessions.
+// Queries the list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -6198,7 +6324,7 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// Queries a list of sessions.
+// Queries the list of sessions.
 //
 // @param request - ListSessionClustersRequest
 //
@@ -6217,7 +6343,7 @@ func (client *Client) ListSessionClusters(workspaceId *string, request *ListSess
 
 // Summary:
 //
-// 查看工作空间队列列表
+// Queries the list of queues in a Spark workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
@@ -6266,7 +6392,7 @@ func (client *Client) ListWorkspaceQueuesWithOptions(workspaceId *string, reques
 
 // Summary:
 //
-// 查看工作空间队列列表
+// Queries the list of queues in a Spark workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
 //
