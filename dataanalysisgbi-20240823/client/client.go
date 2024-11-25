@@ -55,7 +55,10 @@ func (s *RunDataAnalysisRequest) SetSpecificationType(v string) *RunDataAnalysis
 }
 
 type RunDataAnalysisResponseBody struct {
-	Data *RunDataAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Code           *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *RunDataAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpStatusCode *int64                           `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                          `json:"message,omitempty" xml:"message,omitempty"`
 }
 
 func (s RunDataAnalysisResponseBody) String() string {
@@ -66,8 +69,23 @@ func (s RunDataAnalysisResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *RunDataAnalysisResponseBody) SetCode(v string) *RunDataAnalysisResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *RunDataAnalysisResponseBody) SetData(v *RunDataAnalysisResponseBodyData) *RunDataAnalysisResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *RunDataAnalysisResponseBody) SetHttpStatusCode(v int64) *RunDataAnalysisResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RunDataAnalysisResponseBody) SetMessage(v string) *RunDataAnalysisResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -79,8 +97,9 @@ type RunDataAnalysisResponseBodyData struct {
 	// example:
 	//
 	// rewrite
-	Event    *string `json:"event,omitempty" xml:"event,omitempty"`
-	Evidence *string `json:"evidence,omitempty" xml:"evidence,omitempty"`
+	Event          *string `json:"event,omitempty" xml:"event,omitempty"`
+	Evidence       *string `json:"evidence,omitempty" xml:"evidence,omitempty"`
+	HttpStatusCode *int64  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// example:
 	//
 	// DA2578F7-88A5-5D6E-9305-33E724E97D60
@@ -123,6 +142,11 @@ func (s *RunDataAnalysisResponseBodyData) SetEvent(v string) *RunDataAnalysisRes
 
 func (s *RunDataAnalysisResponseBodyData) SetEvidence(v string) *RunDataAnalysisResponseBodyData {
 	s.Evidence = &v
+	return s
+}
+
+func (s *RunDataAnalysisResponseBodyData) SetHttpStatusCode(v int64) *RunDataAnalysisResponseBodyData {
+	s.HttpStatusCode = &v
 	return s
 }
 
