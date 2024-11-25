@@ -4234,11 +4234,11 @@ func (s *CreateEditingProjectResponse) SetBody(v *CreateEditingProjectResponseBo
 }
 
 type CreateLiveRecordTemplateRequest struct {
-	// 代表资源名称的资源属性字段
+	// The name of the template.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	//
 	// This parameter is required.
 	RecordFormat []*CreateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
@@ -4263,11 +4263,21 @@ func (s *CreateLiveRecordTemplateRequest) SetRecordFormat(v []*CreateLiveRecordT
 }
 
 type CreateLiveRecordTemplateRequestRecordFormat struct {
+	// The duration of the recording cycle. Unit: seconds. If you do not specify this parameter, the default value 6 hours is used.
+	//
+	// >
+	//
+	// 	- If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
+	//
+	// 	- If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
+	//
 	// example:
 	//
 	// 3600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
+	// The format.
+	//
+	// >  If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
 	//
 	// This parameter is required.
 	//
@@ -4275,19 +4285,33 @@ type CreateLiveRecordTemplateRequestRecordFormat struct {
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名，不包含后缀
+	// The name of the recording file that is stored in Object Storage Service (OSS).
+	//
+	// 	- The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+	//
+	// 	- The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// 切片时长
+	// The duration of a single segment. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set Format to m3u8.
+	//
+	// If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名，不包含后缀
+	// The name of the TS segment.
+	//
+	// >  This parameter is required only if you set Format to m3u8.
+	//
+	// 	- By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
+	//
+	// 	- The segment name must contain the {UnixTimestamp} and {Sequence} variables.
 	//
 	// example:
 	//
@@ -4329,11 +4353,11 @@ func (s *CreateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v 
 }
 
 type CreateLiveRecordTemplateShrinkRequest struct {
-	// 代表资源名称的资源属性字段
+	// The name of the template.
 	//
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	//
 	// This parameter is required.
 	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
@@ -4358,11 +4382,13 @@ func (s *CreateLiveRecordTemplateShrinkRequest) SetRecordFormatShrink(v string) 
 }
 
 type CreateLiveRecordTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0622C702-41BE-467E-AF2E-883D4517962E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The template ID.
 	//
 	// example:
 	//
@@ -4418,16 +4444,46 @@ func (s *CreateLiveRecordTemplateResponse) SetBody(v *CreateLiveRecordTemplateRe
 }
 
 type CreateLiveSnapshotTemplateRequest struct {
+	// The naming format of the snapshot captured in overwrite mode.
+	//
+	// 	- The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	//
+	// 	- It cannot exceed 255 characters in length.
+	//
+	// 	- The {JobId} placeholder is supported. It specifies the ID of the snapshot job.
+	//
+	// 	- Placeholders such as {UnixTimestamp}, {Sequence}, and {Date} are not allowed.
+	//
+	// 	- You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	//
 	// example:
 	//
 	// snapshot/{JobId}.jpg
 	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	// The naming format of the snapshot captured in time series mode.
+	//
+	// 	- The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	//
+	// 	- It cannot exceed 255 characters in length.
+	//
+	// 	- The {JobId}, {Date}, {UnixTimestamp}, and {Sequence} placeholders are supported. {JobId} specifies the ID of the snapshot job. {Date} specifies the date on which the snapshot is captured. {UnixTimestamp} specifies the timestamp of the snapshot. {Sequence} specifies the sequence number of the snapshot. You must specify at least one of the {UnixTimestamp} and {Sequence} placeholders.
+	//
+	// 	- You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	//
 	// example:
 	//
 	// snapshot/{JobId}/{UnixTimestamp}.jpg
 	SequenceFormat *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	// The name of the template.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots. Unit: seconds.
+	//
+	// 	- Valid values: [5,3600].
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4465,10 +4521,14 @@ func (s *CreateLiveSnapshotTemplateRequest) SetTimeInterval(v int32) *CreateLive
 }
 
 type CreateLiveSnapshotTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
@@ -4523,13 +4583,26 @@ func (s *CreateLiveSnapshotTemplateResponse) SetBody(v *CreateLiveSnapshotTempla
 }
 
 type CreateLiveTranscodeTemplateRequest struct {
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my template
-	Name           *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfig *CreateLiveTranscodeTemplateRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The type of the template. Valid values:
+	//
+	// 	- normal
+	//
+	// 	- narrow-band
+	//
+	// 	- audio-only
+	//
+	// 	- origin
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4562,7 +4635,9 @@ func (s *CreateLiveTranscodeTemplateRequest) SetType(v string) *CreateLiveTransc
 }
 
 type CreateLiveTranscodeTemplateRequestTemplateConfig struct {
+	// The audio parameters.
 	AudioParams *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams `json:"AudioParams,omitempty" xml:"AudioParams,omitempty" type:"Struct"`
+	// The video parameters.
 	VideoParams *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams `json:"VideoParams,omitempty" xml:"VideoParams,omitempty" type:"Struct"`
 }
 
@@ -4585,22 +4660,46 @@ func (s *CreateLiveTranscodeTemplateRequestTemplateConfig) SetVideoParams(v *Cre
 }
 
 type CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
+	// The bitrate of the output audio. Unit: Kbit/s. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 100
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Valid values: 1: mono 2: binaural
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values:
+	//
+	// 	- AAC
+	//
+	// 	- MP3
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. Valid values when the Codec parameter is set to AAC:
+	//
+	// 	- aac_low
+	//
+	// 	- aac_he
+	//
+	// 	- aac_he_v2
+	//
+	// 	- aac_ld
+	//
 	// example:
 	//
 	// aaclow
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sampling rate. Valid values: 22050 to 96000.
+	//
+	// Note: If you set AudioProfile to aac_ld, the audio sampling rate cannot exceed 44,100.
+	//
 	// example:
 	//
 	// 44100
@@ -4641,30 +4740,52 @@ func (s *CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetSampler
 }
 
 type CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
+	// The bitrate of the output video. Unit: Kbit/s. Valid values: 1 to 6000.
+	//
 	// example:
 	//
 	// 2500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The encoding type. Valid values:
+	//
+	// 	- H.264
+	//
+	// 	- H.265
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
+	//
 	// example:
 	//
 	// 25
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The group of pictures (GOP) of the output video. Unit: frame. Valid values: 1 to 3000.
+	//
 	// example:
 	//
 	// 1000
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video. Valid values: Height ≥ 128 max (Height,Width) ≤ 2560 min (Height,Width) ≤ 1440
+	//
+	// Note: The resolution of the output video that is transcoded by using the H.265 Narrowband HD transcoding template cannot exceed 1280 × 720 pixels.
+	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The encoding profile. The profile determines how a video is encoded. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values: 1: baseline. This value is suitable for mobile devices. 2: main. This value is suitable for standard-definition devices. 3: high. This value is suitable for high-definition devices.
+	//
 	// example:
 	//
 	// 2
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The width of the output video. Valid values: Width ≥ 128 max (Height,Width) ≤ 2560 min (Height,Width) ≤ 1440
+	//
+	// Note: The resolution of the output video that is transcoded by using the H.265 Narrowband HD transcoding template cannot exceed 1280 × 720 pixels.
+	//
 	// example:
 	//
 	// 1280
@@ -4715,13 +4836,26 @@ func (s *CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetWidth(v
 }
 
 type CreateLiveTranscodeTemplateShrinkRequest struct {
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// my template
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The type of the template. Valid values:
+	//
+	// 	- normal
+	//
+	// 	- narrow-band
+	//
+	// 	- audio-only
+	//
+	// 	- origin
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4754,10 +4888,14 @@ func (s *CreateLiveTranscodeTemplateShrinkRequest) SetType(v string) *CreateLive
 }
 
 type CreateLiveTranscodeTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the template.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
@@ -6595,8 +6733,12 @@ func (s *DeleteEditingProjectsResponse) SetBody(v *DeleteEditingProjectsResponse
 }
 
 type DeleteLiveRecordFilesRequest struct {
+	// The collection of IDs of recording files.
+	//
 	// This parameter is required.
 	RecordIds []*string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
+	// Specifies whether to delete the original files in OSS.
+	//
 	// example:
 	//
 	// true
@@ -6622,7 +6764,10 @@ func (s *DeleteLiveRecordFilesRequest) SetRemoveFile(v bool) *DeleteLiveRecordFi
 }
 
 type DeleteLiveRecordFilesResponseBody struct {
+	// The list of files deleted.
 	DeleteFileInfoList []*DeleteLiveRecordFilesResponseBodyDeleteFileInfoList `json:"DeleteFileInfoList,omitempty" xml:"DeleteFileInfoList,omitempty" type:"Repeated"`
+	// The description of the state returned.
+	//
 	// example:
 	//
 	// OK
@@ -6659,14 +6804,20 @@ func (s *DeleteLiveRecordFilesResponseBody) SetRequestId(v string) *DeleteLiveRe
 }
 
 type DeleteLiveRecordFilesResponseBodyDeleteFileInfoList struct {
+	// The code that identifies the result of the deletion.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of deletion.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the deleted recording file.
+	//
 	// example:
 	//
 	// 13cbb83e-043c-4728-ac35-*****
@@ -6726,7 +6877,7 @@ func (s *DeleteLiveRecordFilesResponse) SetBody(v *DeleteLiveRecordFilesResponse
 }
 
 type DeleteLiveRecordTemplateRequest struct {
-	// 代表资源一级ID的资源属性字段
+	// The ID of the template to be deleted. To obtain the template ID, log on to the [Intelligent Media Services (IMS) console](https://ice.console.aliyun.com/live-processing/template/list/record), choose Real-time Media Processing > Template Management, and then click the Recording tab. Alternatively, find the ID from the response parameters of the [CreateLiveRecordTemplate](https://help.aliyun.com/document_detail/448213.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -6750,6 +6901,8 @@ func (s *DeleteLiveRecordTemplateRequest) SetTemplateId(v string) *DeleteLiveRec
 }
 
 type DeleteLiveRecordTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5330CF-B4C8-5BEF-AA6B-8E70BD20FAEE
@@ -6799,12 +6952,18 @@ func (s *DeleteLiveRecordTemplateResponse) SetBody(v *DeleteLiveRecordTemplateRe
 }
 
 type DeleteLiveSnapshotFilesRequest struct {
+	// The list of timestamps when the jobs were created. The values are UNIX timestamps representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A maximum of 200 jobs can be deleted at a time.
+	//
 	// This parameter is required.
 	CreateTimestampList []*int64 `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty" type:"Repeated"`
+	// Specifies whether to delete the original files at the same time. Default value: false.
+	//
 	// example:
 	//
 	// true
 	DeleteOriginalFile *bool `json:"DeleteOriginalFile,omitempty" xml:"DeleteOriginalFile,omitempty"`
+	// The ID of the snapshot job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6837,12 +6996,18 @@ func (s *DeleteLiveSnapshotFilesRequest) SetJobId(v string) *DeleteLiveSnapshotF
 }
 
 type DeleteLiveSnapshotFilesShrinkRequest struct {
+	// The list of timestamps when the jobs were created. The values are UNIX timestamps representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A maximum of 200 jobs can be deleted at a time.
+	//
 	// This parameter is required.
 	CreateTimestampListShrink *string `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty"`
+	// Specifies whether to delete the original files at the same time. Default value: false.
+	//
 	// example:
 	//
 	// true
 	DeleteOriginalFile *bool `json:"DeleteOriginalFile,omitempty" xml:"DeleteOriginalFile,omitempty"`
+	// The ID of the snapshot job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6875,7 +7040,10 @@ func (s *DeleteLiveSnapshotFilesShrinkRequest) SetJobId(v string) *DeleteLiveSna
 }
 
 type DeleteLiveSnapshotFilesResponseBody struct {
+	// The list of deleted files.
 	DeleteFileResultList []*DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList `json:"DeleteFileResultList,omitempty" xml:"DeleteFileResultList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****2876-6263-4B75-8F2C-CD0F7FCF****
@@ -6901,10 +7069,20 @@ func (s *DeleteLiveSnapshotFilesResponseBody) SetRequestId(v string) *DeleteLive
 }
 
 type DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList struct {
+	// The time when the file was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1660638613798
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The result of deletion. A value of OK indicates that the file is deleted. Other values indicate that the file failed to be deleted.
+	//
+	// Valid values:
+	//
+	// 	- OK: The file was deleted.
+	//
+	// 	- NotFound: The file was not found.
+	//
 	// example:
 	//
 	// OK
@@ -6959,6 +7137,8 @@ func (s *DeleteLiveSnapshotFilesResponse) SetBody(v *DeleteLiveSnapshotFilesResp
 }
 
 type DeleteLiveSnapshotTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6981,6 +7161,8 @@ func (s *DeleteLiveSnapshotTemplateRequest) SetTemplateId(v string) *DeleteLiveS
 }
 
 type DeleteLiveSnapshotTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -7030,6 +7212,8 @@ func (s *DeleteLiveSnapshotTemplateResponse) SetBody(v *DeleteLiveSnapshotTempla
 }
 
 type DeleteLiveTranscodeJobRequest struct {
+	// The ID of the transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7052,6 +7236,8 @@ func (s *DeleteLiveTranscodeJobRequest) SetJobId(v string) *DeleteLiveTranscodeJ
 }
 
 type DeleteLiveTranscodeJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -7101,6 +7287,8 @@ func (s *DeleteLiveTranscodeJobResponse) SetBody(v *DeleteLiveTranscodeJobRespon
 }
 
 type DeleteLiveTranscodeTemplateRequest struct {
+	// The template ID. To obtain the template ID, log on to the [Intelligent Media Services (IMS) console](https://ice.console.aliyun.com/summary), choose Real-time Media Processing > Template Management, and then click the Transcoding tab. Alternatively, find the ID from the response parameters of the [CreateLiveTranscodeTemplate](https://help.aliyun.com/document_detail/449217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7123,6 +7311,8 @@ func (s *DeleteLiveTranscodeTemplateRequest) SetTemplateId(v string) *DeleteLive
 }
 
 type DeleteLiveTranscodeTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -13713,30 +13903,52 @@ func (s *GetEditingProjectMaterialsResponse) SetBody(v *GetEditingProjectMateria
 }
 
 type GetEventCallbackResponseBody struct {
+	// The authentication key. This parameter is returned only for HTTP callbacks.
+	//
 	// example:
 	//
 	// TestKey001
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// Specifies whether callback authentication is enabled. This parameter is returned only for **HTTP*	- callbacks. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
+	// The name of the Simple Message Queue (SMQ) queue to which callback messages are sent.
+	//
 	// example:
 	//
 	// ice-callback-queue
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
+	// The callback method. Valid values:
+	//
+	// 	- **HTTP**
+	//
+	// 	- **MNS**
+	//
 	// example:
 	//
 	// HTTP
 	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
+	// The callback URL to which event notifications are sent.
+	//
 	// example:
 	//
 	// http://xxx.yyy/callback
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	// The type of the callback event. Multiple values are separated with commas (,). For more information about callback event types, see [Event notification content](https://help.aliyun.com/document_detail/441362.html).
+	//
 	// example:
 	//
 	// ProduceMediaComplete,TranscodeComplete
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -14327,6 +14539,8 @@ func (s *GetLiveEditingJobResponse) SetBody(v *GetLiveEditingJobResponseBody) *G
 }
 
 type GetLiveRecordJobRequest struct {
+	// The ID of the recording job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14349,8 +14563,10 @@ func (s *GetLiveRecordJobRequest) SetJobId(v string) *GetLiveRecordJobRequest {
 }
 
 type GetLiveRecordJobResponseBody struct {
-	// 录制任务
+	// The details of the recording job.
 	RecordJob *GetLiveRecordJobResponseBodyRecordJob `json:"RecordJob,omitempty" xml:"RecordJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B57A046C-CE33-5FBB-B57A-D2B89ACF6907
@@ -14376,7 +14592,7 @@ func (s *GetLiveRecordJobResponseBody) SetRequestId(v string) *GetLiveRecordJobR
 }
 
 type GetLiveRecordJobResponseBodyRecordJob struct {
-	// 代表创建时间的资源属性字段
+	// The time when the job was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -14384,35 +14600,45 @@ type GetLiveRecordJobResponseBodyRecordJob struct {
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The ID of the recording job.
 	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The name of the recording job.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 回调地址
+	// The callback URL.
 	//
 	// example:
 	//
 	// https://example.com/imsnotify
-	NotifyUrl    *string                                            `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The storage address of the recording.
 	RecordOutput *GetLiveRecordJobResponseBodyRecordJobRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
-	// 代表资源名称的资源属性字段
+	// The state of the recording job.
+	//
+	// Valid values:
+	//
+	// 	- paused: The job is paused.
+	//
+	// 	- initial: The job is not started.
+	//
+	// 	- started: The job is in progress.
 	//
 	// example:
 	//
 	// paused
-	Status      *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The URL of the live stream.
 	StreamInput *GetLiveRecordJobResponseBodyRecordJobStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	// 录制模板ID
+	// The ID of the recording template.
 	//
 	// example:
 	//
 	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 录制模板ID
+	// The name of the recording template.
 	//
 	// example:
 	//
@@ -14474,14 +14700,26 @@ func (s *GetLiveRecordJobResponseBodyRecordJob) SetTemplateName(v string) *GetLi
 }
 
 type GetLiveRecordJobResponseBodyRecordJobRecordOutput struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// imsbucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The endpoint of the storage service.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The type of the storage address.
+	//
+	// Valid values:
+	//
+	// 	- vod
+	//
+	// 	- oss
+	//
 	// example:
 	//
 	// oss
@@ -14512,10 +14750,14 @@ func (s *GetLiveRecordJobResponseBodyRecordJobRecordOutput) SetType(v string) *G
 }
 
 type GetLiveRecordJobResponseBodyRecordJobStreamInput struct {
+	// The type of the live stream. The value can only be rtmp.
+	//
 	// example:
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the live stream.
+	//
 	// example:
 	//
 	// rtmp://example.com/app/stream
@@ -14570,10 +14812,14 @@ func (s *GetLiveRecordJobResponse) SetBody(v *GetLiveRecordJobResponseBody) *Get
 }
 
 type GetLiveRecordTemplateRequest struct {
+	// The ID of the recording job. You can specify the JobId parameter to retrieve the snapshot of the template used by the job.
+	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14601,8 +14847,10 @@ func (s *GetLiveRecordTemplateRequest) SetTemplateId(v string) *GetLiveRecordTem
 }
 
 type GetLiveRecordTemplateResponseBody struct {
-	// 录制模板
+	// The recording template.
 	RecordTemplate *GetLiveRecordTemplateResponseBodyRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C892855F-95DF-50D6-A28C-279ABDB76810
@@ -14628,7 +14876,7 @@ func (s *GetLiveRecordTemplateResponseBody) SetRequestId(v string) *GetLiveRecor
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
-	// 代表创建时间的资源属性字段
+	// The time when the job was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -14636,7 +14884,7 @@ type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
 	//
 	// 2022-07-20T03:26:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 代表创建时间的资源属性字段
+	// The time when the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -14644,21 +14892,27 @@ type GetLiveRecordTemplateResponseBodyRecordTemplate struct {
 	//
 	// 2022-07-20T03:26:36Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The template name.
 	//
 	// example:
 	//
 	// test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	RecordFormatList []*GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
-	// 代表资源一级ID的资源属性字段
+	// The template ID.
 	//
 	// example:
 	//
 	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The type of the template.
+	//
+	// Valid values:
+	//
+	// 	- system
+	//
+	// 	- custom
 	//
 	// example:
 	//
@@ -14705,27 +14959,31 @@ func (s *GetLiveRecordTemplateResponseBodyRecordTemplate) SetType(v string) *Get
 }
 
 type GetLiveRecordTemplateResponseBodyRecordTemplateRecordFormatList struct {
+	// The duration of the recording cycle. Unit: seconds. If you do not specify this parameter, the default value 6 hours is used.
+	//
 	// example:
 	//
 	// 7200
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
+	// The output file format.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名，不包含后缀
+	// The name of the recording file that is stored in Object Storage Service (OSS).
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}{EscapedStartTime}{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
+	// The duration of a single segment. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名，不包含后缀
+	// The name of the TS segment.
 	//
 	// example:
 	//
@@ -14796,6 +15054,8 @@ func (s *GetLiveRecordTemplateResponse) SetBody(v *GetLiveRecordTemplateResponse
 }
 
 type GetLiveSnapshotJobRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14818,46 +15078,78 @@ func (s *GetLiveSnapshotJobRequest) SetJobId(v string) *GetLiveSnapshotJobReques
 }
 
 type GetLiveSnapshotJobResponseBody struct {
+	// The snapshot callback URL.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/snapshot/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// The time when the file was created.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The time when the file was last modified.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The naming format of the snapshot captured in overwrite mode.
+	//
 	// example:
 	//
 	// snapshot/{JobId}.jpg
 	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The naming format of the snapshot captured in time series mode.
+	//
 	// example:
 	//
 	// snapshot/{JobId}/{UnixTimestamp}.jpg
-	SequenceFormat *string                                       `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	SequenceFormat *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	// The output information.
 	SnapshotOutput *GetLiveSnapshotJobResponseBodySnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- init: The job is not started.
+	//
+	// 	- paused: The job is paused.
+	//
+	// 	- started: The job is in progress.
+	//
 	// example:
 	//
 	// started
-	Status      *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The input information.
 	StreamInput *GetLiveSnapshotJobResponseBodyStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287666****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots.
+	//
 	// example:
 	//
 	// 5
@@ -14943,14 +15235,20 @@ func (s *GetLiveSnapshotJobResponseBody) SetTimeInterval(v int32) *GetLiveSnapsh
 }
 
 type GetLiveSnapshotJobResponseBodySnapshotOutput struct {
+	// The bucket of the output endpoint. If the storage type is set to oss, the OSS bucket is returned.
+	//
 	// example:
 	//
 	// testbucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The output endpoint. If the storage type is set to oss, the Object Storage Service (OSS) domain name is returned.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The storage type. The value can only be oss.
+	//
 	// example:
 	//
 	// oss
@@ -14981,10 +15279,14 @@ func (s *GetLiveSnapshotJobResponseBodySnapshotOutput) SetStorageType(v string) 
 }
 
 type GetLiveSnapshotJobResponseBodyStreamInput struct {
+	// The type of the input stream. The value can only be rtmp.
+	//
 	// example:
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the input stream.
+	//
 	// example:
 	//
 	// rtmp://www.aliyun.com/stream
@@ -15039,6 +15341,8 @@ func (s *GetLiveSnapshotJobResponse) SetBody(v *GetLiveSnapshotJobResponseBody) 
 }
 
 type GetLiveSnapshotTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15061,35 +15365,58 @@ func (s *GetLiveSnapshotTemplateRequest) SetTemplateId(v string) *GetLiveSnapsho
 }
 
 type GetLiveSnapshotTemplateResponseBody struct {
+	// The time when the configuration was modified.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The naming format of the snapshot captured in overwrite mode.
+	//
 	// example:
 	//
 	// snapshot/{JobId}.jpg
 	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The naming format of the snapshot captured in time series mode.
+	//
 	// example:
 	//
 	// snapshot/{JobId}/{UnixTimestamp}.jpg
 	SequenceFormat *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots.
+	//
 	// example:
 	//
 	// 5
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+	// The type of the template.
+	//
+	// Valid values:
+	//
+	// 	- system
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -15179,6 +15506,8 @@ func (s *GetLiveSnapshotTemplateResponse) SetBody(v *GetLiveSnapshotTemplateResp
 }
 
 type GetLiveTranscodeJobRequest struct {
+	// The ID of the transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15201,7 +15530,10 @@ func (s *GetLiveTranscodeJobRequest) SetJobId(v string) *GetLiveTranscodeJobRequ
 }
 
 type GetLiveTranscodeJobResponseBody struct {
+	// The information about the transcoding job.
 	Job *GetLiveTranscodeJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -15227,36 +15559,60 @@ func (s *GetLiveTranscodeJobResponseBody) SetRequestId(v string) *GetLiveTransco
 }
 
 type GetLiveTranscodeJobResponseBodyJob struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the transcoding job.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the transcoding job.
+	//
 	// example:
 	//
 	// task1
-	Name         *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about the output stream.
 	OutputStream *GetLiveTranscodeJobResponseBodyJobOutputStream `json:"OutputStream,omitempty" xml:"OutputStream,omitempty" type:"Struct"`
+	// The start mode of the job.
+	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	// The state of the job.
+	//
+	// 	- 0: The job is not started.
+	//
+	// 	- 1: The job is in progress.
+	//
+	// 	- 2: The job is stopped.
+	//
 	// example:
 	//
 	// 1
-	Status      *int32                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The information about the input stream.
 	StreamInput *GetLiveTranscodeJobResponseBodyJobStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// b6491d5b3e514b7d895d14b5453ea119
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// basic
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the template.
+	//
 	// example:
 	//
 	// normal
@@ -15322,6 +15678,7 @@ func (s *GetLiveTranscodeJobResponseBodyJob) SetTemplateType(v string) *GetLiveT
 }
 
 type GetLiveTranscodeJobResponseBodyJobOutputStream struct {
+	// The information about the output stream.
 	StreamInfos []*GetLiveTranscodeJobResponseBodyJobOutputStreamStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Repeated"`
 }
 
@@ -15339,10 +15696,14 @@ func (s *GetLiveTranscodeJobResponseBodyJobOutputStream) SetStreamInfos(v []*Get
 }
 
 type GetLiveTranscodeJobResponseBodyJobOutputStreamStreamInfos struct {
+	// The URL of the output stream.
+	//
 	// example:
 	//
 	// rtmp://mydomain/app/mytranscode1
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the output stream protocol. Only the RTMP protocol is supported.
+	//
 	// example:
 	//
 	// rtmp
@@ -15368,10 +15729,14 @@ func (s *GetLiveTranscodeJobResponseBodyJobOutputStreamStreamInfos) SetType(v st
 }
 
 type GetLiveTranscodeJobResponseBodyJobStreamInput struct {
+	// The URL of the input stream.
+	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The type of the input stream.
+	//
 	// example:
 	//
 	// rtmp
@@ -15426,6 +15791,8 @@ func (s *GetLiveTranscodeJobResponse) SetBody(v *GetLiveTranscodeJobResponseBody
 }
 
 type GetLiveTranscodeTemplateRequest struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15448,10 +15815,13 @@ func (s *GetLiveTranscodeTemplateRequest) SetTemplateId(v string) *GetLiveTransc
 }
 
 type GetLiveTranscodeTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the template.
 	TemplateContent *GetLiveTranscodeTemplateResponseBodyTemplateContent `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty" type:"Struct"`
 }
 
@@ -15474,23 +15844,38 @@ func (s *GetLiveTranscodeTemplateResponseBody) SetTemplateContent(v *GetLiveTran
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContent struct {
+	// The category of the template. Valid values:
+	//
+	// 	- system
+	//
+	// 	- customized
+	//
 	// example:
 	//
 	// customized
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-25T06:15:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The name of the template.
+	//
 	// example:
 	//
 	// my-template
-	Name           *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfig *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// bcfa57950bc649b2abfb476ecd36ea4f
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the template.
+	//
 	// example:
 	//
 	// normal
@@ -15536,7 +15921,9 @@ func (s *GetLiveTranscodeTemplateResponseBodyTemplateContent) SetType(v string) 
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig struct {
+	// The audio parameters.
 	AudioParams *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigAudioParams `json:"AudioParams,omitempty" xml:"AudioParams,omitempty" type:"Struct"`
+	// The video parameters.
 	VideoParams *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigVideoParams `json:"VideoParams,omitempty" xml:"VideoParams,omitempty" type:"Struct"`
 }
 
@@ -15559,22 +15946,32 @@ func (s *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfig) SetV
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigAudioParams struct {
+	// The bitrate of the output audio.
+	//
 	// example:
 	//
 	// 1000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile.
+	//
 	// example:
 	//
 	// 1
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sampling rate.
+	//
 	// example:
 	//
 	// 44100
@@ -15615,30 +16012,44 @@ func (s *GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigAudioP
 }
 
 type GetLiveTranscodeTemplateResponseBodyTemplateContentTemplateConfigVideoParams struct {
+	// The bitrate of the output video.
+	//
 	// example:
 	//
 	// 2500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The encoding type.
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The frame rate of the output video.
+	//
 	// example:
 	//
 	// 30
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The group of pictures (GOP) of the output video.
+	//
 	// example:
 	//
 	// 1000
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video.
+	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The encoding profile.
+	//
 	// example:
 	//
 	// 2
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The width of the output video.
+	//
 	// example:
 	//
 	// 1280
@@ -18262,6 +18673,7 @@ type GetMediaProducingJobResponseBodyMediaProducingJob struct {
 	//
 	// 2020-12-23T13:33:49Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The ID of the online editing project.
 	//
 	// example:
@@ -18371,6 +18783,11 @@ func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetMessage(v string)
 
 func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetModifiedTime(v string) *GetMediaProducingJobResponseBodyMediaProducingJob {
 	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetMediaProducingJobResponseBodyMediaProducingJob) SetProgress(v int32) *GetMediaProducingJobResponseBodyMediaProducingJob {
+	s.Progress = &v
 	return s
 }
 
@@ -30865,27 +31282,46 @@ func (s *ListEditingProjectsResponse) SetBody(v *ListEditingProjectsResponseBody
 }
 
 type ListLiveRecordFilesRequest struct {
+	// The end of the time range to query. The maximum time range to query is four days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
-	EndTime *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobIds  []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of job IDs.
+	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
+	// The page number of the page to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 5 to 30. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The format of the recording file. Valid values:
+	//
+	// M3U8, FLV, and MP4
+	//
 	// example:
 	//
 	// m3u8
 	RecordFormat *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
+	// The sorting order of the index files by creation time. Valid values:
+	//
+	// asc: The query results are displayed in ascending order. This is the default value.
+	//
+	// desc: The query results are displayed in descending order.
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2017-12-21T08:00:01Z
@@ -30936,23 +31372,34 @@ func (s *ListLiveRecordFilesRequest) SetStartTime(v string) *ListLiveRecordFiles
 }
 
 type ListLiveRecordFilesResponseBody struct {
+	// The list of index files.
 	Files []*ListLiveRecordFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DE24625C-7C0F-4020-8448-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the index files by creation time.
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of files that meet the specified conditions.
+	//
 	// example:
 	//
 	// 100
@@ -30998,51 +31445,76 @@ func (s *ListLiveRecordFilesResponseBody) SetTotalCount(v string) *ListLiveRecor
 }
 
 type ListLiveRecordFilesResponseBodyFiles struct {
+	// The time when the file was created in UTC.
+	//
 	// example:
 	//
 	// 2016-05-27T09:40:56Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The recording length. Unit: seconds.
+	//
 	// example:
 	//
 	// 100.0
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2015-12-01T07:36:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The format of the recording file.
+	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The height of the video.
+	//
 	// example:
 	//
 	// 640
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the recording job.
+	//
 	// example:
 	//
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the recording job.
+	//
 	// example:
 	//
 	// LiveRecordJob***
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The ID of the index file.
+	//
 	// example:
 	//
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The storage information about the recording file.
+	//
 	// example:
 	//
 	// { "Type": "oss", "Endpoint":"oss-cn-shanghai.aliyuncs.com", "Bucket": "test-bucket" }
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	RecordUrl    *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	// The URL of the index file.
+	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2015-12-01T07:36:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the live stream.
+	//
 	// example:
 	//
 	// LiveStream***
 	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+	// The width of the video.
+	//
 	// example:
 	//
 	// 480
@@ -31152,34 +31624,62 @@ func (s *ListLiveRecordFilesResponse) SetBody(v *ListLiveRecordFilesResponseBody
 }
 
 type ListLiveRecordJobsRequest struct {
+	// The end of the time range to query. The maximum time range between EndTime and StartTime cannot exceed 30 days. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2022-07-11T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The search keyword. You can use the job ID or name as the keyword to search for jobs.
+	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results in ascending order.
+	//
+	// 	- desc: sorts the query results in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2022-07-15T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The state of the job. By default, the state is not filtered.
+	//
+	// Valid values:
+	//
+	// 	- paused: The job is paused.
+	//
+	// 	- initial: The job is not started.
+	//
+	// 	- started: The job is in progress.
+	//
 	// example:
 	//
 	// started
@@ -31230,23 +31730,34 @@ func (s *ListLiveRecordJobsRequest) SetStatus(v string) *ListLiveRecordJobsReque
 }
 
 type ListLiveRecordJobsResponseBody struct {
+	// The list of live stream recording jobs.
 	LiveRecordJobs []*ListLiveRecordJobsResponseBodyLiveRecordJobs `json:"LiveRecordJobs,omitempty" xml:"LiveRecordJobs,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A27DFFA4-F272-5563-8363-CB0BC42740BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 180
@@ -31292,7 +31803,7 @@ func (s *ListLiveRecordJobsResponseBody) SetTotalCount(v int64) *ListLiveRecordJ
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
-	// 代表创建时间的资源属性字段
+	// The time when the job was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -31300,30 +31811,38 @@ type ListLiveRecordJobsResponseBodyLiveRecordJobs struct {
 	//
 	// 2022-07-20T03:26:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the recording job.
+	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The name of the recording job.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 回调地址
+	// The callback URL.
 	//
 	// example:
 	//
 	// https://example.com/imsnotify
-	NotifyUrl    *string                                                   `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The storage address of the recording.
 	RecordOutput *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
+	// The state of the recording job.
+	//
 	// example:
 	//
 	// paused
-	Status      *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The URL of the live stream.
 	StreamInput *ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	// 录制模板ID
+	// The ID of the recording template.
 	//
 	// example:
 	//
 	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the recording template.
+	//
 	// example:
 	//
 	// test template
@@ -31384,14 +31903,26 @@ func (s *ListLiveRecordJobsResponseBodyLiveRecordJobs) SetTemplateName(v string)
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// imsbucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The endpoint of the storage service.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The type of the storage address.
+	//
+	// Valid values:
+	//
+	// 	- vod
+	//
+	// 	- oss
+	//
 	// example:
 	//
 	// oss
@@ -31422,10 +31953,14 @@ func (s *ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput) SetType(v str
 }
 
 type ListLiveRecordJobsResponseBodyLiveRecordJobsStreamInput struct {
+	// The type of the live stream URL.
+	//
 	// example:
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the live stream.
+	//
 	// example:
 	//
 	// rtmp://example-live.com/live/stream1
@@ -31480,23 +32015,45 @@ func (s *ListLiveRecordJobsResponse) SetBody(v *ListLiveRecordJobsResponseBody) 
 }
 
 type ListLiveRecordTemplatesRequest struct {
+	// The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+	//
 	// example:
 	//
 	// test template
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results in ascending order.
+	//
+	// 	- desc: sorts the query results in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy      *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The type of the template.
+	//
+	// Valid values:
+	//
+	// 	- system
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -31542,23 +32099,40 @@ func (s *ListLiveRecordTemplatesRequest) SetType(v string) *ListLiveRecordTempla
 }
 
 type ListLiveRecordTemplatesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize           *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of recording templates.
 	RecordTemplateList []*ListLiveRecordTemplatesResponseBodyRecordTemplateList `json:"RecordTemplateList,omitempty" xml:"RecordTemplateList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA98A0C-7870-15FE-B96F-8880BB600A2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results in ascending order.
+	//
+	// 	- desc: sorts the query results in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -31604,7 +32178,7 @@ func (s *ListLiveRecordTemplatesResponseBody) SetTotalCount(v int64) *ListLiveRe
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
-	// 代表创建时间的资源属性字段
+	// The time when the job was created.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -31612,7 +32186,7 @@ type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 最后修改时间
+	// The time when the template was last modified.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -31620,21 +32194,21 @@ type ListLiveRecordTemplatesResponseBodyRecordTemplateList struct {
 	//
 	// 2022-07-20T03:26:36Z
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The template name.
 	//
 	// example:
 	//
 	// test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	RecordFormatList []*ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList `json:"RecordFormatList,omitempty" xml:"RecordFormatList,omitempty" type:"Repeated"`
-	// 代表资源一级ID的资源属性字段
+	// The template ID.
 	//
 	// example:
 	//
 	// 69e1f9fe-1e97-11ed-ba64-0c42a1b73d66
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The type of the template.
 	//
 	// example:
 	//
@@ -31681,29 +32255,31 @@ func (s *ListLiveRecordTemplatesResponseBodyRecordTemplateList) SetType(v string
 }
 
 type ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList struct {
+	// The duration of the recording cycle. Unit: seconds.
+	//
 	// example:
 	//
 	// 21600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
+	// The output file format.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名，不包含后缀
+	// The name of the recording file that is stored in Object Storage Service (OSS).
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// 切片时长
+	// The duration of a single segment. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名，不包含后缀
+	// The name of the TS segment.
 	//
 	// example:
 	//
@@ -31774,26 +32350,44 @@ func (s *ListLiveRecordTemplatesResponse) SetBody(v *ListLiveRecordTemplatesResp
 }
 
 type ListLiveSnapshotFilesRequest struct {
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// 	- The maximum time range that can be specified is one day.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-02-02T23:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the snapshot job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The number of results to return each time. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The sorting order. Default value: asc.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results by creation time in ascending order.
+	//
+	// 	- desc: sorts the query results by creation time in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31836,11 +32430,16 @@ func (s *ListLiveSnapshotFilesRequest) SetStartTime(v string) *ListLiveSnapshotF
 }
 
 type ListLiveSnapshotFilesResponseBody struct {
+	// The list of files.
 	FileList []*ListLiveSnapshotFilesResponseBodyFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// The start time of the next page. If no value is returned, the pagination ends.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	NextStartTime *string `json:"NextStartTime,omitempty" xml:"NextStartTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -31871,29 +32470,38 @@ func (s *ListLiveSnapshotFilesResponseBody) SetRequestId(v string) *ListLiveSnap
 }
 
 type ListLiveSnapshotFilesResponseBodyFileList struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-02-02T22:22:22Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation timestamp that is used as an input parameter for a delete API operation.
+	//
 	// example:
 	//
 	// 1619503516000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Specifies whether to overlay snapshots.
+	//
 	// example:
 	//
 	// true
 	IsOverlay *bool `json:"IsOverlay,omitempty" xml:"IsOverlay,omitempty"`
-	// OSS bucket。
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// testbucket
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The Object Storage Service (OSS) domain name.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	// The location in which the OSS object is stored.
+	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 }
 
 func (s ListLiveSnapshotFilesResponseBodyFileList) String() string {
@@ -31964,31 +32572,68 @@ func (s *ListLiveSnapshotFilesResponse) SetBody(v *ListLiveSnapshotFilesResponse
 }
 
 type ListLiveSnapshotJobsRequest struct {
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// 	- By default, EndTime is seven days later than StartTime.
+	//
+	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 2022-02-02T23:59:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Valid values: [1,n). Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword. You can use the job ID or name as the keyword to search for jobs. If you search for jobs by name, fuzzy match is supported.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results by creation time in ascending order.
+	//
+	// 	- desc: sorts the query results by creation time in descending order.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// 	- The default value is seven days ago.
+	//
+	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 2022-02-02T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job state filter. By default, all jobs are queried.
+	//
+	// Valid values:
+	//
+	// 	- init: The job is not started.
+	//
+	// 	- paused: The job is paused.
+	//
+	// 	- started: The job is in progress.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLiveSnapshotJobsRequest) String() string {
@@ -32035,23 +32680,34 @@ func (s *ListLiveSnapshotJobsRequest) SetStatus(v string) *ListLiveSnapshotJobsR
 }
 
 type ListLiveSnapshotJobsResponseBody struct {
+	// The list of jobs.
 	JobList []*ListLiveSnapshotJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the jobs by creation time.
+	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -32097,25 +32753,46 @@ func (s *ListLiveSnapshotJobsResponseBody) SetTotalCount(v int64) *ListLiveSnaps
 }
 
 type ListLiveSnapshotJobsResponseBodyJobList struct {
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
-	JobId          *string                                                `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName        *string                                                `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The output information.
 	SnapshotOutput *ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	// The state of the job.
+	//
+	// Valid values:
+	//
+	// 	- init: The job is not started.
+	//
+	// 	- paused: The job is paused.
+	//
+	// 	- started: The job is in progress.
+	//
 	// example:
 	//
 	// started
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287666****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
@@ -32171,14 +32848,20 @@ func (s *ListLiveSnapshotJobsResponseBodyJobList) SetTimeInterval(v int32) *List
 }
 
 type ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput struct {
+	// The bucket of the output endpoint. If the storage type is set to oss, the OSS bucket is returned.
+	//
 	// example:
 	//
 	// testbucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The output endpoint. If the storage type is set to oss, the Object Storage Service (OSS) domain name is returned.
+	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The storage type. The value can only be oss.
+	//
 	// example:
 	//
 	// oss
@@ -32238,23 +32921,52 @@ func (s *ListLiveSnapshotJobsResponse) SetBody(v *ListLiveSnapshotJobsResponseBo
 }
 
 type ListLiveSnapshotTemplatesRequest struct {
+	// The page number. Valid values: [1,n). Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order.
+	//
+	// Valid values:
+	//
+	// 	- asc: sorts the query results by creation time in ascending order.
+	//
+	// 	- desc: sorts the query results by creation time in descending order.
+	//
 	// example:
 	//
 	// desc
-	SortBy      *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The template IDs.
+	//
+	// 	- If you specify the SearchKeyWord parameter, this condition does not take effect.
+	//
+	// 	- The maximum length of the array is 200.
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The type of the template. By default, all types are queried.
+	//
+	// Valid values:
+	//
+	// 	- system
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -32300,23 +33012,34 @@ func (s *ListLiveSnapshotTemplatesRequest) SetType(v string) *ListLiveSnapshotTe
 }
 
 type ListLiveSnapshotTemplatesResponseBody struct {
+	// The number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sorting order of the results by creation time.
+	//
 	// example:
 	//
 	// desc
-	SortBy       *string                                              `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The list of the templates.
 	TemplateList []*ListLiveSnapshotTemplatesResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -32362,19 +33085,34 @@ func (s *ListLiveSnapshotTemplatesResponseBody) SetTotalCount(v int64) *ListLive
 }
 
 type ListLiveSnapshotTemplatesResponseBodyTemplateList struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	TimeInterval *int32 `json:"TimeInterval,omitempty" xml:"TimeInterval,omitempty"`
+	// The type of the template.
+	//
+	// Valid values:
+	//
+	// 	- system
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// custom
@@ -32444,30 +33182,62 @@ func (s *ListLiveSnapshotTemplatesResponse) SetBody(v *ListLiveSnapshotTemplates
 }
 
 type ListLiveTranscodeJobsRequest struct {
+	// The search keyword. You can use the job ID or name as the keyword to search for jobs. If you search for jobs by name, fuzzy match is supported.
+	//
 	// example:
 	//
 	// 24ecbb5c-4f98-4194-9400-f17102e27fc5
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
+	//
+	// 	- asc
+	//
+	// 	- desc
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start mode of the transcoding job.
+	//
+	// 	- 0: The transcoding job immediately starts.
+	//
+	// 	- 1: The transcoding job starts at the scheduled time.
+	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	// The state of the job.
+	//
+	// 0: The job is not started. 1: The job is in progress. 2: The job is stopped.
+	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the template used by the transcoding job.
+	//
+	// 	- normal
+	//
+	// 	- narrow-band
+	//
+	// 	- audio-only
+	//
+	// 	- origin
+	//
 	// example:
 	//
 	// normal
@@ -32518,11 +33288,16 @@ func (s *ListLiveTranscodeJobsRequest) SetType(v string) *ListLiveTranscodeJobsR
 }
 
 type ListLiveTranscodeJobsResponseBody struct {
+	// The list of transcoding jobs.
 	JobList []*ListLiveTranscodeJobsResponseBodyJobList `json:"JobList,omitempty" xml:"JobList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -32553,33 +33328,50 @@ func (s *ListLiveTranscodeJobsResponseBody) SetTotalCount(v int32) *ListLiveTran
 }
 
 type ListLiveTranscodeJobsResponseBodyJobList struct {
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-20T02:48:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the transcoding job.
+	//
 	// example:
 	//
 	// mytask
-	Name         *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about the output stream.
 	OutputStream *ListLiveTranscodeJobsResponseBodyJobListOutputStream `json:"OutputStream,omitempty" xml:"OutputStream,omitempty" type:"Struct"`
+	// The start mode of the job.
+	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	// The state of the job.
+	//
 	// example:
 	//
 	// 1
-	Status      *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The information about the input stream.
 	StreamInput *ListLiveTranscodeJobsResponseBodyJobListStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The ID of the transcoding template used by the transcoding job.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287666****
-	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the transcoding template used by the transcoding job.
+	//
 	// example:
 	//
 	// normal
@@ -32645,6 +33437,7 @@ func (s *ListLiveTranscodeJobsResponseBodyJobList) SetTemplateType(v string) *Li
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStream struct {
+	// The list of stream URLs.
 	StreamInfos []*ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Repeated"`
 }
 
@@ -32662,10 +33455,14 @@ func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStream) SetStreamInfos(v 
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos struct {
+	// The URL of the output stream.
+	//
 	// example:
 	//
 	// rtmp://mydomain/app/mytranscode1
 	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
+	// The type of the output stream protocol. Only the RTMP protocol is supported.
+	//
 	// example:
 	//
 	// rtmp
@@ -32691,10 +33488,14 @@ func (s *ListLiveTranscodeJobsResponseBodyJobListOutputStreamStreamInfos) SetTyp
 }
 
 type ListLiveTranscodeJobsResponseBodyJobListStreamInput struct {
+	// The URL of the input stream.
+	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The type of the input stream.
+	//
 	// example:
 	//
 	// rtmp
@@ -32749,30 +33550,64 @@ func (s *ListLiveTranscodeJobsResponse) SetBody(v *ListLiveTranscodeJobsResponse
 }
 
 type ListLiveTranscodeTemplatesRequest struct {
+	// The category of the template. Valid values:
+	//
+	// 	- system
+	//
+	// 	- customized
+	//
 	// example:
 	//
 	// customized
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+	//
 	// example:
 	//
 	// my_template
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The page number of the page to return. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
+	//
+	// 	- asc
+	//
+	// 	- desc
+	//
 	// example:
 	//
 	// asc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the template. Valid values:
+	//
+	// 	- normal
+	//
+	// 	- narrow-band
+	//
+	// 	- audio-only
+	//
+	// 	- origin
+	//
 	// example:
 	//
 	// normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The video codec. Valid values:
+	//
+	// 	- H.264
+	//
+	// 	- H.265
+	//
 	// example:
 	//
 	// H.264
@@ -32823,11 +33658,16 @@ func (s *ListLiveTranscodeTemplatesRequest) SetVideoCodec(v string) *ListLiveTra
 }
 
 type ListLiveTranscodeTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId           *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of transcoding templates.
 	TemplateContentList []*ListLiveTranscodeTemplatesResponseBodyTemplateContentList `json:"TemplateContentList,omitempty" xml:"TemplateContentList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -32858,23 +33698,34 @@ func (s *ListLiveTranscodeTemplatesResponseBody) SetTotalCount(v int32) *ListLiv
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentList struct {
+	// The category of the template. Valid values:
+	//
 	// example:
 	//
 	// system
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2022-07-20T03:26:36Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// my_template
-	Name           *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfig *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 9b1571b513cb44f7a1ba6ae561ff46f7
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The type of the template.
+	//
 	// example:
 	//
 	// normal
@@ -32920,7 +33771,9 @@ func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentList) SetType(v st
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig struct {
+	// The audio parameters.
 	AudioParams *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfigAudioParams `json:"AudioParams,omitempty" xml:"AudioParams,omitempty" type:"Struct"`
+	// The video parameters.
 	VideoParams *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfigVideoParams `json:"VideoParams,omitempty" xml:"VideoParams,omitempty" type:"Struct"`
 }
 
@@ -32943,22 +33796,32 @@ func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfigAudioParams struct {
+	// The audio bitrate.
+	//
 	// example:
 	//
 	// 1000
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels.
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec.
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The encoding profile.
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sampling rate.
+	//
 	// example:
 	//
 	// 44100
@@ -32999,30 +33862,44 @@ func (s *ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfig
 }
 
 type ListLiveTranscodeTemplatesResponseBodyTemplateContentListTemplateConfigVideoParams struct {
+	// The video bitrate.
+	//
 	// example:
 	//
 	// 2500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The encoding format.
+	//
 	// example:
 	//
 	// 264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The video frame rate.
+	//
 	// example:
 	//
 	// 30
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The group of pictures (GOP) of the output video. Unit: frame.
+	//
 	// example:
 	//
 	// 1000
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The vertical resolution of the video.
+	//
 	// example:
 	//
 	// 1280
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The encoding profile.
+	//
 	// example:
 	//
 	// 3
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The horizontal resolution of the video.
+	//
 	// example:
 	//
 	// 720
@@ -48783,12 +49660,24 @@ func (s *SendAIAgentSpeechResponse) SetBody(v *SendAIAgentSpeechResponseBody) *S
 }
 
 type SendLiveSnapshotJobCommandRequest struct {
+	// The operation command.
+	//
+	// Valid values:
+	//
+	// 	- stop
+	//
+	// 	- restart
+	//
+	// 	- start
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// start
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The ID of the snapshot job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48816,6 +49705,8 @@ func (s *SendLiveSnapshotJobCommandRequest) SetJobId(v string) *SendLiveSnapshot
 }
 
 type SendLiveSnapshotJobCommandResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -48865,12 +49756,16 @@ func (s *SendLiveSnapshotJobCommandResponse) SetBody(v *SendLiveSnapshotJobComma
 }
 
 type SendLiveTranscodeJobCommandRequest struct {
+	// The operation command. Only the stop command is supported. This command is used to stop a transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stop
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The ID of the transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48898,6 +49793,8 @@ func (s *SendLiveTranscodeJobCommandRequest) SetJobId(v string) *SendLiveTransco
 }
 
 type SendLiveTranscodeJobCommandResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -49225,26 +50122,46 @@ func (s *SetDefaultStorageLocationResponse) SetBody(v *SetDefaultStorageLocation
 }
 
 type SetEventCallbackRequest struct {
+	// The authentication key. The key can be up to 32 characters in length and must contain uppercase letters, lowercase letters, and digits. This parameter takes effect only if you set CallbackType to **HTTP**.
+	//
 	// example:
 	//
 	// TestKey001
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// Specifies whether to enable callback authentication. This parameter takes effect only if you set CallbackType to **HTTP**. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
+	// The name of the Simple Message Queue (SMQ) queue in the region. The name must start with ice-callback-.
+	//
 	// example:
 	//
 	// ice-callback-queue
 	CallbackQueueName *string `json:"CallbackQueueName,omitempty" xml:"CallbackQueueName,omitempty"`
+	// The callback method. Valid values:
+	//
+	// 	- **HTTP**
+	//
+	// 	- **MNS**
+	//
 	// example:
 	//
 	// HTTP
 	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
+	// The callback URL. This parameter is required if you set CallbackType to **HTTP**. The callback URL cannot exceed 256 bytes in length. You can specify only one callback URL.
+	//
 	// example:
 	//
 	// http://xxx.yyy/callback
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	// The type of the callback event. You can specify multiple values separated with commas (,). ProduceMediaComplete: indicates that the editing and production task is complete.
+	//
 	// example:
 	//
 	// ProduceMediaComplete
@@ -49290,10 +50207,14 @@ func (s *SetEventCallbackRequest) SetEventTypeList(v string) *SetEventCallbackRe
 }
 
 type SetEventCallbackResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configuration was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -52711,7 +53632,7 @@ func (s *SubmitLiveEditingJobResponse) SetBody(v *SubmitLiveEditingJobResponseBo
 }
 
 type SubmitLiveRecordJobRequest struct {
-	// 代表资源名称的资源属性字段
+	// The name of the recording job.
 	//
 	// This parameter is required.
 	//
@@ -52719,17 +53640,21 @@ type SubmitLiveRecordJobRequest struct {
 	//
 	// live stream record 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 回调地址
+	// The callback URL.
 	//
 	// example:
 	//
 	// https://example.com/imsnotify
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The storage address of the recording.
+	//
 	// This parameter is required.
 	RecordOutput *SubmitLiveRecordJobRequestRecordOutput `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty" type:"Struct"`
+	// The URL of the live stream.
+	//
 	// This parameter is required.
 	StreamInput *SubmitLiveRecordJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	// 录制模板ID
+	// The ID of the recording template.
 	//
 	// This parameter is required.
 	//
@@ -52773,14 +53698,20 @@ func (s *SubmitLiveRecordJobRequest) SetTemplateId(v string) *SubmitLiveRecordJo
 }
 
 type SubmitLiveRecordJobRequestRecordOutput struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// imsbucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The endpoint of the storage service.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The type of the storage address.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52813,12 +53744,16 @@ func (s *SubmitLiveRecordJobRequestRecordOutput) SetType(v string) *SubmitLiveRe
 }
 
 type SubmitLiveRecordJobRequestStreamInput struct {
+	// The type of the live stream URL. The value can only be rtmp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the live stream.
+	//
 	// example:
 	//
 	// rtmp://example.com/live/stream1
@@ -52844,7 +53779,7 @@ func (s *SubmitLiveRecordJobRequestStreamInput) SetUrl(v string) *SubmitLiveReco
 }
 
 type SubmitLiveRecordJobShrinkRequest struct {
-	// 代表资源名称的资源属性字段
+	// The name of the recording job.
 	//
 	// This parameter is required.
 	//
@@ -52852,17 +53787,21 @@ type SubmitLiveRecordJobShrinkRequest struct {
 	//
 	// live stream record 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 回调地址
+	// The callback URL.
 	//
 	// example:
 	//
 	// https://example.com/imsnotify
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The storage address of the recording.
+	//
 	// This parameter is required.
 	RecordOutputShrink *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
+	// The URL of the live stream.
+	//
 	// This parameter is required.
 	StreamInputShrink *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	// 录制模板ID
+	// The ID of the recording template.
 	//
 	// This parameter is required.
 	//
@@ -52906,10 +53845,14 @@ func (s *SubmitLiveRecordJobShrinkRequest) SetTemplateId(v string) *SubmitLiveRe
 }
 
 type SubmitLiveRecordJobResponseBody struct {
+	// The ID of the recording job.
+	//
 	// example:
 	//
 	// ab0e3e76-1e9d-11ed-ba64-0c42a1b73d66
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BEA98A0C-7870-15FE-B96F-8880BB600A2C
@@ -52964,16 +53907,32 @@ func (s *SubmitLiveRecordJobResponse) SetBody(v *SubmitLiveRecordJobResponseBody
 }
 
 type SubmitLiveSnapshotJobRequest struct {
+	// The snapshot callback URL.
+	//
+	// 	- It cannot exceed 255 characters in length.
+	//
+	// 	- Both HTTP and HTTPS URLs are supported.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/snapshot/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// The name of the job.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// This parameter is required.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The information about the output snapshot.
+	//
 	// This parameter is required.
 	SnapshotOutput *SubmitLiveSnapshotJobRequestSnapshotOutput `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty" type:"Struct"`
+	// The information about the input stream.
+	//
 	// This parameter is required.
 	StreamInput *SubmitLiveSnapshotJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53016,18 +53975,24 @@ func (s *SubmitLiveSnapshotJobRequest) SetTemplateId(v string) *SubmitLiveSnapsh
 }
 
 type SubmitLiveSnapshotJobRequestSnapshotOutput struct {
+	// The bucket of the snapshot output endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testbucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The output endpoint of the snapshot.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The storage type of the snapshot. The value can only be oss.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53060,12 +54025,18 @@ func (s *SubmitLiveSnapshotJobRequestSnapshotOutput) SetStorageType(v string) *S
 }
 
 type SubmitLiveSnapshotJobRequestStreamInput struct {
+	// The type of the input stream. The value can only be rtmp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the input stream.
+	//
+	// 	- It cannot exceed 255 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53093,16 +54064,32 @@ func (s *SubmitLiveSnapshotJobRequestStreamInput) SetUrl(v string) *SubmitLiveSn
 }
 
 type SubmitLiveSnapshotJobShrinkRequest struct {
+	// The snapshot callback URL.
+	//
+	// 	- It cannot exceed 255 characters in length.
+	//
+	// 	- Both HTTP and HTTPS URLs are supported.
+	//
 	// example:
 	//
 	// http://www.aliyun.com/snapshot/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// The name of the job.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// This parameter is required.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The information about the output snapshot.
+	//
 	// This parameter is required.
 	SnapshotOutputShrink *string `json:"SnapshotOutput,omitempty" xml:"SnapshotOutput,omitempty"`
+	// The information about the input stream.
+	//
 	// This parameter is required.
 	StreamInputShrink *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53145,10 +54132,14 @@ func (s *SubmitLiveSnapshotJobShrinkRequest) SetTemplateId(v string) *SubmitLive
 }
 
 type SubmitLiveSnapshotJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287666****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -53203,27 +54194,42 @@ func (s *SubmitLiveSnapshotJobResponse) SetBody(v *SubmitLiveSnapshotJobResponse
 }
 
 type SubmitLiveTranscodeJobRequest struct {
+	// The name of the transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// task1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The start mode of the transcoding job.
+	//
+	// 	- 0: The transcoding job immediately starts.
+	//
+	// 	- 1: The transcoding job starts at the scheduled time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	// The information about the input stream.
+	//
 	// This parameter is required.
 	StreamInput *SubmitLiveTranscodeJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
-	TemplateId  *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The configuration of a timed transcoding job. This parameter is required if you set StartMode to 1.
 	TimedConfig *SubmitLiveTranscodeJobRequestTimedConfig `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty" type:"Struct"`
+	// The information about the transcoding output.
+	//
 	// This parameter is required.
 	TranscodeOutput *SubmitLiveTranscodeJobRequestTranscodeOutput `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty" type:"Struct"`
 }
@@ -53267,12 +54273,16 @@ func (s *SubmitLiveTranscodeJobRequest) SetTranscodeOutput(v *SubmitLiveTranscod
 }
 
 type SubmitLiveTranscodeJobRequestStreamInput struct {
+	// The URL of the input stream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The type of the input stream. The value can only be rtmp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53300,10 +54310,14 @@ func (s *SubmitLiveTranscodeJobRequestStreamInput) SetType(v string) *SubmitLive
 }
 
 type SubmitLiveTranscodeJobRequestTimedConfig struct {
+	// The stop time of the transcoding job. Note: The time span between the stop time and the current time cannot exceed seven days.
+	//
 	// example:
 	//
 	// 2022-07-20T08:20:32Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the transcoding job. Note: The time span between the start time and the current time cannot exceed seven days.
+	//
 	// example:
 	//
 	// 2022-02-21T00:00:00Z
@@ -53329,10 +54343,14 @@ func (s *SubmitLiveTranscodeJobRequestTimedConfig) SetStartTime(v string) *Submi
 }
 
 type SubmitLiveTranscodeJobRequestTranscodeOutput struct {
+	// The streaming domain name of ApsaraVideo Live.
+	//
 	// example:
 	//
 	// mydomain
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the output stream. A value of LiveCenter indicates that the URL of the output stream is generated based on the domain name of ApsaraVideo Live. The value can only be LiveCenter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53360,27 +54378,42 @@ func (s *SubmitLiveTranscodeJobRequestTranscodeOutput) SetType(v string) *Submit
 }
 
 type SubmitLiveTranscodeJobShrinkRequest struct {
+	// The name of the transcoding job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// task1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The start mode of the transcoding job.
+	//
+	// 	- 0: The transcoding job immediately starts.
+	//
+	// 	- 1: The transcoding job starts at the scheduled time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	StartMode *int32 `json:"StartMode,omitempty" xml:"StartMode,omitempty"`
+	// The information about the input stream.
+	//
 	// This parameter is required.
 	StreamInputShrink *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****96e8864746a0b6f3****
-	TemplateId        *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The configuration of a timed transcoding job. This parameter is required if you set StartMode to 1.
 	TimedConfigShrink *string `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty"`
+	// The information about the transcoding output.
+	//
 	// This parameter is required.
 	TranscodeOutputShrink *string `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty"`
 }
@@ -53424,10 +54457,14 @@ func (s *SubmitLiveTranscodeJobShrinkRequest) SetTranscodeOutputShrink(v string)
 }
 
 type SubmitLiveTranscodeJobResponseBody struct {
+	// The ID of the transcoding job.
+	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -64867,7 +65904,7 @@ func (s *UpdateEditingProjectResponse) SetBody(v *UpdateEditingProjectResponseBo
 }
 
 type UpdateLiveRecordTemplateRequest struct {
-	// 代表资源名称的资源属性字段
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -64875,11 +65912,11 @@ type UpdateLiveRecordTemplateRequest struct {
 	//
 	// test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	//
 	// This parameter is required.
 	RecordFormat []*UpdateLiveRecordTemplateRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
-	// 代表资源一级ID的资源属性字段
+	// The template ID.
 	//
 	// This parameter is required.
 	//
@@ -64913,11 +65950,21 @@ func (s *UpdateLiveRecordTemplateRequest) SetTemplateId(v string) *UpdateLiveRec
 }
 
 type UpdateLiveRecordTemplateRequestRecordFormat struct {
+	// The duration of the recording cycle. Unit: seconds If you do not specify this parameter, the default value 6 hours is used.
+	//
+	// >
+	//
+	// 	- If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
+	//
+	// 	- If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
+	//
 	// example:
 	//
 	// 3600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// 格式
+	// The format of recording files.
+	//
+	// >  If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
 	//
 	// This parameter is required.
 	//
@@ -64925,19 +65972,31 @@ type UpdateLiveRecordTemplateRequestRecordFormat struct {
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// Oss对象名，不包含后缀
+	// The name of the recording that is stored in Object Storage Service (OSS).
+	//
+	// 	- The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+	//
+	// 	- The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
 	//
 	// example:
 	//
 	// record/{JobId}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// 切片时长
+	// The duration of a single segment. Unit: seconds
+	//
+	// >  This parameter takes effect only if you set Format to m3u8.
+	//
+	// If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// 切片Oss对象名，不包含后缀
+	// The name of the TS segment.
+	//
+	// >  This parameter is required only if you set Format to m3u8. By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
+	//
+	// The segment name must contain the {UnixTimestamp} and {Sequence} variables.
 	//
 	// example:
 	//
@@ -64979,7 +66038,7 @@ func (s *UpdateLiveRecordTemplateRequestRecordFormat) SetSliceOssObjectPrefix(v 
 }
 
 type UpdateLiveRecordTemplateShrinkRequest struct {
-	// 代表资源名称的资源属性字段
+	// The template name.
 	//
 	// This parameter is required.
 	//
@@ -64987,11 +66046,11 @@ type UpdateLiveRecordTemplateShrinkRequest struct {
 	//
 	// test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 录制格式
+	// The list of recording formats.
 	//
 	// This parameter is required.
 	RecordFormatShrink *string `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The template ID.
 	//
 	// This parameter is required.
 	//
@@ -65025,7 +66084,7 @@ func (s *UpdateLiveRecordTemplateShrinkRequest) SetTemplateId(v string) *UpdateL
 }
 
 type UpdateLiveRecordTemplateResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// The request ID.
 	//
 	// example:
 	//
@@ -65076,22 +66135,54 @@ func (s *UpdateLiveRecordTemplateResponse) SetBody(v *UpdateLiveRecordTemplateRe
 }
 
 type UpdateLiveSnapshotTemplateRequest struct {
+	// The naming format of the snapshot captured in overwrite mode.
+	//
+	// 	- The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	//
+	// 	- The value cannot exceed 255 characters in length.
+	//
+	// 	- The {JobId} placeholder is supported. It specifies the ID of the snapshot job.
+	//
+	// 	- Placeholders such as {UnixTimestamp}, {Sequence}, and {Date} are not allowed.
+	//
+	// 	- You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	//
 	// example:
 	//
 	// snapshot/{JobId}.jpg
 	OverwriteFormat *string `json:"OverwriteFormat,omitempty" xml:"OverwriteFormat,omitempty"`
+	// The naming format of the snapshot captured in time series mode.
+	//
+	// 	- The value cannot start with a forward slash (/). Only the suffix .jpg is supported.
+	//
+	// 	- The value cannot exceed 255 characters in length.
+	//
+	// 	- The {JobId}, {Date}, {UnixTimestamp}, and {Sequence} placeholders are supported. {JobId} specifies the ID of the snapshot job. {Date} specifies the date on which the snapshot is captured. {UnixTimestamp} specifies the timestamp of the snapshot. {Sequence} specifies the sequence number of the snapshot. You must specify at least one of the {UnixTimestamp} and {Sequence} placeholders.
+	//
+	// 	- You must specify at least one of the OverwriteFormat and SequenceFormat parameters.
+	//
 	// example:
 	//
 	// snapshot/{JobId}/{UnixTimestamp}.jpg
 	SequenceFormat *string `json:"SequenceFormat,omitempty" xml:"SequenceFormat,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****a046-263c-3560-978a-fb287782****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the template.
+	//
+	// 	- It cannot exceed 128 characters in length.
+	//
 	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The interval between two adjacent snapshots. Unit: seconds.
+	//
+	// 	- Valid values: [5,3600].
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65134,6 +66225,8 @@ func (s *UpdateLiveSnapshotTemplateRequest) SetTimeInterval(v int32) *UpdateLive
 }
 
 type UpdateLiveSnapshotTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
@@ -65183,18 +66276,25 @@ func (s *UpdateLiveSnapshotTemplateResponse) SetBody(v *UpdateLiveSnapshotTempla
 }
 
 type UpdateLiveTranscodeJobRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// mytest3
-	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	StreamInput     *UpdateLiveTranscodeJobRequestStreamInput     `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
-	TimedConfig     *UpdateLiveTranscodeJobRequestTimedConfig     `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty" type:"Struct"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about the input stream.
+	StreamInput *UpdateLiveTranscodeJobRequestStreamInput `json:"StreamInput,omitempty" xml:"StreamInput,omitempty" type:"Struct"`
+	// The configuration of a timed transcoding job.
+	TimedConfig *UpdateLiveTranscodeJobRequestTimedConfig `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty" type:"Struct"`
+	// The information about the transcoding output.
 	TranscodeOutput *UpdateLiveTranscodeJobRequestTranscodeOutput `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty" type:"Struct"`
 }
 
@@ -65232,12 +66332,16 @@ func (s *UpdateLiveTranscodeJobRequest) SetTranscodeOutput(v *UpdateLiveTranscod
 }
 
 type UpdateLiveTranscodeJobRequestStreamInput struct {
+	// The URL of the input stream.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
+	// The type of the input stream. The value can only be rtmp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65265,10 +66369,14 @@ func (s *UpdateLiveTranscodeJobRequestStreamInput) SetType(v string) *UpdateLive
 }
 
 type UpdateLiveTranscodeJobRequestTimedConfig struct {
+	// The stop time of the transcoding job. Note: The time span between the stop time and the current time cannot exceed seven days.
+	//
 	// example:
 	//
 	// 2022-08-05T06:08:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the transcoding job. Note: The time span between the start time and the current time cannot exceed seven days.
+	//
 	// example:
 	//
 	// 2022-06-19T02:16:41Z
@@ -65294,12 +66402,16 @@ func (s *UpdateLiveTranscodeJobRequestTimedConfig) SetStartTime(v string) *Updat
 }
 
 type UpdateLiveTranscodeJobRequestTranscodeOutput struct {
+	// The streaming domain name of ApsaraVideo Live.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mydomain
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The type of the output stream. A value of LiveCenter indicates that the URL of the output stream is generated based on the domain name of ApsaraVideo Live. The value can only be LiveCenter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65327,18 +66439,25 @@ func (s *UpdateLiveTranscodeJobRequestTranscodeOutput) SetType(v string) *Update
 }
 
 type UpdateLiveTranscodeJobShrinkRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// mytest3
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	StreamInputShrink     *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	TimedConfigShrink     *string `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about the input stream.
+	StreamInputShrink *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
+	// The configuration of a timed transcoding job.
+	TimedConfigShrink *string `json:"TimedConfig,omitempty" xml:"TimedConfig,omitempty"`
+	// The information about the transcoding output.
 	TranscodeOutputShrink *string `json:"TranscodeOutput,omitempty" xml:"TranscodeOutput,omitempty"`
 }
 
@@ -65376,6 +66495,8 @@ func (s *UpdateLiveTranscodeJobShrinkRequest) SetTranscodeOutputShrink(v string)
 }
 
 type UpdateLiveTranscodeJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -65425,8 +66546,12 @@ func (s *UpdateLiveTranscodeJobResponse) SetBody(v *UpdateLiveTranscodeJobRespon
 }
 
 type UpdateLiveTranscodeTemplateRequest struct {
-	Name           *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfig *UpdateLiveTranscodeTemplateRequestTemplateConfig `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty" type:"Struct"`
+	// The template ID. To obtain the template ID, log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com/summary), choose Real-time Media Processing > Template Management, and then click the Transcoding tab. Alternatively, find the ID from the response parameters of the [CreateLiveTranscodeTemplate](https://help.aliyun.com/document_detail/449217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65459,7 +66584,9 @@ func (s *UpdateLiveTranscodeTemplateRequest) SetTemplateId(v string) *UpdateLive
 }
 
 type UpdateLiveTranscodeTemplateRequestTemplateConfig struct {
+	// The audio parameters.
 	AudioParams *UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams `json:"AudioParams,omitempty" xml:"AudioParams,omitempty" type:"Struct"`
+	// The video parameters.
 	VideoParams *UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams `json:"VideoParams,omitempty" xml:"VideoParams,omitempty" type:"Struct"`
 }
 
@@ -65482,22 +66609,42 @@ func (s *UpdateLiveTranscodeTemplateRequestTemplateConfig) SetVideoParams(v *Upd
 }
 
 type UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams struct {
+	// The bitrate of the output audio. Unit: Kbit/s. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 100
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The number of sound channels. Valid values: 1: mono 2: binaural
+	//
 	// example:
 	//
 	// 2
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The audio codec. Valid values: AAC MP3
+	//
 	// example:
 	//
 	// AAC
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The audio codec profile. Valid values when the Codec parameter is set to AAC:
+	//
+	// 	- aac_low
+	//
+	// 	- aac_he
+	//
+	// 	- aac_he_v2
+	//
+	// 	- aac_ld
+	//
 	// example:
 	//
 	// aac_low
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The audio sampling rate. Valid values: 22050 to 96000.
+	//
+	// Note If you set AudioProfile to aac_ld, the audio sampling rate cannot exceed 44100.
+	//
 	// example:
 	//
 	// 44100
@@ -65538,30 +66685,70 @@ func (s *UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams) SetSampler
 }
 
 type UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams struct {
+	// The bitrate of the output video. Unit: Kbit/s. Valid values: 1 to 6000.
+	//
 	// example:
 	//
 	// 2500
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The encoding type. Valid values:
+	//
+	// 	- H.264
+	//
+	// 	- H.265
+	//
 	// example:
 	//
 	// H.264
 	Codec *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
+	//
 	// example:
 	//
 	// 30
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// The group of pictures (GOP) of the output video. Unit: frame. Valid values: 1 to 3000.
+	//
 	// example:
 	//
 	// 1000
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
+	// The height of the output video. Valid values:
+	//
+	// 	- Height ≥ 128
+	//
+	// 	- max (Height,Width) ≤ 2560
+	//
+	// 	- min（Height,Width）≤ 1440
+	//
+	// >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The video encoding profile. The profile determines how a video is encoded. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
+	//
+	// 	- 1: baseline. This value is suitable for mobile devices.
+	//
+	// 	- 2: main. This value is suitable for standard-definition devices.
+	//
+	// 	- 3: high. This value is suitable for high-definition devices.
+	//
 	// example:
 	//
 	// 2
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The width of the output video. Valid values:
+	//
+	// 	- Width ≥ 128
+	//
+	// 	- max (Height,Width) ≤ 2560
+	//
+	// 	- min（Height,Width）≤ 1440
+	//
+	// >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+	//
 	// example:
 	//
 	// 1280
@@ -65612,8 +66799,12 @@ func (s *UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams) SetWidth(v
 }
 
 type UpdateLiveTranscodeTemplateShrinkRequest struct {
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration of the template.
 	TemplateConfigShrink *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// The template ID. To obtain the template ID, log on to the [Intelligent Media Services (IMS) console](https://ims.console.aliyun.com/summary), choose Real-time Media Processing > Template Management, and then click the Transcoding tab. Alternatively, find the ID from the response parameters of the [CreateLiveTranscodeTemplate](https://help.aliyun.com/document_detail/449217.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65646,6 +66837,8 @@ func (s *UpdateLiveTranscodeTemplateShrinkRequest) SetTemplateId(v string) *Upda
 }
 
 type UpdateLiveTranscodeTemplateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
@@ -68286,7 +69479,11 @@ func (client *Client) CreateEditingProject(request *CreateEditingProjectRequest)
 
 // Summary:
 //
-// 创建直播录制模板
+// Creates a live stream recording template to submit live stream recording jobs.
+//
+// Description:
+//
+// You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
 //
 // @param tmpReq - CreateLiveRecordTemplateRequest
 //
@@ -68338,7 +69535,11 @@ func (client *Client) CreateLiveRecordTemplateWithOptions(tmpReq *CreateLiveReco
 
 // Summary:
 //
-// 创建直播录制模板
+// Creates a live stream recording template to submit live stream recording jobs.
+//
+// Description:
+//
+// You must specify a recording template for live stream recording. You can configure information such as the format and duration of a recording in a recording template. The recording format can be M3U8, MP4, or FLV.
 //
 // @param request - CreateLiveRecordTemplateRequest
 //
@@ -68356,7 +69557,7 @@ func (client *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplate
 
 // Summary:
 //
-// 创建直播截图模板
+// Create a live stream snapshot template to facilitate the creation of snapshot jobs.
 //
 // @param request - CreateLiveSnapshotTemplateRequest
 //
@@ -68410,7 +69611,7 @@ func (client *Client) CreateLiveSnapshotTemplateWithOptions(request *CreateLiveS
 
 // Summary:
 //
-// 创建直播截图模板
+// Create a live stream snapshot template to facilitate the creation of snapshot jobs.
 //
 // @param request - CreateLiveSnapshotTemplateRequest
 //
@@ -68428,7 +69629,7 @@ func (client *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemp
 
 // Summary:
 //
-// 创建转码模版
+// Creates a live stream transcoding template to submit live stream transcoding jobs.
 //
 // @param tmpReq - CreateLiveTranscodeTemplateRequest
 //
@@ -68484,7 +69685,7 @@ func (client *Client) CreateLiveTranscodeTemplateWithOptions(tmpReq *CreateLiveT
 
 // Summary:
 //
-// 创建转码模版
+// Creates a live stream transcoding template to submit live stream transcoding jobs.
 //
 // @param request - CreateLiveTranscodeTemplateRequest
 //
@@ -69510,7 +70711,7 @@ func (client *Client) DeleteEditingProjects(request *DeleteEditingProjectsReques
 
 // Summary:
 //
-// 实时媒体服务-删除录制文件
+// Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
 //
 // @param request - DeleteLiveRecordFilesRequest
 //
@@ -69556,7 +70757,7 @@ func (client *Client) DeleteLiveRecordFilesWithOptions(request *DeleteLiveRecord
 
 // Summary:
 //
-// 实时媒体服务-删除录制文件
+// Deletes live stream recording files. You can choose to delete only the recording files or delete both the recording files and the original Object Storage Service (OSS) files.
 //
 // @param request - DeleteLiveRecordFilesRequest
 //
@@ -69574,7 +70775,7 @@ func (client *Client) DeleteLiveRecordFiles(request *DeleteLiveRecordFilesReques
 
 // Summary:
 //
-// 删除直播录制模板
+// Deletes a live stream recording template without affecting existing jobs.
 //
 // @param request - DeleteLiveRecordTemplateRequest
 //
@@ -69616,7 +70817,7 @@ func (client *Client) DeleteLiveRecordTemplateWithOptions(request *DeleteLiveRec
 
 // Summary:
 //
-// 删除直播录制模板
+// Deletes a live stream recording template without affecting existing jobs.
 //
 // @param request - DeleteLiveRecordTemplateRequest
 //
@@ -69634,7 +70835,7 @@ func (client *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplate
 
 // Summary:
 //
-// 批量删除直播截图文件
+// Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
 //
 // @param tmpReq - DeleteLiveSnapshotFilesRequest
 //
@@ -69690,7 +70891,7 @@ func (client *Client) DeleteLiveSnapshotFilesWithOptions(tmpReq *DeleteLiveSnaps
 
 // Summary:
 //
-// 批量删除直播截图文件
+// Deletes live stream snapshot files. You can choose to delete only the snapshot files or delete both the snapshot files and the original Object Storage Service (OSS) files.
 //
 // @param request - DeleteLiveSnapshotFilesRequest
 //
@@ -69708,7 +70909,7 @@ func (client *Client) DeleteLiveSnapshotFiles(request *DeleteLiveSnapshotFilesRe
 
 // Summary:
 //
-// 删除直播截图模板
+// Deletes a live stream snapshot template.
 //
 // @param request - DeleteLiveSnapshotTemplateRequest
 //
@@ -69750,7 +70951,7 @@ func (client *Client) DeleteLiveSnapshotTemplateWithOptions(request *DeleteLiveS
 
 // Summary:
 //
-// 删除直播截图模板
+// Deletes a live stream snapshot template.
 //
 // @param request - DeleteLiveSnapshotTemplateRequest
 //
@@ -69828,7 +71029,7 @@ func (client *Client) DeleteLiveTranscodeJob(request *DeleteLiveTranscodeJobRequ
 
 // Summary:
 //
-// 删除指定转码模版
+// Deletes a live stream transcoding template.
 //
 // @param request - DeleteLiveTranscodeTemplateRequest
 //
@@ -69870,7 +71071,7 @@ func (client *Client) DeleteLiveTranscodeTemplateWithOptions(request *DeleteLive
 
 // Summary:
 //
-// 删除指定转码模版
+// Deletes a live stream transcoding template.
 //
 // @param request - DeleteLiveTranscodeTemplateRequest
 //
@@ -72203,7 +73404,7 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 
 // Summary:
 //
-// 获取事件回调地址
+// Queries event callback configurations.
 //
 // @param request - GetEventCallbackRequest
 //
@@ -72234,7 +73435,7 @@ func (client *Client) GetEventCallbackWithOptions(runtime *util.RuntimeOptions) 
 
 // Summary:
 //
-// 获取事件回调地址
+// Queries event callback configurations.
 //
 // @return GetEventCallbackResponse
 func (client *Client) GetEventCallback() (_result *GetEventCallbackResponse, _err error) {
@@ -72382,7 +73583,7 @@ func (client *Client) GetLiveEditingJob(request *GetLiveEditingJobRequest) (_res
 
 // Summary:
 //
-// 查询录制任务明细
+// Queries the information about a live stream recording job.
 //
 // @param request - GetLiveRecordJobRequest
 //
@@ -72420,7 +73621,7 @@ func (client *Client) GetLiveRecordJobWithOptions(request *GetLiveRecordJobReque
 
 // Summary:
 //
-// 查询录制任务明细
+// Queries the information about a live stream recording job.
 //
 // @param request - GetLiveRecordJobRequest
 //
@@ -72438,7 +73639,7 @@ func (client *Client) GetLiveRecordJob(request *GetLiveRecordJobRequest) (_resul
 
 // Summary:
 //
-// 查询直播录制模板详情
+// Queries the information about a live stream recording template or a snapshot of the template.
 //
 // @param request - GetLiveRecordTemplateRequest
 //
@@ -72476,7 +73677,7 @@ func (client *Client) GetLiveRecordTemplateWithOptions(request *GetLiveRecordTem
 
 // Summary:
 //
-// 查询直播录制模板详情
+// Queries the information about a live stream recording template or a snapshot of the template.
 //
 // @param request - GetLiveRecordTemplateRequest
 //
@@ -72494,7 +73695,7 @@ func (client *Client) GetLiveRecordTemplate(request *GetLiveRecordTemplateReques
 
 // Summary:
 //
-// 查询直播截图任务
+// Queries the information a live stream snapshot job.
 //
 // @param request - GetLiveSnapshotJobRequest
 //
@@ -72532,7 +73733,7 @@ func (client *Client) GetLiveSnapshotJobWithOptions(request *GetLiveSnapshotJobR
 
 // Summary:
 //
-// 查询直播截图任务
+// Queries the information a live stream snapshot job.
 //
 // @param request - GetLiveSnapshotJobRequest
 //
@@ -72550,7 +73751,7 @@ func (client *Client) GetLiveSnapshotJob(request *GetLiveSnapshotJobRequest) (_r
 
 // Summary:
 //
-// 查询直播截图模板
+// Queries the information about a live stream snapshot template.
 //
 // @param request - GetLiveSnapshotTemplateRequest
 //
@@ -72588,7 +73789,7 @@ func (client *Client) GetLiveSnapshotTemplateWithOptions(request *GetLiveSnapsho
 
 // Summary:
 //
-// 查询直播截图模板
+// Queries the information about a live stream snapshot template.
 //
 // @param request - GetLiveSnapshotTemplateRequest
 //
@@ -72606,7 +73807,7 @@ func (client *Client) GetLiveSnapshotTemplate(request *GetLiveSnapshotTemplateRe
 
 // Summary:
 //
-// 查询转码任务详情
+// Queries the information about a live stream transcoding job.
 //
 // @param request - GetLiveTranscodeJobRequest
 //
@@ -72648,7 +73849,7 @@ func (client *Client) GetLiveTranscodeJobWithOptions(request *GetLiveTranscodeJo
 
 // Summary:
 //
-// 查询转码任务详情
+// Queries the information about a live stream transcoding job.
 //
 // @param request - GetLiveTranscodeJobRequest
 //
@@ -72666,7 +73867,7 @@ func (client *Client) GetLiveTranscodeJob(request *GetLiveTranscodeJobRequest) (
 
 // Summary:
 //
-// 查询转码模版详情
+// Queries the information a live stream transcoding template.
 //
 // @param request - GetLiveTranscodeTemplateRequest
 //
@@ -72708,7 +73909,7 @@ func (client *Client) GetLiveTranscodeTemplateWithOptions(request *GetLiveTransc
 
 // Summary:
 //
-// 查询转码模版详情
+// Queries the information a live stream transcoding template.
 //
 // @param request - GetLiveTranscodeTemplateRequest
 //
@@ -75058,7 +76259,7 @@ func (client *Client) ListEditingProjects(request *ListEditingProjectsRequest) (
 
 // Summary:
 //
-// 查询录制文件
+// Queries all recording index files in the specified period of time.
 //
 // @param request - ListLiveRecordFilesRequest
 //
@@ -75096,7 +76297,7 @@ func (client *Client) ListLiveRecordFilesWithOptions(request *ListLiveRecordFile
 
 // Summary:
 //
-// 查询录制文件
+// Queries all recording index files in the specified period of time.
 //
 // @param request - ListLiveRecordFilesRequest
 //
@@ -75114,7 +76315,7 @@ func (client *Client) ListLiveRecordFiles(request *ListLiveRecordFilesRequest) (
 
 // Summary:
 //
-// 查询录制任务
+// Queries a list of live stream recording jobs by page.
 //
 // @param request - ListLiveRecordJobsRequest
 //
@@ -75152,7 +76353,7 @@ func (client *Client) ListLiveRecordJobsWithOptions(request *ListLiveRecordJobsR
 
 // Summary:
 //
-// 查询录制任务
+// Queries a list of live stream recording jobs by page.
 //
 // @param request - ListLiveRecordJobsRequest
 //
@@ -75170,7 +76371,7 @@ func (client *Client) ListLiveRecordJobs(request *ListLiveRecordJobsRequest) (_r
 
 // Summary:
 //
-// 查询直播录制模板
+// Queries a list of live stream recording templates.
 //
 // @param request - ListLiveRecordTemplatesRequest
 //
@@ -75208,7 +76409,7 @@ func (client *Client) ListLiveRecordTemplatesWithOptions(request *ListLiveRecord
 
 // Summary:
 //
-// 查询直播录制模板
+// Queries a list of live stream recording templates.
 //
 // @param request - ListLiveRecordTemplatesRequest
 //
@@ -75226,7 +76427,7 @@ func (client *Client) ListLiveRecordTemplates(request *ListLiveRecordTemplatesRe
 
 // Summary:
 //
-// 查询直播截图文件列表
+// Queries a list of live stream snapshot files by page.
 //
 // @param request - ListLiveSnapshotFilesRequest
 //
@@ -75264,7 +76465,7 @@ func (client *Client) ListLiveSnapshotFilesWithOptions(request *ListLiveSnapshot
 
 // Summary:
 //
-// 查询直播截图文件列表
+// Queries a list of live stream snapshot files by page.
 //
 // @param request - ListLiveSnapshotFilesRequest
 //
@@ -75282,7 +76483,7 @@ func (client *Client) ListLiveSnapshotFiles(request *ListLiveSnapshotFilesReques
 
 // Summary:
 //
-// 查询直播截图任务列表
+// Queries a list of live stream snapshot jobs by page.
 //
 // @param request - ListLiveSnapshotJobsRequest
 //
@@ -75320,7 +76521,7 @@ func (client *Client) ListLiveSnapshotJobsWithOptions(request *ListLiveSnapshotJ
 
 // Summary:
 //
-// 查询直播截图任务列表
+// Queries a list of live stream snapshot jobs by page.
 //
 // @param request - ListLiveSnapshotJobsRequest
 //
@@ -75338,7 +76539,7 @@ func (client *Client) ListLiveSnapshotJobs(request *ListLiveSnapshotJobsRequest)
 
 // Summary:
 //
-// 查询直播截图模板列表
+// Queries a list of live stream snapshot templates by page.
 //
 // @param request - ListLiveSnapshotTemplatesRequest
 //
@@ -75376,7 +76577,7 @@ func (client *Client) ListLiveSnapshotTemplatesWithOptions(request *ListLiveSnap
 
 // Summary:
 //
-// 查询直播截图模板列表
+// Queries a list of live stream snapshot templates by page.
 //
 // @param request - ListLiveSnapshotTemplatesRequest
 //
@@ -75394,7 +76595,7 @@ func (client *Client) ListLiveSnapshotTemplates(request *ListLiveSnapshotTemplat
 
 // Summary:
 //
-// 查询转码任务列表
+// Queries a list of live stream transcoding jobs.
 //
 // @param request - ListLiveTranscodeJobsRequest
 //
@@ -75460,7 +76661,7 @@ func (client *Client) ListLiveTranscodeJobsWithOptions(request *ListLiveTranscod
 
 // Summary:
 //
-// 查询转码任务列表
+// Queries a list of live stream transcoding jobs.
 //
 // @param request - ListLiveTranscodeJobsRequest
 //
@@ -75478,7 +76679,7 @@ func (client *Client) ListLiveTranscodeJobs(request *ListLiveTranscodeJobsReques
 
 // Summary:
 //
-// 查询转码模版列表
+// Queries a list of live stream transcoding templates.
 //
 // @param request - ListLiveTranscodeTemplatesRequest
 //
@@ -75544,7 +76745,7 @@ func (client *Client) ListLiveTranscodeTemplatesWithOptions(request *ListLiveTra
 
 // Summary:
 //
-// 查询转码模版列表
+// Queries a list of live stream transcoding templates.
 //
 // @param request - ListLiveTranscodeTemplatesRequest
 //
@@ -78557,7 +79758,7 @@ func (client *Client) SendAIAgentSpeech(request *SendAIAgentSpeechRequest) (_res
 
 // Summary:
 //
-// 发送实时截图任务指令
+// Sends a command to process a live stream snapshot job.
 //
 // @param request - SendLiveSnapshotJobCommandRequest
 //
@@ -78603,7 +79804,7 @@ func (client *Client) SendLiveSnapshotJobCommandWithOptions(request *SendLiveSna
 
 // Summary:
 //
-// 发送实时截图任务指令
+// Sends a command to process a live stream snapshot job.
 //
 // @param request - SendLiveSnapshotJobCommandRequest
 //
@@ -78621,7 +79822,7 @@ func (client *Client) SendLiveSnapshotJobCommand(request *SendLiveSnapshotJobCom
 
 // Summary:
 //
-// 给指定转码任务发实时命令
+// Sends a command to process a live stream transcoding job.
 //
 // @param request - SendLiveTranscodeJobCommandRequest
 //
@@ -78667,7 +79868,7 @@ func (client *Client) SendLiveTranscodeJobCommandWithOptions(request *SendLiveTr
 
 // Summary:
 //
-// 给指定转码任务发实时命令
+// Sends a command to process a live stream transcoding job.
 //
 // @param request - SendLiveTranscodeJobCommandRequest
 //
@@ -78881,7 +80082,7 @@ func (client *Client) SetDefaultStorageLocation(request *SetDefaultStorageLocati
 
 // Summary:
 //
-// 配置事件回调地址
+// Configures a callback method for one or more events.
 //
 // @param request - SetEventCallbackRequest
 //
@@ -78943,7 +80144,7 @@ func (client *Client) SetEventCallbackWithOptions(request *SetEventCallbackReque
 
 // Summary:
 //
-// 配置事件回调地址
+// Configures a callback method for one or more events.
 //
 // @param request - SetEventCallbackRequest
 //
@@ -79629,7 +80830,7 @@ func (client *Client) SubmitAvatarTrainingJob(request *SubmitAvatarTrainingJobRe
 
 // Summary:
 //
-// 提交虚拟人视频合成任务
+// Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
 //
 // @param request - SubmitAvatarVideoJobRequest
 //
@@ -79691,7 +80892,7 @@ func (client *Client) SubmitAvatarVideoJobWithOptions(request *SubmitAvatarVideo
 
 // Summary:
 //
-// 提交虚拟人视频合成任务
+// Submits a video rendering job for a digitized virtual human based on text or an audio file of a human voice.
 //
 // @param request - SubmitAvatarVideoJobRequest
 //
@@ -80377,7 +81578,15 @@ func (client *Client) SubmitLiveEditingJob(request *SubmitLiveEditingJobRequest)
 
 // Summary:
 //
-// 提交录制任务
+// Submits a live stream recording job.
+//
+// Description:
+//
+// You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+//
+// Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+//
+// If the preset recording template does not meet your requirements, you can create a custom recording template.
 //
 // @param tmpReq - SubmitLiveRecordJobRequest
 //
@@ -80445,7 +81654,15 @@ func (client *Client) SubmitLiveRecordJobWithOptions(tmpReq *SubmitLiveRecordJob
 
 // Summary:
 //
-// 提交录制任务
+// Submits a live stream recording job.
+//
+// Description:
+//
+// You can call this operation to record live streams of ApsaraVideo Live or third-party Real-Time Messaging Protocol (RTMP) live streams. We recommend that you ingest a stream before you call this operation to submit a recording job. If no stream is pulled from the streaming URL, the job attempts to pull a stream for 3 minutes. If the attempt times out, the recording service stops.
+//
+// Before you submit a recording job, you must prepare an Object Storage Service (OSS) or ApsaraVideo VOD bucket. We recommend that you use a storage address configured in Intelligent Media Services (IMS) to facilitate the management and processing of generated recording files.
+//
+// If the preset recording template does not meet your requirements, you can create a custom recording template.
 //
 // @param request - SubmitLiveRecordJobRequest
 //
@@ -80463,7 +81680,7 @@ func (client *Client) SubmitLiveRecordJob(request *SubmitLiveRecordJobRequest) (
 
 // Summary:
 //
-// 创建直播截图任务
+// Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
 //
 // @param tmpReq - SubmitLiveSnapshotJobRequest
 //
@@ -80531,7 +81748,7 @@ func (client *Client) SubmitLiveSnapshotJobWithOptions(tmpReq *SubmitLiveSnapsho
 
 // Summary:
 //
-// 创建直播截图任务
+// Submits a live stream snapshot job. If the job is submitted during stream ingest, it automatically starts in asynchronous mode. Otherwise, it does not start.
 //
 // @param request - SubmitLiveSnapshotJobRequest
 //
@@ -80549,7 +81766,13 @@ func (client *Client) SubmitLiveSnapshotJob(request *SubmitLiveSnapshotJobReques
 
 // Summary:
 //
-// 提交转码任务
+// Submits a live stream transcoding job.
+//
+// Description:
+//
+//   When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+//
+// 	- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
 //
 // @param tmpReq - SubmitLiveTranscodeJobRequest
 //
@@ -80625,7 +81848,13 @@ func (client *Client) SubmitLiveTranscodeJobWithOptions(tmpReq *SubmitLiveTransc
 
 // Summary:
 //
-// 提交转码任务
+// Submits a live stream transcoding job.
+//
+// Description:
+//
+//   When you submit a transcoding job that immediately takes effect, make sure that the input stream can be streamed.
+//
+// 	- When you submit a timed transcoding job, make sure that the input stream can be streamed before the specified time.
 //
 // @param request - SubmitLiveTranscodeJobRequest
 //
@@ -82333,7 +83562,11 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 
 // Summary:
 //
-// 修改直播录制模板
+// Updates the information about a live stream recording template.
+//
+// Description:
+//
+// Only user-created templates can be updated. The preset template cannot be updated.
 //
 // @param tmpReq - UpdateLiveRecordTemplateRequest
 //
@@ -82389,7 +83622,11 @@ func (client *Client) UpdateLiveRecordTemplateWithOptions(tmpReq *UpdateLiveReco
 
 // Summary:
 //
-// 修改直播录制模板
+// Updates the information about a live stream recording template.
+//
+// Description:
+//
+// Only user-created templates can be updated. The preset template cannot be updated.
 //
 // @param request - UpdateLiveRecordTemplateRequest
 //
@@ -82407,7 +83644,7 @@ func (client *Client) UpdateLiveRecordTemplate(request *UpdateLiveRecordTemplate
 
 // Summary:
 //
-// 更新直播截图模板
+// Updates the information about a live stream snapshot template.
 //
 // @param request - UpdateLiveSnapshotTemplateRequest
 //
@@ -82465,7 +83702,7 @@ func (client *Client) UpdateLiveSnapshotTemplateWithOptions(request *UpdateLiveS
 
 // Summary:
 //
-// 更新直播截图模板
+// Updates the information about a live stream snapshot template.
 //
 // @param request - UpdateLiveSnapshotTemplateRequest
 //
@@ -82483,7 +83720,13 @@ func (client *Client) UpdateLiveSnapshotTemplate(request *UpdateLiveSnapshotTemp
 
 // Summary:
 //
-// 更新转码任务配置
+// Updates the information about a live stream transcoding job.
+//
+// Description:
+//
+//   For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+//
+// 	- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
 //
 // @param tmpReq - UpdateLiveTranscodeJobRequest
 //
@@ -82555,7 +83798,13 @@ func (client *Client) UpdateLiveTranscodeJobWithOptions(tmpReq *UpdateLiveTransc
 
 // Summary:
 //
-// 更新转码任务配置
+// Updates the information about a live stream transcoding job.
+//
+// Description:
+//
+//   For a non-timed transcoding job, you can modify the Name parameter of the job, regardless of the job state.
+//
+// 	- For a timed job, you can modify the Name, StreamInput, TranscodeOutput, and TimedConfig parameters. However, the StreamInput, TranscodeOutput, and TimedConfig parameters can be modified only when the job is not started.
 //
 // @param request - UpdateLiveTranscodeJobRequest
 //
@@ -82573,7 +83822,7 @@ func (client *Client) UpdateLiveTranscodeJob(request *UpdateLiveTranscodeJobRequ
 
 // Summary:
 //
-// 更新转码模版
+// Updates the information about a live stream transcoding template.
 //
 // @param tmpReq - UpdateLiveTranscodeTemplateRequest
 //
@@ -82629,7 +83878,7 @@ func (client *Client) UpdateLiveTranscodeTemplateWithOptions(tmpReq *UpdateLiveT
 
 // Summary:
 //
-// 更新转码模版
+// Updates the information about a live stream transcoding template.
 //
 // @param request - UpdateLiveTranscodeTemplateRequest
 //
