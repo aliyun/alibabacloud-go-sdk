@@ -108,12 +108,13 @@ func (s *AICreateSessionMessageRequestContext) SetUuid(v string) *AICreateSessio
 }
 
 type AICreateSessionMessageResponseBody struct {
-	Answer    *string `json:"answer,omitempty" xml:"answer,omitempty"`
-	Code      *int64  `json:"code,omitempty" xml:"code,omitempty"`
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
-	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	SessionId *string `json:"session_id,omitempty" xml:"session_id,omitempty"`
+	Answer    *string                                        `json:"answer,omitempty" xml:"answer,omitempty"`
+	Code      *int64                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *string                                        `json:"data,omitempty" xml:"data,omitempty"`
+	Msg       *string                                        `json:"msg,omitempty" xml:"msg,omitempty"`
+	Reference []*AICreateSessionMessageResponseBodyReference `json:"reference,omitempty" xml:"reference,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SessionId *string                                        `json:"session_id,omitempty" xml:"session_id,omitempty"`
 }
 
 func (s AICreateSessionMessageResponseBody) String() string {
@@ -144,6 +145,11 @@ func (s *AICreateSessionMessageResponseBody) SetMsg(v string) *AICreateSessionMe
 	return s
 }
 
+func (s *AICreateSessionMessageResponseBody) SetReference(v []*AICreateSessionMessageResponseBodyReference) *AICreateSessionMessageResponseBody {
+	s.Reference = v
+	return s
+}
+
 func (s *AICreateSessionMessageResponseBody) SetRequestId(v string) *AICreateSessionMessageResponseBody {
 	s.RequestId = &v
 	return s
@@ -151,6 +157,29 @@ func (s *AICreateSessionMessageResponseBody) SetRequestId(v string) *AICreateSes
 
 func (s *AICreateSessionMessageResponseBody) SetSessionId(v string) *AICreateSessionMessageResponseBody {
 	s.SessionId = &v
+	return s
+}
+
+type AICreateSessionMessageResponseBodyReference struct {
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s AICreateSessionMessageResponseBodyReference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AICreateSessionMessageResponseBodyReference) GoString() string {
+	return s.String()
+}
+
+func (s *AICreateSessionMessageResponseBodyReference) SetTitle(v string) *AICreateSessionMessageResponseBodyReference {
+	s.Title = &v
+	return s
+}
+
+func (s *AICreateSessionMessageResponseBodyReference) SetUrl(v string) *AICreateSessionMessageResponseBodyReference {
+	s.Url = &v
 	return s
 }
 
