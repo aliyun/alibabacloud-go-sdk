@@ -1866,6 +1866,220 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 	return s
 }
 
+type DescribeInstanceForIsvRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 155****11
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeInstanceForIsvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceForIsvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceForIsvRequest) SetInstanceId(v string) *DescribeInstanceForIsvRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeInstanceForIsvResponseBody struct {
+	// example:
+	//
+	// 1570634021000
+	BeganOn *int64 `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
+	// example:
+	//
+	// {"package_version":"yuncode000111"}
+	ComponentJson *string `json:"ComponentJson,omitempty" xml:"ComponentJson,omitempty"`
+	// example:
+	//
+	// 1570634018000
+	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	// example:
+	//
+	// 1602259200000
+	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	// example:
+	//
+	// 1551111111
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	// example:
+	//
+	// 204211111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cmgj00**11
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj00**11-prepay
+	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// example:
+	//
+	// APP
+	ProductType    *string                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RelationalData *DescribeInstanceForIsvResponseBodyRelationalData `json:"RelationalData,omitempty" xml:"RelationalData,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6EF60BEC-****-****-****-270359FB54A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OPENED
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+}
+
+func (s DescribeInstanceForIsvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceForIsvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetBeganOn(v int64) *DescribeInstanceForIsvResponseBody {
+	s.BeganOn = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetComponentJson(v string) *DescribeInstanceForIsvResponseBody {
+	s.ComponentJson = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetCreatedOn(v int64) *DescribeInstanceForIsvResponseBody {
+	s.CreatedOn = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetEndOn(v int64) *DescribeInstanceForIsvResponseBody {
+	s.EndOn = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetExtendJson(v string) *DescribeInstanceForIsvResponseBody {
+	s.ExtendJson = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetInstanceId(v int64) *DescribeInstanceForIsvResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetIsTrial(v bool) *DescribeInstanceForIsvResponseBody {
+	s.IsTrial = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetOrderId(v int64) *DescribeInstanceForIsvResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetProductCode(v string) *DescribeInstanceForIsvResponseBody {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetProductName(v string) *DescribeInstanceForIsvResponseBody {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetProductSkuCode(v string) *DescribeInstanceForIsvResponseBody {
+	s.ProductSkuCode = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetProductType(v string) *DescribeInstanceForIsvResponseBody {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetRelationalData(v *DescribeInstanceForIsvResponseBodyRelationalData) *DescribeInstanceForIsvResponseBody {
+	s.RelationalData = v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetRequestId(v string) *DescribeInstanceForIsvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetStatus(v string) *DescribeInstanceForIsvResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetSupplierName(v string) *DescribeInstanceForIsvResponseBody {
+	s.SupplierName = &v
+	return s
+}
+
+type DescribeInstanceForIsvResponseBodyRelationalData struct {
+	// example:
+	//
+	// STARTED
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+}
+
+func (s DescribeInstanceForIsvResponseBodyRelationalData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceForIsvResponseBodyRelationalData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceForIsvResponseBodyRelationalData) SetServiceStatus(v string) *DescribeInstanceForIsvResponseBodyRelationalData {
+	s.ServiceStatus = &v
+	return s
+}
+
+type DescribeInstanceForIsvResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceForIsvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceForIsvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceForIsvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceForIsvResponse) SetHeaders(v map[string]*string) *DescribeInstanceForIsvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponse) SetStatusCode(v int32) *DescribeInstanceForIsvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponse) SetBody(v *DescribeInstanceForIsvResponseBody) *DescribeInstanceForIsvResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstancesRequest struct {
 	// example:
 	//
@@ -2732,6 +2946,240 @@ func (s *DescribeOrderResponse) SetStatusCode(v int32) *DescribeOrderResponse {
 }
 
 func (s *DescribeOrderResponse) SetBody(v *DescribeOrderResponseBody) *DescribeOrderResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOrderForIsvRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 202*********415
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s DescribeOrderForIsvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrderForIsvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrderForIsvRequest) SetOrderId(v string) *DescribeOrderForIsvRequest {
+	s.OrderId = &v
+	return s
+}
+
+type DescribeOrderForIsvResponseBody struct {
+	// example:
+	//
+	// 0
+	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// example:
+	//
+	// 190311111111****
+	AliUid     *int64                 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Components map[string]interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	// example:
+	//
+	// 0.0
+	CouponPrice *float32 `json:"CouponPrice,omitempty" xml:"CouponPrice,omitempty"`
+	// example:
+	//
+	// 1531191564000
+	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	// List
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 202211111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// NEW
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 10.0
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// 1531191675000
+	PaidOn *int64 `json:"PaidOn,omitempty" xml:"PaidOn,omitempty"`
+	// example:
+	//
+	// PAID
+	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// example:
+	//
+	// 0.0
+	PaymentPrice *float32 `json:"PaymentPrice,omitempty" xml:"PaymentPrice,omitempty"`
+	// example:
+	//
+	// MONTH
+	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// example:
+	//
+	// cmgj02****
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj02****-prepay
+	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 6EF60BEC-****-****-****-270359FB54A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0.0
+	TotalPrice *float32 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+}
+
+func (s DescribeOrderForIsvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrderForIsvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetAccountQuantity(v int64) *DescribeOrderForIsvResponseBody {
+	s.AccountQuantity = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetAliUid(v int64) *DescribeOrderForIsvResponseBody {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetComponents(v map[string]interface{}) *DescribeOrderForIsvResponseBody {
+	s.Components = v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetCouponPrice(v float32) *DescribeOrderForIsvResponseBody {
+	s.CouponPrice = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetCreatedOn(v int64) *DescribeOrderForIsvResponseBody {
+	s.CreatedOn = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetInstanceIds(v []*string) *DescribeOrderForIsvResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetOrderId(v int64) *DescribeOrderForIsvResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetOrderStatus(v string) *DescribeOrderForIsvResponseBody {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetOrderType(v string) *DescribeOrderForIsvResponseBody {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetOriginalPrice(v float32) *DescribeOrderForIsvResponseBody {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetPaidOn(v int64) *DescribeOrderForIsvResponseBody {
+	s.PaidOn = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetPayStatus(v string) *DescribeOrderForIsvResponseBody {
+	s.PayStatus = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetPaymentPrice(v float32) *DescribeOrderForIsvResponseBody {
+	s.PaymentPrice = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetPeriodType(v string) *DescribeOrderForIsvResponseBody {
+	s.PeriodType = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetProductCode(v string) *DescribeOrderForIsvResponseBody {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetProductName(v string) *DescribeOrderForIsvResponseBody {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetProductSkuCode(v string) *DescribeOrderForIsvResponseBody {
+	s.ProductSkuCode = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetQuantity(v int32) *DescribeOrderForIsvResponseBody {
+	s.Quantity = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetRequestId(v string) *DescribeOrderForIsvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponseBody) SetTotalPrice(v float32) *DescribeOrderForIsvResponseBody {
+	s.TotalPrice = &v
+	return s
+}
+
+type DescribeOrderForIsvResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOrderForIsvResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeOrderForIsvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrderForIsvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrderForIsvResponse) SetHeaders(v map[string]*string) *DescribeOrderForIsvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponse) SetStatusCode(v int32) *DescribeOrderForIsvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOrderForIsvResponse) SetBody(v *DescribeOrderForIsvResponseBody) *DescribeOrderForIsvResponse {
 	s.Body = v
 	return s
 }
@@ -6216,6 +6664,66 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务商侧查询实例信息
+//
+// @param request - DescribeInstanceForIsvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceForIsvResponse
+func (client *Client) DescribeInstanceForIsvWithOptions(request *DescribeInstanceForIsvRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceForIsvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceForIsv"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceForIsvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务商侧查询实例信息
+//
+// @param request - DescribeInstanceForIsvRequest
+//
+// @return DescribeInstanceForIsvResponse
+func (client *Client) DescribeInstanceForIsv(request *DescribeInstanceForIsvRequest) (_result *DescribeInstanceForIsvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceForIsvResponse{}
+	_body, _err := client.DescribeInstanceForIsvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6389,6 +6897,66 @@ func (client *Client) DescribeOrder(request *DescribeOrderRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOrderResponse{}
 	_body, _err := client.DescribeOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务商侧查询订单详情
+//
+// @param request - DescribeOrderForIsvRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOrderForIsvResponse
+func (client *Client) DescribeOrderForIsvWithOptions(request *DescribeOrderForIsvRequest, runtime *util.RuntimeOptions) (_result *DescribeOrderForIsvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOrderForIsv"),
+		Version:     tea.String("2015-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOrderForIsvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务商侧查询订单详情
+//
+// @param request - DescribeOrderForIsvRequest
+//
+// @return DescribeOrderForIsvResponse
+func (client *Client) DescribeOrderForIsv(request *DescribeOrderForIsvRequest) (_result *DescribeOrderForIsvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOrderForIsvResponse{}
+	_body, _err := client.DescribeOrderForIsvWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
