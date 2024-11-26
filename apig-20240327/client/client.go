@@ -9,6 +9,406 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AiServiceConfig struct {
+	// example:
+	//
+	// https://dashscope.aliyun.com
+	Address           *string   `json:"address,omitempty" xml:"address,omitempty"`
+	ApiKeys           []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	EnableHealthCheck *bool     `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
+	Protocols         []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// example:
+	//
+	// qwen
+	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+}
+
+func (s AiServiceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiServiceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AiServiceConfig) SetAddress(v string) *AiServiceConfig {
+	s.Address = &v
+	return s
+}
+
+func (s *AiServiceConfig) SetApiKeys(v []*string) *AiServiceConfig {
+	s.ApiKeys = v
+	return s
+}
+
+func (s *AiServiceConfig) SetEnableHealthCheck(v bool) *AiServiceConfig {
+	s.EnableHealthCheck = &v
+	return s
+}
+
+func (s *AiServiceConfig) SetProtocols(v []*string) *AiServiceConfig {
+	s.Protocols = v
+	return s
+}
+
+func (s *AiServiceConfig) SetProvider(v string) *AiServiceConfig {
+	s.Provider = &v
+	return s
+}
+
+type AkSkIdentityConfig struct {
+	Ak           *string `json:"ak,omitempty" xml:"ak,omitempty"`
+	GenerateMode *string `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
+	Sk           *string `json:"sk,omitempty" xml:"sk,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s AkSkIdentityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AkSkIdentityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AkSkIdentityConfig) SetAk(v string) *AkSkIdentityConfig {
+	s.Ak = &v
+	return s
+}
+
+func (s *AkSkIdentityConfig) SetGenerateMode(v string) *AkSkIdentityConfig {
+	s.GenerateMode = &v
+	return s
+}
+
+func (s *AkSkIdentityConfig) SetSk(v string) *AkSkIdentityConfig {
+	s.Sk = &v
+	return s
+}
+
+func (s *AkSkIdentityConfig) SetType(v string) *AkSkIdentityConfig {
+	s.Type = &v
+	return s
+}
+
+type ApiKeyIdentityConfig struct {
+	Apikey       *string                           `json:"apikey,omitempty" xml:"apikey,omitempty"`
+	ApikeySource *ApiKeyIdentityConfigApikeySource `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
+	GenerateMode *string                           `json:"generateMode,omitempty" xml:"generateMode,omitempty"`
+	Type         *string                           `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ApiKeyIdentityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiKeyIdentityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ApiKeyIdentityConfig) SetApikey(v string) *ApiKeyIdentityConfig {
+	s.Apikey = &v
+	return s
+}
+
+func (s *ApiKeyIdentityConfig) SetApikeySource(v *ApiKeyIdentityConfigApikeySource) *ApiKeyIdentityConfig {
+	s.ApikeySource = v
+	return s
+}
+
+func (s *ApiKeyIdentityConfig) SetGenerateMode(v string) *ApiKeyIdentityConfig {
+	s.GenerateMode = &v
+	return s
+}
+
+func (s *ApiKeyIdentityConfig) SetType(v string) *ApiKeyIdentityConfig {
+	s.Type = &v
+	return s
+}
+
+type ApiKeyIdentityConfigApikeySource struct {
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	Value  *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ApiKeyIdentityConfigApikeySource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiKeyIdentityConfigApikeySource) GoString() string {
+	return s.String()
+}
+
+func (s *ApiKeyIdentityConfigApikeySource) SetSource(v string) *ApiKeyIdentityConfigApikeySource {
+	s.Source = &v
+	return s
+}
+
+func (s *ApiKeyIdentityConfigApikeySource) SetValue(v string) *ApiKeyIdentityConfigApikeySource {
+	s.Value = &v
+	return s
+}
+
+type ApiRouteConflictInfo struct {
+	Conflicts  []*ApiRouteConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
+	DomainInfo *ApiRouteConflictInfoDomainInfo  `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
+}
+
+func (s ApiRouteConflictInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfo) SetConflicts(v []*ApiRouteConflictInfoConflicts) *ApiRouteConflictInfo {
+	s.Conflicts = v
+	return s
+}
+
+func (s *ApiRouteConflictInfo) SetDomainInfo(v *ApiRouteConflictInfoDomainInfo) *ApiRouteConflictInfo {
+	s.DomainInfo = v
+	return s
+}
+
+type ApiRouteConflictInfoConflicts struct {
+	Details         []*ApiRouteConflictInfoConflictsDetails       `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
+	EnvironmentInfo *ApiRouteConflictInfoConflictsEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	ResourceId      *string                                       `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceName    *string                                       `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	ResourceType    *string                                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	RouteInfo       *ApiRouteConflictInfoConflictsRouteInfo       `json:"routeInfo,omitempty" xml:"routeInfo,omitempty" type:"Struct"`
+}
+
+func (s ApiRouteConflictInfoConflicts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflicts) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetDetails(v []*ApiRouteConflictInfoConflictsDetails) *ApiRouteConflictInfoConflicts {
+	s.Details = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetEnvironmentInfo(v *ApiRouteConflictInfoConflictsEnvironmentInfo) *ApiRouteConflictInfoConflicts {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetResourceId(v string) *ApiRouteConflictInfoConflicts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetResourceName(v string) *ApiRouteConflictInfoConflicts {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetResourceType(v string) *ApiRouteConflictInfoConflicts {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflicts) SetRouteInfo(v *ApiRouteConflictInfoConflictsRouteInfo) *ApiRouteConflictInfoConflicts {
+	s.RouteInfo = v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsDetails struct {
+	ConflictingMatch *ApiRouteConflictInfoConflictsDetailsConflictingMatch `json:"conflictingMatch,omitempty" xml:"conflictingMatch,omitempty" type:"Struct"`
+	DetectedMatch    *ApiRouteConflictInfoConflictsDetailsDetectedMatch    `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
+	Level            *string                                               `json:"level,omitempty" xml:"level,omitempty"`
+}
+
+func (s ApiRouteConflictInfoConflictsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsDetails) SetConflictingMatch(v *ApiRouteConflictInfoConflictsDetailsConflictingMatch) *ApiRouteConflictInfoConflictsDetails {
+	s.ConflictingMatch = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetails) SetDetectedMatch(v *ApiRouteConflictInfoConflictsDetailsDetectedMatch) *ApiRouteConflictInfoConflictsDetails {
+	s.DetectedMatch = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetails) SetLevel(v string) *ApiRouteConflictInfoConflictsDetails {
+	s.Level = &v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsDetailsConflictingMatch struct {
+	Match         *HttpRouteMatch                                                    `json:"match,omitempty" xml:"match,omitempty"`
+	OperationInfo *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsConflictingMatch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsConflictingMatch) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatch) SetMatch(v *HttpRouteMatch) *ApiRouteConflictInfoConflictsDetailsConflictingMatch {
+	s.Match = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatch) SetOperationInfo(v *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) *ApiRouteConflictInfoConflictsDetailsConflictingMatch {
+	s.OperationInfo = v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo struct {
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetName(v string) *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetOperationId(v string) *ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo {
+	s.OperationId = &v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsDetailsDetectedMatch struct {
+	Match         *HttpRouteMatch                                                 `json:"match,omitempty" xml:"match,omitempty"`
+	OperationInfo *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsDetectedMatch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsDetectedMatch) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatch) SetMatch(v *HttpRouteMatch) *ApiRouteConflictInfoConflictsDetailsDetectedMatch {
+	s.Match = v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatch) SetOperationInfo(v *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) *ApiRouteConflictInfoConflictsDetailsDetectedMatch {
+	s.OperationInfo = v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo struct {
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetName(v string) *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetOperationId(v string) *ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo {
+	s.OperationId = &v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsEnvironmentInfo struct {
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ApiRouteConflictInfoConflictsEnvironmentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsEnvironmentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsEnvironmentInfo) SetEnvironmentId(v string) *ApiRouteConflictInfoConflictsEnvironmentInfo {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsEnvironmentInfo) SetName(v string) *ApiRouteConflictInfoConflictsEnvironmentInfo {
+	s.Name = &v
+	return s
+}
+
+type ApiRouteConflictInfoConflictsRouteInfo struct {
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+}
+
+func (s ApiRouteConflictInfoConflictsRouteInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoConflictsRouteInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoConflictsRouteInfo) SetName(v string) *ApiRouteConflictInfoConflictsRouteInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoConflictsRouteInfo) SetRouteId(v string) *ApiRouteConflictInfoConflictsRouteInfo {
+	s.RouteId = &v
+	return s
+}
+
+type ApiRouteConflictInfoDomainInfo struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ApiRouteConflictInfoDomainInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApiRouteConflictInfoDomainInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ApiRouteConflictInfoDomainInfo) SetDomainId(v string) *ApiRouteConflictInfoDomainInfo {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ApiRouteConflictInfoDomainInfo) SetName(v string) *ApiRouteConflictInfoDomainInfo {
+	s.Name = &v
+	return s
+}
+
 type Attachment struct {
 	AttachResourceIds  []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
 	AttachResourceType *string   `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
@@ -47,6 +447,126 @@ func (s *Attachment) SetGatewayId(v string) *Attachment {
 
 func (s *Attachment) SetPolicyAttachmentId(v string) *Attachment {
 	s.PolicyAttachmentId = &v
+	return s
+}
+
+type AuthorizationResourceInfo struct {
+	EnvironmentId    *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ParentResourceId *string `json:"parentResourceId,omitempty" xml:"parentResourceId,omitempty"`
+	ResourceId       *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+}
+
+func (s AuthorizationResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizationResourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizationResourceInfo) SetEnvironmentId(v string) *AuthorizationResourceInfo {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *AuthorizationResourceInfo) SetParentResourceId(v string) *AuthorizationResourceInfo {
+	s.ParentResourceId = &v
+	return s
+}
+
+func (s *AuthorizationResourceInfo) SetResourceId(v string) *AuthorizationResourceInfo {
+	s.ResourceId = &v
+	return s
+}
+
+type Backend struct {
+	// example:
+	//
+	// Single
+	Scene    *string            `json:"scene,omitempty" xml:"scene,omitempty"`
+	Services []*BackendServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+}
+
+func (s Backend) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Backend) GoString() string {
+	return s.String()
+}
+
+func (s *Backend) SetScene(v string) *Backend {
+	s.Scene = &v
+	return s
+}
+
+func (s *Backend) SetServices(v []*BackendServices) *Backend {
+	s.Services = v
+	return s
+}
+
+type BackendServices struct {
+	// example:
+	//
+	// item-service
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// port
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// service-cq2bmmdlhtgj***
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// v1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 49
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s BackendServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BackendServices) GoString() string {
+	return s.String()
+}
+
+func (s *BackendServices) SetName(v string) *BackendServices {
+	s.Name = &v
+	return s
+}
+
+func (s *BackendServices) SetPort(v int32) *BackendServices {
+	s.Port = &v
+	return s
+}
+
+func (s *BackendServices) SetProtocol(v string) *BackendServices {
+	s.Protocol = &v
+	return s
+}
+
+func (s *BackendServices) SetServiceId(v string) *BackendServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *BackendServices) SetVersion(v string) *BackendServices {
+	s.Version = &v
+	return s
+}
+
+func (s *BackendServices) SetWeight(v int32) *BackendServices {
+	s.Weight = &v
 	return s
 }
 
@@ -95,6 +615,10 @@ type DomainInfo struct {
 	ForceHttps      *bool   `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
 	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
 	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 	UpdateTimestamp *int64  `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
@@ -142,6 +666,11 @@ func (s *DomainInfo) SetProtocol(v string) *DomainInfo {
 	return s
 }
 
+func (s *DomainInfo) SetResourceGroupId(v string) *DomainInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DomainInfo) SetStatus(v string) *DomainInfo {
 	s.Status = &v
 	return s
@@ -153,13 +682,17 @@ func (s *DomainInfo) SetUpdateTimestamp(v int64) *DomainInfo {
 }
 
 type EnvironmentInfo struct {
-	Alias           *string          `json:"alias,omitempty" xml:"alias,omitempty"`
-	CreateTimestamp *int64           `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	Default         *bool            `json:"default,omitempty" xml:"default,omitempty"`
-	Description     *string          `json:"description,omitempty" xml:"description,omitempty"`
-	EnvironmentId   *string          `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayInfo     *GatewayInfo     `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	Name            *string          `json:"name,omitempty" xml:"name,omitempty"`
+	Alias           *string      `json:"alias,omitempty" xml:"alias,omitempty"`
+	CreateTimestamp *int64       `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	Default         *bool        `json:"default,omitempty" xml:"default,omitempty"`
+	Description     *string      `json:"description,omitempty" xml:"description,omitempty"`
+	EnvironmentId   *string      `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	GatewayInfo     *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	Name            *string      `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId *string          `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	SubDomainInfos  []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	UpdateTimestamp *int64           `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
@@ -207,6 +740,11 @@ func (s *EnvironmentInfo) SetName(v string) *EnvironmentInfo {
 	return s
 }
 
+func (s *EnvironmentInfo) SetResourceGroupId(v string) *EnvironmentInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *EnvironmentInfo) SetSubDomainInfos(v []*SubDomainInfo) *EnvironmentInfo {
 	s.SubDomainInfos = v
 	return s
@@ -218,8 +756,10 @@ func (s *EnvironmentInfo) SetUpdateTimestamp(v int64) *EnvironmentInfo {
 }
 
 type GatewayInfo struct {
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	EngineVersion *string             `json:"engineVersion,omitempty" xml:"engineVersion,omitempty"`
+	GatewayId     *string             `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	Name          *string             `json:"name,omitempty" xml:"name,omitempty"`
+	VpcInfo       *GatewayInfoVpcInfo `json:"vpcInfo,omitempty" xml:"vpcInfo,omitempty" type:"Struct"`
 }
 
 func (s GatewayInfo) String() string {
@@ -230,6 +770,11 @@ func (s GatewayInfo) GoString() string {
 	return s.String()
 }
 
+func (s *GatewayInfo) SetEngineVersion(v string) *GatewayInfo {
+	s.EngineVersion = &v
+	return s
+}
+
 func (s *GatewayInfo) SetGatewayId(v string) *GatewayInfo {
 	s.GatewayId = &v
 	return s
@@ -237,6 +782,34 @@ func (s *GatewayInfo) SetGatewayId(v string) *GatewayInfo {
 
 func (s *GatewayInfo) SetName(v string) *GatewayInfo {
 	s.Name = &v
+	return s
+}
+
+func (s *GatewayInfo) SetVpcInfo(v *GatewayInfoVpcInfo) *GatewayInfo {
+	s.VpcInfo = v
+	return s
+}
+
+type GatewayInfoVpcInfo struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s GatewayInfoVpcInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayInfoVpcInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayInfoVpcInfo) SetName(v string) *GatewayInfoVpcInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *GatewayInfoVpcInfo) SetVpcId(v string) *GatewayInfoVpcInfo {
+	s.VpcId = &v
 	return s
 }
 
@@ -274,540 +847,33 @@ func (s *GatewayLogConfigSlsConfig) SetEnable(v bool) *GatewayLogConfigSlsConfig
 	return s
 }
 
-type GatewayRouteBackend struct {
-	Services []*GatewayRouteBackendServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
-	// example:
-	//
-	// Single
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s GatewayRouteBackend) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteBackend) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteBackend) SetServices(v []*GatewayRouteBackendServices) *GatewayRouteBackend {
-	s.Services = v
-	return s
-}
-
-func (s *GatewayRouteBackend) SetType(v string) *GatewayRouteBackend {
-	s.Type = &v
-	return s
-}
-
-type GatewayRouteBackendServices struct {
-	// example:
-	//
-	// gs-cq2bmmdlhtgj***
-	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	// example:
-	//
-	// item-service
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// port
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// example:
-	//
-	// v1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// example:
-	//
-	// 49
-	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s GatewayRouteBackendServices) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteBackendServices) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteBackendServices) SetGatewayServiceId(v string) *GatewayRouteBackendServices {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *GatewayRouteBackendServices) SetName(v string) *GatewayRouteBackendServices {
-	s.Name = &v
-	return s
-}
-
-func (s *GatewayRouteBackendServices) SetPort(v int32) *GatewayRouteBackendServices {
-	s.Port = &v
-	return s
-}
-
-func (s *GatewayRouteBackendServices) SetProtocol(v string) *GatewayRouteBackendServices {
-	s.Protocol = &v
-	return s
-}
-
-func (s *GatewayRouteBackendServices) SetVersion(v string) *GatewayRouteBackendServices {
-	s.Version = &v
-	return s
-}
-
-func (s *GatewayRouteBackendServices) SetWeight(v float32) *GatewayRouteBackendServices {
-	s.Weight = &v
-	return s
-}
-
-type GatewayRouteBackendConfig struct {
-	Services []*GatewayRouteBackendConfigServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
-	// example:
-	//
-	// Single
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s GatewayRouteBackendConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteBackendConfig) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteBackendConfig) SetServices(v []*GatewayRouteBackendConfigServices) *GatewayRouteBackendConfig {
-	s.Services = v
-	return s
-}
-
-func (s *GatewayRouteBackendConfig) SetType(v string) *GatewayRouteBackendConfig {
-	s.Type = &v
-	return s
-}
-
-type GatewayRouteBackendConfigServices struct {
-	// example:
-	//
-	// gs-cq2bmmdlhtgj***
-	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	// example:
-	//
-	// port
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// example:
-	//
-	// K8S
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// example:
-	//
-	// 49
-	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s GatewayRouteBackendConfigServices) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteBackendConfigServices) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteBackendConfigServices) SetGatewayServiceId(v string) *GatewayRouteBackendConfigServices {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *GatewayRouteBackendConfigServices) SetPort(v int32) *GatewayRouteBackendConfigServices {
-	s.Port = &v
-	return s
-}
-
-func (s *GatewayRouteBackendConfigServices) SetProtocol(v string) *GatewayRouteBackendConfigServices {
-	s.Protocol = &v
-	return s
-}
-
-func (s *GatewayRouteBackendConfigServices) SetSourceType(v string) *GatewayRouteBackendConfigServices {
-	s.SourceType = &v
-	return s
-}
-
-func (s *GatewayRouteBackendConfigServices) SetWeight(v float32) *GatewayRouteBackendConfigServices {
-	s.Weight = &v
-	return s
-}
-
-type GatewayRouteDomainConfig struct {
-	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-}
-
-func (s GatewayRouteDomainConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteDomainConfig) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteDomainConfig) SetDomainIds(v []*string) *GatewayRouteDomainConfig {
-	s.DomainIds = v
-	return s
-}
-
-type GatewayRouteDomainInfo struct {
-	Domains []*GatewayRouteDomainInfoDomains `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-}
-
-func (s GatewayRouteDomainInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteDomainInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteDomainInfo) SetDomains(v []*GatewayRouteDomainInfoDomains) *GatewayRouteDomainInfo {
-	s.Domains = v
-	return s
-}
-
-type GatewayRouteDomainInfoDomains struct {
-	// example:
-	//
-	// d-cp82or5l***
-	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// example:
-	//
-	// item.dev
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-}
-
-func (s GatewayRouteDomainInfoDomains) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayRouteDomainInfoDomains) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayRouteDomainInfoDomains) SetDomainId(v string) *GatewayRouteDomainInfoDomains {
-	s.DomainId = &v
-	return s
-}
-
-func (s *GatewayRouteDomainInfoDomains) SetName(v string) *GatewayRouteDomainInfoDomains {
-	s.Name = &v
-	return s
-}
-
-func (s *GatewayRouteDomainInfoDomains) SetProtocol(v string) *GatewayRouteDomainInfoDomains {
-	s.Protocol = &v
-	return s
-}
-
-type GatewayService struct {
-	Addresses        []*string              `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	CreateTimestamp  *int64                 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	GatewayServiceId *string                `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	HealthCheck      *ServiceHealthCheck    `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	HealthStatus     *string                `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
-	Name             *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace        *string                `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Ports            []*GatewayServicePorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// example:
-	//
-	// LATEST
-	Qualifier          *string   `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	SourceType         *string   `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	UpdateTimestamp    *int64    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-}
-
-func (s GatewayService) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayService) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayService) SetAddresses(v []*string) *GatewayService {
-	s.Addresses = v
-	return s
-}
-
-func (s *GatewayService) SetCreateTimestamp(v int64) *GatewayService {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *GatewayService) SetGatewayServiceId(v string) *GatewayService {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *GatewayService) SetHealthCheck(v *ServiceHealthCheck) *GatewayService {
-	s.HealthCheck = v
-	return s
-}
-
-func (s *GatewayService) SetHealthStatus(v string) *GatewayService {
-	s.HealthStatus = &v
-	return s
-}
-
-func (s *GatewayService) SetName(v string) *GatewayService {
-	s.Name = &v
-	return s
-}
-
-func (s *GatewayService) SetNamespace(v string) *GatewayService {
-	s.Namespace = &v
-	return s
-}
-
-func (s *GatewayService) SetPorts(v []*GatewayServicePorts) *GatewayService {
-	s.Ports = v
-	return s
-}
-
-func (s *GatewayService) SetQualifier(v string) *GatewayService {
-	s.Qualifier = &v
-	return s
-}
-
-func (s *GatewayService) SetSourceType(v string) *GatewayService {
-	s.SourceType = &v
-	return s
-}
-
-func (s *GatewayService) SetUnhealthyEndpoints(v []*string) *GatewayService {
-	s.UnhealthyEndpoints = v
-	return s
-}
-
-func (s *GatewayService) SetUpdateTimestamp(v int64) *GatewayService {
-	s.UpdateTimestamp = &v
-	return s
-}
-
-type GatewayServicePorts struct {
-	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
-	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-}
-
-func (s GatewayServicePorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayServicePorts) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayServicePorts) SetName(v string) *GatewayServicePorts {
-	s.Name = &v
-	return s
-}
-
-func (s *GatewayServicePorts) SetPort(v int32) *GatewayServicePorts {
-	s.Port = &v
-	return s
-}
-
-func (s *GatewayServicePorts) SetProtocol(v string) *GatewayServicePorts {
-	s.Protocol = &v
-	return s
-}
-
-type GatewayServiceSource struct {
-	Bound                  *bool                                       `json:"bound,omitempty" xml:"bound,omitempty"`
-	CreateTimestamp        *int64                                      `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	K8sServiceSourceInfo   *GatewayServiceSourceK8sServiceSourceInfo   `json:"k8sServiceSourceInfo,omitempty" xml:"k8sServiceSourceInfo,omitempty" type:"Struct"`
-	NacosServiceSourceInfo *GatewayServiceSourceNacosServiceSourceInfo `json:"nacosServiceSourceInfo,omitempty" xml:"nacosServiceSourceInfo,omitempty" type:"Struct"`
-	Name                   *string                                     `json:"name,omitempty" xml:"name,omitempty"`
-	ServiceSourceId        *string                                     `json:"serviceSourceId,omitempty" xml:"serviceSourceId,omitempty"`
-	Type                   *string                                     `json:"type,omitempty" xml:"type,omitempty"`
-	UpdateTimestamp        *int64                                      `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-}
-
-func (s GatewayServiceSource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayServiceSource) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayServiceSource) SetBound(v bool) *GatewayServiceSource {
-	s.Bound = &v
-	return s
-}
-
-func (s *GatewayServiceSource) SetCreateTimestamp(v int64) *GatewayServiceSource {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *GatewayServiceSource) SetK8sServiceSourceInfo(v *GatewayServiceSourceK8sServiceSourceInfo) *GatewayServiceSource {
-	s.K8sServiceSourceInfo = v
-	return s
-}
-
-func (s *GatewayServiceSource) SetNacosServiceSourceInfo(v *GatewayServiceSourceNacosServiceSourceInfo) *GatewayServiceSource {
-	s.NacosServiceSourceInfo = v
-	return s
-}
-
-func (s *GatewayServiceSource) SetName(v string) *GatewayServiceSource {
-	s.Name = &v
-	return s
-}
-
-func (s *GatewayServiceSource) SetServiceSourceId(v string) *GatewayServiceSource {
-	s.ServiceSourceId = &v
-	return s
-}
-
-func (s *GatewayServiceSource) SetType(v string) *GatewayServiceSource {
-	s.Type = &v
-	return s
-}
-
-func (s *GatewayServiceSource) SetUpdateTimestamp(v int64) *GatewayServiceSource {
-	s.UpdateTimestamp = &v
-	return s
-}
-
-type GatewayServiceSourceK8sServiceSourceInfo struct {
-	ClusterId     *string                                                `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	IngressConfig *GatewayServiceSourceK8sServiceSourceInfoIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-}
-
-func (s GatewayServiceSourceK8sServiceSourceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayServiceSourceK8sServiceSourceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfo) SetClusterId(v string) *GatewayServiceSourceK8sServiceSourceInfo {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfo) SetIngressConfig(v *GatewayServiceSourceK8sServiceSourceInfoIngressConfig) *GatewayServiceSourceK8sServiceSourceInfo {
-	s.IngressConfig = v
-	return s
-}
-
-type GatewayServiceSourceK8sServiceSourceInfoIngressConfig struct {
-	// example:
-	//
-	// true
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// example:
-	//
-	// mse
-	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// example:
-	//
-	// false
-	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
-	// example:
-	//
-	// default
-	WatchNamespace *string `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
-}
-
-func (s GatewayServiceSourceK8sServiceSourceInfoIngressConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayServiceSourceK8sServiceSourceInfoIngressConfig) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfoIngressConfig) SetEnable(v bool) *GatewayServiceSourceK8sServiceSourceInfoIngressConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfoIngressConfig) SetIngressClass(v string) *GatewayServiceSourceK8sServiceSourceInfoIngressConfig {
-	s.IngressClass = &v
-	return s
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfoIngressConfig) SetOverrideIngressIp(v bool) *GatewayServiceSourceK8sServiceSourceInfoIngressConfig {
-	s.OverrideIngressIp = &v
-	return s
-}
-
-func (s *GatewayServiceSourceK8sServiceSourceInfoIngressConfig) SetWatchNamespace(v string) *GatewayServiceSourceK8sServiceSourceInfoIngressConfig {
-	s.WatchNamespace = &v
-	return s
-}
-
-type GatewayServiceSourceNacosServiceSourceInfo struct {
-	Address    *string `json:"address,omitempty" xml:"address,omitempty"`
-	ClusterId  *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-}
-
-func (s GatewayServiceSourceNacosServiceSourceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GatewayServiceSourceNacosServiceSourceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *GatewayServiceSourceNacosServiceSourceInfo) SetAddress(v string) *GatewayServiceSourceNacosServiceSourceInfo {
-	s.Address = &v
-	return s
-}
-
-func (s *GatewayServiceSourceNacosServiceSourceInfo) SetClusterId(v string) *GatewayServiceSourceNacosServiceSourceInfo {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GatewayServiceSourceNacosServiceSourceInfo) SetInstanceId(v string) *GatewayServiceSourceNacosServiceSourceInfo {
-	s.InstanceId = &v
-	return s
-}
-
 type HttpApiApiInfo struct {
+	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// example:
 	//
 	// /v1
-	BasePath     *string                       `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	Description  *string                       `json:"description,omitempty" xml:"description,omitempty"`
-	Environments []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	BasePath      *string                       `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig        `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	Description   *string                       `json:"description,omitempty" xml:"description,omitempty"`
+	Environments  []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	// example:
 	//
 	// api-xxx
-	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	HttpApiId   *string                    `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+	IngressInfo *HttpApiApiInfoIngressInfo `json:"ingressInfo,omitempty" xml:"ingressInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// test
-	Name        *string             `json:"name,omitempty" xml:"name,omitempty"`
-	Protocols   []*string           `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
+	// Rest
+	Type        *string             `json:"type,omitempty" xml:"type,omitempty"`
 	VersionInfo *HttpApiVersionInfo `json:"versionInfo,omitempty" xml:"versionInfo,omitempty"`
 }
 
@@ -819,8 +885,18 @@ func (s HttpApiApiInfo) GoString() string {
 	return s.String()
 }
 
+func (s *HttpApiApiInfo) SetAiProtocols(v []*string) *HttpApiApiInfo {
+	s.AiProtocols = v
+	return s
+}
+
 func (s *HttpApiApiInfo) SetBasePath(v string) *HttpApiApiInfo {
 	s.BasePath = &v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetDeployConfigs(v []*HttpApiDeployConfig) *HttpApiApiInfo {
+	s.DeployConfigs = v
 	return s
 }
 
@@ -839,6 +915,11 @@ func (s *HttpApiApiInfo) SetHttpApiId(v string) *HttpApiApiInfo {
 	return s
 }
 
+func (s *HttpApiApiInfo) SetIngressInfo(v *HttpApiApiInfoIngressInfo) *HttpApiApiInfo {
+	s.IngressInfo = v
+	return s
+}
+
 func (s *HttpApiApiInfo) SetName(v string) *HttpApiApiInfo {
 	s.Name = &v
 	return s
@@ -846,6 +927,16 @@ func (s *HttpApiApiInfo) SetName(v string) *HttpApiApiInfo {
 
 func (s *HttpApiApiInfo) SetProtocols(v []*string) *HttpApiApiInfo {
 	s.Protocols = v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetResourceGroupId(v string) *HttpApiApiInfo {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetType(v string) *HttpApiApiInfo {
+	s.Type = &v
 	return s
 }
 
@@ -866,10 +957,12 @@ type HttpApiApiInfoEnvironments struct {
 	// example:
 	//
 	// Service
-	BackendType        *string                                       `json:"backendType,omitempty" xml:"backendType,omitempty"`
-	CloudProductConfig *HttpApiApiInfoEnvironmentsCloudProductConfig `json:"cloudProductConfig,omitempty" xml:"cloudProductConfig,omitempty" type:"Struct"`
-	CustomDomains      []*HttpApiDomainInfo                          `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	DnsConfigs         []*HttpApiApiInfoEnvironmentsDnsConfigs       `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
+	BackendType   *string              `json:"backendType,omitempty" xml:"backendType,omitempty"`
+	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Deployed
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// example:
 	//
 	// env-xxx
@@ -878,13 +971,9 @@ type HttpApiApiInfoEnvironments struct {
 	// example:
 	//
 	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// Published
-	PublishStatus  *string                                     `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
+	Name           *string                                     `json:"name,omitempty" xml:"name,omitempty"`
 	ServiceConfigs []*HttpApiApiInfoEnvironmentsServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	VipConfigs     []*HttpApiApiInfoEnvironmentsVipConfigs     `json:"vipConfigs,omitempty" xml:"vipConfigs,omitempty" type:"Repeated"`
+	SubDomains     []*HttpApiApiInfoEnvironmentsSubDomains     `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiApiInfoEnvironments) String() string {
@@ -910,18 +999,13 @@ func (s *HttpApiApiInfoEnvironments) SetBackendType(v string) *HttpApiApiInfoEnv
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironments) SetCloudProductConfig(v *HttpApiApiInfoEnvironmentsCloudProductConfig) *HttpApiApiInfoEnvironments {
-	s.CloudProductConfig = v
-	return s
-}
-
 func (s *HttpApiApiInfoEnvironments) SetCustomDomains(v []*HttpApiDomainInfo) *HttpApiApiInfoEnvironments {
 	s.CustomDomains = v
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironments) SetDnsConfigs(v []*HttpApiApiInfoEnvironmentsDnsConfigs) *HttpApiApiInfoEnvironments {
-	s.DnsConfigs = v
+func (s *HttpApiApiInfoEnvironments) SetDeployStatus(v string) *HttpApiApiInfoEnvironments {
+	s.DeployStatus = &v
 	return s
 }
 
@@ -940,274 +1024,13 @@ func (s *HttpApiApiInfoEnvironments) SetName(v string) *HttpApiApiInfoEnvironmen
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironments) SetPublishStatus(v string) *HttpApiApiInfoEnvironments {
-	s.PublishStatus = &v
-	return s
-}
-
 func (s *HttpApiApiInfoEnvironments) SetServiceConfigs(v []*HttpApiApiInfoEnvironmentsServiceConfigs) *HttpApiApiInfoEnvironments {
 	s.ServiceConfigs = v
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironments) SetVipConfigs(v []*HttpApiApiInfoEnvironmentsVipConfigs) *HttpApiApiInfoEnvironments {
-	s.VipConfigs = v
-	return s
-}
-
-type HttpApiApiInfoEnvironmentsCloudProductConfig struct {
-	// example:
-	//
-	// CS
-	CloudProductType        *string                                                                `json:"cloudProductType,omitempty" xml:"cloudProductType,omitempty"`
-	ContainerServiceConfigs []*HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs `json:"containerServiceConfigs,omitempty" xml:"containerServiceConfigs,omitempty" type:"Repeated"`
-	FunctionConfigs         []*HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs         `json:"functionConfigs,omitempty" xml:"functionConfigs,omitempty" type:"Repeated"`
-	MseNacosConfigs         []*HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs         `json:"mseNacosConfigs,omitempty" xml:"mseNacosConfigs,omitempty" type:"Repeated"`
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfig) GoString() string {
-	return s.String()
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfig) SetCloudProductType(v string) *HttpApiApiInfoEnvironmentsCloudProductConfig {
-	s.CloudProductType = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfig) SetContainerServiceConfigs(v []*HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) *HttpApiApiInfoEnvironmentsCloudProductConfig {
-	s.ContainerServiceConfigs = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfig) SetFunctionConfigs(v []*HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) *HttpApiApiInfoEnvironmentsCloudProductConfig {
-	s.FunctionConfigs = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfig) SetMseNacosConfigs(v []*HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) *HttpApiApiInfoEnvironmentsCloudProductConfig {
-	s.MseNacosConfigs = v
-	return s
-}
-
-type HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs struct {
-	// example:
-	//
-	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// default
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetGatewayServiceId(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetName(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetNamespace(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Namespace = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetPort(v int32) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Port = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetProtocol(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Protocol = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsCloudProductConfigContainerServiceConfigs {
-	s.Weight = &v
-	return s
-}
-
-type HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs struct {
-	// example:
-	//
-	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// test-function
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// LATEST
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) SetGatewayServiceId(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) SetName(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) SetQualifier(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs {
-	s.Qualifier = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsCloudProductConfigFunctionConfigs {
-	s.Weight = &v
-	return s
-}
-
-type HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs struct {
-	// example:
-	//
-	// gs-xxx
-	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	// example:
-	//
-	// DEFAULT_GROUP
-	GroupName *string                        `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// springboot-test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// public
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetGatewayServiceId(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetGroupName(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.GroupName = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetName(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetNamespace(v string) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.Namespace = &v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsCloudProductConfigMseNacosConfigs {
-	s.Weight = &v
-	return s
-}
-
-type HttpApiApiInfoEnvironmentsDnsConfigs struct {
-	DnsList []*string                      `json:"dnsList,omitempty" xml:"dnsList,omitempty" type:"Repeated"`
-	Match   *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s HttpApiApiInfoEnvironmentsDnsConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HttpApiApiInfoEnvironmentsDnsConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *HttpApiApiInfoEnvironmentsDnsConfigs) SetDnsList(v []*string) *HttpApiApiInfoEnvironmentsDnsConfigs {
-	s.DnsList = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsDnsConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiApiInfoEnvironmentsDnsConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *HttpApiApiInfoEnvironmentsDnsConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsDnsConfigs {
-	s.Weight = &v
+func (s *HttpApiApiInfoEnvironments) SetSubDomains(v []*HttpApiApiInfoEnvironmentsSubDomains) *HttpApiApiInfoEnvironments {
+	s.SubDomains = v
 	return s
 }
 
@@ -1260,6 +1083,10 @@ type HttpApiApiInfoEnvironmentsServiceConfigs struct {
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	// example:
 	//
+	// svc-xxx
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// example:
@@ -1301,6 +1128,11 @@ func (s *HttpApiApiInfoEnvironmentsServiceConfigs) SetProtocol(v string) *HttpAp
 	return s
 }
 
+func (s *HttpApiApiInfoEnvironmentsServiceConfigs) SetServiceId(v string) *HttpApiApiInfoEnvironmentsServiceConfigs {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *HttpApiApiInfoEnvironmentsServiceConfigs) SetVersion(v string) *HttpApiApiInfoEnvironmentsServiceConfigs {
 	s.Version = &v
 	return s
@@ -1311,35 +1143,131 @@ func (s *HttpApiApiInfoEnvironmentsServiceConfigs) SetWeight(v int32) *HttpApiAp
 	return s
 }
 
-type HttpApiApiInfoEnvironmentsVipConfigs struct {
-	Endpoints []*string                      `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
+type HttpApiApiInfoEnvironmentsSubDomains struct {
 	// example:
 	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+	// d-xxx
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// Internet
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
-func (s HttpApiApiInfoEnvironmentsVipConfigs) String() string {
+func (s HttpApiApiInfoEnvironmentsSubDomains) String() string {
 	return tea.Prettify(s)
 }
 
-func (s HttpApiApiInfoEnvironmentsVipConfigs) GoString() string {
+func (s HttpApiApiInfoEnvironmentsSubDomains) GoString() string {
 	return s.String()
 }
 
-func (s *HttpApiApiInfoEnvironmentsVipConfigs) SetEndpoints(v []*string) *HttpApiApiInfoEnvironmentsVipConfigs {
-	s.Endpoints = v
+func (s *HttpApiApiInfoEnvironmentsSubDomains) SetDomainId(v string) *HttpApiApiInfoEnvironmentsSubDomains {
+	s.DomainId = &v
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironmentsVipConfigs) SetMatch(v *HttpApiBackendMatchConditions) *HttpApiApiInfoEnvironmentsVipConfigs {
-	s.Match = v
+func (s *HttpApiApiInfoEnvironmentsSubDomains) SetName(v string) *HttpApiApiInfoEnvironmentsSubDomains {
+	s.Name = &v
 	return s
 }
 
-func (s *HttpApiApiInfoEnvironmentsVipConfigs) SetWeight(v int32) *HttpApiApiInfoEnvironmentsVipConfigs {
-	s.Weight = &v
+func (s *HttpApiApiInfoEnvironmentsSubDomains) SetNetworkType(v string) *HttpApiApiInfoEnvironmentsSubDomains {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *HttpApiApiInfoEnvironmentsSubDomains) SetProtocol(v string) *HttpApiApiInfoEnvironmentsSubDomains {
+	s.Protocol = &v
+	return s
+}
+
+type HttpApiApiInfoIngressInfo struct {
+	EnvironmentInfo   *HttpApiApiInfoIngressInfoEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	IngressClass      *string                                   `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	K8sClusterInfo    *HttpApiApiInfoIngressInfoK8sClusterInfo  `json:"k8sClusterInfo,omitempty" xml:"k8sClusterInfo,omitempty" type:"Struct"`
+	OverrideIngressIp *bool                                     `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
+	SourceId          *string                                   `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	WatchNamespace    *string                                   `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
+}
+
+func (s HttpApiApiInfoIngressInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiApiInfoIngressInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetEnvironmentInfo(v *HttpApiApiInfoIngressInfoEnvironmentInfo) *HttpApiApiInfoIngressInfo {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetIngressClass(v string) *HttpApiApiInfoIngressInfo {
+	s.IngressClass = &v
+	return s
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetK8sClusterInfo(v *HttpApiApiInfoIngressInfoK8sClusterInfo) *HttpApiApiInfoIngressInfo {
+	s.K8sClusterInfo = v
+	return s
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetOverrideIngressIp(v bool) *HttpApiApiInfoIngressInfo {
+	s.OverrideIngressIp = &v
+	return s
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetSourceId(v string) *HttpApiApiInfoIngressInfo {
+	s.SourceId = &v
+	return s
+}
+
+func (s *HttpApiApiInfoIngressInfo) SetWatchNamespace(v string) *HttpApiApiInfoIngressInfo {
+	s.WatchNamespace = &v
+	return s
+}
+
+type HttpApiApiInfoIngressInfoEnvironmentInfo struct {
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+}
+
+func (s HttpApiApiInfoIngressInfoEnvironmentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiApiInfoIngressInfoEnvironmentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiApiInfoIngressInfoEnvironmentInfo) SetEnvironmentId(v string) *HttpApiApiInfoIngressInfoEnvironmentInfo {
+	s.EnvironmentId = &v
+	return s
+}
+
+type HttpApiApiInfoIngressInfoK8sClusterInfo struct {
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+}
+
+func (s HttpApiApiInfoIngressInfoK8sClusterInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiApiInfoIngressInfoK8sClusterInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiApiInfoIngressInfoK8sClusterInfo) SetClusterId(v string) *HttpApiApiInfoIngressInfoK8sClusterInfo {
+	s.ClusterId = &v
 	return s
 }
 
@@ -1416,6 +1344,161 @@ func (s *HttpApiBackendMatchConditions) SetDefault(v bool) *HttpApiBackendMatchC
 	return s
 }
 
+type HttpApiDeployConfig struct {
+	// example:
+	//
+	// true
+	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
+	// example:
+	//
+	// SingleService
+	BackendScene    *string   `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// env-xxx
+	EnvironmentId  *string                              `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	PolicyConfigs  []*HttpApiDeployConfigPolicyConfigs  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
+	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s HttpApiDeployConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfig) SetAutoDeploy(v bool) *HttpApiDeployConfig {
+	s.AutoDeploy = &v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetBackendScene(v string) *HttpApiDeployConfig {
+	s.BackendScene = &v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetCustomDomainIds(v []*string) *HttpApiDeployConfig {
+	s.CustomDomainIds = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetEnvironmentId(v string) *HttpApiDeployConfig {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetPolicyConfigs(v []*HttpApiDeployConfigPolicyConfigs) *HttpApiDeployConfig {
+	s.PolicyConfigs = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetServiceConfigs(v []*HttpApiDeployConfigServiceConfigs) *HttpApiDeployConfig {
+	s.ServiceConfigs = v
+	return s
+}
+
+type HttpApiDeployConfigPolicyConfigs struct {
+	AiFallbackConfig *HttpApiDeployConfigPolicyConfigsAiFallbackConfig `json:"aiFallbackConfig,omitempty" xml:"aiFallbackConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// AiFallback
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s HttpApiDeployConfigPolicyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfigPolicyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigPolicyConfigs) SetAiFallbackConfig(v *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) *HttpApiDeployConfigPolicyConfigs {
+	s.AiFallbackConfig = v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigs) SetEnable(v bool) *HttpApiDeployConfigPolicyConfigs {
+	s.Enable = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigs) SetType(v string) *HttpApiDeployConfigPolicyConfigs {
+	s.Type = &v
+	return s
+}
+
+type HttpApiDeployConfigPolicyConfigsAiFallbackConfig struct {
+	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) SetServiceIds(v []*string) *HttpApiDeployConfigPolicyConfigsAiFallbackConfig {
+	s.ServiceIds = v
+	return s
+}
+
+type HttpApiDeployConfigServiceConfigs struct {
+	// example:
+	//
+	// qwen-max
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// example:
+	//
+	// qwen-*
+	ModelNamePattern *string `json:"modelNamePattern,omitempty" xml:"modelNamePattern,omitempty"`
+	// example:
+	//
+	// svc-xxx
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int64 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s HttpApiDeployConfigServiceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfigServiceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetModelName(v string) *HttpApiDeployConfigServiceConfigs {
+	s.ModelName = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetModelNamePattern(v string) *HttpApiDeployConfigServiceConfigs {
+	s.ModelNamePattern = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetServiceId(v string) *HttpApiDeployConfigServiceConfigs {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigServiceConfigs) SetWeight(v int64) *HttpApiDeployConfigServiceConfigs {
+	s.Weight = &v
+	return s
+}
+
 type HttpApiDomainInfo struct {
 	// example:
 	//
@@ -1461,6 +1544,10 @@ type HttpApiInfoByName struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
+	// Http
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
 	// true
 	VersionEnabled    *bool             `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
 	VersionedHttpApis []*HttpApiApiInfo `json:"versionedHttpApis,omitempty" xml:"versionedHttpApis,omitempty" type:"Repeated"`
@@ -1476,6 +1563,11 @@ func (s HttpApiInfoByName) GoString() string {
 
 func (s *HttpApiInfoByName) SetName(v string) *HttpApiInfoByName {
 	s.Name = &v
+	return s
+}
+
+func (s *HttpApiInfoByName) SetType(v string) *HttpApiInfoByName {
+	s.Type = &v
 	return s
 }
 
@@ -2656,6 +2748,208 @@ func (s *HttpDubboTranscoderMothedMapListParamMapsList) SetMappingType(v string)
 	return s
 }
 
+type HttpRoute struct {
+	Backend         *Backend                  `json:"backend,omitempty" xml:"backend,omitempty"`
+	CreateTimestamp *int64                    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	DeployStatus    *string                   `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	Description     *string                   `json:"description,omitempty" xml:"description,omitempty"`
+	DomainInfos     []*HttpRouteDomainInfos   `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
+	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	Match           *HttpRouteMatch           `json:"match,omitempty" xml:"match,omitempty"`
+	Name            *string                   `json:"name,omitempty" xml:"name,omitempty"`
+	RouteId         *string                   `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	UpdateTimestamp *int64                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+}
+
+func (s HttpRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRoute) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRoute) SetBackend(v *Backend) *HttpRoute {
+	s.Backend = v
+	return s
+}
+
+func (s *HttpRoute) SetCreateTimestamp(v int64) *HttpRoute {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *HttpRoute) SetDeployStatus(v string) *HttpRoute {
+	s.DeployStatus = &v
+	return s
+}
+
+func (s *HttpRoute) SetDescription(v string) *HttpRoute {
+	s.Description = &v
+	return s
+}
+
+func (s *HttpRoute) SetDomainInfos(v []*HttpRouteDomainInfos) *HttpRoute {
+	s.DomainInfos = v
+	return s
+}
+
+func (s *HttpRoute) SetEnvironmentInfo(v *HttpRouteEnvironmentInfo) *HttpRoute {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *HttpRoute) SetMatch(v *HttpRouteMatch) *HttpRoute {
+	s.Match = v
+	return s
+}
+
+func (s *HttpRoute) SetName(v string) *HttpRoute {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpRoute) SetRouteId(v string) *HttpRoute {
+	s.RouteId = &v
+	return s
+}
+
+func (s *HttpRoute) SetUpdateTimestamp(v int64) *HttpRoute {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type HttpRouteDomainInfos struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpRouteDomainInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteDomainInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteDomainInfos) SetDomainId(v string) *HttpRouteDomainInfos {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpRouteDomainInfos) SetName(v string) *HttpRouteDomainInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpRouteDomainInfos) SetProtocol(v string) *HttpRouteDomainInfos {
+	s.Protocol = &v
+	return s
+}
+
+type HttpRouteEnvironmentInfo struct {
+	Alias         *string                               `json:"alias,omitempty" xml:"alias,omitempty"`
+	EnvironmentId *string                               `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	GatewayInfo   *HttpRouteEnvironmentInfoGatewayInfo  `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	Name          *string                               `json:"name,omitempty" xml:"name,omitempty"`
+	SubDomains    []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
+}
+
+func (s HttpRouteEnvironmentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteEnvironmentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteEnvironmentInfo) SetAlias(v string) *HttpRouteEnvironmentInfo {
+	s.Alias = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfo) SetEnvironmentId(v string) *HttpRouteEnvironmentInfo {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfo) SetGatewayInfo(v *HttpRouteEnvironmentInfoGatewayInfo) *HttpRouteEnvironmentInfo {
+	s.GatewayInfo = v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfo) SetName(v string) *HttpRouteEnvironmentInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfo) SetSubDomains(v []*HttpRouteEnvironmentInfoSubDomains) *HttpRouteEnvironmentInfo {
+	s.SubDomains = v
+	return s
+}
+
+type HttpRouteEnvironmentInfoGatewayInfo struct {
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s HttpRouteEnvironmentInfoGatewayInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteEnvironmentInfoGatewayInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteEnvironmentInfoGatewayInfo) SetGatewayId(v string) *HttpRouteEnvironmentInfoGatewayInfo {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfoGatewayInfo) SetName(v string) *HttpRouteEnvironmentInfoGatewayInfo {
+	s.Name = &v
+	return s
+}
+
+type HttpRouteEnvironmentInfoSubDomains struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// Internet
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpRouteEnvironmentInfoSubDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpRouteEnvironmentInfoSubDomains) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteEnvironmentInfoSubDomains) SetDomainId(v string) *HttpRouteEnvironmentInfoSubDomains {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfoSubDomains) SetName(v string) *HttpRouteEnvironmentInfoSubDomains {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfoSubDomains) SetNetworkType(v string) *HttpRouteEnvironmentInfoSubDomains {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *HttpRouteEnvironmentInfoSubDomains) SetProtocol(v string) *HttpRouteEnvironmentInfoSubDomains {
+	s.Protocol = &v
+	return s
+}
+
 type HttpRouteMatch struct {
 	Headers []*HttpRouteMatchHeaders `json:"headers,omitempty" xml:"headers,omitempty" type:"Repeated"`
 	// example:
@@ -2802,6 +3096,105 @@ func (s *HttpRouteMatchQueryParams) SetType(v string) *HttpRouteMatchQueryParams
 
 func (s *HttpRouteMatchQueryParams) SetValue(v string) *HttpRouteMatchQueryParams {
 	s.Value = &v
+	return s
+}
+
+type JwtIdentityConfig struct {
+	Jwks             *string                            `json:"jwks,omitempty" xml:"jwks,omitempty"`
+	JwtPayloadConfig *JwtIdentityConfigJwtPayloadConfig `json:"jwtPayloadConfig,omitempty" xml:"jwtPayloadConfig,omitempty" type:"Struct"`
+	JwtTokenConfig   *JwtIdentityConfigJwtTokenConfig   `json:"jwtTokenConfig,omitempty" xml:"jwtTokenConfig,omitempty" type:"Struct"`
+	SecretType       *string                            `json:"secretType,omitempty" xml:"secretType,omitempty"`
+	Type             *string                            `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s JwtIdentityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JwtIdentityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JwtIdentityConfig) SetJwks(v string) *JwtIdentityConfig {
+	s.Jwks = &v
+	return s
+}
+
+func (s *JwtIdentityConfig) SetJwtPayloadConfig(v *JwtIdentityConfigJwtPayloadConfig) *JwtIdentityConfig {
+	s.JwtPayloadConfig = v
+	return s
+}
+
+func (s *JwtIdentityConfig) SetJwtTokenConfig(v *JwtIdentityConfigJwtTokenConfig) *JwtIdentityConfig {
+	s.JwtTokenConfig = v
+	return s
+}
+
+func (s *JwtIdentityConfig) SetSecretType(v string) *JwtIdentityConfig {
+	s.SecretType = &v
+	return s
+}
+
+func (s *JwtIdentityConfig) SetType(v string) *JwtIdentityConfig {
+	s.Type = &v
+	return s
+}
+
+type JwtIdentityConfigJwtPayloadConfig struct {
+	PayloadKeyName  *string `json:"payloadKeyName,omitempty" xml:"payloadKeyName,omitempty"`
+	PayloadKeyValue *string `json:"payloadKeyValue,omitempty" xml:"payloadKeyValue,omitempty"`
+}
+
+func (s JwtIdentityConfigJwtPayloadConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JwtIdentityConfigJwtPayloadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JwtIdentityConfigJwtPayloadConfig) SetPayloadKeyName(v string) *JwtIdentityConfigJwtPayloadConfig {
+	s.PayloadKeyName = &v
+	return s
+}
+
+func (s *JwtIdentityConfigJwtPayloadConfig) SetPayloadKeyValue(v string) *JwtIdentityConfigJwtPayloadConfig {
+	s.PayloadKeyValue = &v
+	return s
+}
+
+type JwtIdentityConfigJwtTokenConfig struct {
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	Pass     *bool   `json:"pass,omitempty" xml:"pass,omitempty"`
+	Position *string `json:"position,omitempty" xml:"position,omitempty"`
+	Prefix   *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+}
+
+func (s JwtIdentityConfigJwtTokenConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JwtIdentityConfigJwtTokenConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JwtIdentityConfigJwtTokenConfig) SetKey(v string) *JwtIdentityConfigJwtTokenConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *JwtIdentityConfigJwtTokenConfig) SetPass(v bool) *JwtIdentityConfigJwtTokenConfig {
+	s.Pass = &v
+	return s
+}
+
+func (s *JwtIdentityConfigJwtTokenConfig) SetPosition(v string) *JwtIdentityConfigJwtTokenConfig {
+	s.Position = &v
+	return s
+}
+
+func (s *JwtIdentityConfigJwtTokenConfig) SetPrefix(v string) *JwtIdentityConfigJwtTokenConfig {
+	s.Prefix = &v
 	return s
 }
 
@@ -3035,234 +3428,160 @@ func (s *ResourceStatistic) SetResourceType(v string) *ResourceStatistic {
 	return s
 }
 
-type RouteRulesConflictInfo struct {
-	Conflicts  []*RouteRulesConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
-	DomainInfo *RouteRulesConflictInfoDomainInfo  `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
+type Service struct {
+	Addresses       []*string        `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
+	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	CreateTimestamp *int64           `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// example:
+	//
+	// gw-xxxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// publich
+	GroupName    *string             `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	HealthCheck  *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
+	HealthStatus *string             `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	Name         *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Namespace    *string             `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Ports        []*ServicePorts     `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// example:
+	//
+	// HTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// LATEST
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId    *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ServiceId          *string   `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	SourceType         *string   `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
+	UpdateTimestamp    *int64    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
-func (s RouteRulesConflictInfo) String() string {
+func (s Service) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RouteRulesConflictInfo) GoString() string {
+func (s Service) GoString() string {
 	return s.String()
 }
 
-func (s *RouteRulesConflictInfo) SetConflicts(v []*RouteRulesConflictInfoConflicts) *RouteRulesConflictInfo {
-	s.Conflicts = v
+func (s *Service) SetAddresses(v []*string) *Service {
+	s.Addresses = v
 	return s
 }
 
-func (s *RouteRulesConflictInfo) SetDomainInfo(v *RouteRulesConflictInfoDomainInfo) *RouteRulesConflictInfo {
-	s.DomainInfo = v
+func (s *Service) SetAiServiceConfig(v *AiServiceConfig) *Service {
+	s.AiServiceConfig = v
 	return s
 }
 
-type RouteRulesConflictInfoConflicts struct {
-	Details         []*RouteRulesConflictInfoConflictsDetails       `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
-	EnvironmentInfo *RouteRulesConflictInfoConflictsEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	ResourceId      *string                                         `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceName    *string                                         `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	ResourceType    *string                                         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-}
-
-func (s RouteRulesConflictInfoConflicts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflicts) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflicts) SetDetails(v []*RouteRulesConflictInfoConflictsDetails) *RouteRulesConflictInfoConflicts {
-	s.Details = v
+func (s *Service) SetCreateTimestamp(v int64) *Service {
+	s.CreateTimestamp = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflicts) SetEnvironmentInfo(v *RouteRulesConflictInfoConflictsEnvironmentInfo) *RouteRulesConflictInfoConflicts {
-	s.EnvironmentInfo = v
+func (s *Service) SetGatewayId(v string) *Service {
+	s.GatewayId = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflicts) SetResourceId(v string) *RouteRulesConflictInfoConflicts {
-	s.ResourceId = &v
+func (s *Service) SetGroupName(v string) *Service {
+	s.GroupName = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflicts) SetResourceName(v string) *RouteRulesConflictInfoConflicts {
-	s.ResourceName = &v
+func (s *Service) SetHealthCheck(v *ServiceHealthCheck) *Service {
+	s.HealthCheck = v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflicts) SetResourceType(v string) *RouteRulesConflictInfoConflicts {
-	s.ResourceType = &v
+func (s *Service) SetHealthStatus(v string) *Service {
+	s.HealthStatus = &v
 	return s
 }
 
-type RouteRulesConflictInfoConflictsDetails struct {
-	ConflictingMatch *RouteRulesConflictInfoConflictsDetailsConflictingMatch `json:"conflictingMatch,omitempty" xml:"conflictingMatch,omitempty" type:"Struct"`
-	DetectedMatch    *RouteRulesConflictInfoConflictsDetailsDetectedMatch    `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
-	Level            *string                                                 `json:"level,omitempty" xml:"level,omitempty"`
-}
-
-func (s RouteRulesConflictInfoConflictsDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsDetails) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsDetails) SetConflictingMatch(v *RouteRulesConflictInfoConflictsDetailsConflictingMatch) *RouteRulesConflictInfoConflictsDetails {
-	s.ConflictingMatch = v
-	return s
-}
-
-func (s *RouteRulesConflictInfoConflictsDetails) SetDetectedMatch(v *RouteRulesConflictInfoConflictsDetailsDetectedMatch) *RouteRulesConflictInfoConflictsDetails {
-	s.DetectedMatch = v
-	return s
-}
-
-func (s *RouteRulesConflictInfoConflictsDetails) SetLevel(v string) *RouteRulesConflictInfoConflictsDetails {
-	s.Level = &v
-	return s
-}
-
-type RouteRulesConflictInfoConflictsDetailsConflictingMatch struct {
-	Match         *HttpRouteMatch                                                      `json:"match,omitempty" xml:"match,omitempty"`
-	OperationInfo *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsConflictingMatch) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsConflictingMatch) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatch) SetMatch(v *HttpRouteMatch) *RouteRulesConflictInfoConflictsDetailsConflictingMatch {
-	s.Match = v
-	return s
-}
-
-func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatch) SetOperationInfo(v *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) *RouteRulesConflictInfoConflictsDetailsConflictingMatch {
-	s.OperationInfo = v
-	return s
-}
-
-type RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo struct {
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetName(v string) *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo {
+func (s *Service) SetName(v string) *Service {
 	s.Name = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetOperationId(v string) *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo {
-	s.OperationId = &v
+func (s *Service) SetNamespace(v string) *Service {
+	s.Namespace = &v
 	return s
 }
 
-type RouteRulesConflictInfoConflictsDetailsDetectedMatch struct {
-	Match         *HttpRouteMatch                                                   `json:"match,omitempty" xml:"match,omitempty"`
-	OperationInfo *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsDetectedMatch) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsDetectedMatch) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatch) SetMatch(v *HttpRouteMatch) *RouteRulesConflictInfoConflictsDetailsDetectedMatch {
-	s.Match = v
+func (s *Service) SetPorts(v []*ServicePorts) *Service {
+	s.Ports = v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatch) SetOperationInfo(v *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) *RouteRulesConflictInfoConflictsDetailsDetectedMatch {
-	s.OperationInfo = v
+func (s *Service) SetProtocol(v string) *Service {
+	s.Protocol = &v
 	return s
 }
 
-type RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo struct {
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetName(v string) *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo {
-	s.Name = &v
+func (s *Service) SetQualifier(v string) *Service {
+	s.Qualifier = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetOperationId(v string) *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo {
-	s.OperationId = &v
+func (s *Service) SetResourceGroupId(v string) *Service {
+	s.ResourceGroupId = &v
 	return s
 }
 
-type RouteRulesConflictInfoConflictsEnvironmentInfo struct {
-	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s RouteRulesConflictInfoConflictsEnvironmentInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RouteRulesConflictInfoConflictsEnvironmentInfo) GoString() string {
-	return s.String()
-}
-
-func (s *RouteRulesConflictInfoConflictsEnvironmentInfo) SetEnvironmentId(v string) *RouteRulesConflictInfoConflictsEnvironmentInfo {
-	s.EnvironmentId = &v
+func (s *Service) SetServiceId(v string) *Service {
+	s.ServiceId = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoConflictsEnvironmentInfo) SetName(v string) *RouteRulesConflictInfoConflictsEnvironmentInfo {
-	s.Name = &v
+func (s *Service) SetSourceType(v string) *Service {
+	s.SourceType = &v
 	return s
 }
 
-type RouteRulesConflictInfoDomainInfo struct {
-	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+func (s *Service) SetUnhealthyEndpoints(v []*string) *Service {
+	s.UnhealthyEndpoints = v
+	return s
+}
+
+func (s *Service) SetUpdateTimestamp(v int64) *Service {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type ServicePorts struct {
 	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
 }
 
-func (s RouteRulesConflictInfoDomainInfo) String() string {
+func (s ServicePorts) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RouteRulesConflictInfoDomainInfo) GoString() string {
+func (s ServicePorts) GoString() string {
 	return s.String()
 }
 
-func (s *RouteRulesConflictInfoDomainInfo) SetDomainId(v string) *RouteRulesConflictInfoDomainInfo {
-	s.DomainId = &v
+func (s *ServicePorts) SetName(v string) *ServicePorts {
+	s.Name = &v
 	return s
 }
 
-func (s *RouteRulesConflictInfoDomainInfo) SetName(v string) *RouteRulesConflictInfoDomainInfo {
-	s.Name = &v
+func (s *ServicePorts) SetPort(v int32) *ServicePorts {
+	s.Port = &v
+	return s
+}
+
+func (s *ServicePorts) SetProtocol(v string) *ServicePorts {
+	s.Protocol = &v
 	return s
 }
 
@@ -3551,8 +3870,16 @@ func (s *SubDomainInfo) SetProtocol(v string) *SubDomainInfo {
 }
 
 type AddGatewaySecurityGroupRuleRequest struct {
-	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
-	PortRanges  []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
+	// Description of the security group rule.
+	//
+	// example:
+	//
+	// 商品中心访问安全组
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Port ranges.
+	PortRanges []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
+	// Security group ID.
+	//
 	// example:
 	//
 	// sg-wz929kxhcdp****
@@ -3583,14 +3910,20 @@ func (s *AddGatewaySecurityGroupRuleRequest) SetSecurityGroupId(v string) *AddGa
 }
 
 type AddGatewaySecurityGroupRuleResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2A6E90D5-A711-54F4-A489-E33C2021EDDF
@@ -3650,38 +3983,59 @@ func (s *AddGatewaySecurityGroupRuleResponse) SetBody(v *AddGatewaySecurityGroup
 }
 
 type CreateDomainRequest struct {
+	// CA Certificate Identifier.
+	//
 	// example:
 	//
-	// 194445-cn-hangzhou
-	CaCertIndentifier *string `json:"caCertIndentifier,omitempty" xml:"caCertIndentifier,omitempty"`
+	// 1ef1da5f-38ed-69b3-****-037781890265
+	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
+	// Certificate Unique Identifier.
+	//
 	// example:
 	//
-	// 194445-cn-hangzhou
-	CertIndentifier *string `json:"certIndentifier,omitempty" xml:"certIndentifier,omitempty"`
+	// 1ef1da5f-38ed-69b3-****-037781890265
+	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
+	// Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
+	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	// HTTP/2 settings.
+	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
+	// Domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The protocol type supported by the domain.
+	//
+	// - HTTP: Supports only HTTP protocol.
+	//
+	// - HTTPS: Supports only HTTPS protocol.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Maximum TLS protocol version, supports up to TLS 1.3.
+	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
+	// Minimum TLS protocol version, supports down to TLS 1.0.
+	//
 	// example:
 	//
 	// TLS1.0
@@ -3696,13 +4050,13 @@ func (s CreateDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDomainRequest) SetCaCertIndentifier(v string) *CreateDomainRequest {
-	s.CaCertIndentifier = &v
+func (s *CreateDomainRequest) SetCaCertIdentifier(v string) *CreateDomainRequest {
+	s.CaCertIdentifier = &v
 	return s
 }
 
-func (s *CreateDomainRequest) SetCertIndentifier(v string) *CreateDomainRequest {
-	s.CertIndentifier = &v
+func (s *CreateDomainRequest) SetCertIdentifier(v string) *CreateDomainRequest {
+	s.CertIdentifier = &v
 	return s
 }
 
@@ -3726,6 +4080,11 @@ func (s *CreateDomainRequest) SetProtocol(v string) *CreateDomainRequest {
 	return s
 }
 
+func (s *CreateDomainRequest) SetResourceGroupId(v string) *CreateDomainRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDomainRequest) SetTlsMax(v string) *CreateDomainRequest {
 	s.TlsMax = &v
 	return s
@@ -3737,15 +4096,22 @@ func (s *CreateDomainRequest) SetTlsMin(v string) *CreateDomainRequest {
 }
 
 type CreateDomainResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *CreateDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 0C2D1C68-0D93-5561-8EE6-FDB7BF067A30
@@ -3781,6 +4147,8 @@ func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseB
 }
 
 type CreateDomainResponseBodyData struct {
+	// Domain ID.
+	//
 	// example:
 	//
 	// d-cpu1aullhtgkidg7sa4g
@@ -3830,21 +4198,37 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateEnvironmentRequest struct {
+	// Environment alias.
+	//
 	// This parameter is required.
-	Alias       *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	//
+	// example:
+	//
+	// 测试环境
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Description of the environment, which can include information such as the purpose of the environment and its owner.
+	//
+	// example:
+	//
+	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Gateway ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6qasrdc0
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Environment name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateEnvironmentRequest) String() string {
@@ -3875,16 +4259,28 @@ func (s *CreateEnvironmentRequest) SetName(v string) *CreateEnvironmentRequest {
 	return s
 }
 
+func (s *CreateEnvironmentRequest) SetResourceGroupId(v string) *CreateEnvironmentRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type CreateEnvironmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *CreateEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 3C3B9A12-3868-5EB9-8BEA-F99E03DD125C
@@ -3920,6 +4316,8 @@ func (s *CreateEnvironmentResponseBody) SetRequestId(v string) *CreateEnvironmen
 }
 
 type CreateEnvironmentResponseBodyData struct {
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
@@ -3968,454 +4366,49 @@ func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *C
 	return s
 }
 
-type CreateGatewayRouteRequest struct {
-	BackendConfig *GatewayRouteBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	DomainConfig  *GatewayRouteDomainConfig  `json:"domainConfig,omitempty" xml:"domainConfig,omitempty"`
-	Match         *HttpRouteMatch            `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// itemcenter-route
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s CreateGatewayRouteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayRouteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayRouteRequest) SetBackendConfig(v *GatewayRouteBackendConfig) *CreateGatewayRouteRequest {
-	s.BackendConfig = v
-	return s
-}
-
-func (s *CreateGatewayRouteRequest) SetDescription(v string) *CreateGatewayRouteRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateGatewayRouteRequest) SetDomainConfig(v *GatewayRouteDomainConfig) *CreateGatewayRouteRequest {
-	s.DomainConfig = v
-	return s
-}
-
-func (s *CreateGatewayRouteRequest) SetMatch(v *HttpRouteMatch) *CreateGatewayRouteRequest {
-	s.Match = v
-	return s
-}
-
-func (s *CreateGatewayRouteRequest) SetName(v string) *CreateGatewayRouteRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
-	Data *CreateGatewayRouteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 0F138FFC-6E2B-56C1-9BAB-A67462E339D1
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s CreateGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayRouteResponseBody) SetCode(v string) *CreateGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateGatewayRouteResponseBody) SetData(v *CreateGatewayRouteResponseBodyData) *CreateGatewayRouteResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateGatewayRouteResponseBody) SetMessage(v string) *CreateGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateGatewayRouteResponseBody) SetRequestId(v string) *CreateGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateGatewayRouteResponseBodyData struct {
-	// example:
-	//
-	// gr-cpumc37d*****
-	GatewayRouteId *string `json:"gatewayRouteId,omitempty" xml:"gatewayRouteId,omitempty"`
-}
-
-func (s CreateGatewayRouteResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayRouteResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayRouteResponseBodyData) SetGatewayRouteId(v string) *CreateGatewayRouteResponseBodyData {
-	s.GatewayRouteId = &v
-	return s
-}
-
-type CreateGatewayRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayRouteResponse) SetHeaders(v map[string]*string) *CreateGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateGatewayRouteResponse) SetStatusCode(v int32) *CreateGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateGatewayRouteResponse) SetBody(v *CreateGatewayRouteResponseBody) *CreateGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type CreateGatewayServiceRequest struct {
-	GatewayServiceConfigs []*CreateGatewayServiceRequestGatewayServiceConfigs `json:"gatewayServiceConfigs,omitempty" xml:"gatewayServiceConfigs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// MSE_NACOS
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-}
-
-func (s CreateGatewayServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceRequest) SetGatewayServiceConfigs(v []*CreateGatewayServiceRequestGatewayServiceConfigs) *CreateGatewayServiceRequest {
-	s.GatewayServiceConfigs = v
-	return s
-}
-
-func (s *CreateGatewayServiceRequest) SetSourceType(v string) *CreateGatewayServiceRequest {
-	s.SourceType = &v
-	return s
-}
-
-type CreateGatewayServiceRequestGatewayServiceConfigs struct {
-	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// example:
-	//
-	// group-1
-	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// example:
-	//
-	// itemcenter-provider
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// MSE_NACOS
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// LATEST
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-}
-
-func (s CreateGatewayServiceRequestGatewayServiceConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceRequestGatewayServiceConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetAddresses(v []*string) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.Addresses = v
-	return s
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetGroupName(v string) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.GroupName = &v
-	return s
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetName(v string) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetNamespace(v string) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.Namespace = &v
-	return s
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetPort(v int32) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.Port = &v
-	return s
-}
-
-func (s *CreateGatewayServiceRequestGatewayServiceConfigs) SetQualifier(v string) *CreateGatewayServiceRequestGatewayServiceConfigs {
-	s.Qualifier = &v
-	return s
-}
-
-type CreateGatewayServiceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data *CreateGatewayServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 9BA5586D-0EAE-5F78-B704-1A8DBADE46DA
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s CreateGatewayServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceResponseBody) SetCode(v string) *CreateGatewayServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateGatewayServiceResponseBody) SetData(v *CreateGatewayServiceResponseBodyData) *CreateGatewayServiceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateGatewayServiceResponseBody) SetMessage(v string) *CreateGatewayServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateGatewayServiceResponseBody) SetRequestId(v string) *CreateGatewayServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateGatewayServiceResponseBodyData struct {
-	GatewayServiceIds []*string `json:"gatewayServiceIds,omitempty" xml:"gatewayServiceIds,omitempty" type:"Repeated"`
-}
-
-func (s CreateGatewayServiceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceResponseBodyData) SetGatewayServiceIds(v []*string) *CreateGatewayServiceResponseBodyData {
-	s.GatewayServiceIds = v
-	return s
-}
-
-type CreateGatewayServiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateGatewayServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateGatewayServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceResponse) SetHeaders(v map[string]*string) *CreateGatewayServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateGatewayServiceResponse) SetStatusCode(v int32) *CreateGatewayServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateGatewayServiceResponse) SetBody(v *CreateGatewayServiceResponseBody) *CreateGatewayServiceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateGatewayServiceVersionRequest struct {
-	Labels []*CreateGatewayServiceVersionRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	// example:
-	//
-	// v1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s CreateGatewayServiceVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceVersionRequest) SetLabels(v []*CreateGatewayServiceVersionRequestLabels) *CreateGatewayServiceVersionRequest {
-	s.Labels = v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionRequest) SetName(v string) *CreateGatewayServiceVersionRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateGatewayServiceVersionRequestLabels struct {
-	// example:
-	//
-	// app
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// example:
-	//
-	// itemcenter-blue
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s CreateGatewayServiceVersionRequestLabels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceVersionRequestLabels) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceVersionRequestLabels) SetKey(v string) *CreateGatewayServiceVersionRequestLabels {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionRequestLabels) SetValue(v string) *CreateGatewayServiceVersionRequestLabels {
-	s.Value = &v
-	return s
-}
-
-type CreateGatewayServiceVersionResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s CreateGatewayServiceVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceVersionResponseBody) SetCode(v string) *CreateGatewayServiceVersionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionResponseBody) SetMessage(v string) *CreateGatewayServiceVersionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionResponseBody) SetRequestId(v string) *CreateGatewayServiceVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateGatewayServiceVersionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateGatewayServiceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateGatewayServiceVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateGatewayServiceVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateGatewayServiceVersionResponse) SetHeaders(v map[string]*string) *CreateGatewayServiceVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionResponse) SetStatusCode(v int32) *CreateGatewayServiceVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateGatewayServiceVersionResponse) SetBody(v *CreateGatewayServiceVersionResponseBody) *CreateGatewayServiceVersionResponse {
-	s.Body = v
-	return s
-}
-
 type CreateHttpApiRequest struct {
-	// This parameter is required.
+	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	// Base path of the API, which must start with a \\"/\\".
 	//
 	// example:
 	//
 	// /v1
-	BasePath    *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	BasePath      *string                `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	// Description of the API.
+	//
+	// example:
+	//
+	// 测试专用API。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Configuration information for the HTTP Ingress API.
+	IngressConfig *CreateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	// Name of the API.
+	//
 	// This parameter is required.
-	Name          *string               `json:"name,omitempty" xml:"name,omitempty"`
-	Protocols     []*string             `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// test-api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// List of API access protocols.
+	Protocols       []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	ResourceGroupId *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Type of the HTTP API.
+	//
+	// - Http
+	//
+	// - Rest
+	//
+	// - WebSocket
+	//
+	// - HttpIngress
+	//
+	// example:
+	//
+	// Http
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Versioning configuration for the API.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -4427,13 +4420,28 @@ func (s CreateHttpApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateHttpApiRequest) SetAiProtocols(v []*string) *CreateHttpApiRequest {
+	s.AiProtocols = v
+	return s
+}
+
 func (s *CreateHttpApiRequest) SetBasePath(v string) *CreateHttpApiRequest {
 	s.BasePath = &v
 	return s
 }
 
+func (s *CreateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *CreateHttpApiRequest {
+	s.DeployConfigs = v
+	return s
+}
+
 func (s *CreateHttpApiRequest) SetDescription(v string) *CreateHttpApiRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetIngressConfig(v *CreateHttpApiRequestIngressConfig) *CreateHttpApiRequest {
+	s.IngressConfig = v
 	return s
 }
 
@@ -4447,21 +4455,104 @@ func (s *CreateHttpApiRequest) SetProtocols(v []*string) *CreateHttpApiRequest {
 	return s
 }
 
+func (s *CreateHttpApiRequest) SetResourceGroupId(v string) *CreateHttpApiRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHttpApiRequest) SetType(v string) *CreateHttpApiRequest {
+	s.Type = &v
+	return s
+}
+
 func (s *CreateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *CreateHttpApiRequest {
 	s.VersionConfig = v
 	return s
 }
 
+type CreateHttpApiRequestIngressConfig struct {
+	// Environment ID.
+	//
+	// example:
+	//
+	// env-cq146allhtgk***
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Ingress Class being listened to.
+	//
+	// example:
+	//
+	// mse
+	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	// Whether to update the address in the Ingress Status.
+	//
+	// example:
+	//
+	// false
+	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
+	// Source ID.
+	//
+	// example:
+	//
+	// src-crdddallhtgtr***
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// Namespace being watched.
+	//
+	// example:
+	//
+	// default
+	WatchNamespace *string `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
+}
+
+func (s CreateHttpApiRequestIngressConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHttpApiRequestIngressConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetEnvironmentId(v string) *CreateHttpApiRequestIngressConfig {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetIngressClass(v string) *CreateHttpApiRequestIngressConfig {
+	s.IngressClass = &v
+	return s
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetOverrideIngressIp(v bool) *CreateHttpApiRequestIngressConfig {
+	s.OverrideIngressIp = &v
+	return s
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetSourceId(v string) *CreateHttpApiRequestIngressConfig {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetWatchNamespace(v string) *CreateHttpApiRequestIngressConfig {
+	s.WatchNamespace = &v
+	return s
+}
+
 type CreateHttpApiResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// API information.
 	Data *CreateHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// A1994B10-C6A8-58FA-8347-6A08B0D4EFDE
@@ -4497,8 +4588,18 @@ func (s *CreateHttpApiResponseBody) SetRequestId(v string) *CreateHttpApiRespons
 }
 
 type CreateHttpApiResponseBodyData struct {
+	// HTTP API ID.
+	//
+	// example:
+	//
+	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Name of the API.
+	//
+	// example:
+	//
+	// test-api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s CreateHttpApiResponseBodyData) String() string {
@@ -4549,6 +4650,7 @@ func (s *CreateHttpApiResponse) SetBody(v *CreateHttpApiResponseBody) *CreateHtt
 }
 
 type CreateHttpApiOperationRequest struct {
+	// List of operation definitions.
 	Operations []*HttpApiOperation `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -4566,15 +4668,22 @@ func (s *CreateHttpApiOperationRequest) SetOperations(v []*HttpApiOperation) *Cr
 }
 
 type CreateHttpApiOperationResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Operation information.
 	Data *CreateHttpApiOperationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 393E2630-DBE7-5221-AB35-9E740675491A
@@ -4610,6 +4719,7 @@ func (s *CreateHttpApiOperationResponseBody) SetRequestId(v string) *CreateHttpA
 }
 
 type CreateHttpApiOperationResponseBodyData struct {
+	// Operation information.
 	Operations []*CreateHttpApiOperationResponseBodyDataOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -4627,6 +4737,11 @@ func (s *CreateHttpApiOperationResponseBodyData) SetOperations(v []*CreateHttpAp
 }
 
 type CreateHttpApiOperationResponseBodyDataOperations struct {
+	// Operation ID.
+	//
+	// example:
+	//
+	// op-xxx
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 }
 
@@ -4672,265 +4787,21 @@ func (s *CreateHttpApiOperationResponse) SetBody(v *CreateHttpApiOperationRespon
 	return s
 }
 
-type CreateServiceSourceRequest struct {
-	K8sServiceSourceConfig   *CreateServiceSourceRequestK8sServiceSourceConfig   `json:"k8sServiceSourceConfig,omitempty" xml:"k8sServiceSourceConfig,omitempty" type:"Struct"`
-	NacosServiceSourceConfig *CreateServiceSourceRequestNacosServiceSourceConfig `json:"nacosServiceSourceConfig,omitempty" xml:"nacosServiceSourceConfig,omitempty" type:"Struct"`
-	Type                     *string                                             `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s CreateServiceSourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceRequest) SetK8sServiceSourceConfig(v *CreateServiceSourceRequestK8sServiceSourceConfig) *CreateServiceSourceRequest {
-	s.K8sServiceSourceConfig = v
-	return s
-}
-
-func (s *CreateServiceSourceRequest) SetNacosServiceSourceConfig(v *CreateServiceSourceRequestNacosServiceSourceConfig) *CreateServiceSourceRequest {
-	s.NacosServiceSourceConfig = v
-	return s
-}
-
-func (s *CreateServiceSourceRequest) SetType(v string) *CreateServiceSourceRequest {
-	s.Type = &v
-	return s
-}
-
-type CreateServiceSourceRequestK8sServiceSourceConfig struct {
-	AuthorizeSecurityGroupRules []*CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules `json:"authorizeSecurityGroupRules,omitempty" xml:"authorizeSecurityGroupRules,omitempty" type:"Repeated"`
-	// example:
-	//
-	// c4a21b3560fad4ec299f3e******
-	ClusterId     *string                                                        `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	IngressConfig *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfig) SetAuthorizeSecurityGroupRules(v []*CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) *CreateServiceSourceRequestK8sServiceSourceConfig {
-	s.AuthorizeSecurityGroupRules = v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfig) SetClusterId(v string) *CreateServiceSourceRequestK8sServiceSourceConfig {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfig) SetIngressConfig(v *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) *CreateServiceSourceRequestK8sServiceSourceConfig {
-	s.IngressConfig = v
-	return s
-}
-
-type CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules struct {
-	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
-	PortRanges      []*string `json:"portRanges,omitempty" xml:"portRanges,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) SetDescription(v string) *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) SetPortRanges(v []*string) *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules {
-	s.PortRanges = v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules) SetSecurityGroupId(v string) *CreateServiceSourceRequestK8sServiceSourceConfigAuthorizeSecurityGroupRules {
-	s.SecurityGroupId = &v
-	return s
-}
-
-type CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig struct {
-	// example:
-	//
-	// true
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// example:
-	//
-	// mse
-	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// example:
-	//
-	// false
-	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
-	// example:
-	//
-	// default
-	WatchNamespace *string `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetEnable(v bool) *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetIngressClass(v string) *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.IngressClass = &v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetOverrideIngressIp(v bool) *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.OverrideIngressIp = &v
-	return s
-}
-
-func (s *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetWatchNamespace(v string) *CreateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.WatchNamespace = &v
-	return s
-}
-
-type CreateServiceSourceRequestNacosServiceSourceConfig struct {
-	// example:
-	//
-	// mse-cn-328fc8***
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-}
-
-func (s CreateServiceSourceRequestNacosServiceSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceRequestNacosServiceSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceRequestNacosServiceSourceConfig) SetInstanceId(v string) *CreateServiceSourceRequestNacosServiceSourceConfig {
-	s.InstanceId = &v
-	return s
-}
-
-type CreateServiceSourceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Data *CreateServiceSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// C67DED2B-F19B-5BEC-88C1-D6EB854CD0D4
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s CreateServiceSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceResponseBody) SetCode(v string) *CreateServiceSourceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateServiceSourceResponseBody) SetData(v *CreateServiceSourceResponseBodyData) *CreateServiceSourceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *CreateServiceSourceResponseBody) SetMessage(v string) *CreateServiceSourceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateServiceSourceResponseBody) SetRequestId(v string) *CreateServiceSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateServiceSourceResponseBodyData struct {
-	// example:
-	//
-	// gss-cpqots5lht****
-	ServiceSourceId *string `json:"serviceSourceId,omitempty" xml:"serviceSourceId,omitempty"`
-}
-
-func (s CreateServiceSourceResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceResponseBodyData) SetServiceSourceId(v string) *CreateServiceSourceResponseBodyData {
-	s.ServiceSourceId = &v
-	return s
-}
-
-type CreateServiceSourceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateServiceSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateServiceSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateServiceSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateServiceSourceResponse) SetHeaders(v map[string]*string) *CreateServiceSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateServiceSourceResponse) SetStatusCode(v int32) *CreateServiceSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateServiceSourceResponse) SetBody(v *CreateServiceSourceResponseBody) *CreateServiceSourceResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteDomainResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// A60EE5CA-1294-532A-9775-8D2FD1C6EFBF
@@ -4990,14 +4861,20 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteEnvironmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the request chain.
+	//
 	// example:
 	//
 	// C61E30D3-579A-5B43-994E-31E02EDC9129
@@ -5057,14 +4934,20 @@ func (s *DeleteEnvironmentResponse) SetBody(v *DeleteEnvironmentResponseBody) *D
 }
 
 type DeleteGatewayResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// DE97DFDB-7DF0-5AB9-941C-10D27D769E4B
@@ -5123,216 +5006,21 @@ func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGat
 	return s
 }
 
-type DeleteGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 5B626361-070A-56A7-B127-ADAC8F3655DB
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s DeleteGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayRouteResponseBody) SetCode(v string) *DeleteGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteGatewayRouteResponseBody) SetMessage(v string) *DeleteGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteGatewayRouteResponseBody) SetRequestId(v string) *DeleteGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteGatewayRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayRouteResponse) SetHeaders(v map[string]*string) *DeleteGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteGatewayRouteResponse) SetStatusCode(v int32) *DeleteGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteGatewayRouteResponse) SetBody(v *DeleteGatewayRouteResponseBody) *DeleteGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteGatewayServiceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s DeleteGatewayServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayServiceResponseBody) SetCode(v string) *DeleteGatewayServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceResponseBody) SetMessage(v string) *DeleteGatewayServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceResponseBody) SetRequestId(v string) *DeleteGatewayServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteGatewayServiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteGatewayServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteGatewayServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayServiceResponse) SetHeaders(v map[string]*string) *DeleteGatewayServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteGatewayServiceResponse) SetStatusCode(v int32) *DeleteGatewayServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceResponse) SetBody(v *DeleteGatewayServiceResponseBody) *DeleteGatewayServiceResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteGatewayServiceVersionResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s DeleteGatewayServiceVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayServiceVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayServiceVersionResponseBody) SetCode(v string) *DeleteGatewayServiceVersionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceVersionResponseBody) SetMessage(v string) *DeleteGatewayServiceVersionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceVersionResponseBody) SetRequestId(v string) *DeleteGatewayServiceVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteGatewayServiceVersionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteGatewayServiceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteGatewayServiceVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteGatewayServiceVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteGatewayServiceVersionResponse) SetHeaders(v map[string]*string) *DeleteGatewayServiceVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteGatewayServiceVersionResponse) SetStatusCode(v int32) *DeleteGatewayServiceVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteGatewayServiceVersionResponse) SetBody(v *DeleteGatewayServiceVersionResponseBody) *DeleteGatewayServiceVersionResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteHttpApiResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5B626361-070A-56A7-B127-ADAC8F3655DB
@@ -5392,14 +5080,20 @@ func (s *DeleteHttpApiResponse) SetBody(v *DeleteHttpApiResponseBody) *DeleteHtt
 }
 
 type DeleteHttpApiOperationResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message,
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
@@ -5458,83 +5152,40 @@ func (s *DeleteHttpApiOperationResponse) SetBody(v *DeleteHttpApiOperationRespon
 	return s
 }
 
-type DeleteServiceSourceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+type GetDomainRequest struct {
+	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
 }
 
-func (s DeleteServiceSourceResponseBody) String() string {
+func (s GetDomainRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DeleteServiceSourceResponseBody) GoString() string {
+func (s GetDomainRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteServiceSourceResponseBody) SetCode(v string) *DeleteServiceSourceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteServiceSourceResponseBody) SetMessage(v string) *DeleteServiceSourceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteServiceSourceResponseBody) SetRequestId(v string) *DeleteServiceSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteServiceSourceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteServiceSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteServiceSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteServiceSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteServiceSourceResponse) SetHeaders(v map[string]*string) *DeleteServiceSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteServiceSourceResponse) SetStatusCode(v int32) *DeleteServiceSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteServiceSourceResponse) SetBody(v *DeleteServiceSourceResponseBody) *DeleteServiceSourceResponse {
-	s.Body = v
+func (s *GetDomainRequest) SetWithStatistics(v bool) *GetDomainRequest {
+	s.WithStatistics = &v
 	return s
 }
 
 type GetDomainResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                    `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *GetDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695
@@ -5570,78 +5221,122 @@ func (s *GetDomainResponseBody) SetRequestId(v string) *GetDomainResponseBody {
 }
 
 type GetDomainResponseBodyData struct {
+	// Encryption algorithm name
+	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
+	// Cloud Shield CA certificate identity.
+	//
 	// example:
 	//
 	// 223576-cn-hangzhou
 	CaCertIndentifier *string `json:"caCertIndentifier,omitempty" xml:"caCertIndentifier,omitempty"`
+	// Cloud Shield certificate identity.
+	//
 	// example:
 	//
 	// 123576-cn-hangzhou
 	CertIndentifier *string `json:"certIndentifier,omitempty" xml:"certIndentifier,omitempty"`
+	// Certificate name
+	//
 	// example:
 	//
 	// test-cert
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// Where it was created from.
+	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	// Creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// Whether it is the default domain.
+	//
 	// example:
 	//
 	// false
 	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
+	// Domain ID.
+	//
 	// example:
 	//
 	// d-cq1m3utlhtgvgkv7sitg
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	// Setting for HTTPS protocol type, whether to enable forced HTTPS redirection.
+	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	// HTTP/2 setting.
+	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
+	// Certificate issuer.
+	//
 	// example:
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	// Domain name.
+	//
 	// example:
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Certificate expiration time.
+	//
 	// example:
 	//
 	// 1719386834548
 	NotAfterTimstamp *int64 `json:"notAfterTimstamp,omitempty" xml:"notAfterTimstamp,omitempty"`
+	// Certificate effective time.
+	//
 	// example:
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
+	// The protocol types supported by the domain.
+	//
+	// - HTTP: Supports only HTTP protocol.
+	//
+	// - HTTPS: Supports only HTTPS protocol.
+	//
 	// example:
 	//
 	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// All domain names bound to the certificate.
+	//
 	// example:
 	//
 	// aliyun.com
-	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
+	Sans           *string                                  `json:"sans,omitempty" xml:"sans,omitempty"`
+	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	// Maximum TLS protocol version, supports up to TLS 1.3.
+	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
+	// Minimum TLS protocol version, supports down to TLS 1.0.
+	//
 	// example:
 	//
 	// TLS 1.0
 	TlsMin *string `json:"tlsMin,omitempty" xml:"tlsMin,omitempty"`
+	// Update timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
@@ -5731,8 +5426,18 @@ func (s *GetDomainResponseBodyData) SetProtocol(v string) *GetDomainResponseBody
 	return s
 }
 
+func (s *GetDomainResponseBodyData) SetResourceGroupId(v string) *GetDomainResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetDomainResponseBodyData) SetSans(v string) *GetDomainResponseBodyData {
 	s.Sans = &v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetStatisticsInfo(v *GetDomainResponseBodyDataStatisticsInfo) *GetDomainResponseBodyData {
+	s.StatisticsInfo = v
 	return s
 }
 
@@ -5748,6 +5453,29 @@ func (s *GetDomainResponseBodyData) SetTlsMin(v string) *GetDomainResponseBodyDa
 
 func (s *GetDomainResponseBodyData) SetUpdatetimestamp(v int64) *GetDomainResponseBodyData {
 	s.Updatetimestamp = &v
+	return s
+}
+
+type GetDomainResponseBodyDataStatisticsInfo struct {
+	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
+	TotalCount         *string              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s GetDomainResponseBodyDataStatisticsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponseBodyDataStatisticsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponseBodyDataStatisticsInfo) SetResourceStatistics(v []*ResourceStatistic) *GetDomainResponseBodyDataStatisticsInfo {
+	s.ResourceStatistics = v
+	return s
+}
+
+func (s *GetDomainResponseBodyDataStatisticsInfo) SetTotalCount(v string) *GetDomainResponseBodyDataStatisticsInfo {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5780,16 +5508,47 @@ func (s *GetDomainResponse) SetBody(v *GetDomainResponseBody) *GetDomainResponse
 	return s
 }
 
+type GetEnvironmentRequest struct {
+	WithStatistics *bool `json:"withStatistics,omitempty" xml:"withStatistics,omitempty"`
+	// Option for vpc info.
+	WithVpcInfo *bool `json:"withVpcInfo,omitempty" xml:"withVpcInfo,omitempty"`
+}
+
+func (s GetEnvironmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentRequest) SetWithStatistics(v bool) *GetEnvironmentRequest {
+	s.WithStatistics = &v
+	return s
+}
+
+func (s *GetEnvironmentRequest) SetWithVpcInfo(v bool) *GetEnvironmentRequest {
+	s.WithVpcInfo = &v
+	return s
+}
+
 type GetEnvironmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *GetEnvironmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 3F8EE674-BB08-5E92-BE6F-E4756A748B0F
@@ -5825,26 +5584,50 @@ func (s *GetEnvironmentResponseBody) SetRequestId(v string) *GetEnvironmentRespo
 }
 
 type GetEnvironmentResponseBodyData struct {
+	// Environment alias.
+	//
+	// example:
+	//
+	// 测试环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// Whether it is the default environment.
+	//
 	// example:
 	//
 	// true
-	Default     *bool   `json:"default,omitempty" xml:"default,omitempty"`
+	Default *bool `json:"default,omitempty" xml:"default,omitempty"`
+	// Environment description.
+	//
+	// example:
+	//
+	// 这是xxx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
-	EnvironmentId *string      `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	GatewayInfo   *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Gateway information
+	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// Environment name.
+	//
 	// example:
 	//
 	// test
-	Name           *string          `json:"name,omitempty" xml:"name,omitempty"`
+	Name            *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceGroupId *string                                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	StatisticsInfo  *GetEnvironmentResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	// List of subdomains.
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
+	// Update timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
@@ -5894,6 +5677,16 @@ func (s *GetEnvironmentResponseBodyData) SetName(v string) *GetEnvironmentRespon
 	return s
 }
 
+func (s *GetEnvironmentResponseBodyData) SetResourceGroupId(v string) *GetEnvironmentResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetStatisticsInfo(v *GetEnvironmentResponseBodyDataStatisticsInfo) *GetEnvironmentResponseBodyData {
+	s.StatisticsInfo = v
+	return s
+}
+
 func (s *GetEnvironmentResponseBodyData) SetSubDomainInfos(v []*SubDomainInfo) *GetEnvironmentResponseBodyData {
 	s.SubDomainInfos = v
 	return s
@@ -5901,6 +5694,29 @@ func (s *GetEnvironmentResponseBodyData) SetSubDomainInfos(v []*SubDomainInfo) *
 
 func (s *GetEnvironmentResponseBodyData) SetUpdateTimestamp(v int64) *GetEnvironmentResponseBodyData {
 	s.UpdateTimestamp = &v
+	return s
+}
+
+type GetEnvironmentResponseBodyDataStatisticsInfo struct {
+	ResourceStatistics []*ResourceStatistic `json:"resourceStatistics,omitempty" xml:"resourceStatistics,omitempty" type:"Repeated"`
+	TotalCount         *int32               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s GetEnvironmentResponseBodyDataStatisticsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnvironmentResponseBodyDataStatisticsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnvironmentResponseBodyDataStatisticsInfo) SetResourceStatistics(v []*ResourceStatistic) *GetEnvironmentResponseBodyDataStatisticsInfo {
+	s.ResourceStatistics = v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyDataStatisticsInfo) SetTotalCount(v int32) *GetEnvironmentResponseBodyDataStatisticsInfo {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5934,15 +5750,22 @@ func (s *GetEnvironmentResponse) SetBody(v *GetEnvironmentResponseBody) *GetEnvi
 }
 
 type GetGatewayResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                     `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *GetGatewayResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0F138FFC-6E2B-56C1-9BAB-A67462E339D1
@@ -5978,60 +5801,118 @@ func (s *GetGatewayResponseBody) SetRequestId(v string) *GetGatewayResponseBody 
 }
 
 type GetGatewayResponseBodyData struct {
+	// Charge type
+	//
+	// - POSTPAY: Postpaid (pay-as-you-go)
+	//
+	// - PREPAY: Prepaid (subscription)
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// Source of gateway creation:
+	//
+	// - Console: Console.
+	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	// Creation timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719386834548
-	CreateTimestamp *int64                                    `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	Environments    []*GetGatewayResponseBodyDataEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// List of environments associated with the gateway.
+	Environments []*GetGatewayResponseBodyDataEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// Expiration timestamp for subscription. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// Gateway ID.
+	//
 	// example:
 	//
 	// gw-cq2vundlhtg***
-	GatewayId     *string                                    `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// List of entry addresses for the gateway.
 	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
+	// Gateway name.
+	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Number of gateway instance nodes.
+	//
 	// example:
 	//
 	// 2
-	Replicas      *string                                  `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	Replicas        *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The security group of the gateway.
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
+	// Gateway specification:
+	//
+	// - apigw.small.x1: Small specification.
+	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// Gateway status:
+	//
+	// - Running: Running.
+	//
+	// - Creating: Creating.
+	//
+	// - CreateFailed: Creation failed.
+	//
+	// - Upgrading: Upgrading.
+	//
+	// - UpgradeFailed: Upgrade failed.
+	//
+	// - Restarting: Restarting.
+	//
+	// - RestartFailed: Restart failed.
+	//
+	// - Deleting: Deleting.
+	//
+	// - DeleteFailed: Deletion failed.
+	//
 	// example:
 	//
 	// Running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string                           `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Target version of the gateway. When it is inconsistent with the current version, an upgrade can be performed.
+	//
 	// example:
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
+	// Update timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719386834548
-	UpdateTimestamp *int64                             `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-	VSwitch         *GetGatewayResponseBodyDataVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// The virtual switch associated with the gateway.
+	VSwitch *GetGatewayResponseBodyDataVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	// Gateway version.
+	//
 	// example:
 	//
 	// 2.0.2
-	Version *string                            `json:"version,omitempty" xml:"version,omitempty"`
-	Vpc     *GetGatewayResponseBodyDataVpc     `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
-	Zones   []*GetGatewayResponseBodyDataZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The VPC (Virtual Private Cloud) associated with the gateway.
+	Vpc *GetGatewayResponseBodyDataVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
+	// List of availability zones associated with the gateway.
+	Zones []*GetGatewayResponseBodyDataZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s GetGatewayResponseBodyData) String() string {
@@ -6087,6 +5968,11 @@ func (s *GetGatewayResponseBodyData) SetReplicas(v string) *GetGatewayResponseBo
 	return s
 }
 
+func (s *GetGatewayResponseBodyData) SetResourceGroupId(v string) *GetGatewayResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetGatewayResponseBodyData) SetSecurityGroup(v *GetGatewayResponseBodyDataSecurityGroup) *GetGatewayResponseBodyData {
 	s.SecurityGroup = v
 	return s
@@ -6099,6 +5985,11 @@ func (s *GetGatewayResponseBodyData) SetSpec(v string) *GetGatewayResponseBodyDa
 
 func (s *GetGatewayResponseBodyData) SetStatus(v string) *GetGatewayResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetTags(v []*GetGatewayResponseBodyDataTags) *GetGatewayResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -6133,11 +6024,20 @@ func (s *GetGatewayResponseBodyData) SetZones(v []*GetGatewayResponseBodyDataZon
 }
 
 type GetGatewayResponseBodyDataEnvironments struct {
+	// The environment alias.
+	//
+	// example:
+	//
+	// 默认环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Environment ID.
+	//
 	// example:
 	//
 	// env-cp9uhudlht***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// The environment name。
+	//
 	// example:
 	//
 	// default-gw-cp9ugg5***
@@ -6168,35 +6068,70 @@ func (s *GetGatewayResponseBodyDataEnvironments) SetName(v string) *GetGatewayRe
 }
 
 type GetGatewayResponseBodyDataLoadBalancers struct {
+	// The address of the load balancer.
+	//
 	// example:
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The IP version of the protocol:
+	//
+	// - ipv4: IPv4 type.
+	//
+	// - ipv6: IPv6 type.
+	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
+	// Load balancer address type:
+	//
+	// - Internet: Public.
+	//
+	// - Intranet: Private.
+	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
+	// Whether it is the default entry address for the gateway.
+	//
 	// example:
 	//
 	// true
 	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	// Load balancer ID.
+	//
 	// example:
 	//
 	// nlb-xoh3pghru7c***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
+	// The provision mode of the load balancer for the gateway:
+	//
+	// - Managed: Managed by the Cloud Native API Gateway.
+	//
 	// example:
 	//
 	// Managed
-	Mode  *string                                         `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// List of listening ports.
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// The status of the load balancer:
+	//
+	// - Ready: Available.
+	//
+	// - NotCreate: Not associated with an instance.
+	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The type of load balancer:
+	//
+	// - NLB: Network Load Balancer.
+	//
+	// - CLB: Classic Load Balancer.
+	//
 	// example:
 	//
 	// NLB
@@ -6257,10 +6192,18 @@ func (s *GetGatewayResponseBodyDataLoadBalancers) SetType(v string) *GetGatewayR
 }
 
 type GetGatewayResponseBodyDataLoadBalancersPorts struct {
+	// Port number.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Protocol:
+	//
+	// - TCP
+	//
+	// - UDP
+	//
 	// example:
 	//
 	// TCP
@@ -6286,10 +6229,14 @@ func (s *GetGatewayResponseBodyDataLoadBalancersPorts) SetProtocol(v string) *Ge
 }
 
 type GetGatewayResponseBodyDataSecurityGroup struct {
+	// Security group name.
+	//
 	// example:
 	//
 	// APIG-sg-gw-cq7ke5ll***
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Security group ID.
+	//
 	// example:
 	//
 	// sg-bp16tafq9***
@@ -6314,8 +6261,38 @@ func (s *GetGatewayResponseBodyDataSecurityGroup) SetSecurityGroupId(v string) *
 	return s
 }
 
+type GetGatewayResponseBodyDataTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetGatewayResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayResponseBodyDataTags) SetKey(v string) *GetGatewayResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataTags) SetValue(v string) *GetGatewayResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
 type GetGatewayResponseBodyDataVSwitch struct {
+	// Virtual switch name.
+	//
+	// example:
+	//
+	// 杭州VPC虚拟交换机
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Virtual switch ID.
+	//
 	// example:
 	//
 	// vsw-bp1c7ggkj***
@@ -6341,7 +6318,14 @@ func (s *GetGatewayResponseBodyDataVSwitch) SetVSwitchId(v string) *GetGatewayRe
 }
 
 type GetGatewayResponseBodyDataVpc struct {
+	// VPC gateway name.
+	//
+	// example:
+	//
+	// 杭州VPC
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// VPC network ID.
+	//
 	// example:
 	//
 	// vpc-bp1llj52lvj6xc***
@@ -6367,8 +6351,16 @@ func (s *GetGatewayResponseBodyDataVpc) SetVpcId(v string) *GetGatewayResponseBo
 }
 
 type GetGatewayResponseBodyDataZones struct {
-	Name    *string                                 `json:"name,omitempty" xml:"name,omitempty"`
+	// Availability zone name.
+	//
+	// example:
+	//
+	// 杭州可用区E
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Virtual switch.
 	VSwitch *GetGatewayResponseBodyDataZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	// Availability zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-e
@@ -6399,7 +6391,14 @@ func (s *GetGatewayResponseBodyDataZones) SetZoneId(v string) *GetGatewayRespons
 }
 
 type GetGatewayResponseBodyDataZonesVSwitch struct {
+	// Virtual switch name.
+	//
+	// example:
+	//
+	// 杭州VPC虚拟交换机
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Virtual switch ID.
+	//
 	// example:
 	//
 	// vsw-bp1c7ggkj***
@@ -6453,242 +6452,23 @@ func (s *GetGatewayResponse) SetBody(v *GetGatewayResponseBody) *GetGatewayRespo
 	return s
 }
 
-type GetGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
-	Data *GetGatewayRouteResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// A1994B10-C6A8-58FA-8347-6A08B0D4EFDE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s GetGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetGatewayRouteResponseBody) SetCode(v string) *GetGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBody) SetData(v *GetGatewayRouteResponseBodyData) *GetGatewayRouteResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBody) SetMessage(v string) *GetGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBody) SetRequestId(v string) *GetGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetGatewayRouteResponseBodyData struct {
-	Backend *GatewayRouteBackend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// example:
-	//
-	// 1719386834548
-	CreateTimestamp *int64                  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	Description     *string                 `json:"description,omitempty" xml:"description,omitempty"`
-	DomainInfo      *GatewayRouteDomainInfo `json:"domainInfo,omitempty" xml:"domainInfo,omitempty"`
-	// example:
-	//
-	// gr-cptf6e7d5l***
-	GatewayRouteId *string         `json:"gatewayRouteId,omitempty" xml:"gatewayRouteId,omitempty"`
-	Match          *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// itemcenter-pre-route
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// NotPublished
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1719386834548
-	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-}
-
-func (s GetGatewayRouteResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGatewayRouteResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetBackend(v *GatewayRouteBackend) *GetGatewayRouteResponseBodyData {
-	s.Backend = v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetCreateTimestamp(v int64) *GetGatewayRouteResponseBodyData {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetDescription(v string) *GetGatewayRouteResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetDomainInfo(v *GatewayRouteDomainInfo) *GetGatewayRouteResponseBodyData {
-	s.DomainInfo = v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetGatewayRouteId(v string) *GetGatewayRouteResponseBodyData {
-	s.GatewayRouteId = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetMatch(v *HttpRouteMatch) *GetGatewayRouteResponseBodyData {
-	s.Match = v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetName(v string) *GetGatewayRouteResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetStatus(v string) *GetGatewayRouteResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponseBodyData) SetUpdateTimestamp(v int64) *GetGatewayRouteResponseBodyData {
-	s.UpdateTimestamp = &v
-	return s
-}
-
-type GetGatewayRouteResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetGatewayRouteResponse) SetHeaders(v map[string]*string) *GetGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetGatewayRouteResponse) SetStatusCode(v int32) *GetGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetGatewayRouteResponse) SetBody(v *GetGatewayRouteResponseBody) *GetGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type GetGatewayServiceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string         `json:"code,omitempty" xml:"code,omitempty"`
-	Data *GatewayService `json:"data,omitempty" xml:"data,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s GetGatewayServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGatewayServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetGatewayServiceResponseBody) SetCode(v string) *GetGatewayServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetGatewayServiceResponseBody) SetData(v *GatewayService) *GetGatewayServiceResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetGatewayServiceResponseBody) SetMessage(v string) *GetGatewayServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetGatewayServiceResponseBody) SetRequestId(v string) *GetGatewayServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetGatewayServiceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetGatewayServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetGatewayServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGatewayServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetGatewayServiceResponse) SetHeaders(v map[string]*string) *GetGatewayServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetGatewayServiceResponse) SetStatusCode(v int32) *GetGatewayServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetGatewayServiceResponse) SetBody(v *GetGatewayServiceResponseBody) *GetGatewayServiceResponse {
-	s.Body = v
-	return s
-}
-
 type GetHttpApiResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// API information.
 	Data *HttpApiApiInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FA9BB94-915B-5299-A694-49FCC7F5DD00
@@ -6753,15 +6533,22 @@ func (s *GetHttpApiResponse) SetBody(v *GetHttpApiResponseBody) *GetHttpApiRespo
 }
 
 type GetHttpApiOperationResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Operation information.
 	Data *HttpApiOperationInfo `json:"data,omitempty" xml:"data,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B725275B-50C6-5A49-A9FD-F0332FCB3351
@@ -6825,20 +6612,105 @@ func (s *GetHttpApiOperationResponse) SetBody(v *GetHttpApiOperationResponseBody
 	return s
 }
 
+type GetHttpApiRouteResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string    `json:"code,omitempty" xml:"code,omitempty"`
+	Data *HttpRoute `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 3ACFC7A7-45A9-58CF-B2D5-765B60254695
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetHttpApiRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpApiRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpApiRouteResponseBody) SetCode(v string) *GetHttpApiRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetHttpApiRouteResponseBody) SetData(v *HttpRoute) *GetHttpApiRouteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetHttpApiRouteResponseBody) SetMessage(v string) *GetHttpApiRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetHttpApiRouteResponseBody) SetRequestId(v string) *GetHttpApiRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetHttpApiRouteResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHttpApiRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetHttpApiRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetHttpApiRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetHttpApiRouteResponse) SetHeaders(v map[string]*string) *GetHttpApiRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetHttpApiRouteResponse) SetStatusCode(v int32) *GetHttpApiRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetHttpApiRouteResponse) SetBody(v *GetHttpApiRouteResponseBody) *GetHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
 type ListDomainsRequest struct {
+	// Gateway Id.
+	//
+	// example:
+	//
+	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Domain name, fuzzy search.
+	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// Page number, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page, default is 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s ListDomainsRequest) String() string {
@@ -6869,16 +6741,28 @@ func (s *ListDomainsRequest) SetPageSize(v int32) *ListDomainsRequest {
 	return s
 }
 
+func (s *ListDomainsRequest) SetResourceGroupId(v string) *ListDomainsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListDomainsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response data.
 	Data *ListDomainsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// C61E30D3-579A-5B43-994E-31E02EDC9129
@@ -6914,15 +6798,22 @@ func (s *ListDomainsResponseBody) SetRequestId(v string) *ListDomainsResponseBod
 }
 
 type ListDomainsResponseBodyData struct {
+	// List of domain information.
 	Items []*DomainInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 9
@@ -6987,27 +6878,43 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListEnvironmentsRequest struct {
+	// Environment alias, fuzzy search.
+	//
+	// example:
+	//
+	// 测试
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
+	// Gateway ID, exact search.
+	//
 	// example:
 	//
 	// gw-cptv6ktlhtgnqr73h8d1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Gateway name, fuzzy search.
+	//
 	// example:
 	//
 	// test-gw
 	GatewayNameLike *string `json:"gatewayNameLike,omitempty" xml:"gatewayNameLike,omitempty"`
+	// Environment name, fuzzy search.
+	//
 	// example:
 	//
 	// test
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// Page number, default is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, default is 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s ListEnvironmentsRequest) String() string {
@@ -7048,16 +6955,28 @@ func (s *ListEnvironmentsRequest) SetPageSize(v int32) *ListEnvironmentsRequest 
 	return s
 }
 
+func (s *ListEnvironmentsRequest) SetResourceGroupId(v string) *ListEnvironmentsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type ListEnvironmentsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Paged query environment list response.
 	Data *ListEnvironmentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the call chain.
+	//
 	// example:
 	//
 	// CE857A85-251D-5018-8103-A38957D71E20
@@ -7093,15 +7012,22 @@ func (s *ListEnvironmentsResponseBody) SetRequestId(v string) *ListEnvironmentsR
 }
 
 type ListEnvironmentsResponseBodyData struct {
+	// List of environment information.
 	Items []*EnvironmentInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 25
@@ -7165,453 +7091,39 @@ func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *Lis
 	return s
 }
 
-type ListGatewayRoutesRequest struct {
-	// example:
-	//
-	// itemcenter
-	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// example:
-	//
-	// pre-itemcenter-router
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// /user
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// example:
-	//
-	// Published
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s ListGatewayRoutesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayRoutesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayRoutesRequest) SetKeyword(v string) *ListGatewayRoutesRequest {
-	s.Keyword = &v
-	return s
-}
-
-func (s *ListGatewayRoutesRequest) SetName(v string) *ListGatewayRoutesRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGatewayRoutesRequest) SetPageNumber(v int32) *ListGatewayRoutesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListGatewayRoutesRequest) SetPageSize(v int32) *ListGatewayRoutesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListGatewayRoutesRequest) SetPath(v string) *ListGatewayRoutesRequest {
-	s.Path = &v
-	return s
-}
-
-func (s *ListGatewayRoutesRequest) SetStatus(v string) *ListGatewayRoutesRequest {
-	s.Status = &v
-	return s
-}
-
-type ListGatewayRoutesResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
-	Data *ListGatewayRoutesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s ListGatewayRoutesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayRoutesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayRoutesResponseBody) SetCode(v string) *ListGatewayRoutesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBody) SetData(v *ListGatewayRoutesResponseBodyData) *ListGatewayRoutesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBody) SetMessage(v string) *ListGatewayRoutesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBody) SetRequestId(v string) *ListGatewayRoutesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListGatewayRoutesResponseBodyData struct {
-	Items []*ListGatewayRoutesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 2
-	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
-}
-
-func (s ListGatewayRoutesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayRoutesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayRoutesResponseBodyData) SetItems(v []*ListGatewayRoutesResponseBodyDataItems) *ListGatewayRoutesResponseBodyData {
-	s.Items = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyData) SetPageNumber(v int32) *ListGatewayRoutesResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyData) SetPageSize(v int32) *ListGatewayRoutesResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyData) SetTotalSize(v int32) *ListGatewayRoutesResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type ListGatewayRoutesResponseBodyDataItems struct {
-	Backend *GatewayRouteBackend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// example:
-	//
-	// 1719386834548
-	CreateTimestamp *int64                  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	Description     *string                 `json:"description,omitempty" xml:"description,omitempty"`
-	DomainInfo      *GatewayRouteDomainInfo `json:"domainInfo,omitempty" xml:"domainInfo,omitempty"`
-	// example:
-	//
-	// gr-cqa8oddlhtg***
-	GatewayRouteId *string         `json:"gatewayRouteId,omitempty" xml:"gatewayRouteId,omitempty"`
-	Match          *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// pre-itemcenter-router
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// NotPublished
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// example:
-	//
-	// 1719386834548
-	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
-}
-
-func (s ListGatewayRoutesResponseBodyDataItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayRoutesResponseBodyDataItems) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetBackend(v *GatewayRouteBackend) *ListGatewayRoutesResponseBodyDataItems {
-	s.Backend = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetCreateTimestamp(v int64) *ListGatewayRoutesResponseBodyDataItems {
-	s.CreateTimestamp = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetDescription(v string) *ListGatewayRoutesResponseBodyDataItems {
-	s.Description = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetDomainInfo(v *GatewayRouteDomainInfo) *ListGatewayRoutesResponseBodyDataItems {
-	s.DomainInfo = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetGatewayRouteId(v string) *ListGatewayRoutesResponseBodyDataItems {
-	s.GatewayRouteId = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetMatch(v *HttpRouteMatch) *ListGatewayRoutesResponseBodyDataItems {
-	s.Match = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetName(v string) *ListGatewayRoutesResponseBodyDataItems {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetStatus(v string) *ListGatewayRoutesResponseBodyDataItems {
-	s.Status = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponseBodyDataItems) SetUpdateTimestamp(v int64) *ListGatewayRoutesResponseBodyDataItems {
-	s.UpdateTimestamp = &v
-	return s
-}
-
-type ListGatewayRoutesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListGatewayRoutesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayRoutesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayRoutesResponse) SetHeaders(v map[string]*string) *ListGatewayRoutesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewayRoutesResponse) SetStatusCode(v int32) *ListGatewayRoutesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListGatewayRoutesResponse) SetBody(v *ListGatewayRoutesResponseBody) *ListGatewayRoutesResponse {
-	s.Body = v
-	return s
-}
-
-type ListGatewayServicesRequest struct {
-	// example:
-	//
-	// itemcenter-provider
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// MSE_NACOS
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-}
-
-func (s ListGatewayServicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayServicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayServicesRequest) SetName(v string) *ListGatewayServicesRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGatewayServicesRequest) SetPageNumber(v int32) *ListGatewayServicesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListGatewayServicesRequest) SetPageSize(v int32) *ListGatewayServicesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListGatewayServicesRequest) SetSourceType(v string) *ListGatewayServicesRequest {
-	s.SourceType = &v
-	return s
-}
-
-type ListGatewayServicesResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
-	Data *ListGatewayServicesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 8FA9BB94-915B-5299-A694-49FCC7F5DD00
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s ListGatewayServicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayServicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayServicesResponseBody) SetCode(v string) *ListGatewayServicesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBody) SetData(v *ListGatewayServicesResponseBodyData) *ListGatewayServicesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBody) SetMessage(v string) *ListGatewayServicesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBody) SetRequestId(v string) *ListGatewayServicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListGatewayServicesResponseBodyData struct {
-	Items []*GatewayService `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// 6
-	TotalSize *int64 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
-}
-
-func (s ListGatewayServicesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayServicesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayServicesResponseBodyData) SetItems(v []*GatewayService) *ListGatewayServicesResponseBodyData {
-	s.Items = v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBodyData) SetPageNumber(v int32) *ListGatewayServicesResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBodyData) SetPageSize(v int32) *ListGatewayServicesResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListGatewayServicesResponseBodyData) SetTotalSize(v int64) *ListGatewayServicesResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type ListGatewayServicesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListGatewayServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListGatewayServicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGatewayServicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGatewayServicesResponse) SetHeaders(v map[string]*string) *ListGatewayServicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGatewayServicesResponse) SetStatusCode(v int32) *ListGatewayServicesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListGatewayServicesResponse) SetBody(v *ListGatewayServicesResponseBody) *ListGatewayServicesResponse {
-	s.Body = v
-	return s
-}
-
 type ListGatewaysRequest struct {
+	// Query exactly by gateway ID.
+	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Keyword, search with full match, case-insensitive.
+	//
 	// example:
 	//
 	// dev
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// Query exactly by gateway name.
+	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize        *int32                     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string                    `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags            []*ListGatewaysRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListGatewaysRequest) String() string {
@@ -7647,16 +7159,134 @@ func (s *ListGatewaysRequest) SetPageSize(v int32) *ListGatewaysRequest {
 	return s
 }
 
+func (s *ListGatewaysRequest) SetResourceGroupId(v string) *ListGatewaysRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysRequest) SetTags(v []*ListGatewaysRequestTags) *ListGatewaysRequest {
+	s.Tags = v
+	return s
+}
+
+type ListGatewaysRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListGatewaysRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysRequestTags) SetKey(v string) *ListGatewaysRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListGatewaysRequestTags) SetValue(v string) *ListGatewaysRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListGatewaysShrinkRequest struct {
+	// Query exactly by gateway ID.
+	//
+	// example:
+	//
+	// gw-cpv4sqdl****
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Keyword, search with full match, case-insensitive.
+	//
+	// example:
+	//
+	// dev
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// Query exactly by gateway name.
+	//
+	// example:
+	//
+	// itemcenter-gateway
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+}
+
+func (s ListGatewaysShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysShrinkRequest) SetGatewayId(v string) *ListGatewaysShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetKeyword(v string) *ListGatewaysShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetName(v string) *ListGatewaysShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetPageNumber(v int32) *ListGatewaysShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetPageSize(v int32) *ListGatewaysShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetResourceGroupId(v string) *ListGatewaysShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetTagsShrink(v string) *ListGatewaysShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
 type ListGatewaysResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Result of the gateway list query.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5B626361-070A-56A7-B127-ADAC8F3655DB
@@ -7692,15 +7322,22 @@ func (s *ListGatewaysResponseBody) SetRequestId(v string) *ListGatewaysResponseB
 }
 
 type ListGatewaysResponseBodyData struct {
+	// Gateway list
 	Items []*ListGatewaysResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 6
@@ -7736,53 +7373,107 @@ func (s *ListGatewaysResponseBodyData) SetTotalSize(v int64) *ListGatewaysRespon
 }
 
 type ListGatewaysResponseBodyDataItems struct {
+	// Charge type
+	//
+	// - POSTPAY: Postpaid (pay-as-you-go)
+	//
+	// - PREPAY: Prepaid (subscription)
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// Source of gateway creation:
+	//
+	// - Console: Console.
+	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
+	// Creation timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// Expiration timestamp for the prepaid (annual or monthly) plan. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// Gateway ID.
+	//
 	// example:
 	//
 	// gw-cpv54p5***
-	GatewayId     *string                                           `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// List of gateway entry addresses.
 	LoadBalancers []*ListGatewaysResponseBodyDataItemsLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
+	// Gateway name.
+	//
 	// example:
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Number of gateway instance nodes.
+	//
 	// example:
 	//
 	// 2
-	Replicas      *string                                         `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	Replicas        *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Security Group.
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
+	// Gateway specification:
+	//
+	// - apigw.small.x1: Small specification.
+	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// Gateway status:
+	//
+	// - Running: Running.
+	//
+	// - Creating: Creating.
+	//
+	// - CreateFailed: Creation failed.
+	//
+	// - Upgrading: Upgrading.
+	//
+	// - UpgradeFailed: Upgrade failed.
+	//
+	// - Restarting: Restarting.
+	//
+	// - RestartFailed: Restart failed.
+	//
+	// - Deleting: Deleting.
+	//
+	// - DeleteFailed: Deletion failed.
+	//
 	// example:
 	//
 	// Running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Target version of the gateway. When it is inconsistent with `version`, a version upgrade can be performed.
+	//
 	// example:
 	//
 	// 2.0.2
 	TargetVersion *string `json:"targetVersion,omitempty" xml:"targetVersion,omitempty"`
+	// Update timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1719386834548
 	UpdateTimestamp *int64                                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 	VSwitch         *ListGatewaysResponseBodyDataItemsVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	// Gateway version.
+	//
 	// example:
 	//
 	// 2.0.2
@@ -7839,6 +7530,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetReplicas(v string) *ListGatewaysR
 	return s
 }
 
+func (s *ListGatewaysResponseBodyDataItems) SetResourceGroupId(v string) *ListGatewaysResponseBodyDataItems {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListGatewaysResponseBodyDataItems) SetSecurityGroup(v *ListGatewaysResponseBodyDataItemsSecurityGroup) *ListGatewaysResponseBodyDataItems {
 	s.SecurityGroup = v
 	return s
@@ -7851,6 +7547,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetSpec(v string) *ListGatewaysRespo
 
 func (s *ListGatewaysResponseBodyDataItems) SetStatus(v string) *ListGatewaysResponseBodyDataItems {
 	s.Status = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetTags(v []*ListGatewaysResponseBodyDataItemsTags) *ListGatewaysResponseBodyDataItems {
+	s.Tags = v
 	return s
 }
 
@@ -7885,35 +7586,70 @@ func (s *ListGatewaysResponseBodyDataItems) SetZones(v []*ListGatewaysResponseBo
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
+	// Load balancer address.
+	//
 	// example:
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// IP version:
+	//
+	// - ipv4: IPv4.
+	//
+	// - ipv6: IPv6.
+	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
+	// Load balancer address type:
+	//
+	// - Internet: Public network.
+	//
+	// - Intranet: Private network.
+	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
+	// Indicates whether this is the default entry address for the gateway.
+	//
 	// example:
 	//
 	// true
 	GatewayDefault *bool `json:"gatewayDefault,omitempty" xml:"gatewayDefault,omitempty"`
+	// Load balancer ID.
+	//
 	// example:
 	//
 	// nlb-xqwioje1c91r***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
+	// Mode of load balancer provision for the gateway:
+	//
+	// - Managed: Managed by the Cloud Native API Gateway.
+	//
 	// example:
 	//
 	// Managed
-	Mode  *string                                                `json:"mode,omitempty" xml:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// List of listening ports.
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	// Status of the load balancer:
+	//
+	// - Ready: Available.
+	//
+	// - NotCreate: No associated instance.
+	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Type of load balancer for the gateway:
+	//
+	// - NLB: Network Load Balancer.
+	//
+	// - CLB: Classic Load Balancer.
+	//
 	// example:
 	//
 	// NLB
@@ -7974,10 +7710,18 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancers) SetType(v string) *List
 }
 
 type ListGatewaysResponseBodyDataItemsLoadBalancersPorts struct {
+	// Port number.
+	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// Protocol:
+	//
+	// - TCP
+	//
+	// - UDP
+	//
 	// example:
 	//
 	// TCP
@@ -8003,6 +7747,7 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) SetProtocol(v stri
 }
 
 type ListGatewaysResponseBodyDataItemsSecurityGroup struct {
+	// The Security Group ID.
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 }
 
@@ -8019,7 +7764,35 @@ func (s *ListGatewaysResponseBodyDataItemsSecurityGroup) SetSecurityGroupId(v st
 	return s
 }
 
+type ListGatewaysResponseBodyDataItemsTags struct {
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsTags) SetTagKey(v string) *ListGatewaysResponseBodyDataItemsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsTags) SetTagValue(v string) *ListGatewaysResponseBodyDataItemsTags {
+	s.TagValue = &v
+	return s
+}
+
 type ListGatewaysResponseBodyDataItemsVSwitch struct {
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-xxxxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 }
 
@@ -8037,6 +7810,11 @@ func (s *ListGatewaysResponseBodyDataItemsVSwitch) SetVSwitchId(v string) *ListG
 }
 
 type ListGatewaysResponseBodyDataItemsVpc struct {
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-xxxxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -8054,8 +7832,14 @@ func (s *ListGatewaysResponseBodyDataItemsVpc) SetVpcId(v string) *ListGatewaysR
 }
 
 type ListGatewaysResponseBodyDataItemsZones struct {
+	// The vSwitch.
 	VSwitch *ListGatewaysResponseBodyDataItemsZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
-	ZoneId  *string                                        `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// The ID of the current zone.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s ListGatewaysResponseBodyDataItemsZones) String() string {
@@ -8077,6 +7861,11 @@ func (s *ListGatewaysResponseBodyDataItemsZones) SetZoneId(v string) *ListGatewa
 }
 
 type ListGatewaysResponseBodyDataItemsZonesVSwitch struct {
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-xxxxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 }
 
@@ -8123,27 +7912,60 @@ func (s *ListGatewaysResponse) SetBody(v *ListGatewaysResponseBody) *ListGateway
 }
 
 type ListHttpApiOperationsRequest struct {
+	// Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
+	//
+	// example:
+	//
+	// cas-xxx
+	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	// List interfaces by Method.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Search operations by exact name.
+	//
+	// example:
+	//
+	// getUserInfo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Search operations by name prefix.
+	//
 	// example:
 	//
 	// GetUser
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// Page number, starting from 1, default is 1 if not specified.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, valid range [1, 100], default is 10 if not specified.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Search operations by path prefix.
+	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
+	// Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+	//
+	// example:
+	//
+	// env-xxx
+	WithConsumerInEnvironmentId *string `json:"withConsumerInEnvironmentId,omitempty" xml:"withConsumerInEnvironmentId,omitempty"`
+	// Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+	//
+	// example:
+	//
+	// cs-xxx
+	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
 }
 
 func (s ListHttpApiOperationsRequest) String() string {
@@ -8152,6 +7974,11 @@ func (s ListHttpApiOperationsRequest) String() string {
 
 func (s ListHttpApiOperationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListHttpApiOperationsRequest) SetConsumerAuthorizationRuleId(v string) *ListHttpApiOperationsRequest {
+	s.ConsumerAuthorizationRuleId = &v
+	return s
 }
 
 func (s *ListHttpApiOperationsRequest) SetMethod(v string) *ListHttpApiOperationsRequest {
@@ -8184,16 +8011,33 @@ func (s *ListHttpApiOperationsRequest) SetPathLike(v string) *ListHttpApiOperati
 	return s
 }
 
+func (s *ListHttpApiOperationsRequest) SetWithConsumerInEnvironmentId(v string) *ListHttpApiOperationsRequest {
+	s.WithConsumerInEnvironmentId = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetWithConsumerInfoById(v string) *ListHttpApiOperationsRequest {
+	s.WithConsumerInfoById = &v
+	return s
+}
+
 type ListHttpApiOperationsResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// List of operations.
 	Data *ListHttpApiOperationsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
@@ -8229,15 +8073,22 @@ func (s *ListHttpApiOperationsResponseBody) SetRequestId(v string) *ListHttpApiO
 }
 
 type ListHttpApiOperationsResponseBodyData struct {
+	// List of operations.
 	Items []*HttpApiOperationInfo `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -8302,20 +8153,64 @@ func (s *ListHttpApiOperationsResponse) SetBody(v *ListHttpApiOperationsResponse
 }
 
 type ListHttpApisRequest struct {
+	// Cloud-native API Gateway ID.
+	//
+	// example:
+	//
+	// gw-cq2avtllh****
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Search keyword, supports fuzzy search by API name or exact search by API ID.
+	//
 	// example:
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Exact search by name.
+	//
+	// example:
+	//
+	// login
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page number, starting from 1, default is 1 if not provided.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, valid range [1, 100], default is 10 if not provided.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	PublishedOnly *bool  `json:"publishedOnly,omitempty" xml:"publishedOnly,omitempty"`
+	PageSize        *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Type of HTTP API. Supports multiple types, separated by ",".
+	//
+	// - Http
+	//
+	// - Rest
+	//
+	// - WebSocket
+	//
+	// - HttpIngress
+	//
+	// example:
+	//
+	// Http,Rest
+	Types *string `json:"types,omitempty" xml:"types,omitempty"`
+	// Each API information in the response carries consumer authentication policy information under the specified environment ID.
+	//
+	// example:
+	//
+	// env-xxx
+	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
+	// Each API information in the response carries a list of authorization rules for the specified consumer ID.
+	//
+	// example:
+	//
+	// cs-xxx
+	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	WithEnvironmentInfo  *bool   `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
 }
 
 func (s ListHttpApisRequest) String() string {
@@ -8324,6 +8219,11 @@ func (s ListHttpApisRequest) String() string {
 
 func (s ListHttpApisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListHttpApisRequest) SetGatewayId(v string) *ListHttpApisRequest {
+	s.GatewayId = &v
+	return s
 }
 
 func (s *ListHttpApisRequest) SetKeyword(v string) *ListHttpApisRequest {
@@ -8346,21 +8246,48 @@ func (s *ListHttpApisRequest) SetPageSize(v int32) *ListHttpApisRequest {
 	return s
 }
 
-func (s *ListHttpApisRequest) SetPublishedOnly(v bool) *ListHttpApisRequest {
-	s.PublishedOnly = &v
+func (s *ListHttpApisRequest) SetResourceGroupId(v string) *ListHttpApisRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetTypes(v string) *ListHttpApisRequest {
+	s.Types = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithAuthPolicyInEnvironmentId(v string) *ListHttpApisRequest {
+	s.WithAuthPolicyInEnvironmentId = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithConsumerInfoById(v string) *ListHttpApisRequest {
+	s.WithConsumerInfoById = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithEnvironmentInfo(v bool) *ListHttpApisRequest {
+	s.WithEnvironmentInfo = &v
 	return s
 }
 
 type ListHttpApisResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// API list.
 	Data *ListHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
@@ -8396,15 +8323,22 @@ func (s *ListHttpApisResponseBody) SetRequestId(v string) *ListHttpApisResponseB
 }
 
 type ListHttpApisResponseBodyData struct {
+	// API information.
 	Items []*HttpApiInfoByName `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -8468,755 +8402,51 @@ func (s *ListHttpApisResponse) SetBody(v *ListHttpApisResponseBody) *ListHttpApi
 	return s
 }
 
-type OfflineGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s OfflineGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfflineGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *OfflineGatewayRouteResponseBody) SetCode(v string) *OfflineGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *OfflineGatewayRouteResponseBody) SetMessage(v string) *OfflineGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *OfflineGatewayRouteResponseBody) SetRequestId(v string) *OfflineGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type OfflineGatewayRouteResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *OfflineGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s OfflineGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfflineGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *OfflineGatewayRouteResponse) SetHeaders(v map[string]*string) *OfflineGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *OfflineGatewayRouteResponse) SetStatusCode(v int32) *OfflineGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *OfflineGatewayRouteResponse) SetBody(v *OfflineGatewayRouteResponseBody) *OfflineGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type OfflineHttpApiRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// env-xxx
-	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-}
-
-func (s OfflineHttpApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfflineHttpApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *OfflineHttpApiRequest) SetEnvironmentId(v string) *OfflineHttpApiRequest {
-	s.EnvironmentId = &v
-	return s
-}
-
-type OfflineHttpApiResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 53DE779E-422D-56EB-B84C-62D75CA5E8DD
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s OfflineHttpApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfflineHttpApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *OfflineHttpApiResponseBody) SetCode(v string) *OfflineHttpApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *OfflineHttpApiResponseBody) SetMessage(v string) *OfflineHttpApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *OfflineHttpApiResponseBody) SetRequestId(v string) *OfflineHttpApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type OfflineHttpApiResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *OfflineHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s OfflineHttpApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OfflineHttpApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *OfflineHttpApiResponse) SetHeaders(v map[string]*string) *OfflineHttpApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *OfflineHttpApiResponse) SetStatusCode(v int32) *OfflineHttpApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *OfflineHttpApiResponse) SetBody(v *OfflineHttpApiResponseBody) *OfflineHttpApiResponse {
-	s.Body = v
-	return s
-}
-
-type PublishGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 043360DA-ED3B-5386-9B7A-D94DECF99A30
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s PublishGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishGatewayRouteResponseBody) SetCode(v string) *PublishGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PublishGatewayRouteResponseBody) SetMessage(v string) *PublishGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PublishGatewayRouteResponseBody) SetRequestId(v string) *PublishGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type PublishGatewayRouteResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *PublishGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s PublishGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishGatewayRouteResponse) SetHeaders(v map[string]*string) *PublishGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishGatewayRouteResponse) SetStatusCode(v int32) *PublishGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PublishGatewayRouteResponse) SetBody(v *PublishGatewayRouteResponseBody) *PublishGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type PublishHttpApiRequest struct {
-	// example:
-	//
-	// true
-	AllowOverwrite *bool                             `json:"allowOverwrite,omitempty" xml:"allowOverwrite,omitempty"`
-	Description    *string                           `json:"description,omitempty" xml:"description,omitempty"`
-	Environment    *PublishHttpApiRequestEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// example:
-	//
-	// apr-xxx
-	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
-}
-
-func (s PublishHttpApiRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequest) SetAllowOverwrite(v bool) *PublishHttpApiRequest {
-	s.AllowOverwrite = &v
-	return s
-}
-
-func (s *PublishHttpApiRequest) SetDescription(v string) *PublishHttpApiRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *PublishHttpApiRequest) SetEnvironment(v *PublishHttpApiRequestEnvironment) *PublishHttpApiRequest {
-	s.Environment = v
-	return s
-}
-
-func (s *PublishHttpApiRequest) SetRevisionId(v string) *PublishHttpApiRequest {
-	s.RevisionId = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironment struct {
-	// example:
-	//
-	// SingleService
-	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	// example:
-	//
-	// Service
-	BackendType        *string                                             `json:"backendType,omitempty" xml:"backendType,omitempty"`
-	CloudProductConfig *PublishHttpApiRequestEnvironmentCloudProductConfig `json:"cloudProductConfig,omitempty" xml:"cloudProductConfig,omitempty" type:"Struct"`
-	CustomDomainIds    []*string                                           `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	DnsConfigs         []*PublishHttpApiRequestEnvironmentDnsConfigs       `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// env-xxx
-	EnvironmentId  *string                                           `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	ServiceConfigs []*PublishHttpApiRequestEnvironmentServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	VipConfigs     []*PublishHttpApiRequestEnvironmentVipConfigs     `json:"vipConfigs,omitempty" xml:"vipConfigs,omitempty" type:"Repeated"`
-}
-
-func (s PublishHttpApiRequestEnvironment) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironment) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetBackendScene(v string) *PublishHttpApiRequestEnvironment {
-	s.BackendScene = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetBackendType(v string) *PublishHttpApiRequestEnvironment {
-	s.BackendType = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetCloudProductConfig(v *PublishHttpApiRequestEnvironmentCloudProductConfig) *PublishHttpApiRequestEnvironment {
-	s.CloudProductConfig = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetCustomDomainIds(v []*string) *PublishHttpApiRequestEnvironment {
-	s.CustomDomainIds = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetDnsConfigs(v []*PublishHttpApiRequestEnvironmentDnsConfigs) *PublishHttpApiRequestEnvironment {
-	s.DnsConfigs = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetEnvironmentId(v string) *PublishHttpApiRequestEnvironment {
-	s.EnvironmentId = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetServiceConfigs(v []*PublishHttpApiRequestEnvironmentServiceConfigs) *PublishHttpApiRequestEnvironment {
-	s.ServiceConfigs = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironment) SetVipConfigs(v []*PublishHttpApiRequestEnvironmentVipConfigs) *PublishHttpApiRequestEnvironment {
-	s.VipConfigs = v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentCloudProductConfig struct {
-	// example:
-	//
-	// FC
-	CloudProductType        *string                                                                      `json:"cloudProductType,omitempty" xml:"cloudProductType,omitempty"`
-	ContainerServiceConfigs []*PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs `json:"containerServiceConfigs,omitempty" xml:"containerServiceConfigs,omitempty" type:"Repeated"`
-	FunctionConfigs         []*PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs         `json:"functionConfigs,omitempty" xml:"functionConfigs,omitempty" type:"Repeated"`
-	MseNacosConfigs         []*PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs         `json:"mseNacosConfigs,omitempty" xml:"mseNacosConfigs,omitempty" type:"Repeated"`
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfig) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfig) SetCloudProductType(v string) *PublishHttpApiRequestEnvironmentCloudProductConfig {
-	s.CloudProductType = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfig) SetContainerServiceConfigs(v []*PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) *PublishHttpApiRequestEnvironmentCloudProductConfig {
-	s.ContainerServiceConfigs = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfig) SetFunctionConfigs(v []*PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) *PublishHttpApiRequestEnvironmentCloudProductConfig {
-	s.FunctionConfigs = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfig) SetMseNacosConfigs(v []*PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) *PublishHttpApiRequestEnvironmentCloudProductConfig {
-	s.MseNacosConfigs = v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs struct {
-	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// test-service
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// default
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetName(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetNamespace(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Namespace = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetPort(v int32) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Port = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetProtocol(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Protocol = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs) SetWeight(v int32) *PublishHttpApiRequestEnvironmentCloudProductConfigContainerServiceConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs struct {
-	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// fc-test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// LATEST
-	Quanlifer *string `json:"quanlifer,omitempty" xml:"quanlifer,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) SetName(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) SetQuanlifer(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs {
-	s.Quanlifer = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs) SetWeight(v int32) *PublishHttpApiRequestEnvironmentCloudProductConfigFunctionConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs struct {
-	// example:
-	//
-	// DEFAULT_GROUP
-	GroupName *string                        `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// provider
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// public
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *string `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) SetGroupName(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs {
-	s.GroupName = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) SetName(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs {
-	s.Name = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) SetNamespace(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs {
-	s.Namespace = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs) SetWeight(v string) *PublishHttpApiRequestEnvironmentCloudProductConfigMseNacosConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentDnsConfigs struct {
-	DnsList []*string                      `json:"dnsList,omitempty" xml:"dnsList,omitempty" type:"Repeated"`
-	Match   *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentDnsConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentDnsConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentDnsConfigs) SetDnsList(v []*string) *PublishHttpApiRequestEnvironmentDnsConfigs {
-	s.DnsList = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentDnsConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentDnsConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentDnsConfigs) SetWeight(v int32) *PublishHttpApiRequestEnvironmentDnsConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentServiceConfigs struct {
-	// example:
-	//
-	// gs-xxx
-	GatewayServiceId *string                        `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	Match            *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// example:
-	//
-	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// example:
-	//
-	// v1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentServiceConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentServiceConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetGatewayServiceId(v string) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.GatewayServiceId = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetPort(v int32) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.Port = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetProtocol(v string) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.Protocol = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetVersion(v string) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.Version = &v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentServiceConfigs) SetWeight(v int32) *PublishHttpApiRequestEnvironmentServiceConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiRequestEnvironmentVipConfigs struct {
-	Endpoints []*string                      `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	Match     *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
-}
-
-func (s PublishHttpApiRequestEnvironmentVipConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiRequestEnvironmentVipConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiRequestEnvironmentVipConfigs) SetEndpoints(v []*string) *PublishHttpApiRequestEnvironmentVipConfigs {
-	s.Endpoints = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentVipConfigs) SetMatch(v *HttpApiBackendMatchConditions) *PublishHttpApiRequestEnvironmentVipConfigs {
-	s.Match = v
-	return s
-}
-
-func (s *PublishHttpApiRequestEnvironmentVipConfigs) SetWeight(v int32) *PublishHttpApiRequestEnvironmentVipConfigs {
-	s.Weight = &v
-	return s
-}
-
-type PublishHttpApiResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 4BACB05C-3FE2-588F-9148-700C5C026B74
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s PublishHttpApiResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiResponseBody) SetCode(v string) *PublishHttpApiResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PublishHttpApiResponseBody) SetMessage(v string) *PublishHttpApiResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PublishHttpApiResponseBody) SetRequestId(v string) *PublishHttpApiResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type PublishHttpApiResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *PublishHttpApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s PublishHttpApiResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishHttpApiResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishHttpApiResponse) SetHeaders(v map[string]*string) *PublishHttpApiResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PublishHttpApiResponse) SetStatusCode(v int32) *PublishHttpApiResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PublishHttpApiResponse) SetBody(v *PublishHttpApiResponseBody) *PublishHttpApiResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateDomainRequest struct {
+	// Cloud Shield CA certificate identifier.
+	//
 	// example:
 	//
 	// 123455-cn-hangzhou
 	CaCertIndentifier *string `json:"caCertIndentifier,omitempty" xml:"caCertIndentifier,omitempty"`
+	// Cloud Shield certificate identifier.
+	//
 	// example:
 	//
 	// 123458-cn-hangzhou
 	CertIndentifier *string `json:"certIndentifier,omitempty" xml:"certIndentifier,omitempty"`
+	// Set the HTTPS protocol type, whether to enable forced HTTPS redirection.
+	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	// HTTP/2 settings.
+	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
+	// The protocol type supported by the domain.
+	//
+	// - HTTP: Supports only HTTP protocol.
+	//
+	// - HTTPS: Supports only HTTPS protocol.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// Maximum TLS protocol version, supports up to TLS 1.3.
+	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
+	// Minimum TLS protocol version, supports down to TLS 1.0.
+	//
 	// example:
 	//
 	// TLS 1.0
@@ -9267,15 +8497,22 @@ func (s *UpdateDomainRequest) SetTlsMin(v string) *UpdateDomainRequest {
 }
 
 type UpdateDomainResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *UpdateDomainResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 4BACB05C-3FE2-588F-9148-700C5C026B74
@@ -9311,6 +8548,11 @@ func (s *UpdateDomainResponseBody) SetRequestId(v string) *UpdateDomainResponseB
 }
 
 type UpdateDomainResponseBodyData struct {
+	// Deploy revision id.
+	//
+	// example:
+	//
+	// apr-xxx
 	DeployRevisionId *string `json:"deployRevisionId,omitempty" xml:"deployRevisionId,omitempty"`
 }
 
@@ -9357,8 +8599,19 @@ func (s *UpdateDomainResponse) SetBody(v *UpdateDomainResponseBody) *UpdateDomai
 }
 
 type UpdateEnvironmentRequest struct {
+	// Environment alias.
+	//
 	// This parameter is required.
-	Alias       *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	//
+	// example:
+	//
+	// 测试环境
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// Description of the environment, which can include information such as the purpose of the environment and its users.
+	//
+	// example:
+	//
+	// 这是xx的xx项目测试环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -9381,14 +8634,20 @@ func (s *UpdateEnvironmentRequest) SetDescription(v string) *UpdateEnvironmentRe
 }
 
 type UpdateEnvironmentResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID, used for tracing the API call chain.
+	//
 	// example:
 	//
 	// 52FB803B-3CD8-5FF8-AAE9-C2B841F6A483
@@ -9447,323 +8706,28 @@ func (s *UpdateEnvironmentResponse) SetBody(v *UpdateEnvironmentResponseBody) *U
 	return s
 }
 
-type UpdateGatewayRouteRequest struct {
-	BackendConfig *GatewayRouteBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty"`
-	Description   *string                    `json:"description,omitempty" xml:"description,omitempty"`
-	DomainConfig  *GatewayRouteDomainConfig  `json:"domainConfig,omitempty" xml:"domainConfig,omitempty"`
-	Match         *HttpRouteMatch            `json:"match,omitempty" xml:"match,omitempty"`
-}
-
-func (s UpdateGatewayRouteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayRouteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayRouteRequest) SetBackendConfig(v *GatewayRouteBackendConfig) *UpdateGatewayRouteRequest {
-	s.BackendConfig = v
-	return s
-}
-
-func (s *UpdateGatewayRouteRequest) SetDescription(v string) *UpdateGatewayRouteRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteRequest) SetDomainConfig(v *GatewayRouteDomainConfig) *UpdateGatewayRouteRequest {
-	s.DomainConfig = v
-	return s
-}
-
-func (s *UpdateGatewayRouteRequest) SetMatch(v *HttpRouteMatch) *UpdateGatewayRouteRequest {
-	s.Match = v
-	return s
-}
-
-type UpdateGatewayRouteResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// B725275B-50C6-5A49-A9FD-F0332FCB3351
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s UpdateGatewayRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayRouteResponseBody) SetCode(v string) *UpdateGatewayRouteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteResponseBody) SetMessage(v string) *UpdateGatewayRouteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteResponseBody) SetRequestId(v string) *UpdateGatewayRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateGatewayRouteResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateGatewayRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayRouteResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateGatewayRouteResponse) SetStatusCode(v int32) *UpdateGatewayRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateGatewayRouteResponse) SetBody(v *UpdateGatewayRouteResponseBody) *UpdateGatewayRouteResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateGatewayServiceRequest struct {
-	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 8080
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-}
-
-func (s UpdateGatewayServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceRequest) SetAddresses(v []*string) *UpdateGatewayServiceRequest {
-	s.Addresses = v
-	return s
-}
-
-func (s *UpdateGatewayServiceRequest) SetPort(v int32) *UpdateGatewayServiceRequest {
-	s.Port = &v
-	return s
-}
-
-type UpdateGatewayServiceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 585657D2-1C20-5B8A-AF17-D727C6490BE4
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s UpdateGatewayServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceResponseBody) SetCode(v string) *UpdateGatewayServiceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceResponseBody) SetMessage(v string) *UpdateGatewayServiceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceResponseBody) SetRequestId(v string) *UpdateGatewayServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateGatewayServiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateGatewayServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateGatewayServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceResponse) SetHeaders(v map[string]*string) *UpdateGatewayServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateGatewayServiceResponse) SetStatusCode(v int32) *UpdateGatewayServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceResponse) SetBody(v *UpdateGatewayServiceResponseBody) *UpdateGatewayServiceResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateGatewayServiceVersionRequest struct {
-	Labels []*UpdateGatewayServiceVersionRequestLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-}
-
-func (s UpdateGatewayServiceVersionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceVersionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceVersionRequest) SetLabels(v []*UpdateGatewayServiceVersionRequestLabels) *UpdateGatewayServiceVersionRequest {
-	s.Labels = v
-	return s
-}
-
-type UpdateGatewayServiceVersionRequestLabels struct {
-	// example:
-	//
-	// topology.kubernetes.io/zone
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-k
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s UpdateGatewayServiceVersionRequestLabels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceVersionRequestLabels) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceVersionRequestLabels) SetKey(v string) *UpdateGatewayServiceVersionRequestLabels {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionRequestLabels) SetValue(v string) *UpdateGatewayServiceVersionRequestLabels {
-	s.Value = &v
-	return s
-}
-
-type UpdateGatewayServiceVersionResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// A1994B10-C6A8-58FA-8347-6A08B0D4EFDE
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s UpdateGatewayServiceVersionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceVersionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceVersionResponseBody) SetCode(v string) *UpdateGatewayServiceVersionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionResponseBody) SetMessage(v string) *UpdateGatewayServiceVersionResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionResponseBody) SetRequestId(v string) *UpdateGatewayServiceVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateGatewayServiceVersionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateGatewayServiceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateGatewayServiceVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateGatewayServiceVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateGatewayServiceVersionResponse) SetHeaders(v map[string]*string) *UpdateGatewayServiceVersionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionResponse) SetStatusCode(v int32) *UpdateGatewayServiceVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateGatewayServiceVersionResponse) SetBody(v *UpdateGatewayServiceVersionResponseBody) *UpdateGatewayServiceVersionResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateHttpApiRequest struct {
+	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
+	// Base path of the API, which must start with a \\"/\\".
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /v1
-	BasePath      *string               `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	Description   *string               `json:"description,omitempty" xml:"description,omitempty"`
-	Protocols     []*string             `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	BasePath      *string                `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	// API description.
+	//
+	// example:
+	//
+	// 更新API描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Configuration information for the HTTP Ingress API.
+	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	// List of API access protocols.
+	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 }
 
@@ -9775,13 +8739,28 @@ func (s UpdateHttpApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateHttpApiRequest) SetAiProtocols(v []*string) *UpdateHttpApiRequest {
+	s.AiProtocols = v
+	return s
+}
+
 func (s *UpdateHttpApiRequest) SetBasePath(v string) *UpdateHttpApiRequest {
 	s.BasePath = &v
 	return s
 }
 
+func (s *UpdateHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *UpdateHttpApiRequest {
+	s.DeployConfigs = v
+	return s
+}
+
 func (s *UpdateHttpApiRequest) SetDescription(v string) *UpdateHttpApiRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetIngressConfig(v *UpdateHttpApiRequestIngressConfig) *UpdateHttpApiRequest {
+	s.IngressConfig = v
 	return s
 }
 
@@ -9795,15 +8774,87 @@ func (s *UpdateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *Update
 	return s
 }
 
+type UpdateHttpApiRequestIngressConfig struct {
+	// Environment ID.
+	//
+	// example:
+	//
+	// env-cr6ql0tlhtgmc****
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// Ingress Class being listened to.
+	//
+	// example:
+	//
+	// mse
+	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
+	// Whether to update the address in the Ingress Status.
+	//
+	// example:
+	//
+	// false
+	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
+	// Source ID.
+	//
+	// example:
+	//
+	// src-crdddallhtgtr****
+	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// Watched namespace.
+	//
+	// example:
+	//
+	// default
+	WatchNamespace *string `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
+}
+
+func (s UpdateHttpApiRequestIngressConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHttpApiRequestIngressConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHttpApiRequestIngressConfig) SetEnvironmentId(v string) *UpdateHttpApiRequestIngressConfig {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequestIngressConfig) SetIngressClass(v string) *UpdateHttpApiRequestIngressConfig {
+	s.IngressClass = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequestIngressConfig) SetOverrideIngressIp(v bool) *UpdateHttpApiRequestIngressConfig {
+	s.OverrideIngressIp = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequestIngressConfig) SetSourceId(v string) *UpdateHttpApiRequestIngressConfig {
+	s.SourceId = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequestIngressConfig) SetWatchNamespace(v string) *UpdateHttpApiRequestIngressConfig {
+	s.WatchNamespace = &v
+	return s
+}
+
 type UpdateHttpApiResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 393E2630-DBE7-5221-AB35-9E740675491A
@@ -9863,6 +8914,7 @@ func (s *UpdateHttpApiResponse) SetBody(v *UpdateHttpApiResponseBody) *UpdateHtt
 }
 
 type UpdateHttpApiOperationRequest struct {
+	// operation definition.
 	Operation *HttpApiOperation `json:"operation,omitempty" xml:"operation,omitempty"`
 }
 
@@ -9880,14 +8932,20 @@ func (s *UpdateHttpApiOperationRequest) SetOperation(v *HttpApiOperation) *Updat
 }
 
 type UpdateHttpApiOperationResponseBody struct {
+	// Response status code.
+	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 043360DA-ED3B-5386-9B7A-D94DECF99A30
@@ -9946,154 +9004,6 @@ func (s *UpdateHttpApiOperationResponse) SetBody(v *UpdateHttpApiOperationRespon
 	return s
 }
 
-type UpdateServiceSourceRequest struct {
-	K8sServiceSourceConfig *UpdateServiceSourceRequestK8sServiceSourceConfig `json:"k8sServiceSourceConfig,omitempty" xml:"k8sServiceSourceConfig,omitempty" type:"Struct"`
-}
-
-func (s UpdateServiceSourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateServiceSourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateServiceSourceRequest) SetK8sServiceSourceConfig(v *UpdateServiceSourceRequestK8sServiceSourceConfig) *UpdateServiceSourceRequest {
-	s.K8sServiceSourceConfig = v
-	return s
-}
-
-type UpdateServiceSourceRequestK8sServiceSourceConfig struct {
-	IngressConfig *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-}
-
-func (s UpdateServiceSourceRequestK8sServiceSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateServiceSourceRequestK8sServiceSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateServiceSourceRequestK8sServiceSourceConfig) SetIngressConfig(v *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) *UpdateServiceSourceRequestK8sServiceSourceConfig {
-	s.IngressConfig = v
-	return s
-}
-
-type UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig struct {
-	// example:
-	//
-	// true
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// example:
-	//
-	// mse
-	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// example:
-	//
-	// false
-	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
-	// example:
-	//
-	// default
-	WatchNamespace *string `json:"watchNamespace,omitempty" xml:"watchNamespace,omitempty"`
-}
-
-func (s UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetEnable(v bool) *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetIngressClass(v string) *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.IngressClass = &v
-	return s
-}
-
-func (s *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetOverrideIngressIp(v bool) *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.OverrideIngressIp = &v
-	return s
-}
-
-func (s *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig) SetWatchNamespace(v string) *UpdateServiceSourceRequestK8sServiceSourceConfigIngressConfig {
-	s.WatchNamespace = &v
-	return s
-}
-
-type UpdateServiceSourceResponseBody struct {
-	// example:
-	//
-	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// example:
-	//
-	// 393E2630-DBE7-5221-AB35-9E740675491A
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s UpdateServiceSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateServiceSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateServiceSourceResponseBody) SetCode(v string) *UpdateServiceSourceResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateServiceSourceResponseBody) SetMessage(v string) *UpdateServiceSourceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdateServiceSourceResponseBody) SetRequestId(v string) *UpdateServiceSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateServiceSourceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateServiceSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateServiceSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateServiceSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateServiceSourceResponse) SetHeaders(v map[string]*string) *UpdateServiceSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateServiceSourceResponse) SetStatusCode(v int32) *UpdateServiceSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateServiceSourceResponse) SetBody(v *UpdateServiceSourceResponseBody) *UpdateServiceSourceResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -10143,7 +9053,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 授权网关访问服务的安全组
+// Authorize the security group for gateway to access services
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -10196,7 +9106,7 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 
 // Summary:
 //
-// 授权网关访问服务的安全组
+// Authorize the security group for gateway to access services
 //
 // @param request - AddGatewaySecurityGroupRuleRequest
 //
@@ -10215,7 +9125,11 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
-// 创建域名
+// Create Domain
+//
+// Description:
+//
+// Create Domain.
 //
 // @param request - CreateDomainRequest
 //
@@ -10230,12 +9144,12 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CaCertIndentifier)) {
-		body["caCertIndentifier"] = request.CaCertIndentifier
+	if !tea.BoolValue(util.IsUnset(request.CaCertIdentifier)) {
+		body["caCertIdentifier"] = request.CaCertIdentifier
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CertIndentifier)) {
-		body["certIndentifier"] = request.CertIndentifier
+	if !tea.BoolValue(util.IsUnset(request.CertIdentifier)) {
+		body["certIdentifier"] = request.CertIdentifier
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ForceHttps)) {
@@ -10252,6 +9166,10 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
 		body["protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TlsMax)) {
@@ -10288,7 +9206,11 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 // Summary:
 //
-// 创建域名
+// Create Domain
+//
+// Description:
+//
+// Create Domain.
 //
 // @param request - CreateDomainRequest
 //
@@ -10308,6 +9230,10 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 // Summary:
 //
 // CreateEnvironment
+//
+// Description:
+//
+// Create environment.
 //
 // @param request - CreateEnvironmentRequest
 //
@@ -10338,6 +9264,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		body["name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -10366,6 +9296,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 //
 // CreateEnvironment
 //
+// Description:
+//
+// Create environment.
+//
 // @param request - CreateEnvironmentRequest
 //
 // @return CreateEnvironmentResponse
@@ -10383,223 +9317,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 
 // Summary:
 //
-// 创建网关路由
-//
-// @param request - CreateGatewayRouteRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateGatewayRouteResponse
-func (client *Client) CreateGatewayRouteWithOptions(gatewayId *string, request *CreateGatewayRouteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayRouteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BackendConfig)) {
-		body["backendConfig"] = request.BackendConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainConfig)) {
-		body["domainConfig"] = request.DomainConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Match)) {
-		body["match"] = request.Match
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建网关路由
-//
-// @param request - CreateGatewayRouteRequest
-//
-// @return CreateGatewayRouteResponse
-func (client *Client) CreateGatewayRoute(gatewayId *string, request *CreateGatewayRouteRequest) (_result *CreateGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGatewayRouteResponse{}
-	_body, _err := client.CreateGatewayRouteWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务
-//
-// @param request - CreateGatewayServiceRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateGatewayServiceResponse
-func (client *Client) CreateGatewayServiceWithOptions(gatewayId *string, request *CreateGatewayServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GatewayServiceConfigs)) {
-		body["gatewayServiceConfigs"] = request.GatewayServiceConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
-		body["sourceType"] = request.SourceType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateGatewayService"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateGatewayServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务
-//
-// @param request - CreateGatewayServiceRequest
-//
-// @return CreateGatewayServiceResponse
-func (client *Client) CreateGatewayService(gatewayId *string, request *CreateGatewayServiceRequest) (_result *CreateGatewayServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGatewayServiceResponse{}
-	_body, _err := client.CreateGatewayServiceWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务版本
-//
-// @param request - CreateGatewayServiceVersionRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateGatewayServiceVersionResponse
-func (client *Client) CreateGatewayServiceVersionWithOptions(gatewayId *string, gatewayServiceId *string, request *CreateGatewayServiceVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayServiceVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Labels)) {
-		body["labels"] = request.Labels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateGatewayServiceVersion"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId)) + "/service-versions"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateGatewayServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务版本
-//
-// @param request - CreateGatewayServiceVersionRequest
-//
-// @return CreateGatewayServiceVersionResponse
-func (client *Client) CreateGatewayServiceVersion(gatewayId *string, gatewayServiceId *string, request *CreateGatewayServiceVersionRequest) (_result *CreateGatewayServiceVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGatewayServiceVersionResponse{}
-	_body, _err := client.CreateGatewayServiceVersionWithOptions(gatewayId, gatewayServiceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一个HTTP类型的API
+// Create an API of HTTP type
 //
 // @param request - CreateHttpApiRequest
 //
@@ -10614,12 +9332,24 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AiProtocols)) {
+		body["aiProtocols"] = request.AiProtocols
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
 		body["basePath"] = request.BasePath
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeployConfigs)) {
+		body["deployConfigs"] = request.DeployConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressConfig)) {
+		body["ingressConfig"] = request.IngressConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -10628,6 +9358,14 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
 		body["protocols"] = request.Protocols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionConfig)) {
@@ -10660,7 +9398,7 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 
 // Summary:
 //
-// 创建一个HTTP类型的API
+// Create an API of HTTP type
 //
 // @param request - CreateHttpApiRequest
 //
@@ -10679,7 +9417,7 @@ func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *Cre
 
 // Summary:
 //
-// 为HTTP API创建Operation
+// Create an Operation for HTTP API
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -10724,7 +9462,7 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 
 // Summary:
 //
-// 为HTTP API创建Operation
+// Create an Operation for HTTP API
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -10734,78 +9472,6 @@ func (client *Client) CreateHttpApiOperation(httpApiId *string, request *CreateH
 	headers := make(map[string]*string)
 	_result = &CreateHttpApiOperationResponse{}
 	_body, _err := client.CreateHttpApiOperationWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务来源
-//
-// @param request - CreateServiceSourceRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateServiceSourceResponse
-func (client *Client) CreateServiceSourceWithOptions(gatewayId *string, request *CreateServiceSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceSourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.K8sServiceSourceConfig)) {
-		body["k8sServiceSourceConfig"] = request.K8sServiceSourceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NacosServiceSourceConfig)) {
-		body["nacosServiceSourceConfig"] = request.NacosServiceSourceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateServiceSource"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/service-sources"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateServiceSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建服务来源
-//
-// @param request - CreateServiceSourceRequest
-//
-// @return CreateServiceSourceResponse
-func (client *Client) CreateServiceSource(gatewayId *string, request *CreateServiceSourceRequest) (_result *CreateServiceSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateServiceSourceResponse{}
-	_body, _err := client.CreateServiceSourceWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10915,7 +9581,7 @@ func (client *Client) DeleteEnvironment(environmentId *string) (_result *DeleteE
 
 // Summary:
 //
-// 删除网关
+// Delete Gateway
 //
 // @param headers - map
 //
@@ -10948,7 +9614,7 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 
 // Summary:
 //
-// 删除网关
+// Delete Gateway
 //
 // @return DeleteGatewayResponse
 func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayResponse, _err error) {
@@ -10965,157 +9631,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 
 // Summary:
 //
-// 创建网关路由
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteGatewayRouteResponse
-func (client *Client) DeleteGatewayRouteWithOptions(gatewayId *string, gatewayRouteId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayRouteId))),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建网关路由
-//
-// @return DeleteGatewayRouteResponse
-func (client *Client) DeleteGatewayRoute(gatewayId *string, gatewayRouteId *string) (_result *DeleteGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGatewayRouteResponse{}
-	_body, _err := client.DeleteGatewayRouteWithOptions(gatewayId, gatewayRouteId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteGatewayServiceResponse
-func (client *Client) DeleteGatewayServiceWithOptions(gatewayId *string, gatewayServiceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayServiceResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteGatewayService"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId))),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteGatewayServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务
-//
-// @return DeleteGatewayServiceResponse
-func (client *Client) DeleteGatewayService(gatewayId *string, gatewayServiceId *string) (_result *DeleteGatewayServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGatewayServiceResponse{}
-	_body, _err := client.DeleteGatewayServiceWithOptions(gatewayId, gatewayServiceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务版本
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteGatewayServiceVersionResponse
-func (client *Client) DeleteGatewayServiceVersionWithOptions(gatewayId *string, gatewayServiceId *string, name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayServiceVersionResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteGatewayServiceVersion"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId)) + "/service-versions/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteGatewayServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务版本
-//
-// @return DeleteGatewayServiceVersionResponse
-func (client *Client) DeleteGatewayServiceVersion(gatewayId *string, gatewayServiceId *string, name *string) (_result *DeleteGatewayServiceVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGatewayServiceVersionResponse{}
-	_body, _err := client.DeleteGatewayServiceVersionWithOptions(gatewayId, gatewayServiceId, name, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除HTTP API
+// Delete HTTP API
 //
 // @param headers - map
 //
@@ -11148,7 +9664,7 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 
 // Summary:
 //
-// 删除HTTP API
+// Delete HTTP API
 //
 // @return DeleteHttpApiResponse
 func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiResponse, _err error) {
@@ -11165,7 +9681,7 @@ func (client *Client) DeleteHttpApi(httpApiId *string) (_result *DeleteHttpApiRe
 
 // Summary:
 //
-// 删除Operation
+// Delete Operation
 //
 // @param headers - map
 //
@@ -11198,7 +9714,7 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// 删除Operation
+// Delete Operation
 //
 // @return DeleteHttpApiOperationResponse
 func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *string) (_result *DeleteHttpApiOperationResponse, _err error) {
@@ -11215,66 +9731,28 @@ func (client *Client) DeleteHttpApiOperation(httpApiId *string, operationId *str
 
 // Summary:
 //
-// 删除服务来源
+// Query domain details
 //
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteServiceSourceResponse
-func (client *Client) DeleteServiceSourceWithOptions(gatewayId *string, serviceSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceSourceResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteServiceSource"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/service-sources/" + tea.StringValue(openapiutil.GetEncodeParam(serviceSourceId))),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteServiceSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除服务来源
-//
-// @return DeleteServiceSourceResponse
-func (client *Client) DeleteServiceSource(gatewayId *string, serviceSourceId *string) (_result *DeleteServiceSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteServiceSourceResponse{}
-	_body, _err := client.DeleteServiceSourceWithOptions(gatewayId, serviceSourceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询域名详情
+// @param request - GetDomainRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDomainResponse
-func (client *Client) GetDomainWithOptions(domainId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
+func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WithStatistics)) {
+		query["withStatistics"] = request.WithStatistics
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDomain"),
@@ -11298,14 +9776,16 @@ func (client *Client) GetDomainWithOptions(domainId *string, headers map[string]
 
 // Summary:
 //
-// 查询域名详情
+// Query domain details
+//
+// @param request - GetDomainRequest
 //
 // @return GetDomainResponse
-func (client *Client) GetDomain(domainId *string) (_result *GetDomainResponse, _err error) {
+func (client *Client) GetDomain(domainId *string, request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetDomainResponse{}
-	_body, _err := client.GetDomainWithOptions(domainId, headers, runtime)
+	_body, _err := client.GetDomainWithOptions(domainId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11317,14 +9797,30 @@ func (client *Client) GetDomain(domainId *string) (_result *GetDomainResponse, _
 //
 // GetEnvironment
 //
+// @param request - GetEnvironmentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEnvironmentResponse
-func (client *Client) GetEnvironmentWithOptions(environmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
+func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *GetEnvironmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnvironmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WithStatistics)) {
+		query["withStatistics"] = request.WithStatistics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithVpcInfo)) {
+		query["withVpcInfo"] = request.WithVpcInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetEnvironment"),
@@ -11350,12 +9846,14 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, headers m
 //
 // GetEnvironment
 //
+// @param request - GetEnvironmentRequest
+//
 // @return GetEnvironmentResponse
-func (client *Client) GetEnvironment(environmentId *string) (_result *GetEnvironmentResponse, _err error) {
+func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironmentRequest) (_result *GetEnvironmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetEnvironmentResponse{}
-	_body, _err := client.GetEnvironmentWithOptions(environmentId, headers, runtime)
+	_body, _err := client.GetEnvironmentWithOptions(environmentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11365,7 +9863,7 @@ func (client *Client) GetEnvironment(environmentId *string) (_result *GetEnviron
 
 // Summary:
 //
-// 获取网关实例详情
+// Get a gateway.
 //
 // @param headers - map
 //
@@ -11398,7 +9896,7 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 
 // Summary:
 //
-// 获取网关实例详情
+// Get a gateway.
 //
 // @return GetGatewayResponse
 func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
@@ -11415,107 +9913,7 @@ func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse
 
 // Summary:
 //
-// 创建网关路由
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetGatewayRouteResponse
-func (client *Client) GetGatewayRouteWithOptions(gatewayId *string, gatewayRouteId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGatewayRouteResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayRouteId))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建网关路由
-//
-// @return GetGatewayRouteResponse
-func (client *Client) GetGatewayRoute(gatewayId *string, gatewayRouteId *string) (_result *GetGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetGatewayRouteResponse{}
-	_body, _err := client.GetGatewayRouteWithOptions(gatewayId, gatewayRouteId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetGatewayServiceResponse
-func (client *Client) GetGatewayServiceWithOptions(gatewayId *string, gatewayServiceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGatewayServiceResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetGatewayService"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId))),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetGatewayServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务
-//
-// @return GetGatewayServiceResponse
-func (client *Client) GetGatewayService(gatewayId *string, gatewayServiceId *string) (_result *GetGatewayServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetGatewayServiceResponse{}
-	_body, _err := client.GetGatewayServiceWithOptions(gatewayId, gatewayServiceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 读取HttpApi
+// Read HttpApi
 //
 // @param headers - map
 //
@@ -11548,7 +9946,7 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[strin
 
 // Summary:
 //
-// 读取HttpApi
+// Read HttpApi
 //
 // @return GetHttpApiResponse
 func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse, _err error) {
@@ -11565,7 +9963,7 @@ func (client *Client) GetHttpApi(httpApiId *string) (_result *GetHttpApiResponse
 
 // Summary:
 //
-// 读取Operation
+// Get Operation
 //
 // @param headers - map
 //
@@ -11598,7 +9996,7 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 
 // Summary:
 //
-// 读取Operation
+// Get Operation
 //
 // @return GetHttpApiOperationResponse
 func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
@@ -11606,6 +10004,56 @@ func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string
 	headers := make(map[string]*string)
 	_result = &GetHttpApiOperationResponse{}
 	_body, _err := client.GetHttpApiOperationWithOptions(httpApiId, operationId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取HttpApi的路由详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpApiRouteResponse
+func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHttpApiRouteResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetHttpApiRoute"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/routes/" + tea.StringValue(openapiutil.GetEncodeParam(routeId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetHttpApiRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取HttpApi的路由详情
+//
+// @return GetHttpApiRouteResponse
+func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_result *GetHttpApiRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetHttpApiRouteResponse{}
+	_body, _err := client.GetHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11644,6 +10092,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11730,6 +10182,10 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		query["pageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -11775,180 +10231,26 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 
 // Summary:
 //
-// 创建网关路由
+// Retrieve the list of created cloud-native gateways
 //
-// @param request - ListGatewayRoutesRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListGatewayRoutesResponse
-func (client *Client) ListGatewayRoutesWithOptions(gatewayId *string, request *ListGatewayRoutesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayRoutesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
-		query["keyword"] = request.Keyword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["pageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Path)) {
-		query["path"] = request.Path
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGatewayRoutes"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewayRoutesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建网关路由
-//
-// @param request - ListGatewayRoutesRequest
-//
-// @return ListGatewayRoutesResponse
-func (client *Client) ListGatewayRoutes(gatewayId *string, request *ListGatewayRoutesRequest) (_result *ListGatewayRoutesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListGatewayRoutesResponse{}
-	_body, _err := client.ListGatewayRoutesWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务列表
-//
-// @param request - ListGatewayServicesRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListGatewayServicesResponse
-func (client *Client) ListGatewayServicesWithOptions(gatewayId *string, request *ListGatewayServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayServicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["pageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
-		query["sourceType"] = request.SourceType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGatewayServices"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGatewayServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询服务列表
-//
-// @param request - ListGatewayServicesRequest
-//
-// @return ListGatewayServicesResponse
-func (client *Client) ListGatewayServices(gatewayId *string, request *ListGatewayServicesRequest) (_result *ListGatewayServicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListGatewayServicesResponse{}
-	_body, _err := client.ListGatewayServicesWithOptions(gatewayId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取已经创建的云原生网关列表
-//
-// @param request - ListGatewaysRequest
+// @param tmpReq - ListGatewaysRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewaysResponse
-func (client *Client) ListGatewaysWithOptions(request *ListGatewaysRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewaysResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListGatewaysShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
 		query["gatewayId"] = request.GatewayId
@@ -11968,6 +10270,14 @@ func (client *Client) ListGatewaysWithOptions(request *ListGatewaysRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11996,7 +10306,7 @@ func (client *Client) ListGatewaysWithOptions(request *ListGatewaysRequest, head
 
 // Summary:
 //
-// 获取已经创建的云原生网关列表
+// Retrieve the list of created cloud-native gateways
 //
 // @param request - ListGatewaysRequest
 //
@@ -12015,7 +10325,7 @@ func (client *Client) ListGateways(request *ListGatewaysRequest) (_result *ListG
 
 // Summary:
 //
-// 列举Operation
+// List Operations
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -12030,6 +10340,10 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsumerAuthorizationRuleId)) {
+		query["consumerAuthorizationRuleId"] = request.ConsumerAuthorizationRuleId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Method)) {
 		query["method"] = request.Method
 	}
@@ -12052,6 +10366,14 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 
 	if !tea.BoolValue(util.IsUnset(request.PathLike)) {
 		query["pathLike"] = request.PathLike
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithConsumerInEnvironmentId)) {
+		query["withConsumerInEnvironmentId"] = request.WithConsumerInEnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithConsumerInfoById)) {
+		query["withConsumerInfoById"] = request.WithConsumerInfoById
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12080,7 +10402,7 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 
 // Summary:
 //
-// 列举Operation
+// List Operations
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -12099,7 +10421,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 
 // Summary:
 //
-// 列举HTTP API
+// List HTTP APIs
 //
 // @param request - ListHttpApisRequest
 //
@@ -12114,6 +10436,10 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["gatewayId"] = request.GatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["keyword"] = request.Keyword
 	}
@@ -12130,8 +10456,24 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		query["pageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PublishedOnly)) {
-		query["publishedOnly"] = request.PublishedOnly
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["types"] = request.Types
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithAuthPolicyInEnvironmentId)) {
+		query["withAuthPolicyInEnvironmentId"] = request.WithAuthPolicyInEnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithConsumerInfoById)) {
+		query["withConsumerInfoById"] = request.WithConsumerInfoById
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithEnvironmentInfo)) {
+		query["withEnvironmentInfo"] = request.WithEnvironmentInfo
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -12160,7 +10502,7 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 
 // Summary:
 //
-// 列举HTTP API
+// List HTTP APIs
 //
 // @param request - ListHttpApisRequest
 //
@@ -12170,246 +10512,6 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 	headers := make(map[string]*string)
 	_result = &ListHttpApisResponse{}
 	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布路由
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return OfflineGatewayRouteResponse
-func (client *Client) OfflineGatewayRouteWithOptions(gatewayId *string, gatewayRouteId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineGatewayRouteResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("OfflineGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayRouteId)) + "/offline"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &OfflineGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布路由
-//
-// @return OfflineGatewayRouteResponse
-func (client *Client) OfflineGatewayRoute(gatewayId *string, gatewayRouteId *string) (_result *OfflineGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OfflineGatewayRouteResponse{}
-	_body, _err := client.OfflineGatewayRouteWithOptions(gatewayId, gatewayRouteId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 下线已发布的HTTP API
-//
-// @param request - OfflineHttpApiRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return OfflineHttpApiResponse
-func (client *Client) OfflineHttpApiWithOptions(httpApiId *string, request *OfflineHttpApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineHttpApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
-		body["environmentId"] = request.EnvironmentId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("OfflineHttpApi"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/offline"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &OfflineHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 下线已发布的HTTP API
-//
-// @param request - OfflineHttpApiRequest
-//
-// @return OfflineHttpApiResponse
-func (client *Client) OfflineHttpApi(httpApiId *string, request *OfflineHttpApiRequest) (_result *OfflineHttpApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OfflineHttpApiResponse{}
-	_body, _err := client.OfflineHttpApiWithOptions(httpApiId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布路由
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return PublishGatewayRouteResponse
-func (client *Client) PublishGatewayRouteWithOptions(gatewayId *string, gatewayRouteId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishGatewayRouteResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PublishGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayRouteId)) + "/publish"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PublishGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布路由
-//
-// @return PublishGatewayRouteResponse
-func (client *Client) PublishGatewayRoute(gatewayId *string, gatewayRouteId *string) (_result *PublishGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PublishGatewayRouteResponse{}
-	_body, _err := client.PublishGatewayRouteWithOptions(gatewayId, gatewayRouteId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布HTTP API
-//
-// @param request - PublishHttpApiRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return PublishHttpApiResponse
-func (client *Client) PublishHttpApiWithOptions(httpApiId *string, request *PublishHttpApiRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishHttpApiResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AllowOverwrite)) {
-		body["allowOverwrite"] = request.AllowOverwrite
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Environment)) {
-		body["environment"] = request.Environment
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RevisionId)) {
-		body["revisionId"] = request.RevisionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PublishHttpApi"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/http-apis/" + tea.StringValue(openapiutil.GetEncodeParam(httpApiId)) + "/publish"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PublishHttpApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布HTTP API
-//
-// @param request - PublishHttpApiRequest
-//
-// @return PublishHttpApiResponse
-func (client *Client) PublishHttpApi(httpApiId *string, request *PublishHttpApiRequest) (_result *PublishHttpApiResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PublishHttpApiResponse{}
-	_body, _err := client.PublishHttpApiWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12575,215 +10677,7 @@ func (client *Client) UpdateEnvironment(environmentId *string, request *UpdateEn
 
 // Summary:
 //
-// 创建网关路由
-//
-// @param request - UpdateGatewayRouteRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateGatewayRouteResponse
-func (client *Client) UpdateGatewayRouteWithOptions(gatewayId *string, gatewayRouteId *string, request *UpdateGatewayRouteRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BackendConfig)) {
-		body["backendConfig"] = request.BackendConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainConfig)) {
-		body["domainConfig"] = request.DomainConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Match)) {
-		body["match"] = request.Match
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateGatewayRoute"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/http-routes/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayRouteId))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateGatewayRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建网关路由
-//
-// @param request - UpdateGatewayRouteRequest
-//
-// @return UpdateGatewayRouteResponse
-func (client *Client) UpdateGatewayRoute(gatewayId *string, gatewayRouteId *string, request *UpdateGatewayRouteRequest) (_result *UpdateGatewayRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGatewayRouteResponse{}
-	_body, _err := client.UpdateGatewayRouteWithOptions(gatewayId, gatewayRouteId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务
-//
-// @param request - UpdateGatewayServiceRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateGatewayServiceResponse
-func (client *Client) UpdateGatewayServiceWithOptions(gatewayId *string, gatewayServiceId *string, request *UpdateGatewayServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Addresses)) {
-		body["addresses"] = request.Addresses
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Port)) {
-		body["port"] = request.Port
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateGatewayService"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateGatewayServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务
-//
-// @param request - UpdateGatewayServiceRequest
-//
-// @return UpdateGatewayServiceResponse
-func (client *Client) UpdateGatewayService(gatewayId *string, gatewayServiceId *string, request *UpdateGatewayServiceRequest) (_result *UpdateGatewayServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGatewayServiceResponse{}
-	_body, _err := client.UpdateGatewayServiceWithOptions(gatewayId, gatewayServiceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务版本
-//
-// @param request - UpdateGatewayServiceVersionRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateGatewayServiceVersionResponse
-func (client *Client) UpdateGatewayServiceVersionWithOptions(gatewayId *string, gatewayServiceId *string, name *string, request *UpdateGatewayServiceVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceVersionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Labels)) {
-		body["labels"] = request.Labels
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateGatewayServiceVersion"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/gateway-services/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayServiceId)) + "/service-versions/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateGatewayServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务版本
-//
-// @param request - UpdateGatewayServiceVersionRequest
-//
-// @return UpdateGatewayServiceVersionResponse
-func (client *Client) UpdateGatewayServiceVersion(gatewayId *string, gatewayServiceId *string, name *string, request *UpdateGatewayServiceVersionRequest) (_result *UpdateGatewayServiceVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGatewayServiceVersionResponse{}
-	_body, _err := client.UpdateGatewayServiceVersionWithOptions(gatewayId, gatewayServiceId, name, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新HTTP API
+// Update HTTP API
 //
 // @param request - UpdateHttpApiRequest
 //
@@ -12798,12 +10692,24 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AiProtocols)) {
+		body["aiProtocols"] = request.AiProtocols
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BasePath)) {
 		body["basePath"] = request.BasePath
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeployConfigs)) {
+		body["deployConfigs"] = request.DeployConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressConfig)) {
+		body["ingressConfig"] = request.IngressConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
@@ -12840,7 +10746,7 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 
 // Summary:
 //
-// 更新HTTP API
+// Update HTTP API
 //
 // @param request - UpdateHttpApiRequest
 //
@@ -12859,7 +10765,7 @@ func (client *Client) UpdateHttpApi(httpApiId *string, request *UpdateHttpApiReq
 
 // Summary:
 //
-// 更新Operation
+// Update Operation
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -12904,7 +10810,7 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 
 // Summary:
 //
-// 更新Operation
+// Update Operation
 //
 // @param request - UpdateHttpApiOperationRequest
 //
@@ -12914,70 +10820,6 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 	headers := make(map[string]*string)
 	_result = &UpdateHttpApiOperationResponse{}
 	_body, _err := client.UpdateHttpApiOperationWithOptions(httpApiId, operationId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务来源
-//
-// @param request - UpdateServiceSourceRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateServiceSourceResponse
-func (client *Client) UpdateServiceSourceWithOptions(gatewayId *string, serviceSourceId *string, request *UpdateServiceSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceSourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.K8sServiceSourceConfig)) {
-		body["k8sServiceSourceConfig"] = request.K8sServiceSourceConfig
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateServiceSource"),
-		Version:     tea.String("2024-03-27"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v1/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(gatewayId)) + "/service-sources/" + tea.StringValue(openapiutil.GetEncodeParam(serviceSourceId))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateServiceSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新服务来源
-//
-// @param request - UpdateServiceSourceRequest
-//
-// @return UpdateServiceSourceResponse
-func (client *Client) UpdateServiceSource(gatewayId *string, serviceSourceId *string, request *UpdateServiceSourceRequest) (_result *UpdateServiceSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateServiceSourceResponse{}
-	_body, _err := client.UpdateServiceSourceWithOptions(gatewayId, serviceSourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
