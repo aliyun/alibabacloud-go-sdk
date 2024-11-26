@@ -28,8 +28,9 @@ type AnalyzeConversationRequest struct {
 	// example:
 	//
 	// false
-	Stream       *bool                                     `json:"stream,omitempty" xml:"stream,omitempty"`
-	UserProfiles []*AnalyzeConversationRequestUserProfiles `json:"userProfiles,omitempty" xml:"userProfiles,omitempty" type:"Repeated"`
+	Stream             *bool                                     `json:"stream,omitempty" xml:"stream,omitempty"`
+	TimeConstraintList []*string                                 `json:"timeConstraintList,omitempty" xml:"timeConstraintList,omitempty" type:"Repeated"`
+	UserProfiles       []*AnalyzeConversationRequestUserProfiles `json:"userProfiles,omitempty" xml:"userProfiles,omitempty" type:"Repeated"`
 }
 
 func (s AnalyzeConversationRequest) String() string {
@@ -82,6 +83,11 @@ func (s *AnalyzeConversationRequest) SetServiceInspection(v *AnalyzeConversation
 
 func (s *AnalyzeConversationRequest) SetStream(v bool) *AnalyzeConversationRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetTimeConstraintList(v []*string) *AnalyzeConversationRequest {
+	s.TimeConstraintList = v
 	return s
 }
 
@@ -380,6 +386,8 @@ type AnalyzeConversationResponseBody struct {
 	//
 	// stop
 	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	InputTokens  *string `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	OutputTokens *string `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
 	// example:
 	//
 	// 968A8634-FA2C-5381-9B3E-C552DED7E8BF
@@ -387,8 +395,9 @@ type AnalyzeConversationResponseBody struct {
 	// example:
 	//
 	// True
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+	Success     *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Text        *string `json:"text,omitempty" xml:"text,omitempty"`
+	TotalTokens *string `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
 func (s AnalyzeConversationResponseBody) String() string {
@@ -414,6 +423,16 @@ func (s *AnalyzeConversationResponseBody) SetFinishReason(v string) *AnalyzeConv
 	return s
 }
 
+func (s *AnalyzeConversationResponseBody) SetInputTokens(v string) *AnalyzeConversationResponseBody {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetOutputTokens(v string) *AnalyzeConversationResponseBody {
+	s.OutputTokens = &v
+	return s
+}
+
 func (s *AnalyzeConversationResponseBody) SetRequestId(v string) *AnalyzeConversationResponseBody {
 	s.RequestId = &v
 	return s
@@ -426,6 +445,11 @@ func (s *AnalyzeConversationResponseBody) SetSuccess(v bool) *AnalyzeConversatio
 
 func (s *AnalyzeConversationResponseBody) SetText(v string) *AnalyzeConversationResponseBody {
 	s.Text = &v
+	return s
+}
+
+func (s *AnalyzeConversationResponseBody) SetTotalTokens(v string) *AnalyzeConversationResponseBody {
+	s.TotalTokens = &v
 	return s
 }
 
@@ -458,384 +482,136 @@ func (s *AnalyzeConversationResponse) SetBody(v *AnalyzeConversationResponseBody
 	return s
 }
 
-type CreateConversationAnalysisTaskRequest struct {
-	// example:
-	//
-	// 1
-	AutoSplit *int32 `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// example:
-	//
-	// 0
-	ClientChannel *int32                                         `json:"clientChannel,omitempty" xml:"clientChannel,omitempty"`
-	Examples      *CreateConversationAnalysisTaskRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Struct"`
-	Fields        []*CreateConversationAnalysisTaskRequestFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// audio.mp3
-	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// tyxmTurbo
-	ModelCode   *string   `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+type AnalyzeImageRequest struct {
+	ImageUrls   []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
 	ResultTypes []*string `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
-	SceneName   *string   `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
-	// example:
-	//
-	// 0
-	ServiceChannel         *int32                                                  `json:"serviceChannel,omitempty" xml:"serviceChannel,omitempty"`
-	ServiceChannelKeywords []*string                                               `json:"serviceChannelKeywords,omitempty" xml:"serviceChannelKeywords,omitempty" type:"Repeated"`
-	ServiceInspection      *CreateConversationAnalysisTaskRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
-	TemplateIds            []*string                                               `json:"templateIds,omitempty" xml:"templateIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://a.b.com/inner.mp3
-	VoiceFileUrl *string `json:"voiceFileUrl,omitempty" xml:"voiceFileUrl,omitempty"`
+	// false
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
 }
 
-func (s CreateConversationAnalysisTaskRequest) String() string {
+func (s AnalyzeImageRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateConversationAnalysisTaskRequest) GoString() string {
+func (s AnalyzeImageRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateConversationAnalysisTaskRequest) SetAutoSplit(v int32) *CreateConversationAnalysisTaskRequest {
-	s.AutoSplit = &v
+func (s *AnalyzeImageRequest) SetImageUrls(v []*string) *AnalyzeImageRequest {
+	s.ImageUrls = v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskRequest) SetClientChannel(v int32) *CreateConversationAnalysisTaskRequest {
-	s.ClientChannel = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetExamples(v *CreateConversationAnalysisTaskRequestExamples) *CreateConversationAnalysisTaskRequest {
-	s.Examples = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetFields(v []*CreateConversationAnalysisTaskRequestFields) *CreateConversationAnalysisTaskRequest {
-	s.Fields = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetFileName(v string) *CreateConversationAnalysisTaskRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetModelCode(v string) *CreateConversationAnalysisTaskRequest {
-	s.ModelCode = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetResultTypes(v []*string) *CreateConversationAnalysisTaskRequest {
+func (s *AnalyzeImageRequest) SetResultTypes(v []*string) *AnalyzeImageRequest {
 	s.ResultTypes = v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskRequest) SetSceneName(v string) *CreateConversationAnalysisTaskRequest {
-	s.SceneName = &v
+func (s *AnalyzeImageRequest) SetStream(v bool) *AnalyzeImageRequest {
+	s.Stream = &v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskRequest) SetServiceChannel(v int32) *CreateConversationAnalysisTaskRequest {
-	s.ServiceChannel = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetServiceChannelKeywords(v []*string) *CreateConversationAnalysisTaskRequest {
-	s.ServiceChannelKeywords = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetServiceInspection(v *CreateConversationAnalysisTaskRequestServiceInspection) *CreateConversationAnalysisTaskRequest {
-	s.ServiceInspection = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetTemplateIds(v []*string) *CreateConversationAnalysisTaskRequest {
-	s.TemplateIds = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequest) SetVoiceFileUrl(v string) *CreateConversationAnalysisTaskRequest {
-	s.VoiceFileUrl = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestExamples struct {
-	Output *string `json:"output,omitempty" xml:"output,omitempty"`
-	// This parameter is required.
-	Sentences []*CreateConversationAnalysisTaskRequestExamplesSentences `json:"sentences,omitempty" xml:"sentences,omitempty" type:"Repeated"`
-}
-
-func (s CreateConversationAnalysisTaskRequestExamples) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestExamples) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestExamples) SetOutput(v string) *CreateConversationAnalysisTaskRequestExamples {
-	s.Output = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestExamples) SetSentences(v []*CreateConversationAnalysisTaskRequestExamplesSentences) *CreateConversationAnalysisTaskRequestExamples {
-	s.Sentences = v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestExamplesSentences struct {
+type AnalyzeImageResponseBody struct {
 	// example:
 	//
-	// chat-01
-	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// This parameter is required.
-	//
+	// stop
+	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
 	// example:
 	//
-	// user
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// This parameter is required.
-	Text *string `json:"text,omitempty" xml:"text,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskRequestExamplesSentences) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestExamplesSentences) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestExamplesSentences) SetChatId(v string) *CreateConversationAnalysisTaskRequestExamplesSentences {
-	s.ChatId = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestExamplesSentences) SetRole(v string) *CreateConversationAnalysisTaskRequestExamplesSentences {
-	s.Role = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestExamplesSentences) SetText(v string) *CreateConversationAnalysisTaskRequestExamplesSentences {
-	s.Text = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestFields struct {
+	// 1000
+	InputTokens *string `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
 	// example:
 	//
-	// phoneNumber
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// This parameter is required.
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// This parameter is required.
-	EnumValues []*CreateConversationAnalysisTaskRequestFieldsEnumValues `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
-	// This parameter is required.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskRequestFields) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestFields) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestFields) SetCode(v string) *CreateConversationAnalysisTaskRequestFields {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestFields) SetDesc(v string) *CreateConversationAnalysisTaskRequestFields {
-	s.Desc = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestFields) SetEnumValues(v []*CreateConversationAnalysisTaskRequestFieldsEnumValues) *CreateConversationAnalysisTaskRequestFields {
-	s.EnumValues = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestFields) SetName(v string) *CreateConversationAnalysisTaskRequestFields {
-	s.Name = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestFieldsEnumValues struct {
-	// This parameter is required.
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// This parameter is required.
-	EnumValue *string `json:"enumValue,omitempty" xml:"enumValue,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskRequestFieldsEnumValues) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestFieldsEnumValues) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestFieldsEnumValues) SetDesc(v string) *CreateConversationAnalysisTaskRequestFieldsEnumValues {
-	s.Desc = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestFieldsEnumValues) SetEnumValue(v string) *CreateConversationAnalysisTaskRequestFieldsEnumValues {
-	s.EnumValue = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestServiceInspection struct {
-	// This parameter is required.
-	InspectionContents []*CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents `json:"inspectionContents,omitempty" xml:"inspectionContents,omitempty" type:"Repeated"`
-	// This parameter is required.
-	InspectionIntroduction *string `json:"inspectionIntroduction,omitempty" xml:"inspectionIntroduction,omitempty"`
-	// This parameter is required.
-	SceneIntroduction *string `json:"sceneIntroduction,omitempty" xml:"sceneIntroduction,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskRequestServiceInspection) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestServiceInspection) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestServiceInspection) SetInspectionContents(v []*CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents) *CreateConversationAnalysisTaskRequestServiceInspection {
-	s.InspectionContents = v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestServiceInspection) SetInspectionIntroduction(v string) *CreateConversationAnalysisTaskRequestServiceInspection {
-	s.InspectionIntroduction = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestServiceInspection) SetSceneIntroduction(v string) *CreateConversationAnalysisTaskRequestServiceInspection {
-	s.SceneIntroduction = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents struct {
-	// This parameter is required.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// This parameter is required.
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents) SetContent(v string) *CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents) SetTitle(v string) *CreateConversationAnalysisTaskRequestServiceInspectionInspectionContents {
-	s.Title = &v
-	return s
-}
-
-type CreateConversationAnalysisTaskResponseBody struct {
-	Data *CreateConversationAnalysisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// 2000
+	OutputTokens *string `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
 	// example:
 	//
-	// 9F1DB065-AE0D-5EE3-B1AF-48632CB0831C
+	// 9*****-AE0D-5EE3-B1AF-48632CB0831C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
 	// True
-	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+	// example:
+	//
+	// 3000
+	TotalTokens *string `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
-func (s CreateConversationAnalysisTaskResponseBody) String() string {
+func (s AnalyzeImageResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateConversationAnalysisTaskResponseBody) GoString() string {
+func (s AnalyzeImageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateConversationAnalysisTaskResponseBody) SetData(v *CreateConversationAnalysisTaskResponseBodyData) *CreateConversationAnalysisTaskResponseBody {
-	s.Data = v
+func (s *AnalyzeImageResponseBody) SetFinishReason(v string) *AnalyzeImageResponseBody {
+	s.FinishReason = &v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskResponseBody) SetRequestId(v string) *CreateConversationAnalysisTaskResponseBody {
+func (s *AnalyzeImageResponseBody) SetInputTokens(v string) *AnalyzeImageResponseBody {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *AnalyzeImageResponseBody) SetOutputTokens(v string) *AnalyzeImageResponseBody {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *AnalyzeImageResponseBody) SetRequestId(v string) *AnalyzeImageResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskResponseBody) SetSuccess(v string) *CreateConversationAnalysisTaskResponseBody {
+func (s *AnalyzeImageResponseBody) SetSuccess(v bool) *AnalyzeImageResponseBody {
 	s.Success = &v
 	return s
 }
 
-type CreateConversationAnalysisTaskResponseBodyData struct {
-	// example:
-	//
-	// 20240905-********-93E9-5D45-B4EF-045743A34071
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-}
-
-func (s CreateConversationAnalysisTaskResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConversationAnalysisTaskResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConversationAnalysisTaskResponseBodyData) SetTaskId(v string) *CreateConversationAnalysisTaskResponseBodyData {
-	s.TaskId = &v
+func (s *AnalyzeImageResponseBody) SetText(v string) *AnalyzeImageResponseBody {
+	s.Text = &v
 	return s
 }
 
-type CreateConversationAnalysisTaskResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateConversationAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+func (s *AnalyzeImageResponseBody) SetTotalTokens(v string) *AnalyzeImageResponseBody {
+	s.TotalTokens = &v
+	return s
 }
 
-func (s CreateConversationAnalysisTaskResponse) String() string {
+type AnalyzeImageResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeImageResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateConversationAnalysisTaskResponse) GoString() string {
+func (s AnalyzeImageResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CreateConversationAnalysisTaskResponse) SetHeaders(v map[string]*string) *CreateConversationAnalysisTaskResponse {
+func (s *AnalyzeImageResponse) SetHeaders(v map[string]*string) *AnalyzeImageResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskResponse) SetStatusCode(v int32) *CreateConversationAnalysisTaskResponse {
+func (s *AnalyzeImageResponse) SetStatusCode(v int32) *AnalyzeImageResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *CreateConversationAnalysisTaskResponse) SetBody(v *CreateConversationAnalysisTaskResponseBody) *CreateConversationAnalysisTaskResponse {
+func (s *AnalyzeImageResponse) SetBody(v *AnalyzeImageResponseBody) *AnalyzeImageResponse {
 	s.Body = v
 	return s
 }
@@ -1653,8 +1429,11 @@ type RunCompletionResponseBody struct {
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Text         *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	InputTokens  *string `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	OutputTokens *string `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	TotalTokens  *string `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
 func (s RunCompletionResponseBody) String() string {
@@ -1677,6 +1456,21 @@ func (s *RunCompletionResponseBody) SetRequestId(v string) *RunCompletionRespons
 
 func (s *RunCompletionResponseBody) SetText(v string) *RunCompletionResponseBody {
 	s.Text = &v
+	return s
+}
+
+func (s *RunCompletionResponseBody) SetInputTokens(v string) *RunCompletionResponseBody {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunCompletionResponseBody) SetOutputTokens(v string) *RunCompletionResponseBody {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunCompletionResponseBody) SetTotalTokens(v string) *RunCompletionResponseBody {
+	s.TotalTokens = &v
 	return s
 }
 
@@ -1779,8 +1573,11 @@ type RunCompletionMessageResponseBody struct {
 	// example:
 	//
 	// 17204B98-xxxx-4F9A-8464-2446A84821CA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Text         *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	InputTokens  *string `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	OutputTokens *string `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	TotalTokens  *string `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
 }
 
 func (s RunCompletionMessageResponseBody) String() string {
@@ -1803,6 +1600,21 @@ func (s *RunCompletionMessageResponseBody) SetRequestId(v string) *RunCompletion
 
 func (s *RunCompletionMessageResponseBody) SetText(v string) *RunCompletionMessageResponseBody {
 	s.Text = &v
+	return s
+}
+
+func (s *RunCompletionMessageResponseBody) SetInputTokens(v string) *RunCompletionMessageResponseBody {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunCompletionMessageResponseBody) SetOutputTokens(v string) *RunCompletionMessageResponseBody {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunCompletionMessageResponseBody) SetTotalTokens(v string) *RunCompletionMessageResponseBody {
+	s.TotalTokens = &v
 	return s
 }
 
@@ -1935,6 +1747,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 		body["stream"] = request.Stream
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TimeConstraintList)) {
+		body["timeConstraintList"] = request.TimeConstraintList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserProfiles)) {
 		body["userProfiles"] = request.UserProfiles
 	}
@@ -1984,71 +1800,31 @@ func (client *Client) AnalyzeConversation(workspaceId *string, appId *string, re
 
 // Summary:
 //
-// 创建语音文件调用llm任务
+// 图片分析
 //
-// @param request - CreateConversationAnalysisTaskRequest
+// @param request - AnalyzeImageRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return CreateConversationAnalysisTaskResponse
-func (client *Client) CreateConversationAnalysisTaskWithOptions(workspaceId *string, appId *string, request *CreateConversationAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConversationAnalysisTaskResponse, _err error) {
+// @return AnalyzeImageResponse
+func (client *Client) AnalyzeImageWithOptions(workspaceId *string, appId *string, request *AnalyzeImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AnalyzeImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AutoSplit)) {
-		body["autoSplit"] = request.AutoSplit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientChannel)) {
-		body["clientChannel"] = request.ClientChannel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Examples)) {
-		body["examples"] = request.Examples
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Fields)) {
-		body["fields"] = request.Fields
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		body["fileName"] = request.FileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
-		body["modelCode"] = request.ModelCode
+	if !tea.BoolValue(util.IsUnset(request.ImageUrls)) {
+		body["imageUrls"] = request.ImageUrls
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
 		body["resultTypes"] = request.ResultTypes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SceneName)) {
-		body["sceneName"] = request.SceneName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceChannel)) {
-		body["serviceChannel"] = request.ServiceChannel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceChannelKeywords)) {
-		body["serviceChannelKeywords"] = request.ServiceChannelKeywords
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceInspection)) {
-		body["serviceInspection"] = request.ServiceInspection
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
-		body["templateIds"] = request.TemplateIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.VoiceFileUrl)) {
-		body["voiceFileUrl"] = request.VoiceFileUrl
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -2056,17 +1832,17 @@ func (client *Client) CreateConversationAnalysisTaskWithOptions(workspaceId *str
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("CreateConversationAnalysisTask"),
+		Action:      tea.String("AnalyzeImage"),
 		Version:     tea.String("2024-06-03"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/ccai/app/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/createConversationAnalysisTask"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/ccai/app/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/analyzeImage"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateConversationAnalysisTaskResponse{}
+	_result = &AnalyzeImageResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2077,16 +1853,16 @@ func (client *Client) CreateConversationAnalysisTaskWithOptions(workspaceId *str
 
 // Summary:
 //
-// 创建语音文件调用llm任务
+// 图片分析
 //
-// @param request - CreateConversationAnalysisTaskRequest
+// @param request - AnalyzeImageRequest
 //
-// @return CreateConversationAnalysisTaskResponse
-func (client *Client) CreateConversationAnalysisTask(workspaceId *string, appId *string, request *CreateConversationAnalysisTaskRequest) (_result *CreateConversationAnalysisTaskResponse, _err error) {
+// @return AnalyzeImageResponse
+func (client *Client) AnalyzeImage(workspaceId *string, appId *string, request *AnalyzeImageRequest) (_result *AnalyzeImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateConversationAnalysisTaskResponse{}
-	_body, _err := client.CreateConversationAnalysisTaskWithOptions(workspaceId, appId, request, headers, runtime)
+	_result = &AnalyzeImageResponse{}
+	_body, _err := client.AnalyzeImageWithOptions(workspaceId, appId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
