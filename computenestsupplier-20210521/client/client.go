@@ -12344,6 +12344,111 @@ func (s *RestartServiceInstanceResponse) SetBody(v *RestartServiceInstanceRespon
 	return s
 }
 
+type RollbackServiceInstanceRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// si-3a8f9a75da074f52b969
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s RollbackServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceRequest) SetClientToken(v string) *RollbackServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceRequest) SetRegionId(v string) *RollbackServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceRequest) SetServiceInstanceId(v string) *RollbackServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type RollbackServiceInstanceResponseBody struct {
+	// example:
+	//
+	// EE9EF87D-46F8-5AF6-9A65-6B034E204136
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// si-5289e1d6d0c14397881d
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// example:
+	//
+	// UpgradeRollbacking
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s RollbackServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceResponseBody) SetRequestId(v string) *RollbackServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponseBody) SetServiceInstanceId(v string) *RollbackServiceInstanceResponseBody {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponseBody) SetStatus(v string) *RollbackServiceInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type RollbackServiceInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RollbackServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RollbackServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceResponse) SetHeaders(v map[string]*string) *RollbackServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponse) SetStatusCode(v int32) *RollbackServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponse) SetBody(v *RollbackServiceInstanceResponseBody) *RollbackServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StartServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -17627,6 +17732,74 @@ func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartServiceInstanceResponse{}
 	_body, _err := client.RestartServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚服务实例
+//
+// @param request - RollbackServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackServiceInstanceResponse
+func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *RollbackServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RollbackServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚服务实例
+//
+// @param request - RollbackServiceInstanceRequest
+//
+// @return RollbackServiceInstanceResponse
+func (client *Client) RollbackServiceInstance(request *RollbackServiceInstanceRequest) (_result *RollbackServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RollbackServiceInstanceResponse{}
+	_body, _err := client.RollbackServiceInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
