@@ -421,6 +421,8 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 type AddUserRequest struct {
+	// Deprecated
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -457,6 +459,11 @@ func (s AddUserRequest) String() string {
 
 func (s AddUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddUserRequest) SetAccountId(v string) *AddUserRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *AddUserRequest) SetAccountName(v string) *AddUserRequest {
@@ -18068,6 +18075,185 @@ func (s *SetDataLevelPermissionWhiteListResponse) SetBody(v *SetDataLevelPermiss
 	return s
 }
 
+type SmartqQueryAbilityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	UserQuestion *string `json:"UserQuestion,omitempty" xml:"UserQuestion,omitempty"`
+}
+
+func (s SmartqQueryAbilityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityRequest) SetCubeId(v string) *SmartqQueryAbilityRequest {
+	s.CubeId = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityRequest) SetUserId(v string) *SmartqQueryAbilityRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityRequest) SetUserQuestion(v string) *SmartqQueryAbilityRequest {
+	s.UserQuestion = &v
+	return s
+}
+
+type SmartqQueryAbilityResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A************2B05DF8D885
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *SmartqQueryAbilityResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SmartqQueryAbilityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityResponseBody) SetRequestId(v string) *SmartqQueryAbilityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBody) SetResult(v *SmartqQueryAbilityResponseBodyResult) *SmartqQueryAbilityResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBody) SetSuccess(v bool) *SmartqQueryAbilityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SmartqQueryAbilityResponseBodyResult struct {
+	ChartType *string                                         `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	MetaType  []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
+	Values    []*SmartqQueryAbilityResponseBodyResultValues   `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s SmartqQueryAbilityResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityResponseBodyResult) SetChartType(v string) *SmartqQueryAbilityResponseBodyResult {
+	s.ChartType = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBodyResult) SetMetaType(v []*SmartqQueryAbilityResponseBodyResultMetaType) *SmartqQueryAbilityResponseBodyResult {
+	s.MetaType = v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBodyResult) SetValues(v []*SmartqQueryAbilityResponseBodyResultValues) *SmartqQueryAbilityResponseBodyResult {
+	s.Values = v
+	return s
+}
+
+type SmartqQueryAbilityResponseBodyResultMetaType struct {
+	// example:
+	//
+	// Polar***STPS
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// string
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SmartqQueryAbilityResponseBodyResultMetaType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityResponseBodyResultMetaType) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetKey(v string) *SmartqQueryAbilityResponseBodyResultMetaType {
+	s.Key = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetValue(v string) *SmartqQueryAbilityResponseBodyResultMetaType {
+	s.Value = &v
+	return s
+}
+
+type SmartqQueryAbilityResponseBodyResultValues struct {
+	Row []*string `json:"Row,omitempty" xml:"Row,omitempty" type:"Repeated"`
+}
+
+func (s SmartqQueryAbilityResponseBodyResultValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityResponseBodyResultValues) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityResponseBodyResultValues) SetRow(v []*string) *SmartqQueryAbilityResponseBodyResultValues {
+	s.Row = v
+	return s
+}
+
+type SmartqQueryAbilityResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmartqQueryAbilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SmartqQueryAbilityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqQueryAbilityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqQueryAbilityResponse) SetHeaders(v map[string]*string) *SmartqQueryAbilityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponse) SetStatusCode(v int32) *SmartqQueryAbilityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponse) SetBody(v *SmartqQueryAbilityResponseBody) *SmartqQueryAbilityResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDataLevelPermissionStatusRequest struct {
 	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
 	//
@@ -19565,6 +19751,10 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
 		query["AccountName"] = request.AccountName
 	}
@@ -25682,6 +25872,74 @@ func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermi
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionWhiteListResponse{}
 	_body, _err := client.SetDataLevelPermissionWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 问数能力开放
+//
+// @param request - SmartqQueryAbilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmartqQueryAbilityResponse
+func (client *Client) SmartqQueryAbilityWithOptions(request *SmartqQueryAbilityRequest, runtime *util.RuntimeOptions) (_result *SmartqQueryAbilityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CubeId)) {
+		query["CubeId"] = request.CubeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserQuestion)) {
+		query["UserQuestion"] = request.UserQuestion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmartqQueryAbility"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SmartqQueryAbilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 问数能力开放
+//
+// @param request - SmartqQueryAbilityRequest
+//
+// @return SmartqQueryAbilityResponse
+func (client *Client) SmartqQueryAbility(request *SmartqQueryAbilityRequest) (_result *SmartqQueryAbilityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SmartqQueryAbilityResponse{}
+	_body, _err := client.SmartqQueryAbilityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
