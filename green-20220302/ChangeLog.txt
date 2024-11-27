@@ -1,3 +1,7 @@
+2024-11-27 Version: v2.19.0
+- Support API ImageBatchModeration.
+
+
 2024-11-08 Version: v2.18.0
 - Generated golang 2022-03-02 for Green.
 

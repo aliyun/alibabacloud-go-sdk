@@ -1870,6 +1870,651 @@ func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBo
 	return s
 }
 
+type ImageBatchModerationRequest struct {
+	// example:
+	//
+	// {
+	//
+	//         "imageUrl": "https://img.alicdn.com/tfs/TB1U4r9AeH2gK0jSZJnXXaT1FXa-2880-480.png",
+	//
+	//         "dataId": "img123****"
+	//
+	//     }
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	// example:
+	//
+	// baselineCheck,tonalityImprove
+	Services *string `json:"Services,omitempty" xml:"Services,omitempty"`
+}
+
+func (s ImageBatchModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationRequest) SetServiceParameters(v string) *ImageBatchModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+func (s *ImageBatchModerationRequest) SetServices(v string) *ImageBatchModerationRequest {
+	s.Services = &v
+	return s
+}
+
+type ImageBatchModerationResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ImageBatchModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBody) SetCode(v int32) *ImageBatchModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBody) SetData(v *ImageBatchModerationResponseBodyData) *ImageBatchModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBody) SetMsg(v string) *ImageBatchModerationResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBody) SetRequestId(v string) *ImageBatchModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyData struct {
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
+	DataId  *string                                        `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Result  []*ImageBatchModerationResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Results []*ImageBatchModerationResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyData) SetDataId(v string) *ImageBatchModerationResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyData) SetResult(v []*ImageBatchModerationResponseBodyDataResult) *ImageBatchModerationResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyData) SetResults(v []*ImageBatchModerationResponseBodyDataResults) *ImageBatchModerationResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyData) SetRiskLevel(v string) *ImageBatchModerationResponseBodyData {
+	s.RiskLevel = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResult struct {
+	// example:
+	//
+	// 81.22
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResult) SetConfidence(v float32) *ImageBatchModerationResponseBodyDataResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResult) SetDescription(v string) *ImageBatchModerationResponseBodyDataResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResult) SetLabel(v string) *ImageBatchModerationResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResults struct {
+	Ext    *ImageBatchModerationResponseBodyDataResultsExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	Result []*ImageBatchModerationResponseBodyDataResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// example:
+	//
+	// baselineCheck
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResults) SetExt(v *ImageBatchModerationResponseBodyDataResultsExt) *ImageBatchModerationResponseBodyDataResults {
+	s.Ext = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResults) SetResult(v []*ImageBatchModerationResponseBodyDataResultsResult) *ImageBatchModerationResponseBodyDataResults {
+	s.Result = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResults) SetRiskLevel(v string) *ImageBatchModerationResponseBodyDataResults {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResults) SetService(v string) *ImageBatchModerationResponseBodyDataResults {
+	s.Service = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExt struct {
+	CustomImage  []*ImageBatchModerationResponseBodyDataResultsExtCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	LogoData     *ImageBatchModerationResponseBodyDataResultsExtLogoData       `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Struct"`
+	PublicFigure []*ImageBatchModerationResponseBodyDataResultsExtPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
+	TextInImage  *ImageBatchModerationResponseBodyDataResultsExtTextInImage    `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExt) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExt) SetCustomImage(v []*ImageBatchModerationResponseBodyDataResultsExtCustomImage) *ImageBatchModerationResponseBodyDataResultsExt {
+	s.CustomImage = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExt) SetLogoData(v *ImageBatchModerationResponseBodyDataResultsExtLogoData) *ImageBatchModerationResponseBodyDataResultsExt {
+	s.LogoData = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExt) SetPublicFigure(v []*ImageBatchModerationResponseBodyDataResultsExtPublicFigure) *ImageBatchModerationResponseBodyDataResultsExt {
+	s.PublicFigure = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExt) SetTextInImage(v *ImageBatchModerationResponseBodyDataResultsExtTextInImage) *ImageBatchModerationResponseBodyDataResultsExt {
+	s.TextInImage = v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtCustomImage struct {
+	// example:
+	//
+	// 1965304870002
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 1965304870002
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtCustomImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtCustomImage) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtCustomImage) SetImageId(v string) *ImageBatchModerationResponseBodyDataResultsExtCustomImage {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtCustomImage) SetLibId(v string) *ImageBatchModerationResponseBodyDataResultsExtCustomImage {
+	s.LibId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtCustomImage) SetLibName(v string) *ImageBatchModerationResponseBodyDataResultsExtCustomImage {
+	s.LibName = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtLogoData struct {
+	Location *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Logo     []*ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo   `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoData) SetLocation(v *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) *ImageBatchModerationResponseBodyDataResultsExtLogoData {
+	s.Location = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoData) SetLogo(v []*ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) *ImageBatchModerationResponseBodyDataResultsExtLogoData {
+	s.Logo = v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation struct {
+	// example:
+	//
+	// 440
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 330
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 11
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 22
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) SetH(v int32) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) SetW(v int32) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) SetX(v int32) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation) SetY(v int32) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLocation {
+	s.Y = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo struct {
+	// example:
+	//
+	// 99.1
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// example:
+	//
+	// logo_sns
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) SetConfidence(v float32) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) SetLabel(v string) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo {
+	s.Label = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo) SetName(v string) *ImageBatchModerationResponseBodyDataResultsExtLogoDataLogo {
+	s.Name = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtPublicFigure struct {
+	FigureId   *string                                                               `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	FigureName *string                                                               `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+	Location   []*ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtPublicFigure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtPublicFigure) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigure) SetFigureId(v string) *ImageBatchModerationResponseBodyDataResultsExtPublicFigure {
+	s.FigureId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigure) SetFigureName(v string) *ImageBatchModerationResponseBodyDataResultsExtPublicFigure {
+	s.FigureName = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigure) SetLocation(v []*ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) *ImageBatchModerationResponseBodyDataResultsExtPublicFigure {
+	s.Location = v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation struct {
+	// example:
+	//
+	// 440
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 330
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 11
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 22
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) SetH(v int32) *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) SetW(v int32) *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) SetX(v int32) *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation) SetY(v int32) *ImageBatchModerationResponseBodyDataResultsExtPublicFigureLocation {
+	s.Y = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtTextInImage struct {
+	CustomText []*ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText `json:"CustomText,omitempty" xml:"CustomText,omitempty" type:"Repeated"`
+	OcrResult  []*ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult  `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	RiskWord   []*string                                                              `json:"RiskWord,omitempty" xml:"RiskWord,omitempty" type:"Repeated"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImage) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImage) SetCustomText(v []*ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) *ImageBatchModerationResponseBodyDataResultsExtTextInImage {
+	s.CustomText = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImage) SetOcrResult(v []*ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) *ImageBatchModerationResponseBodyDataResultsExtTextInImage {
+	s.OcrResult = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImage) SetRiskWord(v []*string) *ImageBatchModerationResponseBodyDataResultsExtTextInImage {
+	s.RiskWord = v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	// example:
+	//
+	// 123456
+	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) SetKeyWords(v string) *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) SetLibId(v string) *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText {
+	s.LibId = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText) SetLibName(v string) *ImageBatchModerationResponseBodyDataResultsExtTextInImageCustomText {
+	s.LibName = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult struct {
+	Location *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// example:
+	//
+	// abcd
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) SetLocation(v *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult {
+	s.Location = v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult) SetText(v string) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResult {
+	s.Text = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation struct {
+	// example:
+	//
+	// 33
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// example:
+	//
+	// 44
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// example:
+	//
+	// 11
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 22
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) SetH(v int32) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) SetW(v int32) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) SetX(v int32) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation) SetY(v int32) *ImageBatchModerationResponseBodyDataResultsExtTextInImageOcrResultLocation {
+	s.Y = &v
+	return s
+}
+
+type ImageBatchModerationResponseBodyDataResultsResult struct {
+	// example:
+	//
+	// 81.22
+	Confidence  *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// violent_explosion
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponseBodyDataResultsResult) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsResult) SetConfidence(v float32) *ImageBatchModerationResponseBodyDataResultsResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsResult) SetDescription(v string) *ImageBatchModerationResponseBodyDataResultsResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponseBodyDataResultsResult) SetLabel(v string) *ImageBatchModerationResponseBodyDataResultsResult {
+	s.Label = &v
+	return s
+}
+
+type ImageBatchModerationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImageBatchModerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImageBatchModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageBatchModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageBatchModerationResponse) SetHeaders(v map[string]*string) *ImageBatchModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImageBatchModerationResponse) SetStatusCode(v int32) *ImageBatchModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImageBatchModerationResponse) SetBody(v *ImageBatchModerationResponseBody) *ImageBatchModerationResponse {
+	s.Body = v
+	return s
+}
+
 type ImageModerationRequest struct {
 	// The moderation services supported by Image Moderation 2.0. Valid values:
 	//
@@ -2056,7 +2701,8 @@ type ImageModerationResponseBodyDataExt struct {
 	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
 	// Returns the text information in the hit image.
 	TextInImage *ImageModerationResponseBodyDataExtTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
-	VlContent   *ImageModerationResponseBodyDataExtVlContent   `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
+	// the vl output content
+	VlContent *ImageModerationResponseBodyDataExtVlContent `json:"VlContent,omitempty" xml:"VlContent,omitempty" type:"Struct"`
 }
 
 func (s ImageModerationResponseBodyDataExt) String() string {
@@ -3103,6 +3749,11 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetY(v 
 }
 
 type ImageModerationResponseBodyDataExtVlContent struct {
+	// the vl output content
+	//
+	// example:
+	//
+	// this is a cat
 	OutputText *string `json:"OutputText,omitempty" xml:"OutputText,omitempty"`
 }
 
@@ -5886,6 +6537,70 @@ func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ImageAsyncModerationResponse{}
 	_body, _err := client.ImageAsyncModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 图片批量调用
+//
+// @param request - ImageBatchModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageBatchModerationResponse
+func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerationRequest, runtime *util.RuntimeOptions) (_result *ImageBatchModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Services)) {
+		query["Services"] = request.Services
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageBatchModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImageBatchModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 图片批量调用
+//
+// @param request - ImageBatchModerationRequest
+//
+// @return ImageBatchModerationResponse
+func (client *Client) ImageBatchModeration(request *ImageBatchModerationRequest) (_result *ImageBatchModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImageBatchModerationResponse{}
+	_body, _err := client.ImageBatchModerationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
