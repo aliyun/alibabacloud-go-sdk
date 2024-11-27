@@ -8226,6 +8226,151 @@ func (s *CreateNetworkAclEntryResponse) SetBody(v *CreateNetworkAclEntryResponse
 	return s
 }
 
+type CreateNetworkInterfaceRequest struct {
+	// example:
+	//
+	// example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vsw-5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateNetworkInterfaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkInterfaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkInterfaceRequest) SetDescription(v string) *CreateNetworkInterfaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceRequest) SetName(v string) *CreateNetworkInterfaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceRequest) SetSecurityGroupIds(v []*string) *CreateNetworkInterfaceRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateNetworkInterfaceRequest) SetVSwitchId(v string) *CreateNetworkInterfaceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateNetworkInterfaceShrinkRequest struct {
+	// example:
+	//
+	// example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
+	// example:
+	//
+	// vsw-5****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateNetworkInterfaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkInterfaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkInterfaceShrinkRequest) SetDescription(v string) *CreateNetworkInterfaceShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceShrinkRequest) SetName(v string) *CreateNetworkInterfaceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceShrinkRequest) SetSecurityGroupIdsShrink(v string) *CreateNetworkInterfaceShrinkRequest {
+	s.SecurityGroupIdsShrink = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceShrinkRequest) SetVSwitchId(v string) *CreateNetworkInterfaceShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateNetworkInterfaceResponseBody struct {
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNetworkInterfaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkInterfaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkInterfaceResponseBody) SetNetworkInterfaceIds(v []*string) *CreateNetworkInterfaceResponseBody {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *CreateNetworkInterfaceResponseBody) SetRequestId(v string) *CreateNetworkInterfaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNetworkInterfaceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetworkInterfaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNetworkInterfaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNetworkInterfaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkInterfaceResponse) SetHeaders(v map[string]*string) *CreateNetworkInterfaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkInterfaceResponse) SetStatusCode(v int32) *CreateNetworkInterfaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkInterfaceResponse) SetBody(v *CreateNetworkInterfaceResponseBody) *CreateNetworkInterfaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSDGRequest struct {
 	// The description of the SDG.
 	//
@@ -11240,6 +11385,91 @@ func (s *DeleteNetworkAclEntryResponse) SetStatusCode(v int32) *DeleteNetworkAcl
 }
 
 func (s *DeleteNetworkAclEntryResponse) SetBody(v *DeleteNetworkAclEntryResponseBody) *DeleteNetworkAclEntryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNetworkInterfacesRequest struct {
+	// This parameter is required.
+	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteNetworkInterfacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkInterfacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkInterfacesRequest) SetNetworkInterfaceIds(v []*string) *DeleteNetworkInterfacesRequest {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+type DeleteNetworkInterfacesShrinkRequest struct {
+	// This parameter is required.
+	NetworkInterfaceIdsShrink *string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty"`
+}
+
+func (s DeleteNetworkInterfacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkInterfacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkInterfacesShrinkRequest) SetNetworkInterfaceIdsShrink(v string) *DeleteNetworkInterfacesShrinkRequest {
+	s.NetworkInterfaceIdsShrink = &v
+	return s
+}
+
+type DeleteNetworkInterfacesResponseBody struct {
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNetworkInterfacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkInterfacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkInterfacesResponseBody) SetRequestId(v string) *DeleteNetworkInterfacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNetworkInterfacesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNetworkInterfacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNetworkInterfacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNetworkInterfacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNetworkInterfacesResponse) SetHeaders(v map[string]*string) *DeleteNetworkInterfacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNetworkInterfacesResponse) SetStatusCode(v int32) *DeleteNetworkInterfacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNetworkInterfacesResponse) SetBody(v *DeleteNetworkInterfacesResponseBody) *DeleteNetworkInterfacesResponse {
 	s.Body = v
 	return s
 }
@@ -18215,7 +18445,9 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	// example:
 	//
 	// 2021-11-11T14:34:55+08:00
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The billing method of the cloud disk or local disk. Valid values:
 	//
 	// 	- **prepaid**: subscription.
@@ -18353,6 +18585,16 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetCategory(v string) *DescribeDis
 
 func (s *DescribeDisksResponseBodyDisksDisks) SetCreationTime(v string) *DescribeDisksResponseBodyDisksDisks {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetDeleteWithInstance(v bool) *DescribeDisksResponseBodyDisksDisks {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetDescription(v string) *DescribeDisksResponseBodyDisksDisks {
+	s.Description = &v
 	return s
 }
 
@@ -38838,6 +39080,7 @@ type DescribeSDGDeploymentStatusResponseBodyDeploymentStatus struct {
 	//
 	// overlay
 	MountType *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
+	Phase     *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	// The ID of the edge node.
 	//
 	// example:
@@ -38881,6 +39124,11 @@ func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetInstanceId(
 
 func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetMountType(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
 	s.MountType = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetPhase(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.Phase = &v
 	return s
 }
 
@@ -41348,7 +41596,8 @@ type DescribeSnapshotsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -41372,7 +41621,8 @@ type DescribeSnapshotsRequest struct {
 	// example:
 	//
 	// sp-bp67acfmxazb4p****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId   *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
 func (s DescribeSnapshotsRequest) String() string {
@@ -41393,6 +41643,11 @@ func (s *DescribeSnapshotsRequest) SetEnsRegionId(v string) *DescribeSnapshotsRe
 	return s
 }
 
+func (s *DescribeSnapshotsRequest) SetEnsRegionIds(v string) *DescribeSnapshotsRequest {
+	s.EnsRegionIds = &v
+	return s
+}
+
 func (s *DescribeSnapshotsRequest) SetInstanceId(v string) *DescribeSnapshotsRequest {
 	s.InstanceId = &v
 	return s
@@ -41410,6 +41665,11 @@ func (s *DescribeSnapshotsRequest) SetPageSize(v int32) *DescribeSnapshotsReques
 
 func (s *DescribeSnapshotsRequest) SetSnapshotId(v string) *DescribeSnapshotsRequest {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetSnapshotName(v string) *DescribeSnapshotsRequest {
+	s.SnapshotName = &v
 	return s
 }
 
@@ -62633,6 +62893,84 @@ func (client *Client) CreateNetworkAclEntry(request *CreateNetworkAclEntryReques
 
 // Summary:
 //
+// 创建弹性网卡
+//
+// @param tmpReq - CreateNetworkInterfaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetworkInterfaceResponse
+func (client *Client) CreateNetworkInterfaceWithOptions(tmpReq *CreateNetworkInterfaceRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkInterfaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateNetworkInterfaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityGroupIds)) {
+		request.SecurityGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityGroupIds, tea.String("SecurityGroupIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIdsShrink)) {
+		query["SecurityGroupIds"] = request.SecurityGroupIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNetworkInterface"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNetworkInterfaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建弹性网卡
+//
+// @param request - CreateNetworkInterfaceRequest
+//
+// @return CreateNetworkInterfaceResponse
+func (client *Client) CreateNetworkInterface(request *CreateNetworkInterfaceRequest) (_result *CreateNetworkInterfaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNetworkInterfaceResponse{}
+	_body, _err := client.CreateNetworkInterfaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a shared data group (SDG) on an Android in Container (AIC) instance.
 //
 // Description:
@@ -64492,6 +64830,72 @@ func (client *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNetworkAclEntryResponse{}
 	_body, _err := client.DeleteNetworkAclEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除弹性网卡
+//
+// @param tmpReq - DeleteNetworkInterfacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkInterfacesResponse
+func (client *Client) DeleteNetworkInterfacesWithOptions(tmpReq *DeleteNetworkInterfacesRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkInterfacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteNetworkInterfacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NetworkInterfaceIds)) {
+		request.NetworkInterfaceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkInterfaceIds, tea.String("NetworkInterfaceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIdsShrink)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNetworkInterfaces"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNetworkInterfacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除弹性网卡
+//
+// @param request - DeleteNetworkInterfacesRequest
+//
+// @return DeleteNetworkInterfacesResponse
+func (client *Client) DeleteNetworkInterfaces(request *DeleteNetworkInterfacesRequest) (_result *DeleteNetworkInterfacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNetworkInterfacesResponse{}
+	_body, _err := client.DeleteNetworkInterfacesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71401,6 +71805,10 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionIds)) {
+		query["EnsRegionIds"] = request.EnsRegionIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -71415,6 +71823,10 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
 		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
 	}
 
 	req := &openapi.OpenApiRequest{
