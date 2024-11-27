@@ -2417,6 +2417,128 @@ func (s *GetSqlStatementResponse) SetBody(v *GetSqlStatementResponseBody) *GetSq
 	return s
 }
 
+type GetTemplateRequest struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// TASK
+	TemplateType *string `json:"templateType,omitempty" xml:"templateType,omitempty"`
+}
+
+func (s GetTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateRequest) SetRegionId(v string) *GetTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetTemplateType(v string) *GetTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type GetTemplateResponseBody struct {
+	Data *Template `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 040003
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// InvalidUser.NotFound
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// 484D9DDA-300D-525E-AF7A-0CCCA5C64A7A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponseBody) SetData(v *Template) *GetTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetErrorCode(v string) *GetTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetErrorMessage(v string) *GetTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetHttpStatusCode(v string) *GetTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTemplateResponseBody) SetSuccess(v bool) *GetTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTemplateResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponse) SetHeaders(v map[string]*string) *GetTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateResponse) SetStatusCode(v int32) *GetTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GrantRoleToUsersRequest struct {
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	//
@@ -5894,6 +6016,74 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 	headers := make(map[string]*string)
 	_result = &GetSqlStatementResponse{}
 	_body, _err := client.GetSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务模板
+//
+// @param request - GetTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
+func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *GetTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["templateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplate"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/interactive/v1/workspace/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceBizId)) + "/template"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务模板
+//
+// @param request - GetTemplateRequest
+//
+// @return GetTemplateResponse
+func (client *Client) GetTemplate(workspaceBizId *string, request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTemplateResponse{}
+	_body, _err := client.GetTemplateWithOptions(workspaceBizId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
