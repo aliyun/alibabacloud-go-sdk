@@ -433,11 +433,11 @@ type CreateApiExportRequest struct {
 	//
 	// }
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// Language type. Valid values:
 	//
-	// - **cn*	- (default): Chinese mainland.
+	// - **cn**: Chinese.
 	//
-	// - **cn-hongkong**: outside the Chinese mainland.
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -3242,6 +3242,8 @@ type DeleteApisecAbnormalsRequest struct {
 	AbnormalIds []*string `json:"AbnormalIds,omitempty" xml:"AbnormalIds,omitempty" type:"Repeated"`
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
@@ -3266,7 +3268,7 @@ type DeleteApisecAbnormalsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -3361,6 +3363,8 @@ func (s *DeleteApisecAbnormalsResponse) SetBody(v *DeleteApisecAbnormalsResponse
 type DeleteApisecEventsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
@@ -3389,7 +3393,7 @@ type DeleteApisecEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -4535,7 +4539,9 @@ func (s *DescribeAccountDelegatedStatusResponse) SetBody(v *DescribeAccountDeleg
 }
 
 type DescribeApiExportsRequest struct {
-	// The returned data export tasks.
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -4543,31 +4549,39 @@ type DescribeApiExportsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-p****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The response parameters.
+	// Language type. Valid values:
+	//
+	// - **cn**: Chinese.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The request ID.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of entries returned.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned data export task.
+	// The region ID of the Web Application Firewall (WAF) instance. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the file.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -4614,9 +4628,9 @@ func (s *DescribeApiExportsRequest) SetResourceManagerResourceGroupId(v string) 
 }
 
 type DescribeApiExportsResponseBody struct {
-	// The time when the data export task was created. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The returned data export tasks.
 	ApiExports []*DescribeApiExportsResponseBodyApiExports `json:"ApiExports,omitempty" xml:"ApiExports,omitempty" type:"Repeated"`
-	// The format of the exported file.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4780,11 +4794,13 @@ func (s *DescribeApiExportsResponse) SetBody(v *DescribeApiExportsResponseBody) 
 type DescribeApisecAbnormalDomainStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query.
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -4800,11 +4816,11 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	//
 	// waf-cn-45919n***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting order.
+	// The sorting order. Valid values:
 	//
-	// 	- asc: ascending order.
+	// - **asc**: ascending order.
 	//
-	// 	- desc: descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
@@ -4816,11 +4832,11 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page. Default value: **5**.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -4838,7 +4854,7 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query.
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -4902,7 +4918,7 @@ func (s *DescribeApisecAbnormalDomainStatisticRequest) SetStartTime(v int64) *De
 type DescribeApisecAbnormalDomainStatisticResponseBody struct {
 	// The response parameters.
 	Data []*DescribeApisecAbnormalDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// Id of the request.
 	//
 	// example:
 	//
@@ -5055,7 +5071,7 @@ type DescribeApisecAbnormalsRequest struct {
 	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
 	// The type of the risk.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
 	//
 	// example:
 	//
@@ -5075,7 +5091,7 @@ type DescribeApisecAbnormalsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -5377,7 +5393,7 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
 	// The type of the risk.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
 	//
 	// example:
 	//
@@ -5403,7 +5419,7 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purposes of APIs.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
@@ -5666,7 +5682,7 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
 	//
 	// example:
 	//
@@ -5794,7 +5810,7 @@ type DescribeApisecApiResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The sensitive data type in the request.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
@@ -5822,7 +5838,7 @@ type DescribeApisecApiResourcesRequest struct {
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
 	// The sensitive data type in the response.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported sensitive data types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
@@ -6114,7 +6130,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
 	//
 	// example:
 	//
@@ -6352,7 +6368,7 @@ type DescribeApisecAssetTrendRequest struct {
 	//
 	// 590
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -6360,7 +6376,7 @@ type DescribeApisecAssetTrendRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -6384,7 +6400,7 @@ type DescribeApisecAssetTrendRequest struct {
 	//
 	// rg-aek**7uq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -6433,7 +6449,7 @@ func (s *DescribeApisecAssetTrendRequest) SetStartTime(v int64) *DescribeApisecA
 type DescribeApisecAssetTrendResponseBody struct {
 	// The data returned.
 	Data []*DescribeApisecAssetTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// Id of the request.
 	//
 	// example:
 	//
@@ -6478,7 +6494,7 @@ type DescribeApisecAssetTrendResponseBodyData struct {
 	//
 	// 20
 	AssetOffline *int64 `json:"AssetOffline,omitempty" xml:"AssetOffline,omitempty"`
-	// The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time for statistics. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -6546,11 +6562,13 @@ func (s *DescribeApisecAssetTrendResponse) SetBody(v *DescribeApisecAssetTrendRe
 type DescribeApisecEventDomainStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -6566,27 +6584,27 @@ type DescribeApisecEventDomainStatisticRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting order.
+	// The sorting order. Valid values:
 	//
-	// 	- asc: ascending order.
+	// - **asc**: ascending order.
 	//
-	// 	- desc: descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page. Default value: **5**.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -6604,7 +6622,7 @@ type DescribeApisecEventDomainStatisticRequest struct {
 	//
 	// rg-acfmvyknl****fa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -6668,7 +6686,7 @@ func (s *DescribeApisecEventDomainStatisticRequest) SetStartTime(v int64) *Descr
 type DescribeApisecEventDomainStatisticResponseBody struct {
 	// The response parameters.
 	Data []*DescribeApisecEventDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// Id of the request.
 	//
 	// example:
 	//
@@ -6815,7 +6833,7 @@ type DescribeApisecEventsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
 	//
 	// example:
 	//
@@ -6861,7 +6879,7 @@ type DescribeApisecEventsRequest struct {
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The type of the event.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
 	//
 	// example:
 	//
@@ -7132,7 +7150,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the business purpose of the API.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purpose of the API.
 	//
 	// example:
 	//
@@ -7208,7 +7226,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The type of the event.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported event types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
 	//
 	// example:
 	//
@@ -8654,11 +8672,11 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting order.
+	// The sorting order. Valid values:
 	//
-	// 	- asc: ascending order.
+	// -  **asc**: ascending order.
 	//
-	// 	- desc: descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
@@ -8670,11 +8688,11 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page. Default value: **5**.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
@@ -8698,11 +8716,11 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	//
 	// 1668496310
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The sensitive data type.
+	// The sensitive data type. Valid values:
 	//
-	// 	- request: sensitive data in requests.
+	// - **request**: sensitive data in requests.
 	//
-	// 	- response: sensitive data in responses.
+	// - **response**: sensitive data in responses.
 	//
 	// example:
 	//
@@ -8771,7 +8789,7 @@ func (s *DescribeApisecSensitiveDomainStatisticRequest) SetType(v string) *Descr
 type DescribeApisecSensitiveDomainStatisticResponseBody struct {
 	// The response parameters.
 	Data []*DescribeApisecSensitiveDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -8823,11 +8841,19 @@ type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
 	// The code of the sensitive data.
 	//
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+	//
 	// example:
 	//
 	// 10
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
-	// The sensitivity level of the sensitive data.
+	// The sensitivity level of the sensitive data.Valid values:
+	//
+	// 	- **S1**: low sensitivity.
+	//
+	// 	- **S2**: moderate sensitivity.
+	//
+	// 	- **S3**: high sensitivity.
 	//
 	// example:
 	//
@@ -11198,6 +11224,8 @@ type DescribeCloudResourcesRequest struct {
 	//
 	// alb-43glijk0fr****gths
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The name of the instance that is added to WAF.
+	//
 	// example:
 	//
 	// test-name
@@ -11216,15 +11244,23 @@ type DescribeCloudResourcesRequest struct {
 	//
 	// alb-name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The cloud service to which the resource belongs. Valid values:
+	// The cloud service to which the resource belongs. If you do not specify this parameter, the system automatically returns the Application Load Balancer (ALB), Microservices Engine (MSE), Function Compute, and Serverless App Engine (SAE) resources that are added to WAF. Valid values:
 	//
-	// 	- **alb**: Application Load Balancer (ALB).
+	// 	- **alb**: ALB.
 	//
-	// 	- **mse**: Microservices Engine (MSE).
+	// 	- **mse**: MSE.
 	//
 	// 	- **fc**: Function Compute.
 	//
-	// 	- **sae**: Serverless App Engine (SAE).
+	// 	- **sae**: SAE.
+	//
+	// 	- **ecs**: Elastic Compute Service (ECS).
+	//
+	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **nlb**: Network Load Balancer (NLB).
 	//
 	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
 	//
@@ -11367,10 +11403,18 @@ func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeClo
 }
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {
+	// The number of the HTTP ports that are added to WAF.
+	//
+	// >  This parameter is returned only if the cloud service is ECS or CLB.
+	//
 	// example:
 	//
 	// 1
 	HttpPortCount *int32 `json:"HttpPortCount,omitempty" xml:"HttpPortCount,omitempty"`
+	// The number of the HTTPS ports that are added to WAF.
+	//
+	// >  This parameter is returned only if the cloud service is ECS or CLB.
+	//
 	// example:
 	//
 	// 1
@@ -11401,14 +11445,20 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	//
 	// alb-ffff****
 	ResourceInstance *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
+	// The ID of the instance that is added to WAF.
+	//
 	// example:
 	//
 	// lb-uf60ub45fr9b***
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The IP address of the instance that is added to WAF.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	// The name of the instance that is added to WAF.
+	//
 	// example:
 	//
 	// test-name
@@ -11430,6 +11480,12 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	// 	- **fc**: Function Compute.
 	//
 	// 	- **sae**: SAE.
+	//
+	// 	- **ecs**: ECS.
+	//
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
 	//
 	// example:
 	//
@@ -17853,7 +17909,7 @@ type DescribeFreeUserEventsResponseBodyEvent struct {
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The type of the security event.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
 	//
 	// example:
 	//
@@ -25661,7 +25717,7 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the sensitive data. Separate multiple types with commas (,).
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data. Only built-in types of sensitive data are supported for this operation.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data. Only built-in types of sensitive data are supported for this operation.
 	//
 	// example:
 	//
@@ -25842,7 +25898,7 @@ type DescribeSensitiveOutboundStatisticResponseBodyData struct {
 	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
 	// The type of the sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -26227,7 +26283,7 @@ type DescribeSensitiveRequestLogRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -26390,7 +26446,8 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	// example:
 	//
 	// a.****.com
-	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	MatchedHost     *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	RemoteCountryId *string `json:"RemoteCountryId,omitempty" xml:"RemoteCountryId,omitempty"`
 	// The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
@@ -26441,6 +26498,11 @@ func (s *DescribeSensitiveRequestLogResponseBodyData) SetCount(v int64) *Describ
 
 func (s *DescribeSensitiveRequestLogResponseBodyData) SetMatchedHost(v string) *DescribeSensitiveRequestLogResponseBodyData {
 	s.MatchedHost = &v
+	return s
+}
+
+func (s *DescribeSensitiveRequestLogResponseBodyData) SetRemoteCountryId(v string) *DescribeSensitiveRequestLogResponseBodyData {
+	s.RemoteCountryId = &v
 	return s
 }
 
@@ -26543,7 +26605,7 @@ type DescribeSensitiveRequestsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -27024,7 +27086,7 @@ type DescribeSensitiveStatisticResponseBodyData struct {
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
 	// The type of the sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -27910,6 +27972,8 @@ type DescribeUserAbnormalTrendResponseBodyTrend struct {
 	AbnormalMedium *int64 `json:"AbnormalMedium,omitempty" xml:"AbnormalMedium,omitempty"`
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
+	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+	//
 	// example:
 	//
 	// 1722268800
@@ -28121,7 +28185,7 @@ type DescribeUserAbnormalTypeResponseBodyAbnormal struct {
 	AbnormalParentType *string `json:"AbnormalParentType,omitempty" xml:"AbnormalParentType,omitempty"`
 	// The type of the risk.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of risks.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
 	//
 	// example:
 	//
@@ -28189,6 +28253,8 @@ func (s *DescribeUserAbnormalTypeResponse) SetBody(v *DescribeUserAbnormalTypeRe
 type DescribeUserApiRequestRequest struct {
 	// The API.
 	//
+	// 	Notice: This parameter is deprecated, please use ApiId to query.
+	//
 	// example:
 	//
 	// /api/v1/know
@@ -28210,6 +28276,8 @@ type DescribeUserApiRequestRequest struct {
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The domain name or IP address of the API.
+	//
+	// 	Notice: This parameter is deprecated, please use ApiId to query.
 	//
 	// example:
 	//
@@ -28464,6 +28532,8 @@ type DescribeUserAssetRequest struct {
 	// asset_num
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	//
+	// 	Notice: The parameter has been deprecated.
 	//
 	// example:
 	//
@@ -28741,6 +28811,8 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
 	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
+	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+	//
 	// example:
 	//
 	// 1723435200
@@ -28952,7 +29024,7 @@ type DescribeUserEventTypeResponseBodyEvent struct {
 	EventParentType *string `json:"EventParentType,omitempty" xml:"EventParentType,omitempty"`
 	// The type of the security event.
 	//
-	// >  You can call the [DescribeApisecRules](~~DescribeApisecRules~~) operation to query the supported types of security events.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
 	//
 	// example:
 	//
@@ -29148,7 +29220,7 @@ type DescribeUserWafLogStatusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -29189,8 +29261,6 @@ type DescribeUserWafLogStatusResponseBody struct {
 	// 	- **cn-hongkong**: China (Hong Kong).
 	//
 	// 	- **ap-southeast-1**: Singapore.
-	//
-	// 	- **ap-southeast-2**: Australia (Sydney).
 	//
 	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
 	//
@@ -30373,6 +30443,8 @@ type ModifyApisecAbnormalsRequest struct {
 	AbnormalIds []*string `json:"AbnormalIds,omitempty" xml:"AbnormalIds,omitempty" type:"Repeated"`
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
@@ -30403,7 +30475,7 @@ type ModifyApisecAbnormalsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -30681,6 +30753,8 @@ func (s *ModifyApisecApiResourceResponse) SetBody(v *ModifyApisecApiResourceResp
 type ModifyApisecEventsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	//
 	// example:
 	//
 	// 428
@@ -30715,7 +30789,7 @@ type ModifyApisecEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
