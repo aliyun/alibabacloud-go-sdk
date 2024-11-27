@@ -1885,6 +1885,218 @@ func (s *AttachEnsInstancesResponse) SetBody(v *AttachEnsInstancesResponseBody) 
 	return s
 }
 
+type AttachInstanceSDGRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s AttachInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGRequest) SetInstanceIds(v []*string) *AttachInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *AttachInstanceSDGRequest) SetSDGId(v string) *AttachInstanceSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type AttachInstanceSDGShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s AttachInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *AttachInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *AttachInstanceSDGShrinkRequest) SetSDGId(v string) *AttachInstanceSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type AttachInstanceSDGResponseBody struct {
+	Data *AttachInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGResponseBody) SetData(v *AttachInstanceSDGResponseBodyData) *AttachInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBody) SetRequestId(v string) *AttachInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *AttachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGResponseBodyData) SetMessage(v string) *AttachInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBodyData) SetResult(v *AttachInstanceSDGResponseBodyDataResult) *AttachInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBodyData) SetSuccess(v bool) *AttachInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type AttachInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*AttachInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s AttachInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *AttachInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBodyDataResult) SetFailedItems(v []*AttachInstanceSDGResponseBodyDataResultFailedItems) *AttachInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *AttachInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type AttachInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s AttachInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *AttachInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *AttachInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *AttachInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type AttachInstanceSDGResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachInstanceSDGResponse) SetHeaders(v map[string]*string) *AttachInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachInstanceSDGResponse) SetStatusCode(v int32) *AttachInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachInstanceSDGResponse) SetBody(v *AttachInstanceSDGResponseBody) *AttachInstanceSDGResponse {
+	s.Body = v
+	return s
+}
+
 type AttachNetworkInterfaceRequest struct {
 	// The ID of the instance
 	//
@@ -26769,6 +26981,272 @@ func (s *DescribeInstanceMonitorDataResponse) SetBody(v *DescribeInstanceMonitor
 	return s
 }
 
+type DescribeInstanceSDGStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aic-xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SDGIds   []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeInstanceSDGStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSDGStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusRequest) SetInstanceId(v string) *DescribeInstanceSDGStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusRequest) SetPageNumber(v int32) *DescribeInstanceSDGStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusRequest) SetPageSize(v int32) *DescribeInstanceSDGStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusRequest) SetSDGIds(v []*string) *DescribeInstanceSDGStatusRequest {
+	s.SDGIds = v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusRequest) SetStatus(v string) *DescribeInstanceSDGStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeInstanceSDGStatusShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aic-xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SDGIdsShrink *string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeInstanceSDGStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSDGStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusShrinkRequest) SetInstanceId(v string) *DescribeInstanceSDGStatusShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusShrinkRequest) SetPageNumber(v int32) *DescribeInstanceSDGStatusShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusShrinkRequest) SetPageSize(v int32) *DescribeInstanceSDGStatusShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusShrinkRequest) SetSDGIdsShrink(v string) *DescribeInstanceSDGStatusShrinkRequest {
+	s.SDGIdsShrink = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusShrinkRequest) SetStatus(v string) *DescribeInstanceSDGStatusShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeInstanceSDGStatusResponseBody struct {
+	DeploymentStatus []*DescribeInstanceSDGStatusResponseBodyDeploymentStatus `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceSDGStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSDGStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusResponseBody) SetDeploymentStatus(v []*DescribeInstanceSDGStatusResponseBodyDeploymentStatus) *DescribeInstanceSDGStatusResponseBody {
+	s.DeploymentStatus = v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBody) SetPageNumber(v int64) *DescribeInstanceSDGStatusResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBody) SetPageSize(v string) *DescribeInstanceSDGStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBody) SetRequestId(v string) *DescribeInstanceSDGStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBody) SetTotalCount(v string) *DescribeInstanceSDGStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {
+	// example:
+	//
+	// cn-guangzhou-26
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// example:
+	//
+	// aic-xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// shared
+	MountType *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
+	// example:
+	//
+	// attach
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// sdg-xxxxxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2023-02-17T02:44:31Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeInstanceSDGStatusResponseBodyDeploymentStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSDGStatusResponseBodyDeploymentStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetEnsRegionId(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetInstanceId(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetMountType(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.MountType = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetPhase(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.Phase = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetSDGId(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.SDGId = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetStatus(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponseBodyDeploymentStatus) SetUpdateTime(v string) *DescribeInstanceSDGStatusResponseBodyDeploymentStatus {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeInstanceSDGStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceSDGStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceSDGStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSDGStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSDGStatusResponse) SetHeaders(v map[string]*string) *DescribeInstanceSDGStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponse) SetStatusCode(v int32) *DescribeInstanceSDGStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceSDGStatusResponse) SetBody(v *DescribeInstanceSDGStatusResponseBody) *DescribeInstanceSDGStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceSpecResponseBody struct {
 	// The bandwidth limit for a single instance. Unit: Mbit/s.
 	//
@@ -43848,6 +44326,218 @@ func (s *DetachDiskResponse) SetBody(v *DetachDiskResponseBody) *DetachDiskRespo
 	return s
 }
 
+type DetachInstanceSDGRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DetachInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGRequest) SetInstanceIds(v []*string) *DetachInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DetachInstanceSDGRequest) SetSDGId(v string) *DetachInstanceSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DetachInstanceSDGShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DetachInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *DetachInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *DetachInstanceSDGShrinkRequest) SetSDGId(v string) *DetachInstanceSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DetachInstanceSDGResponseBody struct {
+	Data *DetachInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGResponseBody) SetData(v *DetachInstanceSDGResponseBodyData) *DetachInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBody) SetRequestId(v string) *DetachInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *DetachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGResponseBodyData) SetMessage(v string) *DetachInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBodyData) SetResult(v *DetachInstanceSDGResponseBodyDataResult) *DetachInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBodyData) SetSuccess(v bool) *DetachInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DetachInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*DetachInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s DetachInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *DetachInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBodyDataResult) SetFailedItems(v []*DetachInstanceSDGResponseBodyDataResultFailedItems) *DetachInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBodyDataResult) SetSuccessCount(v string) *DetachInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type DetachInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DetachInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *DetachInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DetachInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *DetachInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type DetachInstanceSDGResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachInstanceSDGResponse) SetHeaders(v map[string]*string) *DetachInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachInstanceSDGResponse) SetStatusCode(v int32) *DetachInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachInstanceSDGResponse) SetBody(v *DetachInstanceSDGResponseBody) *DetachInstanceSDGResponse {
+	s.Body = v
+	return s
+}
+
 type DetachNetworkInterfaceRequest struct {
 	// The ID of the ENI.
 	//
@@ -49190,6 +49880,218 @@ func (s *ModifyVSwitchAttributeResponse) SetStatusCode(v int32) *ModifyVSwitchAt
 }
 
 func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeResponseBody) *ModifyVSwitchAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type MountInstanceSDGRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s MountInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGRequest) SetInstanceIds(v []*string) *MountInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *MountInstanceSDGRequest) SetSDGId(v string) *MountInstanceSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type MountInstanceSDGShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s MountInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *MountInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *MountInstanceSDGShrinkRequest) SetSDGId(v string) *MountInstanceSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type MountInstanceSDGResponseBody struct {
+	Data *MountInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MountInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGResponseBody) SetData(v *MountInstanceSDGResponseBodyData) *MountInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBody) SetRequestId(v string) *MountInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MountInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *MountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MountInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGResponseBodyData) SetMessage(v string) *MountInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBodyData) SetResult(v *MountInstanceSDGResponseBodyDataResult) *MountInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBodyData) SetSuccess(v bool) *MountInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type MountInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                               `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*MountInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s MountInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *MountInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBodyDataResult) SetFailedItems(v []*MountInstanceSDGResponseBodyDataResultFailedItems) *MountInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *MountInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type MountInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s MountInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *MountInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *MountInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *MountInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type MountInstanceSDGResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MountInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MountInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MountInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MountInstanceSDGResponse) SetHeaders(v map[string]*string) *MountInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MountInstanceSDGResponse) SetStatusCode(v int32) *MountInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MountInstanceSDGResponse) SetBody(v *MountInstanceSDGResponseBody) *MountInstanceSDGResponse {
 	s.Body = v
 	return s
 }
@@ -58524,6 +59426,218 @@ func (s *UnloadRegionSDGResponse) SetBody(v *UnloadRegionSDGResponseBody) *Unloa
 	return s
 }
 
+type UnmountInstanceSDGRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s UnmountInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGRequest) SetInstanceIds(v []*string) *UnmountInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *UnmountInstanceSDGRequest) SetSDGId(v string) *UnmountInstanceSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type UnmountInstanceSDGShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s UnmountInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *UnmountInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *UnmountInstanceSDGShrinkRequest) SetSDGId(v string) *UnmountInstanceSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type UnmountInstanceSDGResponseBody struct {
+	Data *UnmountInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnmountInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGResponseBody) SetData(v *UnmountInstanceSDGResponseBodyData) *UnmountInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBody) SetRequestId(v string) *UnmountInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnmountInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *UnmountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnmountInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGResponseBodyData) SetMessage(v string) *UnmountInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBodyData) SetResult(v *UnmountInstanceSDGResponseBodyDataResult) *UnmountInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBodyData) SetSuccess(v bool) *UnmountInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UnmountInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                                 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*UnmountInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s UnmountInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *UnmountInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBodyDataResult) SetFailedItems(v []*UnmountInstanceSDGResponseBodyDataResultFailedItems) *UnmountInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *UnmountInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type UnmountInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UnmountInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *UnmountInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *UnmountInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type UnmountInstanceSDGResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnmountInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnmountInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnmountInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnmountInstanceSDGResponse) SetHeaders(v map[string]*string) *UnmountInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponse) SetStatusCode(v int32) *UnmountInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnmountInstanceSDGResponse) SetBody(v *UnmountInstanceSDGResponseBody) *UnmountInstanceSDGResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
 	//
@@ -59914,6 +61028,76 @@ func (client *Client) AttachEnsInstances(request *AttachEnsInstancesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachEnsInstancesResponse{}
 	_body, _err := client.AttachEnsInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将某个SDG attach到对应的AIC上
+//
+// @param tmpReq - AttachInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachInstanceSDGResponse
+func (client *Client) AttachInstanceSDGWithOptions(tmpReq *AttachInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *AttachInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将某个SDG attach到对应的AIC上
+//
+// @param request - AttachInstanceSDGRequest
+//
+// @return AttachInstanceSDGResponse
+func (client *Client) AttachInstanceSDG(request *AttachInstanceSDGRequest) (_result *AttachInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachInstanceSDGResponse{}
+	_body, _err := client.AttachInstanceSDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69067,6 +70251,68 @@ func (client *Client) DescribeInstanceMonitorData(request *DescribeInstanceMonit
 
 // Summary:
 //
+// 描述某个AIC实例下的SDG挂载情况
+//
+// @param tmpReq - DescribeInstanceSDGStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceSDGStatusResponse
+func (client *Client) DescribeInstanceSDGStatusWithOptions(tmpReq *DescribeInstanceSDGStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSDGStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeInstanceSDGStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SDGIds)) {
+		request.SDGIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SDGIds, tea.String("SDGIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSDGStatus"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceSDGStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述某个AIC实例下的SDG挂载情况
+//
+// @param request - DescribeInstanceSDGStatusRequest
+//
+// @return DescribeInstanceSDGStatusResponse
+func (client *Client) DescribeInstanceSDGStatus(request *DescribeInstanceSDGStatusRequest) (_result *DescribeInstanceSDGStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceSDGStatusResponse{}
+	_body, _err := client.DescribeInstanceSDGStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the instance specifications that you can purchase.
 //
 // @param request - DescribeInstanceSpecRequest
@@ -72380,6 +73626,76 @@ func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDis
 
 // Summary:
 //
+// 解除SDG的attach状态
+//
+// @param tmpReq - DetachInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachInstanceSDGResponse
+func (client *Client) DetachInstanceSDGWithOptions(tmpReq *DetachInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *DetachInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetachInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除SDG的attach状态
+//
+// @param request - DetachInstanceSDGRequest
+//
+// @return DetachInstanceSDGResponse
+func (client *Client) DetachInstanceSDG(request *DetachInstanceSDGRequest) (_result *DetachInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachInstanceSDGResponse{}
+	_body, _err := client.DetachInstanceSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Detach an elastic network interface (ENI) from an instance.
 //
 // Description:
@@ -75073,6 +76389,76 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyVSwitchAttributeResponse{}
 	_body, _err := client.ModifyVSwitchAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将已经attach在instance上的SDG实际部署到对应的AIC
+//
+// @param tmpReq - MountInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MountInstanceSDGResponse
+func (client *Client) MountInstanceSDGWithOptions(tmpReq *MountInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *MountInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &MountInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MountInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MountInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将已经attach在instance上的SDG实际部署到对应的AIC
+//
+// @param request - MountInstanceSDGRequest
+//
+// @return MountInstanceSDGResponse
+func (client *Client) MountInstanceSDG(request *MountInstanceSDGRequest) (_result *MountInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MountInstanceSDGResponse{}
+	_body, _err := client.MountInstanceSDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -79739,6 +81125,76 @@ func (client *Client) UnloadRegionSDG(request *UnloadRegionSDGRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UnloadRegionSDGResponse{}
 	_body, _err := client.UnloadRegionSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+//
+// @param tmpReq - UnmountInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnmountInstanceSDGResponse
+func (client *Client) UnmountInstanceSDGWithOptions(tmpReq *UnmountInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *UnmountInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnmountInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnmountInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnmountInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将已经Mount的SDG从对应的Instance上解除下来，恢复到attach状态
+//
+// @param request - UnmountInstanceSDGRequest
+//
+// @return UnmountInstanceSDGResponse
+func (client *Client) UnmountInstanceSDG(request *UnmountInstanceSDGRequest) (_result *UnmountInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnmountInstanceSDGResponse{}
+	_body, _err := client.UnmountInstanceSDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
