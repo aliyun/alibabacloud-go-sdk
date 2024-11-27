@@ -62,6 +62,543 @@ func (s *AsyncTaskVO) SetUserId(v int64) *AsyncTaskVO {
 	return s
 }
 
+type DLCatalog struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location    *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DLCatalog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLCatalog) GoString() string {
+	return s.String()
+}
+
+func (s *DLCatalog) SetDescription(v string) *DLCatalog {
+	s.Description = &v
+	return s
+}
+
+func (s *DLCatalog) SetLocation(v string) *DLCatalog {
+	s.Location = &v
+	return s
+}
+
+func (s *DLCatalog) SetName(v string) *DLCatalog {
+	s.Name = &v
+	return s
+}
+
+type DLColumn struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DLColumn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLColumn) GoString() string {
+	return s.String()
+}
+
+func (s *DLColumn) SetComment(v string) *DLColumn {
+	s.Comment = &v
+	return s
+}
+
+func (s *DLColumn) SetName(v string) *DLColumn {
+	s.Name = &v
+	return s
+}
+
+func (s *DLColumn) SetType(v string) *DLColumn {
+	s.Type = &v
+	return s
+}
+
+type DLDatabase struct {
+	CatalogName *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DbId        *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location    *string                `json:"Location,omitempty" xml:"Location,omitempty"`
+	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters  map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s DLDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *DLDatabase) SetCatalogName(v string) *DLDatabase {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *DLDatabase) SetDbId(v int64) *DLDatabase {
+	s.DbId = &v
+	return s
+}
+
+func (s *DLDatabase) SetDescription(v string) *DLDatabase {
+	s.Description = &v
+	return s
+}
+
+func (s *DLDatabase) SetLocation(v string) *DLDatabase {
+	s.Location = &v
+	return s
+}
+
+func (s *DLDatabase) SetName(v string) *DLDatabase {
+	s.Name = &v
+	return s
+}
+
+func (s *DLDatabase) SetParameters(v map[string]interface{}) *DLDatabase {
+	s.Parameters = v
+	return s
+}
+
+type DLOrder struct {
+	Col   *string `json:"Col,omitempty" xml:"Col,omitempty"`
+	Order *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
+}
+
+func (s DLOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLOrder) GoString() string {
+	return s.String()
+}
+
+func (s *DLOrder) SetCol(v string) *DLOrder {
+	s.Col = &v
+	return s
+}
+
+func (s *DLOrder) SetOrder(v int32) *DLOrder {
+	s.Order = &v
+	return s
+}
+
+type DLSerdeInfo struct {
+	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeserializerClass *string                `json:"DeserializerClass,omitempty" xml:"DeserializerClass,omitempty"`
+	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters        map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	SerdeType         *string                `json:"SerdeType,omitempty" xml:"SerdeType,omitempty"`
+	SerializationLib  *string                `json:"SerializationLib,omitempty" xml:"SerializationLib,omitempty"`
+	SerializerClass   *string                `json:"SerializerClass,omitempty" xml:"SerializerClass,omitempty"`
+}
+
+func (s DLSerdeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLSerdeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DLSerdeInfo) SetDescription(v string) *DLSerdeInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DLSerdeInfo) SetDeserializerClass(v string) *DLSerdeInfo {
+	s.DeserializerClass = &v
+	return s
+}
+
+func (s *DLSerdeInfo) SetName(v string) *DLSerdeInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DLSerdeInfo) SetParameters(v map[string]interface{}) *DLSerdeInfo {
+	s.Parameters = v
+	return s
+}
+
+func (s *DLSerdeInfo) SetSerdeType(v string) *DLSerdeInfo {
+	s.SerdeType = &v
+	return s
+}
+
+func (s *DLSerdeInfo) SetSerializationLib(v string) *DLSerdeInfo {
+	s.SerializationLib = &v
+	return s
+}
+
+func (s *DLSerdeInfo) SetSerializerClass(v string) *DLSerdeInfo {
+	s.SerializerClass = &v
+	return s
+}
+
+type DLSkewedInfo struct {
+	SkewedColNames             []*string              `json:"SkewedColNames,omitempty" xml:"SkewedColNames,omitempty" type:"Repeated"`
+	SkewedColValueLocationMaps map[string]interface{} `json:"SkewedColValueLocationMaps,omitempty" xml:"SkewedColValueLocationMaps,omitempty"`
+	SkewedColValues            [][]*string            `json:"SkewedColValues,omitempty" xml:"SkewedColValues,omitempty" type:"Repeated"`
+}
+
+func (s DLSkewedInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLSkewedInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DLSkewedInfo) SetSkewedColNames(v []*string) *DLSkewedInfo {
+	s.SkewedColNames = v
+	return s
+}
+
+func (s *DLSkewedInfo) SetSkewedColValueLocationMaps(v map[string]interface{}) *DLSkewedInfo {
+	s.SkewedColValueLocationMaps = v
+	return s
+}
+
+func (s *DLSkewedInfo) SetSkewedColValues(v [][]*string) *DLSkewedInfo {
+	s.SkewedColValues = v
+	return s
+}
+
+type DLStorageDescriptor struct {
+	BucketCols      []*string              `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
+	Columns         []*DLColumn            `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	InputFormat     *string                `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	IsCompressed    *bool                  `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
+	Location        *string                `json:"Location,omitempty" xml:"Location,omitempty"`
+	NumBuckets      *int32                 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	OriginalColumns []*DLColumn            `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
+	OutputFormat    *string                `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	SerdeInfo       *DLSerdeInfo           `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
+	SkewedInfo      *DLSkewedInfo          `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
+	SortCols        []*DLOrder             `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
+}
+
+func (s DLStorageDescriptor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLStorageDescriptor) GoString() string {
+	return s.String()
+}
+
+func (s *DLStorageDescriptor) SetBucketCols(v []*string) *DLStorageDescriptor {
+	s.BucketCols = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetColumns(v []*DLColumn) *DLStorageDescriptor {
+	s.Columns = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetInputFormat(v string) *DLStorageDescriptor {
+	s.InputFormat = &v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetIsCompressed(v bool) *DLStorageDescriptor {
+	s.IsCompressed = &v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetLocation(v string) *DLStorageDescriptor {
+	s.Location = &v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetNumBuckets(v int32) *DLStorageDescriptor {
+	s.NumBuckets = &v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetOriginalColumns(v []*DLColumn) *DLStorageDescriptor {
+	s.OriginalColumns = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetOutputFormat(v string) *DLStorageDescriptor {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetParameters(v map[string]interface{}) *DLStorageDescriptor {
+	s.Parameters = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetSerdeInfo(v *DLSerdeInfo) *DLStorageDescriptor {
+	s.SerdeInfo = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetSkewedInfo(v *DLSkewedInfo) *DLStorageDescriptor {
+	s.SkewedInfo = v
+	return s
+}
+
+func (s *DLStorageDescriptor) SetSortCols(v []*DLOrder) *DLStorageDescriptor {
+	s.SortCols = v
+	return s
+}
+
+type DLTable struct {
+	CatalogName       *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	CreateTime        *int32                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId         *int64                 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DbId              *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbName            *string                `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastAccessTime    *int32                 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	Location          *string                `json:"Location,omitempty" xml:"Location,omitempty"`
+	ModifierId        *int64                 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner             *string                `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	OwnerType         *string                `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	Parameters        map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PartitionKeys     []*DLColumn            `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	Retention         *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	StorageDescriptor *DLStorageDescriptor   `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`
+	TableType         *string                `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	ViewExpandedText  *string                `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	ViewOriginalText  *string                `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
+}
+
+func (s DLTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLTable) GoString() string {
+	return s.String()
+}
+
+func (s *DLTable) SetCatalogName(v string) *DLTable {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *DLTable) SetCreateTime(v int32) *DLTable {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DLTable) SetCreatorId(v int64) *DLTable {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *DLTable) SetDbId(v int64) *DLTable {
+	s.DbId = &v
+	return s
+}
+
+func (s *DLTable) SetDbName(v string) *DLTable {
+	s.DbName = &v
+	return s
+}
+
+func (s *DLTable) SetDescription(v string) *DLTable {
+	s.Description = &v
+	return s
+}
+
+func (s *DLTable) SetLastAccessTime(v int32) *DLTable {
+	s.LastAccessTime = &v
+	return s
+}
+
+func (s *DLTable) SetLocation(v string) *DLTable {
+	s.Location = &v
+	return s
+}
+
+func (s *DLTable) SetModifierId(v int64) *DLTable {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *DLTable) SetName(v string) *DLTable {
+	s.Name = &v
+	return s
+}
+
+func (s *DLTable) SetOwner(v string) *DLTable {
+	s.Owner = &v
+	return s
+}
+
+func (s *DLTable) SetOwnerType(v string) *DLTable {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *DLTable) SetParameters(v map[string]interface{}) *DLTable {
+	s.Parameters = v
+	return s
+}
+
+func (s *DLTable) SetPartitionKeys(v []*DLColumn) *DLTable {
+	s.PartitionKeys = v
+	return s
+}
+
+func (s *DLTable) SetRetention(v int32) *DLTable {
+	s.Retention = &v
+	return s
+}
+
+func (s *DLTable) SetStorageDescriptor(v *DLStorageDescriptor) *DLTable {
+	s.StorageDescriptor = v
+	return s
+}
+
+func (s *DLTable) SetTableType(v string) *DLTable {
+	s.TableType = &v
+	return s
+}
+
+func (s *DLTable) SetViewExpandedText(v string) *DLTable {
+	s.ViewExpandedText = &v
+	return s
+}
+
+func (s *DLTable) SetViewOriginalText(v string) *DLTable {
+	s.ViewOriginalText = &v
+	return s
+}
+
+type DLTablebaseInfo struct {
+	CatalogName      *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	CreateTime       *int32                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId        *int64                 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DbId             *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbName           *string                `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastAccessTime   *int32                 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	Location         *string                `json:"Location,omitempty" xml:"Location,omitempty"`
+	ModifierId       *int64                 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name             *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner            *string                `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	OwnerType        *string                `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	Parameters       map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PartitionKeys    []*DLColumn            `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	Retention        *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	TableType        *string                `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	ViewExpandedText *string                `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	ViewOriginalText *string                `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
+}
+
+func (s DLTablebaseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DLTablebaseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DLTablebaseInfo) SetCatalogName(v string) *DLTablebaseInfo {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetCreateTime(v int32) *DLTablebaseInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetCreatorId(v int64) *DLTablebaseInfo {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetDbId(v int64) *DLTablebaseInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetDbName(v string) *DLTablebaseInfo {
+	s.DbName = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetDescription(v string) *DLTablebaseInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetLastAccessTime(v int32) *DLTablebaseInfo {
+	s.LastAccessTime = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetLocation(v string) *DLTablebaseInfo {
+	s.Location = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetModifierId(v int64) *DLTablebaseInfo {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetName(v string) *DLTablebaseInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetOwner(v string) *DLTablebaseInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetOwnerType(v string) *DLTablebaseInfo {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetParameters(v map[string]interface{}) *DLTablebaseInfo {
+	s.Parameters = v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetPartitionKeys(v []*DLColumn) *DLTablebaseInfo {
+	s.PartitionKeys = v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetRetention(v int32) *DLTablebaseInfo {
+	s.Retention = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetTableType(v string) *DLTablebaseInfo {
+	s.TableType = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetViewExpandedText(v string) *DLTablebaseInfo {
+	s.ViewExpandedText = &v
+	return s
+}
+
+func (s *DLTablebaseInfo) SetViewOriginalText(v string) *DLTablebaseInfo {
+	s.ViewOriginalText = &v
+	return s
+}
+
 type DatasetItemVO struct {
 	AsyncTaskList    []*AsyncTaskVO          `json:"AsyncTaskList,omitempty" xml:"AsyncTaskList,omitempty" type:"Repeated"`
 	DatasetStatus    *int32                  `json:"DatasetStatus,omitempty" xml:"DatasetStatus,omitempty"`
@@ -489,6 +1026,222 @@ func (s *UsersDetailsVO) SetUserName(v string) *UsersDetailsVO {
 
 func (s *UsersDetailsVO) SetUserPublicKeyPem(v string) *UsersDetailsVO {
 	s.UserPublicKeyPem = &v
+	return s
+}
+
+type AddAuthorityTemplateItemsRequest struct {
+	// This parameter is required.
+	Items []*AddAuthorityTemplateItemsRequestItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15***
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddAuthorityTemplateItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorityTemplateItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorityTemplateItemsRequest) SetItems(v []*AddAuthorityTemplateItemsRequestItems) *AddAuthorityTemplateItemsRequest {
+	s.Items = v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequest) SetTemplateId(v int64) *AddAuthorityTemplateItemsRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequest) SetTid(v int64) *AddAuthorityTemplateItemsRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddAuthorityTemplateItemsRequestItems struct {
+	// example:
+	//
+	// 2478****
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// example:
+	//
+	// 237****
+	InstanceId      *int32    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermissionTypes []*string `json:"PermissionTypes,omitempty" xml:"PermissionTypes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// test_table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s AddAuthorityTemplateItemsRequestItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorityTemplateItemsRequestItems) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorityTemplateItemsRequestItems) SetDbId(v int32) *AddAuthorityTemplateItemsRequestItems {
+	s.DbId = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequestItems) SetInstanceId(v int32) *AddAuthorityTemplateItemsRequestItems {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequestItems) SetPermissionTypes(v []*string) *AddAuthorityTemplateItemsRequestItems {
+	s.PermissionTypes = v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequestItems) SetResourceType(v string) *AddAuthorityTemplateItemsRequestItems {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsRequestItems) SetTableName(v string) *AddAuthorityTemplateItemsRequestItems {
+	s.TableName = &v
+	return s
+}
+
+type AddAuthorityTemplateItemsShrinkRequest struct {
+	// This parameter is required.
+	ItemsShrink *string `json:"Items,omitempty" xml:"Items,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15***
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddAuthorityTemplateItemsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorityTemplateItemsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorityTemplateItemsShrinkRequest) SetItemsShrink(v string) *AddAuthorityTemplateItemsShrinkRequest {
+	s.ItemsShrink = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsShrinkRequest) SetTemplateId(v int64) *AddAuthorityTemplateItemsShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsShrinkRequest) SetTid(v int64) *AddAuthorityTemplateItemsShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddAuthorityTemplateItemsResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 3D3FB827-E667-50DB-AD59-C83F8237FECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddAuthorityTemplateItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorityTemplateItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorityTemplateItemsResponseBody) SetData(v bool) *AddAuthorityTemplateItemsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponseBody) SetErrorCode(v string) *AddAuthorityTemplateItemsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponseBody) SetErrorMessage(v string) *AddAuthorityTemplateItemsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponseBody) SetRequestId(v string) *AddAuthorityTemplateItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponseBody) SetSuccess(v bool) *AddAuthorityTemplateItemsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddAuthorityTemplateItemsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAuthorityTemplateItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddAuthorityTemplateItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAuthorityTemplateItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuthorityTemplateItemsResponse) SetHeaders(v map[string]*string) *AddAuthorityTemplateItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponse) SetStatusCode(v int32) *AddAuthorityTemplateItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddAuthorityTemplateItemsResponse) SetBody(v *AddAuthorityTemplateItemsResponseBody) *AddAuthorityTemplateItemsResponse {
+	s.Body = v
 	return s
 }
 
@@ -3546,6 +4299,319 @@ func (s *CloseOrderResponse) SetStatusCode(v int32) *CloseOrderResponse {
 }
 
 func (s *CloseOrderResponse) SetBody(v *CloseOrderResponseBody) *CloseOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAbacAuthorizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12****
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// 31****
+	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 51****
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateAbacAuthorizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacAuthorizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacAuthorizationRequest) SetIdentityType(v string) *CreateAbacAuthorizationRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationRequest) SetPolicyId(v int64) *CreateAbacAuthorizationRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationRequest) SetRoleId(v int64) *CreateAbacAuthorizationRequest {
+	s.RoleId = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationRequest) SetTid(v int64) *CreateAbacAuthorizationRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationRequest) SetUserId(v int64) *CreateAbacAuthorizationRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateAbacAuthorizationResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAbacAuthorizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacAuthorizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacAuthorizationResponseBody) SetErrorCode(v string) *CreateAbacAuthorizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponseBody) SetErrorMessage(v string) *CreateAbacAuthorizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponseBody) SetRequestId(v string) *CreateAbacAuthorizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponseBody) SetResult(v string) *CreateAbacAuthorizationResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponseBody) SetSuccess(v bool) *CreateAbacAuthorizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAbacAuthorizationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAbacAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAbacAuthorizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacAuthorizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacAuthorizationResponse) SetHeaders(v map[string]*string) *CreateAbacAuthorizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponse) SetStatusCode(v int32) *CreateAbacAuthorizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAbacAuthorizationResponse) SetBody(v *CreateAbacAuthorizationResponseBody) *CreateAbacAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAbacPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Action": "*",
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Resource": "*",
+	//
+	//       "Condition": {
+	//
+	//         "StringEqualsIgnoreCase": {
+	//
+	//           "dms:DbType": [
+	//
+	//             "redis"
+	//
+	//           ]
+	//
+	//         }
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "Version": "1"
+	//
+	// }
+	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// example:
+	//
+	// test
+	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// policy_test
+	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateAbacPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacPolicyRequest) SetAbacPolicyContent(v string) *CreateAbacPolicyRequest {
+	s.AbacPolicyContent = &v
+	return s
+}
+
+func (s *CreateAbacPolicyRequest) SetAbacPolicyDesc(v string) *CreateAbacPolicyRequest {
+	s.AbacPolicyDesc = &v
+	return s
+}
+
+func (s *CreateAbacPolicyRequest) SetAbacPolicyName(v string) *CreateAbacPolicyRequest {
+	s.AbacPolicyName = &v
+	return s
+}
+
+func (s *CreateAbacPolicyRequest) SetTid(v int64) *CreateAbacPolicyRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateAbacPolicyResponseBody struct {
+	// example:
+	//
+	// 12****
+	CreatePolicyResult *int64 `json:"CreatePolicyResult,omitempty" xml:"CreatePolicyResult,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAbacPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacPolicyResponseBody) SetCreatePolicyResult(v int64) *CreateAbacPolicyResponseBody {
+	s.CreatePolicyResult = &v
+	return s
+}
+
+func (s *CreateAbacPolicyResponseBody) SetErrorCode(v string) *CreateAbacPolicyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateAbacPolicyResponseBody) SetErrorMessage(v string) *CreateAbacPolicyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateAbacPolicyResponseBody) SetRequestId(v string) *CreateAbacPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAbacPolicyResponseBody) SetSuccess(v bool) *CreateAbacPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAbacPolicyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAbacPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAbacPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAbacPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAbacPolicyResponse) SetHeaders(v map[string]*string) *CreateAbacPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAbacPolicyResponse) SetStatusCode(v int32) *CreateAbacPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAbacPolicyResponse) SetBody(v *CreateAbacPolicyResponseBody) *CreateAbacPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -10508,6 +11574,249 @@ func (s *CreateUploadOSSFileJobResponse) SetBody(v *CreateUploadOSSFileJobRespon
 	return s
 }
 
+type DeleteAbacAuthorizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123***
+	AuthorizationId *int64 `json:"AuthorizationId,omitempty" xml:"AuthorizationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteAbacAuthorizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacAuthorizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacAuthorizationRequest) SetAuthorizationId(v int64) *DeleteAbacAuthorizationRequest {
+	s.AuthorizationId = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationRequest) SetIdentityType(v string) *DeleteAbacAuthorizationRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationRequest) SetTid(v int64) *DeleteAbacAuthorizationRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteAbacAuthorizationResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 207176D7-A9B3-55CE-A9DA-14E223A31913
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAbacAuthorizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacAuthorizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacAuthorizationResponseBody) SetErrorCode(v string) *DeleteAbacAuthorizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponseBody) SetErrorMessage(v string) *DeleteAbacAuthorizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponseBody) SetRequestId(v string) *DeleteAbacAuthorizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponseBody) SetResult(v string) *DeleteAbacAuthorizationResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponseBody) SetSuccess(v bool) *DeleteAbacAuthorizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAbacAuthorizationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAbacAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAbacAuthorizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacAuthorizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacAuthorizationResponse) SetHeaders(v map[string]*string) *DeleteAbacAuthorizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponse) SetStatusCode(v int32) *DeleteAbacAuthorizationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAbacAuthorizationResponse) SetBody(v *DeleteAbacAuthorizationResponseBody) *DeleteAbacAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAbacPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12****
+	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteAbacPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacPolicyRequest) SetAbacPolicyId(v int64) *DeleteAbacPolicyRequest {
+	s.AbacPolicyId = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyRequest) SetTid(v int64) *DeleteAbacPolicyRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteAbacPolicyResponseBody struct {
+	// example:
+	//
+	// true
+	DeletePolicyResult *bool `json:"DeletePolicyResult,omitempty" xml:"DeletePolicyResult,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAbacPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacPolicyResponseBody) SetDeletePolicyResult(v bool) *DeleteAbacPolicyResponseBody {
+	s.DeletePolicyResult = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponseBody) SetErrorCode(v string) *DeleteAbacPolicyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponseBody) SetErrorMessage(v string) *DeleteAbacPolicyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponseBody) SetRequestId(v string) *DeleteAbacPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponseBody) SetSuccess(v bool) *DeleteAbacPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAbacPolicyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAbacPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAbacPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAbacPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAbacPolicyResponse) SetHeaders(v map[string]*string) *DeleteAbacPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponse) SetStatusCode(v int32) *DeleteAbacPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAbacPolicyResponse) SetBody(v *DeleteAbacPolicyResponseBody) *DeleteAbacPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAuthorityTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -14005,6 +15314,229 @@ func (s *ExecuteStructSyncResponse) SetBody(v *ExecuteStructSyncResponseBody) *E
 	return s
 }
 
+type GetAbacPolicyRequest struct {
+	// example:
+	//
+	// 12****
+	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// example:
+	//
+	// policy_test
+	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetAbacPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbacPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbacPolicyRequest) SetAbacPolicyId(v int64) *GetAbacPolicyRequest {
+	s.AbacPolicyId = &v
+	return s
+}
+
+func (s *GetAbacPolicyRequest) SetAbacPolicyName(v string) *GetAbacPolicyRequest {
+	s.AbacPolicyName = &v
+	return s
+}
+
+func (s *GetAbacPolicyRequest) SetTid(v int64) *GetAbacPolicyRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetAbacPolicyResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Policy       *GetAbacPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2B7844DE-A0C3-50ED-A796-8F07D377144C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAbacPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbacPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbacPolicyResponseBody) SetErrorCode(v string) *GetAbacPolicyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBody) SetErrorMessage(v string) *GetAbacPolicyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBody) SetPolicy(v *GetAbacPolicyResponseBodyPolicy) *GetAbacPolicyResponseBody {
+	s.Policy = v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBody) SetRequestId(v string) *GetAbacPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBody) SetSuccess(v bool) *GetAbacPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAbacPolicyResponseBodyPolicy struct {
+	// example:
+	//
+	// 3
+	AuthorizedQuantity *string `json:"AuthorizedQuantity,omitempty" xml:"AuthorizedQuantity,omitempty"`
+	// example:
+	//
+	// 51****
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Action": "*",
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Resource": "*",
+	//
+	//       "Condition": {
+	//
+	//         "StringEqualsIgnoreCase": {
+	//
+	//           "dms:DbType": [
+	//
+	//             "redis"
+	//
+	//           ]
+	//
+	//         }
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "Version": "1"
+	//
+	// }
+	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
+	// example:
+	//
+	// test
+	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
+	// example:
+	//
+	// 12****
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// policy_test
+	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicySource *string `json:"PolicySource,omitempty" xml:"PolicySource,omitempty"`
+}
+
+func (s GetAbacPolicyResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbacPolicyResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetAuthorizedQuantity(v string) *GetAbacPolicyResponseBodyPolicy {
+	s.AuthorizedQuantity = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetCreatorId(v int64) *GetAbacPolicyResponseBodyPolicy {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetPolicyContent(v string) *GetAbacPolicyResponseBodyPolicy {
+	s.PolicyContent = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetPolicyDesc(v string) *GetAbacPolicyResponseBodyPolicy {
+	s.PolicyDesc = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetPolicyId(v int64) *GetAbacPolicyResponseBodyPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetPolicyName(v string) *GetAbacPolicyResponseBodyPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponseBodyPolicy) SetPolicySource(v string) *GetAbacPolicyResponseBodyPolicy {
+	s.PolicySource = &v
+	return s
+}
+
+type GetAbacPolicyResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAbacPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAbacPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAbacPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAbacPolicyResponse) SetHeaders(v map[string]*string) *GetAbacPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAbacPolicyResponse) SetStatusCode(v int32) *GetAbacPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAbacPolicyResponse) SetBody(v *GetAbacPolicyResponseBody) *GetAbacPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type GetApprovalDetailRequest struct {
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
 	//
@@ -14163,6 +15695,18 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	//
 	// 1234
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Third-party approval flow remarks.
+	//
+	// example:
+	//
+	// test
+	ThirdpartyWorkflowComment *string `json:"ThirdpartyWorkflowComment,omitempty" xml:"ThirdpartyWorkflowComment,omitempty"`
+	// The third-party approval flow link.
+	//
+	// example:
+	//
+	// https://xxx
+	ThirdpartyWorkflowUrl *string `json:"ThirdpartyWorkflowUrl,omitempty" xml:"ThirdpartyWorkflowUrl,omitempty"`
 	// The title of the approval process.
 	//
 	// example:
@@ -14234,6 +15778,16 @@ func (s *GetApprovalDetailResponseBodyApprovalDetail) SetReasonList(v *GetApprov
 
 func (s *GetApprovalDetailResponseBodyApprovalDetail) SetTemplateId(v int64) *GetApprovalDetailResponseBodyApprovalDetail {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *GetApprovalDetailResponseBodyApprovalDetail) SetThirdpartyWorkflowComment(v string) *GetApprovalDetailResponseBodyApprovalDetail {
+	s.ThirdpartyWorkflowComment = &v
+	return s
+}
+
+func (s *GetApprovalDetailResponseBodyApprovalDetail) SetThirdpartyWorkflowUrl(v string) *GetApprovalDetailResponseBodyApprovalDetail {
+	s.ThirdpartyWorkflowUrl = &v
 	return s
 }
 
@@ -20305,6 +21859,438 @@ func (s *GetDataImportSQLResponse) SetStatusCode(v int32) *GetDataImportSQLRespo
 }
 
 func (s *GetDataImportSQLResponse) SetBody(v *GetDataImportSQLResponseBody) *GetDataImportSQLResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataLakeCatalogRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// 3
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataLakeCatalogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeCatalogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeCatalogRequest) SetCatalogName(v string) *GetDataLakeCatalogRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogRequest) SetDataRegion(v string) *GetDataLakeCatalogRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogRequest) SetTid(v int64) *GetDataLakeCatalogRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataLakeCatalogResponseBody struct {
+	Catalog *DLCatalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// code: 404, can not find catalog, name : hiv request id: 6090E571-E5B1-1E6D-BF44-F9E10E8B7EB1
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataLakeCatalogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeCatalogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeCatalogResponseBody) SetCatalog(v *DLCatalog) *GetDataLakeCatalogResponseBody {
+	s.Catalog = v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponseBody) SetErrorCode(v string) *GetDataLakeCatalogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponseBody) SetErrorMessage(v string) *GetDataLakeCatalogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponseBody) SetRequestId(v string) *GetDataLakeCatalogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponseBody) SetSuccess(v bool) *GetDataLakeCatalogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataLakeCatalogResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataLakeCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataLakeCatalogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeCatalogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeCatalogResponse) SetHeaders(v map[string]*string) *GetDataLakeCatalogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponse) SetStatusCode(v int32) *GetDataLakeCatalogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataLakeCatalogResponse) SetBody(v *GetDataLakeCatalogResponseBody) *GetDataLakeCatalogResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataLakeDatabaseRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// default
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataLakeDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeDatabaseRequest) SetCatalogName(v string) *GetDataLakeDatabaseRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseRequest) SetDataRegion(v string) *GetDataLakeDatabaseRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseRequest) SetName(v string) *GetDataLakeDatabaseRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseRequest) SetTid(v int64) *GetDataLakeDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataLakeDatabaseResponseBody struct {
+	Database *DLDatabase `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 404
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// code: 404, can not find catalog, name : hive1 request id: FF737753-9641-1F51-AFDA-7DF541114B29
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// E5EE2B9E-2F95-57FA-B284-CB441CEE49D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataLakeDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeDatabaseResponseBody) SetDatabase(v *DLDatabase) *GetDataLakeDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponseBody) SetErrorCode(v string) *GetDataLakeDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponseBody) SetErrorMessage(v string) *GetDataLakeDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponseBody) SetRequestId(v string) *GetDataLakeDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponseBody) SetSuccess(v bool) *GetDataLakeDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataLakeDatabaseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataLakeDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataLakeDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeDatabaseResponse) SetHeaders(v map[string]*string) *GetDataLakeDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponse) SetStatusCode(v int32) *GetDataLakeDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataLakeDatabaseResponse) SetBody(v *GetDataLakeDatabaseResponseBody) *GetDataLakeDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataLakeTableRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 100g_customer
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataLakeTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeTableRequest) SetCatalogName(v string) *GetDataLakeTableRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *GetDataLakeTableRequest) SetDataRegion(v string) *GetDataLakeTableRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *GetDataLakeTableRequest) SetDbName(v string) *GetDataLakeTableRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetDataLakeTableRequest) SetName(v string) *GetDataLakeTableRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataLakeTableRequest) SetTid(v int64) *GetDataLakeTableRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataLakeTableResponseBody struct {
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Unknown server error
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3471A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Table   *DLTable `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s GetDataLakeTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeTableResponseBody) SetErrorCode(v string) *GetDataLakeTableResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataLakeTableResponseBody) SetErrorMessage(v string) *GetDataLakeTableResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataLakeTableResponseBody) SetRequestId(v string) *GetDataLakeTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataLakeTableResponseBody) SetSuccess(v string) *GetDataLakeTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataLakeTableResponseBody) SetTable(v *DLTable) *GetDataLakeTableResponseBody {
+	s.Table = v
+	return s
+}
+
+type GetDataLakeTableResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataLakeTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataLakeTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataLakeTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataLakeTableResponse) SetHeaders(v map[string]*string) *GetDataLakeTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataLakeTableResponse) SetStatusCode(v int32) *GetDataLakeTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataLakeTableResponse) SetBody(v *GetDataLakeTableResponseBody) *GetDataLakeTableResponse {
 	s.Body = v
 	return s
 }
@@ -33145,6 +35131,471 @@ func (s *InspectProxyAccessSecretResponse) SetBody(v *InspectProxyAccessSecretRe
 	return s
 }
 
+type ListAbacAuthorizationsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12****
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	PolicySource *string `json:"PolicySource,omitempty" xml:"PolicySource,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListAbacAuthorizationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacAuthorizationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacAuthorizationsRequest) SetPageNumber(v int64) *ListAbacAuthorizationsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsRequest) SetPageSize(v int64) *ListAbacAuthorizationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsRequest) SetPolicyId(v string) *ListAbacAuthorizationsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsRequest) SetPolicySource(v string) *ListAbacAuthorizationsRequest {
+	s.PolicySource = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsRequest) SetTid(v int64) *ListAbacAuthorizationsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListAbacAuthorizationsResponseBody struct {
+	AuthorizationList []*ListAbacAuthorizationsResponseBodyAuthorizationList `json:"AuthorizationList,omitempty" xml:"AuthorizationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAbacAuthorizationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacAuthorizationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetAuthorizationList(v []*ListAbacAuthorizationsResponseBodyAuthorizationList) *ListAbacAuthorizationsResponseBody {
+	s.AuthorizationList = v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetErrorCode(v string) *ListAbacAuthorizationsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetErrorMessage(v string) *ListAbacAuthorizationsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetRequestId(v string) *ListAbacAuthorizationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetSuccess(v bool) *ListAbacAuthorizationsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBody) SetTotalCount(v int64) *ListAbacAuthorizationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAbacAuthorizationsResponseBodyAuthorizationList struct {
+	// example:
+	//
+	// 32****
+	AuthorizationId *int64 `json:"AuthorizationId,omitempty" xml:"AuthorizationId,omitempty"`
+	// example:
+	//
+	// 51****
+	IdentityId *int64 `json:"IdentityId,omitempty" xml:"IdentityId,omitempty"`
+	// example:
+	//
+	// test_user
+	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
+	// example:
+	//
+	// USER
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// example:
+	//
+	// 12****
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// policy_test
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	PolicySource *string `json:"PolicySource,omitempty" xml:"PolicySource,omitempty"`
+}
+
+func (s ListAbacAuthorizationsResponseBodyAuthorizationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacAuthorizationsResponseBodyAuthorizationList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetAuthorizationId(v int64) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.AuthorizationId = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetIdentityId(v int64) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetIdentityName(v string) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.IdentityName = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetIdentityType(v string) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetPolicyId(v int64) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetPolicyName(v string) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponseBodyAuthorizationList) SetPolicySource(v string) *ListAbacAuthorizationsResponseBodyAuthorizationList {
+	s.PolicySource = &v
+	return s
+}
+
+type ListAbacAuthorizationsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAbacAuthorizationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAbacAuthorizationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacAuthorizationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacAuthorizationsResponse) SetHeaders(v map[string]*string) *ListAbacAuthorizationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponse) SetStatusCode(v int32) *ListAbacAuthorizationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAbacAuthorizationsResponse) SetBody(v *ListAbacAuthorizationsResponseBody) *ListAbacAuthorizationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAbacPoliciesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// policy_test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListAbacPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacPoliciesRequest) SetPageNumber(v int64) *ListAbacPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAbacPoliciesRequest) SetPageSize(v int64) *ListAbacPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAbacPoliciesRequest) SetSearchKey(v string) *ListAbacPoliciesRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListAbacPoliciesRequest) SetTid(v int64) *ListAbacPoliciesRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListAbacPoliciesResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	PolicyList   []*ListAbacPoliciesResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAbacPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacPoliciesResponseBody) SetErrorCode(v string) *ListAbacPoliciesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetErrorMessage(v string) *ListAbacPoliciesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetPolicyList(v []*ListAbacPoliciesResponseBodyPolicyList) *ListAbacPoliciesResponseBody {
+	s.PolicyList = v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetRequestId(v string) *ListAbacPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetSuccess(v bool) *ListAbacPoliciesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetTid(v int64) *ListAbacPoliciesResponseBody {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBody) SetTotalCount(v int64) *ListAbacPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAbacPoliciesResponseBodyPolicyList struct {
+	// example:
+	//
+	// {
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Action": "*",
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Resource": "*",
+	//
+	//       "Condition": {
+	//
+	//         "StringEqualsIgnoreCase": {
+	//
+	//           "dms:DbType": [
+	//
+	//             "redis"
+	//
+	//           ]
+	//
+	//         }
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "Version": "1"
+	//
+	// }
+	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// example:
+	//
+	// test
+	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// example:
+	//
+	// 12****
+	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// example:
+	//
+	// policy_test
+	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	AbacPolicySource *string `json:"AbacPolicySource,omitempty" xml:"AbacPolicySource,omitempty"`
+	// example:
+	//
+	// 51****
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+}
+
+func (s ListAbacPoliciesResponseBodyPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacPoliciesResponseBodyPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetAbacPolicyContent(v string) *ListAbacPoliciesResponseBodyPolicyList {
+	s.AbacPolicyContent = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetAbacPolicyDesc(v string) *ListAbacPoliciesResponseBodyPolicyList {
+	s.AbacPolicyDesc = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetAbacPolicyId(v int64) *ListAbacPoliciesResponseBodyPolicyList {
+	s.AbacPolicyId = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetAbacPolicyName(v string) *ListAbacPoliciesResponseBodyPolicyList {
+	s.AbacPolicyName = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetAbacPolicySource(v string) *ListAbacPoliciesResponseBodyPolicyList {
+	s.AbacPolicySource = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponseBodyPolicyList) SetCreatorId(v int64) *ListAbacPoliciesResponseBodyPolicyList {
+	s.CreatorId = &v
+	return s
+}
+
+type ListAbacPoliciesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAbacPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAbacPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAbacPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbacPoliciesResponse) SetHeaders(v map[string]*string) *ListAbacPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAbacPoliciesResponse) SetStatusCode(v int32) *ListAbacPoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAbacPoliciesResponse) SetBody(v *ListAbacPoliciesResponseBody) *ListAbacPoliciesResponse {
+	s.Body = v
+	return s
+}
+
 type ListAuthorityTemplateRequest struct {
 	// example:
 	//
@@ -33352,6 +35803,863 @@ func (s *ListAuthorityTemplateResponse) SetStatusCode(v int32) *ListAuthorityTem
 }
 
 func (s *ListAuthorityTemplateResponse) SetBody(v *ListAuthorityTemplateResponseBody) *ListAuthorityTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedDatabasesForUserRequest struct {
+	// example:
+	//
+	// MySQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// product
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// false
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// policy_test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 51****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListAuthorizedDatabasesForUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedDatabasesForUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetDbType(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetEnvType(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetLogic(v bool) *ListAuthorizedDatabasesForUserRequest {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetPageNumber(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetPageSize(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetSearchKey(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetTid(v int64) *ListAuthorizedDatabasesForUserRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserRequest) SetUserId(v string) *ListAuthorizedDatabasesForUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListAuthorizedDatabasesForUserResponseBody struct {
+	Databases []*ListAuthorizedDatabasesForUserResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 012AE0B5-4B52-532F-BD7C-1EE9F182089B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBody) SetDatabases(v []*ListAuthorizedDatabasesForUserResponseBodyDatabases) *ListAuthorizedDatabasesForUserResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBody) SetRequestId(v string) *ListAuthorizedDatabasesForUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAuthorizedDatabasesForUserResponseBodyDatabases struct {
+	// example:
+	//
+	// 254****
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// example:
+	//
+	// MYSQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// product
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 235****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	Logic            *bool                                                                `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	PermissionDetail *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail `json:"PermissionDetail,omitempty" xml:"PermissionDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// poc_testdb
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// poc
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// example:
+	//
+	// 51****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetDbId(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetDbType(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetEnvType(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetInstanceId(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetLogic(v bool) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetPermissionDetail(v *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.PermissionDetail = v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetSchemaName(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetSearchName(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabases) SetUserId(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabases {
+	s.UserId = &v
+	return s
+}
+
+type ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail struct {
+	// example:
+	//
+	// DATABASE
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// example:
+	//
+	// 2024-12-06 10:00:00
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CORRECT
+	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) SetDsType(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail {
+	s.DsType = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) SetExpireDate(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) SetMessage(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail) SetPermType(v string) *ListAuthorizedDatabasesForUserResponseBodyDatabasesPermissionDetail {
+	s.PermType = &v
+	return s
+}
+
+type ListAuthorizedDatabasesForUserResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuthorizedDatabasesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuthorizedDatabasesForUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedDatabasesForUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedDatabasesForUserResponse) SetHeaders(v map[string]*string) *ListAuthorizedDatabasesForUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponse) SetStatusCode(v int32) *ListAuthorizedDatabasesForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuthorizedDatabasesForUserResponse) SetBody(v *ListAuthorizedDatabasesForUserResponseBody) *ListAuthorizedDatabasesForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedInstancesForUserRequest struct {
+	// example:
+	//
+	// MySQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// product
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// policy_test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 51****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListAuthorizedInstancesForUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedInstancesForUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetDbType(v string) *ListAuthorizedInstancesForUserRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetEnvType(v string) *ListAuthorizedInstancesForUserRequest {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetPageNumber(v string) *ListAuthorizedInstancesForUserRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetPageSize(v string) *ListAuthorizedInstancesForUserRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetSearchKey(v string) *ListAuthorizedInstancesForUserRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetTid(v int64) *ListAuthorizedInstancesForUserRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserRequest) SetUserId(v string) *ListAuthorizedInstancesForUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListAuthorizedInstancesForUserResponseBody struct {
+	Instances []*ListAuthorizedInstancesForUserResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B7DB89CC-017D-5503-8953-38FFE241A618
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAuthorizedInstancesForUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedInstancesForUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBody) SetInstances(v []*ListAuthorizedInstancesForUserResponseBodyInstances) *ListAuthorizedInstancesForUserResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBody) SetRequestId(v string) *ListAuthorizedInstancesForUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAuthorizedInstancesForUserResponseBodyInstances struct {
+	// example:
+	//
+	// MySQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// product
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// rm-2zex9lrc0gz0****.mysql.rds.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// DMS_TEST
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// example:
+	//
+	// 21****
+	InstanceId       *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermissionDetail *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail `json:"PermissionDetail,omitempty" xml:"PermissionDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 51****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user_test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListAuthorizedInstancesForUserResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedInstancesForUserResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetDbType(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetEnvType(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.EnvType = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetHost(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.Host = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetInstanceAlias(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetInstanceId(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetPermissionDetail(v *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.PermissionDetail = v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetPort(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.Port = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetUserId(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstances) SetUserName(v string) *ListAuthorizedInstancesForUserResponseBodyInstances {
+	s.UserName = &v
+	return s
+}
+
+type ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail struct {
+	// example:
+	//
+	// DATABASE
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// example:
+	//
+	// 2024-12-06 10:00:00
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CORRECT
+	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+}
+
+func (s ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) SetDsType(v string) *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail {
+	s.DsType = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) SetExpireDate(v string) *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) SetMessage(v string) *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail) SetPermType(v string) *ListAuthorizedInstancesForUserResponseBodyInstancesPermissionDetail {
+	s.PermType = &v
+	return s
+}
+
+type ListAuthorizedInstancesForUserResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuthorizedInstancesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuthorizedInstancesForUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedInstancesForUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedInstancesForUserResponse) SetHeaders(v map[string]*string) *ListAuthorizedInstancesForUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponse) SetStatusCode(v int32) *ListAuthorizedInstancesForUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuthorizedInstancesForUserResponse) SetBody(v *ListAuthorizedInstancesForUserResponseBody) *ListAuthorizedInstancesForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedUsersForDatabaseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 135***
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// example:
+	//
+	// false
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// poc_test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListAuthorizedUsersForDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetDbId(v string) *ListAuthorizedUsersForDatabaseRequest {
+	s.DbId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetLogic(v bool) *ListAuthorizedUsersForDatabaseRequest {
+	s.Logic = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetPageNumber(v string) *ListAuthorizedUsersForDatabaseRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetPageSize(v string) *ListAuthorizedUsersForDatabaseRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetSearchKey(v string) *ListAuthorizedUsersForDatabaseRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseRequest) SetTid(v int64) *ListAuthorizedUsersForDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListAuthorizedUsersForDatabaseResponseBody struct {
+	// example:
+	//
+	// FE8EE2F1-4880-46BC-A704-5CF63EAF9A04
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     []*ListAuthorizedUsersForDatabaseResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s ListAuthorizedUsersForDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponseBody) SetRequestId(v string) *ListAuthorizedUsersForDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponseBody) SetUsers(v []*ListAuthorizedUsersForDatabaseResponseBodyUsers) *ListAuthorizedUsersForDatabaseResponseBody {
+	s.Users = v
+	return s
+}
+
+type ListAuthorizedUsersForDatabaseResponseBodyUsers struct {
+	// example:
+	//
+	// 164882191****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// 51****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user_test
+	UserNickName *string `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+}
+
+func (s ListAuthorizedUsersForDatabaseResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForDatabaseResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponseBodyUsers) SetUid(v string) *ListAuthorizedUsersForDatabaseResponseBodyUsers {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponseBodyUsers) SetUserId(v string) *ListAuthorizedUsersForDatabaseResponseBodyUsers {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponseBodyUsers) SetUserNickName(v string) *ListAuthorizedUsersForDatabaseResponseBodyUsers {
+	s.UserNickName = &v
+	return s
+}
+
+type ListAuthorizedUsersForDatabaseResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuthorizedUsersForDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuthorizedUsersForDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponse) SetHeaders(v map[string]*string) *ListAuthorizedUsersForDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponse) SetStatusCode(v int32) *ListAuthorizedUsersForDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForDatabaseResponse) SetBody(v *ListAuthorizedUsersForDatabaseResponseBody) *ListAuthorizedUsersForDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type ListAuthorizedUsersForInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 174****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// poc_test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3****
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListAuthorizedUsersForInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForInstanceRequest) SetInstanceId(v string) *ListAuthorizedUsersForInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceRequest) SetPageNumber(v string) *ListAuthorizedUsersForInstanceRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceRequest) SetPageSize(v string) *ListAuthorizedUsersForInstanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceRequest) SetSearchKey(v string) *ListAuthorizedUsersForInstanceRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceRequest) SetTid(v int64) *ListAuthorizedUsersForInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListAuthorizedUsersForInstanceResponseBody struct {
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     []*ListAuthorizedUsersForInstanceResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s ListAuthorizedUsersForInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBody) SetRequestId(v string) *ListAuthorizedUsersForInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBody) SetUsers(v []*ListAuthorizedUsersForInstanceResponseBodyUsers) *ListAuthorizedUsersForInstanceResponseBody {
+	s.Users = v
+	return s
+}
+
+type ListAuthorizedUsersForInstanceResponseBodyUsers struct {
+	// example:
+	//
+	// 164882191****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// 51***
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user_test
+	UserNickName *string `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	// example:
+	//
+	// user01
+	UserRealName *string `json:"UserRealName,omitempty" xml:"UserRealName,omitempty"`
+}
+
+func (s ListAuthorizedUsersForInstanceResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForInstanceResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBodyUsers) SetUid(v string) *ListAuthorizedUsersForInstanceResponseBodyUsers {
+	s.Uid = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBodyUsers) SetUserId(v string) *ListAuthorizedUsersForInstanceResponseBodyUsers {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBodyUsers) SetUserNickName(v string) *ListAuthorizedUsersForInstanceResponseBodyUsers {
+	s.UserNickName = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponseBodyUsers) SetUserRealName(v string) *ListAuthorizedUsersForInstanceResponseBodyUsers {
+	s.UserRealName = &v
+	return s
+}
+
+type ListAuthorizedUsersForInstanceResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAuthorizedUsersForInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAuthorizedUsersForInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAuthorizedUsersForInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAuthorizedUsersForInstanceResponse) SetHeaders(v map[string]*string) *ListAuthorizedUsersForInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponse) SetStatusCode(v int32) *ListAuthorizedUsersForInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAuthorizedUsersForInstanceResponse) SetBody(v *ListAuthorizedUsersForInstanceResponseBody) *ListAuthorizedUsersForInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -36136,6 +39444,498 @@ func (s *ListDataImportSQLTypeResponse) SetStatusCode(v int32) *ListDataImportSQ
 }
 
 func (s *ListDataImportSQLTypeResponse) SetBody(v *ListDataImportSQLTypeResponseBody) *ListDataImportSQLTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataLakeCatalogRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// hive
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataLakeCatalogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeCatalogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeCatalogRequest) SetDataRegion(v string) *ListDataLakeCatalogRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogRequest) SetSearchKey(v string) *ListDataLakeCatalogRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogRequest) SetTid(v int64) *ListDataLakeCatalogRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataLakeCatalogResponseBody struct {
+	CataLogList *ListDataLakeCatalogResponseBodyCataLogList `json:"CataLogList,omitempty" xml:"CataLogList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// E76DD2E7-EBAC-5724-B163-19AAC233F8F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataLakeCatalogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeCatalogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeCatalogResponseBody) SetCataLogList(v *ListDataLakeCatalogResponseBodyCataLogList) *ListDataLakeCatalogResponseBody {
+	s.CataLogList = v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponseBody) SetErrorCode(v string) *ListDataLakeCatalogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponseBody) SetErrorMessage(v string) *ListDataLakeCatalogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponseBody) SetRequestId(v string) *ListDataLakeCatalogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponseBody) SetSuccess(v bool) *ListDataLakeCatalogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataLakeCatalogResponseBodyCataLogList struct {
+	Catalog []*DLCatalog `json:"Catalog,omitempty" xml:"Catalog,omitempty" type:"Repeated"`
+}
+
+func (s ListDataLakeCatalogResponseBodyCataLogList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeCatalogResponseBodyCataLogList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeCatalogResponseBodyCataLogList) SetCatalog(v []*DLCatalog) *ListDataLakeCatalogResponseBodyCataLogList {
+	s.Catalog = v
+	return s
+}
+
+type ListDataLakeCatalogResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataLakeCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataLakeCatalogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeCatalogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeCatalogResponse) SetHeaders(v map[string]*string) *ListDataLakeCatalogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponse) SetStatusCode(v int32) *ListDataLakeCatalogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataLakeCatalogResponse) SetBody(v *ListDataLakeCatalogResponseBody) *ListDataLakeCatalogResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataLakeDatabaseRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// default
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataLakeDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeDatabaseRequest) SetCatalogName(v string) *ListDataLakeDatabaseRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseRequest) SetDataRegion(v string) *ListDataLakeDatabaseRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseRequest) SetSearchKey(v string) *ListDataLakeDatabaseRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseRequest) SetTid(v int64) *ListDataLakeDatabaseRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataLakeDatabaseResponseBody struct {
+	DatabaseList *ListDataLakeDatabaseResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3471A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataLakeDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetDatabaseList(v *ListDataLakeDatabaseResponseBodyDatabaseList) *ListDataLakeDatabaseResponseBody {
+	s.DatabaseList = v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetErrorCode(v string) *ListDataLakeDatabaseResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetErrorMessage(v string) *ListDataLakeDatabaseResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetRequestId(v string) *ListDataLakeDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetSuccess(v bool) *ListDataLakeDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataLakeDatabaseResponseBodyDatabaseList struct {
+	Database []*DLDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Repeated"`
+}
+
+func (s ListDataLakeDatabaseResponseBodyDatabaseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeDatabaseResponseBodyDatabaseList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeDatabaseResponseBodyDatabaseList) SetDatabase(v []*DLDatabase) *ListDataLakeDatabaseResponseBodyDatabaseList {
+	s.Database = v
+	return s
+}
+
+type ListDataLakeDatabaseResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataLakeDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataLakeDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeDatabaseResponse) SetHeaders(v map[string]*string) *ListDataLakeDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponse) SetStatusCode(v int32) *ListDataLakeDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponse) SetBody(v *ListDataLakeDatabaseResponseBody) *ListDataLakeDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataLakeTablebaseInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 10
+	Rows *int32 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// test
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataLakeTablebaseInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeTablebaseInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetCatalogName(v string) *ListDataLakeTablebaseInfoRequest {
+	s.CatalogName = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetDataRegion(v string) *ListDataLakeTablebaseInfoRequest {
+	s.DataRegion = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetDbName(v string) *ListDataLakeTablebaseInfoRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetPage(v int32) *ListDataLakeTablebaseInfoRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetRows(v int32) *ListDataLakeTablebaseInfoRequest {
+	s.Rows = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetSearchKey(v string) *ListDataLakeTablebaseInfoRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoRequest) SetTid(v int64) *ListDataLakeTablebaseInfoRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataLakeTablebaseInfoResponseBody struct {
+	// example:
+	//
+	// 400
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Specified parameter Rows is not valid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// B43AD641-49C2-5299-9E06-1B37EC1B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success           *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TablebaseInfoList *ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList `json:"TablebaseInfoList,omitempty" xml:"TablebaseInfoList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 100
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataLakeTablebaseInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeTablebaseInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetErrorCode(v string) *ListDataLakeTablebaseInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetErrorMessage(v string) *ListDataLakeTablebaseInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetRequestId(v string) *ListDataLakeTablebaseInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetSuccess(v bool) *ListDataLakeTablebaseInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetTablebaseInfoList(v *ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList) *ListDataLakeTablebaseInfoResponseBody {
+	s.TablebaseInfoList = v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBody) SetTotalCount(v string) *ListDataLakeTablebaseInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList struct {
+	TablebaseInfo []*DLTablebaseInfo `json:"TablebaseInfo,omitempty" xml:"TablebaseInfo,omitempty" type:"Repeated"`
+}
+
+func (s ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList) SetTablebaseInfo(v []*DLTablebaseInfo) *ListDataLakeTablebaseInfoResponseBodyTablebaseInfoList {
+	s.TablebaseInfo = v
+	return s
+}
+
+type ListDataLakeTablebaseInfoResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataLakeTablebaseInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataLakeTablebaseInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataLakeTablebaseInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataLakeTablebaseInfoResponse) SetHeaders(v map[string]*string) *ListDataLakeTablebaseInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponse) SetStatusCode(v int32) *ListDataLakeTablebaseInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataLakeTablebaseInfoResponse) SetBody(v *ListDataLakeTablebaseInfoResponseBody) *ListDataLakeTablebaseInfoResponse {
 	s.Body = v
 	return s
 }
@@ -55765,6 +59565,183 @@ func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse
 	return s
 }
 
+type SetWorkflowExtraInfoRequest struct {
+	// example:
+	//
+	// false
+	RenderAddApprovalNode *bool `json:"RenderAddApprovalNode,omitempty" xml:"RenderAddApprovalNode,omitempty"`
+	// example:
+	//
+	// true
+	RenderAgree *bool `json:"RenderAgree,omitempty" xml:"RenderAgree,omitempty"`
+	// example:
+	//
+	// true
+	RenderCancel *bool `json:"RenderCancel,omitempty" xml:"RenderCancel,omitempty"`
+	// example:
+	//
+	// false
+	RenderReject *bool `json:"RenderReject,omitempty" xml:"RenderReject,omitempty"`
+	// example:
+	//
+	// true
+	RenderTransfer *bool `json:"RenderTransfer,omitempty" xml:"RenderTransfer,omitempty"`
+	// example:
+	//
+	// test
+	ThirdpartyWorkflowComment *string `json:"ThirdpartyWorkflowComment,omitempty" xml:"ThirdpartyWorkflowComment,omitempty"`
+	// example:
+	//
+	// https://xxx
+	ThirdpartyWorkflowUrl *string `json:"ThirdpartyWorkflowUrl,omitempty" xml:"ThirdpartyWorkflowUrl,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 184****
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+}
+
+func (s SetWorkflowExtraInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWorkflowExtraInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetRenderAddApprovalNode(v bool) *SetWorkflowExtraInfoRequest {
+	s.RenderAddApprovalNode = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetRenderAgree(v bool) *SetWorkflowExtraInfoRequest {
+	s.RenderAgree = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetRenderCancel(v bool) *SetWorkflowExtraInfoRequest {
+	s.RenderCancel = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetRenderReject(v bool) *SetWorkflowExtraInfoRequest {
+	s.RenderReject = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetRenderTransfer(v bool) *SetWorkflowExtraInfoRequest {
+	s.RenderTransfer = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetThirdpartyWorkflowComment(v string) *SetWorkflowExtraInfoRequest {
+	s.ThirdpartyWorkflowComment = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetThirdpartyWorkflowUrl(v string) *SetWorkflowExtraInfoRequest {
+	s.ThirdpartyWorkflowUrl = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetTid(v int64) *SetWorkflowExtraInfoRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoRequest) SetWorkflowInstanceId(v int64) *SetWorkflowExtraInfoRequest {
+	s.WorkflowInstanceId = &v
+	return s
+}
+
+type SetWorkflowExtraInfoResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 8401893F-4235-55D5-B563-7CF7A7D037DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetWorkflowExtraInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWorkflowExtraInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetWorkflowExtraInfoResponseBody) SetData(v bool) *SetWorkflowExtraInfoResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponseBody) SetErrorCode(v string) *SetWorkflowExtraInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponseBody) SetErrorMessage(v string) *SetWorkflowExtraInfoResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponseBody) SetRequestId(v string) *SetWorkflowExtraInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponseBody) SetSuccess(v bool) *SetWorkflowExtraInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetWorkflowExtraInfoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetWorkflowExtraInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetWorkflowExtraInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetWorkflowExtraInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetWorkflowExtraInfoResponse) SetHeaders(v map[string]*string) *SetWorkflowExtraInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponse) SetStatusCode(v int32) *SetWorkflowExtraInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetWorkflowExtraInfoResponse) SetBody(v *SetWorkflowExtraInfoResponseBody) *SetWorkflowExtraInfoResponse {
+	s.Body = v
+	return s
+}
+
 type SkipDataCorrectRowCheckRequest struct {
 	// The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
 	//
@@ -56822,6 +60799,181 @@ func (s *SyncInstanceMetaResponse) SetStatusCode(v int32) *SyncInstanceMetaRespo
 }
 
 func (s *SyncInstanceMetaResponse) SetBody(v *SyncInstanceMetaResponseBody) *SyncInstanceMetaResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAbacPolicyRequest struct {
+	// example:
+	//
+	// {
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Action": "*",
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Resource": "*",
+	//
+	//       "Condition": {
+	//
+	//         "StringEqualsIgnoreCase": {
+	//
+	//           "dms:DbType": [
+	//
+	//             "redis"
+	//
+	//           ]
+	//
+	//         }
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "Version": "1"
+	//
+	// }
+	AbacPolicyContent *string `json:"AbacPolicyContent,omitempty" xml:"AbacPolicyContent,omitempty"`
+	// example:
+	//
+	// test
+	AbacPolicyDesc *string `json:"AbacPolicyDesc,omitempty" xml:"AbacPolicyDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12****
+	AbacPolicyId *int64 `json:"AbacPolicyId,omitempty" xml:"AbacPolicyId,omitempty"`
+	// example:
+	//
+	// policy_test
+	AbacPolicyName *string `json:"AbacPolicyName,omitempty" xml:"AbacPolicyName,omitempty"`
+	// example:
+	//
+	// 3***
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateAbacPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAbacPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAbacPolicyRequest) SetAbacPolicyContent(v string) *UpdateAbacPolicyRequest {
+	s.AbacPolicyContent = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyRequest) SetAbacPolicyDesc(v string) *UpdateAbacPolicyRequest {
+	s.AbacPolicyDesc = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyRequest) SetAbacPolicyId(v int64) *UpdateAbacPolicyRequest {
+	s.AbacPolicyId = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyRequest) SetAbacPolicyName(v string) *UpdateAbacPolicyRequest {
+	s.AbacPolicyName = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyRequest) SetTid(v int64) *UpdateAbacPolicyRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateAbacPolicyResponseBody struct {
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// CE43759B-5A72-560A-BF3D-862F38B36B9E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	UpdatePolicyResult *int64 `json:"UpdatePolicyResult,omitempty" xml:"UpdatePolicyResult,omitempty"`
+}
+
+func (s UpdateAbacPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAbacPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAbacPolicyResponseBody) SetErrorCode(v string) *UpdateAbacPolicyResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponseBody) SetErrorMessage(v string) *UpdateAbacPolicyResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponseBody) SetRequestId(v string) *UpdateAbacPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponseBody) SetSuccess(v bool) *UpdateAbacPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponseBody) SetUpdatePolicyResult(v int64) *UpdateAbacPolicyResponseBody {
+	s.UpdatePolicyResult = &v
+	return s
+}
+
+type UpdateAbacPolicyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAbacPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAbacPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAbacPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAbacPolicyResponse) SetHeaders(v map[string]*string) *UpdateAbacPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponse) SetStatusCode(v int32) *UpdateAbacPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAbacPolicyResponse) SetBody(v *UpdateAbacPolicyResponseBody) *UpdateAbacPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -60709,6 +64861,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加权限模板资源
+//
+// @param tmpReq - AddAuthorityTemplateItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAuthorityTemplateItemsResponse
+func (client *Client) AddAuthorityTemplateItemsWithOptions(tmpReq *AddAuthorityTemplateItemsRequest, runtime *util.RuntimeOptions) (_result *AddAuthorityTemplateItemsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddAuthorityTemplateItemsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Items)) {
+		request.ItemsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Items, tea.String("Items"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ItemsShrink)) {
+		query["Items"] = request.ItemsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAuthorityTemplateItems"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddAuthorityTemplateItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加权限模板资源
+//
+// @param request - AddAuthorityTemplateItemsRequest
+//
+// @return AddAuthorityTemplateItemsResponse
+func (client *Client) AddAuthorityTemplateItems(request *AddAuthorityTemplateItemsRequest) (_result *AddAuthorityTemplateItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAuthorityTemplateItemsResponse{}
+	_body, _err := client.AddAuthorityTemplateItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a masking rule.
 //
 // @param request - AddDesensitizationRuleRequest
@@ -61911,6 +66137,154 @@ func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrde
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseOrderResponse{}
 	_body, _err := client.CloseOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建权限策略授权
+//
+// @param request - CreateAbacAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAbacAuthorizationResponse
+func (client *Client) CreateAbacAuthorizationWithOptions(request *CreateAbacAuthorizationRequest, runtime *util.RuntimeOptions) (_result *CreateAbacAuthorizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAbacAuthorization"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAbacAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建权限策略授权
+//
+// @param request - CreateAbacAuthorizationRequest
+//
+// @return CreateAbacAuthorizationResponse
+func (client *Client) CreateAbacAuthorization(request *CreateAbacAuthorizationRequest) (_result *CreateAbacAuthorizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAbacAuthorizationResponse{}
+	_body, _err := client.CreateAbacAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建权限策略
+//
+// @param request - CreateAbacPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAbacPolicyResponse
+func (client *Client) CreateAbacPolicyWithOptions(request *CreateAbacPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateAbacPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyContent)) {
+		query["AbacPolicyContent"] = request.AbacPolicyContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyDesc)) {
+		query["AbacPolicyDesc"] = request.AbacPolicyDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyName)) {
+		query["AbacPolicyName"] = request.AbacPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAbacPolicy"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAbacPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建权限策略
+//
+// @param request - CreateAbacPolicyRequest
+//
+// @return CreateAbacPolicyResponse
+func (client *Client) CreateAbacPolicy(request *CreateAbacPolicyRequest) (_result *CreateAbacPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAbacPolicyResponse{}
+	_body, _err := client.CreateAbacPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64014,6 +68388,138 @@ func (client *Client) CreateUploadOSSFileJob(request *CreateUploadOSSFileJobRequ
 
 // Summary:
 //
+// 删除权限策略授权
+//
+// @param request - DeleteAbacAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAbacAuthorizationResponse
+func (client *Client) DeleteAbacAuthorizationWithOptions(request *DeleteAbacAuthorizationRequest, runtime *util.RuntimeOptions) (_result *DeleteAbacAuthorizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationId)) {
+		query["AuthorizationId"] = request.AuthorizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAbacAuthorization"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAbacAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除权限策略授权
+//
+// @param request - DeleteAbacAuthorizationRequest
+//
+// @return DeleteAbacAuthorizationResponse
+func (client *Client) DeleteAbacAuthorization(request *DeleteAbacAuthorizationRequest) (_result *DeleteAbacAuthorizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAbacAuthorizationResponse{}
+	_body, _err := client.DeleteAbacAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除权限策略
+//
+// @param request - DeleteAbacPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAbacPolicyResponse
+func (client *Client) DeleteAbacPolicyWithOptions(request *DeleteAbacPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteAbacPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyId)) {
+		query["AbacPolicyId"] = request.AbacPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAbacPolicy"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAbacPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除权限策略
+//
+// @param request - DeleteAbacPolicyRequest
+//
+// @return DeleteAbacPolicyResponse
+func (client *Client) DeleteAbacPolicy(request *DeleteAbacPolicyRequest) (_result *DeleteAbacPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAbacPolicyResponse{}
+	_body, _err := client.DeleteAbacPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除权限模版
 //
 // @param request - DeleteAuthorityTemplateRequest
@@ -65656,6 +70162,74 @@ func (client *Client) ExecuteStructSync(request *ExecuteStructSyncRequest) (_res
 
 // Summary:
 //
+// 获取策略详情
+//
+// @param request - GetAbacPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAbacPolicyResponse
+func (client *Client) GetAbacPolicyWithOptions(request *GetAbacPolicyRequest, runtime *util.RuntimeOptions) (_result *GetAbacPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyId)) {
+		query["AbacPolicyId"] = request.AbacPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyName)) {
+		query["AbacPolicyName"] = request.AbacPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAbacPolicy"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAbacPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取策略详情
+//
+// @param request - GetAbacPolicyRequest
+//
+// @return GetAbacPolicyResponse
+func (client *Client) GetAbacPolicy(request *GetAbacPolicyRequest) (_result *GetAbacPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAbacPolicyResponse{}
+	_body, _err := client.GetAbacPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the approval details of a ticket.
 //
 // @param request - GetApprovalDetailRequest
@@ -66931,6 +71505,222 @@ func (client *Client) GetDataImportSQL(request *GetDataImportSQLRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataImportSQLResponse{}
 	_body, _err := client.GetDataImportSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取uc的数据库目录
+//
+// @param request - GetDataLakeCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataLakeCatalogResponse
+func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogRequest, runtime *util.RuntimeOptions) (_result *GetDataLakeCatalogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataLakeCatalog"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataLakeCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取uc的数据库目录
+//
+// @param request - GetDataLakeCatalogRequest
+//
+// @return GetDataLakeCatalogResponse
+func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_result *GetDataLakeCatalogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataLakeCatalogResponse{}
+	_body, _err := client.GetDataLakeCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取UC的数据库
+//
+// @param request - GetDataLakeDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataLakeDatabaseResponse
+func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDataLakeDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataLakeDatabase"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataLakeDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取UC的数据库
+//
+// @param request - GetDataLakeDatabaseRequest
+//
+// @return GetDataLakeDatabaseResponse
+func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (_result *GetDataLakeDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataLakeDatabaseResponse{}
+	_body, _err := client.GetDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表信息
+//
+// @param request - GetDataLakeTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataLakeTableResponse
+func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableRequest, runtime *util.RuntimeOptions) (_result *GetDataLakeTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataLakeTable"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataLakeTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表信息
+//
+// @param request - GetDataLakeTableRequest
+//
+// @return GetDataLakeTableResponse
+func (client *Client) GetDataLakeTable(request *GetDataLakeTableRequest) (_result *GetDataLakeTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataLakeTableResponse{}
+	_body, _err := client.GetDataLakeTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69934,6 +74724,154 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 
 // Summary:
 //
+// 获取权限策略授权列表
+//
+// @param request - ListAbacAuthorizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAbacAuthorizationsResponse
+func (client *Client) ListAbacAuthorizationsWithOptions(request *ListAbacAuthorizationsRequest, runtime *util.RuntimeOptions) (_result *ListAbacAuthorizationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicySource)) {
+		query["PolicySource"] = request.PolicySource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAbacAuthorizations"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAbacAuthorizationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取权限策略授权列表
+//
+// @param request - ListAbacAuthorizationsRequest
+//
+// @return ListAbacAuthorizationsResponse
+func (client *Client) ListAbacAuthorizations(request *ListAbacAuthorizationsRequest) (_result *ListAbacAuthorizationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAbacAuthorizationsResponse{}
+	_body, _err := client.ListAbacAuthorizationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取权限策略列表
+//
+// @param request - ListAbacPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAbacPoliciesResponse
+func (client *Client) ListAbacPoliciesWithOptions(request *ListAbacPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListAbacPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAbacPolicies"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAbacPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取权限策略列表
+//
+// @param request - ListAbacPoliciesRequest
+//
+// @return ListAbacPoliciesResponse
+func (client *Client) ListAbacPolicies(request *ListAbacPoliciesRequest) (_result *ListAbacPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAbacPoliciesResponse{}
+	_body, _err := client.ListAbacPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取权限模版列表
 //
 // @param request - ListAuthorityTemplateRequest
@@ -69997,6 +74935,334 @@ func (client *Client) ListAuthorityTemplate(request *ListAuthorityTemplateReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAuthorityTemplateResponse{}
 	_body, _err := client.ListAuthorityTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户有权限的数据库
+//
+// @param request - ListAuthorizedDatabasesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedDatabasesForUserResponse
+func (client *Client) ListAuthorizedDatabasesForUserWithOptions(request *ListAuthorizedDatabasesForUserRequest, runtime *util.RuntimeOptions) (_result *ListAuthorizedDatabasesForUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizedDatabasesForUser"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuthorizedDatabasesForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户有权限的数据库
+//
+// @param request - ListAuthorizedDatabasesForUserRequest
+//
+// @return ListAuthorizedDatabasesForUserResponse
+func (client *Client) ListAuthorizedDatabasesForUser(request *ListAuthorizedDatabasesForUserRequest) (_result *ListAuthorizedDatabasesForUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuthorizedDatabasesForUserResponse{}
+	_body, _err := client.ListAuthorizedDatabasesForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户有权限的实例
+//
+// @param request - ListAuthorizedInstancesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedInstancesForUserResponse
+func (client *Client) ListAuthorizedInstancesForUserWithOptions(request *ListAuthorizedInstancesForUserRequest, runtime *util.RuntimeOptions) (_result *ListAuthorizedInstancesForUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizedInstancesForUser"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuthorizedInstancesForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户有权限的实例
+//
+// @param request - ListAuthorizedInstancesForUserRequest
+//
+// @return ListAuthorizedInstancesForUserResponse
+func (client *Client) ListAuthorizedInstancesForUser(request *ListAuthorizedInstancesForUserRequest) (_result *ListAuthorizedInstancesForUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuthorizedInstancesForUserResponse{}
+	_body, _err := client.ListAuthorizedInstancesForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询有数据库权限的用户
+//
+// @param request - ListAuthorizedUsersForDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedUsersForDatabaseResponse
+func (client *Client) ListAuthorizedUsersForDatabaseWithOptions(request *ListAuthorizedUsersForDatabaseRequest, runtime *util.RuntimeOptions) (_result *ListAuthorizedUsersForDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbId)) {
+		query["DbId"] = request.DbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logic)) {
+		query["Logic"] = request.Logic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizedUsersForDatabase"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuthorizedUsersForDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询有数据库权限的用户
+//
+// @param request - ListAuthorizedUsersForDatabaseRequest
+//
+// @return ListAuthorizedUsersForDatabaseResponse
+func (client *Client) ListAuthorizedUsersForDatabase(request *ListAuthorizedUsersForDatabaseRequest) (_result *ListAuthorizedUsersForDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuthorizedUsersForDatabaseResponse{}
+	_body, _err := client.ListAuthorizedUsersForDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询有实例权限的用户
+//
+// @param request - ListAuthorizedUsersForInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthorizedUsersForInstanceResponse
+func (client *Client) ListAuthorizedUsersForInstanceWithOptions(request *ListAuthorizedUsersForInstanceRequest, runtime *util.RuntimeOptions) (_result *ListAuthorizedUsersForInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAuthorizedUsersForInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAuthorizedUsersForInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询有实例权限的用户
+//
+// @param request - ListAuthorizedUsersForInstanceRequest
+//
+// @return ListAuthorizedUsersForInstanceResponse
+func (client *Client) ListAuthorizedUsersForInstance(request *ListAuthorizedUsersForInstanceRequest) (_result *ListAuthorizedUsersForInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAuthorizedUsersForInstanceResponse{}
+	_body, _err := client.ListAuthorizedUsersForInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -70737,6 +76003,230 @@ func (client *Client) ListDataImportSQLType(request *ListDataImportSQLTypeReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataImportSQLTypeResponse{}
 	_body, _err := client.ListDataImportSQLTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取uc的数据库目录列表
+//
+// @param request - ListDataLakeCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLakeCatalogResponse
+func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalogRequest, runtime *util.RuntimeOptions) (_result *ListDataLakeCatalogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataLakeCatalog"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataLakeCatalogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取uc的数据库目录列表
+//
+// @param request - ListDataLakeCatalogRequest
+//
+// @return ListDataLakeCatalogResponse
+func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (_result *ListDataLakeCatalogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataLakeCatalogResponse{}
+	_body, _err := client.ListDataLakeCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据库列表
+//
+// @param request - ListDataLakeDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLakeDatabaseResponse
+func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatabaseRequest, runtime *util.RuntimeOptions) (_result *ListDataLakeDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataLakeDatabase"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataLakeDatabaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据库列表
+//
+// @param request - ListDataLakeDatabaseRequest
+//
+// @return ListDataLakeDatabaseResponse
+func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest) (_result *ListDataLakeDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataLakeDatabaseResponse{}
+	_body, _err := client.ListDataLakeDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表信息
+//
+// @param request - ListDataLakeTablebaseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataLakeTablebaseInfoResponse
+func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLakeTablebaseInfoRequest, runtime *util.RuntimeOptions) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogName)) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
+		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rows)) {
+		query["Rows"] = request.Rows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataLakeTablebaseInfo"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataLakeTablebaseInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表信息
+//
+// @param request - ListDataLakeTablebaseInfoRequest
+//
+// @return ListDataLakeTablebaseInfoResponse
+func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseInfoRequest) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataLakeTablebaseInfoResponse{}
+	_body, _err := client.ListDataLakeTablebaseInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -76056,6 +81546,98 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 
 // Summary:
 //
+// 修改审批流额外信息
+//
+// @param request - SetWorkflowExtraInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetWorkflowExtraInfoResponse
+func (client *Client) SetWorkflowExtraInfoWithOptions(request *SetWorkflowExtraInfoRequest, runtime *util.RuntimeOptions) (_result *SetWorkflowExtraInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RenderAddApprovalNode)) {
+		query["RenderAddApprovalNode"] = request.RenderAddApprovalNode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderAgree)) {
+		query["RenderAgree"] = request.RenderAgree
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderCancel)) {
+		query["RenderCancel"] = request.RenderCancel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderReject)) {
+		query["RenderReject"] = request.RenderReject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderTransfer)) {
+		query["RenderTransfer"] = request.RenderTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdpartyWorkflowComment)) {
+		query["ThirdpartyWorkflowComment"] = request.ThirdpartyWorkflowComment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdpartyWorkflowUrl)) {
+		query["ThirdpartyWorkflowUrl"] = request.ThirdpartyWorkflowUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkflowInstanceId)) {
+		query["WorkflowInstanceId"] = request.WorkflowInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetWorkflowExtraInfo"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetWorkflowExtraInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改审批流额外信息
+//
+// @param request - SetWorkflowExtraInfoRequest
+//
+// @return SetWorkflowExtraInfoResponse
+func (client *Client) SetWorkflowExtraInfo(request *SetWorkflowExtraInfoRequest) (_result *SetWorkflowExtraInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetWorkflowExtraInfoResponse{}
+	_body, _err := client.SetWorkflowExtraInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Skips the verification on the number of rows in the precheck for data change.
 //
 // @param request - SkipDataCorrectRowCheckRequest
@@ -76595,6 +82177,82 @@ func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncInstanceMetaResponse{}
 	_body, _err := client.SyncInstanceMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新权限策略
+//
+// @param request - UpdateAbacPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAbacPolicyResponse
+func (client *Client) UpdateAbacPolicyWithOptions(request *UpdateAbacPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateAbacPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyContent)) {
+		query["AbacPolicyContent"] = request.AbacPolicyContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyDesc)) {
+		query["AbacPolicyDesc"] = request.AbacPolicyDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyId)) {
+		query["AbacPolicyId"] = request.AbacPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AbacPolicyName)) {
+		query["AbacPolicyName"] = request.AbacPolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAbacPolicy"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAbacPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新权限策略
+//
+// @param request - UpdateAbacPolicyRequest
+//
+// @return UpdateAbacPolicyResponse
+func (client *Client) UpdateAbacPolicy(request *UpdateAbacPolicyRequest) (_result *UpdateAbacPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAbacPolicyResponse{}
+	_body, _err := client.UpdateAbacPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
