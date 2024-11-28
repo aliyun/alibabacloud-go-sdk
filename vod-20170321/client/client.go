@@ -25393,7 +25393,16 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// example:
 	//
 	// 1
-	Encrypt     *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	// The encryption type of the media stream. Valid values:
+	//
+	// 	- **License**: decryption on local devices
+	//
+	// >  If the encryption type is **License**, only ApsaraVideo Player SDK can be used to play videos.
+	//
+	// example:
+	//
+	// License
 	EncryptMode *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
@@ -27867,7 +27876,8 @@ type GetVideoInfoResponseBodyVideo struct {
 	// example:
 	//
 	// Video title in ApsaraVideo VOD
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the media file.
 	//
 	// example:
@@ -27991,6 +28001,11 @@ func (s *GetVideoInfoResponseBodyVideo) SetTemplateGroupId(v string) *GetVideoIn
 
 func (s *GetVideoInfoResponseBodyVideo) SetTitle(v string) *GetVideoInfoResponseBodyVideo {
 	s.Title = &v
+	return s
+}
+
+func (s *GetVideoInfoResponseBodyVideo) SetUserData(v string) *GetVideoInfoResponseBodyVideo {
+	s.UserData = &v
 	return s
 }
 
@@ -28257,7 +28272,8 @@ type GetVideoInfosResponseBodyVideoList struct {
 	// example:
 	//
 	// Video tiltle
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the audio or video file.
 	//
 	// example:
@@ -28366,6 +28382,11 @@ func (s *GetVideoInfosResponseBodyVideoList) SetTemplateGroupId(v string) *GetVi
 
 func (s *GetVideoInfosResponseBodyVideoList) SetTitle(v string) *GetVideoInfosResponseBodyVideoList {
 	s.Title = &v
+	return s
+}
+
+func (s *GetVideoInfosResponseBodyVideoList) SetUserData(v string) *GetVideoInfosResponseBodyVideoList {
+	s.UserData = &v
 	return s
 }
 
@@ -38295,7 +38316,8 @@ type SubmitTranscodeJobsRequest struct {
 	// example:
 	//
 	// 6
-	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority  *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Processing*	- > **Transcoding Template Groups**.
 	//
 	// This parameter is required.
@@ -38351,6 +38373,11 @@ func (s *SubmitTranscodeJobsRequest) SetPipelineId(v string) *SubmitTranscodeJob
 
 func (s *SubmitTranscodeJobsRequest) SetPriority(v string) *SubmitTranscodeJobsRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobsRequest) SetSessionId(v string) *SubmitTranscodeJobsRequest {
+	s.SessionId = &v
 	return s
 }
 
@@ -39657,7 +39684,8 @@ type UpdateVideoInfoRequest struct {
 	// example:
 	//
 	// video title
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the video.
 	//
 	// This parameter is required.
@@ -39698,6 +39726,11 @@ func (s *UpdateVideoInfoRequest) SetTags(v string) *UpdateVideoInfoRequest {
 
 func (s *UpdateVideoInfoRequest) SetTitle(v string) *UpdateVideoInfoRequest {
 	s.Title = &v
+	return s
+}
+
+func (s *UpdateVideoInfoRequest) SetUserData(v string) *UpdateVideoInfoRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -54522,6 +54555,10 @@ func (client *Client) SubmitTranscodeJobsWithOptions(request *SubmitTranscodeJob
 		query["Priority"] = request.Priority
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["SessionId"] = request.SessionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateGroupId)) {
 		query["TemplateGroupId"] = request.TemplateGroupId
 	}
@@ -55344,6 +55381,10 @@ func (client *Client) UpdateVideoInfoWithOptions(request *UpdateVideoInfoRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoId)) {
