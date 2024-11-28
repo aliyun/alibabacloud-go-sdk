@@ -3563,6 +3563,179 @@ func (s *GenerateViewPointResponse) SetBody(v *GenerateViewPointResponseBody) *G
 	return s
 }
 
+type GetCategoriesByTaskIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetCategoriesByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCategoriesByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCategoriesByTaskIdRequest) SetTaskId(v string) *GetCategoriesByTaskIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdRequest) SetWorkspaceId(v string) *GetCategoriesByTaskIdRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetCategoriesByTaskIdResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetCategoriesByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCategoriesByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCategoriesByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetCode(v string) *GetCategoriesByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetData(v []*GetCategoriesByTaskIdResponseBodyData) *GetCategoriesByTaskIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetHttpStatusCode(v int32) *GetCategoriesByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetMessage(v string) *GetCategoriesByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetRequestId(v string) *GetCategoriesByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBody) SetSuccess(v bool) *GetCategoriesByTaskIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCategoriesByTaskIdResponseBodyData struct {
+	Category *string                                          `json:"Category,omitempty" xml:"Category,omitempty"`
+	Children []*GetCategoriesByTaskIdResponseBodyDataChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetCategoriesByTaskIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCategoriesByTaskIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCategoriesByTaskIdResponseBodyData) SetCategory(v string) *GetCategoriesByTaskIdResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBodyData) SetChildren(v []*GetCategoriesByTaskIdResponseBodyDataChildren) *GetCategoriesByTaskIdResponseBodyData {
+	s.Children = v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponseBodyData) SetCount(v int32) *GetCategoriesByTaskIdResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type GetCategoriesByTaskIdResponseBodyDataChildren struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+}
+
+func (s GetCategoriesByTaskIdResponseBodyDataChildren) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCategoriesByTaskIdResponseBodyDataChildren) GoString() string {
+	return s.String()
+}
+
+func (s *GetCategoriesByTaskIdResponseBodyDataChildren) SetCategory(v string) *GetCategoriesByTaskIdResponseBodyDataChildren {
+	s.Category = &v
+	return s
+}
+
+type GetCategoriesByTaskIdResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCategoriesByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCategoriesByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCategoriesByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCategoriesByTaskIdResponse) SetHeaders(v map[string]*string) *GetCategoriesByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponse) SetStatusCode(v int32) *GetCategoriesByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCategoriesByTaskIdResponse) SetBody(v *GetCategoriesByTaskIdResponseBody) *GetCategoriesByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetCustomHotTopicBroadcastJobRequest struct {
 	// This parameter is required.
 	//
@@ -4600,6 +4773,342 @@ func (s *GetDocClusterTaskResponse) SetStatusCode(v int32) *GetDocClusterTaskRes
 }
 
 func (s *GetDocClusterTaskResponse) SetBody(v *GetDocClusterTaskResponseBody) *GetDocClusterTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskRequest) SetTaskId(v string) *GetEnterpriseVocAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskRequest) SetWorkspaceId(v string) *GetEnterpriseVocAnalysisTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetEnterpriseVocAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetCode(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetData(v *GetEnterpriseVocAnalysisTaskResponseBodyData) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetMessage(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetRequestId(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetSuccess(v bool) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// error
+	ErrorMessage       *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	StatisticsOverview *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview `json:"StatisticsOverview,omitempty" xml:"StatisticsOverview,omitempty" type:"Struct"`
+	// example:
+	//
+	// SUCCESSED
+	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage  *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetStatisticsOverview(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.StatisticsOverview = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetStatus(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetUsage(v *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.Usage = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview struct {
+	// example:
+	//
+	// 100
+	Count                     *int32                                                                                   `json:"Count,omitempty" xml:"Count,omitempty"`
+	FilterDimensionStatistics *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics `json:"FilterDimensionStatistics,omitempty" xml:"FilterDimensionStatistics,omitempty" type:"Struct"`
+	TagDimensionStatistics    *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics    `json:"TagDimensionStatistics,omitempty" xml:"TagDimensionStatistics,omitempty" type:"Struct"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.Count = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetFilterDimensionStatistics(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.FilterDimensionStatistics = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetTagDimensionStatistics(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.TagDimensionStatistics = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics struct {
+	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic `json:"TagValueCountStatistic,omitempty" xml:"TagValueCountStatistic,omitempty" type:"Repeated"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) SetTagValueCountStatistic(v []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics {
+	s.TagValueCountStatistic = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic struct {
+	// example:
+	//
+	// xxx
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// multiTagValues
+	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// example:
+	//
+	// 100
+	ValueCount *int32 `json:"ValueCount,omitempty" xml:"ValueCount,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) SetTagName(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) SetTagTaskType(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic {
+	s.TagTaskType = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) SetValueCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic {
+	s.ValueCount = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics struct {
+	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic `json:"TagValueCountStatistic,omitempty" xml:"TagValueCountStatistic,omitempty" type:"Repeated"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) SetTagValueCountStatistic(v []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics {
+	s.TagValueCountStatistic = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic struct {
+	// example:
+	//
+	// xxx
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// multiTagValues
+	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// example:
+	//
+	// 100
+	ValueCount *int32 `json:"ValueCount,omitempty" xml:"ValueCount,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) SetTagName(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) SetTagTaskType(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic {
+	s.TagTaskType = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) SetValueCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic {
+	s.ValueCount = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataUsage struct {
+	// example:
+	//
+	// 200
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) SetInputTokens(v int64) *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) SetOutputTokens(v int64) *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEnterpriseVocAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetEnterpriseVocAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetStatusCode(v int32) *GetEnterpriseVocAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetBody(v *GetEnterpriseVocAnalysisTaskResponseBody) *GetEnterpriseVocAnalysisTaskResponse {
 	s.Body = v
 	return s
 }
@@ -9377,6 +9886,362 @@ func (s *InsertInterveneRuleResponse) SetStatusCode(v int32) *InsertInterveneRul
 }
 
 func (s *InsertInterveneRuleResponse) SetBody(v *InsertInterveneRuleResponseBody) *InsertInterveneRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdRequest struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// token-xxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 3
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetCategories(v []*string) *ListAnalysisTagDetailByTaskIdRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetCurrent(v int32) *ListAnalysisTagDetailByTaskIdRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetMaxResults(v int32) *ListAnalysisTagDetailByTaskIdRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetNextToken(v string) *ListAnalysisTagDetailByTaskIdRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetSize(v int32) *ListAnalysisTagDetailByTaskIdRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetTaskId(v string) *ListAnalysisTagDetailByTaskIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdRequest) SetWorkspaceId(v string) *ListAnalysisTagDetailByTaskIdRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdShrinkRequest struct {
+	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// token-xxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 3
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetCategoriesShrink(v string) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetCurrent(v int32) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.Current = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetMaxResults(v int32) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetNextToken(v string) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetSize(v int32) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetTaskId(v string) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdShrinkRequest) SetWorkspaceId(v string) *ListAnalysisTagDetailByTaskIdShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAnalysisTagDetailByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// token-xxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetCode(v string) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetData(v []*ListAnalysisTagDetailByTaskIdResponseBodyData) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetHttpStatusCode(v int32) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetMaxResults(v int32) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetMessage(v string) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetNextToken(v string) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetRequestId(v string) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetSuccess(v bool) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBody) SetTotalCount(v int32) *ListAnalysisTagDetailByTaskIdResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdResponseBodyData struct {
+	// example:
+	//
+	// xxx
+	Content     *string                                                     `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentTags []*ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags `json:"ContentTags,omitempty" xml:"ContentTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 112
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// summaryAndOverview
+	TagTaskType *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetContent(v string) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetContentTags(v []*ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.ContentTags = v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetId(v int64) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetTagTaskType(v string) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.TagTaskType = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetTaskId(v string) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags struct {
+	// example:
+	//
+	// xxx
+	SummaryOverview *string `json:"SummaryOverview,omitempty" xml:"SummaryOverview,omitempty"`
+	// example:
+	//
+	// xxx
+	TagName *string   `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) SetSummaryOverview(v string) *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags {
+	s.SummaryOverview = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) SetTagName(v string) *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags {
+	s.TagName = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags) SetTags(v []*string) *ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags {
+	s.Tags = v
+	return s
+}
+
+type ListAnalysisTagDetailByTaskIdResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAnalysisTagDetailByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnalysisTagDetailByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponse) SetHeaders(v map[string]*string) *ListAnalysisTagDetailByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponse) SetStatusCode(v int32) *ListAnalysisTagDetailByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponse) SetBody(v *ListAnalysisTagDetailByTaskIdResponseBody) *ListAnalysisTagDetailByTaskIdResponse {
 	s.Body = v
 	return s
 }
@@ -23849,6 +24714,416 @@ func (s *SubmitDocClusterTaskResponse) SetBody(v *SubmitDocClusterTaskResponseBo
 	return s
 }
 
+type SubmitEnterpriseVocAnalysisTaskRequest struct {
+	// This parameter is required.
+	ContentTags []*SubmitEnterpriseVocAnalysisTaskRequestContentTags `json:"ContentTags,omitempty" xml:"ContentTags,omitempty" type:"Repeated"`
+	Contents    []*SubmitEnterpriseVocAnalysisTaskRequestContents    `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// oss://default/bucket-name/materialDocument/tenant_agent/fileName
+	FileKey    *string                                             `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FilterTags []*SubmitEnterpriseVocAnalysisTaskRequestFilterTags `json:"FilterTags,omitempty" xml:"FilterTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// shortContent
+	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	ModelId        *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	PositiveSample *string `json:"PositiveSample,omitempty" xml:"PositiveSample,omitempty"`
+	// example:
+	//
+	// oss://default/bucket-name/path/xxx.xlsx
+	PositiveSampleFileKey *string `json:"PositiveSampleFileKey,omitempty" xml:"PositiveSampleFileKey,omitempty"`
+	// example:
+	//
+	// lightAppSass
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetContentTags(v []*SubmitEnterpriseVocAnalysisTaskRequestContentTags) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ContentTags = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetContents(v []*SubmitEnterpriseVocAnalysisTaskRequestContents) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.Contents = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetFileKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetFilterTags(v []*SubmitEnterpriseVocAnalysisTaskRequestFilterTags) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.FilterTags = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetMaterialType(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.MaterialType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetModelId(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetPositiveSample(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.PositiveSample = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetPositiveSampleFileKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.PositiveSampleFileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetTaskType(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetWorkspaceId(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestContentTags struct {
+	// example:
+	//
+	// 一级标签-二级标签
+	TagDefinePrompt *string `json:"TagDefinePrompt,omitempty" xml:"TagDefinePrompt,omitempty"`
+	// example:
+	//
+	// 一级标签-二级标签
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// singleTagValue
+	TagTaskType          *string `json:"TagTaskType,omitempty" xml:"TagTaskType,omitempty"`
+	TagValueDefinePrompt *string `json:"TagValueDefinePrompt,omitempty" xml:"TagValueDefinePrompt,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContentTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContentTags) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContentTags) SetTagDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestContentTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContentTags) SetTagName(v string) *SubmitEnterpriseVocAnalysisTaskRequestContentTags {
+	s.TagName = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContentTags) SetTagTaskType(v string) *SubmitEnterpriseVocAnalysisTaskRequestContentTags {
+	s.TagTaskType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContentTags) SetTagValueDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestContentTags {
+	s.TagValueDefinePrompt = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestContents struct {
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContents) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContents) SetExtraInfo(v string) *SubmitEnterpriseVocAnalysisTaskRequestContents {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContents) SetText(v string) *SubmitEnterpriseVocAnalysisTaskRequestContents {
+	s.Text = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestFilterTags struct {
+	// example:
+	//
+	// 一级标签-二级标签
+	TagDefinePrompt *string `json:"TagDefinePrompt,omitempty" xml:"TagDefinePrompt,omitempty"`
+	// example:
+	//
+	// 一级标签-二级标签
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// singleTagValue
+	TagType              *string `json:"TagType,omitempty" xml:"TagType,omitempty"`
+	TagValueDefinePrompt *string `json:"TagValueDefinePrompt,omitempty" xml:"TagValueDefinePrompt,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestFilterTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestFilterTags) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagName(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagName = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagType(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagValueDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagValueDefinePrompt = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
+	// This parameter is required.
+	ContentTagsShrink *string `json:"ContentTags,omitempty" xml:"ContentTags,omitempty"`
+	ContentsShrink    *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
+	// example:
+	//
+	// oss://default/bucket-name/materialDocument/tenant_agent/fileName
+	FileKey          *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FilterTagsShrink *string `json:"FilterTags,omitempty" xml:"FilterTags,omitempty"`
+	// example:
+	//
+	// shortContent
+	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qwen-max
+	ModelId        *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	PositiveSample *string `json:"PositiveSample,omitempty" xml:"PositiveSample,omitempty"`
+	// example:
+	//
+	// oss://default/bucket-name/path/xxx.xlsx
+	PositiveSampleFileKey *string `json:"PositiveSampleFileKey,omitempty" xml:"PositiveSampleFileKey,omitempty"`
+	// example:
+	//
+	// lightAppSass
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetContentTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ContentTagsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetContentsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ContentsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetFileKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetFilterTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.FilterTagsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetMaterialType(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.MaterialType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetModelId(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetPositiveSample(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.PositiveSample = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetPositiveSampleFileKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.PositiveSampleFileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetTaskType(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetWorkspaceId(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitEnterpriseVocAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetCode(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetData(v *SubmitEnterpriseVocAnalysisTaskResponseBodyData) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetMessage(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetRequestId(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// xxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBodyData) SetTaskId(v string) *SubmitEnterpriseVocAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitEnterpriseVocAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetHeaders(v map[string]*string) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetStatusCode(v int32) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVocAnalysisTaskResponseBody) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequest struct {
 	// This parameter is required.
 	//
@@ -24916,6 +26191,188 @@ func (s *UpdateMaterialDocumentResponse) SetStatusCode(v int32) *UpdateMaterialD
 }
 
 func (s *UpdateMaterialDocumentResponse) SetBody(v *UpdateMaterialDocumentResponseBody) *UpdateMaterialDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type ValidateUploadTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Content
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// example:
+	//
+	// lightAppSass
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Content
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ValidateUploadTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateUploadTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateUploadTemplateRequest) SetFileKey(v string) *ValidateUploadTemplateRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateRequest) SetTaskType(v string) *ValidateUploadTemplateRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateRequest) SetTemplateType(v string) *ValidateUploadTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateRequest) SetWorkspaceId(v string) *ValidateUploadTemplateRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ValidateUploadTemplateResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ValidateUploadTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ValidateUploadTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateUploadTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetCode(v string) *ValidateUploadTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetData(v *ValidateUploadTemplateResponseBodyData) *ValidateUploadTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetHttpStatusCode(v int32) *ValidateUploadTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetMessage(v string) *ValidateUploadTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetRequestId(v string) *ValidateUploadTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBody) SetSuccess(v bool) *ValidateUploadTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidateUploadTemplateResponseBodyData struct {
+	// example:
+	//
+	// 50
+	CommentCount *int32 `json:"CommentCount,omitempty" xml:"CommentCount,omitempty"`
+	// example:
+	//
+	// 50
+	DialogueCount *int32 `json:"DialogueCount,omitempty" xml:"DialogueCount,omitempty"`
+	// example:
+	//
+	// 50
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ValidateUploadTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateUploadTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateUploadTemplateResponseBodyData) SetCommentCount(v int32) *ValidateUploadTemplateResponseBodyData {
+	s.CommentCount = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBodyData) SetDialogueCount(v int32) *ValidateUploadTemplateResponseBodyData {
+	s.DialogueCount = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponseBodyData) SetTotalCount(v int32) *ValidateUploadTemplateResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ValidateUploadTemplateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidateUploadTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ValidateUploadTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateUploadTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateUploadTemplateResponse) SetHeaders(v map[string]*string) *ValidateUploadTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponse) SetStatusCode(v int32) *ValidateUploadTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidateUploadTemplateResponse) SetBody(v *ValidateUploadTemplateResponseBody) *ValidateUploadTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -26421,6 +27878,70 @@ func (client *Client) GenerateViewPoint(request *GenerateViewPointRequest) (_res
 
 // Summary:
 //
+// 获取某次标签挖掘结果分类
+//
+// @param request - GetCategoriesByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCategoriesByTaskIdResponse
+func (client *Client) GetCategoriesByTaskIdWithOptions(request *GetCategoriesByTaskIdRequest, runtime *util.RuntimeOptions) (_result *GetCategoriesByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCategoriesByTaskId"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCategoriesByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取某次标签挖掘结果分类
+//
+// @param request - GetCategoriesByTaskIdRequest
+//
+// @return GetCategoriesByTaskIdResponse
+func (client *Client) GetCategoriesByTaskId(request *GetCategoriesByTaskIdRequest) (_result *GetCategoriesByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCategoriesByTaskIdResponse{}
+	_body, _err := client.GetCategoriesByTaskIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取自定义播报单任务结果
 //
 // @param request - GetCustomHotTopicBroadcastJobRequest
@@ -26744,6 +28265,70 @@ func (client *Client) GetDocClusterTask(request *GetDocClusterTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocClusterTaskResponse{}
 	_body, _err := client.GetDocClusterTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取企业VOC分析任务结果
+//
+// @param request - GetEnterpriseVocAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnterpriseVocAnalysisTaskResponse
+func (client *Client) GetEnterpriseVocAnalysisTaskWithOptions(request *GetEnterpriseVocAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseVocAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseVocAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取企业VOC分析任务结果
+//
+// @param request - GetEnterpriseVocAnalysisTaskRequest
+//
+// @return GetEnterpriseVocAnalysisTaskResponse
+func (client *Client) GetEnterpriseVocAnalysisTask(request *GetEnterpriseVocAnalysisTaskRequest) (_result *GetEnterpriseVocAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.GetEnterpriseVocAnalysisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27718,6 +29303,96 @@ func (client *Client) InsertInterveneRule(request *InsertInterveneRuleRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &InsertInterveneRuleResponse{}
 	_body, _err := client.InsertInterveneRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页获取企业VOC分析任务明细列表
+//
+// @param tmpReq - ListAnalysisTagDetailByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAnalysisTagDetailByTaskIdResponse
+func (client *Client) ListAnalysisTagDetailByTaskIdWithOptions(tmpReq *ListAnalysisTagDetailByTaskIdRequest, runtime *util.RuntimeOptions) (_result *ListAnalysisTagDetailByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListAnalysisTagDetailByTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Categories)) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, tea.String("Categories"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoriesShrink)) {
+		body["Categories"] = request.CategoriesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Current)) {
+		body["Current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		body["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAnalysisTagDetailByTaskId"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页获取企业VOC分析任务明细列表
+//
+// @param request - ListAnalysisTagDetailByTaskIdRequest
+//
+// @return ListAnalysisTagDetailByTaskIdResponse
+func (client *Client) ListAnalysisTagDetailByTaskId(request *ListAnalysisTagDetailByTaskIdRequest) (_result *ListAnalysisTagDetailByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.ListAnalysisTagDetailByTaskIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31391,6 +33066,116 @@ func (client *Client) SubmitDocClusterTask(request *SubmitDocClusterTaskRequest)
 
 // Summary:
 //
+// 提交VOC异步任务
+//
+// @param tmpReq - SubmitEnterpriseVocAnalysisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitEnterpriseVocAnalysisTaskResponse
+func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(tmpReq *SubmitEnterpriseVocAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitEnterpriseVocAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitEnterpriseVocAnalysisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContentTags)) {
+		request.ContentTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContentTags, tea.String("ContentTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Contents)) {
+		request.ContentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contents, tea.String("Contents"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTags)) {
+		request.FilterTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTags, tea.String("FilterTags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentTagsShrink)) {
+		body["ContentTags"] = request.ContentTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentsShrink)) {
+		body["Contents"] = request.ContentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTagsShrink)) {
+		body["FilterTags"] = request.FilterTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaterialType)) {
+		body["MaterialType"] = request.MaterialType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PositiveSample)) {
+		body["PositiveSample"] = request.PositiveSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PositiveSampleFileKey)) {
+		body["PositiveSampleFileKey"] = request.PositiveSampleFileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitEnterpriseVocAnalysisTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交VOC异步任务
+//
+// @param request - SubmitEnterpriseVocAnalysisTaskRequest
+//
+// @return SubmitEnterpriseVocAnalysisTaskResponse
+func (client *Client) SubmitEnterpriseVocAnalysisTask(request *SubmitEnterpriseVocAnalysisTaskRequest) (_result *SubmitEnterpriseVocAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.SubmitEnterpriseVocAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交选题热点分析任务
 //
 // @param tmpReq - SubmitTopicSelectionPerspectiveAnalysisTaskRequest
@@ -31760,6 +33545,78 @@ func (client *Client) UpdateMaterialDocument(request *UpdateMaterialDocumentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMaterialDocumentResponse{}
 	_body, _err := client.UpdateMaterialDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验企业VOC上传模板
+//
+// @param request - ValidateUploadTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateUploadTemplateResponse
+func (client *Client) ValidateUploadTemplateWithOptions(request *ValidateUploadTemplateRequest, runtime *util.RuntimeOptions) (_result *ValidateUploadTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		body["TemplateType"] = request.TemplateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateUploadTemplate"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidateUploadTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验企业VOC上传模板
+//
+// @param request - ValidateUploadTemplateRequest
+//
+// @return ValidateUploadTemplateResponse
+func (client *Client) ValidateUploadTemplate(request *ValidateUploadTemplateRequest) (_result *ValidateUploadTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidateUploadTemplateResponse{}
+	_body, _err := client.ValidateUploadTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
