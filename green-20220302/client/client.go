@@ -1871,6 +1871,7 @@ func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBo
 }
 
 type ImageBatchModerationRequest struct {
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// example:
 	//
 	// {
@@ -1881,10 +1882,6 @@ type ImageBatchModerationRequest struct {
 	//
 	//     }
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
-	// example:
-	//
-	// baselineCheck,tonalityImprove
-	Services *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
 
 func (s ImageBatchModerationRequest) String() string {
@@ -1895,13 +1892,13 @@ func (s ImageBatchModerationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImageBatchModerationRequest) SetServiceParameters(v string) *ImageBatchModerationRequest {
-	s.ServiceParameters = &v
+func (s *ImageBatchModerationRequest) SetService(v string) *ImageBatchModerationRequest {
+	s.Service = &v
 	return s
 }
 
-func (s *ImageBatchModerationRequest) SetServices(v string) *ImageBatchModerationRequest {
-	s.Services = &v
+func (s *ImageBatchModerationRequest) SetServiceParameters(v string) *ImageBatchModerationRequest {
+	s.ServiceParameters = &v
 	return s
 }
 
@@ -6559,12 +6556,12 @@ func (client *Client) ImageBatchModerationWithOptions(request *ImageBatchModerat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
-		query["ServiceParameters"] = request.ServiceParameters
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Services)) {
-		query["Services"] = request.Services
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
 	}
 
 	req := &openapi.OpenApiRequest{
