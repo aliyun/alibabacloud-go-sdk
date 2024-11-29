@@ -1,3 +1,17 @@
+2024-11-29 Version: v4.26.8
+- Update API CreateAutoProvisioningGroup: update param LaunchTemplateConfig.
+- Update API CreateSavingsPlan: add param InstanceTypeFamilyGroup.
+- Update API DescribeInstanceTypes: update response param.
+- Update API DescribeSavingsPlanEstimation: add param EstimationResource.
+- Update API DescribeSavingsPlanEstimation: add param InstanceTypeScope.
+- Update API DescribeSavingsPlanEstimation: update response param.
+- Update API DescribeSavingsPlanPrice: add param InstanceTypeFamilyGroup.
+- Update API RedeployDedicatedHost: add param MigrationType.
+- Update API RunInstances: update param NetworkInterface.
+- Update API RunInstances: update param SecurityGroupId.
+- Update API RunInstances: update param SecurityGroupIds.
+
+
 2024-11-15 Version: v4.26.7
 - Update API ImportImage: add param ClientToken.
 
