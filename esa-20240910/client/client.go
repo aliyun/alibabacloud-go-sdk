@@ -4500,6 +4500,223 @@ func (s *CommitRoutineStagingCodeResponse) SetBody(v *CommitRoutineStagingCodeRe
 	return s
 }
 
+type CreateClientCertificateRequest struct {
+	// example:
+	//
+	// -----BEGIN CERTIFICATE REQUEST-----
+	CSR *string `json:"CSR,omitempty" xml:"CSR,omitempty"`
+	// example:
+	//
+	// RSA
+	PkeyType *string `json:"PkeyType,omitempty" xml:"PkeyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 365
+	ValidityDays *int64 `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s CreateClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientCertificateRequest) SetCSR(v string) *CreateClientCertificateRequest {
+	s.CSR = &v
+	return s
+}
+
+func (s *CreateClientCertificateRequest) SetPkeyType(v string) *CreateClientCertificateRequest {
+	s.PkeyType = &v
+	return s
+}
+
+func (s *CreateClientCertificateRequest) SetSiteId(v int64) *CreateClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *CreateClientCertificateRequest) SetValidityDays(v int64) *CreateClientCertificateRequest {
+	s.ValidityDays = &v
+	return s
+}
+
+type CreateClientCertificateResponseBody struct {
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1dbb
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d95
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// DCDN CA
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// 2024-12-01T02:12:49Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-12-01T02:12:49Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// example:
+	//
+	// C370DAF1-C838-4288-A1A0-9A87633D248E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1daa
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 365
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s CreateClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientCertificateResponseBody) SetCACertificateId(v string) *CreateClientCertificateResponseBody {
+	s.CACertificateId = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetCertificate(v string) *CreateClientCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetCommonName(v string) *CreateClientCertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetFingerprintSha256(v string) *CreateClientCertificateResponseBody {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetId(v string) *CreateClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetIssuer(v string) *CreateClientCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetNotAfter(v string) *CreateClientCertificateResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetNotBefore(v string) *CreateClientCertificateResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetPrivateKey(v string) *CreateClientCertificateResponseBody {
+	s.PrivateKey = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetRequestId(v string) *CreateClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetSerialNumber(v string) *CreateClientCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetSignatureAlgorithm(v string) *CreateClientCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetStatus(v string) *CreateClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponseBody) SetValidityDays(v string) *CreateClientCertificateResponseBody {
+	s.ValidityDays = &v
+	return s
+}
+
+type CreateClientCertificateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientCertificateResponse) SetHeaders(v map[string]*string) *CreateClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClientCertificateResponse) SetStatusCode(v int32) *CreateClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClientCertificateResponse) SetBody(v *CreateClientCertificateResponseBody) *CreateClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomScenePolicyRequest struct {
 	// The time when the policy expires.
 	//
@@ -9105,36 +9322,60 @@ func (s *CreateSiteDeliveryTaskResponse) SetBody(v *CreateSiteDeliveryTaskRespon
 }
 
 type CreateSiteFunctionRequest struct {
-	CacheReserve                        []*CreateSiteFunctionRequestCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
-	CacheRules                          []*CreateSiteFunctionRequestCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
-	CacheTags                           []*CreateSiteFunctionRequestCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	CnameFlattening                     []*CreateSiteFunctionRequestCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
-	CompressionRules                    []*CreateSiteFunctionRequestCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
-	CrossBorderOptimization             []*CreateSiteFunctionRequestCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
-	DevelopmentMode                     []*CreateSiteFunctionRequestDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
-	HttpRequestHeaderModificationRules  []*CreateSiteFunctionRequestHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	CacheReserve []*CreateSiteFunctionRequestCacheReserve `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	// The cache rules.
+	CacheRules []*CreateSiteFunctionRequestCacheRules `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	// The cache tags.
+	CacheTags []*CreateSiteFunctionRequestCacheTags `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	// The configuration of CNAME flattening.
+	CnameFlattening []*CreateSiteFunctionRequestCnameFlattening `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	// The configuration of a compression rule.
+	CompressionRules        []*CreateSiteFunctionRequestCompressionRules        `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization []*CreateSiteFunctionRequestCrossBorderOptimization `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	// The configuration of development mode.
+	DevelopmentMode []*CreateSiteFunctionRequestDevelopmentMode `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	// The configuration of a request header modification rule.
+	HttpRequestHeaderModificationRules []*CreateSiteFunctionRequestHttpRequestHeaderModificationRules `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	// The configuration of a response header modification rule.
 	HttpResponseHeaderModificationRules []*CreateSiteFunctionRequestHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
 	HttpsApplicationConfiguration       []*CreateSiteFunctionRequestHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
 	HttpsBasicConfiguration             []*CreateSiteFunctionRequestHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
-	ImageTransform                      []*CreateSiteFunctionRequestImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
-	Ipv6                                []*CreateSiteFunctionRequestIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
-	ManagedTransforms                   []*CreateSiteFunctionRequestManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
-	NetworkOptimization                 []*CreateSiteFunctionRequestNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
-	OriginProtection                    []*CreateSiteFunctionRequestOriginProtection                    `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty" type:"Repeated"`
-	OriginRules                         []*CreateSiteFunctionRequestOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
-	RedirectRules                       []*CreateSiteFunctionRequestRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
-	RewriteUrlRules                     []*CreateSiteFunctionRequestRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
-	SeoBypass                           []*CreateSiteFunctionRequestSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	// The configuration of image transformations.
+	ImageTransform []*CreateSiteFunctionRequestImageTransform `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	// The IPv6 configuration.
+	Ipv6 []*CreateSiteFunctionRequestIpv6 `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	// The configuration of managed transforms.
+	ManagedTransforms   []*CreateSiteFunctionRequestManagedTransforms   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization []*CreateSiteFunctionRequestNetworkOptimization `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	// The configuration of origin protection.
+	OriginProtection []*CreateSiteFunctionRequestOriginProtection `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty" type:"Repeated"`
+	// The configuration of an origin rule.
+	OriginRules []*CreateSiteFunctionRequestOriginRules `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	// The configuration of a redirect rule.
+	RedirectRules []*CreateSiteFunctionRequestRedirectRules `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	// The configuration of a URL rewrite rule.
+	RewriteUrlRules []*CreateSiteFunctionRequestRewriteUrlRules `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	// The configuration of SEO crawler bypassing.
+	SeoBypass []*CreateSiteFunctionRequestSeoBypass `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CreateSiteFunction
-	SiteId            *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The configuration of site hold. After this feature is enabled, other accounts cannot add your website domain or its subdomains to ESA.
 	SiteNameExclusive []*CreateSiteFunctionRequestSiteNameExclusive `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
-	SitePause         []*CreateSiteFunctionRequestSitePause         `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
-	SiteVersion       *int32                                        `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TieredCache       []*CreateSiteFunctionRequestTieredCache       `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+	// The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
+	SitePause []*CreateSiteFunctionRequestSitePause `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	// The version number of the website. You can use this parameter to specify a version of your website to apply the new feature settings. By default, version 0 is used.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion *int32                                  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	TieredCache []*CreateSiteFunctionRequestTieredCache `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
 }
 
 func (s CreateSiteFunctionRequest) String() string {
@@ -9271,7 +9512,13 @@ func (s *CreateSiteFunctionRequest) SetTieredCache(v []*CreateSiteFunctionReques
 }
 
 type CreateSiteFunctionRequestCacheReserve struct {
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// cr_hk_123456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9294,29 +9541,162 @@ func (s *CreateSiteFunctionRequestCacheReserve) SetInstanceId(v string) *CreateS
 }
 
 type CreateSiteFunctionRequestCacheRules struct {
+	// example:
+	//
+	// 8880
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
-	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
-	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
-	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
-	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
-	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
-	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
-	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
-	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
-	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
-	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
-	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
-	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
-	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
-	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
-	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
-	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
-	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
-	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+	// The browser cache configuration. Valid values:
+	//
+	// 	- no_cache: does not cache resources.
+	//
+	// 	- follow_origin: follows the origin\\"s cache rule.
+	//
+	// 	- override_origin: uses a custom cache rule instead of the origin\\"s.
+	//
+	// example:
+	//
+	// follow_origin
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// The browser cache TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// The configuration of bypass cache. Valid values:
+	//
+	// 	- cache_all: Responses of all requests are cached.
+	//
+	// 	- default_cache (default): Resources are cached only based on supported file extensions.
+	//
+	// 	- bypass_all: All requests bypass the cache component.
+	//
+	// example:
+	//
+	// default_cache
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// The edge cache configuration. Valid values:
+	//
+	// 	- follow_origin: follows the origin\\"s cache rule. If the origin does not have a cache rule, the default cache rule is used.
+	//
+	// 	- no-cache: does not cache resources.
+	//
+	// 	- override_origin: uses a custom cache rule instead of the origin\\"s.
+	//
+	// 	- follow_origin_bypass: follows the origin\\"s cache rule. If the origin does not have a cache rule, no resources are cached.
+	//
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// The edge cache TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// The status code TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// The cookie names and values included in the cache key. Separate multiple combinations with spaces.
+	//
+	// example:
+	//
+	// cookie_exapmle
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// The header names and values included in the cache key. Separate multiple combinations with spaces.
+	//
+	// example:
+	//
+	// example
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// The parameters to be retained or ignored in the query string. Separate multiple values with spaces.
+	//
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// Specifies how to process the query string when cache keys are generated. Valid values:
+	//
+	// 	- ignore_all: ignores the entire query string.
+	//
+	// 	- exclude_query_string: ignores specified parameters in the query string.
+	//
+	// 	- reserve_all (default): retains the entire query string.
+	//
+	// 	- include_query_string: retains specified parameters in the query string.
+	//
+	// example:
+	//
+	// reserve_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Specifies whether to sort query strings. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestCacheRules) String() string {
@@ -9443,8 +9823,22 @@ func (s *CreateSiteFunctionRequestCacheRules) SetUserLanguage(v string) *CreateS
 }
 
 type CreateSiteFunctionRequestCacheTags struct {
+	// Specifies whether the matching is not case-sensitive. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
-	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The name of the custom cache tag.
+	//
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestCacheTags) String() string {
@@ -9466,6 +9860,15 @@ func (s *CreateSiteFunctionRequestCacheTags) SetTagName(v string) *CreateSiteFun
 }
 
 type CreateSiteFunctionRequestCnameFlattening struct {
+	// The CNAME flattening mode. Valid values:
+	//
+	// 	- flatten_all: flattens all CNAMEs.
+	//
+	// 	- flatten_all (default): flattens only the root domain.
+	//
+	// example:
+	//
+	// on
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
 }
 
@@ -9483,11 +9886,48 @@ func (s *CreateSiteFunctionRequestCnameFlattening) SetFlattenMode(v string) *Cre
 }
 
 type CreateSiteFunctionRequestCompressionRules struct {
-	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
-	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable Brotli compression. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// Specifies whether to enable Gzip compression. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestCompressionRules) String() string {
@@ -9524,6 +9964,9 @@ func (s *CreateSiteFunctionRequestCompressionRules) SetRuleName(v string) *Creat
 }
 
 type CreateSiteFunctionRequestCrossBorderOptimization struct {
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -9541,6 +9984,15 @@ func (s *CreateSiteFunctionRequestCrossBorderOptimization) SetEnable(v string) *
 }
 
 type CreateSiteFunctionRequestDevelopmentMode struct {
+	// Specifies whether to enable the development mode. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -9558,10 +10010,34 @@ func (s *CreateSiteFunctionRequestDevelopmentMode) SetEnable(v string) *CreateSi
 }
 
 type CreateSiteFunctionRequestHttpRequestHeaderModificationRules struct {
+	// Modifies a request header. You can add, delete, or modify a response header.
+	//
+	// example:
+	//
+	// [{"operation":"add","name":"header_example_add","value":"value_exapme_add"},{"operation":"del","name":"header_example_delete","value":"value_exapme_delete"},{"operation":"modify","name":"header_example_update","value":"value_exapme_example"}]
 	RequestHeaderModification []*CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	Rule                      *string                                                                                 `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                *string                                                                                 `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                  *string                                                                                 `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRules) String() string {
@@ -9593,9 +10069,18 @@ func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRules) SetRuleNam
 }
 
 type CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
@@ -9622,10 +10107,34 @@ func (s *CreateSiteFunctionRequestHttpRequestHeaderModificationRulesRequestHeade
 }
 
 type CreateSiteFunctionRequestHttpResponseHeaderModificationRules struct {
+	// Modifies a response header. You can add, delete, or modify a request header.
+	//
+	// example:
+	//
+	// [{"operation":"add","name":"header_example_add","value":"value_exapme_add"},{"operation":"del","name":"header_example_delete","value":"value_exapme_delete"},{"operation":"modify","name":"header_example_update","value":"value_exapme_example"}]
 	ResponseHeaderModification []*CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	Rule                       *string                                                                                   `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                 *string                                                                                   `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                   *string                                                                                   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRules) String() string {
@@ -9657,9 +10166,18 @@ func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRules) SetRuleNa
 }
 
 type CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
@@ -9686,19 +10204,58 @@ func (s *CreateSiteFunctionRequestHttpResponseHeaderModificationRulesResponseHea
 }
 
 type CreateSiteFunctionRequestHttpsApplicationConfiguration struct {
-	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
-	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
-	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
-	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
-	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
-	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
-	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpsApplicationConfiguration) String() string {
@@ -9775,19 +10332,58 @@ func (s *CreateSiteFunctionRequestHttpsApplicationConfiguration) SetRuleName(v s
 }
 
 type CreateSiteFunctionRequestHttpsBasicConfiguration struct {
-	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
-	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
-	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
-	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
-	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
-	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
-	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
-	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestHttpsBasicConfiguration) String() string {
@@ -9864,6 +10460,15 @@ func (s *CreateSiteFunctionRequestHttpsBasicConfiguration) SetTls13(v string) *C
 }
 
 type CreateSiteFunctionRequestImageTransform struct {
+	// Specifies whether to enable image transformations. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off (default)
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -9881,6 +10486,15 @@ func (s *CreateSiteFunctionRequestImageTransform) SetEnable(v string) *CreateSit
 }
 
 type CreateSiteFunctionRequestIpv6 struct {
+	// Specifies whether to enable IPv6. Valid values:
+	//
+	// 	- on (default)
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -9898,8 +10512,26 @@ func (s *CreateSiteFunctionRequestIpv6) SetEnable(v string) *CreateSiteFunctionR
 }
 
 type CreateSiteFunctionRequestManagedTransforms struct {
+	// Specifies whether to include the header that indicates the geographical location of a client in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
-	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// Specifies whether to include the "ali-real-client-ip" header that contains the client\\"s real IP address in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestManagedTransforms) String() string {
@@ -9921,14 +10553,38 @@ func (s *CreateSiteFunctionRequestManagedTransforms) SetAddRealClientIpHeader(v 
 }
 
 type CreateSiteFunctionRequestNetworkOptimization struct {
-	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// on
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestNetworkOptimization) String() string {
@@ -9980,6 +10636,15 @@ func (s *CreateSiteFunctionRequestNetworkOptimization) SetWebsocket(v string) *C
 }
 
 type CreateSiteFunctionRequestOriginProtection struct {
+	// Specifies whether to enable origin protection. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -9997,16 +10662,70 @@ func (s *CreateSiteFunctionRequestOriginProtection) SetEnable(v string) *CreateS
 }
 
 type CreateSiteFunctionRequestOriginRules struct {
-	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
-	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// The hostname that overrides the resolved hostname of an incoming request.
+	//
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// The Host header in origin requests.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
-	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The protocol used for origin requests. Valid values:
+	//
+	// 	- http: HTTP.
+	//
+	// 	- https: HTTPS.
+	//
+	// 	- follow: follows the protocol used by the client.
+	//
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// The SNI in origin requests.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestOriginRules) String() string {
@@ -10068,13 +10787,68 @@ func (s *CreateSiteFunctionRequestOriginRules) SetRuleName(v string) *CreateSite
 }
 
 type CreateSiteFunctionRequestRedirectRules struct {
+	// Specifies whether to retain the query string. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The response code that you want to use to indicate URL redirection. Valid value:
+	//
+	// 	- 301
+	//
+	// 	- 302
+	//
+	// 	- 303
+	//
+	// 	- 307
+	//
+	// 	- 308
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The destination URL to which requests are redirected.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The redirect type. Valid value:
+	//
+	// 	- static
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestRedirectRules) String() string {
@@ -10121,13 +10895,60 @@ func (s *CreateSiteFunctionRequestRedirectRules) SetType(v string) *CreateSiteFu
 }
 
 type CreateSiteFunctionRequestRewriteUrlRules struct {
-	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The desired query string to which you want to rewrite the query string in the original request.
+	//
+	// example:
+	//
+	// ?example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The query string rewrite method. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
+	// example:
+	//
+	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The path rewrite method. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The desired URI to which you want to rewrite the path in the original request.
+	//
+	// example:
+	//
+	// /image.example.com/index.html
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateSiteFunctionRequestRewriteUrlRules) String() string {
@@ -10174,6 +10995,15 @@ func (s *CreateSiteFunctionRequestRewriteUrlRules) SetUri(v string) *CreateSiteF
 }
 
 type CreateSiteFunctionRequestSeoBypass struct {
+	// Specifies whether to enable SEO crawler bypassing. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -10191,6 +11021,15 @@ func (s *CreateSiteFunctionRequestSeoBypass) SetEnable(v string) *CreateSiteFunc
 }
 
 type CreateSiteFunctionRequestSiteNameExclusive struct {
+	// Specifies whether to enable site hold. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -10208,6 +11047,15 @@ func (s *CreateSiteFunctionRequestSiteNameExclusive) SetEnable(v string) *Create
 }
 
 type CreateSiteFunctionRequestSitePause struct {
+	// Specifies whether ESA is paused on the website. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Paused *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
 }
 
@@ -10225,6 +11073,9 @@ func (s *CreateSiteFunctionRequestSitePause) SetPaused(v string) *CreateSiteFunc
 }
 
 type CreateSiteFunctionRequestTieredCache struct {
+	// example:
+	//
+	// edge_smart
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
 }
 
@@ -10242,36 +11093,60 @@ func (s *CreateSiteFunctionRequestTieredCache) SetCacheArchitectureMode(v string
 }
 
 type CreateSiteFunctionShrinkRequest struct {
-	CacheReserveShrink                        *string `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty"`
-	CacheRulesShrink                          *string `json:"CacheRules,omitempty" xml:"CacheRules,omitempty"`
-	CacheTagsShrink                           *string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty"`
-	CnameFlatteningShrink                     *string `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty"`
-	CompressionRulesShrink                    *string `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty"`
-	CrossBorderOptimizationShrink             *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	DevelopmentModeShrink                     *string `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty"`
-	HttpRequestHeaderModificationRulesShrink  *string `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty"`
+	CacheReserveShrink *string `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty"`
+	// The cache rules.
+	CacheRulesShrink *string `json:"CacheRules,omitempty" xml:"CacheRules,omitempty"`
+	// The cache tags.
+	CacheTagsShrink *string `json:"CacheTags,omitempty" xml:"CacheTags,omitempty"`
+	// The configuration of CNAME flattening.
+	CnameFlatteningShrink *string `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty"`
+	// The configuration of a compression rule.
+	CompressionRulesShrink        *string `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty"`
+	CrossBorderOptimizationShrink *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
+	// The configuration of development mode.
+	DevelopmentModeShrink *string `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty"`
+	// The configuration of a request header modification rule.
+	HttpRequestHeaderModificationRulesShrink *string `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty"`
+	// The configuration of a response header modification rule.
 	HttpResponseHeaderModificationRulesShrink *string `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty"`
 	HttpsApplicationConfigurationShrink       *string `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty"`
 	HttpsBasicConfigurationShrink             *string `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty"`
-	ImageTransformShrink                      *string `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty"`
-	Ipv6Shrink                                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	ManagedTransformsShrink                   *string `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty"`
-	NetworkOptimizationShrink                 *string `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty"`
-	OriginProtectionShrink                    *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
-	OriginRulesShrink                         *string `json:"OriginRules,omitempty" xml:"OriginRules,omitempty"`
-	RedirectRulesShrink                       *string `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty"`
-	RewriteUrlRulesShrink                     *string `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty"`
-	SeoBypassShrink                           *string `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty"`
+	// The configuration of image transformations.
+	ImageTransformShrink *string `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty"`
+	// The IPv6 configuration.
+	Ipv6Shrink *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// The configuration of managed transforms.
+	ManagedTransformsShrink   *string `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty"`
+	NetworkOptimizationShrink *string `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty"`
+	// The configuration of origin protection.
+	OriginProtectionShrink *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
+	// The configuration of an origin rule.
+	OriginRulesShrink *string `json:"OriginRules,omitempty" xml:"OriginRules,omitempty"`
+	// The configuration of a redirect rule.
+	RedirectRulesShrink *string `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty"`
+	// The configuration of a URL rewrite rule.
+	RewriteUrlRulesShrink *string `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty"`
+	// The configuration of SEO crawler bypassing.
+	SeoBypassShrink *string `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CreateSiteFunction
-	SiteId                  *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The configuration of site hold. After this feature is enabled, other accounts cannot add your website domain or its subdomains to ESA.
 	SiteNameExclusiveShrink *string `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty"`
-	SitePauseShrink         *string `json:"SitePause,omitempty" xml:"SitePause,omitempty"`
-	SiteVersion             *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	TieredCacheShrink       *string `json:"TieredCache,omitempty" xml:"TieredCache,omitempty"`
+	// The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
+	SitePauseShrink *string `json:"SitePause,omitempty" xml:"SitePause,omitempty"`
+	// The version number of the website. You can use this parameter to specify a version of your website to apply the new feature settings. By default, version 0 is used.
+	//
+	// example:
+	//
+	// 0
+	SiteVersion       *int32  `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	TieredCacheShrink *string `json:"TieredCache,omitempty" xml:"TieredCache,omitempty"`
 }
 
 func (s CreateSiteFunctionShrinkRequest) String() string {
@@ -10408,8 +11283,13 @@ func (s *CreateSiteFunctionShrinkRequest) SetTieredCacheShrink(v string) *Create
 }
 
 type CreateSiteFunctionResponseBody struct {
+	// The returned configurations.
 	Configs *CreateSiteFunctionResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10432,28 +11312,42 @@ func (s *CreateSiteFunctionResponseBody) SetRequestId(v string) *CreateSiteFunct
 }
 
 type CreateSiteFunctionResponseBodyConfigs struct {
-	CacheReserve                        []*CreateSiteFunctionResponseBodyConfigsCacheReserve                        `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
-	CacheRules                          []*CreateSiteFunctionResponseBodyConfigsCacheRules                          `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
-	CacheTags                           []*CreateSiteFunctionResponseBodyConfigsCacheTags                           `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
-	CnameFlattening                     []*CreateSiteFunctionResponseBodyConfigsCnameFlattening                     `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
-	CompressionRules                    []*CreateSiteFunctionResponseBodyConfigsCompressionRules                    `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
-	CrossBorderOptimization             []*CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization             `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
-	DevelopmentMode                     []*CreateSiteFunctionResponseBodyConfigsDevelopmentMode                     `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
-	HttpRequestHeaderModificationRules  []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules  `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	CacheReserve []*CreateSiteFunctionResponseBodyConfigsCacheReserve `json:"CacheReserve,omitempty" xml:"CacheReserve,omitempty" type:"Repeated"`
+	// The cache rules.
+	CacheRules []*CreateSiteFunctionResponseBodyConfigsCacheRules `json:"CacheRules,omitempty" xml:"CacheRules,omitempty" type:"Repeated"`
+	// The cache tags.
+	CacheTags       []*CreateSiteFunctionResponseBodyConfigsCacheTags       `json:"CacheTags,omitempty" xml:"CacheTags,omitempty" type:"Repeated"`
+	CnameFlattening []*CreateSiteFunctionResponseBodyConfigsCnameFlattening `json:"CnameFlattening,omitempty" xml:"CnameFlattening,omitempty" type:"Repeated"`
+	// The configuration of a compression rule.
+	CompressionRules        []*CreateSiteFunctionResponseBodyConfigsCompressionRules        `json:"CompressionRules,omitempty" xml:"CompressionRules,omitempty" type:"Repeated"`
+	CrossBorderOptimization []*CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty" type:"Repeated"`
+	// The configuration of development mode.
+	DevelopmentMode []*CreateSiteFunctionResponseBodyConfigsDevelopmentMode `json:"DevelopmentMode,omitempty" xml:"DevelopmentMode,omitempty" type:"Repeated"`
+	// The configuration of a request header modification rule.
+	HttpRequestHeaderModificationRules []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules `json:"HttpRequestHeaderModificationRules,omitempty" xml:"HttpRequestHeaderModificationRules,omitempty" type:"Repeated"`
+	// The configuration of a response header modification rule.
 	HttpResponseHeaderModificationRules []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules `json:"HttpResponseHeaderModificationRules,omitempty" xml:"HttpResponseHeaderModificationRules,omitempty" type:"Repeated"`
 	HttpsApplicationConfiguration       []*CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration       `json:"HttpsApplicationConfiguration,omitempty" xml:"HttpsApplicationConfiguration,omitempty" type:"Repeated"`
 	HttpsBasicConfiguration             []*CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration             `json:"HttpsBasicConfiguration,omitempty" xml:"HttpsBasicConfiguration,omitempty" type:"Repeated"`
-	ImageTransform                      []*CreateSiteFunctionResponseBodyConfigsImageTransform                      `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
-	Ipv6                                []*CreateSiteFunctionResponseBodyConfigsIpv6                                `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
-	ManagedTransforms                   []*CreateSiteFunctionResponseBodyConfigsManagedTransforms                   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
-	NetworkOptimization                 []*CreateSiteFunctionResponseBodyConfigsNetworkOptimization                 `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
-	OriginRules                         []*CreateSiteFunctionResponseBodyConfigsOriginRules                         `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
-	RedirectRules                       []*CreateSiteFunctionResponseBodyConfigsRedirectRules                       `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
-	RewriteUrlRules                     []*CreateSiteFunctionResponseBodyConfigsRewriteUrlRules                     `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
-	SeoBypass                           []*CreateSiteFunctionResponseBodyConfigsSeoBypass                           `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
-	SiteNameExclusive                   []*CreateSiteFunctionResponseBodyConfigsSiteNameExclusive                   `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
-	SitePause                           []*CreateSiteFunctionResponseBodyConfigsSitePause                           `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
-	TieredCache                         []*CreateSiteFunctionResponseBodyConfigsTieredCache                         `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
+	// The configuration of image transformations.
+	ImageTransform []*CreateSiteFunctionResponseBodyConfigsImageTransform `json:"ImageTransform,omitempty" xml:"ImageTransform,omitempty" type:"Repeated"`
+	// The IPv6 configuration.
+	Ipv6 []*CreateSiteFunctionResponseBodyConfigsIpv6 `json:"Ipv6,omitempty" xml:"Ipv6,omitempty" type:"Repeated"`
+	// The configuration of managed transforms.
+	ManagedTransforms   []*CreateSiteFunctionResponseBodyConfigsManagedTransforms   `json:"ManagedTransforms,omitempty" xml:"ManagedTransforms,omitempty" type:"Repeated"`
+	NetworkOptimization []*CreateSiteFunctionResponseBodyConfigsNetworkOptimization `json:"NetworkOptimization,omitempty" xml:"NetworkOptimization,omitempty" type:"Repeated"`
+	// The configuration of an origin rule.
+	OriginRules []*CreateSiteFunctionResponseBodyConfigsOriginRules `json:"OriginRules,omitempty" xml:"OriginRules,omitempty" type:"Repeated"`
+	// The configuration of a redirect rule.
+	RedirectRules []*CreateSiteFunctionResponseBodyConfigsRedirectRules `json:"RedirectRules,omitempty" xml:"RedirectRules,omitempty" type:"Repeated"`
+	// The configuration of a URL rewrite rule.
+	RewriteUrlRules []*CreateSiteFunctionResponseBodyConfigsRewriteUrlRules `json:"RewriteUrlRules,omitempty" xml:"RewriteUrlRules,omitempty" type:"Repeated"`
+	// The configuration of SEO crawler bypassing.
+	SeoBypass         []*CreateSiteFunctionResponseBodyConfigsSeoBypass         `json:"SeoBypass,omitempty" xml:"SeoBypass,omitempty" type:"Repeated"`
+	SiteNameExclusive []*CreateSiteFunctionResponseBodyConfigsSiteNameExclusive `json:"SiteNameExclusive,omitempty" xml:"SiteNameExclusive,omitempty" type:"Repeated"`
+	// The configuration of temporarily pausing ESA proxy on the website. If you pause ESA proxy, all requests to the domains in your DNS records go directly to your origin server.
+	SitePause   []*CreateSiteFunctionResponseBodyConfigsSitePause   `json:"SitePause,omitempty" xml:"SitePause,omitempty" type:"Repeated"`
+	TieredCache []*CreateSiteFunctionResponseBodyConfigsTieredCache `json:"TieredCache,omitempty" xml:"TieredCache,omitempty" type:"Repeated"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigs) String() string {
@@ -10575,8 +11469,17 @@ func (s *CreateSiteFunctionResponseBodyConfigs) SetTieredCache(v []*CreateSiteFu
 }
 
 type CreateSiteFunctionResponseBodyConfigsCacheReserve struct {
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable     *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// cr_hk_123456789
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10604,31 +11507,174 @@ func (s *CreateSiteFunctionResponseBodyConfigsCacheReserve) SetInstanceId(v stri
 }
 
 type CreateSiteFunctionResponseBodyConfigsCacheRules struct {
+	// example:
+	//
+	// 8880
 	AdditionalCacheablePorts *string `json:"AdditionalCacheablePorts,omitempty" xml:"AdditionalCacheablePorts,omitempty"`
-	BrowserCacheMode         *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
-	BrowserCacheTtl          *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
-	BypassCache              *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
-	CacheDeceptionArmor      *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
-	CacheReserveEligibility  *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
-	CheckPresenceCookie      *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
-	CheckPresenceHeader      *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
-	ConfigId                 *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	EdgeCacheMode            *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
-	EdgeCacheTtl             *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
-	EdgeStatusCodeCacheTtl   *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
-	IncludeCookie            *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
-	IncludeHeader            *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
-	QueryString              *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
-	QueryStringMode          *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
-	Rule                     *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable               *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                 *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence                 *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	ServeStale               *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
-	SortQueryStringForCache  *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
-	UserDeviceType           *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
-	UserGeo                  *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
-	UserLanguage             *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
+	// The browser cache configuration. Valid values:
+	//
+	// 	- no_cache: does not cache resources.
+	//
+	// 	- follow_origin: follows the origin\\"s cache rule.
+	//
+	// 	- override_origin: uses a custom cache rule instead of the origin\\"s.
+	//
+	// example:
+	//
+	// follow_origin
+	BrowserCacheMode *string `json:"BrowserCacheMode,omitempty" xml:"BrowserCacheMode,omitempty"`
+	// The browser cache TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	BrowserCacheTtl *string `json:"BrowserCacheTtl,omitempty" xml:"BrowserCacheTtl,omitempty"`
+	// The configuration of bypass cache. Valid values:
+	//
+	// 	- cache_all: Responses of all requests are cached.
+	//
+	// 	- default_cache (default): Resources are cached only based on supported file extensions.
+	//
+	// 	- bypass_all: All requests bypass the cache component.
+	//
+	// example:
+	//
+	// default_cache
+	BypassCache *string `json:"BypassCache,omitempty" xml:"BypassCache,omitempty"`
+	// example:
+	//
+	// on
+	CacheDeceptionArmor *string `json:"CacheDeceptionArmor,omitempty" xml:"CacheDeceptionArmor,omitempty"`
+	// example:
+	//
+	// bypass_cache_reserve
+	CacheReserveEligibility *string `json:"CacheReserveEligibility,omitempty" xml:"CacheReserveEligibility,omitempty"`
+	// example:
+	//
+	// cookiename
+	CheckPresenceCookie *string `json:"CheckPresenceCookie,omitempty" xml:"CheckPresenceCookie,omitempty"`
+	// example:
+	//
+	// headername
+	CheckPresenceHeader *string `json:"CheckPresenceHeader,omitempty" xml:"CheckPresenceHeader,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The edge cache configuration. Valid values:
+	//
+	// 	- follow_origin: follows the origin\\"s cache rule. If the origin does not have a cache rule, the default cache rule is used.
+	//
+	// 	- no-cache: does not cache resources.
+	//
+	// 	- override_origin: uses a custom cache rule instead of the origin\\"s.
+	//
+	// 	- follow_origin_bypass: follows the origin\\"s cache rule. If the origin does not have a cache rule, no resources are cached.
+	//
+	// example:
+	//
+	// follow_origin
+	EdgeCacheMode *string `json:"EdgeCacheMode,omitempty" xml:"EdgeCacheMode,omitempty"`
+	// The edge cache TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	EdgeCacheTtl *string `json:"EdgeCacheTtl,omitempty" xml:"EdgeCacheTtl,omitempty"`
+	// The status code TTL. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	EdgeStatusCodeCacheTtl *string `json:"EdgeStatusCodeCacheTtl,omitempty" xml:"EdgeStatusCodeCacheTtl,omitempty"`
+	// The cookie names and values included in the cache key. Multiple combinations are separated by spaces.
+	//
+	// example:
+	//
+	// cookie_exapmle
+	IncludeCookie *string `json:"IncludeCookie,omitempty" xml:"IncludeCookie,omitempty"`
+	// The header names and values included in the cache key. Multiple combinations are separated by spaces.
+	//
+	// example:
+	//
+	// example
+	IncludeHeader *string `json:"IncludeHeader,omitempty" xml:"IncludeHeader,omitempty"`
+	// The parameters to be retained or ignored in the query string. Multiple values are separated by spaces.
+	//
+	// example:
+	//
+	// example
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The method to process the query string when cache keys are generated. Valid values:
+	//
+	// 	- ignore_all: ignores the entire query string.
+	//
+	// 	- exclude_query_string: ignores specified parameters in the query string.
+	//
+	// 	- reserve_all (default): retains the entire query string.
+	//
+	// 	- include_query_string: retains specified parameters in the query string.
+	//
+	// example:
+	//
+	// reserve_all
+	QueryStringMode *string `json:"QueryStringMode,omitempty" xml:"QueryStringMode,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	ServeStale *string `json:"ServeStale,omitempty" xml:"ServeStale,omitempty"`
+	// Indicates whether query string sorting is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	SortQueryStringForCache *string `json:"SortQueryStringForCache,omitempty" xml:"SortQueryStringForCache,omitempty"`
+	// example:
+	//
+	// on
+	UserDeviceType *string `json:"UserDeviceType,omitempty" xml:"UserDeviceType,omitempty"`
+	// example:
+	//
+	// on
+	UserGeo *string `json:"UserGeo,omitempty" xml:"UserGeo,omitempty"`
+	// example:
+	//
+	// on
+	UserLanguage *string `json:"UserLanguage,omitempty" xml:"UserLanguage,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsCacheRules) String() string {
@@ -10765,10 +11811,34 @@ func (s *CreateSiteFunctionResponseBodyConfigsCacheRules) SetUserLanguage(v stri
 }
 
 type CreateSiteFunctionResponseBodyConfigsCacheTags struct {
+	// Specifies whether the matching is not case-sensitive. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	CaseInsensitive *string `json:"CaseInsensitive,omitempty" xml:"CaseInsensitive,omitempty"`
-	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The name of the custom cache tag.
+	//
+	// example:
+	//
+	// example
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsCacheTags) String() string {
@@ -10800,9 +11870,18 @@ func (s *CreateSiteFunctionResponseBodyConfigsCacheTags) SetTagName(v string) *C
 }
 
 type CreateSiteFunctionResponseBodyConfigsCnameFlattening struct {
-	ConfigId    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// flatten_all
 	FlattenMode *string `json:"FlattenMode,omitempty" xml:"FlattenMode,omitempty"`
-	Sequence    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsCnameFlattening) String() string {
@@ -10829,13 +11908,60 @@ func (s *CreateSiteFunctionResponseBodyConfigsCnameFlattening) SetSequence(v str
 }
 
 type CreateSiteFunctionResponseBodyConfigsCompressionRules struct {
-	Brotli     *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
-	ConfigId   *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Gzip       *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
-	Rule       *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether Brotli compression is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Brotli *string `json:"Brotli,omitempty" xml:"Brotli,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether Gzip compression is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Gzip *string `json:"Gzip,omitempty" xml:"Gzip,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence   *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsCompressionRules) String() string {
@@ -10882,8 +12008,14 @@ func (s *CreateSiteFunctionResponseBodyConfigsCompressionRules) SetSequence(v st
 }
 
 type CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 395227502417920
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) String() string {
@@ -10905,8 +12037,27 @@ func (s *CreateSiteFunctionResponseBodyConfigsCrossBorderOptimization) SetEnable
 }
 
 type CreateSiteFunctionResponseBodyConfigsDevelopmentMode struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether the development mode is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -10934,12 +12085,46 @@ func (s *CreateSiteFunctionResponseBodyConfigsDevelopmentMode) SetSequence(v str
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules struct {
-	ConfigId                  *int64                                                                                              `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modifies a request header. You can add, delete, or modify a request header.
+	//
+	// example:
+	//
+	// [{"operation":"add","name":"header_example_add","value":"value_exapme_add"},{"operation":"del","name":"header_example_delete","value":"value_exapme_delete"},{"operation":"modify","name":"header_example_update","value":"value_exapme_example"}]
 	RequestHeaderModification []*CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification `json:"RequestHeaderModification,omitempty" xml:"RequestHeaderModification,omitempty" type:"Repeated"`
-	Rule                      *string                                                                                             `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                *string                                                                                             `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                  *string                                                                                             `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence                  *string                                                                                             `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules) String() string {
@@ -10981,9 +12166,18 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRulesRequestHeaderModification) String() string {
@@ -11010,12 +12204,46 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpRequestHeaderModificationRules
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules struct {
-	ConfigId                   *int64                                                                                                `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Modifies a response header. You can add, delete, or modify a request header.
+	//
+	// example:
+	//
+	// [{"operation":"add","name":"header_example_add","value":"value_exapme_add"},{"operation":"del","name":"header_example_delete","value":"value_exapme_delete"},{"operation":"modify","name":"header_example_update","value":"value_exapme_example"}]
 	ResponseHeaderModification []*CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
-	Rule                       *string                                                                                               `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable                 *string                                                                                               `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName                   *string                                                                                               `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence                   *string                                                                                               `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRules) String() string {
@@ -11057,9 +12285,18 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRule
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// headername
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// headervalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRulesResponseHeaderModification) String() string {
@@ -11086,21 +12323,66 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpResponseHeaderModificationRule
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration struct {
-	AltSvc                *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
-	AltSvcClear           *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
-	AltSvcMa              *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
-	AltSvcPersist         *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
-	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Hsts                  *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
+	AltSvc *string `json:"AltSvc,omitempty" xml:"AltSvc,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcClear *string `json:"AltSvcClear,omitempty" xml:"AltSvcClear,omitempty"`
+	// example:
+	//
+	// 86400
+	AltSvcMa *string `json:"AltSvcMa,omitempty" xml:"AltSvcMa,omitempty"`
+	// example:
+	//
+	// on
+	AltSvcPersist *string `json:"AltSvcPersist,omitempty" xml:"AltSvcPersist,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Hsts *string `json:"Hsts,omitempty" xml:"Hsts,omitempty"`
+	// example:
+	//
+	// on
 	HstsIncludeSubdomains *string `json:"HstsIncludeSubdomains,omitempty" xml:"HstsIncludeSubdomains,omitempty"`
-	HstsMaxAge            *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	HstsPreload           *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	HttpsForce            *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
-	HttpsForceCode        *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
-	Rule                  *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable            *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName              *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 3600
+	HstsMaxAge *string `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
+	// example:
+	//
+	// on
+	HstsPreload *string `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
+	// example:
+	//
+	// on
+	HttpsForce *string `json:"HttpsForce,omitempty" xml:"HttpsForce,omitempty"`
+	// example:
+	//
+	// 301
+	HttpsForceCode *string `json:"HttpsForceCode,omitempty" xml:"HttpsForceCode,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) String() string {
@@ -11187,21 +12469,66 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpsApplicationConfiguration) Set
 }
 
 type CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration struct {
-	Ciphersuite      *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	Ciphersuite *string `json:"Ciphersuite,omitempty" xml:"Ciphersuite,omitempty"`
+	// example:
+	//
+	// all
 	CiphersuiteGroup *string `json:"CiphersuiteGroup,omitempty" xml:"CiphersuiteGroup,omitempty"`
-	ConfigId         *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Http2            *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	Http3            *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
-	Https            *string `json:"Https,omitempty" xml:"Https,omitempty"`
-	OcspStapling     *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
-	Rule             *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable       *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence         *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Tls10            *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
-	Tls11            *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
-	Tls12            *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
-	Tls13            *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// example:
+	//
+	// on
+	Http3 *string `json:"Http3,omitempty" xml:"Http3,omitempty"`
+	// example:
+	//
+	// on
+	Https *string `json:"Https,omitempty" xml:"Https,omitempty"`
+	// example:
+	//
+	// on
+	OcspStapling *string `json:"OcspStapling,omitempty" xml:"OcspStapling,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	Tls10 *string `json:"Tls10,omitempty" xml:"Tls10,omitempty"`
+	// example:
+	//
+	// on
+	Tls11 *string `json:"Tls11,omitempty" xml:"Tls11,omitempty"`
+	// example:
+	//
+	// on
+	Tls12 *string `json:"Tls12,omitempty" xml:"Tls12,omitempty"`
+	// example:
+	//
+	// on
+	Tls13 *string `json:"Tls13,omitempty" xml:"Tls13,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) String() string {
@@ -11288,8 +12615,27 @@ func (s *CreateSiteFunctionResponseBodyConfigsHttpsBasicConfiguration) SetTls13(
 }
 
 type CreateSiteFunctionResponseBodyConfigsImageTransform struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether the image transformations feature is enabled. Valid values:
+	//
+	// on
+	//
+	// off (default)
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -11317,8 +12663,27 @@ func (s *CreateSiteFunctionResponseBodyConfigsImageTransform) SetSequence(v stri
 }
 
 type CreateSiteFunctionResponseBodyConfigsIpv6 struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether IPv6 is enabled. Valid values:
+	//
+	// on (default)
+	//
+	// off
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -11346,10 +12711,38 @@ func (s *CreateSiteFunctionResponseBodyConfigsIpv6) SetSequence(v string) *Creat
 }
 
 type CreateSiteFunctionResponseBodyConfigsManagedTransforms struct {
+	// Indicates whether the header that indicates the geographical location of a client is included in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	AddClientGeolocationHeaders *string `json:"AddClientGeolocationHeaders,omitempty" xml:"AddClientGeolocationHeaders,omitempty"`
-	AddRealClientIpHeader       *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
-	ConfigId                    *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Sequence                    *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// Indicates whether the "ali-real-client-ip" header that contains the client\\"s real IP address is included in an origin request. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsManagedTransforms) String() string {
@@ -11381,16 +12774,46 @@ func (s *CreateSiteFunctionResponseBodyConfigsManagedTransforms) SetSequence(v s
 }
 
 type CreateSiteFunctionResponseBodyConfigsNetworkOptimization struct {
-	ConfigId          *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Grpc              *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
-	Http2Origin       *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	Rule              *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable        *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence          *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	SmartRouting      *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 390286182395904
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Grpc *string `json:"Grpc,omitempty" xml:"Grpc,omitempty"`
+	// example:
+	//
+	// on
+	Http2Origin *string `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// on
+	SmartRouting *string `json:"SmartRouting,omitempty" xml:"SmartRouting,omitempty"`
+	// example:
+	//
+	// 300
 	UploadMaxFilesize *string `json:"UploadMaxFilesize,omitempty" xml:"UploadMaxFilesize,omitempty"`
-	Websocket         *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
+	// example:
+	//
+	// on
+	Websocket *string `json:"Websocket,omitempty" xml:"Websocket,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsNetworkOptimization) String() string {
@@ -11452,18 +12875,82 @@ func (s *CreateSiteFunctionResponseBodyConfigsNetworkOptimization) SetWebsocket(
 }
 
 type CreateSiteFunctionResponseBodyConfigsOriginRules struct {
-	ConfigId        *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	DnsRecord       *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
-	OriginHost      *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
-	OriginHttpPort  *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The hostname that overrides the resolved hostname of an incoming request.
+	//
+	// example:
+	//
+	// test.example.com
+	DnsRecord *string `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty"`
+	// The Host header in origin requests.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginHost *string `json:"OriginHost,omitempty" xml:"OriginHost,omitempty"`
+	// example:
+	//
+	// 8080
+	OriginHttpPort *string `json:"OriginHttpPort,omitempty" xml:"OriginHttpPort,omitempty"`
+	// example:
+	//
+	// 4433
 	OriginHttpsPort *string `json:"OriginHttpsPort,omitempty" xml:"OriginHttpsPort,omitempty"`
-	OriginScheme    *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
-	OriginSni       *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
-	Range           *string `json:"Range,omitempty" xml:"Range,omitempty"`
-	Rule            *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable      *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName        *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence        *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The protocol used for origin requests. Valid values:
+	//
+	// 	- http: HTTP.
+	//
+	// 	- https: HTTPS.
+	//
+	// 	- follow: follows the protocol used by the client.
+	//
+	// example:
+	//
+	// http
+	OriginScheme *string `json:"OriginScheme,omitempty" xml:"OriginScheme,omitempty"`
+	// The SNI in origin requests.
+	//
+	// example:
+	//
+	// origin.example.com
+	OriginSni *string `json:"OriginSni,omitempty" xml:"OriginSni,omitempty"`
+	// example:
+	//
+	// on
+	Range *string `json:"Range,omitempty" xml:"Range,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsOriginRules) String() string {
@@ -11535,15 +13022,80 @@ func (s *CreateSiteFunctionResponseBodyConfigsOriginRules) SetSequence(v string)
 }
 
 type CreateSiteFunctionResponseBodyConfigsRedirectRules struct {
-	ConfigId           *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether the feature of retaining the query string is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	ReserveQueryString *string `json:"ReserveQueryString,omitempty" xml:"ReserveQueryString,omitempty"`
-	Rule               *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable         *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence           *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	StatusCode         *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TargetUrl          *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The response code that you want to use to indicate URL redirection. Valid values:
+	//
+	// 	- 301
+	//
+	// 	- 302
+	//
+	// 	- 303
+	//
+	// 	- 307
+	//
+	// 	- 308
+	//
+	// example:
+	//
+	// 301
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The destination URL to which requests are redirected.
+	//
+	// example:
+	//
+	// http://www.exapmle.com/index.html
+	TargetUrl *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	// The redirect type. Valid value:
+	//
+	// 	- static
+	//
+	// example:
+	//
+	// static
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsRedirectRules) String() string {
@@ -11600,15 +13152,72 @@ func (s *CreateSiteFunctionResponseBodyConfigsRedirectRules) SetType(v string) *
 }
 
 type CreateSiteFunctionResponseBodyConfigsRewriteUrlRules struct {
-	ConfigId               *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	QueryString            *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The desired query string to which you want to rewrite the query string in the original request.
+	//
+	// example:
+	//
+	// ?example=123
+	QueryString *string `json:"QueryString,omitempty" xml:"QueryString,omitempty"`
+	// The query string rewrite method. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
+	// example:
+	//
+	// static
 	RewriteQueryStringType *string `json:"RewriteQueryStringType,omitempty" xml:"RewriteQueryStringType,omitempty"`
-	RewriteUriType         *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
-	Rule                   *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	RuleEnable             *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	RuleName               *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Sequence               *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Uri                    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The path rewrite method. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
+	// example:
+	//
+	// static
+	RewriteUriType *string `json:"RewriteUriType,omitempty" xml:"RewriteUriType,omitempty"`
+	// The rule content.
+	//
+	// example:
+	//
+	// [{"MatchType":"http.request.method","MatchOperator":"eq","MatchValue":"GET","Negate":false}]
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name.
+	//
+	// example:
+	//
+	// rule_example
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The desired URI to which you want to rewrite the path in the original request.
+	//
+	// example:
+	//
+	// /image.example.com/index.html
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) String() string {
@@ -11665,8 +13274,27 @@ func (s *CreateSiteFunctionResponseBodyConfigsRewriteUrlRules) SetUri(v string) 
 }
 
 type CreateSiteFunctionResponseBodyConfigsSeoBypass struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether SEO crawler bypassing is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -11694,8 +13322,17 @@ func (s *CreateSiteFunctionResponseBodyConfigsSeoBypass) SetSequence(v string) *
 }
 
 type CreateSiteFunctionResponseBodyConfigsSiteNameExclusive struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Enable   *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -11723,8 +13360,27 @@ func (s *CreateSiteFunctionResponseBodyConfigsSiteNameExclusive) SetSequence(v s
 }
 
 type CreateSiteFunctionResponseBodyConfigsSitePause struct {
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Paused   *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// The configuration ID.
+	//
+	// example:
+	//
+	// 344147756398592
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Indicates whether ESA is paused on the website. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	Paused *string `json:"Paused,omitempty" xml:"Paused,omitempty"`
+	// The order in which the rule is executed.
+	//
+	// example:
+	//
+	// 1
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
@@ -11752,9 +13408,18 @@ func (s *CreateSiteFunctionResponseBodyConfigsSitePause) SetSequence(v string) *
 }
 
 type CreateSiteFunctionResponseBodyConfigsTieredCache struct {
+	// example:
+	//
+	// edge_smart
 	CacheArchitectureMode *string `json:"CacheArchitectureMode,omitempty" xml:"CacheArchitectureMode,omitempty"`
-	ConfigId              *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	Sequence              *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 352816096987136
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 }
 
 func (s CreateSiteFunctionResponseBodyConfigsTieredCache) String() string {
@@ -13994,6 +15659,333 @@ func (s *CreateWaitingRoomRuleResponse) SetStatusCode(v int32) *CreateWaitingRoo
 }
 
 func (s *CreateWaitingRoomRuleResponse) SetBody(v *CreateWaitingRoomRuleResponseBody) *CreateWaitingRoomRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d95
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateRequest) SetId(v string) *DeleteCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteCertificateRequest) SetSiteId(v int64) *DeleteCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteCertificateResponseBody struct {
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d95
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateResponseBody) SetId(v string) *DeleteCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteCertificateResponseBody) SetRequestId(v string) *DeleteCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCertificateResponseBody) SetSiteId(v int64) *DeleteCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteCertificateResponseBody) SetSiteName(v string) *DeleteCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteCertificateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCertificateResponse) SetHeaders(v map[string]*string) *DeleteCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCertificateResponse) SetStatusCode(v int32) *DeleteCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *DeleteCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteClientCaCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteClientCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCaCertificateRequest) SetId(v string) *DeleteClientCaCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteClientCaCertificateRequest) SetSiteId(v int64) *DeleteClientCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteClientCaCertificateResponseBody struct {
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteClientCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCaCertificateResponseBody) SetId(v string) *DeleteClientCaCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteClientCaCertificateResponseBody) SetRequestId(v string) *DeleteClientCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClientCaCertificateResponseBody) SetSiteId(v int64) *DeleteClientCaCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteClientCaCertificateResponseBody) SetSiteName(v string) *DeleteClientCaCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteClientCaCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClientCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteClientCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCaCertificateResponse) SetHeaders(v map[string]*string) *DeleteClientCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClientCaCertificateResponse) SetStatusCode(v int32) *DeleteClientCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteClientCaCertificateResponse) SetBody(v *DeleteClientCaCertificateResponseBody) *DeleteClientCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteClientCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCertificateRequest) SetId(v string) *DeleteClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteClientCertificateRequest) SetSiteId(v int64) *DeleteClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteClientCertificateResponseBody struct {
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DeleteClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCertificateResponseBody) SetId(v string) *DeleteClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteClientCertificateResponseBody) SetRequestId(v string) *DeleteClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClientCertificateResponseBody) SetSiteId(v int64) *DeleteClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DeleteClientCertificateResponseBody) SetSiteName(v string) *DeleteClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type DeleteClientCertificateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientCertificateResponse) SetHeaders(v map[string]*string) *DeleteClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClientCertificateResponse) SetStatusCode(v int32) *DeleteClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteClientCertificateResponse) SetBody(v *DeleteClientCertificateResponseBody) *DeleteClientCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -18103,6 +20095,681 @@ func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecifi
 	return s
 }
 
+type GetCertificateQuotaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetCertificateQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateQuotaRequest) SetSiteId(v int64) *GetCertificateQuotaRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetCertificateQuotaRequest) SetType(v string) *GetCertificateQuotaRequest {
+	s.Type = &v
+	return s
+}
+
+type GetCertificateQuotaResponseBody struct {
+	// example:
+	//
+	// 10
+	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// 5
+	QuotaUsage *int64 `json:"QuotaUsage,omitempty" xml:"QuotaUsage,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	SiteCount *int64                                      `json:"SiteCount,omitempty" xml:"SiteCount,omitempty"`
+	SiteUsage []*GetCertificateQuotaResponseBodySiteUsage `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty" type:"Repeated"`
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetCertificateQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateQuotaResponseBody) SetQuota(v int64) *GetCertificateQuotaResponseBody {
+	s.Quota = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBody) SetQuotaUsage(v int64) *GetCertificateQuotaResponseBody {
+	s.QuotaUsage = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBody) SetRequestId(v string) *GetCertificateQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBody) SetSiteCount(v int64) *GetCertificateQuotaResponseBody {
+	s.SiteCount = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBody) SetSiteUsage(v []*GetCertificateQuotaResponseBodySiteUsage) *GetCertificateQuotaResponseBody {
+	s.SiteUsage = v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBody) SetType(v string) *GetCertificateQuotaResponseBody {
+	s.Type = &v
+	return s
+}
+
+type GetCertificateQuotaResponseBodySiteUsage struct {
+	// example:
+	//
+	// 165929521496928
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 5
+	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
+}
+
+func (s GetCertificateQuotaResponseBodySiteUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateQuotaResponseBodySiteUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateQuotaResponseBodySiteUsage) SetSiteId(v string) *GetCertificateQuotaResponseBodySiteUsage {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBodySiteUsage) SetSiteName(v string) *GetCertificateQuotaResponseBodySiteUsage {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponseBodySiteUsage) SetSiteUsage(v int64) *GetCertificateQuotaResponseBodySiteUsage {
+	s.SiteUsage = &v
+	return s
+}
+
+type GetCertificateQuotaResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCertificateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCertificateQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateQuotaResponse) SetHeaders(v map[string]*string) *GetCertificateQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCertificateQuotaResponse) SetStatusCode(v int32) *GetCertificateQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCertificateQuotaResponse) SetBody(v *GetCertificateQuotaResponseBody) *GetCertificateQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type GetClientCaCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b5****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetClientCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCaCertificateRequest) SetId(v string) *GetClientCaCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCaCertificateRequest) SetSiteId(v int64) *GetClientCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetClientCaCertificateResponseBody struct {
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetClientCaCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetClientCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCaCertificateResponseBody) SetCertificate(v string) *GetClientCaCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBody) SetRequestId(v string) *GetClientCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBody) SetResult(v *GetClientCaCertificateResponseBodyResult) *GetClientCaCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBody) SetSiteId(v int64) *GetClientCaCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBody) SetSiteName(v string) *GetClientCaCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBody) SetStatus(v string) *GetClientCaCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetClientCaCertificateResponseBodyResult struct {
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2024-03-05 18:24:04
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b5****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-03-05 18:24:04
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetClientCaCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCaCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetCommonName(v string) *GetClientCaCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetCreateTime(v string) *GetClientCaCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetId(v string) *GetClientCaCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetIssuer(v string) *GetClientCaCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetName(v string) *GetClientCaCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetNotAfter(v string) *GetClientCaCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetNotBefore(v string) *GetClientCaCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetPubkeyAlgorithm(v string) *GetClientCaCertificateResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetSAN(v string) *GetClientCaCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetSignatureAlgorithm(v string) *GetClientCaCertificateResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetStatus(v string) *GetClientCaCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetType(v string) *GetClientCaCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponseBodyResult) SetUpdateTime(v string) *GetClientCaCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetClientCaCertificateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClientCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClientCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCaCertificateResponse) SetHeaders(v map[string]*string) *GetClientCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientCaCertificateResponse) SetStatusCode(v int32) *GetClientCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientCaCertificateResponse) SetBody(v *GetClientCaCertificateResponseBody) *GetClientCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type GetClientCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateRequest) SetId(v string) *GetClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCertificateRequest) SetSiteId(v int64) *GetClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetClientCertificateResponseBody struct {
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateResponseBody) SetCertificate(v string) *GetClientCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBody) SetRequestId(v string) *GetClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBody) SetResult(v *GetClientCertificateResponseBodyResult) *GetClientCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetClientCertificateResponseBody) SetSiteId(v int64) *GetClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBody) SetSiteName(v string) *GetClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBody) SetStatus(v string) *GetClientCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetClientCertificateResponseBodyResult struct {
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// dcdn
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-09-22 05:33:13
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetClientCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetCACertificateId(v string) *GetClientCertificateResponseBodyResult {
+	s.CACertificateId = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetCommonName(v string) *GetClientCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetCreateTime(v string) *GetClientCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetId(v string) *GetClientCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetIssuer(v string) *GetClientCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetName(v string) *GetClientCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetNotAfter(v string) *GetClientCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetNotBefore(v string) *GetClientCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetPubkeyAlgorithm(v string) *GetClientCertificateResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetSAN(v string) *GetClientCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetSignatureAlgorithm(v string) *GetClientCertificateResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetStatus(v string) *GetClientCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetType(v string) *GetClientCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetClientCertificateResponseBodyResult) SetUpdateTime(v string) *GetClientCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetClientCertificateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateResponse) SetHeaders(v map[string]*string) *GetClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientCertificateResponse) SetStatusCode(v int32) *GetClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientCertificateResponse) SetBody(v *GetClientCertificateResponseBody) *GetClientCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type GetEdgeContainerAppRequest struct {
 	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
 	//
@@ -21308,6 +23975,8 @@ func (s *GetRealtimeDeliveryFieldResponse) SetBody(v *GetRealtimeDeliveryFieldRe
 }
 
 type GetRecordRequest struct {
+	// The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21330,8 +23999,9 @@ func (s *GetRecordRequest) SetRecordId(v int64) *GetRecordRequest {
 }
 
 type GetRecordResponseBody struct {
+	// The information about the queried record.
 	RecordModel *GetRecordResponseBodyRecordModel `json:"RecordModel,omitempty" xml:"RecordModel,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -21358,57 +24028,120 @@ func (s *GetRecordResponseBody) SetRequestId(v string) *GetRecordResponseBody {
 }
 
 type GetRecordResponseBodyRecordModel struct {
+	// The origin authentication information of the CNAME record.
 	AuthConf *GetRecordResponseBodyRecordModelAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	// The business scenario of the record for acceleration. Leave this parameter empty if your record is not proxied. Valid values:
+	//
+	// 	- **image_video**
+	//
+	// 	- **api**
+	//
+	// 	- **web**
+	//
 	// example:
 	//
 	// image_video
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// The comments of the record.
+	//
+	// example:
+	//
+	// This is a comment.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-03-10T13:30:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The DNS record information. The content returned by this parameter varies based on the record type.
+	//
 	// example:
 	//
 	// {"value":"1.1.1.1"}
-	Data       *GetRecordResponseBodyRecordModelData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HostPolicy *string                               `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	Data *GetRecordResponseBodyRecordModelData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The origin host policy. This policy takes effect when the record type is CNAME. Valid values:
+	//
+	// 	- follow_hostname: matches the requested domain name.
+	//
+	// 	- follow_origin_domain: matches the origin\\"s domain name.
+	//
+	// example:
+	//
+	// follow_origin_domain
+	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
+	// Indicates whether the record is proxied. Only CNAME and A/AAAA records can be proxied. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
+	// The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+	//
 	// example:
 	//
 	// a.example.com.cnamezone.com
 	RecordCname *string `json:"RecordCname,omitempty" xml:"RecordCname,omitempty"`
+	// The record ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The record name.
+	//
 	// example:
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	//
+	// 	- **OSS**: OSS bucket.
+	//
+	// 	- **S3**: S3 bucket.
+	//
+	// 	- **LB**: load balancer.
+	//
+	// 	- **OP**: origin pool.
+	//
+	// 	- **Domain**: domain name.
+	//
+	// If you do not pass this parameter or if you leave its value empty, Domain is returned by default.
+	//
 	// example:
 	//
 	// OSS
 	RecordSourceType *string `json:"RecordSourceType,omitempty" xml:"RecordSourceType,omitempty"`
+	// The type of the DNS record, such as **A/AAAA, CNAME, and TXT**.
+	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+	//
 	// example:
 	//
 	// 20
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2023-01-27T02:26:22Z
@@ -21504,22 +24237,46 @@ func (s *GetRecordResponseBodyRecordModel) SetUpdateTime(v string) *GetRecordRes
 }
 
 type GetRecordResponseBodyRecordModelAuthConf struct {
+	// The access key ID of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.
+	//
 	// example:
 	//
 	// VIxuvJSA2S03f******kp208dy5w7
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The authentication type of the origin server. Different origins support different authentication types. The origin type refers to the SourceType parameter in this operation. This parameter is returned if the origin type is OSS or S3Valid values:
+	//
+	// 	- **public**: public read. This value is returned when the origin is a public OSS or S3 bucket.
+	//
+	// 	- **private**: private read. This value is returned when the origin is a private S3 bucket.
+	//
+	// 	- **private_same_account**: private read in the same account. This value is returned when the origin is a private OSS bucket in your account.
+	//
+	// 	- **private_cross_account**: private read across accounts. This value is returned when the origin is a private OSS bucket in a different Alibaba Cloud account.
+	//
 	// example:
 	//
 	// public
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The region of the origin. If the origin type is S3, you must specify this value. You can obtain the region information from the official website of S3.
+	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The secret access key of the account to which the origin server belongs. This parameter is returned if the origin type is OSS and AuthType is set to private_cross_account, or the origin type is S3 and AuthType is set to private.SecretKey
+	//
 	// example:
 	//
 	// u0Nkg5gBK*******QF5wvKMM504JUHt
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The version of the signature algorithm. This parameter is returned when the origin type is S3 and AuthType is private. The following two types are supported:
+	//
+	// 	- **v2**
+	//
+	// 	- **v4**
+	//
+	// If this parameter is left empty, the default value v4 is used.
+	//
 	// example:
 	//
 	// v2
@@ -21560,58 +24317,102 @@ func (s *GetRecordResponseBodyRecordModelAuthConf) SetVersion(v string) *GetReco
 }
 
 type GetRecordResponseBodyRecordModelData struct {
+	// The encryption algorithm used for the record, specified within the range from 0 to 255. This parameter is required when you add CERT or SSHFP records.
+	//
 	// example:
 	//
 	// 1
 	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The public key of the certificate. This parameter is required when you add CERT, SMIMEA, or TLSA records.
+	//
 	// example:
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The public key fingerprint of the record. This parameter is required when you add a SSHFP record.
+	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The flag bit of the record. The Flag for a CAA record indicates its priority and how it is processed, specified within the range of 0 to 255. This parameter is required when you add a CAA record.
+	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The public key identification for the record. Valid values: 0 to 65535. This parameter is required when you add a CAA record.
+	//
 	// example:
 	//
 	// 1
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The algorithm policy used to match or validate the certificate, specified within the range 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 1
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
+	// The port of the record. Valid values: 0 to 65535. This parameter is required when you add an SRV record.
+	//
 	// example:
 	//
 	// 8707
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The priority of the record. Valid values: 0 to 65535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
+	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The type of the certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 1
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	// The tag of the record. The Tag of a CAA record indicate its specific type and usage.
+	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
+	//
 	// example:
 	//
 	// RSA
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
+	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The record value or part of the record content. This parameter is returned when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records.
+	//
+	// 	- **A/AAAA**: the IP address. Multiple IP addresses are separated with commas (,). There is at least one IPv4 address.
+	//
+	// 	- **CNAME**: the target domain name.
+	//
+	// 	- **NS**: the nameserver for the domain name.
+	//
+	// 	- **MX**: a valid domain name of the target mail server.
+	//
+	// 	- **TXT**: a valid text string.
+	//
+	// 	- **CAA**: a valid domain name of the certificate authority.
+	//
+	// 	- **SRV**: a valid domain name of the target host.
+	//
+	// 	- **URI**: a valid URI string.
+	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the record, specified within the range of 0 to 65535. This parameter is required when you add SRV or URI records.
+	//
 	// example:
 	//
 	// 0
@@ -23586,7 +26387,7 @@ type GetUploadTaskRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/435925.html) operation.
+	// The ID of the file upload task. This field is assigned after you call the [UploadFile](https://help.aliyun.com/document_detail/2850466.html) operation.
 	//
 	// example:
 	//
@@ -25397,6 +28198,369 @@ func (s *ListCacheReserveInstancesResponse) SetStatusCode(v int32) *ListCacheRes
 }
 
 func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstancesResponseBody) *ListCacheReserveInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCiphersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// strict
+	CiphersGroup *string `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
+}
+
+func (s ListCiphersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCiphersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCiphersRequest) SetCiphersGroup(v string) *ListCiphersRequest {
+	s.CiphersGroup = &v
+	return s
+}
+
+type ListCiphersResponseBody struct {
+	// example:
+	//
+	// all
+	CiphersGroup *string `json:"CiphersGroup,omitempty" xml:"CiphersGroup,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCiphersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCiphersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCiphersResponseBody) SetCiphersGroup(v string) *ListCiphersResponseBody {
+	s.CiphersGroup = &v
+	return s
+}
+
+func (s *ListCiphersResponseBody) SetRequestId(v string) *ListCiphersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCiphersResponseBody) SetResult(v []*string) *ListCiphersResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCiphersResponseBody) SetTotalCount(v int64) *ListCiphersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCiphersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCiphersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCiphersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCiphersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCiphersResponse) SetHeaders(v map[string]*string) *ListCiphersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCiphersResponse) SetStatusCode(v int32) *ListCiphersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCiphersResponse) SetBody(v *ListCiphersResponseBody) *ListCiphersResponse {
+	s.Body = v
+	return s
+}
+
+type ListClientCaCertificatesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListClientCaCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCaCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCaCertificatesRequest) SetPageNumber(v int64) *ListClientCaCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesRequest) SetPageSize(v int64) *ListClientCaCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesRequest) SetSiteId(v int64) *ListClientCaCertificatesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListClientCaCertificatesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListClientCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListClientCaCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCaCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetPageNumber(v int64) *ListClientCaCertificatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetPageSize(v int64) *ListClientCaCertificatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetRequestId(v string) *ListClientCaCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetResult(v []*ListClientCaCertificatesResponseBodyResult) *ListClientCaCertificatesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetSiteId(v int64) *ListClientCaCertificatesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetSiteName(v string) *ListClientCaCertificatesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBody) SetTotalCount(v int64) *ListClientCaCertificatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListClientCaCertificatesResponseBodyResult struct {
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2024-06-24 07:48:51
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b5****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// upload
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2024-07-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListClientCaCertificatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCaCertificatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetCommonName(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetCreateTime(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetId(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetIssuer(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetName(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetNotAfter(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetNotBefore(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetPubkeyAlgorithm(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.PubkeyAlgorithm = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetSAN(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetSignatureAlgorithm(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetStatus(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetType(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponseBodyResult) SetUpdateTime(v string) *ListClientCaCertificatesResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListClientCaCertificatesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClientCaCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListClientCaCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClientCaCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClientCaCertificatesResponse) SetHeaders(v map[string]*string) *ListClientCaCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponse) SetStatusCode(v int32) *ListClientCaCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClientCaCertificatesResponse) SetBody(v *ListClientCaCertificatesResponseBody) *ListClientCaCertificatesResponse {
 	s.Body = v
 	return s
 }
@@ -32627,7 +35791,8 @@ type ListSitesRequest struct {
 	// example:
 	//
 	// false
-	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	OnlyEnterprise *bool   `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	OrderBy        *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Default value: **1**.
 	//
 	// example:
@@ -32710,6 +35875,11 @@ func (s *ListSitesRequest) SetCoverage(v string) *ListSitesRequest {
 
 func (s *ListSitesRequest) SetOnlyEnterprise(v bool) *ListSitesRequest {
 	s.OnlyEnterprise = &v
+	return s
+}
+
+func (s *ListSitesRequest) SetOrderBy(v string) *ListSitesRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -32814,7 +35984,8 @@ type ListSitesShrinkRequest struct {
 	// example:
 	//
 	// false
-	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	OnlyEnterprise *bool   `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	OrderBy        *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Default value: **1**.
 	//
 	// example:
@@ -32897,6 +36068,11 @@ func (s *ListSitesShrinkRequest) SetCoverage(v string) *ListSitesShrinkRequest {
 
 func (s *ListSitesShrinkRequest) SetOnlyEnterprise(v bool) *ListSitesShrinkRequest {
 	s.OnlyEnterprise = &v
+	return s
+}
+
+func (s *ListSitesShrinkRequest) SetOrderBy(v string) *ListSitesShrinkRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -33111,6 +36287,7 @@ type ListSitesResponseBodySites struct {
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	VisitTime  *string `json:"VisitTime,omitempty" xml:"VisitTime,omitempty"`
 }
 
 func (s ListSitesResponseBodySites) String() string {
@@ -33193,6 +36370,11 @@ func (s *ListSitesResponseBodySites) SetUpdateTime(v string) *ListSitesResponseB
 
 func (s *ListSitesResponseBodySites) SetVerifyCode(v string) *ListSitesResponseBodySites {
 	s.VerifyCode = &v
+	return s
+}
+
+func (s *ListSitesResponseBodySites) SetVisitTime(v string) *ListSitesResponseBodySites {
+	s.VisitTime = &v
 	return s
 }
 
@@ -33952,7 +37134,8 @@ type ListUserRatePlanInstancesRequest struct {
 	// example:
 	//
 	// 500
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize            *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RemainingExpireDays *int32 `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
 	// The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
 	//
 	// 	- CreateTime: the time when the plans were purchased.
@@ -34017,6 +37200,11 @@ func (s *ListUserRatePlanInstancesRequest) SetPageNumber(v int32) *ListUserRateP
 
 func (s *ListUserRatePlanInstancesRequest) SetPageSize(v int32) *ListUserRatePlanInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRatePlanInstancesRequest) SetRemainingExpireDays(v int32) *ListUserRatePlanInstancesRequest {
+	s.RemainingExpireDays = &v
 	return s
 }
 
@@ -38750,6 +41938,115 @@ func (s *ResetScheduledPreloadJobResponse) SetStatusCode(v int32) *ResetSchedule
 }
 
 func (s *ResetScheduledPreloadJobResponse) SetBody(v *ResetScheduledPreloadJobResponseBody) *ResetScheduledPreloadJobResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeClientCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s RevokeClientCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeClientCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeClientCertificateRequest) SetId(v string) *RevokeClientCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *RevokeClientCertificateRequest) SetSiteId(v int64) *RevokeClientCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type RevokeClientCertificateResponseBody struct {
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A123425345
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s RevokeClientCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeClientCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeClientCertificateResponseBody) SetId(v string) *RevokeClientCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *RevokeClientCertificateResponseBody) SetRequestId(v string) *RevokeClientCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RevokeClientCertificateResponseBody) SetSiteId(v int64) *RevokeClientCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *RevokeClientCertificateResponseBody) SetSiteName(v string) *RevokeClientCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type RevokeClientCertificateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeClientCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeClientCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeClientCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeClientCertificateResponse) SetHeaders(v map[string]*string) *RevokeClientCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeClientCertificateResponse) SetStatusCode(v int32) *RevokeClientCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeClientCertificateResponse) SetBody(v *RevokeClientCertificateResponseBody) *RevokeClientCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -45081,6 +48378,187 @@ func (s *UpdateWaitingRoomRuleResponse) SetBody(v *UpdateWaitingRoomRuleResponse
 	return s
 }
 
+type UploadClientCaCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UploadClientCaCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadClientCaCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadClientCaCertificateRequest) SetCertificate(v string) *UploadClientCaCertificateRequest {
+	s.Certificate = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateRequest) SetName(v string) *UploadClientCaCertificateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateRequest) SetSiteId(v int64) *UploadClientCaCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UploadClientCaCertificateResponseBody struct {
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// 2024-12-01T02:13:07Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-12-01T02:13:07Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 300
+	ValidityDays *string `json:"ValidityDays,omitempty" xml:"ValidityDays,omitempty"`
+}
+
+func (s UploadClientCaCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadClientCaCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetCommonName(v string) *UploadClientCaCertificateResponseBody {
+	s.CommonName = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetFingerprintSha256(v string) *UploadClientCaCertificateResponseBody {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetId(v string) *UploadClientCaCertificateResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetIssuer(v string) *UploadClientCaCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetNotAfter(v string) *UploadClientCaCertificateResponseBody {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetNotBefore(v string) *UploadClientCaCertificateResponseBody {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetRequestId(v string) *UploadClientCaCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetSerialNumber(v string) *UploadClientCaCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetSignatureAlgorithm(v string) *UploadClientCaCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetStatus(v string) *UploadClientCaCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponseBody) SetValidityDays(v string) *UploadClientCaCertificateResponseBody {
+	s.ValidityDays = &v
+	return s
+}
+
+type UploadClientCaCertificateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadClientCaCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadClientCaCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadClientCaCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadClientCaCertificateResponse) SetHeaders(v map[string]*string) *UploadClientCaCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponse) SetStatusCode(v int32) *UploadClientCaCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadClientCaCertificateResponse) SetBody(v *UploadClientCaCertificateResponseBody) *UploadClientCaCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type UploadFileRequest struct {
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
 	//
@@ -47022,6 +50500,80 @@ func (client *Client) CommitRoutineStagingCode(request *CommitRoutineStagingCode
 
 // Summary:
 //
+// 创建客户端证书
+//
+// @param request - CreateClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClientCertificateResponse
+func (client *Client) CreateClientCertificateWithOptions(request *CreateClientCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CSR)) {
+		body["CSR"] = request.CSR
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PkeyType)) {
+		body["PkeyType"] = request.PkeyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidityDays)) {
+		body["ValidityDays"] = request.ValidityDays
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建客户端证书
+//
+// @param request - CreateClientCertificateRequest
+//
+// @return CreateClientCertificateResponse
+func (client *Client) CreateClientCertificate(request *CreateClientCertificateRequest) (_result *CreateClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClientCertificateResponse{}
+	_body, _err := client.CreateClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an account-level custom scenario policy. You can execute a policy after you associate the policy with a website.
 //
 // @param request - CreateCustomScenePolicyRequest
@@ -48408,7 +51960,11 @@ func (client *Client) CreateSiteDeliveryTask(request *CreateSiteDeliveryTaskRequ
 
 // Summary:
 //
-// 新增站点功能配置
+// Configures one or more feature settings for a website.
+//
+// Description:
+//
+// This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
 //
 // @param tmpReq - CreateSiteFunctionRequest
 //
@@ -48640,7 +52196,11 @@ func (client *Client) CreateSiteFunctionWithOptions(tmpReq *CreateSiteFunctionRe
 
 // Summary:
 //
-// 新增站点功能配置
+// Configures one or more feature settings for a website.
+//
+// Description:
+//
+// This API operation is used the first time you configure feature settings for your website. To modify existing feature settings, call the UpdateSiteFunction operation.
 //
 // @param request - CreateSiteFunctionRequest
 //
@@ -49233,6 +52793,174 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWaitingRoomRuleResponse{}
 	_body, _err := client.CreateWaitingRoomRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除证书
+//
+// @param request - DeleteCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCertificateResponse
+func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除证书
+//
+// @param request - DeleteCertificateRequest
+//
+// @return DeleteCertificateResponse
+func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_result *DeleteCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCertificateResponse{}
+	_body, _err := client.DeleteCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除客户端CA证书
+//
+// @param request - DeleteClientCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientCaCertificateResponse
+func (client *Client) DeleteClientCaCertificateWithOptions(request *DeleteClientCaCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteClientCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClientCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteClientCaCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除客户端CA证书
+//
+// @param request - DeleteClientCaCertificateRequest
+//
+// @return DeleteClientCaCertificateResponse
+func (client *Client) DeleteClientCaCertificate(request *DeleteClientCaCertificateRequest) (_result *DeleteClientCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClientCaCertificateResponse{}
+	_body, _err := client.DeleteClientCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除客户端证书
+//
+// @param request - DeleteClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteClientCertificateResponse
+func (client *Client) DeleteClientCertificateWithOptions(request *DeleteClientCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除客户端证书
+//
+// @param request - DeleteClientCertificateRequest
+//
+// @return DeleteClientCertificateResponse
+func (client *Client) DeleteClientCertificate(request *DeleteClientCertificateRequest) (_result *DeleteClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClientCertificateResponse{}
+	_body, _err := client.DeleteClientCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51574,6 +55302,174 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
+// 查询证书quota及用量
+//
+// @param request - GetCertificateQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCertificateQuotaResponse
+func (client *Client) GetCertificateQuotaWithOptions(request *GetCertificateQuotaRequest, runtime *util.RuntimeOptions) (_result *GetCertificateQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCertificateQuota"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCertificateQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询证书quota及用量
+//
+// @param request - GetCertificateQuotaRequest
+//
+// @return GetCertificateQuotaResponse
+func (client *Client) GetCertificateQuota(request *GetCertificateQuotaRequest) (_result *GetCertificateQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCertificateQuotaResponse{}
+	_body, _err := client.GetCertificateQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端CA证书信息
+//
+// @param request - GetClientCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientCaCertificateResponse
+func (client *Client) GetClientCaCertificateWithOptions(request *GetClientCaCertificateRequest, runtime *util.RuntimeOptions) (_result *GetClientCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientCaCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端CA证书信息
+//
+// @param request - GetClientCaCertificateRequest
+//
+// @return GetClientCaCertificateResponse
+func (client *Client) GetClientCaCertificate(request *GetClientCaCertificateRequest) (_result *GetClientCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientCaCertificateResponse{}
+	_body, _err := client.GetClientCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书以及证书信息
+//
+// @param request - GetClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientCertificateResponse
+func (client *Client) GetClientCertificateWithOptions(request *GetClientCertificateRequest, runtime *util.RuntimeOptions) (_result *GetClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书以及证书信息
+//
+// @param request - GetClientCertificateRequest
+//
+// @return GetClientCertificateResponse
+func (client *Client) GetClientCertificate(request *GetClientCertificateRequest) (_result *GetClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientCertificateResponse{}
+	_body, _err := client.GetClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a containerized application, including basic application configurations and health check configurations.
 //
 // @param request - GetEdgeContainerAppRequest
@@ -52485,7 +56381,7 @@ func (client *Client) GetRealtimeDeliveryField(request *GetRealtimeDeliveryField
 
 // Summary:
 //
-// 查询单个记录信息
+// Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
 //
 // @param request - GetRecordRequest
 //
@@ -52523,7 +56419,7 @@ func (client *Client) GetRecordWithOptions(request *GetRecordRequest, runtime *u
 
 // Summary:
 //
-// 查询单个记录信息
+// Queries the configuration of a single DNS record, such as the record value, priority, and origin authentication setting (exclusive to CNAME records).
 //
 // @param request - GetRecordRequest
 //
@@ -53769,6 +57665,118 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCacheReserveInstancesResponse{}
 	_body, _err := client.ListCacheReserveInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询TLS密码套件列表
+//
+// @param request - ListCiphersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCiphersResponse
+func (client *Client) ListCiphersWithOptions(request *ListCiphersRequest, runtime *util.RuntimeOptions) (_result *ListCiphersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCiphers"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCiphersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询TLS密码套件列表
+//
+// @param request - ListCiphersRequest
+//
+// @return ListCiphersResponse
+func (client *Client) ListCiphers(request *ListCiphersRequest) (_result *ListCiphersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCiphersResponse{}
+	_body, _err := client.ListCiphersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下客户端CA证书列表
+//
+// @param request - ListClientCaCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientCaCertificatesResponse
+func (client *Client) ListClientCaCertificatesWithOptions(request *ListClientCaCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListClientCaCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClientCaCertificates"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClientCaCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下客户端CA证书列表
+//
+// @param request - ListClientCaCertificatesRequest
+//
+// @return ListClientCaCertificatesResponse
+func (client *Client) ListClientCaCertificates(request *ListClientCaCertificatesRequest) (_result *ListClientCaCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListClientCaCertificatesResponse{}
+	_body, _err := client.ListClientCaCertificatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56866,6 +60874,62 @@ func (client *Client) ResetScheduledPreloadJob(request *ResetScheduledPreloadJob
 
 // Summary:
 //
+// 吊销客户端证书
+//
+// @param request - RevokeClientCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeClientCertificateResponse
+func (client *Client) RevokeClientCertificateWithOptions(request *RevokeClientCertificateRequest, runtime *util.RuntimeOptions) (_result *RevokeClientCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeClientCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeClientCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销客户端证书
+//
+// @param request - RevokeClientCertificateRequest
+//
+// @return RevokeClientCertificateResponse
+func (client *Client) RevokeClientCertificate(request *RevokeClientCertificateRequest) (_result *RevokeClientCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeClientCertificateResponse{}
+	_body, _err := client.RevokeClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Rolls back a version of a containerized application.
 //
 // @param request - RollbackEdgeContainerAppVersionRequest
@@ -59328,6 +63392,76 @@ func (client *Client) UpdateWaitingRoomRule(request *UpdateWaitingRoomRuleReques
 
 // Summary:
 //
+// 上传客户端CA证书
+//
+// @param request - UploadClientCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadClientCaCertificateResponse
+func (client *Client) UploadClientCaCertificateWithOptions(request *UploadClientCaCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadClientCaCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		body["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadClientCaCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadClientCaCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传客户端CA证书
+//
+// @param request - UploadClientCaCertificateRequest
+//
+// @return UploadClientCaCertificateResponse
+func (client *Client) UploadClientCaCertificate(request *UploadClientCaCertificateRequest) (_result *UploadClientCaCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadClientCaCertificateResponse{}
+	_body, _err := client.UploadClientCaCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Uploads the file that contains resources to be purged or prefetched.
 //
 // Description:
@@ -59335,8 +63469,6 @@ func (client *Client) UpdateWaitingRoomRule(request *UpdateWaitingRoomRuleReques
 // >
 //
 // 	- The file can be up to 10 MB in size.
-//
-// 	- After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
 //
 // @param request - UploadFileRequest
 //
@@ -59397,8 +63529,6 @@ func (client *Client) UploadFileWithOptions(request *UploadFileRequest, runtime 
 // >
 //
 // 	- The file can be up to 10 MB in size.
-//
-// 	- After the file is uploaded, you can call [SubmitUploadTask](~~SubmitUploadTask~~) to submit the purge or prefetch task.
 //
 // @param request - UploadFileRequest
 //
