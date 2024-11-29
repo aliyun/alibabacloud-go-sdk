@@ -9,6 +9,110 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelCouponRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 501001340370350
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+}
+
+func (s CancelCouponRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCouponRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCouponRequest) SetCouponId(v int64) *CancelCouponRequest {
+	s.CouponId = &v
+	return s
+}
+
+type CancelCouponResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data    *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelCouponResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCouponResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCouponResponseBody) SetCode(v string) *CancelCouponResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelCouponResponseBody) SetData(v bool) *CancelCouponResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CancelCouponResponseBody) SetMessage(v string) *CancelCouponResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelCouponResponseBody) SetRequestId(v string) *CancelCouponResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelCouponResponseBody) SetSuccess(v bool) *CancelCouponResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelCouponResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelCouponResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelCouponResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCouponResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCouponResponse) SetHeaders(v map[string]*string) *CancelCouponResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelCouponResponse) SetStatusCode(v int32) *CancelCouponResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelCouponResponse) SetBody(v *CancelCouponResponseBody) *CancelCouponResponse {
+	s.Body = v
+	return s
+}
+
 type CancelSubscriptionBillRequest struct {
 	// The type of the bill to which you want to cancel the subscription. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
 	//
@@ -124,6 +228,228 @@ func (s *CancelSubscriptionBillResponse) SetStatusCode(v int32) *CancelSubscript
 }
 
 func (s *CancelSubscriptionBillResponse) SetBody(v *CancelSubscriptionBillResponseBody) *CancelSubscriptionBillResponse {
+	s.Body = v
+	return s
+}
+
+type CouponApprovalStatusListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5093156
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 2
+	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+}
+
+func (s CouponApprovalStatusListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CouponApprovalStatusListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CouponApprovalStatusListRequest) SetPageNo(v int32) *CouponApprovalStatusListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListRequest) SetPageSize(v int32) *CouponApprovalStatusListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListRequest) SetTemplateId(v string) *CouponApprovalStatusListRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListRequest) SetTemplateName(v string) *CouponApprovalStatusListRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListRequest) SetTemplateStatus(v string) *CouponApprovalStatusListRequest {
+	s.TemplateStatus = &v
+	return s
+}
+
+type CouponApprovalStatusListResponseBody struct {
+	// example:
+	//
+	// 200
+	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*CouponApprovalStatusListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s CouponApprovalStatusListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CouponApprovalStatusListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetCode(v string) *CouponApprovalStatusListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetData(v []*CouponApprovalStatusListResponseBodyData) *CouponApprovalStatusListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetMessage(v string) *CouponApprovalStatusListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetPageNo(v int32) *CouponApprovalStatusListResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetPageSize(v int32) *CouponApprovalStatusListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetRequestId(v string) *CouponApprovalStatusListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBody) SetTotal(v int32) *CouponApprovalStatusListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type CouponApprovalStatusListResponseBodyData struct {
+	// example:
+	//
+	// test@test.aliyunid.com
+	IssuerAccount *string `json:"IssuerAccount,omitempty" xml:"IssuerAccount,omitempty"`
+	// example:
+	//
+	// 5432738203821334
+	IssuerUid *string `json:"IssuerUid,omitempty" xml:"IssuerUid,omitempty"`
+	Note      *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// example:
+	//
+	// S00000101-100040
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 2
+	TemplateStatus *int64 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// example:
+	//
+	// 2024-02-02 09:46:59
+	TimeOfRequest *string `json:"TimeOfRequest,omitempty" xml:"TimeOfRequest,omitempty"`
+}
+
+func (s CouponApprovalStatusListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CouponApprovalStatusListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetIssuerAccount(v string) *CouponApprovalStatusListResponseBodyData {
+	s.IssuerAccount = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetIssuerUid(v string) *CouponApprovalStatusListResponseBodyData {
+	s.IssuerUid = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetNote(v string) *CouponApprovalStatusListResponseBodyData {
+	s.Note = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetTemplateId(v string) *CouponApprovalStatusListResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetTemplateName(v string) *CouponApprovalStatusListResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetTemplateStatus(v int64) *CouponApprovalStatusListResponseBodyData {
+	s.TemplateStatus = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponseBodyData) SetTimeOfRequest(v string) *CouponApprovalStatusListResponseBodyData {
+	s.TimeOfRequest = &v
+	return s
+}
+
+type CouponApprovalStatusListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CouponApprovalStatusListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CouponApprovalStatusListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CouponApprovalStatusListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CouponApprovalStatusListResponse) SetHeaders(v map[string]*string) *CouponApprovalStatusListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponse) SetStatusCode(v int32) *CouponApprovalStatusListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CouponApprovalStatusListResponse) SetBody(v *CouponApprovalStatusListResponseBody) *CouponApprovalStatusListResponse {
 	s.Body = v
 	return s
 }
@@ -1227,6 +1553,113 @@ func (s *DeductOutstandingBalanceResponse) SetBody(v *DeductOutstandingBalanceRe
 	return s
 }
 
+type DeleteCouponTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6558410265670417297
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteCouponTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponTemplateRequest) SetTemplateId(v int64) *DeleteCouponTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteCouponTemplateResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A747A00F-E096-5244-88B3-3E474BAE3AE4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCouponTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponTemplateResponseBody) SetCode(v string) *DeleteCouponTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponseBody) SetData(v bool) *DeleteCouponTemplateResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponseBody) SetMessage(v string) *DeleteCouponTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponseBody) SetRequestId(v string) *DeleteCouponTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponseBody) SetSuccess(v bool) *DeleteCouponTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCouponTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCouponTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCouponTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponTemplateResponse) SetHeaders(v map[string]*string) *DeleteCouponTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponse) SetStatusCode(v int32) *DeleteCouponTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCouponTemplateResponse) SetBody(v *DeleteCouponTemplateResponseBody) *DeleteCouponTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type EditEndUserStatusRequest struct {
 	// Shutdown Status</br>
 	//
@@ -1825,7 +2258,7 @@ func (s *ExportCustomerQuotaRecordResponse) SetBody(v *ExportCustomerQuotaRecord
 }
 
 type GetAccountInfoRequest struct {
-	// Message
+	// Pagination, current page.
 	//
 	// This parameter is required.
 	//
@@ -1833,7 +2266,7 @@ type GetAccountInfoRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Success
+	// Pagination, record number on each page, maximum 20.
 	//
 	// This parameter is required.
 	//
@@ -1841,23 +2274,19 @@ type GetAccountInfoRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 10 (Value <= 20)
+	// Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
 	//
 	// example:
 	//
 	// 1215848086704806
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// Result Code - Error Code. Value Range:
+	// Distribution Customer\\"s Account Type:
 	//
-	// - 200 OK
+	// - 1 End User
 	//
-	// - 1109 System Error
+	// - 2 Enterprise
 	//
-	// - 3029: Invalid UID
-	//
-	// - 3062: UID and UserType are both empty.
-	//
-	// - 3063: UserType value out of range.
+	// - 3 T2 Partner
 	//
 	// example:
 	//
@@ -1894,21 +2323,19 @@ func (s *GetAccountInfoRequest) SetUserType(v string) *GetAccountInfoRequest {
 }
 
 type GetAccountInfoResponseBody struct {
-	// Account Type:
-	//
-	// - 1 Agency\\"s End User
-	//
-	// - 2 Reseller\\"s End User
-	//
-	// - 3 Enterprise
-	//
-	// - 4 T2 Agency Partner
-	//
-	// - 5 T2 Reseller Partner
-	//
-	// - 6 T2 Agency+Reseller Partner
+	// List of Account Information
 	AccountInfoList *GetAccountInfoResponseBodyAccountInfoList `json:"AccountInfoList,omitempty" xml:"AccountInfoList,omitempty" type:"Struct"`
-	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+	// Result Code - Error Code. Value Range:
+	//
+	// - 200 OK
+	//
+	// - 1109 System Error
+	//
+	// - 3029: Invalid UID
+	//
+	// - 3062: UID and UserType are both empty.
+	//
+	// - 3063: UserType value out of range.
 	//
 	// example:
 	//
@@ -1918,17 +2345,17 @@ type GetAccountInfoResponseBody struct {
 	//
 	// example:
 	//
-	// Pagination Information
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Pagination, page volume in total.
+	// Pagination Information
 	PageInfo *GetAccountInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Request id, a unique identifier generated by Alibaba cloud for the request.
+	// Request id, a unique identifier generated by Alibaba Cloud for the request.
 	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Pagination, record number on each page.
+	// Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
 	//
 	// example:
 	//
@@ -1992,94 +2419,123 @@ func (s *GetAccountInfoResponseBodyAccountInfoList) SetAccountInfo(v []*GetAccou
 }
 
 type GetAccountInfoResponseBodyAccountInfoListAccountInfo struct {
-	// The E-mail of Distribution Customer.
+	// The name of Sub Account.
+	//
+	// - Enterprise Customer: Name of Company
+	//
+	// - T2 Reseller: Name of Partner
 	//
 	// example:
 	//
-	// Description of Distribution Customer.
+	// XXX Technology LTD.
 	AccountNickname *string `json:"AccountNickname,omitempty" xml:"AccountNickname,omitempty"`
-	// Account CID of Distribution Customer.
+	// Alibaba Cloud Login name of Distribution Customer.
 	//
 	// example:
 	//
 	// 1234@qq.com
 	AliyunId *string `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	// XXX Technology LTD.
+	// The time that Distribution Customer successfully associated with Distributor.
 	//
 	// example:
 	//
 	// 2021-01-01
 	AssociationSuccessTime *string `json:"AssociationSuccessTime,omitempty" xml:"AssociationSuccessTime,omitempty"`
-	// customer\\"s CID
+	// Account CID of Distribution Customer.
 	//
 	// example:
 	//
 	// 61479572
-	Cid                 *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
-	CustomerAccountType *int32 `json:"CustomerAccountType,omitempty" xml:"CustomerAccountType,omitempty"`
-	// customer manager
+	Cid *int64 `json:"Cid,omitempty" xml:"Cid,omitempty"`
+	// Type of customer\\"s account, 0 Individual, 1 Enterprise
 	//
 	// example:
 	//
-	// abc
-	CustomerBd                  *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
-	CustomerEnterpriseCertified *int32  `json:"CustomerEnterpriseCertified,omitempty" xml:"CustomerEnterpriseCertified,omitempty"`
-	// The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+	// 1
+	CustomerAccountType *int32 `json:"CustomerAccountType,omitempty" xml:"CustomerAccountType,omitempty"`
+	// Customer\\"s Sales Manager
+	//
+	// example:
+	//
+	// Tommy
+	CustomerBd *string `json:"CustomerBd,omitempty" xml:"CustomerBd,omitempty"`
+	// Whether the customer has completed Enterprise Real-name Authentication, 0 No, 1 Yes
+	//
+	// example:
+	//
+	// 1
+	CustomerEnterpriseCertified *int32 `json:"CustomerEnterpriseCertified,omitempty" xml:"CustomerEnterpriseCertified,omitempty"`
+	// When Shutdown Policy is delayStop, this number refer to Shutdown-delay Credit (overdraft limit).
 	//
 	// example:
 	//
 	// 600
 	DelayAmount *string `json:"DelayAmount,omitempty" xml:"DelayAmount,omitempty"`
-	// Partner\\"s Shutdown Policy Management for Sub Account.
+	// There are a value for Shutdown Policy Management towards Sub Account.
 	//
-	// 1: delayStop. The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+	// - 1 immediatelyStop,  immediately shutdown the instance once customer\\"s quota is ran out.
 	//
-	// 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.
+	// - 2 delayStop, delay shutdown the instance until customer\\"s Shutdown-delay Credit is ran out. Please refer to DelayAmount.
 	//
-	// 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.
+	// - 3 noStop, customer\\"s instance status is rely on manual control instead of auto setting.
 	//
 	// example:
 	//
-	// noStop
+	// immediatelyStop
 	DelayStatus *string `json:"DelayStatus,omitempty" xml:"DelayStatus,omitempty"`
-	// Sub Account
+	// The E-mail of Distribution Customer.
 	//
 	// example:
 	//
 	// 1234@qq.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Account UID of Distribution Customer.
+	// The contact number of Distribution Customer.
 	//
 	// example:
 	//
 	// 13641588680
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// Purchase Forbidden：Ban the new purchase action
+	// Purchase Control, Value Range:
 	//
-	// normal：Normal--End Use can issue Cloud Resource order immediately.
+	// - Purchase Forbidden
+	//
+	// - Normal (Purchase is allowed)
 	//
 	// example:
 	//
 	// Normal
-	NewBuyStatus        *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
-	RegisterCountryCode *string `json:"RegisterCountryCode,omitempty" xml:"RegisterCountryCode,omitempty"`
-	// Valid mobile number of Distribution Customer.
+	NewBuyStatus *string `json:"NewBuyStatus,omitempty" xml:"NewBuyStatus,omitempty"`
+	// The Country Code where the customer\\"s account is registered.
 	//
 	// example:
 	//
-	// Alibaba Cloud Login name of Distribution Customer.
+	// CN
+	RegisterCountryCode *string `json:"RegisterCountryCode,omitempty" xml:"RegisterCountryCode,omitempty"`
+	// Description of Distribution Customer.
+	//
+	// example:
+	//
+	// Sub Account
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The name of Sub Account:
+	// Account Type:
 	//
-	// 1.	Use the official name of Company, if Sub Account is an enterprise.
+	// - 1 Agency\\"s End User
 	//
-	// 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
+	// - 2 Reseller\\"s End User
+	//
+	// - 3 Enterprise
+	//
+	// - 4 T2 Agency Partner
+	//
+	// - 5 T2 Reseller Partner
+	//
+	// - 6 T2 Agency+Reseller Partner
 	//
 	// example:
 	//
 	// 1
 	SubAccountType *int32 `json:"SubAccountType,omitempty" xml:"SubAccountType,omitempty"`
-	// Request ID, the unique request identifier generated by Alibaba Cloud.
+	// Account UID of Distribution Customer.
 	//
 	// example:
 	//
@@ -2176,19 +2632,19 @@ func (s *GetAccountInfoResponseBodyAccountInfoListAccountInfo) SetUid(v int64) *
 }
 
 type GetAccountInfoResponseBodyPageInfo struct {
-	// Account Information
+	// Pagination, current page.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Pagination, current page.
+	// Pagination, record number on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of Account Information
+	// Pagination, page volume in total.
 	//
 	// example:
 	//
@@ -2244,6 +2700,226 @@ func (s *GetAccountInfoResponse) SetStatusCode(v int32) *GetAccountInfoResponse 
 }
 
 func (s *GetAccountInfoResponse) SetBody(v *GetAccountInfoResponseBody) *GetAccountInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetCouponTemplateDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5093156
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetCouponTemplateDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCouponTemplateDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCouponTemplateDetailRequest) SetTemplateId(v int64) *GetCouponTemplateDetailRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetCouponTemplateDetailResponseBody struct {
+	// example:
+	//
+	// 200
+	Code    *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetCouponTemplateDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCouponTemplateDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCouponTemplateDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCouponTemplateDetailResponseBody) SetCode(v string) *GetCouponTemplateDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBody) SetData(v *GetCouponTemplateDetailResponseBodyData) *GetCouponTemplateDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBody) SetMessage(v string) *GetCouponTemplateDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBody) SetRequestId(v string) *GetCouponTemplateDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBody) SetSuccess(v bool) *GetCouponTemplateDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCouponTemplateDetailResponseBodyData struct {
+	// example:
+	//
+	// UNIVERSAL
+	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
+	// example:
+	//
+	// aliyun_poc
+	CostBearer        *string `json:"CostBearer,omitempty" xml:"CostBearer,omitempty"`
+	CouponDescription *string `json:"CouponDescription,omitempty" xml:"CouponDescription,omitempty"`
+	// example:
+	//
+	// 2024-11-21 18:18:22
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 100
+	Denomination *float64 `json:"Denomination,omitempty" xml:"Denomination,omitempty"`
+	// example:
+	//
+	// 1
+	LimitPerPerson *int32 `json:"LimitPerPerson,omitempty" xml:"LimitPerPerson,omitempty"`
+	// example:
+	//
+	// ALL,BILLING
+	PurchaseType         *string `json:"PurchaseType,omitempty" xml:"PurchaseType,omitempty"`
+	ReasonForApplication *string `json:"ReasonForApplication,omitempty" xml:"ReasonForApplication,omitempty"`
+	// example:
+	//
+	// APPROVED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1576
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 100
+	ValidUntil *string `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty"`
+	// example:
+	//
+	// 0
+	ValidUntilType *string `json:"ValidUntilType,omitempty" xml:"ValidUntilType,omitempty"`
+}
+
+func (s GetCouponTemplateDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCouponTemplateDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetApplicableProducts(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.ApplicableProducts = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetCostBearer(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.CostBearer = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetCouponDescription(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.CouponDescription = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetCreatedTime(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetDenomination(v float64) *GetCouponTemplateDetailResponseBodyData {
+	s.Denomination = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetLimitPerPerson(v int32) *GetCouponTemplateDetailResponseBodyData {
+	s.LimitPerPerson = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetPurchaseType(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.PurchaseType = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetReasonForApplication(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.ReasonForApplication = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetStatus(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetTemplateId(v int64) *GetCouponTemplateDetailResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetTemplateName(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetValidUntil(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.ValidUntil = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponseBodyData) SetValidUntilType(v string) *GetCouponTemplateDetailResponseBodyData {
+	s.ValidUntilType = &v
+	return s
+}
+
+type GetCouponTemplateDetailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCouponTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCouponTemplateDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCouponTemplateDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCouponTemplateDetailResponse) SetHeaders(v map[string]*string) *GetCouponTemplateDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponse) SetStatusCode(v int32) *GetCouponTemplateDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCouponTemplateDetailResponse) SetBody(v *GetCouponTemplateDetailResponseBody) *GetCouponTemplateDetailResponse {
 	s.Body = v
 	return s
 }
@@ -6048,6 +6724,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 作废优惠券
+//
+// @param request - CancelCouponRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelCouponResponse
+func (client *Client) CancelCouponWithOptions(request *CancelCouponRequest, runtime *util.RuntimeOptions) (_result *CancelCouponResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CouponId)) {
+		query["CouponId"] = request.CouponId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelCoupon"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelCouponResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 作废优惠券
+//
+// @param request - CancelCouponRequest
+//
+// @return CancelCouponResponse
+func (client *Client) CancelCoupon(request *CancelCouponRequest) (_result *CancelCouponResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelCouponResponse{}
+	_body, _err := client.CancelCouponWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
 //
 // Description:
@@ -6119,6 +6855,82 @@ func (client *Client) CancelSubscriptionBill(request *CancelSubscriptionBillRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelSubscriptionBillResponse{}
 	_body, _err := client.CancelSubscriptionBillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 优惠券审批状态列表
+//
+// @param request - CouponApprovalStatusListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CouponApprovalStatusListResponse
+func (client *Client) CouponApprovalStatusListWithOptions(request *CouponApprovalStatusListRequest, runtime *util.RuntimeOptions) (_result *CouponApprovalStatusListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateStatus)) {
+		query["TemplateStatus"] = request.TemplateStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CouponApprovalStatusList"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CouponApprovalStatusListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 优惠券审批状态列表
+//
+// @param request - CouponApprovalStatusListRequest
+//
+// @return CouponApprovalStatusListResponse
+func (client *Client) CouponApprovalStatusList(request *CouponApprovalStatusListRequest) (_result *CouponApprovalStatusListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CouponApprovalStatusListResponse{}
+	_body, _err := client.CouponApprovalStatusListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6445,6 +7257,66 @@ func (client *Client) DeductOutstandingBalance(request *DeductOutstandingBalance
 	runtime := &util.RuntimeOptions{}
 	_result = &DeductOutstandingBalanceResponse{}
 	_body, _err := client.DeductOutstandingBalanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 作废优惠券模板
+//
+// @param request - DeleteCouponTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCouponTemplateResponse
+func (client *Client) DeleteCouponTemplateWithOptions(request *DeleteCouponTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteCouponTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCouponTemplate"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCouponTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 作废优惠券模板
+//
+// @param request - DeleteCouponTemplateRequest
+//
+// @return DeleteCouponTemplateResponse
+func (client *Client) DeleteCouponTemplate(request *DeleteCouponTemplateRequest) (_result *DeleteCouponTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCouponTemplateResponse{}
+	_body, _err := client.DeleteCouponTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6805,6 +7677,66 @@ func (client *Client) GetAccountInfo(request *GetAccountInfoRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountInfoResponse{}
 	_body, _err := client.GetAccountInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优惠券模板详情
+//
+// @param request - GetCouponTemplateDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCouponTemplateDetailResponse
+func (client *Client) GetCouponTemplateDetailWithOptions(request *GetCouponTemplateDetailRequest, runtime *util.RuntimeOptions) (_result *GetCouponTemplateDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCouponTemplateDetail"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCouponTemplateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优惠券模板详情
+//
+// @param request - GetCouponTemplateDetailRequest
+//
+// @return GetCouponTemplateDetailResponse
+func (client *Client) GetCouponTemplateDetail(request *GetCouponTemplateDetailRequest) (_result *GetCouponTemplateDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCouponTemplateDetailResponse{}
+	_body, _err := client.GetCouponTemplateDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
