@@ -54331,6 +54331,7 @@ type ListServiceSourceResponseBodyData struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The information about the support for Ingresses by applications.
 	IngressOptions *ListServiceSourceResponseBodyDataIngressOptions `json:"IngressOptions,omitempty" xml:"IngressOptions,omitempty" type:"Struct"`
+	Invalid        *bool                                            `json:"Invalid,omitempty" xml:"Invalid,omitempty"`
 	// The name.
 	//
 	// example:
@@ -54409,6 +54410,11 @@ func (s *ListServiceSourceResponseBodyData) SetId(v int64) *ListServiceSourceRes
 
 func (s *ListServiceSourceResponseBodyData) SetIngressOptions(v *ListServiceSourceResponseBodyDataIngressOptions) *ListServiceSourceResponseBodyData {
 	s.IngressOptions = v
+	return s
+}
+
+func (s *ListServiceSourceResponseBodyData) SetInvalid(v bool) *ListServiceSourceResponseBodyData {
+	s.Invalid = &v
 	return s
 }
 
