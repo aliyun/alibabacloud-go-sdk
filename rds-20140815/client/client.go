@@ -744,6 +744,8 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 }
 
 type AttachRCDiskRequest struct {
+	// The reserved parameter. This parameter is not supported.
+	//
 	// example:
 	//
 	// false
@@ -5342,13 +5344,11 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// >
+	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-	//
-	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -5999,11 +5999,9 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// >
+	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
 	//
-	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
-	//
-	// 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	//
 	// example:
 	//
@@ -6482,13 +6480,11 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Classic**: the classic network
 	//
-	// >
+	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
 	//
-	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-	//
-	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+	// > 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -12754,7 +12750,7 @@ type CreateRCSnapshotRequest struct {
 	//
 	// 2
 	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// The zone ID.
+	// This parameter has been deprecated.
 	//
 	// example:
 	//
@@ -37992,6 +37988,12 @@ type DescribeDBProxyEndpointResponseBody struct {
 	//
 	// keaxncrjluwu0gue****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
+	// The minimum number of reserved instances.
+	//
+	// example:
+	//
+	// 2
+	DBProxyEndpointMinSlaveCount *string `json:"DBProxyEndpointMinSlaveCount,omitempty" xml:"DBProxyEndpointMinSlaveCount,omitempty"`
 	// An internal parameter. You can ignore this parameter.
 	//
 	// example:
@@ -38113,6 +38115,11 @@ func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringPort(v stri
 
 func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyEndpointId(v string) *DescribeDBProxyEndpointResponseBody {
 	s.DBProxyEndpointId = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyEndpointMinSlaveCount(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyEndpointMinSlaveCount = &v
 	return s
 }
 
@@ -52764,6 +52771,7 @@ type DescribeRCClustersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCClustersRequest) String() string {
@@ -52776,6 +52784,11 @@ func (s DescribeRCClustersRequest) GoString() string {
 
 func (s *DescribeRCClustersRequest) SetRegionId(v string) *DescribeRCClustersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCClustersRequest) SetVpcId(v string) *DescribeRCClustersRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -52809,6 +52822,7 @@ func (s *DescribeRCClustersResponseBody) SetRequestId(v string) *DescribeRCClust
 }
 
 type DescribeRCClustersResponseBodyClusters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The cluster name.
 	//
 	// example:
@@ -52837,6 +52851,7 @@ type DescribeRCClustersResponseBodyClusters struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCClustersResponseBodyClusters) String() string {
@@ -52845,6 +52860,11 @@ func (s DescribeRCClustersResponseBodyClusters) String() string {
 
 func (s DescribeRCClustersResponseBodyClusters) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRCClustersResponseBodyClusters) SetClusterId(v string) *DescribeRCClustersResponseBodyClusters {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeRCClustersResponseBodyClusters) SetClusterName(v string) *DescribeRCClustersResponseBodyClusters {
@@ -52859,6 +52879,11 @@ func (s *DescribeRCClustersResponseBodyClusters) SetCreateTime(v string) *Descri
 
 func (s *DescribeRCClustersResponseBodyClusters) SetStatus(v string) *DescribeRCClustersResponseBodyClusters {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeRCClustersResponseBodyClusters) SetVpcId(v string) *DescribeRCClustersResponseBodyClusters {
+	s.VpcId = &v
 	return s
 }
 
@@ -54495,6 +54520,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// b076f6ff-46d1-4234-a608-4e951ed6****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The instance status. Valid values:
 	//
 	// 	- **Pending**
@@ -54729,6 +54755,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetSecurityGroupIds(v *Describ
 
 func (s *DescribeRCInstanceAttributeResponseBody) SetSerialNumber(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetSpotStrategy(v string) *DescribeRCInstanceAttributeResponseBody {
+	s.SpotStrategy = &v
 	return s
 }
 
@@ -55443,7 +55474,8 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The instance status. Valid values:
 	//
 	// 	- **Pending**
@@ -55527,6 +55559,11 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetInstanceId(v string) *De
 
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetRegionId(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetSpotStrategy(v string) *DescribeRCInstancesResponseBodyRCInstances {
+	s.SpotStrategy = &v
 	return s
 }
 
@@ -74990,9 +75027,9 @@ func (s *ModifyDBProxyResponse) SetBody(v *ModifyDBProxyResponseBody) *ModifyDBP
 }
 
 type ModifyDBProxyEndpointRequest struct {
-	// The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end of the value.
+	// The capabilities that you want to enable for the proxy endpoint. If you specify more than one capability, separate the capabilities with semicolons (;). Format: `Capability 1:Status;Capability 2:Status;...`. Do not add a semicolon (;) at the end of the value.
 	//
-	// Valid feature values:
+	// Valid capability values:
 	//
 	// 	- **ReadWriteSpliting**: read/write splitting
 	//
@@ -75000,13 +75037,19 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// 	- **TransactionReadSqlRouteOptimizeStatus**: transaction splitting
 	//
+	// 	- **AZProximityAccess**: nearest access
+	//
 	// Valid status values:
 	//
 	// 	- **1**: enabled
 	//
 	// 	- **0**: disabled
 	//
-	// >  If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by **ReadWriteSpliting**.
+	// >
+	//
+	// 	- If the instance runs PostgreSQL, you can enable only read/write splitting, which is specified by **ReadWriteSpliting**.
+	//
+	// 	- Nearest access is supported only by dedicated database proxies for RDS instances that run MySQL.
 	//
 	// example:
 	//
@@ -75041,7 +75084,8 @@ type ModifyDBProxyEndpointRequest struct {
 	// example:
 	//
 	// test-proxy
-	DbEndpointAliases *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	DbEndpointAliases       *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	DbEndpointMinSlaveCount *string `json:"DbEndpointMinSlaveCount,omitempty" xml:"DbEndpointMinSlaveCount,omitempty"`
 	// The type of operation that you want to perform. Valid values:
 	//
 	// 	- **Modify**: Modify a proxy terminal. This is the default value.
@@ -75074,23 +75118,23 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// RWSplit
 	DbEndpointType *string `json:"DbEndpointType,omitempty" xml:"DbEndpointType,omitempty"`
-	// The specified time takes effect. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
+	// The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > This parameter must be passed when EffectiveTime is SpecificTime.
+	// >  If **EffectiveTime*	- is set to **SpecificTime**, you must specify this parameter.
 	//
 	// example:
 	//
 	// 2023-05-06T07:08:09Z
 	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
-	// Effective time, value:
+	// The effective time. Valid values:
 	//
-	// - **Immediate**: effective immediately.
+	// 	- **Immediate**: The effective time is immediate.
 	//
-	// - **MaintainTime**: effective during the operational and maintainable time period, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// - **SpecificTime**: effective at a specified time.
+	// 	- **SpecificTime**: The effective time is a specified point in time.
 	//
-	// Default value: MaintainTime.
+	// Default value: **MaintainTime**.
 	//
 	// example:
 	//
@@ -75099,11 +75143,11 @@ type ModifyDBProxyEndpointRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The policy that is used to allocate read weights. Valid values:
 	//
-	// 	- **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
+	// 	- **Standard*	- (default): The system automatically assigns read weights to the primary and read-only instances based on the specifications of these instances.
 	//
-	// 	- **Custom**: You must manually allocate read weights to the instance and its read-only instances.
+	// 	- **Custom**: You must manually allocate read weights to the primary and read-only instances.
 	//
-	// > You must specify this parameter only when the read/write splitting feature is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
+	// >  You must specify this parameter when read/write splitting is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
 	//
 	// example:
 	//
@@ -75141,7 +75185,7 @@ type ModifyDBProxyEndpointRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies the switch ID corresponding to the availability zone of the proxy connection address. By default, it is the switch ID corresponding to the default terminal of the proxy instance. You can query the created switch by calling the DescribeVSwitches interface.
+	// The ID of the vSwitch in the zone in which the proxy endpoint is specified. The default value is the ID of the vSwitch that corresponds to the default terminal of the database proxy. You can call the DescribeVSwitches operation to query existing vSwitches.
 	//
 	// example:
 	//
@@ -75179,6 +75223,11 @@ func (s *ModifyDBProxyEndpointRequest) SetDBProxyEngineType(v string) *ModifyDBP
 
 func (s *ModifyDBProxyEndpointRequest) SetDbEndpointAliases(v string) *ModifyDBProxyEndpointRequest {
 	s.DbEndpointAliases = &v
+	return s
+}
+
+func (s *ModifyDBProxyEndpointRequest) SetDbEndpointMinSlaveCount(v string) *ModifyDBProxyEndpointRequest {
+	s.DbEndpointMinSlaveCount = &v
 	return s
 }
 
@@ -78773,9 +78822,26 @@ func (s *ModifyRCInstanceChargeTypeResponse) SetBody(v *ModifyRCInstanceChargeTy
 }
 
 type ModifyRCInstanceDescriptionRequest struct {
+	// The instance name.
+	//
+	// >  The name must be 2 to 255 characters in length and can contain letters, digits, `underscores (_)`, and `hyphens (-)`. It must start with a letter.
+	//
+	// example:
+	//
+	// testInstance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rc-m5ei7b1w38w2l91x****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyRCInstanceDescriptionRequest) String() string {
@@ -78802,6 +78868,11 @@ func (s *ModifyRCInstanceDescriptionRequest) SetRegionId(v string) *ModifyRCInst
 }
 
 type ModifyRCInstanceDescriptionResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// CCECD3CD-AB2D-4F6D-BEDE-47BC90A398D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -84583,6 +84654,7 @@ type RunRCInstancesRequest struct {
 	//
 	// sg-uf6av412xaxixuezol6w
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The specification of the system disk.
 	SystemDisk *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Tag        []*RunRCInstancesRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -84736,6 +84808,11 @@ func (s *RunRCInstancesRequest) SetSecurityEnhancementStrategy(v string) *RunRCI
 
 func (s *RunRCInstancesRequest) SetSecurityGroupId(v string) *RunRCInstancesRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSpotStrategy(v string) *RunRCInstancesRequest {
+	s.SpotStrategy = &v
 	return s
 }
 
@@ -85045,6 +85122,7 @@ type RunRCInstancesShrinkRequest struct {
 	//
 	// sg-uf6av412xaxixuezol6w
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The specification of the system disk.
 	SystemDiskShrink *string                           `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	Tag              []*RunRCInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85198,6 +85276,11 @@ func (s *RunRCInstancesShrinkRequest) SetSecurityEnhancementStrategy(v string) *
 
 func (s *RunRCInstancesShrinkRequest) SetSecurityGroupId(v string) *RunRCInstancesShrinkRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSpotStrategy(v string) *RunRCInstancesShrinkRequest {
+	s.SpotStrategy = &v
 	return s
 }
 
@@ -108496,6 +108579,10 @@ func (client *Client) DescribeRCClustersWithOptions(request *DescribeRCClustersR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -117892,6 +117979,10 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 		query["DbEndpointAliases"] = request.DbEndpointAliases
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DbEndpointMinSlaveCount)) {
+		query["DbEndpointMinSlaveCount"] = request.DbEndpointMinSlaveCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DbEndpointOperator)) {
 		query["DbEndpointOperator"] = request.DbEndpointOperator
 	}
@@ -120095,7 +120186,7 @@ func (client *Client) ModifyRCInstanceChargeType(request *ModifyRCInstanceCharge
 
 // Summary:
 //
-// 修改RC实例描述
+// Modifies the name of an RDS Custom instance.
 //
 // @param request - ModifyRCInstanceDescriptionRequest
 //
@@ -120145,7 +120236,7 @@ func (client *Client) ModifyRCInstanceDescriptionWithOptions(request *ModifyRCIn
 
 // Summary:
 //
-// 修改RC实例描述
+// Modifies the name of an RDS Custom instance.
 //
 // @param request - ModifyRCInstanceDescriptionRequest
 //
@@ -124046,6 +124137,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpotStrategy)) {
+		query["SpotStrategy"] = request.SpotStrategy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
