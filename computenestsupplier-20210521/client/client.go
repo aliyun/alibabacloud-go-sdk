@@ -4162,13 +4162,7 @@ type GetServiceResponseBody struct {
 	// DevOps
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The commodity details.
-	Commodity *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
-	// The commodity code of the service in Alibaba Cloud Marketplace.
-	//
-	// example:
-	//
-	// cmjj00xxxx
-	CommodityCode      *string                                   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Commodity          *GetServiceResponseBodyCommodity          `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	ComplianceMetadata *GetServiceResponseBodyComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The time when the service was created.
 	//
@@ -4182,12 +4176,6 @@ type GetServiceResponseBody struct {
 	//
 	// componesConfigs
 	CrossRegionConnectionStatus *string `json:"CrossRegionConnectionStatus,omitempty" xml:"CrossRegionConnectionStatus,omitempty"`
-	// The validity period of the default license. Unit: day. Valid values: 1 to 1000.
-	//
-	// example:
-	//
-	// 1
-	DefaultLicenseDays *int64 `json:"DefaultLicenseDays,omitempty" xml:"DefaultLicenseDays,omitempty"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
 	// example:
@@ -4268,20 +4256,6 @@ type GetServiceResponseBody struct {
 	//
 	// None
 	PayFromType *string `json:"PayFromType,omitempty" xml:"PayFromType,omitempty"`
-	// The billing method of the service. Valid values:
-	//
-	// 	- Permanent: Once you purchase the service, you can use it permanently.
-	//
-	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
-	//
-	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
-	//
-	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
-	//
-	// example:
-	//
-	// Permanent
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The permissions on the service. Valid values:
 	//
 	// 	- Deployable: Permissions to deploy the service.
@@ -4353,13 +4327,7 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// DISCOVERABLE
-	ServiceDiscoverable *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
-	// The URL of the service documentation.
-	//
-	// example:
-	//
-	// http://example1.com
-	ServiceDocUrl        *string                                       `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
+	ServiceDiscoverable  *string                                       `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
 	ServiceDocumentInfos []*GetServiceResponseBodyServiceDocumentInfos `json:"ServiceDocumentInfos,omitempty" xml:"ServiceDocumentInfos,omitempty" type:"Repeated"`
 	// The service ID.
 	//
@@ -4582,11 +4550,6 @@ func (s *GetServiceResponseBody) SetCommodity(v *GetServiceResponseBodyCommodity
 	return s
 }
 
-func (s *GetServiceResponseBody) SetCommodityCode(v string) *GetServiceResponseBody {
-	s.CommodityCode = &v
-	return s
-}
-
 func (s *GetServiceResponseBody) SetComplianceMetadata(v *GetServiceResponseBodyComplianceMetadata) *GetServiceResponseBody {
 	s.ComplianceMetadata = v
 	return s
@@ -4599,11 +4562,6 @@ func (s *GetServiceResponseBody) SetCreateTime(v string) *GetServiceResponseBody
 
 func (s *GetServiceResponseBody) SetCrossRegionConnectionStatus(v string) *GetServiceResponseBody {
 	s.CrossRegionConnectionStatus = &v
-	return s
-}
-
-func (s *GetServiceResponseBody) SetDefaultLicenseDays(v int64) *GetServiceResponseBody {
-	s.DefaultLicenseDays = &v
 	return s
 }
 
@@ -4649,11 +4607,6 @@ func (s *GetServiceResponseBody) SetOperationMetadata(v string) *GetServiceRespo
 
 func (s *GetServiceResponseBody) SetPayFromType(v string) *GetServiceResponseBody {
 	s.PayFromType = &v
-	return s
-}
-
-func (s *GetServiceResponseBody) SetPayType(v string) *GetServiceResponseBody {
-	s.PayType = &v
 	return s
 }
 
@@ -4704,11 +4657,6 @@ func (s *GetServiceResponseBody) SetServiceAuditDocumentUrl(v string) *GetServic
 
 func (s *GetServiceResponseBody) SetServiceDiscoverable(v string) *GetServiceResponseBody {
 	s.ServiceDiscoverable = &v
-	return s
-}
-
-func (s *GetServiceResponseBody) SetServiceDocUrl(v string) *GetServiceResponseBody {
-	s.ServiceDocUrl = &v
 	return s
 }
 
@@ -6959,7 +6907,8 @@ type GetServiceInstanceResponseBodyService struct {
 	// example:
 	//
 	// http://example.com
-	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl            *string                                                        `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	UpgradableServiceInfos []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos `json:"UpgradableServiceInfos,omitempty" xml:"UpgradableServiceInfos,omitempty" type:"Repeated"`
 	// The service versions that can be updated.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
 	// The service version.
@@ -7039,6 +6988,11 @@ func (s *GetServiceInstanceResponseBodyService) SetSupplierUrl(v string) *GetSer
 	return s
 }
 
+func (s *GetServiceInstanceResponseBodyService) SetUpgradableServiceInfos(v []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) *GetServiceInstanceResponseBodyService {
+	s.UpgradableServiceInfos = v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBodyService) SetUpgradableServiceVersions(v []*string) *GetServiceInstanceResponseBodyService {
 	s.UpgradableServiceVersions = v
 	return s
@@ -7106,6 +7060,29 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetName(v string) *G
 
 func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(v string) *GetServiceInstanceResponseBodyServiceServiceInfos {
 	s.ShortDescription = &v
+	return s
+}
+
+type GetServiceInstanceResponseBodyServiceUpgradableServiceInfos struct {
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) SetVersion(v string) *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos {
+	s.Version = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) SetVersionName(v string) *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos {
+	s.VersionName = &v
 	return s
 }
 
