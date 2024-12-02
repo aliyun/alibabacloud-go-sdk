@@ -8956,6 +8956,7 @@ type CreateSnatEntryRequest struct {
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
 	// This parameter is required.
@@ -9020,6 +9021,11 @@ func (s CreateSnatEntryRequest) GoString() string {
 
 func (s *CreateSnatEntryRequest) SetIdleTimeout(v int32) *CreateSnatEntryRequest {
 	s.IdleTimeout = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetIspAffinity(v bool) *CreateSnatEntryRequest {
+	s.IspAffinity = &v
 	return s
 }
 
@@ -27769,7 +27775,8 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServiceStatus   []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
 	// The status of the instance. Valid values:
 	//
 	// 	- Running
@@ -27877,6 +27884,11 @@ func (s *DescribeInstancesRequest) SetSearchKey(v string) *DescribeInstancesRequ
 
 func (s *DescribeInstancesRequest) SetSecurityGroupId(v string) *DescribeInstancesRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetServiceStatus(v []*string) *DescribeInstancesRequest {
+	s.ServiceStatus = v
 	return s
 }
 
@@ -28038,7 +28050,8 @@ type DescribeInstancesShrinkRequest struct {
 	// example:
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId     *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ServiceStatusShrink *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- Running
@@ -28146,6 +28159,11 @@ func (s *DescribeInstancesShrinkRequest) SetSearchKey(v string) *DescribeInstanc
 
 func (s *DescribeInstancesShrinkRequest) SetSecurityGroupId(v string) *DescribeInstancesShrinkRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetServiceStatusShrink(v string) *DescribeInstancesShrinkRequest {
+	s.ServiceStatusShrink = &v
 	return s
 }
 
@@ -28395,6 +28413,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	PublicIpAddresses *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
 	// The IDs of the security groups.
 	SecurityGroupIds *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	ServiceStatus    *string                                                         `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The instance type.
 	//
 	// example:
@@ -28557,6 +28576,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetPublicIpAddresses(v 
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetSecurityGroupIds(v *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds) *DescribeInstancesResponseBodyInstancesInstance {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetServiceStatus(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ServiceStatus = &v
 	return s
 }
 
@@ -42448,6 +42472,7 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// 10
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the Network Address Translation (NAT) gateway.
 	//
 	// example:
@@ -42550,6 +42575,11 @@ func (s *DescribeSnatAttributeResponseBody) SetDestCIDR(v string) *DescribeSnatA
 
 func (s *DescribeSnatAttributeResponseBody) SetIdleTimeout(v int32) *DescribeSnatAttributeResponseBody {
 	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetIspAffinity(v bool) *DescribeSnatAttributeResponseBody {
+	s.IspAffinity = &v
 	return s
 }
 
@@ -42854,6 +42884,7 @@ type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	IspAffinity *bool  `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
 	// The ID of the NAT gateway.
 	//
 	// example:
@@ -42928,6 +42959,11 @@ func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) GoString() string 
 
 func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetIdleTimeout(v int32) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
 	s.IdleTimeout = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetIspAffinity(v bool) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.IspAffinity = &v
 	return s
 }
 
@@ -49775,6 +49811,95 @@ func (s *ModifySnapshotAttributeResponse) SetStatusCode(v int32) *ModifySnapshot
 }
 
 func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResponseBody) *ModifySnapshotAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifySnatEntryRequest struct {
+	// example:
+	//
+	// true
+	IspAffinity *bool `json:"IspAffinity,omitempty" xml:"IspAffinity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// snat-5tfjp36fsrb36zs36faj0****
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// example:
+	//
+	// test0
+	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+}
+
+func (s ModifySnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnatEntryRequest) SetIspAffinity(v bool) *ModifySnatEntryRequest {
+	s.IspAffinity = &v
+	return s
+}
+
+func (s *ModifySnatEntryRequest) SetSnatEntryId(v string) *ModifySnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *ModifySnatEntryRequest) SetSnatEntryName(v string) *ModifySnatEntryRequest {
+	s.SnatEntryName = &v
+	return s
+}
+
+type ModifySnatEntryResponseBody struct {
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifySnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnatEntryResponseBody) SetRequestId(v string) *ModifySnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifySnatEntryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifySnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnatEntryResponse) SetHeaders(v map[string]*string) *ModifySnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySnatEntryResponse) SetStatusCode(v int32) *ModifySnatEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySnatEntryResponse) SetBody(v *ModifySnatEntryResponseBody) *ModifySnatEntryResponse {
 	s.Body = v
 	return s
 }
@@ -64388,6 +64513,10 @@ func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest
 		query["IdleTimeout"] = request.IdleTimeout
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IspAffinity)) {
+		query["IspAffinity"] = request.IspAffinity
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
 		query["NatGatewayId"] = request.NatGatewayId
 	}
@@ -70489,6 +70618,10 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 	}
 	request := &DescribeInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServiceStatus)) {
+		request.ServiceStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceStatus, tea.String("ServiceStatus"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -70556,6 +70689,10 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceStatusShrink)) {
+		query["ServiceStatus"] = request.ServiceStatusShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -76309,6 +76446,74 @@ func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySnapshotAttributeResponse{}
 	_body, _err := client.ModifySnapshotAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改snat规则
+//
+// @param request - ModifySnatEntryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySnatEntryResponse
+func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest, runtime *util.RuntimeOptions) (_result *ModifySnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IspAffinity)) {
+		query["IspAffinity"] = request.IspAffinity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryName)) {
+		query["SnatEntryName"] = request.SnatEntryName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改snat规则
+//
+// @param request - ModifySnatEntryRequest
+//
+// @return ModifySnatEntryResponse
+func (client *Client) ModifySnatEntry(request *ModifySnatEntryRequest) (_result *ModifySnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySnatEntryResponse{}
+	_body, _err := client.ModifySnatEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
