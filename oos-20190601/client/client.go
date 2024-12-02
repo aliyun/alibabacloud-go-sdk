@@ -9,6 +9,171 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AnalyzeGitRepositoryRequest struct {
+	Branch      *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// This parameter is required.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoFullName *string `json:"RepoFullName,omitempty" xml:"RepoFullName,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s AnalyzeGitRepositoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeGitRepositoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetBranch(v string) *AnalyzeGitRepositoryRequest {
+	s.Branch = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetClientToken(v string) *AnalyzeGitRepositoryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetOrgId(v string) *AnalyzeGitRepositoryRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetOwner(v string) *AnalyzeGitRepositoryRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetPlatform(v string) *AnalyzeGitRepositoryRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetRegionId(v string) *AnalyzeGitRepositoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetRepoFullName(v string) *AnalyzeGitRepositoryRequest {
+	s.RepoFullName = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryRequest) SetRepoId(v string) *AnalyzeGitRepositoryRequest {
+	s.RepoId = &v
+	return s
+}
+
+type AnalyzeGitRepositoryResponseBody struct {
+	AnalysisResults []*AnalyzeGitRepositoryResponseBodyAnalysisResults `json:"AnalysisResults,omitempty" xml:"AnalysisResults,omitempty" type:"Repeated"`
+	Count           *int32                                             `json:"Count,omitempty" xml:"Count,omitempty"`
+	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AnalyzeGitRepositoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeGitRepositoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeGitRepositoryResponseBody) SetAnalysisResults(v []*AnalyzeGitRepositoryResponseBodyAnalysisResults) *AnalyzeGitRepositoryResponseBody {
+	s.AnalysisResults = v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponseBody) SetCount(v int32) *AnalyzeGitRepositoryResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponseBody) SetRequestId(v string) *AnalyzeGitRepositoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AnalyzeGitRepositoryResponseBodyAnalysisResults struct {
+	BuildFiles []*AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles `json:"BuildFiles,omitempty" xml:"BuildFiles,omitempty" type:"Repeated"`
+	BuildType  *string                                                      `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+}
+
+func (s AnalyzeGitRepositoryResponseBodyAnalysisResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeGitRepositoryResponseBodyAnalysisResults) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetBuildFiles(v []*AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles) *AnalyzeGitRepositoryResponseBodyAnalysisResults {
+	s.BuildFiles = v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetBuildType(v string) *AnalyzeGitRepositoryResponseBodyAnalysisResults {
+	s.BuildType = &v
+	return s
+}
+
+type AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles struct {
+	FileType *string   `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	Paths    []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles) SetFileType(v string) *AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles {
+	s.FileType = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles) SetPaths(v []*string) *AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles {
+	s.Paths = v
+	return s
+}
+
+type AnalyzeGitRepositoryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeGitRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeGitRepositoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeGitRepositoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeGitRepositoryResponse) SetHeaders(v map[string]*string) *AnalyzeGitRepositoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponse) SetStatusCode(v int32) *AnalyzeGitRepositoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponse) SetBody(v *AnalyzeGitRepositoryResponseBody) *AnalyzeGitRepositoryResponse {
+	s.Body = v
+	return s
+}
+
 type CancelExecutionRequest struct {
 	// The ID of the execution.
 	//
@@ -11771,7 +11936,8 @@ type ListExecutionsResponseBodyExecutions struct {
 	// example:
 	//
 	// Automatic
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode             *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	NextScheduleTime *string `json:"NextScheduleTime,omitempty" xml:"NextScheduleTime,omitempty"`
 	// The output of the execution.
 	//
 	// example:
@@ -11962,6 +12128,11 @@ func (s *ListExecutionsResponseBodyExecutions) SetLastTriggerTime(v string) *Lis
 
 func (s *ListExecutionsResponseBodyExecutions) SetMode(v string) *ListExecutionsResponseBodyExecutions {
 	s.Mode = &v
+	return s
+}
+
+func (s *ListExecutionsResponseBodyExecutions) SetNextScheduleTime(v string) *ListExecutionsResponseBodyExecutions {
+	s.NextScheduleTime = &v
 	return s
 }
 
@@ -12284,6 +12455,172 @@ func (s *ListGitRepositoriesResponse) SetStatusCode(v int32) *ListGitRepositorie
 }
 
 func (s *ListGitRepositoriesResponse) SetBody(v *ListGitRepositoriesResponseBody) *ListGitRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListGitRepositoryContentsRequest struct {
+	Branch      *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// This parameter is required.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// This parameter is required.
+	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoFullName *string `json:"RepoFullName,omitempty" xml:"RepoFullName,omitempty"`
+	RepoId       *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+}
+
+func (s ListGitRepositoryContentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGitRepositoryContentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGitRepositoryContentsRequest) SetBranch(v string) *ListGitRepositoryContentsRequest {
+	s.Branch = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetClientToken(v string) *ListGitRepositoryContentsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetContentType(v string) *ListGitRepositoryContentsRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetOrgId(v string) *ListGitRepositoryContentsRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetOwner(v string) *ListGitRepositoryContentsRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetPath(v string) *ListGitRepositoryContentsRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetPlatform(v string) *ListGitRepositoryContentsRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetRegionId(v string) *ListGitRepositoryContentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetRepoFullName(v string) *ListGitRepositoryContentsRequest {
+	s.RepoFullName = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsRequest) SetRepoId(v int64) *ListGitRepositoryContentsRequest {
+	s.RepoId = &v
+	return s
+}
+
+type ListGitRepositoryContentsResponseBody struct {
+	Contents  []*ListGitRepositoryContentsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	Count     *int32                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGitRepositoryContentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGitRepositoryContentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGitRepositoryContentsResponseBody) SetContents(v []*ListGitRepositoryContentsResponseBodyContents) *ListGitRepositoryContentsResponseBody {
+	s.Contents = v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponseBody) SetCount(v int32) *ListGitRepositoryContentsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponseBody) SetRequestId(v string) *ListGitRepositoryContentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGitRepositoryContentsResponseBodyContents struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGitRepositoryContentsResponseBodyContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGitRepositoryContentsResponseBodyContents) GoString() string {
+	return s.String()
+}
+
+func (s *ListGitRepositoryContentsResponseBodyContents) SetContent(v string) *ListGitRepositoryContentsResponseBodyContents {
+	s.Content = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponseBodyContents) SetName(v string) *ListGitRepositoryContentsResponseBodyContents {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponseBodyContents) SetPath(v string) *ListGitRepositoryContentsResponseBodyContents {
+	s.Path = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponseBodyContents) SetType(v string) *ListGitRepositoryContentsResponseBodyContents {
+	s.Type = &v
+	return s
+}
+
+type ListGitRepositoryContentsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGitRepositoryContentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGitRepositoryContentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGitRepositoryContentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGitRepositoryContentsResponse) SetHeaders(v map[string]*string) *ListGitRepositoryContentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponse) SetStatusCode(v int32) *ListGitRepositoryContentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGitRepositoryContentsResponse) SetBody(v *ListGitRepositoryContentsResponseBody) *ListGitRepositoryContentsResponse {
 	s.Body = v
 	return s
 }
@@ -24802,6 +25139,94 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 分析仓库
+//
+// @param request - AnalyzeGitRepositoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeGitRepositoryResponse
+func (client *Client) AnalyzeGitRepositoryWithOptions(request *AnalyzeGitRepositoryRequest, runtime *util.RuntimeOptions) (_result *AnalyzeGitRepositoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Branch)) {
+		query["Branch"] = request.Branch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoFullName)) {
+		query["RepoFullName"] = request.RepoFullName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AnalyzeGitRepository"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AnalyzeGitRepositoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分析仓库
+//
+// @param request - AnalyzeGitRepositoryRequest
+//
+// @return AnalyzeGitRepositoryResponse
+func (client *Client) AnalyzeGitRepository(request *AnalyzeGitRepositoryRequest) (_result *AnalyzeGitRepositoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AnalyzeGitRepositoryResponse{}
+	_body, _err := client.AnalyzeGitRepositoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels an execution.
 //
 // @param request - CancelExecutionRequest
@@ -28347,6 +28772,102 @@ func (client *Client) ListGitRepositories(request *ListGitRepositoriesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGitRepositoriesResponse{}
 	_body, _err := client.ListGitRepositoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取仓库文件与目录信息
+//
+// @param request - ListGitRepositoryContentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGitRepositoryContentsResponse
+func (client *Client) ListGitRepositoryContentsWithOptions(request *ListGitRepositoryContentsRequest, runtime *util.RuntimeOptions) (_result *ListGitRepositoryContentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Branch)) {
+		query["Branch"] = request.Branch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
+		query["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoFullName)) {
+		query["RepoFullName"] = request.RepoFullName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
+		query["RepoId"] = request.RepoId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGitRepositoryContents"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGitRepositoryContentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取仓库文件与目录信息
+//
+// @param request - ListGitRepositoryContentsRequest
+//
+// @return ListGitRepositoryContentsResponse
+func (client *Client) ListGitRepositoryContents(request *ListGitRepositoryContentsRequest) (_result *ListGitRepositoryContentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGitRepositoryContentsResponse{}
+	_body, _err := client.ListGitRepositoryContentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
