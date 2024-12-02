@@ -6239,6 +6239,8 @@ func (s *CreateListResponse) SetBody(v *CreateListResponseBody) *CreateListRespo
 }
 
 type CreateOriginProtectionRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6261,6 +6263,8 @@ func (s *CreateOriginProtectionRequest) SetSiteId(v int64) *CreateOriginProtecti
 }
 
 type CreateOriginProtectionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -16586,6 +16590,8 @@ func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListRespo
 }
 
 type DeleteOriginProtectionRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16608,6 +16614,8 @@ func (s *DeleteOriginProtectionRequest) SetSiteId(v int64) *DeleteOriginProtecti
 }
 
 type DeleteOriginProtectionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -20770,6 +20778,119 @@ func (s *GetClientCertificateResponse) SetBody(v *GetClientCertificateResponseBo
 	return s
 }
 
+type GetClientCertificateHostnamesRequest struct {
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetClientCertificateHostnamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateHostnamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateHostnamesRequest) SetId(v string) *GetClientCertificateHostnamesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesRequest) SetSiteId(v int64) *GetClientCertificateHostnamesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetClientCertificateHostnamesResponseBody struct {
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s GetClientCertificateHostnamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateHostnamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateHostnamesResponseBody) SetHostnames(v []*string) *GetClientCertificateHostnamesResponseBody {
+	s.Hostnames = v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponseBody) SetId(v string) *GetClientCertificateHostnamesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponseBody) SetRequestId(v string) *GetClientCertificateHostnamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponseBody) SetSiteId(v int64) *GetClientCertificateHostnamesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponseBody) SetSiteName(v string) *GetClientCertificateHostnamesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type GetClientCertificateHostnamesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClientCertificateHostnamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClientCertificateHostnamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClientCertificateHostnamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClientCertificateHostnamesResponse) SetHeaders(v map[string]*string) *GetClientCertificateHostnamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponse) SetStatusCode(v int32) *GetClientCertificateHostnamesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClientCertificateHostnamesResponse) SetBody(v *GetClientCertificateHostnamesResponseBody) *GetClientCertificateHostnamesResponse {
+	s.Body = v
+	return s
+}
+
 type GetEdgeContainerAppRequest struct {
 	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
 	//
@@ -23344,6 +23465,8 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 }
 
 type GetOriginProtectionRequest struct {
+	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
 	// example:
 	//
 	// 123456789****
@@ -23364,25 +23487,50 @@ func (s *GetOriginProtectionRequest) SetSiteId(v int64) *GetOriginProtectionRequ
 }
 
 type GetOriginProtectionResponseBody struct {
+	// The IP whitelist for origin protection used by the website.
 	CurrentIPWhitelist *GetOriginProtectionResponseBodyCurrentIPWhitelist `json:"CurrentIPWhitelist,omitempty" xml:"CurrentIPWhitelist,omitempty" type:"Struct"`
-	DiffIPWhitelist    *GetOriginProtectionResponseBodyDiffIPWhitelist    `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
-	LatestIPWhitelist  *GetOriginProtectionResponseBodyLatestIPWhitelist  `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that has been updated.
+	DiffIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelist `json:"DiffIPWhitelist,omitempty" xml:"DiffIPWhitelist,omitempty" type:"Struct"`
+	// The latest IP whitelist for origin protection.
+	LatestIPWhitelist *GetOriginProtectionResponseBodyLatestIPWhitelist `json:"LatestIPWhitelist,omitempty" xml:"LatestIPWhitelist,omitempty" type:"Struct"`
+	// Indicates whether the IP whitelist for origin protection needs to be updated. If the currently used IP whitelist is different from the latest IP whitelist, it needs to be updated, and the value is true.
+	//
+	// 	- true: The update is required.
+	//
+	// 	- false: No update is required.
+	//
 	// example:
 	//
 	// true
 	NeedUpdate *bool `json:"NeedUpdate,omitempty" xml:"NeedUpdate,omitempty"`
+	// Indicates whether IP convergence is enabled.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	// Indicates whether origin protection is enabled.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	OriginProtection *string `json:"OriginProtection,omitempty" xml:"OriginProtection,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456****
@@ -23438,7 +23586,9 @@ func (s *GetOriginProtectionResponseBody) SetSiteId(v int64) *GetOriginProtectio
 }
 
 type GetOriginProtectionResponseBodyCurrentIPWhitelist struct {
+	// The IP whitelist for origin protection used by the website, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection used by the website, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -23461,9 +23611,12 @@ func (s *GetOriginProtectionResponseBodyCurrentIPWhitelist) SetIPv6(v []*string)
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelist struct {
-	AddedIPWhitelist    *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist    `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
+	// The new IP whitelist for origin protection.
+	AddedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist `json:"AddedIPWhitelist,omitempty" xml:"AddedIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that remains unchanged.
 	NoChangeIpWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist `json:"NoChangeIpWhitelist,omitempty" xml:"NoChangeIpWhitelist,omitempty" type:"Struct"`
-	RemovedIPWhitelist  *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist  `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
+	// The IP whitelist for origin protection that has been deleted.
+	RemovedIPWhitelist *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist `json:"RemovedIPWhitelist,omitempty" xml:"RemovedIPWhitelist,omitempty" type:"Struct"`
 }
 
 func (s GetOriginProtectionResponseBodyDiffIPWhitelist) String() string {
@@ -23490,7 +23643,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) SetRemovedIPWhitelist(v
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -23513,7 +23668,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist) SetIPv6
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -23536,7 +23693,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistNoChangeIpWhitelist) SetI
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist struct {
+	// The IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -23559,7 +23718,9 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelistRemovedIPWhitelist) SetIP
 }
 
 type GetOriginProtectionResponseBodyLatestIPWhitelist struct {
+	// The latest IP whitelist for origin protection, specified as IPv4 addresses or CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// The latest IP whitelist for origin protection, specified as IPv6 addresses or CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -42331,6 +42492,158 @@ func (s *SetCertificateResponse) SetBody(v *SetCertificateResponseBody) *SetCert
 	return s
 }
 
+type SetClientCertificateHostnamesRequest struct {
+	// This parameter is required.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s SetClientCertificateHostnamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetClientCertificateHostnamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetClientCertificateHostnamesRequest) SetHostnames(v []*string) *SetClientCertificateHostnamesRequest {
+	s.Hostnames = v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesRequest) SetId(v string) *SetClientCertificateHostnamesRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesRequest) SetSiteId(v int64) *SetClientCertificateHostnamesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type SetClientCertificateHostnamesShrinkRequest struct {
+	// This parameter is required.
+	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s SetClientCertificateHostnamesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetClientCertificateHostnamesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetClientCertificateHostnamesShrinkRequest) SetHostnamesShrink(v string) *SetClientCertificateHostnamesShrinkRequest {
+	s.HostnamesShrink = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesShrinkRequest) SetId(v string) *SetClientCertificateHostnamesShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesShrinkRequest) SetSiteId(v int64) *SetClientCertificateHostnamesShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type SetClientCertificateHostnamesResponseBody struct {
+	// example:
+	//
+	// babab9db65ee5efcca9f3d41d4b50d66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s SetClientCertificateHostnamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetClientCertificateHostnamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetClientCertificateHostnamesResponseBody) SetId(v string) *SetClientCertificateHostnamesResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesResponseBody) SetRequestId(v string) *SetClientCertificateHostnamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesResponseBody) SetSiteId(v int64) *SetClientCertificateHostnamesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesResponseBody) SetSiteName(v string) *SetClientCertificateHostnamesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+type SetClientCertificateHostnamesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetClientCertificateHostnamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetClientCertificateHostnamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetClientCertificateHostnamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetClientCertificateHostnamesResponse) SetHeaders(v map[string]*string) *SetClientCertificateHostnamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesResponse) SetStatusCode(v int32) *SetClientCertificateHostnamesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetClientCertificateHostnamesResponse) SetBody(v *SetClientCertificateHostnamesResponseBody) *SetClientCertificateHostnamesResponse {
+	s.Body = v
+	return s
+}
+
 type SetHttpDDoSAttackIntelligentProtectionRequest struct {
 	// The mode of smart HTTP DDoS protection. Valid values:
 	//
@@ -43604,12 +43917,20 @@ func (s *UpdateListResponse) SetBody(v *UpdateListResponseBody) *UpdateListRespo
 }
 
 type UpdateOriginProtectionRequest struct {
+	// The IP convergence status.
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// on
 	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43637,6 +43958,8 @@ func (s *UpdateOriginProtectionRequest) SetSiteId(v int64) *UpdateOriginProtecti
 }
 
 type UpdateOriginProtectionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C6B5E5A-42FC-5DF2-986C-4DAAE3C55086
@@ -43686,6 +44009,8 @@ func (s *UpdateOriginProtectionResponse) SetBody(v *UpdateOriginProtectionRespon
 }
 
 type UpdateOriginProtectionIpWhiteListRequest struct {
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43708,6 +44033,8 @@ func (s *UpdateOriginProtectionIpWhiteListRequest) SetSiteId(v int64) *UpdateOri
 }
 
 type UpdateOriginProtectionIpWhiteListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
@@ -51050,7 +51377,7 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 
 // Summary:
 //
-// 开启源站防护
+// Enables origin protection.
 //
 // @param request - CreateOriginProtectionRequest
 //
@@ -51092,7 +51419,7 @@ func (client *Client) CreateOriginProtectionWithOptions(request *CreateOriginPro
 
 // Summary:
 //
-// 开启源站防护
+// Enables origin protection.
 //
 // @param request - CreateOriginProtectionRequest
 //
@@ -53398,7 +53725,7 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 
 // Summary:
 //
-// 关闭源站防护功能
+// Disables origin protection.
 //
 // @param request - DeleteOriginProtectionRequest
 //
@@ -53440,7 +53767,7 @@ func (client *Client) DeleteOriginProtectionWithOptions(request *DeleteOriginPro
 
 // Summary:
 //
-// 关闭源站防护功能
+// Disables origin protection.
 //
 // @param request - DeleteOriginProtectionRequest
 //
@@ -55470,6 +55797,62 @@ func (client *Client) GetClientCertificate(request *GetClientCertificateRequest)
 
 // Summary:
 //
+// 获取客户端证书绑定的域名列表
+//
+// @param request - GetClientCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientCertificateHostnamesResponse
+func (client *Client) GetClientCertificateHostnamesWithOptions(request *GetClientCertificateHostnamesRequest, runtime *util.RuntimeOptions) (_result *GetClientCertificateHostnamesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClientCertificateHostnames"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClientCertificateHostnamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端证书绑定的域名列表
+//
+// @param request - GetClientCertificateHostnamesRequest
+//
+// @return GetClientCertificateHostnamesResponse
+func (client *Client) GetClientCertificateHostnames(request *GetClientCertificateHostnamesRequest) (_result *GetClientCertificateHostnamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClientCertificateHostnamesResponse{}
+	_body, _err := client.GetClientCertificateHostnamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a containerized application, including basic application configurations and health check configurations.
 //
 // @param request - GetEdgeContainerAppRequest
@@ -56153,7 +56536,7 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 
 // Summary:
 //
-// 查询站点源站防护相关配置，查看回源IP白名单信息
+// Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -56191,7 +56574,7 @@ func (client *Client) GetOriginProtectionWithOptions(request *GetOriginProtectio
 
 // Summary:
 //
-// 查询站点源站防护相关配置，查看回源IP白名单信息
+// Queries the origin protection configurations of a website, including the origin protection, IP convergence, and the status and details of the IP whitelist for origin protection. The details includes the IP whitelist used by the website, the latest IP whitelist, and the differences between them.
 //
 // @param request - GetOriginProtectionRequest
 //
@@ -61102,6 +61485,82 @@ func (client *Client) SetCertificate(request *SetCertificateRequest) (_result *S
 
 // Summary:
 //
+// 为客户端证书绑定域名
+//
+// @param tmpReq - SetClientCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetClientCertificateHostnamesResponse
+func (client *Client) SetClientCertificateHostnamesWithOptions(tmpReq *SetClientCertificateHostnamesRequest, runtime *util.RuntimeOptions) (_result *SetClientCertificateHostnamesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SetClientCertificateHostnamesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hostnames)) {
+		request.HostnamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hostnames, tea.String("Hostnames"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HostnamesShrink)) {
+		body["Hostnames"] = request.HostnamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetClientCertificateHostnames"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetClientCertificateHostnamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为客户端证书绑定域名
+//
+// @param request - SetClientCertificateHostnamesRequest
+//
+// @return SetClientCertificateHostnamesResponse
+func (client *Client) SetClientCertificateHostnames(request *SetClientCertificateHostnamesRequest) (_result *SetClientCertificateHostnamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetClientCertificateHostnamesResponse{}
+	_body, _err := client.SetClientCertificateHostnamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures smart HTTP DDoS protection.
 //
 // @param request - SetHttpDDoSAttackIntelligentProtectionRequest
@@ -61660,7 +62119,7 @@ func (client *Client) UpdateList(request *UpdateListRequest) (_result *UpdateLis
 
 // Summary:
 //
-// 修改源站防护
+// Enables or disables IP convergence.
 //
 // @param request - UpdateOriginProtectionRequest
 //
@@ -61706,7 +62165,7 @@ func (client *Client) UpdateOriginProtectionWithOptions(request *UpdateOriginPro
 
 // Summary:
 //
-// 修改源站防护
+// Enables or disables IP convergence.
 //
 // @param request - UpdateOriginProtectionRequest
 //
@@ -61724,7 +62183,7 @@ func (client *Client) UpdateOriginProtection(request *UpdateOriginProtectionRequ
 
 // Summary:
 //
-// 确认更新站点回源IP白名单到最新版本
+// Updates the IP whitelist for origin protection used by a website to the latest version.
 //
 // @param request - UpdateOriginProtectionIpWhiteListRequest
 //
@@ -61766,7 +62225,7 @@ func (client *Client) UpdateOriginProtectionIpWhiteListWithOptions(request *Upda
 
 // Summary:
 //
-// 确认更新站点回源IP白名单到最新版本
+// Updates the IP whitelist for origin protection used by a website to the latest version.
 //
 // @param request - UpdateOriginProtectionIpWhiteListRequest
 //
