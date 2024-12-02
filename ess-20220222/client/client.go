@@ -17499,8 +17499,13 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 }
 
 type DescribeElasticStrengthRequest struct {
+	DataDiskCategories []*string `json:"DataDiskCategories,omitempty" xml:"DataDiskCategories,omitempty" type:"Repeated"`
+	ImageFamily        *string   `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
+	ImageId            *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName          *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
-	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InstanceTypes    []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Ipv6AddressCount *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
 	//
 	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
@@ -17531,6 +17536,7 @@ type DescribeElasticStrengthRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The IDs of the scaling groups that you want to query.
 	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
+	SpotStrategy    *string   `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
 	//
 	// 	- cloud: basic disk.
@@ -17541,6 +17547,7 @@ type DescribeElasticStrengthRequest struct {
 	//
 	// 	- cloud_essd: Enterprise SSD (ESSD).
 	SystemDiskCategories []*string `json:"SystemDiskCategories,omitempty" xml:"SystemDiskCategories,omitempty" type:"Repeated"`
+	VSwitchIds           []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeElasticStrengthRequest) String() string {
@@ -17551,8 +17558,33 @@ func (s DescribeElasticStrengthRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeElasticStrengthRequest) SetDataDiskCategories(v []*string) *DescribeElasticStrengthRequest {
+	s.DataDiskCategories = v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetImageFamily(v string) *DescribeElasticStrengthRequest {
+	s.ImageFamily = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetImageId(v string) *DescribeElasticStrengthRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetImageName(v string) *DescribeElasticStrengthRequest {
+	s.ImageName = &v
+	return s
+}
+
 func (s *DescribeElasticStrengthRequest) SetInstanceTypes(v []*string) *DescribeElasticStrengthRequest {
 	s.InstanceTypes = v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetIpv6AddressCount(v int32) *DescribeElasticStrengthRequest {
+	s.Ipv6AddressCount = &v
 	return s
 }
 
@@ -17576,8 +17608,18 @@ func (s *DescribeElasticStrengthRequest) SetScalingGroupIds(v []*string) *Descri
 	return s
 }
 
+func (s *DescribeElasticStrengthRequest) SetSpotStrategy(v string) *DescribeElasticStrengthRequest {
+	s.SpotStrategy = &v
+	return s
+}
+
 func (s *DescribeElasticStrengthRequest) SetSystemDiskCategories(v []*string) *DescribeElasticStrengthRequest {
 	s.SystemDiskCategories = v
+	return s
+}
+
+func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeElasticStrengthRequest {
+	s.VSwitchIds = v
 	return s
 }
 
