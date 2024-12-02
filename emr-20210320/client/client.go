@@ -1424,6 +1424,10 @@ type Cluster struct {
 	//
 	// 1592837465784
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// 部署模式。
 	//
 	// example:
@@ -1524,6 +1528,11 @@ func (s *Cluster) SetClusterType(v string) *Cluster {
 
 func (s *Cluster) SetCreateTime(v int64) *Cluster {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *Cluster) SetDeletionProtection(v bool) *Cluster {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -1770,8 +1779,9 @@ type ClusterSummary struct {
 	// example:
 	//
 	// 1592837465784
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// EMR服务角色。
 	EmrDefaultRole *string `json:"EmrDefaultRole,omitempty" xml:"EmrDefaultRole,omitempty"`
 	// 删除时间。
@@ -1850,6 +1860,11 @@ func (s *ClusterSummary) SetClusterType(v string) *ClusterSummary {
 
 func (s *ClusterSummary) SetCreateTime(v int64) *ClusterSummary {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ClusterSummary) SetDeletionProtection(v bool) *ClusterSummary {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -3763,6 +3778,24 @@ func (s *Node) SetZoneId(v string) *Node {
 }
 
 type NodeAttributes struct {
+	// 是否启用云盘加密。取值范围：
+	//
+	// - true：启用加密。
+	//
+	// - false：不加密。
+	//
+	// 默认值：false，不加密
+	//
+	// example:
+	//
+	// false
+	DataDiskEncrypted *bool `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	// KMS加密秘钥ID。
+	//
+	// example:
+	//
+	// 0e478b7a-4262-4802-b8cb-00d3fb40****
+	DataDiskKMSKeyId *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
 	// ECS ssh登录秘钥。
 	//
 	// example:
@@ -3789,6 +3822,24 @@ type NodeAttributes struct {
 	//
 	// sg-hp3abbae8lb6lmb1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// 是否启用云盘加密。取值范围：
+	//
+	// - true：启用加密。
+	//
+	// - false：不加密。
+	//
+	// 默认值：false，不加密
+	//
+	// example:
+	//
+	// false
+	SystemDiskEncrypted *bool `json:"SystemDiskEncrypted,omitempty" xml:"SystemDiskEncrypted,omitempty"`
+	// KMS加密秘钥ID。
+	//
+	// example:
+	//
+	// 0e478b7a-4262-4802-b8cb-00d3fb40****
+	SystemDiskKMSKeyId *string `json:"SystemDiskKMSKeyId,omitempty" xml:"SystemDiskKMSKeyId,omitempty"`
 	// 专有网络ID。
 	//
 	// This parameter is required.
@@ -3815,6 +3866,16 @@ func (s NodeAttributes) GoString() string {
 	return s.String()
 }
 
+func (s *NodeAttributes) SetDataDiskEncrypted(v bool) *NodeAttributes {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *NodeAttributes) SetDataDiskKMSKeyId(v string) *NodeAttributes {
+	s.DataDiskKMSKeyId = &v
+	return s
+}
+
 func (s *NodeAttributes) SetKeyPairName(v string) *NodeAttributes {
 	s.KeyPairName = &v
 	return s
@@ -3832,6 +3893,16 @@ func (s *NodeAttributes) SetRamRole(v string) *NodeAttributes {
 
 func (s *NodeAttributes) SetSecurityGroupId(v string) *NodeAttributes {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *NodeAttributes) SetSystemDiskEncrypted(v bool) *NodeAttributes {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *NodeAttributes) SetSystemDiskKMSKeyId(v string) *NodeAttributes {
+	s.SystemDiskKMSKeyId = &v
 	return s
 }
 
@@ -3979,7 +4050,8 @@ type NodeGroup struct {
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType        *string             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PrivatePoolOptions *PrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty"`
 	// 存活节点数量。
 	//
 	// example:
@@ -4007,8 +4079,6 @@ type NodeGroup struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// 状态变化原因。
 	StateChangeReason *NodeGroupStateChangeReason `json:"StateChangeReason,omitempty" xml:"StateChangeReason,omitempty"`
-	// 节点组状态，NodeGroupState别名。
-	//
 	// example:
 	//
 	// CREATED
@@ -4104,6 +4174,11 @@ func (s *NodeGroup) SetNodeResizeStrategy(v string) *NodeGroup {
 
 func (s *NodeGroup) SetPaymentType(v string) *NodeGroup {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *NodeGroup) SetPrivatePoolOptions(v *PrivatePoolOptions) *NodeGroup {
+	s.PrivatePoolOptions = v
 	return s
 }
 
@@ -4251,7 +4326,8 @@ type NodeGroupConfig struct {
 	// example:
 	//
 	// PayAsYouGo
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType        *string             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PrivatePoolOptions *PrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty"`
 	// 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
 	SpotBidPrices []*SpotBidPrice `json:"SpotBidPrices,omitempty" xml:"SpotBidPrices,omitempty" type:"Repeated"`
 	// 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
@@ -4374,6 +4450,11 @@ func (s *NodeGroupConfig) SetNodeResizeStrategy(v string) *NodeGroupConfig {
 
 func (s *NodeGroupConfig) SetPaymentType(v string) *NodeGroupConfig {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *NodeGroupConfig) SetPrivatePoolOptions(v *PrivatePoolOptions) *NodeGroupConfig {
+	s.PrivatePoolOptions = v
 	return s
 }
 
@@ -5050,6 +5131,35 @@ func (s *PriceInfo) SetTaxPrice(v string) *PriceInfo {
 
 func (s *PriceInfo) SetTradePrice(v string) *PriceInfo {
 	s.TradePrice = &v
+	return s
+}
+
+type PrivatePoolOptions struct {
+	// example:
+	//
+	// Open
+	MatchCriteria *string `json:"MatchCriteria,omitempty" xml:"MatchCriteria,omitempty"`
+	// example:
+	//
+	// eap-bp67acfmxazb4****
+	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
+}
+
+func (s PrivatePoolOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PrivatePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *PrivatePoolOptions) SetMatchCriteria(v string) *PrivatePoolOptions {
+	s.MatchCriteria = &v
+	return s
+}
+
+func (s *PrivatePoolOptions) SetPrivatePoolIds(v []*string) *PrivatePoolOptions {
+	s.PrivatePoolIds = v
 	return s
 }
 
@@ -7788,7 +7898,8 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// DATALAKE
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The deployment mode of master nodes in the cluster. Valid values:
 	//
 	// 	- NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
@@ -7904,6 +8015,11 @@ func (s *CreateClusterRequest) SetClusterName(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetClusterType(v string) *CreateClusterRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetDeletionProtection(v bool) *CreateClusterRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -8269,6 +8385,8 @@ func (s *CreateScriptResponse) SetBody(v *CreateScriptResponseBody) *CreateScrip
 }
 
 type DecreaseNodesRequest struct {
+	BatchInterval *int32 `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
+	BatchSize     *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -8313,6 +8431,16 @@ func (s DecreaseNodesRequest) String() string {
 
 func (s DecreaseNodesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DecreaseNodesRequest) SetBatchInterval(v int32) *DecreaseNodesRequest {
+	s.BatchInterval = &v
+	return s
+}
+
+func (s *DecreaseNodesRequest) SetBatchSize(v int32) *DecreaseNodesRequest {
+	s.BatchSize = &v
+	return s
 }
 
 func (s *DecreaseNodesRequest) SetClusterId(v string) *DecreaseNodesRequest {
@@ -9979,7 +10107,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	// example:
 	//
 	// DATALAKE
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The deployment mode of master nodes in the cluster. Valid values:
 	//
 	// 	- NORMAL: regular mode.
@@ -10095,6 +10224,11 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetClusterType(v strin
 	return s
 }
 
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeletionProtection(v bool) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
+	s.DeletionProtection = &v
+	return s
+}
+
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMeta) SetDeployMode(v string) *GetClusterCloneMetaResponseBodyClusterCloneMeta {
 	s.DeployMode = &v
 	return s
@@ -10180,7 +10314,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
 	// example:
 	//
 	// asp-asduwe23znl***
-	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	ScalingPolicyId   *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	ScalingPolicyType *string `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
 	// The list of auto scaling rules.
 	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
@@ -10213,6 +10348,11 @@ func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScal
 	return s
 }
 
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScalingPolicyType(v string) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
+	s.ScalingPolicyType = &v
+	return s
+}
+
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies) SetScalingRules(v []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies {
 	s.ScalingRules = v
 	return s
@@ -10224,7 +10364,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints s
 	// example:
 	//
 	// 200
-	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MaxCapacity         *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MaxOnDemandCapacity *int32 `json:"MaxOnDemandCapacity,omitempty" xml:"MaxOnDemandCapacity,omitempty"`
 	// The minimum number of nodes in the node group. Default value: 0.
 	//
 	// example:
@@ -10243,6 +10384,11 @@ func (s GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraint
 
 func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) SetMaxCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints {
 	s.MaxCapacity = &v
+	return s
+}
+
+func (s *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints) SetMaxOnDemandCapacity(v int32) *GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints {
+	s.MaxOnDemandCapacity = &v
 	return s
 }
 
@@ -47605,7 +47751,7 @@ type ListInstanceTypesRequest struct {
 	//
 	// example:
 	//
-	// 线上已发布版本EMR-5.8.0
+	// EMR-5.8.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
 	// Availability Zone ID
 	//
@@ -49497,21 +49643,21 @@ func (s *RunApplicationActionResponse) SetBody(v *RunApplicationActionResponseBo
 }
 
 type RunClusterRequest struct {
-	// 应用配置。数组元素个数N的取值范围：1~1000。
+	// The service configurations. Number of elements in the array: 1 to 1,000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// 应用列表。数组元素个数N的取值范围：1~100。
+	// The list of services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// 引导脚本。数组元素个数N的取值范围：1~10。
+	// The bootstrap actions. Number of elements in the array: 1 to 10.
 	BootstrapScripts []*Script `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty" type:"Repeated"`
-	// 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+	// The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
 	//
 	// example:
 	//
 	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+	// The cluster name. The name must be 1 to 128 characters in length. The name must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -49519,62 +49665,64 @@ type RunClusterRequest struct {
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 创建的EMR集群类型。取值范围：
+	// The type of the cluster. Valid values:
 	//
-	// - DATALAKE：新版数据湖。
+	// 	- DATALAKE
 	//
-	// - OLAP：数据分析。
+	// 	- OLAP
 	//
-	// - DATAFLOW：实时数据流。
+	// 	- DATAFLOW
 	//
-	// - DATASERVING：数据服务。
+	// 	- DATASERVING
 	//
-	// - CUSTOM：自定义集群。
+	// 	- CUSTOM
 	//
-	// - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+	// 	- HADOOP: We recommend that you set this parameter to DATALAKE rather than HADOOP.
+	//
+	// If the first time you create an EMR cluster is after 17:00 (UTC+8) on December 19, 2022, you cannot create a Hadoop, Data Science, Presto, or ZooKeeper cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DATALAKE
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 集群中的应用部署模式。取值范围：
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The deployment mode of master nodes in the cluster. Valid values:
 	//
-	// - NORMAL：非高可用部署。集群1个MASTER节点。
+	// 	- NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
 	//
-	// - HA：高可用部署。高可用部署要求至少3个MASTER节点。
-	//
-	// 默认值：NORMAL。
+	// 	- HA: high availability mode. A cluster that contains at least three master nodes is created.
 	//
 	// example:
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// Emr cluster for ETL
-	Description    *string         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The basic attributes of all ECS instances in the cluster.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// 节点组。数组元素个数N的取值范围：1~100。
-	//
-	// <p>
+	// The node groups. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	NodeGroups []*NodeGroupConfig `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// 集群的付费类型。取值范围：
+	// The billing method of the cluster. Valid values:
 	//
-	// - PayAsYouGo：后付费。
+	// 	- PayAsYouGo
 	//
-	// - Subscription：预付费。
+	// 	- Subscription
 	//
-	// 默认值：PayAsYouGo。
+	// Default value: PayAsYouGo.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49582,7 +49730,7 @@ type RunClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR发行版。
+	// The EMR version. You can query available EMR versions in the EMR console.
 	//
 	// This parameter is required.
 	//
@@ -49590,26 +49738,25 @@ type RunClusterRequest struct {
 	//
 	// EMR-5.16.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 集群所在的企业资源组ID。
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Kerberos安全模式。取值范围：
+	// The security mode of the cluster. Valid values:
 	//
-	// - NORMAL：普通模式，不开启Kerberos模式。
+	// 	- NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
 	//
-	// - KERBEROS：开启Kerberos模式。
-	//
-	// 默认值：NORMAL
+	// 	- KERBEROS: Kerberos mode. Kerberos authentication is enabled.
 	//
 	// example:
 	//
 	// NORMAL
-	SecurityMode       *string             `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	// The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// 标签。数组元数个数N的取值范围：0~20。
+	// The list of tags. Number of elements in the array: 0 to 20.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -49648,6 +49795,11 @@ func (s *RunClusterRequest) SetClusterName(v string) *RunClusterRequest {
 
 func (s *RunClusterRequest) SetClusterType(v string) *RunClusterRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *RunClusterRequest) SetDeletionProtection(v bool) *RunClusterRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -49707,21 +49859,21 @@ func (s *RunClusterRequest) SetTags(v []*Tag) *RunClusterRequest {
 }
 
 type RunClusterShrinkRequest struct {
-	// 应用配置。数组元素个数N的取值范围：1~1000。
+	// The service configurations. Number of elements in the array: 1 to 1,000.
 	ApplicationConfigsShrink *string `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty"`
-	// 应用列表。数组元素个数N的取值范围：1~100。
+	// The list of services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	ApplicationsShrink *string `json:"Applications,omitempty" xml:"Applications,omitempty"`
-	// 引导脚本。数组元素个数N的取值范围：1~10。
+	// The bootstrap actions. Number of elements in the array: 1 to 10.
 	BootstrapScriptsShrink *string `json:"BootstrapScripts,omitempty" xml:"BootstrapScripts,omitempty"`
-	// 幂等客户端TOKEN。同一个ClientToken多次调用的返回结果一致，同一个ClientToken最多只创建一个集群。
+	// The client token that is used to ensure the idempotence of the request. The same ClientToken value for multiple calls to the RunCluster operation results in identical responses. Only one cluster can be created by using the same ClientToken value.
 	//
 	// example:
 	//
 	// A7D960FA-6DBA-5E07-8746-A63E3E4D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 集群名称。长度为1~128个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、半角冒号（:）、下划线（_）、半角句号（.）或者短划线（-）
+	// The cluster name. The name must be 1 to 128 characters in length. The name must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -49729,62 +49881,64 @@ type RunClusterShrinkRequest struct {
 	//
 	// emrtest
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 创建的EMR集群类型。取值范围：
+	// The type of the cluster. Valid values:
 	//
-	// - DATALAKE：新版数据湖。
+	// 	- DATALAKE
 	//
-	// - OLAP：数据分析。
+	// 	- OLAP
 	//
-	// - DATAFLOW：实时数据流。
+	// 	- DATAFLOW
 	//
-	// - DATASERVING：数据服务。
+	// 	- DATASERVING
 	//
-	// - CUSTOM：自定义集群。
+	// 	- CUSTOM
 	//
-	// - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+	// 	- HADOOP: We recommend that you set this parameter to DATALAKE rather than HADOOP.
+	//
+	// If the first time you create an EMR cluster is after 17:00 (UTC+8) on December 19, 2022, you cannot create a Hadoop, Data Science, Presto, or ZooKeeper cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DATALAKE
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// 集群中的应用部署模式。取值范围：
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The deployment mode of master nodes in the cluster. Valid values:
 	//
-	// - NORMAL：非高可用部署。集群1个MASTER节点。
+	// 	- NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
 	//
-	// - HA：高可用部署。高可用部署要求至少3个MASTER节点。
-	//
-	// 默认值：NORMAL。
+	// 	- HA: high availability mode. A cluster that contains at least three master nodes is created.
 	//
 	// example:
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// Emr cluster for ETL
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The basic attributes of all ECS instances in the cluster.
 	NodeAttributesShrink *string `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
-	// 节点组。数组元素个数N的取值范围：1~100。
-	//
-	// <p>
+	// The node groups. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	NodeGroupsShrink *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
-	// 集群的付费类型。取值范围：
+	// The billing method of the cluster. Valid values:
 	//
-	// - PayAsYouGo：后付费。
+	// 	- PayAsYouGo
 	//
-	// - Subscription：预付费。
+	// 	- Subscription
 	//
-	// 默认值：PayAsYouGo。
+	// Default value: PayAsYouGo.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49792,7 +49946,7 @@ type RunClusterShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// EMR发行版。
+	// The EMR version. You can query available EMR versions in the EMR console.
 	//
 	// This parameter is required.
 	//
@@ -49800,26 +49954,25 @@ type RunClusterShrinkRequest struct {
 	//
 	// EMR-5.16.0
 	ReleaseVersion *string `json:"ReleaseVersion,omitempty" xml:"ReleaseVersion,omitempty"`
-	// 集群所在的企业资源组ID。
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Kerberos安全模式。取值范围：
+	// The security mode of the cluster. Valid values:
 	//
-	// - NORMAL：普通模式，不开启Kerberos模式。
+	// 	- NORMAL: regular mode. Kerberos authentication is disabled. This is the default value.
 	//
-	// - KERBEROS：开启Kerberos模式。
-	//
-	// 默认值：NORMAL
+	// 	- KERBEROS: Kerberos mode. Kerberos authentication is enabled.
 	//
 	// example:
 	//
 	// NORMAL
-	SecurityMode             *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
+	// The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfigShrink *string `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// 标签。数组元数个数N的取值范围：0~20。
+	// The list of tags. Number of elements in the array: 0 to 20.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -49858,6 +50011,11 @@ func (s *RunClusterShrinkRequest) SetClusterName(v string) *RunClusterShrinkRequ
 
 func (s *RunClusterShrinkRequest) SetClusterType(v string) *RunClusterShrinkRequest {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *RunClusterShrinkRequest) SetDeletionProtection(v bool) *RunClusterShrinkRequest {
+	s.DeletionProtection = &v
 	return s
 }
 
@@ -49917,19 +50075,19 @@ func (s *RunClusterShrinkRequest) SetTagsShrink(v string) *RunClusterShrinkReque
 }
 
 type RunClusterResponseBody struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// example:
 	//
 	// c-b933c5aac7f7***
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 操作ID。
+	// The operation ID.
 	//
 	// example:
 	//
 	// op-13c37a77c505****
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -50989,6 +51147,10 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 		query["ClusterType"] = request.ClusterType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
 		query["DeployMode"] = request.DeployMode
 	}
@@ -51237,6 +51399,14 @@ func (client *Client) DecreaseNodesWithOptions(request *DecreaseNodesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchInterval)) {
+		query["BatchInterval"] = request.BatchInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchSize)) {
+		query["BatchSize"] = request.BatchSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
@@ -55806,6 +55976,14 @@ func (client *Client) RunApplicationAction(request *RunApplicationActionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
+//
+// Description:
+//
+// RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+//
 // @param tmpReq - RunClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55876,6 +56054,10 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 		body["ClusterType"] = request.ClusterType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		body["DeletionProtection"] = request.DeletionProtection
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
 		body["DeployMode"] = request.DeployMode
 	}
@@ -55940,6 +56122,14 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a pay-as-you-go or subscription E-MapReduce (EMR) cluster.
+//
+// Description:
+//
+// RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+//
 // @param request - RunClusterRequest
 //
 // @return RunClusterResponse
