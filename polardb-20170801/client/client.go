@@ -1850,15 +1850,17 @@ type CreateDBClusterRequest struct {
 	//
 	// polar.mysql.x4.medium
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// Number of standard edition nodes. Values are as follows:
+	// The number of nodes. This parameter is supported for Standard Edition clusters. Valid values:
 	//
-	// - **1*	- (default): Indicates there is only one read-write node.
+	// 	- **1*	- (default): only one primary node.
 	//
-	// - **2**: Indicates there is one read-only node and one read-write node.
+	// 	- **2**: one read-only node and one primary node.
 	//
-	// > - Enterprise edition defaults to 2 nodes, while the standard edition defaults to 1 node.
+	// >
 	//
-	// > - Only supported by PolarDB MySQL edition.
+	// 	- By default, an Enterprise Edition cluster has two nodes and a Standard Edition cluster has one node.
+	//
+	// 	- This parameter is supported only for PolarDB for MySQL clusters.
 	//
 	// example:
 	//
@@ -2241,7 +2243,8 @@ type CreateDBClusterRequest struct {
 	// true
 	TDEStatus *bool `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 	// List of tags.
-	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag                []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TargetMinorVersion *string                      `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
 	// If the payment type is **Prepaid**, this parameter is required.
 	//
 	// - When **Period*	- is **Month**, **UsedTime*	- should be an integer within `[1-9]`.
@@ -2536,6 +2539,11 @@ func (s *CreateDBClusterRequest) SetTDEStatus(v bool) *CreateDBClusterRequest {
 
 func (s *CreateDBClusterRequest) SetTag(v []*CreateDBClusterRequestTag) *CreateDBClusterRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetTargetMinorVersion(v string) *CreateDBClusterRequest {
+	s.TargetMinorVersion = &v
 	return s
 }
 
@@ -6661,6 +6669,10 @@ func (s *DescribeAITaskStatusRequest) SetResourceOwnerId(v int64) *DescribeAITas
 
 type DescribeAITaskStatusResponseBody struct {
 	// The name of the database account that is used to connect to the AI nodes in the cluster.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
 	//
@@ -7055,10 +7067,14 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeActivationCodeDetailsRequest struct {
+	// The ID of the activation code.
+	//
 	// example:
 	//
 	// 123
 	ActivationCodeId *int32 `json:"ActivationCodeId,omitempty" xml:"ActivationCodeId,omitempty"`
+	// The Alibaba Cloud order ID (including the virtual order ID).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7110,48 +7126,68 @@ func (s *DescribeActivationCodeDetailsRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribeActivationCodeDetailsResponseBody struct {
+	// The time when the activation code takes effect.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
+	// The activation code in the base64 format. The activation code is decoded and stored into a file named license.lic. PolarDB can access and read the license.lic file upon startup to validate the license or perform related operations.
+	//
 	// example:
 	//
 	// AAEAA******AAA=
 	CertContentB64 *string `json:"CertContentB64,omitempty" xml:"CertContentB64,omitempty"`
+	// The description of the activation code.
+	//
 	// example:
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the activation code expires.
+	//
 	// example:
 	//
 	// 2054-10-09 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
+	// The time when the activation code was created.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the activation code was last updated.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the activation code.
+	//
 	// example:
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The MAC address.
+	//
 	// example:
 	//
 	// 12:34:56:78:98:00
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// The name of the activation code.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// F2A9EFA7-915F-4572-8299-85A307******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The system identifier of the database.
+	//
 	// example:
 	//
 	// 1234567890123456
@@ -8889,7 +8925,7 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 }
 
 type DescribeBackupsResponseBody struct {
-	// The details of backup sets.
+	// The queried backup sets.
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -8908,7 +8944,10 @@ type DescribeBackupsResponseBody struct {
 	// example:
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4639948800
 	TotalLevel2BackupSize *string `json:"TotalLevel2BackupSize,omitempty" xml:"TotalLevel2BackupSize,omitempty"`
 	// The total number of returned entries.
 	//
@@ -9054,9 +9093,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The expected expiration time of the backup set.
-	//
-	// > This parameter is supported only for instances that are enabled with sparse backup.
+	// The expected expiration time of the backup set (This parameter is supported only for clusters for which sparse backup is enabled).
 	//
 	// example:
 	//
@@ -9493,7 +9530,7 @@ func (s *DescribeClassListRequest) SetResourceOwnerId(v int64) *DescribeClassLis
 }
 
 type DescribeClassListResponseBody struct {
-	// The specifications of the cluster.
+	// The cluster specifications.
 	Items []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The region ID of the cluster.
 	//
@@ -10282,7 +10319,16 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// StandbyClusterON
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	ImciAutoIndex     *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
+	// Indicates whether the automatic IMCI-based query acceleration feature is enabled. Valid values:
+	//
+	// 	- `ON`: enabled
+	//
+	// 	- `OFF`: disabled
+	//
+	// example:
+	//
+	// OFF
+	ImciAutoIndex *string `json:"ImciAutoIndex,omitempty" xml:"ImciAutoIndex,omitempty"`
 	// Maximum number of inodes in the file system.
 	//
 	// example:
@@ -10499,7 +10545,9 @@ type DescribeDBClusterAttributeResponseBody struct {
 	StorageMax *int64 `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
 	// Storage billing type. Valid values are as follows:
 	//
-	// - **Postpaid**：Pay-as-you-go (by capacity). - **Prepaid**：Subscription (by space).
+	// - **Postpaid**: Pay-as-you-go (by capacity).
+	//
+	// - **Prepaid**: Subscription (by space).
 	//
 	// example:
 	//
@@ -10545,7 +10593,7 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Exclusive
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// Indicates whether the failover with hot replica feature is supported if the cluster has In-Memory Column Index (IMCI) nodes.
+	// Indicates whether queries based on In-Memory Column Indexes (IMCIs) are supported during and after a failover with hot replica.
 	//
 	// example:
 	//
@@ -13600,7 +13648,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The Query Type
+	// The query type.
 	//
 	// example:
 	//
@@ -20292,6 +20340,8 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGloba
 }
 
 type DescribeLicenseOrderDetailsRequest struct {
+	// The Alibaba Cloud order ID (or virtual order ID).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20338,58 +20388,96 @@ func (s *DescribeLicenseOrderDetailsRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeLicenseOrderDetailsResponseBody struct {
+	// The number of generated activation codes.
+	//
 	// example:
 	//
 	// 2
 	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
+	// The maximum number of activation codes that you can apply for.
+	//
 	// example:
 	//
 	// 8
 	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
+	// The Alibaba Cloud order ID (including the virtual order ID).
+	//
 	// example:
 	//
 	// 239618016570503
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// Indicates whether activation codes can be generated without the system identifier.
+	//
 	// example:
 	//
 	// false
 	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
+	// The type of the engine. Valid values: PG, Oracle, and MySQL.
+	//
 	// example:
 	//
 	// PG
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The time when the order was created.
+	//
 	// example:
 	//
 	// 2021-10-19 01:13:45
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the order was last updated.
+	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the order is a virtual order (virtual orders allow pre-generation of activation codes).
+	//
 	// example:
 	//
 	// false
 	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
+	// Indicates whether the virtual order is frozen (activation codes cannot be generated for a frozen virtual order).
+	//
 	// example:
 	//
 	// false
 	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
+	// The plan type. Valid values:
+	//
+	// 	- single_node_subscribe
+	//
+	// 	- single_node_long_term
+	//
+	// 	- primary_backup_subscribe
+	//
+	// 	- primary_backup_long_term
+	//
+	// 	- pre_generation_long_term
+	//
 	// example:
 	//
 	// pre_generation_long_term
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
+	// The validity period of the plan, which is one year (common) or thirty years (long-term).
+	//
 	// example:
 	//
 	// 1 year
 	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
+	// The plan validity period, one year (common) or thirty years (long-term).
+	//
 	// example:
 	//
 	// aliyun_market
 	PurchaseChannel *string `json:"PurchaseChannel,omitempty" xml:"PurchaseChannel,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C0ACF0-DD29-4B67-9190-B7A48C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The virtual order ID.
+	//
 	// example:
 	//
 	// 239618016570503
@@ -36714,7 +36802,7 @@ func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstan
 
 // Summary:
 //
-// Create Database Cluster
+// CreateDBCluster.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -36931,6 +37019,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["Tag"] = request.Tag
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TargetMinorVersion)) {
+		query["TargetMinorVersion"] = request.TargetMinorVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -36972,7 +37064,7 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// Create Database Cluster
+// CreateDBCluster.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -39326,7 +39418,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// 查询激活码详情
+// Queries the details of an activation code.
 //
 // @param request - DescribeActivationCodeDetailsRequest
 //
@@ -39388,7 +39480,7 @@ func (client *Client) DescribeActivationCodeDetailsWithOptions(request *Describe
 
 // Summary:
 //
-// 查询激活码详情
+// Queries the details of an activation code.
 //
 // @param request - DescribeActivationCodeDetailsRequest
 //
@@ -42670,7 +42762,7 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 
 // Summary:
 //
-// 查看License订单详情
+// Queries the information of a license order.
 //
 // @param request - DescribeLicenseOrderDetailsRequest
 //
@@ -42728,7 +42820,7 @@ func (client *Client) DescribeLicenseOrderDetailsWithOptions(request *DescribeLi
 
 // Summary:
 //
-// 查看License订单详情
+// Queries the information of a license order.
 //
 // @param request - DescribeLicenseOrderDetailsRequest
 //
@@ -47502,7 +47594,7 @@ func (client *Client) ModifyDBNodeClass(request *ModifyDBNodeClassRequest) (_res
 
 // Summary:
 //
-// Enables or disables the hot standby node in a cluster.
+// Enables or disables the failover with hot replica feature for a node in a cluster.
 //
 // @param request - ModifyDBNodeHotReplicaModeRequest
 //
@@ -47568,7 +47660,7 @@ func (client *Client) ModifyDBNodeHotReplicaModeWithOptions(request *ModifyDBNod
 
 // Summary:
 //
-// Enables or disables the hot standby node in a cluster.
+// Enables or disables the failover with hot replica feature for a node in a cluster.
 //
 // @param request - ModifyDBNodeHotReplicaModeRequest
 //
