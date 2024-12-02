@@ -2414,8 +2414,16 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// nolock
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The end time of the instance maintenance window.
+	//
+	// example:
+	//
+	// 1970-01-01T05:00Z
 	MaintainEndtime *string `json:"MaintainEndtime,omitempty" xml:"MaintainEndtime,omitempty"`
 	// The start time of the instance maintenance window.
+	//
+	// example:
+	//
+	// 1970-01-01T02:00Z
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
 	// The storage capacity of the instance.
 	//
@@ -2423,7 +2431,7 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// 0
 	ObjectStoreSize *int64 `json:"ObjectStoreSize,omitempty" xml:"ObjectStoreSize,omitempty"`
-	// 地域ID。
+	// The Region ID.
 	//
 	// example:
 	//
@@ -2471,20 +2479,21 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// 400
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The zone ID.
+	// The subdomain zone ID.
 	//
 	// example:
 	//
 	// cn-beijing-h-aliyun
-	SubDomain *string                                        `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	Tags      []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// VPC ID。
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
+	Tags []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 实例可用区ID
+	// The Zone ID.
 	//
 	// example:
 	//
@@ -2698,6 +2707,10 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// test01
 	DbClusterName *string `json:"DbClusterName,omitempty" xml:"DbClusterName,omitempty"`
 	// The instance name.
+	//
+	// example:
+	//
+	// test instance
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
 	// The memory size.
 	//
@@ -2705,7 +2718,7 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	//
 	// 64
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// 修改时间。
+	// The modified time.
 	//
 	// example:
 	//
@@ -2716,7 +2729,8 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// PL1
-	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	ScalingRulesEnable *bool   `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
 	// The time when the cluster started.
 	//
 	// example:
@@ -2811,6 +2825,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetPerformanceLev
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetScalingRulesEnable(v bool) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.ScalingRulesEnable = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStartTime(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.StartTime = &v
 	return s
@@ -2822,10 +2841,14 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStatus(v strin
 }
 
 type DescribeDBInstanceAttributeResponseBodyTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue
