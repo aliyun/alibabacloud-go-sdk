@@ -489,6 +489,7 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 type CreateArtifactRequest struct {
 	// The build properties of the artifact, utilized for hosting and building the deployment package.
 	ArtifactBuildProperty *CreateArtifactRequestArtifactBuildProperty `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty" type:"Struct"`
+	ArtifactBuildType     *string                                     `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -560,6 +561,11 @@ func (s *CreateArtifactRequest) SetArtifactBuildProperty(v *CreateArtifactReques
 	return s
 }
 
+func (s *CreateArtifactRequest) SetArtifactBuildType(v string) *CreateArtifactRequest {
+	s.ArtifactBuildType = &v
+	return s
+}
+
 func (s *CreateArtifactRequest) SetArtifactId(v string) *CreateArtifactRequest {
 	s.ArtifactId = &v
 	return s
@@ -606,6 +612,8 @@ func (s *CreateArtifactRequest) SetVersionName(v string) *CreateArtifactRequest 
 }
 
 type CreateArtifactRequestArtifactBuildProperty struct {
+	BuildArgs []*CreateArtifactRequestArtifactBuildPropertyBuildArgs `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	CodeRepo  *CreateArtifactRequestArtifactBuildPropertyCodeRepo    `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
 	// The command content.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -627,7 +635,8 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// RunShellScript
-	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	CommandType    *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -635,7 +644,8 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceContainerImage *string `json:"SourceContainerImage,omitempty" xml:"SourceContainerImage,omitempty"`
 	// The source image id. Supported Types:
 	//
 	// - Image ID: Pass the Image ID of the Ecs image directly.
@@ -662,6 +672,16 @@ func (s CreateArtifactRequestArtifactBuildProperty) GoString() string {
 	return s.String()
 }
 
+func (s *CreateArtifactRequestArtifactBuildProperty) SetBuildArgs(v []*CreateArtifactRequestArtifactBuildPropertyBuildArgs) *CreateArtifactRequestArtifactBuildProperty {
+	s.BuildArgs = v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildProperty) SetCodeRepo(v *CreateArtifactRequestArtifactBuildPropertyCodeRepo) *CreateArtifactRequestArtifactBuildProperty {
+	s.CodeRepo = v
+	return s
+}
+
 func (s *CreateArtifactRequestArtifactBuildProperty) SetCommandContent(v string) *CreateArtifactRequestArtifactBuildProperty {
 	s.CommandContent = &v
 	return s
@@ -672,13 +692,81 @@ func (s *CreateArtifactRequestArtifactBuildProperty) SetCommandType(v string) *C
 	return s
 }
 
+func (s *CreateArtifactRequestArtifactBuildProperty) SetDockerfilePath(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.DockerfilePath = &v
+	return s
+}
+
 func (s *CreateArtifactRequestArtifactBuildProperty) SetRegionId(v string) *CreateArtifactRequestArtifactBuildProperty {
 	s.RegionId = &v
 	return s
 }
 
+func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceContainerImage(v string) *CreateArtifactRequestArtifactBuildProperty {
+	s.SourceContainerImage = &v
+	return s
+}
+
 func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *CreateArtifactRequestArtifactBuildProperty {
 	s.SourceImageId = &v
+	return s
+}
+
+type CreateArtifactRequestArtifactBuildPropertyBuildArgs struct {
+	ArgumentName  *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	ArgumentValue *string `json:"ArgumentValue,omitempty" xml:"ArgumentValue,omitempty"`
+}
+
+func (s CreateArtifactRequestArtifactBuildPropertyBuildArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactRequestArtifactBuildPropertyBuildArgs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentName(v string) *CreateArtifactRequestArtifactBuildPropertyBuildArgs {
+	s.ArgumentName = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentValue(v string) *CreateArtifactRequestArtifactBuildPropertyBuildArgs {
+	s.ArgumentValue = &v
+	return s
+}
+
+type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
+	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Owner    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+}
+
+func (s CreateArtifactRequestArtifactBuildPropertyCodeRepo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactRequestArtifactBuildPropertyCodeRepo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetBranch(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Branch = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetPlatform(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Platform = &v
+	return s
+}
+
+func (s *CreateArtifactRequestArtifactBuildPropertyCodeRepo) SetRepoName(v string) *CreateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.RepoName = &v
 	return s
 }
 
@@ -861,6 +949,7 @@ func (s *CreateArtifactRequestTag) SetValue(v string) *CreateArtifactRequestTag 
 type CreateArtifactShrinkRequest struct {
 	// The build properties of the artifact, utilized for hosting and building the deployment package.
 	ArtifactBuildPropertyShrink *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
+	ArtifactBuildType           *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -929,6 +1018,11 @@ func (s CreateArtifactShrinkRequest) GoString() string {
 
 func (s *CreateArtifactShrinkRequest) SetArtifactBuildPropertyShrink(v string) *CreateArtifactShrinkRequest {
 	s.ArtifactBuildPropertyShrink = &v
+	return s
+}
+
+func (s *CreateArtifactShrinkRequest) SetArtifactBuildType(v string) *CreateArtifactShrinkRequest {
+	s.ArtifactBuildType = &v
 	return s
 }
 
@@ -1017,6 +1111,7 @@ type CreateArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
+	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -1115,6 +1210,11 @@ func (s CreateArtifactResponseBody) GoString() string {
 
 func (s *CreateArtifactResponseBody) SetArtifactBuildProperty(v string) *CreateArtifactResponseBody {
 	s.ArtifactBuildProperty = &v
+	return s
+}
+
+func (s *CreateArtifactResponseBody) SetArtifactBuildType(v string) *CreateArtifactResponseBody {
+	s.ArtifactBuildType = &v
 	return s
 }
 
@@ -3541,6 +3641,7 @@ type GetArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
+	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -3645,6 +3746,11 @@ func (s GetArtifactResponseBody) GoString() string {
 
 func (s *GetArtifactResponseBody) SetArtifactBuildProperty(v string) *GetArtifactResponseBody {
 	s.ArtifactBuildProperty = &v
+	return s
+}
+
+func (s *GetArtifactResponseBody) SetArtifactBuildType(v string) *GetArtifactResponseBody {
+	s.ArtifactBuildType = &v
 	return s
 }
 
@@ -8478,6 +8584,7 @@ type ListArtifactVersionsResponseBodyArtifacts struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
+	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -8596,6 +8703,11 @@ func (s ListArtifactVersionsResponseBodyArtifacts) GoString() string {
 
 func (s *ListArtifactVersionsResponseBodyArtifacts) SetArtifactBuildProperty(v string) *ListArtifactVersionsResponseBodyArtifacts {
 	s.ArtifactBuildProperty = &v
+	return s
+}
+
+func (s *ListArtifactVersionsResponseBodyArtifacts) SetArtifactBuildType(v string) *ListArtifactVersionsResponseBodyArtifacts {
+	s.ArtifactBuildType = &v
 	return s
 }
 
@@ -12700,6 +12812,8 @@ func (s *UpdateArtifactRequest) SetVersionName(v string) *UpdateArtifactRequest 
 }
 
 type UpdateArtifactRequestArtifactBuildProperty struct {
+	BuildArgs []*UpdateArtifactRequestArtifactBuildPropertyBuildArgs `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	CodeRepo  *UpdateArtifactRequestArtifactBuildPropertyCodeRepo    `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
 	// The command content.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -12721,7 +12835,8 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// RunShellScript
-	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	CommandType    *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -12729,7 +12844,8 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceContainerImage *string `json:"SourceContainerImage,omitempty" xml:"SourceContainerImage,omitempty"`
 	// The source image id. Supported Types:
 	//
 	// - Image ID: Pass the Image ID of the Ecs image directly.
@@ -12756,6 +12872,16 @@ func (s UpdateArtifactRequestArtifactBuildProperty) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetBuildArgs(v []*UpdateArtifactRequestArtifactBuildPropertyBuildArgs) *UpdateArtifactRequestArtifactBuildProperty {
+	s.BuildArgs = v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetCodeRepo(v *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) *UpdateArtifactRequestArtifactBuildProperty {
+	s.CodeRepo = v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactBuildProperty) SetCommandContent(v string) *UpdateArtifactRequestArtifactBuildProperty {
 	s.CommandContent = &v
 	return s
@@ -12766,13 +12892,81 @@ func (s *UpdateArtifactRequestArtifactBuildProperty) SetCommandType(v string) *U
 	return s
 }
 
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetDockerfilePath(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.DockerfilePath = &v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactBuildProperty) SetRegionId(v string) *UpdateArtifactRequestArtifactBuildProperty {
 	s.RegionId = &v
 	return s
 }
 
+func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceContainerImage(v string) *UpdateArtifactRequestArtifactBuildProperty {
+	s.SourceContainerImage = &v
+	return s
+}
+
 func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) *UpdateArtifactRequestArtifactBuildProperty {
 	s.SourceImageId = &v
+	return s
+}
+
+type UpdateArtifactRequestArtifactBuildPropertyBuildArgs struct {
+	ArgumentName  *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	ArgumentValue *string `json:"ArgumentValue,omitempty" xml:"ArgumentValue,omitempty"`
+}
+
+func (s UpdateArtifactRequestArtifactBuildPropertyBuildArgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactRequestArtifactBuildPropertyBuildArgs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentName(v string) *UpdateArtifactRequestArtifactBuildPropertyBuildArgs {
+	s.ArgumentName = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentValue(v string) *UpdateArtifactRequestArtifactBuildPropertyBuildArgs {
+	s.ArgumentValue = &v
+	return s
+}
+
+type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
+	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	Owner    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+}
+
+func (s UpdateArtifactRequestArtifactBuildPropertyCodeRepo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateArtifactRequestArtifactBuildPropertyCodeRepo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetBranch(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Branch = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetOwner(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetPlatform(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.Platform = &v
+	return s
+}
+
+func (s *UpdateArtifactRequestArtifactBuildPropertyCodeRepo) SetRepoName(v string) *UpdateArtifactRequestArtifactBuildPropertyCodeRepo {
+	s.RepoName = &v
 	return s
 }
 
@@ -12981,6 +13175,7 @@ type UpdateArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
+	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -13040,7 +13235,8 @@ type UpdateArtifactResponseBody struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
 	// The ID of the region that supports the deployment package.
 	//
 	// example:
@@ -13073,6 +13269,11 @@ func (s UpdateArtifactResponseBody) GoString() string {
 
 func (s *UpdateArtifactResponseBody) SetArtifactBuildProperty(v string) *UpdateArtifactResponseBody {
 	s.ArtifactBuildProperty = &v
+	return s
+}
+
+func (s *UpdateArtifactResponseBody) SetArtifactBuildType(v string) *UpdateArtifactResponseBody {
+	s.ArtifactBuildType = &v
 	return s
 }
 
@@ -13113,6 +13314,11 @@ func (s *UpdateArtifactResponseBody) SetRequestId(v string) *UpdateArtifactRespo
 
 func (s *UpdateArtifactResponseBody) SetStatus(v string) *UpdateArtifactResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *UpdateArtifactResponseBody) SetStatusDetail(v string) *UpdateArtifactResponseBody {
+	s.StatusDetail = &v
 	return s
 }
 
@@ -15237,6 +15443,10 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ArtifactBuildPropertyShrink)) {
 		query["ArtifactBuildProperty"] = request.ArtifactBuildPropertyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArtifactBuildType)) {
+		query["ArtifactBuildType"] = request.ArtifactBuildType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ArtifactId)) {
