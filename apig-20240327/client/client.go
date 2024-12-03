@@ -3198,6 +3198,142 @@ func (s *JwtIdentityConfigJwtTokenConfig) SetPrefix(v string) *JwtIdentityConfig
 	return s
 }
 
+type ParentResourceInfo struct {
+	ApiInfo      *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
+	ResourceType *string         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ParentResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ParentResourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ParentResourceInfo) SetApiInfo(v *HttpApiApiInfo) *ParentResourceInfo {
+	s.ApiInfo = v
+	return s
+}
+
+func (s *ParentResourceInfo) SetResourceType(v string) *ParentResourceInfo {
+	s.ResourceType = &v
+	return s
+}
+
+type PluginClassInfo struct {
+	Alias                      *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	ConfigExample              *string `json:"configExample,omitempty" xml:"configExample,omitempty"`
+	Description                *string `json:"description,omitempty" xml:"description,omitempty"`
+	ExecutePriority            *int32  `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	ExecuteStage               *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	ImageName                  *string `json:"imageName,omitempty" xml:"imageName,omitempty"`
+	InnerPlugin                *bool   `json:"innerPlugin,omitempty" xml:"innerPlugin,omitempty"`
+	Mode                       *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	Name                       *string `json:"name,omitempty" xml:"name,omitempty"`
+	PluginClassId              *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	Source                     *string `json:"source,omitempty" xml:"source,omitempty"`
+	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
+	Type                       *string `json:"type,omitempty" xml:"type,omitempty"`
+	Version                    *string `json:"version,omitempty" xml:"version,omitempty"`
+	VersionDescription         *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
+	WasmLanguage               *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
+	WasmUrl                    *string `json:"wasmUrl,omitempty" xml:"wasmUrl,omitempty"`
+}
+
+func (s PluginClassInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PluginClassInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PluginClassInfo) SetAlias(v string) *PluginClassInfo {
+	s.Alias = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetConfigExample(v string) *PluginClassInfo {
+	s.ConfigExample = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetDescription(v string) *PluginClassInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetExecutePriority(v int32) *PluginClassInfo {
+	s.ExecutePriority = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetExecuteStage(v string) *PluginClassInfo {
+	s.ExecuteStage = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetImageName(v string) *PluginClassInfo {
+	s.ImageName = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetInnerPlugin(v bool) *PluginClassInfo {
+	s.InnerPlugin = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetMode(v string) *PluginClassInfo {
+	s.Mode = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetName(v string) *PluginClassInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetPluginClassId(v string) *PluginClassInfo {
+	s.PluginClassId = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetSource(v string) *PluginClassInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetSupportedMinGatewayVersion(v string) *PluginClassInfo {
+	s.SupportedMinGatewayVersion = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetType(v string) *PluginClassInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetVersion(v string) *PluginClassInfo {
+	s.Version = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetVersionDescription(v string) *PluginClassInfo {
+	s.VersionDescription = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetWasmLanguage(v string) *PluginClassInfo {
+	s.WasmLanguage = &v
+	return s
+}
+
+func (s *PluginClassInfo) SetWasmUrl(v string) *PluginClassInfo {
+	s.WasmUrl = &v
+	return s
+}
+
 type PolicyClassInfo struct {
 	Alias                   *string   `json:"alias,omitempty" xml:"alias,omitempty"`
 	AttachableResourceTypes []*string `json:"attachableResourceTypes,omitempty" xml:"attachableResourceTypes,omitempty" type:"Repeated"`
@@ -3402,6 +3538,41 @@ func (s *PolicyInfo) SetPolicyId(v string) *PolicyInfo {
 
 func (s *PolicyInfo) SetType(v string) *PolicyInfo {
 	s.Type = &v
+	return s
+}
+
+type ResourceInfo struct {
+	ResourceId      *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceName    *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	ResourceType    *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	ResourceVersion *string `json:"resourceVersion,omitempty" xml:"resourceVersion,omitempty"`
+}
+
+func (s ResourceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceInfo) SetResourceId(v string) *ResourceInfo {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ResourceInfo) SetResourceName(v string) *ResourceInfo {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ResourceInfo) SetResourceType(v string) *ResourceInfo {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ResourceInfo) SetResourceVersion(v string) *ResourceInfo {
+	s.ResourceVersion = &v
 	return s
 }
 
@@ -3869,6 +4040,52 @@ func (s *SubDomainInfo) SetProtocol(v string) *SubDomainInfo {
 	return s
 }
 
+type TlsCipherSuitesConfig struct {
+	CipherSuites []*TlsCipherSuitesConfigCipherSuites `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
+	ConfigType   *string                              `json:"configType,omitempty" xml:"configType,omitempty"`
+}
+
+func (s TlsCipherSuitesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TlsCipherSuitesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TlsCipherSuitesConfig) SetCipherSuites(v []*TlsCipherSuitesConfigCipherSuites) *TlsCipherSuitesConfig {
+	s.CipherSuites = v
+	return s
+}
+
+func (s *TlsCipherSuitesConfig) SetConfigType(v string) *TlsCipherSuitesConfig {
+	s.ConfigType = &v
+	return s
+}
+
+type TlsCipherSuitesConfigCipherSuites struct {
+	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SupportVersions []*string `json:"supportVersions,omitempty" xml:"supportVersions,omitempty" type:"Repeated"`
+}
+
+func (s TlsCipherSuitesConfigCipherSuites) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TlsCipherSuitesConfigCipherSuites) GoString() string {
+	return s.String()
+}
+
+func (s *TlsCipherSuitesConfigCipherSuites) SetName(v string) *TlsCipherSuitesConfigCipherSuites {
+	s.Name = &v
+	return s
+}
+
+func (s *TlsCipherSuitesConfigCipherSuites) SetSupportVersions(v []*string) *TlsCipherSuitesConfigCipherSuites {
+	s.SupportVersions = v
+	return s
+}
+
 type AddGatewaySecurityGroupRuleRequest struct {
 	// Description of the security group rule.
 	//
@@ -4026,8 +4243,9 @@ type CreateDomainRequest struct {
 	// example:
 	//
 	// HTTP
-	Protocol        *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Protocol              *string                `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ResourceGroupId       *string                `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
 	// example:
@@ -4082,6 +4300,11 @@ func (s *CreateDomainRequest) SetProtocol(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetResourceGroupId(v string) *CreateDomainRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetTlsCipherSuitesConfig(v *TlsCipherSuitesConfig) *CreateDomainRequest {
+	s.TlsCipherSuitesConfig = v
 	return s
 }
 
@@ -5321,8 +5544,9 @@ type GetDomainResponseBodyData struct {
 	// example:
 	//
 	// aliyun.com
-	Sans           *string                                  `json:"sans,omitempty" xml:"sans,omitempty"`
-	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	Sans                  *string                                  `json:"sans,omitempty" xml:"sans,omitempty"`
+	StatisticsInfo        *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
+	TlsCipherSuitesConfig *TlsCipherSuitesConfig                   `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
 	// example:
@@ -5438,6 +5662,11 @@ func (s *GetDomainResponseBodyData) SetSans(v string) *GetDomainResponseBodyData
 
 func (s *GetDomainResponseBodyData) SetStatisticsInfo(v *GetDomainResponseBodyDataStatisticsInfo) *GetDomainResponseBodyData {
 	s.StatisticsInfo = v
+	return s
+}
+
+func (s *GetDomainResponseBodyData) SetTlsCipherSuitesConfig(v *TlsCipherSuitesConfig) *GetDomainResponseBodyData {
+	s.TlsCipherSuitesConfig = v
 	return s
 }
 
@@ -7965,7 +8194,8 @@ type ListHttpApiOperationsRequest struct {
 	// example:
 	//
 	// cs-xxx
-	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
 func (s ListHttpApiOperationsRequest) String() string {
@@ -8018,6 +8248,11 @@ func (s *ListHttpApiOperationsRequest) SetWithConsumerInEnvironmentId(v string) 
 
 func (s *ListHttpApiOperationsRequest) SetWithConsumerInfoById(v string) *ListHttpApiOperationsRequest {
 	s.WithConsumerInfoById = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetWithPluginAttachmentByPluginId(v string) *ListHttpApiOperationsRequest {
+	s.WithPluginAttachmentByPluginId = &v
 	return s
 }
 
@@ -8204,13 +8439,16 @@ type ListHttpApisRequest struct {
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
+	WithAuthPolicyList            *bool   `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
 	// Each API information in the response carries a list of authorization rules for the specified consumer ID.
 	//
 	// example:
 	//
 	// cs-xxx
-	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	WithEnvironmentInfo  *bool   `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
+	WithConsumerInfoById           *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
+	WithEnvironmentInfo            *bool   `json:"withEnvironmentInfo,omitempty" xml:"withEnvironmentInfo,omitempty"`
+	WithEnvironmentInfoById        *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
+	WithPluginAttachmentByPluginId *string `json:"withPluginAttachmentByPluginId,omitempty" xml:"withPluginAttachmentByPluginId,omitempty"`
 }
 
 func (s ListHttpApisRequest) String() string {
@@ -8261,6 +8499,11 @@ func (s *ListHttpApisRequest) SetWithAuthPolicyInEnvironmentId(v string) *ListHt
 	return s
 }
 
+func (s *ListHttpApisRequest) SetWithAuthPolicyList(v bool) *ListHttpApisRequest {
+	s.WithAuthPolicyList = &v
+	return s
+}
+
 func (s *ListHttpApisRequest) SetWithConsumerInfoById(v string) *ListHttpApisRequest {
 	s.WithConsumerInfoById = &v
 	return s
@@ -8268,6 +8511,16 @@ func (s *ListHttpApisRequest) SetWithConsumerInfoById(v string) *ListHttpApisReq
 
 func (s *ListHttpApisRequest) SetWithEnvironmentInfo(v bool) *ListHttpApisRequest {
 	s.WithEnvironmentInfo = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithEnvironmentInfoById(v string) *ListHttpApisRequest {
+	s.WithEnvironmentInfoById = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetWithPluginAttachmentByPluginId(v string) *ListHttpApisRequest {
+	s.WithPluginAttachmentByPluginId = &v
 	return s
 }
 
@@ -8438,7 +8691,8 @@ type UpdateDomainRequest struct {
 	// example:
 	//
 	// HTTP
-	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	Protocol              *string                `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
 	// Maximum TLS protocol version, supports up to TLS 1.3.
 	//
 	// example:
@@ -8483,6 +8737,11 @@ func (s *UpdateDomainRequest) SetHttp2Option(v string) *UpdateDomainRequest {
 
 func (s *UpdateDomainRequest) SetProtocol(v string) *UpdateDomainRequest {
 	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetTlsCipherSuitesConfig(v *TlsCipherSuitesConfig) *UpdateDomainRequest {
+	s.TlsCipherSuitesConfig = v
 	return s
 }
 
@@ -9170,6 +9429,10 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TlsCipherSuitesConfig)) {
+		body["tlsCipherSuitesConfig"] = request.TlsCipherSuitesConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TlsMax)) {
@@ -10376,6 +10639,10 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		query["withConsumerInfoById"] = request.WithConsumerInfoById
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithPluginAttachmentByPluginId)) {
+		query["withPluginAttachmentByPluginId"] = request.WithPluginAttachmentByPluginId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -10468,12 +10735,24 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		query["withAuthPolicyInEnvironmentId"] = request.WithAuthPolicyInEnvironmentId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WithAuthPolicyList)) {
+		query["withAuthPolicyList"] = request.WithAuthPolicyList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WithConsumerInfoById)) {
 		query["withConsumerInfoById"] = request.WithConsumerInfoById
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WithEnvironmentInfo)) {
 		query["withEnvironmentInfo"] = request.WithEnvironmentInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithEnvironmentInfoById)) {
+		query["withEnvironmentInfoById"] = request.WithEnvironmentInfoById
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithPluginAttachmentByPluginId)) {
+		query["withPluginAttachmentByPluginId"] = request.WithPluginAttachmentByPluginId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10554,6 +10833,10 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 
 	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
 		body["protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TlsCipherSuitesConfig)) {
+		body["tlsCipherSuitesConfig"] = request.TlsCipherSuitesConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TlsMax)) {
