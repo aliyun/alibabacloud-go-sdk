@@ -328,7 +328,7 @@ func (s *AllocateCostUnitResourceRequest) SetToUnitUserId(v int64) *AllocateCost
 type AllocateCostUnitResourceRequestResourceInstanceList struct {
 	// The split item of the shared instance. This parameter is required only for shared instances.
 	//
-	// 	- Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, cbwp, and pcdn.
+	// 	- Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
 	//
 	// 	- You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
 	//
@@ -2064,7 +2064,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// 12
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period       *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	PricingCycle *int64 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The code of the service to which the instance belongs. You can query the service code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud Services**.
 	//
 	// This parameter is required.
@@ -2143,6 +2144,11 @@ func (s *CreateInstanceRequest) SetParameter(v []*CreateInstanceRequestParameter
 
 func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPricingCycle(v int64) *CreateInstanceRequest {
+	s.PricingCycle = &v
 	return s
 }
 
@@ -6546,7 +6552,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	//
 	// example:
 	//
-	// CPU：12
+	// CPU:12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
 	// The ID of the instance.
 	//
@@ -14241,7 +14247,7 @@ func (s *GetCustomerListResponse) SetBody(v *GetCustomerListResponseBody) *GetCu
 }
 
 type GetOrderDetailRequest struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// This parameter is required.
 	//
@@ -14271,21 +14277,21 @@ func (s *GetOrderDetailRequest) SetOwnerId(v int64) *GetOrderDetailRequest {
 }
 
 type GetOrderDetailResponseBody struct {
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetOrderDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -14339,21 +14345,21 @@ type GetOrderDetailResponseBodyData struct {
 	//
 	// test
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The details of the order.
+	// The orders returned.
 	OrderList *GetOrderDetailResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -14412,14 +14418,15 @@ func (s *GetOrderDetailResponseBodyDataOrderList) SetOrder(v []*GetOrderDetailRe
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
-	// The after-tax amount of the order.
+	// The aftertaxt amount of the order.
 	//
 	// example:
 	//
 	// 0
-	AfterTaxAmount   *string                                                       `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	// The billing information about the configurations.
 	BillModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
-	// The service code.
+	// The commodity code.
 	//
 	// example:
 	//
@@ -14437,13 +14444,13 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	//
 	// 2017-06-08T09:41:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The currency.
+	// The currency. Valid values: CNY, USD, and JPY.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The order extension information.
+	// The additional information about the order.
 	ExtendInfos map[string]*string `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
 	// The instance IDs.
 	//
@@ -14451,68 +14458,45 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	//
 	// ["rm-bp1a2vsr018313t6o"]
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
-	// The ID of the Resource Access Management (RAM) user who performs operations on the order. If no RAM user is involved, leave this parameter blank.
+	// The ID of the Resource Access Management (RAM) user that performs operations on the order. If no RAM user is involved, this parameter is empty.
 	//
 	// example:
 	//
 	// 23424243432
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 3453425324
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The type of the suborder. Valid values:
-	//
-	// 	- ProductSubOrder: the service suborder
-	//
-	// 	- RefundSubOrder: the refund suborder
+	// The type of the suborder. A value of productsuborder indicates service suborder. A value of refundsuborder indicates refund suborder.
 	//
 	// example:
 	//
 	// ProductSubOrder
 	OrderSubType *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
-	// The type of the order. Valid values:
-	//
-	// 	- New: purchases an instance.
-	//
-	// 	- Renew: renews an instance.
-	//
-	// 	- Upgrade: upgrades the configurations of an instance.
-	//
-	// 	- Refund: applies for a refund.
-	//
-	// 	- Convert: switches the billing method.
-	//
-	// 	- Downgrade: downgrades the configurations of an instance.
-	//
-	// 	- ResizeDisk: resizes the disk.
+	// The type of the order. Valid values: new, renew, upgrade, and refund.
 	//
 	// example:
 	//
 	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The module information without standardized conversion.
+	// The configuration information that is not formatted.
 	//
 	// example:
 	//
 	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
-	OriginalConfig       *string                                                           `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
+	OriginalConfig *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
+	// The information about the configurations.
 	OriginalModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig `json:"OriginalModuleConfig,omitempty" xml:"OriginalModuleConfig,omitempty" type:"Struct"`
-	// The currency of payment.
+	// The currency used for payment. Valid values: CNY, USD, and JPY.
 	//
 	// example:
 	//
 	// CNY
 	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	// The status of payment. Valid values:
-	//
-	// 	- Unpaid: The order is not paid.
-	//
-	// 	- Paid: The order is paid.
-	//
-	// 	- Cancelled: The order is canceled.
+	// The payment state. Valid values: unpaid, paid, and canceled.
 	//
 	// example:
 	//
@@ -14560,7 +14544,7 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	//
 	// 1
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -14578,11 +14562,7 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	//
 	// 234343
 	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- Subscription: subscription
-	//
-	// 	- PayAsYouGo: pay-as-you-go
+	// The billing method. Valid values: Subscription and PayAsYouGo.
 	//
 	// example:
 	//
@@ -14784,10 +14764,26 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) SetBillMo
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig struct {
-	ApiCode              *string                                                                                           `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
+	// The API code of the configuration item.
+	//
+	// example:
+	//
+	// datadisk
+	ApiCode *string `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
+	// The attributes of the configured item.
 	BillModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties `json:"BillModuleProperties,omitempty" xml:"BillModuleProperties,omitempty" type:"Struct"`
-	Code                 *string                                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name                 *string                                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code of the configuration item.
+	//
+	// example:
+	//
+	// datadisk
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the configuration item.
+	//
+	// example:
+	//
+	// Data disk
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) String() string {
@@ -14836,9 +14832,24 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleC
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties struct {
-	AttrApiCode   *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
+	// The attribute code of the configured item.
+	//
+	// example:
+	//
+	// cloud_ssd
+	AttrApiCode *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
+	// The API code of the configured item.
+	//
+	// example:
+	//
+	// cloud_ssd
 	ModuleApiCode *string `json:"ModuleApiCode,omitempty" xml:"ModuleApiCode,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The attribute value of the configuration item.
+	//
+	// example:
+	//
+	// cloud_ssd
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) String() string {
@@ -14882,9 +14893,20 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) SetOr
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig struct {
-	Code             *string                                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code of the configuration item.
+	//
+	// example:
+	//
+	// systemdisk
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The attributes of the configured item.
 	ModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties `json:"ModuleProperties,omitempty" xml:"ModuleProperties,omitempty" type:"Struct"`
-	Name             *string                                                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the configuration item.
+	//
+	// example:
+	//
+	// System disk
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) String() string {
@@ -14928,8 +14950,23 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOrigina
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute code of the configured item.
+	//
+	// example:
+	//
+	// cloud_efficiency
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The attribute name of the configured item.
+	//
+	// example:
+	//
+	// cloud_efficiency
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute value of the configured item.
+	//
+	// example:
+	//
+	// cloud_efficiency
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -22051,7 +22088,12 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	//
 	// ApsaraDB
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
-	PipCode       *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The code of the service. The code is the same as that in Cost Center.
+	//
+	// example:
+	//
+	// rds
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The resources related to the resource instance.
 	//
 	// example:
@@ -22075,7 +22117,16 @@ type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	// example:
 	//
 	// testResource
-	ResourceNick   *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	// The source of the resource. Value:
+	//
+	// - AUTO_ALLOCATE
+	//
+	// - MANUAL_ALLOCATE
+	//
+	// example:
+	//
+	// MANUAL_ALLOCATE
 	ResourceSource *string `json:"ResourceSource,omitempty" xml:"ResourceSource,omitempty"`
 	// The status of the resource.
 	//
@@ -35772,7 +35823,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+// For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
 //
 // If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
 //
@@ -35844,7 +35895,7 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 //
 // Description:
 //
-// For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+// For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
 //
 // If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
 //
@@ -36543,6 +36594,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
 		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
@@ -38546,7 +38601,7 @@ func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPla
 //
 // 	- You can query split bills that were generated within the last 12 months by calling this operation.
 //
-// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
 //
 // @param request - DescribeSplitItemBillRequest
 //
@@ -38652,7 +38707,7 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 //
 // 	- You can query split bills that were generated within the last 12 months by calling this operation.
 //
-// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
 //
 // @param request - DescribeSplitItemBillRequest
 //
