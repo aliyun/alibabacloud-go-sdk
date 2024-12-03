@@ -11368,6 +11368,10 @@ type CreatePersonalTodoTaskRequest struct {
 	//
 	// [ "012345" ]
 	ParticipantIds []*string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1703750708595
+	ReminderTimeStamp *int64 `json:"ReminderTimeStamp,omitempty" xml:"ReminderTimeStamp,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -11407,6 +11411,11 @@ func (s *CreatePersonalTodoTaskRequest) SetNotifyConfigs(v *CreatePersonalTodoTa
 
 func (s *CreatePersonalTodoTaskRequest) SetParticipantIds(v []*string) *CreatePersonalTodoTaskRequest {
 	s.ParticipantIds = v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskRequest) SetReminderTimeStamp(v int64) *CreatePersonalTodoTaskRequest {
+	s.ReminderTimeStamp = &v
 	return s
 }
 
@@ -11480,6 +11489,10 @@ type CreatePersonalTodoTaskShrinkRequest struct {
 	//
 	// [ "012345" ]
 	ParticipantIdsShrink *string `json:"ParticipantIds,omitempty" xml:"ParticipantIds,omitempty"`
+	// example:
+	//
+	// 1703750708595
+	ReminderTimeStamp *int64 `json:"ReminderTimeStamp,omitempty" xml:"ReminderTimeStamp,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -11519,6 +11532,11 @@ func (s *CreatePersonalTodoTaskShrinkRequest) SetNotifyConfigsShrink(v string) *
 
 func (s *CreatePersonalTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *CreatePersonalTodoTaskShrinkRequest {
 	s.ParticipantIdsShrink = &v
+	return s
+}
+
+func (s *CreatePersonalTodoTaskShrinkRequest) SetReminderTimeStamp(v int64) *CreatePersonalTodoTaskShrinkRequest {
+	s.ReminderTimeStamp = &v
 	return s
 }
 
@@ -78093,6 +78111,10 @@ func (client *Client) CreatePersonalTodoTaskWithOptions(tmpReq *CreatePersonalTo
 
 	if !tea.BoolValue(util.IsUnset(request.ParticipantIdsShrink)) {
 		body["ParticipantIds"] = request.ParticipantIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReminderTimeStamp)) {
+		body["ReminderTimeStamp"] = request.ReminderTimeStamp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Subject)) {
