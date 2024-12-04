@@ -1149,8 +1149,9 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 2.0
-	EngineVersion            *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	IsColumnarReadDBInstance *bool   `json:"IsColumnarReadDBInstance,omitempty" xml:"IsColumnarReadDBInstance,omitempty"`
+	EngineVersion            *string            `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExtraParams              map[string]*string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
+	IsColumnarReadDBInstance *bool              `json:"IsColumnarReadDBInstance,omitempty" xml:"IsColumnarReadDBInstance,omitempty"`
 	// example:
 	//
 	// false
@@ -1280,6 +1281,11 @@ func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetExtraParams(v map[string]*string) *CreateDBInstanceRequest {
+	s.ExtraParams = v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetIsColumnarReadDBInstance(v bool) *CreateDBInstanceRequest {
 	s.IsColumnarReadDBInstance = &v
 	return s
@@ -1361,6 +1367,255 @@ func (s *CreateDBInstanceRequest) SetVSwitchId(v string) *CreateDBInstanceReques
 }
 
 func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateDBInstanceShrinkRequest struct {
+	// example:
+	//
+	// true
+	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	// example:
+	//
+	// xxxxxx-xxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CnClass     *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	// example:
+	//
+	// polarx.x4.2xlarge.2d
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DNNodeCount    *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	EngineVersion            *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExtraParamsShrink        *string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
+	IsColumnarReadDBInstance *bool   `json:"IsColumnarReadDBInstance,omitempty" xml:"IsColumnarReadDBInstance,omitempty"`
+	// example:
+	//
+	// false
+	IsReadDBInstance *bool `json:"IsReadDBInstance,omitempty" xml:"IsReadDBInstance,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PREPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// pxc-*********
+	PrimaryDBInstanceName *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// null
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-a
+	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	Series        *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3azones
+	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-*****
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// vsw-*********
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDBInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetAutoRenew(v bool) *CreateDBInstanceShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetCNNodeCount(v string) *CreateDBInstanceShrinkRequest {
+	s.CNNodeCount = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetClientToken(v string) *CreateDBInstanceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetCnClass(v string) *CreateDBInstanceShrinkRequest {
+	s.CnClass = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDBNodeClass(v string) *CreateDBInstanceShrinkRequest {
+	s.DBNodeClass = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDBNodeCount(v int32) *CreateDBInstanceShrinkRequest {
+	s.DBNodeCount = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDNNodeCount(v string) *CreateDBInstanceShrinkRequest {
+	s.DNNodeCount = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDnClass(v string) *CreateDBInstanceShrinkRequest {
+	s.DnClass = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetDnStorageSpace(v string) *CreateDBInstanceShrinkRequest {
+	s.DnStorageSpace = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetEngineVersion(v string) *CreateDBInstanceShrinkRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetExtraParamsShrink(v string) *CreateDBInstanceShrinkRequest {
+	s.ExtraParamsShrink = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetIsColumnarReadDBInstance(v bool) *CreateDBInstanceShrinkRequest {
+	s.IsColumnarReadDBInstance = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetIsReadDBInstance(v bool) *CreateDBInstanceShrinkRequest {
+	s.IsReadDBInstance = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetNetworkType(v string) *CreateDBInstanceShrinkRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetPayType(v string) *CreateDBInstanceShrinkRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetPeriod(v string) *CreateDBInstanceShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetPrimaryDBInstanceName(v string) *CreateDBInstanceShrinkRequest {
+	s.PrimaryDBInstanceName = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetPrimaryZone(v string) *CreateDBInstanceShrinkRequest {
+	s.PrimaryZone = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetRegionId(v string) *CreateDBInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetResourceGroupId(v string) *CreateDBInstanceShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetSecondaryZone(v string) *CreateDBInstanceShrinkRequest {
+	s.SecondaryZone = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetSeries(v string) *CreateDBInstanceShrinkRequest {
+	s.Series = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetTertiaryZone(v string) *CreateDBInstanceShrinkRequest {
+	s.TertiaryZone = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetTopologyType(v string) *CreateDBInstanceShrinkRequest {
+	s.TopologyType = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetUsedTime(v int32) *CreateDBInstanceShrinkRequest {
+	s.UsedTime = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetVPCId(v string) *CreateDBInstanceShrinkRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetVSwitchId(v string) *CreateDBInstanceShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetZoneId(v string) *CreateDBInstanceShrinkRequest {
 	s.ZoneId = &v
 	return s
 }
@@ -4406,7 +4661,10 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// example:
 	//
 	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Expired         *string                                                           `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	GdnInstanceName *string                                                           `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
+	GdnMemberList   []*DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList `json:"GdnMemberList,omitempty" xml:"GdnMemberList,omitempty" type:"Repeated"`
+	GdnRole         *string                                                           `json:"GdnRole,omitempty" xml:"GdnRole,omitempty"`
 	// example:
 	//
 	// pxc-zkralxpc5d****
@@ -4628,6 +4886,21 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetExpireDate(v stri
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetExpired(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetGdnInstanceName(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.GdnInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetGdnMemberList(v []*DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.GdnMemberList = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetGdnRole(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.GdnRole = &v
 	return s
 }
 
@@ -4896,6 +5169,35 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes) SetRegionId(v
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList struct {
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) SetMemberName(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList {
+	s.MemberName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) SetRole(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList {
+	s.Status = &v
 	return s
 }
 
@@ -5452,6 +5754,7 @@ type DescribeDBInstanceTopologyRequest struct {
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MinuteSimple   *bool   `json:"MinuteSimple,omitempty" xml:"MinuteSimple,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -5476,6 +5779,11 @@ func (s *DescribeDBInstanceTopologyRequest) SetDBInstanceName(v string) *Describ
 
 func (s *DescribeDBInstanceTopologyRequest) SetEndTime(v string) *DescribeDBInstanceTopologyRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceTopologyRequest) SetMinuteSimple(v bool) *DescribeDBInstanceTopologyRequest {
+	s.MinuteSimple = &v
 	return s
 }
 
@@ -6686,6 +6994,7 @@ func (s *DescribeDBInstanceViaEndpointResponse) SetBody(v *DescribeDBInstanceVia
 }
 
 type DescribeDBInstancesRequest struct {
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
 	// example:
 	//
 	// dinga93c84f4d***
@@ -6725,6 +7034,11 @@ func (s DescribeDBInstancesRequest) String() string {
 
 func (s DescribeDBInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBInstancesRequest) SetDbVersion(v string) *DescribeDBInstancesRequest {
+	s.DbVersion = &v
+	return s
 }
 
 func (s *DescribeDBInstancesRequest) SetInstanceId(v string) *DescribeDBInstancesRequest {
@@ -8215,13 +8529,110 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 	return s
 }
 
-type DescribeParameterTemplatesRequest struct {
+type DescribeOpenBackupSetRequest struct {
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-10-14T00:00:00Z
+	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+}
+
+func (s DescribeOpenBackupSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOpenBackupSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOpenBackupSetRequest) SetDBInstanceName(v string) *DescribeOpenBackupSetRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeOpenBackupSetRequest) SetRegionId(v string) *DescribeOpenBackupSetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOpenBackupSetRequest) SetRestoreTime(v string) *DescribeOpenBackupSetRequest {
+	s.RestoreTime = &v
+	return s
+}
+
+type DescribeOpenBackupSetResponseBody struct {
+	// example:
+	//
+	// {"gmsBackupSet": {"pubFullDownloadUrl": "https://xxxxx","dnName": "pxc-xdb-m-xxxxxx","hostInstanceId": 0001,"binlogs": [],"backupEndTime": "2024-10-21T10:11:56Z","backupLinkExpiredTime": "2024-10-23T06:13:54Z","dnBackupSetId": "00088","notCompletedBinlogs": [],"commitIndex": "15249275","innerFullDownloadUrl": "http://xxxxx","backupStartTime": "2024-10-21T10:09:20Z","backupSetSize": 526118912},"dnBackupSets": [],"insName": "pxc-xxxxx","backupSetId": "cb-xxxxx","canBinlogRecoverToTime": 1729567925000,"backupEndTime": "2024-10-21T10:12:16Z","canBinlogRecoverToTimeUTC": "2024-10-22T03:32:05Z","canBackupMinRecoverToTimeUTC": "2024-10-21T10:11:56Z","pitrInvalid": false,"backupStartTime": "2024-10-21T10:09:16Z","canBackupMinRecoverToTime": 1729505516000}
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOpenBackupSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOpenBackupSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOpenBackupSetResponseBody) SetData(v interface{}) *DescribeOpenBackupSetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeOpenBackupSetResponseBody) SetRequestId(v string) *DescribeOpenBackupSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOpenBackupSetResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOpenBackupSetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeOpenBackupSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOpenBackupSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOpenBackupSetResponse) SetHeaders(v map[string]*string) *DescribeOpenBackupSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOpenBackupSetResponse) SetStatusCode(v int32) *DescribeOpenBackupSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOpenBackupSetResponse) SetBody(v *DescribeOpenBackupSetResponseBody) *DescribeOpenBackupSetResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterTemplatesRequest struct {
+	// example:
+	//
+	// pxc-********
+	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// example:
 	//
 	// compute
@@ -8244,6 +8655,11 @@ func (s DescribeParameterTemplatesRequest) GoString() string {
 
 func (s *DescribeParameterTemplatesRequest) SetDBInstanceId(v string) *DescribeParameterTemplatesRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesRequest) SetEngineVersion(v string) *DescribeParameterTemplatesRequest {
+	s.EngineVersion = &v
 	return s
 }
 
@@ -8491,6 +8907,7 @@ func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParamet
 
 type DescribeParametersResponseBodyData struct {
 	ConfigParameters []*DescribeParametersResponseBodyDataConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
+	DBInstanceId     *string                                               `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// example:
 	//
 	// polarx
@@ -8512,6 +8929,11 @@ func (s DescribeParametersResponseBodyData) GoString() string {
 
 func (s *DescribeParametersResponseBodyData) SetConfigParameters(v []*DescribeParametersResponseBodyDataConfigParameters) *DescribeParametersResponseBodyData {
 	s.ConfigParameters = v
+	return s
+}
+
+func (s *DescribeParametersResponseBodyData) SetDBInstanceId(v string) *DescribeParametersResponseBodyData {
+	s.DBInstanceId = &v
 	return s
 }
 
@@ -11268,9 +11690,8 @@ type ModifyParameterRequest struct {
 	// example:
 	//
 	// compute
-	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	// This parameter is required.
-	//
+	ParamLevel       *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// example:
 	//
 	// {"CONN_POOL_BLOCK_TIMEOUT":6000}
@@ -11303,6 +11724,11 @@ func (s *ModifyParameterRequest) SetDBInstanceId(v string) *ModifyParameterReque
 
 func (s *ModifyParameterRequest) SetParamLevel(v string) *ModifyParameterRequest {
 	s.ParamLevel = &v
+	return s
+}
+
+func (s *ModifyParameterRequest) SetParameterGroupId(v string) *ModifyParameterRequest {
+	s.ParameterGroupId = &v
 	return s
 }
 
@@ -11589,14 +12015,10 @@ type ReleaseInstancePublicConnectionRequest struct {
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionRequest) String() string {
@@ -11617,28 +12039,8 @@ func (s *ReleaseInstancePublicConnectionRequest) SetDBInstanceName(v string) *Re
 	return s
 }
 
-func (s *ReleaseInstancePublicConnectionRequest) SetOwnerAccount(v string) *ReleaseInstancePublicConnectionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ReleaseInstancePublicConnectionRequest) SetOwnerId(v int64) *ReleaseInstancePublicConnectionRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *ReleaseInstancePublicConnectionRequest) SetRegionId(v string) *ReleaseInstancePublicConnectionRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerAccount(v string) *ReleaseInstancePublicConnectionRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *ReleaseInstancePublicConnectionRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -13890,16 +14292,22 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 	return _result, _err
 }
 
-// @param request - CreateDBInstanceRequest
+// @param tmpReq - CreateDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBInstanceResponse
-func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDBInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExtraParams)) {
+		request.ExtraParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtraParams, tea.String("ExtraParams"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
@@ -13939,6 +14347,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
 		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraParamsShrink)) {
+		query["ExtraParams"] = request.ExtraParamsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsColumnarReadDBInstance)) {
@@ -15289,6 +15701,10 @@ func (client *Client) DescribeDBInstanceTopologyWithOptions(request *DescribeDBI
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MinuteSimple)) {
+		query["MinuteSimple"] = request.MinuteSimple
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -15409,6 +15825,10 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbVersion)) {
+		query["DbVersion"] = request.DbVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -15734,6 +16154,74 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 开放商业备份集
+//
+// @param request - DescribeOpenBackupSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenBackupSetResponse
+func (client *Client) DescribeOpenBackupSetWithOptions(request *DescribeOpenBackupSetRequest, runtime *util.RuntimeOptions) (_result *DescribeOpenBackupSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreTime)) {
+		query["RestoreTime"] = request.RestoreTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOpenBackupSet"),
+		Version:     tea.String("2020-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOpenBackupSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开放商业备份集
+//
+// @param request - DescribeOpenBackupSetRequest
+//
+// @return DescribeOpenBackupSetResponse
+func (client *Client) DescribeOpenBackupSet(request *DescribeOpenBackupSetRequest) (_result *DescribeOpenBackupSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOpenBackupSetResponse{}
+	_body, _err := client.DescribeOpenBackupSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeParameterTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15747,6 +16235,10 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ParamLevel)) {
@@ -17112,6 +17604,10 @@ func (client *Client) ModifyParameterWithOptions(request *ModifyParameterRequest
 		query["ParamLevel"] = request.ParamLevel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupId)) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
 		query["Parameters"] = request.Parameters
 	}
@@ -17308,24 +17804,8 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 		query["DBInstanceName"] = request.DBInstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
