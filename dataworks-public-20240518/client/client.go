@@ -1301,6 +1301,10 @@ func (s *DataQualityRuleCheckingConfigThresholds) SetWarned(v *DataQualityRuleCh
 type DataQualityRuleCheckingConfigThresholdsCritical struct {
 	// example:
 	//
+	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
 	// >
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// example:
@@ -1317,6 +1321,11 @@ func (s DataQualityRuleCheckingConfigThresholdsCritical) GoString() string {
 	return s.String()
 }
 
+func (s *DataQualityRuleCheckingConfigThresholdsCritical) SetExpression(v string) *DataQualityRuleCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
 func (s *DataQualityRuleCheckingConfigThresholdsCritical) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsCritical {
 	s.Operator = &v
 	return s
@@ -1328,6 +1337,10 @@ func (s *DataQualityRuleCheckingConfigThresholdsCritical) SetValue(v string) *Da
 }
 
 type DataQualityRuleCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// example:
 	//
 	// >
@@ -1346,6 +1359,11 @@ func (s DataQualityRuleCheckingConfigThresholdsExpected) GoString() string {
 	return s.String()
 }
 
+func (s *DataQualityRuleCheckingConfigThresholdsExpected) SetExpression(v string) *DataQualityRuleCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
 func (s *DataQualityRuleCheckingConfigThresholdsExpected) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsExpected {
 	s.Operator = &v
 	return s
@@ -1357,6 +1375,10 @@ func (s *DataQualityRuleCheckingConfigThresholdsExpected) SetValue(v string) *Da
 }
 
 type DataQualityRuleCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// 波动率类型规则使用，通过表达式来表示波动阈值。如：波动上升大于0.01： $checkValue > 0.01  波动下降大于0.01：$checkValue < -0.01   波动率绝对值：abs($checkValue) > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// example:
 	//
 	// >
@@ -1373,6 +1395,11 @@ func (s DataQualityRuleCheckingConfigThresholdsWarned) String() string {
 
 func (s DataQualityRuleCheckingConfigThresholdsWarned) GoString() string {
 	return s.String()
+}
+
+func (s *DataQualityRuleCheckingConfigThresholdsWarned) SetExpression(v string) *DataQualityRuleCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
 }
 
 func (s *DataQualityRuleCheckingConfigThresholdsWarned) SetOperator(v string) *DataQualityRuleCheckingConfigThresholdsWarned {
@@ -1738,11 +1765,155 @@ func (s *AssociateProjectToResourceGroupResponse) SetBody(v *AssociateProjectToR
 	return s
 }
 
+type AttachDataQualityRulesToEvaluationTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200001
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	DataQualityRuleIds []*int64 `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskRequest) SetDataQualityEvaluationTaskId(v int64) *AttachDataQualityRulesToEvaluationTaskRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskRequest) SetDataQualityRuleIds(v []*int64) *AttachDataQualityRulesToEvaluationTaskRequest {
+	s.DataQualityRuleIds = v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskRequest) SetProjectId(v int64) *AttachDataQualityRulesToEvaluationTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type AttachDataQualityRulesToEvaluationTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200001
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	DataQualityRuleIdsShrink *string `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskShrinkRequest) SetDataQualityEvaluationTaskId(v int64) *AttachDataQualityRulesToEvaluationTaskShrinkRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskShrinkRequest) SetDataQualityRuleIdsShrink(v string) *AttachDataQualityRulesToEvaluationTaskShrinkRequest {
+	s.DataQualityRuleIdsShrink = &v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskShrinkRequest) SetProjectId(v int64) *AttachDataQualityRulesToEvaluationTaskShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type AttachDataQualityRulesToEvaluationTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// E6F0DBDD-5AD8-4870-A6A0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskResponseBody) SetRequestId(v string) *AttachDataQualityRulesToEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskResponseBody) SetSuccess(v bool) *AttachDataQualityRulesToEvaluationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AttachDataQualityRulesToEvaluationTaskResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachDataQualityRulesToEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDataQualityRulesToEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskResponse) SetHeaders(v map[string]*string) *AttachDataQualityRulesToEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskResponse) SetStatusCode(v int32) *AttachDataQualityRulesToEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachDataQualityRulesToEvaluationTaskResponse) SetBody(v *AttachDataQualityRulesToEvaluationTaskResponseBody) *AttachDataQualityRulesToEvaluationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CloneDataSourceRequest struct {
+	// The name of the destination data source The name can contain letters, digits, and underscores (_), and must start with a letter. It cannot exceed 60 characters in length.
+	//
 	// example:
 	//
 	// demo_holo_datasource
 	CloneDataSourceName *string `json:"CloneDataSourceName,omitempty" xml:"CloneDataSourceName,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 16036
@@ -1768,6 +1939,8 @@ func (s *CloneDataSourceRequest) SetId(v int64) *CloneDataSourceRequest {
 }
 
 type CloneDataSourceResponseBody struct {
+	// The ID of the cloned data source.
+	//
 	// example:
 	//
 	// 19715
@@ -1826,25 +1999,34 @@ func (s *CloneDataSourceResponse) SetBody(v *CloneDataSourceResponseBody) *Clone
 }
 
 type CreateAlertRuleRequest struct {
+	// Indicates whether the rule is enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xm_create_test
-	Name         *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration for the alert notification.
 	Notification *CreateAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account used by the creator of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 279114181716147735
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The conditions for triggering the alert.
+	//
 	// This parameter is required.
 	TriggerCondition *CreateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
 }
@@ -1883,22 +2065,34 @@ func (s *CreateAlertRuleRequest) SetTriggerCondition(v *CreateAlertRuleRequestTr
 }
 
 type CreateAlertRuleRequestNotification struct {
+	// The alert channels.
+	//
 	// This parameter is required.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The interval at which an alert notification is sent. Unit: minutes. Valid values: 5 to 10,000.
+	//
 	// example:
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// The maximum number of times an alert notification is sent within one calendar day. Valid values: 1 to 10,000.
+	//
 	// example:
 	//
 	// 3
 	Maximum *int32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The alert recipient.
+	//
 	// This parameter is required.
 	Receivers []*CreateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// The end of the time range for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// The beginning of the time range for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
@@ -1944,14 +2138,35 @@ func (s *CreateAlertRuleRequestNotification) SetSilenceStartTime(v string) *Crea
 }
 
 type CreateAlertRuleRequestNotificationReceivers struct {
+	// The additional configuration of the alert recipient. If the ReceiverType parameter is set to DingdingUrl, you can set this parameter to {"atAll":true} to remind all members in a DingTalk group.
+	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient. Valid valves:
+	//
+	// 	- AliUid: Alibaba Cloud account ID.
+	//
+	// 	- Shift Schedules: The personnel in a shift schedule.
+	//
+	// 	- TaskOwner: The node owner. This parameter is available for custom alerts and event alerts.
+	//
+	// 	- Owner: The baseline owner. This parameter is available for baseline alerts.
+	//
+	// 	- WebhookUrl: URL of a custom webhook.
+	//
+	// 	- DingdingUrl: DingTalk chatbot URL.
+	//
+	// 	- FeishuUrl: Lark chatbot URL.
+	//
+	// 	- WeixinUrl: WeCom chatbot URL.
+	//
 	// example:
 	//
 	// TaskOwner
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The IDs of the alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -1979,8 +2194,38 @@ func (s *CreateAlertRuleRequestNotificationReceivers) SetReceiverValues(v []*str
 }
 
 type CreateAlertRuleRequestTriggerCondition struct {
+	// The extended information about the rule. This parameter is required for some trigger conditions.
 	Extension *CreateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	Target    *CreateAlertRuleRequestTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The monitored object.
+	Target *CreateAlertRuleRequestTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The condition for triggering the alert. Valid values:
+	//
+	// 	- Finished: The system sends an alert notification when the instance is successfully run.
+	//
+	// 	- UnFinished: The system sends an alert notification if the instance is still running at a specified point in time.
+	//
+	// 	- Error: The system sends an alert notification if an error occurs when the instance is running.
+	//
+	// 	- CycleUnfinished: The system sends an alert notification if the instance is still running at the end of a specified cycle.
+	//
+	// 	- Timeout: The system sends an alert notification if the instance is still running after a specified period of time ends.
+	//
+	// 	- InstanceTransferComplete: The system sends an alert notification if DataWorks generates auto triggered node instances that need to run the next day before 24:00.
+	//
+	// 	- InstanceTransferFluctuate: The system sends an alert notification when the number of auto triggered node instances that are generated in your workspace significantly fluctuates, in comparison with the average number of auto triggered node instances that are historically generated in the workspace.
+	//
+	// 	- ExhaustedError: The system sends an alert notification if an error persists after the instance is automatically rerun.
+	//
+	// 	- InstanceKeyword: The system sends an alert notification if the instance with errors contain specified keywords.
+	//
+	// 	- InstanceErrorCount: The system sends an alert notification if the number of instances on which an error occurs on the current day reaches a specified threshold.
+	//
+	// 	- InstanceErrorPercentage: The system sends an alert notification if the proportion of the number of instances on which an error occurs in the workspace to the total number of instances on the current day reaches a specified threshold.
+	//
+	// 	- ResourceGroupPercentage: The system sends an alert notification if the value of the ResourceGroupPercentage parameter is greater than a specific percentage for a specific period of time.
+	//
+	// 	- ResourceGroupWaitCount: The system sends an alert notification if the value of the ResourceGroupWaitCount parameter is greater than a specific number for a specific period of time.
+	//
 	// example:
 	//
 	// Error
@@ -2011,13 +2256,20 @@ func (s *CreateAlertRuleRequestTriggerCondition) SetType(v string) *CreateAlertR
 }
 
 type CreateAlertRuleRequestTriggerConditionExtension struct {
-	CycleUnfinished           *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	Error                     *CreateAlertRuleRequestTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	InstanceErrorCount        *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	InstanceErrorPercentage   *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to CycleUnfinished.
+	CycleUnfinished *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to Error.
+	Error *CreateAlertRuleRequestTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceErrorCount.
+	InstanceErrorCount *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceErrorPercentage.
+	InstanceErrorPercentage *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to InstanceTransferFluctuate.
 	InstanceTransferFluctuate *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	Timeout                   *CreateAlertRuleRequestTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	UnFinished                *CreateAlertRuleRequestTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to Timeout.
+	Timeout *CreateAlertRuleRequestTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	// The alert configuration. This parameter takes effect only if the Type parameter is set to UnFinished.
+	UnFinished *CreateAlertRuleRequestTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
 func (s CreateAlertRuleRequestTriggerConditionExtension) String() string {
@@ -2064,6 +2316,7 @@ func (s *CreateAlertRuleRequestTriggerConditionExtension) SetUnFinished(v *Creat
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
+	// The configurations of the scheduling cycle and timeout period of the instance.
 	CycleAndTime []*CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
 }
 
@@ -2081,10 +2334,14 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycl
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
+	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// The timeout period of instance running. The time is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	//
 	// example:
 	//
 	// 12:00
@@ -2110,11 +2367,14 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndT
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionError struct {
+	// Indicates whether an alert is triggered if a batch synchronization task is rerun after it fails to run as expected.
+	//
 	// example:
 	//
 	// false
-	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
-	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
+	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateAlertRuleRequestTriggerConditionExtensionError) String() string {
@@ -2136,6 +2396,8 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionError) SetStreamTaskIds(
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
+	// The number of instances on which an error occurs. Valid values: 1 to 10,000.
+	//
 	// example:
 	//
 	// 5
@@ -2156,6 +2418,8 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) SetC
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
+	// The percentage of the number of instances on which an error occurs in the workspace to the total number of instances on the current day. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 5
@@ -2176,10 +2440,20 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage)
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// The percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The way in which the number of auto triggered node instances that are generated in your workspace significantly fluctuates. Valid values:
+	//
+	// 	- abs: The number of instances increases or decreases.
+	//
+	// 	- increase: The number of instances increases.
+	//
+	// 	- decrease: The number of instances decreases.
+	//
 	// example:
 	//
 	// abs
@@ -2205,6 +2479,8 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuat
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionTimeout struct {
+	// The timeout period. Unit: minutes. Valid values: 1 to 21,600.
+	//
 	// example:
 	//
 	// 10
@@ -2225,6 +2501,8 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionTimeout) SetTimeoutInMin
 }
 
 type CreateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
+	// The timeout period of the instance that is still running at a specified point in time. The time is in the hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	//
 	// example:
 	//
 	// 30:00
@@ -2245,8 +2523,20 @@ func (s *CreateAlertRuleRequestTriggerConditionExtensionUnFinished) SetUnFinishe
 }
 
 type CreateAlertRuleRequestTriggerConditionTarget struct {
+	// The whitelists of the monitoring tasks.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
-	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The IDs of monitored objects.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Task: node
+	//
+	// 	- Baseline: baseline
+	//
+	// 	- Project: workspace
+	//
+	// 	- BizProcess: workflow
+	//
 	// example:
 	//
 	// Task
@@ -2277,25 +2567,34 @@ func (s *CreateAlertRuleRequestTriggerConditionTarget) SetType(v string) *Create
 }
 
 type CreateAlertRuleShrinkRequest struct {
+	// Indicates whether the rule is enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The name of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xm_create_test
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration for the alert notification.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The ID of the Alibaba Cloud account used by the creator of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 279114181716147735
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The conditions for triggering the alert.
+	//
 	// This parameter is required.
 	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`
 }
@@ -2334,10 +2633,14 @@ func (s *CreateAlertRuleShrinkRequest) SetTriggerConditionShrink(v string) *Crea
 }
 
 type CreateAlertRuleResponseBody struct {
+	// The rule ID.
+	//
 	// example:
 	//
 	// 123123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A6C6B486-E3A2-5D52-9E76-D9380485D946
@@ -2392,11 +2695,13 @@ func (s *CreateAlertRuleResponse) SetBody(v *CreateAlertRuleResponseBody) *Creat
 }
 
 type CreateDIAlarmRuleRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 任务ID，是告警规则关联的任务ID。
+	// The ID of the synchronization task with which the alert rule is associated.
 	//
 	// This parameter is required.
 	//
@@ -2404,21 +2709,25 @@ type CreateDIAlarmRuleRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// 描述。
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 告警规则是否启用，默认不开启。
+	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 告警指标类型，可选的枚举值：
+	// The metric type in the alert rule. Valid values:
 	//
-	// - Heartbeat（任务状态报警）
+	// 	- Heartbeat
 	//
-	// - FailoverCount（failover次数报警）
+	// 	- FailoverCount
 	//
-	// - Delay（任务延迟报警）
+	// 	- Delay
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
 	//
 	// This parameter is required.
 	//
@@ -2426,14 +2735,20 @@ type CreateDIAlarmRuleRequest struct {
 	//
 	// Heartbeat
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alartRule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The alert notification settings.
+	//
 	// This parameter is required.
 	NotificationSettings *CreateDIAlarmRuleRequestNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
+	// The conditions that can trigger the alert rule.
+	//
 	// This parameter is required.
 	TriggerConditions []*CreateDIAlarmRuleRequestTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
 }
@@ -2487,11 +2802,15 @@ func (s *CreateDIAlarmRuleRequest) SetTriggerConditions(v []*CreateDIAlarmRuleRe
 }
 
 type CreateDIAlarmRuleRequestNotificationSettings struct {
+	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
-	InhibitionInterval    *int32                                                               `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	NotificationChannels  []*CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	InhibitionInterval *int32 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	// The alert notification methods.
+	NotificationChannels []*CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The settings of alert notification recipients.
 	NotificationReceivers []*CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -2519,7 +2838,22 @@ func (s *CreateDIAlarmRuleRequestNotificationSettings) SetNotificationReceivers(
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
+	// The alert notification methods. Valid values:
+	//
+	// 	- Mail
+	//
+	// 	- Phone
+	//
+	// 	- Sms
+	//
+	// 	- Ding
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Warning
@@ -2545,10 +2879,17 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels) SetSe
 }
 
 type CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers struct {
+	// The recipient type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
+	//
 	// example:
 	//
 	// DingToken
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The recipient.
+	//
+	// 	- If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
+	//
+	// 	- If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -2571,15 +2912,32 @@ func (s *CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 }
 
 type CreateDIAlarmRuleRequestTriggerConditions struct {
+	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	// The time interval for alert calculation. Unit: minutes.
+	//
 	// example:
 	//
 	// 10
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Warning
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The alert threshold.
+	//
+	// 	- If the alert rule is for task status, you do not need to specify a threshold.
+	//
+	// 	- If the alert rule is for failovers, you must specify the number of failovers.
+	//
+	// 	- If the alert rule is for latency, you must specify the latency duration, in seconds.
+	//
 	// example:
 	//
 	// 10
@@ -2615,11 +2973,13 @@ func (s *CreateDIAlarmRuleRequestTriggerConditions) SetThreshold(v int64) *Creat
 }
 
 type CreateDIAlarmRuleShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ABFUOEUOTRTRJKE
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 任务ID，是告警规则关联的任务ID。
+	// The ID of the synchronization task with which the alert rule is associated.
 	//
 	// This parameter is required.
 	//
@@ -2627,21 +2987,25 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	//
 	// 1
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// 描述。
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 告警规则是否启用，默认不开启。
+	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// 告警指标类型，可选的枚举值：
+	// The metric type in the alert rule. Valid values:
 	//
-	// - Heartbeat（任务状态报警）
+	// 	- Heartbeat
 	//
-	// - FailoverCount（failover次数报警）
+	// 	- FailoverCount
 	//
-	// - Delay（任务延迟报警）
+	// 	- Delay
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
 	//
 	// This parameter is required.
 	//
@@ -2649,14 +3013,20 @@ type CreateDIAlarmRuleShrinkRequest struct {
 	//
 	// Heartbeat
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alartRule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The alert notification settings.
+	//
 	// This parameter is required.
 	NotificationSettingsShrink *string `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty"`
+	// The conditions that can trigger the alert rule.
+	//
 	// This parameter is required.
 	TriggerConditionsShrink *string `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty"`
 }
@@ -2710,12 +3080,14 @@ func (s *CreateDIAlarmRuleShrinkRequest) SetTriggerConditionsShrink(v string) *C
 }
 
 type CreateDIAlarmRuleResponseBody struct {
-	// 代表资源一级ID的资源属性字段
+	// The ID of the alert rule.
 	//
 	// example:
 	//
 	// 1
 	DIAlarmRuleId *string `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// C636A747-7E4E-594D-94CD-2B4F8A9A9A63
@@ -2770,44 +3142,77 @@ func (s *CreateDIAlarmRuleResponse) SetBody(v *CreateDIAlarmRuleResponseBody) *C
 }
 
 type CreateDIJobRequest struct {
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The settings of the destination. Only a single destination is supported.
+	//
 	// This parameter is required.
 	DestinationDataSourceSettings []*CreateDIJobRequestDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
+	// The destination type. Valid values: Hologres and Hive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// The name of the synchronization task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
-	JobName     *string                        `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// The synchronization type. Valid values:
+	//
+	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	//
+	// 	- RealtimeIncremental: real-time incremental synchronization
+	//
+	// 	- Full: full synchronization
+	//
+	// 	- OfflineIncremental: batch incremental synchronization
+	//
+	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource settings.
+	//
 	// This parameter is required.
 	ResourceSettings *CreateDIJobRequestResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	// The settings of the source. Only a single source is supported.
+	//
 	// This parameter is required.
 	SourceDataSourceSettings []*CreateDIJobRequestSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
+	// The source type. Set this parameter to MySQL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	//
 	// This parameter is required.
-	TableMappings       []*CreateDIJobRequestTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	TableMappings []*CreateDIJobRequestTableMappings `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
 	TransformationRules []*CreateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
@@ -2880,6 +3285,8 @@ func (s *CreateDIJobRequest) SetTransformationRules(v []*CreateDIJobRequestTrans
 }
 
 type CreateDIJobRequestDestinationDataSourceSettings struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// holo_datasource_1
@@ -2900,14 +3307,20 @@ func (s *CreateDIJobRequestDestinationDataSourceSettings) SetDataSourceName(v st
 }
 
 type CreateDIJobRequestJobSettings struct {
+	// The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
+	//
 	// example:
 	//
 	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
-	ChannelSettings        *string                                                `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ChannelSettings *string `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	// The data type mappings between source fields and destination fields.
 	ColumnDataTypeSettings []*CreateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
-	CycleScheduleSettings  *CreateDIJobRequestJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
-	DdlHandlingSettings    []*CreateDIJobRequestJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
-	RuntimeSettings        []*CreateDIJobRequestJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+	// The settings for periodic scheduling.
+	CycleScheduleSettings *CreateDIJobRequestJobSettingsCycleScheduleSettings `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	// The processing settings for DDL messages.
+	DdlHandlingSettings []*CreateDIJobRequestJobSettingsDdlHandlingSettings `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	// The runtime settings.
+	RuntimeSettings []*CreateDIJobRequestJobSettingsRuntimeSettings `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
 }
 
 func (s CreateDIJobRequestJobSettings) String() string {
@@ -2944,10 +3357,14 @@ func (s *CreateDIJobRequestJobSettings) SetRuntimeSettings(v []*CreateDIJobReque
 }
 
 type CreateDIJobRequestJobSettingsColumnDataTypeSettings struct {
+	// The data type of the destination field.
+	//
 	// example:
 	//
 	// text
 	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// The data type of the source field.
+	//
 	// example:
 	//
 	// bigint
@@ -2973,10 +3390,18 @@ func (s *CreateDIJobRequestJobSettingsColumnDataTypeSettings) SetSourceDataType(
 }
 
 type CreateDIJobRequestJobSettingsCycleScheduleSettings struct {
+	// The synchronization type that requires periodic scheduling. Valid values:
+	//
+	// 	- Full: full synchronization
+	//
+	// 	- OfflineIncremental: batch incremental synchronization
+	//
 	// example:
 	//
 	// Full
 	CycleMigrationType *string `json:"CycleMigrationType,omitempty" xml:"CycleMigrationType,omitempty"`
+	// The scheduling parameters.
+	//
 	// example:
 	//
 	// bizdate=$bizdate
@@ -3002,10 +3427,34 @@ func (s *CreateDIJobRequestJobSettingsCycleScheduleSettings) SetScheduleParamete
 }
 
 type CreateDIJobRequestJobSettingsDdlHandlingSettings struct {
+	// The processing policy. Valid values:
+	//
+	// 	- Ignore: ignores a DDL message.
+	//
+	// 	- Critical: reports an error for a DDL message.
+	//
+	// 	- Normal: normally processes a DDL message.
+	//
 	// example:
 	//
 	// Critical
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The type of the DDL operation. Valid values:
+	//
+	// 	- RenameColumn
+	//
+	// 	- ModifyColumn
+	//
+	// 	- CreateTable
+	//
+	// 	- TruncateTable
+	//
+	// 	- DropTable
+	//
+	// 	- DropColumn
+	//
+	// 	- AddColumn
+	//
 	// example:
 	//
 	// AddColumn
@@ -3031,10 +3480,30 @@ func (s *CreateDIJobRequestJobSettingsDdlHandlingSettings) SetType(v string) *Cr
 }
 
 type CreateDIJobRequestJobSettingsRuntimeSettings struct {
+	// The name of the configuration item. Valid values:
+	//
+	// 	- runtime.offline.speed.limit.mb: specifies the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
+	//
+	// 	- runtime.offline.speed.limit.enable: specifies whether throttling is enabled for a batch synchronization task.
+	//
+	// 	- dst.offline.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
+	//
+	// 	- runtime.offline.concurrent: specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
+	//
+	// 	- dst.realtime.connection.max: specifies the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
+	//
+	// 	- runtime.enable.auto.create.schema: specifies whether schemas are automatically created in the destination of a synchronization task.
+	//
+	// 	- src.offline.datasource.max.connection: specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+	//
+	// 	- runtime.realtime.concurrent: specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
+	//
 	// example:
 	//
 	// runtime.offline.concurrent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// 1
@@ -3060,8 +3529,11 @@ func (s *CreateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *Creat
 }
 
 type CreateDIJobRequestResourceSettings struct {
-	OfflineResourceSettings  *CreateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for batch synchronization.
+	OfflineResourceSettings *CreateDIJobRequestResourceSettingsOfflineResourceSettings `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for real-time synchronization.
 	RealtimeResourceSettings *CreateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	// The resource used for scheduling.
 	ScheduleResourceSettings *CreateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
 }
 
@@ -3089,10 +3561,14 @@ func (s *CreateDIJobRequestResourceSettings) SetScheduleResourceSettings(v *Crea
 }
 
 type CreateDIJobRequestResourceSettingsOfflineResourceSettings struct {
+	// The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for batch synchronization.
+	//
 	// example:
 	//
 	// S_res_group_111_222
@@ -3118,10 +3594,14 @@ func (s *CreateDIJobRequestResourceSettingsOfflineResourceSettings) SetResourceG
 }
 
 type CreateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
+	// The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for real-time synchronization.
+	//
 	// example:
 	//
 	// S_res_group_111_222
@@ -3147,10 +3627,14 @@ func (s *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) SetResource
 }
 
 type CreateDIJobRequestResourceSettingsScheduleResourceSettings struct {
+	// The number of CUs in the resource group for scheduling that are used for batch synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for scheduling used for batch synchronization.
+	//
 	// example:
 	//
 	// S_res_group_235454102432001_1579085295030
@@ -3176,10 +3660,13 @@ func (s *CreateDIJobRequestResourceSettingsScheduleResourceSettings) SetResource
 }
 
 type CreateDIJobRequestSourceDataSourceSettings struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_datasource_1
-	DataSourceName       *string                                                         `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The properties of the data source.
 	DataSourceProperties *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
 }
 
@@ -3202,10 +3689,14 @@ func (s *CreateDIJobRequestSourceDataSourceSettings) SetDataSourceProperties(v *
 }
 
 type CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties struct {
+	// The encoding format of the database.
+	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// GMT+8
@@ -3231,8 +3722,10 @@ func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) SetTime
 }
 
 type CreateDIJobRequestTableMappings struct {
+	// The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
 	SourceObjectSelectionRules []*CreateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
-	TransformationRules        []*CreateDIJobRequestTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+	// The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+	TransformationRules []*CreateDIJobRequestTableMappingsTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
 func (s CreateDIJobRequestTableMappings) String() string {
@@ -3254,18 +3747,30 @@ func (s *CreateDIJobRequestTableMappings) SetTransformationRules(v []*CreateDIJo
 }
 
 type CreateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
+	// The operation that is performed to select objects. Valid values: Include and Exclude.
+	//
 	// example:
 	//
 	// Include
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The expression.
+	//
 	// example:
 	//
 	// mysql_table_1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The expression type. Valid values: Exact and Regex.
+	//
 	// example:
 	//
 	// Exact
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// The object type. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Database
+	//
 	// example:
 	//
 	// Table
@@ -3301,14 +3806,40 @@ func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) SetObjectTyp
 }
 
 type CreateDIJobRequestTableMappingsTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefineRuntimeSettings
+	//
+	// 	- DefinePartitionKey
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which you want to perform the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -3339,18 +3870,80 @@ func (s *CreateDIJobRequestTableMappingsTransformationRules) SetRuleTargetType(v
 }
 
 type CreateDIJobRequestTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefineRuntimeSettings
+	//
+	// 	- DefinePartitionKey
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The expression of the rule. The expression must be a JSON string.
+	//
+	// Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}
+	//
+	// 	- expression: the expression of the renaming rule. You can use the following variables in an expression: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} specifies the name of the source. ${srcDatabaseName} specifies the name of a source database. ${srcTableName} specifies the name of a source table.
+	//
+	// 	- variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name cannot be enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string.
+	//
+	// Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+	//
+	// 	- If you do not configure such a rule, no fields are added to the destination and no values are assigned by default.
+	//
+	// 	- columnName: the name of the field that you want to add.
+	//
+	// 	- columnValueType: the value type of the field. Valid values: Constant and Variable.
+	//
+	// 	- columnValue: the value of the field. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC specifies the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation.
+	//
+	// Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}
+	//
+	// 	- If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default.
+	//
+	// 	- If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+	//
+	// 	- If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run.
+	//
+	// Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}
+	//
+	// 	- If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal.
+	//
+	// 	- dmlType: the DML operation. Valid values: Insert, Update, and Delete.
+	//
+	// 	- dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete.
+	//
+	// 	- filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+	//
 	// example:
 	//
 	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
 	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which you want to perform the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -3386,44 +3979,77 @@ func (s *CreateDIJobRequestTransformationRules) SetRuleTargetType(v string) *Cre
 }
 
 type CreateDIJobShrinkRequest struct {
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The settings of the destination. Only a single destination is supported.
+	//
 	// This parameter is required.
 	DestinationDataSourceSettingsShrink *string `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty"`
+	// The destination type. Valid values: Hologres and Hive.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// The name of the synchronization task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_8772
-	JobName           *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	// The synchronization type. Valid values:
+	//
+	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	//
+	// 	- RealtimeIncremental: real-time incremental synchronization
+	//
+	// 	- Full: full synchronization
+	//
+	// 	- OfflineIncremental: batch incremental synchronization
+	//
+	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource settings.
+	//
 	// This parameter is required.
 	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
+	// The settings of the source. Only a single source is supported.
+	//
 	// This parameter is required.
 	SourceDataSourceSettingsShrink *string `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty"`
+	// The source type. Set this parameter to MySQL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	//
 	// This parameter is required.
-	TableMappingsShrink       *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	TableMappingsShrink *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
 	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
 }
 
@@ -3496,10 +4122,14 @@ func (s *CreateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *Creat
 }
 
 type CreateDIJobResponseBody struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 11792
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4F6AB6B3-41FB-5EBB-AFB2-0C98D49DA2BB
@@ -3553,7 +4183,2038 @@ func (s *CreateDIJobResponse) SetBody(v *CreateDIJobResponseBody) *CreateDIJobRe
 	return s
 }
 
+type CreateDataQualityEvaluationTaskRequest struct {
+	DataQualityRules []*CreateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// 质量监控任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	Hooks []*CreateDataQualityEvaluationTaskRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// 质量监控任务名称
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	Notifications *CreateDataQualityEvaluationTaskRequestNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// 项目空间Id
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	Target *CreateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// 数据质量校验任务的触发配置
+	Trigger *CreateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetDataQualityRules(v []*CreateDataQualityEvaluationTaskRequestDataQualityRules) *CreateDataQualityEvaluationTaskRequest {
+	s.DataQualityRules = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetDataSourceId(v int64) *CreateDataQualityEvaluationTaskRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetDescription(v string) *CreateDataQualityEvaluationTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetHooks(v []*CreateDataQualityEvaluationTaskRequestHooks) *CreateDataQualityEvaluationTaskRequest {
+	s.Hooks = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetName(v string) *CreateDataQualityEvaluationTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetNotifications(v *CreateDataQualityEvaluationTaskRequestNotifications) *CreateDataQualityEvaluationTaskRequest {
+	s.Notifications = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetProjectId(v int64) *CreateDataQualityEvaluationTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetRuntimeConf(v string) *CreateDataQualityEvaluationTaskRequest {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetTarget(v *CreateDataQualityEvaluationTaskRequestTarget) *CreateDataQualityEvaluationTaskRequest {
+	s.Target = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequest) SetTrigger(v *CreateDataQualityEvaluationTaskRequestTrigger) *CreateDataQualityEvaluationTaskRequest {
+	s.Trigger = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRules struct {
+	CheckingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2176
+	Id             *int64                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	SamplingConfig *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// SYSTEM:field:null_value:fixed:0
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetCheckingConfig(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetDescription(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetEnabled(v bool) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetErrorHandlers(v []*CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetId(v int64) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetName(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetSamplingConfig(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetSeverity(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRules) SetTemplateCode(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.TemplateCode = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
+	// example:
+	//
+	// {"bizdate": ["-1"]}
+	ReferencedSamplesFilter *string                                                                         `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetReferencedSamplesFilter(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetThresholds(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetType(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
+	Critical *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetCritical(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetExpected(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetWarned(v *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0.01
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetValue(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// =
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetValue(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0.001
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetValue(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM ods_api_log WHERE status = \\"Error\\";
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) SetErrorDataFilter(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) SetType(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
+	// example:
+	//
+	// NullValueCount
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// status != \\"Succeeded\\"
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// odps.sql.type.system.odps2=True,odps.sql.hive.compatible=True
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetMetric(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetMetricParameters(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetSamplingFilter(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetSettingConfig(v string) *CreateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestHooks struct {
+	// Hook触发条件
+	//
+	// example:
+	//
+	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Hook类型
+	//
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestHooks) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestHooks) SetCondition(v string) *CreateDataQualityEvaluationTaskRequestHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestHooks) SetType(v string) *CreateDataQualityEvaluationTaskRequestHooks {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestNotifications struct {
+	// 通知触发条件
+	//
+	// example:
+	//
+	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// 具体的消息通知设置
+	Notifications []*CreateDataQualityEvaluationTaskRequestNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotifications) SetCondition(v string) *CreateDataQualityEvaluationTaskRequestNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotifications) SetNotifications(v []*CreateDataQualityEvaluationTaskRequestNotificationsNotifications) *CreateDataQualityEvaluationTaskRequestNotifications {
+	s.Notifications = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestNotificationsNotifications struct {
+	// 通知方式
+	NotificationChannels []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// 告警接收人设置
+	NotificationReceivers []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNotificationChannels(v []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) *CreateDataQualityEvaluationTaskRequestNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNotificationReceivers(v []*CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) *CreateDataQualityEvaluationTaskRequestNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels struct {
+	// 通知方式
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
+	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	//
+	// example:
+	//
+	// {  "atAll": true }
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 告警接收人类型
+	//
+	// example:
+	//
+	// DingdingUrl
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// 告警接收人
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetExtension(v string) *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestTarget struct {
+	// 表所属的数据库类型
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// 分区表的分区设置
+	//
+	// example:
+	//
+	// pt=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// 表在数据地图中的唯一ID
+	//
+	// example:
+	//
+	// odps.api_test.ods_openapi_log_d
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestTarget) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestTarget) SetDatabaseType(v string) *CreateDataQualityEvaluationTaskRequestTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestTarget) SetPartitionSpec(v string) *CreateDataQualityEvaluationTaskRequestTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestTarget) SetTableGuid(v string) *CreateDataQualityEvaluationTaskRequestTarget {
+	s.TableGuid = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskRequestTrigger struct {
+	// 具体指明哪些调度节点的实例执行成功后可以触发
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// 何种事件可以触发质量校验任务执行
+	//
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskRequestTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskRequestTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestTrigger) SetTaskIds(v []*int64) *CreateDataQualityEvaluationTaskRequestTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskRequestTrigger) SetType(v string) *CreateDataQualityEvaluationTaskRequestTrigger {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskShrinkRequest struct {
+	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
+	// example:
+	//
+	// 1
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// 质量监控任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// 质量监控任务名称
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
+	// 项目空间Id
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// 数据质量校验任务的触发配置
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetDataQualityRulesShrink(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.DataQualityRulesShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetDataSourceId(v int64) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetDescription(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetHooksShrink(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.HooksShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetName(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetNotificationsShrink(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.NotificationsShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetProjectId(v int64) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetRuntimeConf(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetTargetShrink(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.TargetShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskShrinkRequest) SetTriggerShrink(v string) *CreateDataQualityEvaluationTaskShrinkRequest {
+	s.TriggerShrink = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskResponseBody struct {
+	// example:
+	//
+	// 10001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2d9ce-38ef-4923-baf6-391a7e656
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskResponseBody) SetId(v int64) *CreateDataQualityEvaluationTaskResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *CreateDataQualityEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataQualityEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskResponse) SetHeaders(v map[string]*string) *CreateDataQualityEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskResponse) SetStatusCode(v int32) *CreateDataQualityEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskResponse) SetBody(v *CreateDataQualityEvaluationTaskResponseBody) *CreateDataQualityEvaluationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200001
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// { "triggerTime": 1733284062000 }
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId       *int64                                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RuntimeResource *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequest) SetDataQualityEvaluationTaskId(v int64) *CreateDataQualityEvaluationTaskInstanceRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequest) SetParameters(v string) *CreateDataQualityEvaluationTaskInstanceRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequest) SetProjectId(v int64) *CreateDataQualityEvaluationTaskInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequest) SetRuntimeResource(v *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource) *CreateDataQualityEvaluationTaskInstanceRequest {
+	s.RuntimeResource = v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource struct {
+	// example:
+	//
+	// 0.25
+	Cu *float64 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// 63900680
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource) SetCu(v float64) *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource {
+	s.Cu = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource) SetResourceGroupId(v string) *CreateDataQualityEvaluationTaskInstanceRequestRuntimeResource {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200001
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// { "triggerTime": 1733284062000 }
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId             *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceShrinkRequest) SetDataQualityEvaluationTaskId(v int64) *CreateDataQualityEvaluationTaskInstanceShrinkRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceShrinkRequest) SetParameters(v string) *CreateDataQualityEvaluationTaskInstanceShrinkRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceShrinkRequest) SetProjectId(v int64) *CreateDataQualityEvaluationTaskInstanceShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceShrinkRequest) SetRuntimeResourceShrink(v string) *CreateDataQualityEvaluationTaskInstanceShrinkRequest {
+	s.RuntimeResourceShrink = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskInstanceResponseBody struct {
+	// example:
+	//
+	// 22130
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ecb967ec-c137-48****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceResponseBody) SetId(v int64) *CreateDataQualityEvaluationTaskInstanceResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceResponseBody) SetRequestId(v string) *CreateDataQualityEvaluationTaskInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataQualityEvaluationTaskInstanceResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataQualityEvaluationTaskInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityEvaluationTaskInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceResponse) SetHeaders(v map[string]*string) *CreateDataQualityEvaluationTaskInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceResponse) SetStatusCode(v int32) *CreateDataQualityEvaluationTaskInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataQualityEvaluationTaskInstanceResponse) SetBody(v *CreateDataQualityEvaluationTaskInstanceResponseBody) *CreateDataQualityEvaluationTaskInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataQualityRuleRequest struct {
+	// The check settings for sample data.
+	CheckingConfig *CreateDataQualityRuleRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The description of the rule. The description can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
+	ErrorHandlers []*CreateDataQualityRuleRequestErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// The name of the rule.
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10726
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfig *CreateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The strength of the rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
+	// example:
+	//
+	// Normal
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	Target *CreateDataQualityRuleRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The ID of the template used by the rule.
+	//
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequest) SetCheckingConfig(v *CreateDataQualityRuleRequestCheckingConfig) *CreateDataQualityRuleRequest {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetDescription(v string) *CreateDataQualityRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetEnabled(v bool) *CreateDataQualityRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetErrorHandlers(v []*CreateDataQualityRuleRequestErrorHandlers) *CreateDataQualityRuleRequest {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetName(v string) *CreateDataQualityRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetProjectId(v int64) *CreateDataQualityRuleRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetSamplingConfig(v *CreateDataQualityRuleRequestSamplingConfig) *CreateDataQualityRuleRequest {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetSeverity(v string) *CreateDataQualityRuleRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetTarget(v *CreateDataQualityRuleRequestTarget) *CreateDataQualityRuleRequest {
+	s.Target = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequest) SetTemplateCode(v string) *CreateDataQualityRuleRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *CreateDataQualityRuleRequestCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// The method that is used to calculate a threshold. You can leave this parameter empty if you use a rule template. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctation
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
+	// 	- Variance
+	//
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfig) SetReferencedSamplesFilter(v string) *CreateDataQualityRuleRequestCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfig) SetThresholds(v *CreateDataQualityRuleRequestCheckingConfigThresholds) *CreateDataQualityRuleRequestCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfig) SetType(v string) *CreateDataQualityRuleRequestCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
+	Critical *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
+	Expected *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) SetCritical(v *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) *CreateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) SetExpected(v *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) *CreateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) *CreateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type CreateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue > 0.05
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetExpression(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetOperator(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetValue(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestCheckingConfigThresholdsExpected struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue <= 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetExpression(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetOperator(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetValue(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestCheckingConfigThresholdsWarned struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetExpression(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetOperator(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetValue(v string) *CreateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestErrorHandlers struct {
+	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	//
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// 	- SaveErrorData
+	//
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestErrorHandlers) SetErrorDataFilter(v string) *CreateDataQualityRuleRequestErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestErrorHandlers) SetType(v string) *CreateDataQualityRuleRequestErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	//
+	// example:
+	//
+	// Count
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	//
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestSamplingConfig) SetMetric(v string) *CreateDataQualityRuleRequestSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestSamplingConfig) SetMetricParameters(v string) *CreateDataQualityRuleRequestSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestSamplingConfig) SetSamplingFilter(v string) *CreateDataQualityRuleRequestSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestSamplingConfig) SetSettingConfig(v string) *CreateDataQualityRuleRequestSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type CreateDataQualityRuleRequestTarget struct {
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// The configuration of the partitioned table.
+	//
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// The ID of the table that is limited by the rule in Data Map.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityRuleRequestTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleRequestTarget) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleRequestTarget) SetDatabaseType(v string) *CreateDataQualityRuleRequestTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestTarget) SetPartitionSpec(v string) *CreateDataQualityRuleRequestTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestTarget) SetTableGuid(v string) *CreateDataQualityRuleRequestTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleRequestTarget) SetType(v string) *CreateDataQualityRuleRequestTarget {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityRuleShrinkRequest struct {
+	// The check settings for sample data.
+	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
+	// The description of the rule. The description can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
+	ErrorHandlersShrink *string `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty"`
+	// The name of the rule.
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10726
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
+	// The strength of the rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
+	// example:
+	//
+	// Normal
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the template used by the rule.
+	//
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s CreateDataQualityRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetCheckingConfigShrink(v string) *CreateDataQualityRuleShrinkRequest {
+	s.CheckingConfigShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetDescription(v string) *CreateDataQualityRuleShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetEnabled(v bool) *CreateDataQualityRuleShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetErrorHandlersShrink(v string) *CreateDataQualityRuleShrinkRequest {
+	s.ErrorHandlersShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetName(v string) *CreateDataQualityRuleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetProjectId(v int64) *CreateDataQualityRuleShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetSamplingConfigShrink(v string) *CreateDataQualityRuleShrinkRequest {
+	s.SamplingConfigShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetSeverity(v string) *CreateDataQualityRuleShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetTargetShrink(v string) *CreateDataQualityRuleShrinkRequest {
+	s.TargetShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleShrinkRequest) SetTemplateCode(v string) *CreateDataQualityRuleShrinkRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type CreateDataQualityRuleResponseBody struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataQualityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleResponseBody) SetId(v int64) *CreateDataQualityRuleResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleResponseBody) SetRequestId(v string) *CreateDataQualityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataQualityRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataQualityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleResponse) SetHeaders(v map[string]*string) *CreateDataQualityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataQualityRuleResponse) SetStatusCode(v int32) *CreateDataQualityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleResponse) SetBody(v *CreateDataQualityRuleResponseBody) *CreateDataQualityRuleResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataQualityRuleTemplateRequest struct {
+	// The check settings for sample data.
+	CheckingConfig *CreateDataQualityRuleTemplateRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfig *CreateDataQualityRuleTemplateRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The applicable scope of the template. Valid values:
+	//
+	// 	- Tenant: The template is available in all workspaces in the current tenant.
+	//
+	// 	- Project: The template is available only in the current workspace.
+	//
+	// example:
+	//
+	// Project
+	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetCheckingConfig(v *CreateDataQualityRuleTemplateRequestCheckingConfig) *CreateDataQualityRuleTemplateRequest {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetDirectoryPath(v string) *CreateDataQualityRuleTemplateRequest {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetName(v string) *CreateDataQualityRuleTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetProjectId(v int64) *CreateDataQualityRuleTemplateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetSamplingConfig(v *CreateDataQualityRuleTemplateRequestSamplingConfig) *CreateDataQualityRuleTemplateRequest {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequest) SetVisibleScope(v string) *CreateDataQualityRuleTemplateRequest {
+	s.VisibleScope = &v
+	return s
+}
+
+type CreateDataQualityRuleTemplateRequestCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold calculation method. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctation
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
+	// 	- Variance
+	//
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateRequestCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateRequestCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateRequestCheckingConfig) SetReferencedSamplesFilter(v string) *CreateDataQualityRuleTemplateRequestCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequestCheckingConfig) SetType(v string) *CreateDataQualityRuleTemplateRequestCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type CreateDataQualityRuleTemplateRequestSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	//
+	// example:
+	//
+	// Count
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
+	// example:
+	//
+	// {"SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateRequestSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateRequestSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateRequestSamplingConfig) SetMetric(v string) *CreateDataQualityRuleTemplateRequestSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequestSamplingConfig) SetMetricParameters(v string) *CreateDataQualityRuleTemplateRequestSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateRequestSamplingConfig) SetSettingConfig(v string) *CreateDataQualityRuleTemplateRequestSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type CreateDataQualityRuleTemplateShrinkRequest struct {
+	// The check settings for sample data.
+	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
+	// The applicable scope of the template. Valid values:
+	//
+	// 	- Tenant: The template is available in all workspaces in the current tenant.
+	//
+	// 	- Project: The template is available only in the current workspace.
+	//
+	// example:
+	//
+	// Project
+	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetCheckingConfigShrink(v string) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.CheckingConfigShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetDirectoryPath(v string) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetName(v string) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetProjectId(v int64) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetSamplingConfigShrink(v string) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.SamplingConfigShrink = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateShrinkRequest) SetVisibleScope(v string) *CreateDataQualityRuleTemplateShrinkRequest {
+	s.VisibleScope = &v
+	return s
+}
+
+type CreateDataQualityRuleTemplateResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateResponseBody) SetCode(v string) *CreateDataQualityRuleTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateResponseBody) SetRequestId(v string) *CreateDataQualityRuleTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDataQualityRuleTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataQualityRuleTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataQualityRuleTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *CreateDataQualityRuleTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateResponse) SetStatusCode(v int32) *CreateDataQualityRuleTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataQualityRuleTemplateResponse) SetBody(v *CreateDataQualityRuleTemplateResponseBody) *CreateDataQualityRuleTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataSourceRequest struct {
+	// The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
+	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3576,16 +6237,26 @@ type CreateDataSourceRequest struct {
 	//
 	// }
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The mode in which you want to add the data source. The mode varies based on the data source type. Valid values for MySQL data sources:
+	//
+	// 	- InstanceMode: instance mode
+	//
+	// 	- UrlMode: connection string mode
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UrlMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// The description of the data source. The description cannot exceed 3,000 characters in length.
+	//
 	// example:
 	//
 	// this is a holo datasource
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the data source. The name can be up to 255 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3598,6 +6269,8 @@ type CreateDataSourceRequest struct {
 	//
 	// 2
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the data source. More than 70 types of data sources are supported in DataWorks.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3645,6 +6318,8 @@ func (s *CreateDataSourceRequest) SetType(v string) *CreateDataSourceRequest {
 }
 
 type CreateDataSourceResponseBody struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// 22130
@@ -3703,6 +6378,8 @@ func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *Cre
 }
 
 type CreateDataSourceSharedRuleRequest struct {
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3715,10 +6392,14 @@ type CreateDataSourceSharedRuleRequest struct {
 	//
 	// Dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The user with which you want to share the data source. If you do not configure this parameter, the data source is shared to an entire workspace.
+	//
 	// example:
 	//
 	// 1107550004253538
 	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
+	// The ID of the workspace to which you want to share the data source. You cannot share the data source to the workspace with which the data source is associated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3756,6 +6437,8 @@ func (s *CreateDataSourceSharedRuleRequest) SetTargetProjectId(v int64) *CreateD
 }
 
 type CreateDataSourceSharedRuleResponseBody struct {
+	// The sharing rule ID.
+	//
 	// example:
 	//
 	// 105412
@@ -4346,28 +7029,56 @@ func (s *CreateNodeResponse) SetBody(v *CreateNodeResponseBody) *CreateNodeRespo
 }
 
 type CreateProjectRequest struct {
+	// The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+	//
+	// You can configure this parameter to specify an Alibaba Cloud resource group that you want to use to manage the workspace.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zff
-	AliyunResourceGroupId *string                                   `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	AliyunResourceTags    []*CreateProjectRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	Description           *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
+	AliyunResourceTags []*CreateProjectRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// The description of the workspace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the development environment. Valid values:
+	//
+	// 	- true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+	//
+	// 	- false: disables the development environment. In this case, only the production environment is used in the workspace.
+	//
 	// example:
 	//
 	// false
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Specifies whether to disable the Develop role. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
 	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The display name of the workspace.
+	//
 	// This parameter is required.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The name of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sora_finance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
+	//
+	// 	- true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: disables scheduling of PAI tasks.
+	//
 	// example:
 	//
 	// true
@@ -4423,10 +7134,14 @@ func (s *CreateProjectRequest) SetPaiTaskEnabled(v bool) *CreateProjectRequest {
 }
 
 type CreateProjectRequestAliyunResourceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// batch
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// blue
@@ -4452,28 +7167,56 @@ func (s *CreateProjectRequestAliyunResourceTags) SetValue(v string) *CreateProje
 }
 
 type CreateProjectShrinkRequest struct {
+	// The ID of the Alibaba Cloud resource group to which the workspace belongs. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+	//
+	// You can configure this parameter to specify an Alibaba Cloud resource group that you want to use to manage the workspace.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zff
-	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
 	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the workspace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the development environment. Valid values:
+	//
+	// 	- true : enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+	//
+	// 	- false: disables the development environment. In this case, only the production environment is used in the workspace.
+	//
 	// example:
 	//
 	// false
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Specifies whether to disable the Develop role. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
 	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The display name of the workspace.
+	//
 	// This parameter is required.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The name of the workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sora_finance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
+	//
+	// 	- true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: disables scheduling of PAI tasks.
+	//
 	// example:
 	//
 	// true
@@ -4529,10 +7272,14 @@ func (s *CreateProjectShrinkRequest) SetPaiTaskEnabled(v bool) *CreateProjectShr
 }
 
 type CreateProjectResponseBody struct {
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 123456
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
@@ -4587,14 +7334,24 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateProjectMemberRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 24054
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to assign to the member.
+	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
+	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.7159281fJ97yfv), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4627,14 +7384,24 @@ func (s *CreateProjectMemberRequest) SetUserId(v string) *CreateProjectMemberReq
 }
 
 type CreateProjectMemberShrinkRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 24054
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
+	//
+	// You must configure this parameter to specify the roles that you want to assign to the member.
+	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
+	// The ID of the account that you want to add to the workspace as a member. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.7159281fJ97yfv), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account that you want to add to the workspace as a member.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4667,6 +7434,8 @@ func (s *CreateProjectMemberShrinkRequest) SetUserId(v string) *CreateProjectMem
 }
 
 type CreateProjectMemberResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 2B2F0B26-9253-5780-B6DB-F1A886D44D6F
@@ -4845,6 +7614,8 @@ type CreateResourceGroupRequest struct {
 	//
 	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The specifications of the resource group. Unit: compute unit (CU). This parameter is required only when you set the PaymentType parameter to PrePaid.
+	//
 	// example:
 	//
 	// 2
@@ -5219,6 +7990,8 @@ func (s *CreateWorkflowDefinitionResponse) SetBody(v *CreateWorkflowDefinitionRe
 }
 
 type DeleteAlertRuleRequest struct {
+	// The rule ID.
+	//
 	// example:
 	//
 	// 105412
@@ -5239,10 +8012,14 @@ func (s *DeleteAlertRuleRequest) SetId(v int64) *DeleteAlertRuleRequest {
 }
 
 type DeleteAlertRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8754EE08-4AA2-5F77-ADD7-754DBBDA9F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5481,7 +8258,285 @@ func (s *DeleteDIJobResponse) SetBody(v *DeleteDIJobResponseBody) *DeleteDIJobRe
 	return s
 }
 
+type DeleteDataQualityEvaluationTaskRequest struct {
+	// example:
+	//
+	// 123123
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteDataQualityEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityEvaluationTaskRequest) SetId(v int64) *DeleteDataQualityEvaluationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteDataQualityEvaluationTaskRequest) SetProjectId(v int64) *DeleteDataQualityEvaluationTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteDataQualityEvaluationTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0bc1ec92159376****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataQualityEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *DeleteDataQualityEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataQualityEvaluationTaskResponseBody) SetSuccess(v bool) *DeleteDataQualityEvaluationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataQualityEvaluationTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataQualityEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataQualityEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityEvaluationTaskResponse) SetHeaders(v map[string]*string) *DeleteDataQualityEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataQualityEvaluationTaskResponse) SetStatusCode(v int32) *DeleteDataQualityEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataQualityEvaluationTaskResponse) SetBody(v *DeleteDataQualityEvaluationTaskResponseBody) *DeleteDataQualityEvaluationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataQualityRuleRequest struct {
+	// The rule ID.
+	//
+	// example:
+	//
+	// 19715
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 17302
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteDataQualityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleRequest) SetId(v int64) *DeleteDataQualityRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleRequest) SetProjectId(v int64) *DeleteDataQualityRuleRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteDataQualityRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataQualityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleResponseBody) SetRequestId(v string) *DeleteDataQualityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleResponseBody) SetSuccess(v bool) *DeleteDataQualityRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataQualityRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataQualityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleResponse) SetHeaders(v map[string]*string) *DeleteDataQualityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataQualityRuleResponse) SetStatusCode(v int32) *DeleteDataQualityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleResponse) SetBody(v *DeleteDataQualityRuleResponseBody) *DeleteDataQualityRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataQualityRuleTemplateRequest struct {
+	// The code for the template.
+	//
+	// example:
+	//
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 10001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DeleteDataQualityRuleTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleTemplateRequest) SetCode(v string) *DeleteDataQualityRuleTemplateRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleTemplateRequest) SetProjectId(v int64) *DeleteDataQualityRuleTemplateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteDataQualityRuleTemplateResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataQualityRuleTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleTemplateResponseBody) SetRequestId(v string) *DeleteDataQualityRuleTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleTemplateResponseBody) SetSuccess(v bool) *DeleteDataQualityRuleTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataQualityRuleTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDataQualityRuleTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataQualityRuleTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *DeleteDataQualityRuleTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataQualityRuleTemplateResponse) SetStatusCode(v int32) *DeleteDataQualityRuleTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataQualityRuleTemplateResponse) SetBody(v *DeleteDataQualityRuleTemplateResponseBody) *DeleteDataQualityRuleTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDataSourceRequest struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// 1234
@@ -5502,6 +8557,8 @@ func (s *DeleteDataSourceRequest) SetId(v int64) *DeleteDataSourceRequest {
 }
 
 type DeleteDataSourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B56432E0-2112-5C97-88D0-AA0AE5C75C74
@@ -5560,6 +8617,8 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 }
 
 type DeleteDataSourceSharedRuleRequest struct {
+	// The sharing rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5928,6 +8987,10 @@ func (s *DeleteNodeResponse) SetBody(v *DeleteNodeResponseBody) *DeleteNodeRespo
 }
 
 type DeleteProjectRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5950,6 +9013,8 @@ func (s *DeleteProjectRequest) SetId(v int64) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AFBB799F-8578-51C5-A766-E922EDB8XXXX
@@ -6356,12 +9421,22 @@ func (s *DeleteRouteResponse) SetBody(v *DeleteRouteResponseBody) *DeleteRouteRe
 }
 
 type DeleteTaskRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
@@ -6387,10 +9462,14 @@ func (s *DeleteTaskRequest) SetProjectEnv(v string) *DeleteTaskRequest {
 }
 
 type DeleteTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -6543,6 +9622,146 @@ func (s *DeleteWorkflowDefinitionResponse) SetStatusCode(v int32) *DeleteWorkflo
 }
 
 func (s *DeleteWorkflowDefinitionResponse) SetBody(v *DeleteWorkflowDefinitionResponseBody) *DeleteWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type DetachDataQualityRulesFromEvaluationTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	DataQualityRuleIds []*int64 `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10002
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskRequest) SetDataQualityEvaluationTaskId(v int64) *DetachDataQualityRulesFromEvaluationTaskRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskRequest) SetDataQualityRuleIds(v []*int64) *DetachDataQualityRulesFromEvaluationTaskRequest {
+	s.DataQualityRuleIds = v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskRequest) SetProjectId(v int64) *DetachDataQualityRulesFromEvaluationTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DetachDataQualityRulesFromEvaluationTaskShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	DataQualityEvaluationTaskId *int64 `json:"DataQualityEvaluationTaskId,omitempty" xml:"DataQualityEvaluationTaskId,omitempty"`
+	// This parameter is required.
+	DataQualityRuleIdsShrink *string `json:"DataQualityRuleIds,omitempty" xml:"DataQualityRuleIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10002
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskShrinkRequest) SetDataQualityEvaluationTaskId(v int64) *DetachDataQualityRulesFromEvaluationTaskShrinkRequest {
+	s.DataQualityEvaluationTaskId = &v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskShrinkRequest) SetDataQualityRuleIdsShrink(v string) *DetachDataQualityRulesFromEvaluationTaskShrinkRequest {
+	s.DataQualityRuleIdsShrink = &v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskShrinkRequest) SetProjectId(v int64) *DetachDataQualityRulesFromEvaluationTaskShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DetachDataQualityRulesFromEvaluationTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskResponseBody) SetRequestId(v string) *DetachDataQualityRulesFromEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskResponseBody) SetSuccess(v bool) *DetachDataQualityRulesFromEvaluationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetachDataQualityRulesFromEvaluationTaskResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachDataQualityRulesFromEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDataQualityRulesFromEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskResponse) SetHeaders(v map[string]*string) *DetachDataQualityRulesFromEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskResponse) SetStatusCode(v int32) *DetachDataQualityRulesFromEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachDataQualityRulesFromEvaluationTaskResponse) SetBody(v *DetachDataQualityRulesFromEvaluationTaskResponseBody) *DetachDataQualityRulesFromEvaluationTaskResponse {
 	s.Body = v
 	return s
 }
@@ -6769,6 +9988,8 @@ func (s *ExecDeploymentStageResponse) SetBody(v *ExecDeploymentStageResponseBody
 }
 
 type GetAlertRuleRequest struct {
+	// The rule ID.
+	//
 	// example:
 	//
 	// 28547072
@@ -6789,7 +10010,10 @@ func (s *GetAlertRuleRequest) SetId(v string) *GetAlertRuleRequest {
 }
 
 type GetAlertRuleResponseBody struct {
+	// The information about the rule.
 	AlertRule *GetAlertRuleResponseBodyAlertRule `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8abcb91f-d266-4073-b907-2ed670378ed1
@@ -6815,23 +10039,33 @@ func (s *GetAlertRuleResponseBody) SetRequestId(v string) *GetAlertRuleResponseB
 }
 
 type GetAlertRuleResponseBodyAlertRule struct {
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 16035
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// error_rule
-	Name         *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration for the alert notification.
 	Notification *GetAlertRuleResponseBodyAlertRuleNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 279961421580845157
-	Owner            *string                                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The alert triggering condition.
 	TriggerCondition *GetAlertRuleResponseBodyAlertRuleTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
 }
 
@@ -6874,20 +10108,30 @@ func (s *GetAlertRuleResponseBodyAlertRule) SetTriggerCondition(v *GetAlertRuleR
 }
 
 type GetAlertRuleResponseBodyAlertRuleNotification struct {
+	// The alert notification channels.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The interval at which an alert notification is sent. Unit: minutes. Valid values: [5,10000].
+	//
 	// example:
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// The maximum number of times an alert notification can be sent within a calendar day. Valid values: [1, 10000].
+	//
 	// example:
 	//
 	// 3
-	Maximum   *int32                                                    `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Maximum *int32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The alert recipients.
 	Receivers []*GetAlertRuleResponseBodyAlertRuleNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// The end time for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// The start time for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
@@ -6933,14 +10177,35 @@ func (s *GetAlertRuleResponseBodyAlertRuleNotification) SetSilenceStartTime(v st
 }
 
 type GetAlertRuleResponseBodyAlertRuleNotificationReceivers struct {
+	// The additional configuration of the alert recipient. If the ReceiverType parameter is set to DingdingUrl, you can set this parameter to {"atAll":true} to remind all members in a DingTalk group.
+	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient. Valid valves:
+	//
+	// 	- AliUid: Alibaba Cloud account ID.
+	//
+	// 	- Shift Schedules: the personnel in a shift schedule.
+	//
+	// 	- TaskOwner: the task owner. The task owner can receive custom alerts and event alerts.
+	//
+	// 	- Owner: the baseline owner. The baseline owner can receive baseline alerts.
+	//
+	// 	- WebhookUrl: URL of a custom webhook.
+	//
+	// 	- DingdingUrl: DingTalk webhook URL.
+	//
+	// 	- FeishuUrl: Lark webhook URL.
+	//
+	// 	- WeixinUrl: WeCom webhook URL.
+	//
 	// example:
 	//
 	// WebhookUrl
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -6968,8 +10233,38 @@ func (s *GetAlertRuleResponseBodyAlertRuleNotificationReceivers) SetReceiverValu
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerCondition struct {
+	// The extended information about the rule. This parameter is required for specific types of alerts.
 	Extension *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	Target    *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The monitored objects.
+	Target *GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The alert type. Valid values:
+	//
+	// 	- Finished: An instance is successfully run.
+	//
+	// 	- UnFinished: An instance does not finish running before a specified point in time.
+	//
+	// 	- Error: An error occurs on an instance.
+	//
+	// 	- CycleUnfinished: An instance does not finish running as expected within a specific cycle.
+	//
+	// 	- Timeout: An instance times out.
+	//
+	// 	- InstanceTransferComplete: An instance is generated by the auto triggered node.
+	//
+	// 	- InstanceTransferFluctuate: The number of generated instances fluctuates.
+	//
+	// 	- ExhaustedError: An error persists after an instance is automatically rerun.
+	//
+	// 	- InstanceKeyword: An instance with errors contains specified keywords.
+	//
+	// 	- InstanceErrorCount: The number of instances on which an error occurs reaches a specified threshold.
+	//
+	// 	- InstanceErrorPercentage: The proportion of instances on which an error occurs in the workspace to the total number of instances reaches a specified threshold.
+	//
+	// 	- ResourceGroupPercentage: The usage rate of the resource group reaches a specified threshold.
+	//
+	// 	- ResourceGroupWaitCount: The number of instances that are waiting for resources in the resource group reaches a specified threshold.
+	//
 	// example:
 	//
 	// Error
@@ -7000,13 +10295,20 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerCondition) SetType(v string) *G
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension struct {
-	CycleUnfinished           *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	Error                     *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	InstanceErrorCount        *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	InstanceErrorPercentage   *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the CycleUnfinished type.
+	CycleUnfinished *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Error type.
+	Error *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorCount type.
+	InstanceErrorCount *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorPercentage type.
+	InstanceErrorPercentage *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceTransferFluctuate type.
 	InstanceTransferFluctuate *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	Timeout                   *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	UnFinished                *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Timeout type.
+	Timeout *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	// The configuration for an alert of the UnFinished type.
+	UnFinished *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
 func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) String() string {
@@ -7053,6 +10355,7 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtension) SetUnFinish
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinished struct {
+	// The configurations of the scheduling cycle and timeout period of the instance.
 	CycleAndTime []*GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
 }
 
@@ -7070,10 +10373,14 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinish
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// The ID of the scheduling cycle of the instance. Valid values: [1,288].
+	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// The latest completion time of the instance within the scheduling cycle. The time is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 12:00
@@ -7099,11 +10406,14 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionCycleUnfinish
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError struct {
+	// Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
+	//
 	// example:
 	//
 	// false
-	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
-	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
+	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
 
 func (s GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) String() string {
@@ -7125,6 +10435,8 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionError) SetStr
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorCount struct {
+	// The maximum number of instances on which an error occurs. Valid values: [1,10000].
+	//
 	// example:
 	//
 	// 10
@@ -7145,6 +10457,8 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceError
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceErrorPercentage struct {
+	// The maximum percentage of instances on which an error occurs in the workspace to the total number of instances. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
@@ -7165,10 +10479,20 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceError
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// The maximum percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The way in which the number of auto triggered node instances that are generated in your workspace fluctuates. Valid values:
+	//
+	// 	- abs: the absolute value. The number of instances increases or decreases.
+	//
+	// 	- increase: The number of instances increases.
+	//
+	// 	- decrease: The number of instances decreases.
+	//
 	// example:
 	//
 	// 10
@@ -7194,6 +10518,8 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionInstanceTrans
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout struct {
+	// The timeout period. Unit: minutes. Valid values: [1, 21600].
+	//
 	// example:
 	//
 	// 10
@@ -7214,6 +10540,8 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionTimeout) SetT
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished struct {
+	// The latest completion time of the instance. The period is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 12:00
@@ -7234,8 +10562,20 @@ func (s *GetAlertRuleResponseBodyAlertRuleTriggerConditionExtensionUnFinished) S
 }
 
 type GetAlertRuleResponseBodyAlertRuleTriggerConditionTarget struct {
+	// The nodes that are not to be monitored.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
-	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The IDs of monitored objects.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the monitored objects. Valid values:
+	//
+	// 	- Task: node
+	//
+	// 	- Baseline: baseline
+	//
+	// 	- Project: workspace
+	//
+	// 	- BizProcess: workflow
+	//
 	// example:
 	//
 	// Task
@@ -7295,11 +10635,20 @@ func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRul
 }
 
 type GetDIJobRequest struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 11588
-	DIJobId   *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// DataWorks工作空间ID。您可以通过ListProjects接口获取工作空间ID。
+	//
+	// example:
+	//
+	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Specifies whether to return detailed configuration information, including TransformationRules, TableMappings, and JobSettings. Valid values: true and false. Default value: true.
+	//
 	// example:
 	//
 	// true
@@ -7330,8 +10679,9 @@ func (s *GetDIJobRequest) SetWithDetails(v bool) *GetDIJobRequest {
 }
 
 type GetDIJobResponseBody struct {
+	// The pagination information.
 	PagingInfo *GetDIJobResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// 代表创建时间的资源属性字段
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -7358,41 +10708,92 @@ func (s *GetDIJobResponseBody) SetRequestId(v string) *GetDIJobResponseBody {
 }
 
 type GetDIJobResponseBodyPagingInfo struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 32601
 	DIJobId *string `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the synchronization task.
+	//
 	// example:
 	//
 	// description
-	Description                   *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The properties of the destination.
 	DestinationDataSourceSettings []*GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
+	// The destination type. The value Hologres is returned.
+	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	// The name of the synchronization task.
+	//
 	// example:
 	//
 	// imp_ods_dms_det_dealer_info_df
-	JobName     *string                                    `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The runtime settings.
 	JobSettings *GetDIJobResponseBodyPagingInfoJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	JobStatus   *string                                    `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// 任务状态。
+	//
+	// 同步状态，取值范围：
+	//
+	// - Finished：运行成功已结束
+	//
+	// - Failed：运行失败
+	//
+	// - Running：运行中
+	//
+	// - Initialized：初始化完成(未启动）
+	//
+	// - Stopping：停止中
+	//
+	// - Stop：停止
+	//
+	// example:
+	//
+	// Running
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The synchronization type. Valid values:
+	//
+	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	//
+	// 	- RealtimeIncremental: real-time incremental synchronization
+	//
+	// 	- Full: full synchronization
+	//
+	// 	- OfflineIncremental: batch incremental synchronization
+	//
+	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// This parameter indicates the DataWorks workspace to which the API operation is applied.
+	//
 	// example:
 	//
 	// 98330
-	ProjectId                *int64                                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ResourceSettings         *GetDIJobResponseBodyPagingInfoResourceSettings           `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource settings.
+	ResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	// The settings of the source. Only a single source is supported.
 	SourceDataSourceSettings []*GetDIJobResponseBodyPagingInfoSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
+	// The source type. The value MySQL is returned.
+	//
 	// example:
 	//
 	// Mysql
-	SourceDataSourceType *string                                              `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	TableMappings        []*GetDIJobResponseBodyPagingInfoTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
-	TransformationRules  []*GetDIJobResponseBodyPagingInfoTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
+	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	TableMappings []*GetDIJobResponseBodyPagingInfoTableMappings `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	// The list of transformation rules that are applied to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+	TransformationRules []*GetDIJobResponseBodyPagingInfoTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
 func (s GetDIJobResponseBodyPagingInfo) String() string {
@@ -7474,6 +10875,8 @@ func (s *GetDIJobResponseBodyPagingInfo) SetTransformationRules(v []*GetDIJobRes
 }
 
 type GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// dw_mysql
@@ -7494,14 +10897,34 @@ func (s *GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings) SetDataSou
 }
 
 type GetDIJobResponseBodyPagingInfoJobSettings struct {
+	// The channel control settings for the synchronization task. The value of this parameter is a JSON string.
+	//
 	// example:
 	//
 	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
-	ChannelSettings        *string                                                            `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ChannelSettings *string `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	// The data type mappings between source fields and destination fields.
 	ColumnDataTypeSettings []*GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
-	CycleScheduleSettings  *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
-	DdlHandlingSettings    []*GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
-	RuntimeSettings        []*GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+	// The settings for periodic scheduling.
+	CycleScheduleSettings *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	// The DDL operation types. Valid values:
+	//
+	// 	- RenameColumn
+	//
+	// 	- ModifyColumn
+	//
+	// 	- CreateTable
+	//
+	// 	- TruncateTable
+	//
+	// 	- DropTable
+	//
+	// 	- DropColumn
+	//
+	// 	- AddColumn
+	DdlHandlingSettings []*GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	// The runtime settings.
+	RuntimeSettings []*GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
 }
 
 func (s GetDIJobResponseBodyPagingInfoJobSettings) String() string {
@@ -7538,10 +10961,14 @@ func (s *GetDIJobResponseBodyPagingInfoJobSettings) SetRuntimeSettings(v []*GetD
 }
 
 type GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings struct {
+	// The data type of the destination field.
+	//
 	// example:
 	//
 	// text
 	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// The data type of the source field.
+	//
 	// example:
 	//
 	// bigint
@@ -7567,10 +10994,18 @@ func (s *GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings) SetSou
 }
 
 type GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings struct {
+	// The synchronization type that requires periodic scheduling. Valid values:
+	//
+	// 	- Full: full synchronization
+	//
+	// 	- OfflineIncremental: batch incremental synchronization
+	//
 	// example:
 	//
 	// Full
 	CycleMigrationType *string `json:"CycleMigrationType,omitempty" xml:"CycleMigrationType,omitempty"`
+	// The scheduling parameters.
+	//
 	// example:
 	//
 	// bizdate=$bizdate
@@ -7596,10 +11031,30 @@ func (s *GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings) SetSche
 }
 
 type GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings struct {
+	// The processing policy for a specific type of DDL message. Valid values:
+	//
+	// 	- Ignore: ignores a DDL message.
+	//
+	// 	- Critical: reports an error for a DDL message.
+	//
+	// 	- Normal: normally processes a DDL message.
+	//
 	// example:
 	//
 	// Ignore
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The DDL operation type. Valid values:
+	//
+	// 	- RenameColumn
+	//
+	// 	- ModifyColumn
+	//
+	// 	- CreateTable
+	//
+	// 	- TruncateTable
+	//
+	// 	- DropTable
+	//
 	// example:
 	//
 	// CreateTable
@@ -7625,10 +11080,30 @@ func (s *GetDIJobResponseBodyPagingInfoJobSettingsDdlHandlingSettings) SetType(v
 }
 
 type GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings struct {
+	// The name of the configuration item. Valid values:
+	//
+	// 	- runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
+	//
+	// 	- runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
+	//
+	// 	- dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
+	//
+	// 	- runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
+	//
+	// 	- dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
+	//
+	// 	- runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
+	//
+	// 	- src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+	//
+	// 	- runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+	//
 	// example:
 	//
 	// runtime.offline.concurrent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// 1
@@ -7654,8 +11129,11 @@ func (s *GetDIJobResponseBodyPagingInfoJobSettingsRuntimeSettings) SetValue(v st
 }
 
 type GetDIJobResponseBodyPagingInfoResourceSettings struct {
-	OfflineResourceSettings  *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for batch synchronization.
+	OfflineResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for real-time synchronization.
 	RealtimeResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	// The resource used for scheduling.
 	ScheduleResourceSettings *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
 }
 
@@ -7683,10 +11161,14 @@ func (s *GetDIJobResponseBodyPagingInfoResourceSettings) SetScheduleResourceSett
 }
 
 type GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings struct {
+	// The number of compute units (CUs) in the resource group for scheduling that are used for batch synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for batch synchronization.
+	//
 	// example:
 	//
 	// S_res_group_7708_1667792816832
@@ -7712,10 +11194,14 @@ func (s *GetDIJobResponseBodyPagingInfoResourceSettingsOfflineResourceSettings) 
 }
 
 type GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings struct {
+	// The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for real-time synchronization.
+	//
 	// example:
 	//
 	// S_res_group_235454102432001_1579085295030
@@ -7741,10 +11227,14 @@ func (s *GetDIJobResponseBodyPagingInfoResourceSettingsRealtimeResourceSettings)
 }
 
 type GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings struct {
+	// The number of CUs in the resource group for Data Integration that are used for scheduling.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for scheduling used by the synchronization task.
+	//
 	// example:
 	//
 	// S_res_group_235454102432001_1718359176885
@@ -7770,10 +11260,13 @@ func (s *GetDIJobResponseBodyPagingInfoResourceSettingsScheduleResourceSettings)
 }
 
 type GetDIJobResponseBodyPagingInfoSourceDataSourceSettings struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// dw_mysql
-	DataSourceName       *string                                                                     `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The properties of the data source.
 	DataSourceProperties *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
 }
 
@@ -7796,10 +11289,14 @@ func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettings) SetDataSourcePr
 }
 
 type GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourceProperties struct {
+	// The encoding format of the database.
+	//
 	// example:
 	//
 	// UTF-8
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// GMT+8
@@ -7825,8 +11322,10 @@ func (s *GetDIJobResponseBodyPagingInfoSourceDataSourceSettingsDataSourcePropert
 }
 
 type GetDIJobResponseBodyPagingInfoTableMappings struct {
+	// The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
 	SourceObjectSelectionRules []*GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
-	TransformationRules        []*GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+	// The list of transformation rules that are applied to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+	TransformationRules []*GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
 func (s GetDIJobResponseBodyPagingInfoTableMappings) String() string {
@@ -7848,18 +11347,30 @@ func (s *GetDIJobResponseBodyPagingInfoTableMappings) SetTransformationRules(v [
 }
 
 type GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules struct {
+	// The operation that is performed to select objects. Valid values: Include and Exclude.
+	//
 	// example:
 	//
 	// Include
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The expression.
+	//
 	// example:
 	//
 	// mysql_table_1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The expression type. Valid values: Exact and Regex.
+	//
 	// example:
 	//
 	// Exact
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// The object type. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Database
+	//
 	// example:
 	//
 	// Table
@@ -7895,14 +11406,32 @@ func (s *GetDIJobResponseBodyPagingInfoTableMappingsSourceObjectSelectionRules) 
 }
 
 type GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
 	// example:
 	//
 	// AddColumn
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which the action is performed. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -7933,18 +11462,56 @@ func (s *GetDIJobResponseBodyPagingInfoTableMappingsTransformationRules) SetRule
 }
 
 type GetDIJobResponseBodyPagingInfoTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefineRuntimeSettings
+	//
+	// 	- DefinePartitionKey
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The expression of the rule. The expression is a JSON string.
+	//
+	// Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
+	//
+	// expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name is not enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from indicates the original string. to indicates the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+	//
+	// If no rule of this type is configured, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that is added. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field. If the value of the columnValueType parameter is Constant, the value of the columnValue parameter is a constant of the STRING data type. If the value of the columnValueType parameter is Variable, the value of the columnValue parameter is a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME indicates the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC indicates the name of the source. TABLE_NAME_SRC indicates the name of a source table. DB_NAME_DEST indicates the name of a destination database. DATASOURCE_NAME_DEST indicates the name of the destination. TABLE_NAME_DEST indicates the name of a destination table. DB_NAME_SRC_TRANSED indicates the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+	//
+	// If no rule of this type is configured, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+	//
+	// If no rule of this type is configured, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. The value Filter is returned for the dmlAction parameter only when the value of the dmlType parameter is Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is returned only when the value of the dmlAction parameter is Filter.
+	//
 	// example:
 	//
 	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
 	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which the action is performed. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -8116,6 +11683,1539 @@ func (s *GetDIJobLogResponse) SetBody(v *GetDIJobLogResponseBody) *GetDIJobLogRe
 	return s
 }
 
+type GetDataQualityEvaluationTaskRequest struct {
+	// example:
+	//
+	// 1006455182
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskRequest) SetId(v int64) *GetDataQualityEvaluationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBody struct {
+	DataQualityEvaluationTask *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask `json:"DataQualityEvaluationTask,omitempty" xml:"DataQualityEvaluationTask,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBody) SetDataQualityEvaluationTask(v *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) *GetDataQualityEvaluationTaskResponseBody {
+	s.DataQualityEvaluationTask = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *GetDataQualityEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask struct {
+	// 质量监控任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	Hooks []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// 2178
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 质量监控任务名称
+	//
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	Notifications *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// 项目空间Id
+	//
+	// example:
+	//
+	// 2626
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	Target *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// 数据质量校验任务的触发配置
+	Trigger *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetDescription(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetHooks(v []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Hooks = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetId(v int64) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetName(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetNotifications(v *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Notifications = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetProjectId(v int64) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetRuntimeConf(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetTarget(v *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Target = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetTrigger(v *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask {
+	s.Trigger = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks struct {
+	// Hook触发条件
+	//
+	// example:
+	//
+	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Hook类型
+	//
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks) SetCondition(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks) SetType(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications struct {
+	// 通知触发条件
+	//
+	// example:
+	//
+	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// 具体的消息通知设置
+	Notifications []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) SetCondition(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications) SetNotifications(v []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications {
+	s.Notifications = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications struct {
+	// 通知方式
+	NotificationChannels []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// 告警接收人设置
+	NotificationReceivers []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) SetNotificationChannels(v []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications) SetNotificationReceivers(v []*GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {
+	// 通知方式
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers struct {
+	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	//
+	// example:
+	//
+	// {  "atAll": true }
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 告警接收人类型
+	//
+	// example:
+	//
+	// DingdingUrl
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// 告警接收人
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetExtension(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget struct {
+	// 表所属的数据库类型
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// pt=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// 表在数据地图中的唯一ID
+	//
+	// example:
+	//
+	// odps.meta_open_api_test_sz.test_partition_tbl
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// 监控对象类型
+	//
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) SetDatabaseType(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) SetPartitionSpec(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) SetTableGuid(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget) SetType(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger struct {
+	// 具体指明哪些调度节点的实例执行成功后可以触发
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// 何种事件可以触发质量校验任务执行
+	//
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger) SetTaskIds(v []*int64) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger) SetType(v string) *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataQualityEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskResponse) SetHeaders(v map[string]*string) *GetDataQualityEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponse) SetStatusCode(v int32) *GetDataQualityEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskResponse) SetBody(v *GetDataQualityEvaluationTaskResponseBody) *GetDataQualityEvaluationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceRequest struct {
+	// example:
+	//
+	// 7227550902
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceRequest) SetId(v int64) *GetDataQualityEvaluationTaskInstanceRequest {
+	s.Id = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBody struct {
+	DataQualityEvaluationTaskInstance *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance `json:"DataQualityEvaluationTaskInstance,omitempty" xml:"DataQualityEvaluationTaskInstance,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBody) SetDataQualityEvaluationTaskInstance(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) *GetDataQualityEvaluationTaskInstanceResponseBody {
+	s.DataQualityEvaluationTaskInstance = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBody) SetRequestId(v string) *GetDataQualityEvaluationTaskInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance struct {
+	// example:
+	//
+	// 1716344665000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1716344665000
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 7234231689
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// { "triggerTime": 1733284062000 }
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// 98330
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Passed
+	Status *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Task   *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// example:
+	//
+	// { "triggerClient": "CWF2", "triggerClientId": 70001238945 }
+	TriggerContext *string `json:"TriggerContext,omitempty" xml:"TriggerContext,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetCreateTime(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetFinishTime(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetParameters(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.Parameters = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetProjectId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetStatus(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetTask(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.Task = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance) SetTriggerContext(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstance {
+	s.TriggerContext = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask struct {
+	Description *string                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Hooks       []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 28544990
+	Id            *int64                                                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name          *string                                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notifications *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// example:
+	//
+	// 20629
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// { "queue": "default" }
+	RuntimeConf *string                                                                                       `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	Target      *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget  `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	Trigger     *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetDescription(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetHooks(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Hooks = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetName(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetNotifications(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Notifications = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetProjectId(v int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetRuntimeConf(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetTarget(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Target = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask) SetTrigger(v *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTask {
+	s.Trigger = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks struct {
+	// example:
+	//
+	// (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// BlockTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks) SetCondition(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskHooks {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications struct {
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition     *string                                                                                                            `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Notifications []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) SetCondition(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications) SetNotifications(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotifications {
+	s.Notifications = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications struct {
+	NotificationChannels  []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	NotificationReceivers []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) SetNotificationChannels(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications) SetNotificationReceivers(v []*GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels struct {
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers struct {
+	// example:
+	//
+	// { "atAll": true }
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// DingdingUrl
+	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetExtension(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// pt=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.api_trace.ods_d_api_log
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) SetDatabaseType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) SetPartitionSpec(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) SetTableGuid(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTarget {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger struct {
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger) SetTaskIds(v []*int64) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger) SetType(v string) *GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskInstanceTaskTrigger {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityEvaluationTaskInstanceResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataQualityEvaluationTaskInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityEvaluationTaskInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponse) SetHeaders(v map[string]*string) *GetDataQualityEvaluationTaskInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponse) SetStatusCode(v int32) *GetDataQualityEvaluationTaskInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataQualityEvaluationTaskInstanceResponse) SetBody(v *GetDataQualityEvaluationTaskInstanceResponseBody) *GetDataQualityEvaluationTaskInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataQualityRuleRequest struct {
+	// example:
+	//
+	// 19715
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDataQualityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleRequest) SetId(v int64) *GetDataQualityRuleRequest {
+	s.Id = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBody struct {
+	// The information about the rule.
+	DataQualityRule *GetDataQualityRuleResponseBodyDataQualityRule `json:"DataQualityRule,omitempty" xml:"DataQualityRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBody) SetDataQualityRule(v *GetDataQualityRuleResponseBodyDataQualityRule) *GetDataQualityRuleResponseBody {
+	s.DataQualityRule = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBody) SetRequestId(v string) *GetDataQualityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRule struct {
+	// The check settings for sample data.
+	CheckingConfig *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                                         `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16033
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1948
+	ProjectId      *int64                                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// High
+	Severity *string                                              `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Target   *GetDataQualityRuleResponseBodyDataQualityRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 228248921215042
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetCheckingConfig(v *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetDescription(v string) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetEnabled(v bool) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetErrorHandlers(v []*GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetId(v int64) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetName(v string) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetProjectId(v int64) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetSamplingConfig(v *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetSeverity(v string) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Severity = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTarget(v *GetDataQualityRuleResponseBodyDataQualityRuleTarget) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.Target = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTemplateCode(v string) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRule) SetTenantId(v int64) *GetDataQualityRuleResponseBodyDataQualityRule {
+	s.TenantId = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) SetReferencedSamplesFilter(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) SetThresholds(v *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig) SetType(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
+	Critical *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
+	Expected *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) SetCritical(v *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) SetExpected(v *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds) SetWarned(v *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical struct {
+	// The threshold expression.
+	//
+	// example:
+	//
+	// $checkValue > 0.05
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) SetExpression(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) SetOperator(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical) SetValue(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected struct {
+	// The threshold expression.
+	//
+	// example:
+	//
+	// $checkValue <= 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) SetExpression(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) SetOperator(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected) SetValue(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned struct {
+	// The threshold expression.
+	//
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) SetExpression(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) SetOperator(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned) SetValue(v string) *GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) SetErrorDataFilter(v string) *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers) SetType(v string) *GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig struct {
+	// example:
+	//
+	// Max
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) SetMetric(v string) *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) SetMetricParameters(v string) *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) SetSamplingFilter(v string) *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig) SetSettingConfig(v string) *GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type GetDataQualityRuleResponseBodyDataQualityRuleTarget struct {
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponseBodyDataQualityRuleTarget) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleTarget) SetDatabaseType(v string) *GetDataQualityRuleResponseBodyDataQualityRuleTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleTarget) SetPartitionSpec(v string) *GetDataQualityRuleResponseBodyDataQualityRuleTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleTarget) SetTableGuid(v string) *GetDataQualityRuleResponseBodyDataQualityRuleTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponseBodyDataQualityRuleTarget) SetType(v string) *GetDataQualityRuleResponseBodyDataQualityRuleTarget {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataQualityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleResponse) SetHeaders(v map[string]*string) *GetDataQualityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataQualityRuleResponse) SetStatusCode(v int32) *GetDataQualityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataQualityRuleResponse) SetBody(v *GetDataQualityRuleResponseBody) *GetDataQualityRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataQualityRuleTemplateRequest struct {
+	// example:
+	//
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateRequest) SetCode(v string) *GetDataQualityRuleTemplateRequest {
+	s.Code = &v
+	return s
+}
+
+type GetDataQualityRuleTemplateResponseBody struct {
+	DataQualityRuleTemplate *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate `json:"DataQualityRuleTemplate,omitempty" xml:"DataQualityRuleTemplate,omitempty" type:"Struct"`
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateResponseBody) SetDataQualityRuleTemplate(v *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) *GetDataQualityRuleTemplateResponseBody {
+	s.DataQualityRuleTemplate = v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBody) SetRequestId(v string) *GetDataQualityRuleTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate struct {
+	CheckingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// USER_DEFINED:123
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4020
+	ProjectId      *int64                                                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SamplingConfig *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 195820716552192
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// Project
+	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetCheckingConfig(v *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetCode(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetDirectoryPath(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetName(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetProjectId(v int64) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetSamplingConfig(v *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetTenantId(v int64) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate) SetVisibleScope(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplate {
+	s.VisibleScope = &v
+	return s
+}
+
+type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig struct {
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig) SetReferencedSamplesFilter(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig) SetType(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig struct {
+	// example:
+	//
+	// Max
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// {"SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) SetMetric(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) SetMetricParameters(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig) SetSettingConfig(v string) *GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type GetDataQualityRuleTemplateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataQualityRuleTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataQualityRuleTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *GetDataQualityRuleTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponse) SetStatusCode(v int32) *GetDataQualityRuleTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataQualityRuleTemplateResponse) SetBody(v *GetDataQualityRuleTemplateResponseBody) *GetDataQualityRuleTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataSourceRequest struct {
 	// The data source ID.
 	//
@@ -8141,6 +13241,7 @@ func (s *GetDataSourceRequest) SetId(v int64) *GetDataSourceRequest {
 }
 
 type GetDataSourceResponseBody struct {
+	// The information about the data source.
 	DataSource *GetDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -8169,7 +13270,13 @@ func (s *GetDataSourceResponseBody) SetRequestId(v string) *GetDataSourceRespons
 }
 
 type GetDataSourceResponseBodyDataSource struct {
-	// The connection properties of the data source.
+	// The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
 	//
 	// example:
 	//
@@ -8251,7 +13358,7 @@ type GetDataSourceResponseBodyDataSource struct {
 	//
 	// 52660
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
+	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the `${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database}` format.
 	//
 	// example:
 	//
@@ -8849,6 +13956,8 @@ func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionRe
 }
 
 type GetJobStatusRequest struct {
+	// The ID of the asynchronous task that is generated after you call an asynchronous operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8871,7 +13980,10 @@ func (s *GetJobStatusRequest) SetJobId(v string) *GetJobStatusRequest {
 }
 
 type GetJobStatusResponseBody struct {
+	// The real-time status information of the asynchronous task.
 	JobStatus *GetJobStatusResponseBodyJobStatus `json:"JobStatus,omitempty" xml:"JobStatus,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5E2BFE96-C0E0-5A98-85C8-633EC803198D
@@ -8897,26 +14009,52 @@ func (s *GetJobStatusResponseBody) SetRequestId(v string) *GetJobStatusResponseB
 }
 
 type GetJobStatusResponseBodyJobStatus struct {
+	// Indicates whether the asynchronous task is complete. Valid values: True False
+	//
 	// example:
 	//
 	// False
 	Completed *string `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the asynchronous task was created.
+	//
 	// example:
 	//
 	// 1729063449802
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the asynchronous task fails.
+	//
 	// example:
 	//
 	// Not Found
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// C664CDE3-9C0B-5792-B17F-6C543783BBBC
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the asynchronous task. Valid values:
+	//
+	// 	- **Create**: The asynchronous task is used to create an object.
+	//
+	// 	- **Update**: The asynchronous task is used to update an object.
+	//
+	// 	- **Cancel**: The asynchronous task is used to cancel an operation.
+	//
 	// example:
 	//
 	// Create
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The status of the asynchronous task. Valid values:
+	//
+	// 	- **Success**
+	//
+	// 	- **Fail**
+	//
+	// 	- **Cancel**
+	//
+	// 	- **Running**
+	//
 	// example:
 	//
 	// Success
@@ -9838,12 +14976,38 @@ func (s *GetProjectMemberResponse) SetBody(v *GetProjectMemberResponseBody) *Get
 }
 
 type GetProjectRoleRequest struct {
+	// The code of the role in the DataWorks workspace.
+	//
+	// Valid values:
+	//
+	// 	- role_project_admin: workspace administrator
+	//
+	// 	- role_project_dev: developer
+	//
+	// 	- role_project_dg_admin: data governance administrator
+	//
+	// 	- role_project_guest: visitor
+	//
+	// 	- role_project_security: security administrator
+	//
+	// 	- role_project_deploy: deployer
+	//
+	// 	- role_project_owner: workspace owner
+	//
+	// 	- role_project_data_analyst: data analyst
+	//
+	// 	- role_project_pe: O\\&M engineer
+	//
+	// 	- role_project_erd: model designer
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9871,7 +15035,10 @@ func (s *GetProjectRoleRequest) SetProjectId(v int64) *GetProjectRoleRequest {
 }
 
 type GetProjectRoleResponseBody struct {
+	// The role in the DataWorks workspace.
 	ProjectRole *GetProjectRoleResponseBodyProjectRole `json:"ProjectRole,omitempty" xml:"ProjectRole,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 82F28E60-CF48-5EDF-AB25-D806847B97D1
@@ -9897,15 +15064,50 @@ func (s *GetProjectRoleResponseBody) SetRequestId(v string) *GetProjectRoleRespo
 }
 
 type GetProjectRoleResponseBodyProjectRole struct {
+	// The code of the role in the DataWorks workspace.
+	//
+	// Valid values:
+	//
+	// 	- role_project_admin: workspace administrator
+	//
+	// 	- role_project_dev: developer
+	//
+	// 	- role_project_dg_admin: data governance administrator
+	//
+	// 	- role_project_guest: visitor
+	//
+	// 	- role_project_security: security administrator
+	//
+	// 	- role_project_deploy: deployer
+	//
+	// 	- role_project_owner: workspace owner
+	//
+	// 	- role_project_data_analyst: data analyst
+	//
+	// 	- role_project_pe: O\\&M engineer
+	//
+	// 	- role_project_erd: model designer
+	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the role in the DataWorks workspace.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 10002
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the role in the DataWorks workspace.
+	//
+	// Valid values:
+	//
+	// 	- UserCustom: user-defined role
+	//
+	// 	- System: system role
+	//
 	// example:
 	//
 	// System
@@ -10170,7 +15372,8 @@ type GetResourceGroupResponseBody struct {
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the resource group.
 	ResourceGroup *GetResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
 	// example:
 	//
@@ -10238,11 +15441,44 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The type the resource group. Valid values:
+	//
+	// 	- CommonV2: serverless resource group
+	//
+	// 	- ExclusiveDataIntegration: exclusive resource group for Data Integration
+	//
+	// 	- ExclusiveScheduler: exclusive resource group for scheduling
+	//
+	// 	- ExclusiveDataService: exclusive resource group for DataService Studio
+	//
 	// example:
 	//
 	// CommonV2
-	ResourceGroupType *string                                        `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	Spec              *GetResourceGroupResponseBodyResourceGroupSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	// The specifications of the resource group.
+	Spec *GetResourceGroupResponseBodyResourceGroupSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- Normal: The resource group is running or in use.
+	//
+	// 	- Stop: The resource group is expired.
+	//
+	// 	- Deleted: The resource group is released or destroyed.
+	//
+	// 	- Creating: The resource group is being started.
+	//
+	// 	- CreateFailed: The resource group fails to be started.
+	//
+	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
+	//
+	// 	- UpdateFailed: The resource group fails to be scaled out or upgraded.
+	//
+	// 	- Deleting: The resource group is being released or destroyed.
+	//
+	// 	- DeleteFailed: The resource group fails to be released or destroyed.
+	//
+	// 	- Timeout: The operations that are performed on the resource group time out.
+	//
 	// example:
 	//
 	// Normal
@@ -10318,6 +15554,8 @@ func (s *GetResourceGroupResponseBodyResourceGroup) SetStatus(v string) *GetReso
 }
 
 type GetResourceGroupResponseBodyResourceGroupSpec struct {
+	// The number of resources in the resource group.
+	//
 	// example:
 	//
 	// 1
@@ -10401,8 +15639,9 @@ type GetRouteResponseBody struct {
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Route     *GetRouteResponseBodyRoute `json:"Route,omitempty" xml:"Route,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the route.
+	Route *GetRouteResponseBodyRoute `json:"Route,omitempty" xml:"Route,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -10445,6 +15684,8 @@ type GetRouteResponseBodyRoute struct {
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The network ID.
+	//
 	// example:
 	//
 	// 1000
@@ -10527,12 +15768,22 @@ func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
 }
 
 type GetTaskRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
@@ -10558,11 +15809,14 @@ func (s *GetTaskRequest) SetProjectEnv(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task      *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the task.
+	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -10584,85 +15838,154 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 }
 
 type GetTaskResponseBodyTask struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser   *string                                `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	DataSource   *GetTaskResponseBodyTaskDataSource     `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
+	DataSource *GetTaskResponseBodyTaskDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The dependency information.
 	Dependencies []*GetTaskResponseBodyTaskDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
-	Id           *int64                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Inputs       *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	InstanceMode *string                        `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input information.
+	Inputs *GetTaskResponseBodyTaskInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	// 实例生成模式。
+	//
+	// T+1（第二天生成）
+	//
+	// Immediately（立即生成）
+	//
+	// example:
+	//
+	// T+1
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
-	ModifyUser *string                         `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Outputs    *GetTaskResponseBodyTaskOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The output information.
+	Outputs *GetTaskResponseBodyTaskOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	//
 	// example:
 	//
 	// 3
-	RerunTimes      *int32                                  `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *GetTaskResponseBodyTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	Script          *GetTaskResponseBodyTaskScript          `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
-	SubTasks        *GetTaskResponseBodyTaskSubTasks        `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Struct"`
-	Tags            []*GetTaskResponseBodyTaskTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The script information.
+	Script *GetTaskResponseBodyTaskScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
+	// The configurations of the subtasks, such as a do-while node.
+	SubTasks *GetTaskResponseBodyTaskSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Struct"`
+	// The tags.
+	Tags []*GetTaskResponseBodyTaskTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
-	Timeout *int32                          `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger task scheduling.
 	Trigger *GetTaskResponseBodyTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 1234
@@ -10823,6 +16146,8 @@ func (s *GetTaskResponseBodyTask) SetWorkflowId(v int64) *GetTaskResponseBodyTas
 }
 
 type GetTaskResponseBodyTaskDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -10843,11 +16168,33 @@ func (s *GetTaskResponseBodyTaskDataSource) SetName(v string) *GetTaskResponseBo
 }
 
 type GetTaskResponseBodyTaskDependencies struct {
+	// The dependency type.
+	//
+	// Valid values:
+	//
+	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
+	//
+	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+	//
+	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	//
+	// 	- Normal: same-cycle dependency
+	//
 	// example:
 	//
 	// Normal
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 上游任务的输出标识符。（`同周期依赖`返回此字段）
+	//
+	// example:
+	//
+	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
+	// 上游任务的Id。（`跨周期依赖其他节点`依赖返回此字段，其他跨周期依赖类型不返回）
+	//
+	// example:
+	//
+	// 1234
 	UpstreamTaskId *string `json:"UpstreamTaskId,omitempty" xml:"UpstreamTaskId,omitempty"`
 }
 
@@ -10875,6 +16222,7 @@ func (s *GetTaskResponseBodyTaskDependencies) SetUpstreamTaskId(v string) *GetTa
 }
 
 type GetTaskResponseBodyTaskInputs struct {
+	// The variables.
 	Variables []*GetTaskResponseBodyTaskInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -10892,14 +16240,30 @@ func (s *GetTaskResponseBodyTaskInputs) SetVariables(v []*GetTaskResponseBodyTas
 }
 
 type GetTaskResponseBodyTaskInputsVariables struct {
+	// The name of the variable.
+	//
 	// example:
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type.
+	//
+	// Valid values:
+	//
+	// 	- Constant: constant
+	//
+	// 	- PassThrough: parameter pass-through
+	//
+	// 	- System: variable
+	//
+	// 	- NodeOutput: script output
+	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the variable.
+	//
 	// example:
 	//
 	// Value1
@@ -10930,8 +16294,10 @@ func (s *GetTaskResponseBodyTaskInputsVariables) SetValue(v string) *GetTaskResp
 }
 
 type GetTaskResponseBodyTaskOutputs struct {
+	// The task outputs.
 	TaskOutputs []*GetTaskResponseBodyTaskOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
-	Variables   []*GetTaskResponseBodyTaskOutputsVariables   `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
+	// The variables.
+	Variables []*GetTaskResponseBodyTaskOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
 func (s GetTaskResponseBodyTaskOutputs) String() string {
@@ -10953,6 +16319,8 @@ func (s *GetTaskResponseBodyTaskOutputs) SetVariables(v []*GetTaskResponseBodyTa
 }
 
 type GetTaskResponseBodyTaskOutputsTaskOutputs struct {
+	// The identifier of the output.
+	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
@@ -10973,14 +16341,30 @@ func (s *GetTaskResponseBodyTaskOutputsTaskOutputs) SetOutput(v string) *GetTask
 }
 
 type GetTaskResponseBodyTaskOutputsVariables struct {
+	// The name of the variable.
+	//
 	// example:
 	//
 	// key1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type.
+	//
+	// Valid values:
+	//
+	// 	- Constant: constant
+	//
+	// 	- PassThrough: parameter pass-through
+	//
+	// 	- System: system variable
+	//
+	// 	- NodeOutput: script output
+	//
 	// example:
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the variable.
+	//
 	// example:
 	//
 	// value1
@@ -11011,14 +16395,20 @@ func (s *GetTaskResponseBodyTaskOutputsVariables) SetValue(v string) *GetTaskRes
 }
 
 type GetTaskResponseBodyTaskRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -11049,10 +16439,14 @@ func (s *GetTaskResponseBodyTaskRuntimeResource) SetResourceGroupId(v string) *G
 }
 
 type GetTaskResponseBodyTaskScript struct {
+	// The script content.
+	//
 	// example:
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The script parameters.
+	//
 	// example:
 	//
 	// para1=$bizdate
@@ -11078,7 +16472,18 @@ func (s *GetTaskResponseBodyTaskScript) SetParameters(v string) *GetTaskResponse
 }
 
 type GetTaskResponseBodyTaskSubTasks struct {
+	// The subtasks.
 	SubTasks []*GetTaskResponseBodyTaskSubTasksSubTasks `json:"SubTasks,omitempty" xml:"SubTasks,omitempty" type:"Repeated"`
+	// The type of the subtask.
+	//
+	// Valid values:
+	//
+	// 	- DoWhile: do-while node
+	//
+	// 	- Combined: node group
+	//
+	// 	- ForEach: for-each node
+	//
 	// example:
 	//
 	// Combined
@@ -11104,75 +16509,128 @@ func (s *GetTaskResponseBodyTaskSubTasks) SetType(v string) *GetTaskResponseBody
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasks struct {
+	// The baseline ID.
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                            `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *GetTaskResponseBodyTaskSubTasksSubTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 180
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	//
 	// example:
 	//
 	// 3
-	RerunTimes      *int32                                                  `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The runtime environment configuration of the task, such as the resource group.
 	RuntimeResource *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
-	Timeout *int32                                          `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger task scheduling.
 	Trigger *GetTaskResponseBodyTaskSubTasksSubTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
 	// example:
 	//
 	// 1234
@@ -11298,6 +16756,8 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasks) SetWorkflowId(v int64) *GetTas
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasksDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -11318,14 +16778,20 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasksDataSource) SetName(v string) *G
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource struct {
+	// The default number of CUs configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -11356,22 +16822,46 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource) SetResourceGrou
 }
 
 type GetTaskResponseBodyTaskSubTasksSubTasksTrigger struct {
+	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
@@ -11412,10 +16902,14 @@ func (s *GetTaskResponseBodyTaskSubTasksSubTasksTrigger) SetType(v string) *GetT
 }
 
 type GetTaskResponseBodyTaskTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -11441,22 +16935,46 @@ func (s *GetTaskResponseBodyTaskTags) SetValue(v string) *GetTaskResponseBodyTas
 }
 
 type GetTaskResponseBodyTaskTrigger struct {
+	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
@@ -11644,8 +17162,11 @@ type GetTaskInstanceResponseBodyTaskInstance struct {
 	// example:
 	//
 	// 1000
-	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
 	// The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
@@ -12367,12 +17888,16 @@ func (s *GetTaskInstanceResponse) SetBody(v *GetTaskInstanceResponseBody) *GetTa
 }
 
 type GetTaskInstanceLogRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sequence number of an instance run. Minimum value: 1. By default, the latest run is used.
+	//
 	// example:
 	//
 	// 1
@@ -12398,10 +17923,14 @@ func (s *GetTaskInstanceLogRequest) SetRunNumber(v int32) *GetTaskInstanceLogReq
 }
 
 type GetTaskInstanceLogResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The run log of the instance.
+	//
 	// example:
 	//
 	// This is running log
@@ -12778,12 +18307,18 @@ func (s *GrantMemberProjectRolesResponse) SetBody(v *GrantMemberProjectRolesResp
 }
 
 type ImportWorkflowDefinitionRequest struct {
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+	//
 	// This parameter is required.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
@@ -12807,7 +18342,10 @@ func (s *ImportWorkflowDefinitionRequest) SetSpec(v string) *ImportWorkflowDefin
 }
 
 type ImportWorkflowDefinitionResponseBody struct {
+	// The status information of the asynchronous task.
 	AsyncJob *ImportWorkflowDefinitionResponseBodyAsyncJob `json:"AsyncJob,omitempty" xml:"AsyncJob,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7C352CB7-CD88-50CF-9D0D-E81BDF020E7F
@@ -12833,34 +18371,68 @@ func (s *ImportWorkflowDefinitionResponseBody) SetRequestId(v string) *ImportWor
 }
 
 type ImportWorkflowDefinitionResponseBodyAsyncJob struct {
+	// Indicates whether the asynchronous task is complete.
+	//
 	// example:
 	//
 	// false
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
+	// The time when the asynchronous task was created. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1706581425000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message returned if the asynchronous task fails.
+	//
 	// example:
 	//
 	// target folder already exists: XXXX
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the asynchronous task.
+	//
 	// example:
 	//
 	// 1234567691239009XXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The progress of the asynchronous task. Valid values: 0 to 100.
+	//
 	// example:
 	//
 	// 0
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The response.
+	//
+	// >  The workflow ID is returned.
+	//
 	// example:
 	//
 	// 632647691239009XXXX
 	Response *string `json:"Response,omitempty" xml:"Response,omitempty"`
+	// The status of the asynchronous task.
+	//
+	// Valid values:
+	//
+	// 	- Running: The asynchronous task is running.
+	//
+	// 	- Success: The asynchronous task is complete.
+	//
+	// 	- Fail: The asynchronous task fails.
+	//
+	// 	- Cancel: The asynchronous task is canceled.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the asynchronous task.
+	//
+	// Valid values:
+	//
+	// 	- Create: The asynchronous task is used to create an object.
+	//
+	// 	- Cancel: The asynchronous task is used to cancel an operation.
+	//
 	// example:
 	//
 	// Create
@@ -12945,32 +18517,44 @@ func (s *ImportWorkflowDefinitionResponse) SetBody(v *ImportWorkflowDefinitionRe
 }
 
 type ListAlertRulesRequest struct {
+	// The name of the rule.
+	//
 	// example:
 	//
 	// error_rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 1933790683****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Alibaba Cloud account used by the alert recipient.
+	//
 	// example:
 	//
 	// 1933790683****
-	Receiver *string   `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
-	TaskIds  []*int64  `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	Types    []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	// The IDs of the scheduling tasks.
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The alert triggering condition.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertRulesRequest) String() string {
@@ -13017,32 +18601,44 @@ func (s *ListAlertRulesRequest) SetTypes(v []*string) *ListAlertRulesRequest {
 }
 
 type ListAlertRulesShrinkRequest struct {
+	// The name of the rule.
+	//
 	// example:
 	//
 	// error_rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 1933790683****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Alibaba Cloud account used by the alert recipient.
+	//
 	// example:
 	//
 	// 1933790683****
-	Receiver      *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	// The IDs of the scheduling tasks.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	TypesShrink   *string `json:"Types,omitempty" xml:"Types,omitempty"`
+	// The alert triggering condition.
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
 func (s ListAlertRulesShrinkRequest) String() string {
@@ -13089,7 +18685,10 @@ func (s *ListAlertRulesShrinkRequest) SetTypesShrink(v string) *ListAlertRulesSh
 }
 
 type ListAlertRulesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListAlertRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A6C6B486-E3A2-5D52-9E76-D9380485D946
@@ -13115,15 +18714,22 @@ func (s *ListAlertRulesResponseBody) SetRequestId(v string) *ListAlertRulesRespo
 }
 
 type ListAlertRulesResponseBodyPagingInfo struct {
+	// The rules.
 	AlertRules []*ListAlertRulesResponseBodyPagingInfoAlertRules `json:"AlertRules,omitempty" xml:"AlertRules,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -13159,22 +18765,31 @@ func (s *ListAlertRulesResponseBodyPagingInfo) SetTotalCount(v int32) *ListAlert
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRules struct {
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 22125
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// error_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 1933790683****
-	Owner            *string                                                         `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The alert triggering condition.
 	TriggerCondition *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
 }
 
@@ -13212,8 +18827,38 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRules) SetTriggerCondition(v *
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition struct {
+	// The extended information about the rule. This parameter is required for specific types of alerts.
 	Extension *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	Target    *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The monitored objects.
+	Target *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The alert type. Valid values:
+	//
+	// 	- Finished: An instance is successfully run.
+	//
+	// 	- UnFinished: An instance does not finish running before a specified point in time.
+	//
+	// 	- Error: An error occurs on an instance.
+	//
+	// 	- CycleUnfinished: An instance does not finish running as expected within a specific cycle.
+	//
+	// 	- Timeout: An instance times out.
+	//
+	// 	- InstanceTransferComplete: An instance is generated by the auto triggered node.
+	//
+	// 	- InstanceTransferFluctuate: The number of generated instances fluctuates.
+	//
+	// 	- ExhaustedError: An error persists after an instance is automatically rerun.
+	//
+	// 	- InstanceKeyword: An instance with errors contains specified keywords.
+	//
+	// 	- InstanceErrorCount: The number of instances on which an error occurs reaches a specified threshold.
+	//
+	// 	- InstanceErrorPercentage: The proportion of instances on which an error occurs in the workspace to the total number of instances reaches a specified threshold.
+	//
+	// 	- ResourceGroupPercentage: The usage rate of the resource group reaches a specified threshold.
+	//
+	// 	- ResourceGroupWaitCount: The number of instances that are waiting for resources in the resource group reaches a specified threshold.
+	//
 	// example:
 	//
 	// Error
@@ -13244,13 +18889,20 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerCondition) SetType
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension struct {
-	CycleUnfinished           *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	Error                     *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	InstanceErrorCount        *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	InstanceErrorPercentage   *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the CycleUnfinished type.
+	CycleUnfinished *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Error type.
+	Error *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorCount type.
+	InstanceErrorCount *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorPercentage type.
+	InstanceErrorPercentage *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceTransferFluctuate type.
 	InstanceTransferFluctuate *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	Timeout                   *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	UnFinished                *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Timeout type.
+	Timeout *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	// The configuration for an alert of the UnFinished type.
+	UnFinished *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
 func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension) String() string {
@@ -13297,6 +18949,7 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinished struct {
+	// The configurations of the scheduling cycle and timeout period of the instance.
 	CycleAndTime []*ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
 }
 
@@ -13314,10 +18967,14 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// The ID of the scheduling cycle of the instance. Valid values: [1,288].
+	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// The latest completion time of the instance within the scheduling cycle. The time is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 01:00
@@ -13343,11 +19000,14 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError struct {
+	// Indicates whether an alert is triggered if a batch synchronization task is automatically rerun upon a failure.
+	//
 	// example:
 	//
 	// false
-	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
-	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
+	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionError) String() string {
@@ -13369,6 +19029,8 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorCount struct {
+	// The maximum number of instances on which an error occurs. Valid values: [1,10000].
+	//
 	// example:
 	//
 	// 10
@@ -13389,6 +19051,8 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceErrorPercentage struct {
+	// The maximum percentage of instances on which an error occurs in the workspace to the total number of instances. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
@@ -13409,10 +19073,20 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// The maximum percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The way in which the number of auto triggered node instances that are generated in your workspace fluctuates. Valid values:
+	//
+	// 	- abs: the absolute value. The number of instances increases or decreases.
+	//
+	// 	- increase: The number of instances increases.
+	//
+	// 	- decrease: The number of instances decreases.
+	//
 	// example:
 	//
 	// abs
@@ -13438,6 +19112,8 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionTimeout struct {
+	// The timeout period. Unit: minutes.
+	//
 	// example:
 	//
 	// 10
@@ -13458,6 +19134,8 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtensionUnFinished struct {
+	// The latest completion time of the instance. The period is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 12:00
@@ -13478,8 +19156,20 @@ func (s *ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionExtension
 }
 
 type ListAlertRulesResponseBodyPagingInfoAlertRulesTriggerConditionTarget struct {
+	// The nodes that are not to be monitored.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
-	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The IDs of monitored objects.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the monitored objects. Valid values:
+	//
+	// 	- Task: node
+	//
+	// 	- Baseline: baseline
+	//
+	// 	- Projec: workspace
+	//
+	// 	- BizProcess: workflow
+	//
 	// example:
 	//
 	// Task
@@ -13539,18 +19229,26 @@ func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAle
 }
 
 type ListDIAlarmRulesRequest struct {
+	// The ID of the alert rule.
+	//
 	// example:
 	//
 	// 34988
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The ID of the synchronization task for which alert rules are configured.
+	//
 	// example:
 	//
 	// 1000001
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -13586,7 +19284,10 @@ func (s *ListDIAlarmRulesRequest) SetPageSize(v int32) *ListDIAlarmRulesRequest 
 }
 
 type ListDIAlarmRulesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDIAlarmRulesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 74C2FECD-5B3A-554A-BCF5-351A36DE9815
@@ -13612,15 +19313,22 @@ func (s *ListDIAlarmRulesResponseBody) SetRequestId(v string) *ListDIAlarmRulesR
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfo struct {
+	// The alert rules returned.
 	DIJobAlarmRules []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules `json:"DIJobAlarmRules,omitempty" xml:"DIJobAlarmRules,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 90
@@ -13656,32 +19364,56 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIA
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
+	// The ID of the alert rule.
+	//
 	// example:
 	//
 	// 72402
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 32594
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the alert rule.
+	//
 	// example:
 	//
 	// rule descrition
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the alert rule is enabled. Valid values: True and False.
+	//
 	// example:
 	//
 	// True
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The metric type in the alert rule. Valid values:
+	//
+	// 	- Heartbeat
+	//
+	// 	- FailoverCount
+	//
+	// 	- Delay
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
+	//
 	// example:
 	//
 	// Heartbeat
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the alert rule.
+	//
 	// example:
 	//
 	// rule_name
-	Name                 *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The alert notification settings.
 	NotificationSettings *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
-	TriggerConditions    []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions  `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
+	// The conditions that are used to trigger the alert rule.
+	TriggerConditions []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
 }
 
 func (s ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) String() string {
@@ -13733,11 +19465,15 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules) SetTriggerCondit
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings struct {
+	// The duration of the alert suppression interval. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
-	InhibitionInterval    *int64                                                                                            `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	NotificationChannels  []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	// The alert notification methods.
+	NotificationChannels []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The settings of alert notification recipients.
 	NotificationReceivers []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -13765,7 +19501,22 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels struct {
+	// The alert notification method. Valid values:
+	//
+	// 	- Mail
+	//
+	// 	- Phone
+	//
+	// 	- Sms
+	//
+	// 	- Ding
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Critical
@@ -13791,10 +19542,17 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationReceivers struct {
+	// The recipient type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
+	//
 	// example:
 	//
 	// DingToken
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The recipient.
+	//
+	// 	- If the value of the ReceiverType parameter is AliyunUid, the value of this parameter is the Alibaba Cloud account ID of a user.
+	//
+	// 	- If the value of the ReceiverType parameter is DingToken, the value of this parameter is the token of a DingTalk chatbot.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -13817,15 +19575,32 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions struct {
+	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	// The time interval for alert calculation. Unit: minutes.
+	//
 	// example:
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Critical
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The alert threshold.
+	//
+	// 	- If the alert rule is for task status, no threshold is used.
+	//
+	// 	- If the alert rule is for failovers, the threshold is the number of failovers.
+	//
+	// 	- If the alert rule is for latency, the threshold is the latency duration, in seconds.
+	//
 	// example:
 	//
 	// 5
@@ -13890,30 +19665,42 @@ func (s *ListDIAlarmRulesResponse) SetBody(v *ListDIAlarmRulesResponseBody) *Lis
 }
 
 type ListDIJobEventsRequest struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1717971005
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of event that you want to query. Valid values: Failover, Alarm, and DDL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Alarm
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13961,7 +19748,10 @@ func (s *ListDIJobEventsRequest) SetStartTime(v int64) *ListDIJobEventsRequest {
 }
 
 type ListDIJobEventsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDIJobEventsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 645F6D68-9C29-5961-80B1-BDD4B794C22D
@@ -13987,15 +19777,22 @@ func (s *ListDIJobEventsResponseBody) SetRequestId(v string) *ListDIJobEventsRes
 }
 
 type ListDIJobEventsResponseBodyPagingInfo struct {
+	// The events returned. The value of this parameter is an array.
 	DIJobEvent []*ListDIJobEventsResponseBodyPagingInfoDIJobEvent `json:"DIJobEvent,omitempty" xml:"DIJobEvent,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2524
@@ -14031,27 +19828,40 @@ func (s *ListDIJobEventsResponseBodyPagingInfo) SetTotalCount(v int64) *ListDIJo
 }
 
 type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
+	// The processing result of the DDL event. Valid values: Critical, Ignore, Normal, and Warning.
+	//
 	// example:
 	//
 	// Ignore
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The alert notification method. Valid values: Phone, Mail, Sms, Ding, and Webhook.
+	//
 	// example:
 	//
 	// Phone
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	// The time when the event was created.
+	//
 	// example:
 	//
 	// 1663573162
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Detail     *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The alert details.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The DDL statement of the destination table.
+	//
 	// example:
 	//
 	// alter table table2 ***
 	DstSql *string `json:"DstSql,omitempty" xml:"DstSql,omitempty"`
+	// The name of the destination table.
+	//
 	// example:
 	//
 	// table2
 	DstTable *string `json:"DstTable,omitempty" xml:"DstTable,omitempty"`
+	// The error logs for failovers.
+	//
 	// example:
 	//
 	// 2024-05-29 15:11:31,377 [main] INFO com.*.**.di.core.metrics.:21 []  {****}
@@ -14060,26 +19870,48 @@ type ListDIJobEventsResponseBodyPagingInfoDIJobEvent struct {
 	//
 	// 2024-05-29 15:11:33,248 [flink-akka.*.*-dispatcher-17] INFO
 	FailoverMessage *string `json:"FailoverMessage,omitempty" xml:"FailoverMessage,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The severity level of the alert. Valid values: Warning and Critical.
+	//
 	// example:
 	//
 	// Warning
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The DDL statement of the source table.
+	//
 	// example:
 	//
 	// alter table table1 ***
 	SrcSql *string `json:"SrcSql,omitempty" xml:"SrcSql,omitempty"`
+	// The name of the source table.
+	//
 	// example:
 	//
 	// table1
 	SrcTable *string `json:"SrcTable,omitempty" xml:"SrcTable,omitempty"`
+	// The sending status of an alert notification. Valid values: Success, Fail, and Silence.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the alert event.
+	//
+	// 	- Heartbeat
+	//
+	// 	- Delay
+	//
+	// 	- FailoverCount
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
+	//
 	// example:
 	//
 	// Delay
@@ -14189,18 +20021,26 @@ func (s *ListDIJobEventsResponse) SetBody(v *ListDIJobEventsResponseBody) *ListD
 }
 
 type ListDIJobMetricsRequest struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 11265
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1712205941
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metrics that you want to query.
+	//
 	// This parameter is required.
 	MetricName []*string `json:"MetricName,omitempty" xml:"MetricName,omitempty" type:"Repeated"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14238,18 +20078,26 @@ func (s *ListDIJobMetricsRequest) SetStartTime(v int64) *ListDIJobMetricsRequest
 }
 
 type ListDIJobMetricsShrinkRequest struct {
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 11265
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1712205941
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metrics that you want to query.
+	//
 	// This parameter is required.
 	MetricNameShrink *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14287,7 +20135,10 @@ func (s *ListDIJobMetricsShrinkRequest) SetStartTime(v int64) *ListDIJobMetricsS
 }
 
 type ListDIJobMetricsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDIJobMetricsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -14313,6 +20164,7 @@ func (s *ListDIJobMetricsResponseBody) SetRequestId(v string) *ListDIJobMetricsR
 }
 
 type ListDIJobMetricsResponseBodyPagingInfo struct {
+	// The metrics returned.
 	JobMetrics []*ListDIJobMetricsResponseBodyPagingInfoJobMetrics `json:"JobMetrics,omitempty" xml:"JobMetrics,omitempty" type:"Repeated"`
 }
 
@@ -14330,10 +20182,13 @@ func (s *ListDIJobMetricsResponseBodyPagingInfo) SetJobMetrics(v []*ListDIJobMet
 }
 
 type ListDIJobMetricsResponseBodyPagingInfoJobMetrics struct {
+	// The name of the metric.
+	//
 	// example:
 	//
 	// JobDelay
-	Name       *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The metric data.
 	SeriesList []*ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList `json:"SeriesList,omitempty" xml:"SeriesList,omitempty" type:"Repeated"`
 }
 
@@ -14356,10 +20211,14 @@ func (s *ListDIJobMetricsResponseBodyPagingInfoJobMetrics) SetSeriesList(v []*Li
 }
 
 type ListDIJobMetricsResponseBodyPagingInfoJobMetricsSeriesList struct {
+	// The point in time at which data is sampled based on the metric.
+	//
 	// example:
 	//
 	// 1716881141
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The sample value.
+	//
 	// example:
 	//
 	// 10
@@ -14414,36 +20273,52 @@ func (s *ListDIJobMetricsResponse) SetBody(v *ListDIJobMetricsResponseBody) *Lis
 }
 
 type ListDIJobRunDetailsRequest struct {
+	// The ID of the synchronization task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11265
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the source.
+	//
 	// example:
 	//
 	// ds_name
 	SourceDataSourceName *string `json:"SourceDataSourceName,omitempty" xml:"SourceDataSourceName,omitempty"`
+	// The name of the database in the source.
+	//
 	// example:
 	//
 	// db_name
 	SourceDatabaseName *string `json:"SourceDatabaseName,omitempty" xml:"SourceDatabaseName,omitempty"`
+	// The name of the schema of the source.
+	//
 	// example:
 	//
 	// schema_name
 	SourceSchemaName *string `json:"SourceSchemaName,omitempty" xml:"SourceSchemaName,omitempty"`
+	// The name of the table in the source.
+	//
 	// example:
 	//
 	// table_name
@@ -14499,7 +20374,10 @@ func (s *ListDIJobRunDetailsRequest) SetSourceTableName(v string) *ListDIJobRunD
 }
 
 type ListDIJobRunDetailsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDIJobRunDetailsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 691CA452-D37A-4ED0-9441
@@ -14525,15 +20403,22 @@ func (s *ListDIJobRunDetailsResponseBody) SetRequestId(v string) *ListDIJobRunDe
 }
 
 type ListDIJobRunDetailsResponseBodyPagingInfo struct {
+	// The running information about the synchronization task.
 	JobRunInfos []*ListDIJobRunDetailsResponseBodyPagingInfoJobRunInfos `json:"JobRunInfos,omitempty" xml:"JobRunInfos,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 131
@@ -14569,70 +20454,104 @@ func (s *ListDIJobRunDetailsResponseBodyPagingInfo) SetTotalCount(v string) *Lis
 }
 
 type ListDIJobRunDetailsResponseBodyPagingInfoJobRunInfos struct {
+	// The name of the database in the destination.
+	//
 	// example:
 	//
 	// dst_db
 	DestinationDatabaseName *string `json:"DestinationDatabaseName,omitempty" xml:"DestinationDatabaseName,omitempty"`
+	// The name of the destination.
+	//
 	// example:
 	//
 	// dst_name
 	DestinationDatasourceName *string `json:"DestinationDatasourceName,omitempty" xml:"DestinationDatasourceName,omitempty"`
+	// The name of the schema of the destination.
+	//
 	// example:
 	//
 	// dst_schema
 	DestinationSchemaName *string `json:"DestinationSchemaName,omitempty" xml:"DestinationSchemaName,omitempty"`
+	// The name of the table in the destination.
+	//
 	// example:
 	//
 	// dst_name
 	DestinationTableName *string `json:"DestinationTableName,omitempty" xml:"DestinationTableName,omitempty"`
+	// The error message that is returned if an error occurs during full batch synchronization. If no error occurs, no value is returned for this parameter.
+	//
 	// example:
 	//
 	// sync table t1 fail.
 	FullMigrationErrorMessage *string `json:"FullMigrationErrorMessage,omitempty" xml:"FullMigrationErrorMessage,omitempty"`
+	// The status of full batch synchronization.
+	//
 	// example:
 	//
 	// Finished
 	FullMigrationStatus *string `json:"FullMigrationStatus,omitempty" xml:"FullMigrationStatus,omitempty"`
+	// The total number of errors that occur during full synchronization.
+	//
 	// example:
 	//
 	// 0
 	OfflineErrorRecords *int64 `json:"OfflineErrorRecords,omitempty" xml:"OfflineErrorRecords,omitempty"`
+	// The total number of bytes that are synchronized during full synchronization.
+	//
 	// example:
 	//
 	// 100
 	OfflineTotalBytes *int64 `json:"OfflineTotalBytes,omitempty" xml:"OfflineTotalBytes,omitempty"`
+	// The total number of data records that are synchronized during full synchronization.
+	//
 	// example:
 	//
 	// 10
 	OfflineTotalRecords *int64 `json:"OfflineTotalRecords,omitempty" xml:"OfflineTotalRecords,omitempty"`
+	// The error message that is returned if an error occurs during real-time synchronization. If no error occurs, no value is returned for this parameter.
+	//
 	// example:
 	//
 	// sync table t1 fail.
 	RealtimeMigrationErrorMessage *string `json:"RealtimeMigrationErrorMessage,omitempty" xml:"RealtimeMigrationErrorMessage,omitempty"`
+	// The status of real-time synchronization.
+	//
 	// example:
 	//
 	// Running
 	RealtimeMigrationStatus *string `json:"RealtimeMigrationStatus,omitempty" xml:"RealtimeMigrationStatus,omitempty"`
+	// The name of the database in the source.
+	//
 	// example:
 	//
 	// db_name
 	SourceDatabaseName *string `json:"SourceDatabaseName,omitempty" xml:"SourceDatabaseName,omitempty"`
+	// The name of the source.
+	//
 	// example:
 	//
 	// ds_name
 	SourceDatasourceName *string `json:"SourceDatasourceName,omitempty" xml:"SourceDatasourceName,omitempty"`
+	// The name of the schema of the source.
+	//
 	// example:
 	//
 	// schema_name
 	SourceSchemaName *string `json:"SourceSchemaName,omitempty" xml:"SourceSchemaName,omitempty"`
+	// The name of the table in the source.
+	//
 	// example:
 	//
 	// table_name
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The error message that is returned if an error occurs during schema synchronization. If no error occurs, no value is returned for this parameter.
+	//
 	// example:
 	//
 	// create table t1 fail.
 	StructureMigrationErrorMessage *string `json:"StructureMigrationErrorMessage,omitempty" xml:"StructureMigrationErrorMessage,omitempty"`
+	// The synchronization status of the schema.
+	//
 	// example:
 	//
 	// Finished
@@ -15444,7 +21363,7 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field is SPARK-SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks, and the value SPARK-SQL indicates the SQL engine that is used to collect EMR data.
+	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
 	//
 	// example:
 	//
@@ -15532,9 +21451,9 @@ type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEval
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The type of the callback event.
+	// The type of the callback event. Valid values:
 	//
-	// 	- Valid values: BlockTaskInstance. The value indicates that an auto triggered node is blocked.
+	// 	- BlockTaskInstance. The value indicates that an auto triggered node is blocked.
 	//
 	// example:
 	//
@@ -15756,9 +21675,9 @@ func (s *ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQuality
 type ListDataQualityEvaluationTaskInstancesResponseBodyPagingInfoDataQualityEvaluationTaskInstancesTaskTrigger struct {
 	// The IDs of the auto triggered nodes of which the instances are successfully run.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger condition of the task.
+	// The trigger condition of the task. Valid values:
 	//
-	// 	- Valid values: ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+	// 	- ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
 	//
 	// example:
 	//
@@ -15980,7 +21899,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field is SPARK-SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks, and the value SPARK-SQL indicates the SQL engine that is used to collect EMR data.
+	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
 	//
 	// example:
 	//
@@ -16063,9 +21982,9 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The type of the callback event.
+	// The type of the callback event. Valid values:
 	//
-	// 	- Valid values: BlockTaskInstance. The value indicates that an auto triggered node is blocked.
+	// 	- BlockTaskInstance. The value indicates that an auto triggered node is blocked.
 	//
 	// example:
 	//
@@ -16287,9 +22206,9 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger struct {
 	// The IDs of the auto triggered nodes of which the instances are successfully run. This parameter takes effect only if the Type parameter is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The trigger condition of the task.
+	// The trigger condition of the task. Valid values:
 	//
-	// 	- Valid values: ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+	// 	- ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
 	//
 	// example:
 	//
@@ -16705,6 +22624,8 @@ type ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule struct {
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The monitored object of the rule.
 	Target *ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The code of the template that is referenced when you create a rule.
+	//
 	// example:
 	//
 	// system::user_defined
@@ -17192,6 +23113,387 @@ func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsRespon
 	return s
 }
 
+type ListDataQualityRuleTemplateRequest struct {
+	CreationSource *string `json:"CreationSource,omitempty" xml:"CreationSource,omitempty"`
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. If you want to query a system template, set this parameter to the name of the system template. Fuzzy match is supported.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetCreationSource(v string) *ListDataQualityRuleTemplateRequest {
+	s.CreationSource = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetDirectoryPath(v string) *ListDataQualityRuleTemplateRequest {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetName(v string) *ListDataQualityRuleTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetPageNumber(v int32) *ListDataQualityRuleTemplateRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetPageSize(v int32) *ListDataQualityRuleTemplateRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateRequest) SetProjectId(v int64) *ListDataQualityRuleTemplateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponseBody struct {
+	// The pagination information.
+	PagingInfo *ListDataQualityRuleTemplateResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponseBody) SetPagingInfo(v *ListDataQualityRuleTemplateResponseBodyPagingInfo) *ListDataQualityRuleTemplateResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBody) SetRequestId(v string) *ListDataQualityRuleTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponseBodyPagingInfo struct {
+	// The templates.
+	DataQualityRuleTemplates []*ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates `json:"DataQualityRuleTemplates,omitempty" xml:"DataQualityRuleTemplates,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 42
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetDataQualityRuleTemplates(v []*ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+	s.DataQualityRuleTemplates = v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetPageNumber(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetPageSize(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfo) SetTotalCount(v int32) *ListDataQualityRuleTemplateResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates struct {
+	// The check settings for sample data.
+	CheckingConfig *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The code for the template.
+	//
+	// example:
+	//
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The path of the template. The backslash is used as the separator character in the path name. Each directory name can be up to 1024 characters in length. It cannot contain whitespace characters or slashes.
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 2043
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfig *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The ID of the DataWorks tenant.
+	//
+	// example:
+	//
+	// 195820716552192
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The applicable scope of the template. Valid values:
+	//
+	// 	- Tenant: The template is available in all workspaces in the current tenant.
+	//
+	// 	- Project: The template is available only in the current workspace.
+	//
+	// example:
+	//
+	// Project
+	VisibleScope *string `json:"VisibleScope,omitempty" xml:"VisibleScope,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetCheckingConfig(v *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetCode(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetDirectoryPath(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetName(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetProjectId(v int64) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetSamplingConfig(v *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetTenantId(v int64) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates) SetVisibleScope(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplates {
+	s.VisibleScope = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to indicate the query method of referenced samples.
+	//
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold calculation method. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctation
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
+	// 	- Variance
+	//
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetReferencedSamplesFilter(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig) SetType(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	//
+	// example:
+	//
+	// Max
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
+	// example:
+	//
+	// {"SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetric(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetMetricParameters(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig) SetSettingConfig(v string) *ListDataQualityRuleTemplateResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type ListDataQualityRuleTemplateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataQualityRuleTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataQualityRuleTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *ListDataQualityRuleTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponse) SetStatusCode(v int32) *ListDataQualityRuleTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataQualityRuleTemplateResponse) SetBody(v *ListDataQualityRuleTemplateResponseBody) *ListDataQualityRuleTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ListDataQualityRulesRequest struct {
 	// The ID of the data quality monitoring task that is associated with the rule.
 	//
@@ -17561,6 +23863,7 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -17595,6 +23898,11 @@ func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig
 	return s.String()
 }
 
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) SetExpression(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsCritical {
 	s.Operator = &v
 	return s
@@ -17606,6 +23914,7 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -17640,6 +23949,11 @@ func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig
 	return s.String()
 }
 
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) SetExpression(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsExpected {
 	s.Operator = &v
 	return s
@@ -17651,6 +23965,7 @@ func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfi
 }
 
 type ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The comparison operator. Valid values:
 	//
 	// 	- \\>
@@ -17683,6 +23998,11 @@ func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfig
 
 func (s ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) SetExpression(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
 }
 
 func (s *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *ListDataQualityRulesResponseBodyPagingInfoDataQualityRulesCheckingConfigThresholdsWarned {
@@ -17918,12 +24238,16 @@ func (s *ListDataQualityRulesResponse) SetBody(v *ListDataQualityRulesResponseBo
 }
 
 type ListDataSourceSharedRulesRequest struct {
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The ID of the workspace to which the data source is shared. You cannot share the data source to the workspace with which the data source is associated.
+	//
 	// example:
 	//
 	// 1
@@ -17949,8 +24273,9 @@ func (s *ListDataSourceSharedRulesRequest) SetTargetProjectId(v int64) *ListData
 }
 
 type ListDataSourceSharedRulesResponseBody struct {
+	// The sharing rules of the data source.
 	DataSourceSharedRules []*ListDataSourceSharedRulesResponseBodyDataSourceSharedRules `json:"DataSourceSharedRules,omitempty" xml:"DataSourceSharedRules,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -17977,14 +24302,20 @@ func (s *ListDataSourceSharedRulesResponseBody) SetRequestId(v string) *ListData
 }
 
 type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
+	// The time when the rule was created. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1724379762000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who creates the rule.
+	//
 	// example:
 	//
 	// 1
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+	//
 	// example:
 	//
 	// 1
@@ -17993,22 +24324,32 @@ type ListDataSourceSharedRulesResponseBodyDataSourceSharedRules struct {
 	//
 	// Dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the data source in the destination workspace.
+	//
 	// example:
 	//
 	// targetProject.datasource
 	SharedDataSourceName *string `json:"SharedDataSourceName,omitempty" xml:"SharedDataSourceName,omitempty"`
+	// The user in the workspace to which the data source is shared. If the data source is shared to the entire workspace, this parameter is left empty.
+	//
 	// example:
 	//
 	// 1
 	SharedUser *string `json:"SharedUser,omitempty" xml:"SharedUser,omitempty"`
+	// The ID of the workspace with which the data source is associated.
+	//
 	// example:
 	//
 	// 1
 	SourceProjectId *int64 `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
+	// The ID of the workspace to which the data source is shared.
+	//
 	// example:
 	//
 	// 1
@@ -18098,32 +24439,66 @@ func (s *ListDataSourceSharedRulesResponse) SetBody(v *ListDataSourceSharedRules
 }
 
 type ListDataSourcesRequest struct {
+	// The environment in which the data sources are used. Valid values:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the data source. Fuzzy match by data source name is supported.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which you want to sort the data sources. Valid values:
+	//
+	// 	- Desc: descending order
+	//
+	// 	- Asc: ascending order
+	//
+	// Default value: Asc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 17820
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field that you want to use to sort the data sources. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- Id
+	//
+	// 	- Name
+	//
+	// Default value: Id
+	//
 	// example:
 	//
 	// Id
@@ -18131,7 +24506,8 @@ type ListDataSourcesRequest struct {
 	// example:
 	//
 	// ["tag1", "tag2", "tag3"]
-	Tags  *string   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
@@ -18189,32 +24565,66 @@ func (s *ListDataSourcesRequest) SetTypes(v []*string) *ListDataSourcesRequest {
 }
 
 type ListDataSourcesShrinkRequest struct {
+	// The environment in which the data sources are used. Valid values:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the data source. Fuzzy match by data source name is supported.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which you want to sort the data sources. Valid values:
+	//
+	// 	- Desc: descending order
+	//
+	// 	- Asc: ascending order
+	//
+	// Default value: Asc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 17820
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field that you want to use to sort the data sources. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- Id
+	//
+	// 	- Name
+	//
+	// Default value: Id
+	//
 	// example:
 	//
 	// Id
@@ -18222,7 +24632,8 @@ type ListDataSourcesShrinkRequest struct {
 	// example:
 	//
 	// ["tag1", "tag2", "tag3"]
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
 	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
 }
 
@@ -18280,7 +24691,10 @@ func (s *ListDataSourcesShrinkRequest) SetTypesShrink(v string) *ListDataSources
 }
 
 type ListDataSourcesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDataSourcesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BE1433F-6D55-5D86-9344-CA6F7DD19B13
@@ -18307,14 +24721,20 @@ func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesRes
 
 type ListDataSourcesResponseBodyPagingInfo struct {
 	DataSources []*ListDataSourcesResponseBodyPagingInfoDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 131
@@ -18351,10 +24771,14 @@ func (s *ListDataSourcesResponseBodyPagingInfo) SetTotalCount(v int64) *ListData
 
 type ListDataSourcesResponseBodyPagingInfoDataSources struct {
 	DataSource []*ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Repeated"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// mysql
@@ -18385,6 +24809,8 @@ func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetType(v string) *Li
 }
 
 type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
+	// The connection properties of the data source.
+	//
 	// example:
 	//
 	// {
@@ -18405,34 +24831,50 @@ type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
 	//
 	// }
 	ConnectionProperties interface{} `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The mode in which the data source is added. The mode varies based on the data source type. Valid values: InstanceMode, UrlMode, and CdhMode. The value InstanceMode indicates the instance mode. The value UrlMode indicates the connection string mode. The value CdhMode indicates the CDH cluster mode.
+	//
 	// example:
 	//
 	// UrlMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// The time when the data source was added. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1648711113000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who adds the data source.
+	//
 	// example:
 	//
 	// 1624387842781448
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 16035
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the data source was last modified. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1648711113000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The ID of the user who modifies the data source.
+	//
 	// example:
 	//
 	// 1624387842781448
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
+	//
 	// example:
 	//
 	// 1648711121000:cn-beijing:odps:yongxunQA_beijing_standard
@@ -18929,16 +25371,22 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 }
 
 type ListDownstreamTaskInstancesRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -18969,7 +25417,10 @@ func (s *ListDownstreamTaskInstancesRequest) SetPageSize(v int32) *ListDownstrea
 }
 
 type ListDownstreamTaskInstancesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDownstreamTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -18995,15 +25446,22 @@ func (s *ListDownstreamTaskInstancesResponseBody) SetRequestId(v string) *ListDo
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32                                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instances.
 	TaskInstances []*ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -19039,120 +25497,242 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int3
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                                                   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the instance finished running.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 100
-	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times the instance is run. By default, the value starts from 1.
+	//
 	// example:
 	//
 	// 1
-	RunNumber       *int32                                                                         `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	Runtime         *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	// The runtime information about the instance.
+	Runtime *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	// The information about the resource group with which the instance is associated.
 	RuntimeResource *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The time when the instance started to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// 	- NotRun: The instance is not run.
+	//
+	// 	- Running: The instance is running.
+	//
+	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	//
+	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	//
+	// 	- WaitResource: The instance is waiting for resources.
+	//
+	// 	- Failure: The instance fails to be run.
+	//
+	// 	- Success: The instance is successfully run.
+	//
+	// 	- Checking: Data quality is being checked for the instance.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task for which the instance is generated.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The scheduling time.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// The method to trigger instance scheduling.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance.
+	//
+	// Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- SupplementData
+	//
+	// 	- Manual
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
+	// 	- ManualFlow
+	//
 	// example:
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// The name of the workflow to which the instance belongs.
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
@@ -19329,6 +25909,8 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWork
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -19349,10 +25931,14 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSourc
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// The host for running.
+	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The instance run ID.
+	//
 	// example:
 	//
 	// T3_123
@@ -19378,14 +25964,20 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) 
 }
 
 type ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -19445,20 +26037,34 @@ func (s *ListDownstreamTaskInstancesResponse) SetBody(v *ListDownstreamTaskInsta
 }
 
 type ListDownstreamTasksRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
@@ -19494,7 +26100,10 @@ func (s *ListDownstreamTasksRequest) SetProjectEnv(v string) *ListDownstreamTask
 }
 
 type ListDownstreamTasksResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListDownstreamTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -19520,15 +26129,22 @@ func (s *ListDownstreamTasksResponseBody) SetRequestId(v string) *ListDownstream
 }
 
 type ListDownstreamTasksResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tasks    []*ListDownstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tasks.
+	Tasks []*ListDownstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -19564,80 +26180,140 @@ func (s *ListDownstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *List
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                                   `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1234
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	//
 	// example:
 	//
 	// 3
-	RerunTimes      *int32                                                         `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	StepType        *string                                                        `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	// example:
+	//
+	// Normal
+	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
-	Timeout *int32                                                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger task scheduling.
 	Trigger *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
 	// example:
 	//
 	// 1234
@@ -19773,6 +26449,8 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) 
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -19793,14 +26471,20 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) SetName(v str
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -19831,26 +26515,52 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetResou
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
+	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
@@ -23125,22 +29835,40 @@ func (s *ListProjectMembersResponse) SetBody(v *ListProjectMembersResponseBody) 
 }
 
 type ListProjectRolesRequest struct {
+	// The codes of roles in the DataWorks workspace.
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
+	// The names of roles in the DataWorks workspace.
 	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the role in the DataWorks workspace.
+	//
+	// Valid values:
+	//
+	// 	- UserCustom: user-defined role
+	//
+	// 	- System: system role
+	//
 	// example:
 	//
 	// System
@@ -23186,22 +29914,40 @@ func (s *ListProjectRolesRequest) SetType(v string) *ListProjectRolesRequest {
 }
 
 type ListProjectRolesShrinkRequest struct {
+	// The codes of roles in the DataWorks workspace.
 	CodesShrink *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
+	// The names of roles in the DataWorks workspace.
 	NamesShrink *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+	//
+	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the role in the DataWorks workspace.
+	//
+	// Valid values:
+	//
+	// 	- UserCustom: user-defined role
+	//
+	// 	- System: system role
+	//
 	// example:
 	//
 	// System
@@ -23247,7 +29993,10 @@ func (s *ListProjectRolesShrinkRequest) SetType(v string) *ListProjectRolesShrin
 }
 
 type ListProjectRolesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListProjectRolesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 61649187-0BCF-5E75-8D4B-64FDBEBBB447
@@ -23273,15 +30022,22 @@ func (s *ListProjectRolesResponseBody) SetRequestId(v string) *ListProjectRolesR
 }
 
 type ListProjectRolesResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize     *string                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The roles in the DataWorks workspace.
 	ProjectRoles []*ListProjectRolesResponseBodyPagingInfoProjectRoles `json:"ProjectRoles,omitempty" xml:"ProjectRoles,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 42
@@ -23317,15 +30073,22 @@ func (s *ListProjectRolesResponseBodyPagingInfo) SetTotalCount(v string) *ListPr
 }
 
 type ListProjectRolesResponseBodyPagingInfoProjectRoles struct {
+	// The code of the role in the DataWorks workspace.
+	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the role in the DataWorks workspace.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 21229
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the role in the DataWorks workspace.
+	//
 	// example:
 	//
 	// System
@@ -23390,33 +30153,100 @@ func (s *ListProjectRolesResponse) SetBody(v *ListProjectRolesResponseBody) *Lis
 }
 
 type ListProjectsRequest struct {
+	// The ID of the Alibaba Cloud resource group to which the workspaces belong. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zff
-	AliyunResourceGroupId *string                                  `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	AliyunResourceTags    []*ListProjectsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
+	AliyunResourceTags []*ListProjectsRequestAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// Specifies whether the development environment is enabled. Valid values:
+	//
+	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
+	//
+	// 	- false: The development environment is disabled. In this case, only the production environment is used in a workspace.
+	//
 	// example:
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Specifies whether the Develop role is disabled. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
-	DevRoleDisabled *bool     `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
-	Ids             []*int64  `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	Names           []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The IDs of the DataWorks workspaces.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The names of the DataWorks workspaces.
+	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
+	//
+	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: Scheduling of PAI tasks is disabled.
+	//
 	// example:
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// The status of the workspaces. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Initializing
+	//
+	// 	- InitFailed
+	//
+	// 	- Forbidden
+	//
+	// 	- Deleting
+	//
+	// 	- DeleteFailed
+	//
+	// 	- Frozen
+	//
+	// 	- Updating
+	//
+	// 	- UpdateFailed
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Available
@@ -23482,10 +30312,14 @@ func (s *ListProjectsRequest) SetStatus(v string) *ListProjectsRequest {
 }
 
 type ListProjectsRequestAliyunResourceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// batch
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// blue
@@ -23511,33 +30345,100 @@ func (s *ListProjectsRequestAliyunResourceTags) SetValue(v string) *ListProjects
 }
 
 type ListProjectsShrinkRequest struct {
+	// The ID of the Alibaba Cloud resource group to which the workspaces belong. You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) and go to the Resource Group page to query the ID.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zff
-	AliyunResourceGroupId    *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
 	AliyunResourceTagsShrink *string `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty"`
+	// Specifies whether the development environment is enabled. Valid values:
+	//
+	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
+	//
+	// 	- false: The development environment is disabled. In this case, only the production environment is used in a workspace.
+	//
 	// example:
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Specifies whether the Develop role is disabled. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
-	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
-	IdsShrink       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	NamesShrink     *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The IDs of the DataWorks workspaces.
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The names of the DataWorks workspaces.
+	NamesShrink *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
+	//
+	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: Scheduling of PAI tasks is disabled.
+	//
 	// example:
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// The status of the workspaces. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Initializing
+	//
+	// 	- InitFailed
+	//
+	// 	- Forbidden
+	//
+	// 	- Deleting
+	//
+	// 	- DeleteFailed
+	//
+	// 	- Frozen
+	//
+	// 	- Updating
+	//
+	// 	- UpdateFailed
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// Available
@@ -23603,7 +30504,10 @@ func (s *ListProjectsShrinkRequest) SetStatus(v string) *ListProjectsShrinkReque
 }
 
 type ListProjectsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListProjectsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D24AD9A-652F-59E2-AC1F-05029300F8A4
@@ -23629,15 +30533,22 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspaces.
 	Projects []*ListProjectsResponseBodyPagingInfoProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -23673,37 +30584,86 @@ func (s *ListProjectsResponseBodyPagingInfo) SetTotalCount(v int32) *ListProject
 }
 
 type ListProjectsResponseBodyPagingInfoProjects struct {
+	// The ID of the Alibaba Cloud resource group to which the workspace belongs.
+	//
 	// example:
 	//
 	// rg-acfmzbn7pti3zfa
-	AliyunResourceGroupId *string                                                         `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
-	AliyunResourceTags    []*ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	Description           *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
+	// The tags.
+	AliyunResourceTags []*ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
+	// The description of the workspace.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the development environment is enabled. Valid values:
+	//
+	// 	- true: The development environment is enabled. In this case, the development environment is isolated from the production environment in the workspace.
+	//
+	// 	- false: The development environment is disabled. In this case, only the production environment is used in the workspace.
+	//
 	// example:
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Indicates whether the Develop role is disabled. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
-	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The display name of the workspace.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// sora_finance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account to which the workspace belongs.
+	//
 	// example:
 	//
 	// 123532153125
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Indicates whether scheduling of PAI tasks is enabled. Valid values:
+	//
+	// 	- true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: Scheduling of PAI tasks is disabled.
+	//
 	// example:
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// The status of the workspace. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Initializing
+	//
+	// 	- InitFailed
+	//
+	// 	- Forbidden
+	//
+	// 	- Deleting
+	//
+	// 	- DeleteFailed
+	//
+	// 	- Frozen
+	//
+	// 	- Updating
+	//
+	// 	- UpdateFailed
+	//
 	// example:
 	//
 	// Available
@@ -23774,10 +30734,14 @@ func (s *ListProjectsResponseBodyPagingInfoProjects) SetStatus(v string) *ListPr
 }
 
 type ListProjectsResponseBodyPagingInfoProjectsAliyunResourceTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// batch
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// blue
@@ -23832,20 +30796,28 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListResourceGroupsRequest struct {
+	// The name of a resource group, which is used for fuzzy match.
+	//
 	// example:
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The billing method of resource groups. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The ID of the DataWorks workspace.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId          *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypes []*string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty" type:"Repeated"`
-	Statuses           []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// The statuses of resource groups.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -23882,20 +30854,28 @@ func (s *ListResourceGroupsRequest) SetStatuses(v []*string) *ListResourceGroups
 }
 
 type ListResourceGroupsShrinkRequest struct {
+	// The name of a resource group, which is used for fuzzy match.
+	//
 	// example:
 	//
 	// Resource
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The billing method of resource groups. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The ID of the DataWorks workspace.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId                *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
 	ResourceGroupTypesShrink *string `json:"ResourceGroupTypes,omitempty" xml:"ResourceGroupTypes,omitempty"`
-	StatusesShrink           *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// The statuses of resource groups.
+	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 
 func (s ListResourceGroupsShrinkRequest) String() string {
@@ -23932,11 +30912,16 @@ func (s *ListResourceGroupsShrinkRequest) SetStatusesShrink(v string) *ListResou
 }
 
 type ListResourceGroupsResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource groups returned.
 	ResourceGroupList []*ListResourceGroupsResponseBodyResourceGroupList `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -23967,47 +30952,98 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 type ListResourceGroupsResponseBodyResourceGroupList struct {
+	// The time when the resource group was created. The value is a 64-bit timestamp.
+	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the account that is used to create the resource group.
+	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the virtual private cloud (VPC) with which the resource group is associated by default.
+	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
+	// The ID of the vSwitch with which the resource group is associated by default.
+	//
 	// example:
 	//
 	// vsw-uf8usrhs7hjd9amsXXXXX
 	DefaultVswicthId *string `json:"DefaultVswicthId,omitempty" xml:"DefaultVswicthId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the resource group.
+	//
 	// example:
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The instance ID of the order that is used to create the resource group.
+	//
 	// example:
 	//
 	// c442b330-3b10-4584-959e-736e4edXXXXX
 	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	// The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+	//
 	// example:
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The description of the resource group.
+	//
 	// example:
 	//
 	// 创建用于普通任务的通用资源组
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The type the resource group. Valid values:
+	//
+	// 	- CommonV2: serverless resource group
+	//
+	// 	- ExclusiveDataIntegration: exclusive resource group for Data Integration
+	//
+	// 	- ExclusiveScheduler: exclusive resource group for scheduling
+	//
+	// 	- ExclusiveDataService: exclusive resource group for DataService Studio
+	//
 	// example:
 	//
 	// CommonV2
-	ResourceGroupType *string                                              `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
-	Spec              *ListResourceGroupsResponseBodyResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+	// The specifications of the resource group.
+	Spec *ListResourceGroupsResponseBodyResourceGroupListSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	// The status of the resource group. Valid values:
+	//
+	// 	- Normal: The resource group is running or in use.
+	//
+	// 	- Stop: The resource group is expired.
+	//
+	// 	- Deleted: The resource group is released or destroyed.
+	//
+	// 	- Creating: The resource group is being started.
+	//
+	// 	- CreateFailed: The resource group fails to be started.
+	//
+	// 	- Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
+	//
+	// 	- UpdateFailed: The resource group fails to be scaled out or upgraded.
+	//
+	// 	- Deleting: The resource group is being released or destroyed.
+	//
+	// 	- DeleteFailed: The resource group fails to be released or destroyed.
+	//
+	// 	- Timeout: The operations that are performed on the resource group time out.
+	//
 	// example:
 	//
 	// Normal
@@ -24083,10 +31119,14 @@ func (s *ListResourceGroupsResponseBodyResourceGroupList) SetStatus(v string) *L
 }
 
 type ListResourceGroupsResponseBodyResourceGroupListSpec struct {
+	// The number of resources in the resource group.
+	//
 	// example:
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The details about the specifications.
+	//
 	// example:
 	//
 	// 2CU
@@ -24620,7 +31660,8 @@ type ListRoutesResponseBody struct {
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routes.
 	RouteList []*ListRoutesResponseBodyRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -24664,6 +31705,8 @@ type ListRoutesResponseBodyRouteList struct {
 	//
 	// 1000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The network ID.
+	//
 	// example:
 	//
 	// 1000
@@ -24746,20 +31789,28 @@ func (s *ListRoutesResponse) SetBody(v *ListRoutesResponseBody) *ListRoutesRespo
 }
 
 type ListTaskInstanceOperationLogsRequest struct {
+	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+	//
 	// example:
 	//
 	// 1710239005403
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -24795,7 +31846,10 @@ func (s *ListTaskInstanceOperationLogsRequest) SetPageSize(v int32) *ListTaskIns
 }
 
 type ListTaskInstanceOperationLogsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListTaskInstanceOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -24821,15 +31875,22 @@ func (s *ListTaskInstanceOperationLogsResponseBody) SetRequestId(v string) *List
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfo struct {
+	// The operation logs.
 	OperationLogs []*ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -24865,19 +31926,28 @@ func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) SetTotalCount(v in
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs struct {
+	// The time when the operation log was generated.
+	//
 	// example:
 	//
 	// 1710239005403
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The operation content.
 	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
+	// The serial number of the operation.
+	//
 	// example:
 	//
 	// 1111
 	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
+	// The ID of the instance on which the operation was performed.
+	//
 	// example:
 	//
 	// 1234
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	// The account ID of the operator.
+	//
 	// example:
 	//
 	// 1000
@@ -24947,67 +32017,134 @@ func (s *ListTaskInstanceOperationLogsResponse) SetBody(v *ListTaskInstanceOpera
 }
 
 type ListTaskInstancesRequest struct {
+	// The data timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
+	//
 	// example:
 	//
 	// 1234
-	Id  *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the instances. You can query multiple instances at a time by instance ID.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The information about the resource group. Set this parameter to the identifier of a resource group for scheduling.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	//
+	// 	- `TriggerTime (Desc/Asc)`
+	//
+	// 	- `StartedTime (Desc/Asc)`
+	//
+	// 	- `FinishedTime (Desc/Asc)`
+	//
+	// 	- `CreateTime (Desc/Asc)`
+	//
+	// 	- `Id (Desc/Asc)`
+	//
+	//     Default value: `Id Desc`.
+	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId   *int64   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskIds  []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	TaskName *string  `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The IDs of the tasks. You can query multiple instances at a time by task ID.
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The name of the task. Fuzzy match is supported.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
-	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	TriggerType       *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance.
+	//
+	// Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- Manual
+	//
+	// 	- SupplementData
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
@@ -25118,67 +32255,134 @@ func (s *ListTaskInstancesRequest) SetWorkflowInstanceType(v string) *ListTaskIn
 }
 
 type ListTaskInstancesShrinkRequest struct {
+	// The data timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
+	//
 	// example:
 	//
 	// 1234
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the instances. You can query multiple instances at a time by instance ID.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The information about the resource group. Set this parameter to the identifier of a resource group for scheduling.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+	//
+	// 	- `TriggerTime (Desc/Asc)`
+	//
+	// 	- `StartedTime (Desc/Asc)`
+	//
+	// 	- `FinishedTime (Desc/Asc)`
+	//
+	// 	- `CreateTime (Desc/Asc)`
+	//
+	// 	- `Id (Desc/Asc)`
+	//
+	//     Default value: `Id Desc`.
+	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId        *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The IDs of the tasks. You can query multiple instances at a time by task ID.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The name of the task. Fuzzy match is supported.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
-	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	TriggerType       *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// example:
+	//
+	// Normal
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance.
+	//
+	// Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- Manual
+	//
+	// 	- SupplementData
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
@@ -25289,7 +32493,10 @@ func (s *ListTaskInstancesShrinkRequest) SetWorkflowInstanceType(v string) *List
 }
 
 type ListTaskInstancesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -25315,15 +32522,22 @@ func (s *ListTaskInstancesResponseBody) SetRequestId(v string) *ListTaskInstance
 }
 
 type ListTaskInstancesResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instances.
 	TaskInstances []*ListTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -25359,120 +32573,242 @@ func (s *ListTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32) *ListTa
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the user who creates the instance.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the instance finished running.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the user who modifies the instance.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
-	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	// The priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times the task is run. By default, the value starts from 1.
+	//
 	// example:
 	//
 	// 1
-	RunNumber       *int32                                                               `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	Runtime         *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	// The runtime information about the instance.
+	Runtime *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	// The information about the resource group with which the instance is associated.
 	RuntimeResource *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The time when the instance started to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// 	- NotRun: The instance is not run.
+	//
+	// 	- Running: The instance is running.
+	//
+	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	//
+	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	//
+	// 	- WaitResource: The instance is waiting for resources.
+	//
+	// 	- Failure: The instance fails to be run.
+	//
+	// 	- Success: The instance is successfully run.
+	//
+	// 	- Checking: Data quality is being checked for the instance.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task for which the instance is generated.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The scheduling time.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance.
+	//
+	// Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- SupplementData
+	//
+	// 	- Manual
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
+	// 	- ManualFlow
+	//
 	// example:
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// The name of the workflow to which the instance belongs.
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
@@ -25649,6 +32985,8 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkflowName(v
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -25669,10 +33007,14 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource) SetName
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// The host for running.
+	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The instance run ID.
+	//
 	// example:
 	//
 	// T3_123
@@ -25698,14 +33040,20 @@ func (s *ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) SetProcess
 }
 
 type ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// The default number of CUs configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -25765,24 +33113,40 @@ func (s *ListTaskInstancesResponse) SetBody(v *ListTaskInstancesResponseBody) *L
 }
 
 type ListTaskOperationLogsRequest struct {
+	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+	//
 	// example:
 	//
 	// 1710239005403
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
@@ -25823,7 +33187,10 @@ func (s *ListTaskOperationLogsRequest) SetProjectEnv(v string) *ListTaskOperatio
 }
 
 type ListTaskOperationLogsResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListTaskOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -25849,15 +33216,22 @@ func (s *ListTaskOperationLogsResponseBody) SetRequestId(v string) *ListTaskOper
 }
 
 type ListTaskOperationLogsResponseBodyPagingInfo struct {
+	// The operation logs.
 	OperationLogs []*ListTaskOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -25893,19 +33267,28 @@ func (s *ListTaskOperationLogsResponseBodyPagingInfo) SetTotalCount(v int32) *Li
 }
 
 type ListTaskOperationLogsResponseBodyPagingInfoOperationLogs struct {
+	// The time when the operation log was generated.
+	//
 	// example:
 	//
 	// 1710239005403
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The operation content.
 	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
+	// The serial number of the operation.
+	//
 	// example:
 	//
 	// 1111
 	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
+	// The ID of the task on which the operation was performed.
+	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The account ID of the operator.
+	//
 	// example:
 	//
 	// 1000
@@ -25975,49 +33358,100 @@ func (s *ListTaskOperationLogsResponse) SetBody(v *ListTaskOperationLogsResponse
 }
 
 type ListTasksRequest struct {
+	// The name of the task. Fuzzy match is supported.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The information about the resource group. Set this parameter to the ID of a resource group for scheduling.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
 	RuntimeResource *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
+	// The field that is used to sort tasks. This parameter is configured in the format of "Sorting field Sorting order". You can set the sorting order to Desc or Asc. If you do not specify the sorting order, Asc is used by default. Valid values:
+	//
+	// 	- `ModifyTime (Desc/Asc)`
+	//
+	// 	- `CreateTime (Desc/Asc)`
+	//
+	// 	- `Id (Desc/Asc)`
+	//
+	//     Default value: `Id Desc`.
+	//
 	// example:
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
 	// example:
 	//
 	// 1234
@@ -26093,7 +33527,10 @@ func (s *ListTasksRequest) SetWorkflowId(v int64) *ListTasksRequest {
 }
 
 type ListTasksResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -26119,15 +33556,22 @@ func (s *ListTasksResponseBody) SetRequestId(v string) *ListTasksResponseBody {
 }
 
 type ListTasksResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tasks    []*ListTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tasks.
+	Tasks []*ListTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -26163,79 +33607,142 @@ func (s *ListTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListTasksRespo
 }
 
 type ListTasksResponseBodyPagingInfoTasks struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1234
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 实例生成模式。
+	//
+	// T+1（第二天生成）
+	//
+	// Immediately（立即生成）
+	//
+	// example:
+	//
+	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	//
 	// example:
 	//
 	// 3
-	RerunTimes      *int32                                               `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
-	Timeout *int32                                       `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger task scheduling.
 	Trigger *ListTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
 	// example:
 	//
 	// 1234
@@ -26366,6 +33873,8 @@ func (s *ListTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *ListTasks
 }
 
 type ListTasksResponseBodyPagingInfoTasksDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -26386,14 +33895,20 @@ func (s *ListTasksResponseBodyPagingInfoTasksDataSource) SetName(v string) *List
 }
 
 type ListTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -26424,22 +33939,46 @@ func (s *ListTasksResponseBodyPagingInfoTasksRuntimeResource) SetResourceGroupId
 }
 
 type ListTasksResponseBodyPagingInfoTasksTrigger struct {
+	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
@@ -26509,16 +34048,22 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListUpstreamTaskInstancesRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -26549,7 +34094,10 @@ func (s *ListUpstreamTaskInstancesRequest) SetPageSize(v int32) *ListUpstreamTas
 }
 
 type ListUpstreamTaskInstancesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListUpstreamTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -26575,15 +34123,22 @@ func (s *ListUpstreamTaskInstancesResponseBody) SetRequestId(v string) *ListUpst
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize      *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The instances.
 	TaskInstances []*ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -26619,120 +34174,242 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int32)
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp.
+	//
 	// example:
 	//
 	// 1710239005403
 	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                                                 `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the instance finished running.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
-	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PeriodNumber *int32  `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times the instance is run. By default, the value starts from 1.
+	//
 	// example:
 	//
 	// 1
-	RunNumber       *int32                                                                       `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	Runtime         *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime         `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
+	// The runtime information about the instance.
+	Runtime *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
+	// The information about the resource group with which the instance is associated.
 	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
+	// The time when the instance started to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the instance.
+	//
+	// Valid values:
+	//
+	// 	- NotRun: The instance is not run.
+	//
+	// 	- Running: The instance is running.
+	//
+	// 	- WaitTime: The instance is waiting for the scheduling time to arrive.
+	//
+	// 	- CheckingCondition: Branch conditions are being checked for the instance.
+	//
+	// 	- WaitResource: The instance is waiting for resources.
+	//
+	// 	- Failure: The instance fails to be run.
+	//
+	// 	- Success: The instance is successfully run.
+	//
+	// 	- Checking: Data quality is being checked for the instance.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// 1234
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the task for which the instance is generated.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task for which the instance is generated.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
+	// The scheduling time.
+	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
+	// The method to trigger instance scheduling.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The ID of the workflow to which the instance belongs.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+	// The workflow instance ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The type of the workflow instance.
+	//
+	// Valid values:
+	//
+	// 	- SmokeTest
+	//
+	// 	- SupplementData
+	//
+	// 	- Manual
+	//
+	// 	- ManualWorkflow
+	//
+	// 	- Normal
+	//
+	// 	- ManualFlow
+	//
 	// example:
 	//
 	// Normal
 	WorkflowInstanceType *string `json:"WorkflowInstanceType,omitempty" xml:"WorkflowInstanceType,omitempty"`
-	WorkflowName         *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// The name of the workflow to which the instance belongs.
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) String() string {
@@ -26909,6 +34586,8 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) SetWorkfl
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -26929,10 +34608,14 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource)
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
+	// The host for running.
+	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
+	// The instance run ID.
+	//
 	// example:
 	//
 	// T3_123
@@ -26958,14 +34641,20 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) Se
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -27025,20 +34714,34 @@ func (s *ListUpstreamTaskInstancesResponse) SetBody(v *ListUpstreamTaskInstances
 }
 
 type ListUpstreamTasksRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
@@ -27074,7 +34777,10 @@ func (s *ListUpstreamTasksRequest) SetProjectEnv(v string) *ListUpstreamTasksReq
 }
 
 type ListUpstreamTasksResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListUpstreamTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
@@ -27100,15 +34806,22 @@ func (s *ListUpstreamTasksResponseBody) SetRequestId(v string) *ListUpstreamTask
 }
 
 type ListUpstreamTasksResponseBodyPagingInfo struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tasks    []*ListUpstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tasks.
+	Tasks []*ListUpstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -27144,80 +34857,140 @@ func (s *ListUpstreamTasksResponseBodyPagingInfo) SetTotalCount(v int32) *ListUp
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasks struct {
+	// The baseline ID.
+	//
 	// example:
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The account ID of the creator.
+	//
 	// example:
 	//
 	// 1000
-	CreateUser *string                                                 `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The information about the associated data source.
 	DataSource *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The description of the task.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1234
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The account ID of the modifier.
+	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the task.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The account ID of the task owner.
+	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The environment of the workspace.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment
+	//
+	// 	- Dev: development environment
+	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The rerun interval. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
+	// The rerun mode.
+	//
+	// Valid values:
+	//
+	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	//
+	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	//
+	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	//
 	// example:
 	//
 	// 3
-	RerunTimes      *int32                                                       `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
+	// The configurations of the runtime environment, such as the resource group information.
 	RuntimeResource *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	StepType        *string                                                      `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	// example:
+	//
+	// Normal
+	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 1
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of task running. Unit: seconds.
+	//
 	// example:
 	//
 	// 3600
-	Timeout *int32                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The method to trigger task scheduling.
 	Trigger *ListUpstreamTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the workflow to which the task belongs.
+	//
 	// example:
 	//
 	// 1234
@@ -27353,6 +35126,8 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasks) SetWorkflowId(v int64) *L
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasksDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -27373,14 +35148,20 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasksDataSource) SetName(v strin
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
+	// The default number of compute units (CUs) configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The ID of the resource group for scheduling configured for task running.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -27411,26 +35192,52 @@ func (s *ListUpstreamTasksResponseBodyPagingInfoTasksRuntimeResource) SetResourc
 }
 
 type ListUpstreamTasksResponseBodyPagingInfoTasksTrigger struct {
+	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
+	// Valid values:
+	//
+	// 	- Pause
+	//
+	// 	- Skip
+	//
+	// 	- Normal
+	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The trigger type.
+	//
+	// Valid values:
+	//
+	// 	- Scheduler: scheduling cycle-based trigger
+	//
+	// 	- Manual: manual trigger
+	//
 	// example:
 	//
 	// Scheduler
@@ -28332,16 +36139,21 @@ func (s *MoveWorkflowDefinitionResponse) SetBody(v *MoveWorkflowDefinitionRespon
 }
 
 type RemoveTaskInstanceDependenciesRequest struct {
+	// The remarks.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
-	Id                      *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of ancestor instances of the instance
 	UpstreamTaskInstanceIds []*int64 `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty" type:"Repeated"`
 }
 
@@ -28369,16 +36181,21 @@ func (s *RemoveTaskInstanceDependenciesRequest) SetUpstreamTaskInstanceIds(v []*
 }
 
 type RemoveTaskInstanceDependenciesShrinkRequest struct {
+	// The remarks.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
-	Id                            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of ancestor instances of the instance
 	UpstreamTaskInstanceIdsShrink *string `json:"UpstreamTaskInstanceIds,omitempty" xml:"UpstreamTaskInstanceIds,omitempty"`
 }
 
@@ -28406,10 +36223,14 @@ func (s *RemoveTaskInstanceDependenciesShrinkRequest) SetUpstreamTaskInstanceIds
 }
 
 type RemoveTaskInstanceDependenciesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -28969,7 +36790,8 @@ type RerunTaskInstancesResponseBody struct {
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -29076,7 +36898,8 @@ type ResumeTaskInstancesResponseBody struct {
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -29330,7 +37153,8 @@ type SetSuccessTaskInstancesResponseBody struct {
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -29723,7 +37547,8 @@ type StopTaskInstancesResponseBody struct {
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -29830,7 +37655,8 @@ type SuspendTaskInstancesResponseBody struct {
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -29882,12 +37708,16 @@ func (s *SuspendTaskInstancesResponse) SetBody(v *SuspendTaskInstancesResponseBo
 }
 
 type TriggerSchedulerTaskInstanceRequest struct {
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The time defined by the HTTP Trigger node.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29915,10 +37745,14 @@ func (s *TriggerSchedulerTaskInstanceRequest) SetTriggerTime(v int64) *TriggerSc
 }
 
 type TriggerSchedulerTaskInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -29973,23 +37807,33 @@ func (s *TriggerSchedulerTaskInstanceResponse) SetBody(v *TriggerSchedulerTaskIn
 }
 
 type UpdateAlertRuleRequest struct {
+	// Specifies whether to enable the rule.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 105412
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// collection_name
-	Name         *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration for the alert notification.
 	Notification *UpdateAlertRuleRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 193379****
-	Owner            *string                                 `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The alert triggering condition.
 	TriggerCondition *UpdateAlertRuleRequestTriggerCondition `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty" type:"Struct"`
 }
 
@@ -30032,20 +37876,30 @@ func (s *UpdateAlertRuleRequest) SetTriggerCondition(v *UpdateAlertRuleRequestTr
 }
 
 type UpdateAlertRuleRequestNotification struct {
+	// The alert notification channels.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The interval at which an alert notification is sent. Unit: minutes. Valid values: [5,10000].
+	//
 	// example:
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
+	// The maximum number of times an alert notification can be sent within a calendar day. Valid values: [1, 10000].
+	//
 	// example:
 	//
 	// 3
-	Maximum   *int32                                         `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	Maximum *int32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The alert recipients.
 	Receivers []*UpdateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// The end time for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
+	// The start time for silence. The time is in the HH:mm:ss format.
+	//
 	// example:
 	//
 	// 00:00:00
@@ -30091,14 +37945,35 @@ func (s *UpdateAlertRuleRequestNotification) SetSilenceStartTime(v string) *Upda
 }
 
 type UpdateAlertRuleRequestNotificationReceivers struct {
+	// The additional configuration of the alert recipient. If the ReceiverType parameter is set to DingdingUrl, you can set this parameter to {"atAll":true} to remind all members in a DingTalk group.
+	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient. Valid valves:
+	//
+	// 	- AliUid: Alibaba Cloud account ID.
+	//
+	// 	- Shift Schedules: the personnel in a shift schedule.
+	//
+	// 	- TaskOwner: the task owner. The task owner can receive custom alerts and event alerts.
+	//
+	// 	- Owner: the baseline owner. The baseline owner can receive baseline alerts.
+	//
+	// 	- WebhookUrl: URL of a custom webhook.
+	//
+	// 	- DingdingUrl: DingTalk webhook URL.
+	//
+	// 	- FeishuUrl: Lark webhook URL.
+	//
+	// 	- WeixinUrl: WeCom webhook URL.
+	//
 	// example:
 	//
 	// TaskOwner
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -30126,8 +38001,38 @@ func (s *UpdateAlertRuleRequestNotificationReceivers) SetReceiverValues(v []*str
 }
 
 type UpdateAlertRuleRequestTriggerCondition struct {
+	// The extended information about the rule. This parameter is required for specific types of alerts.
 	Extension *UpdateAlertRuleRequestTriggerConditionExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	Target    *UpdateAlertRuleRequestTriggerConditionTarget    `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The monitored objects.
+	Target *UpdateAlertRuleRequestTriggerConditionTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The alert type. Valid values:
+	//
+	// 	- Finished: An instance is successfully run.
+	//
+	// 	- UnFinished:An instance does not finish running before a specified point in time.
+	//
+	// 	- Error: An error occurs on an instance.
+	//
+	// 	- CycleUnfinished: An instance does not finish running as expected within a specific cycle.
+	//
+	// 	- Timeout: An instance times out.
+	//
+	// 	- InstanceTransferComplete: An instance is generated by the auto triggered node.
+	//
+	// 	- InstanceTransferFluctuate: The number of generated instances fluctuates.
+	//
+	// 	- ExhaustedError: An error persists after an instance is automatically rerun.
+	//
+	// 	- InstanceKeyword: An instance with errors contains specified keywords.
+	//
+	// 	- InstanceErrorCount: The number of instances on which an error occurs reaches a specified threshold.
+	//
+	// 	- InstanceErrorPercentage: The proportion of instances on which an error occurs in the workspace to the total number of instances reaches a specified threshold.
+	//
+	// 	- ResourceGroupPercentage: The usage rate of the resource group reaches a specified threshold.
+	//
+	// 	- ResourceGroupWaitCount: The number of instances that are waiting for resources in the resource group reaches a specified threshold.
+	//
 	// example:
 	//
 	// ERROR
@@ -30158,13 +38063,20 @@ func (s *UpdateAlertRuleRequestTriggerCondition) SetType(v string) *UpdateAlertR
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtension struct {
-	CycleUnfinished           *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished           `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
-	Error                     *UpdateAlertRuleRequestTriggerConditionExtensionError                     `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	InstanceErrorCount        *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount        `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
-	InstanceErrorPercentage   *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage   `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the CycleUnfinished type.
+	CycleUnfinished *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished `json:"CycleUnfinished,omitempty" xml:"CycleUnfinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Error type.
+	Error *UpdateAlertRuleRequestTriggerConditionExtensionError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorCount type.
+	InstanceErrorCount *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount `json:"InstanceErrorCount,omitempty" xml:"InstanceErrorCount,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceErrorPercentage type.
+	InstanceErrorPercentage *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage `json:"InstanceErrorPercentage,omitempty" xml:"InstanceErrorPercentage,omitempty" type:"Struct"`
+	// The configuration for an alert of the InstanceTransferFluctuate type.
 	InstanceTransferFluctuate *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate `json:"InstanceTransferFluctuate,omitempty" xml:"InstanceTransferFluctuate,omitempty" type:"Struct"`
-	Timeout                   *UpdateAlertRuleRequestTriggerConditionExtensionTimeout                   `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
-	UnFinished                *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished                `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
+	// The configuration for an alert of the Timeout type.
+	Timeout *UpdateAlertRuleRequestTriggerConditionExtensionTimeout `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+	// The configuration for an alert of the UnFinished type.
+	UnFinished *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished `json:"UnFinished,omitempty" xml:"UnFinished,omitempty" type:"Struct"`
 }
 
 func (s UpdateAlertRuleRequestTriggerConditionExtension) String() string {
@@ -30211,6 +38123,7 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtension) SetUnFinished(v *Updat
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished struct {
+	// The configurations of the scheduling cycle and timeout period of the instance.
 	CycleAndTime []*UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime `json:"CycleAndTime,omitempty" xml:"CycleAndTime,omitempty" type:"Repeated"`
 }
 
@@ -30228,10 +38141,14 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinished) SetCycl
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime struct {
+	// The ID of the scheduling cycle of the instance. Valid values: [1,288].
+	//
 	// example:
 	//
 	// 1
 	CycleId *int32 `json:"CycleId,omitempty" xml:"CycleId,omitempty"`
+	// The latest completion time of the instance within the scheduling cycle. The time is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 01:00
@@ -30257,11 +38174,14 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndT
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionError struct {
+	// Specifies whether to trigger an alert if a batch synchronization task is automatically rerun upon a failure.
+	//
 	// example:
 	//
 	// true
-	AutoRerunAlert *bool    `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
-	StreamTaskIds  []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
+	AutoRerunAlert *bool `json:"AutoRerunAlert,omitempty" xml:"AutoRerunAlert,omitempty"`
+	// The IDs of the real-time computing tasks. This parameter is required when you monitor real-time computing tasks.
+	StreamTaskIds []*int64 `json:"StreamTaskIds,omitempty" xml:"StreamTaskIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAlertRuleRequestTriggerConditionExtensionError) String() string {
@@ -30283,6 +38203,8 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionError) SetStreamTaskIds(
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount struct {
+	// The maximum number of instances on which an error occurs. Valid values: [1,10000].
+	//
 	// example:
 	//
 	// 10
@@ -30303,6 +38225,8 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorCount) SetC
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage struct {
+	// The maximum percentage of instances on which an error occurs in the workspace to the total number of instances. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
@@ -30323,10 +38247,20 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceErrorPercentage)
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuate struct {
+	// The maximum percentage of fluctuation in the number of auto triggered node instances that are generated in your workspace. Valid values: [1-100].
+	//
 	// example:
 	//
 	// 10
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The way in which the number of auto triggered node instances that are generated in your workspace fluctuates. Valid values:
+	//
+	// 	- abs: the absolute value. The number of instances increases or decreases.
+	//
+	// 	- increase: The number of instances increases.
+	//
+	// 	- decrease: The number of instances decreases.
+	//
 	// example:
 	//
 	// abs
@@ -30352,6 +38286,8 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionInstanceTransferFluctuat
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionTimeout struct {
+	// The timeout period. Unit: minutes. Valid values: [1, 21600].
+	//
 	// example:
 	//
 	// 10
@@ -30372,6 +38308,8 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionTimeout) SetTimeoutInMin
 }
 
 type UpdateAlertRuleRequestTriggerConditionExtensionUnFinished struct {
+	// The latest completion time of the instance. The period is in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+	//
 	// example:
 	//
 	// 12:00
@@ -30392,8 +38330,20 @@ func (s *UpdateAlertRuleRequestTriggerConditionExtensionUnFinished) SetUnFinishe
 }
 
 type UpdateAlertRuleRequestTriggerConditionTarget struct {
+	// The nodes that are not to be monitored.
 	AllowTasks []*int64 `json:"AllowTasks,omitempty" xml:"AllowTasks,omitempty" type:"Repeated"`
-	Ids        []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The IDs of monitored objects.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the monitored objects. Valid values:
+	//
+	// 	- Task: node
+	//
+	// 	- Baseline: baseline
+	//
+	// 	- Project: workspace
+	//
+	// 	- BizProcess: workflow
+	//
 	// example:
 	//
 	// Task
@@ -30424,23 +38374,33 @@ func (s *UpdateAlertRuleRequestTriggerConditionTarget) SetType(v string) *Update
 }
 
 type UpdateAlertRuleShrinkRequest struct {
+	// Specifies whether to enable the rule.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 105412
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// collection_name
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configuration for the alert notification.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The ID of the Alibaba Cloud account used by the owner of the rule.
+	//
 	// example:
 	//
 	// 193379****
-	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The alert triggering condition.
 	TriggerConditionShrink *string `json:"TriggerCondition,omitempty" xml:"TriggerCondition,omitempty"`
 }
 
@@ -30483,10 +38443,14 @@ func (s *UpdateAlertRuleShrinkRequest) SetTriggerConditionShrink(v string) *Upda
 }
 
 type UpdateAlertRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D85FEE2B-6174-5817-AF9E-FDD02FEDA5BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -30541,31 +38505,54 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 }
 
 type UpdateDIAlarmRuleRequest struct {
+	// The ID of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 34982
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 1
-	DIJobId     *int64  `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The metric type in the alert rule. Valid values:
+	//
+	// 	- Heartbeat
+	//
+	// 	- FailoverCount
+	//
+	// 	- Delay
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
+	//
 	// example:
 	//
 	// Heartbeat
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the alert rule.
+	//
 	// example:
 	//
 	// alarm_rule_name
-	Name                 *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The alert notification settings.
 	NotificationSettings *UpdateDIAlarmRuleRequestNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
-	TriggerConditions    []*UpdateDIAlarmRuleRequestTriggerConditions  `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
+	// The conditions that can trigger the alert rule.
+	TriggerConditions []*UpdateDIAlarmRuleRequestTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDIAlarmRuleRequest) String() string {
@@ -30617,11 +38604,15 @@ func (s *UpdateDIAlarmRuleRequest) SetTriggerConditions(v []*UpdateDIAlarmRuleRe
 }
 
 type UpdateDIAlarmRuleRequestNotificationSettings struct {
+	// The duration of the alert suppression interval. Default value: 5. Unit: minutes.
+	//
 	// example:
 	//
 	// 5
-	InhibitionInterval    *int64                                                               `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
-	NotificationChannels  []*UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	InhibitionInterval *int64 `json:"InhibitionInterval,omitempty" xml:"InhibitionInterval,omitempty"`
+	// The alert notification methods.
+	NotificationChannels []*UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The settings of alert notification recipients.
 	NotificationReceivers []*UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -30649,7 +38640,22 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettings) SetNotificationReceivers(
 }
 
 type UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels struct {
+	// The alert notification method. Valid values:
+	//
+	// 	- Mail
+	//
+	// 	- Phone
+	//
+	// 	- Sms
+	//
+	// 	- Ding
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Warning
@@ -30675,10 +38681,17 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels) SetSe
 }
 
 type UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers struct {
+	// The recipient type. Valid values: AliyunUid, DingToken, FeishuToken, and WebHookUrl.
+	//
 	// example:
 	//
 	// DingToken
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The recipient.
+	//
+	// 	- If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
+	//
+	// 	- If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -30701,15 +38714,32 @@ func (s *UpdateDIAlarmRuleRequestNotificationSettingsNotificationReceivers) SetR
 }
 
 type UpdateDIAlarmRuleRequestTriggerConditions struct {
+	// The types of DDL operations for which the alert rule takes effect.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
+	// The time interval for alert calculation. Unit: minutes.
+	//
 	// example:
 	//
 	// 15
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The severity level. Valid values:
+	//
+	// 	- Warning
+	//
+	// 	- Critical
+	//
 	// example:
 	//
 	// Warning
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The alert threshold.
+	//
+	// 	- If the alert rule is for task status, you do not need to specify a threshold.
+	//
+	// 	- If the alert rule is for failovers, you must specify the number of failovers.
+	//
+	// 	- If the alert rule is for latency, you must specify the latency duration, in seconds.
+	//
 	// example:
 	//
 	// 5
@@ -30745,31 +38775,54 @@ func (s *UpdateDIAlarmRuleRequestTriggerConditions) SetThreshold(v int64) *Updat
 }
 
 type UpdateDIAlarmRuleShrinkRequest struct {
+	// The ID of the alert rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 34982
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
+	// The ID of the synchronization task.
+	//
 	// example:
 	//
 	// 1
-	DIJobId     *int64  `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the alert rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the alert rule. By default, the alert rule is disabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The metric type in the alert rule. Valid values:
+	//
+	// 	- Heartbeat
+	//
+	// 	- FailoverCount
+	//
+	// 	- Delay
+	//
+	// 	- DdlReport
+	//
+	// 	- ResourceUtilization
+	//
 	// example:
 	//
 	// Heartbeat
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The name of the alert rule.
+	//
 	// example:
 	//
 	// alarm_rule_name
-	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The alert notification settings.
 	NotificationSettingsShrink *string `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty"`
-	TriggerConditionsShrink    *string `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty"`
+	// The conditions that can trigger the alert rule.
+	TriggerConditionsShrink *string `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty"`
 }
 
 func (s UpdateDIAlarmRuleShrinkRequest) String() string {
@@ -30821,10 +38874,18 @@ func (s *UpdateDIAlarmRuleShrinkRequest) SetTriggerConditionsShrink(v string) *U
 }
 
 type UpdateDIAlarmRuleResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// A6C6B486-E3A2-5D52-9E76-D9380485D946
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -30879,17 +38940,29 @@ func (s *UpdateDIAlarmRuleResponse) SetBody(v *UpdateDIAlarmRuleResponseBody) *U
 }
 
 type UpdateDIJobRequest struct {
+	// The ID of the synchronization task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11588
-	DIJobId             *int64                                   `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	Description         *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	JobSettings         *UpdateDIJobRequestJobSettings           `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	ProjectId           *int64                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ResourceSettings    *UpdateDIJobRequestResourceSettings      `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
-	TableMappings       []*UpdateDIJobRequestTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the synchronization task.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
+	JobSettings *UpdateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
+	// DataWorks工作空间ID。您可以通过[ListProjects](https://help.aliyun.com/document_detail/178393.html)接口获取工作空间ID。
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource settings.
+	ResourceSettings *UpdateDIJobRequestResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
+	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	TableMappings []*UpdateDIJobRequestTableMappings `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
 	TransformationRules []*UpdateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
@@ -30937,14 +39010,20 @@ func (s *UpdateDIJobRequest) SetTransformationRules(v []*UpdateDIJobRequestTrans
 }
 
 type UpdateDIJobRequestJobSettings struct {
+	// The channel control settings for the synchronization task. The value of this parameter must be a JSON string.
+	//
 	// example:
 	//
 	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
-	ChannelSettings        *string                                                `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	ChannelSettings *string `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	// The data type mappings between source fields and destination fields.
 	ColumnDataTypeSettings []*UpdateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
-	CycleScheduleSettings  *UpdateDIJobRequestJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
-	DdlHandlingSettings    []*UpdateDIJobRequestJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
-	RuntimeSettings        []*UpdateDIJobRequestJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+	// The settings for periodic scheduling.
+	CycleScheduleSettings *UpdateDIJobRequestJobSettingsCycleScheduleSettings `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	// The processing settings for DDL messages.
+	DdlHandlingSettings []*UpdateDIJobRequestJobSettingsDdlHandlingSettings `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	// The runtime settings.
+	RuntimeSettings []*UpdateDIJobRequestJobSettingsRuntimeSettings `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDIJobRequestJobSettings) String() string {
@@ -30981,10 +39060,14 @@ func (s *UpdateDIJobRequestJobSettings) SetRuntimeSettings(v []*UpdateDIJobReque
 }
 
 type UpdateDIJobRequestJobSettingsColumnDataTypeSettings struct {
+	// The data type of the destination field.
+	//
 	// example:
 	//
 	// text
 	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
+	// The data type of the source field.
+	//
 	// example:
 	//
 	// bigint
@@ -31010,6 +39093,8 @@ func (s *UpdateDIJobRequestJobSettingsColumnDataTypeSettings) SetSourceDataType(
 }
 
 type UpdateDIJobRequestJobSettingsCycleScheduleSettings struct {
+	// The scheduling parameters.
+	//
 	// example:
 	//
 	// bizdate=$bizdate
@@ -31030,10 +39115,34 @@ func (s *UpdateDIJobRequestJobSettingsCycleScheduleSettings) SetScheduleParamete
 }
 
 type UpdateDIJobRequestJobSettingsDdlHandlingSettings struct {
+	// The processing policy. Valid values:
+	//
+	// 	- Ignore: ignores a DDL message.
+	//
+	// 	- Critical: reports an error for a DDL message.
+	//
+	// 	- Normal: normally processes a DDL message.
+	//
 	// example:
 	//
 	// Critical
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The type of the DDL operation. Valid values:
+	//
+	// 	- RenameColumn
+	//
+	// 	- ModifyColumn
+	//
+	// 	- CreateTable
+	//
+	// 	- TruncateTable
+	//
+	// 	- DropTable
+	//
+	// 	- DropColumn
+	//
+	// 	- AddColumn
+	//
 	// example:
 	//
 	// AddColumn
@@ -31059,10 +39168,30 @@ func (s *UpdateDIJobRequestJobSettingsDdlHandlingSettings) SetType(v string) *Up
 }
 
 type UpdateDIJobRequestJobSettingsRuntimeSettings struct {
+	// The name of the configuration item. Valid values:
+	//
+	// 	- runtime.offline.speed.limit.mb: indicates the maximum transmission rate that is allowed for a batch synchronization task. This configuration item takes effect only when runtime.offline.speed.limit.enable is set to true.
+	//
+	// 	- runtime.offline.speed.limit.enable: indicates whether throttling is enabled for a batch synchronization task.
+	//
+	// 	- dst.offline.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a batch synchronization task.
+	//
+	// 	- runtime.offline.concurrent: indicates the maximum number of parallel threads that are allowed for a batch synchronization task.
+	//
+	// 	- dst.realtime.connection.max: indicates the maximum number of connections that are allowed for writing data to the destination of a real-time synchronization task.
+	//
+	// 	- runtime.enable.auto.create.schema: indicates whether schemas are automatically created in the destination of a synchronization task.
+	//
+	// 	- src.offline.datasource.max.connection: indicates the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+	//
+	// 	- runtime.realtime.concurrent: indicates the maximum number of parallel threads that are allowed for a real-time synchronization task.
+	//
 	// example:
 	//
 	// runtime.offline.concurrent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// 1
@@ -31088,8 +39217,11 @@ func (s *UpdateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *Updat
 }
 
 type UpdateDIJobRequestResourceSettings struct {
-	OfflineResourceSettings  *UpdateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for batch synchronization.
+	OfflineResourceSettings *UpdateDIJobRequestResourceSettingsOfflineResourceSettings `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The resource used for real-time synchronization.
 	RealtimeResourceSettings *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	// The resource used for scheduling.
 	ScheduleResourceSettings *UpdateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
 }
 
@@ -31117,10 +39249,14 @@ func (s *UpdateDIJobRequestResourceSettings) SetScheduleResourceSettings(v *Upda
 }
 
 type UpdateDIJobRequestResourceSettingsOfflineResourceSettings struct {
+	// The number of compute units (CUs) in the resource group for Data Integration that are used for batch synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for batch synchronization.
+	//
 	// example:
 	//
 	// S_res_group_111_222
@@ -31146,10 +39282,14 @@ func (s *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) SetResourceG
 }
 
 type UpdateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
+	// The number of CUs in the resource group for Data Integration that are used for real-time synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for Data Integration used for real-time synchronization.
+	//
 	// example:
 	//
 	// S_res_group_111_222
@@ -31175,10 +39315,14 @@ func (s *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) SetResource
 }
 
 type UpdateDIJobRequestResourceSettingsScheduleResourceSettings struct {
+	// The number of CUs in the resource group for scheduling that are used for batch synchronization.
+	//
 	// example:
 	//
 	// 2.0
 	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The identifier of the resource group for scheduling used for batch synchronization.
+	//
 	// example:
 	//
 	// S_res_group_235454102432001_1721021993437
@@ -31204,8 +39348,10 @@ func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetResource
 }
 
 type UpdateDIJobRequestTableMappings struct {
+	// The list of rules used to select synchronization objects in the source. The objects can be databases or tables.
 	SourceObjectSelectionRules []*UpdateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
-	TransformationRules        []*UpdateDIJobRequestTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+	// The list of transformation rules that you want to apply to the synchronization objects selected from the source. Each entry in the list defines a transformation rule.
+	TransformationRules []*UpdateDIJobRequestTableMappingsTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDIJobRequestTableMappings) String() string {
@@ -31227,18 +39373,30 @@ func (s *UpdateDIJobRequestTableMappings) SetTransformationRules(v []*UpdateDIJo
 }
 
 type UpdateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
+	// The operation that is performed to select objects. Valid values: Include and Exclude.
+	//
 	// example:
 	//
 	// Include
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The expression.
+	//
 	// example:
 	//
 	// mysql_table_1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The expression type. Valid values: Exact and Regex.
+	//
 	// example:
 	//
 	// Exact
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
+	// The object type. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Database
+	//
 	// example:
 	//
 	// Table
@@ -31274,14 +39432,32 @@ func (s *UpdateDIJobRequestTableMappingsSourceObjectSelectionRules) SetObjectTyp
 }
 
 type UpdateDIJobRequestTableMappingsTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which you want to perform the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -31312,18 +39488,48 @@ func (s *UpdateDIJobRequestTableMappingsTransformationRules) SetRuleTargetType(v
 }
 
 type UpdateDIJobRequestTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
 	// example:
 	//
 	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The expression of the rule. The expression must be a JSON string.
+	//
+	// Example of a renaming rule: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922","variables":[{"variableName":"srcDatabaseName","variableRules":[{"from":"fromdb","to":"todb"}]}]}.
+	//
+	// expression: the expression of the renaming rule. The expression may contain the following variables: ${srcDatasourceName}, ${srcDatabaseName}, and ${srcTableName}. ${srcDatasourceName} indicates the name of the source. ${srcDatabaseName} indicates the name of a source database. ${srcTableName} indicates the name of a source table. variables: the generation rule for a variable used in the expression of the renaming rule. The default value of the specified variable is the original value of the object indicated by the variable. You can define a group of string replacement rules to change the original values based on your business requirements. variableName: the name of the variable. The variable name cannot be enclosed in ${}. variableRules: the string replacement rules for variables. The system runs the string replacement rules in sequence. from specifies the original string. to specifies the new string. Example of a rule used to add a specific field to the destination and assign a value to the field: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}.
+	//
+	// If you do not configure such a rule, no fields are added to the destination and no values are assigned by default. columnName: the name of the field that you want to add. columnValueType: the value type of the field. Valid values: Constant and Variable. columnValue: the value of the field. If you set the valueType parameter to Constant, set the columnValue parameter to a custom constant of the STRING type. If you set the valueType parameter to Variable, set the columnValue to a built-in variable. The following built-in variables are supported: EXECUTE_TIME (LONG data type), DB_NAME_SRC (STRING data type), DATASOURCE_NAME_SRC (STRING data type), TABLE_NAME_SRC (STRING data type), DB_NAME_DEST (STRING data type), DATASOURCE_NAME_DEST (STRING data type), TABLE_NAME_DEST (STRING data type), and DB_NAME_SRC_TRANSED (STRING data type). EXECUTE_TIME specifies the execution time. DB_NAME_SRC indicates the name of a source database. DATASOURCE_NAME_SRC specifies the name of the source. TABLE_NAME_SRC specifies the name of a source table. DB_NAME_DEST specifies the name of a destination database. DATASOURCE_NAME_DEST specifies the name of the destination. TABLE_NAME_DEST specifies the name of a destination table. DB_NAME_SRC_TRANSED specifies the database name obtained after a transformation. Example of a rule used to specify primary key fields for a destination table: {"columns":["ukcolumn1","ukcolumn2"]}.
+	//
+	// If you do not configure such a rule, the primary key fields in the mapped source table are used for the destination table by default. If the destination table is an existing table, Data Integration does not modify the schema of the destination table. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. If the destination table is automatically created by the system, Data Integration automatically creates the schema of the destination table. The schema contains the primary key fields that you specify. If the specified primary key fields do not exist in the destination table, an error is reported when the synchronization task starts to run. Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+	//
+	// If you do not configure such a rule, the default processing policy for messages generated for insert, update, and delete operations is Normal. dmlType: the DML operation. Valid values: Insert, Update, and Delete. dmlAction: the processing policy for DML messages. Valid values: Normal, Ignore, Filter, and LogicalDelete. Filter indicates conditional processing. You can set the dmlAction parameter to Filter only when the dmlType parameter is set to Update or Delete. filterCondition: the condition used to filter DML messages. This parameter is required only when the dmlAction parameter is set to Filter.
+	//
 	// example:
 	//
 	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
 	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
+	// The name of the rule. If the values of the RuleActionType parameter and the RuleTargetType parameter are the same for multiple transformation rules, you must make sure that the transformation rule names are unique.
+	//
 	// example:
 	//
 	// rename_rule_1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the object on which you want to perform the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
 	// example:
 	//
 	// Table
@@ -31359,17 +39565,29 @@ func (s *UpdateDIJobRequestTransformationRules) SetRuleTargetType(v string) *Upd
 }
 
 type UpdateDIJobShrinkRequest struct {
+	// The ID of the synchronization task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11588
-	DIJobId                   *int64  `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	JobSettingsShrink         *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	ProjectId                 *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ResourceSettingsShrink    *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
-	TableMappingsShrink       *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
+	// The description of the synchronization task.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
+	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
+	// DataWorks工作空间ID。您可以通过[ListProjects](https://help.aliyun.com/document_detail/178393.html)接口获取工作空间ID。
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource settings.
+	ResourceSettingsShrink *string `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty"`
+	// The list of mappings between rules used to select synchronization objects in the source and transformation rules applied to the selected synchronization objects. Each entry in the list displays a mapping between a rule used to select synchronization objects and a transformation rule applied to the selected synchronization objects.
+	TableMappingsShrink *string `json:"TableMappings,omitempty" xml:"TableMappings,omitempty"`
+	// The list of transformation rules for objects involved in the synchronization task. Each entry in the list defines a transformation rule.
 	TransformationRulesShrink *string `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty"`
 }
 
@@ -31417,10 +39635,18 @@ func (s *UpdateDIJobShrinkRequest) SetTransformationRulesShrink(v string) *Updat
 }
 
 type UpdateDIJobResponseBody struct {
+	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// AAC30B35-820D-5F3E-A42C-E96BB6379325
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -31474,7 +39700,1857 @@ func (s *UpdateDIJobResponse) SetBody(v *UpdateDIJobResponseBody) *UpdateDIJobRe
 	return s
 }
 
+type UpdateDataQualityEvaluationTaskRequest struct {
+	DataQualityRules []*UpdateDataQualityEvaluationTaskRequestDataQualityRules `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 358750
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// 质量监控任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	Hooks []*UpdateDataQualityEvaluationTaskRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7227061794
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 质量监控任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	Notifications *UpdateDataQualityEvaluationTaskRequestNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
+	// 项目空间Id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	Target *UpdateDataQualityEvaluationTaskRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// 数据质量校验任务的触发配置
+	Trigger *UpdateDataQualityEvaluationTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetDataQualityRules(v []*UpdateDataQualityEvaluationTaskRequestDataQualityRules) *UpdateDataQualityEvaluationTaskRequest {
+	s.DataQualityRules = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetDataSourceId(v int64) *UpdateDataQualityEvaluationTaskRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetDescription(v string) *UpdateDataQualityEvaluationTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetHooks(v []*UpdateDataQualityEvaluationTaskRequestHooks) *UpdateDataQualityEvaluationTaskRequest {
+	s.Hooks = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetId(v int64) *UpdateDataQualityEvaluationTaskRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetName(v string) *UpdateDataQualityEvaluationTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetNotifications(v *UpdateDataQualityEvaluationTaskRequestNotifications) *UpdateDataQualityEvaluationTaskRequest {
+	s.Notifications = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetProjectId(v int64) *UpdateDataQualityEvaluationTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetRuntimeConf(v string) *UpdateDataQualityEvaluationTaskRequest {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetTarget(v *UpdateDataQualityEvaluationTaskRequestTarget) *UpdateDataQualityEvaluationTaskRequest {
+	s.Target = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequest) SetTrigger(v *UpdateDataQualityEvaluationTaskRequestTrigger) *UpdateDataQualityEvaluationTaskRequest {
+	s.Trigger = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRules struct {
+	CheckingConfig *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	Enabled       *bool                                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ErrorHandlers []*UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1022171560
+	Id             *int64                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	SamplingConfig *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// Normal
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// SYSTEM:field:null_value:fixed:0
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetCheckingConfig(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetDescription(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetEnabled(v bool) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetErrorHandlers(v []*UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetId(v int64) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetName(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetSamplingConfig(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetSeverity(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRules) SetTemplateCode(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRules {
+	s.TemplateCode = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig struct {
+	// example:
+	//
+	// {"bizdate": ["-1"]}
+	ReferencedSamplesFilter *string                                                                         `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	Thresholds              *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetReferencedSamplesFilter(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetThresholds(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig) SetType(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds struct {
+	Critical *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	Expected *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	Warned   *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned   `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetCritical(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetExpected(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds) SetWarned(v *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0.01
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical) SetValue(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected struct {
+	// example:
+	//
+	// =
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected) SetValue(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned struct {
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// 0.001
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetOperator(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned) SetValue(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers struct {
+	// example:
+	//
+	// SELECT 	- FROM ods_d_openapi_log WHERE status = \\"Error\\"
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) SetErrorDataFilter(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers) SetType(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig struct {
+	// example:
+	//
+	// CountNotIn
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// example:
+	//
+	// status != \\"Succeeded\\"
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// example:
+	//
+	// odps.sql.type.system.odps2=True,odps.sql.hive.compatible=True
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetMetric(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetMetricParameters(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetSamplingFilter(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) SetSettingConfig(v string) *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestHooks struct {
+	// Hook触发条件
+	//
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Hook类型
+	//
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestHooks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestHooks) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestHooks) SetCondition(v string) *UpdateDataQualityEvaluationTaskRequestHooks {
+	s.Condition = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestHooks) SetType(v string) *UpdateDataQualityEvaluationTaskRequestHooks {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestNotifications struct {
+	// 通知触发条件
+	//
+	// example:
+	//
+	// ${severity} == "High" AND ${status} == "Critical"
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// 具体的消息通知设置
+	Notifications []*UpdateDataQualityEvaluationTaskRequestNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotifications) SetCondition(v string) *UpdateDataQualityEvaluationTaskRequestNotifications {
+	s.Condition = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotifications) SetNotifications(v []*UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) *UpdateDataQualityEvaluationTaskRequestNotifications {
+	s.Notifications = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestNotificationsNotifications struct {
+	// 通知方式
+	NotificationChannels []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// 告警接收人设置
+	NotificationReceivers []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNotificationChannels(v []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) *UpdateDataQualityEvaluationTaskRequestNotificationsNotifications {
+	s.NotificationChannels = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotifications) SetNotificationReceivers(v []*UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) *UpdateDataQualityEvaluationTaskRequestNotificationsNotifications {
+	s.NotificationReceivers = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels struct {
+	// 通知方式
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels) SetChannels(v []*string) *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels {
+	s.Channels = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers struct {
+	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	//
+	// example:
+	//
+	// {  "atAll": true }
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// 告警接收人类型
+	//
+	// example:
+	//
+	// DingdingUrl
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// 告警接收人
+	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetExtension(v string) *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.Extension = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetReceiverType(v string) *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers) SetReceiverValues(v []*string) *UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers {
+	s.ReceiverValues = v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestTarget struct {
+	// 表所属的数据库类型
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// 分区表的分区设置
+	//
+	// example:
+	//
+	// dt=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// 表在数据地图中的唯一ID
+	//
+	// example:
+	//
+	// odsp.openapi.ods_d_openapi_log
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestTarget) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestTarget) SetDatabaseType(v string) *UpdateDataQualityEvaluationTaskRequestTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestTarget) SetPartitionSpec(v string) *UpdateDataQualityEvaluationTaskRequestTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestTarget) SetTableGuid(v string) *UpdateDataQualityEvaluationTaskRequestTarget {
+	s.TableGuid = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskRequestTrigger struct {
+	// 具体指明哪些调度节点的实例执行成功后可以触发
+	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// 何种事件可以触发质量校验任务执行
+	//
+	// example:
+	//
+	// ByScheduledTaskInstance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestTrigger) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskRequestTrigger) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestTrigger) SetTaskIds(v []*int64) *UpdateDataQualityEvaluationTaskRequestTrigger {
+	s.TaskIds = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskRequestTrigger) SetType(v string) *UpdateDataQualityEvaluationTaskRequestTrigger {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskShrinkRequest struct {
+	DataQualityRulesShrink *string `json:"DataQualityRules,omitempty" xml:"DataQualityRules,omitempty"`
+	// example:
+	//
+	// 358750
+	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// 质量监控任务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7227061794
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 质量监控任务名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 数据质量校验任务通知订阅配置
+	NotificationsShrink *string `json:"Notifications,omitempty" xml:"Notifications,omitempty"`
+	// 项目空间Id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时把SQL引擎指定为SPARK-SQL
+	//
+	// example:
+	//
+	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// 参看 DataQualityTarget示例	数据质量校验任务的监控对象，参考 DataQualityTarget
+	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// 数据质量校验任务的触发配置
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetDataQualityRulesShrink(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.DataQualityRulesShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetDataSourceId(v int64) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetDescription(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetHooksShrink(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.HooksShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetId(v int64) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetName(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetNotificationsShrink(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.NotificationsShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetProjectId(v int64) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetRuntimeConf(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.RuntimeConf = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetTargetShrink(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.TargetShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskShrinkRequest) SetTriggerShrink(v string) *UpdateDataQualityEvaluationTaskShrinkRequest {
+	s.TriggerShrink = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskResponseBody struct {
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskResponseBody) SetRequestId(v string) *UpdateDataQualityEvaluationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskResponseBody) SetSuccess(v bool) *UpdateDataQualityEvaluationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataQualityEvaluationTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataQualityEvaluationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataQualityEvaluationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityEvaluationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityEvaluationTaskResponse) SetHeaders(v map[string]*string) *UpdateDataQualityEvaluationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskResponse) SetStatusCode(v int32) *UpdateDataQualityEvaluationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataQualityEvaluationTaskResponse) SetBody(v *UpdateDataQualityEvaluationTaskResponseBody) *UpdateDataQualityEvaluationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDataQualityRuleRequest struct {
+	// The check settings for sample data.
+	CheckingConfig *UpdateDataQualityRuleRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The description of the rule. The description can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
+	ErrorHandlers []*UpdateDataQualityRuleRequestErrorHandlers `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty" type:"Repeated"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfig *UpdateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+	// The strength of the rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
+	// example:
+	//
+	// High
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	Target *UpdateDataQualityRuleRequestTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The ID of the template used by the rule.
+	//
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequest) SetCheckingConfig(v *UpdateDataQualityRuleRequestCheckingConfig) *UpdateDataQualityRuleRequest {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetDescription(v string) *UpdateDataQualityRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetEnabled(v bool) *UpdateDataQualityRuleRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetErrorHandlers(v []*UpdateDataQualityRuleRequestErrorHandlers) *UpdateDataQualityRuleRequest {
+	s.ErrorHandlers = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetId(v int64) *UpdateDataQualityRuleRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetName(v string) *UpdateDataQualityRuleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetProjectId(v int64) *UpdateDataQualityRuleRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetSamplingConfig(v *UpdateDataQualityRuleRequestSamplingConfig) *UpdateDataQualityRuleRequest {
+	s.SamplingConfig = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetSeverity(v string) *UpdateDataQualityRuleRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetTarget(v *UpdateDataQualityRuleRequestTarget) *UpdateDataQualityRuleRequest {
+	s.Target = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequest) SetTemplateCode(v string) *UpdateDataQualityRuleRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The threshold settings.
+	Thresholds *UpdateDataQualityRuleRequestCheckingConfigThresholds `json:"Thresholds,omitempty" xml:"Thresholds,omitempty" type:"Struct"`
+	// The threshold calculation method. Valid values:
+	//
+	// 	- Fixed
+	//
+	// 	- Fluctation
+	//
+	// 	- FluctationDiscreate
+	//
+	// 	- Auto
+	//
+	// 	- Average
+	//
+	// 	- Variance
+	//
+	// example:
+	//
+	// Fixed
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfig) SetReferencedSamplesFilter(v string) *UpdateDataQualityRuleRequestCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfig) SetThresholds(v *UpdateDataQualityRuleRequestCheckingConfigThresholds) *UpdateDataQualityRuleRequestCheckingConfig {
+	s.Thresholds = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfig) SetType(v string) *UpdateDataQualityRuleRequestCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestCheckingConfigThresholds struct {
+	// The threshold settings for critical alerts.
+	Critical *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" type:"Struct"`
+	// The expected threshold setting.
+	Expected *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected `json:"Expected,omitempty" xml:"Expected,omitempty" type:"Struct"`
+	// The threshold settings for normal alerts.
+	Warned *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned `json:"Warned,omitempty" xml:"Warned,omitempty" type:"Struct"`
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) SetCritical(v *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) *UpdateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Critical = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) SetExpected(v *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) *UpdateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Expected = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholds) SetWarned(v *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) *UpdateDataQualityRuleRequestCheckingConfigThresholds {
+	s.Warned = v
+	return s
+}
+
+type UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue > 0.05
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetExpression(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Expression = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetOperator(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical) SetValue(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsCritical {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue <= 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetExpression(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Expression = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetOperator(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected) SetValue(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsExpected {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned struct {
+	// 阈值表达式。
+	//
+	// 波动率类型规则必须使用表达式方式表示波动阈值。如：
+	//
+	// - 波动上升大于0.01： $checkValue > 0.01
+	//
+	// - 波动下降大于0.01：$checkValue < -0.01
+	//
+	// - 波动率绝对值：abs($checkValue) > 0.01
+	//
+	// 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value
+	//
+	// example:
+	//
+	// $checkValue > 0.01
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The comparison operator. Valid values:
+	//
+	// 	- \\>
+	//
+	// 	- \\>=
+	//
+	// 	- <
+	//
+	// 	- <=
+	//
+	// 	- !=
+	//
+	// 	- \\=
+	//
+	// example:
+	//
+	// >
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The threshold value.
+	//
+	// example:
+	//
+	// 100.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetExpression(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Expression = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetOperator(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned) SetValue(v string) *UpdateDataQualityRuleRequestCheckingConfigThresholdsWarned {
+	s.Value = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestErrorHandlers struct {
+	// The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+	//
+	// example:
+	//
+	// SELECT 	- FROM tb_api_log WHERE id IS NULL
+	ErrorDataFilter *string `json:"ErrorDataFilter,omitempty" xml:"ErrorDataFilter,omitempty"`
+	// The type of the operation. Valid values:
+	//
+	// 	- SaveErrorData
+	//
+	// example:
+	//
+	// SaveErrorData
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestErrorHandlers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestErrorHandlers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestErrorHandlers) SetErrorDataFilter(v string) *UpdateDataQualityRuleRequestErrorHandlers {
+	s.ErrorDataFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestErrorHandlers) SetType(v string) *UpdateDataQualityRuleRequestErrorHandlers {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestSamplingConfig struct {
+	// The metrics used for sampling. You can leave this parameter empty if you use a rule template. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	//
+	// example:
+	//
+	// Min
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
+	// example:
+	//
+	// { "Columns": [ "id", "name" ] , "SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+	//
+	// example:
+	//
+	// id IS NULL
+	SamplingFilter *string `json:"SamplingFilter,omitempty" xml:"SamplingFilter,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestSamplingConfig) SetMetric(v string) *UpdateDataQualityRuleRequestSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestSamplingConfig) SetMetricParameters(v string) *UpdateDataQualityRuleRequestSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestSamplingConfig) SetSamplingFilter(v string) *UpdateDataQualityRuleRequestSamplingConfig {
+	s.SamplingFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestSamplingConfig) SetSettingConfig(v string) *UpdateDataQualityRuleRequestSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type UpdateDataQualityRuleRequestTarget struct {
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
+	// example:
+	//
+	// maxcompute
+	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// The configuration of the partitioned table.
+	//
+	// example:
+	//
+	// ds=$[yyyymmdd-1]
+	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// The ID of the table that is limited by the rule in Data Map.
+	//
+	// example:
+	//
+	// odps.unit_test.tb_unit_test
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityRuleRequestTarget) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleRequestTarget) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleRequestTarget) SetDatabaseType(v string) *UpdateDataQualityRuleRequestTarget {
+	s.DatabaseType = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestTarget) SetPartitionSpec(v string) *UpdateDataQualityRuleRequestTarget {
+	s.PartitionSpec = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestTarget) SetTableGuid(v string) *UpdateDataQualityRuleRequestTarget {
+	s.TableGuid = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleRequestTarget) SetType(v string) *UpdateDataQualityRuleRequestTarget {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityRuleShrinkRequest struct {
+	// The check settings for sample data.
+	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
+	// The description of the rule. The description can be up to 500 characters in length.
+	//
+	// example:
+	//
+	// this is a odps _sql task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The operations that you can perform after the rule-based check fails.
+	ErrorHandlersShrink *string `json:"ErrorHandlers,omitempty" xml:"ErrorHandlers,omitempty"`
+	// The rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
+	// The strength of the rule. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- High
+	//
+	// example:
+	//
+	// High
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The monitored object of the rule.
+	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the template used by the rule.
+	//
+	// example:
+	//
+	// system::user_defined
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s UpdateDataQualityRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetCheckingConfigShrink(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.CheckingConfigShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetDescription(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetEnabled(v bool) *UpdateDataQualityRuleShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetErrorHandlersShrink(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.ErrorHandlersShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetId(v int64) *UpdateDataQualityRuleShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetName(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetProjectId(v int64) *UpdateDataQualityRuleShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetSamplingConfigShrink(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.SamplingConfigShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetSeverity(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.Severity = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetTargetShrink(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.TargetShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleShrinkRequest) SetTemplateCode(v string) *UpdateDataQualityRuleShrinkRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type UpdateDataQualityRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataQualityRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleResponseBody) SetRequestId(v string) *UpdateDataQualityRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleResponseBody) SetSuccess(v bool) *UpdateDataQualityRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataQualityRuleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataQualityRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleResponse) SetHeaders(v map[string]*string) *UpdateDataQualityRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleResponse) SetStatusCode(v int32) *UpdateDataQualityRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleResponse) SetBody(v *UpdateDataQualityRuleResponseBody) *UpdateDataQualityRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateRequest struct {
+	// The check settings for sample data.
+	CheckingConfig *UpdateDataQualityRuleTemplateRequestCheckingConfig `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty" type:"Struct"`
+	// The code for the template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfig *UpdateDataQualityRuleTemplateRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateDataQualityRuleTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetCheckingConfig(v *UpdateDataQualityRuleTemplateRequestCheckingConfig) *UpdateDataQualityRuleTemplateRequest {
+	s.CheckingConfig = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetCode(v string) *UpdateDataQualityRuleTemplateRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetDirectoryPath(v string) *UpdateDataQualityRuleTemplateRequest {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetName(v string) *UpdateDataQualityRuleTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetProjectId(v int64) *UpdateDataQualityRuleTemplateRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequest) SetSamplingConfig(v *UpdateDataQualityRuleTemplateRequestSamplingConfig) *UpdateDataQualityRuleTemplateRequest {
+	s.SamplingConfig = v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateRequestCheckingConfig struct {
+	// The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to specify the query method of referenced samples.
+	//
+	// example:
+	//
+	// { "bizdate": [ "-1", "-7", "-1m" ] }
+	ReferencedSamplesFilter *string `json:"ReferencedSamplesFilter,omitempty" xml:"ReferencedSamplesFilter,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
+	// example:
+	//
+	// Table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDataQualityRuleTemplateRequestCheckingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateRequestCheckingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateRequestCheckingConfig) SetReferencedSamplesFilter(v string) *UpdateDataQualityRuleTemplateRequestCheckingConfig {
+	s.ReferencedSamplesFilter = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequestCheckingConfig) SetType(v string) *UpdateDataQualityRuleTemplateRequestCheckingConfig {
+	s.Type = &v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateRequestSamplingConfig struct {
+	// The metrics used for sampling. Valid values:
+	//
+	// 	- Count: the number of rows in the table.
+	//
+	// 	- Min: the minimum value of the field.
+	//
+	// 	- Max: the maximum value of the field.
+	//
+	// 	- Avg: the average value of the field.
+	//
+	// 	- DistinctCount: the number of unique values of the field after deduplication.
+	//
+	// 	- DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
+	//
+	// 	- DuplicatedCount: the number of duplicated values of the field.
+	//
+	// 	- DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
+	//
+	// 	- TableSize: the table size.
+	//
+	// 	- NullValueCount: the number of rows in which the field value is null.
+	//
+	// 	- NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
+	//
+	// 	- GroupCount: the field value and the number of rows for each field value.
+	//
+	// 	- CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
+	//
+	// 	- CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
+	//
+	// 	- UserDefinedSql: indicates that data is sampled by executing custom SQL statements.
+	//
+	// example:
+	//
+	// Max
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The parameters required for sampling.
+	//
+	// example:
+	//
+	// {"SQL": "select count(1) from table;"}
+	MetricParameters *string `json:"MetricParameters,omitempty" xml:"MetricParameters,omitempty"`
+	// The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+	//
+	// example:
+	//
+	// SET odps.sql.udf.timeout=600s;
+	//
+	// SET odps.sql.python.version=cp27;
+	SettingConfig *string `json:"SettingConfig,omitempty" xml:"SettingConfig,omitempty"`
+}
+
+func (s UpdateDataQualityRuleTemplateRequestSamplingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateRequestSamplingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateRequestSamplingConfig) SetMetric(v string) *UpdateDataQualityRuleTemplateRequestSamplingConfig {
+	s.Metric = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequestSamplingConfig) SetMetricParameters(v string) *UpdateDataQualityRuleTemplateRequestSamplingConfig {
+	s.MetricParameters = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateRequestSamplingConfig) SetSettingConfig(v string) *UpdateDataQualityRuleTemplateRequestSamplingConfig {
+	s.SettingConfig = &v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateShrinkRequest struct {
+	// The check settings for sample data.
+	CheckingConfigShrink *string `json:"CheckingConfig,omitempty" xml:"CheckingConfig,omitempty"`
+	// The code for the template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// USER_DEFINED:123
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sampling settings.
+	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
+}
+
+func (s UpdateDataQualityRuleTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetCheckingConfigShrink(v string) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.CheckingConfigShrink = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetCode(v string) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetDirectoryPath(v string) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.DirectoryPath = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetName(v string) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetProjectId(v int64) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateShrinkRequest) SetSamplingConfigShrink(v string) *UpdateDataQualityRuleTemplateShrinkRequest {
+	s.SamplingConfigShrink = &v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 691CA452-D37A-4ED0-9441
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDataQualityRuleTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateResponseBody) SetRequestId(v string) *UpdateDataQualityRuleTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateResponseBody) SetSuccess(v bool) *UpdateDataQualityRuleTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDataQualityRuleTemplateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDataQualityRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDataQualityRuleTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDataQualityRuleTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDataQualityRuleTemplateResponse) SetHeaders(v map[string]*string) *UpdateDataQualityRuleTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateResponse) SetStatusCode(v int32) *UpdateDataQualityRuleTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDataQualityRuleTemplateResponse) SetBody(v *UpdateDataQualityRuleTemplateResponseBody) *UpdateDataQualityRuleTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDataSourceRequest struct {
+	// The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
+	// The parameters that you need to configure to the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31497,20 +41573,34 @@ type UpdateDataSourceRequest struct {
 	//
 	// }
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The mode in which the data source is added. The mode varies based on the data source type. Valid values:
+	//
+	// 	- InstanceMode: instance mode
+	//
+	// 	- UrlMode: connection string mode
+	//
+	// 	- CdhMode: CDH cluster mode
+	//
 	// example:
 	//
 	// UrlMode
 	ConnectionPropertiesMode *string `json:"ConnectionPropertiesMode,omitempty" xml:"ConnectionPropertiesMode,omitempty"`
+	// The description of the data source. The description cannot exceed 3,000 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 16033
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31553,6 +41643,8 @@ func (s *UpdateDataSourceRequest) SetProjectId(v int64) *UpdateDataSourceRequest
 }
 
 type UpdateDataSourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 102E8E24-0387-531D-8A75-1C0AE7DD03E5
@@ -31835,22 +41927,44 @@ func (s *UpdateNodeResponse) SetBody(v *UpdateNodeResponseBody) *UpdateNodeRespo
 }
 
 type UpdateProjectRequest struct {
+	// The description of the workspace.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the development environment. Valid values:
+	//
+	// 	- true: enables the development environment. In this case, the development environment is isolated from the production environment in the workspace.
+	//
+	// 	- false: disables the development environment. In this case, only the production environment is used in the workspace.
+	//
 	// example:
 	//
 	// true
 	DevEnvironmentEnabled *bool `json:"DevEnvironmentEnabled,omitempty" xml:"DevEnvironmentEnabled,omitempty"`
+	// Specifies whether to disable the Develop role. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
+	// Note: If you disable the Develop role, you cannot assume the Develop role to develop nodes in workflows and edit node code. The Develop role cannot be enabled again after it is disabled.
+	//
 	// example:
 	//
 	// true
-	DevRoleDisabled *bool   `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DevRoleDisabled *bool `json:"DevRoleDisabled,omitempty" xml:"DevRoleDisabled,omitempty"`
+	// The display name of the workspace.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether to enable scheduling of Platform for AI (PAI) tasks. Valid values:
+	//
+	// 	- true: enables scheduling of PAI tasks. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+	//
+	// 	- false: disables scheduling of PAI tasks.
+	//
 	// example:
 	//
 	// true
@@ -32265,10 +42379,13 @@ func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteRe
 }
 
 type UpdateTaskInstancesRequest struct {
+	// The remarks.
+	//
 	// example:
 	//
 	// this is a comment
-	Comment       *string                                    `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instances.
 	TaskInstances []*UpdateTaskInstancesRequestTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
 }
 
@@ -32291,17 +42408,26 @@ func (s *UpdateTaskInstancesRequest) SetTaskInstances(v []*UpdateTaskInstancesRe
 }
 
 type UpdateTaskInstancesRequestTaskInstances struct {
+	// The information about the associated data source.
 	DataSource *UpdateTaskInstancesRequestTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The priority of the instance. Valid values: 1, 3, 5, 7, and 8.
+	//
+	// A larger value indicates a higher priority. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The resource group information. Set this parameter to the ID of a resource group for scheduling.
+	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -32337,6 +42463,8 @@ func (s *UpdateTaskInstancesRequestTaskInstances) SetRuntimeResource(v string) *
 }
 
 type UpdateTaskInstancesRequestTaskInstancesDataSource struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// mysql_test
@@ -32357,10 +42485,13 @@ func (s *UpdateTaskInstancesRequestTaskInstancesDataSource) SetName(v string) *U
 }
 
 type UpdateTaskInstancesShrinkRequest struct {
+	// The remarks.
+	//
 	// example:
 	//
 	// this is a comment
-	Comment             *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instances.
 	TaskInstancesShrink *string `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty"`
 }
 
@@ -32383,10 +42514,13 @@ func (s *UpdateTaskInstancesShrinkRequest) SetTaskInstancesShrink(v string) *Upd
 }
 
 type UpdateTaskInstancesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17XXXX
-	RequestId   *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the batch operation, which is in the MAP structure. The instance ID serves as a key, and the result serves as a value.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 
@@ -32690,6 +42824,14 @@ func (client *Client) AbolishDeployment(request *AbolishDeploymentRequest) (_res
 //
 // Associates a resource group with a workspace.
 //
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//
 // @param request - AssociateProjectToResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32736,6 +42878,14 @@ func (client *Client) AssociateProjectToResourceGroupWithOptions(request *Associ
 //
 // Associates a resource group with a workspace.
 //
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
+//
 // @param request - AssociateProjectToResourceGroupRequest
 //
 // @return AssociateProjectToResourceGroupResponse
@@ -32752,7 +42902,89 @@ func (client *Client) AssociateProjectToResourceGroup(request *AssociateProjectT
 
 // Summary:
 //
-// 验证用
+// 把数据质量规则关联到数据质量校验任务上
+//
+// @param tmpReq - AttachDataQualityRulesToEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachDataQualityRulesToEvaluationTaskResponse
+func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *AttachDataQualityRulesToEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *AttachDataQualityRulesToEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachDataQualityRulesToEvaluationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataQualityRuleIds)) {
+		request.DataQualityRuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataQualityRuleIds, tea.String("DataQualityRuleIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataQualityEvaluationTaskId)) {
+		body["DataQualityEvaluationTaskId"] = request.DataQualityEvaluationTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataQualityRuleIdsShrink)) {
+		body["DataQualityRuleIds"] = request.DataQualityRuleIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDataQualityRulesToEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 把数据质量规则关联到数据质量校验任务上
+//
+// @param request - AttachDataQualityRulesToEvaluationTaskRequest
+//
+// @return AttachDataQualityRulesToEvaluationTaskResponse
+func (client *Client) AttachDataQualityRulesToEvaluationTask(request *AttachDataQualityRulesToEvaluationTaskRequest) (_result *AttachDataQualityRulesToEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
+	_body, _err := client.AttachDataQualityRulesToEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Clones an existing data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CloneDataSourceRequest
 //
@@ -32798,7 +43030,15 @@ func (client *Client) CloneDataSourceWithOptions(request *CloneDataSourceRequest
 
 // Summary:
 //
-// 验证用
+// Clones an existing data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CloneDataSourceRequest
 //
@@ -32816,7 +43056,7 @@ func (client *Client) CloneDataSource(request *CloneDataSourceRequest) (_result 
 
 // Summary:
 //
-// 创建自定义监控报警规则
+// Creates a custom monitoring alert rule.
 //
 // @param tmpReq - CreateAlertRuleRequest
 //
@@ -32884,7 +43124,7 @@ func (client *Client) CreateAlertRuleWithOptions(tmpReq *CreateAlertRuleRequest,
 
 // Summary:
 //
-// 创建自定义监控报警规则
+// Creates a custom monitoring alert rule.
 //
 // @param request - CreateAlertRuleRequest
 //
@@ -32902,7 +43142,7 @@ func (client *Client) CreateAlertRule(request *CreateAlertRuleRequest) (_result 
 
 // Summary:
 //
-// 创建数据集成报警规则
+// Creates an alert rule for a synchronization task.
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
 //
@@ -32950,7 +43190,7 @@ func (client *Client) CreateDIAlarmRuleWithOptions(tmpReq *CreateDIAlarmRuleRequ
 
 // Summary:
 //
-// 创建数据集成报警规则
+// Creates an alert rule for a synchronization task.
 //
 // @param request - CreateDIAlarmRuleRequest
 //
@@ -32968,7 +43208,7 @@ func (client *Client) CreateDIAlarmRule(request *CreateDIAlarmRuleRequest) (_res
 
 // Summary:
 //
-// 创建数据集成任务
+// Creates a new-version synchronization task.
 //
 // @param tmpReq - CreateDIJobRequest
 //
@@ -33032,7 +43272,7 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 
 // Summary:
 //
-// 创建数据集成任务
+// Creates a new-version synchronization task.
 //
 // @param request - CreateDIJobRequest
 //
@@ -33050,7 +43290,415 @@ func (client *Client) CreateDIJob(request *CreateDIJobRequest) (_result *CreateD
 
 // Summary:
 //
-// 验证用
+// 创建DataWorks数据质量监控
+//
+// @param tmpReq - CreateDataQualityEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityEvaluationTaskResponse
+func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateDataQualityEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDataQualityEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityEvaluationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataQualityRules)) {
+		request.DataQualityRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataQualityRules, tea.String("DataQualityRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hooks)) {
+		request.HooksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hooks, tea.String("Hooks"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notifications)) {
+		request.NotificationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notifications, tea.String("Notifications"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Trigger)) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, tea.String("Trigger"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataQualityRulesShrink)) {
+		body["DataQualityRules"] = request.DataQualityRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HooksShrink)) {
+		body["Hooks"] = request.HooksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationsShrink)) {
+		body["Notifications"] = request.NotificationsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeConf)) {
+		body["RuntimeConf"] = request.RuntimeConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
+		body["Target"] = request.TargetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerShrink)) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataQualityEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataQualityEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建DataWorks数据质量监控
+//
+// @param request - CreateDataQualityEvaluationTaskRequest
+//
+// @return CreateDataQualityEvaluationTaskResponse
+func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQualityEvaluationTaskRequest) (_result *CreateDataQualityEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataQualityEvaluationTaskResponse{}
+	_body, _err := client.CreateDataQualityEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量校验任务实例
+//
+// @param tmpReq - CreateDataQualityEvaluationTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityEvaluationTaskInstanceResponse
+func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq *CreateDataQualityEvaluationTaskInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDataQualityEvaluationTaskInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityEvaluationTaskInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuntimeResource)) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, tea.String("RuntimeResource"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataQualityEvaluationTaskId)) {
+		body["DataQualityEvaluationTaskId"] = request.DataQualityEvaluationTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		body["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeResourceShrink)) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataQualityEvaluationTaskInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量校验任务实例
+//
+// @param request - CreateDataQualityEvaluationTaskInstanceRequest
+//
+// @return CreateDataQualityEvaluationTaskInstanceResponse
+func (client *Client) CreateDataQualityEvaluationTaskInstance(request *CreateDataQualityEvaluationTaskInstanceRequest) (_result *CreateDataQualityEvaluationTaskInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
+	_body, _err := client.CreateDataQualityEvaluationTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data quality monitoring rule.
+//
+// @param tmpReq - CreateDataQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityRuleResponse
+func (client *Client) CreateDataQualityRuleWithOptions(tmpReq *CreateDataQualityRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDataQualityRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckingConfig)) {
+		request.CheckingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckingConfig, tea.String("CheckingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ErrorHandlers)) {
+		request.ErrorHandlersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ErrorHandlers, tea.String("ErrorHandlers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SamplingConfig)) {
+		request.SamplingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SamplingConfig, tea.String("SamplingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckingConfigShrink)) {
+		body["CheckingConfig"] = request.CheckingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorHandlersShrink)) {
+		body["ErrorHandlers"] = request.ErrorHandlersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingConfigShrink)) {
+		body["SamplingConfig"] = request.SamplingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		body["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
+		body["Target"] = request.TargetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		body["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataQualityRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data quality monitoring rule.
+//
+// @param request - CreateDataQualityRuleRequest
+//
+// @return CreateDataQualityRuleResponse
+func (client *Client) CreateDataQualityRule(request *CreateDataQualityRuleRequest) (_result *CreateDataQualityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataQualityRuleResponse{}
+	_body, _err := client.CreateDataQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data quality monitoring rule template.
+//
+// @param tmpReq - CreateDataQualityRuleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityRuleTemplateResponse
+func (client *Client) CreateDataQualityRuleTemplateWithOptions(tmpReq *CreateDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateDataQualityRuleTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityRuleTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckingConfig)) {
+		request.CheckingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckingConfig, tea.String("CheckingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SamplingConfig)) {
+		request.SamplingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SamplingConfig, tea.String("SamplingConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckingConfigShrink)) {
+		body["CheckingConfig"] = request.CheckingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryPath)) {
+		body["DirectoryPath"] = request.DirectoryPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingConfigShrink)) {
+		body["SamplingConfig"] = request.SamplingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibleScope)) {
+		body["VisibleScope"] = request.VisibleScope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataQualityRuleTemplate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a data quality monitoring rule template.
+//
+// @param request - CreateDataQualityRuleTemplateRequest
+//
+// @return CreateDataQualityRuleTemplateResponse
+func (client *Client) CreateDataQualityRuleTemplate(request *CreateDataQualityRuleTemplateRequest) (_result *CreateDataQualityRuleTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataQualityRuleTemplateResponse{}
+	_body, _err := client.CreateDataQualityRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a data source to the development environment or production environment of a workspace.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -33112,7 +43760,15 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 
 // Summary:
 //
-// 验证用
+// Adds a data source to the development environment or production environment of a workspace.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - CreateDataSourceRequest
 //
@@ -33130,7 +43786,15 @@ func (client *Client) CreateDataSource(request *CreateDataSourceRequest) (_resul
 
 // Summary:
 //
-// 验证用
+// Creates a rule for sharing a data source to other workspaces or RAM users.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - CreateDataSourceSharedRuleRequest
 //
@@ -33184,7 +43848,15 @@ func (client *Client) CreateDataSourceSharedRuleWithOptions(request *CreateDataS
 
 // Summary:
 //
-// 验证用
+// Creates a rule for sharing a data source to other workspaces or RAM users.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to share a data source from Workspace A to Workspace B, you must have the permissions to share the data source in both workspaces. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - CreateDataSourceSharedRuleRequest
 //
@@ -33360,7 +44032,11 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 
 // Summary:
 //
-// 创建并绑定通用资源组网络资源。
+// Creates a network and associates the network with a general resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateNetworkRequest
 //
@@ -33414,7 +44090,11 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 
 // Summary:
 //
-// 创建并绑定通用资源组网络资源。
+// Creates a network and associates the network with a general resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateNetworkRequest
 //
@@ -33512,7 +44192,7 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param tmpReq - CreateProjectRequest
 //
@@ -33588,7 +44268,7 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateProjectRequest
 //
@@ -33606,7 +44286,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// 添加工作空间成员
+// Adds a member to a workspace.
 //
 // @param tmpReq - CreateProjectMemberRequest
 //
@@ -33662,7 +44342,7 @@ func (client *Client) CreateProjectMemberWithOptions(tmpReq *CreateProjectMember
 
 // Summary:
 //
-// 添加工作空间成员
+// Adds a member to a workspace.
 //
 // @param request - CreateProjectMemberRequest
 //
@@ -33752,7 +44432,13 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 
 // Summary:
 //
-// 创建通用资源组。
+// Creates a serverless resource group.
+//
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -33830,7 +44516,13 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 
 // Summary:
 //
-// 创建通用资源组。
+// Creates a serverless resource group.
+//
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -33848,7 +44540,11 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 
 // Summary:
 //
-// 创建网络资源的路由。
+// Creates a route for a network.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateRouteRequest
 //
@@ -33894,7 +44590,11 @@ func (client *Client) CreateRouteWithOptions(request *CreateRouteRequest, runtim
 
 // Summary:
 //
-// 创建网络资源的路由。
+// Creates a route for a network.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateRouteRequest
 //
@@ -33984,7 +44684,7 @@ func (client *Client) CreateWorkflowDefinition(request *CreateWorkflowDefinition
 
 // Summary:
 //
-// 删除自定义监控报警规则
+// Deletes a custom alert monitoring rule.
 //
 // @param request - DeleteAlertRuleRequest
 //
@@ -34026,7 +44726,7 @@ func (client *Client) DeleteAlertRuleWithOptions(request *DeleteAlertRuleRequest
 
 // Summary:
 //
-// 删除自定义监控报警规则
+// Deletes a custom alert monitoring rule.
 //
 // @param request - DeleteAlertRuleRequest
 //
@@ -34100,7 +44800,7 @@ func (client *Client) DeleteDIAlarmRule(request *DeleteDIAlarmRuleRequest) (_res
 
 // Summary:
 //
-// 删除数据集成任务
+// Deletes a new-version synchronization task.
 //
 // @param request - DeleteDIJobRequest
 //
@@ -34138,7 +44838,7 @@ func (client *Client) DeleteDIJobWithOptions(request *DeleteDIJobRequest, runtim
 
 // Summary:
 //
-// 删除数据集成任务
+// Deletes a new-version synchronization task.
 //
 // @param request - DeleteDIJobRequest
 //
@@ -34156,7 +44856,207 @@ func (client *Client) DeleteDIJob(request *DeleteDIJobRequest) (_result *DeleteD
 
 // Summary:
 //
-// 验证用
+// 删除数据质量校验任务
+//
+// @param request - DeleteDataQualityEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityEvaluationTaskResponse
+func (client *Client) DeleteDataQualityEvaluationTaskWithOptions(request *DeleteDataQualityEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteDataQualityEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataQualityEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataQualityEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据质量校验任务
+//
+// @param request - DeleteDataQualityEvaluationTaskRequest
+//
+// @return DeleteDataQualityEvaluationTaskResponse
+func (client *Client) DeleteDataQualityEvaluationTask(request *DeleteDataQualityEvaluationTaskRequest) (_result *DeleteDataQualityEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataQualityEvaluationTaskResponse{}
+	_body, _err := client.DeleteDataQualityEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data quality monitoring rule.
+//
+// @param request - DeleteDataQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityRuleResponse
+func (client *Client) DeleteDataQualityRuleWithOptions(request *DeleteDataQualityRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDataQualityRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataQualityRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data quality monitoring rule.
+//
+// @param request - DeleteDataQualityRuleRequest
+//
+// @return DeleteDataQualityRuleResponse
+func (client *Client) DeleteDataQualityRule(request *DeleteDataQualityRuleRequest) (_result *DeleteDataQualityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataQualityRuleResponse{}
+	_body, _err := client.DeleteDataQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data quality monitoring rule template.
+//
+// @param request - DeleteDataQualityRuleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityRuleTemplateResponse
+func (client *Client) DeleteDataQualityRuleTemplateWithOptions(request *DeleteDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteDataQualityRuleTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataQualityRuleTemplate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data quality monitoring rule template.
+//
+// @param request - DeleteDataQualityRuleTemplateRequest
+//
+// @return DeleteDataQualityRuleTemplateResponse
+func (client *Client) DeleteDataQualityRuleTemplate(request *DeleteDataQualityRuleTemplateRequest) (_result *DeleteDataQualityRuleTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataQualityRuleTemplateResponse{}
+	_body, _err := client.DeleteDataQualityRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all Dataworks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -34194,7 +45094,15 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 
 // Summary:
 //
-// 验证用
+// Removes a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all Dataworks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -34212,7 +45120,15 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 
 // Summary:
 //
-// 验证用
+// Deletes a sharing rule of a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - DeleteDataSourceSharedRuleRequest
 //
@@ -34254,7 +45170,15 @@ func (client *Client) DeleteDataSourceSharedRuleWithOptions(request *DeleteDataS
 
 // Summary:
 //
-// 验证用
+// Deletes a sharing rule of a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to delete a sharing rule of a data source from Workspace A to Workspace B, you must have the permissions to share the data source in Workspace A or Workspace B. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - DeleteDataSourceSharedRuleRequest
 //
@@ -34344,7 +45268,11 @@ func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *D
 
 // Summary:
 //
-// 解绑并删除通用资源组网络资源。
+// Disassociates and deletes a network from a general resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteNetworkRequest
 //
@@ -34386,7 +45314,11 @@ func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, ru
 
 // Summary:
 //
-// 解绑并删除通用资源组网络资源。
+// Disassociates and deletes a network from a general resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteNetworkRequest
 //
@@ -34476,7 +45408,7 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 
 // Summary:
 //
-// 销毁工作空间
+// Deletes a DataWorks workspace.
 //
 // @param request - DeleteProjectRequest
 //
@@ -34518,7 +45450,7 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 
 // Summary:
 //
-// 销毁工作空间
+// Deletes a DataWorks workspace.
 //
 // @param request - DeleteProjectRequest
 //
@@ -34674,6 +45606,12 @@ func (client *Client) DeleteResource(request *DeleteResourceRequest) (_result *D
 //
 // Deletes a serverless resource group.
 //
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+//
 // @param request - DeleteResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -34716,6 +45654,12 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 //
 // Deletes a serverless resource group.
 //
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  **Before you call this API operation, you must make sure that you have a good command of the billing details and [pricing](https://help.aliyun.com/zh/dataworks/product-overview/new-resource-group-overview?spm=a2c4g.11186623.0.i1) of serverless resource groups.
+//
 // @param request - DeleteResourceGroupRequest
 //
 // @return DeleteResourceGroupResponse
@@ -34732,7 +45676,11 @@ func (client *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (
 
 // Summary:
 //
-// 删除网络资源的路由。
+// Deletes a route from a network resource.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteRouteRequest
 //
@@ -34774,7 +45722,11 @@ func (client *Client) DeleteRouteWithOptions(request *DeleteRouteRequest, runtim
 
 // Summary:
 //
-// 删除网络资源的路由。
+// Deletes a route from a network resource.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteRouteRequest
 //
@@ -34790,6 +45742,14 @@ func (client *Client) DeleteRoute(request *DeleteRouteRequest) (_result *DeleteR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -34832,6 +45792,14 @@ func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a task.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - DeleteTaskRequest
 //
 // @return DeleteTaskResponse
@@ -34920,7 +45888,89 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 
 // Summary:
 //
+// 取消数据质量规则和数据质量校验任务的关联
+//
+// @param tmpReq - DetachDataQualityRulesFromEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachDataQualityRulesFromEvaluationTaskResponse
+func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq *DetachDataQualityRulesFromEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *DetachDataQualityRulesFromEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetachDataQualityRulesFromEvaluationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataQualityRuleIds)) {
+		request.DataQualityRuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataQualityRuleIds, tea.String("DataQualityRuleIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataQualityEvaluationTaskId)) {
+		body["DataQualityEvaluationTaskId"] = request.DataQualityEvaluationTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataQualityRuleIdsShrink)) {
+		body["DataQualityRuleIds"] = request.DataQualityRuleIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDataQualityRulesFromEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消数据质量规则和数据质量校验任务的关联
+//
+// @param request - DetachDataQualityRulesFromEvaluationTaskRequest
+//
+// @return DetachDataQualityRulesFromEvaluationTaskResponse
+func (client *Client) DetachDataQualityRulesFromEvaluationTask(request *DetachDataQualityRulesFromEvaluationTaskRequest) (_result *DetachDataQualityRulesFromEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
+	_body, _err := client.DetachDataQualityRulesFromEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disassociates a resource group from a workspace.
+//
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -34967,6 +46017,14 @@ func (client *Client) DissociateProjectFromResourceGroupWithOptions(request *Dis
 // Summary:
 //
 // Disassociates a resource group from a workspace.
+//
+// Description:
+//
+// 1.  You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
+// 2.  Your account must be assigned one of the following roles of the desired workspace:
+//
+// 	- Tenant Owner, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - DissociateProjectFromResourceGroupRequest
 //
@@ -35066,7 +46124,7 @@ func (client *Client) ExecDeploymentStage(request *ExecDeploymentStageRequest) (
 
 // Summary:
 //
-// 获取自定义监控报警规则
+// Queries a list of custom alert monitoring rules.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -35104,7 +46162,7 @@ func (client *Client) GetAlertRuleWithOptions(request *GetAlertRuleRequest, runt
 
 // Summary:
 //
-// 获取自定义监控报警规则
+// Queries a list of custom alert monitoring rules.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -35122,7 +46180,7 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 
 // Summary:
 //
-// 查看数据集成任务
+// Queries the information about a synchronization task.
 //
 // @param request - GetDIJobRequest
 //
@@ -35160,7 +46218,7 @@ func (client *Client) GetDIJobWithOptions(request *GetDIJobRequest, runtime *uti
 
 // Summary:
 //
-// 查看数据集成任务
+// Queries the information about a synchronization task.
 //
 // @param request - GetDIJobRequest
 //
@@ -35234,11 +46292,253 @@ func (client *Client) GetDIJobLog(request *GetDIJobLogRequest) (_result *GetDIJo
 
 // Summary:
 //
+// 查询数据质量校验任务详情
+//
+// @param request - GetDataQualityEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityEvaluationTaskResponse
+func (client *Client) GetDataQualityEvaluationTaskWithOptions(request *GetDataQualityEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *GetDataQualityEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataQualityEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataQualityEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据质量校验任务详情
+//
+// @param request - GetDataQualityEvaluationTaskRequest
+//
+// @return GetDataQualityEvaluationTaskResponse
+func (client *Client) GetDataQualityEvaluationTask(request *GetDataQualityEvaluationTaskRequest) (_result *GetDataQualityEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataQualityEvaluationTaskResponse{}
+	_body, _err := client.GetDataQualityEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据质量校验任务实例详情
+//
+// @param request - GetDataQualityEvaluationTaskInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityEvaluationTaskInstanceResponse
+func (client *Client) GetDataQualityEvaluationTaskInstanceWithOptions(request *GetDataQualityEvaluationTaskInstanceRequest, runtime *util.RuntimeOptions) (_result *GetDataQualityEvaluationTaskInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataQualityEvaluationTaskInstance"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataQualityEvaluationTaskInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据质量校验任务实例详情
+//
+// @param request - GetDataQualityEvaluationTaskInstanceRequest
+//
+// @return GetDataQualityEvaluationTaskInstanceResponse
+func (client *Client) GetDataQualityEvaluationTaskInstance(request *GetDataQualityEvaluationTaskInstanceRequest) (_result *GetDataQualityEvaluationTaskInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataQualityEvaluationTaskInstanceResponse{}
+	_body, _err := client.GetDataQualityEvaluationTaskInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询质量规则详情
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetDataQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityRuleResponse
+func (client *Client) GetDataQualityRuleWithOptions(request *GetDataQualityRuleRequest, runtime *util.RuntimeOptions) (_result *GetDataQualityRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataQualityRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询质量规则详情
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetDataQualityRuleRequest
+//
+// @return GetDataQualityRuleResponse
+func (client *Client) GetDataQualityRule(request *GetDataQualityRuleRequest) (_result *GetDataQualityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataQualityRuleResponse{}
+	_body, _err := client.GetDataQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量规则模版详情
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetDataQualityRuleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityRuleTemplateResponse
+func (client *Client) GetDataQualityRuleTemplateWithOptions(request *GetDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *GetDataQualityRuleTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataQualityRuleTemplate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取质量规则模版详情
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// @param request - GetDataQualityRuleTemplateRequest
+//
+// @return GetDataQualityRuleTemplateResponse
+func (client *Client) GetDataQualityRuleTemplate(request *GetDataQualityRuleTemplateRequest) (_result *GetDataQualityRuleTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataQualityRuleTemplateResponse{}
+	_body, _err := client.GetDataQualityRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a data source by ID.
 //
 // Description:
 //
-// You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
 // 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
@@ -35282,7 +46582,9 @@ func (client *Client) GetDataSourceWithOptions(request *GetDataSourceRequest, ru
 //
 // Description:
 //
-// You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
 // 	- Tenant Owner, Workspace Administrator, Deployment, Development, Project Owner, and O\\&M
 //
@@ -35414,7 +46716,7 @@ func (client *Client) GetFunction(request *GetFunctionRequest) (_result *GetFunc
 
 // Summary:
 //
-// 返回异步任务的状态信息
+// Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - GetJobStatusRequest
 //
@@ -35452,7 +46754,7 @@ func (client *Client) GetJobStatusWithOptions(request *GetJobStatusRequest, runt
 
 // Summary:
 //
-// 返回异步任务的状态信息
+// Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - GetJobStatusRequest
 //
@@ -35470,7 +46772,11 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 
 // Summary:
 //
-// 获取某个网络资源详细信息。
+// Queries the information about a network resource.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetNetworkRequest
 //
@@ -35508,7 +46814,11 @@ func (client *Client) GetNetworkWithOptions(request *GetNetworkRequest, runtime 
 
 // Summary:
 //
-// 获取某个网络资源详细信息。
+// Queries the information about a network resource.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetNetworkRequest
 //
@@ -35702,7 +47012,7 @@ func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_resul
 
 // Summary:
 //
-// 查询工作空间角色详情
+// Queries the information about a role in a DataWorks workspace.
 //
 // @param request - GetProjectRoleRequest
 //
@@ -35748,7 +47058,7 @@ func (client *Client) GetProjectRoleWithOptions(request *GetProjectRoleRequest, 
 
 // Summary:
 //
-// 查询工作空间角色详情
+// Queries the information about a role in a DataWorks workspace.
 //
 // @param request - GetProjectRoleRequest
 //
@@ -35824,6 +47134,10 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 //
 // 根据id获取指定资源组。
 //
+// Description:
+//
+// You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
 // @param request - GetResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -35862,6 +47176,10 @@ func (client *Client) GetResourceGroupWithOptions(request *GetResourceGroupReque
 //
 // 根据id获取指定资源组。
 //
+// Description:
+//
+// You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
 // @param request - GetResourceGroupRequest
 //
 // @return GetResourceGroupResponse
@@ -35878,7 +47196,11 @@ func (client *Client) GetResourceGroup(request *GetResourceGroupRequest) (_resul
 
 // Summary:
 //
-// 根据id获取指定路由。
+// Queries the information about a route based on its ID.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetRouteRequest
 //
@@ -35916,7 +47238,11 @@ func (client *Client) GetRouteWithOptions(request *GetRouteRequest, runtime *uti
 
 // Summary:
 //
-// 根据id获取指定路由。
+// Queries the information about a route based on its ID.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetRouteRequest
 //
@@ -35932,6 +47258,10 @@ func (client *Client) GetRoute(request *GetRouteRequest) (_result *GetRouteRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a task.
+//
 // @param request - GetTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -35966,6 +47296,10 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a task.
+//
 // @param request - GetTaskRequest
 //
 // @return GetTaskResponse
@@ -36036,6 +47370,14 @@ func (client *Client) GetTaskInstance(request *GetTaskInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the run log generated during a specific run of an instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetTaskInstanceLogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36070,6 +47412,14 @@ func (client *Client) GetTaskInstanceLogWithOptions(request *GetTaskInstanceLogR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the run log generated during a specific run of an instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetTaskInstanceLogRequest
 //
 // @return GetTaskInstanceLogResponse
@@ -36216,7 +47566,13 @@ func (client *Client) GrantMemberProjectRoles(request *GrantMemberProjectRolesRe
 
 // Summary:
 //
-// 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+// Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+//
+// Description:
+//
+// > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+//
+// >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -36262,7 +47618,13 @@ func (client *Client) ImportWorkflowDefinitionWithOptions(request *ImportWorkflo
 
 // Summary:
 //
-// 调用此接口，可以将通过FlowSpec定义的工作流节点和其内部的子节点都导入到数据开发中
+// Imports a workflow and its child nodes that are specified by the FlowSpec field to DataStudio.
+//
+// Description:
+//
+// > You cannot use this API operation to import multiple workflows at a time. If you specify multiple workflows by using FlowSpec, the system imports only the first specified workflow.
+//
+// >  ImportWorkflowDefinition is an asynchronous operation. After you send a request, an asynchronous task is generated, and the system returns the ID of the asynchronous task. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - ImportWorkflowDefinitionRequest
 //
@@ -36280,7 +47642,7 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 
 // Summary:
 //
-// 分页获取自定义监控报警规则
+// Queries a list of custom monitoring alert rule by page.
 //
 // @param tmpReq - ListAlertRulesRequest
 //
@@ -36356,7 +47718,7 @@ func (client *Client) ListAlertRulesWithOptions(tmpReq *ListAlertRulesRequest, r
 
 // Summary:
 //
-// 分页获取自定义监控报警规则
+// Queries a list of custom monitoring alert rule by page.
 //
 // @param request - ListAlertRulesRequest
 //
@@ -36374,7 +47736,7 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 
 // Summary:
 //
-// 查看数据集成报警规则
+// Views alert rules configured for a synchronization task.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -36412,7 +47774,7 @@ func (client *Client) ListDIAlarmRulesWithOptions(request *ListDIAlarmRulesReque
 
 // Summary:
 //
-// 查看数据集成报警规则
+// Views alert rules configured for a synchronization task.
 //
 // @param request - ListDIAlarmRulesRequest
 //
@@ -36430,7 +47792,7 @@ func (client *Client) ListDIAlarmRules(request *ListDIAlarmRulesRequest) (_resul
 
 // Summary:
 //
-// 获取数据集成任务事件
+// Queries events for a synchronization task.
 //
 // @param request - ListDIJobEventsRequest
 //
@@ -36468,7 +47830,7 @@ func (client *Client) ListDIJobEventsWithOptions(request *ListDIJobEventsRequest
 
 // Summary:
 //
-// 获取数据集成任务事件
+// Queries events for a synchronization task.
 //
 // @param request - ListDIJobEventsRequest
 //
@@ -36486,7 +47848,7 @@ func (client *Client) ListDIJobEvents(request *ListDIJobEventsRequest) (_result 
 
 // Summary:
 //
-// 获取数据集成任务指标
+// Queries metrics for a synchronization task.
 //
 // @param tmpReq - ListDIJobMetricsRequest
 //
@@ -36530,7 +47892,7 @@ func (client *Client) ListDIJobMetricsWithOptions(tmpReq *ListDIJobMetricsReques
 
 // Summary:
 //
-// 获取数据集成任务指标
+// Queries metrics for a synchronization task.
 //
 // @param request - ListDIJobMetricsRequest
 //
@@ -36548,7 +47910,7 @@ func (client *Client) ListDIJobMetrics(request *ListDIJobMetricsRequest) (_resul
 
 // Summary:
 //
-// 获取数据集成运行信息
+// Queries the running information about a synchronization task.
 //
 // @param request - ListDIJobRunDetailsRequest
 //
@@ -36586,7 +47948,7 @@ func (client *Client) ListDIJobRunDetailsWithOptions(request *ListDIJobRunDetail
 
 // Summary:
 //
-// 获取数据集成运行信息
+// Queries the running information about a synchronization task.
 //
 // @param request - ListDIJobRunDetailsRequest
 //
@@ -36662,6 +48024,10 @@ func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJob
 //
 // Queries a list of instances generated by a data quality monitoring task by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36700,6 +48066,10 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request 
 //
 // Queries a list of instances generated by a data quality monitoring task by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
 // @return ListDataQualityEvaluationTaskInstancesResponse
@@ -36717,6 +48087,10 @@ func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQu
 // Summary:
 //
 // Queries a list of data quality monitoring tasks by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityEvaluationTasksRequest
 //
@@ -36756,6 +48130,10 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 //
 // Queries a list of data quality monitoring tasks by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityEvaluationTasksRequest
 //
 // @return ListDataQualityEvaluationTasksResponse
@@ -36770,6 +48148,10 @@ func (client *Client) ListDataQualityEvaluationTasks(request *ListDataQualityEva
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityResultsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36804,6 +48186,10 @@ func (client *Client) ListDataQualityResultsWithOptions(request *ListDataQuality
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityResultsRequest
 //
 // @return ListDataQualityResultsResponse
@@ -36820,7 +48206,67 @@ func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequ
 
 // Summary:
 //
+// Queries a list of data quality monitoring rule templates.
+//
+// @param request - ListDataQualityRuleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityRuleTemplateResponse
+func (client *Client) ListDataQualityRuleTemplateWithOptions(request *ListDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *ListDataQualityRuleTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataQualityRuleTemplate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of data quality monitoring rule templates.
+//
+// @param request - ListDataQualityRuleTemplateRequest
+//
+// @return ListDataQualityRuleTemplateResponse
+func (client *Client) ListDataQualityRuleTemplate(request *ListDataQualityRuleTemplateRequest) (_result *ListDataQualityRuleTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataQualityRuleTemplateResponse{}
+	_body, _err := client.ListDataQualityRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of data quality monitoring rules by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityRulesRequest
 //
@@ -36860,6 +48306,10 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 //
 // Queries a list of data quality monitoring rules by page.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListDataQualityRulesRequest
 //
 // @return ListDataQualityRulesResponse
@@ -36876,7 +48326,15 @@ func (client *Client) ListDataQualityRules(request *ListDataQualityRulesRequest)
 
 // Summary:
 //
-// 验证用
+// Queries a list of sharing rules of a data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - ListDataSourceSharedRulesRequest
 //
@@ -36914,7 +48372,15 @@ func (client *Client) ListDataSourceSharedRulesWithOptions(request *ListDataSour
 
 // Summary:
 //
-// 验证用
+// Queries a list of sharing rules of a data source.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  If you want to query the sharing rules of a data source that is associated with Workspace A, you must have the permissions to share the data source in Workspace A. You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, and Workspace Owner
 //
 // @param request - ListDataSourceSharedRulesRequest
 //
@@ -36932,7 +48398,13 @@ func (client *Client) ListDataSourceSharedRules(request *ListDataSourceSharedRul
 
 // Summary:
 //
-// 验证用
+// Queries a list of data sources based on the business information of data sources.
+//
+// Description:
+//
+// You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
 // @param tmpReq - ListDataSourcesRequest
 //
@@ -36976,7 +48448,13 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 
 // Summary:
 //
-// 验证用
+// Queries a list of data sources based on the business information of data sources.
+//
+// Description:
+//
+// You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
 // @param request - ListDataSourcesRequest
 //
@@ -37048,6 +48526,10 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of descendant instances of an instance by page.
+//
 // @param request - ListDownstreamTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37082,6 +48564,10 @@ func (client *Client) ListDownstreamTaskInstancesWithOptions(request *ListDownst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of descendant instances of an instance by page.
+//
 // @param request - ListDownstreamTaskInstancesRequest
 //
 // @return ListDownstreamTaskInstancesResponse
@@ -37096,6 +48582,10 @@ func (client *Client) ListDownstreamTaskInstances(request *ListDownstreamTaskIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of descendant tasks of a task by page.
+//
 // @param request - ListDownstreamTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37130,6 +48620,10 @@ func (client *Client) ListDownstreamTasksWithOptions(request *ListDownstreamTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of descendant tasks of a task by page.
+//
 // @param request - ListDownstreamTasksRequest
 //
 // @return ListDownstreamTasksResponse
@@ -37202,7 +48696,11 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 
 // Summary:
 //
-// 获取通用资源组网络资源列表。
+// Queries a list of network resources of a serverless resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListNetworksRequest
 //
@@ -37240,7 +48738,11 @@ func (client *Client) ListNetworksWithOptions(request *ListNetworksRequest, runt
 
 // Summary:
 //
-// 获取通用资源组网络资源列表。
+// Queries a list of network resources of a serverless resource group.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListNetworksRequest
 //
@@ -37456,7 +48958,7 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 
 // Summary:
 //
-// 分页查询工作空间角色详情
+// Queries the information about roles in a DataWorks workspace by page.
 //
 // @param tmpReq - ListProjectRolesRequest
 //
@@ -37528,7 +49030,7 @@ func (client *Client) ListProjectRolesWithOptions(tmpReq *ListProjectRolesReques
 
 // Summary:
 //
-// 分页查询工作空间角色详情
+// Queries the information about roles in a DataWorks workspace by page.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -37546,7 +49048,7 @@ func (client *Client) ListProjectRoles(request *ListProjectRolesRequest) (_resul
 
 // Summary:
 //
-// 分页查询工作空间详情
+// Queries a list of DataWorks workspaces of the tenant to which your account belongs.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -37638,7 +49140,7 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 
 // Summary:
 //
-// 分页查询工作空间详情
+// Queries a list of DataWorks workspaces of the tenant to which your account belongs.
 //
 // @param request - ListProjectsRequest
 //
@@ -37656,7 +49158,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// 获取资源组列表。
+// Queries a list of resource groups.
 //
 // @param tmpReq - ListResourceGroupsRequest
 //
@@ -37704,7 +49206,7 @@ func (client *Client) ListResourceGroupsWithOptions(tmpReq *ListResourceGroupsRe
 
 // Summary:
 //
-// 获取资源组列表。
+// Queries a list of resource groups.
 //
 // @param request - ListResourceGroupsRequest
 //
@@ -37780,6 +49282,10 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 //
 // 获取网络资源的路由列表。
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListRoutesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37818,6 +49324,10 @@ func (client *Client) ListRoutesWithOptions(request *ListRoutesRequest, runtime 
 //
 // 获取网络资源的路由列表。
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListRoutesRequest
 //
 // @return ListRoutesResponse
@@ -37832,6 +49342,16 @@ func (client *Client) ListRoutes(request *ListRoutesRequest) (_result *ListRoute
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs of an instance by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// You can call this operation to query only the operation logs generated within the previous 31 days.
+//
 // @param request - ListTaskInstanceOperationLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37866,6 +49386,16 @@ func (client *Client) ListTaskInstanceOperationLogsWithOptions(request *ListTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs of an instance by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// You can call this operation to query only the operation logs generated within the previous 31 days.
+//
 // @param request - ListTaskInstanceOperationLogsRequest
 //
 // @return ListTaskInstanceOperationLogsResponse
@@ -37880,6 +49410,10 @@ func (client *Client) ListTaskInstanceOperationLogs(request *ListTaskInstanceOpe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances. You can also specify filter conditions to query specific instances.
+//
 // @param tmpReq - ListTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38000,6 +49534,10 @@ func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances. You can also specify filter conditions to query specific instances.
+//
 // @param request - ListTaskInstancesRequest
 //
 // @return ListTaskInstancesResponse
@@ -38014,6 +49552,16 @@ func (client *Client) ListTaskInstances(request *ListTaskInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs of a task by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// You can call this operation to query only the operation logs generated within the previous 31 days.
+//
 // @param request - ListTaskOperationLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38048,6 +49596,16 @@ func (client *Client) ListTaskOperationLogsWithOptions(request *ListTaskOperatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs of a task by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
+// You can call this operation to query only the operation logs generated within the previous 31 days.
+//
 // @param request - ListTaskOperationLogsRequest
 //
 // @return ListTaskOperationLogsResponse
@@ -38062,6 +49620,10 @@ func (client *Client) ListTaskOperationLogs(request *ListTaskOperationLogsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+//
 // @param request - ListTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38144,6 +49706,10 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tasks by page. You can also specify filter conditions to query tasks.
+//
 // @param request - ListTasksRequest
 //
 // @return ListTasksResponse
@@ -38158,6 +49724,10 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of ancestor instances of an instance by page.
+//
 // @param request - ListUpstreamTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38192,6 +49762,10 @@ func (client *Client) ListUpstreamTaskInstancesWithOptions(request *ListUpstream
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of ancestor instances of an instance by page.
+//
 // @param request - ListUpstreamTaskInstancesRequest
 //
 // @return ListUpstreamTaskInstancesResponse
@@ -38206,6 +49780,10 @@ func (client *Client) ListUpstreamTaskInstances(request *ListUpstreamTaskInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of ancestor tasks of a task by page.
+//
 // @param request - ListUpstreamTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38240,6 +49818,10 @@ func (client *Client) ListUpstreamTasksWithOptions(request *ListUpstreamTasksReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of ancestor tasks of a task by page.
+//
 // @param request - ListUpstreamTasksRequest
 //
 // @return ListUpstreamTasksResponse
@@ -38582,6 +50164,14 @@ func (client *Client) MoveWorkflowDefinition(request *MoveWorkflowDefinitionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes multiple upstream dependencies of an instance at a time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - RemoveTaskInstanceDependenciesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38636,6 +50226,14 @@ func (client *Client) RemoveTaskInstanceDependenciesWithOptions(tmpReq *RemoveTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes multiple upstream dependencies of an instance at a time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - RemoveTaskInstanceDependenciesRequest
 //
 // @return RemoveTaskInstanceDependenciesResponse
@@ -38922,6 +50520,10 @@ func (client *Client) RenameWorkflowDefinition(request *RenameWorkflowDefinition
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - RerunTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38970,6 +50572,10 @@ func (client *Client) RerunTaskInstancesWithOptions(tmpReq *RerunTaskInstancesRe
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - RerunTaskInstancesRequest
 //
 // @return RerunTaskInstancesResponse
@@ -38984,6 +50590,10 @@ func (client *Client) RerunTaskInstances(request *RerunTaskInstancesRequest) (_r
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - ResumeTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39032,6 +50642,10 @@ func (client *Client) ResumeTaskInstancesWithOptions(tmpReq *ResumeTaskInstances
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ResumeTaskInstancesRequest
 //
 // @return ResumeTaskInstancesResponse
@@ -39120,6 +50734,10 @@ func (client *Client) RevokeMemberProjectRoles(request *RevokeMemberProjectRoles
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - SetSuccessTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39168,6 +50786,10 @@ func (client *Client) SetSuccessTaskInstancesWithOptions(tmpReq *SetSuccessTaskI
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - SetSuccessTaskInstancesRequest
 //
 // @return SetSuccessTaskInstancesResponse
@@ -39184,7 +50806,7 @@ func (client *Client) SetSuccessTaskInstances(request *SetSuccessTaskInstancesRe
 
 // Summary:
 //
-// 启动数据集成任务
+// Starts a new-version synchronization task.
 //
 // @param tmpReq - StartDIJobRequest
 //
@@ -39228,7 +50850,7 @@ func (client *Client) StartDIJobWithOptions(tmpReq *StartDIJobRequest, runtime *
 
 // Summary:
 //
-// 启动数据集成任务
+// Starts a new-version synchronization task.
 //
 // @param request - StartDIJobRequest
 //
@@ -39300,6 +50922,10 @@ func (client *Client) StopDIJob(request *StopDIJobRequest) (_result *StopDIJobRe
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - StopTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39348,6 +50974,10 @@ func (client *Client) StopTaskInstancesWithOptions(tmpReq *StopTaskInstancesRequ
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - StopTaskInstancesRequest
 //
 // @return StopTaskInstancesResponse
@@ -39362,6 +50992,10 @@ func (client *Client) StopTaskInstances(request *StopTaskInstancesRequest) (_res
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - SuspendTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39410,6 +51044,10 @@ func (client *Client) SuspendTaskInstancesWithOptions(tmpReq *SuspendTaskInstanc
 	return _result, _err
 }
 
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - SuspendTaskInstancesRequest
 //
 // @return SuspendTaskInstancesResponse
@@ -39424,6 +51062,14 @@ func (client *Client) SuspendTaskInstances(request *SuspendTaskInstancesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Triggers a task to run by using an HTTP Trigger node at a specified time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - TriggerSchedulerTaskInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39466,6 +51112,14 @@ func (client *Client) TriggerSchedulerTaskInstanceWithOptions(request *TriggerSc
 	return _result, _err
 }
 
+// Summary:
+//
+// Triggers a task to run by using an HTTP Trigger node at a specified time.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - TriggerSchedulerTaskInstanceRequest
 //
 // @return TriggerSchedulerTaskInstanceResponse
@@ -39482,7 +51136,7 @@ func (client *Client) TriggerSchedulerTaskInstance(request *TriggerSchedulerTask
 
 // Summary:
 //
-// 创建自定义监控报警规则
+// Updates a custom alert monitoring rule.
 //
 // @param tmpReq - UpdateAlertRuleRequest
 //
@@ -39554,7 +51208,7 @@ func (client *Client) UpdateAlertRuleWithOptions(tmpReq *UpdateAlertRuleRequest,
 
 // Summary:
 //
-// 创建自定义监控报警规则
+// Updates a custom alert monitoring rule.
 //
 // @param request - UpdateAlertRuleRequest
 //
@@ -39572,7 +51226,7 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 
 // Summary:
 //
-// 更新数据集成报警规则
+// Updates an alert rule configured for a synchronization task.
 //
 // @param tmpReq - UpdateDIAlarmRuleRequest
 //
@@ -39620,7 +51274,7 @@ func (client *Client) UpdateDIAlarmRuleWithOptions(tmpReq *UpdateDIAlarmRuleRequ
 
 // Summary:
 //
-// 更新数据集成报警规则
+// Updates an alert rule configured for a synchronization task.
 //
 // @param request - UpdateDIAlarmRuleRequest
 //
@@ -39638,7 +51292,7 @@ func (client *Client) UpdateDIAlarmRule(request *UpdateDIAlarmRuleRequest) (_res
 
 // Summary:
 //
-// 更新数据集成任务
+// Updates a synchronization task.
 //
 // @param tmpReq - UpdateDIJobRequest
 //
@@ -39694,7 +51348,7 @@ func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime
 
 // Summary:
 //
-// 更新数据集成任务
+// Updates a synchronization task.
 //
 // @param request - UpdateDIJobRequest
 //
@@ -39712,7 +51366,349 @@ func (client *Client) UpdateDIJob(request *UpdateDIJobRequest) (_result *UpdateD
 
 // Summary:
 //
-// 验证用
+// 更新数据质量校验任务
+//
+// @param tmpReq - UpdateDataQualityEvaluationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityEvaluationTaskResponse
+func (client *Client) UpdateDataQualityEvaluationTaskWithOptions(tmpReq *UpdateDataQualityEvaluationTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateDataQualityEvaluationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataQualityEvaluationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataQualityRules)) {
+		request.DataQualityRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataQualityRules, tea.String("DataQualityRules"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Hooks)) {
+		request.HooksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hooks, tea.String("Hooks"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notifications)) {
+		request.NotificationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notifications, tea.String("Notifications"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Trigger)) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, tea.String("Trigger"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataQualityRulesShrink)) {
+		body["DataQualityRules"] = request.DataQualityRulesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HooksShrink)) {
+		body["Hooks"] = request.HooksShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationsShrink)) {
+		body["Notifications"] = request.NotificationsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeConf)) {
+		body["RuntimeConf"] = request.RuntimeConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
+		body["Target"] = request.TargetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerShrink)) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataQualityEvaluationTask"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDataQualityEvaluationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据质量校验任务
+//
+// @param request - UpdateDataQualityEvaluationTaskRequest
+//
+// @return UpdateDataQualityEvaluationTaskResponse
+func (client *Client) UpdateDataQualityEvaluationTask(request *UpdateDataQualityEvaluationTaskRequest) (_result *UpdateDataQualityEvaluationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataQualityEvaluationTaskResponse{}
+	_body, _err := client.UpdateDataQualityEvaluationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a data quality monitoring rule.
+//
+// @param tmpReq - UpdateDataQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityRuleResponse
+func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQualityRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateDataQualityRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataQualityRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckingConfig)) {
+		request.CheckingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckingConfig, tea.String("CheckingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ErrorHandlers)) {
+		request.ErrorHandlersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ErrorHandlers, tea.String("ErrorHandlers"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SamplingConfig)) {
+		request.SamplingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SamplingConfig, tea.String("SamplingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Target)) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, tea.String("Target"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckingConfigShrink)) {
+		body["CheckingConfig"] = request.CheckingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorHandlersShrink)) {
+		body["ErrorHandlers"] = request.ErrorHandlersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingConfigShrink)) {
+		body["SamplingConfig"] = request.SamplingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Severity)) {
+		body["Severity"] = request.Severity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetShrink)) {
+		body["Target"] = request.TargetShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		body["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataQualityRule"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDataQualityRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a data quality monitoring rule.
+//
+// @param request - UpdateDataQualityRuleRequest
+//
+// @return UpdateDataQualityRuleResponse
+func (client *Client) UpdateDataQualityRule(request *UpdateDataQualityRuleRequest) (_result *UpdateDataQualityRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataQualityRuleResponse{}
+	_body, _err := client.UpdateDataQualityRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a data quality monitoring rule template.
+//
+// @param tmpReq - UpdateDataQualityRuleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityRuleTemplateResponse
+func (client *Client) UpdateDataQualityRuleTemplateWithOptions(tmpReq *UpdateDataQualityRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateDataQualityRuleTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataQualityRuleTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckingConfig)) {
+		request.CheckingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckingConfig, tea.String("CheckingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SamplingConfig)) {
+		request.SamplingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SamplingConfig, tea.String("SamplingConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckingConfigShrink)) {
+		body["CheckingConfig"] = request.CheckingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryPath)) {
+		body["DirectoryPath"] = request.DirectoryPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SamplingConfigShrink)) {
+		body["SamplingConfig"] = request.SamplingConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataQualityRuleTemplate"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a data quality monitoring rule template.
+//
+// @param request - UpdateDataQualityRuleTemplateRequest
+//
+// @return UpdateDataQualityRuleTemplateResponse
+func (client *Client) UpdateDataQualityRuleTemplate(request *UpdateDataQualityRuleTemplateRequest) (_result *UpdateDataQualityRuleTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDataQualityRuleTemplateResponse{}
+	_body, _err := client.UpdateDataQualityRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -39770,7 +51766,15 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 
 // Summary:
 //
-// 验证用
+// Modifies a data source by ID.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
+//
+// 	- Tenant Owner, Tenant Administrator, Workspace Administrator, Workspace Owner, and O\\&M
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -39924,7 +51928,7 @@ func (client *Client) UpdateNode(request *UpdateNodeRequest) (_result *UpdateNod
 
 // Summary:
 //
-// 更新工作空间
+// Updates a DataWorks workspace.
 //
 // @param request - UpdateProjectRequest
 //
@@ -39990,7 +51994,7 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, ru
 
 // Summary:
 //
-// 更新工作空间
+// Updates a DataWorks workspace.
 //
 // @param request - UpdateProjectRequest
 //
@@ -40078,6 +52082,10 @@ func (client *Client) UpdateResource(request *UpdateResourceRequest) (_result *U
 //
 // Updates basic information about a resource group.
 //
+// Description:
+//
+// You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
 // @param request - UpdateResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40128,6 +52136,10 @@ func (client *Client) UpdateResourceGroupWithOptions(request *UpdateResourceGrou
 //
 // Updates basic information about a resource group.
 //
+// Description:
+//
+// You can use this API operation only in DataWorks Basic Edition or an advanced edition.
+//
 // @param request - UpdateResourceGroupRequest
 //
 // @return UpdateResourceGroupResponse
@@ -40144,7 +52156,11 @@ func (client *Client) UpdateResourceGroup(request *UpdateResourceGroupRequest) (
 
 // Summary:
 //
-// 更新网络资源的路由。
+// Updates the information about a route.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - UpdateRouteRequest
 //
@@ -40190,7 +52206,11 @@ func (client *Client) UpdateRouteWithOptions(request *UpdateRouteRequest, runtim
 
 // Summary:
 //
-// 更新网络资源的路由。
+// Updates the information about a route.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - UpdateRouteRequest
 //
@@ -40206,6 +52226,14 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - UpdateTaskInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40254,6 +52282,14 @@ func (client *Client) UpdateTaskInstancesWithOptions(tmpReq *UpdateTaskInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies properties configured for multiple instances at a time. The properties include the priority, resource group for scheduling, and data source.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - UpdateTaskInstancesRequest
 //
 // @return UpdateTaskInstancesResponse
