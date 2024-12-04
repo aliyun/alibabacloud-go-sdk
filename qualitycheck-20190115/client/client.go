@@ -7324,6 +7324,7 @@ type GetResultResponseBodyDataResultInfo struct {
 	//
 	// test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Vid      *string `json:"Vid,omitempty" xml:"Vid,omitempty"`
 }
 
 func (s GetResultResponseBodyDataResultInfo) String() string {
@@ -7461,6 +7462,11 @@ func (s *GetResultResponseBodyDataResultInfo) SetTaskId(v string) *GetResultResp
 
 func (s *GetResultResponseBodyDataResultInfo) SetTaskName(v string) *GetResultResponseBodyDataResultInfo {
 	s.TaskName = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfo) SetVid(v string) *GetResultResponseBodyDataResultInfo {
+	s.Vid = &v
 	return s
 }
 
@@ -7618,6 +7624,7 @@ type GetResultResponseBodyDataResultInfoHitResultHitResult struct {
 	//
 	// 11xx
 	SchemeVersion *int64  `json:"SchemeVersion,omitempty" xml:"SchemeVersion,omitempty"`
+	Score         *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -7661,6 +7668,11 @@ func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetSchemeId(v in
 
 func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetSchemeVersion(v int64) *GetResultResponseBodyDataResultInfoHitResultHitResult {
 	s.SchemeVersion = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfoHitResultHitResult) SetScore(v int32) *GetResultResponseBodyDataResultInfoHitResultHitResult {
+	s.Score = &v
 	return s
 }
 
@@ -9272,7 +9284,8 @@ type GetResultToReviewResponseBodyDataDialoguesDialogue struct {
 	// example:
 	//
 	// 2019-10-01 11:12:01
-	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	BeginTime   *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	BeginTimeMs *int64  `json:"BeginTimeMs,omitempty" xml:"BeginTimeMs,omitempty"`
 	// example:
 	//
 	// 7
@@ -9313,6 +9326,11 @@ func (s *GetResultToReviewResponseBodyDataDialoguesDialogue) SetBegin(v int64) *
 
 func (s *GetResultToReviewResponseBodyDataDialoguesDialogue) SetBeginTime(v string) *GetResultToReviewResponseBodyDataDialoguesDialogue {
 	s.BeginTime = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataDialoguesDialogue) SetBeginTimeMs(v int64) *GetResultToReviewResponseBodyDataDialoguesDialogue {
+	s.BeginTimeMs = &v
 	return s
 }
 
