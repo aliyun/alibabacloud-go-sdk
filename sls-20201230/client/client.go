@@ -4223,6 +4223,10 @@ func (s *Logstore) SetTtl(v int32) *Logstore {
 type Machine struct {
 	// example:
 	//
+	// test
+	HostId *string `json:"host-id,omitempty" xml:"host-id,omitempty"`
+	// example:
+	//
 	// 192.168.x.x
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 	// example:
@@ -4245,6 +4249,11 @@ func (s Machine) String() string {
 
 func (s Machine) GoString() string {
 	return s.String()
+}
+
+func (s *Machine) SetHostId(v string) *Machine {
+	s.HostId = &v
+	return s
 }
 
 func (s *Machine) SetIp(v string) *Machine {
@@ -9423,7 +9432,8 @@ type GetDownloadJobResponseBodyExecutionDetails struct {
 	// example:
 	//
 	// 123
-	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	LogCount *int64  `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	Notice   *string `json:"notice,omitempty" xml:"notice,omitempty"`
 	// 下载进度
 	//
 	// example:
@@ -9467,6 +9477,11 @@ func (s *GetDownloadJobResponseBodyExecutionDetails) SetFileSize(v int64) *GetDo
 
 func (s *GetDownloadJobResponseBodyExecutionDetails) SetLogCount(v int64) *GetDownloadJobResponseBodyExecutionDetails {
 	s.LogCount = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetNotice(v string) *GetDownloadJobResponseBodyExecutionDetails {
+	s.Notice = &v
 	return s
 }
 
@@ -13115,7 +13130,8 @@ type ListDownloadJobsResponseBodyResultsExecutionDetails struct {
 	// example:
 	//
 	// 123
-	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	LogCount *int64  `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	Notice   *string `json:"notice,omitempty" xml:"notice,omitempty"`
 	// 下载进度
 	//
 	// example:
@@ -13159,6 +13175,11 @@ func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetFileSize(v int6
 
 func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetLogCount(v int64) *ListDownloadJobsResponseBodyResultsExecutionDetails {
 	s.LogCount = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetNotice(v string) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.Notice = &v
 	return s
 }
 
@@ -18469,7 +18490,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		client.HttpClient = defaultHttpClient
 	}
 
-	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	return nil
 }
