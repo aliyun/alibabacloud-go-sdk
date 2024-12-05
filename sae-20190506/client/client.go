@@ -3303,6 +3303,537 @@ func (s *HostAlias) SetIp(v string) *HostAlias {
 	return s
 }
 
+type HttpApiRoute struct {
+	// example:
+	//
+	// intranet/internet
+	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// example:
+	//
+	// Deploying/NotDeployed/Undeploying/Deployed
+	DeployStatus *string `json:"DeployStatus,omitempty" xml:"DeployStatus,omitempty"`
+	// example:
+	//
+	// Single/Multiple/VersionOriented
+	DestinationType *string                `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Domains         []*HttpApiRouteDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	EnvironmentId   *string                `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	GatewayId       *string                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	HttpApiId       *string                `json:"HttpApiId,omitempty" xml:"HttpApiId,omitempty"`
+	// example:
+	//
+	// Http
+	HttpApiName *string `json:"HttpApiName,omitempty" xml:"HttpApiName,omitempty"`
+	// example:
+	//
+	// Http
+	HttpApiType *string `json:"HttpApiType,omitempty" xml:"HttpApiType,omitempty"`
+	// example:
+	//
+	// 1
+	IngressId       *int64  `json:"IngressId,omitempty" xml:"IngressId,omitempty"`
+	NacosInstanceId *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	NacosNamespaceId *string                 `json:"NacosNamespaceId,omitempty" xml:"NacosNamespaceId,omitempty"`
+	Name             *string                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	NamespaceId      *string                 `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	Policies         *HttpApiRoutePolicies   `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	Predicates       *HttpApiRoutePredicates `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
+	RouteId          *string                 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	Services         []*HttpApiRouteServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SAE_NACOS/SAE_K8S_SERVICE/MSE_NACOS
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s HttpApiRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoute) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoute) SetAddressType(v string) *HttpApiRoute {
+	s.AddressType = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetDeployStatus(v string) *HttpApiRoute {
+	s.DeployStatus = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetDestinationType(v string) *HttpApiRoute {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetDomains(v []*HttpApiRouteDomains) *HttpApiRoute {
+	s.Domains = v
+	return s
+}
+
+func (s *HttpApiRoute) SetEnvironmentId(v string) *HttpApiRoute {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetGatewayId(v string) *HttpApiRoute {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetHttpApiId(v string) *HttpApiRoute {
+	s.HttpApiId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetHttpApiName(v string) *HttpApiRoute {
+	s.HttpApiName = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetHttpApiType(v string) *HttpApiRoute {
+	s.HttpApiType = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetIngressId(v int64) *HttpApiRoute {
+	s.IngressId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetNacosInstanceId(v string) *HttpApiRoute {
+	s.NacosInstanceId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetNacosNamespaceId(v string) *HttpApiRoute {
+	s.NacosNamespaceId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetName(v string) *HttpApiRoute {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetNamespaceId(v string) *HttpApiRoute {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetPolicies(v *HttpApiRoutePolicies) *HttpApiRoute {
+	s.Policies = v
+	return s
+}
+
+func (s *HttpApiRoute) SetPredicates(v *HttpApiRoutePredicates) *HttpApiRoute {
+	s.Predicates = v
+	return s
+}
+
+func (s *HttpApiRoute) SetRouteId(v string) *HttpApiRoute {
+	s.RouteId = &v
+	return s
+}
+
+func (s *HttpApiRoute) SetServices(v []*HttpApiRouteServices) *HttpApiRoute {
+	s.Services = v
+	return s
+}
+
+func (s *HttpApiRoute) SetSourceType(v string) *HttpApiRoute {
+	s.SourceType = &v
+	return s
+}
+
+type HttpApiRouteDomains struct {
+	DomainId   *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s HttpApiRouteDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRouteDomains) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRouteDomains) SetDomainId(v string) *HttpApiRouteDomains {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpApiRouteDomains) SetDomainName(v string) *HttpApiRouteDomains {
+	s.DomainName = &v
+	return s
+}
+
+type HttpApiRoutePolicies struct {
+	Fallback *HttpApiRoutePoliciesFallback `json:"Fallback,omitempty" xml:"Fallback,omitempty" type:"Struct"`
+	Retry    *HttpApiRoutePoliciesRetry    `json:"Retry,omitempty" xml:"Retry,omitempty" type:"Struct"`
+	Timeout  *HttpApiRoutePoliciesTimeout  `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+}
+
+func (s HttpApiRoutePolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePolicies) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePolicies) SetFallback(v *HttpApiRoutePoliciesFallback) *HttpApiRoutePolicies {
+	s.Fallback = v
+	return s
+}
+
+func (s *HttpApiRoutePolicies) SetRetry(v *HttpApiRoutePoliciesRetry) *HttpApiRoutePolicies {
+	s.Retry = v
+	return s
+}
+
+func (s *HttpApiRoutePolicies) SetTimeout(v *HttpApiRoutePoliciesTimeout) *HttpApiRoutePolicies {
+	s.Timeout = v
+	return s
+}
+
+type HttpApiRoutePoliciesFallback struct {
+	Destinations []*HttpApiRoutePoliciesFallbackDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
+	Enable       *bool                                       `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s HttpApiRoutePoliciesFallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePoliciesFallback) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePoliciesFallback) SetDestinations(v []*HttpApiRoutePoliciesFallbackDestinations) *HttpApiRoutePoliciesFallback {
+	s.Destinations = v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallback) SetEnable(v bool) *HttpApiRoutePoliciesFallback {
+	s.Enable = &v
+	return s
+}
+
+type HttpApiRoutePoliciesFallbackDestinations struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName     *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort     *int64  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+}
+
+func (s HttpApiRoutePoliciesFallbackDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePoliciesFallbackDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetAppId(v string) *HttpApiRoutePoliciesFallbackDestinations {
+	s.AppId = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetAppName(v string) *HttpApiRoutePoliciesFallbackDestinations {
+	s.AppName = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetServiceId(v string) *HttpApiRoutePoliciesFallbackDestinations {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetServiceName(v string) *HttpApiRoutePoliciesFallbackDestinations {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetServicePort(v int64) *HttpApiRoutePoliciesFallbackDestinations {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesFallbackDestinations) SetServiceProtocol(v string) *HttpApiRoutePoliciesFallbackDestinations {
+	s.ServiceProtocol = &v
+	return s
+}
+
+type HttpApiRoutePoliciesRetry struct {
+	Attempts *int64 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	// example:
+	//
+	// true/false
+	Enable    *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	HttpCodes []*string `json:"HttpCodes,omitempty" xml:"HttpCodes,omitempty" type:"Repeated"`
+	RetryOn   []*string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty" type:"Repeated"`
+}
+
+func (s HttpApiRoutePoliciesRetry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePoliciesRetry) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePoliciesRetry) SetAttempts(v int64) *HttpApiRoutePoliciesRetry {
+	s.Attempts = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesRetry) SetEnable(v bool) *HttpApiRoutePoliciesRetry {
+	s.Enable = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesRetry) SetHttpCodes(v []*string) *HttpApiRoutePoliciesRetry {
+	s.HttpCodes = v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesRetry) SetRetryOn(v []*string) *HttpApiRoutePoliciesRetry {
+	s.RetryOn = v
+	return s
+}
+
+type HttpApiRoutePoliciesTimeout struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// s
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum  *int64  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s HttpApiRoutePoliciesTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePoliciesTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePoliciesTimeout) SetEnable(v bool) *HttpApiRoutePoliciesTimeout {
+	s.Enable = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesTimeout) SetTimeUnit(v string) *HttpApiRoutePoliciesTimeout {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *HttpApiRoutePoliciesTimeout) SetUnitNum(v int64) *HttpApiRoutePoliciesTimeout {
+	s.UnitNum = &v
+	return s
+}
+
+type HttpApiRoutePredicates struct {
+	HeaderPredicates []*HttpApiRoutePredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                 `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *HttpApiRoutePredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*HttpApiRoutePredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s HttpApiRoutePredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePredicates) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePredicates) SetHeaderPredicates(v []*HttpApiRoutePredicatesHeaderPredicates) *HttpApiRoutePredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *HttpApiRoutePredicates) SetMethodPredicates(v []*string) *HttpApiRoutePredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *HttpApiRoutePredicates) SetPathPredicates(v *HttpApiRoutePredicatesPathPredicates) *HttpApiRoutePredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *HttpApiRoutePredicates) SetQueryPredicates(v []*HttpApiRoutePredicatesQueryPredicates) *HttpApiRoutePredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type HttpApiRoutePredicatesHeaderPredicates struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Prefix/Exact/Regex
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s HttpApiRoutePredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePredicatesHeaderPredicates) SetName(v string) *HttpApiRoutePredicatesHeaderPredicates {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesHeaderPredicates) SetType(v string) *HttpApiRoutePredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesHeaderPredicates) SetValue(v string) *HttpApiRoutePredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type HttpApiRoutePredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// Prefix/Exact/Regex
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s HttpApiRoutePredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePredicatesPathPredicates) SetIgnoreCase(v bool) *HttpApiRoutePredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesPathPredicates) SetPath(v string) *HttpApiRoutePredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesPathPredicates) SetType(v string) *HttpApiRoutePredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type HttpApiRoutePredicatesQueryPredicates struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Prefix/Exact/Regex
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s HttpApiRoutePredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRoutePredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRoutePredicatesQueryPredicates) SetName(v string) *HttpApiRoutePredicatesQueryPredicates {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesQueryPredicates) SetType(v string) *HttpApiRoutePredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *HttpApiRoutePredicatesQueryPredicates) SetValue(v string) *HttpApiRoutePredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type HttpApiRouteServices struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServicePort *int64  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// example:
+	//
+	// HTTP
+	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// example:
+	//
+	// 90
+	ServiceWeight *int64 `json:"ServiceWeight,omitempty" xml:"ServiceWeight,omitempty"`
+}
+
+func (s HttpApiRouteServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiRouteServices) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiRouteServices) SetAppId(v string) *HttpApiRouteServices {
+	s.AppId = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetAppName(v string) *HttpApiRouteServices {
+	s.AppName = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetServiceId(v string) *HttpApiRouteServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetServiceName(v string) *HttpApiRouteServices {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetServicePort(v int64) *HttpApiRouteServices {
+	s.ServicePort = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetServiceProtocol(v string) *HttpApiRouteServices {
+	s.ServiceProtocol = &v
+	return s
+}
+
+func (s *HttpApiRouteServices) SetServiceWeight(v int64) *HttpApiRouteServices {
+	s.ServiceWeight = &v
+	return s
+}
+
 type ImageConfig struct {
 	AccelerationType *string         `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
 	Image            *string         `json:"image,omitempty" xml:"image,omitempty"`
@@ -4786,8 +5317,13 @@ func (s *PriceEstimateFeature) SetRegionId(v string) *PriceEstimateFeature {
 }
 
 type PriceEstimateOutput struct {
-	Apps  []*PriceEstimateOutputApps  `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	Items []*PriceEstimateOutputItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	Apps         []*PriceEstimateOutputApps         `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	Items        []*PriceEstimateOutputItems        `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PostPayItems []*PriceEstimateOutputPostPayItems `json:"PostPayItems,omitempty" xml:"PostPayItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 235.66
+	PostPayTotalPrice *float32 `json:"PostPayTotalPrice,omitempty" xml:"PostPayTotalPrice,omitempty"`
 	// example:
 	//
 	// 235.66
@@ -4809,6 +5345,16 @@ func (s *PriceEstimateOutput) SetApps(v []*PriceEstimateOutputApps) *PriceEstima
 
 func (s *PriceEstimateOutput) SetItems(v []*PriceEstimateOutputItems) *PriceEstimateOutput {
 	s.Items = v
+	return s
+}
+
+func (s *PriceEstimateOutput) SetPostPayItems(v []*PriceEstimateOutputPostPayItems) *PriceEstimateOutput {
+	s.PostPayItems = v
+	return s
+}
+
+func (s *PriceEstimateOutput) SetPostPayTotalPrice(v float32) *PriceEstimateOutput {
+	s.PostPayTotalPrice = &v
 	return s
 }
 
@@ -5007,6 +5553,130 @@ func (s *PriceEstimateOutputItemsSteps) SetRegionIds(v []*string) *PriceEstimate
 }
 
 func (s *PriceEstimateOutputItemsSteps) SetUnit(v string) *PriceEstimateOutputItemsSteps {
+	s.Unit = &v
+	return s
+}
+
+type PriceEstimateOutputPostPayItems struct {
+	// example:
+	//
+	// 3600.00
+	Amount *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// p_micro_service_cpu
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1.00
+	Price *float32                                `json:"Price,omitempty" xml:"Price,omitempty"`
+	Steps []*PriceEstimateOutputPostPayItemsSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pack/post
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 核*秒
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s PriceEstimateOutputPostPayItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputPostPayItems) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetAmount(v float32) *PriceEstimateOutputPostPayItems {
+	s.Amount = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetCount(v int64) *PriceEstimateOutputPostPayItems {
+	s.Count = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetId(v string) *PriceEstimateOutputPostPayItems {
+	s.Id = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetPrice(v float32) *PriceEstimateOutputPostPayItems {
+	s.Price = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetSteps(v []*PriceEstimateOutputPostPayItemsSteps) *PriceEstimateOutputPostPayItems {
+	s.Steps = v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetType(v string) *PriceEstimateOutputPostPayItems {
+	s.Type = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItems) SetUnit(v string) *PriceEstimateOutputPostPayItems {
+	s.Unit = &v
+	return s
+}
+
+type PriceEstimateOutputPostPayItemsSteps struct {
+	// example:
+	//
+	// 0
+	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// example:
+	//
+	// 10000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 0.0001
+	Price     *float32  `json:"Price,omitempty" xml:"Price,omitempty"`
+	RegionIds []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 核*秒
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s PriceEstimateOutputPostPayItemsSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PriceEstimateOutputPostPayItemsSteps) GoString() string {
+	return s.String()
+}
+
+func (s *PriceEstimateOutputPostPayItemsSteps) SetBegin(v int64) *PriceEstimateOutputPostPayItemsSteps {
+	s.Begin = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItemsSteps) SetEnd(v int64) *PriceEstimateOutputPostPayItemsSteps {
+	s.End = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItemsSteps) SetPrice(v float32) *PriceEstimateOutputPostPayItemsSteps {
+	s.Price = &v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItemsSteps) SetRegionIds(v []*string) *PriceEstimateOutputPostPayItemsSteps {
+	s.RegionIds = v
+	return s
+}
+
+func (s *PriceEstimateOutputPostPayItemsSteps) SetUnit(v string) *PriceEstimateOutputPostPayItemsSteps {
 	s.Unit = &v
 	return s
 }
@@ -5630,6 +6300,71 @@ func (s *ScaleConfig) SetMinimumInstanceCount(v int64) *ScaleConfig {
 
 func (s *ScaleConfig) SetRequestId(v string) *ScaleConfig {
 	s.RequestId = &v
+	return s
+}
+
+type SidecarContainerConfig struct {
+	Command            *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs        *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EmptyDirDesc       *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
+	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Memory             *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SidecarContainerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SidecarContainerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SidecarContainerConfig) SetCommand(v string) *SidecarContainerConfig {
+	s.Command = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetCommandArgs(v string) *SidecarContainerConfig {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetConfigMapMountDesc(v string) *SidecarContainerConfig {
+	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetCpu(v int32) *SidecarContainerConfig {
+	s.Cpu = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetEmptyDirDesc(v string) *SidecarContainerConfig {
+	s.EmptyDirDesc = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetEnvs(v string) *SidecarContainerConfig {
+	s.Envs = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetImageUrl(v string) *SidecarContainerConfig {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetMemory(v int32) *SidecarContainerConfig {
+	s.Memory = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetName(v string) *SidecarContainerConfig {
+	s.Name = &v
 	return s
 }
 
@@ -9117,7 +9852,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// KSAK****
-	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// xxxxxx
 	//
 	// example:
@@ -9458,6 +10194,11 @@ func (s *CreateApplicationRequest) SetNasConfigs(v string) *CreateApplicationReq
 
 func (s *CreateApplicationRequest) SetNasId(v string) *CreateApplicationRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetOidcRoleName(v string) *CreateApplicationRequest {
+	s.OidcRoleName = &v
 	return s
 }
 
@@ -14325,7 +15066,10 @@ type DeployApplicationRequest struct {
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	Cpu                *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 1000
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
 	//
 	// 	- **hostName**: the domain name or hostname.
@@ -14487,7 +15231,10 @@ type DeployApplicationRequest struct {
 	//
 	// {"exec":{"command":["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 1024
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The Nacos registry. Valid values:
 	//
 	// 	- **0**: SAE built-in Nacos registry
@@ -14499,7 +15246,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistration *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	// example:
+	//
+	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
 	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
@@ -14553,12 +15303,13 @@ type DeployApplicationRequest struct {
 	//
 	// [{"mountPath":"/test1","readOnly":false,"nasId":"nasId1","mountDomain":"nasId1.cn-shenzhen.nas.aliyuncs.com","nasPath":"/test1"},{"nasId":"nasId2","mountDomain":"nasId2.cn-shenzhen.nas.aliyuncs.com","readOnly":false,"nasPath":"/test2","mountPath":"/test2"}]
 	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
-	// The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId*	- parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId*	- values in the subsequent requests to an empty string ("").
+	// The ID of the File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId*	- parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId*	- values in the subsequent requests to an empty string ("").
 	//
 	// example:
 	//
 	// 10d3b4****
-	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	//
 	// example:
@@ -14672,10 +15423,19 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {"exec":{"command":["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
-	Readiness       *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
+	// example:
+	//
+	// 1
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	ServiceTags     *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	// example:
+	//
+	// {\\"alicloud.service.tag\\":\\"g1\\"}
+	ServiceTags *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	// The logging configurations of Log Service.
 	//
 	// 	- To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
@@ -14756,7 +15516,10 @@ type DeployApplicationRequest struct {
 	//
 	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	UpdateStrategy *string `json:"UpdateStrategy,omitempty" xml:"UpdateStrategy,omitempty"`
-	VSwitchId      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vsw-bp12mw1f8k3jgygk9****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
 	//
 	// example:
@@ -14962,6 +15725,11 @@ func (s *DeployApplicationRequest) SetNasConfigs(v string) *DeployApplicationReq
 
 func (s *DeployApplicationRequest) SetNasId(v string) *DeployApplicationRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetOidcRoleName(v string) *DeployApplicationRequest {
+	s.OidcRoleName = &v
 	return s
 }
 
@@ -16235,7 +17003,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// AKSN89**
-	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	//
 	// example:
@@ -16702,6 +17471,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetNasConfigs(v string) *Des
 
 func (s *DescribeApplicationConfigResponseBodyData) SetNasId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.NasId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetOidcRoleName(v string) *DescribeApplicationConfigResponseBodyData {
+	s.OidcRoleName = &v
 	return s
 }
 
@@ -23437,8 +24211,9 @@ type DescribeIngressResponseBodyDataRules struct {
 	// example:
 	//
 	// /path1
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	RewritePath *string `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
+	Path        *string                                            `json:"Path,omitempty" xml:"Path,omitempty"`
+	RewritePath *string                                            `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
+	RuleActions []*DescribeIngressResponseBodyDataRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeIngressResponseBodyDataRules) String() string {
@@ -23481,6 +24256,34 @@ func (s *DescribeIngressResponseBodyDataRules) SetPath(v string) *DescribeIngres
 
 func (s *DescribeIngressResponseBodyDataRules) SetRewritePath(v string) *DescribeIngressResponseBodyDataRules {
 	s.RewritePath = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataRules) SetRuleActions(v []*DescribeIngressResponseBodyDataRulesRuleActions) *DescribeIngressResponseBodyDataRules {
+	s.RuleActions = v
+	return s
+}
+
+type DescribeIngressResponseBodyDataRulesRuleActions struct {
+	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
+	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+}
+
+func (s DescribeIngressResponseBodyDataRulesRuleActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIngressResponseBodyDataRulesRuleActions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIngressResponseBodyDataRulesRuleActions) SetActionConfig(v string) *DescribeIngressResponseBodyDataRulesRuleActions {
+	s.ActionConfig = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataRulesRuleActions) SetActionType(v string) *DescribeIngressResponseBodyDataRulesRuleActions {
+	s.ActionType = &v
 	return s
 }
 
@@ -30539,6 +31342,156 @@ func (s *GetWarningEventMetricResponse) SetStatusCode(v int32) *GetWarningEventM
 }
 
 func (s *GetWarningEventMetricResponse) SetBody(v *GetWarningEventMetricResponseBody) *GetWarningEventMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetWebshellTokenRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hello-podsdfsdfsdfsdf
+	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+}
+
+func (s GetWebshellTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebshellTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebshellTokenRequest) SetAppId(v string) *GetWebshellTokenRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetWebshellTokenRequest) SetPodName(v string) *GetWebshellTokenRequest {
+	s.PodName = &v
+	return s
+}
+
+type GetWebshellTokenResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetWebshellTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s GetWebshellTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebshellTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebshellTokenResponseBody) SetCode(v string) *GetWebshellTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetData(v *GetWebshellTokenResponseBodyData) *GetWebshellTokenResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetErrorCode(v string) *GetWebshellTokenResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetMessage(v string) *GetWebshellTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetRequestId(v string) *GetWebshellTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetSuccess(v bool) *GetWebshellTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBody) SetTraceId(v string) *GetWebshellTokenResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GetWebshellTokenResponseBodyData struct {
+	// example:
+	//
+	// zWWpvRj_5pzof4hfo7-hGynM8oGMmO_7
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetWebshellTokenResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebshellTokenResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebshellTokenResponseBodyData) SetToken(v string) *GetWebshellTokenResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+type GetWebshellTokenResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWebshellTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWebshellTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWebshellTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWebshellTokenResponse) SetHeaders(v map[string]*string) *GetWebshellTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWebshellTokenResponse) SetStatusCode(v int32) *GetWebshellTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponse) SetBody(v *GetWebshellTokenResponseBody) *GetWebshellTokenResponse {
 	s.Body = v
 	return s
 }
@@ -43881,6 +44834,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["NasId"] = request.NasId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OidcRoleName)) {
+		query["OidcRoleName"] = request.OidcRoleName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
 		query["PackageType"] = request.PackageType
 	}
@@ -45947,6 +46904,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OidcRoleName)) {
+		query["OidcRoleName"] = request.OidcRoleName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
@@ -49101,6 +50062,66 @@ func (client *Client) GetWarningEventMetric(request *GetWarningEventMetricReques
 	headers := make(map[string]*string)
 	_result = &GetWarningEventMetricResponse{}
 	_body, _err := client.GetWarningEventMetricWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetWebshellTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWebshellTokenResponse
+func (client *Client) GetWebshellTokenWithOptions(request *GetWebshellTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWebshellTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PodName)) {
+		query["PodName"] = request.PodName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWebshellToken"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/instance/webshellToken"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWebshellTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetWebshellTokenRequest
+//
+// @return GetWebshellTokenResponse
+func (client *Client) GetWebshellToken(request *GetWebshellTokenRequest) (_result *GetWebshellTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWebshellTokenResponse{}
+	_body, _err := client.GetWebshellTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
