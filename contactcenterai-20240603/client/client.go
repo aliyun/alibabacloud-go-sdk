@@ -23,6 +23,7 @@ type AnalyzeConversationRequest struct {
 	ResultTypes       []*string                                    `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
 	SceneName         *string                                      `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
 	ServiceInspection *AnalyzeConversationRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
+	SourceCallerUid   *string                                      `json:"sourceCallerUid,omitempty" xml:"sourceCallerUid,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -78,6 +79,11 @@ func (s *AnalyzeConversationRequest) SetSceneName(v string) *AnalyzeConversation
 
 func (s *AnalyzeConversationRequest) SetServiceInspection(v *AnalyzeConversationRequestServiceInspection) *AnalyzeConversationRequest {
 	s.ServiceInspection = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetSourceCallerUid(v string) *AnalyzeConversationRequest {
+	s.SourceCallerUid = &v
 	return s
 }
 
@@ -1074,6 +1080,7 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 }
 
 type GetTaskResultRequest struct {
+	RequiredFieldList []*string `json:"requiredFieldList,omitempty" xml:"requiredFieldList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 20240905-********-93E9-5D45-B4EF-045743A34071
@@ -1088,7 +1095,38 @@ func (s GetTaskResultRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTaskResultRequest) SetRequiredFieldList(v []*string) *GetTaskResultRequest {
+	s.RequiredFieldList = v
+	return s
+}
+
 func (s *GetTaskResultRequest) SetTaskId(v string) *GetTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskResultShrinkRequest struct {
+	RequiredFieldListShrink *string `json:"requiredFieldList,omitempty" xml:"requiredFieldList,omitempty"`
+	// example:
+	//
+	// 20240905-********-93E9-5D45-B4EF-045743A34071
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetTaskResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultShrinkRequest) SetRequiredFieldListShrink(v string) *GetTaskResultShrinkRequest {
+	s.RequiredFieldListShrink = &v
+	return s
+}
+
+func (s *GetTaskResultShrinkRequest) SetTaskId(v string) *GetTaskResultShrinkRequest {
 	s.TaskId = &v
 	return s
 }
@@ -1129,6 +1167,8 @@ func (s *GetTaskResultResponseBody) SetSuccess(v string) *GetTaskResultResponseB
 }
 
 type GetTaskResultResponseBodyData struct {
+	AsrResult        []*GetTaskResultResponseBodyDataAsrResult `json:"asrResult,omitempty" xml:"asrResult,omitempty" type:"Repeated"`
+	TaskErrorMessage *string                                   `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
 	// example:
 	//
 	// 20240905-********-93E9-5D45-B4EF-045743A34071
@@ -1148,6 +1188,16 @@ func (s GetTaskResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetTaskResultResponseBodyData) SetAsrResult(v []*GetTaskResultResponseBodyDataAsrResult) *GetTaskResultResponseBodyData {
+	s.AsrResult = v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyData) SetTaskErrorMessage(v string) *GetTaskResultResponseBodyData {
+	s.TaskErrorMessage = &v
+	return s
+}
+
 func (s *GetTaskResultResponseBodyData) SetTaskId(v string) *GetTaskResultResponseBodyData {
 	s.TaskId = &v
 	return s
@@ -1160,6 +1210,53 @@ func (s *GetTaskResultResponseBodyData) SetTaskStatus(v string) *GetTaskResultRe
 
 func (s *GetTaskResultResponseBodyData) SetText(v string) *GetTaskResultResponseBodyData {
 	s.Text = &v
+	return s
+}
+
+type GetTaskResultResponseBodyDataAsrResult struct {
+	Begin        *int64  `json:"begin,omitempty" xml:"begin,omitempty"`
+	EmotionValue *int32  `json:"emotionValue,omitempty" xml:"emotionValue,omitempty"`
+	End          *int64  `json:"end,omitempty" xml:"end,omitempty"`
+	Role         *string `json:"role,omitempty" xml:"role,omitempty"`
+	SpeechRate   *int32  `json:"speechRate,omitempty" xml:"speechRate,omitempty"`
+	Words        *string `json:"words,omitempty" xml:"words,omitempty"`
+}
+
+func (s GetTaskResultResponseBodyDataAsrResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResultResponseBodyDataAsrResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetBegin(v int64) *GetTaskResultResponseBodyDataAsrResult {
+	s.Begin = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetEmotionValue(v int32) *GetTaskResultResponseBodyDataAsrResult {
+	s.EmotionValue = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetEnd(v int64) *GetTaskResultResponseBodyDataAsrResult {
+	s.End = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetRole(v string) *GetTaskResultResponseBodyDataAsrResult {
+	s.Role = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetSpeechRate(v int32) *GetTaskResultResponseBodyDataAsrResult {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *GetTaskResultResponseBodyDataAsrResult) SetWords(v string) *GetTaskResultResponseBodyDataAsrResult {
+	s.Words = &v
 	return s
 }
 
@@ -1743,6 +1840,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 		body["serviceInspection"] = request.ServiceInspection
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceCallerUid)) {
+		body["sourceCallerUid"] = request.SourceCallerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
 		body["stream"] = request.Stream
 	}
@@ -1970,19 +2071,29 @@ func (client *Client) CreateTask(workspaceId *string, appId *string, request *Cr
 //
 // 语音文件调用大模型获取结果
 //
-// @param request - GetTaskResultRequest
+// @param tmpReq - GetTaskResultRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResultResponse
-func (client *Client) GetTaskResultWithOptions(request *GetTaskResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetTaskResultWithOptions(tmpReq *GetTaskResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetTaskResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RequiredFieldList)) {
+		request.RequiredFieldListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequiredFieldList, tea.String("requiredFieldList"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RequiredFieldListShrink)) {
+		query["requiredFieldList"] = request.RequiredFieldListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["taskId"] = request.TaskId
 	}
