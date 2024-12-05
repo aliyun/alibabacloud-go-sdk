@@ -7740,6 +7740,280 @@ func (s *GetPropertiesResponse) SetBody(v *GetPropertiesResponseBody) *GetProper
 	return s
 }
 
+type GetSmartClipTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// task-03d46184ee7d8749
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetSmartClipTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskRequest) SetTaskId(v string) *GetSmartClipTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetSmartClipTaskRequest) SetWorkspaceId(v string) *GetSmartClipTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetSmartClipTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSmartClipTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSmartClipTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskResponseBody) SetCode(v string) *GetSmartClipTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBody) SetData(v *GetSmartClipTaskResponseBodyData) *GetSmartClipTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBody) SetHttpStatusCode(v int32) *GetSmartClipTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBody) SetMessage(v string) *GetSmartClipTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBody) SetRequestId(v string) *GetSmartClipTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBody) SetSuccess(v bool) *GetSmartClipTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSmartClipTaskResponseBodyData struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status  *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubJobs []*GetSmartClipTaskResponseBodyDataSubJobs `json:"SubJobs,omitempty" xml:"SubJobs,omitempty" type:"Repeated"`
+}
+
+func (s GetSmartClipTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskResponseBodyData) SetErrorMessage(v string) *GetSmartClipTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyData) SetStatus(v string) *GetSmartClipTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyData) SetSubJobs(v []*GetSmartClipTaskResponseBodyDataSubJobs) *GetSmartClipTaskResponseBodyData {
+	s.SubJobs = v
+	return s
+}
+
+type GetSmartClipTaskResponseBodyDataSubJobs struct {
+	// example:
+	//
+	// x\"x\"x\"x
+	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FileAttr     *GetSmartClipTaskResponseBodyDataSubJobsFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	// example:
+	//
+	// oss://default/bucket-name/path-xxx/xxx-1.mp4
+	FileKey *string `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// xxxxx
+	SubJobId *string `json:"SubJobId,omitempty" xml:"SubJobId,omitempty"`
+}
+
+func (s GetSmartClipTaskResponseBodyDataSubJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskResponseBodyDataSubJobs) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetErrorMessage(v string) *GetSmartClipTaskResponseBodyDataSubJobs {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetFileAttr(v *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) *GetSmartClipTaskResponseBodyDataSubJobs {
+	s.FileAttr = v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetFileKey(v string) *GetSmartClipTaskResponseBodyDataSubJobs {
+	s.FileKey = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetStatus(v string) *GetSmartClipTaskResponseBodyDataSubJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobs) SetSubJobId(v string) *GetSmartClipTaskResponseBodyDataSubJobs {
+	s.SubJobId = &v
+	return s
+}
+
+type GetSmartClipTaskResponseBodyDataSubJobsFileAttr struct {
+	// example:
+	//
+	// 120
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 290804
+	FileLength *string `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	// example:
+	//
+	// 2024-12-12.mp4
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 1080
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// http://www.example.com/tmp.mp4
+	TmpUrl *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetSmartClipTaskResponseBodyDataSubJobsFileAttr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskResponseBodyDataSubJobsFileAttr) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetDuration(v float64) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetFileLength(v string) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.FileLength = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetFileName(v string) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetHeight(v int32) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.Height = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetTmpUrl(v string) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.TmpUrl = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponseBodyDataSubJobsFileAttr) SetWidth(v int32) *GetSmartClipTaskResponseBodyDataSubJobsFileAttr {
+	s.Width = &v
+	return s
+}
+
+type GetSmartClipTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSmartClipTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSmartClipTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmartClipTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmartClipTaskResponse) SetHeaders(v map[string]*string) *GetSmartClipTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSmartClipTaskResponse) SetStatusCode(v int32) *GetSmartClipTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSmartClipTaskResponse) SetBody(v *GetSmartClipTaskResponseBody) *GetSmartClipTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetTopicByIdRequest struct {
 	// This parameter is required.
 	//
@@ -25124,6 +25398,532 @@ func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVoc
 	return s
 }
 
+type SubmitSmartClipTaskRequest struct {
+	EditingConfig *SubmitSmartClipTaskRequestEditingConfig `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	InputConfig  *SubmitSmartClipTaskRequestInputConfig  `json:"InputConfig,omitempty" xml:"InputConfig,omitempty" type:"Struct"`
+	OutputConfig *SubmitSmartClipTaskRequestOutputConfig `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequest) SetEditingConfig(v *SubmitSmartClipTaskRequestEditingConfig) *SubmitSmartClipTaskRequest {
+	s.EditingConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequest) SetInputConfig(v *SubmitSmartClipTaskRequestInputConfig) *SubmitSmartClipTaskRequest {
+	s.InputConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequest) SetOutputConfig(v *SubmitSmartClipTaskRequestOutputConfig) *SubmitSmartClipTaskRequest {
+	s.OutputConfig = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequest) SetWorkspaceId(v string) *SubmitSmartClipTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfig struct {
+	TitleConfig *SubmitSmartClipTaskRequestEditingConfigTitleConfig `json:"TitleConfig,omitempty" xml:"TitleConfig,omitempty" type:"Struct"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfig) SetTitleConfig(v *SubmitSmartClipTaskRequestEditingConfigTitleConfig) *SubmitSmartClipTaskRequestEditingConfig {
+	s.TitleConfig = v
+	return s
+}
+
+type SubmitSmartClipTaskRequestEditingConfigTitleConfig struct {
+	// example:
+	//
+	// TopLeft
+	Alignment *string `json:"Alignment,omitempty" xml:"Alignment,omitempty"`
+	// example:
+	//
+	// 2
+	TimelineIn *float32 `json:"TimelineIn,omitempty" xml:"TimelineIn,omitempty"`
+	// example:
+	//
+	// 3
+	TimelineOut *float32 `json:"TimelineOut,omitempty" xml:"TimelineOut,omitempty"`
+	// example:
+	//
+	// 100
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 100
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigTitleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestEditingConfigTitleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigTitleConfig) SetAlignment(v string) *SubmitSmartClipTaskRequestEditingConfigTitleConfig {
+	s.Alignment = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigTitleConfig) SetTimelineIn(v float32) *SubmitSmartClipTaskRequestEditingConfigTitleConfig {
+	s.TimelineIn = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigTitleConfig) SetTimelineOut(v float32) *SubmitSmartClipTaskRequestEditingConfigTitleConfig {
+	s.TimelineOut = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigTitleConfig) SetX(v float32) *SubmitSmartClipTaskRequestEditingConfigTitleConfig {
+	s.X = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestEditingConfigTitleConfig) SetY(v float32) *SubmitSmartClipTaskRequestEditingConfigTitleConfig {
+	s.Y = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestInputConfig struct {
+	BackgroundMusics []*SubmitSmartClipTaskRequestInputConfigBackgroundMusics `json:"BackgroundMusics,omitempty" xml:"BackgroundMusics,omitempty" type:"Repeated"`
+	SpeechTexts      []*string                                                `json:"SpeechTexts,omitempty" xml:"SpeechTexts,omitempty" type:"Repeated"`
+	Stickers         []*SubmitSmartClipTaskRequestInputConfigStickers         `json:"Stickers,omitempty" xml:"Stickers,omitempty" type:"Repeated"`
+	Titles           []*string                                                `json:"Titles,omitempty" xml:"Titles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	VideoIds []*SubmitSmartClipTaskRequestInputConfigVideoIds `json:"VideoIds,omitempty" xml:"VideoIds,omitempty" type:"Repeated"`
+}
+
+func (s SubmitSmartClipTaskRequestInputConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestInputConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfig) SetBackgroundMusics(v []*SubmitSmartClipTaskRequestInputConfigBackgroundMusics) *SubmitSmartClipTaskRequestInputConfig {
+	s.BackgroundMusics = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfig) SetSpeechTexts(v []*string) *SubmitSmartClipTaskRequestInputConfig {
+	s.SpeechTexts = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfig) SetStickers(v []*SubmitSmartClipTaskRequestInputConfigStickers) *SubmitSmartClipTaskRequestInputConfig {
+	s.Stickers = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfig) SetTitles(v []*string) *SubmitSmartClipTaskRequestInputConfig {
+	s.Titles = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfig) SetVideoIds(v []*SubmitSmartClipTaskRequestInputConfigVideoIds) *SubmitSmartClipTaskRequestInputConfig {
+	s.VideoIds = v
+	return s
+}
+
+type SubmitSmartClipTaskRequestInputConfigBackgroundMusics struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://default/bucket-name/filepath/video.mp3
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fileKey
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigBackgroundMusics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigBackgroundMusics) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigBackgroundMusics) SetId(v string) *SubmitSmartClipTaskRequestInputConfigBackgroundMusics {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigBackgroundMusics) SetType(v string) *SubmitSmartClipTaskRequestInputConfigBackgroundMusics {
+	s.Type = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestInputConfigStickers struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.5
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	StickerId *SubmitSmartClipTaskRequestInputConfigStickersStickerId `json:"StickerId,omitempty" xml:"StickerId,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.5
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.5
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.5
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigStickers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigStickers) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetHeight(v float64) *SubmitSmartClipTaskRequestInputConfigStickers {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetStickerId(v *SubmitSmartClipTaskRequestInputConfigStickersStickerId) *SubmitSmartClipTaskRequestInputConfigStickers {
+	s.StickerId = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetWidth(v float64) *SubmitSmartClipTaskRequestInputConfigStickers {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetX(v float64) *SubmitSmartClipTaskRequestInputConfigStickers {
+	s.X = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickers) SetY(v float64) *SubmitSmartClipTaskRequestInputConfigStickers {
+	s.Y = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestInputConfigStickersStickerId struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://default/bucket-name/filepath/sticker.png
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fileKey
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigStickersStickerId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigStickersStickerId) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickersStickerId) SetId(v string) *SubmitSmartClipTaskRequestInputConfigStickersStickerId {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigStickersStickerId) SetType(v string) *SubmitSmartClipTaskRequestInputConfigStickersStickerId {
+	s.Type = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestInputConfigVideoIds struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://default/bucket-name/filepath/video.mp4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fileKey
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigVideoIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestInputConfigVideoIds) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigVideoIds) SetId(v string) *SubmitSmartClipTaskRequestInputConfigVideoIds {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestInputConfigVideoIds) SetType(v string) *SubmitSmartClipTaskRequestInputConfigVideoIds {
+	s.Type = &v
+	return s
+}
+
+type SubmitSmartClipTaskRequestOutputConfig struct {
+	// example:
+	//
+	// 1
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// test_{index}.mp4
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 1080
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 120
+	MaxDuration *int32 `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
+	// example:
+	//
+	// true
+	SaveToGeneratedContent *bool `json:"SaveToGeneratedContent,omitempty" xml:"SaveToGeneratedContent,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s SubmitSmartClipTaskRequestOutputConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskRequestOutputConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetCount(v int32) *SubmitSmartClipTaskRequestOutputConfig {
+	s.Count = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetFileName(v string) *SubmitSmartClipTaskRequestOutputConfig {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetHeight(v int32) *SubmitSmartClipTaskRequestOutputConfig {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetMaxDuration(v int32) *SubmitSmartClipTaskRequestOutputConfig {
+	s.MaxDuration = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetSaveToGeneratedContent(v bool) *SubmitSmartClipTaskRequestOutputConfig {
+	s.SaveToGeneratedContent = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskRequestOutputConfig) SetWidth(v int32) *SubmitSmartClipTaskRequestOutputConfig {
+	s.Width = &v
+	return s
+}
+
+type SubmitSmartClipTaskShrinkRequest struct {
+	EditingConfigShrink *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// This parameter is required.
+	InputConfigShrink  *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	OutputConfigShrink *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	// This parameter is required.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitSmartClipTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskShrinkRequest) SetEditingConfigShrink(v string) *SubmitSmartClipTaskShrinkRequest {
+	s.EditingConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskShrinkRequest) SetInputConfigShrink(v string) *SubmitSmartClipTaskShrinkRequest {
+	s.InputConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskShrinkRequest) SetOutputConfigShrink(v string) *SubmitSmartClipTaskShrinkRequest {
+	s.OutputConfigShrink = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskShrinkRequest) SetWorkspaceId(v string) *SubmitSmartClipTaskShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitSmartClipTaskResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitSmartClipTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitSmartClipTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetCode(v string) *SubmitSmartClipTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetData(v *SubmitSmartClipTaskResponseBodyData) *SubmitSmartClipTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetHttpStatusCode(v int32) *SubmitSmartClipTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetMessage(v string) *SubmitSmartClipTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetRequestId(v string) *SubmitSmartClipTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponseBody) SetSuccess(v bool) *SubmitSmartClipTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitSmartClipTaskResponseBodyData struct {
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitSmartClipTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskResponseBodyData) SetTaskId(v string) *SubmitSmartClipTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitSmartClipTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSmartClipTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSmartClipTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmartClipTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartClipTaskResponse) SetHeaders(v map[string]*string) *SubmitSmartClipTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponse) SetStatusCode(v int32) *SubmitSmartClipTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSmartClipTaskResponse) SetBody(v *SubmitSmartClipTaskResponseBody) *SubmitSmartClipTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTopicSelectionPerspectiveAnalysisTaskRequest struct {
 	// This parameter is required.
 	//
@@ -28879,6 +29679,70 @@ func (client *Client) GetProperties(request *GetPropertiesRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPropertiesResponse{}
 	_body, _err := client.GetPropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一键成片剪辑任务
+//
+// @param request - GetSmartClipTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmartClipTaskResponse
+func (client *Client) GetSmartClipTaskWithOptions(request *GetSmartClipTaskRequest, runtime *util.RuntimeOptions) (_result *GetSmartClipTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmartClipTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSmartClipTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一键成片剪辑任务
+//
+// @param request - GetSmartClipTaskRequest
+//
+// @return GetSmartClipTaskResponse
+func (client *Client) GetSmartClipTask(request *GetSmartClipTaskRequest) (_result *GetSmartClipTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSmartClipTaskResponse{}
+	_body, _err := client.GetSmartClipTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33167,6 +34031,92 @@ func (client *Client) SubmitEnterpriseVocAnalysisTask(request *SubmitEnterpriseV
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
 	_body, _err := client.SubmitEnterpriseVocAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一键成片剪辑任务
+//
+// @param tmpReq - SubmitSmartClipTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSmartClipTaskResponse
+func (client *Client) SubmitSmartClipTaskWithOptions(tmpReq *SubmitSmartClipTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitSmartClipTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitSmartClipTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EditingConfig)) {
+		request.EditingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EditingConfig, tea.String("EditingConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InputConfig)) {
+		request.InputConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InputConfig, tea.String("InputConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OutputConfig)) {
+		request.OutputConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputConfig, tea.String("OutputConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EditingConfigShrink)) {
+		body["EditingConfig"] = request.EditingConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputConfigShrink)) {
+		body["InputConfig"] = request.InputConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfigShrink)) {
+		body["OutputConfig"] = request.OutputConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmartClipTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSmartClipTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交一键成片剪辑任务
+//
+// @param request - SubmitSmartClipTaskRequest
+//
+// @return SubmitSmartClipTaskResponse
+func (client *Client) SubmitSmartClipTask(request *SubmitSmartClipTaskRequest) (_result *SubmitSmartClipTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSmartClipTaskResponse{}
+	_body, _err := client.SubmitSmartClipTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
