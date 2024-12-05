@@ -1,3 +1,6 @@
+2024-12-05 Version: v1.6.2
+- Generated golang 2022-07-18 for ververica.
+
 2024-10-09 Version: v1.6.1
 - Update API ListDeployments: add param sortName.
 

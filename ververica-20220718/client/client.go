@@ -1918,6 +1918,8 @@ type JobStatus struct {
 	// RUNNING
 	CurrentJobStatus *string           `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
 	Failure          *JobFailure       `json:"failure,omitempty" xml:"failure,omitempty"`
+	HealthScore      *int32            `json:"healthScore,omitempty" xml:"healthScore,omitempty"`
+	RiskLevel        *string           `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
 	Running          *JobStatusRunning `json:"running,omitempty" xml:"running,omitempty"`
 }
 
@@ -1936,6 +1938,16 @@ func (s *JobStatus) SetCurrentJobStatus(v string) *JobStatus {
 
 func (s *JobStatus) SetFailure(v *JobFailure) *JobStatus {
 	s.Failure = v
+	return s
+}
+
+func (s *JobStatus) SetHealthScore(v int32) *JobStatus {
+	s.HealthScore = &v
+	return s
+}
+
+func (s *JobStatus) SetRiskLevel(v string) *JobStatus {
+	s.RiskLevel = &v
 	return s
 }
 
