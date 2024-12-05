@@ -657,245 +657,6 @@ func (s *ListHotTopicSummariesResponse) SetBody(v *ListHotTopicSummariesResponse
 	return s
 }
 
-type RunCommentGenerationRequest struct {
-	// example:
-	//
-	// 20
-	Length *string `json:"length,omitempty" xml:"length,omitempty"`
-	// example:
-	//
-	// 10
-	NumComments    *string `json:"numComments,omitempty" xml:"numComments,omitempty"`
-	SourceMaterial *string `json:"sourceMaterial,omitempty" xml:"sourceMaterial,omitempty"`
-	Style          *string `json:"style,omitempty" xml:"style,omitempty"`
-}
-
-func (s RunCommentGenerationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationRequest) SetLength(v string) *RunCommentGenerationRequest {
-	s.Length = &v
-	return s
-}
-
-func (s *RunCommentGenerationRequest) SetNumComments(v string) *RunCommentGenerationRequest {
-	s.NumComments = &v
-	return s
-}
-
-func (s *RunCommentGenerationRequest) SetSourceMaterial(v string) *RunCommentGenerationRequest {
-	s.SourceMaterial = &v
-	return s
-}
-
-func (s *RunCommentGenerationRequest) SetStyle(v string) *RunCommentGenerationRequest {
-	s.Style = &v
-	return s
-}
-
-type RunCommentGenerationResponseBody struct {
-	End     *bool                                    `json:"end,omitempty" xml:"end,omitempty"`
-	Header  *RunCommentGenerationResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
-	Payload *RunCommentGenerationResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
-}
-
-func (s RunCommentGenerationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponseBody) SetEnd(v bool) *RunCommentGenerationResponseBody {
-	s.End = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBody) SetHeader(v *RunCommentGenerationResponseBodyHeader) *RunCommentGenerationResponseBody {
-	s.Header = v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBody) SetPayload(v *RunCommentGenerationResponseBodyPayload) *RunCommentGenerationResponseBody {
-	s.Payload = v
-	return s
-}
-
-type RunCommentGenerationResponseBodyHeader struct {
-	// example:
-	//
-	// result-generated
-	Event     *string `json:"event,omitempty" xml:"event,omitempty"`
-	EventInfo *string `json:"eventInfo,omitempty" xml:"eventInfo,omitempty"`
-	// example:
-	//
-	// F8A35034-EDCF-5C50-95A5-1044316F36E3
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// tcm9xac9dsfbfgm8hf5k94l3cqybwh9o3mn0iuyytdgd9qoejxf1crxsdvuvr8fu0zuhbe8anhdaoeif2wbkmebagnezh23cuhkiazx2tmjh4eml791eak7t95sshvtkz14bh2lnbktzvdhialzd8reoaem0pktw41slinwyoabe75xlnxsqb5eo1i6ly70
-	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// example:
-	//
-	// task-fu1918oghtodbis3chgpfr
-	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// example:
-	//
-	// 21507c3517074446017046500ed5f1
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
-}
-
-func (s RunCommentGenerationResponseBodyHeader) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponseBodyHeader) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetEvent(v string) *RunCommentGenerationResponseBodyHeader {
-	s.Event = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetEventInfo(v string) *RunCommentGenerationResponseBodyHeader {
-	s.EventInfo = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetRequestId(v string) *RunCommentGenerationResponseBodyHeader {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetSessionId(v string) *RunCommentGenerationResponseBodyHeader {
-	s.SessionId = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetTaskId(v string) *RunCommentGenerationResponseBodyHeader {
-	s.TaskId = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyHeader) SetTraceId(v string) *RunCommentGenerationResponseBodyHeader {
-	s.TraceId = &v
-	return s
-}
-
-type RunCommentGenerationResponseBodyPayload struct {
-	Output *RunCommentGenerationResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
-	Usage  *RunCommentGenerationResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
-}
-
-func (s RunCommentGenerationResponseBodyPayload) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponseBodyPayload) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponseBodyPayload) SetOutput(v *RunCommentGenerationResponseBodyPayloadOutput) *RunCommentGenerationResponseBodyPayload {
-	s.Output = v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyPayload) SetUsage(v *RunCommentGenerationResponseBodyPayloadUsage) *RunCommentGenerationResponseBodyPayload {
-	s.Usage = v
-	return s
-}
-
-type RunCommentGenerationResponseBodyPayloadOutput struct {
-	Text *string `json:"text,omitempty" xml:"text,omitempty"`
-}
-
-func (s RunCommentGenerationResponseBodyPayloadOutput) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponseBodyPayloadOutput) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponseBodyPayloadOutput) SetText(v string) *RunCommentGenerationResponseBodyPayloadOutput {
-	s.Text = &v
-	return s
-}
-
-type RunCommentGenerationResponseBodyPayloadUsage struct {
-	// example:
-	//
-	// 100
-	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
-	// example:
-	//
-	// 100
-	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
-	// example:
-	//
-	// 200
-	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
-}
-
-func (s RunCommentGenerationResponseBodyPayloadUsage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponseBodyPayloadUsage) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunCommentGenerationResponseBodyPayloadUsage {
-	s.InputTokens = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunCommentGenerationResponseBodyPayloadUsage {
-	s.OutputTokens = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunCommentGenerationResponseBodyPayloadUsage {
-	s.TotalTokens = &v
-	return s
-}
-
-type RunCommentGenerationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *RunCommentGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s RunCommentGenerationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCommentGenerationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RunCommentGenerationResponse) SetHeaders(v map[string]*string) *RunCommentGenerationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RunCommentGenerationResponse) SetStatusCode(v int32) *RunCommentGenerationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RunCommentGenerationResponse) SetBody(v *RunCommentGenerationResponseBody) *RunCommentGenerationResponse {
-	s.Body = v
-	return s
-}
-
 type RunHotTopicChatRequest struct {
 	Category        *string   `json:"category,omitempty" xml:"category,omitempty"`
 	GenerateOptions []*string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
@@ -1407,6 +1168,10 @@ type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries struct {
 	CustomHotValue *float64 `json:"customHotValue,omitempty" xml:"customHotValue,omitempty"`
 	// example:
 	//
+	// xxx
+	CustomTextSummary *string `json:"customTextSummary,omitempty" xml:"customTextSummary,omitempty"`
+	// example:
+	//
 	// xx
 	HotTopic *string `json:"hotTopic,omitempty" xml:"hotTopic,omitempty"`
 	// example:
@@ -1416,7 +1181,13 @@ type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries struct {
 	// example:
 	//
 	// 100000
-	HotValue *float64 `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
+	HotValue *float64                                                           `json:"hotValue,omitempty" xml:"hotValue,omitempty"`
+	Images   []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	News     []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews   `json:"news,omitempty" xml:"news,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxx
+	TextSummary *string `json:"textSummary,omitempty" xml:"textSummary,omitempty"`
 }
 
 func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) String() string {
@@ -1432,6 +1203,11 @@ func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetCustomHot
 	return s
 }
 
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetCustomTextSummary(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.CustomTextSummary = &v
+	return s
+}
+
 func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotTopic(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
 	s.HotTopic = &v
 	return s
@@ -1444,6 +1220,70 @@ func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotTopicV
 
 func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetHotValue(v float64) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
 	s.HotValue = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetImages(v []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.Images = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetNews(v []*RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.News = v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetTextSummary(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries {
+	s.TextSummary = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages struct {
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages) SetUrl(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages {
+	s.Url = &v
+	return s
+}
+
+type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews struct {
+	// example:
+	//
+	// xxx
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews) SetTitle(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews {
+	s.Title = &v
+	return s
+}
+
+func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews) SetUrl(v string) *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesNews {
+	s.Url = &v
 	return s
 }
 
@@ -2163,13 +2003,16 @@ func (s *RunMarketingInformationExtractResponse) SetBody(v *RunMarketingInformat
 }
 
 type RunMarketingInformationWritingRequest struct {
-	CustomPrompt *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	CustomLimitation *string `json:"customLimitation,omitempty" xml:"customLimitation,omitempty"`
+	CustomPrompt     *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	InputExample     *string `json:"inputExample,omitempty" xml:"inputExample,omitempty"`
 	// example:
 	//
 	// qwen-max
 	//
 	// qwen-plus
 	ModelId        *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	OutputExample  *string `json:"outputExample,omitempty" xml:"outputExample,omitempty"`
 	SourceMaterial *string `json:"sourceMaterial,omitempty" xml:"sourceMaterial,omitempty"`
 	WritingType    *string `json:"writingType,omitempty" xml:"writingType,omitempty"`
 }
@@ -2182,13 +2025,28 @@ func (s RunMarketingInformationWritingRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunMarketingInformationWritingRequest) SetCustomLimitation(v string) *RunMarketingInformationWritingRequest {
+	s.CustomLimitation = &v
+	return s
+}
+
 func (s *RunMarketingInformationWritingRequest) SetCustomPrompt(v string) *RunMarketingInformationWritingRequest {
 	s.CustomPrompt = &v
 	return s
 }
 
+func (s *RunMarketingInformationWritingRequest) SetInputExample(v string) *RunMarketingInformationWritingRequest {
+	s.InputExample = &v
+	return s
+}
+
 func (s *RunMarketingInformationWritingRequest) SetModelId(v string) *RunMarketingInformationWritingRequest {
 	s.ModelId = &v
+	return s
+}
+
+func (s *RunMarketingInformationWritingRequest) SetOutputExample(v string) *RunMarketingInformationWritingRequest {
+	s.OutputExample = &v
 	return s
 }
 
@@ -4346,82 +4204,6 @@ func (client *Client) ListHotTopicSummaries(workspaceId *string, request *ListHo
 
 // Summary:
 //
-// 评论生成服务
-//
-// @param request - RunCommentGenerationRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RunCommentGenerationResponse
-func (client *Client) RunCommentGenerationWithOptions(workspaceId *string, request *RunCommentGenerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunCommentGenerationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Length)) {
-		body["length"] = request.Length
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NumComments)) {
-		body["numComments"] = request.NumComments
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceMaterial)) {
-		body["sourceMaterial"] = request.SourceMaterial
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Style)) {
-		body["style"] = request.Style
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RunCommentGeneration"),
-		Version:     tea.String("2024-08-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runCommentGeneration"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RunCommentGenerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 评论生成服务
-//
-// @param request - RunCommentGenerationRequest
-//
-// @return RunCommentGenerationResponse
-func (client *Client) RunCommentGeneration(workspaceId *string, request *RunCommentGenerationRequest) (_result *RunCommentGenerationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RunCommentGenerationResponse{}
-	_body, _err := client.RunCommentGenerationWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 轻应用-热点播报-问答
 //
 // @param tmpReq - RunHotTopicChatRequest
@@ -4719,12 +4501,24 @@ func (client *Client) RunMarketingInformationWritingWithOptions(workspaceId *str
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomLimitation)) {
+		body["customLimitation"] = request.CustomLimitation
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomPrompt)) {
 		body["customPrompt"] = request.CustomPrompt
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InputExample)) {
+		body["inputExample"] = request.InputExample
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
 		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputExample)) {
+		body["outputExample"] = request.OutputExample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceMaterial)) {
