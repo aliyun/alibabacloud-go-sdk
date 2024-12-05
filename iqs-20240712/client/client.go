@@ -2679,6 +2679,7 @@ type PlaceSearchNovaResponseBodyDataMetadata struct {
 	//
 	// 010-83847583
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	Score *string `json:"score,omitempty" xml:"score,omitempty"`
 	// example:
 	//
 	// [{\\"value\\":\\"nttd\\",\\"key\\":\\"owner\\"}]
@@ -2716,6 +2717,11 @@ func (s *PlaceSearchNovaResponseBodyDataMetadata) SetMainTag(v string) *PlaceSea
 
 func (s *PlaceSearchNovaResponseBodyDataMetadata) SetPhone(v string) *PlaceSearchNovaResponseBodyDataMetadata {
 	s.Phone = &v
+	return s
+}
+
+func (s *PlaceSearchNovaResponseBodyDataMetadata) SetScore(v string) *PlaceSearchNovaResponseBodyDataMetadata {
+	s.Score = &v
 	return s
 }
 
