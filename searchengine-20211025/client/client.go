@@ -2313,6 +2313,7 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The namespace name.
 	//
 	// example:
@@ -2387,6 +2388,11 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetDatabase(v string) *CreateIn
 
 func (s *CreateIndexRequestDataSourceInfoConfig) SetEndpoint(v string) *CreateIndexRequestDataSourceInfoConfig {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfoConfig) SetFormat(v string) *CreateIndexRequestDataSourceInfoConfig {
+	s.Format = &v
 	return s
 }
 
@@ -7303,7 +7309,7 @@ func (s *GetFileRequest) SetFileName(v string) *GetFileRequest {
 }
 
 type GetFileResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
@@ -7343,8 +7349,9 @@ type GetFileResponseBodyResult struct {
 	// example:
 	//
 	// ha-cn-2r42p5oi202_xijie_test
-	DataSource *string              `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	Extend     map[string][]*string `json:"extend,omitempty" xml:"extend,omitempty"`
+	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// Extended information
+	Extend map[string][]*string `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The full path of the file.
 	//
 	// example:
@@ -7444,7 +7451,7 @@ func (s *GetFileResponse) SetBody(v *GetFileResponseBody) *GetFileResponse {
 }
 
 type GetIndexResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7484,7 +7491,8 @@ type GetIndexResponseBodyResult struct {
 	// example:
 	//
 	// {"summarys":{"parameter":{"file_compressor":"zstd"},"summary_fields":["id"]},"file_compress":[{"name":"file_compressor","type":"zstd"},{"name":"no_compressor","type":""}],"indexs":[{"index_fields":"name","index_name":"ids","index_type":"STRING"},{"has_primary_key_attribute":true,"index_fields":"id","is_primary_key_sorted":false,"index_name":"id","index_type":"PRIMARYKEY64"}],"attributes":[{"file_compress":"no_compressor","field_name":"id"}],"fields":[{"user_defined_param":{},"compress_type":"uniq","field_type":"STRING","field_name":"id"},{"compress_type":"uniq","field_type":"STRING","field_name":"name"}],"table_name":"api"}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the data source.
 	//
 	// example:
@@ -7504,7 +7512,8 @@ type GetIndexResponseBodyResult struct {
 	// example:
 	//
 	// sz_vpc_domain_1
-	Domain *string              `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// Extended information
 	Extend map[string][]*string `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The time when full data in the index was last updated.
 	//
@@ -7561,7 +7570,8 @@ type GetIndexResponseBodyResult struct {
 	// example:
 	//
 	// 2
-	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
+	Partition  *int32  `json:"partition,omitempty" xml:"partition,omitempty"`
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 	// The information about the versions.
 	Versions []*GetIndexResponseBodyResultVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
@@ -7591,6 +7601,11 @@ func (s *GetIndexResponseBodyResult) SetConfigWhenBuild(v map[string]map[string]
 
 func (s *GetIndexResponseBodyResult) SetContent(v string) *GetIndexResponseBodyResult {
 	s.Content = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResult) SetCreateTime(v string) *GetIndexResponseBodyResult {
+	s.CreateTime = &v
 	return s
 }
 
@@ -7651,6 +7666,11 @@ func (s *GetIndexResponseBodyResult) SetName(v string) *GetIndexResponseBodyResu
 
 func (s *GetIndexResponseBodyResult) SetPartition(v int32) *GetIndexResponseBodyResult {
 	s.Partition = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResult) SetUpdateTime(v string) *GetIndexResponseBodyResult {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -7777,6 +7797,7 @@ type GetIndexResponseBodyResultDataSourceInfoConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	//
 	// example:
@@ -7851,6 +7872,11 @@ func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetDatabase(v string) *
 
 func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetEndpoint(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetFormat(v string) *GetIndexResponseBodyResultDataSourceInfoConfig {
+	s.Format = &v
 	return s
 }
 
@@ -8312,13 +8338,13 @@ func (s *GetIndexVersionResponse) SetBody(v *GetIndexVersionResponseBody) *GetIn
 }
 
 type GetInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The results returned.
+	// Response parameters
 	Result *GetInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -8365,7 +8391,12 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// ha3_test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The edition of the instance. Valid values: vector and engine.
+	//
+	// example:
+	//
+	// vector
+	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
 	// The time when the instance expires.
 	//
 	// example:
@@ -8389,17 +8420,29 @@ type GetInstanceResponseBodyResult struct {
 	// example:
 	//
 	// Unlock
-	LockMode *string                               `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	Network  *GetInstanceResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	NewMode  *bool                                 `json:"newMode,omitempty" xml:"newMode,omitempty"`
-	NoQrs    *bool                                 `json:"noQrs,omitempty" xml:"noQrs,omitempty"`
+	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	// The network information of the instance.
+	Network *GetInstanceResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	// Specifies whether the instance is of the new version.
+	//
+	// example:
+	//
+	// true
+	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	// Specifies whether the instance has only one node.
+	//
+	// example:
+	//
+	// false
+	NoQrs *bool `json:"noQrs,omitempty" xml:"noQrs,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzjvw24el5lma
-	ResourceGroupId *string                            `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	Spec            *GetInstanceResponseBodyResultSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The node specifications.
+	Spec *GetInstanceResponseBodyResultSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
 	// The status of the instance. Valid values:
 	//
 	// 	- INIT: being initialized
@@ -8422,8 +8465,18 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// 1634609702
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	UserName   *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	Version    *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// admin
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The version of the engine.
+	//
+	// example:
+	//
+	// ha3_3.10.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetInstanceResponseBodyResult) String() string {
@@ -8530,11 +8583,36 @@ func (s *GetInstanceResponseBodyResult) SetVersion(v string) *GetInstanceRespons
 }
 
 type GetInstanceResponseBodyResultNetwork struct {
-	Allow          *string `json:"allow,omitempty" xml:"allow,omitempty"`
-	Endpoint       *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The public domain name whitelist.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	Allow *string `json:"allow,omitempty" xml:"allow,omitempty"`
+	// The instance endpoint.
+	//
+	// example:
+	//
+	// ha-cn-35t3r****.ha.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The public endpoint.
+	//
+	// example:
+	//
+	// ha-cn-35t3ni****.public.ha.aliyuncs.com
 	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
-	VSwitchId      *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	VpcId          *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp11ldcf59q2n****
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-wz9axk41d9vff****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s GetInstanceResponseBodyResultNetwork) String() string {
@@ -8571,7 +8649,9 @@ func (s *GetInstanceResponseBodyResultNetwork) SetVpcId(v string) *GetInstanceRe
 }
 
 type GetInstanceResponseBodyResultSpec struct {
-	QrsResource    *GetInstanceResponseBodyResultSpecQrsResource    `json:"qrsResource,omitempty" xml:"qrsResource,omitempty" type:"Struct"`
+	// The QRS worker specifications.
+	QrsResource *GetInstanceResponseBodyResultSpecQrsResource `json:"qrsResource,omitempty" xml:"qrsResource,omitempty" type:"Struct"`
+	// The searcher worker specifications.
 	SearchResource *GetInstanceResponseBodyResultSpecSearchResource `json:"searchResource,omitempty" xml:"searchResource,omitempty" type:"Struct"`
 }
 
@@ -8594,11 +8674,36 @@ func (s *GetInstanceResponseBodyResultSpec) SetSearchResource(v *GetInstanceResp
 }
 
 type GetInstanceResponseBodyResultSpecQrsResource struct {
-	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
-	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
-	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
-	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The category. Valid values: local_ssd, SSD, and cloud.
+	//
+	// example:
+	//
+	// local_ssd
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The number of vCPUs.
+	//
+	// example:
+	//
+	// 2
+	Cpu *int32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 100
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The memory of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 10
+	Mem *int32 `json:"mem,omitempty" xml:"mem,omitempty"`
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 1
+	NodeCount *int32 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
 }
 
 func (s GetInstanceResponseBodyResultSpecQrsResource) String() string {
@@ -8635,11 +8740,36 @@ func (s *GetInstanceResponseBodyResultSpecQrsResource) SetNodeCount(v int32) *Ge
 }
 
 type GetInstanceResponseBodyResultSpecSearchResource struct {
-	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
-	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
-	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
-	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	// The category. Valid values: local_ssd, SSD, and cloud.
+	//
+	// example:
+	//
+	// local_ssd
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// The number of vCPUs.
+	//
+	// example:
+	//
+	// 2
+	Cpu *int32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The storage capacity. Unit: GB.
+	//
+	// example:
+	//
+	// 100
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The memory of the instance. Unit: GB.
+	//
+	// example:
+	//
+	// 10
+	Mem *int32 `json:"mem,omitempty" xml:"mem,omitempty"`
+	// The number of nodes.
+	//
+	// example:
+	//
+	// 1
+	NodeCount *int32 `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
 }
 
 func (s GetInstanceResponseBodyResultSpecSearchResource) String() string {
@@ -12301,7 +12431,8 @@ type ListIndexesResponseBodyResult struct {
 	// example:
 	//
 	// {"summarys":{"parameter":{"file_compressor":"zstd"},"summary_fields":["id"]},"file_compress":[{"name":"file_compressor","type":"zstd"},{"name":"no_compressor","type":""}],"indexs":[{"index_fields":"name","index_name":"ids","index_type":"STRING"},{"has_primary_key_attribute":true,"index_fields":"id","is_primary_key_sorted":false,"index_name":"id","index_type":"PRIMARYKEY64"}],"attributes":[{"file_compress":"no_compressor","field_name":"id"}],"fields":[{"user_defined_param":{},"compress_type":"uniq","field_type":"STRING","field_name":"id"},{"compress_type":"uniq","field_type":"STRING","field_name":"name"}],"table_name":"api"}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the data source.
 	//
 	// example:
@@ -12363,7 +12494,8 @@ type ListIndexesResponseBodyResult struct {
 	// example:
 	//
 	// 2
-	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
+	Partition  *int32  `json:"partition,omitempty" xml:"partition,omitempty"`
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 	// The index versions.
 	Versions []*ListIndexesResponseBodyResultVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
@@ -12378,6 +12510,11 @@ func (s ListIndexesResponseBodyResult) GoString() string {
 
 func (s *ListIndexesResponseBodyResult) SetContent(v string) *ListIndexesResponseBodyResult {
 	s.Content = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResult) SetCreateTime(v string) *ListIndexesResponseBodyResult {
+	s.CreateTime = &v
 	return s
 }
 
@@ -12433,6 +12570,11 @@ func (s *ListIndexesResponseBodyResult) SetName(v string) *ListIndexesResponseBo
 
 func (s *ListIndexesResponseBodyResult) SetPartition(v int32) *ListIndexesResponseBodyResult {
 	s.Partition = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResult) SetUpdateTime(v string) *ListIndexesResponseBodyResult {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -12548,6 +12690,7 @@ type ListIndexesResponseBodyResultDataSourceInfoConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	//
 	// example:
@@ -12622,6 +12765,11 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetDatabase(v string
 
 func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetEndpoint(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetFormat(v string) *ListIndexesResponseBodyResultDataSourceInfoConfig {
+	s.Format = &v
 	return s
 }
 
@@ -16765,7 +16913,9 @@ type ModifyIndexRequestDataSourceInfo struct {
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	OssDataPath *string `json:"ossDataPath,omitempty" xml:"ossDataPath,omitempty"`
+	Partition   *string `json:"partition,omitempty" xml:"partition,omitempty"`
 	// The maximum number of full indexes that can be concurrently processed.
 	//
 	// example:
@@ -16831,6 +16981,16 @@ func (s *ModifyIndexRequestDataSourceInfo) SetName(v string) *ModifyIndexRequest
 	return s
 }
 
+func (s *ModifyIndexRequestDataSourceInfo) SetOssDataPath(v string) *ModifyIndexRequestDataSourceInfo {
+	s.OssDataPath = &v
+	return s
+}
+
+func (s *ModifyIndexRequestDataSourceInfo) SetPartition(v string) *ModifyIndexRequestDataSourceInfo {
+	s.Partition = &v
+	return s
+}
+
 func (s *ModifyIndexRequestDataSourceInfo) SetProcessParallelNum(v int32) *ModifyIndexRequestDataSourceInfo {
 	s.ProcessParallelNum = &v
 	return s
@@ -16878,6 +17038,7 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	//
 	// example:
@@ -16952,6 +17113,11 @@ func (s *ModifyIndexRequestDataSourceInfoConfig) SetDatabase(v string) *ModifyIn
 
 func (s *ModifyIndexRequestDataSourceInfoConfig) SetEndpoint(v string) *ModifyIndexRequestDataSourceInfoConfig {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *ModifyIndexRequestDataSourceInfoConfig) SetFormat(v string) *ModifyIndexRequestDataSourceInfoConfig {
+	s.Format = &v
 	return s
 }
 
@@ -23379,13 +23545,13 @@ func (client *Client) GetDeployGraph(instanceId *string) (_result *GetDeployGrap
 //
 // Description:
 //
-// ## Method
+// ## [](#)Method
 //
 //     GET
 //
-// ## URI
+// ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
 //
 // @param request - GetFileRequest
 //
@@ -23434,13 +23600,13 @@ func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, 
 //
 // Description:
 //
-// ## Method
+// ## [](#)Method
 //
 //     GET
 //
-// ## URI
+// ## [](#uri)URI
 //
-//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file?fileName=/root/test.txt
+//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}/versions/{versionName}/file
 //
 // @param request - GetFileRequest
 //
@@ -23460,6 +23626,16 @@ func (client *Client) GetFile(instanceId *string, indexName *string, versionName
 // Summary:
 //
 // Queries the information about an index version.
+//
+// Description:
+//
+// ## [](#)Method
+//
+//     GET
+//
+// ## [](#uri)URI
+//
+//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}
 //
 // @param headers - map
 //
@@ -23493,6 +23669,16 @@ func (client *Client) GetIndexWithOptions(instanceId *string, indexName *string,
 // Summary:
 //
 // Queries the information about an index version.
+//
+// Description:
+//
+// ## [](#)Method
+//
+//     GET
+//
+// ## [](#uri)URI
+//
+//     /openapi/ha3/instances/{instanceId}/indexes/{indexName}
 //
 // @return GetIndexResponse
 func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *GetIndexResponse, _err error) {
@@ -23633,13 +23819,21 @@ func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
-// `GET`
+// ```java
 //
-// ### URI
+// GET
 //
-// `/openapi/ha3/instances/{instanceId}`
+// ```
+//
+// ### [](#uri)URI
+//
+// ```java
+//
+// /openapi/ha3/instances/{instanceId}
+//
+// ```
 //
 // @param headers - map
 //
@@ -23676,13 +23870,21 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
-// `GET`
+// ```java
 //
-// ### URI
+// GET
 //
-// `/openapi/ha3/instances/{instanceId}`
+// ```
+//
+// ### [](#uri)URI
+//
+// ```java
+//
+// /openapi/ha3/instances/{instanceId}
+//
+// ```
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
