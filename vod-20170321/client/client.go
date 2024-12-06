@@ -20958,6 +20958,382 @@ func (s *GetImageInfosResponse) SetBody(v *GetImageInfosResponseBody) *GetImageI
 	return s
 }
 
+type GetJobDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5c9dff***************59d50a967f5
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// transcode
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+}
+
+func (s GetJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailRequest) SetJobId(v string) *GetJobDetailRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobDetailRequest) SetJobType(v string) *GetJobDetailRequest {
+	s.JobType = &v
+	return s
+}
+
+type GetJobDetailResponseBody struct {
+	AIJobDetail *GetJobDetailResponseBodyAIJobDetail `json:"AIJobDetail,omitempty" xml:"AIJobDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// transcode
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 6708D849-F109-1A6C-AC91-************
+	RequestId          *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnapshotJobDetail  *GetJobDetailResponseBodySnapshotJobDetail  `json:"SnapshotJobDetail,omitempty" xml:"SnapshotJobDetail,omitempty" type:"Struct"`
+	TranscodeJobDetail *GetJobDetailResponseBodyTranscodeJobDetail `json:"TranscodeJobDetail,omitempty" xml:"TranscodeJobDetail,omitempty" type:"Struct"`
+}
+
+func (s GetJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBody) SetAIJobDetail(v *GetJobDetailResponseBodyAIJobDetail) *GetJobDetailResponseBody {
+	s.AIJobDetail = v
+	return s
+}
+
+func (s *GetJobDetailResponseBody) SetJobType(v string) *GetJobDetailResponseBody {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBody) SetRequestId(v string) *GetJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBody) SetSnapshotJobDetail(v *GetJobDetailResponseBodySnapshotJobDetail) *GetJobDetailResponseBody {
+	s.SnapshotJobDetail = v
+	return s
+}
+
+func (s *GetJobDetailResponseBody) SetTranscodeJobDetail(v *GetJobDetailResponseBodyTranscodeJobDetail) *GetJobDetailResponseBody {
+	s.TranscodeJobDetail = v
+	return s
+}
+
+type GetJobDetailResponseBodyAIJobDetail struct {
+	// example:
+	//
+	// 2024-10-14T07:39:46Z
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// example:
+	//
+	// 2024-10-14T07:39:25Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 5c9dff751ba**********59d50a967f5
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// AIVideoCensor
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 30e5d7**********bd900764de7c0102
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {"AuditRange":["video","image-cover","text-title"],"AuditContent":["screen"],"AuditItem":["terrorism","porn"],"AuditAutoBlock":"no"}
+	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	// example:
+	//
+	// Auto
+	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// example:
+	//
+	// 139109*****84930
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetJobDetailResponseBodyAIJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBodyAIJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetCompleteTime(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetCreateTime(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetJobId(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetJobType(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.JobType = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetMediaId(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetStatus(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetTemplateConfig(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.TemplateConfig = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetTrigger(v string) *GetJobDetailResponseBodyAIJobDetail {
+	s.Trigger = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyAIJobDetail) SetUserId(v int64) *GetJobDetailResponseBodyAIJobDetail {
+	s.UserId = &v
+	return s
+}
+
+type GetJobDetailResponseBodySnapshotJobDetail struct {
+	// example:
+	//
+	// 2024-10-14T07:39:45Z
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// example:
+	//
+	// 2024-10-14T07:39:25Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 63df12s0**********4hdq249t82kr91
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// {"inl":0,"num":32,"tm":5,"wd":"352","ft":"normal","hg":"640"}
+	NormalConfig *string `json:"NormalConfig,omitempty" xml:"NormalConfig,omitempty"`
+	// example:
+	//
+	// {"pad":"0","lines":"10","mgin":"0","cols":"10","ikcp":"false","hg":"68"}
+	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Auto
+	Trigger *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// example:
+	//
+	// 139109*****84930
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 30e5d7**********bd900764de7c0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s GetJobDetailResponseBodySnapshotJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBodySnapshotJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetCompleteTime(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetCreateTime(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetJobId(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetNormalConfig(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.NormalConfig = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetSpriteConfig(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.SpriteConfig = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetStatus(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetTrigger(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.Trigger = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetUserId(v int64) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodySnapshotJobDetail) SetVideoId(v string) *GetJobDetailResponseBodySnapshotJobDetail {
+	s.VideoId = &v
+	return s
+}
+
+type GetJobDetailResponseBodyTranscodeJobDetail struct {
+	// example:
+	//
+	// 2024-10-14T07:39:34Z
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// example:
+	//
+	// 2024-10-14T07:39:25Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// HD
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// example:
+	//
+	// 2dc1634e**********3f1d22d1a0174e
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// TranscodeSuccess
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// dbfaaec9e**********bf0b81219244c
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 139109*****84930
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 30e5d7**********bd900764de7c0102
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+}
+
+func (s GetJobDetailResponseBodyTranscodeJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBodyTranscodeJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetCompleteTime(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetCreateTime(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetDefinition(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.Definition = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetJobId(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetStatus(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetTemplateId(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetUserId(v int64) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetVideoId(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
+	s.VideoId = &v
+	return s
+}
+
+type GetJobDetailResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponse) SetHeaders(v map[string]*string) *GetJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobDetailResponse) SetStatusCode(v int32) *GetJobDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobDetailResponse) SetBody(v *GetJobDetailResponseBody) *GetJobDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetMediaAuditAudioResultDetailRequest struct {
 	// The ID of the video. You can query the video ID by using the ApsaraVideo VOD console or calling the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation.
 	//
@@ -26186,13 +26562,12 @@ func (s *GetTranscodeSummaryResponse) SetBody(v *GetTranscodeSummaryResponseBody
 }
 
 type GetTranscodeTaskRequest struct {
+	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 	// The ID of the transcoding task. You can use one of the following methods to obtain the ID:
 	//
 	// 	- Obtain the value of TranscodeTaskId from the response to the [SubmitTranscodeJobs](https://help.aliyun.com/document_detail/68570.html) operation.
 	//
 	// 	- Obtain the value of TranscodeTaskId from the response to the [ListTranscodeTask](https://help.aliyun.com/document_detail/109120.html) operation.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -26208,18 +26583,25 @@ func (s GetTranscodeTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTranscodeTaskRequest) SetJobIds(v string) *GetTranscodeTaskRequest {
+	s.JobIds = &v
+	return s
+}
+
 func (s *GetTranscodeTaskRequest) SetTranscodeTaskId(v string) *GetTranscodeTaskRequest {
 	s.TranscodeTaskId = &v
 	return s
 }
 
 type GetTranscodeTaskResponseBody struct {
+	NonExistJobIds []*string `json:"NonExistJobIds,omitempty" xml:"NonExistJobIds,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// F4C6D5BE-BF13-45*****6C-516EA8906DCD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TranscodeJobInfoList []*GetTranscodeTaskResponseBodyTranscodeJobInfoList `json:"TranscodeJobInfoList,omitempty" xml:"TranscodeJobInfoList,omitempty" type:"Repeated"`
 	// Details about transcoding tasks.
 	TranscodeTask *GetTranscodeTaskResponseBodyTranscodeTask `json:"TranscodeTask,omitempty" xml:"TranscodeTask,omitempty" type:"Struct"`
 }
@@ -26232,13 +26614,195 @@ func (s GetTranscodeTaskResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetTranscodeTaskResponseBody) SetNonExistJobIds(v []*string) *GetTranscodeTaskResponseBody {
+	s.NonExistJobIds = v
+	return s
+}
+
 func (s *GetTranscodeTaskResponseBody) SetRequestId(v string) *GetTranscodeTaskResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetTranscodeTaskResponseBody) SetTranscodeJobInfoList(v []*GetTranscodeTaskResponseBodyTranscodeJobInfoList) *GetTranscodeTaskResponseBody {
+	s.TranscodeJobInfoList = v
+	return s
+}
+
 func (s *GetTranscodeTaskResponseBody) SetTranscodeTask(v *GetTranscodeTaskResponseBodyTranscodeTask) *GetTranscodeTaskResponseBody {
 	s.TranscodeTask = v
+	return s
+}
+
+type GetTranscodeTaskResponseBodyTranscodeJobInfoList struct {
+	CompleteTime        *string                                                     `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreationTime        *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Definition          *string                                                     `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	ErrorCode           *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage        *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	InputFileUrl        *string                                                     `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
+	OutputFile          *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile `json:"OutputFile,omitempty" xml:"OutputFile,omitempty" type:"Struct"`
+	Priority            *string                                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	TranscodeJobId      *string                                                     `json:"TranscodeJobId,omitempty" xml:"TranscodeJobId,omitempty"`
+	TranscodeJobStatus  *string                                                     `json:"TranscodeJobStatus,omitempty" xml:"TranscodeJobStatus,omitempty"`
+	TranscodeProgress   *int64                                                      `json:"TranscodeProgress,omitempty" xml:"TranscodeProgress,omitempty"`
+	TranscodeTemplateId *string                                                     `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
+}
+
+func (s GetTranscodeTaskResponseBodyTranscodeJobInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscodeTaskResponseBodyTranscodeJobInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetCompleteTime(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetCreationTime(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetDefinition(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.Definition = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetErrorCode(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetErrorMessage(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetInputFileUrl(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.InputFileUrl = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetOutputFile(v *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.OutputFile = v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetPriority(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeJobId(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.TranscodeJobId = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeJobStatus(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.TranscodeJobStatus = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeProgress(v int64) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.TranscodeProgress = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoList) SetTranscodeTemplateId(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoList {
+	s.TranscodeTemplateId = &v
+	return s
+}
+
+type GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile struct {
+	AudioStreamList    *string   `json:"AudioStreamList,omitempty" xml:"AudioStreamList,omitempty"`
+	Bitrate            *string   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration           *string   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encryption         *string   `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	Filesize           *int64    `json:"Filesize,omitempty" xml:"Filesize,omitempty"`
+	Format             *string   `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps                *string   `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Height             *string   `json:"Height,omitempty" xml:"Height,omitempty"`
+	OutputFileUrl      *string   `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
+	SubtitleStreamList *string   `json:"SubtitleStreamList,omitempty" xml:"SubtitleStreamList,omitempty"`
+	VideoStreamList    *string   `json:"VideoStreamList,omitempty" xml:"VideoStreamList,omitempty"`
+	WatermarkIdList    []*string `json:"WatermarkIdList,omitempty" xml:"WatermarkIdList,omitempty" type:"Repeated"`
+	Width              *string   `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetAudioStreamList(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.AudioStreamList = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetBitrate(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetDuration(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetEncryption(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Encryption = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetFilesize(v int64) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Filesize = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetFormat(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Format = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetFps(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Fps = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetHeight(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Height = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetOutputFileUrl(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.OutputFileUrl = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetSubtitleStreamList(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.SubtitleStreamList = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetVideoStreamList(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.VideoStreamList = &v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetWatermarkIdList(v []*string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.WatermarkIdList = v
+	return s
+}
+
+func (s *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile) SetWidth(v string) *GetTranscodeTaskResponseBodyTranscodeJobInfoListOutputFile {
+	s.Width = &v
 	return s
 }
 
@@ -30915,6 +31479,168 @@ func (s *ListDynamicImageResponse) SetStatusCode(v int32) *ListDynamicImageRespo
 }
 
 func (s *ListDynamicImageResponse) SetBody(v *ListDynamicImageResponseBody) *ListDynamicImageResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// transcode
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30e5d7**********bd900764de7c0102
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s ListJobInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfoRequest) SetJobType(v string) *ListJobInfoRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListJobInfoRequest) SetMediaId(v string) *ListJobInfoRequest {
+	s.MediaId = &v
+	return s
+}
+
+type ListJobInfoResponseBody struct {
+	JobInfoList []*ListJobInfoResponseBodyJobInfoList `json:"JobInfoList,omitempty" xml:"JobInfoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// transcode
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 30e5d7**********bd900764de7c0102
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 6708D849-F109-1A6C-AC91-************
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListJobInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfoResponseBody) SetJobInfoList(v []*ListJobInfoResponseBodyJobInfoList) *ListJobInfoResponseBody {
+	s.JobInfoList = v
+	return s
+}
+
+func (s *ListJobInfoResponseBody) SetJobType(v string) *ListJobInfoResponseBody {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBody) SetMediaId(v string) *ListJobInfoResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBody) SetRequestId(v string) *ListJobInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListJobInfoResponseBodyJobInfoList struct {
+	// example:
+	//
+	// 2024-10-14T07:39:34Z
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// example:
+	//
+	// 2024-10-14T07:39:25Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 5c9dff751ba**********59d50a967f5
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// TranscodeSuccess
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 139109*****84930
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListJobInfoResponseBodyJobInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfoResponseBodyJobInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfoResponseBodyJobInfoList) SetCompleteTime(v string) *ListJobInfoResponseBodyJobInfoList {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBodyJobInfoList) SetCreateTime(v string) *ListJobInfoResponseBodyJobInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBodyJobInfoList) SetJobId(v string) *ListJobInfoResponseBodyJobInfoList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBodyJobInfoList) SetStatus(v string) *ListJobInfoResponseBodyJobInfoList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListJobInfoResponseBodyJobInfoList) SetUserId(v int64) *ListJobInfoResponseBodyJobInfoList {
+	s.UserId = &v
+	return s
+}
+
+type ListJobInfoResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfoResponse) SetHeaders(v map[string]*string) *ListJobInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobInfoResponse) SetStatusCode(v int32) *ListJobInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobInfoResponse) SetBody(v *ListJobInfoResponseBody) *ListJobInfoResponse {
 	s.Body = v
 	return s
 }
@@ -49356,6 +50082,70 @@ func (client *Client) GetImageInfos(request *GetImageInfosRequest) (_result *Get
 
 // Summary:
 //
+// 异步任务管理能力建设
+//
+// @param request - GetJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobDetailResponse
+func (client *Client) GetJobDetailWithOptions(request *GetJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobDetail"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步任务管理能力建设
+//
+// @param request - GetJobDetailRequest
+//
+// @return GetJobDetailResponse
+func (client *Client) GetJobDetail(request *GetJobDetailRequest) (_result *GetJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetJobDetailResponse{}
+	_body, _err := client.GetJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of audio review results.
 //
 // Description:
@@ -50181,6 +50971,10 @@ func (client *Client) GetTranscodeTaskWithOptions(request *GetTranscodeTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TranscodeTaskId)) {
 		query["TranscodeTaskId"] = request.TranscodeTaskId
 	}
@@ -51427,6 +52221,70 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDynamicImageResponse{}
 	_body, _err := client.ListDynamicImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步任务管理能力建设
+//
+// @param request - ListJobInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobInfoResponse
+func (client *Client) ListJobInfoWithOptions(request *ListJobInfoRequest, runtime *util.RuntimeOptions) (_result *ListJobInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobInfo"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步任务管理能力建设
+//
+// @param request - ListJobInfoRequest
+//
+// @return ListJobInfoResponse
+func (client *Client) ListJobInfo(request *ListJobInfoRequest) (_result *ListJobInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobInfoResponse{}
+	_body, _err := client.ListJobInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
