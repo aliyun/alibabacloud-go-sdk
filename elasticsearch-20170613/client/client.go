@@ -1613,6 +1613,11 @@ func (s *ResultSpecInfoMapValue) SetDiskType(v string) *ResultSpecInfoMapValue {
 }
 
 type ActivateZonesRequest struct {
+	// 请求体参数。
+	//
+	// example:
+	//
+	// ["cn-hangzhou-i","cn-hangzhou-h"]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -2154,12 +2159,32 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type CapacityPlanRequest struct {
+	// Indicates whether there is a need for complex aggregation queries. Options:
+	//
+	// - true: Yes
+	//
+	// - false (default): No
+	//
 	// example:
 	//
 	// true
-	ComplexQueryAvailable *bool                          `json:"complexQueryAvailable,omitempty" xml:"complexQueryAvailable,omitempty"`
-	DataInfo              []*CapacityPlanRequestDataInfo `json:"dataInfo,omitempty" xml:"dataInfo,omitempty" type:"Repeated"`
-	Metric                []*CapacityPlanRequestMetric   `json:"metric,omitempty" xml:"metric,omitempty" type:"Repeated"`
+	ComplexQueryAvailable *bool `json:"complexQueryAvailable,omitempty" xml:"complexQueryAvailable,omitempty"`
+	// Disk usage status.
+	DataInfo []*CapacityPlanRequestDataInfo `json:"dataInfo,omitempty" xml:"dataInfo,omitempty" type:"Repeated"`
+	// Metrics information including disk usage, search and write operations, aggregation requests, etc.
+	Metric []*CapacityPlanRequestMetric `json:"metric,omitempty" xml:"metric,omitempty" type:"Repeated"`
+	// Usage scenarios, options:
+	//
+	// - general: General scenario
+	//
+	// - analysisVisualization: Data analysis scenario
+	//
+	// - dbAcceleration: Database acceleration scenario
+	//
+	// - search: Search scenario
+	//
+	// - log: Log scenario
+	//
 	// example:
 	//
 	// general
@@ -2195,22 +2220,52 @@ func (s *CapacityPlanRequest) SetUsageScenario(v string) *CapacityPlanRequest {
 }
 
 type CapacityPlanRequestDataInfo struct {
+	// Disk data metric code. Options:
+	//
+	// - totalRawData: Raw data information
+	//
+	// - document: Data document information, estimated document count
+	//
+	// - dailyIncrement: Daily data growth
+	//
+	// - dailyIncrementDoc: Daily incremental document count
+	//
+	// - retentionTime: Data retention period
+	//
+	// - replica: Replica settings
+	//
 	// example:
 	//
 	// totalRawData
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Disk usage metric value.
+	//
 	// example:
 	//
 	// 100
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// Total number of data entries.
+	//
 	// example:
 	//
 	// 10000
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// Disk data type. Options:
+	//
+	// - hot: Hot data
+	//
+	// - warm: Cold data
+	//
 	// example:
 	//
 	// hot
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Data or time unit. Options:
+	//
+	// - Data units: MiB, GiB, TB, PB
+	//
+	// - Time units: DAYS, WEEKS, MONTHS, YEARS
+	//
 	// example:
 	//
 	// MiB
@@ -2251,30 +2306,52 @@ func (s *CapacityPlanRequestDataInfo) SetUnit(v string) *CapacityPlanRequestData
 }
 
 type CapacityPlanRequestMetric struct {
+	// Average QPS.
+	//
 	// example:
 	//
 	// 30
 	AverageQps *int32 `json:"averageQps,omitempty" xml:"averageQps,omitempty"`
+	// Search or write metric code. Options:
+	//
+	// - write: Write
+	//
+	// - search: Search
+	//
 	// example:
 	//
 	// write
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Concurrent number.
+	//
 	// example:
 	//
 	// 2
 	Concurrent *int64 `json:"concurrent,omitempty" xml:"concurrent,omitempty"`
+	// Peak QPS.
+	//
 	// example:
 	//
 	// 30
 	PeakQps *int32 `json:"peakQps,omitempty" xml:"peakQps,omitempty"`
+	// Expected average response time, unit: milliseconds.
+	//
 	// example:
 	//
 	// 100
 	ResponseTime *int32 `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
+	// Throughput, unit: MB/S.
+	//
 	// example:
 	//
 	// 100
 	Throughput *int64 `json:"throughput,omitempty" xml:"throughput,omitempty"`
+	// Search/write peak type. Options:
+	//
+	// - common: Regular
+	//
+	// - peak: Peak
+	//
 	// example:
 	//
 	// common
@@ -2325,13 +2402,13 @@ func (s *CapacityPlanRequestMetric) SetType(v string) *CapacityPlanRequestMetric
 }
 
 type CapacityPlanResponseBody struct {
-	// The response of the request.
+	// ID of the current request.
 	//
 	// example:
 	//
 	// E91B7129-A669-4D9D-A743-F90A0FF1F5EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The extension configuration information.
+	// Returned result of the request.
 	Result *CapacityPlanResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -2354,18 +2431,28 @@ func (s *CapacityPlanResponseBody) SetResult(v *CapacityPlanResponseBodyResult) 
 }
 
 type CapacityPlanResponseBodyResult struct {
-	// The type of the configuration. Set the value to sharedDisk.
-	//
-	// >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+	// Extended configuration information.
 	ExtendConfigs []*CapacityPlanResponseBodyResultExtendConfigs `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
-	// The node information.
+	// Edition type, with values meaning as follows:
+	//
+	// - advanced: Enhanced Edition
+	//
+	// - x-pack: Commercial Edition
+	//
+	// - community: Community Edition
 	//
 	// example:
 	//
 	// advanced
 	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
-	// The number of cores.
+	// Node information.
 	NodeConfigurations []*CapacityPlanResponseBodyResultNodeConfigurations `json:"NodeConfigurations,omitempty" xml:"NodeConfigurations,omitempty" type:"Repeated"`
+	// Based on the capacity planning calculation, there is no default value. The meanings of the values are as follows:
+	//
+	// - true: Represents an oversized cluster, indicating that the number of data nodes calculated by the capacity planning exceeds the threshold of 50.
+	//
+	// - false: The number of data nodes calculated by the capacity planning is within 50.
+	//
 	// example:
 	//
 	// true
@@ -2401,27 +2488,23 @@ func (s *CapacityPlanResponseBodyResult) SetOversizedCluster(v bool) *CapacityPl
 }
 
 type CapacityPlanResponseBodyResultExtendConfigs struct {
-	// The size of the disk. Unit: GiB.
+	// Configuration type, with a single value: sharedDisk.
+	//
+	// > This extendConfigs attribute may appear when the planned instance type is Advanced.
 	//
 	// example:
 	//
 	// sharedDisk
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The type of the disk. Valid value: CPFS_PREMIUM.
-	//
-	// >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+	// Disk size, in GiB.
 	//
 	// example:
 	//
 	// 2048
 	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// The version type. Valid values:
+	// Disk type, with a single value: CPFS_PREMIUM.
 	//
-	// 	- advanced: enhanced edition
-	//
-	// 	- x-pack: Commercial Edition
-	//
-	// 	- community: community version
+	// > This extendConfigs attribute may appear when the planned instance type is Advanced.
 	//
 	// example:
 	//
@@ -2453,63 +2536,59 @@ func (s *CapacityPlanResponseBodyResultExtendConfigs) SetDiskType(v string) *Cap
 }
 
 type CapacityPlanResponseBodyResultNodeConfigurations struct {
-	// The number of CPUs of the cloud desktop.
+	// Number of nodes.
 	//
 	// example:
 	//
 	// 10
 	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The size of the disk. Unit: GiB.
+	// Number of CPUs.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The type of the hard disk. Valid values:
-	//
-	// 	- cloud_essd: enhanced SSD (ESSD)
-	//
-	// 	- cloud_ssd: standard SSD
-	//
-	// 	- cloud_efficiency: ultra disk
-	//
-	// 	- local_ssd: local SSD
-	//
-	// 	- local_efficiency: local ultra disk
+	// Disk size, in GiB.
 	//
 	// example:
 	//
 	// 20
 	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// The memory size of the current node role.
+	// Disk type, with meanings as follows:
+	//
+	// - cloud_essd: ESSD Cloud Disk
+	//
+	// - cloud_ssd: SSD Cloud Disk
+	//
+	// - cloud_efficiency: Efficient Cloud Disk
+	//
+	// - local_ssd: Local SSD Disk
+	//
+	// - local_efficiency: Local Efficient Disk
 	//
 	// example:
 	//
 	// cloud_ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The type of the node. Supported types are as follows:
-	//
-	// 	- WORKER: data node
-	//
-	// 	- WORKER_WARM: cold data node
-	//
-	// 	- MASTER: dedicated master node
-	//
-	// 	- KIBANA: Kibana node
-	//
-	// 	- COORDINATING: client node
-	//
-	// 	- ELASTIC_WORKER: elastic node
+	// Specified memory size for the current node role.
 	//
 	// example:
 	//
 	// 2
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The result calculated based on the capacity planning. No default value is available. The values are as follows:
+	// Node type, with supported types as follows:
 	//
-	// 	- true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
+	// - WORKER: Data Node
 	//
-	// 	- false: The number of data nodes calculated by capacity planning is less than 50.
+	// - WORKER_WARM: Cold Data Node
+	//
+	// - MASTER: Dedicated Master Node
+	//
+	// - KIBANA: Kibana Node
+	//
+	// - COORDINATING: Coordinator Node
+	//
+	// - ELASTIC_WORKER: Elastic Node
 	//
 	// example:
 	//
@@ -2752,6 +2831,8 @@ func (s *CloseHttpsResponse) SetBody(v *CloseHttpsResponseBody) *CloseHttpsRespo
 }
 
 type CloseManagedIndexRequest struct {
+	// Used to ensure the idempotency of the request. Generated by the client, it must be unique across different requests and not exceed 64 ASCII characters.
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
@@ -2772,10 +2853,18 @@ func (s *CloseManagedIndexRequest) SetClientToken(v string) *CloseManagedIndexRe
 }
 
 type CloseManagedIndexResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the index\\"s cloud management has been successfully closed:
+	//
+	// - true: Success
+	//
+	// - false: Failure
+	//
 	// example:
 	//
 	// true
@@ -4232,7 +4321,7 @@ func (s *CreateVpcEndpointResponse) SetBody(v *CreateVpcEndpointResponseBody) *C
 
 type DeactivateZonesRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	// Used to ensure idempotency of the request. The client generates this parameter value and must guarantee its uniqueness across different requests, with a maximum length of 64 ASCII characters.
 	//
 	// example:
 	//
@@ -4259,17 +4348,17 @@ func (s *DeactivateZonesRequest) SetClientToken(v string) *DeactivateZonesReques
 }
 
 type DeactivateZonesResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
+	// Return result:
 	//
-	// 	- true: offline zone successfully
+	// - true: Zone offline successful
 	//
-	// 	- false: offline zone successfully failed
+	// - false: Zone offline failed
 	//
 	// example:
 	//
@@ -5470,11 +5559,14 @@ func (s *DescribeAckOperatorResponse) SetBody(v *DescribeAckOperatorResponseBody
 }
 
 type DescribeApmResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 97597D87-8066-5493-B692-5C50DA236D68
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeApmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result.
+	Result *DescribeApmResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeApmResponseBody) String() string {
@@ -5496,78 +5588,134 @@ func (s *DescribeApmResponseBody) SetResult(v *DescribeApmResponseBodyResult) *D
 }
 
 type DescribeApmResponseBodyResult struct {
+	// Instance domain.
+	//
 	// example:
 	//
 	// apm-cn-i7m2fuae****.apm.elasticsearch.aliyuncs.com:8200
 	ApmServerDomain *string `json:"apmServerDomain,omitempty" xml:"apmServerDomain,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2021-11-16T07:15:51.967Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Deployed replica count.
+	//
 	// example:
 	//
 	// 1
 	DeployedReplica *int64 `json:"deployedReplica,omitempty" xml:"deployedReplica,omitempty"`
+	// Instance name.
+	//
 	// example:
 	//
 	// APMtest
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Instance expiration time.
+	//
 	// example:
 	//
 	// 4792752000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// apm-cn-i7m2fuae****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Number of nodes.
+	//
 	// example:
 	//
 	// 1
 	NodeAmount *int64 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// Associated Elasticsearch instance.
+	//
 	// example:
 	//
 	// es-cn-i7m2fsfhc001x****
 	OutputES *string `json:"outputES,omitempty" xml:"outputES,omitempty"`
+	// Username of the associated Elasticsearch instance.
+	//
 	// example:
 	//
 	// elastic
 	OutputESUserName *string `json:"outputESUserName,omitempty" xml:"outputESUserName,omitempty"`
+	// User account ID.
+	//
 	// example:
 	//
 	// 133071096032****
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// Payment method, with the following values:
+	//
+	// - postpaid: Pay-as-you-go.
+	//
+	// - prepaid: Subscription.
+	//
 	// example:
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Replica count.
+	//
 	// example:
 	//
 	// 1
 	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// Specification, with the following values:
+	//
+	// - C1M2 (1 core, 2 GB)
+	//
+	// - C2M4 (2 cores, 4 GB)
+	//
 	// example:
 	//
 	// C1M2
 	ResourceSpec *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	// Lifecycle status, with the following values:
+	//
+	// - CREATING: Creating.
+	//
+	// - ACTIVATING: Activating.
+	//
+	// - ACTIVE: Active.
+	//
+	// - INACTIVE: Frozen.
+	//
+	// - INVALID: Invalid.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Version information.
+	//
 	// example:
 	//
 	// 7.10.2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1530vdhqkamm9s0****
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// Availability zone where the switch is located.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// Switch ID.
+	//
 	// example:
 	//
 	// vsw-bp1j1mql6r9g5vfb4****
@@ -8789,7 +8937,7 @@ type DescribeLogstashResponseBodyResultEndpointList struct {
 	//
 	// example:
 	//
-	// 172.16.\*\*.**
+	// ``172.16.**.**``
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The IP address of the node.
 	//
@@ -11171,6 +11319,7 @@ type GetRegionConfigurationResponseBodyResult struct {
 	InstanceSupportNodes []*string                                                       `json:"instanceSupportNodes,omitempty" xml:"instanceSupportNodes,omitempty" type:"Repeated"`
 	JvmConfine           *GetRegionConfigurationResponseBodyResultJvmConfine             `json:"jvmConfine,omitempty" xml:"jvmConfine,omitempty" type:"Struct"`
 	KibanaNodeProperties *GetRegionConfigurationResponseBodyResultKibanaNodeProperties   `json:"kibanaNodeProperties,omitempty" xml:"kibanaNodeProperties,omitempty" type:"Struct"`
+	LogstashZones        []*string                                                       `json:"logstashZones,omitempty" xml:"logstashZones,omitempty" type:"Repeated"`
 	MasterDiskList       []*GetRegionConfigurationResponseBodyResultMasterDiskList       `json:"masterDiskList,omitempty" xml:"masterDiskList,omitempty" type:"Repeated"`
 	MasterSpec           []*string                                                       `json:"masterSpec,omitempty" xml:"masterSpec,omitempty" type:"Repeated"`
 	Node                 *GetRegionConfigurationResponseBodyResultNode                   `json:"node,omitempty" xml:"node,omitempty" type:"Struct"`
@@ -11249,6 +11398,11 @@ func (s *GetRegionConfigurationResponseBodyResult) SetJvmConfine(v *GetRegionCon
 
 func (s *GetRegionConfigurationResponseBodyResult) SetKibanaNodeProperties(v *GetRegionConfigurationResponseBodyResultKibanaNodeProperties) *GetRegionConfigurationResponseBodyResult {
 	s.KibanaNodeProperties = v
+	return s
+}
+
+func (s *GetRegionConfigurationResponseBodyResult) SetLogstashZones(v []*string) *GetRegionConfigurationResponseBodyResult {
+	s.LogstashZones = v
 	return s
 }
 
@@ -12044,6 +12198,9 @@ type GetRegionalInstanceConfigResponseBodyResult struct {
 	MasterSpecs           []*string                                                         `json:"masterSpecs,omitempty" xml:"masterSpecs,omitempty" type:"Repeated"`
 	SpecInfoMap           map[string]*ResultSpecInfoMapValue                                `json:"specInfoMap,omitempty" xml:"specInfoMap,omitempty"`
 	Versions              []*string                                                         `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
+	WarmNodeAmountRange   *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange   `json:"warmNodeAmountRange,omitempty" xml:"warmNodeAmountRange,omitempty" type:"Struct"`
+	WarmNodeDiskList      []*GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList    `json:"warmNodeDiskList,omitempty" xml:"warmNodeDiskList,omitempty" type:"Repeated"`
+	WarmNodeSpecs         []*string                                                         `json:"warmNodeSpecs,omitempty" xml:"warmNodeSpecs,omitempty" type:"Repeated"`
 }
 
 func (s GetRegionalInstanceConfigResponseBodyResult) String() string {
@@ -12111,6 +12268,21 @@ func (s *GetRegionalInstanceConfigResponseBodyResult) SetSpecInfoMap(v map[strin
 
 func (s *GetRegionalInstanceConfigResponseBodyResult) SetVersions(v []*string) *GetRegionalInstanceConfigResponseBodyResult {
 	s.Versions = v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResult) SetWarmNodeAmountRange(v *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange) *GetRegionalInstanceConfigResponseBodyResult {
+	s.WarmNodeAmountRange = v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResult) SetWarmNodeDiskList(v []*GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) *GetRegionalInstanceConfigResponseBodyResult {
+	s.WarmNodeDiskList = v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResult) SetWarmNodeSpecs(v []*string) *GetRegionalInstanceConfigResponseBodyResult {
+	s.WarmNodeSpecs = v
 	return s
 }
 
@@ -12341,6 +12513,105 @@ func (s *GetRegionalInstanceConfigResponseBodyResultMasterDiskListSubClassificat
 	return s
 }
 
+type GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange struct {
+	MaxAmount *int32 `json:"maxAmount,omitempty" xml:"maxAmount,omitempty"`
+	MinAmount *int32 `json:"minAmount,omitempty" xml:"minAmount,omitempty"`
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange) SetMaxAmount(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange {
+	s.MaxAmount = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange) SetMinAmount(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeAmountRange {
+	s.MinAmount = &v
+	return s
+}
+
+type GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList struct {
+	DiskType                  *string                                                                                 `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	MaxSize                   *int32                                                                                  `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
+	MinSize                   *int32                                                                                  `json:"minSize,omitempty" xml:"minSize,omitempty"`
+	ScaleLimit                *int32                                                                                  `json:"scaleLimit,omitempty" xml:"scaleLimit,omitempty"`
+	SubClassificationConfines []*GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines `json:"subClassificationConfines,omitempty" xml:"subClassificationConfines,omitempty" type:"Repeated"`
+	ValueLimitSet             []*int32                                                                                `json:"valueLimitSet,omitempty" xml:"valueLimitSet,omitempty" type:"Repeated"`
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetDiskType(v string) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.DiskType = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetMaxSize(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetMinSize(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.MinSize = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetScaleLimit(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.ScaleLimit = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetSubClassificationConfines(v []*GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.SubClassificationConfines = v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList) SetValueLimitSet(v []*int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskList {
+	s.ValueLimitSet = v
+	return s
+}
+
+type GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines struct {
+	MaxSize          *int32  `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
+	MinSize          *int32  `json:"minSize,omitempty" xml:"minSize,omitempty"`
+	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) GoString() string {
+	return s.String()
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) SetMaxSize(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) SetMinSize(v int32) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines {
+	s.MinSize = &v
+	return s
+}
+
+func (s *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines) SetPerformanceLevel(v string) *GetRegionalInstanceConfigResponseBodyResultWarmNodeDiskListSubClassificationConfines {
+	s.PerformanceLevel = &v
+	return s
+}
+
 type GetRegionalInstanceConfigResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -12452,7 +12723,7 @@ type GetSuggestShrinkableNodesResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 192.168.\*\*.**
+	// ``192.168.**.**``
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The access port number of the node.
 	//
@@ -12580,7 +12851,7 @@ type GetTransferableNodesResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 192.168.\*\*.**
+	// ``192.168.**.**``
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The access port of the node.
 	//
@@ -22603,7 +22874,7 @@ type ListSearchLogRequest struct {
 	//
 	// example:
 	//
-	// host:172.16.\*\*.*	- AND content:netty
+	// host:``172.16.**.**`` AND content:netty
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The number of entries returned per page.
 	//
@@ -22738,13 +23009,13 @@ type ListSearchLogResponseBodyResult struct {
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
-	// {"level": "info", "host": "192.168.\*\*.**", "time": "2019-03-18T08:16:12.741Z","content": "[o.e.c.r.a.AllocationService] [MnNASM_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[my_index][3]] ...])."}
+	// {"level": "info", "host": "``192.168.**.**``", "time": "2019-03-18T08:16:12.741Z","content": "[o.e.c.r.a.AllocationService] [MnNASM_] Cluster health status changed from [YELLOW] to [GREEN] (reason: [shards started [[my_index][3]] ...])."}
 	ContentCollection map[string]interface{} `json:"contentCollection,omitempty" xml:"contentCollection,omitempty"`
 	// Details of the log entry. Different content fields are returned for different log types.
 	//
 	// example:
 	//
-	// 192.168.\*\*.**
+	// ``192.168.**.**``
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// example:
 	//
@@ -33852,6 +34123,7 @@ func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionReq
 }
 
 type UpgradeEngineVersionRequestPlugins struct {
+	Enable      *string `json:"enable,omitempty" xml:"enable,omitempty"`
 	FileVersion *string `json:"fileVersion,omitempty" xml:"fileVersion,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	Version     *string `json:"version,omitempty" xml:"version,omitempty"`
@@ -33863,6 +34135,11 @@ func (s UpgradeEngineVersionRequestPlugins) String() string {
 
 func (s UpgradeEngineVersionRequestPlugins) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeEngineVersionRequestPlugins) SetEnable(v string) *UpgradeEngineVersionRequestPlugins {
+	s.Enable = &v
+	return s
 }
 
 func (s *UpgradeEngineVersionRequestPlugins) SetFileVersion(v string) *UpgradeEngineVersionRequestPlugins {
@@ -35123,7 +35400,7 @@ func (client *Client) CancelTask(InstanceId *string, request *CancelTaskRequest)
 
 // Summary:
 //
-// 容量规划
+// Capacity Planning
 //
 // @param request - CapacityPlanRequest
 //
@@ -35180,7 +35457,7 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 
 // Summary:
 //
-// 容量规划
+// Capacity Planning
 //
 // @param request - CapacityPlanRequest
 //
@@ -35323,7 +35600,7 @@ func (client *Client) CloseHttps(InstanceId *string, request *CloseHttpsRequest)
 
 // Summary:
 //
-// 关闭索引托管
+// Disable Managed Index
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -35368,7 +35645,7 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 
 // Summary:
 //
-// 关闭索引托管
+// Disable Managed Index
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -36083,7 +36360,7 @@ func (client *Client) CreateVpcEndpoint(InstanceId *string, request *CreateVpcEn
 
 // Summary:
 //
-// Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+// Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
 //
 // @param request - DeactivateZonesRequest
 //
@@ -36129,7 +36406,7 @@ func (client *Client) DeactivateZonesWithOptions(InstanceId *string, request *De
 
 // Summary:
 //
-// Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+// Invoke DeactivateZones to offline certain zones when there are multiple availability zones, and migrate nodes in the offline zones to other availability zones.
 //
 // @param request - DeactivateZonesRequest
 //
@@ -36974,7 +37251,7 @@ func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeA
 
 // Summary:
 //
-// DescribeApm
+// Describe APM
 //
 // @param headers - map
 //
@@ -37007,7 +37284,7 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, headers map[str
 
 // Summary:
 //
-// DescribeApm
+// Describe APM
 //
 // @return DescribeApmResponse
 func (client *Client) DescribeApm(instanceId *string) (_result *DescribeApmResponse, _err error) {
