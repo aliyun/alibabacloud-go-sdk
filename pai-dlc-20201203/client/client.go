@@ -904,6 +904,10 @@ type EcsSpec struct {
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	// example:
 	//
+	// 80
+	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// example:
+	//
 	// NVIDIA v100
 	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	// example:
@@ -959,6 +963,11 @@ func (s *EcsSpec) SetDefaultGPUDriver(v string) *EcsSpec {
 
 func (s *EcsSpec) SetGpu(v int32) *EcsSpec {
 	s.Gpu = &v
+	return s
+}
+
+func (s *EcsSpec) SetGpuMemory(v int32) *EcsSpec {
+	s.GpuMemory = &v
 	return s
 }
 
@@ -3397,7 +3406,7 @@ type Tensorboard struct {
 	//
 	// tensorboard.pai
 	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	Workspaceid *string `json:"Workspaceid,omitempty" xml:"Workspaceid,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Tensorboard) String() string {
@@ -3553,8 +3562,8 @@ func (s *Tensorboard) SetUsername(v string) *Tensorboard {
 	return s
 }
 
-func (s *Tensorboard) SetWorkspaceid(v string) *Tensorboard {
-	s.Workspaceid = &v
+func (s *Tensorboard) SetWorkspaceId(v string) *Tensorboard {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -6370,7 +6379,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// desc
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
 	// example:
 	//
 	// 1
@@ -6463,6 +6473,11 @@ func (s *ListJobsRequest) SetJobType(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetOrder(v string) *ListJobsRequest {
 	s.Order = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetOversoldInfo(v string) *ListJobsRequest {
+	s.OversoldInfo = &v
 	return s
 }
 
@@ -6564,7 +6579,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// desc
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
 	// example:
 	//
 	// 1
@@ -6657,6 +6673,11 @@ func (s *ListJobsShrinkRequest) SetJobType(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetOrder(v string) *ListJobsShrinkRequest {
 	s.Order = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetOversoldInfo(v string) *ListJobsShrinkRequest {
+	s.OversoldInfo = &v
 	return s
 }
 
@@ -7438,7 +7459,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              tea.String("pai-dlc.aliyuncs.com"),
@@ -8849,6 +8869,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
 		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversoldInfo)) {
+		query["OversoldInfo"] = request.OversoldInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
