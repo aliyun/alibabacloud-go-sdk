@@ -252,6 +252,7 @@ func (s *AuthorizeAndroidInstanceResponse) SetBody(v *AuthorizeAndroidInstanceRe
 type BackupFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	BackupFileName        *string   `json:"BackupFileName,omitempty" xml:"BackupFileName,omitempty"`
 	// This parameter is required.
 	BackupFilePath     *string   `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
 	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -277,6 +278,11 @@ func (s BackupFileRequest) GoString() string {
 
 func (s *BackupFileRequest) SetAndroidInstanceIdList(v []*string) *BackupFileRequest {
 	s.AndroidInstanceIdList = v
+	return s
+}
+
+func (s *BackupFileRequest) SetBackupFileName(v string) *BackupFileRequest {
+	s.BackupFileName = &v
 	return s
 }
 
@@ -1963,7 +1969,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// ARM
-	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	ArchitectureType        *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AvailableInstanceAmount *int32  `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
 	// example:
 	//
 	// PrePaid
@@ -2066,6 +2073,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetAppInst
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetArchitectureType(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.ArchitectureType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetAvailableInstanceAmount(v int32) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.AvailableInstanceAmount = &v
 	return s
 }
 
@@ -7183,6 +7195,10 @@ func (client *Client) BackupFileWithOptions(request *BackupFileRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIdList)) {
 		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupFileName)) {
+		query["BackupFileName"] = request.BackupFileName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BackupFilePath)) {
