@@ -35545,6 +35545,8 @@ type PurgeCachesRequest struct {
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123456789****
@@ -35683,6 +35685,8 @@ type PurgeCachesShrinkRequest struct {
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
