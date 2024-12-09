@@ -1,3 +1,11 @@
+2024-12-09 Version: v6.7.0
+- Support API CreateAgentInstanceConfig.
+- Support API DeleteAgentInstanceConfig.
+- Support API GetAgentInstanceConfig.
+- Support API ListAgentInstanceConfigs.
+- Support API UpdateAgentInstanceConfig.
+
+
 2024-12-04 Version: v6.6.1
 - Update API GetDownloadJob: update response param.
 - Update API ListDownloadJobs: update response param.

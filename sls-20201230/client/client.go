@@ -2112,24 +2112,34 @@ func (s *MLServiceParamResource) SetReplica(v int32) *MLServiceParamResource {
 type MaxComputeExport struct {
 	// This parameter is required.
 	Configuration *MaxComputeExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	CreateTime    *int64                         `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// example:
 	//
-	// MaxComputeExport
+	// 1714284115
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// odpsexport-demo
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// MaxComputeExport
-	DisplayName      *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	LastModifiedTime *int64  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// odpsexport-test
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1714284589
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// MaxComputeExport
+	// export-general-1714033191-584993-hcl
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
 	// example:
 	//
 	// RUNNING
@@ -2174,6 +2184,11 @@ func (s *MaxComputeExport) SetName(v string) *MaxComputeExport {
 	return s
 }
 
+func (s *MaxComputeExport) SetScheduleId(v string) *MaxComputeExport {
+	s.ScheduleId = &v
+	return s
+}
+
 func (s *MaxComputeExport) SetStatus(v string) *MaxComputeExport {
 	s.Status = &v
 	return s
@@ -2181,14 +2196,30 @@ func (s *MaxComputeExport) SetStatus(v string) *MaxComputeExport {
 
 type MaxComputeExportConfiguration struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-logstore-demo
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ram::123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	// This parameter is required.
 	Sink *MaxComputeExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -2229,14 +2260,22 @@ type MaxComputeExportConfigurationSink struct {
 	// This parameter is required.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// Deprecated
+	//
+	// example:
+	//
+	// asdfghjk
 	OdpsAccessKeyId *string `json:"odpsAccessKeyId,omitempty" xml:"odpsAccessKeyId,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// esasdfghjkl
 	OdpsAccessSecret *string `json:"odpsAccessSecret,omitempty" xml:"odpsAccessSecret,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://xxxxxxxx
+	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	OdpsEndpoint *string `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
 	// This parameter is required.
 	//
@@ -2244,9 +2283,11 @@ type MaxComputeExportConfigurationSink struct {
 	//
 	// demo_project
 	OdpsProject *string `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
-	// acs:ram::xxxxxxx
+	// acs:ram::123456789:role/aliyunlogdefaultrole
 	OdpsRolearn *string `json:"odpsRolearn,omitempty" xml:"odpsRolearn,omitempty"`
 	// This parameter is required.
 	//
@@ -2255,6 +2296,10 @@ type MaxComputeExportConfigurationSink struct {
 	// demo_table
 	OdpsTable *string `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// http://dt.cn-hangzhou.maxcompute.aliyun-inc.com
 	OdpsTunnelEndpoint *string `json:"odpsTunnelEndpoint,omitempty" xml:"odpsTunnelEndpoint,omitempty"`
 	// This parameter is required.
 	PartitionColumn []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
@@ -4832,6 +4877,67 @@ func (s *ConsumerGroupUpdateCheckPointResponse) SetStatusCode(v int32) *Consumer
 	return s
 }
 
+type CreateAgentInstanceConfigRequest struct {
+	// This parameter is required.
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// This parameter is required.
+	ConfigMatcher *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
+	// This parameter is required.
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	IsGray     *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
+}
+
+func (s CreateAgentInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAgentInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentInstanceConfigRequest) SetConfig(v string) *CreateAgentInstanceConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateAgentInstanceConfigRequest) SetConfigMatcher(v string) *CreateAgentInstanceConfigRequest {
+	s.ConfigMatcher = &v
+	return s
+}
+
+func (s *CreateAgentInstanceConfigRequest) SetConfigName(v string) *CreateAgentInstanceConfigRequest {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *CreateAgentInstanceConfigRequest) SetIsGray(v bool) *CreateAgentInstanceConfigRequest {
+	s.IsGray = &v
+	return s
+}
+
+type CreateAgentInstanceConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateAgentInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAgentInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAgentInstanceConfigResponse) SetHeaders(v map[string]*string) *CreateAgentInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAgentInstanceConfigResponse) SetStatusCode(v int32) *CreateAgentInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateAlertRequest struct {
 	// The detailed configurations of the alert rule.
 	//
@@ -7336,6 +7442,46 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 	return s
 }
 
+type DeleteAgentInstanceConfigRequest struct {
+	IsGray *bool `json:"isGray,omitempty" xml:"isGray,omitempty"`
+}
+
+func (s DeleteAgentInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAgentInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAgentInstanceConfigRequest) SetIsGray(v bool) *DeleteAgentInstanceConfigRequest {
+	s.IsGray = &v
+	return s
+}
+
+type DeleteAgentInstanceConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteAgentInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAgentInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAgentInstanceConfigResponse) SetHeaders(v map[string]*string) *DeleteAgentInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAgentInstanceConfigResponse) SetStatusCode(v int32) *DeleteAgentInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteAlertResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8150,6 +8296,82 @@ func (s *EnableScheduledSQLResponse) SetHeaders(v map[string]*string) *EnableSch
 
 func (s *EnableScheduledSQLResponse) SetStatusCode(v int32) *EnableScheduledSQLResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type GetAgentInstanceConfigResponseBody struct {
+	Config         *string `json:"config,omitempty" xml:"config,omitempty"`
+	ConfigMatcher  *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
+	ConfigName     *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	CreateTime     *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	IsGray         *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
+	LastModifyTime *int64  `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+}
+
+func (s GetAgentInstanceConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInstanceConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetConfig(v string) *GetAgentInstanceConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetConfigMatcher(v string) *GetAgentInstanceConfigResponseBody {
+	s.ConfigMatcher = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetConfigName(v string) *GetAgentInstanceConfigResponseBody {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetCreateTime(v int64) *GetAgentInstanceConfigResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetIsGray(v bool) *GetAgentInstanceConfigResponseBody {
+	s.IsGray = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponseBody) SetLastModifyTime(v int64) *GetAgentInstanceConfigResponseBody {
+	s.LastModifyTime = &v
+	return s
+}
+
+type GetAgentInstanceConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAgentInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAgentInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentInstanceConfigResponse) SetHeaders(v map[string]*string) *GetAgentInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponse) SetStatusCode(v int32) *GetAgentInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAgentInstanceConfigResponse) SetBody(v *GetAgentInstanceConfigResponseBody) *GetAgentInstanceConfigResponse {
+	s.Body = v
 	return s
 }
 
@@ -11572,6 +11794,87 @@ func (s *GetStoreViewIndexResponse) SetStatusCode(v int32) *GetStoreViewIndexRes
 }
 
 func (s *GetStoreViewIndexResponse) SetBody(v *GetStoreViewIndexResponseBody) *GetStoreViewIndexResponse {
+	s.Body = v
+	return s
+}
+
+type ListAgentInstanceConfigsRequest struct {
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListAgentInstanceConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentInstanceConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentInstanceConfigsRequest) SetOffset(v int64) *ListAgentInstanceConfigsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsRequest) SetSize(v int64) *ListAgentInstanceConfigsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListAgentInstanceConfigsResponseBody struct {
+	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	Size    *int64    `json:"size,omitempty" xml:"size,omitempty"`
+	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListAgentInstanceConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentInstanceConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentInstanceConfigsResponseBody) SetConfigs(v []*string) *ListAgentInstanceConfigsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsResponseBody) SetSize(v int64) *ListAgentInstanceConfigsResponseBody {
+	s.Size = &v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsResponseBody) SetTotal(v int64) *ListAgentInstanceConfigsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListAgentInstanceConfigsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAgentInstanceConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAgentInstanceConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAgentInstanceConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAgentInstanceConfigsResponse) SetHeaders(v map[string]*string) *ListAgentInstanceConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsResponse) SetStatusCode(v int32) *ListAgentInstanceConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAgentInstanceConfigsResponse) SetBody(v *ListAgentInstanceConfigsResponseBody) *ListAgentInstanceConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -15996,6 +16299,60 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 	return s
 }
 
+type UpdateAgentInstanceConfigRequest struct {
+	// This parameter is required.
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
+	// This parameter is required.
+	ConfigMatcher *string `json:"configMatcher,omitempty" xml:"configMatcher,omitempty"`
+	IsGray        *bool   `json:"isGray,omitempty" xml:"isGray,omitempty"`
+}
+
+func (s UpdateAgentInstanceConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentInstanceConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentInstanceConfigRequest) SetConfig(v string) *UpdateAgentInstanceConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateAgentInstanceConfigRequest) SetConfigMatcher(v string) *UpdateAgentInstanceConfigRequest {
+	s.ConfigMatcher = &v
+	return s
+}
+
+func (s *UpdateAgentInstanceConfigRequest) SetIsGray(v bool) *UpdateAgentInstanceConfigRequest {
+	s.IsGray = &v
+	return s
+}
+
+type UpdateAgentInstanceConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateAgentInstanceConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAgentInstanceConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAgentInstanceConfigResponse) SetHeaders(v map[string]*string) *UpdateAgentInstanceConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAgentInstanceConfigResponse) SetStatusCode(v int32) *UpdateAgentInstanceConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateAlertRequest struct {
 	// The detailed configurations of the alert rule.
 	//
@@ -18857,6 +19214,82 @@ func (client *Client) ConsumerGroupUpdateCheckPoint(project *string, logstore *s
 
 // Summary:
 //
+// CreateAgentInstanceConfig
+//
+// @param request - CreateAgentInstanceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentInstanceConfigResponse
+func (client *Client) CreateAgentInstanceConfigWithOptions(request *CreateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigMatcher)) {
+		body["configMatcher"] = request.ConfigMatcher
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
+		body["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
+		body["isGray"] = request.IsGray
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAgentInstanceConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/agentinstanceconfigs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateAgentInstanceConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateAgentInstanceConfig
+//
+// @param request - CreateAgentInstanceConfigRequest
+//
+// @return CreateAgentInstanceConfigResponse
+func (client *Client) CreateAgentInstanceConfig(request *CreateAgentInstanceConfigRequest) (_result *CreateAgentInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAgentInstanceConfigResponse{}
+	_body, _err := client.CreateAgentInstanceConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // CreateAlert
 //
 // @param request - CreateAlertRequest
@@ -21124,6 +21557,70 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
+// DeleteAgentInstanceConfig
+//
+// @param request - DeleteAgentInstanceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentInstanceConfigResponse
+func (client *Client) DeleteAgentInstanceConfigWithOptions(configName *string, request *DeleteAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
+		query["isGray"] = request.IsGray
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAgentInstanceConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAgentInstanceConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DeleteAgentInstanceConfig
+//
+// @param request - DeleteAgentInstanceConfigRequest
+//
+// @return DeleteAgentInstanceConfigResponse
+func (client *Client) DeleteAgentInstanceConfig(configName *string, request *DeleteAgentInstanceConfigRequest) (_result *DeleteAgentInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentInstanceConfigResponse{}
+	_body, _err := client.DeleteAgentInstanceConfigWithOptions(configName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule.
 //
 // @param headers - map
@@ -23115,6 +23612,56 @@ func (client *Client) EnableScheduledSQL(project *string, scheduledSQLName *stri
 	headers := make(map[string]*string)
 	_result = &EnableScheduledSQLResponse{}
 	_body, _err := client.EnableScheduledSQLWithOptions(project, scheduledSQLName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GetAgentInstanceConfig
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentInstanceConfigResponse
+func (client *Client) GetAgentInstanceConfigWithOptions(configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAgentInstanceConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAgentInstanceConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAgentInstanceConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetAgentInstanceConfig
+//
+// @return GetAgentInstanceConfigResponse
+func (client *Client) GetAgentInstanceConfig(configName *string) (_result *GetAgentInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAgentInstanceConfigResponse{}
+	_body, _err := client.GetAgentInstanceConfigWithOptions(configName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26015,6 +26562,74 @@ func (client *Client) GetStoreViewIndex(project *string, name *string) (_result 
 	headers := make(map[string]*string)
 	_result = &GetStoreViewIndexResponse{}
 	_body, _err := client.GetStoreViewIndexWithOptions(project, name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListAgentInstanceConfigs
+//
+// @param request - ListAgentInstanceConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentInstanceConfigsResponse
+func (client *Client) ListAgentInstanceConfigsWithOptions(request *ListAgentInstanceConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAgentInstanceConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAgentInstanceConfigs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/agentinstanceconfigs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAgentInstanceConfigsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListAgentInstanceConfigs
+//
+// @param request - ListAgentInstanceConfigsRequest
+//
+// @return ListAgentInstanceConfigsResponse
+func (client *Client) ListAgentInstanceConfigs(request *ListAgentInstanceConfigsRequest) (_result *ListAgentInstanceConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAgentInstanceConfigsResponse{}
+	_body, _err := client.ListAgentInstanceConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29635,6 +30250,78 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	headers := make(map[string]*string)
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// UpdateAgentInstanceConfig
+//
+// @param request - UpdateAgentInstanceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentInstanceConfigResponse
+func (client *Client) UpdateAgentInstanceConfigWithOptions(configName *string, request *UpdateAgentInstanceConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAgentInstanceConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigMatcher)) {
+		body["configMatcher"] = request.ConfigMatcher
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGray)) {
+		body["isGray"] = request.IsGray
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAgentInstanceConfig"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/agentinstanceconfigs/" + tea.StringValue(configName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateAgentInstanceConfigResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// UpdateAgentInstanceConfig
+//
+// @param request - UpdateAgentInstanceConfigRequest
+//
+// @return UpdateAgentInstanceConfigResponse
+func (client *Client) UpdateAgentInstanceConfig(configName *string, request *UpdateAgentInstanceConfigRequest) (_result *UpdateAgentInstanceConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAgentInstanceConfigResponse{}
+	_body, _err := client.UpdateAgentInstanceConfigWithOptions(configName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
