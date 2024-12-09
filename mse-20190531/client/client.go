@@ -12953,6 +12953,149 @@ func (s *CreateNacosServiceResponse) SetBody(v *CreateNacosServiceResponseBody) 
 	return s
 }
 
+type CreateNamespaceRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Describe       *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceRequest) SetAcceptLanguage(v string) *CreateNamespaceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetDescribe(v string) *CreateNamespaceRequest {
+	s.Describe = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateNamespaceResponseBody struct {
+	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// mse-100-000
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D1F1A6F3-7E03-5EAD-B3F1-123456789ABC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponseBody) SetData(v *CreateNamespaceResponseBodyData) *CreateNamespaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetErrorCode(v string) *CreateNamespaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetMessage(v string) *CreateNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetSuccess(v bool) *CreateNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateNamespaceResponseBodyData struct {
+	// example:
+	//
+	// myNamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s CreateNamespaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponseBodyData) SetNamespace(v string) *CreateNamespaceResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBodyData) SetRegion(v string) *CreateNamespaceResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+type CreateNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponse) SetHeaders(v map[string]*string) *CreateNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *CreateNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateSwimmingLaneRequest struct {
 	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
 	//
@@ -28770,6 +28913,7 @@ func (s *GetGatewayServiceDetailResponseBody) SetSuccess(v bool) *GetGatewayServ
 }
 
 type GetGatewayServiceDetailResponseBodyData struct {
+	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
 	// The ID of the gateway.
 	//
 	// example:
@@ -28888,6 +29032,11 @@ func (s GetGatewayServiceDetailResponseBodyData) String() string {
 
 func (s GetGatewayServiceDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetGatewayServiceDetailResponseBodyData) SetDnsServerList(v []*string) *GetGatewayServiceDetailResponseBodyData {
+	s.DnsServerList = v
+	return s
 }
 
 func (s *GetGatewayServiceDetailResponseBodyData) SetGatewayId(v int64) *GetGatewayServiceDetailResponseBodyData {
@@ -31913,7 +32062,8 @@ type GetPluginConfigResponseBodyData struct {
 	// example:
 	//
 	// This is a plug-in.
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	SummaryEn *string `json:"SummaryEn,omitempty" xml:"SummaryEn,omitempty"`
 	// The type.
 	//
 	// example:
@@ -32045,6 +32195,11 @@ func (s *GetPluginConfigResponseBodyData) SetStatus(v string) *GetPluginConfigRe
 
 func (s *GetPluginConfigResponseBodyData) SetSummary(v string) *GetPluginConfigResponseBodyData {
 	s.Summary = &v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyData) SetSummaryEn(v string) *GetPluginConfigResponseBodyData {
+	s.SummaryEn = &v
 	return s
 }
 
@@ -32529,7 +32684,8 @@ type GetPluginsResponseBodyData struct {
 	// example:
 	//
 	// This is a plug-in.
-	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Summary   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	SummaryEn *string `json:"SummaryEn,omitempty" xml:"SummaryEn,omitempty"`
 	// The version of the plug-in.
 	//
 	// example:
@@ -32626,6 +32782,11 @@ func (s *GetPluginsResponseBodyData) SetStatus(v string) *GetPluginsResponseBody
 
 func (s *GetPluginsResponseBodyData) SetSummary(v string) *GetPluginsResponseBodyData {
 	s.Summary = &v
+	return s
+}
+
+func (s *GetPluginsResponseBodyData) SetSummaryEn(v string) *GetPluginsResponseBodyData {
+	s.SummaryEn = &v
 	return s
 }
 
@@ -35002,6 +35163,7 @@ func (s *ImportServicesRequest) SetTlsSetting(v string) *ImportServicesRequest {
 }
 
 type ImportServicesRequestServiceList struct {
+	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
 	// The group.
 	//
 	// example:
@@ -35042,6 +35204,11 @@ func (s ImportServicesRequestServiceList) String() string {
 
 func (s ImportServicesRequestServiceList) GoString() string {
 	return s.String()
+}
+
+func (s *ImportServicesRequestServiceList) SetDnsServerList(v []*string) *ImportServicesRequestServiceList {
+	s.DnsServerList = v
+	return s
 }
 
 func (s *ImportServicesRequestServiceList) SetGroupName(v string) *ImportServicesRequestServiceList {
@@ -49212,6 +49379,7 @@ func (s *ListGatewayServiceResponseBodyData) SetTotalSize(v int64) *ListGatewayS
 }
 
 type ListGatewayServiceResponseBodyDataResult struct {
+	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
 	// The gateway ID.
 	//
 	// example:
@@ -49347,6 +49515,11 @@ func (s ListGatewayServiceResponseBodyDataResult) String() string {
 
 func (s ListGatewayServiceResponseBodyDataResult) GoString() string {
 	return s.String()
+}
+
+func (s *ListGatewayServiceResponseBodyDataResult) SetDnsServerList(v []*string) *ListGatewayServiceResponseBodyDataResult {
+	s.DnsServerList = v
+	return s
 }
 
 func (s *ListGatewayServiceResponseBodyDataResult) SetGatewayId(v int64) *ListGatewayServiceResponseBodyDataResult {
@@ -52745,6 +52918,347 @@ func (s *ListNacosHistoryConfigsResponse) SetStatusCode(v int32) *ListNacosHisto
 }
 
 func (s *ListNacosHistoryConfigsResponse) SetBody(v *ListNacosHistoryConfigsResponseBody) *ListNacosHistoryConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListNamespacesRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ListNamespacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesRequest) SetAcceptLanguage(v string) *ListNamespacesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetName(v string) *ListNamespacesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetPageNumber(v int32) *ListNamespacesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetPageSize(v int32) *ListNamespacesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetRegion(v string) *ListNamespacesRequest {
+	s.Region = &v
+	return s
+}
+
+type ListNamespacesResponseBody struct {
+	Data *ListNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D1F1A6F3-7E03-5EAD-B3F1-123456789ABC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListNamespacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBody) SetData(v *ListNamespacesResponseBodyData) *ListNamespacesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListNamespacesResponseBody) SetRequestId(v string) *ListNamespacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListNamespacesResponseBodyData struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   []*ListNamespacesResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Results  []*ListNamespacesResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListNamespacesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBodyData) SetPageNumber(v int32) *ListNamespacesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyData) SetPageSize(v int32) *ListNamespacesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyData) SetResult(v []*ListNamespacesResponseBodyDataResult) *ListNamespacesResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyData) SetResults(v []*ListNamespacesResponseBodyDataResults) *ListNamespacesResponseBodyData {
+	s.Results = v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyData) SetTotalSize(v int32) *ListNamespacesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListNamespacesResponseBodyDataResult struct {
+	// example:
+	//
+	// 3
+	AppCount *int32 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
+	// example:
+	//
+	// 2024-09-02T09:49:48.000+0000
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Describe   *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// example:
+	//
+	// 6
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 2024-09-02T09:49:48.000+0000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 178*******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListNamespacesResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetAppCount(v int32) *ListNamespacesResponseBodyDataResult {
+	s.AppCount = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetCreateTime(v int64) *ListNamespacesResponseBodyDataResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetDescribe(v string) *ListNamespacesResponseBodyDataResult {
+	s.Describe = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetInstanceCount(v int64) *ListNamespacesResponseBodyDataResult {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetNamespace(v string) *ListNamespacesResponseBodyDataResult {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetRegion(v string) *ListNamespacesResponseBodyDataResult {
+	s.Region = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetUpdateTime(v int64) *ListNamespacesResponseBodyDataResult {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetUserId(v string) *ListNamespacesResponseBodyDataResult {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResult) SetVersion(v int32) *ListNamespacesResponseBodyDataResult {
+	s.Version = &v
+	return s
+}
+
+type ListNamespacesResponseBodyDataResults struct {
+	// example:
+	//
+	// 3
+	AppCount *int32 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
+	// example:
+	//
+	// 2024-09-02T09:49:48.000+0000
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Describe   *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// example:
+	//
+	// 6
+	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// example:
+	//
+	// myNamespace
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 2024-09-02T09:49:48.000+0000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 178*******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListNamespacesResponseBodyDataResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponseBodyDataResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetAppCount(v int32) *ListNamespacesResponseBodyDataResults {
+	s.AppCount = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetCreateTime(v int64) *ListNamespacesResponseBodyDataResults {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetDescribe(v string) *ListNamespacesResponseBodyDataResults {
+	s.Describe = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetInstanceCount(v int64) *ListNamespacesResponseBodyDataResults {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetNamespace(v string) *ListNamespacesResponseBodyDataResults {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetRegion(v string) *ListNamespacesResponseBodyDataResults {
+	s.Region = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetUpdateTime(v int64) *ListNamespacesResponseBodyDataResults {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetUserId(v string) *ListNamespacesResponseBodyDataResults {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListNamespacesResponseBodyDataResults) SetVersion(v int32) *ListNamespacesResponseBodyDataResults {
+	s.Version = &v
+	return s
+}
+
+type ListNamespacesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNamespacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespacesResponse) SetHeaders(v map[string]*string) *ListNamespacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNamespacesResponse) SetStatusCode(v int32) *ListNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNamespacesResponse {
 	s.Body = v
 	return s
 }
@@ -73266,7 +73780,8 @@ type UpdateGatewayServiceRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DnsServerList  []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 501
@@ -73321,6 +73836,11 @@ func (s *UpdateGatewayServiceRequest) SetAcceptLanguage(v string) *UpdateGateway
 	return s
 }
 
+func (s *UpdateGatewayServiceRequest) SetDnsServerList(v []*string) *UpdateGatewayServiceRequest {
+	s.DnsServerList = v
+	return s
+}
+
 func (s *UpdateGatewayServiceRequest) SetGatewayId(v int64) *UpdateGatewayServiceRequest {
 	s.GatewayId = &v
 	return s
@@ -73365,7 +73885,8 @@ type UpdateGatewayServiceShrinkRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage      *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DnsServerListShrink *string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty"`
 	// example:
 	//
 	// 501
@@ -73417,6 +73938,11 @@ func (s UpdateGatewayServiceShrinkRequest) GoString() string {
 
 func (s *UpdateGatewayServiceShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceShrinkRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceShrinkRequest) SetDnsServerListShrink(v string) *UpdateGatewayServiceShrinkRequest {
+	s.DnsServerListShrink = &v
 	return s
 }
 
@@ -81652,6 +82178,74 @@ func (client *Client) CreateNacosService(request *CreateNacosServiceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNacosServiceResponse{}
 	_body, _err := client.CreateNacosServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateNamespace
+//
+// @param request - CreateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
+func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Describe)) {
+		query["Describe"] = request.Describe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNamespace"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CreateNamespace
+//
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -90441,6 +91035,82 @@ func (client *Client) ListNacosHistoryConfigs(request *ListNacosHistoryConfigsRe
 
 // Summary:
 //
+// 展示命名空间列表
+//
+// @param request - ListNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNamespacesResponse
+func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNamespaces"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 展示命名空间列表
+//
+// @param request - ListNamespacesRequest
+//
+// @return ListNamespacesResponse
+func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNamespacesResponse{}
+	_body, _err := client.ListNamespacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the trajectory data of a Nacos registry.
 //
 // @param request - ListNamingTrackRequest
@@ -95793,6 +96463,10 @@ func (client *Client) UpdateGatewayServiceWithOptions(tmpReq *UpdateGatewayServi
 	}
 	request := &UpdateGatewayServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DnsServerList)) {
+		request.DnsServerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DnsServerList, tea.String("DnsServerList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IpList)) {
 		request.IpListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpList, tea.String("IpList"), tea.String("json"))
 	}
@@ -95800,6 +96474,10 @@ func (client *Client) UpdateGatewayServiceWithOptions(tmpReq *UpdateGatewayServi
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DnsServerListShrink)) {
+		query["DnsServerList"] = request.DnsServerListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
