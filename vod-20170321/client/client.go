@@ -25721,7 +25721,8 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// example:
 	//
 	// 450.878
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Bitrate   *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
 	// The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
@@ -25931,6 +25932,11 @@ func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetBitDepth(v int32) *GetP
 
 func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetBitrate(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
 	s.Bitrate = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyPlayInfoListPlayInfo) SetCodecName(v string) *GetPlayInfoResponseBodyPlayInfoListPlayInfo {
+	s.CodecName = &v
 	return s
 }
 
