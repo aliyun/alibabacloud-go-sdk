@@ -490,6 +490,168 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CheckServiceDeployableRequest struct {
+	// example:
+	//
+	// 1.29
+	PostPaidAmount *string `json:"PostPaidAmount,omitempty" xml:"PostPaidAmount,omitempty"`
+	// example:
+	//
+	// 0.0
+	PrePaidAmount *string `json:"PrePaidAmount,omitempty" xml:"PrePaidAmount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// example:
+	//
+	// NotTrial
+	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+}
+
+func (s CheckServiceDeployableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceDeployableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceDeployableRequest) SetPostPaidAmount(v string) *CheckServiceDeployableRequest {
+	s.PostPaidAmount = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetPrePaidAmount(v string) *CheckServiceDeployableRequest {
+	s.PrePaidAmount = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetRegionId(v string) *CheckServiceDeployableRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetServiceId(v string) *CheckServiceDeployableRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetServiceVersion(v string) *CheckServiceDeployableRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetTrialType(v string) *CheckServiceDeployableRequest {
+	s.TrialType = &v
+	return s
+}
+
+type CheckServiceDeployableResponseBody struct {
+	CheckResults []*CheckServiceDeployableResponseBodyCheckResults `json:"CheckResults,omitempty" xml:"CheckResults,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckServiceDeployableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceDeployableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceDeployableResponseBody) SetCheckResults(v []*CheckServiceDeployableResponseBodyCheckResults) *CheckServiceDeployableResponseBody {
+	s.CheckResults = v
+	return s
+}
+
+func (s *CheckServiceDeployableResponseBody) SetRequestId(v string) *CheckServiceDeployableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckServiceDeployableResponseBodyCheckResults struct {
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Balance
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// true
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CheckServiceDeployableResponseBodyCheckResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceDeployableResponseBodyCheckResults) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceDeployableResponseBodyCheckResults) SetMessage(v string) *CheckServiceDeployableResponseBodyCheckResults {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckServiceDeployableResponseBodyCheckResults) SetType(v string) *CheckServiceDeployableResponseBodyCheckResults {
+	s.Type = &v
+	return s
+}
+
+func (s *CheckServiceDeployableResponseBodyCheckResults) SetValue(v string) *CheckServiceDeployableResponseBodyCheckResults {
+	s.Value = &v
+	return s
+}
+
+type CheckServiceDeployableResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckServiceDeployableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckServiceDeployableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceDeployableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceDeployableResponse) SetHeaders(v map[string]*string) *CheckServiceDeployableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckServiceDeployableResponse) SetStatusCode(v int32) *CheckServiceDeployableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckServiceDeployableResponse) SetBody(v *CheckServiceDeployableResponseBody) *CheckServiceDeployableResponse {
+	s.Body = v
+	return s
+}
+
 type ContinueDeployServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -691,25 +853,33 @@ type CreateServiceInstanceRequest struct {
 	//
 	// example:
 	//
-	// 云账号报警联系人
+	// Default Group
 	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits.
+	// 	- **true**: performs a dry run for the request, but does not create a service instance.
 	//
-	// 	- **false*	- (default): sends the request.
+	// 	- **false**: performs a dry run for the request, and creates a service instance if the request passes the dry run.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Indicates whether the service instance supports the operation feature.
+	// Specifies whether the service instance supports the hosted O\\&M feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
-	// Whether to enable Prometheus monitoring.
+	// Specifies whether to enable the Prometheus monitoring feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
@@ -743,11 +913,15 @@ type CreateServiceInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Whether the resource pays automatically.Valid values:
+	// Specifies whether to automatically deduct the resource fees from the account balance. Valid values:
 	//
-	// - true
+	// 	- **true**
 	//
-	// - false
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ResourceAutoPay *bool `json:"ResourceAutoPay,omitempty" xml:"ResourceAutoPay,omitempty"`
 	// The resource group ID.
 	//
@@ -779,7 +953,7 @@ type CreateServiceInstanceRequest struct {
 	//
 	// example:
 	//
-	// 套餐一
+	// Default Ppackage
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The tags.
 	Tag []*CreateServiceInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -787,19 +961,13 @@ type CreateServiceInstanceRequest struct {
 	//
 	// example:
 	//
-	// 模板1
+	// ECS Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial type of serviceInstance.
+	// The trial type of the service instance. Valid values:
 	//
-	// Valid values:
+	// 	- **Trial**: Trials are supported.
 	//
-	// - Created:
-	//
-	// - Deploying
-	//
-	// - DeployedFailed
-	//
-	// - Deployed
+	// 	- **NotTrial**: Trials are not supported.
 	//
 	// example:
 	//
@@ -921,7 +1089,7 @@ type CreateServiceInstanceRequestCommodity struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	// Specifies whether to enable auto-renewal for the service instance. Valid values:
 	//
 	// 	- **true**
 	//
@@ -930,8 +1098,13 @@ type CreateServiceInstanceRequestCommodity struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CouponId  *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// 302070970220
+	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
 	// example:
@@ -940,11 +1113,11 @@ type CreateServiceInstanceRequestCommodity struct {
 	PayPeriod *int64 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
-	// 	- Year
+	// 	- **Year**
 	//
-	// 	- Month
+	// 	- **Month**
 	//
-	// 	- Day
+	// 	- **Day**
 	//
 	// example:
 	//
@@ -1119,25 +1292,33 @@ type CreateServiceInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// 云账号报警联系人
+	// Default Group
 	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits.
+	// 	- **true**: performs a dry run for the request, but does not create a service instance.
 	//
-	// 	- **false*	- (default): sends the request.
+	// 	- **false**: performs a dry run for the request, and creates a service instance if the request passes the dry run.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Indicates whether the service instance supports the operation feature.
+	// Specifies whether the service instance supports the hosted O\\&M feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
-	// Whether to enable Prometheus monitoring.
+	// Specifies whether to enable the Prometheus monitoring feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// example:
 	//
@@ -1171,11 +1352,15 @@ type CreateServiceInstanceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Whether the resource pays automatically.Valid values:
+	// Specifies whether to automatically deduct the resource fees from the account balance. Valid values:
 	//
-	// - true
+	// 	- **true**
 	//
-	// - false
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ResourceAutoPay *bool `json:"ResourceAutoPay,omitempty" xml:"ResourceAutoPay,omitempty"`
 	// The resource group ID.
 	//
@@ -1207,7 +1392,7 @@ type CreateServiceInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// 套餐一
+	// Default Ppackage
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The tags.
 	Tag []*CreateServiceInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -1215,19 +1400,13 @@ type CreateServiceInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// 模板1
+	// ECS Template
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The trial type of serviceInstance.
+	// The trial type of the service instance. Valid values:
 	//
-	// Valid values:
+	// 	- **Trial**: Trials are supported.
 	//
-	// - Created:
-	//
-	// - Deploying
-	//
-	// - DeployedFailed
-	//
-	// - Deployed
+	// 	- **NotTrial**: Trials are not supported.
 	//
 	// example:
 	//
@@ -1349,7 +1528,7 @@ type CreateServiceInstanceShrinkRequestCommodity struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	// Specifies whether to enable auto-renewal for the service instance. Valid values:
 	//
 	// 	- **true**
 	//
@@ -1358,8 +1537,13 @@ type CreateServiceInstanceShrinkRequestCommodity struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CouponId  *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The coupon ID.
+	//
+	// example:
+	//
+	// 302070970220
+	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
 	// example:
@@ -1368,11 +1552,11 @@ type CreateServiceInstanceShrinkRequestCommodity struct {
 	PayPeriod *int64 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
-	// 	- Year
+	// 	- **Year**
 	//
-	// 	- Month
+	// 	- **Month**
 	//
-	// 	- Day
+	// 	- **Day**
 	//
 	// example:
 	//
@@ -1559,13 +1743,23 @@ type CreateServiceInstanceResponseBody struct {
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	// Indicates whether the synchronization task was created. Valid values:
+	// The status of the service instance. Valid values:
 	//
-	// 	- **1**: Created.
+	// 	- **Created**
 	//
-	// 	- **0**: Creation failed. The tables in the synchronization task are duplicate. The duplicate tables are returned for the **RepeatedDbs*	- parameter.
+	// 	- **Deploying**
 	//
-	// 	- **-1**: Creation failed. The cause why the creation failed is returned for the **ErrorMsg*	- parameter.
+	// 	- **DeployedFailed**
+	//
+	// 	- **Deployed**
+	//
+	// 	- **Upgrading**
+	//
+	// 	- **Deleting**
+	//
+	// 	- **Deleted**
+	//
+	// 	- **DeletedFailed**
 	//
 	// example:
 	//
@@ -2049,6 +2243,1059 @@ func (s *GenerateServicePolicyResponse) SetStatusCode(v int32) *GenerateServiceP
 }
 
 func (s *GenerateServicePolicyResponse) SetBody(v *GenerateServicePolicyResponseBody) *GenerateServicePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceRequest struct {
+	// Region Id.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service instance id.
+	//
+	// example:
+	//
+	// si-b58c874912fc4294****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// Wordpress
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// 1.0
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// Whether to disclose service details.
+	ShowDetails []*string `json:"ShowDetails,omitempty" xml:"ShowDetails,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRequest) SetRegionId(v string) *GetServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceId(v string) *GetServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceInstanceId(v string) *GetServiceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceName(v string) *GetServiceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceVersion(v string) *GetServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetShowDetails(v []*string) *GetServiceRequest {
+	s.ShowDetails = v
+	return s
+}
+
+type GetServiceResponseBody struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
+	// example:
+	//
+	// { "TemplateUrl": "http://template.file.url", // 应用分组级别告警元数据 "ApplicationGroups": [ { "Name": "applicationGroup1", "TemplateUrl": "url1" }, { "Name": "applicationGroup2", "TemplateUrl": "url2" } ] }
+	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	// The categories of the Flow.
+	//
+	// example:
+	//
+	// AI
+	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The information about the order placed in Alibaba Cloud Marketplace.
+	Commodity *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// Service deployment approach, Valid values：
+	//
+	// - NoWhere
+	//
+	// - Marketplace
+	//
+	// - ComputeNest
+	//
+	// example:
+	//
+	// Marketplace
+	DeployFrom *string `json:"DeployFrom,omitempty" xml:"DeployFrom,omitempty"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
+	// example:
+	//
+	// {\\"TemplateUrl\\": \\"http://tidbRosFile\\"}
+	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// example:
+	//
+	// ros
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
+	// example:
+	//
+	// 259200
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Information about the ram role created in the service template.
+	InstanceRoleInfos []*GetServiceResponseBodyInstanceRoleInfos `json:"InstanceRoleInfos,omitempty" xml:"InstanceRoleInfos,omitempty" type:"Repeated"`
+	// Indicates whether the hosted O\\&M feature is enabled for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is returned if you set **ServiceType*	- to **private**.
+	//
+	// example:
+	//
+	// false
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {\\"PayType\\":\\"CustomFixTime\\",\\"DefaultLicenseDays\\":7,\\"CustomMetadata\\":[{\\"TemplateName\\":\\"模板1\\",\\"SpecificationName\\":\\"bandwith-0\\",\\"CustomData\\":\\"1\\"}]}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// {\\"Logstores\\":[]}
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The operation metadata.
+	//
+	// example:
+	//
+	// {\\"PrometheusConfigMap\\":{\\"New_Vpc_Ack_And_Jumpserver\\":{}}}
+	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The permissions on the service. Valid values:
+	//
+	// 	- Deployable: Permissions to deploy the service.
+	//
+	// 	- Accessible: Permissions to access the service.
+	//
+	// example:
+	//
+	// Deployable
+	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
+	// example:
+	//
+	// policyName1, policyName2
+	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The time when the service was published.
+	//
+	// example:
+	//
+	// 2021-05-21T00:00:00Z
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service document information.
+	ServiceDocumentInfos []*GetServiceResponseBodyServiceDocumentInfos `json:"ServiceDocumentInfos,omitempty" xml:"ServiceDocumentInfos,omitempty" type:"Repeated"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a544xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
+	ServiceInfos []*GetServiceResponseBodyServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The URL of the service page.
+	//
+	// example:
+	//
+	// http://example1.com
+	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// - private: The service is a private service and is deployed within the account of a customer.
+	//
+	// - managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// - operation: The service is a hosted O&M service.
+	//
+	// example:
+	//
+	// private
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
+	// example:
+	//
+	// Public
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The deploy status of the service. Valid values:
+	//
+	// - Draft
+	//
+	// - Beta
+	//
+	// - Submitted
+	//
+	// - Approved
+	//
+	// - Launching
+	//
+	// - Online
+	//
+	// - Offline
+	//
+	// - Creating
+	//
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of service provider.
+	//
+	// example:
+	//
+	// Computing Nest Community service
+	SupplierDesc *string `json:"SupplierDesc,omitempty" xml:"SupplierDesc,omitempty"`
+	// The Logo of service provider.
+	//
+	// example:
+	//
+	// https://service-info-public.oss-cn-hangzhou.aliyuncs.com/xxx/service-image/xxx.png
+	SupplierLogo *string `json:"SupplierLogo,omitempty" xml:"SupplierLogo,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The Alibaba Cloud account ID of the service provider.
+	//
+	// example:
+	//
+	// 158927391332*****
+	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// http://example.com
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The tags.
+	Tags []*GetServiceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
+	// example:
+	//
+	// SingleTenant
+	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
+	// example:
+	//
+	// 7
+	TrialDuration *int64 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
+	// example:
+	//
+	// Trial
+	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version name.
+	//
+	// example:
+	//
+	// v1
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBody) SetAlarmMetadata(v string) *GetServiceResponseBody {
+	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCategories(v string) *GetServiceResponseBody {
+	s.Categories = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCommodity(v *GetServiceResponseBodyCommodity) *GetServiceResponseBody {
+	s.Commodity = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDeployFrom(v string) *GetServiceResponseBody {
+	s.DeployFrom = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDeployMetadata(v string) *GetServiceResponseBody {
+	s.DeployMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDeployType(v string) *GetServiceResponseBody {
+	s.DeployType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDuration(v int64) *GetServiceResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetInstanceRoleInfos(v []*GetServiceResponseBodyInstanceRoleInfos) *GetServiceResponseBody {
+	s.InstanceRoleInfos = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetIsSupportOperated(v bool) *GetServiceResponseBody {
+	s.IsSupportOperated = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetLicenseMetadata(v string) *GetServiceResponseBody {
+	s.LicenseMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetLogMetadata(v string) *GetServiceResponseBody {
+	s.LogMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetOperationMetadata(v string) *GetServiceResponseBody {
+	s.OperationMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPermission(v string) *GetServiceResponseBody {
+	s.Permission = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPolicyNames(v string) *GetServiceResponseBody {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPublishTime(v string) *GetServiceResponseBody {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceDocumentInfos(v []*GetServiceResponseBodyServiceDocumentInfos) *GetServiceResponseBody {
+	s.ServiceDocumentInfos = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceId(v string) *GetServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceInfos(v []*GetServiceResponseBodyServiceInfos) *GetServiceResponseBody {
+	s.ServiceInfos = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceProductUrl(v string) *GetServiceResponseBody {
+	s.ServiceProductUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceType(v string) *GetServiceResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetShareType(v string) *GetServiceResponseBody {
+	s.ShareType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetStatus(v string) *GetServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierDesc(v string) *GetServiceResponseBody {
+	s.SupplierDesc = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierLogo(v string) *GetServiceResponseBody {
+	s.SupplierLogo = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierName(v string) *GetServiceResponseBody {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierUid(v int64) *GetServiceResponseBody {
+	s.SupplierUid = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierUrl(v string) *GetServiceResponseBody {
+	s.SupplierUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTags(v []*GetServiceResponseBodyTags) *GetServiceResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTenantType(v string) *GetServiceResponseBody {
+	s.TenantType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTrialDuration(v int64) *GetServiceResponseBody {
+	s.TrialDuration = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTrialType(v string) *GetServiceResponseBody {
+	s.TrialType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetVersion(v string) *GetServiceResponseBody {
+	s.Version = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetVersionName(v string) *GetServiceResponseBody {
+	s.VersionName = &v
+	return s
+}
+
+type GetServiceResponseBodyCommodity struct {
+	// The billing method of the service. Valid values:
+	//
+	// 	- **PREPAY*	- (default): subscription.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// cmjj00****
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The configuration metadata related to Lingxiao.
+	CssMetadata *GetServiceResponseBodyCommodityCssMetadata `json:"CssMetadata,omitempty" xml:"CssMetadata,omitempty" type:"Struct"`
+	// The deploy page.
+	//
+	// example:
+	//
+	// Order： Order page
+	//
+	// Detail： Detail page
+	DeployPage *string `json:"DeployPage,omitempty" xml:"DeployPage,omitempty"`
+	// The metadata of Alibaba Cloud Marketplace.
+	MarketplaceMetadata *GetServiceResponseBodyCommodityMarketplaceMetadata `json:"MarketplaceMetadata,omitempty" xml:"MarketplaceMetadata,omitempty" type:"Struct"`
+	// The order time.
+	OrderTime map[string][]*string `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
+	// The configuration metadata related to Saas Boost.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Enabled":false    "PublicAccessUrl":"https://example.com"
+	//
+	// }
+	SaasBoostMetadata *string `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
+	// The specification details of the service in Alibaba Cloud Marketplace.
+	Specifications []*GetServiceResponseBodyCommoditySpecifications `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- marketplace: Alibaba Cloud Marketplace.
+	//
+	// 	- Css: Lingxiao.
+	//
+	// example:
+	//
+	// Marketplace
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetServiceResponseBodyCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodity) SetChargeType(v string) *GetServiceResponseBodyCommodity {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetCommodityCode(v string) *GetServiceResponseBodyCommodity {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetCssMetadata(v *GetServiceResponseBodyCommodityCssMetadata) *GetServiceResponseBodyCommodity {
+	s.CssMetadata = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetDeployPage(v string) *GetServiceResponseBodyCommodity {
+	s.DeployPage = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetMarketplaceMetadata(v *GetServiceResponseBodyCommodityMarketplaceMetadata) *GetServiceResponseBodyCommodity {
+	s.MarketplaceMetadata = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetOrderTime(v map[string][]*string) *GetServiceResponseBodyCommodity {
+	s.OrderTime = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetSaasBoostMetadata(v string) *GetServiceResponseBodyCommodity {
+	s.SaasBoostMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetSpecifications(v []*GetServiceResponseBodyCommoditySpecifications) *GetServiceResponseBodyCommodity {
+	s.Specifications = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodity) SetType(v string) *GetServiceResponseBodyCommodity {
+	s.Type = &v
+	return s
+}
+
+type GetServiceResponseBodyCommodityCssMetadata struct {
+	// The mapping information about the billing items.
+	ComponentsMappings []*GetServiceResponseBodyCommodityCssMetadataComponentsMappings `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyCommodityCssMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodityCssMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodityCssMetadata) SetComponentsMappings(v []*GetServiceResponseBodyCommodityCssMetadataComponentsMappings) *GetServiceResponseBodyCommodityCssMetadata {
+	s.ComponentsMappings = v
+	return s
+}
+
+type GetServiceResponseBodyCommodityCssMetadataComponentsMappings struct {
+	// The mappings.
+	Mappings map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template one.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyCommodityCssMetadataComponentsMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodityCssMetadataComponentsMappings) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodityCssMetadataComponentsMappings) SetMappings(v map[string]*string) *GetServiceResponseBodyCommodityCssMetadataComponentsMappings {
+	s.Mappings = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodityCssMetadataComponentsMappings) SetTemplateName(v string) *GetServiceResponseBodyCommodityCssMetadataComponentsMappings {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyCommodityMarketplaceMetadata struct {
+	// The mappings between the service specifications and the template or package.
+	SpecificationMappings []*GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyCommodityMarketplaceMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodityMarketplaceMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodityMarketplaceMetadata) SetSpecificationMappings(v []*GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) *GetServiceResponseBodyCommodityMarketplaceMetadata {
+	s.SpecificationMappings = v
+	return s
+}
+
+type GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings struct {
+	// The specification code of the service in Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// cmjj00****
+	SpecificationCode *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// Package one.
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template one.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) SetSpecificationCode(v string) *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings {
+	s.SpecificationCode = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) SetSpecificationName(v string) *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) SetTemplateName(v string) *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyCommoditySpecifications struct {
+	// The commodity code.
+	//
+	// example:
+	//
+	// cmjj00****
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The specification name.
+	//
+	// example:
+	//
+	// specifications1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The subscription duration. Unit: week or year.
+	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyCommoditySpecifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommoditySpecifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetCode(v string) *GetServiceResponseBodyCommoditySpecifications {
+	s.Code = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetName(v string) *GetServiceResponseBodyCommoditySpecifications {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetTimes(v []*string) *GetServiceResponseBodyCommoditySpecifications {
+	s.Times = v
+	return s
+}
+
+type GetServiceResponseBodyInstanceRoleInfos struct {
+	// The content of the policy.
+	//
+	// example:
+	//
+	// {\\n  \\"Version\\": \\"1\\",\\n  \\"Statement\\": [\\n    {\\n      \\"Effect\\": \\"Allow\\",\\n      \\"Action\\": \\"*\\",\\n      \\"Principal\\": \\"*\\",\\n      \\"Resource\\": \\"*\\"\\n    }\\n  ]\\n}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The information of the RAM entity.
+	Principals []*string `json:"Principals,omitempty" xml:"Principals,omitempty" type:"Repeated"`
+	// The ram role name.
+	//
+	// example:
+	//
+	// ram-for-dts
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template one.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyInstanceRoleInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyInstanceRoleInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyInstanceRoleInfos) SetPolicyDocument(v string) *GetServiceResponseBodyInstanceRoleInfos {
+	s.PolicyDocument = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyInstanceRoleInfos) SetPrincipals(v []*string) *GetServiceResponseBodyInstanceRoleInfos {
+	s.Principals = v
+	return s
+}
+
+func (s *GetServiceResponseBodyInstanceRoleInfos) SetRoleName(v string) *GetServiceResponseBodyInstanceRoleInfos {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyInstanceRoleInfos) SetTemplateName(v string) *GetServiceResponseBodyInstanceRoleInfos {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyServiceDocumentInfos struct {
+	// The URL that is used to access the document.
+	//
+	// example:
+	//
+	// https://help.aliyun.com/zh/compute-nest/use-cases/deploy-an-sd-painting-service-instance?spm=a2c4g.11186623.0.i2
+	DocumentUrl *string `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
+	// The language that you use for the query. Valid values: zh-CN and en-US.
+	//
+	// example:
+	//
+	// zh-CN
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template one.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceDocumentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceDocumentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceDocumentInfos) SetDocumentUrl(v string) *GetServiceResponseBodyServiceDocumentInfos {
+	s.DocumentUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceDocumentInfos) SetLocale(v string) *GetServiceResponseBodyServiceDocumentInfos {
+	s.Locale = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceDocumentInfos) SetTemplateName(v string) *GetServiceResponseBodyServiceDocumentInfos {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyServiceInfos struct {
+	// The agreement information about the service.
+	Agreements []*GetServiceResponseBodyServiceInfosAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
+	// example:
+	//
+	// https://example.com/service-image/c1c4a559-cc60-4af1-b976-98f356602462.png
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
+	// example:
+	//
+	// zh-CN
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// Service document information.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// Docker Community Edition (CE) is a free version of the Docker project, aimed at developers, enthusiasts, and individuals and organizations who want to use container technology.
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The list of the software in the service.
+	Softwares []*GetServiceResponseBodyServiceInfosSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceResponseBodyServiceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetAgreements(v []*GetServiceResponseBodyServiceInfosAgreements) *GetServiceResponseBodyServiceInfos {
+	s.Agreements = v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetImage(v string) *GetServiceResponseBodyServiceInfos {
+	s.Image = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetLocale(v string) *GetServiceResponseBodyServiceInfos {
+	s.Locale = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetName(v string) *GetServiceResponseBodyServiceInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetShortDescription(v string) *GetServiceResponseBodyServiceInfos {
+	s.ShortDescription = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetSoftwares(v []*GetServiceResponseBodyServiceInfosSoftwares) *GetServiceResponseBodyServiceInfos {
+	s.Softwares = v
+	return s
+}
+
+type GetServiceResponseBodyServiceInfosAgreements struct {
+	// The agreement name.
+	//
+	// example:
+	//
+	// User agreement
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The agreement URL.
+	//
+	// example:
+	//
+	// https://url
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceInfosAgreements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceInfosAgreements) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceInfosAgreements) SetName(v string) *GetServiceResponseBodyServiceInfosAgreements {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfosAgreements) SetUrl(v string) *GetServiceResponseBodyServiceInfosAgreements {
+	s.Url = &v
+	return s
+}
+
+type GetServiceResponseBodyServiceInfosSoftwares struct {
+	// The name of the Software.
+	//
+	// example:
+	//
+	// wordpress
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the software.
+	//
+	// example:
+	//
+	// 6.0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceInfosSoftwares) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceInfosSoftwares) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceInfosSoftwares) SetName(v string) *GetServiceResponseBodyServiceInfosSoftwares {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfosSoftwares) SetVersion(v string) *GetServiceResponseBodyServiceInfosSoftwares {
+	s.Version = &v
+	return s
+}
+
+type GetServiceResponseBodyTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetServiceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyTags) SetKey(v string) *GetServiceResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyTags) SetValue(v string) *GetServiceResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
+type GetServiceResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponse) SetHeaders(v map[string]*string) *GetServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceResponse) SetStatusCode(v int32) *GetServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceResponse {
 	s.Body = v
 	return s
 }
@@ -2766,7 +4013,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 套餐一
+	// Package one
 	PredefinedParameterName *string `json:"PredefinedParameterName,omitempty" xml:"PredefinedParameterName,omitempty"`
 	// The deployment progress of the service instance. Unit: percentage.
 	//
@@ -2864,7 +4111,7 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 模板1
+	// Template one
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The time when the serviceInstance  was last updated.
 	//
@@ -3392,7 +4639,7 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// example:
 	//
-	// A公司
+	// Alibaba Cloud
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 	// The URL of the service provider.
 	//
@@ -3400,13 +4647,71 @@ type GetServiceInstanceResponseBodyService struct {
 	//
 	// http://example.com
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The upgradable service version.
+	UpgradableServiceInfos []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos `json:"UpgradableServiceInfos,omitempty" xml:"UpgradableServiceInfos,omitempty" type:"Repeated"`
 	// The service version that can be updated.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
 	// The metadata about the upgrade.
 	//
 	// example:
 	//
-	// {\\"Description\\":\\"开启服务升级\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\",\\"Resource\\"]}
+	// {
+	//
+	//   "Type": "OOS",
+	//
+	//   "Description": "Changelog or something description",
+	//
+	//   "SupportUpgradeFromVersions": [1, 2],
+	//
+	//   "UpgradeSteps": {
+	//
+	//     "PreUpgradeStage": {
+	//
+	//       "Description": "初始化数据库",
+	//
+	//       "Type": "RunCommand",
+	//
+	//       "ResourceName": "EcsRole1",
+	//
+	//       "CommandType": "runShellScript",
+	//
+	//       "CommandContent": "echo hello"
+	//
+	//     },
+	//
+	//     "UpgradeStage": [{
+	//
+	//       "Description": "更新EcsRole1实例",
+	//
+	//       "Type": "RunCommand",
+	//
+	//       "ResourceName": "EcsRole1",
+	//
+	//       "ArtifactsDownloadDirectory": "/home/admin",
+	//
+	//       "CommandType": "runShellScript",
+	//
+	//       "CommandContent": "echo hello"
+	//
+	//     }],
+	//
+	//     "PostUpgradeStage": {
+	//
+	//       "Description": "部署后post check",
+	//
+	//       "Type": "None/RunCommand",
+	//
+	//       "ResourceName": "EcsRole1",
+	//
+	//       "CommandType": "runShellScript",
+	//
+	//       "CommandContent": "echo hello"
+	//
+	//     }
+	//
+	//   }
+	//
+	// }
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
 	// The service version.
 	//
@@ -3485,6 +4790,11 @@ func (s *GetServiceInstanceResponseBodyService) SetSupplierUrl(v string) *GetSer
 	return s
 }
 
+func (s *GetServiceInstanceResponseBodyService) SetUpgradableServiceInfos(v []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) *GetServiceInstanceResponseBodyService {
+	s.UpgradableServiceInfos = v
+	return s
+}
+
 func (s *GetServiceInstanceResponseBodyService) SetUpgradableServiceVersions(v []*string) *GetServiceInstanceResponseBodyService {
 	s.UpgradableServiceVersions = v
 	return s
@@ -3522,13 +4832,13 @@ type GetServiceInstanceResponseBodyServiceServiceInfos struct {
 	//
 	// example:
 	//
-	// B数据库
+	// Docker Community Edition
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the service.
 	//
 	// example:
 	//
-	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	// Docker Community Edition (CE) is a free version of the Docker project, aimed at developers, enthusiasts, and individuals and organizations who want to use container technology.
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -3557,6 +4867,39 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetName(v string) *G
 
 func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(v string) *GetServiceInstanceResponseBodyServiceServiceInfos {
 	s.ShortDescription = &v
+	return s
+}
+
+type GetServiceInstanceResponseBodyServiceUpgradableServiceInfos struct {
+	// An upgradable service version.
+	//
+	// example:
+	//
+	// draft
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version name of an upgradable service version.
+	//
+	// example:
+	//
+	// 0.1.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) SetVersion(v string) *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos {
+	s.Version = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos) SetVersionName(v string) *GetServiceInstanceResponseBodyServiceUpgradableServiceInfos {
+	s.VersionName = &v
 	return s
 }
 
@@ -4510,6 +5853,139 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 	return s
 }
 
+type GetUserInformationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetUserInformationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInformationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInformationRequest) SetRegionId(v string) *GetUserInformationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetUserInformationResponseBody struct {
+	DeliverySettings *GetUserInformationResponseBodyDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// example:
+	//
+	// 52EBAF16-22F6-53DB-AE1E-44764FC62AF0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetUserInformationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInformationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInformationResponseBody) SetDeliverySettings(v *GetUserInformationResponseBodyDeliverySettings) *GetUserInformationResponseBody {
+	s.DeliverySettings = v
+	return s
+}
+
+func (s *GetUserInformationResponseBody) SetRequestId(v string) *GetUserInformationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetUserInformationResponseBodyDeliverySettings struct {
+	// example:
+	//
+	// true
+	ActiontrailDeliveryToOssEnabled *bool `json:"ActiontrailDeliveryToOssEnabled,omitempty" xml:"ActiontrailDeliveryToOssEnabled,omitempty"`
+	// example:
+	//
+	// 0101data
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// true
+	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// example:
+	//
+	// 7
+	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// example:
+	//
+	// /test
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+}
+
+func (s GetUserInformationResponseBodyDeliverySettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInformationResponseBodyDeliverySettings) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInformationResponseBodyDeliverySettings) SetActiontrailDeliveryToOssEnabled(v bool) *GetUserInformationResponseBodyDeliverySettings {
+	s.ActiontrailDeliveryToOssEnabled = &v
+	return s
+}
+
+func (s *GetUserInformationResponseBodyDeliverySettings) SetOssBucketName(v string) *GetUserInformationResponseBodyDeliverySettings {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *GetUserInformationResponseBodyDeliverySettings) SetOssEnabled(v bool) *GetUserInformationResponseBodyDeliverySettings {
+	s.OssEnabled = &v
+	return s
+}
+
+func (s *GetUserInformationResponseBodyDeliverySettings) SetOssExpirationDays(v int64) *GetUserInformationResponseBodyDeliverySettings {
+	s.OssExpirationDays = &v
+	return s
+}
+
+func (s *GetUserInformationResponseBodyDeliverySettings) SetOssPath(v string) *GetUserInformationResponseBodyDeliverySettings {
+	s.OssPath = &v
+	return s
+}
+
+type GetUserInformationResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserInformationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInformationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInformationResponse) SetHeaders(v map[string]*string) *GetUserInformationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserInformationResponse) SetStatusCode(v int32) *GetUserInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserInformationResponse) SetBody(v *GetUserInformationResponseBody) *GetUserInformationResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceCategoriesResponseBody struct {
 	// The category list of the service.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
@@ -4569,12 +6045,15 @@ func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponse
 }
 
 type ListServiceInstanceLogsRequest struct {
+	// The filters.
 	Filter []*ListServiceInstanceLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The log source. Valid values:
 	//
 	// 	- computeNest (default): logs of the deployment and upgrade of the service instance.
 	//
 	// 	- application: logs generated by the application.
+	//
+	// 	- actionTrail: logs generated by ActionTrail.
 	//
 	// example:
 	//
@@ -4664,7 +6143,31 @@ func (s *ListServiceInstanceLogsRequest) SetServiceInstanceId(v string) *ListSer
 }
 
 type ListServiceInstanceLogsRequestFilter struct {
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- StartTime: the start time of the log event.
+	//
+	// 	- EndTime: the end time of the ActionTrail event.
+	//
+	// 	- EventName: the name of the ActionTrail event.
+	//
+	// 	- ResourceName: the name of the ActionTrail resource.
+	//
+	// 	- ApplicationGroupName: the name of the application group.
+	//
+	// example:
+	//
+	// - StartTime
+	//
+	// - EndTime
+	//
+	// - EventName
+	//
+	// - ResourceName
+	//
+	// - ApplicationGroupName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value N of the filter. Valid values of N: 1 to 10.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -4738,6 +6241,18 @@ func (s *ListServiceInstanceLogsResponseBody) SetServiceInstancesLogs(v []*ListS
 }
 
 type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {
+	// Compliance package risk types. For example, data security checks within a VPC, such as VpcDataRisk
+	//
+	// example:
+	//
+	// VpcDataRisk
+	CompliancePackType *string `json:"CompliancePackType,omitempty" xml:"CompliancePackType,omitempty"`
+	// Specific risk rule names for the compliance package. For example, ECS instance migration out of VPC - ecs-move-out-vpc.
+	//
+	// example:
+	//
+	// ecs-move-out-vpc
+	ComplianceRuleName *string `json:"ComplianceRuleName,omitempty" xml:"ComplianceRuleName,omitempty"`
 	// The log content.
 	//
 	// example:
@@ -4768,13 +6283,15 @@ type ListServiceInstanceLogsResponseBodyServiceInstancesLogs struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The source of the service instance log. Valid values:
 	//
-	// 	- ros: The log is generated by Resource Orchestration Service (ROS).
+	// computeNest: logs of the deployment and upgrade of the service instance.
 	//
-	// 	- computeNest: The log is generated by Compute Nest.
+	// application: logs generated by the application.
+	//
+	// actionTrail: logs generated by ActionTrail.
 	//
 	// example:
 	//
-	// ros
+	// computeNest
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The state of the service instance. Valid values:
 	//
@@ -4814,6 +6331,16 @@ func (s ListServiceInstanceLogsResponseBodyServiceInstancesLogs) String() string
 
 func (s ListServiceInstanceLogsResponseBodyServiceInstancesLogs) GoString() string {
 	return s.String()
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetCompliancePackType(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.CompliancePackType = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetComplianceRuleName(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
+	s.ComplianceRuleName = &v
+	return s
 }
 
 func (s *ListServiceInstanceLogsResponseBodyServiceInstancesLogs) SetContent(v string) *ListServiceInstanceLogsResponseBodyServiceInstancesLogs {
@@ -4897,6 +6424,30 @@ type ListServiceInstanceResourcesRequest struct {
 	//
 	// 2022-01-01T12:00:00
 	ExpireTimeStart *string `json:"ExpireTimeStart,omitempty" xml:"ExpireTimeStart,omitempty"`
+	// The filter conditions. Vaild values:
+	//
+	// - ExpireTimeStart：
+	//
+	// Query start time for Subscription resource expiration.
+	//
+	// <notice>Notice Note: Only supports querying service instances on private deployments.	Notice:
+	//
+	// - ExpireTimeEnd：Query end time for Subscription resource expiration.
+	//
+	// <notice>Notice Note: Only supports querying service instances on private deployments.	Notice:
+	//
+	// - PayType：The billing method of the read-only instance.
+	//
+	// <notice>Notice Note: Only supports querying service instances on private deployments.<notice>
+	//
+	//    Valid values:
+	//
+	//    - PayAsYouGo
+	//
+	//    - Subscription
+	//
+	// - ResourceARN：The Alibaba Cloud Resource Name (ARN) of a resource.
+	Filters []*ListServiceInstanceResourcesRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
@@ -4971,6 +6522,11 @@ func (s *ListServiceInstanceResourcesRequest) SetExpireTimeStart(v string) *List
 	return s
 }
 
+func (s *ListServiceInstanceResourcesRequest) SetFilters(v []*ListServiceInstanceResourcesRequestFilters) *ListServiceInstanceResourcesRequest {
+	s.Filters = v
+	return s
+}
+
 func (s *ListServiceInstanceResourcesRequest) SetMaxResults(v int32) *ListServiceInstanceResourcesRequest {
 	s.MaxResults = &v
 	return s
@@ -5008,6 +6564,43 @@ func (s *ListServiceInstanceResourcesRequest) SetServiceInstanceResourceType(v s
 
 func (s *ListServiceInstanceResourcesRequest) SetTag(v []*ListServiceInstanceResourcesRequestTag) *ListServiceInstanceResourcesRequest {
 	s.Tag = v
+	return s
+}
+
+type ListServiceInstanceResourcesRequestFilters struct {
+	// Vaild values:
+	//
+	// - ExpireTimeStart
+	//
+	// - ExpireTimeEnd
+	//
+	// - PayType
+	//
+	// - ResourceARN
+	//
+	// example:
+	//
+	// ExpireTimeStart
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the filter condition.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceResourcesRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceResourcesRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceResourcesRequestFilters) SetName(v string) *ListServiceInstanceResourcesRequestFilters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceInstanceResourcesRequestFilters) SetValues(v []*string) *ListServiceInstanceResourcesRequestFilters {
+	s.Values = v
 	return s
 }
 
@@ -6526,6 +8119,700 @@ func (s *ListServiceUsagesResponse) SetBody(v *ListServiceUsagesResponseBody) *L
 	return s
 }
 
+type ListServicesRequest struct {
+	// The filter.
+	Filter []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// Keyword fuzzy query.
+	//
+	// example:
+	//
+	// name
+	FuzzyKeyword *string `json:"FuzzyKeyword,omitempty" xml:"FuzzyKeyword,omitempty"`
+	// Whether it is used. Optional values:
+	//
+	//
+	//
+	// - false: not being used.
+	//
+	//
+	//
+	// - true: already in use.
+	//
+	// example:
+	//
+	// false
+	InUsed *bool `json:"InUsed,omitempty" xml:"InUsed,omitempty"`
+	// The number of entries page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// BBBAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Service ordering type.
+	//
+	// example:
+	//
+	// UpdateTime
+	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service access type.
+	//
+	// example:
+	//
+	// All
+	ServiceAccessType *string `json:"ServiceAccessType,omitempty" xml:"ServiceAccessType,omitempty"`
+	// The tags.
+	Tag []*ListServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesRequest) SetFilter(v []*ListServicesRequestFilter) *ListServicesRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServicesRequest) SetFuzzyKeyword(v string) *ListServicesRequest {
+	s.FuzzyKeyword = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetInUsed(v bool) *ListServicesRequest {
+	s.InUsed = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetMaxResults(v int32) *ListServicesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetNextToken(v string) *ListServicesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetOrderByType(v string) *ListServicesRequest {
+	s.OrderByType = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetRegionId(v string) *ListServicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetServiceAccessType(v string) *ListServicesRequest {
+	s.ServiceAccessType = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetTag(v []*ListServicesRequestTag) *ListServicesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListServicesRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	//
+	// 	- ServiceId: the ID of the service.
+	//
+	// 	- Name: the name of the service.
+	//
+	// 	- Status: the state of the service.
+	//
+	// 	- SupplierName: the name of the service provider.
+	//
+	// example:
+	//
+	// Status
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A value of the filter condition.
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServicesRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesRequestFilter) SetName(v string) *ListServicesRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServicesRequestFilter) SetValue(v []*string) *ListServicesRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServicesRequestTag struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServicesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesRequestTag) SetKey(v string) *ListServicesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServicesRequestTag) SetValue(v string) *ListServicesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListServicesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI41
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3F976EF8-C10A-57DC-917C-BB7BEB508FFB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The services.
+	Services []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBody) SetMaxResults(v int32) *ListServicesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServicesResponseBody) SetNextToken(v string) *ListServicesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServicesResponseBody) SetRequestId(v string) *ListServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServicesResponseBody) SetServices(v []*ListServicesResponseBodyServices) *ListServicesResponseBody {
+	s.Services = v
+	return s
+}
+
+func (s *ListServicesResponseBody) SetTotalCount(v int32) *ListServicesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServicesResponseBodyServices struct {
+	// The category of the service.
+	//
+	// example:
+	//
+	// cloud_ssd
+	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The commodity details.
+	Commodity *ListServicesResponseBodyServicesCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// cmjj00xxxx
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Service deployment approach. Valid values:
+	//
+	// - NoWhere
+	//
+	// - Marketplace
+	//
+	// - ComputeNest
+	//
+	// example:
+	//
+	// ComputeNest
+	DeployFrom *string `json:"DeployFrom,omitempty" xml:"DeployFrom,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// example:
+	//
+	// ros
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The time when the service was published.
+	//
+	// example:
+	//
+	// 2022-01-21T10:35:44Z
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// Service recommendation score.
+	//
+	// example:
+	//
+	// 5
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-6b5d632edd394dxxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
+	ServiceInfos []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The URL of the service page.
+	//
+	// example:
+	//
+	// http://example1.com
+	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// - private: The service is a private service and is deployed within the account of a customer.
+	//
+	// - managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// - operation: The service is a hosted O&M service.
+	//
+	// example:
+	//
+	// private
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The state of the service. Valid values:
+	//
+	// 	- Draft: The service is a draft.
+	//
+	// 	- Submitted: The service is submitted for review. You cannot modify services in this state.
+	//
+	// 	- Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+	//
+	// 	- Launching: The service is being published.
+	//
+	// 	- Online: The service is published.
+	//
+	// 	- Offline: The service is unpublished.
+	//
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The name of service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
+	SupplierNameEng *string `json:"SupplierNameEng,omitempty" xml:"SupplierNameEng,omitempty"`
+	// The Alibaba Cloud account ID of the service provider.
+	//
+	// example:
+	//
+	// 1436322xxxxx
+	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	// The URL of the service provider.
+	//
+	// example:
+	//
+	// http://example.com
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The tags.
+	Tags []*ListServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant type of the managed service. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
+	// example:
+	//
+	// SingleTenant
+	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
+	// example:
+	//
+	// 7
+	TrialDuration *string `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
+	// example:
+	//
+	// Trial
+	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The version of the service.
+	//
+	// example:
+	//
+	// 4
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The custom version name defined by the service provider.
+	//
+	// example:
+	//
+	// v2.0.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Indicates whether the service is a virtual Internet service. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	VirtualInternetService *string `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
+}
+
+func (s ListServicesResponseBodyServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServices) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServices) SetCategories(v string) *ListServicesResponseBodyServices {
+	s.Categories = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetCommodity(v *ListServicesResponseBodyServicesCommodity) *ListServicesResponseBodyServices {
+	s.Commodity = v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetCommodityCode(v string) *ListServicesResponseBodyServices {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetDeployFrom(v string) *ListServicesResponseBodyServices {
+	s.DeployFrom = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetDeployType(v string) *ListServicesResponseBodyServices {
+	s.DeployType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetPublishTime(v string) *ListServicesResponseBodyServices {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetScore(v int32) *ListServicesResponseBodyServices {
+	s.Score = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceId(v string) *ListServicesResponseBodyServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceInfos(v []*ListServicesResponseBodyServicesServiceInfos) *ListServicesResponseBodyServices {
+	s.ServiceInfos = v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceProductUrl(v string) *ListServicesResponseBodyServices {
+	s.ServiceProductUrl = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceType(v string) *ListServicesResponseBodyServices {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetStatus(v string) *ListServicesResponseBodyServices {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSupplierName(v string) *ListServicesResponseBodyServices {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSupplierNameEng(v string) *ListServicesResponseBodyServices {
+	s.SupplierNameEng = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSupplierUid(v int64) *ListServicesResponseBodyServices {
+	s.SupplierUid = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetSupplierUrl(v string) *ListServicesResponseBodyServices {
+	s.SupplierUrl = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetTags(v []*ListServicesResponseBodyServicesTags) *ListServicesResponseBodyServices {
+	s.Tags = v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetTenantType(v string) *ListServicesResponseBodyServices {
+	s.TenantType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetTrialDuration(v string) *ListServicesResponseBodyServices {
+	s.TrialDuration = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetTrialType(v string) *ListServicesResponseBodyServices {
+	s.TrialType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetVersion(v string) *ListServicesResponseBodyServices {
+	s.Version = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetVersionName(v string) *ListServicesResponseBodyServices {
+	s.VersionName = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetVirtualInternetService(v string) *ListServicesResponseBodyServices {
+	s.VirtualInternetService = &v
+	return s
+}
+
+type ListServicesResponseBodyServicesCommodity struct {
+	// The commodity code.
+	//
+	// example:
+	//
+	// cmjj00****
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// Deploy Page.
+	//
+	// example:
+	//
+	// Order： Order Page
+	//
+	// Detail： Detail Page
+	DeployPage *string `json:"DeployPage,omitempty" xml:"DeployPage,omitempty"`
+}
+
+func (s ListServicesResponseBodyServicesCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServicesCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServicesCommodity) SetCommodityCode(v string) *ListServicesResponseBodyServicesCommodity {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesCommodity) SetDeployPage(v string) *ListServicesResponseBodyServicesCommodity {
+	s.DeployPage = &v
+	return s
+}
+
+type ListServicesResponseBodyServicesServiceInfos struct {
+	// The URL of the service icon.
+	//
+	// example:
+	//
+	// http://img.tidb.oss.url
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese.
+	//
+	// 	- en-US: English.
+	//
+	// example:
+	//
+	// zh-CN
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The name of the service.
+	//
+	// example:
+	//
+	// Docker Community Edition
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// Docker Community Edition (CE) is a free version of the Docker project, aimed at developers, enthusiasts, and individuals and organizations who want to use container technology.
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+}
+
+func (s ListServicesResponseBodyServicesServiceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServicesServiceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServicesServiceInfos) SetImage(v string) *ListServicesResponseBodyServicesServiceInfos {
+	s.Image = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceInfos) SetLocale(v string) *ListServicesResponseBodyServicesServiceInfos {
+	s.Locale = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceInfos) SetName(v string) *ListServicesResponseBodyServicesServiceInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceInfos) SetShortDescription(v string) *ListServicesResponseBodyServicesServiceInfos {
+	s.ShortDescription = &v
+	return s
+}
+
+type ListServicesResponseBodyServicesTags struct {
+	// The tag key.
+	//
+	// >  This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListServicesResponseBodyServicesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServicesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServicesTags) SetKey(v string) *ListServicesResponseBodyServicesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesTags) SetValue(v string) *ListServicesResponseBodyServicesTags {
+	s.Value = &v
+	return s
+}
+
+type ListServicesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
@@ -6647,6 +8934,200 @@ func (s *ListTagKeysResponse) SetStatusCode(v int32) *ListTagKeysResponse {
 }
 
 func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// AAAAAVz7BQqj2xtiNSC3d3RAD38=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// example:
+	//
+	// si-44b9923be2d048eb8f5f
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// serviceinstance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// major
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -8005,6 +10486,139 @@ func (s *UpdateServiceUsageResponse) SetBody(v *UpdateServiceUsageResponseBody) 
 	return s
 }
 
+type UpdateUserInformationRequest struct {
+	DeliverySettings *UpdateUserInformationRequestDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateUserInformationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserInformationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserInformationRequest) SetDeliverySettings(v *UpdateUserInformationRequestDeliverySettings) *UpdateUserInformationRequest {
+	s.DeliverySettings = v
+	return s
+}
+
+func (s *UpdateUserInformationRequest) SetRegionId(v string) *UpdateUserInformationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateUserInformationRequestDeliverySettings struct {
+	// example:
+	//
+	// true
+	ActiontrailDeliveryToOssEnabled *bool `json:"ActiontrailDeliveryToOssEnabled,omitempty" xml:"ActiontrailDeliveryToOssEnabled,omitempty"`
+	// example:
+	//
+	// "mybucket"
+	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// example:
+	//
+	// true
+	OssEnabled *bool `json:"OssEnabled,omitempty" xml:"OssEnabled,omitempty"`
+	// example:
+	//
+	// 7
+	OssExpirationDays *int64 `json:"OssExpirationDays,omitempty" xml:"OssExpirationDays,omitempty"`
+	// example:
+	//
+	// "path1/path2/"
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+}
+
+func (s UpdateUserInformationRequestDeliverySettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserInformationRequestDeliverySettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserInformationRequestDeliverySettings) SetActiontrailDeliveryToOssEnabled(v bool) *UpdateUserInformationRequestDeliverySettings {
+	s.ActiontrailDeliveryToOssEnabled = &v
+	return s
+}
+
+func (s *UpdateUserInformationRequestDeliverySettings) SetOssBucketName(v string) *UpdateUserInformationRequestDeliverySettings {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *UpdateUserInformationRequestDeliverySettings) SetOssEnabled(v bool) *UpdateUserInformationRequestDeliverySettings {
+	s.OssEnabled = &v
+	return s
+}
+
+func (s *UpdateUserInformationRequestDeliverySettings) SetOssExpirationDays(v int64) *UpdateUserInformationRequestDeliverySettings {
+	s.OssExpirationDays = &v
+	return s
+}
+
+func (s *UpdateUserInformationRequestDeliverySettings) SetOssPath(v string) *UpdateUserInformationRequestDeliverySettings {
+	s.OssPath = &v
+	return s
+}
+
+type UpdateUserInformationResponseBody struct {
+	// example:
+	//
+	// 51945B04-6AA6-410D-93BA-236E0248B104
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUserInformationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserInformationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserInformationResponseBody) SetRequestId(v string) *UpdateUserInformationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUserInformationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUserInformationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserInformationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserInformationResponse) SetHeaders(v map[string]*string) *UpdateUserInformationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserInformationResponse) SetStatusCode(v int32) *UpdateUserInformationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserInformationResponse) SetBody(v *UpdateUserInformationResponseBody) *UpdateUserInformationResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeServiceInstanceRequest struct {
 	// example:
 	//
@@ -8370,6 +10984,86 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务实例部署前的预检查
+//
+// @param request - CheckServiceDeployableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceDeployableResponse
+func (client *Client) CheckServiceDeployableWithOptions(request *CheckServiceDeployableRequest, runtime *util.RuntimeOptions) (_result *CheckServiceDeployableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PostPaidAmount)) {
+		query["PostPaidAmount"] = request.PostPaidAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrePaidAmount)) {
+		query["PrePaidAmount"] = request.PrePaidAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrialType)) {
+		query["TrialType"] = request.TrialType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckServiceDeployable"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckServiceDeployableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 服务实例部署前的预检查
+//
+// @param request - CheckServiceDeployableRequest
+//
+// @return CheckServiceDeployableResponse
+func (client *Client) CheckServiceDeployable(request *CheckServiceDeployableRequest) (_result *CheckServiceDeployableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckServiceDeployableResponse{}
+	_body, _err := client.CheckServiceDeployableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8827,6 +11521,86 @@ func (client *Client) GenerateServicePolicy(request *GenerateServicePolicyReques
 
 // Summary:
 //
+// Queries the information about a service.
+//
+// @param request - GetServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceResponse
+func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowDetails)) {
+		query["ShowDetails"] = request.ShowDetails
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetService"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about a service.
+//
+// @param request - GetServiceRequest
+//
+// @return GetServiceResponse
+func (client *Client) GetService(request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceResponse{}
+	_body, _err := client.GetServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 计算巢服务部署询价
 //
 // @param tmpReq - GetServiceEstimateCostRequest
@@ -8937,7 +11711,7 @@ func (client *Client) GetServiceEstimateCost(request *GetServiceEstimateCostRequ
 
 // Summary:
 //
-// Queries the information about a service instance.
+// Queries the information about a service instance based on the region ID and the ID of the service instance or the Alibaba Cloud Marketplace instance. Information including the service status, template name, and involved resources are returned.
 //
 // @param request - GetServiceInstanceRequest
 //
@@ -8987,7 +11761,7 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 
 // Summary:
 //
-// Queries the information about a service instance.
+// Queries the information about a service instance based on the region ID and the ID of the service instance or the Alibaba Cloud Marketplace instance. Information including the service status, template name, and involved resources are returned.
 //
 // @param request - GetServiceInstanceRequest
 //
@@ -9191,6 +11965,66 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 
 // Summary:
 //
+//
+//
+//  	- @param request GetUserInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserInformationResponse
+func (client *Client) GetUserInformationWithOptions(request *GetUserInformationRequest, runtime *util.RuntimeOptions) (_result *GetUserInformationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserInformation"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserInformationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+//
+//
+//  	- @param request GetUserInformationRequest
+//
+// @return GetUserInformationResponse
+func (client *Client) GetUserInformation(request *GetUserInformationRequest) (_result *GetUserInformationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserInformationResponse{}
+	_body, _err := client.GetUserInformationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务类别
 //
 // @param request - ListServiceCategoriesRequest
@@ -9341,6 +12175,10 @@ func (client *Client) ListServiceInstanceResourcesWithOptions(request *ListServi
 
 	if !tea.BoolValue(util.IsUnset(request.ExpireTimeStart)) {
 		query["ExpireTimeStart"] = request.ExpireTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -9636,6 +12474,98 @@ func (client *Client) ListServiceUsages(request *ListServiceUsagesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of services.
+//
+// @param request - ListServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServicesResponse
+func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyKeyword)) {
+		query["FuzzyKeyword"] = request.FuzzyKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InUsed)) {
+		query["InUsed"] = request.InUsed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByType)) {
+		query["OrderByType"] = request.OrderByType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAccessType)) {
+		query["ServiceAccessType"] = request.ServiceAccessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServices"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of services.
+//
+// @param request - ListServicesRequest
+//
+// @return ListServicesResponse
+func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServicesResponse{}
+	_body, _err := client.ListServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ListTagKeysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9689,6 +12619,74 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
 	_body, _err := client.ListTagKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10392,6 +13390,74 @@ func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户全局信息
+//
+// @param request - UpdateUserInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserInformationResponse
+func (client *Client) UpdateUserInformationWithOptions(request *UpdateUserInformationRequest, runtime *util.RuntimeOptions) (_result *UpdateUserInformationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeliverySettings)) {
+		query["DeliverySettings"] = request.DeliverySettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserInformation"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserInformationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新用户全局信息
+//
+// @param request - UpdateUserInformationRequest
+//
+// @return UpdateUserInformationResponse
+func (client *Client) UpdateUserInformation(request *UpdateUserInformationRequest) (_result *UpdateUserInformationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserInformationResponse{}
+	_body, _err := client.UpdateUserInformationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级服务实例
+//
 // @param tmpReq - UpgradeServiceInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10456,6 +13522,10 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级服务实例
+//
 // @param request - UpgradeServiceInstanceRequest
 //
 // @return UpgradeServiceInstanceResponse
