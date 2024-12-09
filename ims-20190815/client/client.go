@@ -5282,7 +5282,7 @@ func (s *GetLoginProfileRequest) SetUserPrincipalName(v string) *GetLoginProfile
 }
 
 type GetLoginProfileResponseBody struct {
-	// The logon information.
+	// The console logon configurations.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -5311,31 +5311,43 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
-	// The last time when the RAM user logged on to the console.
+	// The time of the most recent logon. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-14T07:25:25Z
 	LastLoginTime *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	// Indicates whether multi-factor authentication (MFA) must be enabled.
+	// Indicates whether multi-factor authentication (MFA) must be enabled. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user must reset the password at the next logon.
+	// Indicates whether the RAM user is required to reset the password upon the next logon. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of password-based logon.
+	// Indicates whether console logon is enabled. Valid values:
+	//
+	// 	- Active: enabled.
+	//
+	// 	- Inactive: disabled.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The modification time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -6755,7 +6767,8 @@ type GetUserSsoSettingsResponseBodyUserSsoSettings struct {
 	// example:
 	//
 	// false
-	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
 func (s GetUserSsoSettingsResponseBodyUserSsoSettings) String() string {
@@ -6778,6 +6791,11 @@ func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) SetMetadataDocument(v st
 
 func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) SetSsoEnabled(v bool) *GetUserSsoSettingsResponseBodyUserSsoSettings {
 	s.SsoEnabled = &v
+	return s
+}
+
+func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) SetSsoLoginWithDomain(v bool) *GetUserSsoSettingsResponseBodyUserSsoSettings {
+	s.SsoLoginWithDomain = &v
 	return s
 }
 
@@ -11495,7 +11513,8 @@ type SetUserSsoSettingsRequest struct {
 	// example:
 	//
 	// true
-	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
 func (s SetUserSsoSettingsRequest) String() string {
@@ -11518,6 +11537,11 @@ func (s *SetUserSsoSettingsRequest) SetMetadataDocument(v string) *SetUserSsoSet
 
 func (s *SetUserSsoSettingsRequest) SetSsoEnabled(v bool) *SetUserSsoSettingsRequest {
 	s.SsoEnabled = &v
+	return s
+}
+
+func (s *SetUserSsoSettingsRequest) SetSsoLoginWithDomain(v bool) *SetUserSsoSettingsRequest {
+	s.SsoLoginWithDomain = &v
 	return s
 }
 
@@ -11568,7 +11592,8 @@ type SetUserSsoSettingsResponseBodyUserSsoSettings struct {
 	// example:
 	//
 	// true
-	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoEnabled         *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 
 func (s SetUserSsoSettingsResponseBodyUserSsoSettings) String() string {
@@ -11591,6 +11616,11 @@ func (s *SetUserSsoSettingsResponseBodyUserSsoSettings) SetMetadataDocument(v st
 
 func (s *SetUserSsoSettingsResponseBodyUserSsoSettings) SetSsoEnabled(v bool) *SetUserSsoSettingsResponseBodyUserSsoSettings {
 	s.SsoEnabled = &v
+	return s
+}
+
+func (s *SetUserSsoSettingsResponseBodyUserSsoSettings) SetSsoLoginWithDomain(v bool) *SetUserSsoSettingsResponseBodyUserSsoSettings {
+	s.SsoLoginWithDomain = &v
 	return s
 }
 
@@ -15958,7 +15988,7 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// Queries the console logon settings of a RAM user.
+// Queries the logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -16000,7 +16030,7 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 
 // Summary:
 //
-// Queries the console logon settings of a RAM user.
+// Queries the logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -17890,10 +17920,6 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 	return _result, _err
 }
 
-// Summary:
-//
-// 设置用户SSO身份提供商信息
-//
 // @param request - SetUserSsoSettingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17915,6 +17941,10 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 
 	if !tea.BoolValue(util.IsUnset(request.SsoEnabled)) {
 		query["SsoEnabled"] = request.SsoEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SsoLoginWithDomain)) {
+		query["SsoLoginWithDomain"] = request.SsoLoginWithDomain
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17940,10 +17970,6 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 	return _result, _err
 }
 
-// Summary:
-//
-// 设置用户SSO身份提供商信息
-//
 // @param request - SetUserSsoSettingsRequest
 //
 // @return SetUserSsoSettingsResponse
