@@ -950,66 +950,128 @@ func (s *AttachSharedStoragesResponse) SetBody(v *AttachSharedStoragesResponseBo
 }
 
 type CreateClusterRequest struct {
+	// The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
 	AdditionalPackages []*CreateClusterRequestAdditionalPackages `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty" type:"Repeated"`
-	Addons             []*CreateClusterRequestAddons             `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// The configurations of the custom addons in the cluster. Only one addon is supported.
+	Addons []*CreateClusterRequestAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// The client version. By default, the latest version is used.
+	//
 	// example:
 	//
 	// 2.1.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The cluster type. Valid values:
+	//
+	// 	- Standard
+	//
+	// 	- Serverless
+	//
 	// example:
 	//
 	// Standard
-	ClusterCategory            *string                                         `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
-	ClusterCredentials         *CreateClusterRequestClusterCredentials         `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty" type:"Struct"`
+	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
+	// The access credentials of the cluster.
+	ClusterCredentials *CreateClusterRequestClusterCredentials `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty" type:"Struct"`
+	// The post-processing script of the cluster.
 	ClusterCustomConfiguration *CreateClusterRequestClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
+	// The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// The deployment mode of the cluster. Valid values:
+	//
+	// 	- Integrated
+	//
+	// 	- Hybrid
+	//
+	// 	- Custom
+	//
 	// example:
 	//
 	// Integrated
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
+	//
 	// example:
 	//
 	// vsw-f8za5p0mwzgdu3wgx****
 	ClusterVSwitchId *string `json:"ClusterVSwitchId,omitempty" xml:"ClusterVSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the cluster resides.
+	//
 	// example:
 	//
 	// vpc-m5efjevmclc0xdmys****
 	ClusterVpcId *string `json:"ClusterVpcId,omitempty" xml:"ClusterVpcId,omitempty"`
+	// Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Specifies whether to use an advanced security group. Valid values:
+	//
+	// 	- true: automatically creates and uses an advanced security group.
+	//
+	// 	- false: automatically creates and uses a basic security group.
+	//
+	// For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
+	//
 	// example:
 	//
 	// false
-	IsEnterpriseSecurityGroup *bool                        `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	Manager                   *CreateClusterRequestManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
+	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	// The configurations of the cluster management node.
+	Manager *CreateClusterRequestManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
+	// The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
+	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
+	// The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+	//
 	// example:
 	//
 	// 500
-	MaxCount *int32           `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	Queues   []*QueueTemplate `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The configurations of the queues in the cluster. The number of queues can be 0 to 8.
+	Queues []*QueueTemplate `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	// The ID of the resource group to which the cluster belongs.
+	//
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
+	//
 	// example:
 	//
 	// rg-acfmxazb4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group to which the cluster belongs.
+	//
+	// You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
+	//
 	// example:
 	//
 	// sg-bp13n61xsydodfyg****
-	SecurityGroupId *string                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SharedStorages  []*SharedStorageTemplate    `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty" type:"Repeated"`
-	Tags            []*CreateClusterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The configurations of shared storage in the cluster.
+	SharedStorages []*SharedStorageTemplate `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty" type:"Repeated"`
+	// The tags of the cluster.
+	Tags []*CreateClusterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -1126,10 +1188,14 @@ func (s *CreateClusterRequest) SetTags(v []*CreateClusterRequestTags) *CreateClu
 }
 
 type CreateClusterRequestAdditionalPackages struct {
+	// The name of the software that you want to install in the cluster.
+	//
 	// example:
 	//
 	// mpich
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the software that you want to install in the cluster.
+	//
 	// example:
 	//
 	// 4.0.3
@@ -1155,20 +1221,28 @@ func (s *CreateClusterRequestAdditionalPackages) SetVersion(v string) *CreateClu
 }
 
 type CreateClusterRequestAddons struct {
+	// The addon name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Login
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource configurations of the addon.
+	//
 	// example:
 	//
 	// "{\\\\"EipResource\\\\": {\\\\"AutoCreate\\\\": true}, \\\\"EcsResources\\\\": [{\\\\"InstanceType\\\\": \\\\"ecs.c7.xlarge\\\\", \\\\"ImageId\\\\": \\\\"centos_7_6_x64_20G_alibase_20211130.vhd\\\\", \\\\"SystemDisk\\\\": {\\\\"Category\\\\": \\\\"cloud_essd\\\\", \\\\"Size\\\\": 40, \\\\"Level\\\\": \\\\"PL0\\\\"}, \\\\"EnableHT\\\\": true, \\\\"InstanceChargeType\\\\": \\\\"PostPaid\\\\", \\\\"SpotStrategy\\\\": \\\\"NoSpot\\\\"}]}"
 	ResourcesSpec *string `json:"ResourcesSpec,omitempty" xml:"ResourcesSpec,omitempty"`
+	// The service configurations of the addon.
+	//
 	// example:
 	//
 	// "[{\\\\"ServiceName\\\\": \\\\"SSH\\\\", \\\\"ServiceAccessType\\\\": null, \\\\"ServiceAccessUrl\\\\": null, \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 22, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}, {\\\\"ServiceName\\\\": \\\\"VNC\\\\", \\\\"ServiceAccessType\\\\": null, \\\\"ServiceAccessUrl\\\\": null, \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 12016, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}, {\\\\"ServiceName\\\\": \\\\"CLIENT\\\\", \\\\"ServiceAccessType\\\\": \\\\"URL\\\\", \\\\"ServiceAccessUrl\\\\": \\\\"\\\\", \\\\"NetworkACL\\\\": [{\\\\"IpProtocol\\\\": \\\\"TCP\\\\", \\\\"Port\\\\": 12011, \\\\"SourceCidrIp\\\\": \\\\"0.0.0.0/0\\\\"}]}]"
 	ServicesSpec *string `json:"ServicesSpec,omitempty" xml:"ServicesSpec,omitempty"`
+	// The addon version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1206,10 +1280,18 @@ func (s *CreateClusterRequestAddons) SetVersion(v string) *CreateClusterRequestA
 }
 
 type CreateClusterRequestClusterCredentials struct {
+	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	//
+	// >  For more information, see [Create a key pair](https://help.aliyun.com/document_detail/51793.html).
+	//
 	// example:
 	//
 	// ali0824
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The password for the root user to log on to the node. The password must be 8 to 20 characters in length, and must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: `() ~ ! @ # $ % ^ & 	- - = + { } [ ] : ; \\" < > , . ? /`
+	//
+	// >  We recommend that you use HTTPS to call the API operation to prevent password leakage.
+	//
 	// example:
 	//
 	// **********
@@ -1235,10 +1317,14 @@ func (s *CreateClusterRequestClusterCredentials) SetPassword(v string) *CreateCl
 }
 
 type CreateClusterRequestClusterCustomConfiguration struct {
+	// The runtime parameters of the script after the cluster is created.
+	//
 	// example:
 	//
 	// E-HPC cn-hangzhou
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// The URL that is used to download the post-processing script.
+	//
 	// example:
 	//
 	// http://*****
@@ -1264,10 +1350,14 @@ func (s *CreateClusterRequestClusterCustomConfiguration) SetScript(v string) *Cr
 }
 
 type CreateClusterRequestManager struct {
-	DNS              *CreateClusterRequestManagerDNS              `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
+	// The configurations of the domain name resolution service.
+	DNS *CreateClusterRequestManagerDNS `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
+	// The configurations of the directory service.
 	DirectoryService *CreateClusterRequestManagerDirectoryService `json:"DirectoryService,omitempty" xml:"DirectoryService,omitempty" type:"Struct"`
-	ManagerNode      *NodeTemplate                                `json:"ManagerNode,omitempty" xml:"ManagerNode,omitempty"`
-	Scheduler        *CreateClusterRequestManagerScheduler        `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
+	// The hardware configurations of the management node.
+	ManagerNode *NodeTemplate `json:"ManagerNode,omitempty" xml:"ManagerNode,omitempty"`
+	// The configurations of the scheduler service.
+	Scheduler *CreateClusterRequestManagerScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
 }
 
 func (s CreateClusterRequestManager) String() string {
@@ -1299,10 +1389,18 @@ func (s *CreateClusterRequestManager) SetScheduler(v *CreateClusterRequestManage
 }
 
 type CreateClusterRequestManagerDNS struct {
+	// The domain name resolution type.
+	//
+	// Valid values:
+	//
+	// 	- NIS: NIS.
+	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the domain name resolution service.
+	//
 	// example:
 	//
 	// 2.31
@@ -1328,10 +1426,18 @@ func (s *CreateClusterRequestManagerDNS) SetVersion(v string) *CreateClusterRequ
 }
 
 type CreateClusterRequestManagerDirectoryService struct {
+	// The type of the domain account.
+	//
+	// Valid values:
+	//
+	// 	- NIS: NIS.
+	//
 	// example:
 	//
 	// NIS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the domain account service.
+	//
 	// example:
 	//
 	// 2.31
@@ -1357,10 +1463,24 @@ func (s *CreateClusterRequestManagerDirectoryService) SetVersion(v string) *Crea
 }
 
 type CreateClusterRequestManagerScheduler struct {
+	// The scheduler type. Valid values:
+	//
+	// 	- SLURM
+	//
+	// 	- PBS
+	//
+	// 	- OPENGRIDSCHEDULER
+	//
+	// 	- LSF_PLUGIN
+	//
+	// 	- PBS_PLUGIN
+	//
 	// example:
 	//
 	// SLURM
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The scheduler version.
+	//
 	// example:
 	//
 	// 22.05.8
@@ -1386,10 +1506,14 @@ func (s *CreateClusterRequestManagerScheduler) SetVersion(v string) *CreateClust
 }
 
 type CreateClusterRequestTags struct {
+	// The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// ClusterId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// ehpc-hz-******
@@ -1415,66 +1539,128 @@ func (s *CreateClusterRequestTags) SetValue(v string) *CreateClusterRequestTags 
 }
 
 type CreateClusterShrinkRequest struct {
+	// The list of software that you want to install in the cluster. Valid values of N: 0 to 10.
 	AdditionalPackagesShrink *string `json:"AdditionalPackages,omitempty" xml:"AdditionalPackages,omitempty"`
-	AddonsShrink             *string `json:"Addons,omitempty" xml:"Addons,omitempty"`
+	// The configurations of the custom addons in the cluster. Only one addon is supported.
+	AddonsShrink *string `json:"Addons,omitempty" xml:"Addons,omitempty"`
+	// The client version. By default, the latest version is used.
+	//
 	// example:
 	//
 	// 2.1.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The cluster type. Valid values:
+	//
+	// 	- Standard
+	//
+	// 	- Serverless
+	//
 	// example:
 	//
 	// Standard
-	ClusterCategory                  *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
-	ClusterCredentialsShrink         *string `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty"`
+	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
+	// The access credentials of the cluster.
+	ClusterCredentialsShrink *string `json:"ClusterCredentials,omitempty" xml:"ClusterCredentials,omitempty"`
+	// The post-processing script of the cluster.
 	ClusterCustomConfigurationShrink *string `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty"`
+	// The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// The deployment mode of the cluster. Valid values:
+	//
+	// 	- Integrated
+	//
+	// 	- Hybrid
+	//
+	// 	- Custom
+	//
 	// example:
 	//
 	// Integrated
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
 	// example:
 	//
 	// slurm22.05.8-cluster-20240718
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
+	//
+	// You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html) operation to query information about the created VPCs and vSwitches.
+	//
 	// example:
 	//
 	// vsw-f8za5p0mwzgdu3wgx****
 	ClusterVSwitchId *string `json:"ClusterVSwitchId,omitempty" xml:"ClusterVSwitchId,omitempty"`
+	// The ID of the virtual private cloud (VPC) in which the cluster resides.
+	//
 	// example:
 	//
 	// vpc-m5efjevmclc0xdmys****
 	ClusterVpcId *string `json:"ClusterVpcId,omitempty" xml:"ClusterVpcId,omitempty"`
+	// Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the [DeleteCluster](https://help.aliyun.com/document_detail/424406.html) operation. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Specifies whether to use an advanced security group. Valid values:
+	//
+	// 	- true: automatically creates and uses an advanced security group.
+	//
+	// 	- false: automatically creates and uses a basic security group.
+	//
+	// For more information, see [Basic security groups and advanced security groups](https://help.aliyun.com/document_detail/605897.html).
+	//
 	// example:
 	//
 	// false
-	IsEnterpriseSecurityGroup *bool   `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
-	ManagerShrink             *string `json:"Manager,omitempty" xml:"Manager,omitempty"`
+	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
+	// The configurations of the cluster management node.
+	ManagerShrink *string `json:"Manager,omitempty" xml:"Manager,omitempty"`
+	// The maximum number of vCPUs that can be used by compute nodes in the cluster. Valid values: 0 to 100,000.
+	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
+	// The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+	//
 	// example:
 	//
 	// 500
-	MaxCount     *int32  `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The configurations of the queues in the cluster. The number of queues can be 0 to 8.
 	QueuesShrink *string `json:"Queues,omitempty" xml:"Queues,omitempty"`
+	// The ID of the resource group to which the cluster belongs.
+	//
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the IDs of the resource groups.
+	//
 	// example:
 	//
 	// rg-acfmxazb4******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the security group to which the cluster belongs.
+	//
+	// You can call the [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) operation to query available security groups in the current region.
+	//
 	// example:
 	//
 	// sg-bp13n61xsydodfyg****
-	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The configurations of shared storage in the cluster.
 	SharedStoragesShrink *string `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty"`
-	TagsShrink           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The tags of the cluster.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateClusterShrinkRequest) String() string {
@@ -1591,18 +1777,30 @@ func (s *CreateClusterShrinkRequest) SetTagsShrink(v string) *CreateClusterShrin
 }
 
 type CreateClusterResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// ehpc-hz-FYUr******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F6757FA4-8FED-4602-B7F5-3550C0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// F6757FA4-8FED-4602-B7F5-3550C0******
@@ -1719,9 +1917,9 @@ type CreateJobRequestJobSpec struct {
 	//
 	// 1-5:2
 	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
-	// The command or script to run the job. If you want to use a command, you must specify the full path of the command, for example, /bin/ping.
+	// The command or script that is used to run the job. If you want to use a command, you must specify the full path of the command, for example, /bin/ping.
 	//
-	// If you want to use a script, you must make sure that you have the execution permissions on it. By default, the user root directory ~/ is used as the default script path on the cluster side. If your script is not in that directory, you must specify the full path in this parameter, such as /home/xxx/job.sh
+	// If you want to use a script, you must make sure that you have the execution permissions on it. By default, the user root directory ~/ is used as the default script path on the cluster side. If your script is not in that directory, you must specify the full path in this parameter, such as /home/xxx/job.sh Note that in this mode, if requirements on resources such as CPU and memory are specified in the script, the job will be run based on the resource requirements specified in the script. In this case, do not specify resource requirements in the Resource parameter. Otherwise, the job may fail to run.
 	//
 	// If you want to run the job directly by using the CLI, you must specify the absolute path of the command and add two hyphens and a space (-- ) before the path, such as -- /bin/ping -c 10 localhost.
 	//
@@ -2051,7 +2249,8 @@ type CreateNodesRequest struct {
 	// example:
 	//
 	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The type of the network between compute nodes. Valid values:
 	//
 	// 	- vpc
@@ -2123,6 +2322,11 @@ func (s *CreateNodesRequest) SetCount(v int32) *CreateNodesRequest {
 	return s
 }
 
+func (s *CreateNodesRequest) SetDeploymentSetId(v string) *CreateNodesRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
 func (s *CreateNodesRequest) SetHPCInterConnect(v string) *CreateNodesRequest {
 	s.HPCInterConnect = &v
 	return s
@@ -2180,7 +2384,8 @@ type CreateNodesShrinkRequest struct {
 	// example:
 	//
 	// 10
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The type of the network between compute nodes. Valid values:
 	//
 	// 	- vpc
@@ -2249,6 +2454,11 @@ func (s *CreateNodesShrinkRequest) SetComputeNodeShrink(v string) *CreateNodesSh
 
 func (s *CreateNodesShrinkRequest) SetCount(v int32) *CreateNodesShrinkRequest {
 	s.Count = &v
+	return s
+}
+
+func (s *CreateNodesShrinkRequest) SetDeploymentSetId(v string) *CreateNodesShrinkRequest {
+	s.DeploymentSetId = &v
 	return s
 }
 
@@ -2669,7 +2879,7 @@ func (s *CreateUsersResponse) SetBody(v *CreateUsersResponseBody) *CreateUsersRe
 }
 
 type DeleteClusterRequest struct {
-	// The cluster ID.
+	// The ID of the E-HPC cluster to be released.
 	//
 	// example:
 	//
@@ -4545,7 +4755,7 @@ type GetClusterResponseBody struct {
 	//
 	// 4
 	IdleInterval *int32 `json:"IdleInterval,omitempty" xml:"IdleInterval,omitempty"`
-	// The configurations of the cluster management node.
+	// The management node configurations.
 	Manager *GetClusterResponseBodyManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
 	// The maximum total number of vCPUs that can be used by all compute nodes managed by the cluster.
 	//
@@ -4558,7 +4768,8 @@ type GetClusterResponseBody struct {
 	// example:
 	//
 	// 100
-	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MaxCount    *string                            `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MonitorSpec *GetClusterResponseBodyMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -4684,6 +4895,11 @@ func (s *GetClusterResponseBody) SetMaxCoreCount(v string) *GetClusterResponseBo
 
 func (s *GetClusterResponseBody) SetMaxCount(v string) *GetClusterResponseBody {
 	s.MaxCount = &v
+	return s
+}
+
+func (s *GetClusterResponseBody) SetMonitorSpec(v *GetClusterResponseBodyMonitorSpec) *GetClusterResponseBody {
+	s.MonitorSpec = v
 	return s
 }
 
@@ -5017,6 +5233,23 @@ func (s *GetClusterResponseBodyManagerScheduler) SetVersion(v string) *GetCluste
 	return s
 }
 
+type GetClusterResponseBodyMonitorSpec struct {
+	EnableComputeLoadMonitor *bool `json:"EnableComputeLoadMonitor,omitempty" xml:"EnableComputeLoadMonitor,omitempty"`
+}
+
+func (s GetClusterResponseBodyMonitorSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterResponseBodyMonitorSpec) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterResponseBodyMonitorSpec) SetEnableComputeLoadMonitor(v bool) *GetClusterResponseBodyMonitorSpec {
+	s.EnableComputeLoadMonitor = &v
+	return s
+}
+
 type GetClusterResponse struct {
 	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -5134,7 +5367,7 @@ type GetCommonLogDetailResponseBody struct {
 	//
 	// operation
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the user who performed the action.
+	// The account ID of the operator.
 	//
 	// example:
 	//
@@ -5358,12 +5591,16 @@ func (s *GetCommonLogDetailResponse) SetBody(v *GetCommonLogDetailResponseBody) 
 }
 
 type GetJobRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The job ID. You can call the ListJobs operation to query the job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5391,11 +5628,20 @@ func (s *GetJobRequest) SetJobId(v string) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
+	// The job details.
 	JobInfo *GetJobResponseBodyJobInfo `json:"JobInfo,omitempty" xml:"JobInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0****-1335-****-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -5426,76 +5672,115 @@ func (s *GetJobResponseBody) SetSuccess(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyJobInfo struct {
+	// The parent job ID. If the return value is a non-empty string, the job is an array job.
+	//
 	// example:
 	//
 	// 1
 	ArrayJobId *string `json:"ArrayJobId,omitempty" xml:"ArrayJobId,omitempty"`
+	// The sub-job ID. This parameter is valid when the ArrayJobId parameter is a non-empty string.
+	//
 	// example:
 	//
 	// 3
 	ArrayJobSubId *string `json:"ArrayJobSubId,omitempty" xml:"ArrayJobSubId,omitempty"`
+	// The job queue. If the job is not in a queue, the output is empty.
+	//
+	// The format is X-Y:Z. X indicates the first index, Y indicates the final index, and Z indicates the step size. For example, 2-7:2 indicates three sub-jobs numbered 2, 4, and 6.
+	//
 	// example:
 	//
 	// 1-5:2
 	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	// The command that is used to run the job.
+	//
 	// example:
 	//
 	// /home/huangsf/ehpc/job_meta.pbs
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
+	// The time when the job was submitted.
+	//
 	// example:
 	//
 	// 2024-08-16T10:52:48
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error log file of the job.
+	//
 	// example:
 	//
 	// /home/xxx/STDIN.e1
 	ErrorLog *string `json:"ErrorLog,omitempty" xml:"ErrorLog,omitempty"`
+	// Additional information.
+	//
 	// example:
 	//
 	// {}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 1.manager
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// testJob
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The queue to which the job belongs.
+	//
 	// example:
 	//
 	// workq
 	JobQueue *string `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	// The time when the job was last modified.
+	//
 	// example:
 	//
 	// 2024-08-16T10:52:48
 	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The compute nodes that are used to run the job.
+	//
 	// example:
 	//
 	// compute000
 	NodeList *string `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
+	// The standard output log file of the job.
+	//
 	// example:
 	//
 	// /home/xxx/STDIN.o1
 	OutputLog *string `json:"OutputLog,omitempty" xml:"OutputLog,omitempty"`
+	// The priority of the job.
+	//
 	// example:
 	//
 	// 0
-	Priority      *string                                 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Resources     *GetJobResponseBodyJobInfoResources     `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The resources that were requested when the job was submitted.
+	Resources *GetJobResponseBodyJobInfoResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// The resources that are actually used by the job.
 	ResourcesUsed *GetJobResponseBodyJobInfoResourcesUsed `json:"ResourcesUsed,omitempty" xml:"ResourcesUsed,omitempty" type:"Struct"`
+	// The user to which the job belongs or that is used to submit the job. This user is a cluster-side user.
+	//
 	// example:
 	//
 	// testuser
 	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	// The time when the job was started.
+	//
 	// example:
 	//
 	// 2024-08-16T10:52:48
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job state.
+	//
 	// example:
 	//
 	// Running
-	State     *string                               `json:"State,omitempty" xml:"State,omitempty"`
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The variables of the job.
 	Variables []*GetJobResponseBodyJobInfoVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -5608,18 +5893,26 @@ func (s *GetJobResponseBodyJobInfo) SetVariables(v []*GetJobResponseBodyJobInfoV
 }
 
 type GetJobResponseBodyJobInfoResources struct {
+	// The number of vCPUs used by the job on each node.
+	//
 	// example:
 	//
 	// 2
 	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The number of GPUs used by the job on each node.
+	//
 	// example:
 	//
 	// 1
 	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// The memory size used by the job on each node.
+	//
 	// example:
 	//
 	// 1gb
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The number of nodes that are used to run the job.
+	//
 	// example:
 	//
 	// 1
@@ -5655,14 +5948,20 @@ func (s *GetJobResponseBodyJobInfoResources) SetNodes(v string) *GetJobResponseB
 }
 
 type GetJobResponseBodyJobInfoResourcesUsed struct {
+	// The number of vCPUs used by the job on each node.
+	//
 	// example:
 	//
 	// 2
 	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The memory size used by the job on each node.
+	//
 	// example:
 	//
 	// 512mb
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The number of nodes that are used to run the job.
+	//
 	// example:
 	//
 	// 2
@@ -5693,10 +5992,14 @@ func (s *GetJobResponseBodyJobInfoResourcesUsed) SetNodes(v string) *GetJobRespo
 }
 
 type GetJobResponseBodyJobInfoVariables struct {
+	// The name of the environment variable.
+	//
 	// example:
 	//
 	// ProxyIP
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the environment variable.
+	//
 	// example:
 	//
 	// 10.x.x.x
@@ -5993,7 +6296,7 @@ func (s *GetQueueRequest) SetQueueName(v string) *GetQueueRequest {
 }
 
 type GetQueueResponseBody struct {
-	// The information about the queue.
+	// The queue configurations.
 	Queue *GetQueueResponseBodyQueue `json:"Queue,omitempty" xml:"Queue,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -7350,17 +7653,19 @@ type ListAvailableImagesRequest struct {
 	HPCInterConnect *string `json:"HPCInterConnect,omitempty" xml:"HPCInterConnect,omitempty"`
 	// The image source. Valid values:
 	//
-	// 	- system: system images
+	// 	- system: system image.
 	//
-	// 	- self: custom images
+	// 	- self: custom image.
 	//
-	// 	- others: shared images
+	// 	- others: shared image.
 	//
 	// example:
 	//
 	// self
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The instance type for which you want to query available images. If you do not specify the instance type, all available images are returned, regardless of the supported instance types.
+	// The instance type.
+	//
+	// >  By default, if you do not specify an instance type, the list of images that are supported by all instance types are queried. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
@@ -7368,9 +7673,9 @@ type ListAvailableImagesRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Specifies whether to return published community images. Valid values:
 	//
-	// 	- true: returns published community images. If you set the value of this parameter to true, the ImageOwnerAlias parameter must be set to others.
+	// 	- true: returns published community images. If you set the value of this parameter to `true`, the `ImageOwnerAlias` parameter must be set to `others`.
 	//
-	// 	- false: returns non-community images. The value of the ImageOwnerAlias parameter prevails.
+	// 	- false: returns non-community images. The value of the `ImageOwnerAlias` parameter prevails.
 	//
 	// Default value: false.
 	//
@@ -7530,17 +7835,19 @@ type ListAvailableImagesShrinkRequest struct {
 	HPCInterConnect *string `json:"HPCInterConnect,omitempty" xml:"HPCInterConnect,omitempty"`
 	// The image source. Valid values:
 	//
-	// 	- system: system images
+	// 	- system: system image.
 	//
-	// 	- self: custom images
+	// 	- self: custom image.
 	//
-	// 	- others: shared images
+	// 	- others: shared image.
 	//
 	// example:
 	//
 	// self
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The instance type for which you want to query available images. If you do not specify the instance type, all available images are returned, regardless of the supported instance types.
+	// The instance type.
+	//
+	// >  By default, if you do not specify an instance type, the list of images that are supported by all instance types are queried. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
@@ -7548,9 +7855,9 @@ type ListAvailableImagesShrinkRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// Specifies whether to return published community images. Valid values:
 	//
-	// 	- true: returns published community images. If you set the value of this parameter to true, the ImageOwnerAlias parameter must be set to others.
+	// 	- true: returns published community images. If you set the value of this parameter to `true`, the `ImageOwnerAlias` parameter must be set to `others`.
 	//
-	// 	- false: returns non-community images. The value of the ImageOwnerAlias parameter prevails.
+	// 	- false: returns non-community images. The value of the `ImageOwnerAlias` parameter prevails.
 	//
 	// Default value: false.
 	//
@@ -7630,13 +7937,17 @@ func (s *ListAvailableImagesShrinkRequest) SetSchedulerShrink(v string) *ListAva
 type ListAvailableImagesResponseBody struct {
 	// The information about the images.
 	Images []*ListAvailableImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// Id of the request
+	// The page number of the returned page.
+	//
+	// 	- Pages start from page 1.
+	//
+	// 	- Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Id of the request
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -7650,15 +7961,15 @@ type ListAvailableImagesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// 	- true: The request was successful.
 	//
-	// 	- false
+	// 	- false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Id of the request
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -7717,9 +8028,9 @@ type ListAvailableImagesResponseBodyImages struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// The boot mode of the image. Valid values:
 	//
-	// 	- BIOS: Basic Input/Output System (BIOS)
+	// 	- BIOS: Basic Input/Output System (BIOS).
 	//
-	// 	- UEFI: Unified Extensible Firmware Interface (UEFI)
+	// 	- UEFI: Unified Extensible Firmware Interface (UEFI).
 	//
 	// >  When you change the OS boot mode of an instance, you must make sure that the boot mode matches the boot mode of the associated image. Otherwise, the instance fails to be booted.
 	//
@@ -7747,11 +8058,11 @@ type ListAvailableImagesResponseBodyImages struct {
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The image source. Valid values:
 	//
-	// 	- system: system images
+	// 	- system: system image.
 	//
-	// 	- self: custom images
+	// 	- self: custom image.
 	//
-	// 	- others: shared images
+	// 	- others: shared image.
 	//
 	// example:
 	//
@@ -8829,7 +9140,7 @@ type ListCommonLogsRequest struct {
 	//
 	// Operation
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the user who performed the action.
+	// The account ID of the operator.
 	//
 	// example:
 	//
@@ -8988,7 +9299,7 @@ type ListCommonLogsShrinkRequest struct {
 	//
 	// Operation
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The ID of the user who performed the action.
+	// The account ID of the operator.
 	//
 	// example:
 	//
@@ -9097,7 +9408,7 @@ func (s *ListCommonLogsShrinkRequest) SetTo(v int64) *ListCommonLogsShrinkReques
 }
 
 type ListCommonLogsResponseBody struct {
-	// The information about the returned logs.
+	// The brief information of operation logs.
 	Logs []*ListCommonLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -9194,7 +9505,7 @@ type ListCommonLogsResponseBodyLogs struct {
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the user who performed the action.
+	// The account ID of the operator.
 	//
 	// example:
 	//
@@ -9321,7 +9632,7 @@ type ListInstalledSoftwaresRequest struct {
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the page to return.
 	//
 	// example:
 	//
@@ -9635,7 +9946,8 @@ type ListJobsRequestJobFilter struct {
 	// example:
 	//
 	// 1724122486
-	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	CreateTimeStart *string                              `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	Diagnosis       []*ListJobsRequestJobFilterDiagnosis `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty" type:"Repeated"`
 	// The job name. Fuzzy match is supported.
 	//
 	// example:
@@ -9684,6 +9996,11 @@ func (s *ListJobsRequestJobFilter) SetCreateTimeStart(v string) *ListJobsRequest
 	return s
 }
 
+func (s *ListJobsRequestJobFilter) SetDiagnosis(v []*ListJobsRequestJobFilterDiagnosis) *ListJobsRequestJobFilter {
+	s.Diagnosis = v
+	return s
+}
+
 func (s *ListJobsRequestJobFilter) SetJobName(v string) *ListJobsRequestJobFilter {
 	s.JobName = &v
 	return s
@@ -9711,6 +10028,35 @@ func (s *ListJobsRequestJobFilter) SetSortBy(v *ListJobsRequestJobFilterSortBy) 
 
 func (s *ListJobsRequestJobFilter) SetUsers(v []*string) *ListJobsRequestJobFilter {
 	s.Users = v
+	return s
+}
+
+type ListJobsRequestJobFilterDiagnosis struct {
+	Operator  *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Option    *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListJobsRequestJobFilterDiagnosis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsRequestJobFilterDiagnosis) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsRequestJobFilterDiagnosis) SetOperator(v string) *ListJobsRequestJobFilterDiagnosis {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilterDiagnosis) SetOption(v string) *ListJobsRequestJobFilterDiagnosis {
+	s.Option = &v
+	return s
+}
+
+func (s *ListJobsRequestJobFilterDiagnosis) SetThreshold(v string) *ListJobsRequestJobFilterDiagnosis {
+	s.Threshold = &v
 	return s
 }
 
@@ -9840,7 +10186,7 @@ func (s *ListJobsShrinkRequest) SetPageSize(v string) *ListJobsShrinkRequest {
 }
 
 type ListJobsResponseBody struct {
-	// The returned jobs.
+	// The jobs.
 	Jobs []*ListJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	// The page number. Default value: 1
 	//
@@ -9946,13 +10292,13 @@ func (s *ListJobsResponseBodyJobs) SetJobSpec(v *ListJobsResponseBodyJobsJobSpec
 }
 
 type ListJobsResponseBodyJobsJobSpec struct {
-	// 数组作业ID。
+	// The array job ID.
 	//
 	// example:
 	//
 	// 4
 	ArrayJobId *string `json:"ArrayJobId,omitempty" xml:"ArrayJobId,omitempty"`
-	// 数组子作业ID。
+	// The ID of the job in the array.
 	//
 	// example:
 	//
@@ -10005,13 +10351,15 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	// 0
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The information about the resources required to run the job.
-	Resources *ListJobsResponseBodyJobsJobSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	Resources               *ListJobsResponseBodyJobsJobSpecResources               `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	ResourcesActualOccupied *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied `json:"ResourcesActualOccupied,omitempty" xml:"ResourcesActualOccupied,omitempty" type:"Struct"`
 	// The user that ran the job.
 	//
 	// example:
 	//
 	// testuser1
 	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The job state. Valid values: (PBS cluster and Slurm cluster)
 	//
 	// 	- FINISHED/Completed
@@ -10110,8 +10458,18 @@ func (s *ListJobsResponseBodyJobsJobSpec) SetResources(v *ListJobsResponseBodyJo
 	return s
 }
 
+func (s *ListJobsResponseBodyJobsJobSpec) SetResourcesActualOccupied(v *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) *ListJobsResponseBodyJobsJobSpec {
+	s.ResourcesActualOccupied = v
+	return s
+}
+
 func (s *ListJobsResponseBodyJobsJobSpec) SetRunasUser(v string) *ListJobsResponseBodyJobsJobSpec {
 	s.RunasUser = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpec) SetStartTime(v string) *ListJobsResponseBodyJobsJobSpec {
+	s.StartTime = &v
 	return s
 }
 
@@ -10195,6 +10553,41 @@ func (s *ListJobsResponseBodyJobsJobSpecResources) SetNodes(v string) *ListJobsR
 	return s
 }
 
+type ListJobsResponseBodyJobsJobSpecResourcesActualOccupied struct {
+	Cores  *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Gpus   *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Nodes  *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) SetCores(v string) *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied {
+	s.Cores = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) SetGpus(v string) *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied {
+	s.Gpus = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) SetMemory(v string) *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) SetNodes(v string) *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied {
+	s.Nodes = &v
+	return s
+}
+
 type ListJobsResponse struct {
 	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -10249,13 +10642,25 @@ type ListNodesRequest struct {
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
 	// The queues to which the nodes belong.
 	QueueNames []*string `json:"QueueNames,omitempty" xml:"QueueNames,omitempty" type:"Repeated"`
-	// Specifies whether the results are sorted in ascending or descending order. Valid values: forward (ascending) and backward (descending).
+	// Specifies whether the results are sorted in ascending or descending order. Valid values:
+	//
+	// 	- Forward: ascending
+	//
+	// 	- Backward: descending
+	//
+	// Default value: Forward.
 	//
 	// example:
 	//
 	// Forward
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The sorting method of the node list. Valid values: addedtime: sorted by the time when the node was added. hostname: sorted by hostname. Default value: addedtime.
+	// The sorting method of the node list. Valid values:
+	//
+	// 	- AddedTime: sorts the nodes by the time that they were added.
+	//
+	// 	- HostName: sorts the nodes by their hostnames.
+	//
+	// Default value: addedtime.
 	//
 	// example:
 	//
@@ -10343,13 +10748,25 @@ type ListNodesShrinkRequest struct {
 	PrivateIpAddressShrink *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The queues to which the nodes belong.
 	QueueNamesShrink *string `json:"QueueNames,omitempty" xml:"QueueNames,omitempty"`
-	// Specifies whether the results are sorted in ascending or descending order. Valid values: forward (ascending) and backward (descending).
+	// Specifies whether the results are sorted in ascending or descending order. Valid values:
+	//
+	// 	- Forward: ascending
+	//
+	// 	- Backward: descending
+	//
+	// Default value: Forward.
 	//
 	// example:
 	//
 	// Forward
 	Sequence *string `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The sorting method of the node list. Valid values: addedtime: sorted by the time when the node was added. hostname: sorted by hostname. Default value: addedtime.
+	// The sorting method of the node list. Valid values:
+	//
+	// 	- AddedTime: sorts the nodes by the time that they were added.
+	//
+	// 	- HostName: sorts the nodes by their hostnames.
+	//
+	// Default value: addedtime.
 	//
 	// example:
 	//
@@ -10480,7 +10897,8 @@ type ListNodesResponseBodyNodes struct {
 	// example:
 	//
 	// 2020-06-09T06:22:02.000Z
-	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	AddTime         *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The time when the node expires.
 	//
 	// example:
@@ -10615,6 +11033,11 @@ func (s ListNodesResponseBodyNodes) GoString() string {
 
 func (s *ListNodesResponseBodyNodes) SetAddTime(v string) *ListNodesResponseBodyNodes {
 	s.AddTime = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyNodes) SetDeploymentSetId(v string) *ListNodesResponseBodyNodes {
+	s.DeploymentSetId = &v
 	return s
 }
 
@@ -11404,7 +11827,7 @@ type ListSoftwaresRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operating system (OS) information.
 	OsInfos []*ListSoftwaresRequestOsInfos `json:"OsInfos,omitempty" xml:"OsInfos,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the page to return.
 	//
 	// example:
 	//
@@ -11779,7 +12202,7 @@ type ListUsersRequest struct {
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The page number.
+	// The page number of the page to return.
 	//
 	// Pages start from page 1.
 	//
@@ -12452,7 +12875,8 @@ type UpdateClusterRequest struct {
 	// example:
 	//
 	// 500
-	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MaxCount    *int32                           `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MonitorSpec *UpdateClusterRequestMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
 }
 
 func (s UpdateClusterRequest) String() string {
@@ -12523,6 +12947,11 @@ func (s *UpdateClusterRequest) SetMaxCount(v int32) *UpdateClusterRequest {
 	return s
 }
 
+func (s *UpdateClusterRequest) SetMonitorSpec(v *UpdateClusterRequestMonitorSpec) *UpdateClusterRequest {
+	s.MonitorSpec = v
+	return s
+}
+
 type UpdateClusterRequestClusterCustomConfiguration struct {
 	// The arguments that are used to run the post-processing script.
 	//
@@ -12553,6 +12982,23 @@ func (s *UpdateClusterRequestClusterCustomConfiguration) SetArgs(v string) *Upda
 
 func (s *UpdateClusterRequestClusterCustomConfiguration) SetScript(v string) *UpdateClusterRequestClusterCustomConfiguration {
 	s.Script = &v
+	return s
+}
+
+type UpdateClusterRequestMonitorSpec struct {
+	EnableComputeLoadMonitor *bool `json:"EnableComputeLoadMonitor,omitempty" xml:"EnableComputeLoadMonitor,omitempty"`
+}
+
+func (s UpdateClusterRequestMonitorSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterRequestMonitorSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterRequestMonitorSpec) SetEnableComputeLoadMonitor(v bool) *UpdateClusterRequestMonitorSpec {
+	s.EnableComputeLoadMonitor = &v
 	return s
 }
 
@@ -12640,7 +13086,8 @@ type UpdateClusterShrinkRequest struct {
 	// example:
 	//
 	// 500
-	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MaxCount          *int32  `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MonitorSpecShrink *string `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty"`
 }
 
 func (s UpdateClusterShrinkRequest) String() string {
@@ -12708,6 +13155,11 @@ func (s *UpdateClusterShrinkRequest) SetMaxCoreCount(v int32) *UpdateClusterShri
 
 func (s *UpdateClusterShrinkRequest) SetMaxCount(v int32) *UpdateClusterShrinkRequest {
 	s.MaxCount = &v
+	return s
+}
+
+func (s *UpdateClusterShrinkRequest) SetMonitorSpecShrink(v string) *UpdateClusterShrinkRequest {
+	s.MonitorSpecShrink = &v
 	return s
 }
 
@@ -13426,6 +13878,16 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
 //
+// Description:
+//
+// ## [](#)Usage notes
+//
+// When you call this operation, take note of the following items:
+//
+// 	- The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+//
+// 	- E-HPC clusters support Apsara File Storage NAS file systems.
+//
 // @param tmpReq - AttachSharedStoragesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13478,6 +13940,16 @@ func (client *Client) AttachSharedStoragesWithOptions(tmpReq *AttachSharedStorag
 //
 // Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
 //
+// Description:
+//
+// ## [](#)Usage notes
+//
+// When you call this operation, take note of the following items:
+//
+// 	- The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+//
+// 	- E-HPC clusters support Apsara File Storage NAS file systems.
+//
 // @param request - AttachSharedStoragesRequest
 //
 // @return AttachSharedStoragesResponse
@@ -13494,7 +13966,13 @@ func (client *Client) AttachSharedStorages(request *AttachSharedStoragesRequest)
 
 // Summary:
 //
-// 创建一个按量付费或者预付费（包年包月） 集群
+// Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -13650,7 +14128,13 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 // Summary:
 //
-// 创建一个按量付费或者预付费（包年包月） 集群
+// Creates a pay-as-you-go or subscription Elastic High Performance Computing (E-HPC) cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Before you call this operation, make sure that you are familiar with the billing and pricing of E-HPC. For more information, see [Overview](https://help.aliyun.com/document_detail/2842985.html).
 //
 // @param request - CreateClusterRequest
 //
@@ -13783,6 +14267,10 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		query["Count"] = request.Count
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
+		query["DeploymentSetId"] = request.DeploymentSetId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.HPCInterConnect)) {
@@ -14002,6 +14490,14 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 //
 // Releases an Enterprise High Performance Computing (E-HPC) cluster.
 //
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Make sure that data of the cluster to be deleted is backed up before you call this operation.
+//
+// > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
+//
 // @param request - DeleteClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14043,6 +14539,14 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 // Summary:
 //
 // Releases an Enterprise High Performance Computing (E-HPC) cluster.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Make sure that data of the cluster to be deleted is backed up before you call this operation.
+//
+// > After a cluster is released, you cannot restore the data stored in the cluster. Exercise caution when you release a cluster.
 //
 // @param request - DeleteClusterRequest
 //
@@ -14632,7 +15136,7 @@ func (client *Client) GetCommonLogDetail(request *GetCommonLogDetailRequest) (_r
 
 // Summary:
 //
-// 获取作业详情
+// Obtains the details of a job.
 //
 // @param request - GetJobRequest
 //
@@ -14678,7 +15182,7 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.Ru
 
 // Summary:
 //
-// 获取作业详情
+// Obtains the details of a job.
 //
 // @param request - GetJobRequest
 //
@@ -14850,6 +15354,20 @@ func (client *Client) GetQueue(request *GetQueueRequest) (_result *GetQueueRespo
 //
 // Installs an addon.
 //
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Take note of the following items when you call this operation:
+//
+// 	- The cluster must be in the `Running` state.
+//
+// 	- Clusters fall into two types:
+//
+//     	- Regular clusters on Alibaba Cloud Public Cloud
+//
+//     	- Managed clusters on Alibaba Cloud Public Cloud
+//
 // @param request - InstallAddonRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14907,6 +15425,20 @@ func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runt
 // Summary:
 //
 // Installs an addon.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Take note of the following items when you call this operation:
+//
+// 	- The cluster must be in the `Running` state.
+//
+// 	- Clusters fall into two types:
+//
+//     	- Regular clusters on Alibaba Cloud Public Cloud
+//
+//     	- Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - InstallAddonRequest
 //
@@ -16028,6 +16560,20 @@ func (client *Client) StopJobs(request *StopJobsRequest) (_result *StopJobsRespo
 //
 // Uninstalls an addon.
 //
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Take note of the following items when you call this operation:
+//
+// 	- The cluster must be in the `Running` state.
+//
+// 	- Clusters fall into the following types:
+//
+//     	- Regular clusters on Alibaba Cloud Public Cloud
+//
+//     	- Managed clusters on Alibaba Cloud Public Cloud
+//
 // @param request - UnInstallAddonRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16073,6 +16619,20 @@ func (client *Client) UnInstallAddonWithOptions(request *UnInstallAddonRequest, 
 // Summary:
 //
 // Uninstalls an addon.
+//
+// Description:
+//
+// ## [](#)Usage notes
+//
+// Take note of the following items when you call this operation:
+//
+// 	- The cluster must be in the `Running` state.
+//
+// 	- Clusters fall into the following types:
+//
+//     	- Regular clusters on Alibaba Cloud Public Cloud
+//
+//     	- Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - UnInstallAddonRequest
 //
@@ -16170,6 +16730,10 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 		request.ClusterCustomConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterCustomConfiguration, tea.String("ClusterCustomConfiguration"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.MonitorSpec)) {
+		request.MonitorSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MonitorSpec, tea.String("MonitorSpec"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
 		query["ClientVersion"] = request.ClientVersion
@@ -16217,6 +16781,10 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.MaxCount)) {
 		query["MaxCount"] = request.MaxCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorSpecShrink)) {
+		query["MonitorSpec"] = request.MonitorSpecShrink
 	}
 
 	req := &openapi.OpenApiRequest{
