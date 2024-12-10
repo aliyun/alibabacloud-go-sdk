@@ -32,6 +32,23 @@ func (s *ACS) SetAssociatedProducts(v []*string) *ACS {
 	return s
 }
 
+type Action struct {
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+}
+
+func (s Action) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Action) GoString() string {
+	return s.String()
+}
+
+func (s *Action) SetActionType(v string) *Action {
+	s.ActionType = &v
+	return s
+}
+
 type AlgorithmSpec struct {
 	CodeDir *Location `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	// This parameter is required.
@@ -43,14 +60,13 @@ type AlgorithmSpec struct {
 	Image         *string    `json:"Image,omitempty" xml:"Image,omitempty"`
 	InputChannels []*Channel `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	// This parameter is required.
-	JobType              *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	MetricDefinitions    []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	OutputChannels       []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	ProgressDefinitions  *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
-	ResourceRequirements []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
-	// Deprecated
-	SupportedInstanceTypes      []*string `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
-	SupportsDistributedTraining *bool     `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
+	JobType                     *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MetricDefinitions           []*MetricDefinition               `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	OutputChannels              []*Channel                        `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	ProgressDefinitions         *AlgorithmSpecProgressDefinitions `json:"ProgressDefinitions,omitempty" xml:"ProgressDefinitions,omitempty" type:"Struct"`
+	ResourceRequirements        []*ConditionExpression            `json:"ResourceRequirements,omitempty" xml:"ResourceRequirements,omitempty" type:"Repeated"`
+	SupportedInstanceTypes      []*string                         `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	SupportsDistributedTraining *bool                             `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
 }
 
 func (s AlgorithmSpec) String() string {
@@ -1191,6 +1207,7 @@ type Node struct {
 	CPU               *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
 	CreatorId         *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	GPU               *string        `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUMemory         *string        `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
 	GPUType           *string        `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	GmtCreateTime     *string        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtExpiredTime    *string        `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
@@ -1247,6 +1264,11 @@ func (s *Node) SetCreatorId(v string) *Node {
 
 func (s *Node) SetGPU(v string) *Node {
 	s.GPU = &v
+	return s
+}
+
+func (s *Node) SetGPUMemory(v string) *Node {
+	s.GPUMemory = &v
 	return s
 }
 
@@ -1676,8 +1698,12 @@ type NodeType struct {
 	// example:
 	//
 	// 0
-	GPU     *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// 80G
+	GPUMemory *string `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	GPUType   *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	// example:
 	//
 	// 64Gi
@@ -1708,6 +1734,11 @@ func (s *NodeType) SetCPU(v string) *NodeType {
 
 func (s *NodeType) SetGPU(v string) *NodeType {
 	s.GPU = &v
+	return s
+}
+
+func (s *NodeType) SetGPUMemory(v string) *NodeType {
+	s.GPUMemory = &v
 	return s
 }
 
@@ -1983,18 +2014,18 @@ type QueueInfo struct {
 	// example:
 	//
 	// Enqueued
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// PreAllocation
-	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// example:
 	//
 	// dlcxxxx
 	WorkloadId   *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// example:
+	//
+	// PreAllocation
+	WorkloadStatus *string `json:"WorkloadStatus,omitempty" xml:"WorkloadStatus,omitempty"`
 	// example:
 	//
 	// dlc
@@ -2083,11 +2114,6 @@ func (s *QueueInfo) SetStatus(v string) *QueueInfo {
 	return s
 }
 
-func (s *QueueInfo) SetSubStatus(v string) *QueueInfo {
-	s.SubStatus = &v
-	return s
-}
-
 func (s *QueueInfo) SetUserId(v string) *QueueInfo {
 	s.UserId = &v
 	return s
@@ -2105,6 +2131,11 @@ func (s *QueueInfo) SetWorkloadId(v string) *QueueInfo {
 
 func (s *QueueInfo) SetWorkloadName(v string) *QueueInfo {
 	s.WorkloadName = &v
+	return s
+}
+
+func (s *QueueInfo) SetWorkloadStatus(v string) *QueueInfo {
+	s.WorkloadStatus = &v
 	return s
 }
 
@@ -2330,10 +2361,14 @@ func (s *QuotaConfig) SetUserVpc(v *UserVpc) *QuotaConfig {
 }
 
 type QuotaDetails struct {
-	ActualMinQuota  *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
-	DesiredMinQuota *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
-	RequestedQuota  *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
-	UsedQuota       *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+	ActualMinQuota            *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
+	AllocatedQuota            *ResourceAmount `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
+	AncestorsAllocatedQuota   *ResourceAmount `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
+	DescendantsAllocatedQuota *ResourceAmount `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
+	DesiredMinQuota           *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
+	RequestedQuota            *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
+	SelfAllocatedQuota        *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
+	UsedQuota                 *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
 func (s QuotaDetails) String() string {
@@ -2349,6 +2384,21 @@ func (s *QuotaDetails) SetActualMinQuota(v *ResourceAmount) *QuotaDetails {
 	return s
 }
 
+func (s *QuotaDetails) SetAllocatedQuota(v *ResourceAmount) *QuotaDetails {
+	s.AllocatedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetAncestorsAllocatedQuota(v *ResourceAmount) *QuotaDetails {
+	s.AncestorsAllocatedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetDescendantsAllocatedQuota(v *ResourceAmount) *QuotaDetails {
+	s.DescendantsAllocatedQuota = v
+	return s
+}
+
 func (s *QuotaDetails) SetDesiredMinQuota(v *ResourceAmount) *QuotaDetails {
 	s.DesiredMinQuota = v
 	return s
@@ -2356,6 +2406,11 @@ func (s *QuotaDetails) SetDesiredMinQuota(v *ResourceAmount) *QuotaDetails {
 
 func (s *QuotaDetails) SetRequestedQuota(v *ResourceAmount) *QuotaDetails {
 	s.RequestedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetSelfAllocatedQuota(v *ResourceAmount) *QuotaDetails {
+	s.SelfAllocatedQuota = v
 	return s
 }
 
@@ -3264,6 +3319,66 @@ func (s *ResourceSpec) SetNodeSpecs(v []*NodeSpec) *ResourceSpec {
 	return s
 }
 
+type Rules struct {
+	SchedulingRule *SchedulingRule `json:"SchedulingRule,omitempty" xml:"SchedulingRule,omitempty"`
+}
+
+func (s Rules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Rules) GoString() string {
+	return s.String()
+}
+
+func (s *Rules) SetSchedulingRule(v *SchedulingRule) *Rules {
+	s.SchedulingRule = v
+	return s
+}
+
+type SchedulingRule struct {
+	// if can be null:
+	// true
+	CronTab *string `json:"CronTab,omitempty" xml:"CronTab,omitempty"`
+	// if can be null:
+	// true
+	EndAt *string `json:"EndAt,omitempty" xml:"EndAt,omitempty"`
+	// if can be null:
+	// true
+	ExecuteOnce *bool `json:"ExecuteOnce,omitempty" xml:"ExecuteOnce,omitempty"`
+	// if can be null:
+	// true
+	StartAt *string `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+}
+
+func (s SchedulingRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SchedulingRule) GoString() string {
+	return s.String()
+}
+
+func (s *SchedulingRule) SetCronTab(v string) *SchedulingRule {
+	s.CronTab = &v
+	return s
+}
+
+func (s *SchedulingRule) SetEndAt(v string) *SchedulingRule {
+	s.EndAt = &v
+	return s
+}
+
+func (s *SchedulingRule) SetExecuteOnce(v bool) *SchedulingRule {
+	s.ExecuteOnce = &v
+	return s
+}
+
+func (s *SchedulingRule) SetStartAt(v string) *SchedulingRule {
+	s.StartAt = &v
+	return s
+}
+
 type SpotPriceItem struct {
 	// example:
 	//
@@ -3346,6 +3461,195 @@ func (s *SpotStockPreview) SetSpotDiscount(v float32) *SpotStockPreview {
 
 func (s *SpotStockPreview) SetStockStatus(v string) *SpotStockPreview {
 	s.StockStatus = &v
+	return s
+}
+
+type Task struct {
+	Actions          []*Action `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtActivatedTime *string   `json:"GmtActivatedTime,omitempty" xml:"GmtActivatedTime,omitempty"`
+	GmtCreatedTime   *string   `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime  *string   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStoppedTime   *string   `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	QuotaId          *string   `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	Rules            *Rules    `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId           *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName         *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	UserId           *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName         *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s Task) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Task) GoString() string {
+	return s.String()
+}
+
+func (s *Task) SetActions(v []*Action) *Task {
+	s.Actions = v
+	return s
+}
+
+func (s *Task) SetDescription(v string) *Task {
+	s.Description = &v
+	return s
+}
+
+func (s *Task) SetGmtActivatedTime(v string) *Task {
+	s.GmtActivatedTime = &v
+	return s
+}
+
+func (s *Task) SetGmtCreatedTime(v string) *Task {
+	s.GmtCreatedTime = &v
+	return s
+}
+
+func (s *Task) SetGmtModifiedTime(v string) *Task {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Task) SetGmtStoppedTime(v string) *Task {
+	s.GmtStoppedTime = &v
+	return s
+}
+
+func (s *Task) SetQuotaId(v string) *Task {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *Task) SetRules(v *Rules) *Task {
+	s.Rules = v
+	return s
+}
+
+func (s *Task) SetStatus(v string) *Task {
+	s.Status = &v
+	return s
+}
+
+func (s *Task) SetTaskId(v string) *Task {
+	s.TaskId = &v
+	return s
+}
+
+func (s *Task) SetTaskName(v string) *Task {
+	s.TaskName = &v
+	return s
+}
+
+func (s *Task) SetUserId(v string) *Task {
+	s.UserId = &v
+	return s
+}
+
+func (s *Task) SetUserName(v string) *Task {
+	s.UserName = &v
+	return s
+}
+
+type TaskInstance struct {
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtEndTime     *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskInstanceId *string `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
+	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s TaskInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskInstance) GoString() string {
+	return s.String()
+}
+
+func (s *TaskInstance) SetGmtCreatedTime(v string) *TaskInstance {
+	s.GmtCreatedTime = &v
+	return s
+}
+
+func (s *TaskInstance) SetGmtEndTime(v string) *TaskInstance {
+	s.GmtEndTime = &v
+	return s
+}
+
+func (s *TaskInstance) SetStatus(v string) *TaskInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *TaskInstance) SetTaskId(v string) *TaskInstance {
+	s.TaskId = &v
+	return s
+}
+
+func (s *TaskInstance) SetTaskInstanceId(v string) *TaskInstance {
+	s.TaskInstanceId = &v
+	return s
+}
+
+func (s *TaskInstance) SetTenantId(v string) *TaskInstance {
+	s.TenantId = &v
+	return s
+}
+
+func (s *TaskInstance) SetUserId(v string) *TaskInstance {
+	s.UserId = &v
+	return s
+}
+
+type TaskInstanceEvent struct {
+	GmtEndTime   *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PodName      *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+}
+
+func (s TaskInstanceEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TaskInstanceEvent) GoString() string {
+	return s.String()
+}
+
+func (s *TaskInstanceEvent) SetGmtEndTime(v string) *TaskInstanceEvent {
+	s.GmtEndTime = &v
+	return s
+}
+
+func (s *TaskInstanceEvent) SetGmtStartTime(v string) *TaskInstanceEvent {
+	s.GmtStartTime = &v
+	return s
+}
+
+func (s *TaskInstanceEvent) SetMessage(v string) *TaskInstanceEvent {
+	s.Message = &v
+	return s
+}
+
+func (s *TaskInstanceEvent) SetPodName(v string) *TaskInstanceEvent {
+	s.PodName = &v
+	return s
+}
+
+func (s *TaskInstanceEvent) SetStatus(v string) *TaskInstanceEvent {
+	s.Status = &v
+	return s
+}
+
+func (s *TaskInstanceEvent) SetWorkloadType(v string) *TaskInstanceEvent {
+	s.WorkloadType = &v
 	return s
 }
 
@@ -4423,13 +4727,14 @@ type CreateTrainingJobRequest struct {
 	InputChannels      []*CreateTrainingJobRequestInputChannels   `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
 	Labels             []*CreateTrainingJobRequestLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	OutputChannels     []*CreateTrainingJobRequestOutputChannels  `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	Priority           *int32                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	PythonRequirements []*string                                  `json:"PythonRequirements,omitempty" xml:"PythonRequirements,omitempty" type:"Repeated"`
 	// example:
 	//
 	// acs:ram::1157703270994901:role/aliyunserviceroleforpaiworkspace
 	RoleArn   *string                            `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler *CreateTrainingJobRequestScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
-	Settings  *CreateTrainingJobRequestSettings  `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
+	Settings  *JobSettings                       `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// example:
 	//
 	// qwen large language model training
@@ -4517,6 +4822,11 @@ func (s *CreateTrainingJobRequest) SetOutputChannels(v []*CreateTrainingJobReque
 	return s
 }
 
+func (s *CreateTrainingJobRequest) SetPriority(v int32) *CreateTrainingJobRequest {
+	s.Priority = &v
+	return s
+}
+
 func (s *CreateTrainingJobRequest) SetPythonRequirements(v []*string) *CreateTrainingJobRequest {
 	s.PythonRequirements = v
 	return s
@@ -4532,7 +4842,7 @@ func (s *CreateTrainingJobRequest) SetScheduler(v *CreateTrainingJobRequestSched
 	return s
 }
 
-func (s *CreateTrainingJobRequest) SetSettings(v *CreateTrainingJobRequestSettings) *CreateTrainingJobRequest {
+func (s *CreateTrainingJobRequest) SetSettings(v *JobSettings) *CreateTrainingJobRequest {
 	s.Settings = v
 	return s
 }
@@ -4771,8 +5081,9 @@ type CreateTrainingJobRequestInputChannels struct {
 	// example:
 	//
 	// model
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreateTrainingJobRequestInputChannels) String() string {
@@ -4800,6 +5111,11 @@ func (s *CreateTrainingJobRequestInputChannels) SetName(v string) *CreateTrainin
 
 func (s *CreateTrainingJobRequestInputChannels) SetOptions(v string) *CreateTrainingJobRequestInputChannels {
 	s.Options = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestInputChannels) SetVersionName(v string) *CreateTrainingJobRequestInputChannels {
+	s.VersionName = &v
 	return s
 }
 
@@ -4844,7 +5160,8 @@ type CreateTrainingJobRequestOutputChannels struct {
 	// example:
 	//
 	// oss://pai-quickstart-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/modelscope/models/qwen2-0.5b/main/
-	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreateTrainingJobRequestOutputChannels) String() string {
@@ -4870,7 +5187,13 @@ func (s *CreateTrainingJobRequestOutputChannels) SetOutputUri(v string) *CreateT
 	return s
 }
 
+func (s *CreateTrainingJobRequestOutputChannels) SetVersionName(v string) *CreateTrainingJobRequestOutputChannels {
+	s.VersionName = &v
+	return s
+}
+
 type CreateTrainingJobRequestScheduler struct {
+	MaxRunningTimeInMinutes *int64 `json:"MaxRunningTimeInMinutes,omitempty" xml:"MaxRunningTimeInMinutes,omitempty"`
 	// example:
 	//
 	// 0
@@ -4885,55 +5208,13 @@ func (s CreateTrainingJobRequestScheduler) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTrainingJobRequestScheduler) SetMaxRunningTimeInMinutes(v int64) *CreateTrainingJobRequestScheduler {
+	s.MaxRunningTimeInMinutes = &v
+	return s
+}
+
 func (s *CreateTrainingJobRequestScheduler) SetMaxRunningTimeInSeconds(v int64) *CreateTrainingJobRequestScheduler {
 	s.MaxRunningTimeInSeconds = &v
-	return s
-}
-
-type CreateTrainingJobRequestSettings struct {
-	// example:
-	//
-	// ecs.c6.large
-	AIMasterType *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
-	// example:
-	//
-	// true
-	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// example:
-	//
-	// --enable-log-hang-detection true
-	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	// example:
-	//
-	// 1
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-}
-
-func (s CreateTrainingJobRequestSettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTrainingJobRequestSettings) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTrainingJobRequestSettings) SetAIMasterType(v string) *CreateTrainingJobRequestSettings {
-	s.AIMasterType = &v
-	return s
-}
-
-func (s *CreateTrainingJobRequestSettings) SetEnableErrorMonitoringInAIMaster(v bool) *CreateTrainingJobRequestSettings {
-	s.EnableErrorMonitoringInAIMaster = &v
-	return s
-}
-
-func (s *CreateTrainingJobRequestSettings) SetErrorMonitoringArgs(v string) *CreateTrainingJobRequestSettings {
-	s.ErrorMonitoringArgs = &v
-	return s
-}
-
-func (s *CreateTrainingJobRequestSettings) SetPriority(v int32) *CreateTrainingJobRequestSettings {
-	s.Priority = &v
 	return s
 }
 
@@ -7167,6 +7448,7 @@ type GetTrainingJobResponseBody struct {
 	LatestProgress     *GetTrainingJobResponseBodyLatestProgress   `json:"LatestProgress,omitempty" xml:"LatestProgress,omitempty" type:"Struct"`
 	OutputChannels     []*GetTrainingJobResponseBodyOutputChannels `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
 	OutputModel        *GetTrainingJobResponseBodyOutputModel      `json:"OutputModel,omitempty" xml:"OutputModel,omitempty" type:"Struct"`
+	Priority           *int32                                      `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	PythonRequirements []*string                                   `json:"PythonRequirements,omitempty" xml:"PythonRequirements,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -7185,7 +7467,7 @@ type GetTrainingJobResponseBody struct {
 	// acs:ram::{accountID}:role/{roleName}
 	RoleArn   *string                              `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	Scheduler *GetTrainingJobResponseBodyScheduler `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
-	Settings  *GetTrainingJobResponseBodySettings  `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
+	Settings  *JobSettings                         `json:"Settings,omitempty" xml:"Settings,omitempty"`
 	// example:
 	//
 	// Running
@@ -7323,6 +7605,11 @@ func (s *GetTrainingJobResponseBody) SetOutputModel(v *GetTrainingJobResponseBod
 	return s
 }
 
+func (s *GetTrainingJobResponseBody) SetPriority(v int32) *GetTrainingJobResponseBody {
+	s.Priority = &v
+	return s
+}
+
 func (s *GetTrainingJobResponseBody) SetPythonRequirements(v []*string) *GetTrainingJobResponseBody {
 	s.PythonRequirements = v
 	return s
@@ -7353,7 +7640,7 @@ func (s *GetTrainingJobResponseBody) SetScheduler(v *GetTrainingJobResponseBodyS
 	return s
 }
 
-func (s *GetTrainingJobResponseBody) SetSettings(v *GetTrainingJobResponseBodySettings) *GetTrainingJobResponseBody {
+func (s *GetTrainingJobResponseBody) SetSettings(v *JobSettings) *GetTrainingJobResponseBody {
 	s.Settings = v
 	return s
 }
@@ -7632,8 +7919,9 @@ type GetTrainingJobResponseBodyInputChannels struct {
 	// example:
 	//
 	// model
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetTrainingJobResponseBodyInputChannels) String() string {
@@ -7661,6 +7949,11 @@ func (s *GetTrainingJobResponseBodyInputChannels) SetName(v string) *GetTraining
 
 func (s *GetTrainingJobResponseBodyInputChannels) SetOptions(v string) *GetTrainingJobResponseBodyInputChannels {
 	s.Options = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyInputChannels) SetVersionName(v string) *GetTrainingJobResponseBodyInputChannels {
+	s.VersionName = &v
 	return s
 }
 
@@ -7862,7 +8155,8 @@ type GetTrainingJobResponseBodyOutputChannels struct {
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/output/model/
-	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetTrainingJobResponseBodyOutputChannels) String() string {
@@ -7885,6 +8179,11 @@ func (s *GetTrainingJobResponseBodyOutputChannels) SetName(v string) *GetTrainin
 
 func (s *GetTrainingJobResponseBodyOutputChannels) SetOutputUri(v string) *GetTrainingJobResponseBodyOutputChannels {
 	s.OutputUri = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyOutputChannels) SetVersionName(v string) *GetTrainingJobResponseBodyOutputChannels {
+	s.VersionName = &v
 	return s
 }
 
@@ -7918,10 +8217,11 @@ func (s *GetTrainingJobResponseBodyOutputModel) SetUri(v string) *GetTrainingJob
 }
 
 type GetTrainingJobResponseBodyScheduler struct {
+	MaxRunningTimeInMinutes *string `json:"MaxRunningTimeInMinutes,omitempty" xml:"MaxRunningTimeInMinutes,omitempty"`
 	// example:
 	//
 	// 0
-	MaxRunningTimeInSeconds *int64 `json:"MaxRunningTimeInSeconds,omitempty" xml:"MaxRunningTimeInSeconds,omitempty"`
+	MaxRunningTimeInSeconds *string `json:"MaxRunningTimeInSeconds,omitempty" xml:"MaxRunningTimeInSeconds,omitempty"`
 }
 
 func (s GetTrainingJobResponseBodyScheduler) String() string {
@@ -7932,55 +8232,13 @@ func (s GetTrainingJobResponseBodyScheduler) GoString() string {
 	return s.String()
 }
 
-func (s *GetTrainingJobResponseBodyScheduler) SetMaxRunningTimeInSeconds(v int64) *GetTrainingJobResponseBodyScheduler {
+func (s *GetTrainingJobResponseBodyScheduler) SetMaxRunningTimeInMinutes(v string) *GetTrainingJobResponseBodyScheduler {
+	s.MaxRunningTimeInMinutes = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyScheduler) SetMaxRunningTimeInSeconds(v string) *GetTrainingJobResponseBodyScheduler {
 	s.MaxRunningTimeInSeconds = &v
-	return s
-}
-
-type GetTrainingJobResponseBodySettings struct {
-	// example:
-	//
-	// ecs.c6.large
-	AIMasterType *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
-	// example:
-	//
-	// true
-	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// example:
-	//
-	// --enable-log-hang-detection true
-	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	// example:
-	//
-	// 1
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-}
-
-func (s GetTrainingJobResponseBodySettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTrainingJobResponseBodySettings) GoString() string {
-	return s.String()
-}
-
-func (s *GetTrainingJobResponseBodySettings) SetAIMasterType(v string) *GetTrainingJobResponseBodySettings {
-	s.AIMasterType = &v
-	return s
-}
-
-func (s *GetTrainingJobResponseBodySettings) SetEnableErrorMonitoringInAIMaster(v bool) *GetTrainingJobResponseBodySettings {
-	s.EnableErrorMonitoringInAIMaster = &v
-	return s
-}
-
-func (s *GetTrainingJobResponseBodySettings) SetErrorMonitoringArgs(v string) *GetTrainingJobResponseBodySettings {
-	s.ErrorMonitoringArgs = &v
-	return s
-}
-
-func (s *GetTrainingJobResponseBodySettings) SetPriority(v int32) *GetTrainingJobResponseBodySettings {
-	s.Priority = &v
 	return s
 }
 
@@ -9071,6 +9329,233 @@ func (s *ListNodesResponse) SetStatusCode(v int32) *ListNodesResponse {
 }
 
 func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse {
+	s.Body = v
+	return s
+}
+
+type ListQuotaWorkloadsRequest struct {
+	// example:
+	//
+	// dsw65443322
+	BeforeWorkloadId             *string          `json:"BeforeWorkloadId,omitempty" xml:"BeforeWorkloadId,omitempty"`
+	GmtDequeuedTimeRange         *TimeRangeFilter `json:"GmtDequeuedTimeRange,omitempty" xml:"GmtDequeuedTimeRange,omitempty"`
+	GmtEnqueuedTimeRange         *TimeRangeFilter `json:"GmtEnqueuedTimeRange,omitempty" xml:"GmtEnqueuedTimeRange,omitempty"`
+	GmtPositionModifiedTimeRange *TimeRangeFilter `json:"GmtPositionModifiedTimeRange,omitempty" xml:"GmtPositionModifiedTimeRange,omitempty"`
+	// example:
+	//
+	// lrn48278127617
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// true
+	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// example:
+	//
+	// GmtCreatedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Enqueued
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// quota12344666,quota64432233
+	SubQuotaIds *string `json:"SubQuotaIds,omitempty" xml:"SubQuotaIds,omitempty"`
+	// example:
+	//
+	// 29043893812,23829093093
+	UserIds                  *string          `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	WorkloadCreatedTimeRange *TimeRangeFilter `json:"WorkloadCreatedTimeRange,omitempty" xml:"WorkloadCreatedTimeRange,omitempty"`
+	// example:
+	//
+	// dlc12344556
+	WorkloadIds *string `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty"`
+	// example:
+	//
+	// Pending
+	WorkloadStatuses *string `json:"WorkloadStatuses,omitempty" xml:"WorkloadStatuses,omitempty"`
+	// example:
+	//
+	// dlc
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+	// example:
+	//
+	// 186692
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+}
+
+func (s ListQuotaWorkloadsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaWorkloadsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaWorkloadsRequest) SetBeforeWorkloadId(v string) *ListQuotaWorkloadsRequest {
+	s.BeforeWorkloadId = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetGmtDequeuedTimeRange(v *TimeRangeFilter) *ListQuotaWorkloadsRequest {
+	s.GmtDequeuedTimeRange = v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetGmtEnqueuedTimeRange(v *TimeRangeFilter) *ListQuotaWorkloadsRequest {
+	s.GmtEnqueuedTimeRange = v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetGmtPositionModifiedTimeRange(v *TimeRangeFilter) *ListQuotaWorkloadsRequest {
+	s.GmtPositionModifiedTimeRange = v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetNodeName(v string) *ListQuotaWorkloadsRequest {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetOrder(v string) *ListQuotaWorkloadsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetPageNumber(v int32) *ListQuotaWorkloadsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetPageSize(v int32) *ListQuotaWorkloadsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetShowOwn(v bool) *ListQuotaWorkloadsRequest {
+	s.ShowOwn = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetSortBy(v string) *ListQuotaWorkloadsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetStatus(v string) *ListQuotaWorkloadsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetSubQuotaIds(v string) *ListQuotaWorkloadsRequest {
+	s.SubQuotaIds = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetUserIds(v string) *ListQuotaWorkloadsRequest {
+	s.UserIds = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkloadCreatedTimeRange(v *TimeRangeFilter) *ListQuotaWorkloadsRequest {
+	s.WorkloadCreatedTimeRange = v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkloadIds(v string) *ListQuotaWorkloadsRequest {
+	s.WorkloadIds = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkloadStatuses(v string) *ListQuotaWorkloadsRequest {
+	s.WorkloadStatuses = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkloadType(v string) *ListQuotaWorkloadsRequest {
+	s.WorkloadType = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsRequest) SetWorkspaceIds(v string) *ListQuotaWorkloadsRequest {
+	s.WorkspaceIds = &v
+	return s
+}
+
+type ListQuotaWorkloadsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 42F23B58-3684-5443-848A-8DA81FF99712
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 23
+	TotalCount *int64       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Workloads  []*QueueInfo `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
+}
+
+func (s ListQuotaWorkloadsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaWorkloadsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaWorkloadsResponseBody) SetRequestId(v string) *ListQuotaWorkloadsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsResponseBody) SetTotalCount(v int64) *ListQuotaWorkloadsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsResponseBody) SetWorkloads(v []*QueueInfo) *ListQuotaWorkloadsResponseBody {
+	s.Workloads = v
+	return s
+}
+
+type ListQuotaWorkloadsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListQuotaWorkloadsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListQuotaWorkloadsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotaWorkloadsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotaWorkloadsResponse) SetHeaders(v map[string]*string) *ListQuotaWorkloadsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListQuotaWorkloadsResponse) SetStatusCode(v int32) *ListQuotaWorkloadsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListQuotaWorkloadsResponse) SetBody(v *ListQuotaWorkloadsResponseBody) *ListQuotaWorkloadsResponse {
 	s.Body = v
 	return s
 }
@@ -10214,7 +10699,8 @@ type ListTrainingJobMetricsResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTrainingJobMetricsResponseBody) String() string {
@@ -10232,6 +10718,11 @@ func (s *ListTrainingJobMetricsResponseBody) SetMetrics(v []*ListTrainingJobMetr
 
 func (s *ListTrainingJobMetricsResponseBody) SetRequestId(v string) *ListTrainingJobMetricsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrainingJobMetricsResponseBody) SetTotalCount(v int64) *ListTrainingJobMetricsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -11186,7 +11677,8 @@ type ListTrainingJobsResponseBodyTrainingJobsInputChannels struct {
 	// example:
 	//
 	// model
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListTrainingJobsResponseBodyTrainingJobsInputChannels) String() string {
@@ -11209,6 +11701,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetInputUri(v st
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetName(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
 	s.Name = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetVersionName(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
+	s.VersionName = &v
 	return s
 }
 
@@ -11253,7 +11750,8 @@ type ListTrainingJobsResponseBodyTrainingJobsOutputChannels struct {
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/to/output/channel/
-	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	OutputUri   *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListTrainingJobsResponseBodyTrainingJobsOutputChannels) String() string {
@@ -11276,6 +11774,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetName(v strin
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetOutputUri(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
 	s.OutputUri = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetVersionName(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
+	s.VersionName = &v
 	return s
 }
 
@@ -12624,6 +13127,10 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 		body["OutputChannels"] = request.OutputChannels
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PythonRequirements)) {
 		body["PythonRequirements"] = request.PythonRequirements
 	}
@@ -13281,6 +13788,8 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetNodeMetrics is deprecated
+//
 // Summary:
 //
 // get resource group node metrics
@@ -13292,6 +13801,7 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNodeMetricsResponse
+// Deprecated
 func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricType *string, request *GetNodeMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13342,6 +13852,8 @@ func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricT
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetNodeMetrics is deprecated
+//
 // Summary:
 //
 // get resource group node metrics
@@ -13349,6 +13861,7 @@ func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricT
 // @param request - GetNodeMetricsRequest
 //
 // @return GetNodeMetricsResponse
+// Deprecated
 func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string, request *GetNodeMetricsRequest) (_result *GetNodeMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13569,6 +14082,8 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetResourceGroupRequest is deprecated
+//
 // Summary:
 //
 // get resource group requested resource by resource group id
@@ -13580,6 +14095,7 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceGroupRequestResponse
+// Deprecated
 func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGroupRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13618,6 +14134,8 @@ func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGro
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetResourceGroupRequest is deprecated
+//
 // Summary:
 //
 // get resource group requested resource by resource group id
@@ -13625,6 +14143,7 @@ func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGro
 // @param request - GetResourceGroupRequestRequest
 //
 // @return GetResourceGroupRequestResponse
+// Deprecated
 func (client *Client) GetResourceGroupRequest(request *GetResourceGroupRequestRequest) (_result *GetResourceGroupRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13933,6 +14452,8 @@ func (client *Client) GetTrainingJobLatestMetrics(TrainingJobId *string, request
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetUserViewMetrics is deprecated
+//
 // Summary:
 //
 // get user view  metrics
@@ -13944,6 +14465,7 @@ func (client *Client) GetTrainingJobLatestMetrics(TrainingJobId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserViewMetricsResponse
+// Deprecated
 func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, request *GetUserViewMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserViewMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14002,6 +14524,8 @@ func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, req
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetUserViewMetrics is deprecated
+//
 // Summary:
 //
 // get user view  metrics
@@ -14009,6 +14533,7 @@ func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, req
 // @param request - GetUserViewMetricsRequest
 //
 // @return GetUserViewMetricsResponse
+// Deprecated
 func (client *Client) GetUserViewMetrics(ResourceGroupID *string, request *GetUserViewMetricsRequest) (_result *GetUserViewMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14286,6 +14811,138 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	headers := make(map[string]*string)
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 您可以通过此API获取Quota上的任务信息列表
+//
+// @param request - ListQuotaWorkloadsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotaWorkloadsResponse
+func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *ListQuotaWorkloadsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotaWorkloadsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeforeWorkloadId)) {
+		query["BeforeWorkloadId"] = request.BeforeWorkloadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtDequeuedTimeRange)) {
+		query["GmtDequeuedTimeRange"] = request.GmtDequeuedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtEnqueuedTimeRange)) {
+		query["GmtEnqueuedTimeRange"] = request.GmtEnqueuedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtPositionModifiedTimeRange)) {
+		query["GmtPositionModifiedTimeRange"] = request.GmtPositionModifiedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowOwn)) {
+		query["ShowOwn"] = request.ShowOwn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubQuotaIds)) {
+		query["SubQuotaIds"] = request.SubQuotaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadCreatedTimeRange)) {
+		query["WorkloadCreatedTimeRange"] = request.WorkloadCreatedTimeRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadIds)) {
+		query["WorkloadIds"] = request.WorkloadIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadStatuses)) {
+		query["WorkloadStatuses"] = request.WorkloadStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadType)) {
+		query["WorkloadType"] = request.WorkloadType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
+		query["WorkspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQuotaWorkloads"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId)) + "/workloads"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListQuotaWorkloadsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 您可以通过此API获取Quota上的任务信息列表
+//
+// @param request - ListQuotaWorkloadsRequest
+//
+// @return ListQuotaWorkloadsResponse
+func (client *Client) ListQuotaWorkloads(QuotaId *string, request *ListQuotaWorkloadsRequest) (_result *ListQuotaWorkloadsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListQuotaWorkloadsResponse{}
+	_body, _err := client.ListQuotaWorkloadsWithOptions(QuotaId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
