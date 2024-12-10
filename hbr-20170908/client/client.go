@@ -10091,7 +10091,8 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	// example:
 	//
 	// 1554347313
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedByTag *bool  `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
 	// The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
@@ -10171,7 +10172,8 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	// example:
 	//
 	// 00594
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	HitTags      *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Struct"`
 	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
 	//
 	// example:
@@ -10347,6 +10349,11 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreateTime(v i
 	return s
 }
 
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreatedByTag(v bool) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CreatedByTag = &v
+	return s
+}
+
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreatedTime(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.CreatedTime = &v
 	return s
@@ -10404,6 +10411,11 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetExclude(v stri
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetFileSystemId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetHitTags(v *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.HitTags = v
 	return s
 }
 
@@ -10509,6 +10521,52 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetUpdatedTime(v 
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetVaultId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.VaultId = &v
+	return s
+}
+
+type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags struct {
+	HitTag []*DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag `json:"HitTag,omitempty" xml:"HitTag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) SetHitTag(v []*DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags {
+	s.HitTag = v
+	return s
+}
+
+type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag struct {
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) SetKey(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) SetOperator(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) SetValue(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag {
+	s.Value = &v
 	return s
 }
 
@@ -15738,6 +15796,8 @@ func (s *DescribePolicyBindingsResponseBody) SetTotalCount(v int64) *DescribePol
 type DescribePolicyBindingsResponseBodyPolicyBindings struct {
 	// The advanced options.
 	AdvancedOptions *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
+	// Indicates whether the resource is automatically associated with the related resource tag in the backup policy.
+	//
 	// example:
 	//
 	// false
@@ -15791,7 +15851,8 @@ type DescribePolicyBindingsResponseBodyPolicyBindings struct {
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
-	Exclude *string                                                    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// The matched tag rules.
 	HitTags []*DescribePolicyBindingsResponseBodyPolicyBindingsHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Repeated"`
 	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
 	//
@@ -16135,6 +16196,11 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDeta
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail struct {
+	// 不在任务统计和失败文件列表中提示归档型对象
+	//
+	// example:
+	//
+	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
 	// Indicates whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
 	//
@@ -16314,14 +16380,24 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsHitTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag-based matching rule.
+	//
+	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	//
+	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// prod
