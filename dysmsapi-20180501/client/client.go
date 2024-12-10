@@ -1103,12 +1103,11 @@ type SmsConversionRequest struct {
 	Delivered *bool `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
 	// The ID of the OTP message.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1008030300****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	To        *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s SmsConversionRequest) String() string {
@@ -1131,6 +1130,11 @@ func (s *SmsConversionRequest) SetDelivered(v bool) *SmsConversionRequest {
 
 func (s *SmsConversionRequest) SetMessageId(v string) *SmsConversionRequest {
 	s.MessageId = &v
+	return s
+}
+
+func (s *SmsConversionRequest) SetTo(v string) *SmsConversionRequest {
+	s.To = &v
 	return s
 }
 
@@ -1767,6 +1771,10 @@ func (client *Client) SmsConversionWithOptions(request *SmsConversionRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
 		query["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
 	}
 
 	req := &openapi.OpenApiRequest{
