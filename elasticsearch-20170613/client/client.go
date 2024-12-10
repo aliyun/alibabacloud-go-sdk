@@ -19277,6 +19277,7 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// es-cn-abc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The configuration of Kibana nodes.
 	ElasticDataNodeConfiguration *ListInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
 	EndTime                      *int64                                                      `json:"endTime,omitempty" xml:"endTime,omitempty"`
@@ -19397,6 +19398,11 @@ func (s *ListInstanceResponseBodyResult) SetDedicateMaster(v bool) *ListInstance
 
 func (s *ListInstanceResponseBodyResult) SetDescription(v string) *ListInstanceResponseBodyResult {
 	s.Description = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetDomain(v string) *ListInstanceResponseBodyResult {
+	s.Domain = &v
 	return s
 }
 
