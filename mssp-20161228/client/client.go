@@ -10,52 +10,76 @@ import (
 )
 
 type CreateServiceWorkOrderRequest struct {
+	// Creator.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 426556
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Customer ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1477832102462645
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Duration in days.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	DurationDay *string `json:"DurationDay,omitempty" xml:"DurationDay,omitempty"`
+	// Attachment requirement.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Y
 	IsAttachment *string `json:"IsAttachment,omitempty" xml:"IsAttachment,omitempty"`
+	// Whether a reminder is needed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Y
 	IsWorkOrderNotify *string `json:"IsWorkOrderNotify,omitempty" xml:"IsWorkOrderNotify,omitempty"`
+	// Number of days for advance notification.
+	//
 	// example:
 	//
 	// 5
 	NotifyDay *string `json:"NotifyDay,omitempty" xml:"NotifyDay,omitempty"`
+	// Notification ID.
+	//
 	// example:
 	//
 	// 10
 	NotifyId *int64 `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	// Operation remarks.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 新建
 	OperateRemark *string `json:"OperateRemark,omitempty" xml:"OperateRemark,omitempty"`
+	// Operation type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CREATE
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// Operator.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -64,24 +88,48 @@ type CreateServiceWorkOrderRequest struct {
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// This parameter is required.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-01-21 15:25:25
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Work order details.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"questionDetail":"测试工单","answerDetail":""}
 	WorkOrderDetail *string `json:"WorkOrderDetail,omitempty" xml:"WorkOrderDetail,omitempty"`
+	// Work order name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 安全月报交付任务
 	WorkOrderName *string `json:"WorkOrderName,omitempty" xml:"WorkOrderName,omitempty"`
+	// Work order source.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 工单迁移
 	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	// Work order status.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UNPROCESSED
 	WorkOrderStatus *string `json:"WorkOrderStatus,omitempty" xml:"WorkOrderStatus,omitempty"`
+	// Work order type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -184,25 +232,38 @@ func (s *CreateServiceWorkOrderRequest) SetWorkOrderType(v string) *CreateServic
 }
 
 type CreateServiceWorkOrderResponseBody struct {
+	// Interface status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *CreateServiceWorkOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The prompt message of the returned result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7DC44321-7AAE-51CD-8E5F-CEB968569042
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -248,45 +309,80 @@ func (s *CreateServiceWorkOrderResponseBody) SetSuccess(v bool) *CreateServiceWo
 }
 
 type CreateServiceWorkOrderResponseBodyData struct {
+	// Completion time.
+	//
 	// example:
 	//
 	// 2024-03-07 16:45:01
 	CompleteTime *int64 `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-10-04T02:19:55Z
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// 426556
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Customer ID.
+	//
 	// example:
 	//
 	// 1477832102462645
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 24-03-11 00:00:00
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Primary key.
+	//
 	// example:
 	//
 	// 1978941
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Owner.
+	//
 	// example:
 	//
 	// 426556
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2021-01-21 15:25:25
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Work order details.
+	//
+	// example:
+	//
+	// {"questionDetail":"测试工单","answerDetail":""}
 	WorkOrderDetail *string `json:"WorkOrderDetail,omitempty" xml:"WorkOrderDetail,omitempty"`
-	WorkOrderName   *string `json:"WorkOrderName,omitempty" xml:"WorkOrderName,omitempty"`
+	// Work order name.
+	//
+	// example:
+	//
+	// 安全月报交付任务
+	WorkOrderName *string `json:"WorkOrderName,omitempty" xml:"WorkOrderName,omitempty"`
+	// Work order source.
+	//
+	// example:
+	//
+	// 工单迁移
 	WorkOrderSource *string `json:"WorkOrderSource,omitempty" xml:"WorkOrderSource,omitempty"`
+	// Work order status.
+	//
 	// example:
 	//
 	// UNPROCESSED
 	WorkOrderStatus *string `json:"WorkOrderStatus,omitempty" xml:"WorkOrderStatus,omitempty"`
+	// Work order type.
+	//
 	// example:
 	//
 	// MONTH_REPORT
@@ -396,58 +492,102 @@ func (s *CreateServiceWorkOrderResponse) SetBody(v *CreateServiceWorkOrderRespon
 }
 
 type DisposeServiceWorkOrderRequest struct {
+	// Attachment name.
+	//
+	// example:
+	//
+	// bbaa133c-0ac2-489f-9fc8-39f91c2e770c_20230301-20240403-服务工单列表.xlsx
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
+	// End time.
+	//
 	// example:
 	//
 	// 2024-04-14 00:00:00
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Forward to owner.
+	//
 	// example:
 	//
 	// 405639
 	ForwardOwnerId *string `json:"ForwardOwnerId,omitempty" xml:"ForwardOwnerId,omitempty"`
+	// Work order ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23172
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Attachment requirement.
+	//
 	// example:
 	//
 	// Y
 	IsAttachment *string `json:"IsAttachment,omitempty" xml:"IsAttachment,omitempty"`
+	// Work order notification.
+	//
 	// example:
 	//
 	// Y
 	IsWorkOrderNotify *string `json:"IsWorkOrderNotify,omitempty" xml:"IsWorkOrderNotify,omitempty"`
+	// Notification ID.
+	//
 	// example:
 	//
 	// 10
 	NotifyId *int64 `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	// Operation remarks.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 处理完成
 	OperateRemark *string `json:"OperateRemark,omitempty" xml:"OperateRemark,omitempty"`
+	// Processing type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PROCESSED
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// Operator.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 396120
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 2024-04-02 00:00:00
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Upgrade owner.
+	//
 	// example:
 	//
 	// 336333
-	UpgradeOwnerId  *string `json:"UpgradeOwnerId,omitempty" xml:"UpgradeOwnerId,omitempty"`
+	UpgradeOwnerId *string `json:"UpgradeOwnerId,omitempty" xml:"UpgradeOwnerId,omitempty"`
+	// Work order details.
+	//
+	// example:
+	//
+	// {"questionDetail":"测试工单","answerDetail":""}
 	WorkOrderDetail *string `json:"WorkOrderDetail,omitempty" xml:"WorkOrderDetail,omitempty"`
+	// Work order name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 安全产品配置问题与超量提醒
 	WorkOrderName *string `json:"WorkOrderName,omitempty" xml:"WorkOrderName,omitempty"`
+	// Work order status.
+	//
 	// example:
 	//
 	// PROCESSED
@@ -538,24 +678,34 @@ func (s *DisposeServiceWorkOrderRequest) SetWorkOrderStatus(v string) *DisposeSe
 }
 
 type DisposeServiceWorkOrderResponseBody struct {
+	// API response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message of the returned result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ED520610-6231-5D80-BADD-A8CDC7BBC809
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -625,20 +775,32 @@ func (s *DisposeServiceWorkOrderResponse) SetBody(v *DisposeServiceWorkOrderResp
 }
 
 type DisposeWorkTaskRequest struct {
+	// Operator.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// WB01089929
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Operation remarks.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 处理完成
 	OptRemark *string `json:"OptRemark,omitempty" xml:"OptRemark,omitempty"`
+	// Work order status.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Work order ID, multiple IDs separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -676,24 +838,34 @@ func (s *DisposeWorkTaskRequest) SetTaskIds(v string) *DisposeWorkTaskRequest {
 }
 
 type DisposeWorkTaskResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message of the returned result.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86786E4C-6416-55CF-9AB6-5E275B68801D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -762,25 +934,479 @@ func (s *DisposeWorkTaskResponse) SetBody(v *DisposeWorkTaskResponseBody) *Dispo
 	return s
 }
 
+type GetAlarmDetailByIdRequest struct {
+	// Primary key ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20077761
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetAlarmDetailByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmDetailByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmDetailByIdRequest) SetId(v int64) *GetAlarmDetailByIdRequest {
+	s.Id = &v
+	return s
+}
+
+type GetAlarmDetailByIdResponseBody struct {
+	// API response code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
+	Data *GetAlarmDetailByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5C1B0668-442C-57AE-9668-D894B0B012EB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the operation was successful: - true: Success. - false: Failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAlarmDetailByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmDetailByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetCode(v string) *GetAlarmDetailByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetData(v *GetAlarmDetailByIdResponseBodyData) *GetAlarmDetailByIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetHttpStatusCode(v int32) *GetAlarmDetailByIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetMessage(v string) *GetAlarmDetailByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetRequestId(v string) *GetAlarmDetailByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBody) SetSuccess(v bool) *GetAlarmDetailByIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAlarmDetailByIdResponseBodyData struct {
+	// Alarm event type.
+	//
+	// example:
+	//
+	// Unusual Logon
+	AlarmEventType *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	// Alarm event type.
+	//
+	// example:
+	//
+	// Login with unusual location
+	AlarmEventTypeDisplay *string `json:"AlarmEventTypeDisplay,omitempty" xml:"AlarmEventTypeDisplay,omitempty"`
+	// Alarm ID.
+	//
+	// example:
+	//
+	// 202427220
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// Alarm name.
+	//
+	// example:
+	//
+	// 负载均衡可挂载服务器数量告警
+	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	// Alarm source.
+	//
+	// example:
+	//
+	// SUSP_EVENT
+	AlarmSource *string `json:"AlarmSource,omitempty" xml:"AlarmSource,omitempty"`
+	// Latest alarm time.
+	//
+	// example:
+	//
+	// 2018-09-26 01:51:01
+	AlarmTime *string `json:"AlarmTime,omitempty" xml:"AlarmTime,omitempty"`
+	// Analysis process.
+	//
+	// example:
+	//
+	// [{"value":"服务器可能已被黑客攻击，存在恶意进程在运行。 分析过程：告警显示，服务端存在一个名为”dns.exe”的进程在访问”polling.burpcollaborator.net”，这是一个被黑名单列出的恶意域名。在正常情况下,”dns.exe”不应该单独存在于系统的路径下，并且也不应该访问这类恶意域名。因此，这个进程可能是黑客留下的恶意进程。","key":"结论"},{"value":"尽快对服务器进行全面扫描，清除恶意进程。同时，联系网络安全专家进行深入调查，以确定是否有其他潜在的安全威胁。","key":"处置建议"}]
+	AnalysisResult *string `json:"AnalysisResult,omitempty" xml:"AnalysisResult,omitempty"`
+	// Whether high-protection mode is enabled. true means enabled, false means not enabled.
+	//
+	// example:
+	//
+	// false
+	ContainHwMode *bool `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	// Alarm handling time.
+	//
+	// example:
+	//
+	// 2018-09-26 01:51:01
+	DealTime *string `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// webshell
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// Event details information.
+	EventDetails []*GetAlarmDetailByIdResponseBodyDataEventDetails `json:"EventDetails,omitempty" xml:"EventDetails,omitempty" type:"Repeated"`
+	// Alarm level.
+	//
+	// example:
+	//
+	// suspicious
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// Primary key ID of the work order.
+	//
+	// example:
+	//
+	// 9772
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Affected asset.
+	//
+	// example:
+	//
+	// nginx
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Public IP.
+	//
+	// example:
+	//
+	// 47.116.126.79
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Private IP.
+	//
+	// example:
+	//
+	// 172.19.195.176
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// First occurrence time
+	//
+	// example:
+	//
+	// 2018-09-26 01:51:01
+	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
+	// Owner.
+	//
+	// example:
+	//
+	// 324546
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Disposal method.
+	//
+	// example:
+	//
+	// 192.168.XX.XX
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Handling status.
+	//
+	// example:
+	//
+	// 要查询的告警事件状态。取值：
+	//
+	// 0：全部
+	//
+	// 1：待处理
+	//
+	// 2：已忽略
+	//
+	// 4：已确认
+	//
+	// 8：已标记为误报
+	//
+	// 16：处理中
+	//
+	// 32：处理完毕
+	//
+	// 64：已经过期
+	//
+	// 128：已经删除
+	//
+	// 512：自动拦截中
+	//
+	// 513：自动拦截完毕
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// ATT&CK tactic name.
+	//
+	// example:
+	//
+	// Malicious scripts-Malicious script code execution
+	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
+}
+
+func (s GetAlarmDetailByIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmDetailByIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmEventType(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmEventType = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmEventTypeDisplay(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmEventTypeDisplay = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmId(v int64) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmId = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmName(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmName = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmSource(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmSource = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAlarmTime(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AlarmTime = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetAnalysisResult(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.AnalysisResult = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetContainHwMode(v bool) *GetAlarmDetailByIdResponseBodyData {
+	s.ContainHwMode = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetDealTime(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.DealTime = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetDesc(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetEventDetails(v []*GetAlarmDetailByIdResponseBodyDataEventDetails) *GetAlarmDetailByIdResponseBodyData {
+	s.EventDetails = v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetEventLevel(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetId(v int64) *GetAlarmDetailByIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetInstanceName(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetInternetIp(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetIntranetIp(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetOccurrenceTime(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.OccurrenceTime = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetOwnerId(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetRemark(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetStatus(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyData) SetTacticDisplayName(v string) *GetAlarmDetailByIdResponseBodyData {
+	s.TacticDisplayName = &v
+	return s
+}
+
+type GetAlarmDetailByIdResponseBodyDataEventDetails struct {
+	// Alarm event display name.
+	//
+	// example:
+	//
+	// Login with unusual location
+	NameDisplay *string `json:"NameDisplay,omitempty" xml:"NameDisplay,omitempty"`
+	// Alarm event type.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Path where the alarm event occurred.
+	//
+	// example:
+	//
+	// /etc/crontab
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// Path where the alarm event occurred.
+	//
+	// example:
+	//
+	// /etc/crontab
+	ValueDisplay *string `json:"ValueDisplay,omitempty" xml:"ValueDisplay,omitempty"`
+}
+
+func (s GetAlarmDetailByIdResponseBodyDataEventDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmDetailByIdResponseBodyDataEventDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmDetailByIdResponseBodyDataEventDetails) SetNameDisplay(v string) *GetAlarmDetailByIdResponseBodyDataEventDetails {
+	s.NameDisplay = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyDataEventDetails) SetType(v string) *GetAlarmDetailByIdResponseBodyDataEventDetails {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyDataEventDetails) SetValue(v string) *GetAlarmDetailByIdResponseBodyDataEventDetails {
+	s.Value = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponseBodyDataEventDetails) SetValueDisplay(v string) *GetAlarmDetailByIdResponseBodyDataEventDetails {
+	s.ValueDisplay = &v
+	return s
+}
+
+type GetAlarmDetailByIdResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAlarmDetailByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAlarmDetailByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAlarmDetailByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAlarmDetailByIdResponse) SetHeaders(v map[string]*string) *GetAlarmDetailByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponse) SetStatusCode(v int32) *GetAlarmDetailByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAlarmDetailByIdResponse) SetBody(v *GetAlarmDetailByIdResponseBody) *GetAlarmDetailByIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetAttackedAssetDealRequest struct {
+	// Time filter type, supporting filtering by the last 7 days, the last 30 days, the last half year, or custom time periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732268720000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732268720000
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Source of the alert event.
+	//
+	// example:
+	//
+	// 暂时无需传参，有问题请联系管理员
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -813,25 +1439,42 @@ func (s *GetAttackedAssetDealRequest) SetSuspEventSource(v string) *GetAttackedA
 }
 
 type GetAttackedAssetDealResponseBody struct {
+	// Interface return code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query result.
 	Data *GetAttackedAssetDealResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1E74F11C-B4A8-5774-962C-02003BA8504E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the query was successful.<br />
+	//
+	// **Enum values:**
+	//
+	// 	- true: Success.
+	//
+	// 	- false: Failure.
+	//
 	// example:
 	//
 	// true
@@ -877,6 +1520,7 @@ func (s *GetAttackedAssetDealResponseBody) SetSuccess(v bool) *GetAttackedAssetD
 }
 
 type GetAttackedAssetDealResponseBodyData struct {
+	// Collection of attacked asset convergence trends.
 	EcsTrendList []*GetAttackedAssetDealResponseBodyDataEcsTrendList `json:"EcsTrendList,omitempty" xml:"EcsTrendList,omitempty" type:"Repeated"`
 }
 
@@ -894,11 +1538,23 @@ func (s *GetAttackedAssetDealResponseBodyData) SetEcsTrendList(v []*GetAttackedA
 }
 
 type GetAttackedAssetDealResponseBodyDataEcsTrendList struct {
+	// Date point.
+	//
+	// example:
+	//
+	// 202312或20231205
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Number of processed items.
+	//
 	// example:
 	//
 	// 2
 	DealCount *int64 `json:"DealCount,omitempty" xml:"DealCount,omitempty"`
+	// Number of discovered items.
+	//
+	// example:
+	//
+	// 暂时无值，有疑问请联系管理员
 	FindCount *int64 `json:"FindCount,omitempty" xml:"FindCount,omitempty"`
 }
 
@@ -955,24 +1611,35 @@ func (s *GetAttackedAssetDealResponse) SetBody(v *GetAttackedAssetDealResponseBo
 }
 
 type GetBaselineSummaryRequest struct {
+	// Time filter type, supports filtering by the last 7 days, the last 30 days, the last half year, or custom time periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732156885986
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1729478485000
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -1005,25 +1672,36 @@ func (s *GetBaselineSummaryRequest) SetSuspEventSource(v string) *GetBaselineSum
 }
 
 type GetBaselineSummaryResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *GetBaselineSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the returned result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 67D61738-5E38-5164-947A-34E3850D493A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Values: true: success; false: failure.
+	//
 	// example:
 	//
 	// true
@@ -1069,6 +1747,7 @@ func (s *GetBaselineSummaryResponseBody) SetSuccess(v bool) *GetBaselineSummaryR
 }
 
 type GetBaselineSummaryResponseBodyData struct {
+	// Collection of baseline statistical data.
 	TrendDTOList []*GetBaselineSummaryResponseBodyDataTrendDTOList `json:"TrendDTOList,omitempty" xml:"TrendDTOList,omitempty" type:"Repeated"`
 }
 
@@ -1086,11 +1765,20 @@ func (s *GetBaselineSummaryResponseBodyData) SetTrendDTOList(v []*GetBaselineSum
 }
 
 type GetBaselineSummaryResponseBodyDataTrendDTOList struct {
+	// Date point.
+	//
+	// example:
+	//
+	// 202408或者20240801
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Number of processed items.
+	//
 	// example:
 	//
 	// 10
 	DealCount *int64 `json:"DealCount,omitempty" xml:"DealCount,omitempty"`
+	// Number of discovered items.
+	//
 	// example:
 	//
 	// 12
@@ -1149,7 +1837,206 @@ func (s *GetBaselineSummaryResponse) SetBody(v *GetBaselineSummaryResponseBody) 
 	return s
 }
 
+type GetConsoleScoreRequest struct {
+	// Filter time type, supports filtering by the last 7 days, last 30 days, last half year, or custom. If empty, it represents the last 7 days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// month
+	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End date.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1732156885986
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start date.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1729478485000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Source of alert events.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
+	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
+}
+
+func (s GetConsoleScoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsoleScoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsoleScoreRequest) SetDateType(v string) *GetConsoleScoreRequest {
+	s.DateType = &v
+	return s
+}
+
+func (s *GetConsoleScoreRequest) SetEndDate(v int64) *GetConsoleScoreRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetConsoleScoreRequest) SetStartDate(v int64) *GetConsoleScoreRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetConsoleScoreRequest) SetSuspEventSource(v string) *GetConsoleScoreRequest {
+	s.SuspEventSource = &v
+	return s
+}
+
+type GetConsoleScoreResponseBody struct {
+	// Interface response code.
+	//
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "score": "94.00",
+	//
+	//     "consoleScoreTrendDTOS": [
+	//
+	//         {
+	//
+	//             "date": "20241009",
+	//
+	//             "score": "100.0"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "cyclicYearOverYear": "-6.00",
+	//
+	//     "recordDate": "20241209",
+	//
+	//     "weeklyYearOverYear": "1.62",
+	//
+	//     "aboveWholeNetworkUserRatio": "6.25",
+	//
+	//     "aliUid": "1601097845544644",
+	//
+	//     "detailJson": "[{\\"detailDTO\\":[{\\"count\\":0,\\"itemName\\":\\"应用漏洞POC验证\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"未授权访问漏洞（公网暴露）\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"后台弱口令漏洞（公网暴露）\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"文件上传漏洞（公网暴露）\\",\\"mark\\":\\"1\\"}],\\"markRate\\":\\"0.5\\",\\"markType\\":\\"vul\\"},{\\"detailDTO\\":[{\\"count\\":12,\\"itemName\\":\\"WAF3.0回源配置不正确\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"AK泄露检查未开启\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"DNAT管理端口开放\\",\\"mark\\":\\"1\\"},{\\"count\\":0,\\"itemName\\":\\"高危端口暴露\\",\\"mark\\":\\"0.5\\"}],\\"markRate\\":\\"0.5\\",\\"markType\\":\\"risk\\"}]"
+	//
+	// }
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the result returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// D0937B0F-9180-5F70-B6ED-0BA22591627F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. true means success, false means failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetConsoleScoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsoleScoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsoleScoreResponseBody) SetCode(v string) *GetConsoleScoreResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetConsoleScoreResponseBody) SetData(v interface{}) *GetConsoleScoreResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetConsoleScoreResponseBody) SetHttpStatusCode(v int32) *GetConsoleScoreResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetConsoleScoreResponseBody) SetMessage(v string) *GetConsoleScoreResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetConsoleScoreResponseBody) SetRequestId(v string) *GetConsoleScoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConsoleScoreResponseBody) SetSuccess(v bool) *GetConsoleScoreResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetConsoleScoreResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConsoleScoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConsoleScoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsoleScoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsoleScoreResponse) SetHeaders(v map[string]*string) *GetConsoleScoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConsoleScoreResponse) SetStatusCode(v int32) *GetConsoleScoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConsoleScoreResponse) SetBody(v *GetConsoleScoreResponseBody) *GetConsoleScoreResponse {
+	s.Body = v
+	return s
+}
+
 type GetDetailByIdRequest struct {
+	// Primary key ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1172,25 +2059,36 @@ func (s *GetDetailByIdRequest) SetId(v int64) *GetDetailByIdRequest {
 }
 
 type GetDetailByIdResponseBody struct {
+	// Interface return code.
+	//
 	// example:
 	//
 	// 404
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query result.
 	Data *GetDetailByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAB46EC5-3746-59C4-B6D2-469F442EC73F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Values: - **true**: indicates a successful call. - **false**: indicates a failed call.
+	//
 	// example:
 	//
 	// true
@@ -1236,6 +2134,7 @@ func (s *GetDetailByIdResponseBody) SetSuccess(v bool) *GetDetailByIdResponseBod
 }
 
 type GetDetailByIdResponseBodyData struct {
+	// Vulnerability details.
 	VulDetails []*GetDetailByIdResponseBodyDataVulDetails `json:"VulDetails,omitempty" xml:"VulDetails,omitempty" type:"Repeated"`
 }
 
@@ -1253,18 +2152,26 @@ func (s *GetDetailByIdResponseBodyData) SetVulDetails(v []*GetDetailByIdResponse
 }
 
 type GetDetailByIdResponseBodyDataVulDetails struct {
+	// CVE ID.
+	//
 	// example:
 	//
 	// CVE-2022-21291
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
+	// The CVSS score of the vulnerability in the Alibaba Cloud vulnerability database.
+	//
 	// example:
 	//
 	// 10.0
 	CvssScore *string `json:"CvssScore,omitempty" xml:"CvssScore,omitempty"`
+	// Fix suggestion.
+	//
 	// example:
 	//
 	// https://avd.aliyun.com/detail/CVE-2022-21291
 	FixSuggestion *string `json:"FixSuggestion,omitempty" xml:"FixSuggestion,omitempty"`
+	// Title of the vulnerability announcement.
+	//
 	// example:
 	//
 	// Chanjet T-Plus SetupAccount/Upload. Aspx file upload vulnerability(CNVD-2022-60632)
@@ -1329,6 +2236,8 @@ func (s *GetDetailByIdResponse) SetBody(v *GetDetailByIdResponseBody) *GetDetail
 }
 
 type GetDocumentDownloadUrlRequest struct {
+	// Document management ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1351,28 +2260,40 @@ func (s *GetDocumentDownloadUrlRequest) SetId(v int64) *GetDocumentDownloadUrlRe
 }
 
 type GetDocumentDownloadUrlResponseBody struct {
+	// API status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// OSS file access URL.
+	//
 	// example:
 	//
 	// https://oos-cn.ctyunapi.cn/example-bucket/test/1.jpg
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Message of the returned result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// C7BE80B4-7692-54FA-AB22-2A7DF08C4754
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful: - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -1447,24 +2368,42 @@ func (s *GetDocumentDownloadUrlResponse) SetBody(v *GetDocumentDownloadUrlRespon
 }
 
 type GetDocumentPageRequest struct {
+	// Current page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DeliveredBy  *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Delivered by.
+	//
+	// example:
+	//
+	// 张三
+	DeliveredBy *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
+	// Document name.
+	//
+	// example:
+	//
+	// 季度报告
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// Document type.
+	//
 	// example:
 	//
 	// 0
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// Page size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Report type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1512,26 +2451,38 @@ func (s *GetDocumentPageRequest) SetReportType(v string) *GetDocumentPageRequest
 }
 
 type GetDocumentPageResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response data.
 	Data []*GetDocumentPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the response result.
+	//
 	// example:
 	//
 	// successful
-	Message  *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination information.
 	PageInfo *GetDocumentPageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 04DAD7B4-E1DA-5C2C-8E5C-A1EDC880CF60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -1582,16 +2533,32 @@ func (s *GetDocumentPageResponseBody) SetSuccess(v bool) *GetDocumentPageRespons
 }
 
 type GetDocumentPageResponseBodyData struct {
-	DeliveredBy  *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
+	// Delivered by.
+	//
+	// example:
+	//
+	// 张三
+	DeliveredBy *string `json:"DeliveredBy,omitempty" xml:"DeliveredBy,omitempty"`
+	// Report name.
+	//
+	// example:
+	//
+	// 季度报告
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// Service report type.
+	//
 	// example:
 	//
 	// 3
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// Document primary key ID.
+	//
 	// example:
 	//
 	// 346409
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Report generation time.
+	//
 	// example:
 	//
 	// 2023-03-21 17:26:34
@@ -1632,14 +2599,20 @@ func (s *GetDocumentPageResponseBodyData) SetUploadTime(v string) *GetDocumentPa
 }
 
 type GetDocumentPageResponseBodyPageInfo struct {
+	// The current page number in pagination queries.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of data items displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of data items found.
+	//
 	// example:
 	//
 	// 3149
@@ -1699,6 +2672,8 @@ func (s *GetDocumentPageResponse) SetBody(v *GetDocumentPageResponseBody) *GetDo
 }
 
 type GetDocumentSummaryRequest struct {
+	// Type of service report.
+	//
 	// example:
 	//
 	// 1
@@ -1719,25 +2694,40 @@ func (s *GetDocumentSummaryRequest) SetReportType(v string) *GetDocumentSummaryR
 }
 
 type GetDocumentSummaryResponseBody struct {
+	// Interface return code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query result.
 	Data *GetDocumentSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the returned result.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7903F2DE-D9EE-5D16-8A08-E9223E54B281
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. Values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// True
@@ -1783,10 +2773,14 @@ func (s *GetDocumentSummaryResponseBody) SetSuccess(v bool) *GetDocumentSummaryR
 }
 
 type GetDocumentSummaryResponseBodyData struct {
+	// Number of documents.
+	//
 	// example:
 	//
 	// 10
 	DocumentCount *int64 `json:"DocumentCount,omitempty" xml:"DocumentCount,omitempty"`
+	// Number of services or days.
+	//
 	// example:
 	//
 	// 10
@@ -1841,12 +2835,35 @@ func (s *GetDocumentSummaryResponse) SetBody(v *GetDocumentSummaryResponseBody) 
 }
 
 type GetRecentDocumentRequest struct {
+	// Filter time type, supports filtering by the last 7 days, the last 30 days, the last half year, or custom time ranges.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -1879,25 +2896,36 @@ func (s *GetRecentDocumentRequest) SetSuspEventSource(v string) *GetRecentDocume
 }
 
 type GetRecentDocumentResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data []*GetRecentDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4916FA8D-F294-518D-B373-8B59D63CAB19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -1943,11 +2971,20 @@ func (s *GetRecentDocumentResponseBody) SetSuccess(v bool) *GetRecentDocumentRes
 }
 
 type GetRecentDocumentResponseBodyData struct {
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 360491
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Document name
+	//
+	// example:
+	//
+	// 文档名称测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Upload time.
+	//
 	// example:
 	//
 	// 2023-03-20 14:30:38
@@ -2007,24 +3044,35 @@ func (s *GetRecentDocumentResponse) SetBody(v *GetRecentDocumentResponseBody) *G
 }
 
 type GetSafetyCoverRequest struct {
+	// Filter time type, supports filtering by the last 7 days, the last 30 days, the last half year, or custom time periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732268720000
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732255620000
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该接口不用传
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -2057,25 +3105,40 @@ func (s *GetSafetyCoverRequest) SetSuspEventSource(v string) *GetSafetyCoverRequ
 }
 
 type GetSafetyCoverResponseBody struct {
+	// API return code.
+	//
 	// example:
 	//
 	// 404
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query result.
 	Data *GetSafetyCoverResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Message of the response result.
+	//
 	// example:
 	//
 	// system error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 564f8bb9-df3c-42a0-877a-b35d48f66603
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful:
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// True
@@ -2121,8 +3184,11 @@ func (s *GetSafetyCoverResponseBody) SetSuccess(v bool) *GetSafetyCoverResponseB
 }
 
 type GetSafetyCoverResponseBodyData struct {
+	// CFW protection coverage.
 	CfwProtection *GetSafetyCoverResponseBodyDataCfwProtection `json:"CfwProtection,omitempty" xml:"CfwProtection,omitempty" type:"Struct"`
+	// ECS protection coverage.
 	EcsProtection *GetSafetyCoverResponseBodyDataEcsProtection `json:"EcsProtection,omitempty" xml:"EcsProtection,omitempty" type:"Struct"`
+	// WAF protection coverage.
 	WafProtection *GetSafetyCoverResponseBodyDataWafProtection `json:"WafProtection,omitempty" xml:"WafProtection,omitempty" type:"Struct"`
 }
 
@@ -2150,22 +3216,32 @@ func (s *GetSafetyCoverResponseBodyData) SetWafProtection(v *GetSafetyCoverRespo
 }
 
 type GetSafetyCoverResponseBodyDataCfwProtection struct {
+	// Number of unprotected items.
+	//
 	// example:
 	//
 	// 5
 	NoProtectionCount *int64 `json:"NoProtectionCount,omitempty" xml:"NoProtectionCount,omitempty"`
+	// Number of protected items.
+	//
 	// example:
 	//
 	// 5
 	ProtectionCount *int64 `json:"ProtectionCount,omitempty" xml:"ProtectionCount,omitempty"`
+	// Year-over-year protection rate.
+	//
 	// example:
 	//
 	// 35.00
 	ProtectionGrowthRate *string `json:"ProtectionGrowthRate,omitempty" xml:"ProtectionGrowthRate,omitempty"`
+	// Protection rate.
+	//
 	// example:
 	//
 	// 50.00
 	ProtectionRate *string `json:"ProtectionRate,omitempty" xml:"ProtectionRate,omitempty"`
+	// Total quantity.
+	//
 	// example:
 	//
 	// 10
@@ -2206,22 +3282,32 @@ func (s *GetSafetyCoverResponseBodyDataCfwProtection) SetTotalCount(v int64) *Ge
 }
 
 type GetSafetyCoverResponseBodyDataEcsProtection struct {
+	// Number of unprotected items.
+	//
 	// example:
 	//
 	// 5
 	NoProtectionCount *int64 `json:"NoProtectionCount,omitempty" xml:"NoProtectionCount,omitempty"`
+	// Number of protected items.
+	//
 	// example:
 	//
 	// 5
 	ProtectionCount *int64 `json:"ProtectionCount,omitempty" xml:"ProtectionCount,omitempty"`
+	// Year-over-year growth in protection rate.
+	//
 	// example:
 	//
 	// 35.00
 	ProtectionGrowthRate *string `json:"ProtectionGrowthRate,omitempty" xml:"ProtectionGrowthRate,omitempty"`
+	// Protection rate.
+	//
 	// example:
 	//
 	// 50.00
 	ProtectionRate *string `json:"ProtectionRate,omitempty" xml:"ProtectionRate,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 10
@@ -2262,22 +3348,32 @@ func (s *GetSafetyCoverResponseBodyDataEcsProtection) SetTotalCount(v int64) *Ge
 }
 
 type GetSafetyCoverResponseBodyDataWafProtection struct {
+	// Number of unprotected items.
+	//
 	// example:
 	//
 	// 5
 	NoProtectionCount *int64 `json:"NoProtectionCount,omitempty" xml:"NoProtectionCount,omitempty"`
+	// Number of protected items.
+	//
 	// example:
 	//
 	// 5
 	ProtectionCount *int64 `json:"ProtectionCount,omitempty" xml:"ProtectionCount,omitempty"`
+	// Year-over-year growth in protection rate.
+	//
 	// example:
 	//
 	// 35.00
 	ProtectionGrowthRate *string `json:"ProtectionGrowthRate,omitempty" xml:"ProtectionGrowthRate,omitempty"`
+	// Protection rate.
+	//
 	// example:
 	//
 	// 50.00
 	ProtectionRate *string `json:"ProtectionRate,omitempty" xml:"ProtectionRate,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 10
@@ -2346,31 +3442,296 @@ func (s *GetSafetyCoverResponse) SetBody(v *GetSafetyCoverResponseBody) *GetSafe
 	return s
 }
 
+type GetSowListRequest struct {
+	// Filter time type, supports filtering by the last 7 days, the last 30 days, the last half year, or custom time ranges.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// month
+	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1732156885986
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1729478485000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
+	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
+}
+
+func (s GetSowListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSowListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSowListRequest) SetDateType(v string) *GetSowListRequest {
+	s.DateType = &v
+	return s
+}
+
+func (s *GetSowListRequest) SetEndDate(v int64) *GetSowListRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetSowListRequest) SetStartDate(v int64) *GetSowListRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetSowListRequest) SetSuspEventSource(v string) *GetSowListRequest {
+	s.SuspEventSource = &v
+	return s
+}
+
+type GetSowListResponseBody struct {
+	// Interface response code.
+	//
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
+	Data []*GetSowListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt information for the returned result.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FA8883BC-CB18-5E28-A113-8249917CA05E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSowListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSowListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSowListResponseBody) SetCode(v string) *GetSowListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSowListResponseBody) SetData(v []*GetSowListResponseBodyData) *GetSowListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSowListResponseBody) SetHttpStatusCode(v int32) *GetSowListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSowListResponseBody) SetMessage(v string) *GetSowListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSowListResponseBody) SetRequestId(v string) *GetSowListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSowListResponseBody) SetSuccess(v bool) *GetSowListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSowListResponseBodyData struct {
+	// Completion time.
+	//
+	// example:
+	//
+	// 2024-03-28 16:19:35
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// Operation remarks.
+	//
+	// example:
+	//
+	// 新建
+	OperateRemark *string `json:"OperateRemark,omitempty" xml:"OperateRemark,omitempty"`
+	// Progress.
+	//
+	// example:
+	//
+	// IN_PREPARATION
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// Record count.
+	//
+	// example:
+	//
+	// 173
+	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// Start time.
+	//
+	// example:
+	//
+	// 2023-03-24 16:51:26
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Task type.
+	//
+	// example:
+	//
+	// 安全风险评估
+	TaskTypeName *string `json:"TaskTypeName,omitempty" xml:"TaskTypeName,omitempty"`
+	// Work order name.
+	//
+	// example:
+	//
+	// 安全产品配置问题与超量提醒
+	WorkOrderName *string `json:"WorkOrderName,omitempty" xml:"WorkOrderName,omitempty"`
+}
+
+func (s GetSowListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSowListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSowListResponseBodyData) SetCompleteTime(v string) *GetSowListResponseBodyData {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetOperateRemark(v string) *GetSowListResponseBodyData {
+	s.OperateRemark = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetProgress(v string) *GetSowListResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetRecordCount(v int32) *GetSowListResponseBodyData {
+	s.RecordCount = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetStartTime(v string) *GetSowListResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetTaskTypeName(v string) *GetSowListResponseBodyData {
+	s.TaskTypeName = &v
+	return s
+}
+
+func (s *GetSowListResponseBodyData) SetWorkOrderName(v string) *GetSowListResponseBodyData {
+	s.WorkOrderName = &v
+	return s
+}
+
+type GetSowListResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSowListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSowListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSowListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSowListResponse) SetHeaders(v map[string]*string) *GetSowListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSowListResponse) SetStatusCode(v int32) *GetSowListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSowListResponse) SetBody(v *GetSowListResponseBody) *GetSowListResponse {
+	s.Body = v
+	return s
+}
+
 type GetSuspEventPageRequest struct {
+	// Alarm end time.
+	//
 	// example:
 	//
 	// 1732515522000
 	AlarmEndTime *int64 `json:"AlarmEndTime,omitempty" xml:"AlarmEndTime,omitempty"`
+	// Alarm start time.
+	//
 	// example:
 	//
 	// 1722515522000
 	AlarmStartTime *int64 `json:"AlarmStartTime,omitempty" xml:"AlarmStartTime,omitempty"`
+	// Current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Number of items per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Alarm source.
+	//
 	// example:
 	//
 	// SUSP_EVENT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Disposal status.
+	//
 	// example:
 	//
 	// 1
@@ -2416,26 +3777,40 @@ func (s *GetSuspEventPageRequest) SetStatus(v int32) *GetSuspEventPageRequest {
 }
 
 type GetSuspEventPageResponseBody struct {
+	// API response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data []*GetSuspEventPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message of the returned result.
+	//
 	// example:
 	//
 	// system error
-	Message  *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination information.
 	PageInfo *GetSuspEventPageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AFA6F7B7-7C4B-58BB-B8FB-E0FFA4483561
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -2486,49 +3861,102 @@ func (s *GetSuspEventPageResponseBody) SetSuccess(v bool) *GetSuspEventPageRespo
 }
 
 type GetSuspEventPageResponseBodyData struct {
+	// Alarm event type.
+	//
+	// example:
+	//
+	// 精准防御
 	AlarmEventType *string `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
+	// Alarm ID.
+	//
 	// example:
 	//
 	// 5b1eeebe4f22daa2b177298234214fa3
-	AlarmId   *int64  `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
+	// Alarm name.
+	//
+	// example:
+	//
+	// Web服务漏洞利用
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
+	// Alarm source.
+	//
 	// example:
 	//
 	// SUSP_EVENT
 	AlarmSource *string `json:"AlarmSource,omitempty" xml:"AlarmSource,omitempty"`
+	// Latest alarm time.
+	//
 	// example:
 	//
 	// 1722515522000
-	AlarmTime      *string `json:"AlarmTime,omitempty" xml:"AlarmTime,omitempty"`
+	AlarmTime *string `json:"AlarmTime,omitempty" xml:"AlarmTime,omitempty"`
+	// Analysis process.
+	//
+	// example:
+	//
+	// [{"value":"服务器可能已被黑客攻击，存在恶意进程在运行。 分析过程：告警显示，服务端存在一个名为”dns.exe”的进程在访问”polling.burpcollaborator.net”，这是一个被黑名单列出的恶意域名。在正常情况下,”dns.exe”不应该单独存在于系统的路径下，并且也不应该访问这类恶意域名。因此，这个进程可能是黑客留下的恶意进程。","key":"结论"},{"value":"尽快对服务器进行全面扫描，清除恶意进程。同时，联系网络安全专家进行深入调查，以确定是否有其他潜在的安全威胁。","key":"处置建议"}]
 	AnalysisResult *string `json:"AnalysisResult,omitempty" xml:"AnalysisResult,omitempty"`
+	// Alarm handling time.
+	//
 	// example:
 	//
 	// 1732515522000
 	DealTime *string `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	// Alarm level.
+	//
 	// example:
 	//
 	// suspicious
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// Ticket primary key id.
+	//
 	// example:
 	//
 	// 9947
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Affected asset.
+	//
 	// example:
 	//
 	// shells-azhou
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Public IP address.
+	//
 	// example:
 	//
 	// 47.99.188.31
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Private IP address.
+	//
 	// example:
 	//
 	// 172.16.109.130
-	IntranetIp     *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// First occurrence time.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	OccurrenceTime *string `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
-	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Owner ID.
+	//
+	// example:
+	//
+	// 张三
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Disposal method.
+	//
+	// example:
+	//
+	// 处理完成
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Handling status.
+	//
+	// example:
+	//
+	// 未处理
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetSuspEventPageResponseBodyData) String() string {
@@ -2620,14 +4048,20 @@ func (s *GetSuspEventPageResponseBodyData) SetStatus(v string) *GetSuspEventPage
 }
 
 type GetSuspEventPageResponseBodyPageInfo struct {
+	// The current page number in pagination queries.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of items displayed per page in the returned data.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 100
@@ -2687,24 +4121,32 @@ func (s *GetSuspEventPageResponse) SetBody(v *GetSuspEventPageResponseBody) *Get
 }
 
 type GetSuspEventSummaryRequest struct {
+	// Filter time type. Supports filtering by the last 7 days, the last 30 days, the last half year, or custom time ranges.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732156885986
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1729478485000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
 	// example:
 	//
 	// SUSP_EVENT
@@ -2740,25 +4182,40 @@ func (s *GetSuspEventSummaryRequest) SetSuspEventSource(v string) *GetSuspEventS
 }
 
 type GetSuspEventSummaryResponseBody struct {
+	// API response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *GetSuspEventSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the returned result.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9B2DAE9B-B901-5818-AFEF-E5637D938280
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - true: Call succeeded.
+	//
+	// - false: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -2804,10 +4261,14 @@ func (s *GetSuspEventSummaryResponseBody) SetSuccess(v bool) *GetSuspEventSummar
 }
 
 type GetSuspEventSummaryResponseBodyData struct {
-	NetworkAttackTrendDTO   *GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTO   `json:"NetworkAttackTrendDTO,omitempty" xml:"NetworkAttackTrendDTO,omitempty" type:"Struct"`
+	// Network attack trend.
+	NetworkAttackTrendDTO *GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTO `json:"NetworkAttackTrendDTO,omitempty" xml:"NetworkAttackTrendDTO,omitempty" type:"Struct"`
+	// Overview of alert handling.
 	SuspEventDealSummaryDTO *GetSuspEventSummaryResponseBodyDataSuspEventDealSummaryDTO `json:"SuspEventDealSummaryDTO,omitempty" xml:"SuspEventDealSummaryDTO,omitempty" type:"Struct"`
-	SuspEventTopDTO         *GetSuspEventSummaryResponseBodyDataSuspEventTopDTO         `json:"SuspEventTopDTO,omitempty" xml:"SuspEventTopDTO,omitempty" type:"Struct"`
-	SuspEventTrendDTO       *GetSuspEventSummaryResponseBodyDataSuspEventTrendDTO       `json:"SuspEventTrendDTO,omitempty" xml:"SuspEventTrendDTO,omitempty" type:"Struct"`
+	// Top 10 alerts before handling.
+	SuspEventTopDTO *GetSuspEventSummaryResponseBodyDataSuspEventTopDTO `json:"SuspEventTopDTO,omitempty" xml:"SuspEventTopDTO,omitempty" type:"Struct"`
+	// Trend of alert responses.
+	SuspEventTrendDTO *GetSuspEventSummaryResponseBodyDataSuspEventTrendDTO `json:"SuspEventTrendDTO,omitempty" xml:"SuspEventTrendDTO,omitempty" type:"Struct"`
 }
 
 func (s GetSuspEventSummaryResponseBodyData) String() string {
@@ -2839,6 +4300,7 @@ func (s *GetSuspEventSummaryResponseBodyData) SetSuspEventTrendDTO(v *GetSuspEve
 }
 
 type GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTO struct {
+	// Collection of trend nodes for each attack item.
 	TrendList []*GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTOTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
 }
 
@@ -2856,15 +4318,26 @@ func (s *GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTO) SetTrendList(
 }
 
 type GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTOTrendList struct {
+	// Date.
+	//
+	// example:
+	//
+	// 202409或20240901
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// DDoS count.
+	//
 	// example:
 	//
 	// 10
 	DdosCount *int64 `json:"DdosCount,omitempty" xml:"DdosCount,omitempty"`
+	// EIP count.
+	//
 	// example:
 	//
 	// 10
 	EipCount *int64 `json:"EipCount,omitempty" xml:"EipCount,omitempty"`
+	// WAF count.
+	//
 	// example:
 	//
 	// 10
@@ -2900,26 +4373,38 @@ func (s *GetSuspEventSummaryResponseBodyDataNetworkAttackTrendDTOTrendList) SetW
 }
 
 type GetSuspEventSummaryResponseBodyDataSuspEventDealSummaryDTO struct {
+	// Completed.
+	//
 	// example:
 	//
 	// 20
 	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	// In progress.
+	//
 	// example:
 	//
 	// 5
 	HandingCount *int64 `json:"HandingCount,omitempty" xml:"HandingCount,omitempty"`
+	// Alert handling rate.
+	//
 	// example:
 	//
 	// 90
 	HandingRate *string `json:"HandingRate,omitempty" xml:"HandingRate,omitempty"`
+	// Total number of alerts.
+	//
 	// example:
 	//
 	// 35
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Year-over-year comparison of alerts.
+	//
 	// example:
 	//
 	// 10
 	TotalGrowthRate *string `json:"TotalGrowthRate,omitempty" xml:"TotalGrowthRate,omitempty"`
+	// Number of unhandled alerts.
+	//
 	// example:
 	//
 	// 10
@@ -2965,6 +4450,7 @@ func (s *GetSuspEventSummaryResponseBodyDataSuspEventDealSummaryDTO) SetWaitHand
 }
 
 type GetSuspEventSummaryResponseBodyDataSuspEventTopDTO struct {
+	// Top 10 before handling alarms
 	SuspEventList []*GetSuspEventSummaryResponseBodyDataSuspEventTopDTOSuspEventList `json:"SuspEventList,omitempty" xml:"SuspEventList,omitempty" type:"Repeated"`
 }
 
@@ -2982,7 +4468,14 @@ func (s *GetSuspEventSummaryResponseBodyDataSuspEventTopDTO) SetSuspEventList(v 
 }
 
 type GetSuspEventSummaryResponseBodyDataSuspEventTopDTOSuspEventList struct {
+	// Alert name.
+	//
+	// example:
+	//
+	// 主动外连风险 IP
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// Count.
+	//
 	// example:
 	//
 	// 7
@@ -3008,6 +4501,7 @@ func (s *GetSuspEventSummaryResponseBodyDataSuspEventTopDTOSuspEventList) SetTas
 }
 
 type GetSuspEventSummaryResponseBodyDataSuspEventTrendDTO struct {
+	// Trend of alerts.
 	TrendList []*GetSuspEventSummaryResponseBodyDataSuspEventTrendDTOTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
 }
 
@@ -3025,11 +4519,20 @@ func (s *GetSuspEventSummaryResponseBodyDataSuspEventTrendDTO) SetTrendList(v []
 }
 
 type GetSuspEventSummaryResponseBodyDataSuspEventTrendDTOTrendList struct {
+	// Time point.
+	//
+	// example:
+	//
+	// 202405或者20240501
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Number of handled alerts.
+	//
 	// example:
 	//
 	// 10
 	DealCount *int64 `json:"DealCount,omitempty" xml:"DealCount,omitempty"`
+	// Number of discovered alerts.
+	//
 	// example:
 	//
 	// 15
@@ -3089,15 +4592,44 @@ func (s *GetSuspEventSummaryResponse) SetBody(v *GetSuspEventSummaryResponseBody
 }
 
 type GetSuspPageSummaryResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetSuspPageSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Interface response code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
+	Data *GetSuspPageSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the result returned.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// EF801DD1-D934-51B3-92D4-776CE17B184F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSuspPageSummaryResponseBody) String() string {
@@ -3139,12 +4671,47 @@ func (s *GetSuspPageSummaryResponseBody) SetSuccess(v bool) *GetSuspPageSummaryR
 }
 
 type GetSuspPageSummaryResponseBodyData struct {
-	CompletedCount  *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
-	HandingCount    *int64 `json:"HandingCount,omitempty" xml:"HandingCount,omitempty"`
-	HighCount       *int64 `json:"HighCount,omitempty" xml:"HighCount,omitempty"`
-	LowCount        *int64 `json:"LowCount,omitempty" xml:"LowCount,omitempty"`
-	MediumCount     *int64 `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
-	TotalCount      *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of completed items.
+	//
+	// example:
+	//
+	// 10
+	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	// Number of items being processed.
+	//
+	// example:
+	//
+	// 10
+	HandingCount *int64 `json:"HandingCount,omitempty" xml:"HandingCount,omitempty"`
+	// Number of high-risk items.
+	//
+	// example:
+	//
+	// 10
+	HighCount *int64 `json:"HighCount,omitempty" xml:"HighCount,omitempty"`
+	// Number of low-risk items.
+	//
+	// example:
+	//
+	// 10
+	LowCount *int64 `json:"LowCount,omitempty" xml:"LowCount,omitempty"`
+	// Number of medium-risk items.
+	//
+	// example:
+	//
+	// 10
+	MediumCount *int64 `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
+	// Total number of items.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of unhandled items.
+	//
+	// example:
+	//
+	// 10
 	WaitHandleCount *int64 `json:"WaitHandleCount,omitempty" xml:"WaitHandleCount,omitempty"`
 }
 
@@ -3221,25 +4788,36 @@ func (s *GetSuspPageSummaryResponse) SetBody(v *GetSuspPageSummaryResponseBody) 
 }
 
 type GetUserStatusResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *GetUserStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message of the returned result.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// D8DBD769-613E-5E6B-A9FD-B622375B152D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -3285,26 +4863,38 @@ func (s *GetUserStatusResponseBody) SetSuccess(v bool) *GetUserStatusResponseBod
 }
 
 type GetUserStatusResponseBodyData struct {
+	// Customer type.
+	//
 	// example:
 	//
 	// official
 	CustomerType *string `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
+	// End date.
+	//
 	// example:
 	//
 	// 2023-09-28 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// 726cec3c-4887-4354-8c21-c0ad12e10fc2
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Start date.
+	//
 	// example:
 	//
 	// 2023-09-20 00:00:00
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Status.
+	//
 	// example:
 	//
 	// FirstLogin
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Version.
+	//
 	// example:
 	//
 	// mdrjichu
@@ -3379,34 +4969,48 @@ func (s *GetUserStatusResponse) SetBody(v *GetUserStatusResponseBody) *GetUserSt
 }
 
 type GetVulItemPageRequest struct {
+	// Vulnerability alias.
+	//
 	// example:
 	//
 	// RHSA-2018:3665-Important: NetworkManager security update
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Processing status. y: processed; n: unprocessed; h: processing.
+	//
 	// example:
 	//
 	// n
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// Risk level.
+	//
 	// example:
 	//
 	// later
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Vulnerability name.
+	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:20183665
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Number of items to display per page in the returned data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Vulnerability type.
+	//
 	// example:
 	//
 	// sca
@@ -3457,26 +5061,40 @@ func (s *GetVulItemPageRequest) SetScanType(v string) *GetVulItemPageRequest {
 }
 
 type GetVulItemPageResponseBody struct {
+	// API response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data []*GetVulItemPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the returned result.
+	//
 	// example:
 	//
 	// successful
-	Message  *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination information.
 	PageInfo *GetVulItemPageResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request response.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 02F8BBF3-2D61-5982-8911-EEB387BE3AF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// true: Call succeeded. false: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -3527,67 +5145,104 @@ func (s *GetVulItemPageResponseBody) SetSuccess(v bool) *GetVulItemPageResponseB
 }
 
 type GetVulItemPageResponseBodyData struct {
+	// Vulnerability alias.
+	//
+	// example:
+	//
+	// RHSA-2024:4620: libndp 安全更新
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Number of high-priority vulnerabilities to be fixed.
+	//
 	// example:
 	//
 	// 74
 	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 1940494487193744
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Prefix for the CVE remediation advice URL.
+	//
 	// example:
 	//
 	// https://avd.aliyun.com/detail/
 	CveUrlPrefix *string `json:"CveUrlPrefix,omitempty" xml:"CveUrlPrefix,omitempty"`
+	// Processing status.
+	//
 	// example:
 	//
 	// y
 	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// Timestamp of the last discovery of the vulnerability.
+	//
 	// example:
 	//
 	// 2023-04-23 14:47:34
 	FindTime *string `json:"FindTime,omitempty" xml:"FindTime,omitempty"`
+	// Number of processed vulnerabilities.
+	//
 	// example:
 	//
 	// 20
 	HandledCount *int32 `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
+	// Primary key ID.
+	//
 	// example:
 	//
 	// 353845
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Number of medium-priority vulnerabilities to be fixed.
+	//
 	// example:
 	//
 	// 10
 	LaterCount *int32 `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
+	// Risk level
+	//
 	// example:
 	//
 	// later
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Vulnerability name.
+	//
 	// example:
 	//
 	// oval:com.redhat.rhsa:def:20205002
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Number of low-priority vulnerabilities to be fixed.
+	//
 	// example:
 	//
 	// 8
 	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	// CVE number.
+	//
 	// example:
 	//
 	// CVE-2019-20907
 	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
+	// Number of related CVE numbers.
+	//
 	// example:
 	//
 	// 20
 	RelatedCveCount *int32 `json:"RelatedCveCount,omitempty" xml:"RelatedCveCount,omitempty"`
+	// Vulnerability type.
+	//
 	// example:
 	//
 	// sca
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// Tags.
+	//
 	// example:
 	//
 	// Elevation of Privilege
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Total number of fixed vulnerabilities.
+	//
 	// example:
 	//
 	// 50
@@ -3688,14 +5343,20 @@ func (s *GetVulItemPageResponseBodyData) SetTotalFixCount(v int64) *GetVulItemPa
 }
 
 type GetVulItemPageResponseBodyPageInfo struct {
+	// The current page number for pagination queries.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Number of items to display per page in the returned data.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records in the query result.
+	//
 	// example:
 	//
 	// 163
@@ -3754,26 +5415,524 @@ func (s *GetVulItemPageResponse) SetBody(v *GetVulItemPageResponseBody) *GetVulI
 	return s
 }
 
-type GetVulPageSummaryResponseBody struct {
+type GetVulListByIdRequest struct {
+	// Current page
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Whether it has been processed; y: processed; n: not processed
+	//
+	// example:
+	//
+	// n
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// Primary key ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4209205
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Risk level
+	//
+	// example:
+	//
+	// asap,later,nntf
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Asset information of the vulnerability to be queried, which can be set as asset name, public IP, or private IP.
+	//
+	// example:
+	//
+	// production_nat_cn-hangzhou_zone_105
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// UUID of the server with the vulnerability to be queried. Multiple UUIDs should be separated by a comma (,).
+	//
+	// example:
+	//
+	// 3615b908-995a-4edb-bc85-1981b4e94ba0,9c52cf9a-d8ba-4e31-ae06-500b879ee4e6,4b7de3cf-c4ac-42fc-8804-35070493dc29,f3c01525-0777-4c97-88d9-bec11afd4a6a,a80bd516-c4f3-4c27-a169-c8abfaf9e89e
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s GetVulListByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdRequest) SetCurrentPage(v int32) *GetVulListByIdRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetDealed(v string) *GetVulListByIdRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetId(v int64) *GetVulListByIdRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetNecessity(v string) *GetVulListByIdRequest {
+	s.Necessity = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetPageSize(v int32) *GetVulListByIdRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetRemark(v string) *GetVulListByIdRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetVulListByIdRequest) SetUuids(v string) *GetVulListByIdRequest {
+	s.Uuids = &v
+	return s
+}
+
+type GetVulListByIdResponseBody struct {
+	// API response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetVulPageSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
+	Data []*GetVulListByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the returned result.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination information.
+	PageInfo *GetVulListByIdResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// D38B3D2F-67FD-57FF-87D1-C431D2C70F76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Values: - **true**: Yes. - **false**: No.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetVulListByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdResponseBody) SetCode(v string) *GetVulListByIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetData(v []*GetVulListByIdResponseBodyData) *GetVulListByIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetHttpStatusCode(v int32) *GetVulListByIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetMessage(v string) *GetVulListByIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetPageInfo(v *GetVulListByIdResponseBodyPageInfo) *GetVulListByIdResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetRequestId(v string) *GetVulListByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBody) SetSuccess(v bool) *GetVulListByIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetVulListByIdResponseBodyData struct {
+	// Vulnerability Alias
+	//
+	// example:
+	//
+	// Tomcat websocket 拒绝服务漏洞利用代码披露（CVE-2020-13935）
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Impact description
+	EffectMsgDTOS []*GetVulListByIdResponseBodyDataEffectMsgDTOS `json:"EffectMsgDTOS,omitempty" xml:"EffectMsgDTOS,omitempty" type:"Repeated"`
+	// Timestamp of the first time the vulnerability was detected
+	//
+	// example:
+	//
+	// 1620404763000
+	FirstTs *string `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
+	// Instance name of the asset
+	//
+	// example:
+	//
+	// 凌星-CentOS
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Public IP of the asset
+	//
+	// example:
+	//
+	// 39.101.73.28
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// Private IP of the asset
+	//
+	// example:
+	//
+	// 172.22.216.17
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// Timestamp of the last time the vulnerability was detected
+	//
+	// example:
+	//
+	// 1620404763000
+	LastTs *string `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
+	// Vulnerability name
+	//
+	// example:
+	//
+	// SCA:ACSV-2020-111301
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Necessity level of vulnerability repair
+	//
+	// example:
+	//
+	// later,asap,nntf
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// List of associated CVEs for the vulnerability, separated by commas (,) if there are multiple values.
+	//
+	// example:
+	//
+	// CVE-2020-13935
+	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
+	// Repair command
+	//
+	// example:
+	//
+	// **	- update python-perf
+	RepairCmd *string `json:"RepairCmd,omitempty" xml:"RepairCmd,omitempty"`
+	// Timestamp of vulnerability repair
+	//
+	// example:
+	//
+	// 1541207563000
+	RepairTs *string `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
+	// Vulnerability status:
+	//
+	// 1: Not fixed
+	//
+	// 2: Fix failed
+	//
+	// 3: Rollback failed
+	//
+	// 4: Fixing
+	//
+	// 5: Rolling back
+	//
+	// 6: Verifying
+	//
+	// 7: Fixed successfully
+	//
+	// 8: Fixed successfully, pending reboot
+	//
+	// 9: Rolled back successfully
+	//
+	// 10: Ignored
+	//
+	// 11: Rolled back successfully, pending reboot
+	//
+	// 12: Vulnerability does not exist
+	//
+	// 20: Expired
+	//
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Vulnerability tag
+	//
+	// example:
+	//
+	// Restart Required
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// UUID of the asset instance.
+	//
+	// example:
+	//
+	// hdm_5cf2eaf263c021b354877943f181956d
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetVulListByIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdResponseBodyData) SetAliasName(v string) *GetVulListByIdResponseBodyData {
+	s.AliasName = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetEffectMsgDTOS(v []*GetVulListByIdResponseBodyDataEffectMsgDTOS) *GetVulListByIdResponseBodyData {
+	s.EffectMsgDTOS = v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetFirstTs(v string) *GetVulListByIdResponseBodyData {
+	s.FirstTs = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetInstanceName(v string) *GetVulListByIdResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetInternetIp(v string) *GetVulListByIdResponseBodyData {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetIntranetIp(v string) *GetVulListByIdResponseBodyData {
+	s.IntranetIp = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetLastTs(v string) *GetVulListByIdResponseBodyData {
+	s.LastTs = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetName(v string) *GetVulListByIdResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetNecessity(v string) *GetVulListByIdResponseBodyData {
+	s.Necessity = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetRelated(v string) *GetVulListByIdResponseBodyData {
+	s.Related = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetRepairCmd(v string) *GetVulListByIdResponseBodyData {
+	s.RepairCmd = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetRepairTs(v string) *GetVulListByIdResponseBodyData {
+	s.RepairTs = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetStatus(v string) *GetVulListByIdResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetTag(v string) *GetVulListByIdResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyData) SetUuid(v string) *GetVulListByIdResponseBodyData {
+	s.Uuid = &v
+	return s
+}
+
+type GetVulListByIdResponseBodyDataEffectMsgDTOS struct {
+	// Hit
+	//
+	// example:
+	//
+	// fastjson(jar) extendField.safemode equals false
+	MatchList *string `json:"MatchList,omitempty" xml:"MatchList,omitempty"`
+	// Path
+	//
+	// example:
+	//
+	// /uat6/qry/enquiry/policy/yrtPolicyList
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Software name
+	//
+	// example:
+	//
+	// python-perf 3.10.0
+	SoftName *string `json:"SoftName,omitempty" xml:"SoftName,omitempty"`
+}
+
+func (s GetVulListByIdResponseBodyDataEffectMsgDTOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdResponseBodyDataEffectMsgDTOS) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdResponseBodyDataEffectMsgDTOS) SetMatchList(v string) *GetVulListByIdResponseBodyDataEffectMsgDTOS {
+	s.MatchList = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyDataEffectMsgDTOS) SetPath(v string) *GetVulListByIdResponseBodyDataEffectMsgDTOS {
+	s.Path = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyDataEffectMsgDTOS) SetSoftName(v string) *GetVulListByIdResponseBodyDataEffectMsgDTOS {
+	s.SoftName = &v
+	return s
+}
+
+type GetVulListByIdResponseBodyPageInfo struct {
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Number of items per page in the returned data.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of records in the query result.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetVulListByIdResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdResponseBodyPageInfo) SetCurrentPage(v int32) *GetVulListByIdResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyPageInfo) SetPageSize(v int32) *GetVulListByIdResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetVulListByIdResponseBodyPageInfo) SetTotalCount(v int32) *GetVulListByIdResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type GetVulListByIdResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVulListByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVulListByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVulListByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVulListByIdResponse) SetHeaders(v map[string]*string) *GetVulListByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVulListByIdResponse) SetStatusCode(v int32) *GetVulListByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVulListByIdResponse) SetBody(v *GetVulListByIdResponseBody) *GetVulListByIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetVulPageSummaryResponseBody struct {
+	// Interface return code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query result.
+	Data *GetVulPageSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// A3A575C8-80F9-5F04-AA24-CCAC246884A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -3819,30 +5978,44 @@ func (s *GetVulPageSummaryResponseBody) SetSuccess(v bool) *GetVulPageSummaryRes
 }
 
 type GetVulPageSummaryResponseBodyData struct {
+	// Number of completed items.
+	//
 	// example:
 	//
 	// 1990
 	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	// Number of items being handled.
+	//
 	// example:
 	//
 	// 6
 	HandingCount *int64 `json:"HandingCount,omitempty" xml:"HandingCount,omitempty"`
+	// Number of high-risk items.
+	//
 	// example:
 	//
 	// 500
 	HighCount *int64 `json:"HighCount,omitempty" xml:"HighCount,omitempty"`
+	// Number of low-risk items.
+	//
 	// example:
 	//
 	// 1000
 	LowCount *int64 `json:"LowCount,omitempty" xml:"LowCount,omitempty"`
+	// Number of medium-risk items.
+	//
 	// example:
 	//
 	// 500
 	MediumCount *int64 `json:"MediumCount,omitempty" xml:"MediumCount,omitempty"`
+	// Total number of items.
+	//
 	// example:
 	//
 	// 2000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of unhandled items.
+	//
 	// example:
 	//
 	// 4
@@ -3922,24 +6095,35 @@ func (s *GetVulPageSummaryResponse) SetBody(v *GetVulPageSummaryResponseBody) *G
 }
 
 type GetVulSummaryRequest struct {
+	// Filter time type. Supports filtering by the last 7 days, the last 30 days, the last half year, or a custom time range.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732156885986
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1729478485000
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该字段暂未使用，有问题请联系管理员
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -3972,25 +6156,36 @@ func (s *GetVulSummaryRequest) SetSuspEventSource(v string) *GetVulSummaryReques
 }
 
 type GetVulSummaryResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *GetVulSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the response result.
+	//
 	// example:
 	//
 	// system error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EF801DD1-D934-51B3-92D4-776CE17B184F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -4036,15 +6231,22 @@ func (s *GetVulSummaryResponseBody) SetSuccess(v bool) *GetVulSummaryResponseBod
 }
 
 type GetVulSummaryResponseBodyData struct {
+	// Number of completed items.
+	//
 	// example:
 	//
 	// 10
 	CompletedCount *int64 `json:"CompletedCount,omitempty" xml:"CompletedCount,omitempty"`
+	// Risk convergence rate.
+	//
 	// example:
 	//
 	// 50
-	DealRate  *string                                   `json:"DealRate,omitempty" xml:"DealRate,omitempty"`
+	DealRate *string `json:"DealRate,omitempty" xml:"DealRate,omitempty"`
+	// Collection of vulnerability trend nodes.
 	TrendList []*GetVulSummaryResponseBodyDataTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
+	// Number of unhandled items.
+	//
 	// example:
 	//
 	// 5
@@ -4080,11 +6282,20 @@ func (s *GetVulSummaryResponseBodyData) SetWaitHandleCount(v int64) *GetVulSumma
 }
 
 type GetVulSummaryResponseBodyDataTrendList struct {
+	// Time point.
+	//
+	// example:
+	//
+	// 202407或者20240701
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Number of handled items.
+	//
 	// example:
 	//
 	// 10
 	DealCount *int64 `json:"DealCount,omitempty" xml:"DealCount,omitempty"`
+	// Number of discovered items.
+	//
 	// example:
 	//
 	// 15
@@ -4144,24 +6355,35 @@ func (s *GetVulSummaryResponse) SetBody(v *GetVulSummaryResponseBody) *GetVulSum
 }
 
 type GetWorkTaskSummaryRequest struct {
+	// Filter time type, supports filtering by the last 7 days, the last 30 days, the last half year, or custom time periods.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	DateType *string `json:"DateType,omitempty" xml:"DateType,omitempty"`
+	// End time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732156885986
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1729478485000
-	StartDate       *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Alert event source.
+	//
+	// example:
+	//
+	// 该字段暂时未用，有问题请联系管理员
 	SuspEventSource *string `json:"SuspEventSource,omitempty" xml:"SuspEventSource,omitempty"`
 }
 
@@ -4194,25 +6416,36 @@ func (s *GetWorkTaskSummaryRequest) SetSuspEventSource(v string) *GetWorkTaskSum
 }
 
 type GetWorkTaskSummaryResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data returned by the interface.
 	Data *GetWorkTaskSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Prompt message for the response result.
+	//
 	// example:
 	//
 	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EF801DD1-D934-51B3-92D4-776CE17B184F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful. - **true**: The call was successful. - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -4258,34 +6491,50 @@ func (s *GetWorkTaskSummaryResponseBody) SetSuccess(v bool) *GetWorkTaskSummaryR
 }
 
 type GetWorkTaskSummaryResponseBodyData struct {
+	// Average response time (in minutes).
+	//
 	// example:
 	//
 	// 60
 	DealAverageDuration *int64 `json:"DealAverageDuration,omitempty" xml:"DealAverageDuration,omitempty"`
+	// Year-over-year growth rate of average response time.
+	//
 	// example:
 	//
 	// 20
 	DealAverageDurationGrowthRate *string `json:"DealAverageDurationGrowthRate,omitempty" xml:"DealAverageDurationGrowthRate,omitempty"`
+	// Number of work orders responded to.
+	//
 	// example:
 	//
 	// 100
 	DealWorkTaskCount *int64 `json:"DealWorkTaskCount,omitempty" xml:"DealWorkTaskCount,omitempty"`
+	// Year-over-year growth rate of the number of work orders responded to.
+	//
 	// example:
 	//
 	// 20
 	DealWorkTaskCountRate *string `json:"DealWorkTaskCountRate,omitempty" xml:"DealWorkTaskCountRate,omitempty"`
+	// Number of service responses.
+	//
 	// example:
 	//
 	// 10
 	WorkTaskCount *int64 `json:"WorkTaskCount,omitempty" xml:"WorkTaskCount,omitempty"`
+	// Problem closure rate.
+	//
 	// example:
 	//
 	// 90
 	WorkTaskDealRate *string `json:"WorkTaskDealRate,omitempty" xml:"WorkTaskDealRate,omitempty"`
+	// Year-over-year growth rate of problem closure rate.
+	//
 	// example:
 	//
 	// 20
 	WorkTaskDealRateGrowthRate *string `json:"WorkTaskDealRateGrowthRate,omitempty" xml:"WorkTaskDealRateGrowthRate,omitempty"`
+	// Year-over-year growth rate of service responses.
+	//
 	// example:
 	//
 	// 20
@@ -4370,14 +6619,51 @@ func (s *GetWorkTaskSummaryResponse) SetBody(v *GetWorkTaskSummaryResponseBody) 
 }
 
 type PageServiceCustomerRequest struct {
-	AuthStatus   *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Authorization status.
+	//
+	// example:
+	//
+	// 1
+	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Cloud Monitoring - Alert authorization status.
+	//
+	// example:
+	//
+	// 1
 	CmAuthStatus *int32 `json:"CmAuthStatus,omitempty" xml:"CmAuthStatus,omitempty"`
+	// The page number of the query result, default is 1.
+	//
 	// This parameter is required.
-	CurrentPage       *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End time. The format is a Unix timestamp, which is the number of milliseconds since January 1, 1970.
+	//
+	// example:
+	//
+	// 1710641101123
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Cloud Security - Alert authorization status.
+	//
+	// example:
+	//
+	// 1
 	MonitorAuthStatus *int32 `json:"MonitorAuthStatus,omitempty" xml:"MonitorAuthStatus,omitempty"`
+	// Number of records per page.
+	//
 	// This parameter is required.
-	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start time. The format is a Unix timestamp, which is the number of milliseconds since January 1, 1970.
+	//
+	// example:
+	//
+	// 1710641101000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4425,16 +6711,46 @@ func (s *PageServiceCustomerRequest) SetStartTime(v int64) *PageServiceCustomerR
 }
 
 type PageServiceCustomerResponseBody struct {
-	Code           *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*PageServiceCustomerResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageInfo       *PageServiceCustomerResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// Id of the request
+	// Interface return code.
+	//
+	// example:
+	//
+	// System error or openapi error
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data query results.
+	Data []*PageServiceCustomerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message. When the request is successful, it returns a success message; when the request fails, it returns the reason for the failure.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Pagination information.
+	PageInfo *PageServiceCustomerResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// Request ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 808A307F-9513-5099-AAA5-98D4EF199140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Request return status.
+	//
+	// - true: Success.
+	//
+	// - false: Failure.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PageServiceCustomerResponseBody) String() string {
@@ -4481,17 +6797,72 @@ func (s *PageServiceCustomerResponseBody) SetSuccess(v bool) *PageServiceCustome
 }
 
 type PageServiceCustomerResponseBodyData struct {
-	Aliuid            *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AuthStatus        *int32  `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
-	CmAuthStatus      *int32  `json:"CmAuthStatus,omitempty" xml:"CmAuthStatus,omitempty"`
-	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Level             *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	MonitorAuthStatus *int32  `json:"MonitorAuthStatus,omitempty" xml:"MonitorAuthStatus,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnId             *string `json:"OwnId,omitempty" xml:"OwnId,omitempty"`
-	StartTime         *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Customer UID.
+	//
+	// example:
+	//
+	// 1667751131382856
+	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// Authorization status.
+	//
+	// example:
+	//
+	// 1
+	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// Cloud Monitoring - Alert authorization status.
+	//
+	// example:
+	//
+	// 0
+	CmAuthStatus *int32 `json:"CmAuthStatus,omitempty" xml:"CmAuthStatus,omitempty"`
+	// End time. The format is a Unix timestamp, which is the number of milliseconds since January 1, 1970.
+	//
+	// example:
+	//
+	// 1710123149222
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Customer level.
+	//
+	// example:
+	//
+	// GC1
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Cloud Security - Alert authorization status.
+	//
+	// example:
+	//
+	// 1
+	MonitorAuthStatus *int32 `json:"MonitorAuthStatus,omitempty" xml:"MonitorAuthStatus,omitempty"`
+	// Customer name.
+	//
+	// example:
+	//
+	// 中国工程院
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Owner name.
+	//
+	// example:
+	//
+	// 常温
+	OwnId *string `json:"OwnId,omitempty" xml:"OwnId,omitempty"`
+	// Start time. The format is a Unix timestamp, which is the number of milliseconds since January 1, 1970.
+	//
+	// example:
+	//
+	// 1710123149000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Customer ID.
+	//
+	// example:
+	//
+	// 1667751131382856
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Version information.
+	//
+	// example:
+	//
+	// 企业版
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PageServiceCustomerResponseBodyData) String() string {
@@ -4558,9 +6929,24 @@ func (s *PageServiceCustomerResponseBodyData) SetVersion(v string) *PageServiceC
 }
 
 type PageServiceCustomerResponseBodyPageInfo struct {
+	// The current page number in pagination queries.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Number of items per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of query results.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s PageServiceCustomerResponseBodyPageInfo) String() string {
@@ -4616,65 +7002,106 @@ func (s *PageServiceCustomerResponse) SetBody(v *PageServiceCustomerResponseBody
 }
 
 type SendCustomEventRequest struct {
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1214484929940219
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Data source.
+	//
 	// example:
 	//
 	// aegis_suspicious_event
-	DataSource       *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// Event details.
+	//
+	// example:
+	//
+	// 疑似病毒木马启动运行。
 	EventDescription *string `json:"EventDescription,omitempty" xml:"EventDescription,omitempty"`
-	EventDetails     *string `json:"EventDetails,omitempty" xml:"EventDetails,omitempty"`
+	// Alert event details.
+	//
+	// example:
+	//
+	// [{"name":"提示","type":"text","value":"在您的系统上发现可疑进程启动行为，通常与病毒木马或入侵事件相关"},{"name":"ATT&CK攻击阶段","type":"text","value":"代码执行"},{"name":"恶意行为","type":"text","value":"可疑的漏洞利用代码执行"},{"name":"规则类型","type":"text","value":"进程启动"},{"name":"规则引擎","type":"text","value":"精准攻击识别引擎"},{"name":"处置动作","type":"text","value":"阻断行为"},{"name":"进程路径","type":"text","value":"/usr/bin/python3.9"},{"name":"命令行","type":"text","value":"python3 /root/poc/python/cve-2018-15473.py --username root --port 22"},{"name":"父进程路径","type":"text","value":"/bin/gunkit"},{"name":"父进程命令行","type":"text","value":"gunkit serve-grpc --addr unix:///data/gunkit-grpc.sock"},{"name":"进程ID","type":"text","value":"22714"},{"name":"父进程ID","type":"text","value":"2986"},{"name":"描述","type":"text","value":"主动防御检测到可疑进程启动行为，这类可疑进程通常存在于特殊的系统目录，或通过后缀伪装成文档/音频/图片等文件诱导用户运行，该异常行为已被成功拦截"},{"name":"处置建议","type":"text","value":"请您及时排查是否是正常的业务操作，如果您觉得此次拦截是非预期的，那您可以在主动防御 - 恶意行为防御页面中，关闭“可疑进程启动“规则集或者将受影响机器从管理主机中移除"},{"name":"父进程关系","type":"processChain","value":"1:::/usr/lib/systemd/systemd --switched-root --system --deserialize 22 &&& 2939:::/usr/local/bin/containerd-shim-runc-v2 -namespace moby -id 270f164903b47d4e219b410b8d11d9079a7ad1bac8133aea604598300d3b03d5 -address /run/containerd/containerd.sock &&& 2962:::/usr/bin/python3 /usr/bin/supervisord -n &&& 2986:::gunkit serve-grpc --addr unix:///data/gunkit-grpc.sock"}]
+	EventDetails *string `json:"EventDetails,omitempty" xml:"EventDetails,omitempty"`
+	// Event name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 客户端离线
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// Event type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SUSP_CUSTOM_CFW
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Alert discovery time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-04-23 14:47:34
 	FindTime *int64 `json:"FindTime,omitempty" xml:"FindTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// i-uf60h3ns25bzq9eyf8ps
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance name.
+	//
+	// example:
+	//
+	// 猫吉-售卖-MDR扫描器集群1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Whether to send.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	IsSend *string `json:"IsSend,omitempty" xml:"IsSend,omitempty"`
+	// Event level.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// serious
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The first occurrence time of the alert event.
+	//
 	// example:
 	//
 	// 1724956996000
 	OccurrenceTime *int64  `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
 	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Product name.
+	//
 	// example:
 	//
 	// CloudSecCenter
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// Unique ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 68888f02-98f2-492b-a2b2-5b13295755b7
 	UniqueId *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
-	// UUID。
+	// UUID.
 	//
 	// example:
 	//
@@ -4771,25 +7198,40 @@ func (s *SendCustomEventRequest) SetUuid(v string) *SendCustomEventRequest {
 }
 
 type SendCustomEventResponseBody struct {
+	// Interface response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Interface return data.
 	Data *SendCustomEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message. When the request is successful, it returns a success message; when the request fails, it returns the reason for the failure.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 606EB377-155D-5AEB-AC4F-F013444A4C45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - true: Call succeeded.
+	//
+	// - false: Call failed.
+	//
 	// example:
 	//
 	// true
@@ -4835,28 +7277,53 @@ func (s *SendCustomEventResponseBody) SetSuccess(v bool) *SendCustomEventRespons
 }
 
 type SendCustomEventResponseBodyData struct {
+	// Service UID.
+	//
 	// example:
 	//
 	// 1601097845544644
-	CustomerId   *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Customer name.
+	//
+	// example:
+	//
+	// 天津瑞鹏昇科技发展有限公司
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	// Alert ID.
+	//
 	// example:
 	//
 	// c0dc71d1-8a1d-4043-9767-f6c420e34901-81bd
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// Alert type.
+	//
 	// example:
 	//
 	// SUSP_CUSTOM_WAF
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Work order ID.
+	//
 	// example:
 	//
 	// 1914348
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Owner ID.
+	//
 	// example:
 	//
 	// 352675
-	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName    *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Owner name.
+	//
+	// example:
+	//
+	// 乐牙
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Work order name.
+	//
+	// example:
+	//
+	// 22端口禁止任意IP访问
 	WorkTaskName *string `json:"WorkTaskName,omitempty" xml:"WorkTaskName,omitempty"`
 }
 
@@ -4986,7 +7453,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建服务工单
+// Create Service Work Order
 //
 // @param request - CreateServiceWorkOrderRequest
 //
@@ -5092,7 +7559,7 @@ func (client *Client) CreateServiceWorkOrderWithOptions(request *CreateServiceWo
 
 // Summary:
 //
-// 创建服务工单
+// Create Service Work Order
 //
 // @param request - CreateServiceWorkOrderRequest
 //
@@ -5110,7 +7577,7 @@ func (client *Client) CreateServiceWorkOrder(request *CreateServiceWorkOrderRequ
 
 // Summary:
 //
-// 处理服务工单
+// Process Service Work Order
 //
 // @param request - DisposeServiceWorkOrderRequest
 //
@@ -5208,7 +7675,7 @@ func (client *Client) DisposeServiceWorkOrderWithOptions(request *DisposeService
 
 // Summary:
 //
-// 处理服务工单
+// Process Service Work Order
 //
 // @param request - DisposeServiceWorkOrderRequest
 //
@@ -5226,7 +7693,7 @@ func (client *Client) DisposeServiceWorkOrder(request *DisposeServiceWorkOrderRe
 
 // Summary:
 //
-// 处理告警工单
+// Handle Alert Work Order
 //
 // @param request - DisposeWorkTaskRequest
 //
@@ -5280,7 +7747,7 @@ func (client *Client) DisposeWorkTaskWithOptions(request *DisposeWorkTaskRequest
 
 // Summary:
 //
-// 处理告警工单
+// Handle Alert Work Order
 //
 // @param request - DisposeWorkTaskRequest
 //
@@ -5298,7 +7765,67 @@ func (client *Client) DisposeWorkTask(request *DisposeWorkTaskRequest) (_result 
 
 // Summary:
 //
-// 被攻击资产收敛趋势
+// Query Alarm Details
+//
+// @param request - GetAlarmDetailByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlarmDetailByIdResponse
+func (client *Client) GetAlarmDetailByIdWithOptions(request *GetAlarmDetailByIdRequest, runtime *util.RuntimeOptions) (_result *GetAlarmDetailByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAlarmDetailById"),
+		Version:     tea.String("2016-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAlarmDetailByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Alarm Details
+//
+// @param request - GetAlarmDetailByIdRequest
+//
+// @return GetAlarmDetailByIdResponse
+func (client *Client) GetAlarmDetailById(request *GetAlarmDetailByIdRequest) (_result *GetAlarmDetailByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAlarmDetailByIdResponse{}
+	_body, _err := client.GetAlarmDetailByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Trend of Attacked Asset Convergence
 //
 // @param request - GetAttackedAssetDealRequest
 //
@@ -5352,7 +7879,7 @@ func (client *Client) GetAttackedAssetDealWithOptions(request *GetAttackedAssetD
 
 // Summary:
 //
-// 被攻击资产收敛趋势
+// Trend of Attacked Asset Convergence
 //
 // @param request - GetAttackedAssetDealRequest
 //
@@ -5370,7 +7897,7 @@ func (client *Client) GetAttackedAssetDeal(request *GetAttackedAssetDealRequest)
 
 // Summary:
 //
-// 合规风险收敛趋势
+// Compliance Risk Convergence Trend
 //
 // @param request - GetBaselineSummaryRequest
 //
@@ -5424,7 +7951,7 @@ func (client *Client) GetBaselineSummaryWithOptions(request *GetBaselineSummaryR
 
 // Summary:
 //
-// 合规风险收敛趋势
+// Compliance Risk Convergence Trend
 //
 // @param request - GetBaselineSummaryRequest
 //
@@ -5442,7 +7969,79 @@ func (client *Client) GetBaselineSummary(request *GetBaselineSummaryRequest) (_r
 
 // Summary:
 //
-// 查询风险详情
+// Get Console Score
+//
+// @param request - GetConsoleScoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsoleScoreResponse
+func (client *Client) GetConsoleScoreWithOptions(request *GetConsoleScoreRequest, runtime *util.RuntimeOptions) (_result *GetConsoleScoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DateType)) {
+		body["DateType"] = request.DateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuspEventSource)) {
+		body["SuspEventSource"] = request.SuspEventSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConsoleScore"),
+		Version:     tea.String("2016-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConsoleScoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Console Score
+//
+// @param request - GetConsoleScoreRequest
+//
+// @return GetConsoleScoreResponse
+func (client *Client) GetConsoleScore(request *GetConsoleScoreRequest) (_result *GetConsoleScoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetConsoleScoreResponse{}
+	_body, _err := client.GetConsoleScoreWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query Risk Details
 //
 // @param request - GetDetailByIdRequest
 //
@@ -5484,7 +8083,7 @@ func (client *Client) GetDetailByIdWithOptions(request *GetDetailByIdRequest, ru
 
 // Summary:
 //
-// 查询风险详情
+// Query Risk Details
 //
 // @param request - GetDetailByIdRequest
 //
@@ -5502,7 +8101,7 @@ func (client *Client) GetDetailById(request *GetDetailByIdRequest) (_result *Get
 
 // Summary:
 //
-// 服务报告单个下载
+// Single Service Report Download
 //
 // @param request - GetDocumentDownloadUrlRequest
 //
@@ -5544,7 +8143,7 @@ func (client *Client) GetDocumentDownloadUrlWithOptions(request *GetDocumentDown
 
 // Summary:
 //
-// 服务报告单个下载
+// Single Service Report Download
 //
 // @param request - GetDocumentDownloadUrlRequest
 //
@@ -5562,7 +8161,7 @@ func (client *Client) GetDocumentDownloadUrl(request *GetDocumentDownloadUrlRequ
 
 // Summary:
 //
-// 服务报告查询
+// Service Report Query
 //
 // @param request - GetDocumentPageRequest
 //
@@ -5624,7 +8223,7 @@ func (client *Client) GetDocumentPageWithOptions(request *GetDocumentPageRequest
 
 // Summary:
 //
-// 服务报告查询
+// Service Report Query
 //
 // @param request - GetDocumentPageRequest
 //
@@ -5642,7 +8241,7 @@ func (client *Client) GetDocumentPage(request *GetDocumentPageRequest) (_result 
 
 // Summary:
 //
-// 服务报告首页统计项获取
+// Service Report Home Page Statistics Acquisition
 //
 // @param request - GetDocumentSummaryRequest
 //
@@ -5684,7 +8283,7 @@ func (client *Client) GetDocumentSummaryWithOptions(request *GetDocumentSummaryR
 
 // Summary:
 //
-// 服务报告首页统计项获取
+// Service Report Home Page Statistics Acquisition
 //
 // @param request - GetDocumentSummaryRequest
 //
@@ -5702,7 +8301,7 @@ func (client *Client) GetDocumentSummary(request *GetDocumentSummaryRequest) (_r
 
 // Summary:
 //
-// 得到最近上传的服务报告
+// Get Recently Uploaded Service Reports
 //
 // @param request - GetRecentDocumentRequest
 //
@@ -5756,7 +8355,7 @@ func (client *Client) GetRecentDocumentWithOptions(request *GetRecentDocumentReq
 
 // Summary:
 //
-// 得到最近上传的服务报告
+// Get Recently Uploaded Service Reports
 //
 // @param request - GetRecentDocumentRequest
 //
@@ -5774,7 +8373,7 @@ func (client *Client) GetRecentDocument(request *GetRecentDocumentRequest) (_res
 
 // Summary:
 //
-// 得到安全防护覆盖度
+// Get Safety Coverage
 //
 // @param request - GetSafetyCoverRequest
 //
@@ -5828,7 +8427,7 @@ func (client *Client) GetSafetyCoverWithOptions(request *GetSafetyCoverRequest, 
 
 // Summary:
 //
-// 得到安全防护覆盖度
+// Get Safety Coverage
 //
 // @param request - GetSafetyCoverRequest
 //
@@ -5846,7 +8445,79 @@ func (client *Client) GetSafetyCover(request *GetSafetyCoverRequest) (_result *G
 
 // Summary:
 //
-// 告警处置查询
+// Get SOW List
+//
+// @param request - GetSowListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSowListResponse
+func (client *Client) GetSowListWithOptions(request *GetSowListRequest, runtime *util.RuntimeOptions) (_result *GetSowListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DateType)) {
+		body["DateType"] = request.DateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuspEventSource)) {
+		body["SuspEventSource"] = request.SuspEventSource
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSowList"),
+		Version:     tea.String("2016-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSowListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get SOW List
+//
+// @param request - GetSowListRequest
+//
+// @return GetSowListResponse
+func (client *Client) GetSowList(request *GetSowListRequest) (_result *GetSowListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSowListResponse{}
+	_body, _err := client.GetSowListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Alarm Disposal Query
 //
 // @param request - GetSuspEventPageRequest
 //
@@ -5908,7 +8579,7 @@ func (client *Client) GetSuspEventPageWithOptions(request *GetSuspEventPageReque
 
 // Summary:
 //
-// 告警处置查询
+// Alarm Disposal Query
 //
 // @param request - GetSuspEventPageRequest
 //
@@ -5926,7 +8597,7 @@ func (client *Client) GetSuspEventPage(request *GetSuspEventPageRequest) (_resul
 
 // Summary:
 //
-// 得到告警的统计项
+// Get Alert Statistics
 //
 // @param request - GetSuspEventSummaryRequest
 //
@@ -5980,7 +8651,7 @@ func (client *Client) GetSuspEventSummaryWithOptions(request *GetSuspEventSummar
 
 // Summary:
 //
-// 得到告警的统计项
+// Get Alert Statistics
 //
 // @param request - GetSuspEventSummaryRequest
 //
@@ -5998,7 +8669,7 @@ func (client *Client) GetSuspEventSummary(request *GetSuspEventSummaryRequest) (
 
 // Summary:
 //
-// 告警页统计
+// Alarm Page Statistics
 //
 // @param request - GetSuspPageSummaryRequest
 //
@@ -6029,7 +8700,7 @@ func (client *Client) GetSuspPageSummaryWithOptions(runtime *util.RuntimeOptions
 
 // Summary:
 //
-// 告警页统计
+// Alarm Page Statistics
 //
 // @return GetSuspPageSummaryResponse
 func (client *Client) GetSuspPageSummary() (_result *GetSuspPageSummaryResponse, _err error) {
@@ -6045,7 +8716,7 @@ func (client *Client) GetSuspPageSummary() (_result *GetSuspPageSummaryResponse,
 
 // Summary:
 //
-// 查询用户开通状态
+// Query User Activation Status
 //
 // @param request - GetUserStatusRequest
 //
@@ -6076,7 +8747,7 @@ func (client *Client) GetUserStatusWithOptions(runtime *util.RuntimeOptions) (_r
 
 // Summary:
 //
-// 查询用户开通状态
+// Query User Activation Status
 //
 // @return GetUserStatusResponse
 func (client *Client) GetUserStatus() (_result *GetUserStatusResponse, _err error) {
@@ -6092,7 +8763,7 @@ func (client *Client) GetUserStatus() (_result *GetUserStatusResponse, _err erro
 
 // Summary:
 //
-// 风险查询
+// Risk Query
 //
 // @param request - GetVulItemPageRequest
 //
@@ -6158,7 +8829,7 @@ func (client *Client) GetVulItemPageWithOptions(request *GetVulItemPageRequest, 
 
 // Summary:
 //
-// 风险查询
+// Risk Query
 //
 // @param request - GetVulItemPageRequest
 //
@@ -6176,7 +8847,91 @@ func (client *Client) GetVulItemPage(request *GetVulItemPageRequest) (_result *G
 
 // Summary:
 //
-// 风险页统计
+// Query processed details
+//
+// @param request - GetVulListByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVulListByIdResponse
+func (client *Client) GetVulListByIdWithOptions(request *GetVulListByIdRequest, runtime *util.RuntimeOptions) (_result *GetVulListByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		body["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		body["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		body["Uuids"] = request.Uuids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVulListById"),
+		Version:     tea.String("2016-12-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVulListByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query processed details
+//
+// @param request - GetVulListByIdRequest
+//
+// @return GetVulListByIdResponse
+func (client *Client) GetVulListById(request *GetVulListByIdRequest) (_result *GetVulListByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVulListByIdResponse{}
+	_body, _err := client.GetVulListByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Risk Page Statistics
 //
 // @param request - GetVulPageSummaryRequest
 //
@@ -6207,7 +8962,7 @@ func (client *Client) GetVulPageSummaryWithOptions(runtime *util.RuntimeOptions)
 
 // Summary:
 //
-// 风险页统计
+// Risk Page Statistics
 //
 // @return GetVulPageSummaryResponse
 func (client *Client) GetVulPageSummary() (_result *GetVulPageSummaryResponse, _err error) {
@@ -6223,7 +8978,7 @@ func (client *Client) GetVulPageSummary() (_result *GetVulPageSummaryResponse, _
 
 // Summary:
 //
-// 得到风险的统计项
+// Get Risk Statistics
 //
 // @param request - GetVulSummaryRequest
 //
@@ -6277,7 +9032,7 @@ func (client *Client) GetVulSummaryWithOptions(request *GetVulSummaryRequest, ru
 
 // Summary:
 //
-// 得到风险的统计项
+// Get Risk Statistics
 //
 // @param request - GetVulSummaryRequest
 //
@@ -6295,7 +9050,7 @@ func (client *Client) GetVulSummary(request *GetVulSummaryRequest) (_result *Get
 
 // Summary:
 //
-// 得到首行工单的统计项
+// Get the First Line Work Order Statistics
 //
 // @param request - GetWorkTaskSummaryRequest
 //
@@ -6349,7 +9104,7 @@ func (client *Client) GetWorkTaskSummaryWithOptions(request *GetWorkTaskSummaryR
 
 // Summary:
 //
-// 得到首行工单的统计项
+// Get the First Line Work Order Statistics
 //
 // @param request - GetWorkTaskSummaryRequest
 //
@@ -6367,7 +9122,7 @@ func (client *Client) GetWorkTaskSummary(request *GetWorkTaskSummaryRequest) (_r
 
 // Summary:
 //
-// 服务客户信息查询
+// Service Customer Information Query
 //
 // @param request - PageServiceCustomerRequest
 //
@@ -6433,7 +9188,7 @@ func (client *Client) PageServiceCustomerWithOptions(request *PageServiceCustome
 
 // Summary:
 //
-// 服务客户信息查询
+// Service Customer Information Query
 //
 // @param request - PageServiceCustomerRequest
 //
@@ -6451,7 +9206,7 @@ func (client *Client) PageServiceCustomer(request *PageServiceCustomerRequest) (
 
 // Summary:
 //
-// 发送自定义告警事件
+// Send Custom Alert Event
 //
 // @param request - SendCustomEventRequest
 //
@@ -6553,7 +9308,7 @@ func (client *Client) SendCustomEventWithOptions(request *SendCustomEventRequest
 
 // Summary:
 //
-// 发送自定义告警事件
+// Send Custom Alert Event
 //
 // @param request - SendCustomEventRequest
 //
