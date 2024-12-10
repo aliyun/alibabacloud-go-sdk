@@ -2230,7 +2230,10 @@ func (s *CreateGatewayIntranetLinkedVpcResponse) SetBody(v *CreateGatewayIntrane
 }
 
 type CreateGatewayIntranetLinkedVpcPeerRequest struct {
+	// The list of VPC peers.
 	PeerVpcs []*CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -2256,10 +2259,14 @@ func (s *CreateGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *CreateGa
 }
 
 type CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {
+	// The region where the VPC peer resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the VPC peer. To obtain the VPC ID, see [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html).
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -2285,7 +2292,10 @@ func (s *CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetVpcId(v string) *
 }
 
 type CreateGatewayIntranetLinkedVpcPeerShrinkRequest struct {
+	// The list of VPC peers.
 	PeerVpcsShrink *string `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty"`
+	// The VPC ID. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -2311,14 +2321,20 @@ func (s *CreateGatewayIntranetLinkedVpcPeerShrinkRequest) SetVpcId(v string) *Cr
 }
 
 type CreateGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// The ID of the private gateway.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The message that is returned.
+	//
 	// example:
 	//
 	// Successfully add intranet linked vpc Peer for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -4620,7 +4636,10 @@ func (s *DeleteGatewayIntranetLinkedVpcResponse) SetBody(v *DeleteGatewayIntrane
 }
 
 type DeleteGatewayIntranetLinkedVpcPeerRequest struct {
+	// The VPC peer.
 	PeerVpcs []*DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -4646,10 +4665,14 @@ func (s *DeleteGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *DeleteGa
 }
 
 type DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs struct {
+	// The region where the VPC peer resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the VPC peer.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -4675,7 +4698,10 @@ func (s *DeleteGatewayIntranetLinkedVpcPeerRequestPeerVpcs) SetVpcId(v string) *
 }
 
 type DeleteGatewayIntranetLinkedVpcPeerShrinkRequest struct {
+	// The VPC peer.
 	PeerVpcsShrink *string `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty"`
+	// The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -4701,14 +4727,20 @@ func (s *DeleteGatewayIntranetLinkedVpcPeerShrinkRequest) SetVpcId(v string) *De
 }
 
 type DeleteGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// The ID of the private gateway.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The message that is returned.
+	//
 	// example:
 	//
 	// Successfully delete intranet linked vpc Peer for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -6108,7 +6140,8 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// 40325405-579C-4D82****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SSLRedirectionEnabled *bool   `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
 	// The status of the private gateway.
 	//
 	// Valid values:
@@ -6207,6 +6240,11 @@ func (s *DescribeGatewayResponseBody) SetRequestId(v string) *DescribeGatewayRes
 	return s
 }
 
+func (s *DescribeGatewayResponseBody) SetSSLRedirectionEnabled(v bool) *DescribeGatewayResponseBody {
+	s.SSLRedirectionEnabled = &v
+	return s
+}
+
 func (s *DescribeGatewayResponseBody) SetStatus(v string) *DescribeGatewayResponseBody {
 	s.Status = &v
 	return s
@@ -6288,6 +6326,7 @@ type DescribeResourceResponseBody struct {
 	//
 	// 16
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	CpuUsed  *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
 	// The time when the resource group was created.
 	//
 	// example:
@@ -6305,13 +6344,16 @@ type DescribeResourceResponseBody struct {
 	// example:
 	//
 	// 1
-	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuCount *int32   `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuUsed  *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
 	// The total number of instances in the resource group.
 	//
 	// example:
 	//
 	// 4
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	Memory        *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MemoryUsed    *int32 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
 	// The returned message.
 	//
 	// example:
@@ -6396,6 +6438,11 @@ func (s *DescribeResourceResponseBody) SetCpuCount(v int32) *DescribeResourceRes
 	return s
 }
 
+func (s *DescribeResourceResponseBody) SetCpuUsed(v int32) *DescribeResourceResponseBody {
+	s.CpuUsed = &v
+	return s
+}
+
 func (s *DescribeResourceResponseBody) SetCreateTime(v string) *DescribeResourceResponseBody {
 	s.CreateTime = &v
 	return s
@@ -6411,8 +6458,23 @@ func (s *DescribeResourceResponseBody) SetGpuCount(v int32) *DescribeResourceRes
 	return s
 }
 
+func (s *DescribeResourceResponseBody) SetGpuUsed(v float32) *DescribeResourceResponseBody {
+	s.GpuUsed = &v
+	return s
+}
+
 func (s *DescribeResourceResponseBody) SetInstanceCount(v int32) *DescribeResourceResponseBody {
 	s.InstanceCount = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetMemory(v int32) *DescribeResourceResponseBody {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetMemoryUsed(v int32) *DescribeResourceResponseBody {
+	s.MemoryUsed = &v
 	return s
 }
 
@@ -9133,6 +9195,10 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// true
+	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
 	// The state of the private gateway.
 	//
 	// Valid values:
@@ -9218,6 +9284,11 @@ func (s *ListGatewayResponseBodyGateways) SetIsDefault(v bool) *ListGatewayRespo
 
 func (s *ListGatewayResponseBodyGateways) SetReplicas(v int32) *ListGatewayResponseBodyGateways {
 	s.Replicas = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetSSLRedirectionEnabled(v bool) *ListGatewayResponseBodyGateways {
+	s.SSLRedirectionEnabled = &v
 	return s
 }
 
@@ -9541,6 +9612,12 @@ func (s *ListGatewayIntranetLinkedVpcResponse) SetBody(v *ListGatewayIntranetLin
 }
 
 type ListGatewayIntranetLinkedVpcPeerRequest struct {
+	// The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+	//
+	// 	- If you specify a VPC ID, only VPC peers corresponding to the ID are queried.
+	//
+	// 	- Otherwise, all VPC peers are queried.
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -9561,11 +9638,16 @@ func (s *ListGatewayIntranetLinkedVpcPeerRequest) SetVpcId(v string) *ListGatewa
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBody struct {
+	// The ID of the private gateway.
+	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
-	GatewayId   *string                                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The list of VPC peers.
 	PeerVpcList []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList `json:"PeerVpcList,omitempty" xml:"PeerVpcList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -9596,7 +9678,10 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBody) SetRequestId(v string) *L
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList struct {
+	// The ID of the VPC peers.
 	PeerVpcs []*ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs `json:"PeerVpcs,omitempty" xml:"PeerVpcs,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-2zetuli9ws0qgjd******
@@ -9622,10 +9707,14 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcList) SetVpcId(v str
 }
 
 type ListGatewayIntranetLinkedVpcPeerResponseBodyPeerVpcListPeerVpcs struct {
+	// The region where the VPC peer resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the VPC peer.
+	//
 	// example:
 	//
 	// vpc-uf66uio7md****
@@ -9675,6 +9764,61 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetStatusCode(v int32) *ListG
 }
 
 func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetBody(v *ListGatewayIntranetLinkedVpcPeerResponseBody) *ListGatewayIntranetLinkedVpcPeerResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayIntranetSupportedZoneResponseBody struct {
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s ListGatewayIntranetSupportedZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetSupportedZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetSupportedZoneResponseBody) SetRequestId(v string) *ListGatewayIntranetSupportedZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayIntranetSupportedZoneResponseBody) SetZones(v []*string) *ListGatewayIntranetSupportedZoneResponseBody {
+	s.Zones = v
+	return s
+}
+
+type ListGatewayIntranetSupportedZoneResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayIntranetSupportedZoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayIntranetSupportedZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetSupportedZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetSupportedZoneResponse) SetHeaders(v map[string]*string) *ListGatewayIntranetSupportedZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayIntranetSupportedZoneResponse) SetStatusCode(v int32) *ListGatewayIntranetSupportedZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIntranetSupportedZoneResponse) SetBody(v *ListGatewayIntranetSupportedZoneResponseBody) *ListGatewayIntranetSupportedZoneResponse {
 	s.Body = v
 	return s
 }
@@ -13239,7 +13383,8 @@ type UpdateGatewayRequest struct {
 	// example:
 	//
 	// true
-	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	EnableIntranet       *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	EnableSSLRedirection *bool `json:"EnableSSLRedirection,omitempty" xml:"EnableSSLRedirection,omitempty"`
 	// The instance type used for the private gateway.
 	//
 	// example:
@@ -13281,6 +13426,11 @@ func (s *UpdateGatewayRequest) SetEnableInternet(v bool) *UpdateGatewayRequest {
 
 func (s *UpdateGatewayRequest) SetEnableIntranet(v bool) *UpdateGatewayRequest {
 	s.EnableIntranet = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetEnableSSLRedirection(v bool) *UpdateGatewayRequest {
+	s.EnableSSLRedirection = &v
 	return s
 }
 
@@ -15572,7 +15722,7 @@ func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 
 // Summary:
 //
-// 创建网关内网访问端点跨VPC连接
+// Creates a VPC peering connection on an internal endpoint of a gateway.
 //
 // @param tmpReq - CreateGatewayIntranetLinkedVpcPeerRequest
 //
@@ -15627,7 +15777,7 @@ func (client *Client) CreateGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *s
 
 // Summary:
 //
-// 创建网关内网访问端点跨VPC连接
+// Creates a VPC peering connection on an internal endpoint of a gateway.
 //
 // @param request - CreateGatewayIntranetLinkedVpcPeerRequest
 //
@@ -16511,7 +16661,7 @@ func (client *Client) DeleteGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 
 // Summary:
 //
-// 删除网关内网访问端点跨VPC连接
+// Deletes a VPC peering connection from an internal endpoint of a gateway.
 //
 // @param tmpReq - DeleteGatewayIntranetLinkedVpcPeerRequest
 //
@@ -16566,7 +16716,7 @@ func (client *Client) DeleteGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *s
 
 // Summary:
 //
-// 删除网关内网访问端点跨VPC连接
+// Deletes a VPC peering connection from an internal endpoint of a gateway.
 //
 // @param request - DeleteGatewayIntranetLinkedVpcPeerRequest
 //
@@ -18611,7 +18761,7 @@ func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId 
 
 // Summary:
 //
-// 获取网关内网访问端点跨VPC连接列表
+// Obtains a list of all VPC peering connections on internal endpoint of a gateway.
 //
 // @param request - ListGatewayIntranetLinkedVpcPeerRequest
 //
@@ -18656,7 +18806,7 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeerWithOptions(ClusterId *str
 
 // Summary:
 //
-// 获取网关内网访问端点跨VPC连接列表
+// Obtains a list of all VPC peering connections on internal endpoint of a gateway.
 //
 // @param request - ListGatewayIntranetLinkedVpcPeerRequest
 //
@@ -18666,6 +18816,56 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeer(ClusterId *string, Gatewa
 	headers := make(map[string]*string)
 	_result = &ListGatewayIntranetLinkedVpcPeerResponse{}
 	_body, _err := client.ListGatewayIntranetLinkedVpcPeerWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关内网支持的可用区
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayIntranetSupportedZoneResponse
+func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *string, ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayIntranetSupportedZone"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_supported_zone"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayIntranetSupportedZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关内网支持的可用区
+//
+// @return ListGatewayIntranetSupportedZoneResponse
+func (client *Client) ListGatewayIntranetSupportedZone(GatewayId *string, ClusterId *string) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayIntranetSupportedZoneResponse{}
+	_body, _err := client.ListGatewayIntranetSupportedZoneWithOptions(GatewayId, ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20101,6 +20301,10 @@ func (client *Client) UpdateGatewayWithOptions(GatewayId *string, ClusterId *str
 
 	if !tea.BoolValue(util.IsUnset(request.EnableIntranet)) {
 		body["EnableIntranet"] = request.EnableIntranet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSSLRedirection)) {
+		body["EnableSSLRedirection"] = request.EnableSSLRedirection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
