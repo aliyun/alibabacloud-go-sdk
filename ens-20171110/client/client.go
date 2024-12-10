@@ -45193,6 +45193,8 @@ func (s *ExportMeasurementDataResponse) SetBody(v *ExportMeasurementDataResponse
 type GetBucketAclRequest struct {
 	// The name of the bucket.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
