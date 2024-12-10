@@ -276,6 +276,7 @@ type CreateVirtualDatasourceInstanceRequest struct {
 	//
 	// virtual-instance-1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type *int32  `json:"type,omitempty" xml:"type,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -299,6 +300,11 @@ func (s *CreateVirtualDatasourceInstanceRequest) SetDescription(v string) *Creat
 
 func (s *CreateVirtualDatasourceInstanceRequest) SetName(v string) *CreateVirtualDatasourceInstanceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateVirtualDatasourceInstanceRequest) SetType(v int32) *CreateVirtualDatasourceInstanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -1177,6 +1183,7 @@ func (s *SyncRemoteTablesResponse) SetBody(v *SyncRemoteTablesResponseBody) *Syn
 type UpdateVirtualDatasourceInstanceRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1204,6 +1211,11 @@ func (s *UpdateVirtualDatasourceInstanceRequest) SetDescription(v string) *Updat
 
 func (s *UpdateVirtualDatasourceInstanceRequest) SetName(v string) *UpdateVirtualDatasourceInstanceRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateVirtualDatasourceInstanceRequest) SetType(v int32) *UpdateVirtualDatasourceInstanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -1527,6 +1539,10 @@ func (client *Client) CreateVirtualDatasourceInstanceWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1973,6 +1989,10 @@ func (client *Client) UpdateVirtualDatasourceInstanceWithOptions(request *Update
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VdbId)) {
