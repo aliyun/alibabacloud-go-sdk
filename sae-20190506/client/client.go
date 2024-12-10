@@ -9955,8 +9955,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// 1
-	Replicas   *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	SaeVersion *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SaeVersion      *string `json:"SaeVersion,omitempty" xml:"SaeVersion,omitempty"`
+	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
 	//
 	// example:
@@ -10294,6 +10295,11 @@ func (s *CreateApplicationRequest) SetReplicas(v int32) *CreateApplicationReques
 
 func (s *CreateApplicationRequest) SetSaeVersion(v string) *CreateApplicationRequest {
 	s.SaeVersion = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSecretMountDesc(v string) *CreateApplicationRequest {
+	s.SecretMountDesc = &v
 	return s
 }
 
@@ -15427,7 +15433,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// 1
-	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
@@ -15815,6 +15822,11 @@ func (s *DeployApplicationRequest) SetReadiness(v string) *DeployApplicationRequ
 
 func (s *DeployApplicationRequest) SetReplicas(v int32) *DeployApplicationRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetSecretMountDesc(v string) *DeployApplicationRequest {
+	s.SecretMountDesc = &v
 	return s
 }
 
@@ -17146,7 +17158,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// 2
-	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas        *int32                                                      `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 	// The ID of the security group.
 	//
 	// example:
@@ -17574,6 +17587,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetReplicas(v int32) *Descri
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetSecretMountDesc(v []*DescribeApplicationConfigResponseBodyDataSecretMountDesc) *DescribeApplicationConfigResponseBodyData {
+	s.SecretMountDesc = v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetSecurityGroupId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.SecurityGroupId = &v
 	return s
@@ -17778,6 +17796,41 @@ func (s *DescribeApplicationConfigResponseBodyDataOssMountDescs) SetMountPath(v 
 
 func (s *DescribeApplicationConfigResponseBodyDataOssMountDescs) SetReadOnly(v bool) *DescribeApplicationConfigResponseBodyDataOssMountDescs {
 	s.ReadOnly = &v
+	return s
+}
+
+type DescribeApplicationConfigResponseBodyDataSecretMountDesc struct {
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	SecretId   *int64  `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataSecretMountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataSecretMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSecretMountDesc) SetKey(v string) *DescribeApplicationConfigResponseBodyDataSecretMountDesc {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSecretMountDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataSecretMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSecretMountDesc) SetSecretId(v int64) *DescribeApplicationConfigResponseBodyDataSecretMountDesc {
+	s.SecretId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSecretMountDesc) SetSecretName(v string) *DescribeApplicationConfigResponseBodyDataSecretMountDesc {
+	s.SecretName = &v
 	return s
 }
 
@@ -44894,6 +44947,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["SaeVersion"] = request.SaeVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecretMountDesc)) {
+		query["SecretMountDesc"] = request.SecretMountDesc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
@@ -46956,6 +47013,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
 		query["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretMountDesc)) {
+		query["SecretMountDesc"] = request.SecretMountDesc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
