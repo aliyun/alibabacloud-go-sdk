@@ -249,7 +249,8 @@ type CreateCertificateForPackageRequestRequest struct {
 	// example:
 	//
 	// symantec-free-1-free
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductCode *string                                          `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Tags        []*CreateCertificateForPackageRequestRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The name of the applicant.
 	//
 	// If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management*	- module is used. For more information about how to add a contact to the **Information Management*	- module, see [Manage contacts](https://help.aliyun.com/document_detail/198262.html).
@@ -310,6 +311,11 @@ func (s *CreateCertificateForPackageRequestRequest) SetProductCode(v string) *Cr
 	return s
 }
 
+func (s *CreateCertificateForPackageRequestRequest) SetTags(v []*CreateCertificateForPackageRequestRequestTags) *CreateCertificateForPackageRequestRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateCertificateForPackageRequestRequest) SetUsername(v string) *CreateCertificateForPackageRequestRequest {
 	s.Username = &v
 	return s
@@ -317,6 +323,29 @@ func (s *CreateCertificateForPackageRequestRequest) SetUsername(v string) *Creat
 
 func (s *CreateCertificateForPackageRequestRequest) SetValidateType(v string) *CreateCertificateForPackageRequestRequest {
 	s.ValidateType = &v
+	return s
+}
+
+type CreateCertificateForPackageRequestRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCertificateForPackageRequestRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertificateForPackageRequestRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertificateForPackageRequestRequestTags) SetKey(v string) *CreateCertificateForPackageRequestRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCertificateForPackageRequestRequestTags) SetValue(v string) *CreateCertificateForPackageRequestRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -430,7 +459,8 @@ type CreateCertificateRequestRequest struct {
 	// example:
 	//
 	// symantec-free-1-free
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductCode *string                                `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Tags        []*CreateCertificateRequestRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The name of the applicant.
 	//
 	// This parameter is required.
@@ -483,6 +513,11 @@ func (s *CreateCertificateRequestRequest) SetProductCode(v string) *CreateCertif
 	return s
 }
 
+func (s *CreateCertificateRequestRequest) SetTags(v []*CreateCertificateRequestRequestTags) *CreateCertificateRequestRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateCertificateRequestRequest) SetUsername(v string) *CreateCertificateRequestRequest {
 	s.Username = &v
 	return s
@@ -490,6 +525,29 @@ func (s *CreateCertificateRequestRequest) SetUsername(v string) *CreateCertifica
 
 func (s *CreateCertificateRequestRequest) SetValidateType(v string) *CreateCertificateRequestRequest {
 	s.ValidateType = &v
+	return s
+}
+
+type CreateCertificateRequestRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCertificateRequestRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertificateRequestRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertificateRequestRequestTags) SetKey(v string) *CreateCertificateRequestRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCertificateRequestRequestTags) SetValue(v string) *CreateCertificateRequestRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -607,7 +665,8 @@ type CreateCertificateWithCsrRequestRequest struct {
 	// example:
 	//
 	// symantec-free-1-free
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductCode *string                                       `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Tags        []*CreateCertificateWithCsrRequestRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The name of the applicant.
 	//
 	// This parameter is required.
@@ -660,6 +719,11 @@ func (s *CreateCertificateWithCsrRequestRequest) SetProductCode(v string) *Creat
 	return s
 }
 
+func (s *CreateCertificateWithCsrRequestRequest) SetTags(v []*CreateCertificateWithCsrRequestRequestTags) *CreateCertificateWithCsrRequestRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateCertificateWithCsrRequestRequest) SetUsername(v string) *CreateCertificateWithCsrRequestRequest {
 	s.Username = &v
 	return s
@@ -667,6 +731,29 @@ func (s *CreateCertificateWithCsrRequestRequest) SetUsername(v string) *CreateCe
 
 func (s *CreateCertificateWithCsrRequestRequest) SetValidateType(v string) *CreateCertificateWithCsrRequestRequest {
 	s.ValidateType = &v
+	return s
+}
+
+type CreateCertificateWithCsrRequestRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCertificateWithCsrRequestRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCertificateWithCsrRequestRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCertificateWithCsrRequestRequestTags) SetKey(v string) *CreateCertificateWithCsrRequestRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCertificateWithCsrRequestRequestTags) SetValue(v string) *CreateCertificateWithCsrRequestRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -8086,7 +8173,8 @@ type RenewCertificateOrderForPackageRequestRequest struct {
 	// example:
 	//
 	// 123451222
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId *int64                                               `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tags    []*RenewCertificateOrderForPackageRequestRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s RenewCertificateOrderForPackageRequestRequest) String() string {
@@ -8104,6 +8192,34 @@ func (s *RenewCertificateOrderForPackageRequestRequest) SetCsr(v string) *RenewC
 
 func (s *RenewCertificateOrderForPackageRequestRequest) SetOrderId(v int64) *RenewCertificateOrderForPackageRequestRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *RenewCertificateOrderForPackageRequestRequest) SetTags(v []*RenewCertificateOrderForPackageRequestRequestTags) *RenewCertificateOrderForPackageRequestRequest {
+	s.Tags = v
+	return s
+}
+
+type RenewCertificateOrderForPackageRequestRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s RenewCertificateOrderForPackageRequestRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewCertificateOrderForPackageRequestRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *RenewCertificateOrderForPackageRequestRequestTags) SetKey(v string) *RenewCertificateOrderForPackageRequestRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *RenewCertificateOrderForPackageRequestRequestTags) SetValue(v string) *RenewCertificateOrderForPackageRequestRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -8937,7 +9053,8 @@ type UploadUserCertificateRequest struct {
 	// MHcCAQEEILR****
 	//
 	// -----END EC PRIVATE KEY-----
-	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+	SignPrivateKey *string                             `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+	Tags           []*UploadUserCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s UploadUserCertificateRequest) String() string {
@@ -8985,6 +9102,34 @@ func (s *UploadUserCertificateRequest) SetSignCert(v string) *UploadUserCertific
 
 func (s *UploadUserCertificateRequest) SetSignPrivateKey(v string) *UploadUserCertificateRequest {
 	s.SignPrivateKey = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetTags(v []*UploadUserCertificateRequestTags) *UploadUserCertificateRequest {
+	s.Tags = v
+	return s
+}
+
+type UploadUserCertificateRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UploadUserCertificateRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadUserCertificateRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *UploadUserCertificateRequestTags) SetKey(v string) *UploadUserCertificateRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequestTags) SetValue(v string) *UploadUserCertificateRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -9497,6 +9642,10 @@ func (client *Client) CreateCertificateForPackageRequestWithOptions(request *Cre
 		query["ProductCode"] = request.ProductCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
 		query["Username"] = request.Username
 	}
@@ -9593,6 +9742,10 @@ func (client *Client) CreateCertificateRequestWithOptions(request *CreateCertifi
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
@@ -9693,6 +9846,10 @@ func (client *Client) CreateCertificateWithCsrRequestWithOptions(request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
@@ -11944,6 +12101,10 @@ func (client *Client) RenewCertificateOrderForPackageRequestWithOptions(request 
 		query["OrderId"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12472,6 +12633,10 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 
 	if !tea.BoolValue(util.IsUnset(request.SignPrivateKey)) {
 		query["SignPrivateKey"] = request.SignPrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
