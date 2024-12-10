@@ -4817,6 +4817,129 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 	return s
 }
 
+type DeleteBackupsRequest struct {
+	// The ID of the backup set that you want to delete. Separate multiple backup set IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 763,764
+	BackupIds *string `json:"BackupIds,omitempty" xml:"BackupIds,omitempty"`
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf6g8w25jacm7****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteBackupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsRequest) SetBackupIds(v string) *DeleteBackupsRequest {
+	s.BackupIds = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetDBClusterId(v string) *DeleteBackupsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetOwnerAccount(v string) *DeleteBackupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetOwnerId(v int64) *DeleteBackupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetRegionId(v string) *DeleteBackupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetResourceOwnerAccount(v string) *DeleteBackupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteBackupsRequest) SetResourceOwnerId(v int64) *DeleteBackupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteBackupsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 771C5FAA-530F-52F7-B84D-EBAD4561D590
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBackupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsResponseBody) SetRequestId(v string) *DeleteBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBackupsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBackupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBackupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBackupsResponse) SetHeaders(v map[string]*string) *DeleteBackupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupsResponse) SetStatusCode(v int32) *DeleteBackupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBackupsResponse) SetBody(v *DeleteBackupsResponseBody) *DeleteBackupsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDBClusterRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -10471,6 +10594,103 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 	return s
 }
 
+type DescribeCompactionServiceSwitchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp149vz49b36t****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DescribeCompactionServiceSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCompactionServiceSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCompactionServiceSwitchRequest) SetDBClusterId(v string) *DescribeCompactionServiceSwitchRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DescribeCompactionServiceSwitchResponseBody struct {
+	Data *DescribeCompactionServiceSwitchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D761DA51-12F8-5457-AAA9-F52B9F436D2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCompactionServiceSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCompactionServiceSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCompactionServiceSwitchResponseBody) SetData(v *DescribeCompactionServiceSwitchResponseBodyData) *DescribeCompactionServiceSwitchResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCompactionServiceSwitchResponseBody) SetRequestId(v string) *DescribeCompactionServiceSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCompactionServiceSwitchResponseBodyData struct {
+	// example:
+	//
+	// true
+	EnableCompactionService *bool `json:"EnableCompactionService,omitempty" xml:"EnableCompactionService,omitempty"`
+}
+
+func (s DescribeCompactionServiceSwitchResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCompactionServiceSwitchResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCompactionServiceSwitchResponseBodyData) SetEnableCompactionService(v bool) *DescribeCompactionServiceSwitchResponseBodyData {
+	s.EnableCompactionService = &v
+	return s
+}
+
+type DescribeCompactionServiceSwitchResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCompactionServiceSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCompactionServiceSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCompactionServiceSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCompactionServiceSwitchResponse) SetHeaders(v map[string]*string) *DescribeCompactionServiceSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCompactionServiceSwitchResponse) SetStatusCode(v int32) *DescribeCompactionServiceSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCompactionServiceSwitchResponse) SetBody(v *DescribeCompactionServiceSwitchResponseBody) *DescribeCompactionServiceSwitchResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeComputeResourceUsageRequest struct {
 	// The cluster ID.
 	//
@@ -11047,7 +11267,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// Reserved parameters.
 	SupportedFeatures map[string]*string `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty"`
 	// The tags that are added to the cluster.
-	Tags *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Tags     *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TaskInfo *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 	// Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
 	//
 	// 	- **true**
@@ -11261,6 +11482,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetTags(v *Descri
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetTaskInfo(v *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.TaskInfo = v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetUserENIStatus(v bool) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.UserENIStatus = &v
 	return s
@@ -11330,6 +11556,105 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag) SetKey(v s
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag) SetValue(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo struct {
+	Name     *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress *string                                                               `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status   *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepList *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) SetName(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) SetProgress(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) SetStatus(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo) SetStepList(v *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo {
+	s.StepList = v
+	return s
+}
+
+type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList struct {
+	StepList []*DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) SetStepList(v []*DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList {
+	s.StepList = v
+	return s
+}
+
+type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList struct {
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StepDesc     *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
+	StepName     *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
+	StepStatus   *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetEndTime(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetStartTime(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetStepDesc(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.StepDesc = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetStepName(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.StepName = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetStepProgress(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.StepProgress = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) SetStepStatus(v string) *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList {
+	s.StepStatus = &v
 	return s
 }
 
@@ -14568,7 +14893,8 @@ type DescribeDiagnosisRecordsResponseBodyQuerys struct {
 	// example:
 	//
 	// 1
-	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
+	OutputRows *int64  `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
+	PatternId  *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
 	// The peak memory. Unit: bytes.
 	//
 	// example:
@@ -14722,6 +15048,11 @@ func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetOutputDataSize(v int64) 
 
 func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetOutputRows(v int64) *DescribeDiagnosisRecordsResponseBodyQuerys {
 	s.OutputRows = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyQuerys) SetPatternId(v string) *DescribeDiagnosisRecordsResponseBodyQuerys {
+	s.PatternId = &v
 	return s
 }
 
@@ -16572,6 +16903,112 @@ func (s *DescribeEnabledPrivilegesResponse) SetBody(v *DescribeEnabledPrivileges
 	return s
 }
 
+type DescribeEssdCacheConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf685u1o987hj6rn
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DescribeEssdCacheConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEssdCacheConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEssdCacheConfigRequest) SetDBClusterId(v string) *DescribeEssdCacheConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DescribeEssdCacheConfigResponseBody struct {
+	Data *DescribeEssdCacheConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C7EDB8E4-9769-4233-88C7-DCA4C9******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEssdCacheConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEssdCacheConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEssdCacheConfigResponseBody) SetData(v *DescribeEssdCacheConfigResponseBodyData) *DescribeEssdCacheConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEssdCacheConfigResponseBody) SetRequestId(v string) *DescribeEssdCacheConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEssdCacheConfigResponseBodyData struct {
+	// example:
+	//
+	// true
+	EnableEssdCache *bool `json:"EnableEssdCache,omitempty" xml:"EnableEssdCache,omitempty"`
+	// example:
+	//
+	// 500
+	EssdCacheSize *int32 `json:"EssdCacheSize,omitempty" xml:"EssdCacheSize,omitempty"`
+}
+
+func (s DescribeEssdCacheConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEssdCacheConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEssdCacheConfigResponseBodyData) SetEnableEssdCache(v bool) *DescribeEssdCacheConfigResponseBodyData {
+	s.EnableEssdCache = &v
+	return s
+}
+
+func (s *DescribeEssdCacheConfigResponseBodyData) SetEssdCacheSize(v int32) *DescribeEssdCacheConfigResponseBodyData {
+	s.EssdCacheSize = &v
+	return s
+}
+
+type DescribeEssdCacheConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEssdCacheConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeEssdCacheConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEssdCacheConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEssdCacheConfigResponse) SetHeaders(v map[string]*string) *DescribeEssdCacheConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEssdCacheConfigResponse) SetStatusCode(v int32) *DescribeEssdCacheConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEssdCacheConfigResponse) SetBody(v *DescribeEssdCacheConfigResponseBody) *DescribeEssdCacheConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeExcessivePrimaryKeysRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -17326,6 +17763,442 @@ func (s *DescribeJobResourceUsageResponse) SetBody(v *DescribeJobResourceUsageRe
 	return s
 }
 
+type DescribeKernelVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-2ze918p6qf6h9****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeKernelVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKernelVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKernelVersionRequest) SetDBClusterId(v string) *DescribeKernelVersionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeKernelVersionRequest) SetOwnerAccount(v string) *DescribeKernelVersionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeKernelVersionRequest) SetOwnerId(v int64) *DescribeKernelVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeKernelVersionRequest) SetRegionId(v string) *DescribeKernelVersionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeKernelVersionRequest) SetResourceOwnerAccount(v string) *DescribeKernelVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeKernelVersionRequest) SetResourceOwnerId(v int64) *DescribeKernelVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeKernelVersionResponseBody struct {
+	AvailableKernelVersions []*DescribeKernelVersionResponseBodyAvailableKernelVersions `json:"AvailableKernelVersions,omitempty" xml:"AvailableKernelVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-01-12T16:00:00Z
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// 3.1.8
+	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeKernelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKernelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKernelVersionResponseBody) SetAvailableKernelVersions(v []*DescribeKernelVersionResponseBodyAvailableKernelVersions) *DescribeKernelVersionResponseBody {
+	s.AvailableKernelVersions = v
+	return s
+}
+
+func (s *DescribeKernelVersionResponseBody) SetExpireDate(v string) *DescribeKernelVersionResponseBody {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *DescribeKernelVersionResponseBody) SetKernelVersion(v string) *DescribeKernelVersionResponseBody {
+	s.KernelVersion = &v
+	return s
+}
+
+func (s *DescribeKernelVersionResponseBody) SetRequestId(v string) *DescribeKernelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeKernelVersionResponseBodyAvailableKernelVersions struct {
+	// example:
+	//
+	// 2025-07-17T16:00:00Z
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// 3.1.9
+	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	// example:
+	//
+	// 2024-07-17T16:00:00Z
+	ReleaseDate *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
+}
+
+func (s DescribeKernelVersionResponseBodyAvailableKernelVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKernelVersionResponseBodyAvailableKernelVersions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKernelVersionResponseBodyAvailableKernelVersions) SetExpireDate(v string) *DescribeKernelVersionResponseBodyAvailableKernelVersions {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *DescribeKernelVersionResponseBodyAvailableKernelVersions) SetKernelVersion(v string) *DescribeKernelVersionResponseBodyAvailableKernelVersions {
+	s.KernelVersion = &v
+	return s
+}
+
+func (s *DescribeKernelVersionResponseBodyAvailableKernelVersions) SetReleaseDate(v string) *DescribeKernelVersionResponseBodyAvailableKernelVersions {
+	s.ReleaseDate = &v
+	return s
+}
+
+type DescribeKernelVersionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeKernelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeKernelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeKernelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeKernelVersionResponse) SetHeaders(v map[string]*string) *DescribeKernelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeKernelVersionResponse) SetStatusCode(v int32) *DescribeKernelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeKernelVersionResponse) SetBody(v *DescribeKernelVersionResponseBody) *DescribeKernelVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLakeCacheSizeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp10b6646l07akdt
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+}
+
+func (s DescribeLakeCacheSizeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLakeCacheSizeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLakeCacheSizeRequest) SetDBClusterId(v string) *DescribeLakeCacheSizeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+type DescribeLakeCacheSizeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeLakeCacheSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeLakeCacheSizeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLakeCacheSizeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLakeCacheSizeResponseBody) SetCode(v int32) *DescribeLakeCacheSizeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBody) SetData(v *DescribeLakeCacheSizeResponseBodyData) *DescribeLakeCacheSizeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBody) SetRequestId(v string) *DescribeLakeCacheSizeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeLakeCacheSizeResponseBodyData struct {
+	// example:
+	//
+	// 100
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// amv-bp10b6646l07akdt
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 100
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// true
+	EnableLakeCache *bool     `json:"EnableLakeCache,omitempty" xml:"EnableLakeCache,omitempty"`
+	Instances       []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLakeCacheSizeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLakeCacheSizeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLakeCacheSizeResponseBodyData) SetCapacity(v int64) *DescribeLakeCacheSizeResponseBodyData {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBodyData) SetDBClusterId(v string) *DescribeLakeCacheSizeResponseBodyData {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBodyData) SetDataSize(v int64) *DescribeLakeCacheSizeResponseBodyData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBodyData) SetEnableLakeCache(v bool) *DescribeLakeCacheSizeResponseBodyData {
+	s.EnableLakeCache = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponseBodyData) SetInstances(v []*string) *DescribeLakeCacheSizeResponseBodyData {
+	s.Instances = v
+	return s
+}
+
+type DescribeLakeCacheSizeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLakeCacheSizeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLakeCacheSizeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLakeCacheSizeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLakeCacheSizeResponse) SetHeaders(v map[string]*string) *DescribeLakeCacheSizeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponse) SetStatusCode(v int32) *DescribeLakeCacheSizeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLakeCacheSizeResponse) SetBody(v *DescribeLakeCacheSizeResponseBody) *DescribeLakeCacheSizeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOperatorPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf6wjk5xxxxxxxxxx
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeOperatorPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOperatorPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOperatorPermissionRequest) SetDBClusterId(v string) *DescribeOperatorPermissionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionRequest) SetOwnerAccount(v string) *DescribeOperatorPermissionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionRequest) SetOwnerId(v int64) *DescribeOperatorPermissionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionRequest) SetResourceOwnerAccount(v string) *DescribeOperatorPermissionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionRequest) SetResourceOwnerId(v int64) *DescribeOperatorPermissionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeOperatorPermissionResponseBody struct {
+	// example:
+	//
+	// 2024-02-25T03:35:02Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// amv-uf6wjk5xxxxxxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2024-01-10T02:19:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// Control,Data
+	Privileges *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOperatorPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOperatorPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOperatorPermissionResponseBody) SetCreatedTime(v string) *DescribeOperatorPermissionResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponseBody) SetDBClusterId(v string) *DescribeOperatorPermissionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponseBody) SetExpiredTime(v string) *DescribeOperatorPermissionResponseBody {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponseBody) SetPrivileges(v string) *DescribeOperatorPermissionResponseBody {
+	s.Privileges = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponseBody) SetRequestId(v string) *DescribeOperatorPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOperatorPermissionResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOperatorPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeOperatorPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOperatorPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOperatorPermissionResponse) SetHeaders(v map[string]*string) *DescribeOperatorPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponse) SetStatusCode(v int32) *DescribeOperatorPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOperatorPermissionResponse) SetBody(v *DescribeOperatorPermissionResponseBody) *DescribeOperatorPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePatternPerformanceRequest struct {
 	// The cluster ID.
 	//
@@ -17409,26 +18282,32 @@ func (s *DescribePatternPerformanceRequest) SetStartTime(v string) *DescribePatt
 }
 
 type DescribePatternPerformanceResponseBody struct {
+	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
 	// The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-08-22T01:06:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FailedCount *int64  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	// The queried performance metrics.
 	Performances []*DescribePatternPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
+	QueryCount   *int64                                                `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// F21AF487-B8C9-57E0-8E3A-A92BC3611FB6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
 	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-08-21T02:15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tables    *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	User      *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribePatternPerformanceResponseBody) String() string {
@@ -17439,8 +18318,18 @@ func (s DescribePatternPerformanceResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePatternPerformanceResponseBody) SetAccessIp(v string) *DescribePatternPerformanceResponseBody {
+	s.AccessIp = &v
+	return s
+}
+
 func (s *DescribePatternPerformanceResponseBody) SetEndTime(v string) *DescribePatternPerformanceResponseBody {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribePatternPerformanceResponseBody) SetFailedCount(v int64) *DescribePatternPerformanceResponseBody {
+	s.FailedCount = &v
 	return s
 }
 
@@ -17449,13 +18338,33 @@ func (s *DescribePatternPerformanceResponseBody) SetPerformances(v []*DescribePa
 	return s
 }
 
+func (s *DescribePatternPerformanceResponseBody) SetQueryCount(v int64) *DescribePatternPerformanceResponseBody {
+	s.QueryCount = &v
+	return s
+}
+
 func (s *DescribePatternPerformanceResponseBody) SetRequestId(v string) *DescribePatternPerformanceResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribePatternPerformanceResponseBody) SetSQLPattern(v string) *DescribePatternPerformanceResponseBody {
+	s.SQLPattern = &v
+	return s
+}
+
 func (s *DescribePatternPerformanceResponseBody) SetStartTime(v string) *DescribePatternPerformanceResponseBody {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribePatternPerformanceResponseBody) SetTables(v string) *DescribePatternPerformanceResponseBody {
+	s.Tables = &v
+	return s
+}
+
+func (s *DescribePatternPerformanceResponseBody) SetUser(v string) *DescribePatternPerformanceResponseBody {
+	s.User = &v
 	return s
 }
 
@@ -22855,130 +23764,6 @@ func (s *GetSparkConfigLogPathResponse) SetBody(v *GetSparkConfigLogPathResponse
 	return s
 }
 
-type GetSparkDefinitionsRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	// example:
-	//
-	// amv-clusterxxx
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-}
-
-func (s GetSparkDefinitionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkDefinitionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkDefinitionsRequest) SetDBClusterId(v string) *GetSparkDefinitionsRequest {
-	s.DBClusterId = &v
-	return s
-}
-
-type GetSparkDefinitionsResponseBody struct {
-	// The common definitions of Spark applications.
-	//
-	// example:
-	//
-	// {"SQLTemplateExample": "-- Here is just an example of SparkSQL. Modify the content and run your spark program.
-	//
-	// conf spark.driver.resourceSpec=medium;
-	//
-	// conf spark.executor.instances=2;
-	//
-	// conf spark.executor.resourceSpec=medium;
-	//
-	// conf spark.app.name=Spark SQL Test;
-	//
-	// conf spark.adb.connectors=oss;
-	//
-	// -- Here are your sql statements
-	//
-	// show databases;",
-	//
-	//                  "BatchTemplateExample": "{
-	//
-	//     "comments": [
-	//
-	//         "-- Here is just an example of SparkPi. Modify the content and run your spark program."
-	//
-	//     ],
-	//
-	//     "args": ["1000"],
-	//
-	//   "file":"local:///tmp/spark-examples.jar",
-	//
-	//     "name": "SparkPi",
-	//
-	//     "className": "org.apache.spark.examples.SparkPi",
-	//
-	//     "conf": {      "spark.driver.resourceSpec": "medium",
-	//
-	//         "spark.executor.instances": 2,
-	//
-	//         "spark.executor.resourceSpec": "medium"
-	//
-	//     }
-	//
-	// }"
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// D65A809F-34CE-4550-9BC1-0ED21ETG380
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetSparkDefinitionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkDefinitionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkDefinitionsResponseBody) SetData(v string) *GetSparkDefinitionsResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetSparkDefinitionsResponseBody) SetRequestId(v string) *GetSparkDefinitionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetSparkDefinitionsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetSparkDefinitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetSparkDefinitionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkDefinitionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkDefinitionsResponse) SetHeaders(v map[string]*string) *GetSparkDefinitionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSparkDefinitionsResponse) SetStatusCode(v int32) *GetSparkDefinitionsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetSparkDefinitionsResponse) SetBody(v *GetSparkDefinitionsResponseBody) *GetSparkDefinitionsResponse {
-	s.Body = v
-	return s
-}
-
 type GetSparkLogAnalyzeTaskRequest struct {
 	// The ID of the Spark log analysis task. You can call the ListSparkLogAnalyzeTasks operation to query the IDs of all Spark log analysis tasks that are submitted in the current cluster.
 	//
@@ -24935,6 +25720,123 @@ func (s *GetViewObjectsResponse) SetBody(v *GetViewObjectsResponseBody) *GetView
 	return s
 }
 
+type GrantOperatorPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1565u55p32****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11-30T00:00:00Z
+	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Control
+	Privileges           *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GrantOperatorPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantOperatorPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantOperatorPermissionRequest) SetDBClusterId(v string) *GrantOperatorPermissionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetExpiredTime(v string) *GrantOperatorPermissionRequest {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetOwnerAccount(v string) *GrantOperatorPermissionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetOwnerId(v int64) *GrantOperatorPermissionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetPrivileges(v string) *GrantOperatorPermissionRequest {
+	s.Privileges = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetResourceOwnerAccount(v string) *GrantOperatorPermissionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionRequest) SetResourceOwnerId(v int64) *GrantOperatorPermissionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GrantOperatorPermissionResponseBody struct {
+	// example:
+	//
+	// A438072A-E2E7-5509-9A3F-66293512A820
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantOperatorPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantOperatorPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantOperatorPermissionResponseBody) SetRequestId(v string) *GrantOperatorPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantOperatorPermissionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantOperatorPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GrantOperatorPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantOperatorPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantOperatorPermissionResponse) SetHeaders(v map[string]*string) *GrantOperatorPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantOperatorPermissionResponse) SetStatusCode(v int32) *GrantOperatorPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantOperatorPermissionResponse) SetBody(v *GrantOperatorPermissionResponseBody) *GrantOperatorPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type KillSparkAppRequest struct {
 	// The ID of the Spark application that you want to terminate.
 	//
@@ -25991,6 +26893,241 @@ func (s *ListSparkTemplateFileIdsResponse) SetStatusCode(v int32) *ListSparkTemp
 }
 
 func (s *ListSparkTemplateFileIdsResponse) SetBody(v *ListSparkTemplateFileIdsResponseBody) *ListSparkTemplateFileIdsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// 212db86sca4384811e0b5e8707ec21345
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbclusterlakeversion
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetOwnerAccount(v string) *ListTagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetOwnerId(v int64) *ListTagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerAccount(v string) *ListTagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerId(v int64) *ListTagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// testkey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testvalue1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// 212db86sca4384811e0b5e8707ec21345
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 184DE106-CB2C-4DD2-B57F-396652E6C8F8
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// example:
+	//
+	// amv-bp1l20nxxxxxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// dbclusterlakeversion
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// testkey1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// testvalue1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -27069,6 +28206,88 @@ func (s *ModifyClusterConnectionStringResponse) SetBody(v *ModifyClusterConnecti
 	return s
 }
 
+type ModifyCompactionServiceSwitchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp14t95lun0w****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableCompactionService *bool `json:"EnableCompactionService,omitempty" xml:"EnableCompactionService,omitempty"`
+}
+
+func (s ModifyCompactionServiceSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCompactionServiceSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCompactionServiceSwitchRequest) SetDBClusterId(v string) *ModifyCompactionServiceSwitchRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyCompactionServiceSwitchRequest) SetEnableCompactionService(v bool) *ModifyCompactionServiceSwitchRequest {
+	s.EnableCompactionService = &v
+	return s
+}
+
+type ModifyCompactionServiceSwitchResponseBody struct {
+	// example:
+	//
+	// 21ABF219-10E0-571B-94B8-9C9AE5022BF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCompactionServiceSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCompactionServiceSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCompactionServiceSwitchResponseBody) SetRequestId(v string) *ModifyCompactionServiceSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCompactionServiceSwitchResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCompactionServiceSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCompactionServiceSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCompactionServiceSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCompactionServiceSwitchResponse) SetHeaders(v map[string]*string) *ModifyCompactionServiceSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCompactionServiceSwitchResponse) SetStatusCode(v int32) *ModifyCompactionServiceSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCompactionServiceSwitchResponse) SetBody(v *ModifyCompactionServiceSwitchResponseBody) *ModifyCompactionServiceSwitchResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBClusterRequest struct {
 	// The reserved computing resources. Valid values: 0ACU to 4096ACU. The value must be in increments of 16ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
@@ -27442,6 +28661,230 @@ func (s *ModifyDBClusterMaintainTimeResponse) SetStatusCode(v int32) *ModifyDBCl
 }
 
 func (s *ModifyDBClusterMaintainTimeResponse) SetBody(v *ModifyDBClusterMaintainTimeResponseBody) *ModifyDBClusterMaintainTimeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBClusterResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bpxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acxxxxx
+	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyDBClusterResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetDBClusterId(v string) *ModifyDBClusterResourceGroupRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetNewResourceGroupId(v string) *ModifyDBClusterResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetOwnerAccount(v string) *ModifyDBClusterResourceGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetOwnerId(v int64) *ModifyDBClusterResourceGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetResourceOwnerAccount(v string) *ModifyDBClusterResourceGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupRequest) SetResourceOwnerId(v int64) *ModifyDBClusterResourceGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyDBClusterResourceGroupResponseBody struct {
+	// example:
+	//
+	// 65BDA532-28AF-4122-AA39-B382721EEE64
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterResourceGroupResponseBody) SetRequestId(v string) *ModifyDBClusterResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterResourceGroupResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBClusterResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBClusterResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterResourceGroupResponse) SetHeaders(v map[string]*string) *ModifyDBClusterResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupResponse) SetStatusCode(v int32) *ModifyDBClusterResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterResourceGroupResponse) SetBody(v *ModifyDBClusterResourceGroupResponseBody) *ModifyDBClusterResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBClusterVipRequest struct {
+	// The endpoint of the cluster.
+	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-2ze8mbuai97*****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The VPC ID.
+	//
+	// >
+	//
+	// 	- The new **VPC*	- must reside in the same region as the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1at5ze0t5u3xtqn****
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
+	//
+	// >
+	//
+	// 	- The new vSwitch must reside in the same zone as the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1aadw9k19x6cis9****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s ModifyDBClusterVipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterVipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterVipRequest) SetConnectString(v string) *ModifyDBClusterVipRequest {
+	s.ConnectString = &v
+	return s
+}
+
+func (s *ModifyDBClusterVipRequest) SetDBClusterId(v string) *ModifyDBClusterVipRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyDBClusterVipRequest) SetVPCId(v string) *ModifyDBClusterVipRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *ModifyDBClusterVipRequest) SetVSwitchId(v string) *ModifyDBClusterVipRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type ModifyDBClusterVipResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-****-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBClusterVipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterVipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterVipResponseBody) SetRequestId(v string) *ModifyDBClusterVipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBClusterVipResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBClusterVipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBClusterVipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBClusterVipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBClusterVipResponse) SetHeaders(v map[string]*string) *ModifyDBClusterVipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBClusterVipResponse) SetStatusCode(v int32) *ModifyDBClusterVipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBClusterVipResponse) SetBody(v *ModifyDBClusterVipResponseBody) *ModifyDBClusterVipResponse {
 	s.Body = v
 	return s
 }
@@ -28101,6 +29544,238 @@ func (s *ModifyElasticPlanResponse) SetStatusCode(v int32) *ModifyElasticPlanRes
 }
 
 func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *ModifyElasticPlanResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyEssdCacheConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp10yt0gva71ei7d
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableEssdCache *bool `json:"EnableEssdCache,omitempty" xml:"EnableEssdCache,omitempty"`
+	// example:
+	//
+	// 500
+	EssdCacheSize *int32 `json:"EssdCacheSize,omitempty" xml:"EssdCacheSize,omitempty"`
+}
+
+func (s ModifyEssdCacheConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEssdCacheConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEssdCacheConfigRequest) SetDBClusterId(v string) *ModifyEssdCacheConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyEssdCacheConfigRequest) SetEnableEssdCache(v bool) *ModifyEssdCacheConfigRequest {
+	s.EnableEssdCache = &v
+	return s
+}
+
+func (s *ModifyEssdCacheConfigRequest) SetEssdCacheSize(v int32) *ModifyEssdCacheConfigRequest {
+	s.EssdCacheSize = &v
+	return s
+}
+
+type ModifyEssdCacheConfigResponseBody struct {
+	// example:
+	//
+	// 115F9CCA-EF2E-5F91-AB60-4961D52FEAB4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyEssdCacheConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEssdCacheConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEssdCacheConfigResponseBody) SetRequestId(v string) *ModifyEssdCacheConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyEssdCacheConfigResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyEssdCacheConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyEssdCacheConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyEssdCacheConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyEssdCacheConfigResponse) SetHeaders(v map[string]*string) *ModifyEssdCacheConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyEssdCacheConfigResponse) SetStatusCode(v int32) *ModifyEssdCacheConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyEssdCacheConfigResponse) SetBody(v *ModifyEssdCacheConfigResponseBody) *ModifyEssdCacheConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyLakeCacheSizeRequest struct {
+	// example:
+	//
+	// 100
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp10yt0gva71ei7d
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableLakeCache *bool `json:"EnableLakeCache,omitempty" xml:"EnableLakeCache,omitempty"`
+}
+
+func (s ModifyLakeCacheSizeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLakeCacheSizeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLakeCacheSizeRequest) SetCapacity(v int64) *ModifyLakeCacheSizeRequest {
+	s.Capacity = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeRequest) SetDBClusterId(v string) *ModifyLakeCacheSizeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeRequest) SetEnableLakeCache(v bool) *ModifyLakeCacheSizeRequest {
+	s.EnableLakeCache = &v
+	return s
+}
+
+type ModifyLakeCacheSizeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ModifyLakeCacheSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 494486CE-6F49-574E-B304-29127EA12E36
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyLakeCacheSizeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLakeCacheSizeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLakeCacheSizeResponseBody) SetCode(v int32) *ModifyLakeCacheSizeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponseBody) SetData(v *ModifyLakeCacheSizeResponseBodyData) *ModifyLakeCacheSizeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponseBody) SetRequestId(v string) *ModifyLakeCacheSizeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyLakeCacheSizeResponseBodyData struct {
+	// example:
+	//
+	// 100
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 100
+	DataSize  *int64    `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+}
+
+func (s ModifyLakeCacheSizeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLakeCacheSizeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLakeCacheSizeResponseBodyData) SetCapacity(v int64) *ModifyLakeCacheSizeResponseBodyData {
+	s.Capacity = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponseBodyData) SetDataSize(v int64) *ModifyLakeCacheSizeResponseBodyData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponseBodyData) SetInstances(v []*string) *ModifyLakeCacheSizeResponseBodyData {
+	s.Instances = v
+	return s
+}
+
+type ModifyLakeCacheSizeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyLakeCacheSizeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyLakeCacheSizeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyLakeCacheSizeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyLakeCacheSizeResponse) SetHeaders(v map[string]*string) *ModifyLakeCacheSizeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponse) SetStatusCode(v int32) *ModifyLakeCacheSizeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyLakeCacheSizeResponse) SetBody(v *ModifyLakeCacheSizeResponseBody) *ModifyLakeCacheSizeResponse {
 	s.Body = v
 	return s
 }
@@ -28774,140 +30449,6 @@ func (s *ReleaseClusterPublicConnectionResponse) SetBody(v *ReleaseClusterPublic
 	return s
 }
 
-type RenameSparkTemplateFileRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// amv-d*****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The template file ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the template file that you want to rename.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// new_template_name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s RenameSparkTemplateFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenameSparkTemplateFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RenameSparkTemplateFileRequest) SetDBClusterId(v string) *RenameSparkTemplateFileRequest {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *RenameSparkTemplateFileRequest) SetId(v int64) *RenameSparkTemplateFileRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *RenameSparkTemplateFileRequest) SetName(v string) *RenameSparkTemplateFileRequest {
-	s.Name = &v
-	return s
-}
-
-type RenameSparkTemplateFileResponseBody struct {
-	// The data returned.
-	Data *RenameSparkTemplateFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 16D332C4-ACEB-526A-9B53-2B708FED594A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RenameSparkTemplateFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenameSparkTemplateFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RenameSparkTemplateFileResponseBody) SetData(v *RenameSparkTemplateFileResponseBodyData) *RenameSparkTemplateFileResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RenameSparkTemplateFileResponseBody) SetRequestId(v string) *RenameSparkTemplateFileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RenameSparkTemplateFileResponseBodyData struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- True
-	//
-	// 	- False
-	//
-	// example:
-	//
-	// True
-	Succeeded *bool `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-}
-
-func (s RenameSparkTemplateFileResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenameSparkTemplateFileResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RenameSparkTemplateFileResponseBodyData) SetSucceeded(v bool) *RenameSparkTemplateFileResponseBodyData {
-	s.Succeeded = &v
-	return s
-}
-
-type RenameSparkTemplateFileResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *RenameSparkTemplateFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s RenameSparkTemplateFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RenameSparkTemplateFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RenameSparkTemplateFileResponse) SetHeaders(v map[string]*string) *RenameSparkTemplateFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RenameSparkTemplateFileResponse) SetStatusCode(v int32) *RenameSparkTemplateFileResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RenameSparkTemplateFileResponse) SetBody(v *RenameSparkTemplateFileResponseBody) *RenameSparkTemplateFileResponse {
-	s.Body = v
-	return s
-}
-
 type ResetAccountPasswordRequest struct {
 	// The description of the database account.
 	//
@@ -29043,6 +30584,101 @@ func (s *ResetAccountPasswordResponse) SetStatusCode(v int32) *ResetAccountPassw
 }
 
 func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBody) *ResetAccountPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type RevokeOperatorPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1mfe9qmsw1dzyg
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RevokeOperatorPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeOperatorPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeOperatorPermissionRequest) SetDBClusterId(v string) *RevokeOperatorPermissionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *RevokeOperatorPermissionRequest) SetOwnerAccount(v string) *RevokeOperatorPermissionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RevokeOperatorPermissionRequest) SetOwnerId(v int64) *RevokeOperatorPermissionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RevokeOperatorPermissionRequest) SetResourceOwnerAccount(v string) *RevokeOperatorPermissionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RevokeOperatorPermissionRequest) SetResourceOwnerId(v int64) *RevokeOperatorPermissionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RevokeOperatorPermissionResponseBody struct {
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeOperatorPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeOperatorPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeOperatorPermissionResponseBody) SetRequestId(v string) *RevokeOperatorPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeOperatorPermissionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeOperatorPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeOperatorPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeOperatorPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeOperatorPermissionResponse) SetHeaders(v map[string]*string) *RevokeOperatorPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeOperatorPermissionResponse) SetStatusCode(v int32) *RevokeOperatorPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeOperatorPermissionResponse) SetBody(v *RevokeOperatorPermissionResponseBody) *RevokeOperatorPermissionResponse {
 	s.Body = v
 	return s
 }
@@ -31468,6 +33104,102 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
+// Manually deletes backup sets.
+//
+// Description:
+//
+//   You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+//
+// @param request - DeleteBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupsResponse
+func (client *Client) DeleteBackupsWithOptions(request *DeleteBackupsRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupIds)) {
+		query["BackupIds"] = request.BackupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBackups"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manually deletes backup sets.
+//
+// Description:
+//
+//   You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+//
+// @param request - DeleteBackupsRequest
+//
+// @return DeleteBackupsResponse
+func (client *Client) DeleteBackups(request *DeleteBackupsRequest) (_result *DeleteBackupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBackupsResponse{}
+	_body, _err := client.DeleteBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an AnalyticDB for MySQL cluster.
 //
 // Description:
@@ -33572,6 +35304,66 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 
 // Summary:
 //
+// 查询CompactionService开关
+//
+// @param request - DescribeCompactionServiceSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCompactionServiceSwitchResponse
+func (client *Client) DescribeCompactionServiceSwitchWithOptions(request *DescribeCompactionServiceSwitchRequest, runtime *util.RuntimeOptions) (_result *DescribeCompactionServiceSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCompactionServiceSwitch"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCompactionServiceSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询CompactionService开关
+//
+// @param request - DescribeCompactionServiceSwitchRequest
+//
+// @return DescribeCompactionServiceSwitchResponse
+func (client *Client) DescribeCompactionServiceSwitch(request *DescribeCompactionServiceSwitchRequest) (_result *DescribeCompactionServiceSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCompactionServiceSwitchResponse{}
+	_body, _err := client.DescribeCompactionServiceSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例计算资源使用统计
 //
 // Description:
@@ -34980,6 +36772,66 @@ func (client *Client) DescribeEnabledPrivileges(request *DescribeEnabledPrivileg
 
 // Summary:
 //
+// 查询EssdCache配置
+//
+// @param request - DescribeEssdCacheConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEssdCacheConfigResponse
+func (client *Client) DescribeEssdCacheConfigWithOptions(request *DescribeEssdCacheConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeEssdCacheConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEssdCacheConfig"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEssdCacheConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询EssdCache配置
+//
+// @param request - DescribeEssdCacheConfigRequest
+//
+// @return DescribeEssdCacheConfigResponse
+func (client *Client) DescribeEssdCacheConfig(request *DescribeEssdCacheConfigRequest) (_result *DescribeEssdCacheConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEssdCacheConfigResponse{}
+	_body, _err := client.DescribeEssdCacheConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
 //
 // @param request - DescribeExcessivePrimaryKeysRequest
@@ -35151,6 +37003,214 @@ func (client *Client) DescribeJobResourceUsage(request *DescribeJobResourceUsage
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeJobResourceUsageResponse{}
 	_body, _err := client.DescribeJobResourceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 枚举实例版本信息
+//
+// @param request - DescribeKernelVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKernelVersionResponse
+func (client *Client) DescribeKernelVersionWithOptions(request *DescribeKernelVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeKernelVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKernelVersion"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeKernelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 枚举实例版本信息
+//
+// @param request - DescribeKernelVersionRequest
+//
+// @return DescribeKernelVersionResponse
+func (client *Client) DescribeKernelVersion(request *DescribeKernelVersionRequest) (_result *DescribeKernelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeKernelVersionResponse{}
+	_body, _err := client.DescribeKernelVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例LakeCache容量
+//
+// @param request - DescribeLakeCacheSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakeCacheSizeResponse
+func (client *Client) DescribeLakeCacheSizeWithOptions(request *DescribeLakeCacheSizeRequest, runtime *util.RuntimeOptions) (_result *DescribeLakeCacheSizeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLakeCacheSize"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLakeCacheSizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例LakeCache容量
+//
+// @param request - DescribeLakeCacheSizeRequest
+//
+// @return DescribeLakeCacheSizeResponse
+func (client *Client) DescribeLakeCacheSize(request *DescribeLakeCacheSizeRequest) (_result *DescribeLakeCacheSizeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLakeCacheSizeResponse{}
+	_body, _err := client.DescribeLakeCacheSizeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeOperatorPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOperatorPermissionResponse
+func (client *Client) DescribeOperatorPermissionWithOptions(request *DescribeOperatorPermissionRequest, runtime *util.RuntimeOptions) (_result *DescribeOperatorPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOperatorPermission"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOperatorPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeOperatorPermissionRequest
+//
+// @return DescribeOperatorPermissionResponse
+func (client *Client) DescribeOperatorPermission(request *DescribeOperatorPermissionRequest) (_result *DescribeOperatorPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOperatorPermissionResponse{}
+	_body, _err := client.DescribeOperatorPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37428,82 +39488,6 @@ func (client *Client) GetSparkConfigLogPath(request *GetSparkConfigLogPathReques
 
 // Summary:
 //
-// Queries the common definitions of Spark applications.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-//
-// @param request - GetSparkDefinitionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetSparkDefinitionsResponse
-func (client *Client) GetSparkDefinitionsWithOptions(request *GetSparkDefinitionsRequest, runtime *util.RuntimeOptions) (_result *GetSparkDefinitionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
-		body["DBClusterId"] = request.DBClusterId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSparkDefinitions"),
-		Version:     tea.String("2021-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSparkDefinitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the common definitions of Spark applications.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-//
-// @param request - GetSparkDefinitionsRequest
-//
-// @return GetSparkDefinitionsResponse
-func (client *Client) GetSparkDefinitions(request *GetSparkDefinitionsRequest) (_result *GetSparkDefinitionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSparkDefinitionsResponse{}
-	_body, _err := client.GetSparkDefinitionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the results of a Spark log analysis task.
 //
 // Description:
@@ -38426,6 +40410,82 @@ func (client *Client) GetViewObjects(request *GetViewObjectsRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GrantOperatorPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantOperatorPermissionResponse
+func (client *Client) GrantOperatorPermissionWithOptions(request *GrantOperatorPermissionRequest, runtime *util.RuntimeOptions) (_result *GrantOperatorPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiredTime)) {
+		query["ExpiredTime"] = request.ExpiredTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Privileges)) {
+		query["Privileges"] = request.Privileges
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantOperatorPermission"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantOperatorPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GrantOperatorPermissionRequest
+//
+// @return GrantOperatorPermissionResponse
+func (client *Client) GrantOperatorPermission(request *GrantOperatorPermissionRequest) (_result *GrantOperatorPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantOperatorPermissionResponse{}
+	_body, _err := client.GrantOperatorPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Terminates a Spark application.
@@ -38977,6 +41037,90 @@ func (client *Client) ListSparkTemplateFileIds(request *ListSparkTemplateFileIds
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSparkTemplateFileIdsResponse{}
 	_body, _err := client.ListSparkTemplateFileIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39584,6 +41728,70 @@ func (client *Client) ModifyClusterConnectionString(request *ModifyClusterConnec
 
 // Summary:
 //
+// 修改CompactionService开关
+//
+// @param request - ModifyCompactionServiceSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCompactionServiceSwitchResponse
+func (client *Client) ModifyCompactionServiceSwitchWithOptions(request *ModifyCompactionServiceSwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyCompactionServiceSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableCompactionService)) {
+		query["EnableCompactionService"] = request.EnableCompactionService
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCompactionServiceSwitch"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCompactionServiceSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改CompactionService开关
+//
+// @param request - ModifyCompactionServiceSwitchRequest
+//
+// @return ModifyCompactionServiceSwitchResponse
+func (client *Client) ModifyCompactionServiceSwitch(request *ModifyCompactionServiceSwitchRequest) (_result *ModifyCompactionServiceSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCompactionServiceSwitchResponse{}
+	_body, _err := client.ModifyCompactionServiceSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the configurations of an AnalyticDB for MySQL Data Lakehouse Edition cluster.
 //
 // Description:
@@ -39860,6 +42068,158 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 
 // Summary:
 //
+// 修改资源组
+//
+// @param request - ModifyDBClusterResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterResourceGroupResponse
+func (client *Client) ModifyDBClusterResourceGroupWithOptions(request *ModifyDBClusterResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterResourceGroup"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资源组
+//
+// @param request - ModifyDBClusterResourceGroupRequest
+//
+// @return ModifyDBClusterResourceGroupResponse
+func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResourceGroupRequest) (_result *ModifyDBClusterResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterResourceGroupResponse{}
+	_body, _err := client.ModifyDBClusterResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the virtual private cloud (VPC) and vSwitch for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// @param request - ModifyDBClusterVipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterVipResponse
+func (client *Client) ModifyDBClusterVipWithOptions(request *ModifyDBClusterVipRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterVipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectString)) {
+		query["ConnectString"] = request.ConnectString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBClusterVip"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBClusterVipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the virtual private cloud (VPC) and vSwitch for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// @param request - ModifyDBClusterVipRequest
+//
+// @return ModifyDBClusterVipResponse
+func (client *Client) ModifyDBClusterVip(request *ModifyDBClusterVipRequest) (_result *ModifyDBClusterVipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBClusterVipResponse{}
+	_body, _err := client.ModifyDBClusterVipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the amount of reserved computing resources for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
 // Description:
@@ -40089,6 +42449,142 @@ func (client *Client) ModifyElasticPlan(request *ModifyElasticPlanRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyElasticPlanResponse{}
 	_body, _err := client.ModifyElasticPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Essd Cache开关
+//
+// @param request - ModifyEssdCacheConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEssdCacheConfigResponse
+func (client *Client) ModifyEssdCacheConfigWithOptions(request *ModifyEssdCacheConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyEssdCacheConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableEssdCache)) {
+		query["EnableEssdCache"] = request.EnableEssdCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EssdCacheSize)) {
+		query["EssdCacheSize"] = request.EssdCacheSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyEssdCacheConfig"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyEssdCacheConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Essd Cache开关
+//
+// @param request - ModifyEssdCacheConfigRequest
+//
+// @return ModifyEssdCacheConfigResponse
+func (client *Client) ModifyEssdCacheConfig(request *ModifyEssdCacheConfigRequest) (_result *ModifyEssdCacheConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyEssdCacheConfigResponse{}
+	_body, _err := client.ModifyEssdCacheConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例LakeCache容量
+//
+// @param request - ModifyLakeCacheSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLakeCacheSizeResponse
+func (client *Client) ModifyLakeCacheSizeWithOptions(request *ModifyLakeCacheSizeRequest, runtime *util.RuntimeOptions) (_result *ModifyLakeCacheSizeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Capacity)) {
+		query["Capacity"] = request.Capacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableLakeCache)) {
+		query["EnableLakeCache"] = request.EnableLakeCache
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyLakeCacheSize"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyLakeCacheSizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例LakeCache容量
+//
+// @param request - ModifyLakeCacheSizeRequest
+//
+// @return ModifyLakeCacheSizeResponse
+func (client *Client) ModifyLakeCacheSize(request *ModifyLakeCacheSizeRequest) (_result *ModifyLakeCacheSizeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyLakeCacheSizeResponse{}
+	_body, _err := client.ModifyLakeCacheSizeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40346,90 +42842,6 @@ func (client *Client) ReleaseClusterPublicConnection(request *ReleaseClusterPubl
 
 // Summary:
 //
-// Renames a Spark template file.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-//
-// @param request - RenameSparkTemplateFileRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RenameSparkTemplateFileResponse
-func (client *Client) RenameSparkTemplateFileWithOptions(request *RenameSparkTemplateFileRequest, runtime *util.RuntimeOptions) (_result *RenameSparkTemplateFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RenameSparkTemplateFile"),
-		Version:     tea.String("2021-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RenameSparkTemplateFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renames a Spark template file.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
-//
-// @param request - RenameSparkTemplateFileRequest
-//
-// @return RenameSparkTemplateFileResponse
-func (client *Client) RenameSparkTemplateFile(request *RenameSparkTemplateFileRequest) (_result *RenameSparkTemplateFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RenameSparkTemplateFileResponse{}
-	_body, _err := client.RenameSparkTemplateFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Resets the password of a database account for an AnalyticDB for MySQL cluster.
 //
 // Description:
@@ -40505,6 +42917,74 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
 	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RevokeOperatorPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeOperatorPermissionResponse
+func (client *Client) RevokeOperatorPermissionWithOptions(request *RevokeOperatorPermissionRequest, runtime *util.RuntimeOptions) (_result *RevokeOperatorPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeOperatorPermission"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeOperatorPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RevokeOperatorPermissionRequest
+//
+// @return RevokeOperatorPermissionResponse
+func (client *Client) RevokeOperatorPermission(request *RevokeOperatorPermissionRequest) (_result *RevokeOperatorPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeOperatorPermissionResponse{}
+	_body, _err := client.RevokeOperatorPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
