@@ -2789,7 +2789,8 @@ type CreateEciScalingConfigurationRequest struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The custom hostnames of the containers.
 	HostAliases []*CreateEciScalingConfigurationRequestHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// The hostname series of elastic container instances.
@@ -3062,6 +3063,11 @@ func (s *CreateEciScalingConfigurationRequest) SetEnableSls(v bool) *CreateEciSc
 
 func (s *CreateEciScalingConfigurationRequest) SetEphemeralStorage(v int32) *CreateEciScalingConfigurationRequest {
 	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetGpuDriverVersion(v string) *CreateEciScalingConfigurationRequest {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -8744,7 +8750,8 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance       *bool                                     `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	CapacityOptions *CreateScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
@@ -9117,6 +9124,11 @@ func (s *CreateScalingGroupRequest) SetAzBalance(v bool) *CreateScalingGroupRequ
 	return s
 }
 
+func (s *CreateScalingGroupRequest) SetCapacityOptions(v *CreateScalingGroupRequestCapacityOptions) *CreateScalingGroupRequest {
+	s.CapacityOptions = v
+	return s
+}
+
 func (s *CreateScalingGroupRequest) SetClientToken(v string) *CreateScalingGroupRequest {
 	s.ClientToken = &v
 	return s
@@ -9375,6 +9387,41 @@ func (s *CreateScalingGroupRequestAlbServerGroups) SetPort(v int32) *CreateScali
 
 func (s *CreateScalingGroupRequestAlbServerGroups) SetWeight(v int32) *CreateScalingGroupRequestAlbServerGroups {
 	s.Weight = &v
+	return s
+}
+
+type CreateScalingGroupRequestCapacityOptions struct {
+	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+}
+
+func (s CreateScalingGroupRequestCapacityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingGroupRequestCapacityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingGroupRequestCapacityOptions) SetCompensateWithOnDemand(v bool) *CreateScalingGroupRequestCapacityOptions {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestCapacityOptions) SetOnDemandBaseCapacity(v int32) *CreateScalingGroupRequestCapacityOptions {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestCapacityOptions) SetOnDemandPercentageAboveBaseCapacity(v int32) *CreateScalingGroupRequestCapacityOptions {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestCapacityOptions) SetSpotAutoReplaceOnDemand(v bool) *CreateScalingGroupRequestCapacityOptions {
+	s.SpotAutoReplaceOnDemand = &v
 	return s
 }
 
@@ -15523,7 +15570,8 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
 	HostAliases []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// The hostname series.
@@ -15810,6 +15858,11 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetE
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetEphemeralStorage(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
 	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetGpuDriverVersion(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -18088,6 +18141,7 @@ type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
 	//
 	// asg-bp16pbfcr8j9*****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	SkipMatching   *bool   `json:"SkipMatching,omitempty" xml:"SkipMatching,omitempty"`
 	// The start time of the instance refresh task.
 	//
 	// example:
@@ -18178,6 +18232,11 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetRegionId(
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetScalingGroupId(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetSkipMatching(v bool) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
+	s.SkipMatching = &v
 	return s
 }
 
@@ -24066,7 +24125,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance       *bool                                                          `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	CapacityOptions *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
 	//
 	// 	- true
@@ -24478,6 +24538,11 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetAzBalance(v bool) *D
 	return s
 }
 
+func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCapacityOptions(v *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) *DescribeScalingGroupsResponseBodyScalingGroups {
+	s.CapacityOptions = v
+	return s
+}
+
 func (s *DescribeScalingGroupsResponseBodyScalingGroups) SetCompensateWithOnDemand(v bool) *DescribeScalingGroupsResponseBodyScalingGroups {
 	s.CompensateWithOnDemand = &v
 	return s
@@ -24804,6 +24869,41 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetPort(
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetWeight(v int32) *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups {
 	s.Weight = &v
+	return s
+}
+
+type DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions struct {
+	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) SetCompensateWithOnDemand(v bool) *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) SetOnDemandBaseCapacity(v int32) *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) SetOnDemandPercentageAboveBaseCapacity(v int32) *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) SetSpotAutoReplaceOnDemand(v bool) *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions {
+	s.SpotAutoReplaceOnDemand = &v
 	return s
 }
 
@@ -30480,7 +30580,8 @@ type ModifyEciScalingConfigurationRequest struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The hosts.
 	HostAliases []*ModifyEciScalingConfigurationRequestHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// The hostname series of elastic container instances.
@@ -30752,6 +30853,11 @@ func (s *ModifyEciScalingConfigurationRequest) SetEnableSls(v bool) *ModifyEciSc
 
 func (s *ModifyEciScalingConfigurationRequest) SetEphemeralStorage(v int32) *ModifyEciScalingConfigurationRequest {
 	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetGpuDriverVersion(v string) *ModifyEciScalingConfigurationRequest {
+	s.GpuDriverVersion = &v
 	return s
 }
 
@@ -36522,7 +36628,8 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance       *bool                                     `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	CapacityOptions *ModifyScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
 	//
 	// 	- true
@@ -36792,6 +36899,11 @@ func (s *ModifyScalingGroupRequest) SetAzBalance(v bool) *ModifyScalingGroupRequ
 	return s
 }
 
+func (s *ModifyScalingGroupRequest) SetCapacityOptions(v *ModifyScalingGroupRequestCapacityOptions) *ModifyScalingGroupRequest {
+	s.CapacityOptions = v
+	return s
+}
+
 func (s *ModifyScalingGroupRequest) SetCompensateWithOnDemand(v bool) *ModifyScalingGroupRequest {
 	s.CompensateWithOnDemand = &v
 	return s
@@ -36939,6 +37051,41 @@ func (s *ModifyScalingGroupRequest) SetStopInstanceTimeout(v int32) *ModifyScali
 
 func (s *ModifyScalingGroupRequest) SetVSwitchIds(v []*string) *ModifyScalingGroupRequest {
 	s.VSwitchIds = v
+	return s
+}
+
+type ModifyScalingGroupRequestCapacityOptions struct {
+	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
+	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+}
+
+func (s ModifyScalingGroupRequestCapacityOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingGroupRequestCapacityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingGroupRequestCapacityOptions) SetCompensateWithOnDemand(v bool) *ModifyScalingGroupRequestCapacityOptions {
+	s.CompensateWithOnDemand = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequestCapacityOptions) SetOnDemandBaseCapacity(v int32) *ModifyScalingGroupRequestCapacityOptions {
+	s.OnDemandBaseCapacity = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequestCapacityOptions) SetOnDemandPercentageAboveBaseCapacity(v int32) *ModifyScalingGroupRequestCapacityOptions {
+	s.OnDemandPercentageAboveBaseCapacity = &v
+	return s
+}
+
+func (s *ModifyScalingGroupRequestCapacityOptions) SetSpotAutoReplaceOnDemand(v bool) *ModifyScalingGroupRequestCapacityOptions {
+	s.SpotAutoReplaceOnDemand = &v
 	return s
 }
 
@@ -39584,6 +39731,7 @@ type StartInstanceRefreshRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	SkipMatching   *bool   `json:"SkipMatching,omitempty" xml:"SkipMatching,omitempty"`
 }
 
 func (s StartInstanceRefreshRequest) String() string {
@@ -39631,6 +39779,11 @@ func (s *StartInstanceRefreshRequest) SetResourceOwnerAccount(v string) *StartIn
 
 func (s *StartInstanceRefreshRequest) SetScalingGroupId(v string) *StartInstanceRefreshRequest {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequest) SetSkipMatching(v bool) *StartInstanceRefreshRequest {
+	s.SkipMatching = &v
 	return s
 }
 
@@ -42202,6 +42355,10 @@ func (client *Client) CreateEciScalingConfigurationWithOptions(request *CreateEc
 		query["EphemeralStorage"] = request.EphemeralStorage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuDriverVersion)) {
+		query["GpuDriverVersion"] = request.GpuDriverVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HostAliases)) {
 		query["HostAliases"] = request.HostAliases
 	}
@@ -42974,6 +43131,10 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.AzBalance)) {
 		query["AzBalance"] = request.AzBalance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CapacityOptions)) {
+		query["CapacityOptions"] = request.CapacityOptions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -48296,6 +48457,10 @@ func (client *Client) ModifyEciScalingConfigurationWithOptions(request *ModifyEc
 		query["EphemeralStorage"] = request.EphemeralStorage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuDriverVersion)) {
+		query["GpuDriverVersion"] = request.GpuDriverVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HostAliases)) {
 		query["HostAliases"] = request.HostAliases
 	}
@@ -49102,6 +49267,10 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 
 	if !tea.BoolValue(util.IsUnset(request.AzBalance)) {
 		query["AzBalance"] = request.AzBalance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CapacityOptions)) {
+		query["CapacityOptions"] = request.CapacityOptions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CompensateWithOnDemand)) {
@@ -50630,6 +50799,10 @@ func (client *Client) StartInstanceRefreshWithOptions(request *StartInstanceRefr
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
 		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipMatching)) {
+		query["SkipMatching"] = request.SkipMatching
 	}
 
 	req := &openapi.OpenApiRequest{
