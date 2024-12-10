@@ -334,6 +334,77 @@ func (s *JobDriverSparkSubmit) SetSparkSubmitParameters(v string) *JobDriverSpar
 	return s
 }
 
+type KerberosConf struct {
+	Creator          *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	Enabled          *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	GmtCreated       *string   `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
+	GmtModified      *string   `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	KerberosConfId   *string   `json:"kerberosConfId,omitempty" xml:"kerberosConfId,omitempty"`
+	Keytabs          []*string `json:"keytabs,omitempty" xml:"keytabs,omitempty" type:"Repeated"`
+	Krb5Conf         *string   `json:"krb5Conf,omitempty" xml:"krb5Conf,omitempty"`
+	Name             *string   `json:"name,omitempty" xml:"name,omitempty"`
+	NetworkServiceId *string   `json:"networkServiceId,omitempty" xml:"networkServiceId,omitempty"`
+	WorkspaceId      *string   `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s KerberosConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KerberosConf) GoString() string {
+	return s.String()
+}
+
+func (s *KerberosConf) SetCreator(v string) *KerberosConf {
+	s.Creator = &v
+	return s
+}
+
+func (s *KerberosConf) SetEnabled(v bool) *KerberosConf {
+	s.Enabled = &v
+	return s
+}
+
+func (s *KerberosConf) SetGmtCreated(v string) *KerberosConf {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *KerberosConf) SetGmtModified(v string) *KerberosConf {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *KerberosConf) SetKerberosConfId(v string) *KerberosConf {
+	s.KerberosConfId = &v
+	return s
+}
+
+func (s *KerberosConf) SetKeytabs(v []*string) *KerberosConf {
+	s.Keytabs = v
+	return s
+}
+
+func (s *KerberosConf) SetKrb5Conf(v string) *KerberosConf {
+	s.Krb5Conf = &v
+	return s
+}
+
+func (s *KerberosConf) SetName(v string) *KerberosConf {
+	s.Name = &v
+	return s
+}
+
+func (s *KerberosConf) SetNetworkServiceId(v string) *KerberosConf {
+	s.NetworkServiceId = &v
+	return s
+}
+
+func (s *KerberosConf) SetWorkspaceId(v string) *KerberosConf {
+	s.WorkspaceId = &v
+	return s
+}
+
 type PrincipalAction struct {
 	// example:
 	//
@@ -3064,6 +3135,7 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 1509789347011222
 	Creator               *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	CuHours               *int64  `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The end time of the job.
 	//
@@ -3087,7 +3159,8 @@ type ListJobRunsResponseBodyJobRuns struct {
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The path where the operational logs are stored.
-	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
+	Log       *RunLog `json:"log,omitempty" xml:"log,omitempty"`
+	MbSeconds *int64  `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
 	// The job name.
 	//
 	// example:
@@ -3115,7 +3188,8 @@ type ListJobRunsResponseBodyJobRuns struct {
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
 	// The tags of the job.
-	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags         []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
 	// The web UI of the job.
 	//
 	// example:
@@ -3150,6 +3224,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetConfigurationOverrides(v *ListJobRun
 
 func (s *ListJobRunsResponseBodyJobRuns) SetCreator(v string) *ListJobRunsResponseBodyJobRuns {
 	s.Creator = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetCuHours(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.CuHours = &v
 	return s
 }
 
@@ -3188,6 +3267,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetLog(v *RunLog) *ListJobRunsResponseB
 	return s
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) SetMbSeconds(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.MbSeconds = &v
+	return s
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) SetName(v string) *ListJobRunsResponseBodyJobRuns {
 	s.Name = &v
 	return s
@@ -3215,6 +3299,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetSubmitTime(v int64) *ListJobRunsResp
 
 func (s *ListJobRunsResponseBodyJobRuns) SetTags(v []*Tag) *ListJobRunsResponseBodyJobRuns {
 	s.Tags = v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetVcoreSeconds(v int64) *ListJobRunsResponseBodyJobRuns {
+	s.VcoreSeconds = &v
 	return s
 }
 
