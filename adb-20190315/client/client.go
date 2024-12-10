@@ -17730,6 +17730,498 @@ func (s *DescribeLoadTasksRecordsResponse) SetBody(v *DescribeLoadTasksRecordsRe
 	return s
 }
 
+type DescribeLogHubAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1nz6smy07szs58p
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sz_sls2adb_kxdpz_af_data
+	DeliverName *string `json:"DeliverName,omitempty" xml:"DeliverName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// game2-sms-log
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dcsz-af-data
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLogHubAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeRequest) SetDBClusterId(v string) *DescribeLogHubAttributeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetDeliverName(v string) *DescribeLogHubAttributeRequest {
+	s.DeliverName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetLogStoreName(v string) *DescribeLogHubAttributeRequest {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetOwnerAccount(v string) *DescribeLogHubAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetOwnerId(v int64) *DescribeLogHubAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetProjectName(v string) *DescribeLogHubAttributeRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetRegionId(v string) *DescribeLogHubAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetResourceOwnerAccount(v string) *DescribeLogHubAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeRequest) SetResourceOwnerId(v int64) *DescribeLogHubAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLogHubAttributeResponseBody struct {
+	LoghubInfo *DescribeLogHubAttributeResponseBodyLoghubInfo `json:"LoghubInfo,omitempty" xml:"LoghubInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8A564B7F-8C00-43C0-8EC5-919FBB70573
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeLogHubAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeResponseBody) SetLoghubInfo(v *DescribeLogHubAttributeResponseBodyLoghubInfo) *DescribeLogHubAttributeResponseBody {
+	s.LoghubInfo = v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBody) SetRequestId(v string) *DescribeLogHubAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeLogHubAttributeResponseBodyLoghubInfo struct {
+	// example:
+	//
+	// am-8vbs48m7553du1gz2
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// rds
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 361
+	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	// example:
+	//
+	// loghub-web-login-new
+	DeliverName *string `json:"DeliverName,omitempty" xml:"DeliverName,omitempty"`
+	// example:
+	//
+	// 2024-12-06\\"T\\"10:15\\"Z\\"
+	DeliverTime *string `json:"DeliverTime,omitempty" xml:"DeliverTime,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	FilterDirtyData *bool                                                      `json:"FilterDirtyData,omitempty" xml:"FilterDirtyData,omitempty"`
+	LogHubStores    *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores `json:"LogHubStores,omitempty" xml:"LogHubStores,omitempty" type:"Struct"`
+	// example:
+	//
+	// device_login
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// test-adb
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cbd_bi
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// processing
+	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
+	// example:
+	//
+	// test2
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// aaa
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-k
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDBClusterId(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDBType(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDelay(v int64) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDeliverName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.DeliverName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDeliverTime(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.DeliverTime = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetDescription(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetFilterDirtyData(v bool) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.FilterDirtyData = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetLogHubStores(v *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.LogHubStores = v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetLogStoreName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetMessage(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetProjectName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetRegionId(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetSchemaName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetSyncStatus(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.SyncStatus = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetTableName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetUserName(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfo) SetZoneId(v string) *DescribeLogHubAttributeResponseBodyLoghubInfo {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores struct {
+	LogHubStore []*DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore `json:"LogHubStore,omitempty" xml:"LogHubStore,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores) SetLogHubStore(v []*DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStores {
+	s.LogHubStore = v
+	return s
+}
+
+type DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore struct {
+	// example:
+	//
+	// 255311
+	FieldKey *string `json:"FieldKey,omitempty" xml:"FieldKey,omitempty"`
+	// example:
+	//
+	// taskid
+	LogKey *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) SetFieldKey(v string) *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore {
+	s.FieldKey = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore) SetLogKey(v string) *DescribeLogHubAttributeResponseBodyLoghubInfoLogHubStoresLogHubStore {
+	s.LogKey = &v
+	return s
+}
+
+type DescribeLogHubAttributeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLogHubAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLogHubAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogHubAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogHubAttributeResponse) SetHeaders(v map[string]*string) *DescribeLogHubAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponse) SetStatusCode(v int32) *DescribeLogHubAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLogHubAttributeResponse) SetBody(v *DescribeLogHubAttributeResponseBody) *DescribeLogHubAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLogStoreKeysRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-hcl2
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nbgame-point
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLogStoreKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreKeysRequest) SetLogStoreName(v string) *DescribeLogStoreKeysRequest {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetOwnerAccount(v string) *DescribeLogStoreKeysRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetOwnerId(v int64) *DescribeLogStoreKeysRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetProjectName(v string) *DescribeLogStoreKeysRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetRegionId(v string) *DescribeLogStoreKeysRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetResourceOwnerAccount(v string) *DescribeLogStoreKeysRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysRequest) SetResourceOwnerId(v int64) *DescribeLogStoreKeysRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLogStoreKeysResponseBody struct {
+	LogStoreKeys *DescribeLogStoreKeysResponseBodyLogStoreKeys `json:"LogStoreKeys,omitempty" xml:"LogStoreKeys,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3BB185E9-BB54-1727-B876-13243E4C0EB5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeLogStoreKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreKeysResponseBody) SetLogStoreKeys(v *DescribeLogStoreKeysResponseBodyLogStoreKeys) *DescribeLogStoreKeysResponseBody {
+	s.LogStoreKeys = v
+	return s
+}
+
+func (s *DescribeLogStoreKeysResponseBody) SetRequestId(v string) *DescribeLogStoreKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeLogStoreKeysResponseBodyLogStoreKeys struct {
+	LogStoreKey []*string `json:"LogStoreKey,omitempty" xml:"LogStoreKey,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLogStoreKeysResponseBodyLogStoreKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreKeysResponseBodyLogStoreKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreKeysResponseBodyLogStoreKeys) SetLogStoreKey(v []*string) *DescribeLogStoreKeysResponseBodyLogStoreKeys {
+	s.LogStoreKey = v
+	return s
+}
+
+type DescribeLogStoreKeysResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLogStoreKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLogStoreKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreKeysResponse) SetHeaders(v map[string]*string) *DescribeLogStoreKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogStoreKeysResponse) SetStatusCode(v int32) *DescribeLogStoreKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLogStoreKeysResponse) SetBody(v *DescribeLogStoreKeysResponseBody) *DescribeLogStoreKeysResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLoghubDetailRequest struct {
 	// This parameter is required.
 	//
@@ -19265,6 +19757,476 @@ func (s *DescribeProcessListResponse) SetStatusCode(v int32) *DescribeProcessLis
 }
 
 func (s *DescribeProcessListResponse) SetBody(v *DescribeProcessListResponseBody) *DescribeProcessListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasRequest struct {
+	// example:
+	//
+	// mixed_storage
+	ClusterCategory *string `json:"ClusterCategory,omitempty" xml:"ClusterCategory,omitempty"`
+	// example:
+	//
+	// flexible
+	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
+	// example:
+	//
+	// E32
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// example:
+	//
+	// 5
+	NodeCount    *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rm-2ze09tofcv39h7165
+	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-4690g37929****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetClusterCategory(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.ClusterCategory = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetClusterMode(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.ClusterMode = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetNodeClass(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.NodeClass = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetNodeCount(v int32) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.NodeCount = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetOwnerAccount(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetOwnerId(v int64) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetRdsInstanceId(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.RdsInstanceId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetRegionId(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetResourceGroupId(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetResourceOwnerAccount(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetResourceOwnerId(v int64) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasRequest) SetStorageType(v string) *DescribeRdsAnalysisResourceQuotasRequest {
+	s.StorageType = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBody struct {
+	DBNodeCategoryList *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList `json:"DBNodeCategoryList,omitempty" xml:"DBNodeCategoryList,omitempty" type:"Struct"`
+	DBNodeClassList    *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList    `json:"DBNodeClassList,omitempty" xml:"DBNodeClassList,omitempty" type:"Struct"`
+	DBNodeStorageList  *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList  `json:"DBNodeStorageList,omitempty" xml:"DBNodeStorageList,omitempty" type:"Struct"`
+	EngineVersionList  *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList  `json:"EngineVersionList,omitempty" xml:"EngineVersionList,omitempty" type:"Struct"`
+	ModeList           *DescribeRdsAnalysisResourceQuotasResponseBodyModeList           `json:"ModeList,omitempty" xml:"ModeList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1A31D7FA-1826-5843-8807-D2F715E70CB0
+	RequestId       *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageTypeList *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Struct"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetDBNodeCategoryList(v *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.DBNodeCategoryList = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetDBNodeClassList(v *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.DBNodeClassList = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetDBNodeStorageList(v *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.DBNodeStorageList = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetEngineVersionList(v *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.EngineVersionList = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetModeList(v *DescribeRdsAnalysisResourceQuotasResponseBodyModeList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.ModeList = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetRequestId(v string) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBody) SetStorageTypeList(v *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList) *DescribeRdsAnalysisResourceQuotasResponseBody {
+	s.StorageTypeList = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList struct {
+	DBNodeCategory []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory `json:"DBNodeCategory,omitempty" xml:"DBNodeCategory,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList) SetDBNodeCategory(v []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryList {
+	s.DBNodeCategory = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory struct {
+	// example:
+	//
+	// mixed_storage
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// mixed_storage
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeCategoryListDBNodeCategory {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList struct {
+	DBNodeClass []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList) SetDBNodeClass(v []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassList {
+	s.DBNodeClass = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass struct {
+	// example:
+	//
+	// E32
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// E32
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeClassListDBNodeClass {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList struct {
+	DBNodeStorage []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList) SetDBNodeStorage(v []*DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageList {
+	s.DBNodeStorage = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage struct {
+	// example:
+	//
+	// 100
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 100
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyDBNodeStorageListDBNodeStorage {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList struct {
+	EngineVersion []*DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList) SetEngineVersion(v []*DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion) *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionList {
+	s.EngineVersion = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion struct {
+	// example:
+	//
+	// 3.0
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 3.0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyEngineVersionListEngineVersion {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyModeList struct {
+	Mode []*DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode `json:"Mode,omitempty" xml:"Mode,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyModeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyModeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyModeList) SetMode(v []*DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode) *DescribeRdsAnalysisResourceQuotasResponseBodyModeList {
+	s.Mode = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode struct {
+	// example:
+	//
+	// flexible
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// flexible
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyModeListMode {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList struct {
+	StorageType []*DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType `json:"StorageType,omitempty" xml:"StorageType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList) SetStorageType(v []*DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType) *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeList {
+	s.StorageType = v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType struct {
+	// example:
+	//
+	// cloud_essd
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType) SetText(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType) SetValue(v string) *DescribeRdsAnalysisResourceQuotasResponseBodyStorageTypeListStorageType {
+	s.Value = &v
+	return s
+}
+
+type DescribeRdsAnalysisResourceQuotasResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRdsAnalysisResourceQuotasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsAnalysisResourceQuotasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponse) SetHeaders(v map[string]*string) *DescribeRdsAnalysisResourceQuotasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponse) SetStatusCode(v int32) *DescribeRdsAnalysisResourceQuotasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRdsAnalysisResourceQuotasResponse) SetBody(v *DescribeRdsAnalysisResourceQuotasResponseBody) *DescribeRdsAnalysisResourceQuotasResponse {
 	s.Body = v
 	return s
 }
@@ -30755,6 +31717,10 @@ func (s *ModifySQAConfigResponse) SetBody(v *ModifySQAConfigResponseBody) *Modif
 }
 
 type ModifySyncJobRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30763,6 +31729,8 @@ type ModifySyncJobRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30771,9 +31739,13 @@ type ModifySyncJobRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The source instances or clusters.
+	//
 	// if can be null:
 	// true
 	SourceDBCluster []*ModifySyncJobRequestSourceDBCluster `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty" type:"Repeated"`
+	// The synchronization platform.
+	//
 	// example:
 	//
 	// ADB-CDC
@@ -30829,28 +31801,52 @@ func (s *ModifySyncJobRequest) SetSyncPlatform(v string) *ModifySyncJobRequest {
 }
 
 type ModifySyncJobRequestSourceDBCluster struct {
+	// The ID of the source instance or cluster. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2zepqn129i9s3l2z3,rm-2zea4dj583129ksp6
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// The ID of the synchronization job.
+	//
 	// example:
 	//
 	// dts-xxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The operation type.
+	//
+	// Valid values:
+	//
+	// 	- Create
+	//
+	// 	- Modify
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Create
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source database type.
+	//
+	// Valid values:
+	//
+	// 	- rds: ApsaraDB RDS.
+	//
+	// 	- sls: Simple Log Service.
+	//
+	// 	- polardb: PolarDB.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30893,6 +31889,8 @@ func (s *ModifySyncJobRequestSourceDBCluster) SetType(v string) *ModifySyncJobRe
 }
 
 type ModifySyncJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5AD3D9DF-614F-5B97-9522-A2406A432012
@@ -32378,6 +33376,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请公网链接
+//
 // @param request - AllocateClusterPublicConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32436,6 +33438,10 @@ func (client *Client) AllocateClusterPublicConnectionWithOptions(request *Alloca
 	return _result, _err
 }
 
+// Summary:
+//
+// 申请公网链接
+//
 // @param request - AllocateClusterPublicConnectionRequest
 //
 // @return AllocateClusterPublicConnectionResponse
@@ -38198,6 +39204,166 @@ func (client *Client) DescribeLoadTasksRecords(request *DescribeLoadTasksRecords
 	return _result, _err
 }
 
+// @param request - DescribeLogHubAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogHubAttributeResponse
+func (client *Client) DescribeLogHubAttributeWithOptions(request *DescribeLogHubAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLogHubAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliverName)) {
+		query["DeliverName"] = request.DeliverName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogHubAttribute"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLogHubAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeLogHubAttributeRequest
+//
+// @return DescribeLogHubAttributeResponse
+func (client *Client) DescribeLogHubAttribute(request *DescribeLogHubAttributeRequest) (_result *DescribeLogHubAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogHubAttributeResponse{}
+	_body, _err := client.DescribeLogHubAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeLogStoreKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogStoreKeysResponse
+func (client *Client) DescribeLogStoreKeysWithOptions(request *DescribeLogStoreKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeLogStoreKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogStoreKeys"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLogStoreKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeLogStoreKeysRequest
+//
+// @return DescribeLogStoreKeysResponse
+func (client *Client) DescribeLogStoreKeys(request *DescribeLogStoreKeysRequest) (_result *DescribeLogStoreKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogStoreKeysResponse{}
+	_body, _err := client.DescribeLogStoreKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DescribeLoghubDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38615,6 +39781,102 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProcessListResponse{}
 	_body, _err := client.DescribeProcessListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeRdsAnalysisResourceQuotasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsAnalysisResourceQuotasResponse
+func (client *Client) DescribeRdsAnalysisResourceQuotasWithOptions(request *DescribeRdsAnalysisResourceQuotasRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsAnalysisResourceQuotasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterCategory)) {
+		query["ClusterCategory"] = request.ClusterCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterMode)) {
+		query["ClusterMode"] = request.ClusterMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeClass)) {
+		query["NodeClass"] = request.NodeClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCount)) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsInstanceId)) {
+		query["RdsInstanceId"] = request.RdsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsAnalysisResourceQuotas"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRdsAnalysisResourceQuotasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRdsAnalysisResourceQuotasRequest
+//
+// @return DescribeRdsAnalysisResourceQuotasResponse
+func (client *Client) DescribeRdsAnalysisResourceQuotas(request *DescribeRdsAnalysisResourceQuotasRequest) (_result *DescribeRdsAnalysisResourceQuotasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRdsAnalysisResourceQuotasResponse{}
+	_body, _err := client.DescribeRdsAnalysisResourceQuotasWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43182,6 +44444,10 @@ func (client *Client) ModifySQAConfig(request *ModifySQAConfigRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+//
 // @param request - ModifySyncJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -43248,6 +44514,10 @@ func (client *Client) ModifySyncJobWithOptions(request *ModifySyncJobRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the synchronization jobs for an AnalyticDB for MySQL cluster.
+//
 // @param request - ModifySyncJobRequest
 //
 // @return ModifySyncJobResponse
