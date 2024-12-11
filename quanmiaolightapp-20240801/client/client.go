@@ -668,7 +668,8 @@ type RunHotTopicChatRequest struct {
 	// example:
 	//
 	// 1
-	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	ImageCount *int32                            `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	Messages   []*RunHotTopicChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -722,6 +723,11 @@ func (s *RunHotTopicChatRequest) SetImageCount(v int32) *RunHotTopicChatRequest 
 	return s
 }
 
+func (s *RunHotTopicChatRequest) SetMessages(v []*RunHotTopicChatRequestMessages) *RunHotTopicChatRequest {
+	s.Messages = v
+	return s
+}
+
 func (s *RunHotTopicChatRequest) SetModelCustomPromptTemplate(v string) *RunHotTopicChatRequest {
 	s.ModelCustomPromptTemplate = &v
 	return s
@@ -749,6 +755,44 @@ func (s *RunHotTopicChatRequest) SetStepForBroadcastContentConfig(v *RunHotTopic
 
 func (s *RunHotTopicChatRequest) SetTaskId(v string) *RunHotTopicChatRequest {
 	s.TaskId = &v
+	return s
+}
+
+type RunHotTopicChatRequestMessages struct {
+	// example:
+	//
+	// xxx
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2024-12-10 18:51:29
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s RunHotTopicChatRequestMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunHotTopicChatRequestMessages) GoString() string {
+	return s.String()
+}
+
+func (s *RunHotTopicChatRequestMessages) SetContent(v string) *RunHotTopicChatRequestMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequestMessages) SetCreateTime(v string) *RunHotTopicChatRequestMessages {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *RunHotTopicChatRequestMessages) SetRole(v string) *RunHotTopicChatRequestMessages {
+	s.Role = &v
 	return s
 }
 
@@ -824,7 +868,8 @@ type RunHotTopicChatShrinkRequest struct {
 	// example:
 	//
 	// 1
-	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	ImageCount     *int32  `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	MessagesShrink *string `json:"messages,omitempty" xml:"messages,omitempty"`
 	// example:
 	//
 	// xx
@@ -875,6 +920,11 @@ func (s *RunHotTopicChatShrinkRequest) SetHotTopicsShrink(v string) *RunHotTopic
 
 func (s *RunHotTopicChatShrinkRequest) SetImageCount(v int32) *RunHotTopicChatShrinkRequest {
 	s.ImageCount = &v
+	return s
+}
+
+func (s *RunHotTopicChatShrinkRequest) SetMessagesShrink(v string) *RunHotTopicChatShrinkRequest {
+	s.MessagesShrink = &v
 	return s
 }
 
@@ -4228,6 +4278,10 @@ func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *Ru
 		request.HotTopicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HotTopics, tea.String("hotTopics"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Messages)) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, tea.String("messages"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.StepForBroadcastContentConfig)) {
 		request.StepForBroadcastContentConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForBroadcastContentConfig, tea.String("stepForBroadcastContentConfig"), tea.String("json"))
 	}
@@ -4251,6 +4305,10 @@ func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *Ru
 
 	if !tea.BoolValue(util.IsUnset(request.ImageCount)) {
 		body["imageCount"] = request.ImageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessagesShrink)) {
+		body["messages"] = request.MessagesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModelCustomPromptTemplate)) {
