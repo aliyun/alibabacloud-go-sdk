@@ -263,6 +263,7 @@ func (s *InstancePatterns) SetMemory(v float32) *InstancePatterns {
 
 type KubeletConfig struct {
 	AllowedUnsafeSysctls []*string `json:"allowedUnsafeSysctls,omitempty" xml:"allowedUnsafeSysctls,omitempty" type:"Repeated"`
+	ClusterDNS           []*string `json:"clusterDNS,omitempty" xml:"clusterDNS,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 5
@@ -271,6 +272,14 @@ type KubeletConfig struct {
 	//
 	// 10Mi
 	ContainerLogMaxSize *string `json:"containerLogMaxSize,omitempty" xml:"containerLogMaxSize,omitempty"`
+	// example:
+	//
+	// true
+	CpuCFSQuota *bool `json:"cpuCFSQuota,omitempty" xml:"cpuCFSQuota,omitempty"`
+	// example:
+	//
+	// 100ms
+	CpuCFSQuotaPeriod *string `json:"cpuCFSQuotaPeriod,omitempty" xml:"cpuCFSQuotaPeriod,omitempty"`
 	// example:
 	//
 	// none
@@ -289,6 +298,14 @@ type KubeletConfig struct {
 	FeatureGates            map[string]interface{} `json:"featureGates,omitempty" xml:"featureGates,omitempty"`
 	// example:
 	//
+	// 85
+	ImageGCHighThresholdPercent *int32 `json:"imageGCHighThresholdPercent,omitempty" xml:"imageGCHighThresholdPercent,omitempty"`
+	// example:
+	//
+	// 80
+	ImageGCLowThresholdPercent *int32 `json:"imageGCLowThresholdPercent,omitempty" xml:"imageGCLowThresholdPercent,omitempty"`
+	// example:
+	//
 	// 10
 	KubeAPIBurst *int64 `json:"kubeAPIBurst,omitempty" xml:"kubeAPIBurst,omitempty"`
 	// example:
@@ -302,6 +319,14 @@ type KubeletConfig struct {
 	MaxPods *int64 `json:"maxPods,omitempty" xml:"maxPods,omitempty"`
 	// example:
 	//
+	// none
+	MemoryManagerPolicy *string `json:"memoryManagerPolicy,omitempty" xml:"memoryManagerPolicy,omitempty"`
+	// example:
+	//
+	// -1
+	PodPidsLimit *int64 `json:"podPidsLimit,omitempty" xml:"podPidsLimit,omitempty"`
+	// example:
+	//
 	// 0
 	ReadOnlyPort *int64 `json:"readOnlyPort,omitempty" xml:"readOnlyPort,omitempty"`
 	// example:
@@ -311,12 +336,18 @@ type KubeletConfig struct {
 	// example:
 	//
 	// 5
-	RegistryPullQPS *int64 `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
+	RegistryPullQPS *int64                         `json:"registryPullQPS,omitempty" xml:"registryPullQPS,omitempty"`
+	ReservedMemory  []*KubeletConfigReservedMemory `json:"reservedMemory,omitempty" xml:"reservedMemory,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
 	SerializeImagePulls *bool                  `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
 	SystemReserved      map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
+	// example:
+	//
+	// restricted
+	TopologyManagerPolicy *string               `json:"topologyManagerPolicy,omitempty" xml:"topologyManagerPolicy,omitempty"`
+	Tracing               *KubeletConfigTracing `json:"tracing,omitempty" xml:"tracing,omitempty" type:"Struct"`
 }
 
 func (s KubeletConfig) String() string {
@@ -332,6 +363,11 @@ func (s *KubeletConfig) SetAllowedUnsafeSysctls(v []*string) *KubeletConfig {
 	return s
 }
 
+func (s *KubeletConfig) SetClusterDNS(v []*string) *KubeletConfig {
+	s.ClusterDNS = v
+	return s
+}
+
 func (s *KubeletConfig) SetContainerLogMaxFiles(v int64) *KubeletConfig {
 	s.ContainerLogMaxFiles = &v
 	return s
@@ -339,6 +375,16 @@ func (s *KubeletConfig) SetContainerLogMaxFiles(v int64) *KubeletConfig {
 
 func (s *KubeletConfig) SetContainerLogMaxSize(v string) *KubeletConfig {
 	s.ContainerLogMaxSize = &v
+	return s
+}
+
+func (s *KubeletConfig) SetCpuCFSQuota(v bool) *KubeletConfig {
+	s.CpuCFSQuota = &v
+	return s
+}
+
+func (s *KubeletConfig) SetCpuCFSQuotaPeriod(v string) *KubeletConfig {
+	s.CpuCFSQuotaPeriod = &v
 	return s
 }
 
@@ -377,6 +423,16 @@ func (s *KubeletConfig) SetFeatureGates(v map[string]interface{}) *KubeletConfig
 	return s
 }
 
+func (s *KubeletConfig) SetImageGCHighThresholdPercent(v int32) *KubeletConfig {
+	s.ImageGCHighThresholdPercent = &v
+	return s
+}
+
+func (s *KubeletConfig) SetImageGCLowThresholdPercent(v int32) *KubeletConfig {
+	s.ImageGCLowThresholdPercent = &v
+	return s
+}
+
 func (s *KubeletConfig) SetKubeAPIBurst(v int64) *KubeletConfig {
 	s.KubeAPIBurst = &v
 	return s
@@ -397,6 +453,16 @@ func (s *KubeletConfig) SetMaxPods(v int64) *KubeletConfig {
 	return s
 }
 
+func (s *KubeletConfig) SetMemoryManagerPolicy(v string) *KubeletConfig {
+	s.MemoryManagerPolicy = &v
+	return s
+}
+
+func (s *KubeletConfig) SetPodPidsLimit(v int64) *KubeletConfig {
+	s.PodPidsLimit = &v
+	return s
+}
+
 func (s *KubeletConfig) SetReadOnlyPort(v int64) *KubeletConfig {
 	s.ReadOnlyPort = &v
 	return s
@@ -412,6 +478,11 @@ func (s *KubeletConfig) SetRegistryPullQPS(v int64) *KubeletConfig {
 	return s
 }
 
+func (s *KubeletConfig) SetReservedMemory(v []*KubeletConfigReservedMemory) *KubeletConfig {
+	s.ReservedMemory = v
+	return s
+}
+
 func (s *KubeletConfig) SetSerializeImagePulls(v bool) *KubeletConfig {
 	s.SerializeImagePulls = &v
 	return s
@@ -419,6 +490,65 @@ func (s *KubeletConfig) SetSerializeImagePulls(v bool) *KubeletConfig {
 
 func (s *KubeletConfig) SetSystemReserved(v map[string]interface{}) *KubeletConfig {
 	s.SystemReserved = v
+	return s
+}
+
+func (s *KubeletConfig) SetTopologyManagerPolicy(v string) *KubeletConfig {
+	s.TopologyManagerPolicy = &v
+	return s
+}
+
+func (s *KubeletConfig) SetTracing(v *KubeletConfigTracing) *KubeletConfig {
+	s.Tracing = v
+	return s
+}
+
+type KubeletConfigReservedMemory struct {
+	Limits   map[string]interface{} `json:"limits,omitempty" xml:"limits,omitempty"`
+	NumaNode *int32                 `json:"numaNode,omitempty" xml:"numaNode,omitempty"`
+}
+
+func (s KubeletConfigReservedMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KubeletConfigReservedMemory) GoString() string {
+	return s.String()
+}
+
+func (s *KubeletConfigReservedMemory) SetLimits(v map[string]interface{}) *KubeletConfigReservedMemory {
+	s.Limits = v
+	return s
+}
+
+func (s *KubeletConfigReservedMemory) SetNumaNode(v int32) *KubeletConfigReservedMemory {
+	s.NumaNode = &v
+	return s
+}
+
+type KubeletConfigTracing struct {
+	// example:
+	//
+	// localhost:4317
+	Endpoint               *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	SamplingRatePerMillion *int32  `json:"samplingRatePerMillion,omitempty" xml:"samplingRatePerMillion,omitempty"`
+}
+
+func (s KubeletConfigTracing) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KubeletConfigTracing) GoString() string {
+	return s.String()
+}
+
+func (s *KubeletConfigTracing) SetEndpoint(v string) *KubeletConfigTracing {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *KubeletConfigTracing) SetSamplingRatePerMillion(v int32) *KubeletConfigTracing {
+	s.SamplingRatePerMillion = &v
 	return s
 }
 
@@ -14551,7 +14681,8 @@ func (s *DescribeClusterUserKubeconfigResponse) SetBody(v *DescribeClusterUserKu
 }
 
 type DescribeClusterV2UserKubeconfigRequest struct {
-	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PrivateIpAddress         *bool  `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	TemporaryDurationMinutes *int64 `json:"TemporaryDurationMinutes,omitempty" xml:"TemporaryDurationMinutes,omitempty"`
 }
 
 func (s DescribeClusterV2UserKubeconfigRequest) String() string {
@@ -14564,6 +14695,11 @@ func (s DescribeClusterV2UserKubeconfigRequest) GoString() string {
 
 func (s *DescribeClusterV2UserKubeconfigRequest) SetPrivateIpAddress(v bool) *DescribeClusterV2UserKubeconfigRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *DescribeClusterV2UserKubeconfigRequest) SetTemporaryDurationMinutes(v int64) *DescribeClusterV2UserKubeconfigRequest {
+	s.TemporaryDurationMinutes = &v
 	return s
 }
 
@@ -31370,6 +31506,8 @@ func (client *Client) CreateEdgeMachine(request *CreateEdgeMachineRequest) (_res
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the CreateKubernetesTrigger operation to create a trigger for an application.
@@ -31381,6 +31519,7 @@ func (client *Client) CreateEdgeMachine(request *CreateEdgeMachineRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateKubernetesTriggerResponse
+// Deprecated
 func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernetesTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateKubernetesTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31427,6 +31566,8 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the CreateKubernetesTrigger operation to create a trigger for an application.
@@ -31434,6 +31575,7 @@ func (client *Client) CreateKubernetesTriggerWithOptions(request *CreateKubernet
 // @param request - CreateKubernetesTriggerRequest
 //
 // @return CreateKubernetesTriggerResponse
+// Deprecated
 func (client *Client) CreateKubernetesTrigger(request *CreateKubernetesTriggerRequest) (_result *CreateKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -32048,6 +32190,8 @@ func (client *Client) DeleteEdgeMachine(edgeMachineid *string, request *DeleteEd
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
@@ -32057,6 +32201,7 @@ func (client *Client) DeleteEdgeMachine(edgeMachineid *string, request *DeleteEd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteKubernetesTriggerResponse
+// Deprecated
 func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteKubernetesTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -32081,11 +32226,14 @@ func (client *Client) DeleteKubernetesTriggerWithOptions(Id *string, headers map
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the DeleteKubernetesTrigger operation to delete an application trigger by trigger ID
 //
 // @return DeleteKubernetesTriggerResponse
+// Deprecated
 func (client *Client) DeleteKubernetesTrigger(Id *string) (_result *DeleteKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -33504,6 +33652,10 @@ func (client *Client) DescribeClusterV2UserKubeconfigWithOptions(ClusterId *stri
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TemporaryDurationMinutes)) {
+		query["TemporaryDurationMinutes"] = request.TemporaryDurationMinutes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -33858,6 +34010,8 @@ func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+//
 // Summary:
 //
 // You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
@@ -33867,6 +34021,7 @@ func (client *Client) DescribeClustersV1(request *DescribeClustersV1Request) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEdgeMachineActiveProcessResponse
+// Deprecated
 func (client *Client) DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeEdgeMachineActiveProcessResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -33891,11 +34046,14 @@ func (client *Client) DescribeEdgeMachineActiveProcessWithOptions(edgeMachineid 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeEdgeMachineActiveProcess is deprecated
+//
 // Summary:
 //
 // You can call the DescribeEdgeMachineActiveProcess operation to query the activation progress of a cloud-native box.
 //
 // @return DescribeEdgeMachineActiveProcessResponse
+// Deprecated
 func (client *Client) DescribeEdgeMachineActiveProcess(edgeMachineid *string) (_result *DescribeEdgeMachineActiveProcessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -34240,6 +34398,8 @@ func (client *Client) DescribeEventsForRegion(regionId *string, request *Describ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeExternalAgent is deprecated
+//
 // Summary:
 //
 // Queries the proxy configurations of a registered cluster based on the cluster ID.
@@ -34255,6 +34415,7 @@ func (client *Client) DescribeEventsForRegion(regionId *string, request *Describ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExternalAgentResponse
+// Deprecated
 func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, request *DescribeExternalAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeExternalAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34293,6 +34454,8 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeExternalAgent is deprecated
+//
 // Summary:
 //
 // Queries the proxy configurations of a registered cluster based on the cluster ID.
@@ -34304,6 +34467,7 @@ func (client *Client) DescribeExternalAgentWithOptions(ClusterId *string, reques
 // @param request - DescribeExternalAgentRequest
 //
 // @return DescribeExternalAgentResponse
+// Deprecated
 func (client *Client) DescribeExternalAgent(ClusterId *string, request *DescribeExternalAgentRequest) (_result *DescribeExternalAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -35308,6 +35472,8 @@ func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _
 	return _result, _err
 }
 
+// Deprecated: OpenAPI EdgeClusterAddEdgeMachine is deprecated
+//
 // Summary:
 //
 // You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
@@ -35319,6 +35485,7 @@ func (client *Client) DescribeUserQuota() (_result *DescribeUserQuotaResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EdgeClusterAddEdgeMachineResponse
+// Deprecated
 func (client *Client) EdgeClusterAddEdgeMachineWithOptions(clusterid *string, edgeMachineid *string, request *EdgeClusterAddEdgeMachineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EdgeClusterAddEdgeMachineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35361,6 +35528,8 @@ func (client *Client) EdgeClusterAddEdgeMachineWithOptions(clusterid *string, ed
 	return _result, _err
 }
 
+// Deprecated: OpenAPI EdgeClusterAddEdgeMachine is deprecated
+//
 // Summary:
 //
 // You can call the EdgeClusterAddEdgeMachine operation to add a cloud-native box to a Container Service for Kubernetes (ACK) Edge cluster.
@@ -35368,6 +35537,7 @@ func (client *Client) EdgeClusterAddEdgeMachineWithOptions(clusterid *string, ed
 // @param request - EdgeClusterAddEdgeMachineRequest
 //
 // @return EdgeClusterAddEdgeMachineResponse
+// Deprecated
 func (client *Client) EdgeClusterAddEdgeMachine(clusterid *string, edgeMachineid *string, request *EdgeClusterAddEdgeMachineRequest) (_result *EdgeClusterAddEdgeMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -35726,6 +35896,8 @@ func (client *Client) GetClusterDiagnosisResult(clusterId *string, diagnosisId *
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
@@ -35737,6 +35909,7 @@ func (client *Client) GetClusterDiagnosisResult(clusterId *string, diagnosisId *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetKubernetesTriggerResponse
+// Deprecated
 func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request *GetKubernetesTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetKubernetesTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35783,6 +35956,8 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetKubernetesTrigger is deprecated
+//
 // Summary:
 //
 // You can call the GetKubernetesTrigger operationto query the triggers of an application by application name.
@@ -35790,6 +35965,7 @@ func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request
 // @param request - GetKubernetesTriggerRequest
 //
 // @return GetKubernetesTriggerResponse
+// Deprecated
 func (client *Client) GetKubernetesTrigger(ClusterId *string, request *GetKubernetesTriggerRequest) (_result *GetKubernetesTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36784,6 +36960,8 @@ func (client *Client) ModifyClusterAddon(clusterId *string, componentId *string,
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyClusterConfiguration is deprecated
+//
 // Summary:
 //
 // This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
@@ -36795,6 +36973,7 @@ func (client *Client) ModifyClusterAddon(clusterId *string, componentId *string,
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyClusterConfigurationResponse
+// Deprecated
 func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, request *ModifyClusterConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyClusterConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36829,6 +37008,8 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyClusterConfiguration is deprecated
+//
 // Summary:
 //
 // This API operation applies only to Container Service for Kubernetes (ACK) managed clusters.
@@ -36836,6 +37017,7 @@ func (client *Client) ModifyClusterConfigurationWithOptions(ClusterId *string, r
 // @param request - ModifyClusterConfigurationRequest
 //
 // @return ModifyClusterConfigurationResponse
+// Deprecated
 func (client *Client) ModifyClusterConfiguration(ClusterId *string, request *ModifyClusterConfigurationRequest) (_result *ModifyClusterConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
