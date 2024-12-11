@@ -1,3 +1,9 @@
+2024-12-11 Version: v4.4.0
+- Support API GetTemplateParameterConstraints.
+- Update API CreateApplication: add param ApplicationSource.
+- Update API GetApplicationGroup: update response param.
+
+
 2024-12-02 Version: v4.3.0
 - Support API AnalyzeGitRepository.
 - Support API ListGitRepositoryContents.

@@ -506,7 +506,8 @@ func (s *ContinueDeployApplicationGroupResponse) SetBody(v *ContinueDeployApplic
 
 type CreateApplicationRequest struct {
 	// The configurations of application alerts.
-	AlarmConfig *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	AlarmConfig       *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	ApplicationSource *string                              `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
@@ -563,6 +564,11 @@ func (s CreateApplicationRequest) GoString() string {
 
 func (s *CreateApplicationRequest) SetAlarmConfig(v *CreateApplicationRequestAlarmConfig) *CreateApplicationRequest {
 	s.AlarmConfig = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetApplicationSource(v string) *CreateApplicationRequest {
+	s.ApplicationSource = &v
 	return s
 }
 
@@ -640,6 +646,7 @@ func (s *CreateApplicationRequestAlarmConfig) SetTemplateIds(v []*string) *Creat
 type CreateApplicationShrinkRequest struct {
 	// The configurations of application alerts.
 	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
+	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
@@ -696,6 +703,11 @@ func (s CreateApplicationShrinkRequest) GoString() string {
 
 func (s *CreateApplicationShrinkRequest) SetAlarmConfigShrink(v string) *CreateApplicationShrinkRequest {
 	s.AlarmConfigShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetApplicationSource(v string) *CreateApplicationShrinkRequest {
+	s.ApplicationSource = &v
 	return s
 }
 
@@ -6307,7 +6319,7 @@ func (s *GetApplicationGroupRequest) SetRegionId(v string) *GetApplicationGroupR
 }
 
 type GetApplicationGroupResponseBody struct {
-	// The details of the application group.
+	// The information about the application group.
 	ApplicationGroup *GetApplicationGroupResponseBodyApplicationGroup `json:"ApplicationGroup,omitempty" xml:"ApplicationGroup,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -6341,7 +6353,8 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// example:
 	//
 	// MyApplication
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName   *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The ID of the application group in CloudMonitor.
 	//
 	// example:
@@ -6395,7 +6408,12 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// example:
 	//
 	// MyApplicationGroup
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operation metadata.
+	//
+	// example:
+	//
+	// {\\"PrometheusConfigMap\\":{\\"模板1\\":{\\"EnablePrometheus\\":false}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	// The creation progress of the application instance.
 	//
@@ -6433,6 +6451,11 @@ func (s GetApplicationGroupResponseBodyApplicationGroup) GoString() string {
 
 func (s *GetApplicationGroupResponseBodyApplicationGroup) SetApplicationName(v string) *GetApplicationGroupResponseBodyApplicationGroup {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetApplicationSource(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.ApplicationSource = &v
 	return s
 }
 
@@ -9865,6 +9888,221 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 	return s
 }
 
+type GetTemplateParameterConstraintsRequest struct {
+	// example:
+	//
+	// {\\"endDate\\": \\"2022-04-13T03:31:20Z\\", \\"Status\\": \\"Stopped\\"}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"Description": "Example template, describe instances in some status",
+	//
+	// 	"FormatVersion": "OOS-2019-06-01",
+	//
+	// 	"Parameters": {},
+	//
+	// 	"Tasks": [{
+	//
+	// 		"Name": "describeInstances",
+	//
+	// 		"Action": "ACS::ExecuteAPI",
+	//
+	// 		"Description": "desc-en",
+	//
+	// 		"Properties": {
+	//
+	// 			"Service": "ECS",
+	//
+	// 			"API": "DescribeInstances",
+	//
+	// 			"Parameters": {
+	//
+	// 				"Status": "Running"
+	//
+	// 			}
+	//
+	// 		}
+	//
+	// 	}]
+	//
+	// }
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// example:
+	//
+	// MyTemplate
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// http://oos-template.cn-hangzhou.oss.aliyun-inc.com/oos-test-template.json
+	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// example:
+	//
+	// v1
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetParameters(v string) *GetTemplateParameterConstraintsRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetRegionId(v string) *GetTemplateParameterConstraintsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateContent(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateName(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateURL(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateURL = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsRequest) SetTemplateVersion(v string) *GetTemplateParameterConstraintsRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponseBody struct {
+	// example:
+	//
+	// [
+	//
+	//     {
+	//
+	//       "Type": "String",
+	//
+	//       "AllowedValues": [
+	//
+	//         "ecs.n1.tiny",
+	//
+	//         "ecs.r8a.4xlarge",
+	//
+	//         "ecs.n2.xlarge",
+	//
+	//         "ecs.c7.2xlarge",
+	//
+	//         "ecs.c8i.4xlarge",
+	//
+	//         "ecs.g8i.48xlarge",
+	//
+	//         "ecs.c8a.4xlarge",
+	//
+	//         "ecs.i2.4xlarge",
+	//
+	//         "ecs.r8y.2xlarge"
+	//
+	//       ],
+	//
+	//       "AssociationParameterNames": [
+	//
+	//         "RegionId",
+	//
+	//         "zoneId"
+	//
+	//       ],
+	//
+	//       "ParameterKey": "instanceType"
+	//
+	//     },
+	//
+	//     {
+	//
+	//       "Type": "String",
+	//
+	//       "AllowedValues": [],
+	//
+	//       "AssociationParameterNames": [
+	//
+	//         "RegionId",
+	//
+	//         "zoneId",
+	//
+	//         "InstanceType"
+	//
+	//       ],
+	//
+	//       "ParameterKey": "systemDiskCategory"
+	//
+	//     }
+	//
+	//   ]
+	ParameterConstraints map[string]interface{} `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty"`
+	// example:
+	//
+	// CBEC8072-BEC2-478E-8EAE-E723BA79CF19
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponseBody) SetParameterConstraints(v map[string]interface{}) *GetTemplateParameterConstraintsResponseBody {
+	s.ParameterConstraints = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponseBody) SetRequestId(v string) *GetTemplateParameterConstraintsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTemplateParameterConstraintsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTemplateParameterConstraintsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTemplateParameterConstraintsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateParameterConstraintsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateParameterConstraintsResponse) SetHeaders(v map[string]*string) *GetTemplateParameterConstraintsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponse) SetStatusCode(v int32) *GetTemplateParameterConstraintsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTemplateParameterConstraintsResponse) SetBody(v *GetTemplateParameterConstraintsResponseBody) *GetTemplateParameterConstraintsResponse {
+	s.Body = v
+	return s
+}
+
 type ListActionsRequest struct {
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
 	//
@@ -11936,7 +12174,12 @@ type ListExecutionsResponseBodyExecutions struct {
 	// example:
 	//
 	// Automatic
-	Mode             *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The next schedule time for timer trigger execution.
+	//
+	// example:
+	//
+	// 2019-05-16T10:26:14Z
 	NextScheduleTime *string `json:"NextScheduleTime,omitempty" xml:"NextScheduleTime,omitempty"`
 	// The output of the execution.
 	//
@@ -12626,24 +12869,34 @@ func (s *ListGitRepositoryContentsResponse) SetBody(v *ListGitRepositoryContents
 }
 
 type ListInstancePackageStatesRequest struct {
+	// ECS instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp1cpoxxxwxxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Pagination token.
+	//
 	// example:
 	//
 	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctzxxxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of extension names
+	//
 	// example:
 	//
 	// ["template1","template2"]
@@ -12684,16 +12937,21 @@ func (s *ListInstancePackageStatesRequest) SetTemplateNames(v string) *ListInsta
 }
 
 type ListInstancePackageStatesResponseBody struct {
+	// Page size.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token string for pagination.
+	//
 	// example:
 	//
 	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctzxxxxxxx
-	NextToken     *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// List of extensions
 	PackageStates []*ListInstancePackageStatesResponseBodyPackageStates `json:"PackageStates,omitempty" xml:"PackageStates,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -12730,38 +12988,56 @@ func (s *ListInstancePackageStatesResponseBody) SetRequestId(v string) *ListInst
 }
 
 type ListInstancePackageStatesResponseBodyPackageStates struct {
+	// Description
+	//
 	// example:
 	//
 	// template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Parameters
+	//
 	// example:
 	//
 	// {}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Publisher
+	//
 	// example:
 	//
 	// Alibaba Cloud
 	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	// Template type
+	//
 	// example:
 	//
 	// Package
 	TemplateCategory *string `json:"TemplateCategory,omitempty" xml:"TemplateCategory,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// 087b1e11072a40259f6fxxxxxxxxx
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template name.
+	//
 	// example:
 	//
 	// ACS-ECS-Docker
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template version number
+	//
 	// example:
 	//
 	// v3
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// Template version name
+	//
 	// example:
 	//
 	// fix bug
 	TemplateVersionName *string `json:"TemplateVersionName,omitempty" xml:"TemplateVersionName,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2024-05-04T11:17:28
@@ -18249,7 +18525,7 @@ type ListTemplatesRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	// Specifies whether the template is an example template
+	// Specifies whether the template is an example template.
 	//
 	// example:
 	//
@@ -18494,7 +18770,7 @@ type ListTemplatesShrinkRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	// Specifies whether the template is an example template
+	// Specifies whether the template is an example template.
 	//
 	// example:
 	//
@@ -18896,6 +19172,11 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// 2019-05-16T10:26:14Z
 	UpdatedDate *string `json:"UpdatedDate,omitempty" xml:"UpdatedDate,omitempty"`
+	// The version name.
+	//
+	// example:
+	//
+	// v2.1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -21542,9 +21823,19 @@ type UpdateApplicationGroupRequest struct {
 	// example:
 	//
 	// UpdateMyApplicationGroup
-	NewName       *string                `json:"NewName,omitempty" xml:"NewName,omitempty"`
-	OperationName *string                `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	Parameters    map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	// The name of the configuration update operation.
+	//
+	// example:
+	//
+	// /business/v1/product/spus/{spu_id}
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The JSON string that consists of a set of parameters. Default value: {}.
+	//
+	// example:
+	//
+	// {"username": "xx"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
 	//
 	// example:
@@ -21613,8 +21904,18 @@ type UpdateApplicationGroupShrinkRequest struct {
 	// example:
 	//
 	// UpdateMyApplicationGroup
-	NewName          *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
-	OperationName    *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
+	// The name of the configuration update operation.
+	//
+	// example:
+	//
+	// /business/v1/product/spus/{spu_id}
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The JSON string that consists of a set of parameters. Default value: {}.
+	//
+	// example:
+	//
+	// {"username": "xx"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
 	//
@@ -21961,32 +22262,50 @@ func (s *UpdateExecutionResponse) SetBody(v *UpdateExecutionResponseBody) *Updat
 }
 
 type UpdateInstancePackageStateRequest struct {
+	// The operation type.
+	//
+	// Valid values:
+	//
+	// 	- uninstall
+	//
+	// 	- install
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// install
 	ConfigureAction *string `json:"ConfigureAction,omitempty" xml:"ConfigureAction,omitempty"`
+	// The ID of the Elastic Compute Service (ECS) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp1jaxa2bs4bps7*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameters for installing or uninstalling the extensions.
+	//
 	// example:
 	//
 	// {"username": "xx"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The version of the template.
+	//
 	// example:
 	//
 	// v1
@@ -22032,32 +22351,50 @@ func (s *UpdateInstancePackageStateRequest) SetTemplateVersion(v string) *Update
 }
 
 type UpdateInstancePackageStateShrinkRequest struct {
+	// The operation type.
+	//
+	// Valid values:
+	//
+	// 	- uninstall
+	//
+	// 	- install
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// install
 	ConfigureAction *string `json:"ConfigureAction,omitempty" xml:"ConfigureAction,omitempty"`
+	// The ID of the Elastic Compute Service (ECS) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp1jaxa2bs4bps7*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The parameters for installing or uninstalling the extensions.
+	//
 	// example:
 	//
 	// {"username": "xx"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ACS-ECS-InventoryDataCollection
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The version of the template.
+	//
 	// example:
 	//
 	// v1
@@ -22103,7 +22440,7 @@ func (s *UpdateInstancePackageStateShrinkRequest) SetTemplateVersion(v string) *
 }
 
 type UpdateInstancePackageStateResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -25462,6 +25799,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["AlarmConfig"] = request.AlarmConfigShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApplicationSource)) {
+		query["ApplicationSource"] = request.ApplicationSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -28129,6 +28470,86 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 
 // Summary:
 //
+// 获取参数可用值
+//
+// @param request - GetTemplateParameterConstraintsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateParameterConstraintsResponse
+func (client *Client) GetTemplateParameterConstraintsWithOptions(request *GetTemplateParameterConstraintsRequest, runtime *util.RuntimeOptions) (_result *GetTemplateParameterConstraintsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
+		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTemplateParameterConstraints"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTemplateParameterConstraintsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取参数可用值
+//
+// @param request - GetTemplateParameterConstraintsRequest
+//
+// @return GetTemplateParameterConstraintsResponse
+func (client *Client) GetTemplateParameterConstraints(request *GetTemplateParameterConstraintsRequest) (_result *GetTemplateParameterConstraintsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTemplateParameterConstraintsResponse{}
+	_body, _err := client.GetTemplateParameterConstraintsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the available actions, including atomic actions and cloud product actions.
 //
 // @param request - ListActionsRequest
@@ -28877,7 +29298,7 @@ func (client *Client) ListGitRepositoryContents(request *ListGitRepositoryConten
 
 // Summary:
 //
-// 列出实例软件包状态
+// List Instance Package States
 //
 // @param request - ListInstancePackageStatesRequest
 //
@@ -28935,7 +29356,7 @@ func (client *Client) ListInstancePackageStatesWithOptions(request *ListInstance
 
 // Summary:
 //
-// 列出实例软件包状态
+// List Instance Package States
 //
 // @param request - ListInstancePackageStatesRequest
 //
@@ -31453,7 +31874,7 @@ func (client *Client) UpdateExecution(request *UpdateExecutionRequest) (_result 
 
 // Summary:
 //
-// 更新实例软件包状态
+// Updates the installed extensions of an instance.
 //
 // @param tmpReq - UpdateInstancePackageStateRequest
 //
@@ -31521,7 +31942,7 @@ func (client *Client) UpdateInstancePackageStateWithOptions(tmpReq *UpdateInstan
 
 // Summary:
 //
-// 更新实例软件包状态
+// Updates the installed extensions of an instance.
 //
 // @param request - UpdateInstancePackageStateRequest
 //
