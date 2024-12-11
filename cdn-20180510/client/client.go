@@ -30153,27 +30153,27 @@ func (s *PublishStagingConfigToProductionResponse) SetBody(v *PublishStagingConf
 }
 
 type PushObjectCacheRequest struct {
-	// The accelerated region where content is to be prefetched. Valid values:
+	// The acceleration region where content is to be prefetched. Valid values:
 	//
 	// 	- **domestic****: Chinese mainland**
 	//
 	// 	- **overseas****: regions outside the Chinese mainland**
 	//
-	// If you do not set this parameter, content in the accelerated region of the domain name is prefetched.
+	// If you do not set this parameter, content in the service location (specified by parameter Coverage) that you configured for the domain is prefetched. Content is prefetched based on the following rules:
 	//
-	// 	- If the accelerated region is set to **Mainland China Only**, content in regions in the Chinese mainland is prefetched.
+	// 	- If the acceleration region is set to **Chinese Mainland Only**, content in regions in the Chinese mainland is prefetched.
 	//
-	// 	- If the accelerated region is set to **Global**, content in all regions is prefetched.
+	// 	- If the acceleration region is set to **Global**, content in all regions is prefetched.
 	//
-	// 	- If the accelerated region is set to **Global (Excluding Mainland China)**, content in regions outside the Chinese mainland is prefetched.
+	// 	- If the acceleration region is set to **Global (Excluding the Chinese Mainland)**, content in regions outside the Chinese mainland is prefetched.
 	//
 	// example:
 	//
 	// domestic
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// Specifies whether to prefetch content to POPs. Valid values:
+	// Specifies whether to prefetch content to L2 points of presence (POPs). Valid values:
 	//
-	// 	- **true**: prefetches content to POPs.
+	// 	- **true**: prefetches content to L2 POPs.
 	//
 	// 	- **false**: prefetches content to regular POPs. Regular POPs can be L2 POPs or L3 POPs. Default value: **false**.
 	//
@@ -30190,8 +30190,17 @@ type PushObjectCacheRequest struct {
 	// example:
 	//
 	// example.com/image/1.png\\nexample.org/image/2.png
-	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter specifies whether to enable the hash key query mode when you run a prefetch task. Valid values:
+	//
+	// 	- false: The default mode, in which the submitted URL is used as the hash key for the prefetch.
+	//
+	// 	- true: In this mode, the actual hash key used for the prefetch is queried based on the configuration of the domain name.
+	//
+	// example:
+	//
+	// true
 	QueryHashkey  *bool   `json:"QueryHashkey,omitempty" xml:"QueryHashkey,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The custom header for prefetch in the JSON format.
@@ -30320,6 +30329,8 @@ func (s *PushObjectCacheResponse) SetBody(v *PushObjectCacheResponseBody) *PushO
 }
 
 type RefreshObjectCacheByCacheTagRequest struct {
+	// The tags of Cache. If multiple tags are returned, the tags are separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44721,10 +44732,6 @@ func (client *Client) ListFCTrigger(request *ListFCTriggerRequest) (_result *Lis
 //
 // Queries all real-time log delivery tasks within your Alibaba Cloud account.
 //
-// Description:
-//
-// \\*\\	- \\*\\*
-//
 // @param request - ListRealtimeLogDeliveryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -44755,10 +44762,6 @@ func (client *Client) ListRealtimeLogDeliveryWithOptions(runtime *util.RuntimeOp
 // Summary:
 //
 // Queries all real-time log delivery tasks within your Alibaba Cloud account.
-//
-// Description:
-//
-// \\*\\	- \\*\\*
 //
 // @return ListRealtimeLogDeliveryResponse
 func (client *Client) ListRealtimeLogDelivery() (_result *ListRealtimeLogDeliveryResponse, _err error) {
