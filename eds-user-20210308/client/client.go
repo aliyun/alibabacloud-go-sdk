@@ -38,6 +38,200 @@ func (s *GroupResources) SetResourceType(v string) *GroupResources {
 	return s
 }
 
+type ThirdApp struct {
+	AppKey        *string                `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Name          *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	OidcSsoConfig *ThirdAppOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
+	Secrets       []*ThirdAppSecrets     `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+}
+
+func (s ThirdApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThirdApp) GoString() string {
+	return s.String()
+}
+
+func (s *ThirdApp) SetAppKey(v string) *ThirdApp {
+	s.AppKey = &v
+	return s
+}
+
+func (s *ThirdApp) SetName(v string) *ThirdApp {
+	s.Name = &v
+	return s
+}
+
+func (s *ThirdApp) SetOidcSsoConfig(v *ThirdAppOidcSsoConfig) *ThirdApp {
+	s.OidcSsoConfig = v
+	return s
+}
+
+func (s *ThirdApp) SetSecrets(v []*ThirdAppSecrets) *ThirdApp {
+	s.Secrets = v
+	return s
+}
+
+type ThirdAppOidcSsoConfig struct {
+	AccessTokenEffectiveTime *int32                          `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
+	CodeEffectiveTime        *int32                          `json:"CodeEffectiveTime,omitempty" xml:"CodeEffectiveTime,omitempty"`
+	EnableAuthLogin          *bool                           `json:"EnableAuthLogin,omitempty" xml:"EnableAuthLogin,omitempty"`
+	Endpoints                *ThirdAppOidcSsoConfigEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	GrantScopes              []*string                       `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
+	GrantTypes               []*string                       `json:"GrantTypes,omitempty" xml:"GrantTypes,omitempty" type:"Repeated"`
+	IdTokenAlgorithmType     *int32                          `json:"IdTokenAlgorithmType,omitempty" xml:"IdTokenAlgorithmType,omitempty"`
+	IdTokenEffectiveTime     *int32                          `json:"IdTokenEffectiveTime,omitempty" xml:"IdTokenEffectiveTime,omitempty"`
+	RedirectUris             []*string                       `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Repeated"`
+	RefreshTokenEffective    *int32                          `json:"RefreshTokenEffective,omitempty" xml:"RefreshTokenEffective,omitempty"`
+}
+
+func (s ThirdAppOidcSsoConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThirdAppOidcSsoConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ThirdAppOidcSsoConfig) SetAccessTokenEffectiveTime(v int32) *ThirdAppOidcSsoConfig {
+	s.AccessTokenEffectiveTime = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetCodeEffectiveTime(v int32) *ThirdAppOidcSsoConfig {
+	s.CodeEffectiveTime = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetEnableAuthLogin(v bool) *ThirdAppOidcSsoConfig {
+	s.EnableAuthLogin = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetEndpoints(v *ThirdAppOidcSsoConfigEndpoints) *ThirdAppOidcSsoConfig {
+	s.Endpoints = v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetGrantScopes(v []*string) *ThirdAppOidcSsoConfig {
+	s.GrantScopes = v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetGrantTypes(v []*string) *ThirdAppOidcSsoConfig {
+	s.GrantTypes = v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetIdTokenAlgorithmType(v int32) *ThirdAppOidcSsoConfig {
+	s.IdTokenAlgorithmType = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetIdTokenEffectiveTime(v int32) *ThirdAppOidcSsoConfig {
+	s.IdTokenEffectiveTime = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetRedirectUris(v []*string) *ThirdAppOidcSsoConfig {
+	s.RedirectUris = v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfig) SetRefreshTokenEffective(v int32) *ThirdAppOidcSsoConfig {
+	s.RefreshTokenEffective = &v
+	return s
+}
+
+type ThirdAppOidcSsoConfigEndpoints struct {
+	AuthorizationEndpoint      *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	DiscoveryEndpoint          *string `json:"DiscoveryEndpoint,omitempty" xml:"DiscoveryEndpoint,omitempty"`
+	GuestAuthorizationEndpoint *string `json:"GuestAuthorizationEndpoint,omitempty" xml:"GuestAuthorizationEndpoint,omitempty"`
+	Issuer                     *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	JwksEndpoint               *string `json:"JwksEndpoint,omitempty" xml:"JwksEndpoint,omitempty"`
+	LogoutEndpoint             *string `json:"LogoutEndpoint,omitempty" xml:"LogoutEndpoint,omitempty"`
+	RevokeEndpoint             *string `json:"RevokeEndpoint,omitempty" xml:"RevokeEndpoint,omitempty"`
+	TokenEndpoint              *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
+	UserinfoEndpoint           *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
+}
+
+func (s ThirdAppOidcSsoConfigEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThirdAppOidcSsoConfigEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetAuthorizationEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetDiscoveryEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.DiscoveryEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetGuestAuthorizationEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.GuestAuthorizationEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetIssuer(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetJwksEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.JwksEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetLogoutEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.LogoutEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetRevokeEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.RevokeEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetTokenEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *ThirdAppOidcSsoConfigEndpoints) SetUserinfoEndpoint(v string) *ThirdAppOidcSsoConfigEndpoints {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+type ThirdAppSecrets struct {
+	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+}
+
+func (s ThirdAppSecrets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThirdAppSecrets) GoString() string {
+	return s.String()
+}
+
+func (s *ThirdAppSecrets) SetEnable(v bool) *ThirdAppSecrets {
+	s.Enable = &v
+	return s
+}
+
+func (s *ThirdAppSecrets) SetSecret(v string) *ThirdAppSecrets {
+	s.Secret = &v
+	return s
+}
+
 type WaIdPermissions struct {
 	Code           *string            `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsBasicChild   *bool              `json:"IsBasicChild,omitempty" xml:"IsBasicChild,omitempty"`
@@ -2256,6 +2450,7 @@ type FilterUsersRequest struct {
 	//
 	// false
 	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IsQueryAllSubOrgs        *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
 	// The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
 	//
 	// example:
@@ -2314,6 +2509,11 @@ func (s *FilterUsersRequest) SetIncludeDesktopCount(v bool) *FilterUsersRequest 
 
 func (s *FilterUsersRequest) SetIncludeDesktopGroupCount(v bool) *FilterUsersRequest {
 	s.IncludeDesktopGroupCount = &v
+	return s
+}
+
+func (s *FilterUsersRequest) SetIsQueryAllSubOrgs(v bool) *FilterUsersRequest {
+	s.IsQueryAllSubOrgs = &v
 	return s
 }
 
@@ -2539,6 +2739,7 @@ type FilterUsersShrinkRequest struct {
 	//
 	// false
 	IncludeDesktopGroupCount *bool `json:"IncludeDesktopGroupCount,omitempty" xml:"IncludeDesktopGroupCount,omitempty"`
+	IsQueryAllSubOrgs        *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
 	// The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
 	//
 	// example:
@@ -2597,6 +2798,11 @@ func (s *FilterUsersShrinkRequest) SetIncludeDesktopCount(v bool) *FilterUsersSh
 
 func (s *FilterUsersShrinkRequest) SetIncludeDesktopGroupCount(v bool) *FilterUsersShrinkRequest {
 	s.IncludeDesktopGroupCount = &v
+	return s
+}
+
+func (s *FilterUsersShrinkRequest) SetIsQueryAllSubOrgs(v bool) *FilterUsersShrinkRequest {
+	s.IsQueryAllSubOrgs = &v
 	return s
 }
 
@@ -6107,6 +6313,10 @@ func (client *Client) FilterUsersWithOptions(tmpReq *FilterUsersRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeDesktopGroupCount)) {
 		query["IncludeDesktopGroupCount"] = request.IncludeDesktopGroupCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsQueryAllSubOrgs)) {
+		query["IsQueryAllSubOrgs"] = request.IsQueryAllSubOrgs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
