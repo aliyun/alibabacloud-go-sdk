@@ -2373,6 +2373,206 @@ func (s *BindDBResourceGroupWithUserResponse) SetBody(v *BindDBResourceGroupWith
 	return s
 }
 
+type CancelSparkReplStatementRequest struct {
+	// example:
+	//
+	// s202411071444hzdvk486d9d2001****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 456
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s CancelSparkReplStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkReplStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkReplStatementRequest) SetAppId(v string) *CancelSparkReplStatementRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementRequest) SetSessionId(v int64) *CancelSparkReplStatementRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementRequest) SetStatementId(v int64) *CancelSparkReplStatementRequest {
+	s.StatementId = &v
+	return s
+}
+
+type CancelSparkReplStatementResponseBody struct {
+	Data *CancelSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelSparkReplStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkReplStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkReplStatementResponseBody) SetData(v *CancelSparkReplStatementResponseBodyData) *CancelSparkReplStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBody) SetRequestId(v string) *CancelSparkReplStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelSparkReplStatementResponseBodyData struct {
+	// example:
+	//
+	// 190063530332****
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// example:
+	//
+	// print(1+1)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// RUNNING
+	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// example:
+	//
+	// PYTHON
+	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1730968056000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// StackOverflow Exception：
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// {"text/plain": "2"}
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// TEXT
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// example:
+	//
+	// 1730968056000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s CancelSparkReplStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkReplStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetAliyunUid(v int64) *CancelSparkReplStatementResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetCode(v string) *CancelSparkReplStatementResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetCodeState(v string) *CancelSparkReplStatementResponseBodyData {
+	s.CodeState = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetCodeType(v string) *CancelSparkReplStatementResponseBodyData {
+	s.CodeType = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetColumns(v []*string) *CancelSparkReplStatementResponseBodyData {
+	s.Columns = v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetEndTime(v int64) *CancelSparkReplStatementResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetError(v string) *CancelSparkReplStatementResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetOutput(v string) *CancelSparkReplStatementResponseBodyData {
+	s.Output = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetOutputType(v string) *CancelSparkReplStatementResponseBodyData {
+	s.OutputType = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetStartTime(v int64) *CancelSparkReplStatementResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponseBodyData) SetStatementId(v int64) *CancelSparkReplStatementResponseBodyData {
+	s.StatementId = &v
+	return s
+}
+
+type CancelSparkReplStatementResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelSparkReplStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelSparkReplStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkReplStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkReplStatementResponse) SetHeaders(v map[string]*string) *CancelSparkReplStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponse) SetStatusCode(v int32) *CancelSparkReplStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelSparkReplStatementResponse) SetBody(v *CancelSparkReplStatementResponseBody) *CancelSparkReplStatementResponse {
+	s.Body = v
+	return s
+}
+
 type CheckBindRamUserRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -10595,6 +10795,8 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 }
 
 type DescribeCompactionServiceSwitchRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10617,7 +10819,10 @@ func (s *DescribeCompactionServiceSwitchRequest) SetDBClusterId(v string) *Descr
 }
 
 type DescribeCompactionServiceSwitchResponseBody struct {
+	// The returned data.
 	Data *DescribeCompactionServiceSwitchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D761DA51-12F8-5457-AAA9-F52B9F436D2D
@@ -10643,6 +10848,14 @@ func (s *DescribeCompactionServiceSwitchResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeCompactionServiceSwitchResponseBodyData struct {
+	// Indicates whether the remote build feature is enabled.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -22197,6 +22410,221 @@ func (s *EnableElasticPlanResponse) SetBody(v *EnableElasticPlanResponseBody) *E
 	return s
 }
 
+type ExecuteSparkReplStatementRequest struct {
+	// example:
+	//
+	// s202411071444hzdvk486d9d2001****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// print(1+1)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PYTHON
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s ExecuteSparkReplStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkReplStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkReplStatementRequest) SetAppId(v string) *ExecuteSparkReplStatementRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementRequest) SetCode(v string) *ExecuteSparkReplStatementRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementRequest) SetCodeType(v string) *ExecuteSparkReplStatementRequest {
+	s.CodeType = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementRequest) SetSessionId(v int64) *ExecuteSparkReplStatementRequest {
+	s.SessionId = &v
+	return s
+}
+
+type ExecuteSparkReplStatementResponseBody struct {
+	Data *ExecuteSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExecuteSparkReplStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkReplStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkReplStatementResponseBody) SetData(v *ExecuteSparkReplStatementResponseBodyData) *ExecuteSparkReplStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBody) SetRequestId(v string) *ExecuteSparkReplStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteSparkReplStatementResponseBodyData struct {
+	// example:
+	//
+	// 17108278707****
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// example:
+	//
+	// print(1+1)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// RUNNING
+	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// example:
+	//
+	// PYTHON
+	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1730968125000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// StackOverflow Exception
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// {"text/plain": 2}
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// TEXT
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// example:
+	//
+	// 1730968125000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s ExecuteSparkReplStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkReplStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetAliyunUid(v int64) *ExecuteSparkReplStatementResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetCode(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetCodeState(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.CodeState = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetCodeType(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.CodeType = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetColumns(v []*string) *ExecuteSparkReplStatementResponseBodyData {
+	s.Columns = v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetEndTime(v int64) *ExecuteSparkReplStatementResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetError(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetOutput(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.Output = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetOutputType(v string) *ExecuteSparkReplStatementResponseBodyData {
+	s.OutputType = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetStartTime(v int64) *ExecuteSparkReplStatementResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponseBodyData) SetStatementId(v int64) *ExecuteSparkReplStatementResponseBodyData {
+	s.StatementId = &v
+	return s
+}
+
+type ExecuteSparkReplStatementResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSparkReplStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteSparkReplStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkReplStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkReplStatementResponse) SetHeaders(v map[string]*string) *ExecuteSparkReplStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponse) SetStatusCode(v int32) *ExecuteSparkReplStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSparkReplStatementResponse) SetBody(v *ExecuteSparkReplStatementResponseBody) *ExecuteSparkReplStatementResponse {
+	s.Body = v
+	return s
+}
+
 type ExistRunningSQLEngineRequest struct {
 	// The cluster ID.
 	//
@@ -23842,6 +24270,366 @@ func (s *GetSparkLogAnalyzeTaskResponse) SetStatusCode(v int32) *GetSparkLogAnal
 }
 
 func (s *GetSparkLogAnalyzeTaskResponse) SetBody(v *GetSparkLogAnalyzeTaskResponseBody) *GetSparkLogAnalyzeTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkReplSessionRequest struct {
+	// example:
+	//
+	// s202411071444hzdvk486d9d200****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s GetSparkReplSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplSessionRequest) SetAppId(v string) *GetSparkReplSessionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkReplSessionRequest) SetSessionId(v int64) *GetSparkReplSessionRequest {
+	s.SessionId = &v
+	return s
+}
+
+type GetSparkReplSessionResponseBody struct {
+	Data *GetSparkReplSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4CE6DF97-AEA4-484F-906F-C407EE3770EB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSparkReplSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplSessionResponseBody) SetData(v *GetSparkReplSessionResponseBodyData) *GetSparkReplSessionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBody) SetRequestId(v string) *GetSparkReplSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSparkReplSessionResponseBodyData struct {
+	// example:
+	//
+	// true
+	Active *string `json:"Active,omitempty" xml:"Active,omitempty"`
+	// example:
+	//
+	// 178157466101****
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// example:
+	//
+	// s202301061000hz57d797b00002****
+	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
+	// example:
+	//
+	// Session timed out
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 1
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// IDEL
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// https://adbsparkui-cn-hangzhou.aliyuncs.com/?token=****
+	WebUiAddress *string `json:"WebUiAddress,omitempty" xml:"WebUiAddress,omitempty"`
+}
+
+func (s GetSparkReplSessionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplSessionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetActive(v string) *GetSparkReplSessionResponseBodyData {
+	s.Active = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetAliyunUid(v string) *GetSparkReplSessionResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetAttemptId(v string) *GetSparkReplSessionResponseBodyData {
+	s.AttemptId = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetError(v string) *GetSparkReplSessionResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetSessionId(v int64) *GetSparkReplSessionResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetState(v string) *GetSparkReplSessionResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponseBodyData) SetWebUiAddress(v string) *GetSparkReplSessionResponseBodyData {
+	s.WebUiAddress = &v
+	return s
+}
+
+type GetSparkReplSessionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSparkReplSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSparkReplSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplSessionResponse) SetHeaders(v map[string]*string) *GetSparkReplSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkReplSessionResponse) SetStatusCode(v int32) *GetSparkReplSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSparkReplSessionResponse) SetBody(v *GetSparkReplSessionResponseBody) *GetSparkReplSessionResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkReplStatementRequest struct {
+	// example:
+	//
+	// s202411071444hzdvk486d9d200****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s GetSparkReplStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplStatementRequest) SetAppId(v string) *GetSparkReplStatementRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkReplStatementRequest) SetSessionId(v int64) *GetSparkReplStatementRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetSparkReplStatementRequest) SetStatementId(v int64) *GetSparkReplStatementRequest {
+	s.StatementId = &v
+	return s
+}
+
+type GetSparkReplStatementResponseBody struct {
+	Data *GetSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSparkReplStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplStatementResponseBody) SetData(v *GetSparkReplStatementResponseBodyData) *GetSparkReplStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBody) SetRequestId(v string) *GetSparkReplStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSparkReplStatementResponseBodyData struct {
+	// example:
+	//
+	// 144740799645****
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// example:
+	//
+	// print(1+1)
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// RUNNING
+	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// example:
+	//
+	// PYTHON
+	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1730968194000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// stackoverflow error
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// {"text/plain": 2}
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// TEXT
+	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// example:
+	//
+	// 1730968194000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s GetSparkReplStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetAliyunUid(v int64) *GetSparkReplStatementResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetCode(v string) *GetSparkReplStatementResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetCodeState(v string) *GetSparkReplStatementResponseBodyData {
+	s.CodeState = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetCodeType(v string) *GetSparkReplStatementResponseBodyData {
+	s.CodeType = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetColumns(v []*string) *GetSparkReplStatementResponseBodyData {
+	s.Columns = v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetEndTime(v int64) *GetSparkReplStatementResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetError(v string) *GetSparkReplStatementResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetOutput(v string) *GetSparkReplStatementResponseBodyData {
+	s.Output = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetOutputType(v string) *GetSparkReplStatementResponseBodyData {
+	s.OutputType = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetStartTime(v int64) *GetSparkReplStatementResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponseBodyData) SetStatementId(v int64) *GetSparkReplStatementResponseBodyData {
+	s.StatementId = &v
+	return s
+}
+
+type GetSparkReplStatementResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSparkReplStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSparkReplStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkReplStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkReplStatementResponse) SetHeaders(v map[string]*string) *GetSparkReplStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkReplStatementResponse) SetStatusCode(v int32) *GetSparkReplStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSparkReplStatementResponse) SetBody(v *GetSparkReplStatementResponseBody) *GetSparkReplStatementResponse {
 	s.Body = v
 	return s
 }
@@ -28207,12 +28995,22 @@ func (s *ModifyClusterConnectionStringResponse) SetBody(v *ModifyClusterConnecti
 }
 
 type ModifyCompactionServiceSwitchRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp14t95lun0w****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the remote build feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28240,6 +29038,8 @@ func (s *ModifyCompactionServiceSwitchRequest) SetEnableCompactionService(v bool
 }
 
 type ModifyCompactionServiceSwitchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 21ABF219-10E0-571B-94B8-9C9AE5022BF8
@@ -30853,6 +31653,170 @@ func (s *SetSparkAppLogRootPathResponse) SetBody(v *SetSparkAppLogRootPathRespon
 	return s
 }
 
+type StartSparkReplSessionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// { "spark.shuffle.timeout": ":0s" }
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1mfe9qm****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s StartSparkReplSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSparkReplSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartSparkReplSessionRequest) SetConfig(v string) *StartSparkReplSessionRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *StartSparkReplSessionRequest) SetDBClusterId(v string) *StartSparkReplSessionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *StartSparkReplSessionRequest) SetResourceGroupName(v string) *StartSparkReplSessionRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type StartSparkReplSessionResponseBody struct {
+	Data *StartSparkReplSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C1797FEA-B7D6-5ED6-A24B-2C8C5F4D7361
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartSparkReplSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSparkReplSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartSparkReplSessionResponseBody) SetData(v *StartSparkReplSessionResponseBodyData) *StartSparkReplSessionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBody) SetRequestId(v string) *StartSparkReplSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartSparkReplSessionResponseBodyData struct {
+	// example:
+	//
+	// 178157466******
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// example:
+	//
+	// s202301061000h****
+	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
+	// example:
+	//
+	// session time out
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// example:
+	//
+	// 1
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// IDLE
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// https://adbsparkui-cn-hangzhou.aliyuncs.com/?token=****
+	WebUiAddress *string `json:"WebUiAddress,omitempty" xml:"WebUiAddress,omitempty"`
+}
+
+func (s StartSparkReplSessionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSparkReplSessionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetAliyunUid(v string) *StartSparkReplSessionResponseBodyData {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetAttemptId(v string) *StartSparkReplSessionResponseBodyData {
+	s.AttemptId = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetError(v string) *StartSparkReplSessionResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetSessionId(v int64) *StartSparkReplSessionResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetState(v string) *StartSparkReplSessionResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponseBodyData) SetWebUiAddress(v string) *StartSparkReplSessionResponseBodyData {
+	s.WebUiAddress = &v
+	return s
+}
+
+type StartSparkReplSessionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartSparkReplSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartSparkReplSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSparkReplSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartSparkReplSessionResponse) SetHeaders(v map[string]*string) *StartSparkReplSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartSparkReplSessionResponse) SetStatusCode(v int32) *StartSparkReplSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartSparkReplSessionResponse) SetBody(v *StartSparkReplSessionResponseBody) *StartSparkReplSessionResponse {
+	s.Body = v
+	return s
+}
+
 type StartSparkSQLEngineRequest struct {
 	// The configuration that is required to start the Spark SQL engine. Specify this value in the JSON format. For more information, see [Conf configuration parameters](https://help.aliyun.com/document_detail/471203.html).
 	//
@@ -32107,6 +33071,74 @@ func (client *Client) BindDBResourceGroupWithUser(request *BindDBResourceGroupWi
 	runtime := &util.RuntimeOptions{}
 	_result = &BindDBResourceGroupWithUserResponse{}
 	_body, _err := client.BindDBResourceGroupWithUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 终止一段代码
+//
+// @param request - CancelSparkReplStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSparkReplStatementResponse
+func (client *Client) CancelSparkReplStatementWithOptions(request *CancelSparkReplStatementRequest, runtime *util.RuntimeOptions) (_result *CancelSparkReplStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatementId)) {
+		body["StatementId"] = request.StatementId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelSparkReplStatement"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelSparkReplStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 终止一段代码
+//
+// @param request - CancelSparkReplStatementRequest
+//
+// @return CancelSparkReplStatementResponse
+func (client *Client) CancelSparkReplStatement(request *CancelSparkReplStatementRequest) (_result *CancelSparkReplStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelSparkReplStatementResponse{}
+	_body, _err := client.CancelSparkReplStatementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35304,7 +36336,7 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 
 // Summary:
 //
-// 查询CompactionService开关
+// Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeCompactionServiceSwitchRequest
 //
@@ -35346,7 +36378,7 @@ func (client *Client) DescribeCompactionServiceSwitchWithOptions(request *Descri
 
 // Summary:
 //
-// 查询CompactionService开关
+// Queries whether the remote build feature is enabled in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeCompactionServiceSwitchRequest
 //
@@ -38724,6 +39756,78 @@ func (client *Client) EnableElasticPlan(request *EnableElasticPlanRequest) (_res
 
 // Summary:
 //
+// 执行一段代码
+//
+// @param request - ExecuteSparkReplStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSparkReplStatementResponse
+func (client *Client) ExecuteSparkReplStatementWithOptions(request *ExecuteSparkReplStatementRequest, runtime *util.RuntimeOptions) (_result *ExecuteSparkReplStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CodeType)) {
+		body["CodeType"] = request.CodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSparkReplStatement"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteSparkReplStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行一段代码
+//
+// @param request - ExecuteSparkReplStatementRequest
+//
+// @return ExecuteSparkReplStatementResponse
+func (client *Client) ExecuteSparkReplStatement(request *ExecuteSparkReplStatementRequest) (_result *ExecuteSparkReplStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteSparkReplStatementResponse{}
+	_body, _err := client.ExecuteSparkReplStatementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a running SQL engine exists.
 //
 // Description:
@@ -39555,6 +40659,138 @@ func (client *Client) GetSparkLogAnalyzeTask(request *GetSparkLogAnalyzeTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSparkLogAnalyzeTaskResponse{}
 	_body, _err := client.GetSparkLogAnalyzeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一个可交互Session
+//
+// @param request - GetSparkReplSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSparkReplSessionResponse
+func (client *Client) GetSparkReplSessionWithOptions(request *GetSparkReplSessionRequest, runtime *util.RuntimeOptions) (_result *GetSparkReplSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkReplSession"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkReplSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一个可交互Session
+//
+// @param request - GetSparkReplSessionRequest
+//
+// @return GetSparkReplSessionResponse
+func (client *Client) GetSparkReplSession(request *GetSparkReplSessionRequest) (_result *GetSparkReplSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkReplSessionResponse{}
+	_body, _err := client.GetSparkReplSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一段代码的执行结果
+//
+// @param request - GetSparkReplStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSparkReplStatementResponse
+func (client *Client) GetSparkReplStatementWithOptions(request *GetSparkReplStatementRequest, runtime *util.RuntimeOptions) (_result *GetSparkReplStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatementId)) {
+		body["StatementId"] = request.StatementId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkReplStatement"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSparkReplStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取一段代码的执行结果
+//
+// @param request - GetSparkReplStatementRequest
+//
+// @return GetSparkReplStatementResponse
+func (client *Client) GetSparkReplStatement(request *GetSparkReplStatementRequest) (_result *GetSparkReplStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkReplStatementResponse{}
+	_body, _err := client.GetSparkReplStatementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41728,7 +42964,7 @@ func (client *Client) ModifyClusterConnectionString(request *ModifyClusterConnec
 
 // Summary:
 //
-// 修改CompactionService开关
+// Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyCompactionServiceSwitchRequest
 //
@@ -41774,7 +43010,7 @@ func (client *Client) ModifyCompactionServiceSwitchWithOptions(request *ModifyCo
 
 // Summary:
 //
-// 修改CompactionService开关
+// Modifies the status of the remote build feature in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyCompactionServiceSwitchRequest
 //
@@ -43069,6 +44305,74 @@ func (client *Client) SetSparkAppLogRootPath(request *SetSparkAppLogRootPathRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSparkAppLogRootPathResponse{}
 	_body, _err := client.SetSparkAppLogRootPathWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个可交互Session
+//
+// @param request - StartSparkReplSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSparkReplSessionResponse
+func (client *Client) StartSparkReplSessionWithOptions(request *StartSparkReplSessionRequest, runtime *util.RuntimeOptions) (_result *StartSparkReplSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		body["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartSparkReplSession"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartSparkReplSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动一个可交互Session
+//
+// @param request - StartSparkReplSessionRequest
+//
+// @return StartSparkReplSessionResponse
+func (client *Client) StartSparkReplSession(request *StartSparkReplSessionRequest) (_result *StartSparkReplSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartSparkReplSessionResponse{}
+	_body, _err := client.StartSparkReplSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
