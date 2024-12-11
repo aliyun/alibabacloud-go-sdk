@@ -1,3 +1,7 @@
+2024-12-11 Version: v3.7.0
+- Support API MoveResourceGroup.
+
+
 2024-11-15 Version: v3.6.6
 - Generated golang 2018-07-20 for ddosbgp.
 

@@ -2646,17 +2646,19 @@ type DescribeDdosOriginInstanceBillRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The bill type. Valid values:
 	//
-	// 	- **flow_cn**: the bill for the clean bandwidth of elastic IP addresses (EIPs) with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+	// 	- **flow_cn**: the bill for the clean bandwidth of elastic IP addresses (EIPs) with Anti-DDoS (Enhanced) enabled in the Chinese mainland.
 	//
-	// 	- **flow_ov**: the bill for the clean bandwidth of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+	// 	- **flow_ov**: the bill for the clean bandwidth of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland.
 	//
-	// 	- **standard_assets_flow_cn**: the bill for the clean bandwidth of regular Alibaba Cloud services in the Chinese mainland
+	// 	- **standard_assets_flow_cn**: the bill for the clean bandwidth of regular Alibaba Cloud services in the Chinese mainland.
 	//
-	// 	- **standard_assets_flow_ov**: the bill for the clean bandwidth of regular Alibaba Cloud services outside the Chinese mainland
+	// 	- **standard_assets_flow_ov**: the bill for the clean bandwidth of regular Alibaba Cloud services outside the Chinese mainland.
 	//
-	// 	- **function**: the bill for the basic fee
+	// 	- **function**: the bill for the basic fee.
 	//
-	// 	- **ip_count**: the bill for protected IP addresses
+	// 	- **ip_count**: the bill for protected IP addresses.
+	//
+	// 	- **monthly_summary**: the monthly summary bill.
 	//
 	// example:
 	//
@@ -2748,7 +2750,8 @@ type DescribeDdosOriginInstanceBillResponseBody struct {
 	// example:
 	//
 	// {\\"eipCnIpCount\\":6,\\"eipOvIpCount\\":17,\\"standardAssetsCnIpCount\\":2,\\"standardAssetsOvIpCount\\":0}
-	IpInfo             *string                                                         `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	IpInfo *string `json:"IpInfo,omitempty" xml:"IpInfo,omitempty"`
+	// The information about the monthly summary bills.
 	MonthlySummaryList []*DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList `json:"MonthlySummaryList,omitempty" xml:"MonthlySummaryList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -3055,15 +3058,64 @@ func (s *DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList) SetTim
 }
 
 type DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList struct {
-	EnableDays             *int32  `json:"EnableDays,omitempty" xml:"EnableDays,omitempty"`
-	FlowCn                 *int64  `json:"FlowCn,omitempty" xml:"FlowCn,omitempty"`
-	FlowIntl               *int64  `json:"FlowIntl,omitempty" xml:"FlowIntl,omitempty"`
-	IpCountCn              *int32  `json:"IpCountCn,omitempty" xml:"IpCountCn,omitempty"`
-	IpCountIntl            *int32  `json:"IpCountIntl,omitempty" xml:"IpCountIntl,omitempty"`
-	MemberUid              *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	StandardAssetsFlowCn   *int64  `json:"StandardAssetsFlowCn,omitempty" xml:"StandardAssetsFlowCn,omitempty"`
-	StandardAssetsFlowIntl *int64  `json:"StandardAssetsFlowIntl,omitempty" xml:"StandardAssetsFlowIntl,omitempty"`
-	Uid                    *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The number of days that the instance is activated.
+	//
+	// example:
+	//
+	// 30
+	EnableDays *int32 `json:"EnableDays,omitempty" xml:"EnableDays,omitempty"`
+	// The total traffic of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland. Unit: bytes.
+	//
+	// example:
+	//
+	// 123456
+	FlowCn *int64 `json:"FlowCn,omitempty" xml:"FlowCn,omitempty"`
+	// The total traffic of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland. Unit: bytes.
+	//
+	// example:
+	//
+	// 123456
+	FlowIntl *int64 `json:"FlowIntl,omitempty" xml:"FlowIntl,omitempty"`
+	// The total number of protected IP addresses in the Chinese mainland.
+	//
+	// >  The total number of protected IP addresses is the sum of the daily numbers of protected IP addresses in a month.
+	//
+	// example:
+	//
+	// 28
+	IpCountCn *int32 `json:"IpCountCn,omitempty" xml:"IpCountCn,omitempty"`
+	// The total number of protected IP addresses outside the Chinese mainland.
+	//
+	// >  The total number of protected IP addresses is the sum of the daily numbers of protected IP addresses in a month.
+	//
+	// example:
+	//
+	// 30
+	IpCountIntl *int32 `json:"IpCountIntl,omitempty" xml:"IpCountIntl,omitempty"`
+	// The ID of the member.
+	//
+	// example:
+	//
+	// 112873971277****
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The total traffic of regular Alibaba Cloud services in the Chinese mainland. Unit: bytes.
+	//
+	// example:
+	//
+	// 123456
+	StandardAssetsFlowCn *int64 `json:"StandardAssetsFlowCn,omitempty" xml:"StandardAssetsFlowCn,omitempty"`
+	// The total traffic of regular Alibaba Cloud services outside the Chinese mainland. Unit: bytes.
+	//
+	// example:
+	//
+	// 123456
+	StandardAssetsFlowIntl *int64 `json:"StandardAssetsFlowIntl,omitempty" xml:"StandardAssetsFlowIntl,omitempty"`
+	// The ID of the administrator account.
+	//
+	// example:
+	//
+	// 102518028277****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeDdosOriginInstanceBillResponseBodyMonthlySummaryList) String() string {
@@ -10392,6 +10444,110 @@ func (s *ModifyRemarkResponse) SetBody(v *ModifyRemarkResponseBody) *ModifyRemar
 	return s
 }
 
+type MoveResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfm3peow3k****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ddos_originpre_public_cn-7213kxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s MoveResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupRequest) SetResourceGroupId(v string) *MoveResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceRegionId(v string) *MoveResourceGroupRequest {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type MoveResourceGroupResponseBody struct {
+	// example:
+	//
+	// 16A78396-936F-5481-91D7-591BF7981246
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveResourceGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponse) SetHeaders(v map[string]*string) *MoveResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetStatusCode(v int32) *MoveResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *MoveResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
@@ -14439,6 +14595,78 @@ func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *Modif
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyRemarkResponse{}
 	_body, _err := client.ModifyRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动资源组
+//
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
+func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动资源组
+//
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
+func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
