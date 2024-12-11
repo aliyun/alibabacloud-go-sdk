@@ -39612,6 +39612,8 @@ type ListDataLakeDatabaseRequest struct {
 	//
 	// cn-hangzhou
 	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// if can be null:
 	// false
 	//
@@ -39643,6 +39645,16 @@ func (s *ListDataLakeDatabaseRequest) SetDataRegion(v string) *ListDataLakeDatab
 	return s
 }
 
+func (s *ListDataLakeDatabaseRequest) SetMaxResults(v int32) *ListDataLakeDatabaseRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseRequest) SetNextToken(v string) *ListDataLakeDatabaseRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListDataLakeDatabaseRequest) SetSearchKey(v string) *ListDataLakeDatabaseRequest {
 	s.SearchKey = &v
 	return s
@@ -39663,6 +39675,8 @@ type ListDataLakeDatabaseResponseBody struct {
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
 	// 4E1D2B4D-3E53-4ABC-999D-1D2520B3471A
@@ -39693,6 +39707,16 @@ func (s *ListDataLakeDatabaseResponseBody) SetErrorCode(v string) *ListDataLakeD
 
 func (s *ListDataLakeDatabaseResponseBody) SetErrorMessage(v string) *ListDataLakeDatabaseResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetMaxResults(v int32) *ListDataLakeDatabaseResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDataLakeDatabaseResponseBody) SetNextToken(v string) *ListDataLakeDatabaseResponseBody {
+	s.NextToken = &v
 	return s
 }
 
@@ -76099,6 +76123,14 @@ func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatab
 
 	if !tea.BoolValue(util.IsUnset(request.DataRegion)) {
 		query["DataRegion"] = request.DataRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
