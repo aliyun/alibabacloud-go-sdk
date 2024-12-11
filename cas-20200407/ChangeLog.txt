@@ -1,3 +1,6 @@
+2024-12-11 Version: v3.0.4
+- Generated golang 2020-04-07 for cas.
+
 2024-12-10 Version: v3.0.3
 - Update API CreateCertificateForPackageRequest: add param Tags.
 - Update API CreateCertificateRequest: add param Tags.
