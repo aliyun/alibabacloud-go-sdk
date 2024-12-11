@@ -1454,6 +1454,166 @@ func (s *GetLoginTokenResponse) SetBody(v *GetLoginTokenResponseBody) *GetLoginT
 	return s
 }
 
+type GetStsTokenRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e4e169bea1cc48e8afac53**********
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// example:
+	//
+	// eac19bef-1e45-4190-a03a-4ea74b69****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.2.**
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Enterprise\\" 10.0 (Build 14393)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 6.3.0-R-20231106.210000
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B2****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetStsTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStsTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStsTokenRequest) SetAuthCode(v string) *GetStsTokenRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *GetStsTokenRequest) SetClientId(v string) *GetStsTokenRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetStsTokenRequest) SetClientIp(v string) *GetStsTokenRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *GetStsTokenRequest) SetClientOS(v string) *GetStsTokenRequest {
+	s.ClientOS = &v
+	return s
+}
+
+func (s *GetStsTokenRequest) SetClientVersion(v string) *GetStsTokenRequest {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *GetStsTokenRequest) SetUuid(v string) *GetStsTokenRequest {
+	s.Uuid = &v
+	return s
+}
+
+type GetStsTokenResponseBody struct {
+	// example:
+	//
+	// CCF92035-6231-5ABB-930E-1E003C32****
+	RequestId     *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StsTokenModel *GetStsTokenResponseBodyStsTokenModel `json:"StsTokenModel,omitempty" xml:"StsTokenModel,omitempty" type:"Struct"`
+}
+
+func (s GetStsTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStsTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStsTokenResponseBody) SetRequestId(v string) *GetStsTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStsTokenResponseBody) SetStsTokenModel(v *GetStsTokenResponseBodyStsTokenModel) *GetStsTokenResponseBody {
+	s.StsTokenModel = v
+	return s
+}
+
+type GetStsTokenResponseBodyStsTokenModel struct {
+	// example:
+	//
+	// be4be09e-cd00-4b4c-add7-11b4d8****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// sts****
+	StsToken *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
+	// example:
+	//
+	// 105552640689****
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s GetStsTokenResponseBodyStsTokenModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStsTokenResponseBodyStsTokenModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetSessionId(v string) *GetStsTokenResponseBodyStsTokenModel {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetStsToken(v string) *GetStsTokenResponseBodyStsTokenModel {
+	s.StsToken = &v
+	return s
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetTenantId(v int64) *GetStsTokenResponseBodyStsTokenModel {
+	s.TenantId = &v
+	return s
+}
+
+type GetStsTokenResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStsTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetStsTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStsTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStsTokenResponse) SetHeaders(v map[string]*string) *GetStsTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStsTokenResponse) SetStatusCode(v int32) *GetStsTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStsTokenResponse) SetBody(v *GetStsTokenResponseBody) *GetStsTokenResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshLoginTokenRequest struct {
 	// This parameter is required.
 	//
@@ -1946,6 +2106,86 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoginTokenResponse{}
 	_body, _err := client.GetLoginTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取无影StsToken
+//
+// @param request - GetStsTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStsTokenResponse
+func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtime *util.RuntimeOptions) (_result *GetStsTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		body["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
+		body["ClientOS"] = request.ClientOS
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientVersion)) {
+		body["ClientVersion"] = request.ClientVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStsToken"),
+		Version:     tea.String("2021-02-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStsTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取无影StsToken
+//
+// @param request - GetStsTokenRequest
+//
+// @return GetStsTokenResponse
+func (client *Client) GetStsToken(request *GetStsTokenRequest) (_result *GetStsTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStsTokenResponse{}
+	_body, _err := client.GetStsTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
