@@ -618,7 +618,8 @@ type CreateCloudResourceRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceManagerResourceGroupId *string                          `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tag                            []*CreateCloudResourceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateCloudResourceRequest) String() string {
@@ -656,6 +657,11 @@ func (s *CreateCloudResourceRequest) SetRegionId(v string) *CreateCloudResourceR
 
 func (s *CreateCloudResourceRequest) SetResourceManagerResourceGroupId(v string) *CreateCloudResourceRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetTag(v []*CreateCloudResourceRequestTag) *CreateCloudResourceRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1009,6 +1015,29 @@ func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *C
 	return s
 }
 
+type CreateCloudResourceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCloudResourceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequestTag) SetKey(v string) *CreateCloudResourceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestTag) SetValue(v string) *CreateCloudResourceRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateCloudResourceShrinkRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -1049,7 +1078,8 @@ type CreateCloudResourceShrinkRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceManagerResourceGroupId *string                                `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tag                            []*CreateCloudResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateCloudResourceShrinkRequest) String() string {
@@ -1087,6 +1117,34 @@ func (s *CreateCloudResourceShrinkRequest) SetRegionId(v string) *CreateCloudRes
 
 func (s *CreateCloudResourceShrinkRequest) SetResourceManagerResourceGroupId(v string) *CreateCloudResourceShrinkRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetTag(v []*CreateCloudResourceShrinkRequestTag) *CreateCloudResourceShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateCloudResourceShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCloudResourceShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceShrinkRequestTag) SetKey(v string) *CreateCloudResourceShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequestTag) SetValue(v string) *CreateCloudResourceShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -1709,7 +1767,8 @@ type CreateDomainRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceManagerResourceGroupId *string                   `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tag                            []*CreateDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDomainRequest) String() string {
@@ -1752,6 +1811,11 @@ func (s *CreateDomainRequest) SetRegionId(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetResourceManagerResourceGroupId(v string) *CreateDomainRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetTag(v []*CreateDomainRequestTag) *CreateDomainRequest {
+	s.Tag = v
 	return s
 }
 
@@ -2000,7 +2064,8 @@ func (s *CreateDomainRequestListen) SetXffHeaders(v []*string) *CreateDomainRequ
 
 type CreateDomainRequestRedirect struct {
 	// The IP addresses or domain names of the origin server.
-	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	Backends       []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	BackupBackends []*string `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// Specifies whether to enable the public cloud disaster recovery feature. Valid values:
 	//
 	// 	- **true**
@@ -2164,6 +2229,11 @@ func (s *CreateDomainRequestRedirect) SetBackends(v []*string) *CreateDomainRequ
 	return s
 }
 
+func (s *CreateDomainRequestRedirect) SetBackupBackends(v []*string) *CreateDomainRequestRedirect {
+	s.BackupBackends = v
+	return s
+}
+
 func (s *CreateDomainRequestRedirect) SetCnameEnabled(v bool) *CreateDomainRequestRedirect {
 	s.CnameEnabled = &v
 	return s
@@ -2272,6 +2342,29 @@ func (s *CreateDomainRequestRedirectRequestHeaders) SetValue(v string) *CreateDo
 	return s
 }
 
+type CreateDomainRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDomainRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequestTag) SetKey(v string) *CreateDomainRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDomainRequestTag) SetValue(v string) *CreateDomainRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateDomainShrinkRequest struct {
 	// The mode in which you want to add the domain name to WAF. Valid values:
 	//
@@ -2326,7 +2419,8 @@ type CreateDomainShrinkRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	ResourceManagerResourceGroupId *string                         `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tag                            []*CreateDomainShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateDomainShrinkRequest) String() string {
@@ -2372,6 +2466,34 @@ func (s *CreateDomainShrinkRequest) SetResourceManagerResourceGroupId(v string) 
 	return s
 }
 
+func (s *CreateDomainShrinkRequest) SetTag(v []*CreateDomainShrinkRequestTag) *CreateDomainShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateDomainShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDomainShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainShrinkRequestTag) SetKey(v string) *CreateDomainShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDomainShrinkRequestTag) SetValue(v string) *CreateDomainShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
 type CreateDomainResponseBody struct {
 	// The information about the domain name.
 	DomainInfo *CreateDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
@@ -2413,7 +2535,8 @@ type CreateDomainResponseBodyDomainInfo struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 }
 
 func (s CreateDomainResponseBodyDomainInfo) String() string {
@@ -2431,6 +2554,11 @@ func (s *CreateDomainResponseBodyDomainInfo) SetCname(v string) *CreateDomainRes
 
 func (s *CreateDomainResponseBodyDomainInfo) SetDomain(v string) *CreateDomainResponseBodyDomainInfo {
 	s.Domain = &v
+	return s
+}
+
+func (s *CreateDomainResponseBodyDomainInfo) SetDomainId(v string) *CreateDomainResponseBodyDomainInfo {
+	s.DomainId = &v
 	return s
 }
 
@@ -15831,7 +15959,8 @@ func (s *DescribeDomainDetailResponseBodyListen) SetXffHeaders(v []*string) *Des
 
 type DescribeDomainDetailResponseBodyRedirect struct {
 	// An array of addresses of origin servers.
-	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	Backends       []*DescribeDomainDetailResponseBodyRedirectBackends       `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	BackupBackends []*DescribeDomainDetailResponseBodyRedirectBackupBackends `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
 	//
 	// example:
@@ -15951,6 +16080,11 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetBackends(v []*DescribeDoma
 	return s
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) SetBackupBackends(v []*DescribeDomainDetailResponseBodyRedirectBackupBackends) *DescribeDomainDetailResponseBodyRedirect {
+	s.BackupBackends = v
+	return s
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) SetConnectTimeout(v int32) *DescribeDomainDetailResponseBodyRedirect {
 	s.ConnectTimeout = &v
 	return s
@@ -16034,6 +16168,23 @@ func (s DescribeDomainDetailResponseBodyRedirectBackends) GoString() string {
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirectBackends) SetBackend(v string) *DescribeDomainDetailResponseBodyRedirectBackends {
+	s.Backend = &v
+	return s
+}
+
+type DescribeDomainDetailResponseBodyRedirectBackupBackends struct {
+	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackupBackends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackupBackends) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackupBackends) SetBackend(v string) *DescribeDomainDetailResponseBodyRedirectBackupBackends {
 	s.Backend = &v
 	return s
 }
@@ -26446,7 +26597,12 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	// example:
 	//
 	// a.****.com
-	MatchedHost     *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
+	// IP region, formatted as a region code.
+	//
+	// example:
+	//
+	// CN
 	RemoteCountryId *string `json:"RemoteCountryId,omitempty" xml:"RemoteCountryId,omitempty"`
 	// The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
@@ -29281,8 +29437,6 @@ type DescribeUserWafLogStatusResponseBody struct {
 	// 	- **ap-northeast-1**: Japan (Tokyo).
 	//
 	// 	- **ap-northeast-2**: South Korea (Seoul).
-	//
-	// 	- **ap-south-1**: India (Mumbai) Closing Down.
 	//
 	// 	- **eu-west-1**: UK (London).
 	//
@@ -33577,7 +33731,8 @@ type ModifyDomainRequestRedirect struct {
 	// 	- If you use the IP address type, specify the value in the ["ip1","ip2",...] format. You can enter up to 20 IP addresses.
 	//
 	// 	- If you use the domain name type, specify the value in the ["domain"] format. You can enter up to 20 domain names.
-	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	Backends       []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	BackupBackends []*string `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// Specifies whether to enable the public cloud disaster recovery feature. Valid values:
 	//
 	// 	- **true**
@@ -33738,6 +33893,11 @@ func (s ModifyDomainRequestRedirect) GoString() string {
 
 func (s *ModifyDomainRequestRedirect) SetBackends(v []*string) *ModifyDomainRequestRedirect {
 	s.Backends = v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetBackupBackends(v []*string) *ModifyDomainRequestRedirect {
+	s.BackupBackends = v
 	return s
 }
 
@@ -36729,6 +36889,10 @@ func (client *Client) CreateCloudResourceWithOptions(tmpReq *CreateCloudResource
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37075,6 +37239,10 @@ func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
