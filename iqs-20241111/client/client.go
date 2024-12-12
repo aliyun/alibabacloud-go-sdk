@@ -74,6 +74,7 @@ type GenericSearchResult struct {
 	//
 	// 123456
 	RequestId         *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SceneItems        []*SceneItem       `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
 	SearchInformation *SearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 	WeiboItems        []*WeiboItem       `json:"weiboItems,omitempty" xml:"weiboItems,omitempty" type:"Repeated"`
 }
@@ -93,6 +94,11 @@ func (s *GenericSearchResult) SetPageItems(v []*ScorePageItem) *GenericSearchRes
 
 func (s *GenericSearchResult) SetRequestId(v string) *GenericSearchResult {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GenericSearchResult) SetSceneItems(v []*SceneItem) *GenericSearchResult {
+	s.SceneItems = v
 	return s
 }
 
@@ -144,6 +150,29 @@ func (s *IncludeImage) SetWidth(v int32) *IncludeImage {
 	return s
 }
 
+type SceneItem struct {
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s SceneItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SceneItem) GoString() string {
+	return s.String()
+}
+
+func (s *SceneItem) SetDetail(v string) *SceneItem {
+	s.Detail = &v
+	return s
+}
+
+func (s *SceneItem) SetType(v string) *SceneItem {
+	s.Type = &v
+	return s
+}
+
 type ScorePageItem struct {
 	// This parameter is required.
 	//
@@ -157,6 +186,14 @@ type ScorePageItem struct {
 	//
 	// baijiahao.baidu.com
 	DisplayLink *string `json:"displayLink,omitempty" xml:"displayLink,omitempty"`
+	// example:
+	//
+	// https://s2.zimgs.cn/ims?kt=url&at=smstruct&key=aHR0cHM6Ly9ndy5hbGljZG4uY29tL0wxLzcyMy8xNTY1MjU2NjAwLzJhL2YwL2I0LzJhZjBiNDQxMGI5YmVlMDVjOGVlNGJmODk3MTNkNTFjLnBuZw==&sign=yx:CUlNNQVJQjFrk3Kxt2F3KWhTOFU=&tv=400_400
+	HostLogo *string `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
+	// example:
+	//
+	// 新华网
+	Hostname *string `json:"hostname,omitempty" xml:"hostname,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -203,6 +240,10 @@ type ScorePageItem struct {
 	//
 	// 0.234325235
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// example:
+	//
+	// 权威媒体
+	SiteLabel *string `json:"siteLabel,omitempty" xml:"siteLabel,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -226,6 +267,16 @@ func (s *ScorePageItem) SetCardType(v string) *ScorePageItem {
 
 func (s *ScorePageItem) SetDisplayLink(v string) *ScorePageItem {
 	s.DisplayLink = &v
+	return s
+}
+
+func (s *ScorePageItem) SetHostLogo(v string) *ScorePageItem {
+	s.HostLogo = &v
+	return s
+}
+
+func (s *ScorePageItem) SetHostname(v string) *ScorePageItem {
+	s.Hostname = &v
 	return s
 }
 
@@ -271,6 +322,11 @@ func (s *ScorePageItem) SetPublishTime(v int64) *ScorePageItem {
 
 func (s *ScorePageItem) SetScore(v float64) *ScorePageItem {
 	s.Score = &v
+	return s
+}
+
+func (s *ScorePageItem) SetSiteLabel(v string) *ScorePageItem {
+	s.SiteLabel = &v
 	return s
 }
 
