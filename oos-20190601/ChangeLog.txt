@@ -1,3 +1,6 @@
+2024-12-12 Version: v4.4.1
+- Generated golang 2019-06-01 for oos.
+
 2024-12-11 Version: v4.4.0
 - Support API GetTemplateParameterConstraints.
 - Update API CreateApplication: add param ApplicationSource.
