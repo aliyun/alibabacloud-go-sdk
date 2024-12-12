@@ -4185,6 +4185,7 @@ func (s *ListCategoryResponse) SetBody(v *ListCategoryResponseBody) *ListCategor
 type ListChunksRequest struct {
 	// An array of field names. This parameter is used to filter non-private fields (prefixed with_underscores) in the Metadata parameter returned by this operation. By default, this parameter is left empty, which means all non-private fields in the Metadata parameter are returned. If you only want specified non-private fields, such as title, set this parameter to title.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	FileId *string   `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// The primary key ID of the document. This parameter is not required for structured knowledge base, but is required for unstructured knowledge base. To view the ID, you can click the ID icon next to the file name on the [Data Management](https://bailian.console.aliyun.com/#/data-center) page. You can filter returned chunks by the document ID. This parameter is left empty by default.
 	//
 	// example:
@@ -4223,6 +4224,11 @@ func (s ListChunksRequest) GoString() string {
 
 func (s *ListChunksRequest) SetFields(v []*string) *ListChunksRequest {
 	s.Fields = v
+	return s
+}
+
+func (s *ListChunksRequest) SetFileId(v string) *ListChunksRequest {
+	s.FileId = &v
 	return s
 }
 
@@ -9689,6 +9695,10 @@ func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListCh
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Fields)) {
 		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Filed)) {
