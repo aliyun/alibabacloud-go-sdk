@@ -155,21 +155,25 @@ func (s *AIAgentTemplateConfig) SetVoiceChat(v *AIAgentTemplateConfigVoiceChat) 
 }
 
 type AIAgentTemplateConfigAvatarChat3D struct {
-	AsrMaxSilence          *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	AvatarId               *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
-	BailianAppParams       *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	EnablePushToTalk       *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt   *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown       *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting               *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	MaxIdleTime            *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint          *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout     *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout      *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VoiceId                *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceprintId           *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                 *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrMaxSilence            *int32                                         `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	AvatarId                 *string                                        `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	BailianAppParams         *string                                        `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnableIntelligentSegment *bool                                          `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool                                          `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	EnableVoiceInterrupt     *bool                                          `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown         *bool                                          `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string                                        `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	LlmHistory               []*AIAgentTemplateConfigAvatarChat3DLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit          *int32                                         `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	MaxIdleTime              *int32                                         `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	UseVoiceprint            *bool                                          `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout       *int32                                         `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32                                         `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceId                  *string                                        `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId             *string                                        `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume                   *int64                                         `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery              *string                                        `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	WorkflowOverrideParams   *string                                        `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigAvatarChat3D) String() string {
@@ -195,6 +199,11 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetBailianAppParams(v string) *AIAge
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetEnableIntelligentSegment(v bool) *AIAgentTemplateConfigAvatarChat3D {
+	s.EnableIntelligentSegment = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetEnablePushToTalk(v bool) *AIAgentTemplateConfigAvatarChat3D {
 	s.EnablePushToTalk = &v
 	return s
@@ -212,6 +221,16 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetGracefulShutdown(v bool) *AIAgent
 
 func (s *AIAgentTemplateConfigAvatarChat3D) SetGreeting(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmHistory(v []*AIAgentTemplateConfigAvatarChat3DLlmHistory) *AIAgentTemplateConfigAvatarChat3D {
+	s.LlmHistory = v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3D) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigAvatarChat3D {
+	s.LlmHistoryLimit = &v
 	return s
 }
 
@@ -250,27 +269,58 @@ func (s *AIAgentTemplateConfigAvatarChat3D) SetVolume(v int64) *AIAgentTemplateC
 	return s
 }
 
+func (s *AIAgentTemplateConfigAvatarChat3D) SetWakeUpQuery(v string) *AIAgentTemplateConfigAvatarChat3D {
+	s.WakeUpQuery = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigAvatarChat3D) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigAvatarChat3D {
 	s.WorkflowOverrideParams = &v
 	return s
 }
 
+type AIAgentTemplateConfigAvatarChat3DLlmHistory struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AIAgentTemplateConfigAvatarChat3DLlmHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigAvatarChat3DLlmHistory) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3DLlmHistory) SetContent(v string) *AIAgentTemplateConfigAvatarChat3DLlmHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigAvatarChat3DLlmHistory) SetRole(v string) *AIAgentTemplateConfigAvatarChat3DLlmHistory {
+	s.Role = &v
+	return s
+}
+
 type AIAgentTemplateConfigVisionChat struct {
-	AsrMaxSilence            *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	BailianAppParams         *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	EnableIntelligentSegment *bool   `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
-	EnablePushToTalk         *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt     *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown         *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	MaxIdleTime              *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint            *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout       *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout        *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VoiceId                  *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceprintId             *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                   *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WorkflowOverrideParams   *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrMaxSilence            *int32                                       `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	BailianAppParams         *string                                      `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnableIntelligentSegment *bool                                        `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool                                        `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	EnableVoiceInterrupt     *bool                                        `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown         *bool                                        `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string                                      `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	LlmHistory               []*AIAgentTemplateConfigVisionChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit          *int32                                       `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	MaxIdleTime              *int32                                       `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	UseVoiceprint            *bool                                        `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout       *int32                                       `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32                                       `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceId                  *string                                      `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId             *string                                      `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume                   *int64                                       `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery              *string                                      `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	WorkflowOverrideParams   *string                                      `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVisionChat) String() string {
@@ -316,6 +366,16 @@ func (s *AIAgentTemplateConfigVisionChat) SetGreeting(v string) *AIAgentTemplate
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetLlmHistory(v []*AIAgentTemplateConfigVisionChatLlmHistory) *AIAgentTemplateConfigVisionChat {
+	s.LlmHistory = v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChat) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigVisionChat {
+	s.LlmHistoryLimit = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetMaxIdleTime(v int32) *AIAgentTemplateConfigVisionChat {
 	s.MaxIdleTime = &v
 	return s
@@ -351,28 +411,60 @@ func (s *AIAgentTemplateConfigVisionChat) SetVolume(v int64) *AIAgentTemplateCon
 	return s
 }
 
+func (s *AIAgentTemplateConfigVisionChat) SetWakeUpQuery(v string) *AIAgentTemplateConfigVisionChat {
+	s.WakeUpQuery = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVisionChat) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigVisionChat {
 	s.WorkflowOverrideParams = &v
 	return s
 }
 
+type AIAgentTemplateConfigVisionChatLlmHistory struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AIAgentTemplateConfigVisionChatLlmHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigVisionChatLlmHistory) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVisionChatLlmHistory) SetContent(v string) *AIAgentTemplateConfigVisionChatLlmHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVisionChatLlmHistory) SetRole(v string) *AIAgentTemplateConfigVisionChatLlmHistory {
+	s.Role = &v
+	return s
+}
+
 type AIAgentTemplateConfigVoiceChat struct {
-	AsrMaxSilence          *int32  `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
-	AvatarUrl              *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	AvatarUrlType          *string `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
-	BailianAppParams       *string `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
-	EnablePushToTalk       *bool   `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
-	EnableVoiceInterrupt   *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
-	GracefulShutdown       *bool   `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
-	Greeting               *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	MaxIdleTime            *int32  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	UseVoiceprint          *bool   `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
-	UserOfflineTimeout     *int32  `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
-	UserOnlineTimeout      *int32  `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
-	VoiceId                *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceprintId           *string `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
-	Volume                 *int64  `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	WorkflowOverrideParams *string `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
+	AsrMaxSilence            *int32                                      `json:"AsrMaxSilence,omitempty" xml:"AsrMaxSilence,omitempty"`
+	AvatarUrl                *string                                     `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	AvatarUrlType            *string                                     `json:"AvatarUrlType,omitempty" xml:"AvatarUrlType,omitempty"`
+	BailianAppParams         *string                                     `json:"BailianAppParams,omitempty" xml:"BailianAppParams,omitempty"`
+	EnableIntelligentSegment *bool                                       `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
+	EnablePushToTalk         *bool                                       `json:"EnablePushToTalk,omitempty" xml:"EnablePushToTalk,omitempty"`
+	EnableVoiceInterrupt     *bool                                       `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	GracefulShutdown         *bool                                       `json:"GracefulShutdown,omitempty" xml:"GracefulShutdown,omitempty"`
+	Greeting                 *string                                     `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	LlmHistory               []*AIAgentTemplateConfigVoiceChatLlmHistory `json:"LlmHistory,omitempty" xml:"LlmHistory,omitempty" type:"Repeated"`
+	LlmHistoryLimit          *int32                                      `json:"LlmHistoryLimit,omitempty" xml:"LlmHistoryLimit,omitempty"`
+	MaxIdleTime              *int32                                      `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	UseVoiceprint            *bool                                       `json:"UseVoiceprint,omitempty" xml:"UseVoiceprint,omitempty"`
+	UserOfflineTimeout       *int32                                      `json:"UserOfflineTimeout,omitempty" xml:"UserOfflineTimeout,omitempty"`
+	UserOnlineTimeout        *int32                                      `json:"UserOnlineTimeout,omitempty" xml:"UserOnlineTimeout,omitempty"`
+	VoiceId                  *string                                     `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceprintId             *string                                     `json:"VoiceprintId,omitempty" xml:"VoiceprintId,omitempty"`
+	Volume                   *int64                                      `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	WakeUpQuery              *string                                     `json:"WakeUpQuery,omitempty" xml:"WakeUpQuery,omitempty"`
+	WorkflowOverrideParams   *string                                     `json:"WorkflowOverrideParams,omitempty" xml:"WorkflowOverrideParams,omitempty"`
 }
 
 func (s AIAgentTemplateConfigVoiceChat) String() string {
@@ -403,6 +495,11 @@ func (s *AIAgentTemplateConfigVoiceChat) SetBailianAppParams(v string) *AIAgentT
 	return s
 }
 
+func (s *AIAgentTemplateConfigVoiceChat) SetEnableIntelligentSegment(v bool) *AIAgentTemplateConfigVoiceChat {
+	s.EnableIntelligentSegment = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVoiceChat) SetEnablePushToTalk(v bool) *AIAgentTemplateConfigVoiceChat {
 	s.EnablePushToTalk = &v
 	return s
@@ -420,6 +517,16 @@ func (s *AIAgentTemplateConfigVoiceChat) SetGracefulShutdown(v bool) *AIAgentTem
 
 func (s *AIAgentTemplateConfigVoiceChat) SetGreeting(v string) *AIAgentTemplateConfigVoiceChat {
 	s.Greeting = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetLlmHistory(v []*AIAgentTemplateConfigVoiceChatLlmHistory) *AIAgentTemplateConfigVoiceChat {
+	s.LlmHistory = v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChat) SetLlmHistoryLimit(v int32) *AIAgentTemplateConfigVoiceChat {
+	s.LlmHistoryLimit = &v
 	return s
 }
 
@@ -458,8 +565,36 @@ func (s *AIAgentTemplateConfigVoiceChat) SetVolume(v int64) *AIAgentTemplateConf
 	return s
 }
 
+func (s *AIAgentTemplateConfigVoiceChat) SetWakeUpQuery(v string) *AIAgentTemplateConfigVoiceChat {
+	s.WakeUpQuery = &v
+	return s
+}
+
 func (s *AIAgentTemplateConfigVoiceChat) SetWorkflowOverrideParams(v string) *AIAgentTemplateConfigVoiceChat {
 	s.WorkflowOverrideParams = &v
+	return s
+}
+
+type AIAgentTemplateConfigVoiceChatLlmHistory struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s AIAgentTemplateConfigVoiceChatLlmHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIAgentTemplateConfigVoiceChatLlmHistory) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentTemplateConfigVoiceChatLlmHistory) SetContent(v string) *AIAgentTemplateConfigVoiceChatLlmHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *AIAgentTemplateConfigVoiceChatLlmHistory) SetRole(v string) *AIAgentTemplateConfigVoiceChatLlmHistory {
+	s.Role = &v
 	return s
 }
 
@@ -1686,12 +1821,6 @@ type AddTemplateRequest struct {
 	//
 	// <!---->
 	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
 	// example:
 	//
 	// OpenAPI
@@ -1712,18 +1841,6 @@ type AddTemplateRequest struct {
 	//
 	// <!---->
 	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
 	// example:
 	//
 	// Available
@@ -1735,10 +1852,6 @@ type AddTemplateRequest struct {
 	// 	- VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
 	//
 	// <!---->
-	//
-	// *
-	//
-	// *
 	//
 	// example:
 	//
@@ -10914,7 +11027,7 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The quick video production subjobs.
 	SubJobList []*GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList `json:"SubJobList,omitempty" xml:"SubJobList,omitempty" type:"Repeated"`
-	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
 	//
 	// example:
 	//
@@ -13941,7 +14054,7 @@ type GetEventCallbackResponseBody struct {
 	//
 	// http://xxx.yyy/callback
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// The type of the callback event. Multiple values are separated with commas (,). For more information about callback event types, see [Event notification content](https://help.aliyun.com/document_detail/441362.html).
+	// The type of the callback event. Multiple values are separated with commas (,). For more information about callback event types, see [Event notification content](https://help.aliyun.com/document_detail/610204.html).
 	//
 	// example:
 	//
@@ -21749,9 +21862,9 @@ type GetSnapshotUrlsRequest struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The order that you use to sort the query results. Valid values: Asc and Desc.
 	//
-	// *
+	// - Asc
 	//
-	// *
+	// - Desc
 	//
 	// example:
 	//
@@ -22323,9 +22436,9 @@ func (s *GetTemplateResponseBody) SetTemplate(v *GetTemplateResponseBodyTemplate
 type GetTemplateResponseBodyTemplate struct {
 	// The clip parameters for submitting a video production job. You can replace mediaId and text with real values to submit a job. References:
 	//
-	// 	- [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html)
+	// 	- [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html)
 	//
-	// 	- [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html)
+	// 	- [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html)
 	//
 	// example:
 	//
@@ -22333,9 +22446,9 @@ type GetTemplateResponseBodyTemplate struct {
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	// The template configurations.
 	//
-	// 	- For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/277430.html).
+	// 	- For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
 	//
-	// 	- For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html#title-3tf-skt-eoi).
+	// 	- For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 	//
 	// example:
 	//
@@ -28779,10 +28892,6 @@ type ListBatchMediaProducingJobsRequest struct {
 	//
 	// <!---->
 	//
-	// *
-	//
-	// *
-	//
 	// example:
 	//
 	// desc
@@ -29019,7 +29128,7 @@ type ListBatchMediaProducingJobsResponseBodyEditingBatchJobList struct {
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/zh/ims/use-cases/to-configure-a-callback-when-a-clip-completes).
+	// The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -37459,10 +37568,14 @@ func (s *ListPublicMediaBasicInfosResponse) SetBody(v *ListPublicMediaBasicInfos
 }
 
 type ListSearchLibRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 50.
+	//
 	// example:
 	//
 	// 10
@@ -37488,19 +37601,32 @@ func (s *ListSearchLibRequest) SetPageSize(v int32) *ListSearchLibRequest {
 }
 
 type ListSearchLibResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId         *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Information about search libraries.
 	SearchLibInfoList []*ListSearchLibResponseBodySearchLibInfoList `json:"SearchLibInfoList,omitempty" xml:"SearchLibInfoList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总数。
+	//
+	// example:
+	//
+	// 8
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListSearchLibResponseBody) String() string {
@@ -37531,11 +37657,26 @@ func (s *ListSearchLibResponseBody) SetSuccess(v string) *ListSearchLibResponseB
 	return s
 }
 
+func (s *ListSearchLibResponseBody) SetTotal(v int64) *ListSearchLibResponseBody {
+	s.Total = &v
+	return s
+}
+
 type ListSearchLibResponseBodySearchLibInfoList struct {
+	// The search library.
+	//
 	// example:
 	//
 	// faceSearchLib
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The status of the search library.
+	//
+	// 	- normal
+	//
+	// 	- deleting
+	//
+	// 	- deleteFail
+	//
 	// example:
 	//
 	// normal
@@ -41130,6 +41271,422 @@ func (s *ListTranscodeJobsResponse) SetStatusCode(v int32) *ListTranscodeJobsRes
 }
 
 func (s *ListTranscodeJobsResponse) SetBody(v *ListTranscodeJobsResponseBody) *ListTranscodeJobsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCopyrightExtractJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2288c6ca184c0e47098a5b665e2a12****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryCopyrightExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightExtractJobRequest) SetJobId(v string) *QueryCopyrightExtractJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryCopyrightExtractJobResponseBody struct {
+	Data *QueryCopyrightExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// *****ACB-44F2-5F2D-88D7-1283E70*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryCopyrightExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightExtractJobResponseBody) SetData(v *QueryCopyrightExtractJobResponseBodyData) *QueryCopyrightExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCopyrightExtractJobResponseBody) SetMessage(v string) *QueryCopyrightExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCopyrightExtractJobResponseBody) SetRequestId(v string) *QueryCopyrightExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCopyrightExtractJobResponseBody) SetStatusCode(v int64) *QueryCopyrightExtractJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryCopyrightExtractJobResponseBodyData struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s QueryCopyrightExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightExtractJobResponseBodyData) SetMessage(v string) *QueryCopyrightExtractJobResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+type QueryCopyrightExtractJobResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCopyrightExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCopyrightExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightExtractJobResponse) SetHeaders(v map[string]*string) *QueryCopyrightExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCopyrightExtractJobResponse) SetStatusCode(v int32) *QueryCopyrightExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCopyrightExtractJobResponse) SetBody(v *QueryCopyrightExtractJobResponseBody) *QueryCopyrightExtractJobResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCopyrightJobListRequest struct {
+	// example:
+	//
+	// 1627357325
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1627357322
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// ****cdb3e74639973036bc84****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 0
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// 0
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryCopyrightJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListRequest) SetCreateTimeEnd(v int64) *QueryCopyrightJobListRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListRequest) SetCreateTimeStart(v int64) *QueryCopyrightJobListRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListRequest) SetJobId(v string) *QueryCopyrightJobListRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListRequest) SetLevel(v int64) *QueryCopyrightJobListRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListRequest) SetPageNumber(v int64) *QueryCopyrightJobListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListRequest) SetPageSize(v int64) *QueryCopyrightJobListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryCopyrightJobListResponseBody struct {
+	Data []*QueryCopyrightJobListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******36-3C1E-4417-BDB2-1E034F******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryCopyrightJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListResponseBody) SetData(v []*QueryCopyrightJobListResponseBodyData) *QueryCopyrightJobListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBody) SetMessage(v string) *QueryCopyrightJobListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBody) SetRequestId(v string) *QueryCopyrightJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBody) SetStatusCode(v int64) *QueryCopyrightJobListResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryCopyrightJobListResponseBodyData struct {
+	// example:
+	//
+	// 1627357322
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1627357322
+	GmtModified *int64                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Input       *QueryCopyrightJobListResponseBodyDataInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// bfb786c639894f4d80648792021****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 2
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// example:
+	//
+	// test
+	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output  *QueryCopyrightJobListResponseBodyDataOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"Code":"success","Message":"ok"}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 1346693***
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryCopyrightJobListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetGmtCreate(v int64) *QueryCopyrightJobListResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetGmtModified(v int64) *QueryCopyrightJobListResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetInput(v *QueryCopyrightJobListResponseBodyDataInput) *QueryCopyrightJobListResponseBodyData {
+	s.Input = v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetJobId(v string) *QueryCopyrightJobListResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetLevel(v int64) *QueryCopyrightJobListResponseBodyData {
+	s.Level = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetMessage(v string) *QueryCopyrightJobListResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetOutput(v *QueryCopyrightJobListResponseBodyDataOutput) *QueryCopyrightJobListResponseBodyData {
+	s.Output = v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetResult(v string) *QueryCopyrightJobListResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetStatus(v string) *QueryCopyrightJobListResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetUserData(v string) *QueryCopyrightJobListResponseBodyData {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyData) SetUserId(v int64) *QueryCopyrightJobListResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type QueryCopyrightJobListResponseBodyDataInput struct {
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryCopyrightJobListResponseBodyDataInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListResponseBodyDataInput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListResponseBodyDataInput) SetMedia(v string) *QueryCopyrightJobListResponseBodyDataInput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyDataInput) SetType(v string) *QueryCopyrightJobListResponseBodyDataInput {
+	s.Type = &v
+	return s
+}
+
+type QueryCopyrightJobListResponseBodyDataOutput struct {
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryCopyrightJobListResponseBodyDataOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListResponseBodyDataOutput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListResponseBodyDataOutput) SetMedia(v string) *QueryCopyrightJobListResponseBodyDataOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponseBodyDataOutput) SetType(v string) *QueryCopyrightJobListResponseBodyDataOutput {
+	s.Type = &v
+	return s
+}
+
+type QueryCopyrightJobListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCopyrightJobListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCopyrightJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopyrightJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopyrightJobListResponse) SetHeaders(v map[string]*string) *QueryCopyrightJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponse) SetStatusCode(v int32) *QueryCopyrightJobListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCopyrightJobListResponse) SetBody(v *QueryCopyrightJobListResponseBody) *QueryCopyrightJobListResponse {
 	s.Body = v
 	return s
 }
@@ -45252,6 +45809,671 @@ func (s *QuerySmarttagJobResponse) SetBody(v *QuerySmarttagJobResponseBody) *Que
 	return s
 }
 
+type QueryTraceAbJobListRequest struct {
+	// example:
+	//
+	// 1627357325
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1627357322
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// ****d80e4e4044975745c14b****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 0
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ****437bd2b51105d07b12a9****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+}
+
+func (s QueryTraceAbJobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListRequest) SetCreateTimeEnd(v int64) *QueryTraceAbJobListRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListRequest) SetCreateTimeStart(v int64) *QueryTraceAbJobListRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListRequest) SetJobId(v string) *QueryTraceAbJobListRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListRequest) SetPageNumber(v int64) *QueryTraceAbJobListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListRequest) SetPageSize(v int64) *QueryTraceAbJobListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListRequest) SetTraceMediaId(v string) *QueryTraceAbJobListRequest {
+	s.TraceMediaId = &v
+	return s
+}
+
+type QueryTraceAbJobListResponseBody struct {
+	Data []*QueryTraceAbJobListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryTraceAbJobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListResponseBody) SetData(v []*QueryTraceAbJobListResponseBodyData) *QueryTraceAbJobListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBody) SetMessage(v string) *QueryTraceAbJobListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBody) SetRequestId(v string) *QueryTraceAbJobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBody) SetStatusCode(v int64) *QueryTraceAbJobListResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryTraceAbJobListResponseBodyData struct {
+	// example:
+	//
+	// 1627357322
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1627357322
+	GmtModified *int64                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Input       *QueryTraceAbJobListResponseBodyDataInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// bfb786c639894f4d80648792021eff90
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 2
+	Level  *int64                                     `json:"Level,omitempty" xml:"Level,omitempty"`
+	Output *QueryTraceAbJobListResponseBodyDataOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"Code":"success","Message":"ok"}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ****437bd2b51105d07b12a9****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 13466932****
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryTraceAbJobListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetGmtCreate(v int64) *QueryTraceAbJobListResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetGmtModified(v int64) *QueryTraceAbJobListResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetInput(v *QueryTraceAbJobListResponseBodyDataInput) *QueryTraceAbJobListResponseBodyData {
+	s.Input = v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetJobId(v string) *QueryTraceAbJobListResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetLevel(v int64) *QueryTraceAbJobListResponseBodyData {
+	s.Level = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetOutput(v *QueryTraceAbJobListResponseBodyDataOutput) *QueryTraceAbJobListResponseBodyData {
+	s.Output = v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetResult(v string) *QueryTraceAbJobListResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetStatus(v string) *QueryTraceAbJobListResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetTraceMediaId(v string) *QueryTraceAbJobListResponseBodyData {
+	s.TraceMediaId = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetUserData(v string) *QueryTraceAbJobListResponseBodyData {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyData) SetUserId(v int64) *QueryTraceAbJobListResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type QueryTraceAbJobListResponseBodyDataInput struct {
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryTraceAbJobListResponseBodyDataInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListResponseBodyDataInput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListResponseBodyDataInput) SetMedia(v string) *QueryTraceAbJobListResponseBodyDataInput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyDataInput) SetType(v string) *QueryTraceAbJobListResponseBodyDataInput {
+	s.Type = &v
+	return s
+}
+
+type QueryTraceAbJobListResponseBodyDataOutput struct {
+	// example:
+	//
+	// oss://bucket/dir/
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryTraceAbJobListResponseBodyDataOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListResponseBodyDataOutput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListResponseBodyDataOutput) SetMedia(v string) *QueryTraceAbJobListResponseBodyDataOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponseBodyDataOutput) SetType(v string) *QueryTraceAbJobListResponseBodyDataOutput {
+	s.Type = &v
+	return s
+}
+
+type QueryTraceAbJobListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceAbJobListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTraceAbJobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceAbJobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceAbJobListResponse) SetHeaders(v map[string]*string) *QueryTraceAbJobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponse) SetStatusCode(v int32) *QueryTraceAbJobListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTraceAbJobListResponse) SetBody(v *QueryTraceAbJobListResponseBody) *QueryTraceAbJobListResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTraceExtractJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 31fa3c9ca8134fb4b0b0f7878301****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s QueryTraceExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceExtractJobRequest) SetJobId(v string) *QueryTraceExtractJobRequest {
+	s.JobId = &v
+	return s
+}
+
+type QueryTraceExtractJobResponseBody struct {
+	Data *QueryTraceExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// *****ACB-44F2-5F2D-88D7-1283E70*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryTraceExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceExtractJobResponseBody) SetData(v *QueryTraceExtractJobResponseBodyData) *QueryTraceExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTraceExtractJobResponseBody) SetMessage(v string) *QueryTraceExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTraceExtractJobResponseBody) SetRequestId(v string) *QueryTraceExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTraceExtractJobResponseBody) SetStatusCode(v int64) *QueryTraceExtractJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryTraceExtractJobResponseBodyData struct {
+	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+}
+
+func (s QueryTraceExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceExtractJobResponseBodyData) SetTrace(v string) *QueryTraceExtractJobResponseBodyData {
+	s.Trace = &v
+	return s
+}
+
+type QueryTraceExtractJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTraceExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceExtractJobResponse) SetHeaders(v map[string]*string) *QueryTraceExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTraceExtractJobResponse) SetStatusCode(v int32) *QueryTraceExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTraceExtractJobResponse) SetBody(v *QueryTraceExtractJobResponseBody) *QueryTraceExtractJobResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTraceM3u8JobListRequest struct {
+	// example:
+	//
+	// 1627357325
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1627357322
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// example:
+	//
+	// ****20b48fb04483915d4f2cd8ac****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 0
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryTraceM3u8JobListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceM3u8JobListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceM3u8JobListRequest) SetCreateTimeEnd(v int64) *QueryTraceM3u8JobListRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListRequest) SetCreateTimeStart(v int64) *QueryTraceM3u8JobListRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListRequest) SetJobId(v string) *QueryTraceM3u8JobListRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListRequest) SetPageNumber(v int64) *QueryTraceM3u8JobListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListRequest) SetPageSize(v int64) *QueryTraceM3u8JobListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryTraceM3u8JobListResponseBody struct {
+	Data []*QueryTraceM3u8JobListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s QueryTraceM3u8JobListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceM3u8JobListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceM3u8JobListResponseBody) SetData(v []*QueryTraceM3u8JobListResponseBodyData) *QueryTraceM3u8JobListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBody) SetMessage(v string) *QueryTraceM3u8JobListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBody) SetRequestId(v string) *QueryTraceM3u8JobListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBody) SetStatusCode(v int64) *QueryTraceM3u8JobListResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type QueryTraceM3u8JobListResponseBodyData struct {
+	// example:
+	//
+	// 1627357322
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1627357322
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// ****d718e2ff4f018ccf419a7b71****
+	JobId  *string                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Output *QueryTraceM3u8JobListResponseBodyDataOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// test
+	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	// example:
+	//
+	// ****437bd2b105d07b12a9a82****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+	// example:
+	//
+	// 112
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// 1346693276****
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryTraceM3u8JobListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceM3u8JobListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetGmtCreate(v int64) *QueryTraceM3u8JobListResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetGmtModified(v int64) *QueryTraceM3u8JobListResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetJobId(v string) *QueryTraceM3u8JobListResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetOutput(v *QueryTraceM3u8JobListResponseBodyDataOutput) *QueryTraceM3u8JobListResponseBodyData {
+	s.Output = v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetStatus(v string) *QueryTraceM3u8JobListResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetTrace(v string) *QueryTraceM3u8JobListResponseBodyData {
+	s.Trace = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetTraceMediaId(v string) *QueryTraceM3u8JobListResponseBodyData {
+	s.TraceMediaId = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetUserData(v string) *QueryTraceM3u8JobListResponseBodyData {
+	s.UserData = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyData) SetUserId(v int64) *QueryTraceM3u8JobListResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type QueryTraceM3u8JobListResponseBodyDataOutput struct {
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryTraceM3u8JobListResponseBodyDataOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceM3u8JobListResponseBodyDataOutput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyDataOutput) SetMedia(v string) *QueryTraceM3u8JobListResponseBodyDataOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponseBodyDataOutput) SetType(v string) *QueryTraceM3u8JobListResponseBodyDataOutput {
+	s.Type = &v
+	return s
+}
+
+type QueryTraceM3u8JobListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTraceM3u8JobListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTraceM3u8JobListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTraceM3u8JobListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTraceM3u8JobListResponse) SetHeaders(v map[string]*string) *QueryTraceM3u8JobListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponse) SetStatusCode(v int32) *QueryTraceM3u8JobListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTraceM3u8JobListResponse) SetBody(v *QueryTraceM3u8JobListResponseBody) *QueryTraceM3u8JobListResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshUploadMediaRequest struct {
 	// The ID of the media asset.
 	//
@@ -45781,38 +47003,100 @@ func (s *RegisterMediaStreamResponse) SetBody(v *RegisterMediaStreamResponseBody
 }
 
 type SearchEditingProjectRequest struct {
+	// The source of the project.
+	//
+	// \\-OpenAPI
+	//
+	// \\-AliyunConsole
+	//
+	// \\-WebSDK
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole: The project is created in the Alibaba Cloud console.
+	//
+	// 	- WebSDK: The project is created by using the SDK for Web.
+	//
+	// 	- OpenAPI: The project is created by calling API operations.
+	//
 	// example:
 	//
 	// WebSDK
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the editing project. Default value: EditingProject. Valid values:
+	//
+	// 	- EditingProject: a regular editing project.
+	//
+	// 	- LiveEditingProject: a live stream editing project.
+	//
 	// example:
 	//
 	// EditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The sorting rule of results. Valid values:
+	//
+	// \\- CreationTime:Desc (default): The results are sorted in reverse chronological order based on the creation time.
+	//
+	// \\- CreationTime:Asc: The results are sorted in chronological order based on the creation time.
+	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the online editing project. Separate multiple values with commas (,). By default, all online editing projects are queried.
+	//
+	// Valid values:
+	//
+	// \\-Draft
+	//
+	// \\-Producing
+	//
+	// \\-Produced
+	//
+	// \\-ProduceFailed
+	//
 	// example:
 	//
 	// Producing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The template type. Valid values:
+	//
+	// \\-Timeline
+	//
+	// \\-VETemplate
+	//
+	// Valid values:
+	//
+	// 	- Timeline: regular template.
+	//
+	// 	- VETemplate: advanced template.
+	//
+	// 	- None: No template is used.
+	//
 	// example:
 	//
 	// Timeline
@@ -45873,19 +47157,32 @@ func (s *SearchEditingProjectRequest) SetTemplateType(v string) *SearchEditingPr
 }
 
 type SearchEditingProjectResponseBody struct {
+	// The maximum number of entries returned on a single page. The value is set to the maximum number of entries returned on each page except for the last page.
+	//
+	// Examples:
+	//
+	// Valid example: 10,10,5. Invalid example: 10,5,10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// null
-	NextToken   *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The queried online editing projects.
 	ProjectList []*SearchEditingProjectResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****9262E3DA-07FA-4862-FCBB6BC61D08*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Optional. The total number of entries returned. By default, this parameter is not returned.
+	//
 	// example:
 	//
 	// 110
@@ -45926,70 +47223,158 @@ func (s *SearchEditingProjectResponseBody) SetTotalCount(v int64) *SearchEditing
 }
 
 type SearchEditingProjectResponseBodyProjectList struct {
+	// The business configuration of the project. This parameter can be ignored for general editing projects.
+	//
 	// example:
 	//
 	// { "OutputMediaConfig" : { "StorageLocation": "test-bucket.oss-cn-shanghai.aliyuncs.com", "Path": "test-path" }, "OutputMediaTarget": "oss-object", "ReservationTime": "2021-06-21T08:05:00Z" }
 	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// The business status of the project. This parameter can be ignored for general editing projects. Valid values:
+	//
+	// Valid values:
+	//
+	// 	- BroadCasting:
+	//
+	// 	- ReservationCanceled
+	//
+	// 	- LiveFinished
+	//
+	// 	- LoadingFailed
+	//
+	// 	- Reserving
+	//
 	// example:
 	//
 	// Reserving
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// The thumbnail URL of the online editing project.
+	//
 	// example:
 	//
 	// http://example-bucket.oss-cn-shanghai.aliyuncs.com/example-cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The method for editing the online editing project.
+	//
+	// \\-OpenAPI
+	//
+	// \\-AliyunConsole
+	//
+	// \\-WebSDK
+	//
+	// Valid values:
+	//
+	// 	- AliyunConsole: The project is created in the Alibaba Cloud console.
+	//
+	// 	- WebSDK: The project is created by using the SDK for Web.
+	//
+	// 	- OpenAPI: The project is created by calling API operations.
+	//
 	// example:
 	//
 	// OpenAPI
 	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// The time when the online editing project was created.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the online editing project.
+	//
 	// example:
 	//
 	// sample description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The total length of the online editing project. Unit: seconds.
+	//
 	// example:
 	//
 	// 30.100000
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The error code returned if the production of the online editing project failed.
+	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the production of the online editing project failed.
+	//
 	// example:
 	//
 	// "EventTime":"2021-08-12T10:04:15Z","ErrorCode":"InvalidParameter","ErrorMessage":"The specified parameter \\"LiveStreamConfig\\" is not valid. specified parameter example is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The method used when the online editing project was last modified.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// The time when the online editing project was last modified.
+	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the online editing project.
+	//
 	// example:
 	//
 	// ****fddd7748b58bf1d47e95****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the editing project.
+	//
+	// Valid values:
+	//
+	// 	- LiveEditingProject: a live stream editing project.
+	//
+	// 	- EditingProject: a regular editing project.
+	//
 	// example:
 	//
 	// EditingProject
 	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// The status of the online editing project. Valid values:
+	//
+	// \\-Draft
+	//
+	// \\-Editing
+	//
+	// \\-Producing
+	//
+	// \\-Produced
+	//
+	// \\-ProduceFailed
+	//
+	// Valid values:
+	//
+	// 	- Draft
+	//
+	// 	- Produced
+	//
+	// 	- Editing
+	//
+	// 	- Producing
+	//
+	// 	- ProduceFailed
+	//
 	// example:
 	//
 	// PRODUCE_FAILED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the template.
+	//
 	// example:
 	//
 	// Timeline
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The timeline of the online editing project.
+	//
 	// example:
 	//
 	// {"VideoTracks":[{"VideoTrackClips":[{"MediaId":"****4d7cf14dc7b83b0e801c****"},{"MediaId":"****4d7cf14dc7b83b0e801c****"}]}]}
 	Timeline *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
+	// The title of the online editing project.
+	//
 	// example:
 	//
 	// title
@@ -46119,16 +47504,28 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type SearchIndexJobRerunRequest struct {
+	// The ID of the media asset. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ******b48fb04483915d4f2cd8******,******c48fb37407365d4f2cd8******
 	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// The search library.
+	//
 	// example:
 	//
 	// test-1
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	// The type of the job. Separate multiple types with commas (,).
+	//
+	// 	- aiLabel: smart tagging.
+	//
+	// 	- face: face recognition.
+	//
+	// 	- mm: large visual model.
+	//
 	// example:
 	//
 	// AiLabel,Face,Mm
@@ -46159,15 +47556,26 @@ func (s *SearchIndexJobRerunRequest) SetTask(v string) *SearchIndexJobRerunReque
 }
 
 type SearchIndexJobRerunResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *SearchIndexJobRerunResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******11-DB8D-4A9A-875B-275798******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -46203,6 +47611,7 @@ func (s *SearchIndexJobRerunResponseBody) SetSuccess(v string) *SearchIndexJobRe
 }
 
 type SearchIndexJobRerunResponseBodyData struct {
+	// The media asset IDs that do not exist.
 	MediaIdsNoExist []*string `json:"MediaIdsNoExist,omitempty" xml:"MediaIdsNoExist,omitempty" type:"Repeated"`
 }
 
@@ -49027,7 +50436,8 @@ type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
 	// example:
 	//
 	// 69.06635
-	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Expression *string  `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The start time of the clip. Unit: seconds. The value is of the Float type.
 	//
 	// example:
@@ -49048,6 +50458,11 @@ func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) GoString
 
 func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetEndTime(v float32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos {
 	s.EndTime = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetExpression(v string) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos {
+	s.Expression = &v
 	return s
 }
 
@@ -50807,7 +52222,7 @@ type StartWorkflowRequest struct {
 	//
 	// }
 	TaskInput *string `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
-	// The user-defined data in the JSON format, which cannot be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.htm).
+	// The user-defined data in the JSON format, which cannot be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the workflow template. To view the template ID, log on to the [IMS console](https://ims.console.aliyun.com/settings/workflow/list) and choose Configurations > Workflow Template.
 	//
@@ -51223,7 +52638,7 @@ type SubmitAudioProduceJobRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The audio editing configurations.
 	//
-	// 	- voice: the [voice type](https://help.aliyun.com/document_detail/402424.html).
+	// 	- voice: the [voice type](https://help.aliyun.com/document_detail/449563.html).
 	//
 	// 	- customizedVoice: the ID of the personalized human voice.
 	//
@@ -51542,7 +52957,10 @@ type SubmitAvatarVideoJobRequest struct {
 	//
 	// {"AvatarId":"yunqiao"}
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
-	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// The input configurations of the video rendering job for an avatar. You can specify text, the Object Storage Service (OSS) URL of an audio file, or the ID of a media asset. The audio file must be in the MP3 or WAV format.
+	//
+	// >  The text must be at least five words in length.
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	// example:
 	//
 	// {"MediaURL":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4","Width":1920,"Height":1080}
@@ -51814,6 +53232,533 @@ func (s *SubmitBatchMediaProducingJobResponse) SetStatusCode(v int32) *SubmitBat
 }
 
 func (s *SubmitBatchMediaProducingJobResponse) SetBody(v *SubmitBatchMediaProducingJobResponseBody) *SubmitBatchMediaProducingJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitCopyrightExtractJobRequest struct {
+	// This parameter is required.
+	Input *SubmitCopyrightExtractJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"algoType":"v2"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobRequest) SetInput(v *SubmitCopyrightExtractJobRequestInput) *SubmitCopyrightExtractJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobRequest) SetParams(v string) *SubmitCopyrightExtractJobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobRequest) SetUserData(v string) *SubmitCopyrightExtractJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitCopyrightExtractJobRequestInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobRequestInput) SetMedia(v string) *SubmitCopyrightExtractJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobRequestInput) SetType(v string) *SubmitCopyrightExtractJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitCopyrightExtractJobShrinkRequest struct {
+	// This parameter is required.
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// {"algoType":"v2"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobShrinkRequest) SetInputShrink(v string) *SubmitCopyrightExtractJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobShrinkRequest) SetParams(v string) *SubmitCopyrightExtractJobShrinkRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobShrinkRequest) SetUserData(v string) *SubmitCopyrightExtractJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitCopyrightExtractJobResponseBody struct {
+	Data *SubmitCopyrightExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ****2876-6263-4B75-8F2C-CD0F7FCF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobResponseBody) SetData(v *SubmitCopyrightExtractJobResponseBodyData) *SubmitCopyrightExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobResponseBody) SetMessage(v string) *SubmitCopyrightExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobResponseBody) SetRequestId(v string) *SubmitCopyrightExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobResponseBody) SetStatusCode(v int64) *SubmitCopyrightExtractJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type SubmitCopyrightExtractJobResponseBodyData struct {
+	// example:
+	//
+	// bfb786c63****4d80648792021eff90
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobResponseBodyData) SetJobId(v string) *SubmitCopyrightExtractJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitCopyrightExtractJobResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCopyrightExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitCopyrightExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightExtractJobResponse) SetHeaders(v map[string]*string) *SubmitCopyrightExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobResponse) SetStatusCode(v int32) *SubmitCopyrightExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractJobResponse) SetBody(v *SubmitCopyrightExtractJobResponseBody) *SubmitCopyrightExtractJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitCopyrightJobRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example.mp4"}
+	Input *SubmitCopyrightJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// This parameter is required.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example_result.mp4"}
+	Output *SubmitCopyrightJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"algoType":"v2"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 10
+	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitCopyrightJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobRequest) SetDescription(v string) *SubmitCopyrightJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetInput(v *SubmitCopyrightJobRequestInput) *SubmitCopyrightJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetLevel(v int64) *SubmitCopyrightJobRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetMessage(v string) *SubmitCopyrightJobRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetOutput(v *SubmitCopyrightJobRequestOutput) *SubmitCopyrightJobRequest {
+	s.Output = v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetParams(v string) *SubmitCopyrightJobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetStartTime(v string) *SubmitCopyrightJobRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetTotalTime(v string) *SubmitCopyrightJobRequest {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequest) SetUserData(v string) *SubmitCopyrightJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitCopyrightJobRequestInput struct {
+	// This parameter is required.
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitCopyrightJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobRequestInput) SetMedia(v string) *SubmitCopyrightJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequestInput) SetType(v string) *SubmitCopyrightJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitCopyrightJobRequestOutput struct {
+	// This parameter is required.
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitCopyrightJobRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobRequestOutput) SetMedia(v string) *SubmitCopyrightJobRequestOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobRequestOutput) SetType(v string) *SubmitCopyrightJobRequestOutput {
+	s.Type = &v
+	return s
+}
+
+type SubmitCopyrightJobShrinkRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example.mp4"}
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// 0
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// This parameter is required.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Bucket":"example-bucket","Location":"oss-cn-shanghai","Object":"example_result.mp4"}
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// {"algoType":"v2"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 10
+	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitCopyrightJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetDescription(v string) *SubmitCopyrightJobShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetInputShrink(v string) *SubmitCopyrightJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetLevel(v int64) *SubmitCopyrightJobShrinkRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetMessage(v string) *SubmitCopyrightJobShrinkRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetOutputShrink(v string) *SubmitCopyrightJobShrinkRequest {
+	s.OutputShrink = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetParams(v string) *SubmitCopyrightJobShrinkRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetStartTime(v string) *SubmitCopyrightJobShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetTotalTime(v string) *SubmitCopyrightJobShrinkRequest {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobShrinkRequest) SetUserData(v string) *SubmitCopyrightJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitCopyrightJobResponseBody struct {
+	Data *SubmitCopyrightJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// FA258E67-09B8-4EAA-8F33-BA567834A2C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s SubmitCopyrightJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobResponseBody) SetData(v *SubmitCopyrightJobResponseBodyData) *SubmitCopyrightJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitCopyrightJobResponseBody) SetMessage(v string) *SubmitCopyrightJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobResponseBody) SetRequestId(v string) *SubmitCopyrightJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobResponseBody) SetStatusCode(v int64) *SubmitCopyrightJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type SubmitCopyrightJobResponseBodyData struct {
+	// example:
+	//
+	// bfb786c63****f4d80648792021eff90
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitCopyrightJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobResponseBodyData) SetJobId(v string) *SubmitCopyrightJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitCopyrightJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitCopyrightJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitCopyrightJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitCopyrightJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitCopyrightJobResponse) SetHeaders(v map[string]*string) *SubmitCopyrightJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitCopyrightJobResponse) SetStatusCode(v int32) *SubmitCopyrightJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitCopyrightJobResponse) SetBody(v *SubmitCopyrightJobResponseBody) *SubmitCopyrightJobResponse {
 	s.Body = v
 	return s
 }
@@ -52554,7 +54499,7 @@ type SubmitDynamicImageJobRequestInput struct {
 	//
 	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
 	//
 	// This parameter is required.
 	//
@@ -52567,10 +54512,6 @@ type SubmitDynamicImageJobRequestInput struct {
 	// 1.  OSS: an Object Storage Service (OSS) object.
 	//
 	// 2.  Media: a media asset.
-	//
-	// *
-	//
-	// *
 	//
 	// This parameter is required.
 	//
@@ -52607,7 +54548,7 @@ type SubmitDynamicImageJobRequestOutput struct {
 	//
 	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
 	//
 	// This parameter is required.
 	//
@@ -52620,10 +54561,6 @@ type SubmitDynamicImageJobRequestOutput struct {
 	// 1.  OSS: an OSS object.
 	//
 	// 2.  Media: a media asset.
-	//
-	// *
-	//
-	// *
 	//
 	// This parameter is required.
 	//
@@ -52821,18 +54758,30 @@ type SubmitDynamicImageJobRequestTemplateConfigOverwriteParamsTimeSpan struct {
 	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
 	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	//
+	// example:
+	//
+	// 01:59:59.999 or 32000.23
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The length of the ending part of the original clip to be cropped out. If you specify this parameter, the Duration parameter becomes invalid.
 	//
 	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
 	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	//
+	// example:
+	//
+	// 01:59:59.999 or 32000.23
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
 	// The start point of the clip.
 	//
 	// 	- Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
 	//
 	// 	- Valid values: `[00:00:00.000,23:59:59.999]` or `[0.000,86399.999]`.
+	//
+	// example:
+	//
+	// 01:59:59.999 or 32000.23
 	Seek *string `json:"Seek,omitempty" xml:"Seek,omitempty"`
 }
 
@@ -55055,7 +57004,7 @@ type SubmitMediaInfoJobRequestInput struct {
 	//
 	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
 	//
 	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
 	//
@@ -57102,7 +59051,7 @@ type SubmitSnapshotJobRequestInput struct {
 	//
 	// 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
 	//
 	// This parameter is required.
 	//
@@ -57151,7 +59100,7 @@ type SubmitSnapshotJobRequestOutput struct {
 	//
 	// In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
 	//
 	// This parameter is required.
 	//
@@ -57943,7 +59892,7 @@ type SubmitSyncMediaInfoJobRequestInput struct {
 	//
 	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
 	//
 	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
 	//
@@ -59082,6 +61031,737 @@ func (s *SubmitTextGenerateJobResponse) SetBody(v *SubmitTextGenerateJobResponse
 	return s
 }
 
+type SubmitTraceAbJobRequest struct {
+	// example:
+	//
+	// Qh6OdgIMcliQSI1fReOw****
+	CipherBase64ed *string `json:"CipherBase64ed,omitempty" xml:"CipherBase64ed,omitempty"`
+	// This parameter is required.
+	Input *SubmitTraceAbJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// This parameter is required.
+	Output *SubmitTraceAbJobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 360
+	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitTraceAbJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobRequest) SetCipherBase64ed(v string) *SubmitTraceAbJobRequest {
+	s.CipherBase64ed = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetInput(v *SubmitTraceAbJobRequestInput) *SubmitTraceAbJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetLevel(v int64) *SubmitTraceAbJobRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetOutput(v *SubmitTraceAbJobRequestOutput) *SubmitTraceAbJobRequest {
+	s.Output = v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetStartTime(v string) *SubmitTraceAbJobRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetTotalTime(v string) *SubmitTraceAbJobRequest {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequest) SetUserData(v string) *SubmitTraceAbJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitTraceAbJobRequestInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitTraceAbJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobRequestInput) SetMedia(v string) *SubmitTraceAbJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequestInput) SetType(v string) *SubmitTraceAbJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitTraceAbJobRequestOutput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket/dir/
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitTraceAbJobRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobRequestOutput) SetMedia(v string) *SubmitTraceAbJobRequestOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobRequestOutput) SetType(v string) *SubmitTraceAbJobRequestOutput {
+	s.Type = &v
+	return s
+}
+
+type SubmitTraceAbJobShrinkRequest struct {
+	// example:
+	//
+	// Qh6OdgIMcliQSI1fReOw****
+	CipherBase64ed *string `json:"CipherBase64ed,omitempty" xml:"CipherBase64ed,omitempty"`
+	// This parameter is required.
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// 0
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// This parameter is required.
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 360
+	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitTraceAbJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetCipherBase64ed(v string) *SubmitTraceAbJobShrinkRequest {
+	s.CipherBase64ed = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetInputShrink(v string) *SubmitTraceAbJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetLevel(v int64) *SubmitTraceAbJobShrinkRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetOutputShrink(v string) *SubmitTraceAbJobShrinkRequest {
+	s.OutputShrink = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetStartTime(v string) *SubmitTraceAbJobShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetTotalTime(v string) *SubmitTraceAbJobShrinkRequest {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobShrinkRequest) SetUserData(v string) *SubmitTraceAbJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitTraceAbJobResponseBody struct {
+	Data *SubmitTraceAbJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******36-3C1E-4417-BDB2-1E034F******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s SubmitTraceAbJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobResponseBody) SetData(v *SubmitTraceAbJobResponseBodyData) *SubmitTraceAbJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponseBody) SetMessage(v string) *SubmitTraceAbJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponseBody) SetRequestId(v string) *SubmitTraceAbJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponseBody) SetStatusCode(v int64) *SubmitTraceAbJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type SubmitTraceAbJobResponseBodyData struct {
+	// example:
+	//
+	// bfb786c639894f4d80648792021e****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// bf53333264f4d80648792021e****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+}
+
+func (s SubmitTraceAbJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobResponseBodyData) SetJobId(v string) *SubmitTraceAbJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponseBodyData) SetTraceMediaId(v string) *SubmitTraceAbJobResponseBodyData {
+	s.TraceMediaId = &v
+	return s
+}
+
+type SubmitTraceAbJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTraceAbJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitTraceAbJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceAbJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceAbJobResponse) SetHeaders(v map[string]*string) *SubmitTraceAbJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponse) SetStatusCode(v int32) *SubmitTraceAbJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTraceAbJobResponse) SetBody(v *SubmitTraceAbJobResponseBody) *SubmitTraceAbJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitTraceExtractJobRequest struct {
+	// This parameter is required.
+	Input *SubmitTraceExtractJobRequestInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"m3u8Type":"v1"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitTraceExtractJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobRequest) SetInput(v *SubmitTraceExtractJobRequestInput) *SubmitTraceExtractJobRequest {
+	s.Input = v
+	return s
+}
+
+func (s *SubmitTraceExtractJobRequest) SetParams(v string) *SubmitTraceExtractJobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobRequest) SetUserData(v string) *SubmitTraceExtractJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitTraceExtractJobRequestInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitTraceExtractJobRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobRequestInput) SetMedia(v string) *SubmitTraceExtractJobRequestInput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobRequestInput) SetType(v string) *SubmitTraceExtractJobRequestInput {
+	s.Type = &v
+	return s
+}
+
+type SubmitTraceExtractJobShrinkRequest struct {
+	// This parameter is required.
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// {"m3u8Type":"v1"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 123
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitTraceExtractJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobShrinkRequest) SetInputShrink(v string) *SubmitTraceExtractJobShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobShrinkRequest) SetParams(v string) *SubmitTraceExtractJobShrinkRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobShrinkRequest) SetUserData(v string) *SubmitTraceExtractJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitTraceExtractJobResponseBody struct {
+	Data *SubmitTraceExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ****63E8B7C7-4812-46AD-0FA56029AC86****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s SubmitTraceExtractJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobResponseBody) SetData(v *SubmitTraceExtractJobResponseBodyData) *SubmitTraceExtractJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitTraceExtractJobResponseBody) SetMessage(v string) *SubmitTraceExtractJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobResponseBody) SetRequestId(v string) *SubmitTraceExtractJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobResponseBody) SetStatusCode(v int64) *SubmitTraceExtractJobResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type SubmitTraceExtractJobResponseBodyData struct {
+	// example:
+	//
+	// bfb786c639894f4d80648792021e****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitTraceExtractJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobResponseBodyData) SetJobId(v string) *SubmitTraceExtractJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitTraceExtractJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTraceExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitTraceExtractJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceExtractJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceExtractJobResponse) SetHeaders(v map[string]*string) *SubmitTraceExtractJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTraceExtractJobResponse) SetStatusCode(v int32) *SubmitTraceExtractJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTraceExtractJobResponse) SetBody(v *SubmitTraceExtractJobResponseBody) *SubmitTraceExtractJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitTraceM3u8JobRequest struct {
+	// example:
+	//
+	// https://cipher.abc.com
+	KeyUri *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
+	// This parameter is required.
+	Output *SubmitTraceM3u8JobRequestOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// {"m3u8Type":"v1"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Trace  *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	// example:
+	//
+	// 437bd2b516ffda105d07b12a9a82****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobRequest) SetKeyUri(v string) *SubmitTraceM3u8JobRequest {
+	s.KeyUri = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobRequest) SetOutput(v *SubmitTraceM3u8JobRequestOutput) *SubmitTraceM3u8JobRequest {
+	s.Output = v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobRequest) SetParams(v string) *SubmitTraceM3u8JobRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobRequest) SetTrace(v string) *SubmitTraceM3u8JobRequest {
+	s.Trace = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobRequest) SetTraceMediaId(v string) *SubmitTraceM3u8JobRequest {
+	s.TraceMediaId = &v
+	return s
+}
+
+type SubmitTraceM3u8JobRequestOutput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://bucket/object
+	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobRequestOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobRequestOutput) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobRequestOutput) SetMedia(v string) *SubmitTraceM3u8JobRequestOutput {
+	s.Media = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobRequestOutput) SetType(v string) *SubmitTraceM3u8JobRequestOutput {
+	s.Type = &v
+	return s
+}
+
+type SubmitTraceM3u8JobShrinkRequest struct {
+	// example:
+	//
+	// https://cipher.abc.com
+	KeyUri *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
+	// This parameter is required.
+	OutputShrink *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// {"m3u8Type":"v1"}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Trace  *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	// example:
+	//
+	// 437bd2b516ffda105d07b12a9a82****
+	TraceMediaId *string `json:"TraceMediaId,omitempty" xml:"TraceMediaId,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobShrinkRequest) SetKeyUri(v string) *SubmitTraceM3u8JobShrinkRequest {
+	s.KeyUri = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobShrinkRequest) SetOutputShrink(v string) *SubmitTraceM3u8JobShrinkRequest {
+	s.OutputShrink = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobShrinkRequest) SetParams(v string) *SubmitTraceM3u8JobShrinkRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobShrinkRequest) SetTrace(v string) *SubmitTraceM3u8JobShrinkRequest {
+	s.Trace = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobShrinkRequest) SetTraceMediaId(v string) *SubmitTraceM3u8JobShrinkRequest {
+	s.TraceMediaId = &v
+	return s
+}
+
+type SubmitTraceM3u8JobResponseBody struct {
+	Data *SubmitTraceM3u8JobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******11-DB8D-4A9A-875B-275798******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobResponseBody) SetData(v *SubmitTraceM3u8JobResponseBodyData) *SubmitTraceM3u8JobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobResponseBody) SetMessage(v string) *SubmitTraceM3u8JobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobResponseBody) SetRequestId(v string) *SubmitTraceM3u8JobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitTraceM3u8JobResponseBodyData struct {
+	// example:
+	//
+	// bfb786c639894f4d8064879202****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobResponseBodyData) SetJobId(v string) *SubmitTraceM3u8JobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitTraceM3u8JobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitTraceM3u8JobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitTraceM3u8JobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTraceM3u8JobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTraceM3u8JobResponse) SetHeaders(v map[string]*string) *SubmitTraceM3u8JobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobResponse) SetStatusCode(v int32) *SubmitTraceM3u8JobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitTraceM3u8JobResponse) SetBody(v *SubmitTraceM3u8JobResponseBody) *SubmitTraceM3u8JobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTranscodeJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -59178,7 +61858,7 @@ type SubmitTranscodeJobRequestInputGroup struct {
 	//
 	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the Intelligent Media Services (IMS) console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
 	//
 	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
 	//
@@ -59259,7 +61939,7 @@ type SubmitTranscodeJobRequestOutputGroupOutput struct {
 	//
 	// 	- If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
 	//
-	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/440592.html) page of the IMS console.
+	// >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
 	//
 	// 	- If Type is set to Media, set this parameter to the ID of a media asset.
 	//
@@ -68611,9 +71291,9 @@ func (client *Client) AddMediaMarks(request *AddMediaMarksRequest) (_result *Add
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
@@ -68691,9 +71371,9 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // 	- After an advanced template is created, it enters the Processing state. In this case, the template is unavailable. The template can be used only when it is in the Available state. The time required for template processing varies based on the size of the template file. Generally, it ranges from 10 seconds to 5 minutes.
 //
@@ -74769,9 +77449,9 @@ func (client *Client) GetSystemTemplate(request *GetSystemTemplateRequest) (_res
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -74823,9 +77503,9 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - GetTemplateRequest
 //
@@ -77343,7 +80023,7 @@ func (client *Client) ListPublicMediaBasicInfos(request *ListPublicMediaBasicInf
 
 // Summary:
 //
-// 获取搜索库列表
+// Queries the information about search libraries.
 //
 // @param request - ListSearchLibRequest
 //
@@ -77389,7 +80069,7 @@ func (client *Client) ListSearchLibWithOptions(request *ListSearchLibRequest, ru
 
 // Summary:
 //
-// 获取搜索库列表
+// Queries the information about search libraries.
 //
 // @param request - ListSearchLibRequest
 //
@@ -78042,6 +80722,146 @@ func (client *Client) ListTranscodeJobs(request *ListTranscodeJobsRequest) (_res
 
 // Summary:
 //
+// 查询版权水印提取任务
+//
+// @param request - QueryCopyrightExtractJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCopyrightExtractJobResponse
+func (client *Client) QueryCopyrightExtractJobWithOptions(request *QueryCopyrightExtractJobRequest, runtime *util.RuntimeOptions) (_result *QueryCopyrightExtractJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCopyrightExtractJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCopyrightExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询版权水印提取任务
+//
+// @param request - QueryCopyrightExtractJobRequest
+//
+// @return QueryCopyrightExtractJobResponse
+func (client *Client) QueryCopyrightExtractJob(request *QueryCopyrightExtractJobRequest) (_result *QueryCopyrightExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCopyrightExtractJobResponse{}
+	_body, _err := client.QueryCopyrightExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频版权水印任务列表
+//
+// @param request - QueryCopyrightJobListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCopyrightJobListResponse
+func (client *Client) QueryCopyrightJobListWithOptions(request *QueryCopyrightJobListRequest, runtime *util.RuntimeOptions) (_result *QueryCopyrightJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCopyrightJobList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCopyrightJobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频版权水印任务列表
+//
+// @param request - QueryCopyrightJobListRequest
+//
+// @return QueryCopyrightJobListResponse
+func (client *Client) QueryCopyrightJobList(request *QueryCopyrightJobListRequest) (_result *QueryCopyrightJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCopyrightJobListResponse{}
+	_body, _err := client.QueryCopyrightJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of media fingerprint analysis jobs.
 //
 // @param request - QueryDNAJobListRequest
@@ -78634,6 +81454,222 @@ func (client *Client) QuerySmarttagJob(request *QuerySmarttagJobRequest) (_resul
 
 // Summary:
 //
+// 查询视频溯源水印ab流任务
+//
+// @param request - QueryTraceAbJobListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTraceAbJobListResponse
+func (client *Client) QueryTraceAbJobListWithOptions(request *QueryTraceAbJobListRequest, runtime *util.RuntimeOptions) (_result *QueryTraceAbJobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceMediaId)) {
+		query["TraceMediaId"] = request.TraceMediaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTraceAbJobList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTraceAbJobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频溯源水印ab流任务
+//
+// @param request - QueryTraceAbJobListRequest
+//
+// @return QueryTraceAbJobListResponse
+func (client *Client) QueryTraceAbJobList(request *QueryTraceAbJobListRequest) (_result *QueryTraceAbJobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTraceAbJobListResponse{}
+	_body, _err := client.QueryTraceAbJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询溯源水印提取任务
+//
+// @param request - QueryTraceExtractJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTraceExtractJobResponse
+func (client *Client) QueryTraceExtractJobWithOptions(request *QueryTraceExtractJobRequest, runtime *util.RuntimeOptions) (_result *QueryTraceExtractJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTraceExtractJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTraceExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询溯源水印提取任务
+//
+// @param request - QueryTraceExtractJobRequest
+//
+// @return QueryTraceExtractJobResponse
+func (client *Client) QueryTraceExtractJob(request *QueryTraceExtractJobRequest) (_result *QueryTraceExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTraceExtractJobResponse{}
+	_body, _err := client.QueryTraceExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频溯源水印m3u8任务
+//
+// @param request - QueryTraceM3u8JobListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTraceM3u8JobListResponse
+func (client *Client) QueryTraceM3u8JobListWithOptions(request *QueryTraceM3u8JobListRequest, runtime *util.RuntimeOptions) (_result *QueryTraceM3u8JobListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTraceM3u8JobList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTraceM3u8JobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询视频溯源水印m3u8任务
+//
+// @param request - QueryTraceM3u8JobListRequest
+//
+// @return QueryTraceM3u8JobListResponse
+func (client *Client) QueryTraceM3u8JobList(request *QueryTraceM3u8JobListRequest) (_result *QueryTraceM3u8JobListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryTraceM3u8JobListResponse{}
+	_body, _err := client.QueryTraceM3u8JobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtain a new upload credential for a media asset after its upload 
 //
 // Description:
@@ -78902,7 +81938,7 @@ func (client *Client) RegisterMediaStream(request *RegisterMediaStreamRequest) (
 
 // Summary:
 //
-// SearchEditingProject
+// Queries online editing projects by creation time and status.
 //
 // @param request - SearchEditingProjectRequest
 //
@@ -78976,7 +82012,7 @@ func (client *Client) SearchEditingProjectWithOptions(request *SearchEditingProj
 
 // Summary:
 //
-// SearchEditingProject
+// Queries online editing projects by creation time and status.
 //
 // @param request - SearchEditingProjectRequest
 //
@@ -78994,7 +82030,7 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 
 // Summary:
 //
-// 搜索索引任务重新分析
+// Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
 //
 // @param request - SearchIndexJobRerunRequest
 //
@@ -79044,7 +82080,7 @@ func (client *Client) SearchIndexJobRerunWithOptions(request *SearchIndexJobReru
 
 // Summary:
 //
-// 搜索索引任务重新分析
+// Re-analyzes the search index jobs of media assets. You can re-run the search index jobs of up to 20 media assets in each request.
 //
 // @param request - SearchIndexJobRerunRequest
 //
@@ -80988,6 +84024,182 @@ func (client *Client) SubmitBatchMediaProducingJob(request *SubmitBatchMediaProd
 
 // Summary:
 //
+// 提交版权水印提取作业
+//
+// @param tmpReq - SubmitCopyrightExtractJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCopyrightExtractJobResponse
+func (client *Client) SubmitCopyrightExtractJobWithOptions(tmpReq *SubmitCopyrightExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitCopyrightExtractJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitCopyrightExtractJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCopyrightExtractJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCopyrightExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交版权水印提取作业
+//
+// @param request - SubmitCopyrightExtractJobRequest
+//
+// @return SubmitCopyrightExtractJobResponse
+func (client *Client) SubmitCopyrightExtractJob(request *SubmitCopyrightExtractJobRequest) (_result *SubmitCopyrightExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCopyrightExtractJobResponse{}
+	_body, _err := client.SubmitCopyrightExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交版权水印任务
+//
+// @param tmpReq - SubmitCopyrightJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitCopyrightJobResponse
+func (client *Client) SubmitCopyrightJobWithOptions(tmpReq *SubmitCopyrightJobRequest, runtime *util.RuntimeOptions) (_result *SubmitCopyrightJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitCopyrightJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputShrink)) {
+		query["Output"] = request.OutputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalTime)) {
+		query["TotalTime"] = request.TotalTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitCopyrightJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitCopyrightJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交版权水印任务
+//
+// @param request - SubmitCopyrightJobRequest
+//
+// @return SubmitCopyrightJobResponse
+func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_result *SubmitCopyrightJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitCopyrightJobResponse{}
+	_body, _err := client.SubmitCopyrightJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a human voice cloning job. The value of VoiceId must be the one used during audio check. The system uses this ID to find the cached audio file for training. After you call this operation, the JobId is returned. The training process is asynchronous. During training, you can call the GetCustomizedVoiceJob operation to query information such as the job state.
 //
 // @param request - SubmitCustomizedVoiceJobRequest
@@ -82915,6 +86127,256 @@ func (client *Client) SubmitTextGenerateJob(request *SubmitTextGenerateJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitTextGenerateJobResponse{}
 	_body, _err := client.SubmitTextGenerateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频溯源水印ab流任务
+//
+// @param tmpReq - SubmitTraceAbJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTraceAbJobResponse
+func (client *Client) SubmitTraceAbJobWithOptions(tmpReq *SubmitTraceAbJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTraceAbJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitTraceAbJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CipherBase64ed)) {
+		query["CipherBase64ed"] = request.CipherBase64ed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputShrink)) {
+		query["Output"] = request.OutputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TotalTime)) {
+		query["TotalTime"] = request.TotalTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTraceAbJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTraceAbJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频溯源水印ab流任务
+//
+// @param request - SubmitTraceAbJobRequest
+//
+// @return SubmitTraceAbJobResponse
+func (client *Client) SubmitTraceAbJob(request *SubmitTraceAbJobRequest) (_result *SubmitTraceAbJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTraceAbJobResponse{}
+	_body, _err := client.SubmitTraceAbJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交溯源水印提取任务
+//
+// @param tmpReq - SubmitTraceExtractJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTraceExtractJobResponse
+func (client *Client) SubmitTraceExtractJobWithOptions(tmpReq *SubmitTraceExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTraceExtractJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitTraceExtractJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		query["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTraceExtractJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTraceExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交溯源水印提取任务
+//
+// @param request - SubmitTraceExtractJobRequest
+//
+// @return SubmitTraceExtractJobResponse
+func (client *Client) SubmitTraceExtractJob(request *SubmitTraceExtractJobRequest) (_result *SubmitTraceExtractJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTraceExtractJobResponse{}
+	_body, _err := client.SubmitTraceExtractJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频溯源水印m3u8文件任务
+//
+// @param tmpReq - SubmitTraceM3u8JobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTraceM3u8JobResponse
+func (client *Client) SubmitTraceM3u8JobWithOptions(tmpReq *SubmitTraceM3u8JobRequest, runtime *util.RuntimeOptions) (_result *SubmitTraceM3u8JobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitTraceM3u8JobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Output)) {
+		request.OutputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Output, tea.String("Output"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyUri)) {
+		query["KeyUri"] = request.KeyUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputShrink)) {
+		query["Output"] = request.OutputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trace)) {
+		query["Trace"] = request.Trace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceMediaId)) {
+		query["TraceMediaId"] = request.TraceMediaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitTraceM3u8Job"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitTraceM3u8JobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频溯源水印m3u8文件任务
+//
+// @param request - SubmitTraceM3u8JobRequest
+//
+// @return SubmitTraceM3u8JobResponse
+func (client *Client) SubmitTraceM3u8Job(request *SubmitTraceM3u8JobRequest) (_result *SubmitTraceM3u8JobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitTraceM3u8JobResponse{}
+	_body, _err := client.SubmitTraceM3u8JobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
