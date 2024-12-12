@@ -20217,6 +20217,358 @@ func (s *DescribeSchemasResponse) SetBody(v *DescribeSchemasResponseBody) *Descr
 	return s
 }
 
+type DescribeSparkAppDiagnosisInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s202411061017sh0ad564b000****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf663j39b0jd2***
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PYTHON
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSparkAppDiagnosisInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppDiagnosisInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppDiagnosisInfoRequest) SetAppId(v string) *DescribeSparkAppDiagnosisInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoRequest) SetDBClusterId(v string) *DescribeSparkAppDiagnosisInfoRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoRequest) SetLanguage(v string) *DescribeSparkAppDiagnosisInfoRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoRequest) SetRegionId(v string) *DescribeSparkAppDiagnosisInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSparkAppDiagnosisInfoResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// s202404141952sz6a1391200****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 100
+	CpuUtilization    *float64                       `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
+	DiagnosisInfoList []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfoList,omitempty" xml:"DiagnosisInfoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 281063
+	DurationInMillis *int64 `json:"DurationInMillis,omitempty" xml:"DurationInMillis,omitempty"`
+	// example:
+	//
+	// 81055
+	JVMGcCostInMillis *int64 `json:"JVMGcCostInMillis,omitempty" xml:"JVMGcCostInMillis,omitempty"`
+	// example:
+	//
+	// 4096000
+	PeakMemoryInByte *int64 `json:"PeakMemoryInByte,omitempty" xml:"PeakMemoryInByte,omitempty"`
+	// example:
+	//
+	// FB5AC339-91F6-5000-8E5A-F47065B01B87
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4096000
+	ShuffleReadInByte *int64 `json:"ShuffleReadInByte,omitempty" xml:"ShuffleReadInByte,omitempty"`
+	// example:
+	//
+	// 4096000
+	ShuffleWriteInByte *int64 `json:"ShuffleWriteInByte,omitempty" xml:"ShuffleWriteInByte,omitempty"`
+	// example:
+	//
+	// 0
+	SpillInByte *int64 `json:"SpillInByte,omitempty" xml:"SpillInByte,omitempty"`
+	// example:
+	//
+	// 1718329831000
+	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// example:
+	//
+	// FINISHED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeSparkAppDiagnosisInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppDiagnosisInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetAccessDeniedDetail(v string) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetAppId(v string) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetCpuUtilization(v float64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.CpuUtilization = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetDiagnosisInfoList(v []*Adb4MysqlSparkDiagnosisInfo) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.DiagnosisInfoList = v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetDurationInMillis(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.DurationInMillis = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetJVMGcCostInMillis(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.JVMGcCostInMillis = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetPeakMemoryInByte(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.PeakMemoryInByte = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetRequestId(v string) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetShuffleReadInByte(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.ShuffleReadInByte = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetShuffleWriteInByte(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.ShuffleWriteInByte = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetSpillInByte(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.SpillInByte = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetStartedTime(v int64) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.StartedTime = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponseBody) SetState(v string) *DescribeSparkAppDiagnosisInfoResponseBody {
+	s.State = &v
+	return s
+}
+
+type DescribeSparkAppDiagnosisInfoResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSparkAppDiagnosisInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSparkAppDiagnosisInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppDiagnosisInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponse) SetHeaders(v map[string]*string) *DescribeSparkAppDiagnosisInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponse) SetStatusCode(v int32) *DescribeSparkAppDiagnosisInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSparkAppDiagnosisInfoResponse) SetBody(v *DescribeSparkAppDiagnosisInfoResponseBody) *DescribeSparkAppDiagnosisInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSparkAppTypeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s202407161205sza4c07c1000****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-wz9w49b12933****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSparkAppTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppTypeRequest) SetAppId(v string) *DescribeSparkAppTypeRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkAppTypeRequest) SetDBClusterId(v string) *DescribeSparkAppTypeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSparkAppTypeRequest) SetRegionId(v string) *DescribeSparkAppTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSparkAppTypeResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 596AF63B-8798-501E-BA06-CD2184D48A35
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSparkAppTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppTypeResponseBody) SetAccessDeniedDetail(v string) *DescribeSparkAppTypeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeSparkAppTypeResponseBody) SetRequestId(v string) *DescribeSparkAppTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSparkAppTypeResponseBody) SetType(v string) *DescribeSparkAppTypeResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeSparkAppTypeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSparkAppTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSparkAppTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkAppTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkAppTypeResponse) SetHeaders(v map[string]*string) *DescribeSparkAppTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSparkAppTypeResponse) SetStatusCode(v int32) *DescribeSparkAppTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSparkAppTypeResponse) SetBody(v *DescribeSparkAppTypeResponseBody) *DescribeSparkAppTypeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSparkCodeLogRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -38771,6 +39123,130 @@ func (client *Client) DescribeSchemas(request *DescribeSchemasRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSchemasResponse{}
 	_body, _err := client.DescribeSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeSparkAppDiagnosisInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSparkAppDiagnosisInfoResponse
+func (client *Client) DescribeSparkAppDiagnosisInfoWithOptions(request *DescribeSparkAppDiagnosisInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeSparkAppDiagnosisInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSparkAppDiagnosisInfo"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSparkAppDiagnosisInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeSparkAppDiagnosisInfoRequest
+//
+// @return DescribeSparkAppDiagnosisInfoResponse
+func (client *Client) DescribeSparkAppDiagnosisInfo(request *DescribeSparkAppDiagnosisInfoRequest) (_result *DescribeSparkAppDiagnosisInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSparkAppDiagnosisInfoResponse{}
+	_body, _err := client.DescribeSparkAppDiagnosisInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeSparkAppTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSparkAppTypeResponse
+func (client *Client) DescribeSparkAppTypeWithOptions(request *DescribeSparkAppTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeSparkAppTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSparkAppType"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSparkAppTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeSparkAppTypeRequest
+//
+// @return DescribeSparkAppTypeResponse
+func (client *Client) DescribeSparkAppType(request *DescribeSparkAppTypeRequest) (_result *DescribeSparkAppTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSparkAppTypeResponse{}
+	_body, _err := client.DescribeSparkAppTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
