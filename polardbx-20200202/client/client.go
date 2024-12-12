@@ -11047,6 +11047,7 @@ type ModifyDBInstanceClassRequest struct {
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -11088,6 +11089,11 @@ func (s *ModifyDBInstanceClassRequest) SetDBInstanceName(v string) *ModifyDBInst
 
 func (s *ModifyDBInstanceClassRequest) SetDnClass(v string) *ModifyDBInstanceClassRequest {
 	s.DnClass = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetDnStorageSpace(v string) *ModifyDBInstanceClassRequest {
+	s.DnStorageSpace = &v
 	return s
 }
 
@@ -17246,6 +17252,10 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 
 	if !tea.BoolValue(util.IsUnset(request.DnClass)) {
 		query["DnClass"] = request.DnClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DnStorageSpace)) {
+		query["DnStorageSpace"] = request.DnStorageSpace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
