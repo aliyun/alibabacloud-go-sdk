@@ -695,6 +695,7 @@ type CreateFunctionInput struct {
 	//
 	// python3.10
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Tags    []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -813,6 +814,11 @@ func (s *CreateFunctionInput) SetRole(v string) *CreateFunctionInput {
 
 func (s *CreateFunctionInput) SetRuntime(v string) *CreateFunctionInput {
 	s.Runtime = &v
+	return s
+}
+
+func (s *CreateFunctionInput) SetTags(v []*Tag) *CreateFunctionInput {
+	s.Tags = v
 	return s
 }
 
@@ -1741,6 +1747,7 @@ type Function struct {
 	//
 	// Creating
 	StateReasonCode *string `json:"stateReasonCode,omitempty" xml:"stateReasonCode,omitempty"`
+	Tags            []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -1914,6 +1921,11 @@ func (s *Function) SetStateReason(v string) *Function {
 
 func (s *Function) SetStateReasonCode(v string) *Function {
 	s.StateReasonCode = &v
+	return s
+}
+
+func (s *Function) SetTags(v []*Tag) *Function {
+	s.Tags = v
 	return s
 }
 
@@ -3165,6 +3177,10 @@ type ProvisionConfig struct {
 	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
 	// example:
 	//
+	// 5
+	DefaultTarget *int64 `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
+	// example:
+	//
 	// acs:fc:cn-shanghai:124:functions/myFunction
 	FunctionArn      *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
 	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
@@ -3200,6 +3216,11 @@ func (s *ProvisionConfig) SetCurrent(v int64) *ProvisionConfig {
 
 func (s *ProvisionConfig) SetCurrentError(v string) *ProvisionConfig {
 	s.CurrentError = &v
+	return s
+}
+
+func (s *ProvisionConfig) SetDefaultTarget(v int64) *ProvisionConfig {
+	s.DefaultTarget = &v
 	return s
 }
 
@@ -3317,9 +3338,17 @@ type PutProvisionConfigInput struct {
 	// example:
 	//
 	// true
-	AlwaysAllocateGPU *bool              `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
-	ScheduledActions  []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	AlwaysAllocateGPU *bool `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
+	// if can be null:
+	// true
+	DefaultTarget    *int64             `json:"defaultTarget,omitempty" xml:"defaultTarget,omitempty"`
+	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// Deprecated
+	//
 	// This parameter is required.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -3343,6 +3372,11 @@ func (s *PutProvisionConfigInput) SetAlwaysAllocateCPU(v bool) *PutProvisionConf
 
 func (s *PutProvisionConfigInput) SetAlwaysAllocateGPU(v bool) *PutProvisionConfigInput {
 	s.AlwaysAllocateGPU = &v
+	return s
+}
+
+func (s *PutProvisionConfigInput) SetDefaultTarget(v int64) *PutProvisionConfigInput {
+	s.DefaultTarget = &v
 	return s
 }
 
@@ -6438,7 +6472,7 @@ type ListAsyncTasksRequest struct {
 	//
 	// true
 	IncludePayload *bool `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
-	// The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 20.
+	// The number of asynchronous tasks to return. The default value is 20. Valid values: [1,100].
 	//
 	// example:
 	//
@@ -7696,7 +7730,7 @@ func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 }
 
 type PutProvisionConfigRequest struct {
-	// The information about the provisioned configuration.
+	// The provisioned instance configurations.
 	//
 	// This parameter is required.
 	Body *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
