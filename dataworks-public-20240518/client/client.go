@@ -1710,7 +1710,7 @@ type AssociateProjectToResourceGroupResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -7836,6 +7836,8 @@ type CreateRouteResponseBody struct {
 	//
 	// 1000
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -8828,6 +8830,8 @@ type DeleteNetworkResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -9285,7 +9289,7 @@ type DeleteResourceGroupResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -9367,6 +9371,8 @@ type DeleteRouteResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -9810,7 +9816,7 @@ type DissociateProjectFromResourceGroupResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -13576,17 +13582,17 @@ type GetDeploymentResponseBodyPipeline struct {
 	//
 	// Valid values:
 	//
-	// 	- INIT
+	// 	- Init
 	//
-	// 	- RUNNING
+	// 	- Running
 	//
-	// 	- SUCCESS
+	// 	- Success
 	//
-	// 	- FAIL
+	// 	- Fail
 	//
-	// 	- TERMINATION
+	// 	- Termination
 	//
-	// 	- CANCEL
+	// 	- Cancel
 	//
 	// example:
 	//
@@ -13661,17 +13667,17 @@ type GetDeploymentResponseBodyPipelineStages struct {
 	//
 	// Valid values:
 	//
-	// 	- INIT
+	// 	- Init
 	//
-	// 	- RUNNING
+	// 	- Running
 	//
-	// 	- SUCCESS
+	// 	- Success
 	//
-	// 	- FAIL
+	// 	- Fail
 	//
-	// 	- TERMINATION
+	// 	- Termination
 	//
-	// 	- CANCEL
+	// 	- Cancel
 	//
 	// example:
 	//
@@ -13687,15 +13693,15 @@ type GetDeploymentResponseBodyPipelineStages struct {
 	//
 	// Valid values:
 	//
-	// 	- DELETE
+	// 	- Deploy
 	//
-	// 	- BUILD
+	// 	- Check
 	//
-	// 	- CHECK
+	// 	- Offline
 	//
-	// 	- DEPLOY
+	// 	- Build
 	//
-	// 	- OFFLINE
+	// 	- Delete
 	//
 	// example:
 	//
@@ -14151,11 +14157,14 @@ func (s *GetNetworkRequest) SetId(v int64) *GetNetworkRequest {
 }
 
 type GetNetworkResponseBody struct {
+	// The information about the network resource.
 	Network *GetNetworkResponseBodyNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -14206,6 +14215,18 @@ type GetNetworkResponseBodyNetwork struct {
 	//
 	// sg-2ze13vamugr7jenXXXXX
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the network resource. Valid values:
+	//
+	// 	- Pending: The network resource is waiting to be created.
+	//
+	// 	- Creating: The network resource is being created.
+	//
+	// 	- Running: The network resource is running as expected.
+	//
+	// 	- Deleting: The network resource is being deleted.
+	//
+	// 	- Deleted: The network resource is deleted.
+	//
 	// example:
 	//
 	// Running
@@ -14770,7 +14791,7 @@ type GetProjectMemberRequest struct {
 	//
 	// 88757
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.39e9281f3mhq4J), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+	// The ID of the account used by the member. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -15642,6 +15663,8 @@ type GetRouteResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the route.
 	Route *GetRouteResponseBodyRoute `json:"Route,omitempty" xml:"Route,omitempty" type:"Struct"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -18174,7 +18197,7 @@ type GrantMemberProjectRolesRequest struct {
 	//
 	// This parameter is required.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -18222,7 +18245,7 @@ type GrantMemberProjectRolesShrinkRequest struct {
 	//
 	// This parameter is required.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
-	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=openapi-amp.newDocPublishment.0.0.51d7281fjgBRmo), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -19229,13 +19252,13 @@ func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAle
 }
 
 type ListDIAlarmRulesRequest struct {
-	// The ID of the alert rule.
+	// The ID of the alert rule. If you leave this parameter empty, all alert rules of the task are queried.
 	//
 	// example:
 	//
 	// 34988
 	DIAlarmRuleId *int64 `json:"DIAlarmRuleId,omitempty" xml:"DIAlarmRuleId,omitempty"`
-	// The ID of the synchronization task for which alert rules are configured.
+	// The ID of the task for which alert rules are configured.
 	//
 	// example:
 	//
@@ -19410,7 +19433,7 @@ type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRules struct {
 	//
 	// rule_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The alert notification settings.
+	// The alert notification method and recipient settings.
 	NotificationSettings *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettings `json:"NotificationSettings,omitempty" xml:"NotificationSettings,omitempty" type:"Struct"`
 	// The conditions that are used to trigger the alert rule.
 	TriggerConditions []*ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions `json:"TriggerConditions,omitempty" xml:"TriggerConditions,omitempty" type:"Repeated"`
@@ -19501,15 +19524,7 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettingsNotificationChannels struct {
-	// The alert notification method. Valid values:
-	//
-	// 	- Mail
-	//
-	// 	- Phone
-	//
-	// 	- Sms
-	//
-	// 	- Ding
+	// The alert notification methods.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The severity level. Valid values:
 	//
@@ -19575,7 +19590,7 @@ func (s *ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesNotificationSettin
 }
 
 type ListDIAlarmRulesResponseBodyPagingInfoDIJobAlarmRulesTriggerConditions struct {
-	// The types of DDL operations for which the alert rule takes effect.
+	// The types of DDL operations for which the alert rule takes effect. This parameter is returned only if the MetricType parameter is set to DdlReport.
 	DdlReportTags []*string `json:"DdlReportTags,omitempty" xml:"DdlReportTags,omitempty" type:"Repeated"`
 	// The time interval for alert calculation. Unit: minutes.
 	//
@@ -22296,10 +22311,14 @@ type ListDataQualityResultsRequest struct {
 	//
 	// 100001
 	DataQualityRuleId *int64 `json:"DataQualityRuleId,omitempty" xml:"DataQualityRuleId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -24503,6 +24522,12 @@ type ListDataSourcesRequest struct {
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The tag of the data source. This parameter specifies a filter condition.
+	//
+	// 	- You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+	//
+	// 	- If you do not configure this parameter, tag-based filtering is not performed.
+	//
 	// example:
 	//
 	// ["tag1", "tag2", "tag3"]
@@ -24629,6 +24654,12 @@ type ListDataSourcesShrinkRequest struct {
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The tag of the data source. This parameter specifies a filter condition.
+	//
+	// 	- You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+	//
+	// 	- If you do not configure this parameter, tag-based filtering is not performed.
+	//
 	// example:
 	//
 	// ["tag1", "tag2", "tag3"]
@@ -24720,6 +24751,7 @@ func (s *ListDataSourcesResponseBody) SetRequestId(v string) *ListDataSourcesRes
 }
 
 type ListDataSourcesResponseBodyPagingInfo struct {
+	// The data source groups. Each element in the array indicates a data source group. Each data source group contains data sources in the development environment (if any) and the production environment.
 	DataSources []*ListDataSourcesResponseBodyPagingInfoDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -24770,6 +24802,7 @@ func (s *ListDataSourcesResponseBodyPagingInfo) SetTotalCount(v int64) *ListData
 }
 
 type ListDataSourcesResponseBodyPagingInfoDataSources struct {
+	// The data sources. Each element is the information of a single data source with a unique data source ID.
 	DataSource []*ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Repeated"`
 	// The name of the data source.
 	//
@@ -24809,7 +24842,13 @@ func (s *ListDataSourcesResponseBodyPagingInfoDataSources) SetType(v string) *Li
 }
 
 type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
-	// The connection properties of the data source.
+	// The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+	//
+	// 	- Dev: development environment
+	//
+	// 	- Prod: production environment
+	//
+	// The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/zh/dataworks/developer-reference/data-source-connection-information-connectionproperties/?spm=a2c4g.11186623.0.0.3fbb6fe7fo5AMK).
 	//
 	// example:
 	//
@@ -24873,7 +24912,7 @@ type ListDataSourcesResponseBodyPagingInfoDataSourcesDataSource struct {
 	//
 	// 1624387842781448
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the ${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database} format.
+	// The unique business key of the data source. For example, the unique business key of a Hologres data source is in the `${tenantOwnerId}:${regionId}:${type}:${instanceId}:${database}` format.
 	//
 	// example:
 	//
@@ -25077,7 +25116,7 @@ func (s *ListDeploymentsResponseBody) SetRequestId(v string) *ListDeploymentsRes
 }
 
 type ListDeploymentsResponseBodyPagingInfo struct {
-	// The processes.
+	// The deployment processes.
 	Deployments []*ListDeploymentsResponseBodyPagingInfoDeployments `json:"Deployments,omitempty" xml:"Deployments,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -25166,17 +25205,17 @@ type ListDeploymentsResponseBodyPagingInfoDeployments struct {
 	//
 	// Valid values:
 	//
-	// 	- INIT
+	// 	- Init
 	//
-	// 	- RUNNING
+	// 	- Running
 	//
-	// 	- FAIL
+	// 	- Success
 	//
-	// 	- SUCCESS
+	// 	- Fail
 	//
-	// 	- TERMINATION
+	// 	- Termination
 	//
-	// 	- CANCEL
+	// 	- Cancel
 	//
 	// example:
 	//
@@ -25251,17 +25290,17 @@ type ListDeploymentsResponseBodyPagingInfoDeploymentsStages struct {
 	//
 	// Valid values:
 	//
-	// 	- INIT
+	// 	- Init
 	//
-	// 	- RUNNING
+	// 	- Running
 	//
-	// 	- SUCCESS
+	// 	- Success
 	//
-	// 	- FAIL
+	// 	- Fail
 	//
-	// 	- TERMINATION
+	// 	- Termination
 	//
-	// 	- CANCEL
+	// 	- Cancel
 	//
 	// example:
 	//
@@ -25277,15 +25316,15 @@ type ListDeploymentsResponseBodyPagingInfoDeploymentsStages struct {
 	//
 	// Valid values:
 	//
-	// 	- DEPLOY
+	// 	- Deploy
 	//
-	// 	- CHECK
+	// 	- Check
 	//
-	// 	- OFFLINE.
+	// 	- Offline
 	//
-	// 	- BUILD
+	// 	- Build
 	//
-	// 	- DELETE
+	// 	- Delete
 	//
 	// example:
 	//
@@ -26915,17 +26954,17 @@ type ListFunctionsResponseBodyPagingInfoFunctions struct {
 	//
 	// Valid values:
 	//
-	// 	- MATH: mathematical operation function
+	// 	- Math: mathematical operation function
 	//
-	// 	- AGGREGATE: aggregate function
+	// 	- Aggregate: aggregate function
 	//
-	// 	- STRING: string processing function
+	// 	- String: string processing function
 	//
-	// 	- DATE: date function
+	// 	- Date: date function
 	//
-	// 	- ANALYTIC: window function
+	// 	- Analytic: window function
 	//
-	// 	- OTHER: others
+	// 	- Other: other functions
 	//
 	// example:
 	//
@@ -28433,7 +28472,10 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 12345
-	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
 	// The rerun mode. Valid values:
 	//
@@ -29527,7 +29569,7 @@ type ListProjectMembersRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
-	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -29589,7 +29631,7 @@ type ListProjectMembersShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The codes of the roles in the workspace. You can call the [ListProjectRoles](https://help.aliyun.com/zh/dataworks/developer-reference/api-dataworks-public-2024-05-18-listprojectroles?spm=a2c4g.11186623.0.0.43841daeywTtF3) operation to query the codes of all roles in the workspace.
 	RoleCodesShrink *string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty"`
-	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console?spm=a2c4g.11186623.0.0.7f96340a3HFgqS), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+	// The IDs of the accounts used by the members in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
 	UserIdsShrink *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -31663,6 +31705,8 @@ type ListRoutesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The routes.
 	RouteList []*ListRoutesResponseBodyRouteList `json:"RouteList,omitempty" xml:"RouteList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -39254,7 +39298,7 @@ type UpdateDIJobRequestResourceSettingsOfflineResourceSettings struct {
 	// example:
 	//
 	// 2.0
-	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 	// The identifier of the resource group for Data Integration used for batch synchronization.
 	//
 	// example:
@@ -39271,7 +39315,7 @@ func (s UpdateDIJobRequestResourceSettingsOfflineResourceSettings) GoString() st
 	return s.String()
 }
 
-func (s *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsOfflineResourceSettings {
+func (s *UpdateDIJobRequestResourceSettingsOfflineResourceSettings) SetRequestedCu(v float64) *UpdateDIJobRequestResourceSettingsOfflineResourceSettings {
 	s.RequestedCu = &v
 	return s
 }
@@ -39287,7 +39331,7 @@ type UpdateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
 	// example:
 	//
 	// 2.0
-	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 	// The identifier of the resource group for Data Integration used for real-time synchronization.
 	//
 	// example:
@@ -39304,7 +39348,7 @@ func (s UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) GoString() s
 	return s.String()
 }
 
-func (s *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings {
+func (s *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) SetRequestedCu(v float64) *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings {
 	s.RequestedCu = &v
 	return s
 }
@@ -39320,7 +39364,7 @@ type UpdateDIJobRequestResourceSettingsScheduleResourceSettings struct {
 	// example:
 	//
 	// 2.0
-	RequestedCu *int64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 	// The identifier of the resource group for scheduling used for batch synchronization.
 	//
 	// example:
@@ -39337,7 +39381,7 @@ func (s UpdateDIJobRequestResourceSettingsScheduleResourceSettings) GoString() s
 	return s.String()
 }
 
-func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetRequestedCu(v int64) *UpdateDIJobRequestResourceSettingsScheduleResourceSettings {
+func (s *UpdateDIJobRequestResourceSettingsScheduleResourceSettings) SetRequestedCu(v float64) *UpdateDIJobRequestResourceSettingsScheduleResourceSettings {
 	s.RequestedCu = &v
 	return s
 }
@@ -41969,6 +42013,12 @@ type UpdateProjectRequest struct {
 	//
 	// true
 	PaiTaskEnabled *bool `json:"PaiTaskEnabled,omitempty" xml:"PaiTaskEnabled,omitempty"`
+	// Specifies whether to disable or enable the workspace. Valid values:
+	//
+	// 	- Available: enables the workspace.
+	//
+	// 	- Forbidden: disables the workspace.
+	//
 	// example:
 	//
 	// Forbidden
@@ -42288,6 +42338,8 @@ func (s *UpdateResourceGroupResponse) SetBody(v *UpdateResourceGroupResponseBody
 }
 
 type UpdateRouteRequest struct {
+	// The destination CIDR block of the route that you want to update.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42325,6 +42377,8 @@ type UpdateRouteResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -46468,7 +46522,7 @@ func (client *Client) GetDataQualityRule(request *GetDataQualityRuleRequest) (_r
 
 // Summary:
 //
-// 获取质量规则模版详情
+// Queries the information about a data quality monitoring rule template.
 //
 // Description:
 //
@@ -46510,7 +46564,7 @@ func (client *Client) GetDataQualityRuleTemplateWithOptions(request *GetDataQual
 
 // Summary:
 //
-// 获取质量规则模版详情
+// Queries the information about a data quality monitoring rule template.
 //
 // Description:
 //
@@ -46950,6 +47004,10 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 //
 // Queries the details about a member in a workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetProjectMemberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46996,6 +47054,10 @@ func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberReque
 //
 // Queries the details about a member in a workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - GetProjectMemberRequest
 //
 // @return GetProjectMemberResponse
@@ -47013,6 +47075,10 @@ func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_resul
 // Summary:
 //
 // Queries the information about a role in a DataWorks workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetProjectRoleRequest
 //
@@ -47059,6 +47125,10 @@ func (client *Client) GetProjectRoleWithOptions(request *GetProjectRoleRequest, 
 // Summary:
 //
 // Queries the information about a role in a DataWorks workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetProjectRoleRequest
 //
@@ -47436,7 +47506,7 @@ func (client *Client) GetTaskInstanceLog(request *GetTaskInstanceLogRequest) (_r
 
 // Summary:
 //
-// Queries the infomation about a workflow.
+// Queries the information about a workflow.
 //
 // @param request - GetWorkflowDefinitionRequest
 //
@@ -47474,7 +47544,7 @@ func (client *Client) GetWorkflowDefinitionWithOptions(request *GetWorkflowDefin
 
 // Summary:
 //
-// Queries the infomation about a workflow.
+// Queries the information about a workflow.
 //
 // @param request - GetWorkflowDefinitionRequest
 //
@@ -47493,6 +47563,10 @@ func (client *Client) GetWorkflowDefinition(request *GetWorkflowDefinitionReques
 // Summary:
 //
 // Assigns roles to members in a workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - GrantMemberProjectRolesRequest
 //
@@ -47549,6 +47623,10 @@ func (client *Client) GrantMemberProjectRolesWithOptions(tmpReq *GrantMemberProj
 // Summary:
 //
 // Assigns roles to members in a workspace.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GrantMemberProjectRolesRequest
 //
@@ -48402,7 +48480,9 @@ func (client *Client) ListDataSourceSharedRules(request *ListDataSourceSharedRul
 //
 // Description:
 //
-// You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
 // 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
@@ -48452,7 +48532,9 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 //
 // Description:
 //
-// You can call this operation only if you are assigned one of the following roles in DataWorks:
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks:
 //
 // 	- Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator
 //
@@ -48874,6 +48956,10 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 //
 // Queries details about members in a workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param tmpReq - ListProjectMembersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48942,6 +49028,10 @@ func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRe
 //
 // Queries details about members in a workspace.
 //
+// Description:
+//
+// This API operation is available for all DataWorks editions.
+//
 // @param request - ListProjectMembersRequest
 //
 // @return ListProjectMembersResponse
@@ -48959,6 +49049,10 @@ func (client *Client) ListProjectMembers(request *ListProjectMembersRequest) (_r
 // Summary:
 //
 // Queries the information about roles in a DataWorks workspace by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - ListProjectRolesRequest
 //
@@ -49031,6 +49125,10 @@ func (client *Client) ListProjectRolesWithOptions(tmpReq *ListProjectRolesReques
 // Summary:
 //
 // Queries the information about roles in a DataWorks workspace by page.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListProjectRolesRequest
 //
