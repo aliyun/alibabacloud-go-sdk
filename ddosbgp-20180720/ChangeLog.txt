@@ -1,3 +1,7 @@
+2024-12-12 Version: v3.7.1
+- Update API DescribeInstanceList: update response param.
+
+
 2024-12-11 Version: v3.7.0
 - Support API MoveResourceGroup.
 

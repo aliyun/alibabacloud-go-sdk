@@ -3727,7 +3727,8 @@ type DescribeInstanceListResponseBodyInstanceList struct {
 	// example:
 	//
 	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- **1**: normal
@@ -3812,6 +3813,11 @@ func (s *DescribeInstanceListResponseBodyInstanceList) SetProduct(v string) *Des
 
 func (s *DescribeInstanceListResponseBodyInstanceList) SetRemark(v string) *DescribeInstanceListResponseBodyInstanceList {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeInstanceListResponseBodyInstanceList) SetResourceGroupId(v string) *DescribeInstanceListResponseBodyInstanceList {
+	s.ResourceGroupId = &v
 	return s
 }
 
