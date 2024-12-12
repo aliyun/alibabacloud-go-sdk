@@ -22533,9 +22533,39 @@ func (s *InstallClusterAddonsRequestBody) SetVersion(v string) *InstallClusterAd
 	return s
 }
 
+type InstallClusterAddonsResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s InstallClusterAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallClusterAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallClusterAddonsResponseBody) SetClusterId(v string) *InstallClusterAddonsResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *InstallClusterAddonsResponseBody) SetRequestId(v string) *InstallClusterAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InstallClusterAddonsResponseBody) SetTaskId(v string) *InstallClusterAddonsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type InstallClusterAddonsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallClusterAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallClusterAddonsResponse) String() string {
@@ -22553,6 +22583,11 @@ func (s *InstallClusterAddonsResponse) SetHeaders(v map[string]*string) *Install
 
 func (s *InstallClusterAddonsResponse) SetStatusCode(v int32) *InstallClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallClusterAddonsResponse) SetBody(v *InstallClusterAddonsResponseBody) *InstallClusterAddonsResponse {
+	s.Body = v
 	return s
 }
 
@@ -28345,9 +28380,39 @@ func (s *UnInstallClusterAddonsRequestAddons) SetName(v string) *UnInstallCluste
 	return s
 }
 
+type UnInstallClusterAddonsResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UnInstallClusterAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnInstallClusterAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnInstallClusterAddonsResponseBody) SetClusterId(v string) *UnInstallClusterAddonsResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UnInstallClusterAddonsResponseBody) SetRequestId(v string) *UnInstallClusterAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnInstallClusterAddonsResponseBody) SetTaskId(v string) *UnInstallClusterAddonsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type UnInstallClusterAddonsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnInstallClusterAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnInstallClusterAddonsResponse) String() string {
@@ -28365,6 +28430,11 @@ func (s *UnInstallClusterAddonsResponse) SetHeaders(v map[string]*string) *UnIns
 
 func (s *UnInstallClusterAddonsResponse) SetStatusCode(v int32) *UnInstallClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *UnInstallClusterAddonsResponse) SetBody(v *UnInstallClusterAddonsResponseBody) *UnInstallClusterAddonsResponse {
+	s.Body = v
 	return s
 }
 
@@ -36138,7 +36208,7 @@ func (client *Client) InstallClusterAddonsWithOptions(ClusterId *string, request
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &InstallClusterAddonsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -38838,7 +38908,7 @@ func (client *Client) UnInstallClusterAddonsWithOptions(ClusterId *string, reque
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnInstallClusterAddonsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
