@@ -2002,6 +2002,29 @@ func (s *GPUConfig) SetGpuType(v string) *GPUConfig {
 	return s
 }
 
+type GetInstanceLifecycleEventsOutput struct {
+	Events    []*InstanceEventItem `json:"events" xml:"events" type:"Repeated"`
+	RequestId *string              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetInstanceLifecycleEventsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceLifecycleEventsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceLifecycleEventsOutput) SetEvents(v []*InstanceEventItem) *GetInstanceLifecycleEventsOutput {
+	s.Events = v
+	return s
+}
+
+func (s *GetInstanceLifecycleEventsOutput) SetRequestId(v string) *GetInstanceLifecycleEventsOutput {
+	s.RequestId = &v
+	return s
+}
+
 type GetResourceTagsOutput struct {
 	// example:
 	//
@@ -2157,15 +2180,57 @@ func (s *InputCodeLocation) SetZipFile(v string) *InputCodeLocation {
 	return s
 }
 
+type InstanceEventItem struct {
+	Children []*InstanceEventItem `json:"children" xml:"children" type:"Repeated"`
+	Level    *string              `json:"level,omitempty" xml:"level,omitempty"`
+	Message  *string              `json:"message,omitempty" xml:"message,omitempty"`
+	Time     *string              `json:"time,omitempty" xml:"time,omitempty"`
+	Type     *string              `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s InstanceEventItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstanceEventItem) GoString() string {
+	return s.String()
+}
+
+func (s *InstanceEventItem) SetChildren(v []*InstanceEventItem) *InstanceEventItem {
+	s.Children = v
+	return s
+}
+
+func (s *InstanceEventItem) SetLevel(v string) *InstanceEventItem {
+	s.Level = &v
+	return s
+}
+
+func (s *InstanceEventItem) SetMessage(v string) *InstanceEventItem {
+	s.Message = &v
+	return s
+}
+
+func (s *InstanceEventItem) SetTime(v string) *InstanceEventItem {
+	s.Time = &v
+	return s
+}
+
+func (s *InstanceEventItem) SetType(v string) *InstanceEventItem {
+	s.Type = &v
+	return s
+}
+
 type InstanceInfo struct {
+	CreatedTimeMs   *int64 `json:"createdTimeMs,omitempty" xml:"createdTimeMs,omitempty"`
+	DestroyedTimeMs *int64 `json:"destroyedTimeMs,omitempty" xml:"destroyedTimeMs,omitempty"`
 	// example:
 	//
 	// 1ef6b6ff-7f7b-485e-ab49-501ac681****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// example:
-	//
-	// LATEST
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	Qualifier  *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s InstanceInfo) String() string {
@@ -2176,8 +2241,28 @@ func (s InstanceInfo) GoString() string {
 	return s.String()
 }
 
+func (s *InstanceInfo) SetCreatedTimeMs(v int64) *InstanceInfo {
+	s.CreatedTimeMs = &v
+	return s
+}
+
+func (s *InstanceInfo) SetDestroyedTimeMs(v int64) *InstanceInfo {
+	s.DestroyedTimeMs = &v
+	return s
+}
+
 func (s *InstanceInfo) SetInstanceId(v string) *InstanceInfo {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *InstanceInfo) SetQualifier(v string) *InstanceInfo {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *InstanceInfo) SetStatus(v string) *InstanceInfo {
+	s.Status = &v
 	return s
 }
 
@@ -2557,6 +2642,7 @@ func (s *ListFunctionsOutput) SetNextToken(v string) *ListFunctionsOutput {
 
 type ListInstancesOutput struct {
 	Instances []*InstanceInfo `json:"instances" xml:"instances" type:"Repeated"`
+	RequestId *string         `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListInstancesOutput) String() string {
@@ -2569,6 +2655,11 @@ func (s ListInstancesOutput) GoString() string {
 
 func (s *ListInstancesOutput) SetInstances(v []*InstanceInfo) *ListInstancesOutput {
 	s.Instances = v
+	return s
+}
+
+func (s *ListInstancesOutput) SetRequestId(v string) *ListInstancesOutput {
+	s.RequestId = &v
 	return s
 }
 
@@ -6930,12 +7021,18 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsOutput) *ListFunctionsRe
 }
 
 type ListInstancesRequest struct {
+	EndTimeMs      *int64    `json:"endTimeMs,omitempty" xml:"endTimeMs,omitempty"`
+	InstanceIds    []*string `json:"instanceIds" xml:"instanceIds" type:"Repeated"`
+	InstanceStatus []*string `json:"instanceStatus" xml:"instanceStatus" type:"Repeated"`
+	Limit          *string   `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The function version or alias.
 	//
 	// example:
 	//
 	// LATEST
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Qualifier   *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	StartKey    *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	StartTimeMs *int64  `json:"startTimeMs,omitempty" xml:"startTimeMs,omitempty"`
 	// Specifies whether to list all instances. Valid values: true and false.
 	//
 	// example:
@@ -6952,12 +7049,111 @@ func (s ListInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesRequest) SetEndTimeMs(v int64) *ListInstancesRequest {
+	s.EndTimeMs = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceIds(v []*string) *ListInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceStatus(v []*string) *ListInstancesRequest {
+	s.InstanceStatus = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetLimit(v string) *ListInstancesRequest {
+	s.Limit = &v
+	return s
+}
+
 func (s *ListInstancesRequest) SetQualifier(v string) *ListInstancesRequest {
 	s.Qualifier = &v
 	return s
 }
 
+func (s *ListInstancesRequest) SetStartKey(v string) *ListInstancesRequest {
+	s.StartKey = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetStartTimeMs(v int64) *ListInstancesRequest {
+	s.StartTimeMs = &v
+	return s
+}
+
 func (s *ListInstancesRequest) SetWithAllActive(v bool) *ListInstancesRequest {
+	s.WithAllActive = &v
+	return s
+}
+
+type ListInstancesShrinkRequest struct {
+	EndTimeMs            *int64  `json:"endTimeMs,omitempty" xml:"endTimeMs,omitempty"`
+	InstanceIdsShrink    *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
+	InstanceStatusShrink *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
+	Limit                *string `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The function version or alias.
+	//
+	// example:
+	//
+	// LATEST
+	Qualifier   *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	StartKey    *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	StartTimeMs *int64  `json:"startTimeMs,omitempty" xml:"startTimeMs,omitempty"`
+	// Specifies whether to list all instances. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
+	WithAllActive *bool `json:"withAllActive,omitempty" xml:"withAllActive,omitempty"`
+}
+
+func (s ListInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetEndTimeMs(v int64) *ListInstancesShrinkRequest {
+	s.EndTimeMs = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceIdsShrink(v string) *ListInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceStatusShrink(v string) *ListInstancesShrinkRequest {
+	s.InstanceStatusShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetLimit(v string) *ListInstancesShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetQualifier(v string) *ListInstancesShrinkRequest {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetStartKey(v string) *ListInstancesShrinkRequest {
+	s.StartKey = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetStartTimeMs(v int64) *ListInstancesShrinkRequest {
+	s.StartTimeMs = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetWithAllActive(v bool) *ListInstancesShrinkRequest {
 	s.WithAllActive = &v
 	return s
 }
@@ -10415,21 +10611,55 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 //
 // Queries a list of function instances.
 //
-// @param request - ListInstancesRequest
+// @param tmpReq - ListInstancesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(functionName *string, request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancesWithOptions(functionName *string, tmpReq *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("instanceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceStatus)) {
+		request.InstanceStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceStatus, tea.String("instanceStatus"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTimeMs)) {
+		query["endTimeMs"] = request.EndTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["instanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceStatusShrink)) {
+		query["instanceStatus"] = request.InstanceStatusShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["limit"] = request.Limit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
 		query["qualifier"] = request.Qualifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartKey)) {
+		query["startKey"] = request.StartKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeMs)) {
+		query["startTimeMs"] = request.StartTimeMs
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WithAllActive)) {
