@@ -28210,7 +28210,10 @@ type DisableRealtimeLogDeliveryRequest struct {
 	// example:
 	//
 	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DisableRealtimeLogDeliveryRequest) String() string {
@@ -28223,6 +28226,21 @@ func (s DisableRealtimeLogDeliveryRequest) GoString() string {
 
 func (s *DisableRealtimeLogDeliveryRequest) SetDomain(v string) *DisableRealtimeLogDeliveryRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *DisableRealtimeLogDeliveryRequest) SetLogstore(v string) *DisableRealtimeLogDeliveryRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *DisableRealtimeLogDeliveryRequest) SetProject(v string) *DisableRealtimeLogDeliveryRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *DisableRealtimeLogDeliveryRequest) SetRegion(v string) *DisableRealtimeLogDeliveryRequest {
+	s.Region = &v
 	return s
 }
 
@@ -28285,7 +28303,10 @@ type EnableRealtimeLogDeliveryRequest struct {
 	// example:
 	//
 	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s EnableRealtimeLogDeliveryRequest) String() string {
@@ -28298,6 +28319,21 @@ func (s EnableRealtimeLogDeliveryRequest) GoString() string {
 
 func (s *EnableRealtimeLogDeliveryRequest) SetDomain(v string) *EnableRealtimeLogDeliveryRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *EnableRealtimeLogDeliveryRequest) SetLogstore(v string) *EnableRealtimeLogDeliveryRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *EnableRealtimeLogDeliveryRequest) SetProject(v string) *EnableRealtimeLogDeliveryRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *EnableRealtimeLogDeliveryRequest) SetRegion(v string) *EnableRealtimeLogDeliveryRequest {
+	s.Region = &v
 	return s
 }
 
