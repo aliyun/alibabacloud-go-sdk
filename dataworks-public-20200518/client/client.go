@@ -6748,7 +6748,8 @@ type CreateFileRequest struct {
 	// example:
 	//
 	// false
-	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Stop    *bool  `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateFileRequest) String() string {
@@ -6916,6 +6917,11 @@ func (s *CreateFileRequest) SetStartImmediately(v bool) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetStop(v bool) *CreateFileRequest {
 	s.Stop = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetTimeout(v int32) *CreateFileRequest {
+	s.Timeout = &v
 	return s
 }
 
@@ -10489,12 +10495,20 @@ type CreateTableRequest struct {
 	// 101
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// A reserved parameter.
+	//
+	// example:
+	//
+	// reserved
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of fields. A maximum of 1,000 fields are supported.
 	//
 	// This parameter is required.
 	Columns []*CreateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The comment.
+	//
+	// example:
+	//
+	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The endpoint of MaxCompute.
 	//
@@ -10724,6 +10738,10 @@ type CreateTableRequestColumns struct {
 	// columnName1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The display name of the field.
+	//
+	// example:
+	//
+	// columnName in chinese
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The data type of the field. For information about supported data types, see [Data type editions](https://help.aliyun.com/document_detail/27821.html) in MaxCompute documentation.
 	//
@@ -10734,6 +10752,10 @@ type CreateTableRequestColumns struct {
 	// string
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// The comment of the field.
+	//
+	// example:
+	//
+	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the field is a partition field.
 	//
@@ -13078,7 +13100,7 @@ func (s *DeleteFromMetaCategoryResponse) SetBody(v *DeleteFromMetaCategoryRespon
 }
 
 type DeleteLineageRelationRequest struct {
-	// The unique identifier of the destination entity.
+	// Destination entity unique identifier
 	//
 	// This parameter is required.
 	//
@@ -13086,14 +13108,19 @@ type DeleteLineageRelationRequest struct {
 	//
 	// custom-report.report123
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	// The unique identifier of the lineage.
+	// Lineage relationship unique identifier
 	//
 	// example:
 	//
 	// dfazcdfdfccdedd
 	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// Relationship type
+	//
+	// example:
+	//
+	// sql
 	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
-	// The unique identifier of the source entity.
+	// Source entity unique identifier
 	//
 	// This parameter is required.
 	//
@@ -13132,45 +13159,45 @@ func (s *DeleteLineageRelationRequest) SetSrcEntityQualifiedName(v string) *Dele
 }
 
 type DeleteLineageRelationResponseBody struct {
-	// The error code.
+	// Error code
 	//
 	// example:
 	//
 	// 1010040007
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// Error message
 	//
 	// example:
 	//
 	// qualifiedName should be in format as entity-table.entity-guid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// Request ID: used for locating logs and troubleshooting
 	//
 	// example:
 	//
 	// 64B-587A-8CED-969E1973887FXXX-TT
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
+	// Operation result:
 	//
-	// true: successful
+	// true: Success
 	//
-	// false: failed
+	// false: Failure
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Whether the call was successful. Values are as follows:
 	//
-	// true
+	// true: success
 	//
-	// false
+	// false: failed
 	//
 	// example:
 	//
@@ -31615,7 +31642,8 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	// example:
 	//
 	// 4155787800000
-	EndEffectDate *int64 `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	EndEffectDate                   *int64  `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	IgnoreParentSkipRunningProperty *string `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
 	// The output names of the parent files on which the current file depends.
 	InputList []*GetFileResponseBodyDataNodeConfigurationInputList `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
 	// Input parameters of the node.
@@ -31699,7 +31727,8 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	// example:
 	//
 	// false
-	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Stop    *bool  `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetFileResponseBodyDataNodeConfiguration) String() string {
@@ -31747,6 +31776,11 @@ func (s *GetFileResponseBodyDataNodeConfiguration) SetDependentType(v string) *G
 
 func (s *GetFileResponseBodyDataNodeConfiguration) SetEndEffectDate(v int64) *GetFileResponseBodyDataNodeConfiguration {
 	s.EndEffectDate = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetIgnoreParentSkipRunningProperty(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.IgnoreParentSkipRunningProperty = &v
 	return s
 }
 
@@ -31802,6 +31836,11 @@ func (s *GetFileResponseBodyDataNodeConfiguration) SetStartImmediately(v bool) *
 
 func (s *GetFileResponseBodyDataNodeConfiguration) SetStop(v bool) *GetFileResponseBodyDataNodeConfiguration {
 	s.Stop = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetTimeout(v int32) *GetFileResponseBodyDataNodeConfiguration {
+	s.Timeout = &v
 	return s
 }
 
@@ -33842,12 +33881,20 @@ type GetInstanceResponseBodyData struct {
 	//
 	// kzh
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// 111
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The parameters related to the node.
 	//
 	// example:
 	//
 	// bizdate=$bizdate tbods=$tbods tbdw=$tbdw tbpmic=$tbpmic tbpidx=$tbpidx tbptcif=$tbptcif
 	ParamValues *string `json:"ParamValues,omitempty" xml:"ParamValues,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
 	// The priority of the instance. Valid values: 1, 3, 5, 7, and 8. A greater value indicates a higher priority. Default value: 1.
 	//
 	// example:
@@ -34033,8 +34080,18 @@ func (s *GetInstanceResponseBodyData) SetNodeName(v string) *GetInstanceResponse
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetOwner(v string) *GetInstanceResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetParamValues(v string) *GetInstanceResponseBodyData {
 	s.ParamValues = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetPeriodNumber(v int32) *GetInstanceResponseBodyData {
+	s.PeriodNumber = &v
 	return s
 }
 
@@ -38108,43 +38165,43 @@ func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) 
 }
 
 type GetMetaTableFullInfoRequest struct {
-	// The ID of the E-MapReduce (EMR) cluster. You can log on to the EMR console to obtain the ID of the cluster.
+	// The ID of the EMR cluster. You can log in to the EMR management console to obtain the cluster ID.
 	//
 	// example:
 	//
 	// C-010A704DA760****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the data source. Only emr is supported.
+	// Data type, currently only supports the value `emr`.
 	//
 	// example:
 	//
 	// emr
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The name of the metadatabase of the EMR cluster. You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the name of the metadatabase.
+	// The name of the EMR database. You can obtain the database name by calling the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) interface.
 	//
 	// example:
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The number of the page to return.
+	// The page number requested for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	// The number of items per page, with a default of 10 and a maximum of 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The GUID of the metatable. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the GUID of the metatable.
+	// The unique identifier of the table. You can obtain the unique identifier by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable in the EMR cluster. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the name of the metatable.
+	// The name of the EMR table. You can obtain the table name by calling the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) interface.
 	//
 	// example:
 	//
@@ -38196,33 +38253,33 @@ func (s *GetMetaTableFullInfoRequest) SetTableName(v string) *GetMetaTableFullIn
 }
 
 type GetMetaTableFullInfoResponseBody struct {
-	// The business data returned.
+	// Business data.
 	Data *GetMetaTableFullInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// Error code.
 	//
 	// example:
 	//
 	// 1031203110005
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// Error message.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// Request ID. Used for locating logs and troubleshooting issues.
 	//
 	// example:
 	//
 	// 0bc1411515937****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Whether the call was successful.
 	//
 	// example:
 	//
@@ -38275,21 +38332,21 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	//
 	// C-010A704DA760****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The fields in the metatable.
+	// A list of columns.
 	ColumnList []*GetMetaTableFullInfoResponseBodyDataColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	// The remarks of the metatable.
+	// The comment of the table.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the metatable was created. You can convert the timestamp to the related date based on the time zone that you use.
+	// The time when the table was created. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
 	//
 	// example:
 	//
 	// 1589870293000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The amount of storage resources that are consumed by the metatable. Unit: bytes.
+	// The storage space occupied by the table, in bytes (B).
 	//
 	// example:
 	//
@@ -38301,104 +38358,104 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	//
 	// abc
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The type of the environment in which the metatable resides. Valid values:
+	// Environment type, with the following values:
 	//
-	// 	- 0: indicates that the metatable resides in the development environment.
+	// - 0 indicates a table in the development environment.
 	//
-	// 	- 1: indicates that the metatable resides in the production environment.
+	// - 1 indicates a table in the production environment.
 	//
 	// example:
 	//
 	// 1
 	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The scope in which the metatable is visible. Valid values:
+	// Indicates whether the table is visible, with the following values:
 	//
-	// 	- 0: indicates that the metatable is visible to workspace members.
+	// - 0: The table is visible to workspace members.
 	//
-	// 	- 1: indicates that the metatable is visible to users within a tenant.
+	// - 1: The table is visible within the tenant.
 	//
-	// 	- 2: indicates that the metatable is visible to all tenants.
+	// - 2: The table is visible across tenants.
 	//
-	// 	- 3: indicates that the metatable is visible only to the metatable owner.
+	// - 3: The table is only visible to the responsible person.
 	//
 	// example:
 	//
 	// 1
 	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
-	// The time when the metatable was last accessed. You can convert the timestamp to the related date based on the time zone that you use.
+	// The last time the table was accessed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	// The time when the schema of the metatable was last changed. You can convert the timestamp to the related date based on the time zone that you use.
+	// The last time the table structure was changed. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	// The time when the metatable was last updated. You can convert the timestamp to the related date based on the time zone that you use.
+	// The last time the table was updated. The result is displayed as a timestamp, which you can convert to the corresponding date based on your timezone.
 	//
 	// example:
 	//
 	// 1589870294000
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The lifecycle of the metatable. Unit: days.
+	// The lifecycle of the table, in days.
 	//
 	// example:
 	//
 	// 5
 	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	// The storage path of the Hive metatable.
+	// The storage location of the Hive table.
 	//
 	// example:
 	//
 	// hdfs://localhost:777/user/hadoop/test.txt
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The ID of the metatable owner.
+	// The ID of the table owner.
 	//
 	// example:
 	//
 	// 123
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The partition key.
+	// Partition keys.
 	//
 	// example:
 	//
 	// abc
 	PartitionKeys *string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
-	// The ID of the workspace to which the metatable belongs.
+	// The ID of the workspace where the table is located.
 	//
 	// example:
 	//
 	// 22
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the workspace to which the metatable belongs.
+	// The name of the workspace where the table is located.
 	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Schema      *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The GUID of the metatable.
+	// The unique identifier of the table.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The name of the metatable.
+	// The name of the table.
 	//
 	// example:
 	//
 	// table_name
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 12345
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The total number of fields.
+	// The total number of columns.
 	//
 	// example:
 	//
@@ -38525,67 +38582,67 @@ func (s *GetMetaTableFullInfoResponseBodyData) SetTotalColumnCount(v int64) *Get
 }
 
 type GetMetaTableFullInfoResponseBodyDataColumnList struct {
-	// The description of the field.
+	// The description of the column.
 	//
 	// example:
 	//
 	// data comment
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	// The GUID of the field.
+	// The unique identifier of the column.
 	//
 	// example:
 	//
 	// odps.engine_name.table_name.1
 	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
-	// The name of the field.
+	// The name of the column.
 	//
 	// example:
 	//
 	// 1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
+	// The type of the column.
 	//
 	// example:
 	//
 	// string
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The remarks of the field.
+	// The comment for the column.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Indicates whether the field is a foreign key. Valid values:
+	// Whether the field is a foreign key, with values as follows:
 	//
-	// 	- true: The field is a foreign key.
+	// - true, it is a foreign key.
 	//
-	// 	- false: The field is not a foreign key.
+	// - false, it is not a foreign key.
 	//
 	// example:
 	//
 	// true
 	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
-	// Indicates whether the field is a partition field. Valid values:
+	// Indicates whether the column is a partition column, with the following values:
 	//
-	// 	- true: The field is a partition field.
+	// - true: It is a partition column.
 	//
-	// 	- false: The field is not a partition field.
+	// - false: It is not a partition column.
 	//
 	// example:
 	//
 	// true
 	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
-	// Indicates whether the field is the primary key. Valid values:
+	// Indicates whether the column is a primary key, with the following values:
 	//
-	// 	- true: The field is the primary key.
+	// - true: It is a primary key.
 	//
-	// 	- false: The field is not the primary key.
+	// - false: It is not a primary key.
 	//
 	// example:
 	//
 	// false
 	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	// The ordinal number of the field.
+	// The position of the column in the order.
 	//
 	// example:
 	//
@@ -40231,28 +40288,40 @@ func (s *GetMetaTablePartitionResponse) SetBody(v *GetMetaTablePartitionResponse
 }
 
 type GetMetaTableProducingTasksRequest struct {
+	// The ID of the EMR cluster. This parameter takes effect only if the DataSourceType parameter is set to emr.
+	//
 	// example:
 	//
 	// C-A_SAMPLE_CLUSTER_ID
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the metatable. Valid values: odps and emr. The value odps indicates that the metatable is a MaxCompute metatable. The value emr indicates that the metatable is an E-MapReduce (EMR) metatable.
+	//
 	// example:
 	//
 	// odps
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// default
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the schema.
+	//
 	// example:
 	//
 	// myschema
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The GUID of the MaxCompute metatable.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// odps.sample_project.sample_table
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the metatable.
+	//
 	// example:
 	//
 	// sample_table
@@ -40298,23 +40367,34 @@ func (s *GetMetaTableProducingTasksRequest) SetTableName(v string) *GetMetaTable
 }
 
 type GetMetaTableProducingTasksResponseBody struct {
+	// The output tasks of the metatable.
 	Data []*GetMetaTableProducingTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// "0"
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SUCCESS
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 00000-00000-00000-00000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
+	//
 	// example:
 	//
 	// true
@@ -40360,10 +40440,13 @@ func (s *GetMetaTableProducingTasksResponseBody) SetSuccess(v bool) *GetMetaTabl
 }
 
 type GetMetaTableProducingTasksResponseBodyData struct {
+	// The ID of the output task.
+	//
 	// example:
 	//
 	// 9876543210
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the output task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -83406,7 +83489,8 @@ type UpdateFileRequest struct {
 	// example:
 	//
 	// false
-	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Stop    *bool  `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateFileRequest) String() string {
@@ -83569,6 +83653,11 @@ func (s *UpdateFileRequest) SetStartImmediately(v bool) *UpdateFileRequest {
 
 func (s *UpdateFileRequest) SetStop(v bool) *UpdateFileRequest {
 	s.Stop = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetTimeout(v int32) *UpdateFileRequest {
+	s.Timeout = &v
 	return s
 }
 
@@ -85746,6 +85835,10 @@ type UpdateTableRequest struct {
 	// The list of fields.
 	Columns []*UpdateTableRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The comment.
+	//
+	// example:
+	//
+	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the table exists. Valid values:
 	//
@@ -85965,6 +86058,10 @@ type UpdateTableRequestColumns struct {
 	// abc
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The display name of the field.
+	//
+	// example:
+	//
+	// 名称
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The type of the field. For more information, see MaxCompute field types.
 	//
@@ -85975,6 +86072,10 @@ type UpdateTableRequestColumns struct {
 	// string
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// The comment of the field.
+	//
+	// example:
+	//
+	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// Specifies whether the field is a partition field. Valid values: 0 and 1. The value 0 indicates that the field is not a partition field. The value 1 indicates that the field is a partition field.
 	//
@@ -87448,7 +87549,9 @@ func (client *Client) AddMetaCollectionEntity(request *AddMetaCollectionEntityRe
 //
 // Description:
 //
-// For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+//   For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+//
+// 	- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -87506,7 +87609,9 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 //
 // Description:
 //
-// For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+//   For information about how to add an account to a DataWorks workspace as a member, see [Add workspace members and assign roles to them](https://help.aliyun.com/document_detail/136941.html).
+//
+// 	- If you assign a built-in workspace-level role to a member of a DataWorks workspace, the member is automatically granted the permissions of the mapped role of the MaxCompute compute engine in the development environment. For more information, see [Appendix: Mappings between the built-in workspace-level roles of DataWorks and the roles of MaxCompute](https://help.aliyun.com/document_detail/449397.html).
 //
 // @param request - AddProjectMemberToRoleRequest
 //
@@ -89549,6 +89654,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Stop)) {
 		body["Stop"] = request.Stop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -92316,11 +92425,11 @@ func (client *Client) DeleteFromMetaCategory(request *DeleteFromMetaCategoryRequ
 
 // Summary:
 //
-// Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+// Delete lineage, supports deleting user-defined lineage relationships
 //
 // Description:
 //
-// This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+// This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
 //
 // @param request - DeleteLineageRelationRequest
 //
@@ -92374,11 +92483,11 @@ func (client *Client) DeleteLineageRelationWithOptions(request *DeleteLineageRel
 
 // Summary:
 //
-// Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+// Delete lineage, supports deleting user-defined lineage relationships
 //
 // Description:
 //
-// This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
+// This API is currently in the trial phase. Users who wish to experience it can apply, and after the administrator adds them to the trial list, they can call this API.
 //
 // @param request - DeleteLineageRelationRequest
 //
@@ -98089,7 +98198,7 @@ func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_r
 
 // Summary:
 //
-// Queries the complete information about a metatable, including information about fields in the metatable.
+// Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
 //
 // @param request - GetMetaTableFullInfoRequest
 //
@@ -98127,7 +98236,7 @@ func (client *Client) GetMetaTableFullInfoWithOptions(request *GetMetaTableFullI
 
 // Summary:
 //
-// Queries the complete information about a metatable, including information about fields in the metatable.
+// Invoke the GetMetaTableFullInfo interface to obtain the complete information of a table (including field information).
 //
 // @param request - GetMetaTableFullInfoRequest
 //
@@ -98535,7 +98644,7 @@ func (client *Client) GetMetaTablePartition(request *GetMetaTablePartitionReques
 
 // Summary:
 //
-// 获取Table的产出任务列表
+// Queries the output tasks of a metatable.
 //
 // @param request - GetMetaTableProducingTasksRequest
 //
@@ -98597,7 +98706,7 @@ func (client *Client) GetMetaTableProducingTasksWithOptions(request *GetMetaTabl
 
 // Summary:
 //
-// 获取Table的产出任务列表
+// Queries the output tasks of a metatable.
 //
 // @param request - GetMetaTableProducingTasksRequest
 //
@@ -109531,6 +109640,10 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Stop)) {
 		body["Stop"] = request.Stop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
 	}
 
 	req := &openapi.OpenApiRequest{
