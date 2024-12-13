@@ -6735,6 +6735,7 @@ func (s *CreateEnvironmentResponse) SetBody(v *CreateEnvironmentResponseBody) *C
 }
 
 type CreateGrafanaWorkspaceRequest struct {
+	AccountNumber *string `json:"AccountNumber,omitempty" xml:"AccountNumber,omitempty"`
 	// The language. Default value: zh. Valid values:
 	//
 	// 	- zh
@@ -6744,13 +6745,16 @@ type CreateGrafanaWorkspaceRequest struct {
 	// example:
 	//
 	// zh
-	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	AliyunLang          *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	AutoRenew           *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CustomAccountNumber *string `json:"CustomAccountNumber,omitempty" xml:"CustomAccountNumber,omitempty"`
 	// The description of the workspace
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -6788,7 +6792,8 @@ type CreateGrafanaWorkspaceRequest struct {
 	// example:
 	//
 	// Test123456!
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -6815,13 +6820,33 @@ func (s CreateGrafanaWorkspaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateGrafanaWorkspaceRequest) SetAccountNumber(v string) *CreateGrafanaWorkspaceRequest {
+	s.AccountNumber = &v
+	return s
+}
+
 func (s *CreateGrafanaWorkspaceRequest) SetAliyunLang(v string) *CreateGrafanaWorkspaceRequest {
 	s.AliyunLang = &v
 	return s
 }
 
+func (s *CreateGrafanaWorkspaceRequest) SetAutoRenew(v string) *CreateGrafanaWorkspaceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetCustomAccountNumber(v string) *CreateGrafanaWorkspaceRequest {
+	s.CustomAccountNumber = &v
+	return s
+}
+
 func (s *CreateGrafanaWorkspaceRequest) SetDescription(v string) *CreateGrafanaWorkspaceRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetDuration(v string) *CreateGrafanaWorkspaceRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -6842,6 +6867,11 @@ func (s *CreateGrafanaWorkspaceRequest) SetGrafanaWorkspaceName(v string) *Creat
 
 func (s *CreateGrafanaWorkspaceRequest) SetPassword(v string) *CreateGrafanaWorkspaceRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceRequest) SetPricingCycle(v string) *CreateGrafanaWorkspaceRequest {
+	s.PricingCycle = &v
 	return s
 }
 
@@ -6894,6 +6924,7 @@ func (s *CreateGrafanaWorkspaceRequestTags) SetValue(v string) *CreateGrafanaWor
 }
 
 type CreateGrafanaWorkspaceShrinkRequest struct {
+	AccountNumber *string `json:"AccountNumber,omitempty" xml:"AccountNumber,omitempty"`
 	// The language. Default value: zh. Valid values:
 	//
 	// 	- zh
@@ -6903,13 +6934,16 @@ type CreateGrafanaWorkspaceShrinkRequest struct {
 	// example:
 	//
 	// zh
-	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	AliyunLang          *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	AutoRenew           *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CustomAccountNumber *string `json:"CustomAccountNumber,omitempty" xml:"CustomAccountNumber,omitempty"`
 	// The description of the workspace
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -6947,7 +6981,8 @@ type CreateGrafanaWorkspaceShrinkRequest struct {
 	// example:
 	//
 	// Test123456!
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -6974,13 +7009,33 @@ func (s CreateGrafanaWorkspaceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetAccountNumber(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.AccountNumber = &v
+	return s
+}
+
 func (s *CreateGrafanaWorkspaceShrinkRequest) SetAliyunLang(v string) *CreateGrafanaWorkspaceShrinkRequest {
 	s.AliyunLang = &v
 	return s
 }
 
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetAutoRenew(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetCustomAccountNumber(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.CustomAccountNumber = &v
+	return s
+}
+
 func (s *CreateGrafanaWorkspaceShrinkRequest) SetDescription(v string) *CreateGrafanaWorkspaceShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetDuration(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.Duration = &v
 	return s
 }
 
@@ -7001,6 +7056,11 @@ func (s *CreateGrafanaWorkspaceShrinkRequest) SetGrafanaWorkspaceName(v string) 
 
 func (s *CreateGrafanaWorkspaceShrinkRequest) SetPassword(v string) *CreateGrafanaWorkspaceShrinkRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateGrafanaWorkspaceShrinkRequest) SetPricingCycle(v string) *CreateGrafanaWorkspaceShrinkRequest {
+	s.PricingCycle = &v
 	return s
 }
 
@@ -11605,6 +11665,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// grafana-bp1*****
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
+	PaymentType       *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The ID of the region. If you use a Prometheus instance to monitor an Alibaba Cloud service in China, this parameter must be set to cn-shanghai.
 	//
 	// This parameter is required.
@@ -11783,6 +11844,11 @@ func (s *CreatePrometheusInstanceRequest) SetDuration(v int32) *CreatePrometheus
 
 func (s *CreatePrometheusInstanceRequest) SetGrafanaInstanceId(v string) *CreatePrometheusInstanceRequest {
 	s.GrafanaInstanceId = &v
+	return s
+}
+
+func (s *CreatePrometheusInstanceRequest) SetPaymentType(v string) *CreatePrometheusInstanceRequest {
+	s.PaymentType = &v
 	return s
 }
 
@@ -21874,6 +21940,351 @@ func (s *DeleteWebhookContactResponse) SetBody(v *DeleteWebhookContactResponseBo
 	return s
 }
 
+type DescribeAddonMetricsRequest struct {
+	// The version of the component.
+	//
+	// example:
+	//
+	// 0.0.1
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// The language. Valid values: zh and en. Default value: zh.
+	//
+	// example:
+	//
+	// zh
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// The environment.
+	//
+	// example:
+	//
+	// CS
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// The name of the component.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysql
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAddonMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsRequest) SetAddonVersion(v string) *DescribeAddonMetricsRequest {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsRequest) SetAliyunLang(v string) *DescribeAddonMetricsRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsRequest) SetEnvironmentType(v string) *DescribeAddonMetricsRequest {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsRequest) SetName(v string) *DescribeAddonMetricsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsRequest) SetRegionId(v string) *DescribeAddonMetricsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAddonMetricsResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The metric details.
+	Data []*DescribeAddonMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// B6A00968-82A8-4F14-9D1B-B53827DB****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAddonMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponseBody) SetCode(v int32) *DescribeAddonMetricsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBody) SetData(v []*DescribeAddonMetricsResponseBodyData) *DescribeAddonMetricsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBody) SetMessage(v string) *DescribeAddonMetricsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBody) SetRequestId(v string) *DescribeAddonMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBody) SetSuccess(v bool) *DescribeAddonMetricsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAddonMetricsResponseBodyData struct {
+	// The metric group.
+	//
+	// example:
+	//
+	// Common
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The tags.
+	Labels []*DescribeAddonMetricsResponseBodyDataLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metrics.
+	Metrics []*DescribeAddonMetricsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAddonMetricsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponseBodyData) SetGroup(v string) *DescribeAddonMetricsResponseBodyData {
+	s.Group = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyData) SetLabels(v []*DescribeAddonMetricsResponseBodyDataLabels) *DescribeAddonMetricsResponseBodyData {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyData) SetMetrics(v []*DescribeAddonMetricsResponseBodyDataMetrics) *DescribeAddonMetricsResponseBodyData {
+	s.Metrics = v
+	return s
+}
+
+type DescribeAddonMetricsResponseBodyDataLabels struct {
+	// The description of the tag.
+	//
+	// example:
+	//
+	// The number of times a B-tree page of size PAGE_SIZE was successfully compressed.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// page_size
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The source of the tag.
+	//
+	// example:
+	//
+	// db
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s DescribeAddonMetricsResponseBodyDataLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponseBodyDataLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataLabels) SetDescription(v string) *DescribeAddonMetricsResponseBodyDataLabels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataLabels) SetKey(v string) *DescribeAddonMetricsResponseBodyDataLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataLabels) SetSource(v string) *DescribeAddonMetricsResponseBodyDataLabels {
+	s.Source = &v
+	return s
+}
+
+type DescribeAddonMetricsResponseBodyDataMetrics struct {
+	// The description of the metric.
+	//
+	// example:
+	//
+	// The number of times a B-tree page of size PAGE_SIZE was successfully compressed.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tags.
+	Labels []*DescribeAddonMetricsResponseBodyDataMetricsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metric name.
+	//
+	// example:
+	//
+	// mysql_exporter_collector_duration_seconds
+	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	// The type of the metric.
+	//
+	// example:
+	//
+	// GAUGE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The unit of the metric.
+	//
+	// example:
+	//
+	// bytes
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s DescribeAddonMetricsResponseBodyDataMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponseBodyDataMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetDescription(v string) *DescribeAddonMetricsResponseBodyDataMetrics {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetLabels(v []*DescribeAddonMetricsResponseBodyDataMetricsLabels) *DescribeAddonMetricsResponseBodyDataMetrics {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetMetric(v string) *DescribeAddonMetricsResponseBodyDataMetrics {
+	s.Metric = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetType(v string) *DescribeAddonMetricsResponseBodyDataMetrics {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetrics) SetUnit(v string) *DescribeAddonMetricsResponseBodyDataMetrics {
+	s.Unit = &v
+	return s
+}
+
+type DescribeAddonMetricsResponseBodyDataMetricsLabels struct {
+	// The description of the tag.
+	//
+	// example:
+	//
+	// PAGE_SIZE
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// page_size
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The source of the tag.
+	//
+	// example:
+	//
+	// db
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s DescribeAddonMetricsResponseBodyDataMetricsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponseBodyDataMetricsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetricsLabels) SetDescription(v string) *DescribeAddonMetricsResponseBodyDataMetricsLabels {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetricsLabels) SetKey(v string) *DescribeAddonMetricsResponseBodyDataMetricsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponseBodyDataMetricsLabels) SetSource(v string) *DescribeAddonMetricsResponseBodyDataMetricsLabels {
+	s.Source = &v
+	return s
+}
+
+type DescribeAddonMetricsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAddonMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAddonMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonMetricsResponse) SetHeaders(v map[string]*string) *DescribeAddonMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponse) SetStatusCode(v int32) *DescribeAddonMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAddonMetricsResponse) SetBody(v *DescribeAddonMetricsResponseBody) *DescribeAddonMetricsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAddonReleaseRequest struct {
 	// The environment ID.
 	//
@@ -31214,7 +31625,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// PREPAY
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType           *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentTypeUpdateTime *string `json:"PaymentTypeUpdateTime,omitempty" xml:"PaymentTypeUpdateTime,omitempty"`
 	// The product to which the Prometheus instance belongs. Valid values: arms and cms.
 	//
 	// example:
@@ -31309,6 +31721,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// vsw-f8z73vcja1tqnw90aav5a
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID. This parameter is returned only for Prometheus instances for ECS.
 	//
 	// example:
@@ -31410,6 +31823,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetPaymentType(v string) *GetPro
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetPaymentTypeUpdateTime(v string) *GetPrometheusInstanceResponseBodyData {
+	s.PaymentTypeUpdateTime = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetProduct(v string) *GetPrometheusInstanceResponseBodyData {
 	s.Product = &v
 	return s
@@ -31492,6 +31910,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetUserId(v string) *GetPromethe
 
 func (s *GetPrometheusInstanceResponseBodyData) SetVSwitchId(v string) *GetPrometheusInstanceResponseBodyData {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetVersion(v string) *GetPrometheusInstanceResponseBodyData {
+	s.Version = &v
 	return s
 }
 
@@ -33120,11 +33543,13 @@ type GetRumAppInfoResponseBodyData struct {
 	//
 	// web
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The region where the backend is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BackendServiceTraceRegion *string `json:"BackendServiceTraceRegion,omitempty" xml:"BackendServiceTraceRegion,omitempty"`
-	// The mobile collection configurations.
+	// The collection configurations.
 	BonreeSDKConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfig `json:"BonreeSDKConfig,omitempty" xml:"BonreeSDKConfig,omitempty" type:"Struct"`
 	// The domain name of the SDK.
 	//
@@ -33392,7 +33817,13 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) SetVersionCon
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig struct {
+	// example:
+	//
+	// 500
 	SamplingRate *int32 `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
+	// example:
+	//
+	// 1
 	SamplingType *int32 `json:"samplingType,omitempty" xml:"samplingType,omitempty"`
 }
 
@@ -34505,7 +34936,7 @@ type GetRumExceptionStackResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned message.
 	Data *GetRumExceptionStackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -34576,6 +35007,7 @@ func (s *GetRumExceptionStackResponseBody) SetSuccess(v string) *GetRumException
 }
 
 type GetRumExceptionStackResponseBodyData struct {
+	BinaryImages *string `json:"BinaryImages,omitempty" xml:"BinaryImages,omitempty"`
 	CrashAddress *string `json:"CrashAddress,omitempty" xml:"CrashAddress,omitempty"`
 	CrashReason  *string `json:"CrashReason,omitempty" xml:"CrashReason,omitempty"`
 	// The list of stacks.
@@ -34597,6 +35029,11 @@ func (s GetRumExceptionStackResponseBodyData) String() string {
 
 func (s GetRumExceptionStackResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetRumExceptionStackResponseBodyData) SetBinaryImages(v string) *GetRumExceptionStackResponseBodyData {
+	s.BinaryImages = &v
+	return s
 }
 
 func (s *GetRumExceptionStackResponseBodyData) SetCrashAddress(v string) *GetRumExceptionStackResponseBodyData {
@@ -35570,7 +36007,10 @@ type GetStackRequest struct {
 	// example:
 	//
 	// 0.1
-	RpcID  *string `json:"RpcID,omitempty" xml:"RpcID,omitempty"`
+	RpcID *string `json:"RpcID,omitempty" xml:"RpcID,omitempty"`
+	// example:
+	//
+	// 88c32dfa4b******
 	SpanID *string `json:"SpanID,omitempty" xml:"SpanID,omitempty"`
 	// The start time of the call method.
 	//
@@ -35666,7 +36106,10 @@ type GetStackResponseBodyStackInfo struct {
 	// example:
 	//
 	// Tomcat Servlet Process
-	Api       *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	Api *string `json:"Api,omitempty" xml:"Api,omitempty"`
+	// example:
+	//
+	// 1
 	CallCount *string `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
 	// The duration. Unit: milliseconds.
 	//
@@ -47766,6 +48209,761 @@ func (s *ListEnvServiceMonitorsResponse) SetBody(v *ListEnvServiceMonitorsRespon
 	return s
 }
 
+type ListEnvironmentAddonsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvironmentAddonsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsRequest) SetEnvironmentId(v string) *ListEnvironmentAddonsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsRequest) SetRegionId(v string) *ListEnvironmentAddonsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result of the operation.
+	Data *ListEnvironmentAddonsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 32940175-181B-4B93-966E-4BB69176****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBody) SetCode(v int32) *ListEnvironmentAddonsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBody) SetData(v *ListEnvironmentAddonsResponseBodyData) *ListEnvironmentAddonsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBody) SetMessage(v string) *ListEnvironmentAddonsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBody) SetRequestId(v string) *ListEnvironmentAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBody) SetSuccess(v bool) *ListEnvironmentAddonsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyData struct {
+	// The queried add-ons.
+	Addons []*ListEnvironmentAddonsResponseBodyDataAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyData) SetAddons(v []*ListEnvironmentAddonsResponseBodyDataAddons) *ListEnvironmentAddonsResponseBodyData {
+	s.Addons = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyData) SetTotal(v int64) *ListEnvironmentAddonsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddons struct {
+	// The alias of the add-on.
+	//
+	// example:
+	//
+	// MySQL
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The tags of the add-on.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The dashboards.
+	Dashboards []*ListEnvironmentAddonsResponseBodyDataAddonsDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
+	// The description of the add-on.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The supported environments.
+	Environments []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
+	// The URL of the icon.
+	//
+	// example:
+	//
+	// http://xxxx
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// The collection of keywords.
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The time when the instance was last created.
+	//
+	// example:
+	//
+	// 2023-09-22T16:56:29+08:00
+	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
+	// The name of the add-on.
+	//
+	// example:
+	//
+	// mysql
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the add-on can be installed only once.
+	//
+	// example:
+	//
+	// false
+	Once *bool `json:"Once,omitempty" xml:"Once,omitempty"`
+	// The scenario.
+	//
+	// example:
+	//
+	// database
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The version of the agent.
+	//
+	// example:
+	//
+	// 0.0.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The weight.
+	//
+	// example:
+	//
+	// 857
+	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddons) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetAlias(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetCategories(v []*string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Categories = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetDashboards(v []*ListEnvironmentAddonsResponseBodyDataAddonsDashboards) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Dashboards = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetDescription(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetEnvironments(v []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Environments = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetIcon(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetKeywords(v []*string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Keywords = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetLanguage(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Language = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetLatestReleaseCreateTime(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.LatestReleaseCreateTime = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetName(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetOnce(v bool) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Once = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetScene(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetVersion(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Version = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddons) SetWeight(v string) *ListEnvironmentAddonsResponseBodyDataAddons {
+	s.Weight = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsDashboards struct {
+	// The description of the dashboard.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the dashboard.
+	//
+	// example:
+	//
+	// mysql-overview
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The URL of the dashboard.
+	//
+	// example:
+	//
+	// http://xxxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsDashboards) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsDashboards) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsDashboards) SetDescription(v string) *ListEnvironmentAddonsResponseBodyDataAddonsDashboards {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsDashboards) SetName(v string) *ListEnvironmentAddonsResponseBodyDataAddonsDashboards {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsDashboards) SetUrl(v string) *ListEnvironmentAddonsResponseBodyDataAddonsDashboards {
+	s.Url = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsEnvironments struct {
+	// The dependencies of the environment.
+	Dependencies *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Struct"`
+	// The description of the environment.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the feature is enabled.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The tag of the environment.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The name of the environment.
+	//
+	// example:
+	//
+	// CS
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The control policies in the environment.
+	Policies *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetDependencies(v *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Dependencies = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetDescription(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetEnable(v bool) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetLabel(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Label = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetName(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) SetPolicies(v *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments {
+	s.Policies = v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies struct {
+	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
+	// The feature that can be installed in the environment.
+	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
+	// The services.
+	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) SetClusterTypes(v []*string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies {
+	s.ClusterTypes = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) SetFeatures(v map[string]*bool) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies {
+	s.Features = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) SetServices(v []*string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies {
+	s.Services = v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies struct {
+	// The default alert status.
+	//
+	// example:
+	//
+	// default
+	AlertDefaultStatus *string `json:"AlertDefaultStatus,omitempty" xml:"AlertDefaultStatus,omitempty"`
+	// The default installation status.
+	//
+	// example:
+	//
+	// false
+	DefaultInstall              *bool                                                                           `json:"DefaultInstall,omitempty" xml:"DefaultInstall,omitempty"`
+	EnableServiceAccount        *bool                                                                           `json:"EnableServiceAccount,omitempty" xml:"EnableServiceAccount,omitempty"`
+	MetricCheckRule             *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule `json:"MetricCheckRule,omitempty" xml:"MetricCheckRule,omitempty" type:"Struct"`
+	NeedRestartAfterIntegration *bool                                                                           `json:"NeedRestartAfterIntegration,omitempty" xml:"NeedRestartAfterIntegration,omitempty"`
+	// The supported protocols.
+	Protocols []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The target name of the add-on.
+	//
+	// example:
+	//
+	// cloud-rds-mysql
+	TargetAddonName *string `json:"TargetAddonName,omitempty" xml:"TargetAddonName,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetAlertDefaultStatus(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.AlertDefaultStatus = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetDefaultInstall(v bool) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.DefaultInstall = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetEnableServiceAccount(v bool) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.EnableServiceAccount = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetMetricCheckRule(v *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.MetricCheckRule = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetNeedRestartAfterIntegration(v bool) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.NeedRestartAfterIntegration = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetProtocols(v []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.Protocols = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) SetTargetAddonName(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies {
+	s.TargetAddonName = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule struct {
+	PromQL []*string `json:"PromQL,omitempty" xml:"PromQL,omitempty" type:"Repeated"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule) SetPromQL(v []*string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule {
+	s.PromQL = v
+	return s
+}
+
+type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols struct {
+	// The description of the protocol.
+	//
+	// example:
+	//
+	// ARMS
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the protocol icon.
+	//
+	// example:
+	//
+	// http://xxxxxxx
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// The tag of the protocol.
+	//
+	// example:
+	//
+	// ARMS
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The name of the protocol.
+	//
+	// example:
+	//
+	// arms
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) SetDescription(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) SetIcon(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) SetLabel(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols {
+	s.Label = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols) SetName(v string) *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols {
+	s.Name = &v
+	return s
+}
+
+type ListEnvironmentAddonsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnvironmentAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnvironmentAddonsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAddonsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAddonsResponse) SetHeaders(v map[string]*string) *ListEnvironmentAddonsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponse) SetStatusCode(v int32) *ListEnvironmentAddonsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponse) SetBody(v *ListEnvironmentAddonsResponseBody) *ListEnvironmentAddonsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentAlertRulesRequest struct {
+	// example:
+	//
+	// mysql
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// database
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+}
+
+func (s ListEnvironmentAlertRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAlertRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAlertRulesRequest) SetAddonName(v string) *ListEnvironmentAlertRulesRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesRequest) SetEnvironmentId(v string) *ListEnvironmentAlertRulesRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesRequest) SetRegionId(v string) *ListEnvironmentAlertRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesRequest) SetScene(v string) *ListEnvironmentAlertRulesRequest {
+	s.Scene = &v
+	return s
+}
+
+type ListEnvironmentAlertRulesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListEnvironmentAlertRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4C518054-852F-4023-ABC1-4AF95FF7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentAlertRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAlertRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAlertRulesResponseBody) SetCode(v int32) *ListEnvironmentAlertRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBody) SetData(v *ListEnvironmentAlertRulesResponseBodyData) *ListEnvironmentAlertRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBody) SetMessage(v string) *ListEnvironmentAlertRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBody) SetRequestId(v string) *ListEnvironmentAlertRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBody) SetSuccess(v bool) *ListEnvironmentAlertRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentAlertRulesResponseBodyData struct {
+	Groups []*string                                         `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	Rules  []*ListEnvironmentAlertRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 26
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListEnvironmentAlertRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAlertRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAlertRulesResponseBodyData) SetGroups(v []*string) *ListEnvironmentAlertRulesResponseBodyData {
+	s.Groups = v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBodyData) SetRules(v []*ListEnvironmentAlertRulesResponseBodyDataRules) *ListEnvironmentAlertRulesResponseBodyData {
+	s.Rules = v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBodyData) SetTotal(v int64) *ListEnvironmentAlertRulesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentAlertRulesResponseBodyDataRules struct {
+	// example:
+	//
+	// 9502571
+	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// example:
+	//
+	// mysql-CS-MySQLInnoDBLogWaits_lu
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEnvironmentAlertRulesResponseBodyDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAlertRulesResponseBodyDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAlertRulesResponseBodyDataRules) SetAlertId(v int64) *ListEnvironmentAlertRulesResponseBodyDataRules {
+	s.AlertId = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponseBodyDataRules) SetName(v string) *ListEnvironmentAlertRulesResponseBodyDataRules {
+	s.Name = &v
+	return s
+}
+
+type ListEnvironmentAlertRulesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnvironmentAlertRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnvironmentAlertRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentAlertRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentAlertRulesResponse) SetHeaders(v map[string]*string) *ListEnvironmentAlertRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponse) SetStatusCode(v int32) *ListEnvironmentAlertRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentAlertRulesResponse) SetBody(v *ListEnvironmentAlertRulesResponseBody) *ListEnvironmentAlertRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListEnvironmentDashboardsRequest struct {
 	// Name of Addon,One of AddonName and Scene must be filled in.
 	//
@@ -48307,6 +49505,661 @@ func (s *ListEnvironmentFeaturesResponse) SetStatusCode(v int32) *ListEnvironmen
 }
 
 func (s *ListEnvironmentFeaturesResponse) SetBody(v *ListEnvironmentFeaturesResponseBody) *ListEnvironmentFeaturesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentKubeResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pod
+	Kind           *string            `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	LabelSelectors map[string]*string `json:"LabelSelectors,omitempty" xml:"LabelSelectors,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesRequest) SetEnvironmentId(v string) *ListEnvironmentKubeResourcesRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesRequest) SetKind(v string) *ListEnvironmentKubeResourcesRequest {
+	s.Kind = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesRequest) SetLabelSelectors(v map[string]*string) *ListEnvironmentKubeResourcesRequest {
+	s.LabelSelectors = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesRequest) SetNamespace(v string) *ListEnvironmentKubeResourcesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesRequest) SetRegionId(v string) *ListEnvironmentKubeResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvironmentKubeResourcesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pod
+	Kind                 *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	LabelSelectorsShrink *string `json:"LabelSelectors,omitempty" xml:"LabelSelectors,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesShrinkRequest) SetEnvironmentId(v string) *ListEnvironmentKubeResourcesShrinkRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesShrinkRequest) SetKind(v string) *ListEnvironmentKubeResourcesShrinkRequest {
+	s.Kind = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesShrinkRequest) SetLabelSelectorsShrink(v string) *ListEnvironmentKubeResourcesShrinkRequest {
+	s.LabelSelectorsShrink = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesShrinkRequest) SetNamespace(v string) *ListEnvironmentKubeResourcesShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesShrinkRequest) SetRegionId(v string) *ListEnvironmentKubeResourcesShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvironmentKubeResourcesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListEnvironmentKubeResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C21AB7CF-B7AF-410F-BD61-82D1567F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBody) SetCode(v int32) *ListEnvironmentKubeResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBody) SetData(v []*ListEnvironmentKubeResourcesResponseBodyData) *ListEnvironmentKubeResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBody) SetMessage(v string) *ListEnvironmentKubeResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBody) SetRequestId(v string) *ListEnvironmentKubeResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBody) SetSuccess(v bool) *ListEnvironmentKubeResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentKubeResourcesResponseBodyData struct {
+	// example:
+	//
+	// v1
+	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	// example:
+	//
+	// Pod
+	Kind     *string                                               `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Metadata *ListEnvironmentKubeResourcesResponseBodyDataMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// {
+	//
+	//         "dnsPolicy": "ClusterFirst",
+	//
+	//         "nodeName": "cn-hangzhou.172.16.0.60",
+	//
+	//         "terminationGracePeriodSeconds": 30,
+	//
+	//         "enableServiceLinks": true,
+	//
+	//         "serviceAccountName": "arms-prom-operator",
+	//
+	//         "volumes": [
+	//
+	//           {
+	//
+	//             "name": "certs",
+	//
+	//             "secret": {
+	//
+	//               "secretName": "arms-prometheus-ack-arms-prometheus-cert",
+	//
+	//               "defaultMode": 420
+	//
+	//             }
+	//
+	//           }
+	Spec interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// run
+	Status interface{} `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyData) SetApiVersion(v string) *ListEnvironmentKubeResourcesResponseBodyData {
+	s.ApiVersion = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyData) SetKind(v string) *ListEnvironmentKubeResourcesResponseBodyData {
+	s.Kind = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyData) SetMetadata(v *ListEnvironmentKubeResourcesResponseBodyDataMetadata) *ListEnvironmentKubeResourcesResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyData) SetSpec(v interface{}) *ListEnvironmentKubeResourcesResponseBodyData {
+	s.Spec = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyData) SetStatus(v interface{}) *ListEnvironmentKubeResourcesResponseBodyData {
+	s.Status = v
+	return s
+}
+
+type ListEnvironmentKubeResourcesResponseBodyDataMetadata struct {
+	Annotations map[string]*string `json:"Annotations,omitempty" xml:"Annotations,omitempty"`
+	Labels      map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// arms-prometheus-ack-arms-prometheus-c577b6cc8-mvdwd
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// arms-prom
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesResponseBodyDataMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesResponseBodyDataMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyDataMetadata) SetAnnotations(v map[string]*string) *ListEnvironmentKubeResourcesResponseBodyDataMetadata {
+	s.Annotations = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyDataMetadata) SetLabels(v map[string]*string) *ListEnvironmentKubeResourcesResponseBodyDataMetadata {
+	s.Labels = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyDataMetadata) SetName(v string) *ListEnvironmentKubeResourcesResponseBodyDataMetadata {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponseBodyDataMetadata) SetNamespace(v string) *ListEnvironmentKubeResourcesResponseBodyDataMetadata {
+	s.Namespace = &v
+	return s
+}
+
+type ListEnvironmentKubeResourcesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnvironmentKubeResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnvironmentKubeResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentKubeResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentKubeResourcesResponse) SetHeaders(v map[string]*string) *ListEnvironmentKubeResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponse) SetStatusCode(v int32) *ListEnvironmentKubeResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentKubeResourcesResponse) SetBody(v *ListEnvironmentKubeResourcesResponseBody) *ListEnvironmentKubeResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentMetricTargetsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// example:
+	//
+	// blackbox
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvironmentMetricTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsRequest) SetEnvironmentId(v string) *ListEnvironmentMetricTargetsRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsRequest) SetJobName(v string) *ListEnvironmentMetricTargetsRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsRequest) SetRegionId(v string) *ListEnvironmentMetricTargetsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvironmentMetricTargetsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListEnvironmentMetricTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16AF921B-8187-489F-9913-43C808B4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentMetricTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBody) SetCode(v int32) *ListEnvironmentMetricTargetsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBody) SetData(v *ListEnvironmentMetricTargetsResponseBodyData) *ListEnvironmentMetricTargetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBody) SetMessage(v string) *ListEnvironmentMetricTargetsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBody) SetRequestId(v string) *ListEnvironmentMetricTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBody) SetSuccess(v bool) *ListEnvironmentMetricTargetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentMetricTargetsResponseBodyData struct {
+	ActiveTargets  []*ListEnvironmentMetricTargetsResponseBodyDataActiveTargets  `json:"ActiveTargets,omitempty" xml:"ActiveTargets,omitempty" type:"Repeated"`
+	DroppedTargets []*ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets `json:"DroppedTargets,omitempty" xml:"DroppedTargets,omitempty" type:"Repeated"`
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyData) SetActiveTargets(v []*ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) *ListEnvironmentMetricTargetsResponseBodyData {
+	s.ActiveTargets = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyData) SetDroppedTargets(v []*ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) *ListEnvironmentMetricTargetsResponseBodyData {
+	s.DroppedTargets = v
+	return s
+}
+
+type ListEnvironmentMetricTargetsResponseBodyDataActiveTargets struct {
+	DiscoveredLabels map[string]*string `json:"DiscoveredLabels,omitempty" xml:"DiscoveredLabels,omitempty"`
+	// example:
+	//
+	// http://xxx
+	GlobalUrl *string `json:"GlobalUrl,omitempty" xml:"GlobalUrl,omitempty"`
+	// example:
+	//
+	// up
+	Health *string            `json:"Health,omitempty" xml:"Health,omitempty"`
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// Get \\"http://172.16.0.86:9104/metrics\\": dial tcp 172.16.0.86:9104: connect: connection refused
+	LastError *string `json:"LastError,omitempty" xml:"LastError,omitempty"`
+	// example:
+	//
+	// 2023-10-12T07:15:47.306691514Z
+	LastScrape *string `json:"LastScrape,omitempty" xml:"LastScrape,omitempty"`
+	// example:
+	//
+	// 0.00127593
+	LastScrapeDuration *float64 `json:"LastScrapeDuration,omitempty" xml:"LastScrapeDuration,omitempty"`
+	// example:
+	//
+	// 122
+	LastScrapeSeries *int64 `json:"LastScrapeSeries,omitempty" xml:"LastScrapeSeries,omitempty"`
+	// example:
+	//
+	// arms-prom/mysql-exporter-mysql-1694429267986-sm/0"
+	ScrapePool *string `json:"ScrapePool,omitempty" xml:"ScrapePool,omitempty"`
+	// example:
+	//
+	// http://xxxx
+	ScrapeUrl *string `json:"ScrapeUrl,omitempty" xml:"ScrapeUrl,omitempty"`
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetDiscoveredLabels(v map[string]*string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.DiscoveredLabels = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetGlobalUrl(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.GlobalUrl = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetHealth(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.Health = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetLabels(v map[string]*string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.Labels = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetLastError(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.LastError = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetLastScrape(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.LastScrape = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetLastScrapeDuration(v float64) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.LastScrapeDuration = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetLastScrapeSeries(v int64) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.LastScrapeSeries = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetScrapePool(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.ScrapePool = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets) SetScrapeUrl(v string) *ListEnvironmentMetricTargetsResponseBodyDataActiveTargets {
+	s.ScrapeUrl = &v
+	return s
+}
+
+type ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets struct {
+	DiscoveredLabels map[string]*string `json:"DiscoveredLabels,omitempty" xml:"DiscoveredLabels,omitempty"`
+	// example:
+	//
+	// http://xxx
+	GlobalUrl *string `json:"GlobalUrl,omitempty" xml:"GlobalUrl,omitempty"`
+	// example:
+	//
+	// up
+	Health *string            `json:"Health,omitempty" xml:"Health,omitempty"`
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// Get \\"http://172.16.0.86:9104/metrics\\": dial tcp 172.16.0.86:9104: connect: connection refused
+	LastError *string `json:"LastError,omitempty" xml:"LastError,omitempty"`
+	// example:
+	//
+	// 2023-10-12T07:15:47.306691514Z
+	LastScrape *string `json:"LastScrape,omitempty" xml:"LastScrape,omitempty"`
+	// example:
+	//
+	// 0.00127593
+	LastScrapeDuration *float64 `json:"LastScrapeDuration,omitempty" xml:"LastScrapeDuration,omitempty"`
+	// example:
+	//
+	// 122
+	LastScrapeSeries *int64 `json:"LastScrapeSeries,omitempty" xml:"LastScrapeSeries,omitempty"`
+	// example:
+	//
+	// arms-prom/mysql-exporter-mysql-1694429267986-sm/0"
+	ScrapePool *string `json:"ScrapePool,omitempty" xml:"ScrapePool,omitempty"`
+	// example:
+	//
+	// http://xxxx
+	ScrapeUrl *string `json:"ScrapeUrl,omitempty" xml:"ScrapeUrl,omitempty"`
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetDiscoveredLabels(v map[string]*string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.DiscoveredLabels = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetGlobalUrl(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.GlobalUrl = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetHealth(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.Health = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetLabels(v map[string]*string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.Labels = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetLastError(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.LastError = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetLastScrape(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.LastScrape = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetLastScrapeDuration(v float64) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.LastScrapeDuration = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetLastScrapeSeries(v int64) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.LastScrapeSeries = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetScrapePool(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.ScrapePool = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets) SetScrapeUrl(v string) *ListEnvironmentMetricTargetsResponseBodyDataDroppedTargets {
+	s.ScrapeUrl = &v
+	return s
+}
+
+type ListEnvironmentMetricTargetsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnvironmentMetricTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnvironmentMetricTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentMetricTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentMetricTargetsResponse) SetHeaders(v map[string]*string) *ListEnvironmentMetricTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponse) SetStatusCode(v int32) *ListEnvironmentMetricTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentMetricTargetsResponse) SetBody(v *ListEnvironmentMetricTargetsResponseBody) *ListEnvironmentMetricTargetsResponse {
 	s.Body = v
 	return s
 }
@@ -67920,7 +69773,8 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// if can be null:
 	// true
-	EnableAuthToken *bool `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	EnableAuthToken *bool   `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
+	PaymentType     *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -67983,6 +69837,11 @@ func (s *UpdatePrometheusInstanceRequest) SetEnableAuthFreeWrite(v bool) *Update
 
 func (s *UpdatePrometheusInstanceRequest) SetEnableAuthToken(v bool) *UpdatePrometheusInstanceRequest {
 	s.EnableAuthToken = &v
+	return s
+}
+
+func (s *UpdatePrometheusInstanceRequest) SetPaymentType(v string) *UpdatePrometheusInstanceRequest {
+	s.PaymentType = &v
 	return s
 }
 
@@ -73763,12 +75622,28 @@ func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWor
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountNumber)) {
+		query["AccountNumber"] = request.AccountNumber
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
 		query["AliyunLang"] = request.AliyunLang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAccountNumber)) {
+		query["CustomAccountNumber"] = request.CustomAccountNumber
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GrafanaVersion)) {
@@ -73785,6 +75660,10 @@ func (client *Client) CreateGrafanaWorkspaceWithOptions(tmpReq *CreateGrafanaWor
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -74891,6 +76770,10 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 	if !tea.BoolValue(util.IsUnset(request.GrafanaInstanceId)) {
 		query["GrafanaInstanceId"] = request.GrafanaInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -78173,6 +80056,82 @@ func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebhookContactResponse{}
 	_body, _err := client.DeleteWebhookContactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the metric details of a component.
+//
+// @param request - DescribeAddonMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAddonMetricsResponse
+func (client *Client) DescribeAddonMetricsWithOptions(request *DescribeAddonMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeAddonMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonVersion)) {
+		query["AddonVersion"] = request.AddonVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentType)) {
+		query["EnvironmentType"] = request.EnvironmentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddonMetrics"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAddonMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the metric details of a component.
+//
+// @param request - DescribeAddonMetricsRequest
+//
+// @return DescribeAddonMetricsResponse
+func (client *Client) DescribeAddonMetrics(request *DescribeAddonMetricsRequest) (_result *DescribeAddonMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAddonMetricsResponse{}
+	_body, _err := client.DescribeAddonMetricsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -83690,6 +85649,142 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 
 // Summary:
 //
+// 环境addon列表
+//
+// @param request - ListEnvironmentAddonsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentAddonsResponse
+func (client *Client) ListEnvironmentAddonsWithOptions(request *ListEnvironmentAddonsRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentAddonsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentAddons"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境addon列表
+//
+// @param request - ListEnvironmentAddonsRequest
+//
+// @return ListEnvironmentAddonsResponse
+func (client *Client) ListEnvironmentAddons(request *ListEnvironmentAddonsRequest) (_result *ListEnvironmentAddonsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentAddonsResponse{}
+	_body, _err := client.ListEnvironmentAddonsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境的告警组列表
+//
+// @param request - ListEnvironmentAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentAlertRulesResponse
+func (client *Client) ListEnvironmentAlertRulesWithOptions(request *ListEnvironmentAlertRulesRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentAlertRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
+		query["AddonName"] = request.AddonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentAlertRules"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentAlertRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境的告警组列表
+//
+// @param request - ListEnvironmentAlertRulesRequest
+//
+// @return ListEnvironmentAlertRulesResponse
+func (client *Client) ListEnvironmentAlertRules(request *ListEnvironmentAlertRulesRequest) (_result *ListEnvironmentAlertRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentAlertRulesResponse{}
+	_body, _err := client.ListEnvironmentAlertRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about a dashboard of an environment instance.
 //
 // @param request - ListEnvironmentDashboardsRequest
@@ -83821,6 +85916,156 @@ func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvironmentFeaturesResponse{}
 	_body, _err := client.ListEnvironmentFeaturesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境中的kube资源列表
+//
+// @param tmpReq - ListEnvironmentKubeResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentKubeResourcesResponse
+func (client *Client) ListEnvironmentKubeResourcesWithOptions(tmpReq *ListEnvironmentKubeResourcesRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListEnvironmentKubeResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelectors)) {
+		request.LabelSelectorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelectors, tea.String("LabelSelectors"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Kind)) {
+		query["Kind"] = request.Kind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorsShrink)) {
+		query["LabelSelectors"] = request.LabelSelectorsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentKubeResources"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentKubeResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境中的kube资源列表
+//
+// @param request - ListEnvironmentKubeResourcesRequest
+//
+// @return ListEnvironmentKubeResourcesResponse
+func (client *Client) ListEnvironmentKubeResources(request *ListEnvironmentKubeResourcesRequest) (_result *ListEnvironmentKubeResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentKubeResourcesResponse{}
+	_body, _err := client.ListEnvironmentKubeResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境指标target列表
+//
+// @param request - ListEnvironmentMetricTargetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnvironmentMetricTargetsResponse
+func (client *Client) ListEnvironmentMetricTargetsWithOptions(request *ListEnvironmentMetricTargetsRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentMetricTargets"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentMetricTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 环境指标target列表
+//
+// @param request - ListEnvironmentMetricTargetsRequest
+//
+// @return ListEnvironmentMetricTargetsResponse
+func (client *Client) ListEnvironmentMetricTargets(request *ListEnvironmentMetricTargetsRequest) (_result *ListEnvironmentMetricTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentMetricTargetsResponse{}
+	_body, _err := client.ListEnvironmentMetricTargetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89479,6 +91724,10 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(request *UpdatePrometh
 
 	if !tea.BoolValue(util.IsUnset(request.EnableAuthToken)) {
 		query["EnableAuthToken"] = request.EnableAuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
