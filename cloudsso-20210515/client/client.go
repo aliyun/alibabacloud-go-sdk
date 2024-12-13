@@ -577,16 +577,8 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	//
@@ -1912,7 +1904,7 @@ func (s *CreateUserProvisioningResponseBody) SetUserProvisioning(v *CreateUserPr
 }
 
 type CreateUserProvisioningResponseBodyUserProvisioning struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -2009,10 +2001,6 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	// testTargetName
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the member.
-	//
-	// example:
-	//
-	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -2020,7 +2008,7 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The modification time.
+	// The modification time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -2340,16 +2328,8 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	//
@@ -3104,6 +3084,8 @@ type DeleteUserProvisioningEventRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning event.
 	//
+	// You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
+	//
 	// example:
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
@@ -3312,16 +3294,8 @@ type DeprovisionAccessConfigurationResponseBodyTasks struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	//
@@ -3431,6 +3405,8 @@ func (s *DeprovisionAccessConfigurationResponse) SetBody(v *DeprovisionAccessCon
 }
 
 type DisableDelegateAccountRequest struct {
+	// The ID of the delegated administrator account of CloudSSO.
+	//
 	// example:
 	//
 	// 1200971777065046
@@ -3451,6 +3427,8 @@ func (s *DisableDelegateAccountRequest) SetAccountId(v string) *DisableDelegateA
 }
 
 type DisableDelegateAccountResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 12B3E332-DD16-515B-B695-39BA233AA172
@@ -3551,6 +3529,8 @@ func (s *DisableServiceResponse) SetBody(v *DisableServiceResponseBody) *Disable
 }
 
 type EnableDelegateAccountRequest struct {
+	// The ID of the delegated administrator account of CloudSSO.
+	//
 	// example:
 	//
 	// 180658567986****
@@ -3571,6 +3551,8 @@ func (s *EnableDelegateAccountRequest) SetAccountId(v string) *EnableDelegateAcc
 }
 
 type EnableDelegateAccountResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
@@ -4256,7 +4238,12 @@ type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
 	// example:
 	//
 	// 0
-	InProgressTaskCount                     *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
+	InProgressTaskCount *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
+	// The number of inline policies that can be configured for an access configuration.
+	//
+	// example:
+	//
+	// 1
 	InlinePolicyPerAccessConfigurationQuota *int32 `json:"InlinePolicyPerAccessConfigurationQuota,omitempty" xml:"InlinePolicyPerAccessConfigurationQuota,omitempty"`
 	// The region ID of the directory.
 	//
@@ -4479,6 +4466,16 @@ func (s *GetExternalSAMLIdentityProviderResponseBody) SetSAMLIdentityProviderCon
 }
 
 type GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration struct {
+	// The Binding method for initiating a SAML request. Values:
+	//
+	// - Post: Initiate the SAML request using the Post method.
+	//
+	// - Redirect: Initiate the SAML request using the Redirect method.
+	//
+	// example:
+	//
+	// Post
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
 	// The ID of the SAML signing certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The time when the IdP was configured for the first time.
@@ -4506,10 +4503,6 @@ type GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguratio
 	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
-	//
-	// example:
-	//
-	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
@@ -4545,6 +4538,11 @@ func (s GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigura
 
 func (s GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) GoString() string {
 	return s.String()
+}
+
+func (s *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) SetBindingType(v string) *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration {
+	s.BindingType = &v
+	return s
 }
 
 func (s *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) SetCertificateIds(v []*string) *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration {
@@ -4845,6 +4843,16 @@ func (s *GetLoginPreferenceResponseBody) SetRequestId(v string) *GetLoginPrefere
 }
 
 type GetLoginPreferenceResponseBodyLoginPreference struct {
+	// Whether the user can obtain program access credentials on the portal after logging in. Values:
+	//
+	// - True: Yes.
+	//
+	// - False (default): No.
+	//
+	// example:
+	//
+	// True
+	AllowUserToGetCredentials *bool `json:"AllowUserToGetCredentials,omitempty" xml:"AllowUserToGetCredentials,omitempty"`
 	// The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist.
 	//
 	// The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
@@ -4863,6 +4871,11 @@ func (s GetLoginPreferenceResponseBodyLoginPreference) String() string {
 
 func (s GetLoginPreferenceResponseBodyLoginPreference) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginPreferenceResponseBodyLoginPreference) SetAllowUserToGetCredentials(v bool) *GetLoginPreferenceResponseBodyLoginPreference {
+	s.AllowUserToGetCredentials = &v
+	return s
 }
 
 func (s *GetLoginPreferenceResponseBodyLoginPreference) SetLoginNetworkMasks(v string) *GetLoginPreferenceResponseBodyLoginPreference {
@@ -5814,16 +5827,8 @@ type GetTaskResponseBodyTask struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	//
@@ -6837,10 +6842,6 @@ type GetUserProvisioningResponseBodyUserProvisioning struct {
 	// testRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the member.
-	//
-	// example:
-	//
-	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -7142,6 +7143,8 @@ type GetUserProvisioningEventRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning event.
 	//
+	// You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
+	//
 	// example:
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
@@ -7196,7 +7199,7 @@ func (s *GetUserProvisioningEventResponseBody) SetUserProvisioningEvent(v *GetUs
 }
 
 type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -7246,7 +7249,7 @@ type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time at which the RAM user provisioning event was last executed.
+	// The time at which the RAM user provisioning event was last executed. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -7315,10 +7318,6 @@ type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
 	// exampleRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
-	//
-	// example:
-	//
-	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -7326,7 +7325,7 @@ type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The modification time.
+	// The modification time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -8059,16 +8058,8 @@ type ListAccessAssignmentsResponseBodyAccessAssignments struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
@@ -8417,16 +8408,8 @@ type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisio
 	// SharedServices_5009****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/fd-pjM8oy****/101522521960****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/Core/SharedServices_5009****
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
@@ -10833,16 +10816,8 @@ type ListTasksResponseBodyTasks struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
@@ -11136,7 +11111,7 @@ func (s *ListUserProvisioningEventsResponseBody) SetUserProvisioningEvents(v []*
 }
 
 type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -11186,7 +11161,7 @@ type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time at which the RAM user provisioning event was last executed.
+	// The time at which the RAM user provisioning event was last executed. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -11194,9 +11169,9 @@ type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
 	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	// 	- If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
 	//
-	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	// 	- If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
 	//
 	// example:
 	//
@@ -11254,11 +11229,7 @@ type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
 	//
 	// exampleRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path of the resource directory in which you create the RAM user provisioning for the object.
-	//
-	// example:
-	//
-	// rd-******/root/test**
+	// The path of the resource directory in which you create the RAM user provisioning for the member.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -11266,7 +11237,7 @@ type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The modification time.
+	// The modification time. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -11690,10 +11661,6 @@ type ListUserProvisioningsResponseBodyUserProvisionings struct {
 	// testRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
-	//
-	// example:
-	//
-	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -12337,16 +12304,8 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
-	//
-	// example:
-	//
-	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
 	//
@@ -12909,6 +12868,8 @@ type RetryUserProvisioningEventRequest struct {
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the RAM user provisioning event.
 	//
+	// You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
+	//
 	// example:
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
@@ -12990,6 +12951,16 @@ func (s *RetryUserProvisioningEventResponse) SetBody(v *RetryUserProvisioningEve
 }
 
 type SetExternalSAMLIdentityProviderRequest struct {
+	// The Binding method for initiating a SAML request. Values:
+	//
+	// - Post: Initiate the SAML request using the Post method.
+	//
+	// - Redirect: Initiate the SAML request using the Redirect method.
+	//
+	// example:
+	//
+	// Redirect
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
 	// The ID of the directory.
 	//
 	// example:
@@ -13011,10 +12982,6 @@ type SetExternalSAMLIdentityProviderRequest struct {
 	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
-	//
-	// example:
-	//
-	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
@@ -13050,6 +13017,11 @@ func (s SetExternalSAMLIdentityProviderRequest) String() string {
 
 func (s SetExternalSAMLIdentityProviderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetExternalSAMLIdentityProviderRequest) SetBindingType(v string) *SetExternalSAMLIdentityProviderRequest {
+	s.BindingType = &v
+	return s
 }
 
 func (s *SetExternalSAMLIdentityProviderRequest) SetDirectoryId(v string) *SetExternalSAMLIdentityProviderRequest {
@@ -13117,6 +13089,16 @@ func (s *SetExternalSAMLIdentityProviderResponseBody) SetSAMLIdentityProviderCon
 }
 
 type SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration struct {
+	// The Binding method for initiating a SAML request. Values:
+	//
+	// - Post: Initiate the SAML request using the Post method.
+	//
+	// - Redirect: Initiate the SAML request using the Redirect method.
+	//
+	// example:
+	//
+	// Redirect
+	BindingType *string `json:"BindingType,omitempty" xml:"BindingType,omitempty"`
 	// The ID of the SAML signing certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The time when the IdP was configured for the first time.
@@ -13144,10 +13126,6 @@ type SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguratio
 	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
-	//
-	// example:
-	//
-	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
@@ -13183,6 +13161,11 @@ func (s SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfigura
 
 func (s SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) GoString() string {
 	return s.String()
+}
+
+func (s *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) SetBindingType(v string) *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration {
+	s.BindingType = &v
+	return s
 }
 
 func (s *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration) SetCertificateIds(v []*string) *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration {
@@ -13260,6 +13243,7 @@ func (s *SetExternalSAMLIdentityProviderResponse) SetBody(v *SetExternalSAMLIden
 }
 
 type SetLoginPreferenceRequest struct {
+	AllowUserToGetCredentials *bool `json:"AllowUserToGetCredentials,omitempty" xml:"AllowUserToGetCredentials,omitempty"`
 	// The ID of the directory.
 	//
 	// example:
@@ -13290,6 +13274,11 @@ func (s SetLoginPreferenceRequest) String() string {
 
 func (s SetLoginPreferenceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetLoginPreferenceRequest) SetAllowUserToGetCredentials(v bool) *SetLoginPreferenceRequest {
+	s.AllowUserToGetCredentials = &v
+	return s
 }
 
 func (s *SetLoginPreferenceRequest) SetDirectoryId(v string) *SetLoginPreferenceRequest {
@@ -15260,10 +15249,6 @@ type UpdateUserProvisioningResponseBodyUserProvisioning struct {
 	// testMemberName
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
-	//
-	// example:
-	//
-	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
 	//
@@ -16564,6 +16549,10 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 //
 // Creates a Resource Access Management (RAM) user provisioning.
 //
+// Description:
+//
+// You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+//
 // @param request - CreateUserProvisioningRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16633,6 +16622,10 @@ func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvi
 // Summary:
 //
 // Creates a Resource Access Management (RAM) user provisioning.
+//
+// Description:
+//
+// You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
 //
 // @param request - CreateUserProvisioningRequest
 //
@@ -17482,7 +17475,7 @@ func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessC
 
 // Summary:
 //
-// DisableDelegateAccount
+// Disables the delegated administrator account of CloudSSO.
 //
 // @param request - DisableDelegateAccountRequest
 //
@@ -17524,7 +17517,7 @@ func (client *Client) DisableDelegateAccountWithOptions(request *DisableDelegate
 
 // Summary:
 //
-// DisableDelegateAccount
+// Disables the delegated administrator account of CloudSSO.
 //
 // @param request - DisableDelegateAccountRequest
 //
@@ -17597,7 +17590,13 @@ func (client *Client) DisableService() (_result *DisableServiceResponse, _err er
 
 // Summary:
 //
-// EnableDelegateAccount
+// Enables the delegated administrator account of CloudSSO.
+//
+// Description:
+//
+// You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+//
+// After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
 //
 // @param request - EnableDelegateAccountRequest
 //
@@ -17639,7 +17638,13 @@ func (client *Client) EnableDelegateAccountWithOptions(request *EnableDelegateAc
 
 // Summary:
 //
-// EnableDelegateAccount
+// Enables the delegated administrator account of CloudSSO.
+//
+// Description:
+//
+// You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+//
+// After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
 //
 // @param request - EnableDelegateAccountRequest
 //
@@ -17932,13 +17937,7 @@ func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectoryS
 //
 // Description:
 //
-// ### [](#)
-//
-// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-//
-// ### [](#qps)Limit
-//
-// You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
 //
 // @param request - GetDirectoryStatisticsRequest
 //
@@ -17984,13 +17983,7 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 //
 // Description:
 //
-// ### [](#)
-//
-// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
-//
-// ### [](#qps)Limit
-//
-// You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of system policies that can be configured for an access configuration, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
 //
 // @param request - GetDirectoryStatisticsRequest
 //
@@ -19081,7 +19074,7 @@ func (client *Client) GetUserProvisioningConfiguration(request *GetUserProvision
 
 // Summary:
 //
-// Queries a Resource Access Management (RAM) user provisioning event.
+// Queries the information about a Resource Access Management (RAM) user provisioning.
 //
 // @param request - GetUserProvisioningEventRequest
 //
@@ -19127,7 +19120,7 @@ func (client *Client) GetUserProvisioningEventWithOptions(request *GetUserProvis
 
 // Summary:
 //
-// Queries a Resource Access Management (RAM) user provisioning event.
+// Queries the information about a Resource Access Management (RAM) user provisioning.
 //
 // @param request - GetUserProvisioningEventRequest
 //
@@ -20997,6 +20990,10 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BindingType)) {
+		query["BindingType"] = request.BindingType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
 		query["DirectoryId"] = request.DirectoryId
 	}
@@ -21101,6 +21098,10 @@ func (client *Client) SetLoginPreferenceWithOptions(request *SetLoginPreferenceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToGetCredentials)) {
+		query["AllowUserToGetCredentials"] = request.AllowUserToGetCredentials
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
 		query["DirectoryId"] = request.DirectoryId
 	}
