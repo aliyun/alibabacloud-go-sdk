@@ -10,12 +10,18 @@ import (
 )
 
 type ActiveCaCertificateRequest struct {
+	// CA证书所绑定的实例ID，即云消息队列 MQTT 版的实例ID。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// 待激活CA证书的SN序列号，用于唯一标识一个CA证书。
+	//
+	// 取值范围：不超过128 Byte。
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -43,10 +49,14 @@ func (s *ActiveCaCertificateRequest) SetSn(v string) *ActiveCaCertificateRequest
 }
 
 type ActiveCaCertificateResponseBody struct {
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SN serial number of the activated CA certificate, used to uniquely identify a CA certificate.
+	//
 	// example:
 	//
 	// 007269004887******
@@ -101,18 +111,26 @@ func (s *ActiveCaCertificateResponse) SetBody(v *ActiveCaCertificateResponseBody
 }
 
 type ActiveDeviceCertificateRequest struct {
+	// The serial number of the CA certificate to which the device certificate belongs. The serial number is the unique identifier of a CA certificate.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 007269004887******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// The serial number of the device certificate that you want to reactivate. The serial number is the unique identifier of a device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance to which the device certificate is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -145,10 +163,14 @@ func (s *ActiveDeviceCertificateRequest) SetMqttInstanceId(v string) *ActiveDevi
 }
 
 type ActiveDeviceCertificateResponseBody struct {
+	// The serial number of the device certificate that you reactivated. The serial number is the unique identifier of a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -937,12 +959,16 @@ func (s *BatchQuerySessionByClientIdsResponse) SetBody(v *BatchQuerySessionByCli
 }
 
 type CloseConnectionRequest struct {
+	// Client ID of the device
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GID_test@@@test
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// ID of the Micro Message Queue MQTT version instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -970,10 +996,14 @@ func (s *CloseConnectionRequest) SetInstanceId(v string) *CloseConnectionRequest
 }
 
 type CloseConnectionResponseBody struct {
+	// Return code of the interface: 200 indicates success. Other values indicate error codes. For details about the error codes, see Error Codes.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Call result information
+	//
 	// example:
 	//
 	// operation success.
@@ -984,6 +1014,8 @@ type CloseConnectionResponseBody struct {
 	//
 	// 82B9E503-F4A1-4F30-976F-C6999FF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. true means success, false means failure.
+	//
 	// example:
 	//
 	// True
@@ -1140,12 +1172,18 @@ func (s *CreateGroupIdResponse) SetBody(v *CreateGroupIdResponseBody) *CreateGro
 }
 
 type DeleteCaCertificateRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// The serial number of the CA certificate that you want to delete. The serial number is the unique identifier of a CA certificate.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1173,10 +1211,14 @@ func (s *DeleteCaCertificateRequest) SetSn(v string) *DeleteCaCertificateRequest
 }
 
 type DeleteCaCertificateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the CA certificate that you deleted. The serial number is the unique identifier of a CA certificate.
+	//
 	// example:
 	//
 	// 007269004887******
@@ -1231,12 +1273,16 @@ func (s *DeleteCaCertificateResponse) SetBody(v *DeleteCaCertificateResponseBody
 }
 
 type DeleteCustomAuthConnectBlackRequest struct {
+	// The ID of the ApsaraMQ for MQTT client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GID_test@@@test
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1264,20 +1310,26 @@ func (s *DeleteCustomAuthConnectBlackRequest) SetInstanceId(v string) *DeleteCus
 }
 
 type DeleteCustomAuthConnectBlackResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 317076B7-F946-46BC-A98F-4CF9777C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values: true and false.
+	//
 	// example:
 	//
 	// True
@@ -1642,18 +1694,28 @@ func (s *DeleteCustomAuthPermissionResponse) SetBody(v *DeleteCustomAuthPermissi
 }
 
 type DeleteDeviceCertificateRequest struct {
+	// The serial number of the CA certificate to which the device certificate belongs. The serial number is the unique identifier of a CA certificate. CA certificates are used to validate device certificates.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 007269004887******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// The serial number of the device certificate whose registration information you want to delete. The serial number is the unique identifier of a device.
+	//
+	// The serial number of a device certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 356217374433****
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance to which the device certificate is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1686,10 +1748,14 @@ func (s *DeleteDeviceCertificateRequest) SetMqttInstanceId(v string) *DeleteDevi
 }
 
 type DeleteDeviceCertificateResponseBody struct {
+	// The serial number of the device certificate whose registration information is deleted. The serial number is the unique identifier of a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -1832,12 +1898,16 @@ func (s *DeleteGroupIdResponse) SetBody(v *DeleteGroupIdResponseBody) *DeleteGro
 }
 
 type GetCaCertificateRequest struct {
+	// The instance ID bound to the CA certificate, which is the instance ID of the MQTT version of the cloud message queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// The SN serial number of the CA certificate to be queried, used to uniquely identify a CA certificate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1865,7 +1935,10 @@ func (s *GetCaCertificateRequest) SetSn(v string) *GetCaCertificateRequest {
 }
 
 type GetCaCertificateResponseBody struct {
+	// Certificate details.
 	Data *GetCaCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -1891,34 +1964,58 @@ func (s *GetCaCertificateResponseBody) SetRequestId(v string) *GetCaCertificateR
 }
 
 type GetCaCertificateResponseBodyData struct {
+	// Content of the CA certificate.
+	//
+	// > \\n represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END CERTIFICATE-----
 	CaContent *string `json:"CaContent,omitempty" xml:"CaContent,omitempty"`
+	// Name of the CA certificate
+	//
 	// example:
 	//
 	// mqtt_ca
 	CaName *string `json:"CaName,omitempty" xml:"CaName,omitempty"`
+	// Registration code of the CA certificate
+	//
 	// example:
 	//
 	// 13274673-8f90-4630-bea1-9cccb25756ad2089******
 	RegistrationCode *string `json:"RegistrationCode,omitempty" xml:"RegistrationCode,omitempty"`
+	// The SN serial number of the CA certificate, used to uniquely identify a CA certificate. Value range: no more than 128 bytes.
+	//
 	// example:
 	//
 	// 00f26900ba87******
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The status of the CA certificate. The values are as follows:
+	//
+	// - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+	//
+	// > After the CA certificate is registered, it is in an active state by default.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1654137303000
 	ValidBegin *string `json:"ValidBegin,omitempty" xml:"ValidBegin,omitempty"`
+	// The end time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1969497303000
 	ValidEnd *string `json:"ValidEnd,omitempty" xml:"ValidEnd,omitempty"`
+	// Content of the Verification certificate.
+	//
+	// > \\n represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIID/DCCAu+Y5sRMpp9tnd+4s******\\n-----END CERTIFICATE-----
@@ -2003,18 +2100,24 @@ func (s *GetCaCertificateResponse) SetBody(v *GetCaCertificateResponseBody) *Get
 }
 
 type GetDeviceCertificateRequest struct {
+	// The SN serial number of the CA certificate to which the device certificate to be queried belongs, used to uniquely identify a CA certificate. Value range: no more than 128 bytes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 007269004887******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// The SN serial number of the device certificate to be queried, used to uniquely identify a device certificate. Value range: no more than 128 bytes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The instance ID to which the device certificate is bound, i.e., the instance ID of the Cloud Message Queue MQTT version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2047,7 +2150,10 @@ func (s *GetDeviceCertificateRequest) SetMqttInstanceId(v string) *GetDeviceCert
 }
 
 type GetDeviceCertificateResponseBody struct {
+	// Certificate details.
 	Data *GetDeviceCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -2073,30 +2179,50 @@ func (s *GetDeviceCertificateResponseBody) SetRequestId(v string) *GetDeviceCert
 }
 
 type GetDeviceCertificateResponseBodyData struct {
+	// The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
+	//
 	// example:
 	//
 	// 00f26900ba87******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// Content of the device certificate.
+	//
+	//  represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN DEVICECERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END DEVICECERTIFICATE-----
 	DeviceContent *string `json:"DeviceContent,omitempty" xml:"DeviceContent,omitempty"`
+	// Name of the device certificate.
+	//
 	// example:
 	//
 	// mqtt_device
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The SN serial number of the device certificate, used to uniquely identify a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The status of the device certificate. The values are as follows:
+	//
+	// - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+	//
+	// > After the device certificate is registered, it is in an active state by default.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1654137303000
 	ValidBegin *string `json:"ValidBegin,omitempty" xml:"ValidBegin,omitempty"`
+	// The end time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1969497303000
@@ -2348,6 +2474,8 @@ func (s *GetDeviceCredentialResponse) SetBody(v *GetDeviceCredentialResponseBody
 }
 
 type GetRegisterCodeRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2370,10 +2498,14 @@ func (s *GetRegisterCodeRequest) SetMqttInstanceId(v string) *GetRegisterCodeReq
 }
 
 type GetRegisterCodeResponseBody struct {
+	// The registration code of the CA certificate.
+	//
 	// example:
 	//
 	// 13274673-8f90-4630-bea1-9cccb25756ad2089******
 	RegisterCode *string `json:"RegisterCode,omitempty" xml:"RegisterCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -2428,12 +2560,18 @@ func (s *GetRegisterCodeResponse) SetBody(v *GetRegisterCodeResponseBody) *GetRe
 }
 
 type InactivateCaCertificateRequest struct {
+	// The ID of the ApsaraMQ for MQTT instance to which the CA certificate is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// The serial number of the CA certificate that you want to deregister. The serial number is the unique identifier of a CA certificate.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2461,10 +2599,14 @@ func (s *InactivateCaCertificateRequest) SetSn(v string) *InactivateCaCertificat
 }
 
 type InactivateCaCertificateResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the CA certificate that is deregistered. The serial number is the unique identifier of a CA certificate.
+	//
 	// example:
 	//
 	// 007269004887******
@@ -2519,18 +2661,26 @@ func (s *InactivateCaCertificateResponse) SetBody(v *InactivateCaCertificateResp
 }
 
 type InactivateDeviceCertificateRequest struct {
+	// The serial number of the CA certificate to which the device certificate that you want to deregister belongs. The serial number is the unique identifier of a CA certificate.
+	//
+	// The serial number of a CA certificate cannot exceed 128 bytes in size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 007269004887******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// The serial number of the device certificate that you want to deregister. The serial number is the unique identifier of a device.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The ID of the ApsaraMQ for MQTT instance to which the device certificate that you want to deregister is bound.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2563,10 +2713,14 @@ func (s *InactivateDeviceCertificateRequest) SetMqttInstanceId(v string) *Inacti
 }
 
 type InactivateDeviceCertificateResponseBody struct {
+	// The serial number of the device certificate that is deregistered. The serial number is the unique identifier of a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -2621,18 +2775,24 @@ func (s *InactivateDeviceCertificateResponse) SetBody(v *InactivateDeviceCertifi
 }
 
 type ListCaCertificateRequest struct {
+	// The instance ID of the Cloud Message Queue MQTT version, indicating which instance\\"s CA certificates need to be viewed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// Indicates the page number of the returned results. The starting page is counted from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of query records to display per page. Value range: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2665,7 +2825,10 @@ func (s *ListCaCertificateRequest) SetPageSize(v string) *ListCaCertificateReque
 }
 
 type ListCaCertificateResponseBody struct {
+	// Query result.
 	Data *ListCaCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -2691,15 +2854,22 @@ func (s *ListCaCertificateResponseBody) SetRequestId(v string) *ListCaCertificat
 }
 
 type ListCaCertificateResponseBodyData struct {
+	// Details of the CA certificate
 	CaCertificateVOS []*ListCaCertificateResponseBodyDataCaCertificateVOS `json:"CaCertificateVOS,omitempty" xml:"CaCertificateVOS,omitempty" type:"Repeated"`
+	// The current page number of the returned query records.
+	//
 	// example:
 	//
 	// 2
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of results to display per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Maximum number of pages in the query result.
+	//
 	// example:
 	//
 	// 1
@@ -2735,34 +2905,58 @@ func (s *ListCaCertificateResponseBodyData) SetTotal(v int32) *ListCaCertificate
 }
 
 type ListCaCertificateResponseBodyDataCaCertificateVOS struct {
+	// Content of the CA certificate.
+	//
+	// > \\n represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END CERTIFICATE-----
 	CaContent *string `json:"CaContent,omitempty" xml:"CaContent,omitempty"`
+	// Name of the CA certificate
+	//
 	// example:
 	//
 	// mqtt_ca
 	CaName *string `json:"CaName,omitempty" xml:"CaName,omitempty"`
+	// Registration code of the CA certificate
+	//
 	// example:
 	//
 	// 13274673-8f90-4630-bea1-9cccb25756ad2089******
 	RegistrationCode *string `json:"RegistrationCode,omitempty" xml:"RegistrationCode,omitempty"`
+	// SN serial number of the CA certificate
+	//
 	// example:
 	//
 	// 007269004887******
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The status of the CA certificate. The values are as follows:
+	//
+	// - **0**: Indicates that the certificate is in an inactive state. - **1**: Indicates that the certificate is in an active state.
+	//
+	// > After the CA certificate is registered, it is in an active state by default.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1654137303000
 	ValidBegin *string `json:"ValidBegin,omitempty" xml:"ValidBegin,omitempty"`
+	// The end time when the CA certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1969497303000
 	ValidEnd *string `json:"ValidEnd,omitempty" xml:"ValidEnd,omitempty"`
+	// Verify the content of the certificate.
+	//
+	// > \\n represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIID/DCCAu+Y5sRMpp9tnd+4s******\\n-----END CERTIFICATE-----
@@ -2847,18 +3041,24 @@ func (s *ListCaCertificateResponse) SetBody(v *ListCaCertificateResponseBody) *L
 }
 
 type ListDeviceCertificateRequest struct {
+	// The instance ID of the Cloud Message Queue MQTT version, indicating which instance\\"s device certificates need to be viewed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// Indicates which page of the results to return. The starting page is counted from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of query records to display per page. Value range: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2891,7 +3091,10 @@ func (s *ListDeviceCertificateRequest) SetPageSize(v string) *ListDeviceCertific
 }
 
 type ListDeviceCertificateResponseBody struct {
+	// Query result.
 	Data *ListDeviceCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -2917,15 +3120,22 @@ func (s *ListDeviceCertificateResponseBody) SetRequestId(v string) *ListDeviceCe
 }
 
 type ListDeviceCertificateResponseBodyData struct {
+	// Details of the device certificate.
 	DeviceCertificateVOS []*ListDeviceCertificateResponseBodyDataDeviceCertificateVOS `json:"DeviceCertificateVOS,omitempty" xml:"DeviceCertificateVOS,omitempty" type:"Repeated"`
+	// The current page number of the returned query records.
+	//
 	// example:
 	//
 	// 2
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of results to display per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Maximum number of pages in the query result.
+	//
 	// example:
 	//
 	// 1
@@ -2961,30 +3171,50 @@ func (s *ListDeviceCertificateResponseBodyData) SetTotal(v int32) *ListDeviceCer
 }
 
 type ListDeviceCertificateResponseBodyDataDeviceCertificateVOS struct {
+	// The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
+	//
 	// example:
 	//
 	// 00f26900ba87******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// Content of the device certificate.
+	//
+	//  represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN DEVICECERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END DEVICECERTIFICATE-----
 	DeviceContent *string `json:"DeviceContent,omitempty" xml:"DeviceContent,omitempty"`
+	// Name of the device certificate.
+	//
 	// example:
 	//
 	// mqtt_device
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The SN serial number of the device certificate, used to uniquely identify a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The status of the device certificate. The values are as follows:
+	//
+	// - 0: indicates that the certificate is in an inactive state. - 1: indicates that the certificate is in an active state.
+	//
+	// After the device certificate is registered, it defaults to the active state.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1654137303000
 	ValidBegin *string `json:"ValidBegin,omitempty" xml:"ValidBegin,omitempty"`
+	// The end time when the device certificate becomes effective. Formatted as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1969497303000
@@ -3064,24 +3294,32 @@ func (s *ListDeviceCertificateResponse) SetBody(v *ListDeviceCertificateResponse
 }
 
 type ListDeviceCertificateByCaSnRequest struct {
+	// The SN serial number of the CA certificate to be queried, indicating which CA certificate\\"s registered device certificates are to be retrieved.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 007269004887******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// The instance ID bound to the CA certificate, which is the instance ID of the MQTT version of the cloud message queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// Indicates the page number of the returned results. The starting page is counted from 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of query records to display per page. Value range: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3119,7 +3357,10 @@ func (s *ListDeviceCertificateByCaSnRequest) SetPageSize(v string) *ListDeviceCe
 }
 
 type ListDeviceCertificateByCaSnResponseBody struct {
+	// Query result.
 	Data *ListDeviceCertificateByCaSnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -3145,15 +3386,22 @@ func (s *ListDeviceCertificateByCaSnResponseBody) SetRequestId(v string) *ListDe
 }
 
 type ListDeviceCertificateByCaSnResponseBodyData struct {
+	// Details of the device certificate.
 	DeviceCertificateVOS []*ListDeviceCertificateByCaSnResponseBodyDataDeviceCertificateVOS `json:"DeviceCertificateVOS,omitempty" xml:"DeviceCertificateVOS,omitempty" type:"Repeated"`
+	// The current page number of the returned query records.
+	//
 	// example:
 	//
 	// 2
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of results to display per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 1
@@ -3189,30 +3437,52 @@ func (s *ListDeviceCertificateByCaSnResponseBodyData) SetTotal(v int32) *ListDev
 }
 
 type ListDeviceCertificateByCaSnResponseBodyDataDeviceCertificateVOS struct {
+	// The SN serial number of the CA certificate to which the device certificate belongs, used to uniquely identify a CA certificate.
+	//
 	// example:
 	//
 	// 00f26900ba87******
 	CaSn *string `json:"CaSn,omitempty" xml:"CaSn,omitempty"`
+	// Content of the device certificate.
+	//
+	//  represents a new line.
+	//
 	// example:
 	//
 	// -----BEGIN DEVICECERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END DEVICECERTIFICATE-----
 	DeviceContent *string `json:"DeviceContent,omitempty" xml:"DeviceContent,omitempty"`
+	// Name of the device certificate.
+	//
 	// example:
 	//
 	// mqtt_device
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	// The SN serial number of the device certificate, used to uniquely identify a device certificate.
+	//
 	// example:
 	//
 	// 356217374433******
 	DeviceSn *string `json:"DeviceSn,omitempty" xml:"DeviceSn,omitempty"`
+	// The status of the device certificate. The values are as follows:
+	//
+	// - 0: indicates that the certificate is in an inactive state.
+	//
+	// - 1: indicates that the certificate is in an active state.
+	//
+	// After the device certificate is registered, it is in an active state by default.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The start time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1654137303000
 	ValidBegin *string `json:"ValidBegin,omitempty" xml:"ValidBegin,omitempty"`
+	// The end time when the device certificate becomes effective. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1969497303000
@@ -3292,23 +3562,38 @@ func (s *ListDeviceCertificateByCaSnResponse) SetBody(v *ListDeviceCertificateBy
 }
 
 type ListDeviceCredentialClientIdRequest struct {
+	// Group ID of the MQTT version of the micro message queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GID_xxx
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the Cloud Message Queue MQTT version instance, which must match the actual instance ID used by the client. You can obtain this ID from the **Instance Details*	- page in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mqtt-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Token for starting the next page query.
+	//
+	// example:
+	//
+	// FFdXXXXXWa
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Indicates the page number of the returned results. The starting page is counted from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of query records to display per page.
+	//
+	// Value range: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3351,7 +3636,10 @@ func (s *ListDeviceCredentialClientIdRequest) SetPageSize(v string) *ListDeviceC
 }
 
 type ListDeviceCredentialClientIdResponseBody struct {
+	// Returns the information list.
 	DeviceCredentialClientIdList *ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList `json:"DeviceCredentialClientIdList,omitempty" xml:"DeviceCredentialClientIdList,omitempty" type:"Struct"`
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
@@ -3377,16 +3665,32 @@ func (s *ListDeviceCredentialClientIdResponseBody) SetRequestId(v string) *ListD
 }
 
 type ListDeviceCredentialClientIdResponseBodyDeviceCredentialClientIdList struct {
+	// Client list.
 	ClientIdList []*string `json:"ClientIdList,omitempty" xml:"ClientIdList,omitempty" type:"Repeated"`
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Indicates whether there is a token (Token) for the next query. Values:
+	//
+	// - For the first query and when there is no next query, this field does not need to be filled.
+	//
+	// - If there is a next query, the value should be the NextToken returned from the previous API call.
+	//
+	// example:
+	//
+	// 634dxxxxx75b5f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number of the returned query records.
+	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The maximum number of results to display per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 10
@@ -5907,24 +6211,36 @@ func (s *RefreshDeviceCredentialResponse) SetBody(v *RefreshDeviceCredentialResp
 }
 
 type RegisterCaCertificateRequest struct {
+	// Content of the CA certificate to be registered.
+	//
+	// > Note that \\n in the example represents a new line.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----\\nMIIDuzCCAqdGVzdC5jbi1xaW5n******\\n-----END CERTIFICATE-----
 	CaContent *string `json:"CaContent,omitempty" xml:"CaContent,omitempty"`
+	// Name of the CA certificate to be registered
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mqtt_ca
 	CaName *string `json:"CaName,omitempty" xml:"CaName,omitempty"`
+	// The instance ID of the Cloud Message Queue MQTT version. When registering a CA certificate, you need to specify an instance to bind with.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-7mz2d******
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	// Content of the verification certificate for the CA certificate to be registered. It is used together with the registration code of the CA certificate to verify that the user possesses the private key of this CA certificate.
+	//
+	// >  in the example represents a line break.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5962,10 +6278,14 @@ func (s *RegisterCaCertificateRequest) SetVerificationContent(v string) *Registe
 }
 
 type RegisterCaCertificateResponseBody struct {
+	// Public parameters, each request ID is unique and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 020F6A43-19E6-4B6E-B846-44EB31DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The SN serial number of the registered CA certificate, used to uniquely identify a CA certificate.
+	//
 	// example:
 	//
 	// 007269004887******
@@ -6391,6 +6711,149 @@ func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageRe
 	return s
 }
 
+type SetSniConfigRequest struct {
+	// This parameter is required.
+	DefaultCertificate *string `json:"DefaultCertificate,omitempty" xml:"DefaultCertificate,omitempty"`
+	// This parameter is required.
+	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
+	SniConfig      *string `json:"SniConfig,omitempty" xml:"SniConfig,omitempty"`
+}
+
+func (s SetSniConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSniConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSniConfigRequest) SetDefaultCertificate(v string) *SetSniConfigRequest {
+	s.DefaultCertificate = &v
+	return s
+}
+
+func (s *SetSniConfigRequest) SetMqttInstanceId(v string) *SetSniConfigRequest {
+	s.MqttInstanceId = &v
+	return s
+}
+
+func (s *SetSniConfigRequest) SetSniConfig(v string) *SetSniConfigRequest {
+	s.SniConfig = &v
+	return s
+}
+
+type SetSniConfigResponseBody struct {
+	AccessDeniedDetail *SetSniConfigResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetSniConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSniConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetSniConfigResponseBody) SetAccessDeniedDetail(v *SetSniConfigResponseBodyAccessDeniedDetail) *SetSniConfigResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *SetSniConfigResponseBody) SetRequestId(v string) *SetSniConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBody) SetSuccess(v string) *SetSniConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetSniConfigResponseBodyAccessDeniedDetail struct {
+	AuthAction               *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	AuthPrincipalOwnerId     *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	AuthPrincipalType        *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	NoPermissionType         *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	PolicyType               *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s SetSniConfigResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSniConfigResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetAuthAction(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *SetSniConfigResponseBodyAccessDeniedDetail) SetPolicyType(v string) *SetSniConfigResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type SetSniConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSniConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetSniConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSniConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetSniConfigResponse) SetHeaders(v map[string]*string) *SetSniConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetSniConfigResponse) SetStatusCode(v int32) *SetSniConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetSniConfigResponse) SetBody(v *SetSniConfigResponseBody) *SetSniConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UnRegisterDeviceCredentialRequest struct {
 	// The client ID of the device whose access credential you want to deregister.
 	//
@@ -6655,36 +7118,52 @@ func (s *UpdateCustomAuthIdentityResponse) SetBody(v *UpdateCustomAuthIdentityRe
 }
 
 type UpdateCustomAuthPermissionRequest struct {
+	// Specifies whether to allow or deny access.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ALLOW
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// Username or Client ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	// The identity type. Valid values:
+	//
+	// 	- USER
+	//
+	// 	- CLIENT
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// USER
 	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	// ID of the Cloud Message Queue MQTT version instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// post-cn-0pp12gl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The permissions that you want to grant.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PUB_SUB
 	PermitAction *string `json:"PermitAction,omitempty" xml:"PermitAction,omitempty"`
+	// Authorized Topic, supporting multi-level MQTT topics and wildcards.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6732,10 +7211,14 @@ func (s *UpdateCustomAuthPermissionRequest) SetTopic(v string) *UpdateCustomAuth
 }
 
 type UpdateCustomAuthPermissionResponseBody struct {
+	// Error code returned upon failed invocation. For more information, see Error Codes.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Information
+	//
 	// example:
 	//
 	// operation success.
@@ -6746,6 +7229,8 @@ type UpdateCustomAuthPermissionResponseBody struct {
 	//
 	// 8CC04203-679B-4DED-89D9-E7C2E979****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. true: Call succeeded. false: Call failed.
+	//
 	// example:
 	//
 	// True
@@ -6858,7 +7343,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 激活CA证书
+// Activate CA Certificate
+//
+// Description:
+//
+// - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
+//
+// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
+//
+// -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -6904,7 +7397,15 @@ func (client *Client) ActiveCaCertificateWithOptions(request *ActiveCaCertificat
 
 // Summary:
 //
-// 激活CA证书
+// Activate CA Certificate
+//
+// Description:
+//
+// - 仅铂金版和专业版实例支持使用ActiveCaCertificate接口。
+//
+// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
+//
+// -  ActiveCaCertificate接口仅支持对已在云消息队列 MQTT 版服务端注册的CA证书进行操作，您可以通过[ListCaCertificate](https://help.aliyun.com/document_detail/436768.html)接口查询指定实例下已注册的CA证书。
 //
 // @param request - ActiveCaCertificateRequest
 //
@@ -6922,7 +7423,13 @@ func (client *Client) ActiveCaCertificate(request *ActiveCaCertificateRequest) (
 
 // Summary:
 //
-// 激活设备证书
+// Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -6972,7 +7479,13 @@ func (client *Client) ActiveDeviceCertificateWithOptions(request *ActiveDeviceCe
 
 // Summary:
 //
-// 激活设备证书
+// Reactivates a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client based on the registered CA certificate. If the CA certificate matches the device certificate, the client passes the authentication and the system automatically registers the device certificate with the ApsaraMQ for MQTT broker. After a device certificate is registered with an ApsaraMQ for MQTT broker, the certificate is automatically activated. If your device certificate is changed to the inactivated state, you can call this operation to reactivate the device certificate.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - ActiveDeviceCertificateRequest
 //
@@ -7378,7 +7891,11 @@ func (client *Client) BatchQuerySessionByClientIds(request *BatchQuerySessionByC
 
 // Summary:
 //
-// 关闭设备连接
+// Proactively closes an online connection. After you call this API operation, the device may reconnect to the broker based on the client reconnection mechanism.
+//
+// Description:
+//
+// This API is still in the testing phase and is only available for Professional Edition instances in the Shanghai region. Legacy instances are not supported at this time.
 //
 // @param request - CloseConnectionRequest
 //
@@ -7424,7 +7941,11 @@ func (client *Client) CloseConnectionWithOptions(request *CloseConnectionRequest
 
 // Summary:
 //
-// 关闭设备连接
+// Proactively closes an online connection. After you call this API operation, the device may reconnect to the broker based on the client reconnection mechanism.
+//
+// Description:
+//
+// This API is still in the testing phase and is only available for Professional Edition instances in the Shanghai region. Legacy instances are not supported at this time.
 //
 // @param request - CloseConnectionRequest
 //
@@ -7514,7 +8035,17 @@ func (client *Client) CreateGroupId(request *CreateGroupIdRequest) (_result *Cre
 
 // Summary:
 //
-// 删除CA证书
+// Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//
+// 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
 // @param request - DeleteCaCertificateRequest
 //
@@ -7560,7 +8091,17 @@ func (client *Client) DeleteCaCertificateWithOptions(request *DeleteCaCertificat
 
 // Summary:
 //
-// 删除CA证书
+// Deletes a certificate authority (CA) certificate from an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you can use a CA certificate, you must register the certificate with an ApsaraMQ for MQTT broker. If you no longer require a CA certificate, you can call this operation to delete the certificate from the ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to delete only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
+//
+// 	- If you delete a specific CA certificate from an ApsaraMQ for MQTT broker, all device certificates that are issued by the CA certificate and are registered with the ApsaraMQ for MQTT broker are automatically deleted.
 //
 // @param request - DeleteCaCertificateRequest
 //
@@ -7578,7 +8119,7 @@ func (client *Client) DeleteCaCertificate(request *DeleteCaCertificateRequest) (
 
 // Summary:
 //
-// 删除自定义权限连接黑名单
+// Deletes a connection blacklist.
 //
 // @param request - DeleteCustomAuthConnectBlackRequest
 //
@@ -7624,7 +8165,7 @@ func (client *Client) DeleteCustomAuthConnectBlackWithOptions(request *DeleteCus
 
 // Summary:
 //
-// 删除自定义权限连接黑名单
+// Deletes a connection blacklist.
 //
 // @param request - DeleteCustomAuthConnectBlackRequest
 //
@@ -7786,7 +8327,13 @@ func (client *Client) DeleteCustomAuthPermission(request *DeleteCustomAuthPermis
 
 // Summary:
 //
-// 删除设备证书
+// Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -7836,7 +8383,13 @@ func (client *Client) DeleteDeviceCertificateWithOptions(request *DeleteDeviceCe
 
 // Summary:
 //
-// 删除设备证书
+// Deletes the registration information about a specific device certificate from an ApsaraMQ for MQTT broker. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client. If you no longer require a device certificate, you can call this operation to delete the registration information about the certificate from an ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - DeleteDeviceCertificateRequest
 //
@@ -7926,7 +8479,13 @@ func (client *Client) DeleteGroupId(request *DeleteGroupIdRequest) (_result *Del
 
 // Summary:
 //
-// 根据SN返回CA证书
+// Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+// - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
+//
+// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
 //
 // @param request - GetCaCertificateRequest
 //
@@ -7964,7 +8523,13 @@ func (client *Client) GetCaCertificateWithOptions(request *GetCaCertificateReque
 
 // Summary:
 //
-// 根据SN返回CA证书
+// Queries the details of a certificate authority (CA) certificate, such as the content and status of the certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+// - 仅铂金版和专业版实例支持使用GetCaCertificate接口。
+//
+// - 单用户请求频率限制为500次/秒。如有特殊需求，请联系云消息队列 MQTT 版技术支持，钉钉群号：35228338。
 //
 // @param request - GetCaCertificateRequest
 //
@@ -7982,7 +8547,11 @@ func (client *Client) GetCaCertificate(request *GetCaCertificateRequest) (_resul
 
 // Summary:
 //
-// 获取设备证书
+// Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -8020,7 +8589,11 @@ func (client *Client) GetDeviceCertificateWithOptions(request *GetDeviceCertific
 
 // Summary:
 //
-// 获取设备证书
+// Queries the details of a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum edition instances support the use of the GetDeviceCertificate interface. - The request frequency limit per user is 500 requests/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - GetDeviceCertificateRequest
 //
@@ -8114,7 +8687,13 @@ func (client *Client) GetDeviceCredential(request *GetDeviceCredentialRequest) (
 
 // Summary:
 //
-// 获取添加CA证书的注册码
+// Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
+//
+// Description:
+//
+//   This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -8152,7 +8731,13 @@ func (client *Client) GetRegisterCodeWithOptions(request *GetRegisterCodeRequest
 
 // Summary:
 //
-// 获取添加CA证书的注册码
+// Obtains the registration code of a specific certificate authority (CA) certificate. When you register a CA certificate with an ApsaraMQ for MQTT broker, you must upload the validation certificate of the CA certificate to verify whether you have the private key of the CA certificate. The validation certificate of a CA certificate must be generated by using the registration code of the CA certificate.
+//
+// Description:
+//
+//   This API operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - GetRegisterCodeRequest
 //
@@ -8170,7 +8755,15 @@ func (client *Client) GetRegisterCode(request *GetRegisterCodeRequest) (_result 
 
 // Summary:
 //
-// 注销CA证书
+// Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -8216,7 +8809,15 @@ func (client *Client) InactivateCaCertificateWithOptions(request *InactivateCaCe
 
 // Summary:
 //
-// 注销CA证书
+// Deregister a certificate authority (CA) certificate. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. If you no longer require a CA certificate, you can call this operation to deregister the certificate. If you want to continue using a deregistered CA certificate, you can call the ActiveCaCertificate operation to reactivate the certificate.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
+//
+// 	- You can call this operation to deregister only CA certificates that are registered with ApsaraMQ for MQTT brokers. You can call the [ListCaCertificate](https://help.aliyun.com/document_detail/436768.html) operation to query CA certificates that are registered with an ApsaraMQ for MQTT instance.
 //
 // @param request - InactivateCaCertificateRequest
 //
@@ -8234,7 +8835,13 @@ func (client *Client) InactivateCaCertificate(request *InactivateCaCertificateRe
 
 // Summary:
 //
-// 注销设备证书
+// Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -8284,7 +8891,13 @@ func (client *Client) InactivateDeviceCertificateWithOptions(request *Inactivate
 
 // Summary:
 //
-// 注销设备证书
+// Deregisters a device certificate. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+//   This operation is supported only by ApsaraMQ for MQTT Enterprise Platinum Edition and Professional Edition instances.
+//
+// 	- You can call this operation up to 500 times per second per Alibaba Cloud account. If you want to increase the limit, join the DingTalk group 35228338 to contact ApsaraMQ for MQTT technical support.
 //
 // @param request - InactivateDeviceCertificateRequest
 //
@@ -8302,7 +8915,11 @@ func (client *Client) InactivateDeviceCertificate(request *InactivateDeviceCerti
 
 // Summary:
 //
-// 根据实例ID 分页获取CA证书
+// Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -8340,7 +8957,11 @@ func (client *Client) ListCaCertificateWithOptions(request *ListCaCertificateReq
 
 // Summary:
 //
-// 根据实例ID 分页获取CA证书
+// Queries all certificate authority (CA) certificates that are registered with an ApsaraMQ for MQTT instance. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the ListCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact the Micro Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListCaCertificateRequest
 //
@@ -8358,7 +8979,11 @@ func (client *Client) ListCaCertificate(request *ListCaCertificateRequest) (_res
 
 // Summary:
 //
-// 获取设备证书列表
+// Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -8396,7 +9021,11 @@ func (client *Client) ListDeviceCertificateWithOptions(request *ListDeviceCertif
 
 // Summary:
 //
-// 获取设备证书列表
+// Queries all device certificates that are registered with an ApsaraMQ for MQTT instance. Device certificates are digital certificates issued to clients by certificate authority (CA) root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the ListDeviceCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListDeviceCertificateRequest
 //
@@ -8414,7 +9043,11 @@ func (client *Client) ListDeviceCertificate(request *ListDeviceCertificateReques
 
 // Summary:
 //
-// 获取设备证书列表
+// Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -8452,7 +9085,11 @@ func (client *Client) ListDeviceCertificateByCaSnWithOptions(request *ListDevice
 
 // Summary:
 //
-// 获取设备证书列表
+// Queries all device certificates that are issued by a certificate authority (CA) certificate and registered with ApsaraMQ for MQTT brokers. Device certificates are digital certificates issued to clients by CA root certificates. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, the broker uses the device certificate to authenticate the client. If the client passes the authentication, the client and the broker can communicate with each other based on the encrypted private key in the device certificate. If the client fails the authentication, access requests from the client are denied by the client.
+//
+// Description:
+//
+// - Only Platinum and Professional edition instances support using the ListDeviceCertificateByCaSn interface. - The request frequency limit for a single user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - ListDeviceCertificateByCaSnRequest
 //
@@ -8470,7 +9107,7 @@ func (client *Client) ListDeviceCertificateByCaSn(request *ListDeviceCertificate
 
 // Summary:
 //
-// 列出注册的一机一密的设备ID
+// Queries clients that have applied for access credentials in unique-certificate-per-device authentication mode in an ApsaraMQ for MQTT instance.
 //
 // @param request - ListDeviceCredentialClientIdRequest
 //
@@ -8528,7 +9165,7 @@ func (client *Client) ListDeviceCredentialClientIdWithOptions(request *ListDevic
 
 // Summary:
 //
-// 列出注册的一机一密的设备ID
+// Queries clients that have applied for access credentials in unique-certificate-per-device authentication mode in an ApsaraMQ for MQTT instance.
 //
 // @param request - ListDeviceCredentialClientIdRequest
 //
@@ -9406,7 +10043,11 @@ func (client *Client) RefreshDeviceCredential(request *RefreshDeviceCredentialRe
 
 // Summary:
 //
-// 注册CA证书
+// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -9460,7 +10101,11 @@ func (client *Client) RegisterCaCertificateWithOptions(request *RegisterCaCertif
 
 // Summary:
 //
-// 注册CA证书
+// Registers a certificate authority (CA) certificate with an ApsaraMQ for MQTT broker. ApsaraMQ for MQTT allows you to use X.509 certificates for authentication. When you connect an ApsaraMQ for MQTT client to an ApsaraMQ for MQTT broker, you can use the device certificate to implement authentication. CA certificates are used to issue device certificates to clients and validate the device certificates. Before you use a device certificate to authenticate an ApsaraMQ for MQTT client, you must register the CA certificate for which you apply with the ApsaraMQ for MQTT broker.
+//
+// Description:
+//
+// - Only Platinum and Professional instances support using the RegisterCaCertificate interface. - The request frequency limit per user is 500 times/second. For special requirements, please contact Cloud Message Queue MQTT version technical support, DingTalk group number: 35228338.
 //
 // @param request - RegisterCaCertificateRequest
 //
@@ -9718,6 +10363,74 @@ func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMes
 
 // Summary:
 //
+// 配置多域名证书
+//
+// @param request - SetSniConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSniConfigResponse
+func (client *Client) SetSniConfigWithOptions(request *SetSniConfigRequest, runtime *util.RuntimeOptions) (_result *SetSniConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefaultCertificate)) {
+		query["DefaultCertificate"] = request.DefaultCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MqttInstanceId)) {
+		query["MqttInstanceId"] = request.MqttInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SniConfig)) {
+		query["SniConfig"] = request.SniConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSniConfig"),
+		Version:     tea.String("2020-04-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetSniConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置多域名证书
+//
+// @param request - SetSniConfigRequest
+//
+// @return SetSniConfigResponse
+func (client *Client) SetSniConfig(request *SetSniConfigRequest) (_result *SetSniConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetSniConfigResponse{}
+	_body, _err := client.SetSniConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deregisters the access credential of a device. After the access credential of a device is deregistered, you can no longer use the access credential to authenticate the device on the ApsaraMQ for MQTT broker.
 //
 // Description:
@@ -9874,7 +10587,7 @@ func (client *Client) UpdateCustomAuthIdentity(request *UpdateCustomAuthIdentity
 
 // Summary:
 //
-// 更新自定义权限授权
+// Updates the permissions on a topic.
 //
 // @param request - UpdateCustomAuthPermissionRequest
 //
@@ -9936,7 +10649,7 @@ func (client *Client) UpdateCustomAuthPermissionWithOptions(request *UpdateCusto
 
 // Summary:
 //
-// 更新自定义权限授权
+// Updates the permissions on a topic.
 //
 // @param request - UpdateCustomAuthPermissionRequest
 //
