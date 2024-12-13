@@ -3510,6 +3510,7 @@ func (s *TransitIntegratedDirectionResponseBodyDataPathsSegments) SetWalking(v *
 
 type TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus struct {
 	Buslines []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines `json:"buslines,omitempty" xml:"buslines,omitempty" type:"Repeated"`
+	Index    *string                                                               `json:"index,omitempty" xml:"index,omitempty"`
 }
 
 func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) String() string {
@@ -3522,6 +3523,11 @@ func (s TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) GoString() s
 
 func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) SetBuslines(v []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsBusBuslines) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus {
 	s.Buslines = v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus) SetIndex(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsBus {
+	s.Index = &v
 	return s
 }
 
@@ -3906,6 +3912,7 @@ type TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway struct {
 	//
 	// 434508
 	Id     *string                                                                 `json:"id,omitempty" xml:"id,omitempty"`
+	Index  *string                                                                 `json:"index,omitempty" xml:"index,omitempty"`
 	Name   *string                                                                 `json:"name,omitempty" xml:"name,omitempty"`
 	Spaces []*TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailwaySpaces `json:"spaces,omitempty" xml:"spaces,omitempty" type:"Repeated"`
 	// example:
@@ -3941,6 +3948,11 @@ func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetDist
 
 func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetId(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
 	s.Id = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway) SetIndex(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsRailway {
+	s.Index = &v
 	return s
 }
 
@@ -4138,6 +4150,7 @@ type TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi struct {
 	//
 	// 720
 	DriveTimeSecond *string `json:"driveTimeSecond,omitempty" xml:"driveTimeSecond,omitempty"`
+	Index           *string `json:"index,omitempty" xml:"index,omitempty"`
 	OriginName      *string `json:"originName,omitempty" xml:"originName,omitempty"`
 	// example:
 	//
@@ -4177,6 +4190,11 @@ func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetDriveTi
 	return s
 }
 
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetIndex(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
+	s.Index = &v
+	return s
+}
+
 func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi) SetOriginName(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsTaxi {
 	s.OriginName = &v
 	return s
@@ -4202,6 +4220,7 @@ type TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking struct {
 	//
 	// 546
 	DistanceMeter *string `json:"distanceMeter,omitempty" xml:"distanceMeter,omitempty"`
+	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
 	// example:
 	//
 	// 116.466568,39.995552
@@ -4229,6 +4248,11 @@ func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetDest
 
 func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetDistanceMeter(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
 	s.DistanceMeter = &v
+	return s
+}
+
+func (s *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking) SetIndex(v string) *TransitIntegratedDirectionResponseBodyDataPathsSegmentsWalking {
+	s.Index = &v
 	return s
 }
 
