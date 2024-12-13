@@ -2980,8 +2980,8 @@ type DescribeOrderForIsvResponseBody struct {
 	// example:
 	//
 	// 190311111111****
-	AliUid     *int64                 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Components map[string]interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	AliUid     *int64      `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Components interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
 	// example:
 	//
 	// 0.0
@@ -3065,7 +3065,7 @@ func (s *DescribeOrderForIsvResponseBody) SetAliUid(v int64) *DescribeOrderForIs
 	return s
 }
 
-func (s *DescribeOrderForIsvResponseBody) SetComponents(v map[string]interface{}) *DescribeOrderForIsvResponseBody {
+func (s *DescribeOrderForIsvResponseBody) SetComponents(v interface{}) *DescribeOrderForIsvResponseBody {
 	s.Components = v
 	return s
 }

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/market-20151101/v3
+module github.com/alibabacloud-go/market-20151101/v4
 
 go 1.14
 
