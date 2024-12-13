@@ -50987,6 +50987,88 @@ func (s *SearchPublicMediaInfoResponse) SetBody(v *SearchPublicMediaInfoResponse
 	return s
 }
 
+type SendAIAgentDataChannelMessageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"key":"value"}
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SendAIAgentDataChannelMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentDataChannelMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentDataChannelMessageRequest) SetInstanceId(v string) *SendAIAgentDataChannelMessageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SendAIAgentDataChannelMessageRequest) SetMessage(v string) *SendAIAgentDataChannelMessageRequest {
+	s.Message = &v
+	return s
+}
+
+type SendAIAgentDataChannelMessageResponseBody struct {
+	// example:
+	//
+	// 7B117AF5-2A16-412C-B127-FA6175ED1AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendAIAgentDataChannelMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentDataChannelMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentDataChannelMessageResponseBody) SetRequestId(v string) *SendAIAgentDataChannelMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendAIAgentDataChannelMessageResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendAIAgentDataChannelMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendAIAgentDataChannelMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendAIAgentDataChannelMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendAIAgentDataChannelMessageResponse) SetHeaders(v map[string]*string) *SendAIAgentDataChannelMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendAIAgentDataChannelMessageResponse) SetStatusCode(v int32) *SendAIAgentDataChannelMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendAIAgentDataChannelMessageResponse) SetBody(v *SendAIAgentDataChannelMessageResponseBody) *SendAIAgentDataChannelMessageResponse {
+	s.Body = v
+	return s
+}
+
 type SendAIAgentSpeechRequest struct {
 	// example:
 	//
@@ -58018,9 +58100,9 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// ****12e8864746a0a398****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/328557.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+	// The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 	ClipsParam *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
-	// The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html#title-10z-t9u-n69).
+	// The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html).
 	//
 	// >  If no thumbnail is specified in EditingProduceConfig, the first frame of the video is used as the thumbnail.
 	//
@@ -58042,7 +58124,7 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// }
 	EditingProduceConfig *string `json:"EditingProduceConfig,omitempty" xml:"EditingProduceConfig,omitempty"`
-	// The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.445712.0.0.49a716dbA8hgdz#97ff26d0e3c28).
+	// The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html).
 	//
 	// example:
 	//
@@ -58058,7 +58140,7 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// To store the output file in OSS, you must specify MediaURL. To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
 	//
-	// For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html#title-4j6-ve7-g31).
+	// For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html).
 	//
 	// This parameter is required.
 	//
@@ -58086,7 +58168,7 @@ type SubmitMediaProducingJobRequest struct {
 	//
 	// xxxxxfb2101cb318xxxxx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html#title-yvp-81k-wff).
+	// The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html).
 	ProjectMetadata *string `json:"ProjectMetadata,omitempty" xml:"ProjectMetadata,omitempty"`
 	// The source of the editing and production request. Valid values:
 	//
@@ -67811,6 +67893,120 @@ func (s *SubmitVideoTranslationJobResponse) SetStatusCode(v int32) *SubmitVideoT
 }
 
 func (s *SubmitVideoTranslationJobResponse) SetBody(v *SubmitVideoTranslationJobResponseBody) *SubmitVideoTranslationJobResponse {
+	s.Body = v
+	return s
+}
+
+type TakeoverAIAgentCallRequest struct {
+	// example:
+	//
+	// uid2
+	HumanAgentUserId *string `json:"HumanAgentUserId,omitempty" xml:"HumanAgentUserId,omitempty"`
+	// example:
+	//
+	// 39f8e0bc005e4f309379701645f4****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	RequireToken *bool `json:"RequireToken,omitempty" xml:"RequireToken,omitempty"`
+}
+
+func (s TakeoverAIAgentCallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TakeoverAIAgentCallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TakeoverAIAgentCallRequest) SetHumanAgentUserId(v string) *TakeoverAIAgentCallRequest {
+	s.HumanAgentUserId = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallRequest) SetInstanceId(v string) *TakeoverAIAgentCallRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallRequest) SetRequireToken(v bool) *TakeoverAIAgentCallRequest {
+	s.RequireToken = &v
+	return s
+}
+
+type TakeoverAIAgentCallResponseBody struct {
+	// example:
+	//
+	// 70f22d5784194938a7e387052f2b3208
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// uid2
+	HumanAgentUserId *string `json:"HumanAgentUserId,omitempty" xml:"HumanAgentUserId,omitempty"`
+	// example:
+	//
+	// ******3B-0E1A-586A-AC29-742247******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// eyJhcHBpZCI6ICIxMjM0MTIzNxxxxx
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s TakeoverAIAgentCallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TakeoverAIAgentCallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TakeoverAIAgentCallResponseBody) SetChannelId(v string) *TakeoverAIAgentCallResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallResponseBody) SetHumanAgentUserId(v string) *TakeoverAIAgentCallResponseBody {
+	s.HumanAgentUserId = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallResponseBody) SetRequestId(v string) *TakeoverAIAgentCallResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallResponseBody) SetToken(v string) *TakeoverAIAgentCallResponseBody {
+	s.Token = &v
+	return s
+}
+
+type TakeoverAIAgentCallResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TakeoverAIAgentCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TakeoverAIAgentCallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TakeoverAIAgentCallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TakeoverAIAgentCallResponse) SetHeaders(v map[string]*string) *TakeoverAIAgentCallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TakeoverAIAgentCallResponse) SetStatusCode(v int32) *TakeoverAIAgentCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TakeoverAIAgentCallResponse) SetBody(v *TakeoverAIAgentCallResponseBody) *TakeoverAIAgentCallResponse {
 	s.Body = v
 	return s
 }
@@ -80544,9 +80740,9 @@ func (client *Client) ListSystemTemplates(request *ListSystemTemplatesRequest) (
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -80618,9 +80814,9 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - ListTemplatesRequest
 //
@@ -82717,6 +82913,70 @@ func (client *Client) SearchPublicMediaInfo(request *SearchPublicMediaInfoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchPublicMediaInfoResponse{}
 	_body, _err := client.SearchPublicMediaInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 向智能体通话发送datachannel消息
+//
+// @param request - SendAIAgentDataChannelMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendAIAgentDataChannelMessageResponse
+func (client *Client) SendAIAgentDataChannelMessageWithOptions(request *SendAIAgentDataChannelMessageRequest, runtime *util.RuntimeOptions) (_result *SendAIAgentDataChannelMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendAIAgentDataChannelMessage"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendAIAgentDataChannelMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 向智能体通话发送datachannel消息
+//
+// @param request - SendAIAgentDataChannelMessageRequest
+//
+// @return SendAIAgentDataChannelMessageResponse
+func (client *Client) SendAIAgentDataChannelMessage(request *SendAIAgentDataChannelMessageRequest) (_result *SendAIAgentDataChannelMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendAIAgentDataChannelMessageResponse{}
+	_body, _err := client.SendAIAgentDataChannelMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -86572,6 +86832,74 @@ func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJ
 
 // Summary:
 //
+// 切换真人客服接管模式
+//
+// @param request - TakeoverAIAgentCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TakeoverAIAgentCallResponse
+func (client *Client) TakeoverAIAgentCallWithOptions(request *TakeoverAIAgentCallRequest, runtime *util.RuntimeOptions) (_result *TakeoverAIAgentCallResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HumanAgentUserId)) {
+		query["HumanAgentUserId"] = request.HumanAgentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireToken)) {
+		query["RequireToken"] = request.RequireToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TakeoverAIAgentCall"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TakeoverAIAgentCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 切换真人客服接管模式
+//
+// @param request - TakeoverAIAgentCallRequest
+//
+// @return TakeoverAIAgentCallResponse
+func (client *Client) TakeoverAIAgentCall(request *TakeoverAIAgentCallRequest) (_result *TakeoverAIAgentCallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TakeoverAIAgentCallResponse{}
+	_body, _err := client.TakeoverAIAgentCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改实例的配置
 //
 // @param tmpReq - UpdateAIAgentInstanceRequest
@@ -87748,9 +88076,9 @@ func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequ
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - UpdateTemplateRequest
 //
@@ -87826,9 +88154,9 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 //
 // Description:
 //
-//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+//   For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - UpdateTemplateRequest
 //
