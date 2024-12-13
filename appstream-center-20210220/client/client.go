@@ -19,9 +19,6 @@ type FindIdpListByLoginIdentifierRequest struct {
 	//
 	// 370b56f8-2812-4b6c-bfa6-2560791c****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// 22.21.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// example:
 	//
@@ -107,9 +104,6 @@ type FindIdpListByLoginIdentifierShrinkRequest struct {
 	//
 	// 370b56f8-2812-4b6c-bfa6-2560791c****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// example:
-	//
-	// 22.21.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// example:
 	//
@@ -1840,6 +1834,10 @@ func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpLis
 		query["AvailableFeatures"] = request.AvailableFeaturesShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		query["ClientIp"] = request.ClientIp
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientChannel)) {
 		body["ClientChannel"] = request.ClientChannel
@@ -1847,10 +1845,6 @@ func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpLis
 
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		body["ClientId"] = request.ClientId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
-		body["ClientIp"] = request.ClientIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
