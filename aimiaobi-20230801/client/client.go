@@ -1062,6 +1062,149 @@ func (s *DeleteCustomTopicViewPointByIdResponse) SetBody(v *DeleteCustomTopicVie
 	return s
 }
 
+type DeleteDocsRequest struct {
+	// This parameter is required.
+	DocIds []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteDocsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocsRequest) SetDocIds(v []*string) *DeleteDocsRequest {
+	s.DocIds = v
+	return s
+}
+
+func (s *DeleteDocsRequest) SetWorkspaceId(v string) *DeleteDocsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteDocsShrinkRequest struct {
+	// This parameter is required.
+	DocIdsShrink *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteDocsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocsShrinkRequest) SetDocIdsShrink(v string) *DeleteDocsShrinkRequest {
+	s.DocIdsShrink = &v
+	return s
+}
+
+func (s *DeleteDocsShrinkRequest) SetWorkspaceId(v string) *DeleteDocsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteDocsResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2C565EDD-E624-5FED-8565-0A9CB0C8CC46
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDocsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocsResponseBody) SetCode(v string) *DeleteDocsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDocsResponseBody) SetHttpStatusCode(v int32) *DeleteDocsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDocsResponseBody) SetMessage(v string) *DeleteDocsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDocsResponseBody) SetRequestId(v string) *DeleteDocsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocsResponseBody) SetSuccess(v bool) *DeleteDocsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDocsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDocsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDocsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocsResponse) SetHeaders(v map[string]*string) *DeleteDocsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocsResponse) SetStatusCode(v int32) *DeleteDocsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocsResponse) SetBody(v *DeleteDocsResponseBody) *DeleteDocsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -4773,6 +4916,204 @@ func (s *GetDocClusterTaskResponse) SetStatusCode(v int32) *GetDocClusterTaskRes
 }
 
 func (s *GetDocClusterTaskResponse) SetBody(v *GetDocClusterTaskResponseBody) *GetDocClusterTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocInfoRequest struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDocInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocInfoRequest) SetCategoryId(v string) *GetDocInfoRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetDocInfoRequest) SetDocId(v string) *GetDocInfoRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetDocInfoRequest) SetWorkspaceId(v string) *GetDocInfoRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDocInfoResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDocInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDocInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocInfoResponseBody) SetCode(v string) *GetDocInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBody) SetData(v *GetDocInfoResponseBodyData) *GetDocInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocInfoResponseBody) SetHttpStatusCode(v int32) *GetDocInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBody) SetMessage(v string) *GetDocInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBody) SetRequestId(v string) *GetDocInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBody) SetSuccess(v bool) *GetDocInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDocInfoResponseBodyData struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// pdf
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// http://xxx/xxx.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 0
+	Status        *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string   `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	VideoContents []*string `json:"VideoContents,omitempty" xml:"VideoContents,omitempty" type:"Repeated"`
+}
+
+func (s GetDocInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocInfoResponseBodyData) SetCategoryId(v string) *GetDocInfoResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetDocName(v string) *GetDocInfoResponseBodyData {
+	s.DocName = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetDocType(v string) *GetDocInfoResponseBodyData {
+	s.DocType = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetFileUrl(v string) *GetDocInfoResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetStatus(v int32) *GetDocInfoResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetStatusMessage(v string) *GetDocInfoResponseBodyData {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *GetDocInfoResponseBodyData) SetVideoContents(v []*string) *GetDocInfoResponseBodyData {
+	s.VideoContents = v
+	return s
+}
+
+type GetDocInfoResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocInfoResponse) SetHeaders(v map[string]*string) *GetDocInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocInfoResponse) SetStatusCode(v int32) *GetDocInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocInfoResponse) SetBody(v *GetDocInfoResponseBody) *GetDocInfoResponse {
 	s.Body = v
 	return s
 }
@@ -12187,6 +12528,350 @@ func (s *ListDialoguesResponse) SetBody(v *ListDialoguesResponseBody) *ListDialo
 	return s
 }
 
+type ListDocsRequest struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// pdf
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 52a33dc83779f63641e16f5146cd7125
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 10
+	Skip     *int32   `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	Statuses []*int32 `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDocsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsRequest) SetCategoryId(v string) *ListDocsRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetDocName(v string) *ListDocsRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetDocType(v string) *ListDocsRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetMaxResults(v int32) *ListDocsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetNextToken(v string) *ListDocsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetSkip(v int32) *ListDocsRequest {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListDocsRequest) SetStatuses(v []*int32) *ListDocsRequest {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListDocsRequest) SetWorkspaceId(v string) *ListDocsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDocsShrinkRequest struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	DocName    *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// pdf
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 52a33dc83779f63641e16f5146cd7125
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 10
+	Skip           *int32  `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDocsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsShrinkRequest) SetCategoryId(v string) *ListDocsShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetDocName(v string) *ListDocsShrinkRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetDocType(v string) *ListDocsShrinkRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetMaxResults(v int32) *ListDocsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetNextToken(v string) *ListDocsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetSkip(v int32) *ListDocsShrinkRequest {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetStatusesShrink(v string) *ListDocsShrinkRequest {
+	s.StatusesShrink = &v
+	return s
+}
+
+func (s *ListDocsShrinkRequest) SetWorkspaceId(v string) *ListDocsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDocsResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListDocsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CAESGgoSChAKDGNvbXBsZXRlVGltZRABCgQiAggAGAAiQAoJANEQ4mYAAAAACjMDLgAAADFTNzMyZDMwMzAzMDM4NzA3MjZjN2E2NDYyNzUzODMxMzY3ODM0NmIzNTZkNjc=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 70
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDocsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponseBody) SetCode(v string) *ListDocsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetData(v []*ListDocsResponseBodyData) *ListDocsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetHttpStatusCode(v int32) *ListDocsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetMaxResults(v int32) *ListDocsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetMessage(v string) *ListDocsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetNextToken(v string) *ListDocsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetRequestId(v string) *ListDocsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetSuccess(v bool) *ListDocsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDocsResponseBody) SetTotalCount(v int32) *ListDocsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDocsResponseBodyData struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2024-01-04 11:46:07
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 12345
+	DocId   *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// pdf
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 0
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s ListDocsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponseBodyData) SetCategoryId(v string) *ListDocsResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetCreateTime(v int64) *ListDocsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetDocId(v string) *ListDocsResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetDocName(v string) *ListDocsResponseBodyData {
+	s.DocName = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetDocType(v string) *ListDocsResponseBodyData {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetStatus(v int32) *ListDocsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDocsResponseBodyData) SetStatusMessage(v string) *ListDocsResponseBodyData {
+	s.StatusMessage = &v
+	return s
+}
+
+type ListDocsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDocsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDocsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocsResponse) SetHeaders(v map[string]*string) *ListDocsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocsResponse) SetStatusCode(v int32) *ListDocsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocsResponse) SetBody(v *ListDocsResponseBody) *ListDocsResponse {
+	s.Body = v
+	return s
+}
+
 type ListFreshViewPointsRequest struct {
 	// This parameter is required.
 	//
@@ -18886,6 +19571,1730 @@ func (s *RunCustomHotTopicViewPointAnalysisResponse) SetStatusCode(v int32) *Run
 }
 
 func (s *RunCustomHotTopicViewPointAnalysisResponse) SetBody(v *RunCustomHotTopicViewPointAnalysisResponseBody) *RunCustomHotTopicViewPointAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocBrainmapRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocBrainmapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapRequest) SetDocId(v string) *RunDocBrainmapRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunDocBrainmapRequest) SetSessionId(v string) *RunDocBrainmapRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocBrainmapRequest) SetWorkspaceId(v string) *RunDocBrainmapRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocBrainmapResponseBody struct {
+	Header  *RunDocBrainmapResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocBrainmapResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocBrainmapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponseBody) SetHeader(v *RunDocBrainmapResponseBodyHeader) *RunDocBrainmapResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBody) SetPayload(v *RunDocBrainmapResponseBodyPayload) *RunDocBrainmapResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBody) SetRequestId(v string) *RunDocBrainmapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocBrainmapResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 07181f55-2311-48af-8048-132a77dee020
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 161816
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 6427cdf4-2ffe-4d05-b0ef-c4adceea90f4
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocBrainmapResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetErrorCode(v string) *RunDocBrainmapResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetErrorMessage(v string) *RunDocBrainmapResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetEvent(v string) *RunDocBrainmapResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetEventInfo(v string) *RunDocBrainmapResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetSessionId(v string) *RunDocBrainmapResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetTaskId(v string) *RunDocBrainmapResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyHeader) SetTraceId(v string) *RunDocBrainmapResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocBrainmapResponseBodyPayload struct {
+	Output *RunDocBrainmapResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocBrainmapResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocBrainmapResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponseBodyPayload) SetOutput(v *RunDocBrainmapResponseBodyPayloadOutput) *RunDocBrainmapResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyPayload) SetUsage(v *RunDocBrainmapResponseBodyPayloadUsage) *RunDocBrainmapResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocBrainmapResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// {"xxxx":"xxx"}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RunDocBrainmapResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponseBodyPayloadOutput) SetContent(v string) *RunDocBrainmapResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+type RunDocBrainmapResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 65
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 165
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocBrainmapResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocBrainmapResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocBrainmapResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocBrainmapResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocBrainmapResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocBrainmapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocBrainmapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocBrainmapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocBrainmapResponse) SetHeaders(v map[string]*string) *RunDocBrainmapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocBrainmapResponse) SetStatusCode(v int32) *RunDocBrainmapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocBrainmapResponse) SetBody(v *RunDocBrainmapResponseBody) *RunDocBrainmapResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocIntroductionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a3b5eb35-6b28-4cf9-ac09-1dec25ab4df6
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocIntroductionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionRequest) SetDocId(v string) *RunDocIntroductionRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunDocIntroductionRequest) SetSessionId(v string) *RunDocIntroductionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocIntroductionRequest) SetWorkspaceId(v string) *RunDocIntroductionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocIntroductionResponseBody struct {
+	Header  *RunDocIntroductionResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocIntroductionResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// C9B5BEA6-E8C4-5861-BE37-D906D516510E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBody) SetHeader(v *RunDocIntroductionResponseBodyHeader) *RunDocIntroductionResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBody) SetPayload(v *RunDocIntroductionResponseBodyPayload) *RunDocIntroductionResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBody) SetRequestId(v string) *RunDocIntroductionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocIntroductionResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 20247a52-23e2-46fb-943d-309cdee2bc6d
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 8a9cecb7-6d20-32db-8823-5882c217b647
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0bd58ea2-dc38-45da-ac02-17f05cb9040b
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetErrorCode(v string) *RunDocIntroductionResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetErrorMessage(v string) *RunDocIntroductionResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetEvent(v string) *RunDocIntroductionResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetEventInfo(v string) *RunDocIntroductionResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetSessionId(v string) *RunDocIntroductionResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetTaskId(v string) *RunDocIntroductionResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyHeader) SetTraceId(v string) *RunDocIntroductionResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocIntroductionResponseBodyPayload struct {
+	Output *RunDocIntroductionResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocIntroductionResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocIntroductionResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyPayload) SetOutput(v *RunDocIntroductionResponseBodyPayloadOutput) *RunDocIntroductionResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayload) SetUsage(v *RunDocIntroductionResponseBodyPayloadUsage) *RunDocIntroductionResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocIntroductionResponseBodyPayloadOutput struct {
+	Introductions []*RunDocIntroductionResponseBodyPayloadOutputIntroductions `json:"Introductions,omitempty" xml:"Introductions,omitempty" type:"Repeated"`
+	KeyPoint      *string                                                     `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
+	Summary       *string                                                     `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutput) SetIntroductions(v []*RunDocIntroductionResponseBodyPayloadOutputIntroductions) *RunDocIntroductionResponseBodyPayloadOutput {
+	s.Introductions = v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutput) SetKeyPoint(v string) *RunDocIntroductionResponseBodyPayloadOutput {
+	s.KeyPoint = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutput) SetSummary(v string) *RunDocIntroductionResponseBodyPayloadOutput {
+	s.Summary = &v
+	return s
+}
+
+type RunDocIntroductionResponseBodyPayloadOutputIntroductions struct {
+	Blocks []*RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	StartPageId *int32  `json:"StartPageId,omitempty" xml:"StartPageId,omitempty"`
+	Summary     *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutputIntroductions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutputIntroductions) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) SetBlocks(v []*RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) *RunDocIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Blocks = v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) SetStartPageId(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductions {
+	s.StartPageId = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) SetSummary(v string) *RunDocIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductions) SetTitle(v string) *RunDocIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Title = &v
+	return s
+}
+
+type RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks struct {
+	// example:
+	//
+	// 0
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 1200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 600
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 10
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// example:
+	//
+	// 600
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 10
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetBeginTime(v int64) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetEndTime(v int64) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetHeight(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Height = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetPageId(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.PageId = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetWidth(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Width = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetX(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.X = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetY(v int32) *RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Y = &v
+	return s
+}
+
+type RunDocIntroductionResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocIntroductionResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocIntroductionResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocIntroductionResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocIntroductionResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocIntroductionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocIntroductionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocIntroductionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocIntroductionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocIntroductionResponse) SetHeaders(v map[string]*string) *RunDocIntroductionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocIntroductionResponse) SetStatusCode(v int32) *RunDocIntroductionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocIntroductionResponse) SetBody(v *RunDocIntroductionResponseBody) *RunDocIntroductionResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocQaRequest struct {
+	CategoryIds          []*string                              `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	ConversationContexts []*RunDocQaRequestConversationContexts `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty" type:"Repeated"`
+	DocIds               []*string                              `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fromWeb
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f486c4e2-b773-4d65-88f8-2ba540610456
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-dswd4003ny4gh9rw
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocQaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaRequest) SetCategoryIds(v []*string) *RunDocQaRequest {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *RunDocQaRequest) SetConversationContexts(v []*RunDocQaRequestConversationContexts) *RunDocQaRequest {
+	s.ConversationContexts = v
+	return s
+}
+
+func (s *RunDocQaRequest) SetDocIds(v []*string) *RunDocQaRequest {
+	s.DocIds = v
+	return s
+}
+
+func (s *RunDocQaRequest) SetQuery(v string) *RunDocQaRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunDocQaRequest) SetReferenceContent(v string) *RunDocQaRequest {
+	s.ReferenceContent = &v
+	return s
+}
+
+func (s *RunDocQaRequest) SetSearchSource(v string) *RunDocQaRequest {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunDocQaRequest) SetSessionId(v string) *RunDocQaRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocQaRequest) SetWorkspaceId(v string) *RunDocQaRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocQaRequestConversationContexts struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s RunDocQaRequestConversationContexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaRequestConversationContexts) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaRequestConversationContexts) SetContent(v string) *RunDocQaRequestConversationContexts {
+	s.Content = &v
+	return s
+}
+
+func (s *RunDocQaRequestConversationContexts) SetRole(v string) *RunDocQaRequestConversationContexts {
+	s.Role = &v
+	return s
+}
+
+type RunDocQaShrinkRequest struct {
+	CategoryIdsShrink          *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	ConversationContextsShrink *string `json:"ConversationContexts,omitempty" xml:"ConversationContexts,omitempty"`
+	DocIdsShrink               *string `json:"DocIds,omitempty" xml:"DocIds,omitempty"`
+	// This parameter is required.
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	ReferenceContent *string `json:"ReferenceContent,omitempty" xml:"ReferenceContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fromWeb
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f486c4e2-b773-4d65-88f8-2ba540610456
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-dswd4003ny4gh9rw
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocQaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaShrinkRequest) SetCategoryIdsShrink(v string) *RunDocQaShrinkRequest {
+	s.CategoryIdsShrink = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetConversationContextsShrink(v string) *RunDocQaShrinkRequest {
+	s.ConversationContextsShrink = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetDocIdsShrink(v string) *RunDocQaShrinkRequest {
+	s.DocIdsShrink = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetQuery(v string) *RunDocQaShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetReferenceContent(v string) *RunDocQaShrinkRequest {
+	s.ReferenceContent = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetSearchSource(v string) *RunDocQaShrinkRequest {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetSessionId(v string) *RunDocQaShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocQaShrinkRequest) SetWorkspaceId(v string) *RunDocQaShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocQaResponseBody struct {
+	Header  *RunDocQaResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocQaResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocQaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBody) SetHeader(v *RunDocQaResponseBodyHeader) *RunDocQaResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocQaResponseBody) SetPayload(v *RunDocQaResponseBodyPayload) *RunDocQaResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocQaResponseBody) SetRequestId(v string) *RunDocQaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocQaResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// f5517ee8-dbec-4dc8-bd0a-af084b5e3db1
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 46e5c2b5-0877-4f09-bd91-ab0cf314e48b
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocQaResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyHeader) SetErrorCode(v string) *RunDocQaResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetErrorMessage(v string) *RunDocQaResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetEvent(v string) *RunDocQaResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetEventInfo(v string) *RunDocQaResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetSessionId(v string) *RunDocQaResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetTaskId(v string) *RunDocQaResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyHeader) SetTraceId(v string) *RunDocQaResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocQaResponseBodyPayload struct {
+	Output *RunDocQaResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocQaResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocQaResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayload) SetOutput(v *RunDocQaResponseBodyPayloadOutput) *RunDocQaResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayload) SetUsage(v *RunDocQaResponseBodyPayloadUsage) *RunDocQaResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadOutput struct {
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	InterveneContent *string `json:"InterveneContent,omitempty" xml:"InterveneContent,omitempty"`
+	// example:
+	//
+	// false
+	IsReject     *bool                                            `json:"IsReject,omitempty" xml:"IsReject,omitempty"`
+	MediaUrlList []*RunDocQaResponseBodyPayloadOutputMediaUrlList `json:"MediaUrlList,omitempty" xml:"MediaUrlList,omitempty" type:"Repeated"`
+	Recommends   []*RunDocQaResponseBodyPayloadOutputRecommends   `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
+	References   []*RunDocQaResponseBodyPayloadOutputReferences   `json:"References,omitempty" xml:"References,omitempty" type:"Repeated"`
+}
+
+func (s RunDocQaResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetContent(v string) *RunDocQaResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetInterveneContent(v string) *RunDocQaResponseBodyPayloadOutput {
+	s.InterveneContent = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetIsReject(v bool) *RunDocQaResponseBodyPayloadOutput {
+	s.IsReject = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetMediaUrlList(v []*RunDocQaResponseBodyPayloadOutputMediaUrlList) *RunDocQaResponseBodyPayloadOutput {
+	s.MediaUrlList = v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetRecommends(v []*RunDocQaResponseBodyPayloadOutputRecommends) *RunDocQaResponseBodyPayloadOutput {
+	s.Recommends = v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutput) SetReferences(v []*RunDocQaResponseBodyPayloadOutputReferences) *RunDocQaResponseBodyPayloadOutput {
+	s.References = v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadOutputMediaUrlList struct {
+	ClipInfos []*RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/2775676850/O1CN01kdeffE20TM0E7wvpq_!!2775676850.jpg_q60.jpg
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// video
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunDocQaResponseBodyPayloadOutputMediaUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadOutputMediaUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) SetClipInfos(v []*RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) *RunDocQaResponseBodyPayloadOutputMediaUrlList {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) SetFileUrl(v string) *RunDocQaResponseBodyPayloadOutputMediaUrlList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputMediaUrlList) SetMediaType(v string) *RunDocQaResponseBodyPayloadOutputMediaUrlList {
+	s.MediaType = &v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos struct {
+	// example:
+	//
+	// 0
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 30
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) SetFrom(v float64) *RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos) SetTo(v float64) *RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos {
+	s.To = &v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadOutputRecommends struct {
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunDocQaResponseBodyPayloadOutputRecommends) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadOutputRecommends) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputRecommends) SetTitle(v string) *RunDocQaResponseBodyPayloadOutputRecommends {
+	s.Title = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputRecommends) SetUrl(v string) *RunDocQaResponseBodyPayloadOutputRecommends {
+	s.Url = &v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadOutputReferences struct {
+	// example:
+	//
+	// 2024-10-08 18:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 123456
+	SourceDocId *string `json:"SourceDocId,omitempty" xml:"SourceDocId,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://xxxxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunDocQaResponseBodyPayloadOutputReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadOutputReferences) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputReferences) SetPubTime(v string) *RunDocQaResponseBodyPayloadOutputReferences {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputReferences) SetSource(v string) *RunDocQaResponseBodyPayloadOutputReferences {
+	s.Source = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputReferences) SetSourceDocId(v string) *RunDocQaResponseBodyPayloadOutputReferences {
+	s.SourceDocId = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputReferences) SetTitle(v string) *RunDocQaResponseBodyPayloadOutputReferences {
+	s.Title = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadOutputReferences) SetUrl(v string) *RunDocQaResponseBodyPayloadOutputReferences {
+	s.Url = &v
+	return s
+}
+
+type RunDocQaResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocQaResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocQaResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocQaResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocQaResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocQaResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocQaResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocQaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocQaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocQaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocQaResponse) SetHeaders(v map[string]*string) *RunDocQaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocQaResponse) SetStatusCode(v int32) *RunDocQaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocQaResponse) SetBody(v *RunDocQaResponseBody) *RunDocQaResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocSummaryRequest struct {
+	// example:
+	//
+	// 12345
+	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0f56f98a-f2d8-47ec-98e9-1cbdcffa9539
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryRequest) SetDocId(v string) *RunDocSummaryRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunDocSummaryRequest) SetQuery(v string) *RunDocSummaryRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunDocSummaryRequest) SetRecommendContent(v string) *RunDocSummaryRequest {
+	s.RecommendContent = &v
+	return s
+}
+
+func (s *RunDocSummaryRequest) SetSessionId(v string) *RunDocSummaryRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocSummaryRequest) SetWorkspaceId(v string) *RunDocSummaryRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocSummaryResponseBody struct {
+	Header  *RunDocSummaryResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocSummaryResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3259D344-E871-5DE0-8FFE-CDA21F8D4382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponseBody) SetHeader(v *RunDocSummaryResponseBodyHeader) *RunDocSummaryResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocSummaryResponseBody) SetPayload(v *RunDocSummaryResponseBodyPayload) *RunDocSummaryResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocSummaryResponseBody) SetRequestId(v string) *RunDocSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocSummaryResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 92e16ccb-92b6-4894-abbf-fc6e2929a0df
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// b057f2fa-2277-477b-babf-cbc062307828
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2150451a17191950923411783e2927
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocSummaryResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetErrorCode(v string) *RunDocSummaryResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetErrorMessage(v string) *RunDocSummaryResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetEvent(v string) *RunDocSummaryResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetEventInfo(v string) *RunDocSummaryResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetSessionId(v string) *RunDocSummaryResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetTaskId(v string) *RunDocSummaryResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyHeader) SetTraceId(v string) *RunDocSummaryResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocSummaryResponseBodyPayload struct {
+	Output *RunDocSummaryResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocSummaryResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocSummaryResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponseBodyPayload) SetOutput(v *RunDocSummaryResponseBodyPayloadOutput) *RunDocSummaryResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyPayload) SetUsage(v *RunDocSummaryResponseBodyPayloadUsage) *RunDocSummaryResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocSummaryResponseBodyPayloadOutput struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RunDocSummaryResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponseBodyPayloadOutput) SetContent(v string) *RunDocSummaryResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+type RunDocSummaryResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocSummaryResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocSummaryResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocSummaryResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocSummaryResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocSummaryResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocSummaryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSummaryResponse) SetHeaders(v map[string]*string) *RunDocSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocSummaryResponse) SetStatusCode(v int32) *RunDocSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocSummaryResponse) SetBody(v *RunDocSummaryResponseBody) *RunDocSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocTranslationRequest struct {
+	// example:
+	//
+	// 12345
+	DocId            *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	RecommendContent *string `json:"RecommendContent,omitempty" xml:"RecommendContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2e6b3987-f743-4d4c-8326-d9c41a6af3ee
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// toChinese
+	//
+	// toEnglish
+	TransType *string `json:"TransType,omitempty" xml:"TransType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocTranslationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationRequest) SetDocId(v string) *RunDocTranslationRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunDocTranslationRequest) SetRecommendContent(v string) *RunDocTranslationRequest {
+	s.RecommendContent = &v
+	return s
+}
+
+func (s *RunDocTranslationRequest) SetSessionId(v string) *RunDocTranslationRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocTranslationRequest) SetTransType(v string) *RunDocTranslationRequest {
+	s.TransType = &v
+	return s
+}
+
+func (s *RunDocTranslationRequest) SetWorkspaceId(v string) *RunDocTranslationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocTranslationResponseBody struct {
+	Header  *RunDocTranslationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocTranslationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocTranslationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponseBody) SetHeader(v *RunDocTranslationResponseBodyHeader) *RunDocTranslationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocTranslationResponseBody) SetPayload(v *RunDocTranslationResponseBodyPayload) *RunDocTranslationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocTranslationResponseBody) SetRequestId(v string) *RunDocTranslationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocTranslationResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 411c4dfa-2168-4379-a902-675d67f453f8
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 50a1cc8e-717e-4a2b-a76b-dc9734a8564b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ebd19b12-0cae-488f-9e41-5a1c825f545b
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocTranslationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetErrorCode(v string) *RunDocTranslationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetErrorMessage(v string) *RunDocTranslationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetEvent(v string) *RunDocTranslationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetEventInfo(v string) *RunDocTranslationResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetSessionId(v string) *RunDocTranslationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetTaskId(v string) *RunDocTranslationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyHeader) SetTraceId(v string) *RunDocTranslationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocTranslationResponseBodyPayload struct {
+	Output *RunDocTranslationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocTranslationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocTranslationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponseBodyPayload) SetOutput(v *RunDocTranslationResponseBodyPayloadOutput) *RunDocTranslationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyPayload) SetUsage(v *RunDocTranslationResponseBodyPayloadUsage) *RunDocTranslationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocTranslationResponseBodyPayloadOutput struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RunDocTranslationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponseBodyPayloadOutput) SetContent(v string) *RunDocTranslationResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+type RunDocTranslationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocTranslationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocTranslationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocTranslationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocTranslationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocTranslationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocTranslationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocTranslationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocTranslationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocTranslationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocTranslationResponse) SetHeaders(v map[string]*string) *RunDocTranslationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocTranslationResponse) SetStatusCode(v int32) *RunDocTranslationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocTranslationResponse) SetBody(v *RunDocTranslationResponseBody) *RunDocTranslationResponse {
 	s.Body = v
 	return s
 }
@@ -27001,6 +29410,227 @@ func (s *UpdateMaterialDocumentResponse) SetBody(v *UpdateMaterialDocumentRespon
 	return s
 }
 
+type UploadDocRequest struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	Docs []*UploadDocRequestDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-yigtrrjl377rcbab
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UploadDocRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocRequest) SetCategoryId(v string) *UploadDocRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UploadDocRequest) SetDocs(v []*UploadDocRequestDocs) *UploadDocRequest {
+	s.Docs = v
+	return s
+}
+
+func (s *UploadDocRequest) SetWorkspaceId(v string) *UploadDocRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UploadDocRequestDocs struct {
+	// This parameter is required.
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxx/ccc.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s UploadDocRequestDocs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocRequestDocs) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocRequestDocs) SetDocName(v string) *UploadDocRequestDocs {
+	s.DocName = &v
+	return s
+}
+
+func (s *UploadDocRequestDocs) SetFileUrl(v string) *UploadDocRequestDocs {
+	s.FileUrl = &v
+	return s
+}
+
+type UploadDocShrinkRequest struct {
+	// example:
+	//
+	// default
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	DocsShrink *string `json:"Docs,omitempty" xml:"Docs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-yigtrrjl377rcbab
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UploadDocShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocShrinkRequest) SetCategoryId(v string) *UploadDocShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UploadDocShrinkRequest) SetDocsShrink(v string) *UploadDocShrinkRequest {
+	s.DocsShrink = &v
+	return s
+}
+
+func (s *UploadDocShrinkRequest) SetWorkspaceId(v string) *UploadDocShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UploadDocResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UploadDocResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UploadDocResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocResponseBody) SetCode(v string) *UploadDocResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadDocResponseBody) SetData(v *UploadDocResponseBodyData) *UploadDocResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UploadDocResponseBody) SetHttpStatusCode(v int32) *UploadDocResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UploadDocResponseBody) SetMessage(v string) *UploadDocResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UploadDocResponseBody) SetRequestId(v string) *UploadDocResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadDocResponseBody) SetSuccess(v bool) *UploadDocResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UploadDocResponseBodyData struct {
+	DocIds     []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	ExistedIds []*string `json:"ExistedIds,omitempty" xml:"ExistedIds,omitempty" type:"Repeated"`
+}
+
+func (s UploadDocResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocResponseBodyData) SetDocIds(v []*string) *UploadDocResponseBodyData {
+	s.DocIds = v
+	return s
+}
+
+func (s *UploadDocResponseBodyData) SetExistedIds(v []*string) *UploadDocResponseBodyData {
+	s.ExistedIds = v
+	return s
+}
+
+type UploadDocResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadDocResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadDocResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadDocResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadDocResponse) SetHeaders(v map[string]*string) *UploadDocResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadDocResponse) SetStatusCode(v int32) *UploadDocResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadDocResponse) SetBody(v *UploadDocResponseBody) *UploadDocResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateUploadTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -27711,6 +30341,76 @@ func (client *Client) DeleteCustomTopicViewPointById(request *DeleteCustomTopicV
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomTopicViewPointByIdResponse{}
 	_body, _err := client.DeleteCustomTopicViewPointByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读删除多个文档
+//
+// @param tmpReq - DeleteDocsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDocsResponse
+func (client *Client) DeleteDocsWithOptions(tmpReq *DeleteDocsRequest, runtime *util.RuntimeOptions) (_result *DeleteDocsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteDocsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocIds)) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, tea.String("DocIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocIdsShrink)) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDocs"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读删除多个文档
+//
+// @param request - DeleteDocsRequest
+//
+// @return DeleteDocsResponse
+func (client *Client) DeleteDocs(request *DeleteDocsRequest) (_result *DeleteDocsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocsResponse{}
+	_body, _err := client.DeleteDocsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29071,6 +31771,74 @@ func (client *Client) GetDocClusterTask(request *GetDocClusterTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocClusterTaskResponse{}
 	_body, _err := client.GetDocClusterTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读获取文档信息
+//
+// @param request - GetDocInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocInfoResponse
+func (client *Client) GetDocInfoWithOptions(request *GetDocInfoRequest, runtime *util.RuntimeOptions) (_result *GetDocInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocInfo"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读获取文档信息
+//
+// @param request - GetDocInfoRequest
+//
+// @return GetDocInfoResponse
+func (client *Client) GetDocInfo(request *GetDocInfoRequest) (_result *GetDocInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDocInfoResponse{}
+	_body, _err := client.GetDocInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30701,6 +33469,100 @@ func (client *Client) ListDialogues(request *ListDialoguesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDialoguesResponse{}
 	_body, _err := client.ListDialoguesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读获取文档列表
+//
+// @param tmpReq - ListDocsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDocsResponse
+func (client *Client) ListDocsWithOptions(tmpReq *ListDocsRequest, runtime *util.RuntimeOptions) (_result *ListDocsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDocsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Statuses)) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, tea.String("Statuses"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		body["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		body["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Skip)) {
+		body["Skip"] = request.Skip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusesShrink)) {
+		body["Statuses"] = request.StatusesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocs"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读获取文档列表
+//
+// @param request - ListDocsRequest
+//
+// @return ListDocsResponse
+func (client *Client) ListDocs(request *ListDocsRequest) (_result *ListDocsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocsResponse{}
+	_body, _err := client.ListDocsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32475,6 +35337,396 @@ func (client *Client) RunCustomHotTopicViewPointAnalysis(request *RunCustomHotTo
 	runtime := &util.RuntimeOptions{}
 	_result = &RunCustomHotTopicViewPointAnalysisResponse{}
 	_body, _err := client.RunCustomHotTopicViewPointAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读脑图生成接口
+//
+// @param request - RunDocBrainmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocBrainmapResponse
+func (client *Client) RunDocBrainmapWithOptions(request *RunDocBrainmapRequest, runtime *util.RuntimeOptions) (_result *RunDocBrainmapResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocBrainmap"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocBrainmapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读脑图生成接口
+//
+// @param request - RunDocBrainmapRequest
+//
+// @return RunDocBrainmapResponse
+func (client *Client) RunDocBrainmap(request *RunDocBrainmapRequest) (_result *RunDocBrainmapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocBrainmapResponse{}
+	_body, _err := client.RunDocBrainmapWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档导读接口
+//
+// @param request - RunDocIntroductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocIntroductionResponse
+func (client *Client) RunDocIntroductionWithOptions(request *RunDocIntroductionRequest, runtime *util.RuntimeOptions) (_result *RunDocIntroductionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocIntroduction"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocIntroductionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档导读接口
+//
+// @param request - RunDocIntroductionRequest
+//
+// @return RunDocIntroductionResponse
+func (client *Client) RunDocIntroduction(request *RunDocIntroductionRequest) (_result *RunDocIntroductionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocIntroductionResponse{}
+	_body, _err := client.RunDocIntroductionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读问答接口
+//
+// @param tmpReq - RunDocQaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocQaResponse
+func (client *Client) RunDocQaWithOptions(tmpReq *RunDocQaRequest, runtime *util.RuntimeOptions) (_result *RunDocQaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunDocQaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CategoryIds)) {
+		request.CategoryIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryIds, tea.String("CategoryIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConversationContexts)) {
+		request.ConversationContextsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConversationContexts, tea.String("ConversationContexts"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocIds)) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, tea.String("DocIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryIdsShrink)) {
+		body["CategoryIds"] = request.CategoryIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationContextsShrink)) {
+		body["ConversationContexts"] = request.ConversationContextsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocIdsShrink)) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferenceContent)) {
+		body["ReferenceContent"] = request.ReferenceContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchSource)) {
+		body["SearchSource"] = request.SearchSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocQa"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocQaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读问答接口
+//
+// @param request - RunDocQaRequest
+//
+// @return RunDocQaResponse
+func (client *Client) RunDocQa(request *RunDocQaRequest) (_result *RunDocQaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocQaResponse{}
+	_body, _err := client.RunDocQaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档总结摘要接口
+//
+// @param request - RunDocSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocSummaryResponse
+func (client *Client) RunDocSummaryWithOptions(request *RunDocSummaryRequest, runtime *util.RuntimeOptions) (_result *RunDocSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendContent)) {
+		body["RecommendContent"] = request.RecommendContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocSummary"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档总结摘要接口
+//
+// @param request - RunDocSummaryRequest
+//
+// @return RunDocSummaryResponse
+func (client *Client) RunDocSummary(request *RunDocSummaryRequest) (_result *RunDocSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocSummaryResponse{}
+	_body, _err := client.RunDocSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档翻译接口
+//
+// @param request - RunDocTranslationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocTranslationResponse
+func (client *Client) RunDocTranslationWithOptions(request *RunDocTranslationRequest, runtime *util.RuntimeOptions) (_result *RunDocTranslationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecommendContent)) {
+		body["RecommendContent"] = request.RecommendContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransType)) {
+		body["TransType"] = request.TransType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocTranslation"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocTranslationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档翻译接口
+//
+// @param request - RunDocTranslationRequest
+//
+// @return RunDocTranslationResponse
+func (client *Client) RunDocTranslation(request *RunDocTranslationRequest) (_result *RunDocTranslationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocTranslationResponse{}
+	_body, _err := client.RunDocTranslationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34501,6 +37753,80 @@ func (client *Client) UpdateMaterialDocument(request *UpdateMaterialDocumentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMaterialDocumentResponse{}
 	_body, _err := client.UpdateMaterialDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读上传文档接口
+//
+// @param tmpReq - UploadDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadDocResponse
+func (client *Client) UploadDocWithOptions(tmpReq *UploadDocRequest, runtime *util.RuntimeOptions) (_result *UploadDocResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UploadDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Docs)) {
+		request.DocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Docs, tea.String("Docs"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocsShrink)) {
+		body["Docs"] = request.DocsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadDoc"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读上传文档接口
+//
+// @param request - UploadDocRequest
+//
+// @return UploadDocResponse
+func (client *Client) UploadDoc(request *UploadDocRequest) (_result *UploadDocResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadDocResponse{}
+	_body, _err := client.UploadDocWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
