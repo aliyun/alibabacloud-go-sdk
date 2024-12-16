@@ -22465,6 +22465,7 @@ func (s *RunWritingShrinkRequest) SetWritingConfigShrink(v string) *RunWritingSh
 }
 
 type RunWritingResponseBody struct {
+	End     *bool                          `json:"End,omitempty" xml:"End,omitempty"`
 	Header  *RunWritingResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
 	Payload *RunWritingResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 	// example:
@@ -22479,6 +22480,11 @@ func (s RunWritingResponseBody) String() string {
 
 func (s RunWritingResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *RunWritingResponseBody) SetEnd(v bool) *RunWritingResponseBody {
+	s.End = &v
+	return s
 }
 
 func (s *RunWritingResponseBody) SetHeader(v *RunWritingResponseBodyHeader) *RunWritingResponseBody {
