@@ -7480,8 +7480,6 @@ func (s *EnrichRequestJourneyParamList) SetSegmentParamList(v []*EnrichRequestJo
 type EnrichRequestJourneyParamListSegmentParamList struct {
 	// arrival airport code (capitalized)
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// MFM
@@ -7506,8 +7504,6 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
 	ChildCabin *string `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
 	// departure airport code (capitalized)
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// PVG
@@ -7519,8 +7515,6 @@ type EnrichRequestJourneyParamListSegmentParamList struct {
 	// SHA
 	DepartureCity *string `json:"departure_city,omitempty" xml:"departure_city,omitempty"`
 	// departure time in string format (yyyy-MM-dd HH:mm:ss)
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
