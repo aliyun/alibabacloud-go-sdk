@@ -232,6 +232,7 @@ func (s *DemoCategory) SetSubCategories(v []*DemoCategory) *DemoCategory {
 }
 
 type ForwardInfo struct {
+	AccessType []*string `json:"AccessType,omitempty" xml:"AccessType,omitempty" type:"Repeated"`
 	// example:
 	//
 	// dsw-notebook
@@ -246,12 +247,20 @@ type ForwardInfo struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// example:
 	//
-	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// 10086
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	// example:
 	//
 	// 22
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// example:
+	//
+	// ssh
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ngw-bp1uewa15k4iy5770****
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	SSHPublicKey *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
 }
 
@@ -261,6 +270,11 @@ func (s ForwardInfo) String() string {
 
 func (s ForwardInfo) GoString() string {
 	return s.String()
+}
+
+func (s *ForwardInfo) SetAccessType(v []*string) *ForwardInfo {
+	s.AccessType = v
+	return s
 }
 
 func (s *ForwardInfo) SetContainerName(v string) *ForwardInfo {
@@ -278,13 +292,23 @@ func (s *ForwardInfo) SetEnable(v bool) *ForwardInfo {
 	return s
 }
 
-func (s *ForwardInfo) SetNatGatewayId(v string) *ForwardInfo {
-	s.NatGatewayId = &v
+func (s *ForwardInfo) SetExternalPort(v string) *ForwardInfo {
+	s.ExternalPort = &v
 	return s
 }
 
-func (s *ForwardInfo) SetPort(v string) *ForwardInfo {
-	s.Port = &v
+func (s *ForwardInfo) SetForwardPort(v string) *ForwardInfo {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *ForwardInfo) SetName(v string) *ForwardInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ForwardInfo) SetNatGatewayId(v string) *ForwardInfo {
+	s.NatGatewayId = &v
 	return s
 }
 
@@ -294,6 +318,7 @@ func (s *ForwardInfo) SetSSHPublicKey(v string) *ForwardInfo {
 }
 
 type ForwardInfoResponse struct {
+	AccessType  []*string                       `json:"AccessType,omitempty" xml:"AccessType,omitempty" type:"Repeated"`
 	ConnectInfo *ForwardInfoResponseConnectInfo `json:"ConnectInfo,omitempty" xml:"ConnectInfo,omitempty" type:"Struct"`
 	// example:
 	//
@@ -309,12 +334,20 @@ type ForwardInfoResponse struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// example:
 	//
-	// ngw-bp1uewa15k4iy5770****
-	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// 1024
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	// example:
 	//
 	// 22
-	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// example:
+	//
+	// ssh
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ngw-bp1uewa15k4iy5770****
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	SSHPublicKey *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
 }
 
@@ -324,6 +357,11 @@ func (s ForwardInfoResponse) String() string {
 
 func (s ForwardInfoResponse) GoString() string {
 	return s.String()
+}
+
+func (s *ForwardInfoResponse) SetAccessType(v []*string) *ForwardInfoResponse {
+	s.AccessType = v
+	return s
 }
 
 func (s *ForwardInfoResponse) SetConnectInfo(v *ForwardInfoResponseConnectInfo) *ForwardInfoResponse {
@@ -346,13 +384,23 @@ func (s *ForwardInfoResponse) SetEnable(v bool) *ForwardInfoResponse {
 	return s
 }
 
-func (s *ForwardInfoResponse) SetNatGatewayId(v string) *ForwardInfoResponse {
-	s.NatGatewayId = &v
+func (s *ForwardInfoResponse) SetExternalPort(v string) *ForwardInfoResponse {
+	s.ExternalPort = &v
 	return s
 }
 
-func (s *ForwardInfoResponse) SetPort(v string) *ForwardInfoResponse {
-	s.Port = &v
+func (s *ForwardInfoResponse) SetForwardPort(v string) *ForwardInfoResponse {
+	s.ForwardPort = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetName(v string) *ForwardInfoResponse {
+	s.Name = &v
+	return s
+}
+
+func (s *ForwardInfoResponse) SetNatGatewayId(v string) *ForwardInfoResponse {
+	s.NatGatewayId = &v
 	return s
 }
 
@@ -635,7 +683,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// dsw-123456789
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Tag        []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1612285282502324
@@ -736,6 +785,11 @@ func (s *CreateInstanceRequest) SetRequestedResource(v *CreateInstanceRequestReq
 
 func (s *CreateInstanceRequest) SetResourceId(v string) *CreateInstanceRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetTag(v []*CreateInstanceRequestTag) *CreateInstanceRequest {
+	s.Tag = v
 	return s
 }
 
@@ -1008,6 +1062,29 @@ func (s *CreateInstanceRequestRequestedResource) SetMemory(v string) *CreateInst
 
 func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *CreateInstanceRequestRequestedResource {
 	s.SharedMemory = &v
+	return s
+}
+
+type CreateInstanceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestTag) SetKey(v string) *CreateInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2175,7 +2252,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// 1
-	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority  *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ProxyPath *string `json:"ProxyPath,omitempty" xml:"ProxyPath,omitempty"`
 	// example:
 	//
 	// Internal Error
@@ -2207,7 +2285,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tags    []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
@@ -2404,6 +2483,11 @@ func (s *GetInstanceResponseBody) SetPriority(v int64) *GetInstanceResponseBody 
 	return s
 }
 
+func (s *GetInstanceResponseBody) SetProxyPath(v string) *GetInstanceResponseBody {
+	s.ProxyPath = &v
+	return s
+}
+
 func (s *GetInstanceResponseBody) SetReasonCode(v string) *GetInstanceResponseBody {
 	s.ReasonCode = &v
 	return s
@@ -2441,6 +2525,11 @@ func (s *GetInstanceResponseBody) SetStatus(v string) *GetInstanceResponseBody {
 
 func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetTags(v []*GetInstanceResponseBodyTags) *GetInstanceResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -3046,6 +3135,29 @@ func (s *GetInstanceResponseBodyRequestedResource) SetMemory(v string) *GetInsta
 
 func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *GetInstanceResponseBodyRequestedResource {
 	s.SharedMemory = &v
+	return s
+}
+
+type GetInstanceResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetInstanceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyTags) SetTagKey(v string) *GetInstanceResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyTags) SetTagValue(v string) *GetInstanceResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -5491,7 +5603,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 40823
@@ -5621,8 +5734,36 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 	return s
 }
 
+func (s *ListInstancesRequest) SetTag(v []*ListInstancesRequestTag) *ListInstancesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListInstancesRequest) SetWorkspaceId(v string) *ListInstancesRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+type ListInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequestTag) SetKey(v string) *ListInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5682,7 +5823,8 @@ type ListInstancesShrinkRequest struct {
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// example:
 	//
 	// 40823
@@ -5809,6 +5951,11 @@ func (s *ListInstancesShrinkRequest) SetSortBy(v string) *ListInstancesShrinkReq
 
 func (s *ListInstancesShrinkRequest) SetStatus(v string) *ListInstancesShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetTagShrink(v string) *ListInstancesShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -6004,7 +6151,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
@@ -6208,6 +6356,11 @@ func (s *ListInstancesResponseBodyInstances) SetResourceName(v string) *ListInst
 
 func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
 	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetTags(v []*ListInstancesResponseBodyInstancesTags) *ListInstancesResponseBodyInstances {
+	s.Tags = v
 	return s
 }
 
@@ -6757,6 +6910,29 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetMemory(v string
 
 func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v string) *ListInstancesResponseBodyInstancesRequestedResource {
 	s.SharedMemory = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesTags) SetTagKey(v string) *ListInstancesResponseBodyInstancesTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesTags) SetTagValue(v string) *ListInstancesResponseBodyInstancesTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -7857,6 +8033,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -9252,6 +9432,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
 		query["AcceleratorType"] = request.AcceleratorType
@@ -9343,6 +9527,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
