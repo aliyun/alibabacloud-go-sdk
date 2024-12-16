@@ -12719,7 +12719,8 @@ type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
 	// example:
 	//
 	// {instance_name: "am-***"}
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TranslateKey *string `json:"TranslateKey,omitempty" xml:"TranslateKey,omitempty"`
 	// The values of the performance metric at different points in time.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
@@ -12739,6 +12740,11 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) SetName(v s
 
 func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) SetTags(v string) *DescribeDBClusterPerformanceResponseBodyPerformancesSeries {
 	s.Tags = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) SetTranslateKey(v string) *DescribeDBClusterPerformanceResponseBodyPerformancesSeries {
+	s.TranslateKey = &v
 	return s
 }
 
