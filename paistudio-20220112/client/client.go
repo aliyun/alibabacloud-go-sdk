@@ -11297,6 +11297,7 @@ type ListTrainingJobsResponseBodyTrainingJobs struct {
 	// v0.0.1
 	AlgorithmVersion *string                                                   `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
 	ComputeResource  *ListTrainingJobsResponseBodyTrainingJobsComputeResource  `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	DlcJobId         *string                                                   `json:"DlcJobId,omitempty" xml:"DlcJobId,omitempty"`
 	Environments     map[string]*string                                        `json:"Environments,omitempty" xml:"Environments,omitempty"`
 	ExperimentConfig *ListTrainingJobsResponseBodyTrainingJobsExperimentConfig `json:"ExperimentConfig,omitempty" xml:"ExperimentConfig,omitempty" type:"Struct"`
 	// example:
@@ -11379,6 +11380,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmVersion(v string)
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) SetComputeResource(v *ListTrainingJobsResponseBodyTrainingJobsComputeResource) *ListTrainingJobsResponseBodyTrainingJobs {
 	s.ComputeResource = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetDlcJobId(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.DlcJobId = &v
 	return s
 }
 
