@@ -1155,6 +1155,1041 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 	return s
 }
 
+type CreateIdentityProviderRequest struct {
+	// 认证配置
+	AuthnConfig *CreateIdentityProviderRequestAuthnConfig `json:"AuthnConfig,omitempty" xml:"AuthnConfig,omitempty" type:"Struct"`
+	// 自动创建账户账户规则配置。
+	AutoCreateUserConfig *CreateIdentityProviderRequestAutoCreateUserConfig `json:"AutoCreateUserConfig,omitempty" xml:"AutoCreateUserConfig,omitempty" type:"Struct"`
+	// 自动更新账户规则配置。
+	AutoUpdateUserConfig *CreateIdentityProviderRequestAutoUpdateUserConfig `json:"AutoUpdateUserConfig,omitempty" xml:"AutoUpdateUserConfig,omitempty" type:"Struct"`
+	// 账户绑定规则配置。
+	BindingConfig *CreateIdentityProviderRequestBindingConfig `json:"BindingConfig,omitempty" xml:"BindingConfig,omitempty" type:"Struct"`
+	// 钉钉配置
+	DingtalkAppConfig *CreateIdentityProviderRequestDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
+	// 身份提供方名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// 身份提供发类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:idp:alibaba:dingtalk:push
+	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 飞书配置
+	LarkConfig *CreateIdentityProviderRequestLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
+	// AD/LDAP配置
+	LdapConfig *CreateIdentityProviderRequestLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
+	// 网络端点ID
+	//
+	// example:
+	//
+	// nae_examplexxxx
+	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
+	// OIDC IdP配置。
+	OidcConfig *CreateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
+	// 同步入配置
+	UdPullConfig *CreateIdentityProviderRequestUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
+	// 同步出配置
+	UdPushConfig *CreateIdentityProviderRequestUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
+	// WeCom配置
+	WeComConfig *CreateIdentityProviderRequestWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateIdentityProviderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequest) SetAuthnConfig(v *CreateIdentityProviderRequestAuthnConfig) *CreateIdentityProviderRequest {
+	s.AuthnConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetAutoCreateUserConfig(v *CreateIdentityProviderRequestAutoCreateUserConfig) *CreateIdentityProviderRequest {
+	s.AutoCreateUserConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetAutoUpdateUserConfig(v *CreateIdentityProviderRequestAutoUpdateUserConfig) *CreateIdentityProviderRequest {
+	s.AutoUpdateUserConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetBindingConfig(v *CreateIdentityProviderRequestBindingConfig) *CreateIdentityProviderRequest {
+	s.BindingConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetDingtalkAppConfig(v *CreateIdentityProviderRequestDingtalkAppConfig) *CreateIdentityProviderRequest {
+	s.DingtalkAppConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetIdentityProviderName(v string) *CreateIdentityProviderRequest {
+	s.IdentityProviderName = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetIdentityProviderType(v string) *CreateIdentityProviderRequest {
+	s.IdentityProviderType = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetInstanceId(v string) *CreateIdentityProviderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetLarkConfig(v *CreateIdentityProviderRequestLarkConfig) *CreateIdentityProviderRequest {
+	s.LarkConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetLdapConfig(v *CreateIdentityProviderRequestLdapConfig) *CreateIdentityProviderRequest {
+	s.LdapConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetNetworkAccessEndpointId(v string) *CreateIdentityProviderRequest {
+	s.NetworkAccessEndpointId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetOidcConfig(v *CreateIdentityProviderRequestOidcConfig) *CreateIdentityProviderRequest {
+	s.OidcConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetUdPullConfig(v *CreateIdentityProviderRequestUdPullConfig) *CreateIdentityProviderRequest {
+	s.UdPullConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetUdPushConfig(v *CreateIdentityProviderRequestUdPushConfig) *CreateIdentityProviderRequest {
+	s.UdPushConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequest) SetWeComConfig(v *CreateIdentityProviderRequestWeComConfig) *CreateIdentityProviderRequest {
+	s.WeComConfig = v
+	return s
+}
+
+type CreateIdentityProviderRequestAuthnConfig struct {
+	// 对应IdP是否支持认证
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enabled
+	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
+	// 是否支持自动更新密码
+	//
+	// example:
+	//
+	// enabled
+	AutoUpdatePasswordStatus *string `json:"AutoUpdatePasswordStatus,omitempty" xml:"AutoUpdatePasswordStatus,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestAuthnConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestAuthnConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestAuthnConfig) SetAuthnStatus(v string) *CreateIdentityProviderRequestAuthnConfig {
+	s.AuthnStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestAuthnConfig) SetAutoUpdatePasswordStatus(v string) *CreateIdentityProviderRequestAuthnConfig {
+	s.AutoUpdatePasswordStatus = &v
+	return s
+}
+
+type CreateIdentityProviderRequestAutoCreateUserConfig struct {
+	// 自动创建账户是否开启
+	//
+	// example:
+	//
+	// disabled
+	AutoCreateUserStatus        *string   `json:"AutoCreateUserStatus,omitempty" xml:"AutoCreateUserStatus,omitempty"`
+	TargetOrganizationalUnitIds []*string `json:"TargetOrganizationalUnitIds,omitempty" xml:"TargetOrganizationalUnitIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateIdentityProviderRequestAutoCreateUserConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestAutoCreateUserConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestAutoCreateUserConfig) SetAutoCreateUserStatus(v string) *CreateIdentityProviderRequestAutoCreateUserConfig {
+	s.AutoCreateUserStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestAutoCreateUserConfig) SetTargetOrganizationalUnitIds(v []*string) *CreateIdentityProviderRequestAutoCreateUserConfig {
+	s.TargetOrganizationalUnitIds = v
+	return s
+}
+
+type CreateIdentityProviderRequestAutoUpdateUserConfig struct {
+	// 自动更新账户是否开启
+	//
+	// example:
+	//
+	// disabled
+	AutoUpdateUserStatus *string `json:"AutoUpdateUserStatus,omitempty" xml:"AutoUpdateUserStatus,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestAutoUpdateUserConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestAutoUpdateUserConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestAutoUpdateUserConfig) SetAutoUpdateUserStatus(v string) *CreateIdentityProviderRequestAutoUpdateUserConfig {
+	s.AutoUpdateUserStatus = &v
+	return s
+}
+
+type CreateIdentityProviderRequestBindingConfig struct {
+	// 自动匹配账户的规则
+	AutoMatchUserProfileExpressions []*CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions `json:"AutoMatchUserProfileExpressions,omitempty" xml:"AutoMatchUserProfileExpressions,omitempty" type:"Repeated"`
+	// 自动匹配账户是否开启
+	//
+	// example:
+	//
+	// disabled
+	AutoMatchUserStatus *string `json:"AutoMatchUserStatus,omitempty" xml:"AutoMatchUserStatus,omitempty"`
+	// 用户手动绑定账户功能是否开启
+	//
+	// example:
+	//
+	// enabled
+	MappingBindingStatus *string `json:"MappingBindingStatus,omitempty" xml:"MappingBindingStatus,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestBindingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestBindingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestBindingConfig) SetAutoMatchUserProfileExpressions(v []*CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) *CreateIdentityProviderRequestBindingConfig {
+	s.AutoMatchUserProfileExpressions = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBindingConfig) SetAutoMatchUserStatus(v string) *CreateIdentityProviderRequestBindingConfig {
+	s.AutoMatchUserStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBindingConfig) SetMappingBindingStatus(v string) *CreateIdentityProviderRequestBindingConfig {
+	s.MappingBindingStatus = &v
+	return s
+}
+
+type CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions struct {
+	// 表达式的类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// filed
+	ExpressionMappingType *string `json:"ExpressionMappingType,omitempty" xml:"ExpressionMappingType,omitempty"`
+	// 映射属性取值表达式
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idpUser.phoneNumber
+	SourceValueExpression *string `json:"SourceValueExpression,omitempty" xml:"SourceValueExpression,omitempty"`
+	// 映射目标属性名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user.username
+	TargetField *string `json:"TargetField,omitempty" xml:"TargetField,omitempty"`
+	// 映射目标属性名称
+	TargetFieldDescription *string `json:"TargetFieldDescription,omitempty" xml:"TargetFieldDescription,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) SetExpressionMappingType(v string) *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions {
+	s.ExpressionMappingType = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) SetSourceValueExpression(v string) *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions {
+	s.SourceValueExpression = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) SetTargetField(v string) *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions {
+	s.TargetField = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions) SetTargetFieldDescription(v string) *CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions {
+	s.TargetFieldDescription = &v
+	return s
+}
+
+type CreateIdentityProviderRequestDingtalkAppConfig struct {
+	// 钉钉一方应用的AppKey
+	//
+	// example:
+	//
+	// Xczngvfemo4e
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// 钉钉一方应用的AppSecret
+	//
+	// example:
+	//
+	// 5d405a12a6f84ad4ab05ee09axxxx
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// 钉钉一方应用的corpId
+	//
+	// example:
+	//
+	// 3075680424786133505
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// 钉钉版本
+	//
+	// example:
+	//
+	// public_dingtalk
+	DingtalkVersion *string `json:"DingtalkVersion,omitempty" xml:"DingtalkVersion,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestDingtalkAppConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestDingtalkAppConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestDingtalkAppConfig) SetAppKey(v string) *CreateIdentityProviderRequestDingtalkAppConfig {
+	s.AppKey = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestDingtalkAppConfig) SetAppSecret(v string) *CreateIdentityProviderRequestDingtalkAppConfig {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestDingtalkAppConfig) SetCorpId(v string) *CreateIdentityProviderRequestDingtalkAppConfig {
+	s.CorpId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestDingtalkAppConfig) SetDingtalkVersion(v string) *CreateIdentityProviderRequestDingtalkAppConfig {
+	s.DingtalkVersion = &v
+	return s
+}
+
+type CreateIdentityProviderRequestLarkConfig struct {
+	// example:
+	//
+	// cli_xxxx
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// KiiLzh5Dueh4wbLxxxx
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// example:
+	//
+	// FSX123111xxx
+	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestLarkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestLarkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestLarkConfig) SetAppId(v string) *CreateIdentityProviderRequestLarkConfig {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLarkConfig) SetAppSecret(v string) *CreateIdentityProviderRequestLarkConfig {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLarkConfig) SetEnterpriseNumber(v string) *CreateIdentityProviderRequestLarkConfig {
+	s.EnterpriseNumber = &v
+	return s
+}
+
+type CreateIdentityProviderRequestLdapConfig struct {
+	// 管理员密码
+	//
+	// example:
+	//
+	// xxxx
+	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
+	// 管理员账号
+	//
+	// example:
+	//
+	// DC=example,DC=com
+	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
+	// 是否验证指纹证书
+	//
+	// example:
+	//
+	// enabled
+	CertificateFingerprintStatus *string `json:"CertificateFingerprintStatus,omitempty" xml:"CertificateFingerprintStatus,omitempty"`
+	// 证书指纹列表
+	CertificateFingerprints []*string `json:"CertificateFingerprints,omitempty" xml:"CertificateFingerprints,omitempty" type:"Repeated"`
+	// 组成员标识
+	//
+	// example:
+	//
+	// member
+	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
+	// 组objectClass
+	//
+	// example:
+	//
+	// group
+	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
+	// 组自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(group=test@test.com))
+	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
+	// 通信协议
+	//
+	// example:
+	//
+	// ldap
+	LdapProtocol *string `json:"LdapProtocol,omitempty" xml:"LdapProtocol,omitempty"`
+	// ad/ldap 服务器地址
+	//
+	// example:
+	//
+	// 123.xx.xx.89
+	LdapServerHost *string `json:"LdapServerHost,omitempty" xml:"LdapServerHost,omitempty"`
+	// 端口号
+	//
+	// example:
+	//
+	// 636
+	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
+	// 组织objectClass
+	//
+	// example:
+	//
+	// organizationUnit,top
+	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// startTls是否开启
+	//
+	// example:
+	//
+	// enabled
+	StartTlsStatus *string `json:"StartTlsStatus,omitempty" xml:"StartTlsStatus,omitempty"`
+	// 用户登录标识
+	//
+	// example:
+	//
+	// userPrincipalName, mail
+	UserLoginIdentifier *string `json:"UserLoginIdentifier,omitempty" xml:"UserLoginIdentifier,omitempty"`
+	// 用户objectClass
+	//
+	// example:
+	//
+	// person,user
+	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
+	// 用户自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(mail=test@test.com))
+	UserObjectClassCustomFilter *string `json:"UserObjectClassCustomFilter,omitempty" xml:"UserObjectClassCustomFilter,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestLdapConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestLdapConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetAdministratorPassword(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.AdministratorPassword = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetAdministratorUsername(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.AdministratorUsername = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetCertificateFingerprintStatus(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.CertificateFingerprintStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetCertificateFingerprints(v []*string) *CreateIdentityProviderRequestLdapConfig {
+	s.CertificateFingerprints = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetGroupMemberAttributeName(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.GroupMemberAttributeName = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetGroupObjectClass(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.GroupObjectClass = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetGroupObjectClassCustomFilter(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.GroupObjectClassCustomFilter = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetLdapProtocol(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.LdapProtocol = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetLdapServerHost(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.LdapServerHost = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetLdapServerPort(v int32) *CreateIdentityProviderRequestLdapConfig {
+	s.LdapServerPort = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetOrganizationUnitObjectClass(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.OrganizationUnitObjectClass = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetStartTlsStatus(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.StartTlsStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetUserLoginIdentifier(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.UserLoginIdentifier = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetUserObjectClass(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.UserObjectClass = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestLdapConfig) SetUserObjectClassCustomFilter(v string) *CreateIdentityProviderRequestLdapConfig {
+	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+type CreateIdentityProviderRequestOidcConfig struct {
+	// OIDC客户端认证配置。
+	AuthnParam *CreateIdentityProviderRequestOidcConfigAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
+	// OIDC 端点配置。
+	EndpointConfig *CreateIdentityProviderRequestOidcConfigEndpointConfig `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty" type:"Struct"`
+	// OIDC标准参数，如profile、email等
+	//
+	// example:
+	//
+	// openid
+	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
+	// OIDC授权类型。
+	//
+	// example:
+	//
+	// authorization_code
+	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	// 支持的PKCE算法类型。
+	//
+	// example:
+	//
+	// S256
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// AuthorizationCode授权模式下是否使用PKCE。
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestOidcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestOidcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetAuthnParam(v *CreateIdentityProviderRequestOidcConfigAuthnParam) *CreateIdentityProviderRequestOidcConfig {
+	s.AuthnParam = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetEndpointConfig(v *CreateIdentityProviderRequestOidcConfigEndpointConfig) *CreateIdentityProviderRequestOidcConfig {
+	s.EndpointConfig = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetGrantScopes(v []*string) *CreateIdentityProviderRequestOidcConfig {
+	s.GrantScopes = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetGrantType(v string) *CreateIdentityProviderRequestOidcConfig {
+	s.GrantType = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetPkceChallengeMethod(v string) *CreateIdentityProviderRequestOidcConfig {
+	s.PkceChallengeMethod = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfig) SetPkceRequired(v bool) *CreateIdentityProviderRequestOidcConfig {
+	s.PkceRequired = &v
+	return s
+}
+
+type CreateIdentityProviderRequestOidcConfigAuthnParam struct {
+	// OIDC/oAuth2 认证方法。
+	//
+	// example:
+	//
+	// client_secret_post
+	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
+	// OIDC/oAuth2 客户端ID。
+	//
+	// example:
+	//
+	// mkv7rgt4d7i4u7zqtzev2mxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// OIDC/oAuth2 客户端密钥。
+	//
+	// example:
+	//
+	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestOidcConfigAuthnParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestOidcConfigAuthnParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigAuthnParam) SetAuthnMethod(v string) *CreateIdentityProviderRequestOidcConfigAuthnParam {
+	s.AuthnMethod = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigAuthnParam) SetClientId(v string) *CreateIdentityProviderRequestOidcConfigAuthnParam {
+	s.ClientId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigAuthnParam) SetClientSecret(v string) *CreateIdentityProviderRequestOidcConfigAuthnParam {
+	s.ClientSecret = &v
+	return s
+}
+
+type CreateIdentityProviderRequestOidcConfigEndpointConfig struct {
+	// oAuth2 授权端点。
+	//
+	// example:
+	//
+	// https://example.com/auth/authorize
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// OIDC issuer信息。
+	//
+	// example:
+	//
+	// https://example.com/auth
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// OIDC jwks地址。
+	//
+	// example:
+	//
+	// https://example.com/auth/jwks
+	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
+	// oAuth2 Token端点。
+	//
+	// example:
+	//
+	// https://example.com/auth/token
+	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
+	// OIDC 用户信息端点。
+	//
+	// example:
+	//
+	// https://example.com/auth/userinfo
+	UserinfoEndpoint *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestOidcConfigEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestOidcConfigEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigEndpointConfig) SetAuthorizationEndpoint(v string) *CreateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigEndpointConfig) SetIssuer(v string) *CreateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigEndpointConfig) SetJwksUri(v string) *CreateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigEndpointConfig) SetTokenEndpoint(v string) *CreateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestOidcConfigEndpointConfig) SetUserinfoEndpoint(v string) *CreateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+type CreateIdentityProviderRequestUdPullConfig struct {
+	// 是否支持组同步，默认为disabled
+	//
+	// example:
+	//
+	// disabled
+	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// disabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// example:
+	//
+	// disabled
+	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
+	// 同步入配置信息
+	//
+	// This parameter is required.
+	UdSyncScopeConfig *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
+}
+
+func (s CreateIdentityProviderRequestUdPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfig) SetGroupSyncStatus(v string) *CreateIdentityProviderRequestUdPullConfig {
+	s.GroupSyncStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfig) SetIncrementalCallbackStatus(v string) *CreateIdentityProviderRequestUdPullConfig {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfig) SetPeriodicSyncStatus(v string) *CreateIdentityProviderRequestUdPullConfig {
+	s.PeriodicSyncStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfig) SetUdSyncScopeConfig(v *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) *CreateIdentityProviderRequestUdPullConfig {
+	s.UdSyncScopeConfig = v
+	return s
+}
+
+type CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_lyhyy6p7yf7mdrdiq5xxxx
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) SetSourceScopes(v []*string) *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig) SetTargetScope(v string) *CreateIdentityProviderRequestUdPullConfigUdSyncScopeConfig {
+	s.TargetScope = &v
+	return s
+}
+
+type CreateIdentityProviderRequestUdPushConfig struct {
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// disabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// example:
+	//
+	// disabled
+	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
+	// 同步出配置信息
+	UdSyncScopeConfigs []*CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
+}
+
+func (s CreateIdentityProviderRequestUdPushConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPushConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfig) SetIncrementalCallbackStatus(v string) *CreateIdentityProviderRequestUdPushConfig {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfig) SetPeriodicSyncStatus(v string) *CreateIdentityProviderRequestUdPushConfig {
+	s.PeriodicSyncStatus = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfig) SetUdSyncScopeConfigs(v []*CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) *CreateIdentityProviderRequestUdPushConfig {
+	s.UdSyncScopeConfigs = v
+	return s
+}
+
+type CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_lyhyy6p7yf7mdrdiq5xxxx
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) SetSourceScopes(v []*string) *CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs) SetTargetScope(v string) *CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs {
+	s.TargetScope = &v
+	return s
+}
+
+type CreateIdentityProviderRequestWeComConfig struct {
+	// 企业微信自建应用的Id
+	//
+	// example:
+	//
+	// 278231941749863339
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// 授权回调域
+	//
+	// example:
+	//
+	// https://xxx.aliyunidaas.com/xxxx
+	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
+	// 企业微信自建应用的corpId
+	//
+	// example:
+	//
+	// 3756043633237690761
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// 企业微信自建应用的corpSecret
+	//
+	// example:
+	//
+	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
+	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
+	// 可信域名
+	//
+	// example:
+	//
+	// https://xxx.aliyunidaas.com/
+	TrustableDomain *string `json:"TrustableDomain,omitempty" xml:"TrustableDomain,omitempty"`
+}
+
+func (s CreateIdentityProviderRequestWeComConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderRequestWeComConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderRequestWeComConfig) SetAgentId(v string) *CreateIdentityProviderRequestWeComConfig {
+	s.AgentId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestWeComConfig) SetAuthorizeCallbackDomain(v string) *CreateIdentityProviderRequestWeComConfig {
+	s.AuthorizeCallbackDomain = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestWeComConfig) SetCorpId(v string) *CreateIdentityProviderRequestWeComConfig {
+	s.CorpId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestWeComConfig) SetCorpSecret(v string) *CreateIdentityProviderRequestWeComConfig {
+	s.CorpSecret = &v
+	return s
+}
+
+func (s *CreateIdentityProviderRequestWeComConfig) SetTrustableDomain(v string) *CreateIdentityProviderRequestWeComConfig {
+	s.TrustableDomain = &v
+	return s
+}
+
+type CreateIdentityProviderResponseBody struct {
+	// example:
+	//
+	// idp_mwpcwnhrimlr2horxXXXX
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIdentityProviderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderResponseBody) SetIdentityProviderId(v string) *CreateIdentityProviderResponseBody {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *CreateIdentityProviderResponseBody) SetRequestId(v string) *CreateIdentityProviderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIdentityProviderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIdentityProviderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityProviderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityProviderResponse) SetHeaders(v map[string]*string) *CreateIdentityProviderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIdentityProviderResponse) SetStatusCode(v int32) *CreateIdentityProviderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIdentityProviderResponse) SetBody(v *CreateIdentityProviderResponseBody) *CreateIdentityProviderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
 	// The description of the instance. The description can be up to 128 characters in length.
 	//
@@ -2312,6 +3347,92 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 	return s
 }
 
+type DeleteIdentityProviderRequest struct {
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM的实例id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteIdentityProviderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdentityProviderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdentityProviderRequest) SetIdentityProviderId(v string) *DeleteIdentityProviderRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderRequest) SetInstanceId(v string) *DeleteIdentityProviderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteIdentityProviderResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIdentityProviderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdentityProviderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdentityProviderResponseBody) SetRequestId(v string) *DeleteIdentityProviderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIdentityProviderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIdentityProviderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIdentityProviderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIdentityProviderResponse) SetHeaders(v map[string]*string) *DeleteIdentityProviderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponse) SetStatusCode(v int32) *DeleteIdentityProviderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIdentityProviderResponse) SetBody(v *DeleteIdentityProviderResponseBody) *DeleteIdentityProviderResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceRequest struct {
 	// The ID of the instance to be deleted.
 	//
@@ -3287,6 +4408,92 @@ func (s *DisableDomainProxyTokenResponse) SetBody(v *DisableDomainProxyTokenResp
 	return s
 }
 
+type DisableIdentityProviderUdPullRequest struct {
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM的实例id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DisableIdentityProviderUdPullRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableIdentityProviderUdPullRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableIdentityProviderUdPullRequest) SetIdentityProviderId(v string) *DisableIdentityProviderUdPullRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *DisableIdentityProviderUdPullRequest) SetInstanceId(v string) *DisableIdentityProviderUdPullRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DisableIdentityProviderUdPullResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableIdentityProviderUdPullResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableIdentityProviderUdPullResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableIdentityProviderUdPullResponseBody) SetRequestId(v string) *DisableIdentityProviderUdPullResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableIdentityProviderUdPullResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableIdentityProviderUdPullResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableIdentityProviderUdPullResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableIdentityProviderUdPullResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableIdentityProviderUdPullResponse) SetHeaders(v map[string]*string) *DisableIdentityProviderUdPullResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableIdentityProviderUdPullResponse) SetStatusCode(v int32) *DisableIdentityProviderUdPullResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableIdentityProviderUdPullResponse) SetBody(v *DisableIdentityProviderUdPullResponseBody) *DisableIdentityProviderUdPullResponse {
+	s.Body = v
+	return s
+}
+
 type DisableInitDomainAutoRedirectRequest struct {
 	// IDaaS EIAM实例的ID。
 	//
@@ -3994,6 +5201,92 @@ func (s *EnableDomainProxyTokenResponse) SetStatusCode(v int32) *EnableDomainPro
 }
 
 func (s *EnableDomainProxyTokenResponse) SetBody(v *EnableDomainProxyTokenResponseBody) *EnableDomainProxyTokenResponse {
+	s.Body = v
+	return s
+}
+
+type EnableIdentityProviderUdPullRequest struct {
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM的实例id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s EnableIdentityProviderUdPullRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableIdentityProviderUdPullRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableIdentityProviderUdPullRequest) SetIdentityProviderId(v string) *EnableIdentityProviderUdPullRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *EnableIdentityProviderUdPullRequest) SetInstanceId(v string) *EnableIdentityProviderUdPullRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type EnableIdentityProviderUdPullResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableIdentityProviderUdPullResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableIdentityProviderUdPullResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableIdentityProviderUdPullResponseBody) SetRequestId(v string) *EnableIdentityProviderUdPullResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableIdentityProviderUdPullResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableIdentityProviderUdPullResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableIdentityProviderUdPullResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableIdentityProviderUdPullResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableIdentityProviderUdPullResponse) SetHeaders(v map[string]*string) *EnableIdentityProviderUdPullResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableIdentityProviderUdPullResponse) SetStatusCode(v int32) *EnableIdentityProviderUdPullResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableIdentityProviderUdPullResponse) SetBody(v *EnableIdentityProviderUdPullResponseBody) *EnableIdentityProviderUdPullResponse {
 	s.Body = v
 	return s
 }
@@ -5216,7 +6509,7 @@ func (s *GetApplicationSsoConfigRequest) SetInstanceId(v string) *GetApplication
 }
 
 type GetApplicationSsoConfigResponseBody struct {
-	// The SSO configuration information of the application.
+	// The single sign-on (SSO) configuration information of the application.
 	ApplicationSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfig `json:"ApplicationSsoConfig,omitempty" xml:"ApplicationSsoConfig,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -5265,7 +6558,7 @@ type GetApplicationSsoConfigResponseBodyApplicationSsoConfig struct {
 	OidcSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig `json:"OidcSsoConfig,omitempty" xml:"OidcSsoConfig,omitempty" type:"Struct"`
 	// The configuration of the metadata endpoint provided by the application.
 	ProtocolEndpointDomain *GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpointDomain `json:"ProtocolEndpointDomain,omitempty" xml:"ProtocolEndpointDomain,omitempty" type:"Struct"`
-	// The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+	// The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only if the SSO protocol of the application is SAML 2.0.
 	SamlSsoConfig *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig `json:"SamlSsoConfig,omitempty" xml:"SamlSsoConfig,omitempty" type:"Struct"`
 	// The SSO feature status of the application. Valid values:
 	//
@@ -5636,7 +6929,11 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpoint
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct {
-	// assertion是否签名
+	// Whether the Assertion needs a signature. ResponseSigned and AssertionSigned cannot be false at the same time.
+	//
+	// true: signature is required.
+	//
+	// false: signature is not required.
 	//
 	// example:
 	//
@@ -5650,7 +6947,12 @@ type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct
 	//
 	// https://home.console.aliyun.com
 	DefaultRelayState *string `json:"DefaultRelayState,omitempty" xml:"DefaultRelayState,omitempty"`
-	IdPEntityId       *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
+	// The custom issuer ID.
+	//
+	// example:
+	//
+	// https://example.com/
+	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
 	// The Format attribute of the NameID element in the SAML assertion. Valid values:
 	//
 	// 	- urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
@@ -5671,7 +6973,13 @@ type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig struct
 	//
 	// user.username
 	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
-	// response是否签名
+	// Optional RelayState. The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+	OptionalRelayStates []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates `json:"OptionalRelayStates,omitempty" xml:"OptionalRelayStates,omitempty" type:"Repeated"`
+	// Whether the response needs to be signed. ResponseSigned and AssertionSigned cannot be false at the same time.
+	//
+	// true: signature is required.
+	//
+	// false: signature is not required.
 	//
 	// example:
 	//
@@ -5735,6 +7043,11 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) S
 	return s
 }
 
+func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) SetOptionalRelayStates(v []*GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig {
+	s.OptionalRelayStates = v
+	return s
+}
+
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) SetResponseSigned(v bool) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig {
 	s.ResponseSigned = &v
 	return s
@@ -5785,6 +7098,39 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAtt
 
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements) SetAttributeValueExpression(v string) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements {
 	s.AttributeValueExpression = &v
+	return s
+}
+
+type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates struct {
+	// The display name of the RelayState
+	//
+	// example:
+	//
+	// Ram Account SSO
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// RelayState.The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+	//
+	// example:
+	//
+	// https://home.console.aliyun.com
+	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+}
+
+func (s GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates) SetDisplayName(v string) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates) SetRelayState(v string) *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOptionalRelayStates {
+	s.RelayState = &v
 	return s
 }
 
@@ -6512,6 +7858,1356 @@ func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
 }
 
 func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetIdentityProviderRequest struct {
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetIdentityProviderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderRequest) SetIdentityProviderId(v string) *GetIdentityProviderRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *GetIdentityProviderRequest) SetInstanceId(v string) *GetIdentityProviderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetIdentityProviderResponseBody struct {
+	IdentityProviderDetail *GetIdentityProviderResponseBodyIdentityProviderDetail `json:"IdentityProviderDetail,omitempty" xml:"IdentityProviderDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBody) SetIdentityProviderDetail(v *GetIdentityProviderResponseBodyIdentityProviderDetail) *GetIdentityProviderResponseBody {
+	s.IdentityProviderDetail = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBody) SetRequestId(v string) *GetIdentityProviderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
+	// 高阶配置能力
+	//
+	// example:
+	//
+	// disabled
+	AdvancedStatus *string `json:"AdvancedStatus,omitempty" xml:"AdvancedStatus,omitempty"`
+	// IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:idp:bytedance:lark
+	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
+	// IDaaS EIAM 认证方式类型 oidc or saml
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:authntype:oidc
+	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
+	// IDaaS EIAM 对应IdP是否支持认证
+	//
+	// example:
+	//
+	// disabled
+	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 1726021079000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// IDaaS EIAM 身份提供方描述
+	//
+	// example:
+	//
+	// for poc test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 钉钉基础配置
+	DingtalkAppConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
+	// 钉钉同步配置
+	DingtalkProvisioningConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig `json:"DingtalkProvisioningConfig,omitempty" xml:"DingtalkProvisioningConfig,omitempty" type:"Struct"`
+	// IDaaS EIAM 身份提供方外部ID
+	//
+	// example:
+	//
+	// idp_xxxx
+	IdentityProviderExternalId *string `json:"IdentityProviderExternalId,omitempty" xml:"IdentityProviderExternalId,omitempty"`
+	// IDaaS EIAM 身份提供方ID
+	//
+	// example:
+	//
+	// idp_mwpcwnhrimlr2horx7xgg7pp7y
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM 身份提供方名称
+	//
+	// example:
+	//
+	// test
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// 身份提供方同步类型
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:idp:alibaba:dingtalk:push
+	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
+	// IDaaS EIAM 实例Id
+	//
+	// example:
+	//
+	// idaas_x2df3bak3uwnapqm6xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 飞书配置
+	LarkConfig *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
+	// 最后一次状态检查结果
+	//
+	// example:
+	//
+	// success
+	LastStatusCheckJobResult *string `json:"LastStatusCheckJobResult,omitempty" xml:"LastStatusCheckJobResult,omitempty"`
+	// AD/LDAP身份提供方相关信息
+	LdapConfig *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
+	// 锁定原因
+	//
+	// example:
+	//
+	// financial
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// 网络端点ID
+	//
+	// example:
+	//
+	// nae_mx4vsadfe6govkqkwckxxxx
+	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
+	// OIDC IdP配置。
+	OidcConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
+	// 同步入配置
+	UdPullConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
+	// IDaaS EIAM 是否支持UD同步
+	//
+	// example:
+	//
+	// disabled
+	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
+	// 同步出配置
+	UdPushConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
+	// 同步出能力
+	//
+	// example:
+	//
+	// disabled
+	UdPushStatus *string `json:"UdPushStatus,omitempty" xml:"UdPushStatus,omitempty"`
+	// 更新时间
+	//
+	// example:
+	//
+	// 1726021079000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// 企业微信
+	WeComConfig *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetAdvancedStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.AdvancedStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetAuthnSourceSupplier(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.AuthnSourceSupplier = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetAuthnSourceType(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.AuthnSourceType = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetAuthnStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.AuthnStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetCreateTime(v int64) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetDescription(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.Description = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetDingtalkAppConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.DingtalkAppConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetDingtalkProvisioningConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.DingtalkProvisioningConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetIdentityProviderExternalId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.IdentityProviderExternalId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetIdentityProviderId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetIdentityProviderName(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.IdentityProviderName = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetIdentityProviderType(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.IdentityProviderType = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetInstanceId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetLarkConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.LarkConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetLastStatusCheckJobResult(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.LastStatusCheckJobResult = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetLdapConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.LdapConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetLockReason(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.LockReason = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetNetworkAccessEndpointId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.NetworkAccessEndpointId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetOidcConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.OidcConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUdPullConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.UdPullConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUdPullStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.UdPullStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUdPushConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.UdPushConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUdPushStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.UdPushStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUpdateTime(v int64) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetWeComConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.WeComConfig = v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig struct {
+	// IDaaS EIAM 钉钉一方应用的AppKey
+	//
+	// example:
+	//
+	// 41reopmwoy9s
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// IDaaS EIAM 钉钉一方应用的AppSecret
+	//
+	// example:
+	//
+	// REOQ6Cl55kriOd8NOBeqWYLKpHR4p6fdZxxxx
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// IDaaS EIAM 钉钉一方应用的corpId
+	//
+	// example:
+	//
+	// 3756043633237690761
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// IDaaS EIAM 钉钉版本
+	//
+	// example:
+	//
+	// public_dingtalk
+	DingtalkVersion *string `json:"DingtalkVersion,omitempty" xml:"DingtalkVersion,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetAppKey(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetAppSecret(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetCorpId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig) SetDingtalkVersion(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig {
+	s.DingtalkVersion = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig struct {
+	// 授权的钉钉部门
+	AuthedDepartmentIds []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds `json:"AuthedDepartmentIds,omitempty" xml:"AuthedDepartmentIds,omitempty" type:"Repeated"`
+	// 授权的钉钉账户列表
+	AuthedUsers []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers `json:"AuthedUsers,omitempty" xml:"AuthedUsers,omitempty" type:"Repeated"`
+	// 钉钉企业corpId
+	//
+	// example:
+	//
+	// ding_xxxxx
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// 钉钉企业名称
+	//
+	// example:
+	//
+	// 测试企业
+	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) SetAuthedDepartmentIds(v []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig {
+	s.AuthedDepartmentIds = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) SetAuthedUsers(v []*GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig {
+	s.AuthedUsers = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) SetCorpId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) SetCorpName(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig {
+	s.CorpName = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds struct {
+	// 钉钉部门Id
+	//
+	// example:
+	//
+	// 123xxx444
+	DeptId *string `json:"DeptId,omitempty" xml:"DeptId,omitempty"`
+	// 钉钉部门名称
+	//
+	// example:
+	//
+	// 测试部门
+	DeptName *string `json:"DeptName,omitempty" xml:"DeptName,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds) SetDeptId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds {
+	s.DeptId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds) SetDeptName(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds {
+	s.DeptName = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers struct {
+	// 钉钉用户名称
+	//
+	// example:
+	//
+	// 张三
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 钉钉用户userId
+	//
+	// example:
+	//
+	// 130308333929200479
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) SetName(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers {
+	s.Name = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) SetUserId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers {
+	s.UserId = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
+	// IDaaS EIAM 飞书自建应用的corpId
+	//
+	// example:
+	//
+	// cli_a7a99f53a317100c
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// IDaaS EIAM 飞书自建应用的AppSecret
+	//
+	// example:
+	//
+	// ***
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// IDaaS EIAM 飞书企业编码
+	//
+	// example:
+	//
+	// FX1231xxxx
+	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetAppId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetAppSecret(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig) SetEnterpriseNumber(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig {
+	s.EnterpriseNumber = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
+	// 管理员密码
+	//
+	// example:
+	//
+	// XXXX
+	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
+	// 管理员账号
+	//
+	// example:
+	//
+	// example.com
+	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
+	// 是否验证指纹证书
+	//
+	// example:
+	//
+	// enabled
+	CertificateFingerprintStatus *string `json:"CertificateFingerprintStatus,omitempty" xml:"CertificateFingerprintStatus,omitempty"`
+	// 证书指纹列表
+	CertificateFingerprints []*string `json:"CertificateFingerprints,omitempty" xml:"CertificateFingerprints,omitempty" type:"Repeated"`
+	// 通信协议
+	//
+	// example:
+	//
+	// ldap
+	LdapProtocol *string `json:"LdapProtocol,omitempty" xml:"LdapProtocol,omitempty"`
+	// ad/ldap 服务器地址
+	//
+	// example:
+	//
+	// 127.xx.xx.100
+	LdapServerHost *string `json:"LdapServerHost,omitempty" xml:"LdapServerHost,omitempty"`
+	// ad/ldap 服务器地址
+	//
+	// example:
+	//
+	// 389
+	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
+	// startTls是否开启
+	//
+	// example:
+	//
+	// enabled
+	StartTlsStatus *string `json:"StartTlsStatus,omitempty" xml:"StartTlsStatus,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetAdministratorPassword(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.AdministratorPassword = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetAdministratorUsername(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.AdministratorUsername = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetCertificateFingerprintStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.CertificateFingerprintStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetCertificateFingerprints(v []*string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.CertificateFingerprints = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetLdapProtocol(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.LdapProtocol = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetLdapServerHost(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.LdapServerHost = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetLdapServerPort(v int32) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.LdapServerPort = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig) SetStartTlsStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig {
+	s.StartTlsStatus = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig struct {
+	// OIDC客户端认证配置。
+	AuthnParam *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
+	// OIDC 端点配置。
+	EndpointConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty" type:"Struct"`
+	// OIDC标准参数，如profile、email等
+	//
+	// example:
+	//
+	// openid
+	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
+	// OIDC授权类型。
+	//
+	// example:
+	//
+	// authorization_code
+	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	// 支持的PKCE算法类型。
+	//
+	// example:
+	//
+	// S256
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// AuthorizationCode授权模式下是否使用PKCE。
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetAuthnParam(v *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.AuthnParam = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetEndpointConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.EndpointConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetGrantScopes(v []*string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.GrantScopes = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetGrantType(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.GrantType = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetPkceChallengeMethod(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.PkceChallengeMethod = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetPkceRequired(v bool) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
+	s.PkceRequired = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam struct {
+	// OIDC/oAuth2 认证方法。
+	//
+	// example:
+	//
+	// client_secret_post
+	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
+	// OIDC/oAuth2 客户端ID。
+	//
+	// example:
+	//
+	// mkv7rgt4d7i4u7zqtzev2mxxxx
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// OIDC/oAuth2 客户端密钥。
+	//
+	// example:
+	//
+	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) SetAuthnMethod(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam {
+	s.AuthnMethod = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) SetClientId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam {
+	s.ClientId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam) SetClientSecret(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam {
+	s.ClientSecret = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig struct {
+	// oAuth2 授权端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/authorize
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// OIDC issuer信息。
+	//
+	// example:
+	//
+	// https://example.com/oauth
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// OIDC jwks地址。
+	//
+	// example:
+	//
+	// https://example.com/oauth/jwks
+	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
+	// oAuth2 Token端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/token
+	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
+	// OIDC 用户信息端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/userinfo
+	UserinfoEndpoint *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) SetAuthorizationEndpoint(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) SetIssuer(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) SetJwksUri(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) SetTokenEndpoint(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) SetUserinfoEndpoint(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
+	// example:
+	//
+	// disabled
+	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// disabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// 同步入配置信息
+	UdSyncScopeConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) SetGroupSyncStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig {
+	s.GroupSyncStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) SetIncrementalCallbackStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) SetUdSyncScopeConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig {
+	s.UdSyncScopeConfig = v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_123xxxx
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig) SetSourceScopes(v []*string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig) SetTargetScope(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig {
+	s.TargetScope = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig struct {
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// disabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// 同步出配置信息
+	UdSyncScopeConfigs []*GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) SetIncrementalCallbackStatus(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) SetUdSyncScopeConfigs(v []*GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig {
+	s.UdSyncScopeConfigs = v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_123xxxx
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs) SetSourceScopes(v []*string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs) SetTargetScope(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs {
+	s.TargetScope = &v
+	return s
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig struct {
+	// IDaaS EIAM 企业微信自建应用的Id
+	//
+	// example:
+	//
+	// 1242350
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// 授权回调域
+	//
+	// example:
+	//
+	// https://example.com/xxxx
+	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
+	// IDaaS EIAM 企业微信自建应用的corpId
+	//
+	// example:
+	//
+	// 3562012953454577801
+	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// IDaaS EIAM 企业微信自建应用的corpSecret
+	//
+	// example:
+	//
+	// weaseiszjskejskaj12sjeszojxxxx
+	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
+	// 可信域名
+	//
+	// example:
+	//
+	// https://example.com
+	TrustableDomain *string `json:"TrustableDomain,omitempty" xml:"TrustableDomain,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetAgentId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.AgentId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetAuthorizeCallbackDomain(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.AuthorizeCallbackDomain = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetCorpId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetCorpSecret(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.CorpSecret = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetTrustableDomain(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.TrustableDomain = &v
+	return s
+}
+
+type GetIdentityProviderResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIdentityProviderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponse) SetHeaders(v map[string]*string) *GetIdentityProviderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIdentityProviderResponse) SetStatusCode(v int32) *GetIdentityProviderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponse) SetBody(v *GetIdentityProviderResponseBody) *GetIdentityProviderResponse {
+	s.Body = v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationRequest struct {
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationRequest) SetIdentityProviderId(v string) *GetIdentityProviderUdPullConfigurationRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationRequest) SetInstanceId(v string) *GetIdentityProviderUdPullConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId           *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UdPullConfiguration *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration `json:"UdPullConfiguration,omitempty" xml:"UdPullConfiguration,omitempty" type:"Struct"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBody) SetRequestId(v string) *GetIdentityProviderUdPullConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBody) SetUdPullConfiguration(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) *GetIdentityProviderUdPullConfigurationResponseBody {
+	s.UdPullConfiguration = v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration struct {
+	// 组同步状态
+	//
+	// example:
+	//
+	// enabled
+	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
+	// IDaaS EIAM 身份提供方ID
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// enabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// IDaaS EIAM 实例Id
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ldap同步侧相关配置信息
+	LdapUdPullConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// enabled
+	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
+	// 同步入用户映射字段配置列表
+	PullProtectedRule *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule `json:"PullProtectedRule,omitempty" xml:"PullProtectedRule,omitempty" type:"Struct"`
+	// 同步入配置信息
+	UdSyncScopeConfig *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetGroupSyncStatus(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.GroupSyncStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetIdentityProviderId(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetIncrementalCallbackStatus(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetInstanceId(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetLdapUdPullConfig(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.LdapUdPullConfig = v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetPeriodicSyncStatus(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.PeriodicSyncStatus = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetPullProtectedRule(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.PullProtectedRule = v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration) SetUdSyncScopeConfig(v *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration {
+	s.UdSyncScopeConfig = v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig struct {
+	// 组成员标识
+	//
+	// example:
+	//
+	// group
+	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
+	// 组objectClass
+	//
+	// example:
+	//
+	// member
+	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
+	// 组自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(group=test@test.com))
+	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
+	// 组织objectClass
+	//
+	// example:
+	//
+	// ou,top
+	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// 用户objectClass
+	//
+	// example:
+	//
+	// ou,top
+	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
+	// 用户自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(mail=test@test.com))
+	UserObjectClassCustomFilter *string `json:"UserObjectClassCustomFilter,omitempty" xml:"UserObjectClassCustomFilter,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetGroupMemberAttributeName(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.GroupMemberAttributeName = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetGroupObjectClass(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.GroupObjectClass = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetGroupObjectClassCustomFilter(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.GroupObjectClassCustomFilter = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetOrganizationUnitObjectClass(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.OrganizationUnitObjectClass = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetUserObjectClass(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.UserObjectClass = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig) SetUserObjectClassCustomFilter(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapUdPullConfig {
+	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule struct {
+	// 同步保护规则-删除组数量
+	//
+	// example:
+	//
+	// 10
+	GroupDeletedThreshold *int32 `json:"GroupDeletedThreshold,omitempty" xml:"GroupDeletedThreshold,omitempty"`
+	// IDaaS EIAM 钉钉一方应用同步保护规则-删除组织数量
+	//
+	// example:
+	//
+	// 10
+	OrganizationalUnitDeletedThreshold *int32 `json:"OrganizationalUnitDeletedThreshold,omitempty" xml:"OrganizationalUnitDeletedThreshold,omitempty"`
+	// IDaaS EIAM 钉钉一方应用同步保护规则-删除账户数量
+	//
+	// example:
+	//
+	// 30
+	UserDeletedThreshold *int32 `json:"UserDeletedThreshold,omitempty" xml:"UserDeletedThreshold,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) SetGroupDeletedThreshold(v int32) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule {
+	s.GroupDeletedThreshold = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) SetOrganizationalUnitDeletedThreshold(v int32) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule {
+	s.OrganizationalUnitDeletedThreshold = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule) SetUserDeletedThreshold(v int32) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule {
+	s.UserDeletedThreshold = &v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_asjdfhaskfhw213mnsj33sXXX
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig) SetSourceScopes(v []*string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig) SetTargetScope(v string) *GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig {
+	s.TargetScope = &v
+	return s
+}
+
+type GetIdentityProviderUdPullConfigurationResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIdentityProviderUdPullConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityProviderUdPullConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponse) SetHeaders(v map[string]*string) *GetIdentityProviderUdPullConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponse) SetStatusCode(v int32) *GetIdentityProviderUdPullConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIdentityProviderUdPullConfigurationResponse) SetBody(v *GetIdentityProviderUdPullConfigurationResponseBody) *GetIdentityProviderUdPullConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -7451,6 +10147,18 @@ func (s *GetPasswordExpirationConfigurationResponseBody) SetRequestId(v string) 
 }
 
 type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration struct {
+	// The list of valid authentication IDs. The default is all ["ia_all"]
+	//
+	// ia_all: All. If you fill in this value, you cannot fill in other values
+	//
+	// ia_password: Account password login
+	//
+	// ia_otp_sms: SMS verification code login method
+	//
+	// ia_webauthn: WebAuthn authenticator login method
+	//
+	// idp_xxx: Specific identity provider authentication method
+	EffectiveAuthenticationSourceIds []*string `json:"EffectiveAuthenticationSourceIds,omitempty" xml:"EffectiveAuthenticationSourceIds,omitempty" type:"Repeated"`
 	// The action to take when a password expires. Valid values:
 	//
 	// 	- forbid_login: Prohibit the user from using the password to log on to IDaaS.
@@ -7515,6 +10223,11 @@ func (s GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigur
 
 func (s GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration) GoString() string {
 	return s.String()
+}
+
+func (s *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration) SetEffectiveAuthenticationSourceIds(v []*string) *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration {
+	s.EffectiveAuthenticationSourceIds = v
+	return s
 }
 
 func (s *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration) SetPasswordExpirationAction(v string) *GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration {
@@ -12515,6 +15228,311 @@ func (s *ListGroupsForUserResponse) SetStatusCode(v int32) *ListGroupsForUserRes
 }
 
 func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *ListGroupsForUserResponse {
+	s.Body = v
+	return s
+}
+
+type ListIdentityProvidersRequest struct {
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 当前查询的列表页码，默认为1。
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 当前查询的列表页码，默认为20。
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListIdentityProvidersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityProvidersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityProvidersRequest) SetInstanceId(v string) *ListIdentityProvidersRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersRequest) SetPageNumber(v int64) *ListIdentityProvidersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIdentityProvidersRequest) SetPageSize(v int64) *ListIdentityProvidersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListIdentityProvidersResponseBody struct {
+	IdentityProviders []*ListIdentityProvidersResponseBodyIdentityProviders `json:"IdentityProviders,omitempty" xml:"IdentityProviders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIdentityProvidersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityProvidersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityProvidersResponseBody) SetIdentityProviders(v []*ListIdentityProvidersResponseBodyIdentityProviders) *ListIdentityProvidersResponseBody {
+	s.IdentityProviders = v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBody) SetRequestId(v string) *ListIdentityProvidersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBody) SetTotalCount(v int64) *ListIdentityProvidersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIdentityProvidersResponseBodyIdentityProviders struct {
+	// 高阶配置能力
+	//
+	// example:
+	//
+	// disabled
+	AdvancedStatus *string `json:"AdvancedStatus,omitempty" xml:"AdvancedStatus,omitempty"`
+	// IDaaS EIAM 对应的认证来源产品，okta or google or azure ad
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:idp:bytedance:lark
+	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
+	// IDaaS EIAM 认证方式类型 oidc or saml
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:authntype:oidc
+	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
+	// IDaaS EIAM 对应IdP是否支持认证
+	//
+	// example:
+	//
+	// disabled
+	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
+	// example:
+	//
+	// 1712561597000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// IDaaS EIAM 身份提供方描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// IDaaS EIAM 身份提供方外部ID
+	//
+	// example:
+	//
+	// test_123
+	IdentityProviderExternalId *string `json:"IdentityProviderExternalId,omitempty" xml:"IdentityProviderExternalId,omitempty"`
+	// IDaaS EIAM 身份提供方ID
+	//
+	// example:
+	//
+	// idp_m5b5wd5s2hpq4t6iaehhXXX
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// IDaaS EIAM 身份提供方名称
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// 身份提供方同步类型
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:idp:bytedance:lark:pull
+	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// example:
+	//
+	// enabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// IDaaS EIAM 实例Id
+	//
+	// example:
+	//
+	// idaas_pbf4dth34l2qb7mydpntXXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// success
+	LastStatusCheckJobResult *string `json:"LastStatusCheckJobResult,omitempty" xml:"LastStatusCheckJobResult,omitempty"`
+	// 锁定原因
+	//
+	// example:
+	//
+	// financial
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// IDaaS EIAM 是否支持UD同步
+	//
+	// example:
+	//
+	// disabled
+	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
+	// 当支持ud_pullIDaaS侧UD中的范围
+	//
+	// example:
+	//
+	// ou_2buqmxsa3ltyqkjgpwfijurXXX
+	UdPullTargetScope *string `json:"UdPullTargetScope,omitempty" xml:"UdPullTargetScope,omitempty"`
+	// 同步出能力
+	//
+	// example:
+	//
+	// disabled
+	UdPushStatus *string `json:"UdPushStatus,omitempty" xml:"UdPushStatus,omitempty"`
+	// example:
+	//
+	// 1712561597000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListIdentityProvidersResponseBodyIdentityProviders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityProvidersResponseBodyIdentityProviders) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetAdvancedStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.AdvancedStatus = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetAuthnSourceSupplier(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.AuthnSourceSupplier = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetAuthnSourceType(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.AuthnSourceType = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetAuthnStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.AuthnStatus = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetCreateTime(v int64) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetDescription(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetIdentityProviderExternalId(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.IdentityProviderExternalId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetIdentityProviderId(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetIdentityProviderName(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.IdentityProviderName = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetIdentityProviderType(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.IdentityProviderType = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetIncrementalCallbackStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetInstanceId(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetLastStatusCheckJobResult(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.LastStatusCheckJobResult = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetLockReason(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.LockReason = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetUdPullStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.UdPullStatus = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetUdPullTargetScope(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.UdPullTargetScope = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetUdPushStatus(v string) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.UdPushStatus = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponseBodyIdentityProviders) SetUpdateTime(v int64) *ListIdentityProvidersResponseBodyIdentityProviders {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListIdentityProvidersResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIdentityProvidersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIdentityProvidersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityProvidersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityProvidersResponse) SetHeaders(v map[string]*string) *ListIdentityProvidersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIdentityProvidersResponse) SetStatusCode(v int32) *ListIdentityProvidersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIdentityProvidersResponse) SetBody(v *ListIdentityProvidersResponseBody) *ListIdentityProvidersResponse {
 	s.Body = v
 	return s
 }
@@ -18463,6 +21481,7 @@ type SetApplicationSsoConfigRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The initial SSO method. Valid values:
 	//
 	// 	- only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
@@ -18503,6 +21522,11 @@ func (s SetApplicationSsoConfigRequest) GoString() string {
 
 func (s *SetApplicationSsoConfigRequest) SetApplicationId(v string) *SetApplicationSsoConfigRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *SetApplicationSsoConfigRequest) SetClientToken(v string) *SetApplicationSsoConfigRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -18767,7 +21791,8 @@ type SetApplicationSsoConfigRequestSamlSsoConfig struct {
 	// example:
 	//
 	// user.email
-	NameIdValueExpression *string `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
+	NameIdValueExpression *string                                                           `json:"NameIdValueExpression,omitempty" xml:"NameIdValueExpression,omitempty"`
+	OptionalRelayStates   []*SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates `json:"OptionalRelayStates,omitempty" xml:"OptionalRelayStates,omitempty" type:"Repeated"`
 	// Specifies whether to calculate the signature for the response. You cannot set ResponseSigned and AssertionSigned to false at the same time.
 	//
 	// 	- true
@@ -18852,6 +21877,11 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetNameIdValueExpression(v
 	return s
 }
 
+func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetOptionalRelayStates(v []*SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates) *SetApplicationSsoConfigRequestSamlSsoConfig {
+	s.OptionalRelayStates = v
+	return s
+}
+
 func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetResponseSigned(v bool) *SetApplicationSsoConfigRequestSamlSsoConfig {
 	s.ResponseSigned = &v
 	return s
@@ -18902,6 +21932,29 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements) SetAttr
 
 func (s *SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements) SetAttributeValueExpression(v string) *SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements {
 	s.AttributeValueExpression = &v
+	return s
+}
+
+type SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	RelayState  *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
+}
+
+func (s SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates) GoString() string {
+	return s.String()
+}
+
+func (s *SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates) SetDisplayName(v string) *SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates) SetRelayState(v string) *SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates {
+	s.RelayState = &v
 	return s
 }
 
@@ -19141,6 +22194,296 @@ func (s *SetForgetPasswordConfigurationResponse) SetBody(v *SetForgetPasswordCon
 	return s
 }
 
+type SetIdentityProviderUdPullConfigurationRequest struct {
+	// 组同步状态
+	//
+	// example:
+	//
+	// disabled
+	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// 增量回调状态，是否处理来自IdP的增量回调数据
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// disabled
+	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// ldap同步侧相关配置信息
+	LdapUdPullConfig *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig `json:"LdapUdPullConfig,omitempty" xml:"LdapUdPullConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// disabled
+	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
+	// 同步入保护规则,根据IdP的type做解析
+	PullProtectedRule *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule `json:"PullProtectedRule,omitempty" xml:"PullProtectedRule,omitempty" type:"Struct"`
+	// 同步入配置信息
+	UdSyncScopeConfig *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetGroupSyncStatus(v string) *SetIdentityProviderUdPullConfigurationRequest {
+	s.GroupSyncStatus = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetIdentityProviderId(v string) *SetIdentityProviderUdPullConfigurationRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetIncrementalCallbackStatus(v string) *SetIdentityProviderUdPullConfigurationRequest {
+	s.IncrementalCallbackStatus = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetInstanceId(v string) *SetIdentityProviderUdPullConfigurationRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetLdapUdPullConfig(v *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) *SetIdentityProviderUdPullConfigurationRequest {
+	s.LdapUdPullConfig = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetPeriodicSyncStatus(v string) *SetIdentityProviderUdPullConfigurationRequest {
+	s.PeriodicSyncStatus = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetPullProtectedRule(v *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) *SetIdentityProviderUdPullConfigurationRequest {
+	s.PullProtectedRule = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequest) SetUdSyncScopeConfig(v *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig) *SetIdentityProviderUdPullConfigurationRequest {
+	s.UdSyncScopeConfig = v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig struct {
+	// 组成员标识
+	//
+	// example:
+	//
+	// member
+	GroupMemberAttributeName *string `json:"GroupMemberAttributeName,omitempty" xml:"GroupMemberAttributeName,omitempty"`
+	// 组objectClass
+	//
+	// example:
+	//
+	// group
+	GroupObjectClass *string `json:"GroupObjectClass,omitempty" xml:"GroupObjectClass,omitempty"`
+	// 组自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(group=test@test.com))
+	GroupObjectClassCustomFilter *string `json:"GroupObjectClassCustomFilter,omitempty" xml:"GroupObjectClassCustomFilter,omitempty"`
+	// 组织ObjectClass
+	//
+	// example:
+	//
+	// organizationUnit,top
+	OrganizationUnitObjectClass *string `json:"OrganizationUnitObjectClass,omitempty" xml:"OrganizationUnitObjectClass,omitempty"`
+	// 用户ObjectClass
+	//
+	// example:
+	//
+	// userPrincipalName, mail
+	UserObjectClass *string `json:"UserObjectClass,omitempty" xml:"UserObjectClass,omitempty"`
+	// 用户自定义Filter
+	//
+	// example:
+	//
+	// (|(cn=test)(mail=test@test.com))
+	UserObjectClassCustomFilter *string `json:"UserObjectClassCustomFilter,omitempty" xml:"UserObjectClassCustomFilter,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetGroupMemberAttributeName(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.GroupMemberAttributeName = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetGroupObjectClass(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.GroupObjectClass = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetGroupObjectClassCustomFilter(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.GroupObjectClassCustomFilter = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetOrganizationUnitObjectClass(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.OrganizationUnitObjectClass = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetUserObjectClass(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.UserObjectClass = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig) SetUserObjectClassCustomFilter(v string) *SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig {
+	s.UserObjectClassCustomFilter = &v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationRequestPullProtectedRule struct {
+	// 同步保护规则-删除组数量
+	//
+	// example:
+	//
+	// 10
+	GroupDeletedThreshold *int32 `json:"GroupDeletedThreshold,omitempty" xml:"GroupDeletedThreshold,omitempty"`
+	// 钉钉一方应用同步保护规则-删除组织数量
+	//
+	// example:
+	//
+	// 10
+	OrganizationalUnitDeletedThreshold *int32 `json:"OrganizationalUnitDeletedThreshold,omitempty" xml:"OrganizationalUnitDeletedThreshold,omitempty"`
+	// 钉钉一方应用同步保护规则-删除账户数量
+	//
+	// example:
+	//
+	// 30
+	UserDeletedThreshold *int32 `json:"UserDeletedThreshold,omitempty" xml:"UserDeletedThreshold,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) SetGroupDeletedThreshold(v int32) *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule {
+	s.GroupDeletedThreshold = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) SetOrganizationalUnitDeletedThreshold(v int32) *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule {
+	s.OrganizationalUnitDeletedThreshold = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule) SetUserDeletedThreshold(v int32) *SetIdentityProviderUdPullConfigurationRequestPullProtectedRule {
+	s.UserDeletedThreshold = &v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig struct {
+	// 同步来源节点
+	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
+	// 同步目标节点
+	//
+	// example:
+	//
+	// ou_asdaq1addsxzdq1XXX
+	TargetScope *string `json:"TargetScope,omitempty" xml:"TargetScope,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig) SetSourceScopes(v []*string) *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig {
+	s.SourceScopes = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig) SetTargetScope(v string) *SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig {
+	s.TargetScope = &v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationResponseBody) SetRequestId(v string) *SetIdentityProviderUdPullConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetIdentityProviderUdPullConfigurationResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetIdentityProviderUdPullConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetIdentityProviderUdPullConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetIdentityProviderUdPullConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetIdentityProviderUdPullConfigurationResponse) SetHeaders(v map[string]*string) *SetIdentityProviderUdPullConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationResponse) SetStatusCode(v int32) *SetIdentityProviderUdPullConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetIdentityProviderUdPullConfigurationResponse) SetBody(v *SetIdentityProviderUdPullConfigurationResponseBody) *SetIdentityProviderUdPullConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type SetPasswordComplexityConfigurationRequest struct {
 	// The instance ID.
 	//
@@ -19275,6 +22618,7 @@ func (s *SetPasswordComplexityConfigurationResponse) SetBody(v *SetPasswordCompl
 }
 
 type SetPasswordExpirationConfigurationRequest struct {
+	EffectiveAuthenticationSourceIds []*string `json:"EffectiveAuthenticationSourceIds,omitempty" xml:"EffectiveAuthenticationSourceIds,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -19349,6 +22693,11 @@ func (s SetPasswordExpirationConfigurationRequest) String() string {
 
 func (s SetPasswordExpirationConfigurationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetPasswordExpirationConfigurationRequest) SetEffectiveAuthenticationSourceIds(v []*string) *SetPasswordExpirationConfigurationRequest {
+	s.EffectiveAuthenticationSourceIds = v
+	return s
 }
 
 func (s *SetPasswordExpirationConfigurationRequest) SetInstanceId(v string) *SetPasswordExpirationConfigurationRequest {
@@ -19778,7 +23127,7 @@ func (s *SetUserPrimaryOrganizationalUnitResponse) SetBody(v *SetUserPrimaryOrga
 }
 
 type UnlockUserRequest struct {
-	// IDaaS EIAM实例的ID。
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -19786,13 +23135,13 @@ type UnlockUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 账户ID
+	// The account ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// u_001
+	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -19815,6 +23164,8 @@ func (s *UnlockUserRequest) SetUserId(v string) *UnlockUserRequest {
 }
 
 type UnlockUserResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
@@ -20272,6 +23623,533 @@ func (s *UpdateGroupDescriptionResponse) SetStatusCode(v int32) *UpdateGroupDesc
 }
 
 func (s *UpdateGroupDescriptionResponse) SetBody(v *UpdateGroupDescriptionResponseBody) *UpdateGroupDescriptionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIdentityProviderRequest struct {
+	// 钉钉出基本信息
+	DingtalkAppConfig *UpdateIdentityProviderRequestDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
+	// IDaaS的身份提供方主键id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+	// 身份提供方名称
+	//
+	// example:
+	//
+	// test
+	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 飞书配置
+	LarkConfig *UpdateIdentityProviderRequestLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
+	// AD/LDAP基本信息
+	LdapConfig *UpdateIdentityProviderRequestLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
+	// 网络端点ID
+	//
+	// example:
+	//
+	// nae_examplexxxx
+	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
+	// OIDC IdP配置。
+	OidcConfig *UpdateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
+	// 企业微信基本信息
+	WeComConfig *UpdateIdentityProviderRequestWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
+}
+
+func (s UpdateIdentityProviderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequest) SetDingtalkAppConfig(v *UpdateIdentityProviderRequestDingtalkAppConfig) *UpdateIdentityProviderRequest {
+	s.DingtalkAppConfig = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetIdentityProviderId(v string) *UpdateIdentityProviderRequest {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetIdentityProviderName(v string) *UpdateIdentityProviderRequest {
+	s.IdentityProviderName = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetInstanceId(v string) *UpdateIdentityProviderRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetLarkConfig(v *UpdateIdentityProviderRequestLarkConfig) *UpdateIdentityProviderRequest {
+	s.LarkConfig = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetLdapConfig(v *UpdateIdentityProviderRequestLdapConfig) *UpdateIdentityProviderRequest {
+	s.LdapConfig = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetNetworkAccessEndpointId(v string) *UpdateIdentityProviderRequest {
+	s.NetworkAccessEndpointId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetOidcConfig(v *UpdateIdentityProviderRequestOidcConfig) *UpdateIdentityProviderRequest {
+	s.OidcConfig = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequest) SetWeComConfig(v *UpdateIdentityProviderRequestWeComConfig) *UpdateIdentityProviderRequest {
+	s.WeComConfig = v
+	return s
+}
+
+type UpdateIdentityProviderRequestDingtalkAppConfig struct {
+	// 钉钉一方应用的AppKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 49nyeaqumk7f
+	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// 钉钉一方应用的AppSecret
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 86nozWFL2CxgwnhKiXaG8dN4keLPkUNc5xxxx
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestDingtalkAppConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestDingtalkAppConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestDingtalkAppConfig) SetAppKey(v string) *UpdateIdentityProviderRequestDingtalkAppConfig {
+	s.AppKey = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestDingtalkAppConfig) SetAppSecret(v string) *UpdateIdentityProviderRequestDingtalkAppConfig {
+	s.AppSecret = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestLarkConfig struct {
+	// example:
+	//
+	// cli_xxxx
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// KiiLzh5Dueh4wbLxxxx
+	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestLarkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestLarkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestLarkConfig) SetAppId(v string) *UpdateIdentityProviderRequestLarkConfig {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLarkConfig) SetAppSecret(v string) *UpdateIdentityProviderRequestLarkConfig {
+	s.AppSecret = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestLdapConfig struct {
+	// 管理员密码
+	//
+	// example:
+	//
+	// xxxxxx
+	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
+	// 管理员账号
+	//
+	// example:
+	//
+	// DC=example,DC=com
+	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
+	// 是否验证指纹证书
+	//
+	// example:
+	//
+	// enabled
+	CertificateFingerprintStatus *string `json:"CertificateFingerprintStatus,omitempty" xml:"CertificateFingerprintStatus,omitempty"`
+	// 证书指纹列表
+	CertificateFingerprints []*string `json:"CertificateFingerprints,omitempty" xml:"CertificateFingerprints,omitempty" type:"Repeated"`
+	// 通信协议
+	//
+	// example:
+	//
+	// ldap
+	LdapProtocol *string `json:"LdapProtocol,omitempty" xml:"LdapProtocol,omitempty"`
+	// ad/ldap 服务器地址
+	//
+	// example:
+	//
+	// 123.xx.xx.89
+	LdapServerHost *string `json:"LdapServerHost,omitempty" xml:"LdapServerHost,omitempty"`
+	// 端口号
+	//
+	// example:
+	//
+	// 636
+	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
+	// startTls是否开启
+	//
+	// example:
+	//
+	// enabled
+	StartTlsStatus *string `json:"StartTlsStatus,omitempty" xml:"StartTlsStatus,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestLdapConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestLdapConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetAdministratorPassword(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.AdministratorPassword = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetAdministratorUsername(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.AdministratorUsername = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetCertificateFingerprintStatus(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.CertificateFingerprintStatus = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetCertificateFingerprints(v []*string) *UpdateIdentityProviderRequestLdapConfig {
+	s.CertificateFingerprints = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetLdapProtocol(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.LdapProtocol = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetLdapServerHost(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.LdapServerHost = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetLdapServerPort(v int32) *UpdateIdentityProviderRequestLdapConfig {
+	s.LdapServerPort = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestLdapConfig) SetStartTlsStatus(v string) *UpdateIdentityProviderRequestLdapConfig {
+	s.StartTlsStatus = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestOidcConfig struct {
+	// OIDC客户端认证配置。
+	AuthnParam *UpdateIdentityProviderRequestOidcConfigAuthnParam `json:"AuthnParam,omitempty" xml:"AuthnParam,omitempty" type:"Struct"`
+	// OIDC 端点配置。
+	EndpointConfig *UpdateIdentityProviderRequestOidcConfigEndpointConfig `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty" type:"Struct"`
+	// OIDC标准参数，如profile、email等
+	//
+	// example:
+	//
+	// openid
+	GrantScopes []*string `json:"GrantScopes,omitempty" xml:"GrantScopes,omitempty" type:"Repeated"`
+	// OIDC授权类型。
+	//
+	// example:
+	//
+	// authorization_code
+	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
+	// 支持的PKCE算法类型。
+	//
+	// example:
+	//
+	// S256
+	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
+	// AuthorizationCode授权模式下是否使用PKCE。
+	//
+	// example:
+	//
+	// true
+	PkceRequired *bool `json:"PkceRequired,omitempty" xml:"PkceRequired,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestOidcConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestOidcConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetAuthnParam(v *UpdateIdentityProviderRequestOidcConfigAuthnParam) *UpdateIdentityProviderRequestOidcConfig {
+	s.AuthnParam = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetEndpointConfig(v *UpdateIdentityProviderRequestOidcConfigEndpointConfig) *UpdateIdentityProviderRequestOidcConfig {
+	s.EndpointConfig = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetGrantScopes(v []*string) *UpdateIdentityProviderRequestOidcConfig {
+	s.GrantScopes = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetGrantType(v string) *UpdateIdentityProviderRequestOidcConfig {
+	s.GrantType = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetPkceChallengeMethod(v string) *UpdateIdentityProviderRequestOidcConfig {
+	s.PkceChallengeMethod = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfig) SetPkceRequired(v bool) *UpdateIdentityProviderRequestOidcConfig {
+	s.PkceRequired = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestOidcConfigAuthnParam struct {
+	// OIDC/oAuth2 认证方法。
+	//
+	// example:
+	//
+	// client_secret_post
+	AuthnMethod *string `json:"AuthnMethod,omitempty" xml:"AuthnMethod,omitempty"`
+	// OIDC/oAuth2 客户端密钥。
+	//
+	// example:
+	//
+	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
+	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestOidcConfigAuthnParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestOidcConfigAuthnParam) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigAuthnParam) SetAuthnMethod(v string) *UpdateIdentityProviderRequestOidcConfigAuthnParam {
+	s.AuthnMethod = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigAuthnParam) SetClientSecret(v string) *UpdateIdentityProviderRequestOidcConfigAuthnParam {
+	s.ClientSecret = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestOidcConfigEndpointConfig struct {
+	// oAuth2 授权端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/authorize
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
+	// OIDC issuer信息。
+	//
+	// example:
+	//
+	// https://example.com/oauth
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// OIDC jwks地址。
+	//
+	// example:
+	//
+	// https://example.com/oauth/jwks
+	JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
+	// oAuth2 Token端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/token
+	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
+	// OIDC 用户信息端点。
+	//
+	// example:
+	//
+	// https://example.com/oauth/userinfo
+	UserinfoEndpoint *string `json:"UserinfoEndpoint,omitempty" xml:"UserinfoEndpoint,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestOidcConfigEndpointConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestOidcConfigEndpointConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetAuthorizationEndpoint(v string) *UpdateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.AuthorizationEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetIssuer(v string) *UpdateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetJwksUri(v string) *UpdateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.JwksUri = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetTokenEndpoint(v string) *UpdateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.TokenEndpoint = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetUserinfoEndpoint(v string) *UpdateIdentityProviderRequestOidcConfigEndpointConfig {
+	s.UserinfoEndpoint = &v
+	return s
+}
+
+type UpdateIdentityProviderRequestWeComConfig struct {
+	// 企业微信自建应用的Id
+	//
+	// example:
+	//
+	// 1237403
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// 授权回调域
+	//
+	// example:
+	//
+	// https://xxx.aliyunidaas.com/xxxxx
+	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
+	// 企业微信自建应用的corpSecret
+	//
+	// example:
+	//
+	// CSEHDddddddxxxxuxkJEHPveWRXBGqVqRsxxxx
+	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
+	// 可信域名
+	//
+	// example:
+	//
+	// https://xxx.aliyunidaas.com
+	TrustableDomain *string `json:"TrustableDomain,omitempty" xml:"TrustableDomain,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestWeComConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestWeComConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestWeComConfig) SetAgentId(v string) *UpdateIdentityProviderRequestWeComConfig {
+	s.AgentId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestWeComConfig) SetAuthorizeCallbackDomain(v string) *UpdateIdentityProviderRequestWeComConfig {
+	s.AuthorizeCallbackDomain = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestWeComConfig) SetCorpSecret(v string) *UpdateIdentityProviderRequestWeComConfig {
+	s.CorpSecret = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestWeComConfig) SetTrustableDomain(v string) *UpdateIdentityProviderRequestWeComConfig {
+	s.TrustableDomain = &v
+	return s
+}
+
+type UpdateIdentityProviderResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIdentityProviderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderResponseBody) SetRequestId(v string) *UpdateIdentityProviderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIdentityProviderResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIdentityProviderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIdentityProviderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityProviderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderResponse) SetHeaders(v map[string]*string) *UpdateIdentityProviderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIdentityProviderResponse) SetStatusCode(v int32) *UpdateIdentityProviderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderResponse) SetBody(v *UpdateIdentityProviderResponseBody) *UpdateIdentityProviderResponse {
 	s.Body = v
 	return s
 }
@@ -21957,6 +25835,122 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
+// 创建身份提供方
+//
+// @param request - CreateIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdentityProviderResponse
+func (client *Client) CreateIdentityProviderWithOptions(request *CreateIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *CreateIdentityProviderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthnConfig)) {
+		query["AuthnConfig"] = request.AuthnConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateUserConfig)) {
+		query["AutoCreateUserConfig"] = request.AutoCreateUserConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoUpdateUserConfig)) {
+		query["AutoUpdateUserConfig"] = request.AutoUpdateUserConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindingConfig)) {
+		query["BindingConfig"] = request.BindingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DingtalkAppConfig)) {
+		query["DingtalkAppConfig"] = request.DingtalkAppConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderName)) {
+		query["IdentityProviderName"] = request.IdentityProviderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderType)) {
+		query["IdentityProviderType"] = request.IdentityProviderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LarkConfig)) {
+		query["LarkConfig"] = request.LarkConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LdapConfig)) {
+		query["LdapConfig"] = request.LdapConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAccessEndpointId)) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OidcConfig)) {
+		query["OidcConfig"] = request.OidcConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdPullConfig)) {
+		query["UdPullConfig"] = request.UdPullConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdPushConfig)) {
+		query["UdPushConfig"] = request.UdPushConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WeComConfig)) {
+		query["WeComConfig"] = request.WeComConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIdentityProvider"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建身份提供方
+//
+// @param request - CreateIdentityProviderRequest
+//
+// @return CreateIdentityProviderResponse
+func (client *Client) CreateIdentityProvider(request *CreateIdentityProviderRequest) (_result *CreateIdentityProviderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIdentityProviderResponse{}
+	_body, _err := client.CreateIdentityProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an instance based on which all capabilities of Identity as a Service (IDaaS) Enterprise Identity and Access Management (EIAM) are provided.
 //
 // @param request - CreateInstanceRequest
@@ -22616,6 +26610,70 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
 	_body, _err := client.DeleteGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除身份提供方
+//
+// @param request - DeleteIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIdentityProviderResponse
+func (client *Client) DeleteIdentityProviderWithOptions(request *DeleteIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *DeleteIdentityProviderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIdentityProvider"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除身份提供方
+//
+// @param request - DeleteIdentityProviderRequest
+//
+// @return DeleteIdentityProviderResponse
+func (client *Client) DeleteIdentityProvider(request *DeleteIdentityProviderRequest) (_result *DeleteIdentityProviderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIdentityProviderResponse{}
+	_body, _err := client.DeleteIdentityProviderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23349,6 +27407,70 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 
 // Summary:
 //
+// 禁用同步入
+//
+// @param request - DisableIdentityProviderUdPullRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableIdentityProviderUdPullResponse
+func (client *Client) DisableIdentityProviderUdPullWithOptions(request *DisableIdentityProviderUdPullRequest, runtime *util.RuntimeOptions) (_result *DisableIdentityProviderUdPullResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableIdentityProviderUdPull"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableIdentityProviderUdPullResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用同步入
+//
+// @param request - DisableIdentityProviderUdPullRequest
+//
+// @return DisableIdentityProviderUdPullResponse
+func (client *Client) DisableIdentityProviderUdPull(request *DisableIdentityProviderUdPullRequest) (_result *DisableIdentityProviderUdPullResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableIdentityProviderUdPullResponse{}
+	_body, _err := client.DisableIdentityProviderUdPullWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭初始化域名自动跳转。
 //
 // @param request - DisableInitDomainAutoRedirectRequest
@@ -23856,6 +27978,70 @@ func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDomainProxyTokenResponse{}
 	_body, _err := client.EnableDomainProxyTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用同步入
+//
+// @param request - EnableIdentityProviderUdPullRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableIdentityProviderUdPullResponse
+func (client *Client) EnableIdentityProviderUdPullWithOptions(request *EnableIdentityProviderUdPullRequest, runtime *util.RuntimeOptions) (_result *EnableIdentityProviderUdPullResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableIdentityProviderUdPull"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableIdentityProviderUdPullResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用同步入
+//
+// @param request - EnableIdentityProviderUdPullRequest
+//
+// @return EnableIdentityProviderUdPullResponse
+func (client *Client) EnableIdentityProviderUdPull(request *EnableIdentityProviderUdPullRequest) (_result *EnableIdentityProviderUdPullResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableIdentityProviderUdPullResponse{}
+	_body, _err := client.EnableIdentityProviderUdPullWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24552,6 +28738,134 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupResponse{}
 	_body, _err := client.GetGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取身份提供方
+//
+// @param request - GetIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderResponse
+func (client *Client) GetIdentityProviderWithOptions(request *GetIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *GetIdentityProviderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIdentityProvider"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取身份提供方
+//
+// @param request - GetIdentityProviderRequest
+//
+// @return GetIdentityProviderResponse
+func (client *Client) GetIdentityProvider(request *GetIdentityProviderRequest) (_result *GetIdentityProviderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIdentityProviderResponse{}
+	_body, _err := client.GetIdentityProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取IdP同步入配置
+//
+// @param request - GetIdentityProviderUdPullConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityProviderUdPullConfigurationResponse
+func (client *Client) GetIdentityProviderUdPullConfigurationWithOptions(request *GetIdentityProviderUdPullConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetIdentityProviderUdPullConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIdentityProviderUdPullConfiguration"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取IdP同步入配置
+//
+// @param request - GetIdentityProviderUdPullConfigurationRequest
+//
+// @return GetIdentityProviderUdPullConfigurationResponse
+func (client *Client) GetIdentityProviderUdPullConfiguration(request *GetIdentityProviderUdPullConfigurationRequest) (_result *GetIdentityProviderUdPullConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.GetIdentityProviderUdPullConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25947,6 +30261,74 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsForUserResponse{}
 	_body, _err := client.ListGroupsForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询身份提供方
+//
+// @param request - ListIdentityProvidersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdentityProvidersResponse
+func (client *Client) ListIdentityProvidersWithOptions(request *ListIdentityProvidersRequest, runtime *util.RuntimeOptions) (_result *ListIdentityProvidersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIdentityProviders"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIdentityProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询身份提供方
+//
+// @param request - ListIdentityProvidersRequest
+//
+// @return ListIdentityProvidersResponse
+func (client *Client) ListIdentityProviders(request *ListIdentityProvidersRequest) (_result *ListIdentityProvidersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIdentityProvidersResponse{}
+	_body, _err := client.ListIdentityProvidersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27703,6 +32085,10 @@ func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplication
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InitLoginType)) {
 		query["InitLoginType"] = request.InitLoginType
 	}
@@ -27902,6 +32288,94 @@ func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordC
 
 // Summary:
 //
+// 修改IdP同步入配置
+//
+// @param request - SetIdentityProviderUdPullConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetIdentityProviderUdPullConfigurationResponse
+func (client *Client) SetIdentityProviderUdPullConfigurationWithOptions(request *SetIdentityProviderUdPullConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetIdentityProviderUdPullConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupSyncStatus)) {
+		query["GroupSyncStatus"] = request.GroupSyncStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncrementalCallbackStatus)) {
+		query["IncrementalCallbackStatus"] = request.IncrementalCallbackStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LdapUdPullConfig)) {
+		query["LdapUdPullConfig"] = request.LdapUdPullConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodicSyncStatus)) {
+		query["PeriodicSyncStatus"] = request.PeriodicSyncStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PullProtectedRule)) {
+		query["PullProtectedRule"] = request.PullProtectedRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdSyncScopeConfig)) {
+		query["UdSyncScopeConfig"] = request.UdSyncScopeConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetIdentityProviderUdPullConfiguration"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改IdP同步入配置
+//
+// @param request - SetIdentityProviderUdPullConfigurationRequest
+//
+// @return SetIdentityProviderUdPullConfigurationResponse
+func (client *Client) SetIdentityProviderUdPullConfiguration(request *SetIdentityProviderUdPullConfigurationRequest) (_result *SetIdentityProviderUdPullConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetIdentityProviderUdPullConfigurationResponse{}
+	_body, _err := client.SetIdentityProviderUdPullConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures a password complexity policy for an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 //
 // @param request - SetPasswordComplexityConfigurationRequest
@@ -27983,6 +32457,10 @@ func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *Set
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveAuthenticationSourceIds)) {
+		query["EffectiveAuthenticationSourceIds"] = request.EffectiveAuthenticationSourceIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -28270,7 +32748,7 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 
 // Summary:
 //
-// 解锁账户
+// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
 //
 // @param request - UnlockUserRequest
 //
@@ -28316,7 +32794,7 @@ func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime 
 
 // Summary:
 //
-// 解锁账户
+// Unlocks an Employee Identity and Access Management (EIAM) account of Identity as a Service (IDaaS) that is locked.
 //
 // @param request - UnlockUserRequest
 //
@@ -28601,6 +33079,98 @@ func (client *Client) UpdateGroupDescription(request *UpdateGroupDescriptionRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupDescriptionResponse{}
 	_body, _err := client.UpdateGroupDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新idp基础配置
+//
+// @param request - UpdateIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIdentityProviderResponse
+func (client *Client) UpdateIdentityProviderWithOptions(request *UpdateIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *UpdateIdentityProviderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DingtalkAppConfig)) {
+		query["DingtalkAppConfig"] = request.DingtalkAppConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderId)) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityProviderName)) {
+		query["IdentityProviderName"] = request.IdentityProviderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LarkConfig)) {
+		query["LarkConfig"] = request.LarkConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LdapConfig)) {
+		query["LdapConfig"] = request.LdapConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAccessEndpointId)) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OidcConfig)) {
+		query["OidcConfig"] = request.OidcConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WeComConfig)) {
+		query["WeComConfig"] = request.WeComConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIdentityProvider"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIdentityProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新idp基础配置
+//
+// @param request - UpdateIdentityProviderRequest
+//
+// @return UpdateIdentityProviderResponse
+func (client *Client) UpdateIdentityProvider(request *UpdateIdentityProviderRequest) (_result *UpdateIdentityProviderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIdentityProviderResponse{}
+	_body, _err := client.UpdateIdentityProviderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
