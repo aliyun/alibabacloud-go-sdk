@@ -3662,7 +3662,7 @@ type CreateADConnectorDirectoryRequest struct {
 	//
 	// example:
 	//
-	// 127.0.\*\*.**
+	// ``127.0.**.**``
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
 	// The fully qualified domain name (FQDN) of the enterprise AD system. The value must contain the hostname and the domain name. You can register each FQDN only once.
 	//
@@ -3766,7 +3766,7 @@ type CreateADConnectorDirectoryRequest struct {
 	//
 	// example:
 	//
-	// 127.0.\*\*.**
+	// ``127.0.**.**``
 	SubDomainDnsAddress []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
 	// The FQDN of the enterprise AD subdomain. The value must contain the hostname and the subdomain name.
 	//
@@ -3913,7 +3913,7 @@ type CreateADConnectorDirectoryResponseBodyAdConnectors struct {
 	//
 	// example:
 	//
-	// 127.0.\*\*.**
+	// ``127.0.**.**``
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 }
 
@@ -3978,8 +3978,6 @@ type CreateADConnectorOfficeSiteRequest struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The ID of the CEN instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cen-3gwy16dojz1m65****
@@ -4001,8 +3999,6 @@ type CreateADConnectorOfficeSiteRequest struct {
 	// 	- `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
 	//
 	// 	- `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -4159,7 +4155,8 @@ type CreateADConnectorOfficeSiteRequest struct {
 	// example:
 	//
 	// child.example.com
-	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
+	SubDomainName *string   `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
+	VSwitchId     []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
 	// The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
 	//
 	// example:
@@ -4278,6 +4275,11 @@ func (s *CreateADConnectorOfficeSiteRequest) SetSubDomainDnsAddress(v []*string)
 
 func (s *CreateADConnectorOfficeSiteRequest) SetSubDomainName(v string) *CreateADConnectorOfficeSiteRequest {
 	s.SubDomainName = &v
+	return s
+}
+
+func (s *CreateADConnectorOfficeSiteRequest) SetVSwitchId(v []*string) *CreateADConnectorOfficeSiteRequest {
+	s.VSwitchId = v
 	return s
 }
 
@@ -6147,7 +6149,7 @@ type CreateDesktopGroupRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The end users that can use the desktop group.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The Apsara File Storage NAS (NAS) file system that is used after data roaming is enabled.
+	// The File Storage NAS (NAS) file system that is used after data roaming is enabled.
 	//
 	// example:
 	//
@@ -6250,7 +6252,8 @@ type CreateDesktopGroupRequest struct {
 	// example:
 	//
 	// false
-	ProfileFollowSwitch *bool `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
+	ProfileFollowSwitch *bool   `json:"ProfileFollowSwitch,omitempty" xml:"ProfileFollowSwitch,omitempty"`
+	PromotionId         *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. When the specified threshold is reached, new cloud desktops are automatically created. When the specified threshold is not reached, idle cloud desktops are released.
 	//
 	// example:
@@ -6462,6 +6465,11 @@ func (s *CreateDesktopGroupRequest) SetPolicyGroupId(v string) *CreateDesktopGro
 
 func (s *CreateDesktopGroupRequest) SetProfileFollowSwitch(v bool) *CreateDesktopGroupRequest {
 	s.ProfileFollowSwitch = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetPromotionId(v string) *CreateDesktopGroupRequest {
+	s.PromotionId = &v
 	return s
 }
 
@@ -6851,7 +6859,8 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType        *string                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DesktopAttachment *CreateDesktopsRequestDesktopAttachment `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty" type:"Struct"`
 	// The private IP address of the cloud computer.
 	//
 	// example:
@@ -7001,9 +7010,11 @@ type CreateDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
-	Tag []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag          []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TimerGroupId *string                     `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
 	// How the cloud computers are assigned.
 	//
 	// >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
@@ -7098,6 +7109,11 @@ func (s *CreateDesktopsRequest) SetChargeType(v string) *CreateDesktopsRequest {
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetDesktopAttachment(v *CreateDesktopsRequestDesktopAttachment) *CreateDesktopsRequest {
+	s.DesktopAttachment = v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetDesktopMemberIp(v string) *CreateDesktopsRequest {
 	s.DesktopMemberIp = &v
 	return s
@@ -7173,6 +7189,11 @@ func (s *CreateDesktopsRequest) SetRegionId(v string) *CreateDesktopsRequest {
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetResourceGroupId(v string) *CreateDesktopsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetSnapshotPolicyId(v string) *CreateDesktopsRequest {
 	s.SnapshotPolicyId = &v
 	return s
@@ -7180,6 +7201,11 @@ func (s *CreateDesktopsRequest) SetSnapshotPolicyId(v string) *CreateDesktopsReq
 
 func (s *CreateDesktopsRequest) SetTag(v []*CreateDesktopsRequestTag) *CreateDesktopsRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetTimerGroupId(v string) *CreateDesktopsRequest {
+	s.TimerGroupId = &v
 	return s
 }
 
@@ -7314,6 +7340,71 @@ func (s *CreateDesktopsRequestBundleModels) SetVolumeEncryptionEnabled(v bool) *
 
 func (s *CreateDesktopsRequestBundleModels) SetVolumeEncryptionKey(v string) *CreateDesktopsRequestBundleModels {
 	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type CreateDesktopsRequestDesktopAttachment struct {
+	DataDiskCategory   *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskPerLevel   *string `json:"DataDiskPerLevel,omitempty" xml:"DataDiskPerLevel,omitempty"`
+	DataDiskSize       *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	DefaultLanguage    *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	DesktopType        *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskPerLevel *string `json:"SystemDiskPerLevel,omitempty" xml:"SystemDiskPerLevel,omitempty"`
+	SystemDiskSize     *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+}
+
+func (s CreateDesktopsRequestDesktopAttachment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsRequestDesktopAttachment) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetDataDiskCategory(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetDataDiskPerLevel(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.DataDiskPerLevel = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetDataDiskSize(v int32) *CreateDesktopsRequestDesktopAttachment {
+	s.DataDiskSize = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetDefaultLanguage(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.DefaultLanguage = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetDesktopType(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.DesktopType = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetImageId(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetSystemDiskCategory(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetSystemDiskPerLevel(v string) *CreateDesktopsRequestDesktopAttachment {
+	s.SystemDiskPerLevel = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopAttachment) SetSystemDiskSize(v int32) *CreateDesktopsRequestDesktopAttachment {
+	s.SystemDiskSize = &v
 	return s
 }
 
@@ -7622,6 +7713,852 @@ func (s *CreateDesktopsRequestUserCommands) SetContentEncoding(v string) *Create
 }
 
 func (s *CreateDesktopsRequestUserCommands) SetContentType(v string) *CreateDesktopsRequestUserCommands {
+	s.ContentType = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequest struct {
+	// The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable automatic payment.
+	//
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
+	//
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The ID of the cloud computer template.
+	//
+	// example:
+	//
+	// b-je9hani001wfn****
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The cloud computer templates.
+	//
+	// if can be null:
+	// true
+	BundleModels []*CreateDesktopsShrinkRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	// The billing method of the cloud computers.
+	//
+	// Default value: PostPaid. Valid values:
+	//
+	// 	- Postpaid: pay-as-you-go
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- PrePaid: subscription
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType              *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DesktopAttachmentShrink *string `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty"`
+	// The private IP address of the cloud computer.
+	//
+	// example:
+	//
+	// 10.0.0.1
+	DesktopMemberIp *string `json:"DesktopMemberIp,omitempty" xml:"DesktopMemberIp,omitempty"`
+	// The name of the cloud computer. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 64 characters in length.
+	//
+	// 	- The name must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// 	- The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// testDesktopName
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// Specifies whether to automatically add suffixes to the names of cloud computers when you create multiple cloud computers at the same time.
+	//
+	// Default value: true. Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- False
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// false
+	DesktopNameSuffix *bool `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
+	// The details of the scheduled task on cloud computers.
+	//
+	// if can be null:
+	// true
+	DesktopTimers []*CreateDesktopsShrinkRequestDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// To be hidden.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
+	//
+	// example:
+	//
+	// 123456789
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The ID of the cloud computer pool.
+	//
+	// example:
+	//
+	// dg-boyczi8enfyc5****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+	//
+	// The hostnames must meet the following requirements:
+	//
+	// 	- The hostnames must be 2 to 15 characters in length.
+	//
+	// 	- The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+	//
+	// When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	//
+	// 	- `name_prefix`: the prefix of the hostname.
+	//
+	// 	- `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+	//
+	// 	- `name_suffix`: the suffix of the hostname.
+	//
+	// example:
+	//
+	// testhost
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// > This parameter is not publicly available.
+	MonthDesktopSetting *CreateDesktopsShrinkRequestMonthDesktopSetting `json:"MonthDesktopSetting,omitempty" xml:"MonthDesktopSetting,omitempty" type:"Struct"`
+	// The office network ID.
+	//
+	// example:
+	//
+	// cn-hangzhou+os-c5cy7q578s8jc****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The subscription duration of the cloud desktop that you want to create. The unit is specified by the `PeriodUnit` parameter. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
+	//
+	// 	- Valid values if the `PeriodUnit` parameter is set to `Month`:
+	//
+	//     	- 1
+	//
+	//     	- 2
+	//
+	//     	- 3
+	//
+	//     	- 6
+	//
+	// 	- Valid values if the `PeriodUnit` parameter is set to `Year`:
+	//
+	//     	- 1
+	//
+	//     	- 2
+	//
+	//     	- 3
+	//
+	//     	- 4
+	//
+	//     	- 5
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The ID of the policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// system-all-enabled-policy
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The ID of the sales promotion.
+	//
+	// example:
+	//
+	// 23141
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// The tags that you want to add to the cloud desktop.
+	Tag          []*CreateDesktopsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TimerGroupId *string                           `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	// How the cloud computers are assigned.
+	//
+	// >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
+	//
+	// Default value: ALL. Valid values:
+	//
+	// 	- ALL: If you specify the EndUserId parameter, the cloud computers are assigned to all specified end users after the cloud computers are created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- PER_USER: If you specify the EndUserId parameter, the cloud computers are evenly assigned to the specified end users after the cloud computers are created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     In this case, you must make sure that the value of the Amount parameter can be divided by the N value of the EndUserId.N parameter that you specify.
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// ALL
+	UserAssignMode *string `json:"UserAssignMode,omitempty" xml:"UserAssignMode,omitempty"`
+	// Details about the custom command scripts.
+	UserCommands []*CreateDesktopsShrinkRequestUserCommands `json:"UserCommands,omitempty" xml:"UserCommands,omitempty" type:"Repeated"`
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// To be hidden.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Specifies whether to enable disk encryption.
+	//
+	// example:
+	//
+	// false
+	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
+	// The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
+	//
+	// example:
+	//
+	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****
+	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// To be hidden.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequest) SetAmount(v int32) *CreateDesktopsShrinkRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetAutoPay(v bool) *CreateDesktopsShrinkRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetAutoRenew(v bool) *CreateDesktopsShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetBundleId(v string) *CreateDesktopsShrinkRequest {
+	s.BundleId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetBundleModels(v []*CreateDesktopsShrinkRequestBundleModels) *CreateDesktopsShrinkRequest {
+	s.BundleModels = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetChargeType(v string) *CreateDesktopsShrinkRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopAttachmentShrink(v string) *CreateDesktopsShrinkRequest {
+	s.DesktopAttachmentShrink = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopMemberIp(v string) *CreateDesktopsShrinkRequest {
+	s.DesktopMemberIp = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopName(v string) *CreateDesktopsShrinkRequest {
+	s.DesktopName = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopNameSuffix(v bool) *CreateDesktopsShrinkRequest {
+	s.DesktopNameSuffix = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopTimers(v []*CreateDesktopsShrinkRequestDesktopTimers) *CreateDesktopsShrinkRequest {
+	s.DesktopTimers = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDirectoryId(v string) *CreateDesktopsShrinkRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetEndUserId(v []*string) *CreateDesktopsShrinkRequest {
+	s.EndUserId = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetGroupId(v string) *CreateDesktopsShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetHostname(v string) *CreateDesktopsShrinkRequest {
+	s.Hostname = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetMonthDesktopSetting(v *CreateDesktopsShrinkRequestMonthDesktopSetting) *CreateDesktopsShrinkRequest {
+	s.MonthDesktopSetting = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetOfficeSiteId(v string) *CreateDesktopsShrinkRequest {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetPeriod(v int32) *CreateDesktopsShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetPeriodUnit(v string) *CreateDesktopsShrinkRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetPolicyGroupId(v string) *CreateDesktopsShrinkRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetPromotionId(v string) *CreateDesktopsShrinkRequest {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetRegionId(v string) *CreateDesktopsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetResourceGroupId(v string) *CreateDesktopsShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetSnapshotPolicyId(v string) *CreateDesktopsShrinkRequest {
+	s.SnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetTag(v []*CreateDesktopsShrinkRequestTag) *CreateDesktopsShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetTimerGroupId(v string) *CreateDesktopsShrinkRequest {
+	s.TimerGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetUserAssignMode(v string) *CreateDesktopsShrinkRequest {
+	s.UserAssignMode = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetUserCommands(v []*CreateDesktopsShrinkRequestUserCommands) *CreateDesktopsShrinkRequest {
+	s.UserCommands = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetUserName(v string) *CreateDesktopsShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetVolumeEncryptionEnabled(v bool) *CreateDesktopsShrinkRequest {
+	s.VolumeEncryptionEnabled = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetVolumeEncryptionKey(v string) *CreateDesktopsShrinkRequest {
+	s.VolumeEncryptionKey = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetVpcId(v string) *CreateDesktopsShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequestBundleModels struct {
+	// The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: null.
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The ID of a cloud computer template.
+	//
+	// example:
+	//
+	// b-je9hani001wfn****
+	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	// The name of the cloud computer. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 64 characters in length.
+	//
+	// 	- The name must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// 	- The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// testDesktopName
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The IDs of the end users to whom the cloud computer are assigned.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+	//
+	// The hostnames must meet the following requirements:
+	//
+	// 	- The hostnames must be 2 to 15 characters in length.
+	//
+	// 	- The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+	//
+	// When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+	//
+	// 	- `name_prefix`: the prefix of the hostname.
+	//
+	// 	- `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
+	//
+	// 	- `name_suffix`: the suffix of the hostname.
+	//
+	// example:
+	//
+	// testhost
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Specifies whether to enable disk encryption.
+	//
+	// example:
+	//
+	// false
+	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
+	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+	//
+	// example:
+	//
+	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****
+	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequestBundleModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequestBundleModels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetAmount(v int32) *CreateDesktopsShrinkRequestBundleModels {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetBundleId(v string) *CreateDesktopsShrinkRequestBundleModels {
+	s.BundleId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetDesktopName(v string) *CreateDesktopsShrinkRequestBundleModels {
+	s.DesktopName = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetEndUserIds(v []*string) *CreateDesktopsShrinkRequestBundleModels {
+	s.EndUserIds = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetHostname(v string) *CreateDesktopsShrinkRequestBundleModels {
+	s.Hostname = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetVolumeEncryptionEnabled(v bool) *CreateDesktopsShrinkRequestBundleModels {
+	s.VolumeEncryptionEnabled = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestBundleModels) SetVolumeEncryptionKey(v string) *CreateDesktopsShrinkRequestBundleModels {
+	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequestDesktopTimers struct {
+	// Specifies whether to allow the end user to configure the scheduled task.
+	//
+	// example:
+	//
+	// true
+	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
+	// The cron expression for the scheduled task.
+	//
+	// >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\	- 1,2,3,4,5,6,7
+	//
+	// example:
+	//
+	// 0 40 7 ? 	- 1,2,3,4,5,6,7
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// Specifies whether to forcibly execute the scheduled task.
+	//
+	// Valid values:
+	//
+	// 	- true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false: does not forcibly execute the scheduled task.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// True
+	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// The interval at which cloud computers are created. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The operations that scheduled tasks support. This parameter is valid only when TimerType is set to NoConnect.
+	//
+	// Valid values:
+	//
+	// 	- Hibernate: hibernates the cloud computers.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Shutdown: stops the cloud computers.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Shutdown
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The reset type of the cloud computers.
+	//
+	// Valid values:
+	//
+	// 	- RESET_TYPE_SYSTEM: resets the system disks.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- RESET_TYPE_BOTH: resets the system disks and data disks.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// RESET_TYPE_SYSTEM
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The type of the scheduled task.
+	//
+	// example:
+	//
+	// NoOperationReboot
+	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequestDesktopTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequestDesktopTimers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetAllowClientSetting(v bool) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.AllowClientSetting = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetCronExpression(v string) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetEnforce(v bool) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetInterval(v int32) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetOperationType(v string) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetResetType(v string) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestDesktopTimers) SetTimerType(v string) *CreateDesktopsShrinkRequestDesktopTimers {
+	s.TimerType = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequestMonthDesktopSetting struct {
+	// > This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
+	BuyerId *int64 `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
+	// > This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// > This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
+	UseDuration *int32 `json:"UseDuration,omitempty" xml:"UseDuration,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequestMonthDesktopSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequestMonthDesktopSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequestMonthDesktopSetting) SetBuyerId(v int64) *CreateDesktopsShrinkRequestMonthDesktopSetting {
+	s.BuyerId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestMonthDesktopSetting) SetDesktopId(v string) *CreateDesktopsShrinkRequestMonthDesktopSetting {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestMonthDesktopSetting) SetUseDuration(v int32) *CreateDesktopsShrinkRequestMonthDesktopSetting {
+	s.UseDuration = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequestTag struct {
+	// The key of the tag. You can specify 1 to 20 keys for a tag.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag. You can specify 1 to 20 values for a tag.
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequestTag) SetKey(v string) *CreateDesktopsShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestTag) SetValue(v string) *CreateDesktopsShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateDesktopsShrinkRequestUserCommands struct {
+	// The command content.
+	//
+	// example:
+	//
+	// bmV3LWl0ZW0gZDpcdGVzdF91c2VyX2NvbW1hbmRzLnR4dCAtdHlwZSBm****
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The encoding mode of the command content.
+	//
+	// Valid values:
+	//
+	// 	- Base64: encodes the command content in Base64.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- PlainText: does not encode the command content.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Base64
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// The language type of the command.
+	//
+	// Valid values:
+	//
+	// 	- RunPowerShellScript: PowerShell commands (applicable to Windows cloud computers).
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- RunShellScript: shell commands (applicable to Linux cloud computers).
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- RunBatScript: batch commands (applicable to Windows cloud computers).
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// RunPowerShellScript
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+}
+
+func (s CreateDesktopsShrinkRequestUserCommands) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDesktopsShrinkRequestUserCommands) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsShrinkRequestUserCommands) SetContent(v string) *CreateDesktopsShrinkRequestUserCommands {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestUserCommands) SetContentEncoding(v string) *CreateDesktopsShrinkRequestUserCommands {
+	s.ContentEncoding = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequestUserCommands) SetContentType(v string) *CreateDesktopsShrinkRequestUserCommands {
 	s.ContentType = &v
 	return s
 }
@@ -7971,30 +8908,62 @@ func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageRe
 }
 
 type CreateNASFileSystemRequest struct {
+	// Description of the NAS file system.
+	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the file system is encrypted. Uses KMS service-managed keys to encrypt the file system\\"s on-disk data. No decryption is required when reading and writing encrypted data. Possible values and their meanings:
+	//
+	// - 0: Not encrypted.
+	//
+	// - 1: Encrypted using NAS-managed keys.
+	//
+	// Default value: 0
+	//
 	// example:
 	//
 	// 0
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// Name of the NAS file system.
+	//
+	// The file name must follow these rules:
+	//
+	// - Length: 2 to 128 English or Chinese characters.
+	//
+	// - Must start with an uppercase or lowercase letter or a Chinese character, cannot start with http:// or https://.
+	//
+	// - Can include numbers, underscores (_), or hyphens (-).
+	//
 	// example:
 	//
 	// testNAS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Storage specification type of the NAS file system. Allowed values:
+	//
+	// - Capacity: Capacity type.
+	//
+	// - Performance: Performance type.
+	//
+	// Default value: Capacity
+	//
 	// example:
 	//
 	// Capacity
@@ -8040,22 +9009,32 @@ func (s *CreateNASFileSystemRequest) SetStorageType(v string) *CreateNASFileSyst
 }
 
 type CreateNASFileSystemResponseBody struct {
+	// ID of the NAS file system.
+	//
 	// example:
 	//
 	// 04f314****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Name of the NAS file system.
+	//
 	// example:
 	//
 	// testNAS
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	// Mount point domain.
+	//
 	// example:
 	//
 	// 04f314****-at***.cn-hangzhou.nas.aliyuncs.com
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
@@ -9162,6 +10141,7 @@ type CreatePolicyGroupRequest struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	WyAssistant   *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
 }
 
 func (s CreatePolicyGroupRequest) String() string {
@@ -9449,6 +10429,11 @@ func (s *CreatePolicyGroupRequest) SetWatermarkTransparencyValue(v int32) *Creat
 
 func (s *CreatePolicyGroupRequest) SetWatermarkType(v string) *CreatePolicyGroupRequest {
 	s.WatermarkType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetWyAssistant(v string) *CreatePolicyGroupRequest {
+	s.WyAssistant = &v
 	return s
 }
 
@@ -15110,8 +16095,9 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
 	// example:
 	//
 	// Test Team 1
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	OrgId     *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OrgId          *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	RecycleBinSize *string `json:"RecycleBinSize,omitempty" xml:"RecycleBinSize,omitempty"`
 	// The team space status. Valid values:
 	//
 	// 	- enabled
@@ -15183,6 +16169,11 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetGroupName(v st
 
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetOrgId(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
 	s.OrgId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetRecycleBinSize(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups {
+	s.RecycleBinSize = &v
 	return s
 }
 
@@ -18044,7 +19035,8 @@ type DescribeDesktopSessionsRequest struct {
 	// example:
 	//
 	// testUser
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId       *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserIdFilter *string `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
 	// The ID of the office network.
 	//
 	// example:
@@ -18122,6 +19114,11 @@ func (s *DescribeDesktopSessionsRequest) SetEndTime(v string) *DescribeDesktopSe
 
 func (s *DescribeDesktopSessionsRequest) SetEndUserId(v string) *DescribeDesktopSessionsRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetEndUserIdFilter(v string) *DescribeDesktopSessionsRequest {
+	s.EndUserIdFilter = &v
 	return s
 }
 
@@ -18651,7 +19648,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// ecd.graphics.xlarge
-	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
+	DesktopTypeId     *string   `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
+	DesktopTypeIdList []*string `json:"DesktopTypeIdList,omitempty" xml:"DesktopTypeIdList,omitempty" type:"Repeated"`
 	// The number of GPUs.
 	//
 	// example:
@@ -18730,7 +19728,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// 4
-	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The order type.
 	//
 	// example:
@@ -18745,6 +19744,8 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scope    *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s DescribeDesktopTypesRequest) String() string {
@@ -18780,6 +19781,11 @@ func (s *DescribeDesktopTypesRequest) SetDesktopTypeId(v string) *DescribeDeskto
 	return s
 }
 
+func (s *DescribeDesktopTypesRequest) SetDesktopTypeIdList(v []*string) *DescribeDesktopTypesRequest {
+	s.DesktopTypeIdList = v
+	return s
+}
+
 func (s *DescribeDesktopTypesRequest) SetGpuCount(v float32) *DescribeDesktopTypesRequest {
 	s.GpuCount = &v
 	return s
@@ -18800,6 +19806,11 @@ func (s *DescribeDesktopTypesRequest) SetMemorySize(v int32) *DescribeDesktopTyp
 	return s
 }
 
+func (s *DescribeDesktopTypesRequest) SetOrderBy(v string) *DescribeDesktopTypesRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *DescribeDesktopTypesRequest) SetOrderType(v string) *DescribeDesktopTypesRequest {
 	s.OrderType = &v
 	return s
@@ -18807,6 +19818,16 @@ func (s *DescribeDesktopTypesRequest) SetOrderType(v string) *DescribeDesktopTyp
 
 func (s *DescribeDesktopTypesRequest) SetRegionId(v string) *DescribeDesktopTypesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetScope(v string) *DescribeDesktopTypesRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetSortType(v string) *DescribeDesktopTypesRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -18869,7 +19890,8 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	// example:
 	//
 	// 1
-	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuCount  *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuMemory *int32   `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
 	// The GPU memory.
 	//
 	// example:
@@ -18887,7 +19909,9 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	// example:
 	//
 	// 23552
-	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize *string   `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	Scopes     []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
+	StockState *string   `json:"StockState,omitempty" xml:"StockState,omitempty"`
 	// The size of the system disk. Unit: GiB.
 	//
 	// example:
@@ -18929,6 +19953,11 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetGpuCount(v float32) *D
 	return s
 }
 
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetGpuMemory(v int32) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.GpuMemory = &v
+	return s
+}
+
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetGpuSpec(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
 	s.GpuSpec = &v
 	return s
@@ -18941,6 +19970,16 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetInstanceTypeFamily(v s
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetMemorySize(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetScopes(v []*string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.Scopes = v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetStockState(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.StockState = &v
 	return s
 }
 
@@ -19102,7 +20141,9 @@ type DescribeDesktopsRequest struct {
 	// true
 	OnlyDesktopGroup *bool `json:"OnlyDesktopGroup,omitempty" xml:"OnlyDesktopGroup,omitempty"`
 	// The types of the OSs.
-	OsTypes []*string `json:"OsTypes,omitempty" xml:"OsTypes,omitempty" type:"Repeated"`
+	OsTypes    []*string `json:"OsTypes,omitempty" xml:"OsTypes,omitempty" type:"Repeated"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the policy.
 	//
 	// example:
@@ -19271,6 +20312,16 @@ func (s *DescribeDesktopsRequest) SetOsTypes(v []*string) *DescribeDesktopsReque
 	return s
 }
 
+func (s *DescribeDesktopsRequest) SetPageNumber(v int32) *DescribeDesktopsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDesktopsRequest) SetPageSize(v int32) *DescribeDesktopsRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDesktopsRequest) SetPolicyGroupId(v string) *DescribeDesktopsRequest {
 	s.PolicyGroupId = &v
 	return s
@@ -19362,7 +20413,9 @@ type DescribeDesktopsResponseBody struct {
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -19392,6 +20445,16 @@ func (s *DescribeDesktopsResponseBody) SetDesktops(v []*DescribeDesktopsResponse
 
 func (s *DescribeDesktopsResponseBody) SetNextToken(v string) *DescribeDesktopsResponseBody {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBody) SetPageNumber(v int32) *DescribeDesktopsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBody) SetPageSize(v int32) *DescribeDesktopsResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -20192,6 +21255,7 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetZoneType(v string) *DescribeDe
 }
 
 type DescribeDesktopsResponseBodyDesktopsDisks struct {
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	// The disk ID.
 	//
 	// example:
@@ -20252,6 +21316,11 @@ func (s DescribeDesktopsResponseBodyDesktopsDisks) String() string {
 
 func (s DescribeDesktopsResponseBodyDesktopsDisks) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDesktopsResponseBodyDesktopsDisks) SetDiskCategory(v string) *DescribeDesktopsResponseBodyDesktopsDisks {
+	s.DiskCategory = &v
+	return s
 }
 
 func (s *DescribeDesktopsResponseBodyDesktopsDisks) SetDiskId(v string) *DescribeDesktopsResponseBodyDesktopsDisks {
@@ -22042,10 +23111,19 @@ func (s *DescribeDirectoriesResponseBody) SetRequestId(v string) *DescribeDirect
 
 type DescribeDirectoriesResponseBodyDirectories struct {
 	// Details of the AD connector.
-	ADConnectors     []*DescribeDirectoriesResponseBodyDirectoriesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
-	AdHostname       *string                                                   `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	BackupDCHostname *string                                                   `json:"BackupDCHostname,omitempty" xml:"BackupDCHostname,omitempty"`
-	BackupDns        *string                                                   `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
+	ADConnectors []*DescribeDirectoriesResponseBodyDirectoriesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dc001
+	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	// example:
+	//
+	// dc002
+	BackupDCHostname *string `json:"BackupDCHostname,omitempty" xml:"BackupDCHostname,omitempty"`
+	// example:
+	//
+	// 192.168.2.100
+	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
 	// The time when the directory was created.
 	//
 	// example:
@@ -22172,7 +23250,7 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	//
 	// false
 	EnableInternetAccess *bool `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
-	// The IDs of Apsara File Storage NAS (NAS) file systems.
+	// The IDs of File Storage NAS (NAS) file systems.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
 	// The registration logs. This parameter is returned only when the directory type is AD office network.
 	Logs []*DescribeDirectoriesResponseBodyDirectoriesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
@@ -22424,7 +23502,7 @@ type DescribeDirectoriesResponseBodyDirectoriesADConnectors struct {
 	//
 	// example:
 	//
-	// 172.17.\*\*.**
+	// ``172.17.**.**``
 	ADConnectorAddress *string `json:"ADConnectorAddress,omitempty" xml:"ADConnectorAddress,omitempty"`
 	// Valid values:
 	//
@@ -24950,7 +26028,8 @@ type DescribeInvocationsRequest struct {
 	// example:
 	//
 	// test1
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId             *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	IncludeInvokeDesktops *bool   `json:"IncludeInvokeDesktops,omitempty" xml:"IncludeInvokeDesktops,omitempty"`
 	// Specifies whether to return command outputs in the response. Valid values:
 	//
 	// 	- true: returns command outputs.
@@ -25043,6 +26122,11 @@ func (s *DescribeInvocationsRequest) SetDesktopIds(v []*string) *DescribeInvocat
 
 func (s *DescribeInvocationsRequest) SetEndUserId(v string) *DescribeInvocationsRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeInvocationsRequest) SetIncludeInvokeDesktops(v bool) *DescribeInvocationsRequest {
+	s.IncludeInvokeDesktops = &v
 	return s
 }
 
@@ -25174,7 +26258,9 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	// example:
 	//
 	// Pending
-	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvocationStatus          *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeDesktopCount        *int32  `json:"InvokeDesktopCount,omitempty" xml:"InvokeDesktopCount,omitempty"`
+	InvokeDesktopSucceedCount *int32  `json:"InvokeDesktopSucceedCount,omitempty" xml:"InvokeDesktopSucceedCount,omitempty"`
 	// The cloud desktops on which the command is executed.
 	InvokeDesktops []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
 	// The ID of the execution.
@@ -25215,6 +26301,16 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetEndUserId(v string) *Des
 
 func (s *DescribeInvocationsResponseBodyInvocations) SetInvocationStatus(v string) *DescribeInvocationsResponseBodyInvocations {
 	s.InvocationStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) SetInvokeDesktopCount(v int32) *DescribeInvocationsResponseBodyInvocations {
+	s.InvokeDesktopCount = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) SetInvokeDesktopSucceedCount(v int32) *DescribeInvocationsResponseBodyInvocations {
+	s.InvokeDesktopSucceedCount = &v
 	return s
 }
 
@@ -25635,6 +26731,295 @@ func (s *DescribeKmsKeysResponse) SetStatusCode(v int32) *DescribeKmsKeysRespons
 }
 
 func (s *DescribeKmsKeysResponse) SetBody(v *DescribeKmsKeysResponseBody) *DescribeKmsKeysResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeModificationPriceRequest struct {
+	// example:
+	//
+	// 20
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// example:
+	//
+	// ecd-0gfv2z3sf95zvt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.8c16g
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 80
+	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	// example:
+	//
+	// 50
+	UserDiskSizeGib *int32 `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
+}
+
+func (s DescribeModificationPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceRequest) SetBandwidth(v int32) *DescribeModificationPriceRequest {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetInstanceId(v string) *DescribeModificationPriceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetInstanceType(v string) *DescribeModificationPriceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetRegionId(v string) *DescribeModificationPriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetResourceType(v string) *DescribeModificationPriceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetRootDiskSizeGib(v int32) *DescribeModificationPriceRequest {
+	s.RootDiskSizeGib = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetUserDiskSizeGib(v int32) *DescribeModificationPriceRequest {
+	s.UserDiskSizeGib = &v
+	return s
+}
+
+type DescribeModificationPriceResponseBody struct {
+	PriceInfo *DescribeModificationPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 48174475-5EB2-5F99-A9E9-6F892D645****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeModificationPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponseBody) SetPriceInfo(v *DescribeModificationPriceResponseBodyPriceInfo) *DescribeModificationPriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBody) SetRequestId(v string) *DescribeModificationPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeModificationPriceResponseBodyPriceInfo struct {
+	Price *DescribeModificationPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Rules []*DescribeModificationPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfo) SetPrice(v *DescribeModificationPriceResponseBodyPriceInfoPrice) *DescribeModificationPriceResponseBodyPriceInfo {
+	s.Price = v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfo) SetRules(v []*DescribeModificationPriceResponseBodyPriceInfoRules) *DescribeModificationPriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 15.8
+	DiscountPrice *float32           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OrderLines    map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	// example:
+	//
+	// 79.0
+	OriginalPrice *float32                                                         `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	Promotions    []*DescribeModificationPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 63.2
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetCurrency(v string) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetDiscountPrice(v float32) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetOrderLines(v map[string]*string) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.OrderLines = v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetOriginalPrice(v float32) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetPromotions(v []*DescribeModificationPriceResponseBodyPriceInfoPricePromotions) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.Promotions = v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) *DescribeModificationPriceResponseBodyPriceInfoPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
+	// example:
+	//
+	// test
+	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// promo_option
+	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// false
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoPricePromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoPricePromotions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribeModificationPriceResponseBodyPriceInfoPricePromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetPromotionDesc(v string) *DescribeModificationPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetPromotionId(v string) *DescribeModificationPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetPromotionName(v string) *DescribeModificationPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoPricePromotions) SetSelected(v bool) *DescribeModificationPriceResponseBodyPriceInfoPricePromotions {
+	s.Selected = &v
+	return s
+}
+
+type DescribeModificationPriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 14806
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoRules) SetDescription(v string) *DescribeModificationPriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponseBodyPriceInfoRules) SetRuleId(v int64) *DescribeModificationPriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeModificationPriceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeModificationPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeModificationPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceResponse) SetHeaders(v map[string]*string) *DescribeModificationPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeModificationPriceResponse) SetStatusCode(v int32) *DescribeModificationPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeModificationPriceResponse) SetBody(v *DescribeModificationPriceResponseBody) *DescribeModificationPriceResponse {
 	s.Body = v
 	return s
 }
@@ -26529,7 +27914,18 @@ type DescribeOfficeSitesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security protection setting of the office network.
+	//
+	// Valid values:
+	//
+	// 	- SASE: SASE is configured.
+	//
+	// 	- OFF: No security protection setting is configured.
+	//
+	// example:
+	//
+	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
 	// The office network status.
 	//
@@ -26670,8 +28066,13 @@ type DescribeOfficeSitesResponseBody struct {
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBody) String() string {
@@ -26766,7 +28167,9 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// 2021-05-06T05:58Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime      *string   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CustomAccessPoint *string   `json:"CustomAccessPoint,omitempty" xml:"CustomAccessPoint,omitempty"`
+	CustomDnsAddress  []*string `json:"CustomDnsAddress,omitempty" xml:"CustomDnsAddress,omitempty" type:"Repeated"`
 	// The ID of the security group.
 	//
 	// example:
@@ -26857,7 +28260,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// false
 	EnableServiceRoute *bool `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
-	// An array of Apsara File Storage NAS (NAS) file system IDs.
+	// An array of File Storage NAS (NAS) file system IDs.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
 	// Details about registration logs.
 	Logs []*DescribeOfficeSitesResponseBodyOfficeSitesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
@@ -26897,6 +28300,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
+	NmVersion        *string `json:"NmVersion,omitempty" xml:"NmVersion,omitempty"`
 	// The IDs of the office networks.
 	//
 	// example:
@@ -26950,7 +28354,19 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// 2
-	RdsLicenseStatus   *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
+	RdsLicenseStatus *string                                                      `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
+	ResourceAmounts  []*DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts `json:"ResourceAmounts,omitempty" xml:"ResourceAmounts,omitempty" type:"Repeated"`
+	// The security protection setting of the office network.
+	//
+	// Valid values:
+	//
+	// 	- SASE: SASE is configured.
+	//
+	// 	- OFF: No security protection setting is configured.
+	//
+	// example:
+	//
+	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
 	// Indicates whether single sign-on (SSO) is enabled.
 	//
@@ -27002,7 +28418,18 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// testSubDnsUserName
 	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
-	SubnetMode    *string `json:"SubnetMode,omitempty" xml:"SubnetMode,omitempty"`
+	// The subnet mode of the office network.
+	//
+	// Valid values:
+	//
+	// 	- 0: disabled.
+	//
+	// 	- 1: enabled.
+	//
+	// example:
+	//
+	// 0
+	SubnetMode *string `json:"SubnetMode,omitempty" xml:"SubnetMode,omitempty"`
 	// The total number of cloud computers.
 	//
 	// example:
@@ -27015,6 +28442,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 0
 	TotalEdsCountForGroup *int64 `json:"TotalEdsCountForGroup,omitempty" xml:"TotalEdsCountForGroup,omitempty"`
+	TotalResourceAmount   *int64 `json:"TotalResourceAmount,omitempty" xml:"TotalResourceAmount,omitempty"`
 	// >  This parameter is unavailable.
 	//
 	// example:
@@ -27100,6 +28528,16 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCloudBoxOfficeSite(v boo
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCreationTime(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCustomAccessPoint(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.CustomAccessPoint = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetCustomDnsAddress(v []*string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.CustomDnsAddress = v
 	return s
 }
 
@@ -27203,6 +28641,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetNetworkPackageId(v strin
 	return s
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetNmVersion(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.NmVersion = &v
+	return s
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetOfficeSiteId(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.OfficeSiteId = &v
 	return s
@@ -27235,6 +28678,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetRdsLicenseDomainName(v s
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetRdsLicenseStatus(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.RdsLicenseStatus = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetResourceAmounts(v []*DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.ResourceAmounts = v
 	return s
 }
 
@@ -27280,6 +28728,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTotalEdsCount(v int64) *
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTotalEdsCountForGroup(v int64) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.TotalEdsCountForGroup = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetTotalResourceAmount(v int64) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.TotalResourceAmount = &v
 	return s
 }
 
@@ -27458,6 +28911,29 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSitesLogs) SetStep(v string) *Desc
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSitesLogs) SetTimeStamp(v string) *DescribeOfficeSitesResponseBodyOfficeSitesLogs {
 	s.TimeStamp = &v
+	return s
+}
+
+type DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts struct {
+	Amount       *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts) SetAmount(v int64) *DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts) SetResourceType(v string) *DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts {
+	s.ResourceType = &v
 	return s
 }
 
@@ -28021,6 +29497,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// fullControl
 	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The effective scope of the policy. Valid values:
 	//
 	// 	- GLOBAL: The policy takes effect globally.
@@ -28183,6 +29660,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	WyAssistant   *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
 }
 
 func (s DescribePolicyGroupsResponseBodyDescribePolicyGroups) String() string {
@@ -28478,6 +29956,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRemoteCoordina
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResourceRegionId(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ResourceRegionId = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetScope(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.Scope = &v
 	return s
@@ -28610,6 +30093,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkTrans
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWatermarkType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.WatermarkType = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetWyAssistant(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.WyAssistant = &v
 	return s
 }
 
@@ -29130,27 +30618,9 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// 10
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// if can be null:
-	// true
-	BundleModels       []*DescribePriceRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
-	EduCdsEnable       *string                             `json:"EduCdsEnable,omitempty" xml:"EduCdsEnable,omitempty"`
-	EduCdsSize         *int32                              `json:"EduCdsSize,omitempty" xml:"EduCdsSize,omitempty"`
-	EduCommittedTime   *int32                              `json:"EduCommittedTime,omitempty" xml:"EduCommittedTime,omitempty"`
-	EduDesktopBundleId *string                             `json:"EduDesktopBundleId,omitempty" xml:"EduDesktopBundleId,omitempty"`
-	EduDesktopNum      *int32                              `json:"EduDesktopNum,omitempty" xml:"EduDesktopNum,omitempty"`
-	EduRoomClassify    *string                             `json:"EduRoomClassify,omitempty" xml:"EduRoomClassify,omitempty"`
-	EduStudentBundleId *string                             `json:"EduStudentBundleId,omitempty" xml:"EduStudentBundleId,omitempty"`
-	EduStudentNum      *int32                              `json:"EduStudentNum,omitempty" xml:"EduStudentNum,omitempty"`
-	EduTeacherBundleId *string                             `json:"EduTeacherBundleId,omitempty" xml:"EduTeacherBundleId,omitempty"`
-	EduTeacherNum      *int32                              `json:"EduTeacherNum,omitempty" xml:"EduTeacherNum,omitempty"`
-	GroupDesktopCount  *int32                              `json:"GroupDesktopCount,omitempty" xml:"GroupDesktopCount,omitempty"`
-	// The model of the WUYING hardware client.
-	//
-	// example:
-	//
-	// hide
-	HardwareVersion *string `json:"HardwareVersion,omitempty" xml:"HardwareVersion,omitempty"`
+	Bandwidth         *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Duration          *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GroupDesktopCount *int32 `json:"GroupDesktopCount,omitempty" xml:"GroupDesktopCount,omitempty"`
 	// The resource specifications.
 	//
 	// 	- If you set ResourceType to Desktop, set this parameter to one of the following values:
@@ -29209,7 +30679,6 @@ type DescribePriceRequest struct {
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The OS. Valid values:
 	//
 	// 	- Windows
@@ -29221,8 +30690,7 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// Windows
-	OsType      *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PackageSize *int32  `json:"PackageSize,omitempty" xml:"PackageSize,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The subscription duration. Default value: 1.
 	//
 	// example:
@@ -29270,44 +30738,15 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// Desktop
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The performance level (PL) of the system disk. Valid values:
-	//
-	// 	- PL0
-	//
-	// 	- PL1
-	//
-	// 	- PL2
-	//
-	// 	- PL3
-	//
-	// example:
-	//
-	// PL0
-	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
+	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RootDiskCategory *string `json:"RootDiskCategory,omitempty" xml:"RootDiskCategory,omitempty"`
 	// The system disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 80
-	RootDiskSizeGib *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	SpPeriodInfo    *string `json:"SpPeriodInfo,omitempty" xml:"SpPeriodInfo,omitempty"`
-	SpPrice         *bool   `json:"SpPrice,omitempty" xml:"SpPrice,omitempty"`
-	SpType          *string `json:"SpType,omitempty" xml:"SpType,omitempty"`
-	// The PL of the data disk. Valid values:
-	//
-	// 	- PL0
-	//
-	// 	- PL1
-	//
-	// 	- PL2
-	//
-	// 	- PL3
-	//
-	// example:
-	//
-	// PL0
-	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
+	RootDiskSizeGib  *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	UserDiskCategory *string `json:"UserDiskCategory,omitempty" xml:"UserDiskCategory,omitempty"`
 	// The data disk size. Unit: GiB.
 	//
 	// example:
@@ -29334,68 +30773,13 @@ func (s *DescribePriceRequest) SetBandwidth(v int32) *DescribePriceRequest {
 	return s
 }
 
-func (s *DescribePriceRequest) SetBundleModels(v []*DescribePriceRequestBundleModels) *DescribePriceRequest {
-	s.BundleModels = v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduCdsEnable(v string) *DescribePriceRequest {
-	s.EduCdsEnable = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduCdsSize(v int32) *DescribePriceRequest {
-	s.EduCdsSize = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduCommittedTime(v int32) *DescribePriceRequest {
-	s.EduCommittedTime = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduDesktopBundleId(v string) *DescribePriceRequest {
-	s.EduDesktopBundleId = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduDesktopNum(v int32) *DescribePriceRequest {
-	s.EduDesktopNum = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduRoomClassify(v string) *DescribePriceRequest {
-	s.EduRoomClassify = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduStudentBundleId(v string) *DescribePriceRequest {
-	s.EduStudentBundleId = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduStudentNum(v int32) *DescribePriceRequest {
-	s.EduStudentNum = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduTeacherBundleId(v string) *DescribePriceRequest {
-	s.EduTeacherBundleId = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetEduTeacherNum(v int32) *DescribePriceRequest {
-	s.EduTeacherNum = &v
+func (s *DescribePriceRequest) SetDuration(v int32) *DescribePriceRequest {
+	s.Duration = &v
 	return s
 }
 
 func (s *DescribePriceRequest) SetGroupDesktopCount(v int32) *DescribePriceRequest {
 	s.GroupDesktopCount = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetHardwareVersion(v string) *DescribePriceRequest {
-	s.HardwareVersion = &v
 	return s
 }
 
@@ -29409,18 +30793,8 @@ func (s *DescribePriceRequest) SetInternetChargeType(v string) *DescribePriceReq
 	return s
 }
 
-func (s *DescribePriceRequest) SetNetworkType(v string) *DescribePriceRequest {
-	s.NetworkType = &v
-	return s
-}
-
 func (s *DescribePriceRequest) SetOsType(v string) *DescribePriceRequest {
 	s.OsType = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetPackageSize(v int32) *DescribePriceRequest {
-	s.PackageSize = &v
 	return s
 }
 
@@ -29449,8 +30823,8 @@ func (s *DescribePriceRequest) SetResourceType(v string) *DescribePriceRequest {
 	return s
 }
 
-func (s *DescribePriceRequest) SetRootDiskPerformanceLevel(v string) *DescribePriceRequest {
-	s.RootDiskPerformanceLevel = &v
+func (s *DescribePriceRequest) SetRootDiskCategory(v string) *DescribePriceRequest {
+	s.RootDiskCategory = &v
 	return s
 }
 
@@ -29459,81 +30833,13 @@ func (s *DescribePriceRequest) SetRootDiskSizeGib(v int32) *DescribePriceRequest
 	return s
 }
 
-func (s *DescribePriceRequest) SetSpPeriodInfo(v string) *DescribePriceRequest {
-	s.SpPeriodInfo = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetSpPrice(v bool) *DescribePriceRequest {
-	s.SpPrice = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetSpType(v string) *DescribePriceRequest {
-	s.SpType = &v
-	return s
-}
-
-func (s *DescribePriceRequest) SetUserDiskPerformanceLevel(v string) *DescribePriceRequest {
-	s.UserDiskPerformanceLevel = &v
+func (s *DescribePriceRequest) SetUserDiskCategory(v string) *DescribePriceRequest {
+	s.UserDiskCategory = &v
 	return s
 }
 
 func (s *DescribePriceRequest) SetUserDiskSizeGib(v int32) *DescribePriceRequest {
 	s.UserDiskSizeGib = &v
-	return s
-}
-
-type DescribePriceRequestBundleModels struct {
-	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	BundleId     *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OsType       *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	RootDiskId   *string `json:"RootDiskId,omitempty" xml:"RootDiskId,omitempty"`
-	UserDiskId   *string `json:"UserDiskId,omitempty" xml:"UserDiskId,omitempty"`
-}
-
-func (s DescribePriceRequestBundleModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePriceRequestBundleModels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePriceRequestBundleModels) SetAmount(v int32) *DescribePriceRequestBundleModels {
-	s.Amount = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetBundleId(v string) *DescribePriceRequestBundleModels {
-	s.BundleId = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetDuration(v int32) *DescribePriceRequestBundleModels {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetInstanceType(v string) *DescribePriceRequestBundleModels {
-	s.InstanceType = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetOsType(v string) *DescribePriceRequestBundleModels {
-	s.OsType = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetRootDiskId(v string) *DescribePriceRequestBundleModels {
-	s.RootDiskId = &v
-	return s
-}
-
-func (s *DescribePriceRequestBundleModels) SetUserDiskId(v string) *DescribePriceRequestBundleModels {
-	s.UserDiskId = &v
 	return s
 }
 
@@ -30376,6 +31682,128 @@ func (s *DescribeRecordingsResponse) SetBody(v *DescribeRecordingsResponseBody) 
 	return s
 }
 
+type DescribeRefundPriceRequest struct {
+	// This parameter is required.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// RemainRefund
+	RefundType *string `json:"RefundType,omitempty" xml:"RefundType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRefundPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRefundPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRefundPriceRequest) SetDesktopId(v []*string) *DescribeRefundPriceRequest {
+	s.DesktopId = v
+	return s
+}
+
+func (s *DescribeRefundPriceRequest) SetRefundType(v string) *DescribeRefundPriceRequest {
+	s.RefundType = &v
+	return s
+}
+
+func (s *DescribeRefundPriceRequest) SetRegionId(v string) *DescribeRefundPriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRefundPriceResponseBody struct {
+	PriceInfo *DescribeRefundPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRefundPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRefundPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRefundPriceResponseBody) SetPriceInfo(v *DescribeRefundPriceResponseBodyPriceInfo) *DescribeRefundPriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *DescribeRefundPriceResponseBody) SetRequestId(v string) *DescribeRefundPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRefundPriceResponseBodyPriceInfo struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 3990.75
+	RefundFee *float32 `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+}
+
+func (s DescribeRefundPriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRefundPriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRefundPriceResponseBodyPriceInfo) SetCurrency(v string) *DescribeRefundPriceResponseBodyPriceInfo {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeRefundPriceResponseBodyPriceInfo) SetRefundFee(v float32) *DescribeRefundPriceResponseBodyPriceInfo {
+	s.RefundFee = &v
+	return s
+}
+
+type DescribeRefundPriceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRefundPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRefundPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRefundPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRefundPriceResponse) SetHeaders(v map[string]*string) *DescribeRefundPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRefundPriceResponse) SetStatusCode(v int32) *DescribeRefundPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRefundPriceResponse) SetBody(v *DescribeRefundPriceResponseBody) *DescribeRefundPriceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The display name of the region, which varies based on the current language.
 	//
@@ -30509,6 +31937,283 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRenewalPriceRequest struct {
+	// example:
+	//
+	// ecd-6ldllk9zxcpfhs****
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Desktop
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeRenewalPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceRequest) SetInstanceId(v string) *DescribeRenewalPriceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetInstanceIds(v []*string) *DescribeRenewalPriceRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetPeriod(v int32) *DescribeRenewalPriceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetPeriodUnit(v string) *DescribeRenewalPriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetRegionId(v string) *DescribeRenewalPriceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetResourceType(v string) *DescribeRenewalPriceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeRenewalPriceResponseBody struct {
+	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 72E47B1E-6B11-5A11-A27C-7A80F866****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBody) SetPriceInfo(v *DescribeRenewalPriceResponseBodyPriceInfo) *DescribeRenewalPriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBody) SetRequestId(v string) *DescribeRenewalPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfo struct {
+	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Rules []*DescribeRenewalPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetPrice(v *DescribeRenewalPriceResponseBodyPriceInfoPrice) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.Price = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfo) SetRules(v []*DescribeRenewalPriceResponseBodyPriceInfoRules) *DescribeRenewalPriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfoPrice struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 15.8
+	DiscountPrice *float32           `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OrderLines    map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	// example:
+	//
+	// 79.0
+	OriginalPrice *float32                                                    `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	Promotions    []*DescribeRenewalPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 63.2
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetCurrency(v string) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetDiscountPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetOrderLines(v map[string]*string) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.OrderLines = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetOriginalPrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetPromotions(v []*DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.Promotions = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) *DescribeRenewalPriceResponseBodyPriceInfoPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfoPricePromotions struct {
+	// example:
+	//
+	// test
+	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// promo_option
+	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// false
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetPromotionDesc(v string) *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetPromotionId(v string) *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetPromotionName(v string) *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions) SetSelected(v bool) *DescribeRenewalPriceResponseBodyPriceInfoPricePromotions {
+	s.Selected = &v
+	return s
+}
+
+type DescribeRenewalPriceResponseBodyPriceInfoRules struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 29644
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRules) SetDescription(v string) *DescribeRenewalPriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponseBodyPriceInfoRules) SetRuleId(v int64) *DescribeRenewalPriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeRenewalPriceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRenewalPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRenewalPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRenewalPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRenewalPriceResponse) SetHeaders(v map[string]*string) *DescribeRenewalPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponse) SetStatusCode(v int32) *DescribeRenewalPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceResponse) SetBody(v *DescribeRenewalPriceResponseBody) *DescribeRenewalPriceResponse {
 	s.Body = v
 	return s
 }
@@ -35144,18 +36849,21 @@ func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketReque
 }
 
 type GetConnectionTicketResponseBody struct {
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskCode  *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
 	// The ID of the cloud computer connection task.
 	//
 	// example:
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c638****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
 	// The task status.
 	//
 	// Valid values:
@@ -35222,13 +36930,28 @@ func (s GetConnectionTicketResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetConnectionTicketResponseBody) SetDesktopId(v string) *GetConnectionTicketResponseBody {
+	s.DesktopId = &v
+	return s
+}
+
 func (s *GetConnectionTicketResponseBody) SetRequestId(v string) *GetConnectionTicketResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *GetConnectionTicketResponseBody) SetTaskCode(v string) *GetConnectionTicketResponseBody {
+	s.TaskCode = &v
+	return s
+}
+
 func (s *GetConnectionTicketResponseBody) SetTaskId(v string) *GetConnectionTicketResponseBody {
 	s.TaskId = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBody) SetTaskMessage(v string) *GetConnectionTicketResponseBody {
+	s.TaskMessage = &v
 	return s
 }
 
@@ -35715,7 +37438,7 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// 1
 	MinDesktopsCount *int32 `json:"MinDesktopsCount,omitempty" xml:"MinDesktopsCount,omitempty"`
-	// The ID of the Apsara File Storage NAS (NAS) file system for the user data roaming feature.
+	// The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
 	//
 	// example:
 	//
@@ -37517,6 +39240,7 @@ func (s *ListCdsFilesResponse) SetBody(v *ListCdsFilesResponseBody) *ListCdsFile
 }
 
 type ListDirectoryUsersRequest struct {
+	AssignedInfo *string `json:"AssignedInfo,omitempty" xml:"AssignedInfo,omitempty"`
 	// The ID of the AD directory.
 	//
 	// This parameter is required.
@@ -37530,7 +39254,8 @@ type ListDirectoryUsersRequest struct {
 	// example:
 	//
 	// alice
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter              *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IncludeAssignedUser *bool   `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
@@ -37561,6 +39286,7 @@ type ListDirectoryUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListDirectoryUsersRequest) String() string {
@@ -37571,6 +39297,11 @@ func (s ListDirectoryUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDirectoryUsersRequest) SetAssignedInfo(v string) *ListDirectoryUsersRequest {
+	s.AssignedInfo = &v
+	return s
+}
+
 func (s *ListDirectoryUsersRequest) SetDirectoryId(v string) *ListDirectoryUsersRequest {
 	s.DirectoryId = &v
 	return s
@@ -37578,6 +39309,11 @@ func (s *ListDirectoryUsersRequest) SetDirectoryId(v string) *ListDirectoryUsers
 
 func (s *ListDirectoryUsersRequest) SetFilter(v string) *ListDirectoryUsersRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *ListDirectoryUsersRequest) SetIncludeAssignedUser(v bool) *ListDirectoryUsersRequest {
+	s.IncludeAssignedUser = &v
 	return s
 }
 
@@ -37598,6 +39334,11 @@ func (s *ListDirectoryUsersRequest) SetOUPath(v string) *ListDirectoryUsersReque
 
 func (s *ListDirectoryUsersRequest) SetRegionId(v string) *ListDirectoryUsersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListDirectoryUsersRequest) SetSortType(v string) *ListDirectoryUsersRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -37642,18 +39383,21 @@ func (s *ListDirectoryUsersResponseBody) SetUsers(v []*ListDirectoryUsersRespons
 }
 
 type ListDirectoryUsersResponseBodyUsers struct {
+	AssignedDesktopNumber *int32 `json:"AssignedDesktopNumber,omitempty" xml:"AssignedDesktopNumber,omitempty"`
 	// The display name of the user.
 	//
 	// example:
 	//
 	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The name of the user.
 	//
 	// example:
 	//
 	// Alice
 	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	Phone   *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s ListDirectoryUsersResponseBodyUsers) String() string {
@@ -37664,13 +39408,28 @@ func (s ListDirectoryUsersResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
+func (s *ListDirectoryUsersResponseBodyUsers) SetAssignedDesktopNumber(v int32) *ListDirectoryUsersResponseBodyUsers {
+	s.AssignedDesktopNumber = &v
+	return s
+}
+
 func (s *ListDirectoryUsersResponseBodyUsers) SetDisplayName(v string) *ListDirectoryUsersResponseBodyUsers {
 	s.DisplayName = &v
 	return s
 }
 
+func (s *ListDirectoryUsersResponseBodyUsers) SetEmail(v string) *ListDirectoryUsersResponseBodyUsers {
+	s.Email = &v
+	return s
+}
+
 func (s *ListDirectoryUsersResponseBodyUsers) SetEndUser(v string) *ListDirectoryUsersResponseBodyUsers {
 	s.EndUser = &v
+	return s
+}
+
+func (s *ListDirectoryUsersResponseBodyUsers) SetPhone(v string) *ListDirectoryUsersResponseBodyUsers {
+	s.Phone = &v
 	return s
 }
 
@@ -38226,12 +39985,14 @@ func (s *ListOfficeSiteOverviewResponse) SetBody(v *ListOfficeSiteOverviewRespon
 }
 
 type ListOfficeSiteUsersRequest struct {
+	AssignedInfo *string `json:"AssignedInfo,omitempty" xml:"AssignedInfo,omitempty"`
 	// The query string for fuzzy query.
 	//
 	// example:
 	//
 	// *jin*
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter              *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	IncludeAssignedUser *bool   `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
 	// The number of entries per page.
 	//
 	// 	- Valid values: 1 to 100.
@@ -38270,6 +40031,7 @@ type ListOfficeSiteUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListOfficeSiteUsersRequest) String() string {
@@ -38280,8 +40042,18 @@ func (s ListOfficeSiteUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListOfficeSiteUsersRequest) SetAssignedInfo(v string) *ListOfficeSiteUsersRequest {
+	s.AssignedInfo = &v
+	return s
+}
+
 func (s *ListOfficeSiteUsersRequest) SetFilter(v string) *ListOfficeSiteUsersRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *ListOfficeSiteUsersRequest) SetIncludeAssignedUser(v bool) *ListOfficeSiteUsersRequest {
+	s.IncludeAssignedUser = &v
 	return s
 }
 
@@ -38307,6 +40079,11 @@ func (s *ListOfficeSiteUsersRequest) SetOfficeSiteId(v string) *ListOfficeSiteUs
 
 func (s *ListOfficeSiteUsersRequest) SetRegionId(v string) *ListOfficeSiteUsersRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListOfficeSiteUsersRequest) SetSortType(v string) *ListOfficeSiteUsersRequest {
+	s.SortType = &v
 	return s
 }
 
@@ -38353,18 +40130,21 @@ func (s *ListOfficeSiteUsersResponseBody) SetUsers(v []*ListOfficeSiteUsersRespo
 }
 
 type ListOfficeSiteUsersResponseBodyUsers struct {
+	AssignedDesktopNumber *int32 `json:"AssignedDesktopNumber,omitempty" xml:"AssignedDesktopNumber,omitempty"`
 	// The display name of the user.
 	//
 	// example:
 	//
 	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The name of the AD user.
 	//
 	// example:
 	//
 	// Alice
 	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	Phone   *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s ListOfficeSiteUsersResponseBodyUsers) String() string {
@@ -38375,13 +40155,28 @@ func (s ListOfficeSiteUsersResponseBodyUsers) GoString() string {
 	return s.String()
 }
 
+func (s *ListOfficeSiteUsersResponseBodyUsers) SetAssignedDesktopNumber(v int32) *ListOfficeSiteUsersResponseBodyUsers {
+	s.AssignedDesktopNumber = &v
+	return s
+}
+
 func (s *ListOfficeSiteUsersResponseBodyUsers) SetDisplayName(v string) *ListOfficeSiteUsersResponseBodyUsers {
 	s.DisplayName = &v
 	return s
 }
 
+func (s *ListOfficeSiteUsersResponseBodyUsers) SetEmail(v string) *ListOfficeSiteUsersResponseBodyUsers {
+	s.Email = &v
+	return s
+}
+
 func (s *ListOfficeSiteUsersResponseBodyUsers) SetEndUser(v string) *ListOfficeSiteUsersResponseBodyUsers {
 	s.EndUser = &v
+	return s
+}
+
+func (s *ListOfficeSiteUsersResponseBodyUsers) SetPhone(v string) *ListOfficeSiteUsersResponseBodyUsers {
+	s.Phone = &v
 	return s
 }
 
@@ -39153,7 +40948,7 @@ type ModifyADConnectorDirectoryRequest struct {
 	//
 	// example:
 	//
-	// 127.0.\*\*.**
+	// ``127.0.**.**``
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
 	// The domain name. The name must be 2 to 255 characters in length and must be in the two-part domain name format, such as `example.com`. You can register each domain name only once.
 	//
@@ -39219,7 +41014,7 @@ type ModifyADConnectorDirectoryRequest struct {
 	//
 	// example:
 	//
-	// 127.0.\*\*.**
+	// ``127.0.**.**``
 	SubDomainDnsAddress []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
 	// The domain name of the existing AD subdomain.
 	//
@@ -40809,7 +42604,8 @@ type ModifyCloudDrivePermissionRequest struct {
 	// The IDs of the users who have the download permissions.
 	DownloadEndUserIds []*string `json:"DownloadEndUserIds,omitempty" xml:"DownloadEndUserIds,omitempty" type:"Repeated"`
 	// The IDs of the users who have the upload and download permissions.
-	DownloadUploadEndUserIds []*string `json:"DownloadUploadEndUserIds,omitempty" xml:"DownloadUploadEndUserIds,omitempty" type:"Repeated"`
+	DownloadUploadEndUserIds     []*string `json:"DownloadUploadEndUserIds,omitempty" xml:"DownloadUploadEndUserIds,omitempty" type:"Repeated"`
+	NoDownloadNoUploadEndUserIds []*string `json:"NoDownloadNoUploadEndUserIds,omitempty" xml:"NoDownloadNoUploadEndUserIds,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -40840,6 +42636,11 @@ func (s *ModifyCloudDrivePermissionRequest) SetDownloadEndUserIds(v []*string) *
 
 func (s *ModifyCloudDrivePermissionRequest) SetDownloadUploadEndUserIds(v []*string) *ModifyCloudDrivePermissionRequest {
 	s.DownloadUploadEndUserIds = v
+	return s
+}
+
+func (s *ModifyCloudDrivePermissionRequest) SetNoDownloadNoUploadEndUserIds(v []*string) *ModifyCloudDrivePermissionRequest {
+	s.NoDownloadNoUploadEndUserIds = v
 	return s
 }
 
@@ -41593,7 +43394,7 @@ type ModifyDesktopGroupRequest struct {
 	//
 	// true
 	DisableSessionConfig *bool `json:"DisableSessionConfig,omitempty" xml:"DisableSessionConfig,omitempty"`
-	// The ID of the Apsara File Storage NAS (NAS) file system for the user data roaming feature.
+	// The ID of the File Storage NAS (NAS) file system for the user data roaming feature.
 	//
 	// >  This parameter is unavailable.
 	//
@@ -44937,6 +46738,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
+	WyAssistant   *string `json:"WyAssistant,omitempty" xml:"WyAssistant,omitempty"`
 }
 
 func (s ModifyPolicyGroupRequest) String() string {
@@ -45239,6 +47041,11 @@ func (s *ModifyPolicyGroupRequest) SetWatermarkTransparencyValue(v int32) *Modif
 
 func (s *ModifyPolicyGroupRequest) SetWatermarkType(v string) *ModifyPolicyGroupRequest {
 	s.WatermarkType = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetWyAssistant(v string) *ModifyPolicyGroupRequest {
+	s.WyAssistant = &v
 	return s
 }
 
@@ -46474,7 +48281,7 @@ func (s *RebootDesktopsResponse) SetBody(v *RebootDesktopsResponseBody) *RebootD
 }
 
 type RebuildDesktopsRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 20 IDs.
+	// The cloud computer IDs. You can specify the IDs of 1 to 20 cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -46487,7 +48294,22 @@ type RebuildDesktopsRequest struct {
 	// example:
 	//
 	// m-84mztzatmlnys****
-	ImageId  *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The OS language. Only system images are supported, and Linux cloud computers support only English.
+	//
+	// Valid values:
+	//
+	// 	- en-US: English
+	//
+	// 	- zh-HK: Traditional Chinese (Hong Kong, China)
+	//
+	// 	- zh-CN: Simplified Chinese
+	//
+	// 	- ja-JP: Japanese
+	//
+	// example:
+	//
+	// en-US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The operation type on the data disk.
 	//
@@ -46515,7 +48337,7 @@ type RebuildDesktopsRequest struct {
 	//
 	// replace
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
 	//
 	// This parameter is required.
 	//
@@ -47298,6 +49120,130 @@ func (s *RemoveUserFromDesktopOversoldUserGroupResponse) SetStatusCode(v int32) 
 }
 
 func (s *RemoveUserFromDesktopOversoldUserGroupResponse) SetBody(v *RemoveUserFromDesktopOversoldUserGroupResponseBody) *RemoveUserFromDesktopOversoldUserGroupResponse {
+	s.Body = v
+	return s
+}
+
+type RenewDesktopGroupRequest struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dg-7724r1jitbjzc****
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RenewDesktopGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewDesktopGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewDesktopGroupRequest) SetAutoPay(v bool) *RenewDesktopGroupRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetAutoRenew(v bool) *RenewDesktopGroupRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetDesktopGroupId(v string) *RenewDesktopGroupRequest {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetPeriod(v int32) *RenewDesktopGroupRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetPeriodUnit(v string) *RenewDesktopGroupRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetRegionId(v string) *RenewDesktopGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RenewDesktopGroupResponseBody struct {
+	OrderId []*string `json:"OrderId,omitempty" xml:"OrderId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// E55E6732-2028-52FA-AB06-EA29C36B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewDesktopGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewDesktopGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewDesktopGroupResponseBody) SetOrderId(v []*string) *RenewDesktopGroupResponseBody {
+	s.OrderId = v
+	return s
+}
+
+func (s *RenewDesktopGroupResponseBody) SetRequestId(v string) *RenewDesktopGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewDesktopGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewDesktopGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenewDesktopGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewDesktopGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewDesktopGroupResponse) SetHeaders(v map[string]*string) *RenewDesktopGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewDesktopGroupResponse) SetStatusCode(v int32) *RenewDesktopGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewDesktopGroupResponse) SetBody(v *RenewDesktopGroupResponseBody) *RenewDesktopGroupResponse {
 	s.Body = v
 	return s
 }
@@ -50800,7 +52746,8 @@ type UploadImageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SystemDiskSize *string `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s UploadImageRequest) String() string {
@@ -50863,6 +52810,11 @@ func (s *UploadImageRequest) SetProtocolType(v string) *UploadImageRequest {
 
 func (s *UploadImageRequest) SetRegionId(v string) *UploadImageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UploadImageRequest) SetSystemDiskSize(v string) *UploadImageRequest {
+	s.SystemDiskSize = &v
 	return s
 }
 
@@ -53262,6 +55214,10 @@ func (client *Client) CreateADConnectorOfficeSiteWithOptions(request *CreateADCo
 		query["SubDomainName"] = request.SubDomainName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
 		query["VerifyCode"] = request.VerifyCode
 	}
@@ -53325,7 +55281,7 @@ func (client *Client) CreateADConnectorOfficeSite(request *CreateADConnectorOffi
 
 // Summary:
 //
-// Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+// Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -53395,7 +55351,7 @@ func (client *Client) CreateAndBindNasFileSystemWithOptions(request *CreateAndBi
 
 // Summary:
 //
-// Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+// Creates a File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
 //
 // @param request - CreateAndBindNasFileSystemRequest
 //
@@ -54150,6 +56106,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["ProfileFollowSwitch"] = request.ProfileFollowSwitch
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PromotionId)) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RatioThreshold)) {
 		query["RatioThreshold"] = request.RatioThreshold
 	}
@@ -54375,16 +56335,22 @@ func (client *Client) CreateDesktopOversoldGroup(request *CreateDesktopOversoldG
 //
 // If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
 //
-// @param request - CreateDesktopsRequest
+// @param tmpReq - CreateDesktopsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDesktopsResponse
-func (client *Client) CreateDesktopsWithOptions(request *CreateDesktopsRequest, runtime *util.RuntimeOptions) (_result *CreateDesktopsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, runtime *util.RuntimeOptions) (_result *CreateDesktopsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDesktopsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DesktopAttachment)) {
+		request.DesktopAttachmentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DesktopAttachment, tea.String("DesktopAttachment"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Amount)) {
 		query["Amount"] = request.Amount
@@ -54408,6 +56374,10 @@ func (client *Client) CreateDesktopsWithOptions(request *CreateDesktopsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopAttachmentShrink)) {
+		query["DesktopAttachment"] = request.DesktopAttachmentShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopMemberIp)) {
@@ -54470,12 +56440,20 @@ func (client *Client) CreateDesktopsWithOptions(request *CreateDesktopsRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SnapshotPolicyId)) {
 		query["SnapshotPolicyId"] = request.SnapshotPolicyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimerGroupId)) {
+		query["TimerGroupId"] = request.TimerGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserAssignMode)) {
@@ -54711,6 +56689,32 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a NAS file system.
+//
+// Description:
+//
+// <props="china">
+//
+// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+//
+// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+//
+// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+//
+// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+//
+// <props="intl">
+//
+// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+//
+// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+//
+// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+//
+// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+//
 // @param request - CreateNASFileSystemRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -54769,6 +56773,32 @@ func (client *Client) CreateNASFileSystemWithOptions(request *CreateNASFileSyste
 	return _result, _err
 }
 
+// Summary:
+//
+// Create a NAS file system.
+//
+// Description:
+//
+// <props="china">
+//
+// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+//
+// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+//
+// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase resource packages to offset the storage usage.
+//
+// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+//
+// <props="intl">
+//
+// - Each standard workspace can create one NAS file system to meet the need for sharing files between cloud desktops in the workspace.
+//
+// - The system will automatically create a general-purpose NAS file system (with storage specifications of Capacity and Performance, with capacities of 10 PiB and 1 PiB respectively) and generate a default mount point.
+//
+// - The NAS file system uses pay-as-you-go by default. You need to pay for the actual storage usage. You can also purchase storage packages to offset the storage usage.
+//
+// For more information, see [Creating Shared Storage NAS](https://help.aliyun.com/document_detail/214481.html).
+//
 // @param request - CreateNASFileSystemRequest
 //
 // @return CreateNASFileSystemResponse
@@ -55120,6 +57150,10 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.WatermarkType)) {
 		query["WatermarkType"] = request.WatermarkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WyAssistant)) {
+		query["WyAssistant"] = request.WyAssistant
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -56237,7 +58271,7 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 //
 // Description:
 //
-// Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+// Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
 //
 // 	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
 //
@@ -56289,7 +58323,7 @@ func (client *Client) DeleteNASFileSystemsWithOptions(request *DeleteNASFileSyst
 //
 // Description:
 //
-// Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+// Before you delete a File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
 //
 // 	Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
 //
@@ -58078,6 +60112,10 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 		query["EndUserId"] = request.EndUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EndUserIdFilter)) {
+		query["EndUserIdFilter"] = request.EndUserIdFilter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
 		query["OfficeSiteId"] = request.OfficeSiteId
 	}
@@ -58190,6 +60228,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 		query["DesktopTypeId"] = request.DesktopTypeId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DesktopTypeIdList)) {
+		query["DesktopTypeIdList"] = request.DesktopTypeIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GpuCount)) {
 		query["GpuCount"] = request.GpuCount
 	}
@@ -58206,12 +60248,24 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 		query["MemorySize"] = request.MemorySize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
 		query["OrderType"] = request.OrderType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -58364,6 +60418,14 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 
 	if !tea.BoolValue(util.IsUnset(request.OsTypes)) {
 		query["OsTypes"] = request.OsTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
@@ -58881,7 +60943,35 @@ func (client *Client) DescribeFotaPendingDesktopsWithOptions(request *DescribeFo
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopName)) {
+		query["DesktopName"] = request.DesktopName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskUid)) {
+		query["TaskUid"] = request.TaskUid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -58890,7 +60980,7 @@ func (client *Client) DescribeFotaPendingDesktopsWithOptions(request *DescribeFo
 		Version:     tea.String("2020-09-30"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -59372,6 +61462,10 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 		query["EndUserId"] = request.EndUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncludeInvokeDesktops)) {
+		query["IncludeInvokeDesktops"] = request.IncludeInvokeDesktops
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IncludeOutput)) {
 		query["IncludeOutput"] = request.IncludeOutput
 	}
@@ -59499,9 +61593,85 @@ func (client *Client) DescribeKmsKeys(request *DescribeKmsKeysRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeModificationPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModificationPriceResponse
+func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModificationPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeModificationPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDiskSizeGib)) {
+		query["RootDiskSizeGib"] = request.RootDiskSizeGib
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDiskSizeGib)) {
+		query["UserDiskSizeGib"] = request.UserDiskSizeGib
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeModificationPrice"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeModificationPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeModificationPriceRequest
+//
+// @return DescribeModificationPriceResponse
+func (client *Client) DescribeModificationPrice(request *DescribeModificationPriceRequest) (_result *DescribeModificationPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeModificationPriceResponse{}
+	_body, _err := client.DescribeModificationPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
-// Queries the information about Apsara File Storage NAS (NAS) file systems.
+// Queries the information about File Storage NAS (NAS) file systems.
 //
 // @param request - DescribeNASFileSystemsRequest
 //
@@ -59563,7 +61733,7 @@ func (client *Client) DescribeNASFileSystemsWithOptions(request *DescribeNASFile
 
 // Summary:
 //
-// Queries the information about Apsara File Storage NAS (NAS) file systems.
+// Queries the information about File Storage NAS (NAS) file systems.
 //
 // @param request - DescribeNASFileSystemsRequest
 //
@@ -59852,56 +62022,12 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		query["Bandwidth"] = request.Bandwidth
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.BundleModels)) {
-		query["BundleModels"] = request.BundleModels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduCdsEnable)) {
-		query["EduCdsEnable"] = request.EduCdsEnable
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduCdsSize)) {
-		query["EduCdsSize"] = request.EduCdsSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduCommittedTime)) {
-		query["EduCommittedTime"] = request.EduCommittedTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduDesktopBundleId)) {
-		query["EduDesktopBundleId"] = request.EduDesktopBundleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduDesktopNum)) {
-		query["EduDesktopNum"] = request.EduDesktopNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduRoomClassify)) {
-		query["EduRoomClassify"] = request.EduRoomClassify
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduStudentBundleId)) {
-		query["EduStudentBundleId"] = request.EduStudentBundleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduStudentNum)) {
-		query["EduStudentNum"] = request.EduStudentNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduTeacherBundleId)) {
-		query["EduTeacherBundleId"] = request.EduTeacherBundleId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EduTeacherNum)) {
-		query["EduTeacherNum"] = request.EduTeacherNum
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupDesktopCount)) {
 		query["GroupDesktopCount"] = request.GroupDesktopCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.HardwareVersion)) {
-		query["HardwareVersion"] = request.HardwareVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
@@ -59912,16 +62038,8 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		query["InternetChargeType"] = request.InternetChargeType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
-		query["NetworkType"] = request.NetworkType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OsType)) {
 		query["OsType"] = request.OsType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PackageSize)) {
-		query["PackageSize"] = request.PackageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
@@ -59944,28 +62062,16 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		query["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RootDiskPerformanceLevel)) {
-		query["RootDiskPerformanceLevel"] = request.RootDiskPerformanceLevel
+	if !tea.BoolValue(util.IsUnset(request.RootDiskCategory)) {
+		query["RootDiskCategory"] = request.RootDiskCategory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RootDiskSizeGib)) {
 		query["RootDiskSizeGib"] = request.RootDiskSizeGib
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SpPeriodInfo)) {
-		query["SpPeriodInfo"] = request.SpPeriodInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SpPrice)) {
-		query["SpPrice"] = request.SpPrice
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SpType)) {
-		query["SpType"] = request.SpType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserDiskPerformanceLevel)) {
-		query["UserDiskPerformanceLevel"] = request.UserDiskPerformanceLevel
+	if !tea.BoolValue(util.IsUnset(request.UserDiskCategory)) {
+		query["UserDiskCategory"] = request.UserDiskCategory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserDiskSizeGib)) {
@@ -60331,6 +62437,66 @@ func (client *Client) DescribeRecordings(request *DescribeRecordingsRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeRefundPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRefundPriceResponse
+func (client *Client) DescribeRefundPriceWithOptions(request *DescribeRefundPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeRefundPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundType)) {
+		query["RefundType"] = request.RefundType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRefundPrice"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRefundPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRefundPriceRequest
+//
+// @return DescribeRefundPriceResponse
+func (client *Client) DescribeRefundPrice(request *DescribeRefundPriceRequest) (_result *DescribeRefundPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRefundPriceResponse{}
+	_body, _err := client.DescribeRefundPriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the Alibaba Cloud regions that are available for Elastic Desktop Service (EDS).
@@ -60388,6 +62554,78 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeRenewalPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRenewalPriceResponse
+func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeRenewalPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRenewalPrice"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRenewalPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRenewalPriceRequest
+//
+// @return DescribeRenewalPriceResponse
+func (client *Client) DescribeRenewalPrice(request *DescribeRenewalPriceRequest) (_result *DescribeRenewalPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRenewalPriceResponse{}
+	_body, _err := client.DescribeRenewalPriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62608,12 +64846,20 @@ func (client *Client) ListDirectoryUsersWithOptions(request *ListDirectoryUsersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignedInfo)) {
+		query["AssignedInfo"] = request.AssignedInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
 		query["DirectoryId"] = request.DirectoryId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeAssignedUser)) {
+		query["IncludeAssignedUser"] = request.IncludeAssignedUser
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -62630,6 +64876,10 @@ func (client *Client) ListDirectoryUsersWithOptions(request *ListDirectoryUsersR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -62848,8 +65098,16 @@ func (client *Client) ListOfficeSiteUsersWithOptions(request *ListOfficeSiteUser
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssignedInfo)) {
+		query["AssignedInfo"] = request.AssignedInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeAssignedUser)) {
+		query["IncludeAssignedUser"] = request.IncludeAssignedUser
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -62870,6 +65128,10 @@ func (client *Client) ListOfficeSiteUsersWithOptions(request *ListOfficeSiteUser
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -64074,6 +66336,10 @@ func (client *Client) ModifyCloudDrivePermissionWithOptions(request *ModifyCloud
 
 	if !tea.BoolValue(util.IsUnset(request.DownloadUploadEndUserIds)) {
 		query["DownloadUploadEndUserIds"] = request.DownloadUploadEndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoDownloadNoUploadEndUserIds)) {
+		query["NoDownloadNoUploadEndUserIds"] = request.NoDownloadNoUploadEndUserIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -65635,7 +67901,7 @@ func (client *Client) ModifyImagePermission(request *ModifyImagePermissionReques
 
 // Summary:
 //
-// Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+// Modifies the mount target of a File Storage NAS (NAS) file system.
 //
 // Description:
 //
@@ -65689,7 +67955,7 @@ func (client *Client) ModifyNASDefaultMountTargetWithOptions(request *ModifyNASD
 
 // Summary:
 //
-// Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+// Modifies the mount target of a File Storage NAS (NAS) file system.
 //
 // Description:
 //
@@ -66332,6 +68598,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 		query["WatermarkType"] = request.WatermarkType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WyAssistant)) {
+		query["WyAssistant"] = request.WyAssistant
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -66687,17 +68957,17 @@ func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *R
 //
 // Description:
 //
-// Before you change the image of a cloud computer, take note of the following limits:
+// Take note of the following limits when you change an image:
 //
-// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
 //
-// 	- GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+// 	- GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
 //
-// After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+// After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
 //
-// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
 //
-// 	- If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+// 	- If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
 //
 // @param request - RebuildDesktopsRequest
 //
@@ -66759,17 +69029,17 @@ func (client *Client) RebuildDesktopsWithOptions(request *RebuildDesktopsRequest
 //
 // Description:
 //
-// Before you change the image of a cloud computer, take note of the following limits:
+// Take note of the following limits when you change an image:
 //
-// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+// 	- You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Singapore, and Japan (Tokyo).
 //
-// 	- GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+// 	- GPU images and non-GPU images cannot be exchanged. Graphic-based cloud computers can only use GPU-accelerated images. The other cloud computers can only use non-GPU-accelerated images.
 //
-// After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
+// After the image of a cloud computer is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
 //
-// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+// 	- Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer become unavailable. The system automatically deletes the snapshots.
 //
-// 	- If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+// 	- If the OS of the image is changed, the data in the data disk of the original cloud computer is cleared, and the snapshots that are created based on the data disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disk of the original cloud computer is retained, and the snapshots that are created based on the data disk of the original cloud computer can still be used.
 //
 // @param request - RebuildDesktopsRequest
 //
@@ -67008,6 +69278,78 @@ func (client *Client) RemoveUserFromDesktopOversoldUserGroup(request *RemoveUser
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromDesktopOversoldUserGroupResponse{}
 	_body, _err := client.RemoveUserFromDesktopOversoldUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RenewDesktopGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewDesktopGroupResponse
+func (client *Client) RenewDesktopGroupWithOptions(request *RenewDesktopGroupRequest, runtime *util.RuntimeOptions) (_result *RenewDesktopGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
+		query["DesktopGroupId"] = request.DesktopGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewDesktopGroup"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewDesktopGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RenewDesktopGroupRequest
+//
+// @return RenewDesktopGroupResponse
+func (client *Client) RenewDesktopGroup(request *RenewDesktopGroupRequest) (_result *RenewDesktopGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewDesktopGroupResponse{}
+	_body, _err := client.RenewDesktopGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67349,7 +69691,7 @@ func (client *Client) ResetDesktops(request *ResetDesktopsRequest) (_result *Res
 
 // Summary:
 //
-// Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+// Resets the mount target of a File Storage NAS (NAS) file system.
 //
 // Description:
 //
@@ -67399,7 +69741,7 @@ func (client *Client) ResetNASDefaultMountTargetWithOptions(request *ResetNASDef
 
 // Summary:
 //
-// Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+// Resets the mount target of a File Storage NAS (NAS) file system.
 //
 // Description:
 //
@@ -68998,6 +71340,10 @@ func (client *Client) UploadImageWithOptions(request *UploadImageRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		query["SystemDiskSize"] = request.SystemDiskSize
 	}
 
 	req := &openapi.OpenApiRequest{
