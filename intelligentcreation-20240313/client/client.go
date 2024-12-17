@@ -1309,6 +1309,195 @@ func (s *BatchGetProjectTaskResponse) SetBody(v *BatchGetProjectTaskResponseBody
 	return s
 }
 
+type BatchQueryIndividuationTextRequest struct {
+	TextIdList []*string `json:"textIdList,omitempty" xml:"textIdList,omitempty" type:"Repeated"`
+}
+
+func (s BatchQueryIndividuationTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryIndividuationTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryIndividuationTextRequest) SetTextIdList(v []*string) *BatchQueryIndividuationTextRequest {
+	s.TextIdList = v
+	return s
+}
+
+type BatchQueryIndividuationTextShrinkRequest struct {
+	TextIdListShrink *string `json:"textIdList,omitempty" xml:"textIdList,omitempty"`
+}
+
+func (s BatchQueryIndividuationTextShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryIndividuationTextShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryIndividuationTextShrinkRequest) SetTextIdListShrink(v string) *BatchQueryIndividuationTextShrinkRequest {
+	s.TextIdListShrink = &v
+	return s
+}
+
+type BatchQueryIndividuationTextResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 14878724-A835-578D-9DD5-4779ADCE9221
+	RequestId *string                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TextList  []*BatchQueryIndividuationTextResponseBodyTextList `json:"textList,omitempty" xml:"textList,omitempty" type:"Repeated"`
+}
+
+func (s BatchQueryIndividuationTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryIndividuationTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryIndividuationTextResponseBody) SetRequestId(v string) *BatchQueryIndividuationTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBody) SetTextList(v []*BatchQueryIndividuationTextResponseBodyTextList) *BatchQueryIndividuationTextResponseBody {
+	s.TextList = v
+	return s
+}
+
+type BatchQueryIndividuationTextResponseBodyTextList struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 1
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 2849286
+	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// example:
+	//
+	// 812884915104530432
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 837074737851613184
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 110825
+	TextId *string `json:"textId,omitempty" xml:"textId,omitempty"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 11
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s BatchQueryIndividuationTextResponseBodyTextList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryIndividuationTextResponseBodyTextList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetContent(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.Content = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetCreateTime(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetErrorMsg(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetItemId(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetProjectId(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetStatus(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.Status = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetTaskId(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetTextId(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.TextId = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetUpdateTime(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponseBodyTextList) SetUserId(v string) *BatchQueryIndividuationTextResponseBodyTextList {
+	s.UserId = &v
+	return s
+}
+
+type BatchQueryIndividuationTextResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchQueryIndividuationTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchQueryIndividuationTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchQueryIndividuationTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchQueryIndividuationTextResponse) SetHeaders(v map[string]*string) *BatchQueryIndividuationTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponse) SetStatusCode(v int32) *BatchQueryIndividuationTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchQueryIndividuationTextResponse) SetBody(v *BatchQueryIndividuationTextResponseBody) *BatchQueryIndividuationTextResponse {
+	s.Body = v
+	return s
+}
+
 type CheckSessionRequest struct {
 	// example:
 	//
@@ -1778,6 +1967,141 @@ func (s *CreateAICoachTaskSessionResponse) SetBody(v *CreateAICoachTaskSessionRe
 	return s
 }
 
+type CreateAnchorRequest struct {
+	AnchorMaterialName *string `json:"anchorMaterialName,omitempty" xml:"anchorMaterialName,omitempty"`
+	// example:
+	//
+	// https://yic-pre.oss-cn-hangzhou.aliyuncs.com/common/image/anchor/1733474220549-1733474198960image.png?Expires=3311144948&OSSAccessKeyId=LTAI5tPHLyFPhh4UoRias4Zg&Signature=qldDufvRDj9IUTmOtb9r2451RIU%3D
+	CoverUrl         *string `json:"coverUrl,omitempty" xml:"coverUrl,omitempty"`
+	DigitalHumanType *string `json:"digitalHumanType,omitempty" xml:"digitalHumanType,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// offlineSynthesis
+	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+}
+
+func (s CreateAnchorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnchorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnchorRequest) SetAnchorMaterialName(v string) *CreateAnchorRequest {
+	s.AnchorMaterialName = &v
+	return s
+}
+
+func (s *CreateAnchorRequest) SetCoverUrl(v string) *CreateAnchorRequest {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *CreateAnchorRequest) SetDigitalHumanType(v string) *CreateAnchorRequest {
+	s.DigitalHumanType = &v
+	return s
+}
+
+func (s *CreateAnchorRequest) SetGender(v string) *CreateAnchorRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *CreateAnchorRequest) SetUseScene(v string) *CreateAnchorRequest {
+	s.UseScene = &v
+	return s
+}
+
+type CreateAnchorResponseBody struct {
+	// 123456789
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// PARAM_ERROR
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// Failed to proxy flink ui request, message: An error occurred: Invalid UUID string: jobsn
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 10923AA3-F7A1-5EA0-ACCA-D704269EAA78
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateAnchorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnchorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnchorResponseBody) SetData(v string) *CreateAnchorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAnchorResponseBody) SetErrorCode(v string) *CreateAnchorResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateAnchorResponseBody) SetErrorMessage(v string) *CreateAnchorResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateAnchorResponseBody) SetRequestId(v string) *CreateAnchorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAnchorResponseBody) SetSuccess(v bool) *CreateAnchorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAnchorResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAnchorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAnchorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAnchorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAnchorResponse) SetHeaders(v map[string]*string) *CreateAnchorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAnchorResponse) SetStatusCode(v int32) *CreateAnchorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAnchorResponse) SetBody(v *CreateAnchorResponseBody) *CreateAnchorResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIllustrationTaskRequest struct {
 	Body *IllustrationTaskCreateCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -1820,6 +2144,197 @@ func (s *CreateIllustrationTaskResponse) SetStatusCode(v int32) *CreateIllustrat
 }
 
 func (s *CreateIllustrationTaskResponse) SetBody(v *IllustrationTaskResult) *CreateIllustrationTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIndividuationProjectRequest struct {
+	ProjectInfo *string `json:"projectInfo,omitempty" xml:"projectInfo,omitempty"`
+	// example:
+	//
+	// avatar-1
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Purpose     *string `json:"purpose,omitempty" xml:"purpose,omitempty"`
+	// example:
+	//
+	// ail003
+	SceneId *string `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
+}
+
+func (s CreateIndividuationProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationProjectRequest) SetProjectInfo(v string) *CreateIndividuationProjectRequest {
+	s.ProjectInfo = &v
+	return s
+}
+
+func (s *CreateIndividuationProjectRequest) SetProjectName(v string) *CreateIndividuationProjectRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateIndividuationProjectRequest) SetPurpose(v string) *CreateIndividuationProjectRequest {
+	s.Purpose = &v
+	return s
+}
+
+func (s *CreateIndividuationProjectRequest) SetSceneId(v string) *CreateIndividuationProjectRequest {
+	s.SceneId = &v
+	return s
+}
+
+type CreateIndividuationProjectResponseBody struct {
+	// example:
+	//
+	// 812907463682949120
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4D902811-B75C-5D1B-8882-D515F8E2F977
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateIndividuationProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationProjectResponseBody) SetProjectId(v string) *CreateIndividuationProjectResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateIndividuationProjectResponseBody) SetRequestId(v string) *CreateIndividuationProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIndividuationProjectResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIndividuationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIndividuationProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationProjectResponse) SetHeaders(v map[string]*string) *CreateIndividuationProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIndividuationProjectResponse) SetStatusCode(v int32) *CreateIndividuationProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIndividuationProjectResponse) SetBody(v *CreateIndividuationProjectResponseBody) *CreateIndividuationProjectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIndividuationTextTaskRequest struct {
+	CrowdPack [][]*string `json:"crowdPack,omitempty" xml:"crowdPack,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 840015278620459008
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	TaskName  *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+}
+
+func (s CreateIndividuationTextTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationTextTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationTextTaskRequest) SetCrowdPack(v [][]*string) *CreateIndividuationTextTaskRequest {
+	s.CrowdPack = v
+	return s
+}
+
+func (s *CreateIndividuationTextTaskRequest) SetProjectId(v string) *CreateIndividuationTextTaskRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateIndividuationTextTaskRequest) SetTaskName(v string) *CreateIndividuationTextTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+type CreateIndividuationTextTaskResponseBody struct {
+	// example:
+	//
+	// 56AC346B-AF40-5E4F-AFFE-FD8BA5E6FB3A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 837091359375048704
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateIndividuationTextTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationTextTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationTextTaskResponseBody) SetRequestId(v string) *CreateIndividuationTextTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateIndividuationTextTaskResponseBody) SetTaskId(v string) *CreateIndividuationTextTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateIndividuationTextTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateIndividuationTextTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateIndividuationTextTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIndividuationTextTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIndividuationTextTaskResponse) SetHeaders(v map[string]*string) *CreateIndividuationTextTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIndividuationTextTaskResponse) SetStatusCode(v int32) *CreateIndividuationTextTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIndividuationTextTaskResponse) SetBody(v *CreateIndividuationTextTaskResponseBody) *CreateIndividuationTextTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2054,6 +2569,175 @@ func (s *CreateTextTaskResponse) SetStatusCode(v int32) *CreateTextTaskResponse 
 }
 
 func (s *CreateTextTaskResponse) SetBody(v *TextTaskResult) *CreateTextTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIndividuationProjectRequest struct {
+	// example:
+	//
+	// 840015278620459008
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s DeleteIndividuationProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationProjectRequest) SetProjectId(v string) *DeleteIndividuationProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type DeleteIndividuationProjectResponseBody struct {
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s DeleteIndividuationProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationProjectResponseBody) SetDesc(v string) *DeleteIndividuationProjectResponseBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *DeleteIndividuationProjectResponseBody) SetRequestId(v string) *DeleteIndividuationProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIndividuationProjectResponseBody) SetStatus(v string) *DeleteIndividuationProjectResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteIndividuationProjectResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndividuationProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIndividuationProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationProjectResponse) SetHeaders(v map[string]*string) *DeleteIndividuationProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIndividuationProjectResponse) SetStatusCode(v int32) *DeleteIndividuationProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIndividuationProjectResponse) SetBody(v *DeleteIndividuationProjectResponseBody) *DeleteIndividuationProjectResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIndividuationTextRequest struct {
+	TextIdList []*string `json:"textIdList,omitempty" xml:"textIdList,omitempty" type:"Repeated"`
+}
+
+func (s DeleteIndividuationTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationTextRequest) SetTextIdList(v []*string) *DeleteIndividuationTextRequest {
+	s.TextIdList = v
+	return s
+}
+
+type DeleteIndividuationTextResponseBody struct {
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4830493A-728F-5F19-BBCC-1443292E9C49
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s DeleteIndividuationTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationTextResponseBody) SetDesc(v string) *DeleteIndividuationTextResponseBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *DeleteIndividuationTextResponseBody) SetRequestId(v string) *DeleteIndividuationTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIndividuationTextResponseBody) SetStatus(v string) *DeleteIndividuationTextResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteIndividuationTextResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndividuationTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIndividuationTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndividuationTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndividuationTextResponse) SetHeaders(v map[string]*string) *DeleteIndividuationTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIndividuationTextResponse) SetStatusCode(v int32) *DeleteIndividuationTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIndividuationTextResponse) SetBody(v *DeleteIndividuationTextResponseBody) *DeleteIndividuationTextResponse {
 	s.Body = v
 	return s
 }
@@ -4333,6 +5017,148 @@ func (s *QueryAvatarResourceResponse) SetBody(v *QueryAvatarResourceResponseBody
 	return s
 }
 
+type QueryIndividuationTextTaskRequest struct {
+	// example:
+	//
+	// 829682927337963520
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s QueryIndividuationTextTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIndividuationTextTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIndividuationTextTaskRequest) SetTaskId(v string) *QueryIndividuationTextTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type QueryIndividuationTextTaskResponseBody struct {
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 56AC346B-AF40-5E4F-AFFE-FD8BA5E6FB3A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0
+	Status   *int32                                            `json:"status,omitempty" xml:"status,omitempty"`
+	TextList []*QueryIndividuationTextTaskResponseBodyTextList `json:"textList,omitempty" xml:"textList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// yyyy-MM-dd HH:mm:ss
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s QueryIndividuationTextTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIndividuationTextTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIndividuationTextTaskResponseBody) SetCreateTime(v string) *QueryIndividuationTextTaskResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBody) SetRequestId(v string) *QueryIndividuationTextTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBody) SetStatus(v int32) *QueryIndividuationTextTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBody) SetTextList(v []*QueryIndividuationTextTaskResponseBodyTextList) *QueryIndividuationTextTaskResponseBody {
+	s.TextList = v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBody) SetUpdateTime(v string) *QueryIndividuationTextTaskResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type QueryIndividuationTextTaskResponseBodyTextList struct {
+	// example:
+	//
+	// 0
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2761
+	TextId *string `json:"textId,omitempty" xml:"textId,omitempty"`
+	// example:
+	//
+	// 11
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s QueryIndividuationTextTaskResponseBodyTextList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIndividuationTextTaskResponseBodyTextList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIndividuationTextTaskResponseBodyTextList) SetStatus(v int32) *QueryIndividuationTextTaskResponseBodyTextList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBodyTextList) SetTextId(v string) *QueryIndividuationTextTaskResponseBodyTextList {
+	s.TextId = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponseBodyTextList) SetUserId(v string) *QueryIndividuationTextTaskResponseBodyTextList {
+	s.UserId = &v
+	return s
+}
+
+type QueryIndividuationTextTaskResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryIndividuationTextTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryIndividuationTextTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryIndividuationTextTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryIndividuationTextTaskResponse) SetHeaders(v map[string]*string) *QueryIndividuationTextTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponse) SetStatusCode(v int32) *QueryIndividuationTextTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryIndividuationTextTaskResponse) SetBody(v *QueryIndividuationTextTaskResponseBody) *QueryIndividuationTextTaskResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySessionInfoRequest struct {
 	// example:
 	//
@@ -5248,6 +6074,142 @@ func (s *SelectResourceResponse) SetStatusCode(v int32) *SelectResourceResponse 
 }
 
 func (s *SelectResourceResponse) SetBody(v *SelectResourceResponseBody) *SelectResourceResponse {
+	s.Body = v
+	return s
+}
+
+type SendSdkMessageRequest struct {
+	// example:
+	//
+	// {}
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// avatar
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// example:
+	//
+	// getProject
+	OperationName *string `json:"operationName,omitempty" xml:"operationName,omitempty"`
+	// example:
+	//
+	// 123
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s SendSdkMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkMessageRequest) SetData(v string) *SendSdkMessageRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SendSdkMessageRequest) SetModuleName(v string) *SendSdkMessageRequest {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *SendSdkMessageRequest) SetOperationName(v string) *SendSdkMessageRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *SendSdkMessageRequest) SetUserId(v string) *SendSdkMessageRequest {
+	s.UserId = &v
+	return s
+}
+
+type SendSdkMessageResponseBody struct {
+	// example:
+	//
+	// {}
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// system-01
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// SYSTEM_ERROR
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 86A90C40-D1AB-50DA-A4B1-0D545F80F2FE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SendSdkMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkMessageResponseBody) SetData(v string) *SendSdkMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SendSdkMessageResponseBody) SetErrorCode(v string) *SendSdkMessageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SendSdkMessageResponseBody) SetErrorMessage(v string) *SendSdkMessageResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SendSdkMessageResponseBody) SetRequestId(v string) *SendSdkMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendSdkMessageResponseBody) SetSuccess(v bool) *SendSdkMessageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendSdkMessageResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendSdkMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendSdkMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkMessageResponse) SetHeaders(v map[string]*string) *SendSdkMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendSdkMessageResponse) SetStatusCode(v int32) *SendSdkMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendSdkMessageResponse) SetBody(v *SendSdkMessageResponseBody) *SendSdkMessageResponse {
 	s.Body = v
 	return s
 }
@@ -6418,6 +7380,87 @@ func (client *Client) BatchGetProjectTask(request *BatchGetProjectTaskRequest) (
 
 // Summary:
 //
+// 批量查询文案
+//
+// @param tmpReq - BatchQueryIndividuationTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchQueryIndividuationTextResponse
+func (client *Client) BatchQueryIndividuationTextWithOptions(tmpReq *BatchQueryIndividuationTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchQueryIndividuationTextResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchQueryIndividuationTextShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TextIdList)) {
+		request.TextIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TextIdList, tea.String("textIdList"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TextIdListShrink)) {
+		query["textIdList"] = request.TextIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchQueryIndividuationText"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/batchQueryText"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchQueryIndividuationTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchQueryIndividuationTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量查询文案
+//
+// @param request - BatchQueryIndividuationTextRequest
+//
+// @return BatchQueryIndividuationTextResponse
+func (client *Client) BatchQueryIndividuationText(request *BatchQueryIndividuationTextRequest) (_result *BatchQueryIndividuationTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchQueryIndividuationTextResponse{}
+	_body, _err := client.BatchQueryIndividuationTextWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 检查会话状态
 //
 // @param request - CheckSessionRequest
@@ -6742,6 +7785,97 @@ func (client *Client) CreateAICoachTaskSession(request *CreateAICoachTaskSession
 
 // Summary:
 //
+// 创建照片数字人
+//
+// @param request - CreateAnchorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAnchorResponse
+func (client *Client) CreateAnchorWithOptions(request *CreateAnchorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAnchorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnchorMaterialName)) {
+		body["anchorMaterialName"] = request.AnchorMaterialName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoverUrl)) {
+		body["coverUrl"] = request.CoverUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigitalHumanType)) {
+		body["digitalHumanType"] = request.DigitalHumanType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseScene)) {
+		body["useScene"] = request.UseScene
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAnchor"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/digitalHuman/anchorOpen/createAnchor"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAnchorResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAnchorResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建照片数字人
+//
+// @param request - CreateAnchorRequest
+//
+// @return CreateAnchorResponse
+func (client *Client) CreateAnchor(request *CreateAnchorRequest) (_result *CreateAnchorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAnchorResponse{}
+	_body, _err := client.CreateAnchorWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建配图生成任务
 //
 // @param request - CreateIllustrationTaskRequest
@@ -6803,6 +7937,176 @@ func (client *Client) CreateIllustrationTask(textId *string, request *CreateIllu
 	headers := make(map[string]*string)
 	_result = &CreateIllustrationTaskResponse{}
 	_body, _err := client.CreateIllustrationTaskWithOptions(textId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建个性化文案项目
+//
+// @param request - CreateIndividuationProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIndividuationProjectResponse
+func (client *Client) CreateIndividuationProjectWithOptions(request *CreateIndividuationProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIndividuationProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectInfo)) {
+		body["projectInfo"] = request.ProjectInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Purpose)) {
+		body["purpose"] = request.Purpose
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["sceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIndividuationProject"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/createProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateIndividuationProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateIndividuationProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建个性化文案项目
+//
+// @param request - CreateIndividuationProjectRequest
+//
+// @return CreateIndividuationProjectResponse
+func (client *Client) CreateIndividuationProject(request *CreateIndividuationProjectRequest) (_result *CreateIndividuationProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIndividuationProjectResponse{}
+	_body, _err := client.CreateIndividuationProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建个性化文案任务
+//
+// @param request - CreateIndividuationTextTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIndividuationTextTaskResponse
+func (client *Client) CreateIndividuationTextTaskWithOptions(request *CreateIndividuationTextTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIndividuationTextTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrowdPack)) {
+		body["crowdPack"] = request.CrowdPack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIndividuationTextTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/createTextTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateIndividuationTextTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateIndividuationTextTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建个性化文案任务
+//
+// @param request - CreateIndividuationTextTaskRequest
+//
+// @return CreateIndividuationTextTaskResponse
+func (client *Client) CreateIndividuationTextTask(request *CreateIndividuationTextTaskRequest) (_result *CreateIndividuationTextTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIndividuationTextTaskResponse{}
+	_body, _err := client.CreateIndividuationTextTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7000,6 +8304,156 @@ func (client *Client) CreateTextTask(request *CreateTextTaskRequest) (_result *C
 	headers := make(map[string]*string)
 	_result = &CreateTextTaskResponse{}
 	_body, _err := client.CreateTextTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除个性化文案项目
+//
+// @param request - DeleteIndividuationProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIndividuationProjectResponse
+func (client *Client) DeleteIndividuationProjectWithOptions(request *DeleteIndividuationProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndividuationProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["projectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndividuationProject"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/deleteProject"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIndividuationProjectResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIndividuationProjectResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除个性化文案项目
+//
+// @param request - DeleteIndividuationProjectRequest
+//
+// @return DeleteIndividuationProjectResponse
+func (client *Client) DeleteIndividuationProject(request *DeleteIndividuationProjectRequest) (_result *DeleteIndividuationProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIndividuationProjectResponse{}
+	_body, _err := client.DeleteIndividuationProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除个性化文案
+//
+// @param request - DeleteIndividuationTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIndividuationTextResponse
+func (client *Client) DeleteIndividuationTextWithOptions(request *DeleteIndividuationTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndividuationTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TextIdList)) {
+		body["textIdList"] = request.TextIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndividuationText"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/deleteText"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteIndividuationTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteIndividuationTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除个性化文案
+//
+// @param request - DeleteIndividuationTextRequest
+//
+// @return DeleteIndividuationTextResponse
+func (client *Client) DeleteIndividuationText(request *DeleteIndividuationTextRequest) (_result *DeleteIndividuationTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIndividuationTextResponse{}
+	_body, _err := client.DeleteIndividuationTextWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8595,6 +10049,81 @@ func (client *Client) QueryAvatarResource(request *QueryAvatarResourceRequest) (
 
 // Summary:
 //
+// 查询个性化文案任务
+//
+// @param request - QueryIndividuationTextTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryIndividuationTextTaskResponse
+func (client *Client) QueryIndividuationTextTaskWithOptions(request *QueryIndividuationTextTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryIndividuationTextTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryIndividuationTextTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/individuationText/queryTextTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &QueryIndividuationTextTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &QueryIndividuationTextTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询个性化文案任务
+//
+// @param request - QueryIndividuationTextTaskRequest
+//
+// @return QueryIndividuationTextTaskResponse
+func (client *Client) QueryIndividuationTextTask(request *QueryIndividuationTextTaskRequest) (_result *QueryIndividuationTextTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryIndividuationTextTaskResponse{}
+	_body, _err := client.QueryIndividuationTextTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询会话信息
 //
 // @param tmpReq - QuerySessionInfoRequest
@@ -8975,6 +10504,93 @@ func (client *Client) SelectResource(request *SelectResourceRequest) (_result *S
 	headers := make(map[string]*string)
 	_result = &SelectResourceResponse{}
 	_body, _err := client.SelectResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送sdk消息
+//
+// @param request - SendSdkMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendSdkMessageResponse
+func (client *Client) SendSdkMessageWithOptions(request *SendSdkMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendSdkMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		body["moduleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationName)) {
+		body["operationName"] = request.OperationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendSdkMessage"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/sdk/sendMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SendSdkMessageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SendSdkMessageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 发送sdk消息
+//
+// @param request - SendSdkMessageRequest
+//
+// @return SendSdkMessageResponse
+func (client *Client) SendSdkMessage(request *SendSdkMessageRequest) (_result *SendSdkMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendSdkMessageResponse{}
+	_body, _err := client.SendSdkMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
