@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -489,7 +490,20 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 type CreateArtifactRequest struct {
 	// The build properties of the artifact, utilized for hosting and building the deployment package.
 	ArtifactBuildProperty *CreateArtifactRequestArtifactBuildProperty `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty" type:"Struct"`
-	ArtifactBuildType     *string                                     `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the artifact build task. Valid values:
+	//
+	// - EcsImage: Build ECS (Elastic Container Service) image.
+	//
+	// - Dockerfile: Build container image based on Dockerfile.
+	//
+	// - Buildpacks: Build container image based on Buildpacks.
+	//
+	// - ContainerImage: Rebuild container image by renaming an existing container image.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -514,6 +528,12 @@ type CreateArtifactRequest struct {
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the deployment package.
 	//
 	// example:
@@ -581,6 +601,11 @@ func (s *CreateArtifactRequest) SetArtifactType(v string) *CreateArtifactRequest
 	return s
 }
 
+func (s *CreateArtifactRequest) SetClientToken(v string) *CreateArtifactRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *CreateArtifactRequest) SetDescription(v string) *CreateArtifactRequest {
 	s.Description = &v
 	return s
@@ -612,8 +637,14 @@ func (s *CreateArtifactRequest) SetVersionName(v string) *CreateArtifactRequest 
 }
 
 type CreateArtifactRequestArtifactBuildProperty struct {
+	// The build arguments used during the image build process.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
 	BuildArgs []*CreateArtifactRequestArtifactBuildPropertyBuildArgs `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	CodeRepo  *CreateArtifactRequestArtifactBuildPropertyCodeRepo    `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
+	// The address of the code repository.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
+	CodeRepo *CreateArtifactRequestArtifactBuildPropertyCodeRepo `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
 	// The command content.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -635,7 +666,14 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// RunShellScript
-	CommandType    *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	// The relative path to the Dockerfile within the code repository.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+	//
+	// example:
+	//
+	// ./file/Dockerfile
 	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
@@ -644,7 +682,14 @@ type CreateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
+	//
+	// example:
+	//
+	// pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
 	SourceContainerImage *string `json:"SourceContainerImage,omitempty" xml:"SourceContainerImage,omitempty"`
 	// The source image id. Supported Types:
 	//
@@ -713,7 +758,17 @@ func (s *CreateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) 
 }
 
 type CreateArtifactRequestArtifactBuildPropertyBuildArgs struct {
-	ArgumentName  *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	// The name of a specific build argument.
+	//
+	// example:
+	//
+	// ENV
+	ArgumentName *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	// The value of a specific build argument.
+	//
+	// example:
+	//
+	// nginx:latest
 	ArgumentValue *string `json:"ArgumentValue,omitempty" xml:"ArgumentValue,omitempty"`
 }
 
@@ -736,9 +791,35 @@ func (s *CreateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentValue(v
 }
 
 type CreateArtifactRequestArtifactBuildPropertyCodeRepo struct {
-	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	Owner    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the branch in the code repository.
+	//
+	// example:
+	//
+	// main
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The owner of the code repository.
+	//
+	// >  This parameter is available only if the git repository is private.
+	//
+	// example:
+	//
+	// aliyun-computenest
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The platform type. Valid values:
+	//
+	// - github
+	//
+	// - gitee
+	//
+	// example:
+	//
+	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The name of the repository.
+	//
+	// example:
+	//
+	// aliyun-computenest/quickstart-Lobexxx
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 }
 
@@ -787,12 +868,6 @@ type CreateArtifactRequestArtifactProperty struct {
 	//
 	// V1.0
 	CommodityVersion *string `json:"CommodityVersion,omitempty" xml:"CommodityVersion,omitempty"`
-	// The script metadata.
-	//
-	// example:
-	//
-	// {\\"WorkDir\\":\\"/root\\",\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"echo hello\\"}
-	FileScriptMetadata *string `json:"FileScriptMetadata,omitempty" xml:"FileScriptMetadata,omitempty"`
 	// The image ID.
 	//
 	// >  This parameter is available only if the deployment package is an image.
@@ -825,15 +900,18 @@ type CreateArtifactRequestArtifactProperty struct {
 	//
 	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The script content.
+	// The default repository type. Valid values:
 	//
-	// >  This parameter is available only if the deployment package is a script.
+	// 	- `Public`: a public repository.
+	//
+	// 	- `Private`: a private repository.
+	//
+	// You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
 	//
 	// example:
 	//
-	// {"ScriptMetadata":"{\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"ls\\"}"}
-	ScriptMetadata *string `json:"ScriptMetadata,omitempty" xml:"ScriptMetadata,omitempty"`
+	// Public
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	// The version tag of the image repository.
 	//
 	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
@@ -868,11 +946,6 @@ func (s *CreateArtifactRequestArtifactProperty) SetCommodityVersion(v string) *C
 	return s
 }
 
-func (s *CreateArtifactRequestArtifactProperty) SetFileScriptMetadata(v string) *CreateArtifactRequestArtifactProperty {
-	s.FileScriptMetadata = &v
-	return s
-}
-
 func (s *CreateArtifactRequestArtifactProperty) SetImageId(v string) *CreateArtifactRequestArtifactProperty {
 	s.ImageId = &v
 	return s
@@ -895,11 +968,6 @@ func (s *CreateArtifactRequestArtifactProperty) SetRepoName(v string) *CreateArt
 
 func (s *CreateArtifactRequestArtifactProperty) SetRepoType(v string) *CreateArtifactRequestArtifactProperty {
 	s.RepoType = &v
-	return s
-}
-
-func (s *CreateArtifactRequestArtifactProperty) SetScriptMetadata(v string) *CreateArtifactRequestArtifactProperty {
-	s.ScriptMetadata = &v
 	return s
 }
 
@@ -949,7 +1017,20 @@ func (s *CreateArtifactRequestTag) SetValue(v string) *CreateArtifactRequestTag 
 type CreateArtifactShrinkRequest struct {
 	// The build properties of the artifact, utilized for hosting and building the deployment package.
 	ArtifactBuildPropertyShrink *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	ArtifactBuildType           *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the artifact build task. Valid values:
+	//
+	// - EcsImage: Build ECS (Elastic Container Service) image.
+	//
+	// - Dockerfile: Build container image based on Dockerfile.
+	//
+	// - Buildpacks: Build container image based on Buildpacks.
+	//
+	// - ContainerImage: Rebuild container image by renaming an existing container image.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -974,6 +1055,12 @@ type CreateArtifactShrinkRequest struct {
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the deployment package.
 	//
 	// example:
@@ -1038,6 +1125,11 @@ func (s *CreateArtifactShrinkRequest) SetArtifactPropertyShrink(v string) *Creat
 
 func (s *CreateArtifactShrinkRequest) SetArtifactType(v string) *CreateArtifactShrinkRequest {
 	s.ArtifactType = &v
+	return s
+}
+
+func (s *CreateArtifactShrinkRequest) SetClientToken(v string) *CreateArtifactShrinkRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -1111,7 +1203,12 @@ type CreateArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the deployment package to be built.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -3213,6 +3310,14 @@ type DeleteArtifactRequest struct {
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 788E7CP0EN9D51P
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s DeleteArtifactRequest) String() string {
@@ -3230,6 +3335,11 @@ func (s *DeleteArtifactRequest) SetArtifactId(v string) *DeleteArtifactRequest {
 
 func (s *DeleteArtifactRequest) SetArtifactVersion(v string) *DeleteArtifactRequest {
 	s.ArtifactVersion = &v
+	return s
+}
+
+func (s *DeleteArtifactRequest) SetClientToken(v string) *DeleteArtifactRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -3641,7 +3751,12 @@ type GetArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the deployment package to be built.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -4139,9 +4254,19 @@ type GetServiceRequest struct {
 	// example:
 	//
 	// service-4ee86df83fd948******
-	ServiceId         *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The Service Instance Id.
+	//
+	// example:
+	//
+	// si-85b1exxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	ServiceName       *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The Service Name.
+	//
+	// example:
+	//
+	// Wordpress社区版
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -4268,7 +4393,8 @@ type GetServiceResponseBody struct {
 	// DevOps
 	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
 	// The commodity details.
-	Commodity          *GetServiceResponseBodyCommodity          `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	Commodity *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// Compliance check metadata.
 	ComplianceMetadata *GetServiceResponseBodyComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The time when the service was created.
 	//
@@ -4433,7 +4559,8 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// DISCOVERABLE
-	ServiceDiscoverable  *string                                       `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	ServiceDiscoverable *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	// Service document information.
 	ServiceDocumentInfos []*GetServiceResponseBodyServiceDocumentInfos `json:"ServiceDocumentInfos,omitempty" xml:"ServiceDocumentInfos,omitempty" type:"Repeated"`
 	// The service ID.
 	//
@@ -5418,6 +5545,7 @@ func (s *GetServiceResponseBodyCommoditySpecifications) SetTimes(v []*string) *G
 }
 
 type GetServiceResponseBodyComplianceMetadata struct {
+	// The compliance package is selected.
 	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -5435,8 +5563,23 @@ func (s *GetServiceResponseBodyComplianceMetadata) SetCompliancePacks(v []*strin
 }
 
 type GetServiceResponseBodyServiceDocumentInfos struct {
-	DocumentUrl  *string `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
-	Locale       *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL that is used to access the document.
+	//
+	// example:
+	//
+	// http://docurl
+	DocumentUrl *string `json:"DocumentUrl,omitempty" xml:"DocumentUrl,omitempty"`
+	// The language of the return data. Valid values: zh-CN and en-US.
+	//
+	// example:
+	//
+	// zh-CN
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Default Template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -5499,8 +5642,9 @@ type GetServiceResponseBodyServiceInfos struct {
 	// example:
 	//
 	// B是A公司自主设计并研发的开源分布式的关系型数据库
-	ShortDescription *string                                        `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	Softwares        []*GetServiceResponseBodyServiceInfosSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The list of the information about the software in the service.
+	Softwares []*GetServiceResponseBodyServiceInfosSoftwares `json:"Softwares,omitempty" xml:"Softwares,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceResponseBodyServiceInfos) String() string {
@@ -5580,7 +5724,17 @@ func (s *GetServiceResponseBodyServiceInfosAgreements) SetUrl(v string) *GetServ
 }
 
 type GetServiceResponseBodyServiceInfosSoftwares struct {
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the software
+	//
+	// example:
+	//
+	// MySQL
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The version of the software.
+	//
+	// example:
+	//
+	// 5.7
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -6321,7 +6475,12 @@ type GetServiceInstanceResponseBody struct {
 	// example:
 	//
 	// 2022-01-28T06:48:56Z
-	OperationEndTime   *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	// Operate extra info
+	//
+	// example:
+	//
+	// 6cc5ce3590ed7f5529e85fec
 	OperationExtraInfo *string `json:"OperationExtraInfo,omitempty" xml:"OperationExtraInfo,omitempty"`
 	// The beginning of the time range during which hosted O\\&M is implemented.
 	//
@@ -7013,7 +7172,8 @@ type GetServiceInstanceResponseBodyService struct {
 	// example:
 	//
 	// http://example.com
-	SupplierUrl            *string                                                        `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The upgradable service Info.
 	UpgradableServiceInfos []*GetServiceInstanceResponseBodyServiceUpgradableServiceInfos `json:"UpgradableServiceInfos,omitempty" xml:"UpgradableServiceInfos,omitempty" type:"Repeated"`
 	// The service versions that can be updated.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
@@ -7170,7 +7330,17 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(
 }
 
 type GetServiceInstanceResponseBodyServiceUpgradableServiceInfos struct {
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The upgradable service version.
+	//
+	// example:
+	//
+	// 4
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version name of an upgradable service version.
+	//
+	// example:
+	//
+	// Init version
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -7831,24 +8001,34 @@ func (s *GetUploadCredentialsResponse) SetBody(v *GetUploadCredentialsResponseBo
 }
 
 type LaunchServiceRequest struct {
+	// The categories of the service.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Recommend   *bool   `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
+	// Whether to set the recommended service publishing to the service directory.
+	Recommend *bool `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7896,14 +8076,26 @@ func (s *LaunchServiceRequest) SetServiceVersion(v string) *LaunchServiceRequest
 }
 
 type LaunchServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The mode of the service online. Valid Type
+	//
+	// - PublishNewVersion: Launch new version
+	//
+	// - PublishOfflineVersion:  The offline version is online again.
+	//
+	// - UpdateLatestVersion: Update the latest version online
+	//
 	// example:
 	//
 	// PublishNewVersion
 	ServiceLaunchResultType *string `json:"ServiceLaunchResultType,omitempty" xml:"ServiceLaunchResultType,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1.0
@@ -8584,7 +8776,12 @@ type ListArtifactVersionsResponseBodyArtifacts struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the deployment package to be built.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -10131,7 +10328,8 @@ type ListServiceSharedAccountsResponseBody struct {
 	// example:
 	//
 	// CA3AE512-6D30-549A-B52D-B9042CA8D515
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service shared account information.
 	ShareAccount []*ListServiceSharedAccountsResponseBodyShareAccount `json:"ShareAccount,omitempty" xml:"ShareAccount,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -10219,6 +10417,8 @@ type ListServiceSharedAccountsResponseBodyShareAccount struct {
 	//
 	// 2023-02-13T02:16:03.756Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The user aliUid.
+	//
 	// example:
 	//
 	// 127383705xxxxxx
@@ -11583,16 +11783,24 @@ func (s *ModifyServiceInstanceResourcesResponse) SetBody(v *ModifyServiceInstanc
 }
 
 type PreLaunchServiceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11625,6 +11833,8 @@ func (s *PreLaunchServiceRequest) SetServiceId(v string) *PreLaunchServiceReques
 }
 
 type PreLaunchServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -12043,6 +12253,14 @@ type ReleaseArtifactRequest struct {
 	//
 	// artifact-9feded91880e4c78xxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 788E7CP0EN9D51P
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s ReleaseArtifactRequest) String() string {
@@ -12055,6 +12273,11 @@ func (s ReleaseArtifactRequest) GoString() string {
 
 func (s *ReleaseArtifactRequest) SetArtifactId(v string) *ReleaseArtifactRequest {
 	s.ArtifactId = &v
+	return s
+}
+
+func (s *ReleaseArtifactRequest) SetClientToken(v string) *ReleaseArtifactRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -12755,6 +12978,7 @@ type UpdateArtifactRequest struct {
 	//
 	// This parameter is required.
 	ArtifactProperty *UpdateArtifactRequestArtifactProperty `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty" type:"Struct"`
+	ClientToken      *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the deployment package.
 	//
 	// example:
@@ -12796,6 +13020,11 @@ func (s *UpdateArtifactRequest) SetArtifactProperty(v *UpdateArtifactRequestArti
 	return s
 }
 
+func (s *UpdateArtifactRequest) SetClientToken(v string) *UpdateArtifactRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *UpdateArtifactRequest) SetDescription(v string) *UpdateArtifactRequest {
 	s.Description = &v
 	return s
@@ -12812,8 +13041,14 @@ func (s *UpdateArtifactRequest) SetVersionName(v string) *UpdateArtifactRequest 
 }
 
 type UpdateArtifactRequestArtifactBuildProperty struct {
+	// The build arguments used during the image build process.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
 	BuildArgs []*UpdateArtifactRequestArtifactBuildPropertyBuildArgs `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	CodeRepo  *UpdateArtifactRequestArtifactBuildPropertyCodeRepo    `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
+	// The address of the code repository.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile or Buildpacks type.
+	CodeRepo *UpdateArtifactRequestArtifactBuildPropertyCodeRepo `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty" type:"Struct"`
 	// The command content.
 	//
 	// >  This parameter is available only if the deployment package is a ecs image type.
@@ -12835,7 +13070,14 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// RunShellScript
-	CommandType    *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	// The relative path to the Dockerfile within the code repository.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is Dockerfile type.
+	//
+	// example:
+	//
+	// ./file/Dockerfile
 	DockerfilePath *string `json:"DockerfilePath,omitempty" xml:"DockerfilePath,omitempty"`
 	// The region ID where the source mirror image is located.
 	//
@@ -12844,7 +13086,14 @@ type UpdateArtifactRequestArtifactBuildProperty struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The pull location of the source container image. This is used for the command docker pull ${SourceContainerImage}.
+	//
+	// >  This parameter is available only if the ArtifactBuildType is ContainerImage type.
+	//
+	// example:
+	//
+	// pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
 	SourceContainerImage *string `json:"SourceContainerImage,omitempty" xml:"SourceContainerImage,omitempty"`
 	// The source image id. Supported Types:
 	//
@@ -12913,7 +13162,17 @@ func (s *UpdateArtifactRequestArtifactBuildProperty) SetSourceImageId(v string) 
 }
 
 type UpdateArtifactRequestArtifactBuildPropertyBuildArgs struct {
-	ArgumentName  *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	// The name of a specific build argument.
+	//
+	// example:
+	//
+	// ENV
+	ArgumentName *string `json:"ArgumentName,omitempty" xml:"ArgumentName,omitempty"`
+	// The value of a specific build argument.
+	//
+	// example:
+	//
+	// nginx:latest
 	ArgumentValue *string `json:"ArgumentValue,omitempty" xml:"ArgumentValue,omitempty"`
 }
 
@@ -12936,9 +13195,31 @@ func (s *UpdateArtifactRequestArtifactBuildPropertyBuildArgs) SetArgumentValue(v
 }
 
 type UpdateArtifactRequestArtifactBuildPropertyCodeRepo struct {
-	Branch   *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	Owner    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The name of the branch in the code repository.
+	//
+	// example:
+	//
+	// main
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The owner of the code repository.
+	//
+	// >  This parameter is available only if the git repository is private.
+	//
+	// example:
+	//
+	// aliyun-computenest
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The platform where the code repository is hosted.
+	//
+	// example:
+	//
+	// github
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The name of the repository.
+	//
+	// example:
+	//
+	// aliyun-computenest/quickstart-Lobexxx
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 }
 
@@ -12987,14 +13268,6 @@ type UpdateArtifactRequestArtifactProperty struct {
 	//
 	// V1.0
 	CommodityVersion *string `json:"CommodityVersion,omitempty" xml:"CommodityVersion,omitempty"`
-	// The metadata of the Object Storage Service (OSS) object.
-	//
-	// >  This parameter is available only if the deployment package is an OSS object.
-	//
-	// example:
-	//
-	// {\\"WorkDir\\":\\"/root\\",\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"echo hello\\"}
-	FileScriptMetadata *string `json:"FileScriptMetadata,omitempty" xml:"FileScriptMetadata,omitempty"`
 	// The image ID.
 	//
 	// >  This parameter is available only if the deployment package is an image.
@@ -13014,15 +13287,7 @@ type UpdateArtifactRequestArtifactProperty struct {
 	RepoId   *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The script content of the deployment package.
-	//
-	// >  This parameter is available only if the deployment package is a script.
-	//
-	// example:
-	//
-	// {"ScriptMetadata":"{\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"ls\\"}"}
-	ScriptMetadata *string `json:"ScriptMetadata,omitempty" xml:"ScriptMetadata,omitempty"`
-	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The URL of the deployment package object.
 	//
 	//
@@ -13052,11 +13317,6 @@ func (s *UpdateArtifactRequestArtifactProperty) SetCommodityVersion(v string) *U
 	return s
 }
 
-func (s *UpdateArtifactRequestArtifactProperty) SetFileScriptMetadata(v string) *UpdateArtifactRequestArtifactProperty {
-	s.FileScriptMetadata = &v
-	return s
-}
-
 func (s *UpdateArtifactRequestArtifactProperty) SetImageId(v string) *UpdateArtifactRequestArtifactProperty {
 	s.ImageId = &v
 	return s
@@ -13079,11 +13339,6 @@ func (s *UpdateArtifactRequestArtifactProperty) SetRepoName(v string) *UpdateArt
 
 func (s *UpdateArtifactRequestArtifactProperty) SetRepoType(v string) *UpdateArtifactRequestArtifactProperty {
 	s.RepoType = &v
-	return s
-}
-
-func (s *UpdateArtifactRequestArtifactProperty) SetScriptMetadata(v string) *UpdateArtifactRequestArtifactProperty {
-	s.ScriptMetadata = &v
 	return s
 }
 
@@ -13112,6 +13367,7 @@ type UpdateArtifactShrinkRequest struct {
 	//
 	// This parameter is required.
 	ArtifactPropertyShrink *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the deployment package.
 	//
 	// example:
@@ -13153,6 +13409,11 @@ func (s *UpdateArtifactShrinkRequest) SetArtifactPropertyShrink(v string) *Updat
 	return s
 }
 
+func (s *UpdateArtifactShrinkRequest) SetClientToken(v string) *UpdateArtifactShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *UpdateArtifactShrinkRequest) SetDescription(v string) *UpdateArtifactShrinkRequest {
 	s.Description = &v
 	return s
@@ -13175,7 +13436,12 @@ type UpdateArtifactResponseBody struct {
 	//
 	// "{\\"RegionId\\":\\"xxx\\", \\"SourceImageId\\":\\"xxx\\", \\"\\":\\"xxx\\", \\"CommandType\\":\\"xxx\\", \\"CommandContent\\":\\"xxx\\"}"
 	ArtifactBuildProperty *string `json:"ArtifactBuildProperty,omitempty" xml:"ArtifactBuildProperty,omitempty"`
-	ArtifactBuildType     *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
+	// The type of the deployment package to be built.
+	//
+	// example:
+	//
+	// Dockerfile
+	ArtifactBuildType *string `json:"ArtifactBuildType,omitempty" xml:"ArtifactBuildType,omitempty"`
 	// The ID of the deployment package.
 	//
 	// example:
@@ -13235,7 +13501,12 @@ type UpdateArtifactResponseBody struct {
 	// example:
 	//
 	// Available
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the deployment package.
+	//
+	// example:
+	//
+	// "/usr/local/share/aliyun-assist/work/script/t-hz04zm90y6og0sg.sh: line 1: pip: command not found"
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
 	// The ID of the region that supports the deployment package.
 	//
@@ -13389,7 +13660,8 @@ type UpdateServiceRequest struct {
 	// 788E7CP0EN9D51P
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is not publicly accessible.
-	Commodity          *UpdateServiceRequestCommodity          `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	Commodity *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// Compliance check metadata.
 	ComplianceMetadata *UpdateServiceRequestComplianceMetadata `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty" type:"Struct"`
 	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
 	//
@@ -13403,7 +13675,16 @@ type UpdateServiceRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not update a service.
+	//
+	// 	- false: performs a dry run for the request, and update a service if the request passes the dry run.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The deployment type of the service. Valid values:
 	//
 	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
@@ -13841,6 +14122,7 @@ func (s *UpdateServiceRequestCommoditySpecificationMappings) SetTemplateName(v s
 }
 
 type UpdateServiceRequestComplianceMetadata struct {
+	// The compliance package is selected.
 	CompliancePacks []*string `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -14007,7 +14289,8 @@ type UpdateServiceShrinkRequest struct {
 	// 788E7CP0EN9D51P
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is not publicly accessible.
-	CommodityShrink          *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// Compliance check metadata.
 	ComplianceMetadataShrink *string `json:"ComplianceMetadata,omitempty" xml:"ComplianceMetadata,omitempty"`
 	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
 	//
@@ -14021,7 +14304,16 @@ type UpdateServiceShrinkRequest struct {
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not update a service.
+	//
+	// 	- false: performs a dry run for the request, and update a service if the request passes the dry run.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The deployment type of the service. Valid values:
 	//
 	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
@@ -14459,7 +14751,12 @@ type UpdateServiceInstanceAttributeRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The License Data
 	LicenseData *UpdateServiceInstanceAttributeRequestLicenseData `json:"LicenseData,omitempty" xml:"LicenseData,omitempty" type:"Struct"`
-	Reason      *string                                           `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Application reason, currently used for trial application extension.
+	//
+	// example:
+	//
+	// \\"\\"
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -14544,7 +14841,12 @@ type UpdateServiceInstanceAttributeShrinkRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The License Data
 	LicenseDataShrink *string `json:"LicenseData,omitempty" xml:"LicenseData,omitempty"`
-	Reason            *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Application reason, currently used for trial application extension.
+	//
+	// example:
+	//
+	// \\"\\"
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -15152,6 +15454,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("ComputeNestSupplier")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -15233,13 +15542,24 @@ func (client *Client) AddServiceSharedAccountsWithOptions(request *AddServiceSha
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15313,13 +15633,24 @@ func (client *Client) ApproveServiceUsageWithOptions(request *ApproveServiceUsag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApproveServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApproveServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApproveServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15389,13 +15720,24 @@ func (client *Client) ContinueDeployServiceInstanceWithOptions(request *Continue
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ContinueDeployServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ContinueDeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15461,6 +15803,10 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 		query["ArtifactType"] = request.ArtifactType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -15499,13 +15845,24 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15673,13 +16030,24 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15787,13 +16155,24 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15855,13 +16234,24 @@ func (client *Client) CreateServiceUsageWithOptions(request *CreateServiceUsageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15905,6 +16295,10 @@ func (client *Client) DeleteArtifactWithOptions(request *DeleteArtifactRequest, 
 		query["ArtifactVersion"] = request.ArtifactVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15919,13 +16313,24 @@ func (client *Client) DeleteArtifactWithOptions(request *DeleteArtifactRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -15991,13 +16396,24 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16059,13 +16475,24 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16127,13 +16554,24 @@ func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeployServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeployServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16195,13 +16633,24 @@ func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16259,13 +16708,24 @@ func (client *Client) GetArtifactRepositoryCredentialsWithOptions(request *GetAr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetArtifactRepositoryCredentialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetArtifactRepositoryCredentialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetArtifactRepositoryCredentialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16347,13 +16807,24 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16449,13 +16920,24 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceEstimateCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceEstimateCostResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16513,13 +16995,24 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16605,13 +17098,24 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetServiceTemplateParameterConstraintsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetServiceTemplateParameterConstraintsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16669,13 +17173,24 @@ func (client *Client) GetUploadCredentialsWithOptions(request *GetUploadCredenti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetUploadCredentialsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetUploadCredentialsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetUploadCredentialsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16745,13 +17260,24 @@ func (client *Client) LaunchServiceWithOptions(request *LaunchServiceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LaunchServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LaunchServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LaunchServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - LaunchServiceRequest
@@ -16813,13 +17339,24 @@ func (client *Client) ListAcrImageRepositoriesWithOptions(request *ListAcrImageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAcrImageRepositoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAcrImageRepositoriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAcrImageRepositoriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16885,13 +17422,24 @@ func (client *Client) ListAcrImageTagsWithOptions(request *ListAcrImageTagsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAcrImageTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAcrImageTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAcrImageTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -16963,13 +17511,24 @@ func (client *Client) ListArtifactVersionsWithOptions(tmpReq *ListArtifactVersio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17039,13 +17598,24 @@ func (client *Client) ListArtifactsWithOptions(request *ListArtifactsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListArtifactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListArtifactsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListArtifactsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17123,13 +17693,24 @@ func (client *Client) ListServiceInstancesWithOptions(request *ListServiceInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17150,6 +17731,10 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用ListServiceSharedAccounts查看服务共享账号列表。
+//
 // @param request - ListServiceSharedAccountsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17199,15 +17784,30 @@ func (client *Client) ListServiceSharedAccountsWithOptions(request *ListServiceS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 调用ListServiceSharedAccounts查看服务共享账号列表。
+//
 // @param request - ListServiceSharedAccountsRequest
 //
 // @return ListServiceSharedAccountsResponse
@@ -17267,13 +17867,24 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServiceUsagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServiceUsagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17351,13 +17962,24 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListServicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListServicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17419,13 +18041,24 @@ func (client *Client) ModifyServiceInstanceResourcesWithOptions(request *ModifyS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyServiceInstanceResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyServiceInstanceResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyServiceInstanceResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17487,13 +18120,24 @@ func (client *Client) PreLaunchServiceWithOptions(request *PreLaunchServiceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreLaunchServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreLaunchServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreLaunchServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17551,13 +18195,24 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PushMeteringDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PushMeteringDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PushMeteringDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17619,13 +18274,24 @@ func (client *Client) RegisterServiceWithOptions(request *RegisterServiceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RegisterServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RegisterServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RegisterServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17695,13 +18361,24 @@ func (client *Client) RejectServiceUsageWithOptions(request *RejectServiceUsageR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RejectServiceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RejectServiceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RejectServiceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17741,6 +18418,10 @@ func (client *Client) ReleaseArtifactWithOptions(request *ReleaseArtifactRequest
 		query["ArtifactId"] = request.ArtifactId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17755,13 +18436,24 @@ func (client *Client) ReleaseArtifactWithOptions(request *ReleaseArtifactRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17831,13 +18523,24 @@ func (client *Client) RemoveServiceSharedAccountsWithOptions(request *RemoveServ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveServiceSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveServiceSharedAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveServiceSharedAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17899,13 +18602,24 @@ func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -17967,13 +18681,24 @@ func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18035,13 +18760,24 @@ func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18103,13 +18839,24 @@ func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StopServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StopServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18167,6 +18914,10 @@ func (client *Client) UpdateArtifactWithOptions(tmpReq *UpdateArtifactRequest, r
 		query["ArtifactProperty"] = request.ArtifactPropertyShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -18193,13 +18944,24 @@ func (client *Client) UpdateArtifactWithOptions(tmpReq *UpdateArtifactRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateArtifactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateArtifactResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateArtifactResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18367,13 +19129,24 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18449,13 +19222,24 @@ func (client *Client) UpdateServiceInstanceAttributeWithOptions(tmpReq *UpdateSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18535,13 +19319,24 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateServiceInstanceSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateServiceInstanceSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -18621,13 +19416,24 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpgradeServiceInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeServiceInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
