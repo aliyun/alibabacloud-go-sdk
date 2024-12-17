@@ -326,6 +326,7 @@ type BackupFileResponseBody struct {
 	//
 	// 6C8439B9-7DBF-57F4-92AE-55A9B9D3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BackupFileResponseBody) String() string {
@@ -348,6 +349,11 @@ func (s *BackupFileResponseBody) SetData(v []*BackupFileResponseBodyData) *Backu
 
 func (s *BackupFileResponseBody) SetRequestId(v string) *BackupFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *BackupFileResponseBody) SetTaskId(v string) *BackupFileResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -2681,6 +2687,7 @@ type DescribeAppsRequest struct {
 	//
 	// INSTALLING
 	InstallationStatus *string `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
+	MD5                *string `json:"MD5,omitempty" xml:"MD5,omitempty"`
 	// example:
 	//
 	// 10
@@ -2720,6 +2727,11 @@ func (s *DescribeAppsRequest) SetBizRegionId(v string) *DescribeAppsRequest {
 
 func (s *DescribeAppsRequest) SetInstallationStatus(v string) *DescribeAppsRequest {
 	s.InstallationStatus = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetMD5(v string) *DescribeAppsRequest {
+	s.MD5 = &v
 	return s
 }
 
@@ -2787,6 +2799,7 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// 1.0.0
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitempty" xml:"AndroidAppVersion,omitempty"`
+	ApkSize           *string `json:"ApkSize,omitempty" xml:"ApkSize,omitempty"`
 	// example:
 	//
 	// 10404
@@ -2814,6 +2827,7 @@ type DescribeAppsResponseBodyData struct {
 	// INSTALLING
 	InstallationStatus *string   `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
 	InstanceGroupList  []*string `json:"InstanceGroupList,omitempty" xml:"InstanceGroupList,omitempty" type:"Repeated"`
+	MD5                *string   `json:"MD5,omitempty" xml:"MD5,omitempty"`
 	PackageName        *string   `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// example:
 	//
@@ -2831,6 +2845,11 @@ func (s DescribeAppsResponseBodyData) GoString() string {
 
 func (s *DescribeAppsResponseBodyData) SetAndroidAppVersion(v string) *DescribeAppsResponseBodyData {
 	s.AndroidAppVersion = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetApkSize(v string) *DescribeAppsResponseBodyData {
+	s.ApkSize = &v
 	return s
 }
 
@@ -2876,6 +2895,11 @@ func (s *DescribeAppsResponseBodyData) SetInstallationStatus(v string) *Describe
 
 func (s *DescribeAppsResponseBodyData) SetInstanceGroupList(v []*string) *DescribeAppsResponseBodyData {
 	s.InstanceGroupList = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetMD5(v string) *DescribeAppsResponseBodyData {
+	s.MD5 = &v
 	return s
 }
 
@@ -4139,10 +4163,13 @@ func (s *DescribeSpecResponse) SetBody(v *DescribeSpecResponseBody) *DescribeSpe
 }
 
 type DescribeTasksRequest struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	Level    *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
 	// example:
 	//
 	// 10
@@ -4150,17 +4177,21 @@ type DescribeTasksRequest struct {
 	// example:
 	//
 	// FFbc8N4E1iOlcSxC+8boa0HHH2LKWbggYUinyrZWvtS1oTrMYCg1HuMLGuftj0****
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	TaskIds     []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Param        *string   `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParentTaskId *string   `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
+	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	TaskIds      []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Processing
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatus   *string   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatuses []*string `json:"TaskStatuses,omitempty" xml:"TaskStatuses,omitempty" type:"Repeated"`
 	// example:
 	//
 	// StartInstance
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType  *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s DescribeTasksRequest) String() string {
@@ -4171,8 +4202,23 @@ func (s DescribeTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTasksRequest) SetInstanceId(v string) *DescribeTasksRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetInstanceName(v string) *DescribeTasksRequest {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *DescribeTasksRequest) SetInvokeId(v string) *DescribeTasksRequest {
 	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetLevel(v int32) *DescribeTasksRequest {
+	s.Level = &v
 	return s
 }
 
@@ -4183,6 +4229,16 @@ func (s *DescribeTasksRequest) SetMaxResults(v int32) *DescribeTasksRequest {
 
 func (s *DescribeTasksRequest) SetNextToken(v string) *DescribeTasksRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetParam(v string) *DescribeTasksRequest {
+	s.Param = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetParentTaskId(v string) *DescribeTasksRequest {
+	s.ParentTaskId = &v
 	return s
 }
 
@@ -4201,8 +4257,18 @@ func (s *DescribeTasksRequest) SetTaskStatus(v string) *DescribeTasksRequest {
 	return s
 }
 
+func (s *DescribeTasksRequest) SetTaskStatuses(v []*string) *DescribeTasksRequest {
+	s.TaskStatuses = v
+	return s
+}
+
 func (s *DescribeTasksRequest) SetTaskType(v string) *DescribeTasksRequest {
 	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetTaskTypes(v []*string) *DescribeTasksRequest {
+	s.TaskTypes = v
 	return s
 }
 
@@ -4251,16 +4317,23 @@ func (s *DescribeTasksResponseBody) SetTotalCount(v int32) *DescribeTasksRespons
 }
 
 type DescribeTasksResponseBodyData struct {
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg         *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	FailedChildCount *int32  `json:"FailedChildCount,omitempty" xml:"FailedChildCount,omitempty"`
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	FinishTime   *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// example:
 	//
 	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
-	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeId     *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	Level        *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
+	Operator     *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Param        *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParentTaskId *string `json:"ParentTaskId,omitempty" xml:"ParentTaskId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -4268,12 +4341,14 @@ type DescribeTasksResponseBodyData struct {
 	// example:
 	//
 	// acp-25nt4kk9whhok****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Result            *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	RunningChildCount *int32  `json:"RunningChildCount,omitempty" xml:"RunningChildCount,omitempty"`
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SuccessChildCount *int32  `json:"SuccessChildCount,omitempty" xml:"SuccessChildCount,omitempty"`
 	// example:
 	//
 	// t-bp67acfmxazb4p****
@@ -4285,7 +4360,8 @@ type DescribeTasksResponseBodyData struct {
 	// example:
 	//
 	// StartInstance
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TotalChildCount *int32  `json:"TotalChildCount,omitempty" xml:"TotalChildCount,omitempty"`
 }
 
 func (s DescribeTasksResponseBodyData) String() string {
@@ -4306,13 +4382,48 @@ func (s *DescribeTasksResponseBodyData) SetErrorMsg(v string) *DescribeTasksResp
 	return s
 }
 
+func (s *DescribeTasksResponseBodyData) SetFailedChildCount(v int32) *DescribeTasksResponseBodyData {
+	s.FailedChildCount = &v
+	return s
+}
+
 func (s *DescribeTasksResponseBodyData) SetFinishTime(v string) *DescribeTasksResponseBodyData {
 	s.FinishTime = &v
 	return s
 }
 
+func (s *DescribeTasksResponseBodyData) SetInstanceId(v string) *DescribeTasksResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetInstanceName(v string) *DescribeTasksResponseBodyData {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *DescribeTasksResponseBodyData) SetInvokeId(v string) *DescribeTasksResponseBodyData {
 	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetLevel(v int32) *DescribeTasksResponseBodyData {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetOperator(v string) *DescribeTasksResponseBodyData {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetParam(v string) *DescribeTasksResponseBodyData {
+	s.Param = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetParentTaskId(v string) *DescribeTasksResponseBodyData {
+	s.ParentTaskId = &v
 	return s
 }
 
@@ -4331,8 +4442,18 @@ func (s *DescribeTasksResponseBodyData) SetResult(v string) *DescribeTasksRespon
 	return s
 }
 
+func (s *DescribeTasksResponseBodyData) SetRunningChildCount(v int32) *DescribeTasksResponseBodyData {
+	s.RunningChildCount = &v
+	return s
+}
+
 func (s *DescribeTasksResponseBodyData) SetStartTime(v string) *DescribeTasksResponseBodyData {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetSuccessChildCount(v int32) *DescribeTasksResponseBodyData {
+	s.SuccessChildCount = &v
 	return s
 }
 
@@ -4348,6 +4469,11 @@ func (s *DescribeTasksResponseBodyData) SetTaskStatus(v string) *DescribeTasksRe
 
 func (s *DescribeTasksResponseBodyData) SetTaskType(v string) *DescribeTasksResponseBodyData {
 	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetTotalChildCount(v int32) *DescribeTasksResponseBodyData {
+	s.TotalChildCount = &v
 	return s
 }
 
@@ -4747,6 +4873,7 @@ type FetchFileResponseBody struct {
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s FetchFileResponseBody) String() string {
@@ -4764,6 +4891,11 @@ func (s *FetchFileResponseBody) SetData(v []*FetchFileResponseBodyData) *FetchFi
 
 func (s *FetchFileResponseBody) SetRequestId(v string) *FetchFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *FetchFileResponseBody) SetTaskId(v string) *FetchFileResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -4979,6 +5111,7 @@ type InstallAppResponseBody struct {
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s InstallAppResponseBody) String() string {
@@ -4991,6 +5124,11 @@ func (s InstallAppResponseBody) GoString() string {
 
 func (s *InstallAppResponseBody) SetRequestId(v string) *InstallAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *InstallAppResponseBody) SetTaskId(v string) *InstallAppResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6047,6 +6185,7 @@ type RecoveryFileResponseBody struct {
 	//
 	// 6AD56E39-430B-5401-AB4A-7B086454****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RecoveryFileResponseBody) String() string {
@@ -6069,6 +6208,11 @@ func (s *RecoveryFileResponseBody) SetData(v []*RecoveryFileResponseBodyData) *R
 
 func (s *RecoveryFileResponseBody) SetRequestId(v string) *RecoveryFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *RecoveryFileResponseBody) SetTaskId(v string) *RecoveryFileResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6458,6 +6602,7 @@ type SendFileResponseBody struct {
 	//
 	// 425F351C-3F8E-5218-A520-B6311D0D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SendFileResponseBody) String() string {
@@ -6475,6 +6620,11 @@ func (s *SendFileResponseBody) SetData(v []*SendFileResponseBodyData) *SendFileR
 
 func (s *SendFileResponseBody) SetRequestId(v string) *SendFileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *SendFileResponseBody) SetTaskId(v string) *SendFileResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6671,6 +6821,7 @@ func (s *StopAndroidInstanceResponse) SetBody(v *StopAndroidInstanceResponseBody
 type UninstallAppRequest struct {
 	AppIdList           []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
 	InstanceGroupIdList []*string `json:"InstanceGroupIdList,omitempty" xml:"InstanceGroupIdList,omitempty" type:"Repeated"`
+	InstanceIdList      []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 }
 
 func (s UninstallAppRequest) String() string {
@@ -6691,11 +6842,17 @@ func (s *UninstallAppRequest) SetInstanceGroupIdList(v []*string) *UninstallAppR
 	return s
 }
 
+func (s *UninstallAppRequest) SetInstanceIdList(v []*string) *UninstallAppRequest {
+	s.InstanceIdList = v
+	return s
+}
+
 type UninstallAppResponseBody struct {
 	// example:
 	//
 	// E5138F7E-46B5-526A-8C99-82DEAE6B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UninstallAppResponseBody) String() string {
@@ -6708,6 +6865,11 @@ func (s UninstallAppResponseBody) GoString() string {
 
 func (s *UninstallAppResponseBody) SetRequestId(v string) *UninstallAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UninstallAppResponseBody) SetTaskId(v string) *UninstallAppResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -8301,6 +8463,10 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		query["InstallationStatus"] = request.InstallationStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MD5)) {
+		query["MD5"] = request.MD5
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -8813,8 +8979,20 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
 		query["InvokeId"] = request.InvokeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -8823,6 +9001,14 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Param)) {
+		query["Param"] = request.Param
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentTaskId)) {
+		query["ParentTaskId"] = request.ParentTaskId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
@@ -8837,8 +9023,16 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		query["TaskStatus"] = request.TaskStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TaskStatuses)) {
+		query["TaskStatuses"] = request.TaskStatuses
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
 		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskTypes)) {
+		query["TaskTypes"] = request.TaskTypes
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10285,6 +10479,10 @@ func (client *Client) UninstallAppWithOptions(request *UninstallAppRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceGroupIdList)) {
 		query["InstanceGroupIdList"] = request.InstanceGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		query["InstanceIdList"] = request.InstanceIdList
 	}
 
 	req := &openapi.OpenApiRequest{
