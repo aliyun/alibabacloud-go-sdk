@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -356,11 +357,11 @@ type AttachAlbServerGroupsRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the ALB server group. Valid values:
+	// Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the new ALB server group. Valid values:
 	//
-	// 	- true: adds the existing ECS instances or elastic container instances in the scaling group to the ALB server group. In this case, the system returns the value of `ScalingActivityId`.
+	// 	- true: adds the existing ECS instances or elastic container instances in the scaling group to the new ALB server group. In this case, the system returns the value of `ScalingActivityId`.
 	//
-	// 	- false: does not add the existing ECS instances or elastic container instances in the scaling group to the ALB server group.
+	// 	- false: does not add the existing ECS instances or elastic container instances in the scaling group to the new ALB server group.
 	//
 	// Default value: false.
 	//
@@ -939,7 +940,7 @@ type AttachLoadBalancersRequest struct {
 	//
 	//     **
 	//
-	//     **Note*	- If a load balancer is currently attached to your scaling group, and you want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set the ForceAttach request parameter to true.
+	//     **Note*	- If a load balancer is currently attached to your scaling group, and you want to add the instances in your scaling group to the backend server groups of the load balancer, you can call this operation again and set ForceAttach request to true.
 	//
 	// 	- false: If you set this parameter to false, the attachment of the load balancer does not entail the addition of the existing instances in the scaling group to the backend server groups of the load balancer.
 	//
@@ -1815,7 +1816,7 @@ type CompleteLifecycleActionRequest struct {
 	//
 	// CONTINUE
 	LifecycleActionResult *string `json:"LifecycleActionResult,omitempty" xml:"LifecycleActionResult,omitempty"`
-	// The token of the lifecycle hook. You can obtain this token by using a Message Service (MNS) queue or an MNS topic that is specified for the lifecycle hook.
+	// The token of the lifecycle action. You can obtain the token from the Simple Message Queue (SMQ, formerly MNS) queue or topic that is specified for the lifecycle hook.
 	//
 	// This parameter is required.
 	//
@@ -1944,15 +1945,15 @@ func (s *CompleteLifecycleActionResponse) SetBody(v *CompleteLifecycleActionResp
 type CreateAlarmRequest struct {
 	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
 	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
-	// The operator that is used to compare the metric value and the threshold. Valid values:
+	// The operator that you want to use to compare the metric value and the threshold. Valid values:
 	//
-	// 	- If the metric value is greater than or equal to the threshold, set the value to: >=.
+	// 	- If the metric value is greater than or equal to the threshold, set the value to >=.
 	//
-	// 	- If the metric value is less than or equal to the threshold, set the value to: <=.
+	// 	- If the metric value is less than or equal to the metric threshold, set the value to <=.
 	//
-	// 	- If the metric value is greater than the threshold, set the value to: >.
+	// 	- If the metric value is greater than the metric threshold, set the value to >.
 	//
-	// 	- If the metric value is less than the threshold, set the value to: <.
+	// 	- If the metric value is less than the metric threshold, set the value to <.
 	//
 	// Default value: >=.
 	//
@@ -1990,7 +1991,7 @@ type CreateAlarmRequest struct {
 	//
 	// TZ=+00 	- 	- 1-2 	- 	- ?
 	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+	// The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before the scaling rule is executed.
 	//
 	// Default value: 3.
 	//
@@ -2080,11 +2081,11 @@ type CreateAlarmRequest struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the metric. Valid values:
+	// The metric type. Valid values:
 	//
-	// 	- system: system metrics of CloudMonitor
+	// 	- system: system metrics of CloudMonitor.
 	//
-	// 	- custom: custom metrics that are reported to CloudMonitor
+	// 	- custom: custom metrics that are reported to CloudMonitor.
 	//
 	// example:
 	//
@@ -2134,13 +2135,13 @@ type CreateAlarmRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The method that is used to aggregate statistics for the metric. Valid values:
+	// The method that you want to use to aggregate the metric data. Valid values:
 	//
-	// 	- Average
+	// 	- Average: the average value.
 	//
-	// 	- Minimum
+	// 	- Minimum: the minimum value.
 	//
-	// 	- Maximum
+	// 	- Maximum: the maximum value.
 	//
 	// Default value: Average.
 	//
@@ -2541,12 +2542,16 @@ func (s *CreateAlarmResponse) SetBody(v *CreateAlarmResponseBody) *CreateAlarmRe
 }
 
 type CreateDiagnoseReportRequest struct {
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2574,11 +2579,13 @@ func (s *CreateDiagnoseReportRequest) SetScalingGroupId(v string) *CreateDiagnos
 }
 
 type CreateDiagnoseReportResponseBody struct {
+	// The unique ID of the diagnostic report.
+	//
 	// example:
 	//
 	// dr-uf6enpbnri1xhcy9qc7s
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -2789,7 +2796,18 @@ type CreateEciScalingConfigurationRequest struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The version of the GPU driver. Valid values:
+	//
+	// 	- tesla=470.82.01 (default)
+	//
+	// 	- tesla=525.85.12
+	//
+	// >  You can switch the GPU driver version only for a few Elastic Compute Service (ECS) instance types. For more information, see [Specify GPU-accelerated ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/2579486.html).
+	//
+	// example:
+	//
+	// tesla=525.85.12
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The custom hostnames of the containers.
 	HostAliases []*CreateEciScalingConfigurationRequestHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
@@ -4922,23 +4940,25 @@ type CreateLifecycleHookRequest struct {
 	//
 	// SCALE_OUT
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the following rules apply:
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. If you do not specify this parameter, no notification is sent when the lifecycle hook takes effect. If you specify this parameter, the value must be in one of the following formats:
 	//
-	// 	- If you use a Message Service (MNS) queue as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
 	//
-	// 	- If you use an MNS topic as the notification method, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
 	//
-	// 	- If you use an OOS template as the notification method, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+	// 	- If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
 	//
-	// The variables in the preceding parameter formats have the following meanings:
+	// 	- If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
 	//
-	// 	- region-id: the region ID of the scaling group.
+	// The variables in the preceding value formats have the following meanings:
 	//
-	// 	- account-id: the ID of the Alibaba Cloud account. The ID of the RAM user is not supported.
+	// 	- region-id: the region ID of your scaling group.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- account-id: the ID of the Alibaba Cloud account. IDs of Resource Access Management (RAM) users are not supported.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- queuename: the name of the SMQ queue.
+	//
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// 	- templatename: the name of the OOS template.
 	//
@@ -5104,9 +5124,9 @@ type CreateNotificationConfigurationRequest struct {
 	//
 	// 	- If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
 	//
-	// 	- If you specify an MNS queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+	// 	- If you specify an SMQ queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
 	//
-	// 	- If you specify an MNS topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
 	//
 	// The variables in the preceding formats have the following meanings:
 	//
@@ -5114,9 +5134,9 @@ type CreateNotificationConfigurationRequest struct {
 	//
 	// 	- `account-id`: the ID of the Alibaba Cloud account.
 	//
-	// 	- `queuename`: the name of the MNS queue.
+	// 	- `queuename`: the name of the SMQ queue.
 	//
-	// 	- `topicname`: the name of the MNS topic.
+	// 	- `topicname`: the name of the SMQ topic.
 	//
 	// This parameter is required.
 	//
@@ -5344,8 +5364,34 @@ type CreateScalingConfigurationRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// Default value: enabled.
+	//
+	// >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	// Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	//
+	// 	- optional: does not forcibly use the security hardening mode (IMDSv2).
+	//
+	// 	- required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+	//
+	// Default value: optional.
+	//
+	// >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -5378,7 +5424,7 @@ type CreateScalingConfigurationRequest struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determine the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*CreateScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
 	//
@@ -5404,19 +5450,19 @@ type CreateScalingConfigurationRequest struct {
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
+	// 	- If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10, and the default value is 10.
+	//
+	// 	- If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`, and the default value is the value of `InternetMaxBandwidthOut`.
 	//
 	// example:
 	//
 	// 100
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 	//
-	// 	- Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-	//
-	// 	- Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -6477,9 +6523,9 @@ func (s *CreateScalingConfigurationRequestDataDisks) SetSnapshotId(v string) *Cr
 }
 
 type CreateScalingConfigurationRequestInstancePatternInfos struct {
-	// The architecture types of instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
-	// 	- X86: x86.
+	// 	- X86: x86 architecture.
 	//
 	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
 	//
@@ -6487,13 +6533,11 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 	- Arm: Arm.
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster.
-	//
-	// By default, all values are included.
+	// By default, all values are selected.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
 	// Specifies whether to include burstable instance types. Valid values:
 	//
-	// 	- Exclude: does not include burstable instance types.
+	// 	- Exclude: excludes burstable instance types.
 	//
 	// 	- Include: includes burstable instance types.
 	//
@@ -6505,11 +6549,11 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to match the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// Take note of the following items:
 	//
-	// 	- InstancePatternInfos applies only to the scaling groups that reside in virtual private clouds (VPCs).
+	// 	- InstancePatternInfos applies only to scaling groups that reside in virtual private clouds (VPCs).
 	//
 	// 	- If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
 	//
@@ -6519,15 +6563,15 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU architectures of instance types. Valid values:
+	// The CPU architectures of the instance types. Valid values:
 	//
-	// >  You can specify 1 to 2 CPU architectures.
+	// >  You can specify up to two CPU architectures.
 	//
 	// 	- x86
 	//
 	// 	- Arm
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -6535,49 +6579,47 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of instance types. Valid values:
+	// The categories of the instance types. Valid values:
 	//
 	// >  You can specify up to 10 categories.
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type that uses local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type that has high clock speeds.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can use this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// 	- CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
@@ -6613,7 +6655,7 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 4
 	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to match the available instance types.
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
@@ -6667,7 +6709,7 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of instance types. You can specify up to 10 processor models.
+	// The processor models of the instance types. You can specify up to 10 processor models.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
@@ -7050,8 +7092,34 @@ type CreateScalingConfigurationShrinkRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// Default value: enabled.
+	//
+	// >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	// Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	//
+	// 	- optional: does not forcibly use the security hardening mode (IMDSv2).
+	//
+	// 	- required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+	//
+	// Default value: optional.
+	//
+	// >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the most recent custom images that are available in the specified image family are returned. You can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -7084,7 +7152,7 @@ type CreateScalingConfigurationShrinkRequest struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determine the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*CreateScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
 	//
@@ -7110,19 +7178,19 @@ type CreateScalingConfigurationShrinkRequest struct {
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// Default value: 200 This parameter is not used for billing because inbound traffic to instances is free of charge.
+	// 	- If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10, and the default value is 10.
+	//
+	// 	- If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`, and the default value is the value of `InternetMaxBandwidthOut`.
 	//
 	// example:
 	//
 	// 100
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
 	//
-	// 	- Valid values if you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
-	//
-	// 	- Valid values if you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -8183,9 +8251,9 @@ func (s *CreateScalingConfigurationShrinkRequestDataDisks) SetSnapshotId(v strin
 }
 
 type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
-	// The architecture types of instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
-	// 	- X86: x86.
+	// 	- X86: x86 architecture.
 	//
 	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
 	//
@@ -8193,13 +8261,11 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 	- Arm: Arm.
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster.
-	//
-	// By default, all values are included.
+	// By default, all values are selected.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
 	// Specifies whether to include burstable instance types. Valid values:
 	//
-	// 	- Exclude: does not include burstable instance types.
+	// 	- Exclude: excludes burstable instance types.
 	//
 	// 	- Include: includes burstable instance types.
 	//
@@ -8211,11 +8277,11 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to match the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// Take note of the following items:
 	//
-	// 	- InstancePatternInfos applies only to the scaling groups that reside in virtual private clouds (VPCs).
+	// 	- InstancePatternInfos applies only to scaling groups that reside in virtual private clouds (VPCs).
 	//
 	// 	- If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
 	//
@@ -8225,15 +8291,15 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU architectures of instance types. Valid values:
+	// The CPU architectures of the instance types. Valid values:
 	//
-	// >  You can specify 1 to 2 CPU architectures.
+	// >  You can specify up to two CPU architectures.
 	//
 	// 	- x86
 	//
 	// 	- Arm
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -8241,49 +8307,47 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of instance types. Valid values:
+	// The categories of the instance types. Valid values:
 	//
 	// >  You can specify up to 10 categories.
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type that uses local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type that has high clock speeds.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can use this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to match the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// 	- CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
@@ -8319,7 +8383,7 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 4
 	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to match the available instance types.
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
@@ -8373,7 +8437,7 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of instance types. You can specify up to 10 processor models.
+	// The processor models of the instance types. You can specify up to 10 processor models.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
@@ -8750,7 +8814,8 @@ type CreateScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance       *bool                                     `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	// The capacity options.
 	CapacityOptions *CreateScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -9391,10 +9456,46 @@ func (s *CreateScalingGroupRequestAlbServerGroups) SetWeight(v int32) *CreateSca
 }
 
 type CreateScalingGroupRequestCapacityOptions struct {
-	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// Specifies whether to automatically create pay-as-you-go ECS instances to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: true.
+	//
+	// example:
+	//
+	// true
+	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	// The minimum number of pay-as-you-go instances required in the scaling group. When the number of pay-as-you-go instances drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	//
+	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
+	//
+	// example:
+	//
+	// 30
+	OnDemandBaseCapacity *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100.
+	//
+	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
+	//
+	// example:
+	//
+	// 20
 	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible instances to replace the surplus pay-as-you-go instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
+	SpotAutoReplaceOnDemand *bool `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
 }
 
 func (s CreateScalingGroupRequestCapacityOptions) String() string {
@@ -9751,17 +9852,17 @@ func (s *CreateScalingGroupRequestServerGroups) SetWeight(v int32) *CreateScalin
 }
 
 type CreateScalingGroupRequestTags struct {
-	// The tag key that you want to add to the scaling group.
+	// The tag key.
 	//
 	// example:
 	//
 	// Department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Specifies whether to propagate the tag that you want to add to the scaling group. Valid values:
+	// Specifies whether to propagate the tag that you want to add. Valid values:
 	//
-	// 	- true: propagates the tag to only instances that are newly created.
+	// 	- true: propagates the tag to new instances.
 	//
-	// 	- false: does not propagate the tag to any instances.
+	// 	- false: does not propagate the tag to any instance.
 	//
 	// Default value: false.
 	//
@@ -9769,7 +9870,7 @@ type CreateScalingGroupRequestTags struct {
 	//
 	// false
 	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// The tag value that you want to add to the scaling group.
+	// The tag value.
 	//
 	// example:
 	//
@@ -10136,9 +10237,9 @@ type CreateScalingRuleRequest struct {
 	//
 	// 	- StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
 	//
-	// 	- PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
+	// 	- PredictiveScalingRule: a predictive scaling rule. After you execute a predictive scaling rule, Auto Scaling uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
 	//
-	// Default value: SimpleScalingRule
+	// Default value: SimpleScalingRule.
 	//
 	// example:
 	//
@@ -11235,23 +11336,23 @@ func (s *DeleteLifecycleHookResponse) SetBody(v *DeleteLifecycleHookResponseBody
 }
 
 type DeleteNotificationConfigurationRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
 	//
-	// 	- If you use CloudMonitor as the notification party, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
+	// 	- If you specify CloudMonitor as the notification recipient, specify the value in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
 	//
-	// 	- If you use an MNS queue as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
+	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
 	//
-	// 	- If you use an MNS topic as the notification party, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+	// 	- If you specify an SMQ queue as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
 	//
-	// The variables in the preceding formats have the following meanings:
+	// The variables in the preceding value formats have the following meanings:
 	//
 	// 	- region-id: the region ID of the scaling group.
 	//
-	// 	- account-id: the ID of the Alibaba Cloud account.
+	// 	- account-id: the ID of your Alibaba Cloud cloud.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- queuename: the name of the SMQ queue.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// This parameter is required.
 	//
@@ -12704,21 +12805,30 @@ func (s *DescribeAlertConfigurationResponse) SetBody(v *DescribeAlertConfigurati
 }
 
 type DescribeDiagnoseReportsRequest struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the diagnostic reports. You can specify at most 20 IDs.
 	ReportIds []*string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty" type:"Repeated"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12761,21 +12871,28 @@ func (s *DescribeDiagnoseReportsRequest) SetScalingGroupId(v string) *DescribeDi
 }
 
 type DescribeDiagnoseReportsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Reports  []*DescribeDiagnoseReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
-	// Id of the request
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The diagnostic reports.
+	Reports []*DescribeDiagnoseReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ECA123C6-107B-5F70-A177-740A7224C996
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of diagnostic reports.
+	//
 	// example:
 	//
 	// 5
@@ -12816,31 +12933,56 @@ func (s *DescribeDiagnoseReportsResponseBody) SetTotalCount(v int32) *DescribeDi
 }
 
 type DescribeDiagnoseReportsResponseBodyReports struct {
+	// The time when the diagnostic report was created.
+	//
 	// example:
 	//
 	// 2024-08-23T02:22:30Z
-	CreationTime *string                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Details      []*DescribeDiagnoseReportsResponseBodyReportsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The details of the diagnostic report.
+	Details []*DescribeDiagnoseReportsResponseBodyReportsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The status of the diagnostic item. Only the severe status is displayed in the diagnostic report. Valid values:
+	//
+	// 	- Normal: The diagnostic result is normal.
+	//
+	// 	- Warn: The diagnostic result is warning.
+	//
+	// 	- Critical: The diagnostic result is critical.
+	//
 	// example:
 	//
 	// Normal
 	DiagnoseStatus *string `json:"DiagnoseStatus,omitempty" xml:"DiagnoseStatus,omitempty"`
+	// The status of the diagnostic report. Valid values:
+	//
+	// 	- processing: The diagnosis is in progress.
+	//
+	// 	- Finished: The diagnosis is complete.
+	//
 	// example:
 	//
 	// Finished
 	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the diagnostic report.
+	//
 	// example:
 	//
 	// dr-bp14p0cjp7wvjob5l6hk
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// example:
 	//
 	// asg-bp124uve5iph3*****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// The user ID of the scaling group.
+	//
 	// example:
 	//
 	// 161456884*******
@@ -12896,18 +13038,68 @@ func (s *DescribeDiagnoseReportsResponseBodyReports) SetUserId(v string) *Descri
 }
 
 type DescribeDiagnoseReportsResponseBodyReportsDetails struct {
+	// The type of the diagnostic item. Valid values:
+	//
+	// 	- AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
+	//
+	// 	- AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account at the China site (aliyun.com) is greater than or equal to CNY 100.
+	//
+	// 	- ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
+	//
+	// 	- VSwitch: Checks whether a specific vSwitch can work as expected. For example, if a vSwitch is deleted, the vSwitch cannot provide services and an exception occurs.
+	//
+	// 	- SecurityGroup: Checks whether a specific security group can work as expected. For example, if a security group is deleted, the security group cannot provide services and an exception occurs.
+	//
+	// 	- KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
+	//
+	// 	- SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+	//
+	// 	- AlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the ALB instances associated with the scaling group has reached the upper limit.
+	//
+	// 	- NlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the NLB instances associated with the scaling group has reached the upper limit.
+	//
 	// example:
 	//
 	// AccountArrearage
 	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
+	// The error code of the diagnostic item. Valid values:
+	//
+	// 	- VSwitchIdNotFound: The vSwitch does not exist.
+	//
+	// 	- SecurityGroupNotFound: The security group does not exist.
+	//
+	// 	- KeyPairNotFound: The key pair does not exist.
+	//
+	// 	- SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+	//
+	// 	- AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
+	//
+	// 	- NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
+	//
+	// 	- AccountArrearage: Your account has overdue payments.
+	//
+	// 	- AccountNotEnoughBalance: The balance of your Alibaba Cloud account is less than CNY 100.
+	//
+	// 	- ElasticStrengthAlert: The inventory levels are lower than expected.
+	//
 	// example:
 	//
 	// VSwitchIdNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The ID of the resource.
+	//
 	// example:
 	//
 	// sg-280ih****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The status of the diagnostic item. Valid values:
+	//
+	// 	- Normal: The diagnostic result is normal.
+	//
+	// 	- Warn: The diagnostic result is warning.
+	//
+	// 	- Critical: The diagnostic result is critical.
+	//
 	// example:
 	//
 	// Normal
@@ -15570,7 +15762,12 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The version of the GPU driver.
+	//
+	// example:
+	//
+	// tesla=470.82.01
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
 	HostAliases []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
@@ -17553,12 +17750,24 @@ func (s *DescribeEciScalingConfigurationsResponse) SetBody(v *DescribeEciScaling
 
 type DescribeElasticStrengthRequest struct {
 	DataDiskCategories []*string `json:"DataDiskCategories,omitempty" xml:"DataDiskCategories,omitempty" type:"Repeated"`
-	ImageFamily        *string   `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	ImageId            *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName          *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// CentOS7
+	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
+	// example:
+	//
+	// centos6u5_64_20G_aliaegis****.vhd
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// ubuntu_18_04_x64_20G_alibase_20231225.vhd
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The instance types. The instance types specified by this parameter overwrite the instance types specified in the scaling configuration.
-	InstanceTypes    []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	Ipv6AddressCount *int32    `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The preemption policy that you want to apply to pay-as-you-go instances. The preemption policy specified by this parameter overwrites the preemption policy specified in the scaling configuration. Valid values:
 	//
 	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
@@ -17589,7 +17798,10 @@ type DescribeElasticStrengthRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The IDs of the scaling groups that you want to query.
 	ScalingGroupIds []*string `json:"ScalingGroupIds,omitempty" xml:"ScalingGroupIds,omitempty" type:"Repeated"`
-	SpotStrategy    *string   `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// example:
+	//
+	// NoSpot
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The categories of the system disks. The categories of the system disks specified by this parameter overwrite the categories of the system disks specified in the scaling configuration. Valid values:
 	//
 	// 	- cloud: basic disk.
@@ -17677,7 +17889,7 @@ func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeEla
 }
 
 type DescribeElasticStrengthResponseBody struct {
-	// The scaling strength models.
+	// The scaling strengths of scaling configurations that are queried at the same time.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -18660,7 +18872,7 @@ func (s *DescribeLifecycleHooksRequest) SetScalingGroupId(v string) *DescribeLif
 }
 
 type DescribeLifecycleHooksResponseBody struct {
-	// The details of the lifecycle hooks.
+	// Details about the lifecycle hooks.
 	LifecycleHooks []*DescribeLifecycleHooksResponseBodyLifecycleHooks `json:"LifecycleHooks,omitempty" xml:"LifecycleHooks,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -18762,27 +18974,27 @@ type DescribeLifecycleHooksResponseBodyLifecycleHooks struct {
 	//
 	// SCALE_OUT
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter is in one of the following formats:
+	// The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter must be in one of the following formats:
 	//
-	// 	- If you did not specify this parameter, the return value is in the `acs:ess:{region-id}:{account-id}:null/null` format.
+	// 	- If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
 	//
-	// 	- If you specified a Message Service (MNS) queue as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
 	//
-	// 	- If you specified an MNS topic as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+	// 	- If you specify an SMQ as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
 	//
-	// 	- If you specified a CloudOps Orchestration Service (OOS) template as the notification recipient, the return value is in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
+	// 	- If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
 	//
-	// 	- If you specified an event bus as the notification recipient, the return value is in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
+	// 	- If you specify an event bus as the notification recipient, specify the value in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
 	//
-	// The variables in the preceding formats have the following meanings:
+	// The variables in the preceding value formats have the following meanings:
 	//
 	// 	- region-id: the region ID of your scaling group.
 	//
-	// 	- account-id: the ID of your Alibaba Cloud.
+	// 	- account-id: the ID of your Alibaba Cloud account.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- queuename: the name of the SMQ queue.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// 	- templatename: the name of the OOS template.
 	//
@@ -19211,23 +19423,23 @@ func (s *DescribeNotificationConfigurationsResponseBody) SetRequestId(v string) 
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
 	//
-	// 	- If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
+	// 	- If you specify CloudMonitor as the notification recipient, the value is in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
 	//
-	// 	- If you use a Message Service (MNS) queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
+	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, the value is in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
 	//
-	// 	- If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+	// 	- If you specify an SMQ topic as the notification recipient, the value is in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
 	//
-	// The variables in the preceding formats have the following meanings:
+	// The variables in the preceding value formats have the following meanings:
 	//
-	// 	- region-id: the region ID of the scaling group.
+	// 	- region-id: the region ID of your scaling group.
 	//
-	// 	- account-id: the ID of the Alibaba Cloud account.
+	// 	- account-id: the ID of your Alibaba Cloud account.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- queuename: the name of the SMQ queue.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// example:
 	//
@@ -19404,17 +19616,15 @@ func (s *DescribeNotificationTypesResponse) SetBody(v *DescribeNotificationTypes
 }
 
 type DescribePatternTypesRequest struct {
-	// The architectures of instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
-	// 	- X86: x86
+	// 	- X86: x86 architecture.
 	//
-	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
 	//
-	// 	- BareMetal: ECS Bare Metal Instance
+	// 	- BareMetal: ECS Bare Metal Instance.
 	//
-	// 	- Arm: Arm
-	//
-	// 	- SuperComputeCluster: Super Computing Cluster
+	// 	- Arm: Arm.
 	//
 	// By default, all values are selected.
 	Architecture []*string `json:"Architecture,omitempty" xml:"Architecture,omitempty" type:"Repeated"`
@@ -19457,39 +19667,37 @@ type DescribePatternTypesRequest struct {
 	ExcludedInstanceType []*string `json:"ExcludedInstanceType,omitempty" xml:"ExcludedInstanceType,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of the instance types. Valid values:
+	// The classifications of the instance types. Valid values:
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type with local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type with high clock speeds.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
 	// The level of the instance family. Valid values:
 	//
@@ -19611,7 +19819,8 @@ type DescribePatternTypesRequest struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The IDs of the vSwitches.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
-	ZoneId    []*string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" type:"Repeated"`
+	// The zone IDs. If you pass vSwitch IDs to the system, this parameter does not take effect.
+	ZoneId []*string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" type:"Repeated"`
 }
 
 func (s DescribePatternTypesRequest) String() string {
@@ -20083,6 +20292,8 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeScalingActivitiesRequest struct {
+	// The ID of the instance refresh task. If you specify this parameter, this operation returns the list of scaling activities associated with the instance refresh task.
+	//
 	// example:
 	//
 	// ir-a12ds234fasd*****
@@ -20341,6 +20552,8 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// The specified ECS resource is out of stock in this region. Please try again later.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the instance refresh task.
+	//
 	// example:
 	//
 	// ir-asdf12adsxg*****
@@ -20707,7 +20920,7 @@ func (s *DescribeScalingActivityDetailRequest) SetScalingActivityId(v string) *D
 }
 
 type DescribeScalingActivityDetailResponseBody struct {
-	// The details of the scaling activity. If the status of the scaling activity is Rejected, no result is displayed.
+	// The details of the scaling activity. The result of a scaling activity is either successful or failed. If the scaling activity is rejected, no scaling activity details are returned.
 	//
 	// example:
 	//
@@ -21037,8 +21250,26 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// hpc-clus****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	// Indicates whether the access channel is enabled for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// example:
+	//
+	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	// Indicates whether the security hardening mode (IMDSv2) is forcefully used to access instance metadata. Valid values:
+	//
+	// 	- optional: The security hardening mode IMDSv2 is not forcibly used.
+	//
+	// 	- required: The security hardening mode (IMDSv2) is forcibly used. After you set this parameter to required, you cannot access instance metadata in normal mode.
+	//
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
 	//
 	// example:
@@ -21119,17 +21350,13 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum inbound bandwidth. Unit: Mbit/s. Valid values: 1 to 200.
+	// The maximum inbound public bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 200
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound bandwidth. Unit: Mbit/s. Valid values:
-	//
-	// 	- 0 to 1024 if you set InternetChargeType to PayByBandwidth. If you leave this parameter empty, this parameter is automatically set to 0.
-	//
-	// 	- 0 to 1024 if you set InternetChargeType to PayByTraffic. If you leave this parameter empty, an error is returned.
+	// The maximum outbound public bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -21248,9 +21475,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// sg-bp18kz60mefs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of the security groups to which the ECS instances belong. ECS instances that belong to the same security group can communicate with each other.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// 安全选项。
-	SecurityOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
+	SecurityGroupIds []*string                                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the preemptible instances. Unit: hours.
 	//
 	// example:
@@ -22034,17 +22260,15 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsDataDisks
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos struct {
-	// The architecture types of the instance types. Valid values:
+	// The architectures of instance types. Valid values:
 	//
-	// 	- X86: x86
+	// 	- X86: x86.
 	//
-	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
 	//
-	// 	- BareMetal: ECS Bare Metal Instance
+	// 	- BareMetal: ECS Bare Metal Instance.
 	//
-	// 	- Arm: Arm
-	//
-	// 	- SuperComputeCluster: Super Computing Cluster
+	// 	- Arm: Arm.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
 	// Indicates whether burstable instance types are included. Valid values:
 	//
@@ -22080,41 +22304,39 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatte
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of the instance.families. Valid values:
+	// The categories of ECS instances. Valid values:
 	//
-	// >  You can specify 1 to 10 categories.
+	// >  Up to 10 categories of ECS instances are supported.
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type with local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type with high clock speeds.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
 	// The level of the instance family.
 	//
@@ -22419,12 +22641,6 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsScheduler
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsSecurityOptions struct {
-	// 机密计算模式。可能值：
-	//
-	// -  Enclave：表示ECS实例使用Enclave构建机密计算环境。更多信息，请参见[使用Enclave构建机密计算环境](https://help.aliyun.com/document_detail/203433.html)。
-	//
-	// - TDX：表示构建TDX机密计算环境。更多信息，请参见[构建TDX机密计算环境](https://help.aliyun.com/document_detail/479090.html)。
-	//
 	// example:
 	//
 	// TDX
@@ -24125,7 +24341,8 @@ type DescribeScalingGroupsResponseBodyScalingGroups struct {
 	// example:
 	//
 	// false
-	AzBalance       *bool                                                          `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	// The capacity options.
 	CapacityOptions *DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
 	//
@@ -24873,10 +25090,38 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups) SetWeigh
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions struct {
-	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// Indicates whether pay-as-you-go ECS instances can be automatically created to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	// The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	//
+	// example:
+	//
+	// 0
+	OnDemandBaseCapacity *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 0
 	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+	// Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	SpotAutoReplaceOnDemand *bool `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions) String() string {
@@ -26680,10 +26925,24 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The interval at which scheduled task N is repeatedly executed. Valid values:
+	//
+	// 	- Daily: Scheduled task N is executed once every specified number of days.
+	//
+	// 	- Weekly: Scheduled task N is executed on each specified day of a week.
+	//
+	// 	- Monthly: Scheduled task N is executed on each specified day of a month.
+	//
+	// 	- Cron: Scheduled task N is executed based on the specified Cron expression.
+	//
 	// example:
 	//
 	// Weekly
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// The number of times scheduled task N is repeatedly executed.
+	//
+	// You can specify this parameter only if you set RecurrenceType to Weekly. Separate multiple values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
+	//
 	// example:
 	//
 	// 1,2,3
@@ -26710,10 +26969,18 @@ type DescribeScheduledTasksRequest struct {
 	ScheduledTaskIds []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
 	// The names of the scheduled tasks that you want to query.
 	ScheduledTaskNames []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
+	// Specifies whether scheduled task N is enabled.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	// The name of scheduled task N. Fuzzy search based on keywords is supported.
+	//
 	// example:
 	//
 	// scheduled****
@@ -27078,7 +27345,7 @@ type DetachAlbServerGroupsRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to remove the existing ECS instances from the ALB server group. Valid values:
+	// Specifies whether to remove the existing Elastic Compute Service (ECS) instances from the Application Load Balancer (ALB) server group marked for detachment. Valid values:
 	//
 	// 	- true: removes the existing ECS instances from the ALB server group and returns the value of `ScalingActivityId`. You can query the value of ScalingActivityId to check whether the existing ECS instances are removed from the ALB server group.
 	//
@@ -27253,9 +27520,9 @@ func (s *DetachAlbServerGroupsResponse) SetBody(v *DetachAlbServerGroupsResponse
 }
 
 type DetachDBInstancesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
@@ -27284,7 +27551,11 @@ type DetachDBInstancesRequest struct {
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter takes effect only for databases whose AttachMode is set to SecurityGroup. If you set this parameter to true, Auto Scaling removes the security group ID of the active scaling configuration from the security group whitelist of the database that you want to detach from the scaling group.
+	// Specifies whether to remove the security group. This parameter takes effect only if you set `AttachMode` to `SecurityGroup`. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: false.
 	//
@@ -27623,7 +27894,7 @@ type DetachLoadBalancersRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the CLB instance. Valid values:
+	// Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- true
 	//
@@ -29865,11 +30136,11 @@ type ModifyAlarmRequest struct {
 	//
 	// MemoryUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the metric. Valid values:
+	// The metric type. Valid values:
 	//
 	// 	- system: system metrics of CloudMonitor
 	//
-	// 	- custom: custom metrics that are reported to CloudMonitor
+	// 	- custom: custom metrics that are reported to CloudMonitor.
 	//
 	// example:
 	//
@@ -30580,7 +30851,18 @@ type ModifyEciScalingConfigurationRequest struct {
 	// example:
 	//
 	// 20
-	EphemeralStorage *int32  `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	// The version of the GPU driver. Valid values:
+	//
+	// 	- tesla=470.82.01 (default)
+	//
+	// 	- tesla=525.85.12
+	//
+	// >  You can switch the GPU driver version only for a few Elastic Compute Service (ECS) instance types. For more information, see [Specify GPU-accelerated ECS instance types to create an elastic container instance](https://help.aliyun.com/document_detail/2579486.html).
+	//
+	// example:
+	//
+	// tesla=525.85.12
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The hosts.
 	HostAliases []*ModifyEciScalingConfigurationRequestHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
@@ -32861,23 +33143,25 @@ type ModifyLifecycleHookRequest struct {
 	//
 	// SCALE_IN
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. Specify the value in one of the following formats:
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
 	//
-	// 	- If the notification method is a Message Service (MNS) queue, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
 	//
-	// 	- If the notification method is an MNS topic, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
 	//
-	// 	- If the notification method is an Operation Orchestration Service (OOS) template, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+	// 	- If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
 	//
-	// The variables in the preceding parameter formats have the following meanings:
+	// 	- If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
 	//
-	// 	- region-id: the region ID of the scaling group.
+	// The variables in the preceding value formats have the following meanings:
 	//
-	// 	- account-id: the ID of the Alibaba Cloud account.
+	// 	- region-id: the region ID of your scaling group.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- account-id: the ID of your Alibaba Cloud account.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- queuename: the name of the SMQ queue.
+	//
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// 	- templatename: the name of the OOS template.
 	//
@@ -33035,23 +33319,23 @@ func (s *ModifyLifecycleHookResponse) SetBody(v *ModifyLifecycleHookResponseBody
 }
 
 type ModifyNotificationConfigurationRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
+	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
 	//
-	// 	- If you use CloudMonitor as the notification method, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
+	// 	- If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
 	//
-	// 	- If you use an MNS queue as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+	// 	- If you specify a Simple Message Queue (SMQ) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
 	//
-	// 	- If you use an MNS topic as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
 	//
-	// The variables in the preceding formats have the following meanings:
+	// The variables in the preceding value formats have the following meanings:
 	//
 	// 	- region-id: the region ID of your scaling group.
 	//
-	// 	- account-id: the ID of your Alibaba Cloud.
+	// 	- account-id: the ID of your Alibaba Cloud account.
 	//
-	// 	- queuename: the name of the MNS queue.
+	// 	- queuename: the name of the SMQ queue.
 	//
-	// 	- topicname: the name of the MNS topic.
+	// 	- topicname: the name of the SMQ topic.
 	//
 	// This parameter is required.
 	//
@@ -33275,8 +33559,34 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// Default value: enabled.
+	//
+	// >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	// Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	//
+	// 	- optional: does not forcibly use the security hardening mode (IMDSv2).
+	//
+	// 	- required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+	//
+	// Default value: optional.
+	//
+	// >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -33311,7 +33621,7 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determine the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*ModifyScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
@@ -33328,13 +33638,20 @@ type ModifyScalingConfigurationRequest struct {
 	// example:
 	//
 	// PayByBandwidth
-	InternetChargeType     *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthIn *int32  `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// 	- If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// 	- If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10. The default value is 10.
 	//
-	// 	- If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+	// 	- If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`. The default value is the value of `InternetMaxBandwidthOut`.
+	//
+	// example:
+	//
+	// 10
+	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -33384,7 +33701,7 @@ type ModifyScalingConfigurationRequest struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The ENIs.
 	NetworkInterfaces []*ModifyScalingConfigurationRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
-	// Specifies whether to override existing data. Valid values:
+	// Specifies whether to overwrite existing data. Valid values:
 	//
 	// 	- true
 	//
@@ -34364,7 +34681,7 @@ func (s *ModifyScalingConfigurationRequestDataDisks) SetSnapshotId(v string) *Mo
 }
 
 type ModifyScalingConfigurationRequestInstancePatternInfos struct {
-	// The architectures of instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
 	// 	- X86: x86.
 	//
@@ -34374,13 +34691,11 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 	- Arm: Arm.
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster.
-	//
-	// By default, all values are included.
+	// By default, all values are selected.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
 	// Specifies whether to include burstable instance types. Valid values:
 	//
-	// 	- Exclude: does not include burstable instance types.
+	// 	- Exclude: excludes burstable instance types.
 	//
 	// 	- Include: includes burstable instance types.
 	//
@@ -34406,7 +34721,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU architectures of instance types. Valid values:
+	// The CPU architectures of the instance types. Valid values:
 	//
 	// >  You can specify up to two CPU architectures.
 	//
@@ -34414,7 +34729,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 	- Arm
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -34422,47 +34737,45 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of instance types. Valid values:
+	// The categories of the instance types. Valid values:
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type that uses local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type that has a high clock speed.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to obtain the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios in which high stability is required. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// 	- CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
@@ -34470,7 +34783,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	// The instance families that you want to specify. You can specify up to 10 instance families in each call.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to obtain the available instance types.
 	//
 	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
@@ -34504,7 +34817,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) of each t5 or t6 burstable instance.
 	//
 	// example:
 	//
@@ -34540,7 +34853,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 2
 	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	// The initial vCPU credits per t5 or t6 burstable instance.
+	// The initial vCPU credits of each t5 or t6 burstable instance.
 	//
 	// example:
 	//
@@ -34552,7 +34865,7 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of instance types. You can specify up to 10 processor models.
+	// The processor models of the instance types. You can specify up to 10 processor models.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
@@ -34958,8 +35271,34 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	//
 	// hpc-clusterid
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
+	//
+	// 	- enabled
+	//
+	// 	- disabled
+	//
+	// Default value: enabled.
+	//
+	// >  For information about instance metadata, see [Obtain instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	HttpTokens   *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
+	// Specifies whether to forcibly use the security hardening mode (IMDSv2) to access instance metadata. Valid values:
+	//
+	// 	- optional: does not forcibly use the security hardening mode (IMDSv2).
+	//
+	// 	- required: forcibly uses the security hardening mode (IMDSv2). If you set this parameter to required, you cannot access instance metadata in normal mode.
+	//
+	// Default value: optional.
+	//
+	// >  For more information about instance metadata access modes, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+	//
+	// example:
+	//
+	// optional
+	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
 	// The name of the image family. If you specify this parameter, the latest custom images that are available in the specified image family are returned. Then, you can use the images to create instances. If you specify ImageId, you cannot specify ImageFamily.
 	//
 	// example:
@@ -34994,7 +35333,7 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	//
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determine the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
@@ -35011,13 +35350,20 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	// example:
 	//
 	// PayByBandwidth
-	InternetChargeType     *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthIn *int32  `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values:
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// 	- If you set InternetChargeType to PayByBandwidth: 0 to 100. If you leave this parameter empty, this parameter is automatically set to 0.
+	// 	- If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s, the valid values of this parameter are 1 to 10. The default value is 10.
 	//
-	// 	- If you set InternetChargeType to PayByTraffic: 0 to 100. If you leave this parameter empty, an error is returned.
+	// 	- If the purchased outbound public bandwidth is greater than 10 Mbit/s, the valid values of this parameter are 1 to the value of `InternetMaxBandwidthOut`. The default value is the value of `InternetMaxBandwidthOut`.
+	//
+	// example:
+	//
+	// 10
+	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+	//
+	// Default value: 0.
 	//
 	// example:
 	//
@@ -35067,7 +35413,7 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The ENIs.
 	NetworkInterfaces []*ModifyScalingConfigurationShrinkRequestNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Repeated"`
-	// Specifies whether to override existing data. Valid values:
+	// Specifies whether to overwrite existing data. Valid values:
 	//
 	// 	- true
 	//
@@ -36047,7 +36393,7 @@ func (s *ModifyScalingConfigurationShrinkRequestDataDisks) SetSnapshotId(v strin
 }
 
 type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
-	// The architectures of instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
 	// 	- X86: x86.
 	//
@@ -36057,13 +36403,11 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 	- Arm: Arm.
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster.
-	//
-	// By default, all values are included.
+	// By default, all values are selected.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
 	// Specifies whether to include burstable instance types. Valid values:
 	//
-	// 	- Exclude: does not include burstable instance types.
+	// 	- Exclude: excludes burstable instance types.
 	//
 	// 	- Include: includes burstable instance types.
 	//
@@ -36089,7 +36433,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The CPU architectures of instance types. Valid values:
+	// The CPU architectures of the instance types. Valid values:
 	//
 	// >  You can specify up to two CPU architectures.
 	//
@@ -36097,7 +36441,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 	- Arm
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use an asterisk (\\*) as a wildcard character to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -36105,47 +36449,45 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	// The GPU models.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The categories of instance types. Valid values:
+	// The categories of the instance types. Valid values:
 	//
-	// 	- General-purpose
+	// 	- General-purpose: general-purpose instance type.
 	//
-	// 	- Compute-optimized
+	// 	- Compute-optimized: compute-optimized instance type.
 	//
-	// 	- Memory-optimized
+	// 	- Memory-optimized: memory-optimized instance type.
 	//
-	// 	- Big data
+	// 	- Big data: big data instance type.
 	//
-	// 	- Local SSDs
+	// 	- Local SSDs: instance type that uses local SSDs.
 	//
-	// 	- High Clock Speed
+	// 	- High Clock Speed: instance type that has a high clock speed.
 	//
-	// 	- Enhanced
+	// 	- Enhanced: enhanced instance type.
 	//
-	// 	- Shared
+	// 	- Shared: shared instance type.
 	//
-	// 	- Compute-optimized with GPU
+	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
 	//
-	// 	- Visual Compute-optimized
+	// 	- Visual Compute-optimized: visual compute-optimized instance type.
 	//
-	// 	- Heterogeneous Service
+	// 	- Heterogeneous Service: heterogeneous service instance type.
 	//
-	// 	- Compute-optimized with FPGA
+	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
 	//
-	// 	- Compute-optimized with NPU
+	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
 	//
-	// 	- ECS Bare Metal
+	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
 	//
-	// 	- Super Computing Cluster
-	//
-	// 	- High Performance Compute
+	// 	- High Performance Compute: HPC-optimized instance type.
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to obtain the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry-level (shared instance types). Instance types of this level are the most cost-effective but may not ensure stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios in which high stability is required. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise-level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// 	- CreditEntryLevel: credit entry-level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
@@ -36153,7 +36495,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	// The instance families that you want to specify. You can specify up to 10 instance families in each call.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to obtain the available instance types.
 	//
 	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
@@ -36187,7 +36529,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) of each t5 or t6 burstable instance.
 	//
 	// example:
 	//
@@ -36223,7 +36565,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 2
 	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	// The initial vCPU credits per t5 or t6 burstable instance.
+	// The initial vCPU credits of each t5 or t6 burstable instance.
 	//
 	// example:
 	//
@@ -36235,7 +36577,7 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of instance types. You can specify up to 10 processor models.
+	// The processor models of the instance types. You can specify up to 10 processor models.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
@@ -36628,7 +36970,8 @@ type ModifyScalingGroupRequest struct {
 	// example:
 	//
 	// false
-	AzBalance       *bool                                     `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	AzBalance *bool `json:"AzBalance,omitempty" xml:"AzBalance,omitempty"`
+	// The capacity options.
 	CapacityOptions *ModifyScalingGroupRequestCapacityOptions `json:"CapacityOptions,omitempty" xml:"CapacityOptions,omitempty" type:"Struct"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
 	//
@@ -37055,10 +37398,44 @@ func (s *ModifyScalingGroupRequest) SetVSwitchIds(v []*string) *ModifyScalingGro
 }
 
 type ModifyScalingGroupRequestCapacityOptions struct {
-	CompensateWithOnDemand              *bool  `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
-	OnDemandBaseCapacity                *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirements on the number of ECS instances in the scaling group when the number of preemptible instances cannot be reached due to reasons such as cost-related issues and insufficient resources. This parameter takes effect only if you set `MultiAZPolicy` in the `CreateScalingGroup` operation to `COST_OPTIMIZED`. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	CompensateWithOnDemand *bool `json:"CompensateWithOnDemand,omitempty" xml:"CompensateWithOnDemand,omitempty"`
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+	//
+	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 0.
+	//
+	// example:
+	//
+	// 30
+	OnDemandBaseCapacity *int32 `json:"OnDemandBaseCapacity,omitempty" xml:"OnDemandBaseCapacity,omitempty"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100
+	//
+	// If you set `MultiAZPolicy` to `COMPOSABLE`, the default value is 100.
+	//
+	// example:
+	//
+	// 20
 	OnDemandPercentageAboveBaseCapacity *int32 `json:"OnDemandPercentageAboveBaseCapacity,omitempty" xml:"OnDemandPercentageAboveBaseCapacity,omitempty"`
-	SpotAutoReplaceOnDemand             *bool  `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
+	// Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// true
+	SpotAutoReplaceOnDemand *bool `json:"SpotAutoReplaceOnDemand,omitempty" xml:"SpotAutoReplaceOnDemand,omitempty"`
 }
 
 func (s ModifyScalingGroupRequestCapacityOptions) String() string {
@@ -37797,6 +38174,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// 2
 	RecurrenceValue      *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
@@ -37903,6 +38281,11 @@ func (s *ModifyScheduledTaskRequest) SetRecurrenceType(v string) *ModifySchedule
 
 func (s *ModifyScheduledTaskRequest) SetRecurrenceValue(v string) *ModifyScheduledTaskRequest {
 	s.RecurrenceValue = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequest) SetRegionId(v string) *ModifyScheduledTaskRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -38123,9 +38506,9 @@ type RecordLifecycleActionHeartbeatRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The time window during which the desired ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
+	// The time window during which the ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
 	//
-	// After you create a lifecycle hook, you can call this operation to extend the time window during which the desired ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the desired ECS instance from a Pending state ahead of schedule.
+	// After you create a lifecycle hook, you can call this operation to extend the time window during which the ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the ECS instance from the Pending state ahead of schedule.
 	//
 	// Default value: 600.
 	//
@@ -38133,11 +38516,11 @@ type RecordLifecycleActionHeartbeatRequest struct {
 	//
 	// 600
 	HeartbeatTimeout *int32 `json:"heartbeatTimeout,omitempty" xml:"heartbeatTimeout,omitempty"`
-	// The action token of the lifecycle hook. You can obtain the token from the details page of the Message Service (MNS) queue specified for the lifecycle hook when the desired ECS instance enters a Pending state.\\
+	// The action token of the lifecycle hook. You can obtain the token from the details page of the Simple Message Queue (SMQ, formerly MNS) queue specified for the lifecycle hook.
 	//
-	// You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.\\
+	// You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.
 	//
-	// If you specified an MNS topic for the lifecycle hook, you can obtain the token from the MNS topic.
+	// If you specified an SMQ topic for the lifecycle hook, you can obtain the token from the MNS topic.
 	//
 	// This parameter is required.
 	//
@@ -38328,17 +38711,17 @@ type RemoveInstancesRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds. Valid values: 30 to 240.
+	// The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
 	//
 	// >
 	//
 	// 	- By default, this parameter inherits the value of StopInstanceTimeout specified in the CreateScalingGroup or ModifyScalingGroup operation. You can also specify a different value for this parameter in the RemoveInstances operation.
 	//
-	// 	- This parameter takes effect only if you set RemovePolicy to release.\\
+	// 	- This parameter takes effect only if you set RemovePolicy to release.
 	//
-	//     If you specify this parameter, the system proceeds with the scale-in process only after the period of time specified by StopInstanceTimeout ends. In this case, the scale-in operation continues regardless of whether the ECS instance enters the Stopped state or not.\\
+	// 	- If you specify this parameter, the system waits for the ECS instance to enter the Stopped state only for up to the specified period of time before continuing with the scale-in operation, regardless of the status of the ECS instance.
 	//
-	//     If you do not specify this parameter, the system proceeds with the scale-in process only after the ECS instance enters the Stopped state. If the ECS instance fails to enter the Stopped state, the scale-in process rolls back, and the scale-in operation is considered as failed.
+	// 	- If you do not specify this parameter, the system continues with the scale-in operation until the ECS instance enters the Stopped state. If the ECS instance is not successfully stopped, the scale-in process is rolled back and considered failed.
 	//
 	// example:
 	//
@@ -38885,11 +39268,11 @@ type ScaleWithAdjustmentRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
 	//
-	// 	- true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
+	// 	- true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
 	//
-	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
 	//
-	// > For more information about the Expected Number of Instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+	// >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
 	//
 	// Default value: false.
 	//
@@ -39196,11 +39579,11 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
 	//
-	// 	- true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
+	// 	- true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
 	//
-	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
 	//
-	// > For more information about the Expected Number of Instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+	// >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
 	//
 	// Default value: false.
 	//
@@ -39685,7 +40068,7 @@ func (s *SetInstancesProtectionResponse) SetBody(v *SetInstancesProtectionRespon
 }
 
 type StartInstanceRefreshRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
@@ -40011,17 +40394,17 @@ type SuspendProcessesRequest struct {
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The types of the processes that you want to suspend. Valid values:
+	// The types of processes that you want to suspend. Valid values:
 	//
-	// 	- scalein: the scale-in process.
+	// 	- ScaleIn: the scale-in process.
 	//
-	// 	- scaleout: the scale-out process.
+	// 	- ScaleOut: the scale-out process.
 	//
-	// 	- healthcheck: the health check process.
+	// 	- HealthCheck: the health check process.
 	//
-	// 	- alarmnotification: the process of executing an event-triggered task.
+	// 	- AlarmNotification: the process of executing an event-triggered task.
 	//
-	// 	- scheduledaction: the process of executing a scheduled task.
+	// 	- ScheduledAction: the process of executing a scheduled task.
 	//
 	// Presently, Auto Scaling supports suspending the five mentioned process types. In cases where more than five types are specified, Auto Scaling will automatically disregard duplicates and proceed with suspending the unique process types.
 	//
@@ -40156,7 +40539,7 @@ type TagResourcesRequest struct {
 	//
 	// scalinggroup
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Details of the tags.
+	// The tags that you want to add to the Auto Scaling resources.
 	//
 	// This parameter is required.
 	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -40201,9 +40584,9 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	// The key of the tag that you want to add to the Auto Scaling resource.
+	// The tag key.
 	//
-	// You cannot specify empty strings as tag keys. The tag key must be 1 to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -40211,9 +40594,9 @@ type TagResourcesRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Specifies whether to propagate the tag that you want to add. Valid values:
 	//
-	// 	- true: propagates the tag only to instances that are newly created and does not propagate the tag to instances that are already running in the scaling group.
+	// 	- true: propagates the tag to new instances.
 	//
-	// 	- false: does not propagate the tag to any instances.
+	// 	- false: does not propagate the tag to any instance.
 	//
 	// Default value: false.
 	//
@@ -40221,9 +40604,9 @@ type TagResourcesRequestTags struct {
 	//
 	// false
 	Propagate *bool `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
-	// The value of the tag that you want to add to the Auto Scaling resource.
+	// The tag value.
 	//
-	// You can specify empty strings as tag values. The tag value must be 0 to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+	// You can specify empty strings as tag values. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -40652,6 +41035,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Ess")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":                  tea.String("ess.aliyuncs.com"),
@@ -40787,13 +41177,24 @@ func (client *Client) ApplyEciScalingConfigurationWithOptions(request *ApplyEciS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyEciScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyEciScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyEciScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40929,13 +41330,24 @@ func (client *Client) ApplyScalingGroupWithOptions(request *ApplyScalingGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41087,13 +41499,24 @@ func (client *Client) AttachAlbServerGroupsWithOptions(request *AttachAlbServerG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachAlbServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachAlbServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachAlbServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41203,13 +41626,24 @@ func (client *Client) AttachDBInstancesWithOptions(request *AttachDBInstancesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachDBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachDBInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachDBInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41349,13 +41783,24 @@ func (client *Client) AttachInstancesWithOptions(request *AttachInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41483,13 +41928,24 @@ func (client *Client) AttachLoadBalancersWithOptions(request *AttachLoadBalancer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachLoadBalancersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachLoadBalancersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachLoadBalancersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41583,13 +42039,24 @@ func (client *Client) AttachServerGroupsWithOptions(request *AttachServerGroupsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41699,13 +42166,24 @@ func (client *Client) AttachVServerGroupsWithOptions(request *AttachVServerGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachVServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachVServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachVServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41760,7 +42238,7 @@ func (client *Client) AttachVServerGroups(request *AttachVServerGroupsRequest) (
 
 // Summary:
 //
-// Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+// Cancels an instance refresh task. Take note that instances whose configurations were already updated by running an instance refresh task remain intact even after you cancel the task.
 //
 // Description:
 //
@@ -41811,18 +42289,29 @@ func (client *Client) CancelInstanceRefreshWithOptions(request *CancelInstanceRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelInstanceRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelInstanceRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelInstanceRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Cancels an instance refresh task. Take note that new instances that are used to replace old instances or that are scaled out still exist after you call this operation.
+// Cancels an instance refresh task. Take note that instances whose configurations were already updated by running an instance refresh task remain intact even after you cancel the task.
 //
 // Description:
 //
@@ -41901,13 +42390,24 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41999,13 +42499,24 @@ func (client *Client) CompleteLifecycleActionWithOptions(request *CompleteLifecy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CompleteLifecycleActionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CompleteLifecycleActionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CompleteLifecycleActionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42147,13 +42658,24 @@ func (client *Client) CreateAlarmWithOptions(request *CreateAlarmRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42188,7 +42710,7 @@ func (client *Client) CreateAlarm(request *CreateAlarmRequest) (_result *CreateA
 
 // Summary:
 //
-// CreateDiagnoseReport
+// Creates a diagnostic report.
 //
 // @param request - CreateDiagnoseReportRequest
 //
@@ -42215,18 +42737,29 @@ func (client *Client) CreateDiagnoseReportWithOptions(request *CreateDiagnoseRep
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDiagnoseReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDiagnoseReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDiagnoseReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// CreateDiagnoseReport
+// Creates a diagnostic report.
 //
 // @param request - CreateDiagnoseReportRequest
 //
@@ -42477,13 +43010,24 @@ func (client *Client) CreateEciScalingConfigurationWithOptions(request *CreateEc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateEciScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateEciScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateEciScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42589,13 +43133,24 @@ func (client *Client) CreateLifecycleHookWithOptions(request *CreateLifecycleHoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLifecycleHookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLifecycleHookResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLifecycleHookResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42632,11 +43187,11 @@ func (client *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (
 //
 // Description:
 //
-//   You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+//   You can specify CloudMonitor system events, Simple Message Queue (SMQ, formerly MNS) topics, or SMQ queues as notification recipients. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or SMQ.
 //
 // 	- You cannot specify the same recipient for notifications of different event types in a scaling group.
 //
-//     For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
+//     For example, you cannot enable the same CloudMonitor system event, SMQ topic, or SMQ queue to receive notifications of different event types in a scaling group.
 //
 // @param request - CreateNotificationConfigurationRequest
 //
@@ -42691,13 +43246,24 @@ func (client *Client) CreateNotificationConfigurationWithOptions(request *Create
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNotificationConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNotificationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNotificationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42706,11 +43272,11 @@ func (client *Client) CreateNotificationConfigurationWithOptions(request *Create
 //
 // Description:
 //
-//   You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+//   You can specify CloudMonitor system events, Simple Message Queue (SMQ, formerly MNS) topics, or SMQ queues as notification recipients. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or SMQ.
 //
 // 	- You cannot specify the same recipient for notifications of different event types in a scaling group.
 //
-//     For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
+//     For example, you cannot enable the same CloudMonitor system event, SMQ topic, or SMQ queue to receive notifications of different event types in a scaling group.
 //
 // @param request - CreateNotificationConfigurationRequest
 //
@@ -43017,13 +43583,24 @@ func (client *Client) CreateScalingConfigurationWithOptions(tmpReq *CreateScalin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43323,13 +43900,24 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43559,13 +44147,24 @@ func (client *Client) CreateScalingRuleWithOptions(request *CreateScalingRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScalingRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScalingRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43729,13 +44328,24 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateScheduledTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateScheduledTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateScheduledTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43825,13 +44435,24 @@ func (client *Client) DeactivateScalingConfigurationWithOptions(request *Deactiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeactivateScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeactivateScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeactivateScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43901,13 +44522,24 @@ func (client *Client) DeleteAlarmWithOptions(request *DeleteAlarmRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43985,13 +44617,24 @@ func (client *Client) DeleteEciScalingConfigurationWithOptions(request *DeleteEc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteEciScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteEciScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteEciScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44085,13 +44728,24 @@ func (client *Client) DeleteLifecycleHookWithOptions(request *DeleteLifecycleHoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteLifecycleHookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLifecycleHookResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLifecycleHookResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44169,13 +44823,24 @@ func (client *Client) DeleteNotificationConfigurationWithOptions(request *Delete
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNotificationConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNotificationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNotificationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44249,13 +44914,24 @@ func (client *Client) DeleteScalingConfigurationWithOptions(request *DeleteScali
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44359,13 +45035,24 @@ func (client *Client) DeleteScalingGroupWithOptions(request *DeleteScalingGroupR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44457,13 +45144,24 @@ func (client *Client) DeleteScalingRuleWithOptions(request *DeleteScalingRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScalingRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScalingRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44533,13 +45231,24 @@ func (client *Client) DeleteScheduledTaskWithOptions(request *DeleteScheduledTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteScheduledTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteScheduledTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteScheduledTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44633,13 +45342,24 @@ func (client *Client) DescribeAlarmsWithOptions(request *DescribeAlarmsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAlarmsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAlarmsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAlarmsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44705,13 +45425,24 @@ func (client *Client) DescribeAlertConfigurationWithOptions(request *DescribeAle
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAlertConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAlertConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAlertConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44734,7 +45465,7 @@ func (client *Client) DescribeAlertConfiguration(request *DescribeAlertConfigura
 
 // Summary:
 //
-// DescribeDiagnoseReports
+// Queries the diagnostic reports.
 //
 // @param request - DescribeDiagnoseReportsRequest
 //
@@ -44761,18 +45492,29 @@ func (client *Client) DescribeDiagnoseReportsWithOptions(request *DescribeDiagno
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiagnoseReportsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnoseReportsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnoseReportsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// DescribeDiagnoseReports
+// Queries the diagnostic reports.
 //
 // @param request - DescribeDiagnoseReportsRequest
 //
@@ -44833,13 +45575,24 @@ func (client *Client) DescribeEciScalingConfigurationDetailWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEciScalingConfigurationDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEciScalingConfigurationDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEciScalingConfigurationDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44929,13 +45682,24 @@ func (client *Client) DescribeEciScalingConfigurationsWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEciScalingConfigurationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEciScalingConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEciScalingConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44958,7 +45722,7 @@ func (client *Client) DescribeEciScalingConfigurations(request *DescribeEciScali
 
 // Summary:
 //
-// DescribeElasticStrength
+// Queries the scaling strength of a scaling configuration. The success rate of scale-out events depends on the scaling strength of the scaling configuration that you want to use. By checking the scaling strength of a scaling configuration, you can enable Auto Scaling to measure its performance and improve specific configurations.
 //
 // @param request - DescribeElasticStrengthRequest
 //
@@ -44985,18 +45749,29 @@ func (client *Client) DescribeElasticStrengthWithOptions(request *DescribeElasti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticStrengthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticStrengthResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticStrengthResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// DescribeElasticStrength
+// Queries the scaling strength of a scaling configuration. The success rate of scale-out events depends on the scaling strength of the scaling configuration that you want to use. By checking the scaling strength of a scaling configuration, you can enable Auto Scaling to measure its performance and improve specific configurations.
 //
 // @param request - DescribeElasticStrengthRequest
 //
@@ -45077,13 +45852,24 @@ func (client *Client) DescribeInstanceRefreshesWithOptions(request *DescribeInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInstanceRefreshesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInstanceRefreshesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInstanceRefreshesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45106,7 +45892,7 @@ func (client *Client) DescribeInstanceRefreshes(request *DescribeInstanceRefresh
 
 // Summary:
 //
-// Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
+// Queries lifecycle hook actions. When you call the DescribeLifecycleActions operation, you can specify parameters such as ScalingActivityId, NextToken, and MaxResults to query the details such as the action status and ID of a lifecycle hook. You can also call this operation to query the IDs of Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect.
 //
 // Description:
 //
@@ -45173,18 +45959,29 @@ func (client *Client) DescribeLifecycleActionsWithOptions(request *DescribeLifec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLifecycleActionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLifecycleActionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLifecycleActionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
+// Queries lifecycle hook actions. When you call the DescribeLifecycleActions operation, you can specify parameters such as ScalingActivityId, NextToken, and MaxResults to query the details such as the action status and ID of a lifecycle hook. You can also call this operation to query the IDs of Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect.
 //
 // Description:
 //
@@ -45214,7 +46011,7 @@ func (client *Client) DescribeLifecycleActions(request *DescribeLifecycleActions
 
 // Summary:
 //
-// Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
+// Queries lifecycle hooks. When you call this operation, you can specify the lifecycle hook ID or scaling group ID to query the details of the desired lifecycle hook, such as the default action after the lifecycle hook times out, scaling activity that corresponds to the lifecycle hook, Alibaba Cloud Resource Name (ARN) of the notification recipient, and effective period of the lifecycle hook.
 //
 // Description:
 //
@@ -45287,18 +46084,29 @@ func (client *Client) DescribeLifecycleHooksWithOptions(request *DescribeLifecyc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLifecycleHooksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLifecycleHooksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLifecycleHooksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
+// Queries lifecycle hooks. When you call this operation, you can specify the lifecycle hook ID or scaling group ID to query the details of the desired lifecycle hook, such as the default action after the lifecycle hook times out, scaling activity that corresponds to the lifecycle hook, Alibaba Cloud Resource Name (ARN) of the notification recipient, and effective period of the lifecycle hook.
 //
 // Description:
 //
@@ -45361,13 +46169,24 @@ func (client *Client) DescribeLimitationWithOptions(request *DescribeLimitationR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLimitationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLimitationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLimitationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45433,13 +46252,24 @@ func (client *Client) DescribeNotificationConfigurationsWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNotificationConfigurationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNotificationConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNotificationConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45497,13 +46327,24 @@ func (client *Client) DescribeNotificationTypesWithOptions(request *DescribeNoti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNotificationTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNotificationTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNotificationTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45553,13 +46394,24 @@ func (client *Client) DescribePatternTypesWithOptions(request *DescribePatternTy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePatternTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePatternTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePatternTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45625,13 +46477,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45733,13 +46596,24 @@ func (client *Client) DescribeScalingActivitiesWithOptions(request *DescribeScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingActivitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingActivitiesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingActivitiesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45770,7 +46644,7 @@ func (client *Client) DescribeScalingActivities(request *DescribeScalingActiviti
 
 // Summary:
 //
-// Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
+// Queries the details of a scaling activity. You can query a scaling activity by its ID. The scaling activity details include the scaling activity status, error code, and error message. You can efficiently troubleshoot issues and analyze service performance based on the error message.
 //
 // @param request - DescribeScalingActivityDetailRequest
 //
@@ -45813,18 +46687,29 @@ func (client *Client) DescribeScalingActivityDetailWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingActivityDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingActivityDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingActivityDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
+// Queries the details of a scaling activity. You can query a scaling activity by its ID. The scaling activity details include the scaling activity status, error code, and error message. You can efficiently troubleshoot issues and analyze service performance based on the error message.
 //
 // @param request - DescribeScalingActivityDetailRequest
 //
@@ -45909,13 +46794,24 @@ func (client *Client) DescribeScalingConfigurationsWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingConfigurationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingConfigurationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingConfigurationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45981,13 +46877,24 @@ func (client *Client) DescribeScalingGroupDetailWithOptions(request *DescribeSca
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingGroupDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingGroupDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingGroupDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46010,7 +46917,7 @@ func (client *Client) DescribeScalingGroupDetail(request *DescribeScalingGroupDe
 
 // Summary:
 //
-// DescribeScalingGroupDiagnoseDetails
+// Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
 //
 // @param request - DescribeScalingGroupDiagnoseDetailsRequest
 //
@@ -46037,18 +46944,29 @@ func (client *Client) DescribeScalingGroupDiagnoseDetailsWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingGroupDiagnoseDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingGroupDiagnoseDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingGroupDiagnoseDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// DescribeScalingGroupDiagnoseDetails
+// Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
 //
 // @param request - DescribeScalingGroupDiagnoseDetailsRequest
 //
@@ -46145,13 +47063,24 @@ func (client *Client) DescribeScalingGroupsWithOptions(request *DescribeScalingG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46265,13 +47194,24 @@ func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScali
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46377,13 +47317,24 @@ func (client *Client) DescribeScalingRulesWithOptions(request *DescribeScalingRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScalingRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScalingRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScalingRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46501,13 +47452,24 @@ func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeSchedul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeScheduledTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeScheduledTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeScheduledTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46589,13 +47551,24 @@ func (client *Client) DetachAlbServerGroupsWithOptions(request *DetachAlbServerG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachAlbServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachAlbServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachAlbServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46618,7 +47591,7 @@ func (client *Client) DetachAlbServerGroups(request *DetachAlbServerGroupsReques
 
 // Summary:
 //
-// Disassociates one or more ApsaraDB RDS instances from a scaling group.
+// Detaches one or more ApsaraDB RDS instances from a scaling group. If you want to decrease the number of ApsaraDB RDS instances attached to your scaling group, you can call the DetachDBInstance operation. This operation liberates ApsaraDB RDS instances from your scaling group, thereby significantly boosting the agility and efficiency in managing and allocating your resources.
 //
 // @param request - DetachDBInstancesRequest
 //
@@ -46677,18 +47650,29 @@ func (client *Client) DetachDBInstancesWithOptions(request *DetachDBInstancesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachDBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachDBInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachDBInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Disassociates one or more ApsaraDB RDS instances from a scaling group.
+// Detaches one or more ApsaraDB RDS instances from a scaling group. If you want to decrease the number of ApsaraDB RDS instances attached to your scaling group, you can call the DetachDBInstance operation. This operation liberates ApsaraDB RDS instances from your scaling group, thereby significantly boosting the agility and efficiency in managing and allocating your resources.
 //
 // @param request - DetachDBInstancesRequest
 //
@@ -46799,13 +47783,24 @@ func (client *Client) DetachInstancesWithOptions(request *DetachInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46909,13 +47904,24 @@ func (client *Client) DetachLoadBalancersWithOptions(request *DetachLoadBalancer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachLoadBalancersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachLoadBalancersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachLoadBalancersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46993,13 +47999,24 @@ func (client *Client) DetachServerGroupsWithOptions(request *DetachServerGroupsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47091,13 +48108,24 @@ func (client *Client) DetachVServerGroupsWithOptions(request *DetachVServerGroup
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachVServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachVServerGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachVServerGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47181,13 +48209,24 @@ func (client *Client) DisableAlarmWithOptions(request *DisableAlarmRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47269,13 +48308,24 @@ func (client *Client) DisableScalingGroupWithOptions(request *DisableScalingGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47349,13 +48399,24 @@ func (client *Client) EnableAlarmWithOptions(request *EnableAlarmRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47467,13 +48528,24 @@ func (client *Client) EnableScalingGroupWithOptions(request *EnableScalingGroupR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47573,13 +48645,24 @@ func (client *Client) EnterStandbyWithOptions(request *EnterStandbyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnterStandbyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnterStandbyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnterStandbyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47695,13 +48778,24 @@ func (client *Client) ExecuteScalingRuleWithOptions(request *ExecuteScalingRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteScalingRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteScalingRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47809,13 +48903,24 @@ func (client *Client) ExitStandbyWithOptions(request *ExitStandbyRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExitStandbyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExitStandbyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExitStandbyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47901,13 +49006,24 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47930,7 +49046,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 
 // Summary:
 //
-// Queries tags. You can call the ListTagResources operation to query tags that are added to Auto Scaling resources, thereby clarifying resource utilization and facilitating efficient management. This operation aids in the automation of resource categorization and permission management processes.
+// Queries tags. You can call the ListTagResources operation to query tags that are added to Auto Scaling resources, thereby clarifying resource utilization and facilitating efficient resource management. This operation aids in the automation of resource categorization and permission management processes.
 //
 // Description:
 //
@@ -47991,18 +49107,29 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries tags. You can call the ListTagResources operation to query tags that are added to Auto Scaling resources, thereby clarifying resource utilization and facilitating efficient management. This operation aids in the automation of resource categorization and permission management processes.
+// Queries tags. You can call the ListTagResources operation to query tags that are added to Auto Scaling resources, thereby clarifying resource utilization and facilitating efficient resource management. This operation aids in the automation of resource categorization and permission management processes.
 //
 // Description:
 //
@@ -48081,13 +49208,24 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48225,13 +49363,24 @@ func (client *Client) ModifyAlarmWithOptions(request *ModifyAlarmRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAlarmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48313,13 +49462,24 @@ func (client *Client) ModifyAlertConfigurationWithOptions(request *ModifyAlertCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAlertConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAlertConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAlertConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48579,13 +49739,24 @@ func (client *Client) ModifyEciScalingConfigurationWithOptions(request *ModifyEc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyEciScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyEciScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyEciScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48665,13 +49836,24 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyInstanceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyInstanceAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyInstanceAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48781,13 +49963,24 @@ func (client *Client) ModifyLifecycleHookWithOptions(request *ModifyLifecycleHoo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyLifecycleHookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyLifecycleHookResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyLifecycleHookResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48873,13 +50066,24 @@ func (client *Client) ModifyNotificationConfigurationWithOptions(request *Modify
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyNotificationConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyNotificationConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyNotificationConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49177,13 +50381,24 @@ func (client *Client) ModifyScalingConfigurationWithOptions(tmpReq *ModifyScalin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyScalingConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyScalingConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyScalingConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49407,13 +50622,24 @@ func (client *Client) ModifyScalingGroupWithOptions(request *ModifyScalingGroupR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyScalingGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyScalingGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyScalingGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49595,13 +50821,24 @@ func (client *Client) ModifyScalingRuleWithOptions(request *ModifyScalingRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyScalingRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyScalingRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49691,6 +50928,10 @@ func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTas
 		query["RecurrenceValue"] = request.RecurrenceValue
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -49733,13 +50974,24 @@ func (client *Client) ModifyScheduledTaskWithOptions(request *ModifyScheduledTas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyScheduledTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyScheduledTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyScheduledTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49839,13 +51091,24 @@ func (client *Client) RebalanceInstancesWithOptions(request *RebalanceInstancesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RebalanceInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RebalanceInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RebalanceInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49888,9 +51151,9 @@ func (client *Client) RebalanceInstances(request *RebalanceInstancesRequest) (_r
 //
 // Description:
 //
-// You can call this operation only when the desired ECS instance enters a Pending state.\\
+// You can call this operation only to extend the time window during which Elastic Compute Service (ECS) instances stay in a Pending state.
 //
-// An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
+// An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in the Pending state up to 20 times.
 //
 // @param request - RecordLifecycleActionHeartbeatRequest
 //
@@ -49945,13 +51208,24 @@ func (client *Client) RecordLifecycleActionHeartbeatWithOptions(request *RecordL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RecordLifecycleActionHeartbeatResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RecordLifecycleActionHeartbeatResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RecordLifecycleActionHeartbeatResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49960,9 +51234,9 @@ func (client *Client) RecordLifecycleActionHeartbeatWithOptions(request *RecordL
 //
 // Description:
 //
-// You can call this operation only when the desired ECS instance enters a Pending state.\\
+// You can call this operation only to extend the time window during which Elastic Compute Service (ECS) instances stay in a Pending state.
 //
-// An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
+// An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in the Pending state up to 20 times.
 //
 // @param request - RecordLifecycleActionHeartbeatRequest
 //
@@ -50073,13 +51347,24 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RemoveInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50167,13 +51452,24 @@ func (client *Client) ResumeInstanceRefreshWithOptions(request *ResumeInstanceRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeInstanceRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeInstanceRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeInstanceRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50196,7 +51492,7 @@ func (client *Client) ResumeInstanceRefresh(request *ResumeInstanceRefreshReques
 
 // Summary:
 //
-// Resumes suspended processes in a scaling group.
+// Resumes suspended processes in a scaling group. This operation allows Auto Scaling to proceed with executing these processes according to their predefined rules and logic. For example, if you resume the health check process in your scaling group, Auto Scaling automatically detects and removes any instances deemed unhealthy from the scaling group.
 //
 // @param request - ResumeProcessesRequest
 //
@@ -50247,18 +51543,29 @@ func (client *Client) ResumeProcessesWithOptions(request *ResumeProcessesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResumeProcessesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResumeProcessesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResumeProcessesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Resumes suspended processes in a scaling group.
+// Resumes suspended processes in a scaling group. This operation allows Auto Scaling to proceed with executing these processes according to their predefined rules and logic. For example, if you resume the health check process in your scaling group, Auto Scaling automatically detects and removes any instances deemed unhealthy from the scaling group.
 //
 // @param request - ResumeProcessesRequest
 //
@@ -50276,7 +51583,7 @@ func (client *Client) ResumeProcesses(request *ResumeProcessesRequest) (_result 
 
 // Summary:
 //
-// Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+// Rolls back an instance refresh task. If an instance refresh task cannot meet your business requirements, you can call the RollbackInstanceRefresh operation. When you roll back an instance refresh task, Auto Scaling creates new instances based on the active scaling configuration to replace the instances whose configurations are already updated by running the task.
 //
 // @param request - RollbackInstanceRefreshRequest
 //
@@ -50323,18 +51630,29 @@ func (client *Client) RollbackInstanceRefreshWithOptions(request *RollbackInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RollbackInstanceRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RollbackInstanceRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RollbackInstanceRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Rolls back an instance refresh task. If the configurations of an instance refresh task cannot meet your business requirements, you can call this operation to roll back the task. During the rollback process, Auto Scaling creates instances based on the active scaling configuration to replace instances that are created based on the configurations of the instance refresh task.
+// Rolls back an instance refresh task. If an instance refresh task cannot meet your business requirements, you can call the RollbackInstanceRefresh operation. When you roll back an instance refresh task, Auto Scaling creates new instances based on the active scaling configuration to replace the instances whose configurations are already updated by running the task.
 //
 // @param request - RollbackInstanceRefreshRequest
 //
@@ -50449,13 +51767,24 @@ func (client *Client) ScaleWithAdjustmentWithOptions(tmpReq *ScaleWithAdjustment
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ScaleWithAdjustmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ScaleWithAdjustmentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ScaleWithAdjustmentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50541,13 +51870,24 @@ func (client *Client) SetGroupDeletionProtectionWithOptions(request *SetGroupDel
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetGroupDeletionProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetGroupDeletionProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetGroupDeletionProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50617,13 +51957,24 @@ func (client *Client) SetInstanceHealthWithOptions(request *SetInstanceHealthReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetInstanceHealthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetInstanceHealthResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetInstanceHealthResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50707,13 +52058,24 @@ func (client *Client) SetInstancesProtectionWithOptions(request *SetInstancesPro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetInstancesProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetInstancesProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetInstancesProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50746,17 +52108,17 @@ func (client *Client) SetInstancesProtection(request *SetInstancesProtectionRequ
 
 // Summary:
 //
-// Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+// Starts an instance refresh task. If you want to apply a new scaling configuration in a scaling group or update the image specified in a scaling configuration, you can call the StartInstanceRefresh operation.
 //
 // Description:
 //
 //   Only one instance refresh task can be executed at a time in a scaling group.
 //
-// 	- Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support instance refresh tasks.
+// 	- You can start instance refresh tasks for Elastic Compute Service (ECS) instances in scaling groups that use the **priority policy*	- as the scaling policy. Scaling groups whose capacity is measured based on the **number of vCPUs*	- and scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support the StartInstanceRefresh operation.
 //
-// 	- During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+// 	- When you start an instance refresh task, scaling events can be completed as expected. Take note that instances that are scaled out use the configurations specified in the instance refresh task.
 //
-// 	- Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+// 	- The StartInstanceRefresh operation does not take effect on instances that are manually added or instances that are in the Standby and Protected states.
 //
 // @param request - StartInstanceRefreshRequest
 //
@@ -50819,28 +52181,39 @@ func (client *Client) StartInstanceRefreshWithOptions(request *StartInstanceRefr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartInstanceRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartInstanceRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartInstanceRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Starts an instance refresh task. If you want to batch update instance images, modify information in scaling configurations, and scale out instances based on new configurations, you can call the StartInstanceRefresh.html operation. After you start an instance refresh task, Auto Scaling gradually creates new instances from the desired configurations provided by the task to replace old instances. When all replacements are complete, the configurations of instances in your scaling group perfectly match your expectations.
+// Starts an instance refresh task. If you want to apply a new scaling configuration in a scaling group or update the image specified in a scaling configuration, you can call the StartInstanceRefresh operation.
 //
 // Description:
 //
 //   Only one instance refresh task can be executed at a time in a scaling group.
 //
-// 	- Instance refresh tasks are currently supported only by scaling groups of the Elastic Compute Service (ECS) type and using **the priority policy**. Scaling groups that use the number of vCPUs as the method to calculate the group capacity or scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support instance refresh tasks.
+// 	- You can start instance refresh tasks for Elastic Compute Service (ECS) instances in scaling groups that use the **priority policy*	- as the scaling policy. Scaling groups whose capacity is measured based on the **number of vCPUs*	- and scaling groups whose instance reclaim mode is **Economical Mode*	- or **Forcibly Recycle*	- do not support the StartInstanceRefresh operation.
 //
-// 	- During the execution of an instance refresh task, scaling events can be complete as expected. Take note that instances that are scaled out use the desired configurations provided by the instance refresh task.
+// 	- When you start an instance refresh task, scaling events can be completed as expected. Take note that instances that are scaled out use the configurations specified in the instance refresh task.
 //
-// 	- Instance refresh tasks does not take effect on instances that are manually added and instances that are in the Standby and Protected states.
+// 	- The StartInstanceRefresh operation does not take effect on instances that are manually added or instances that are in the Standby and Protected states.
 //
 // @param request - StartInstanceRefreshRequest
 //
@@ -50858,7 +52231,7 @@ func (client *Client) StartInstanceRefresh(request *StartInstanceRefreshRequest)
 
 // Summary:
 //
-// Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+// Suspends an instance refresh task. If you are not sure that you want to roll back an ongoing instance refresh task whose configurations you think has an issue, you can call the SuspendInstanceRefresh operation to suspend the task.
 //
 // Description:
 //
@@ -50909,18 +52282,29 @@ func (client *Client) SuspendInstanceRefreshWithOptions(request *SuspendInstance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SuspendInstanceRefreshResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SuspendInstanceRefreshResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SuspendInstanceRefreshResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Suspends an instance refresh task. You can call this operation to suspend an ongoing instance refresh task for observation.
+// Suspends an instance refresh task. If you are not sure that you want to roll back an ongoing instance refresh task whose configurations you think has an issue, you can call the SuspendInstanceRefresh operation to suspend the task.
 //
 // Description:
 //
@@ -50993,13 +52377,24 @@ func (client *Client) SuspendProcessesWithOptions(request *SuspendProcessesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SuspendProcessesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SuspendProcessesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SuspendProcessesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51022,7 +52417,7 @@ func (client *Client) SuspendProcesses(request *SuspendProcessesRequest) (_resul
 
 // Summary:
 //
-// Creates and attaches tags. You can call the TagResources operation to uniformly create and attach tags to your Auto Scaling resources, streamlining resource management. This capability empowers you to categorize resources based on tags, thereby enhancing the overall efficiency of resource allocation and utilization.
+// Creates and adds tags. You can call the TagResources operation to uniformly create and attach tags to your Auto Scaling resources, streamlining resource management. This capability empowers you to categorize resources based on tags, thereby enhancing the overall efficiency of resource allocation and utilization.
 //
 // Description:
 //
@@ -51089,18 +52484,29 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Creates and attaches tags. You can call the TagResources operation to uniformly create and attach tags to your Auto Scaling resources, streamlining resource management. This capability empowers you to categorize resources based on tags, thereby enhancing the overall efficiency of resource allocation and utilization.
+// Creates and adds tags. You can call the TagResources operation to uniformly create and attach tags to your Auto Scaling resources, streamlining resource management. This capability empowers you to categorize resources based on tags, thereby enhancing the overall efficiency of resource allocation and utilization.
 //
 // Description:
 //
@@ -51189,13 +52595,24 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51218,7 +52635,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Checks whether Auto Scaling is authorized to access Elastic Compute Service (ECS) and Elastic Container Instance resources.
+// Checks whether the specified Alibaba Cloud account assumes the AliyunServiceRoleForAutoScaling service-linked role. An account can be used to operate Elastic Compute Service (ECS) instances and elastic container instances only after it assumes the service-linked role.
 //
 // @param request - VerifyAuthenticationRequest
 //
@@ -51265,18 +52682,29 @@ func (client *Client) VerifyAuthenticationWithOptions(request *VerifyAuthenticat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifyAuthenticationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifyAuthenticationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifyAuthenticationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Checks whether Auto Scaling is authorized to access Elastic Compute Service (ECS) and Elastic Container Instance resources.
+// Checks whether the specified Alibaba Cloud account assumes the AliyunServiceRoleForAutoScaling service-linked role. An account can be used to operate Elastic Compute Service (ECS) instances and elastic container instances only after it assumes the service-linked role.
 //
 // @param request - VerifyAuthenticationRequest
 //
@@ -51337,13 +52765,24 @@ func (client *Client) VerifyUserWithOptions(request *VerifyUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &VerifyUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &VerifyUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &VerifyUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:

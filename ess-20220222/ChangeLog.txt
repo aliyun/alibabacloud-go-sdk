@@ -1,3 +1,7 @@
+2024-12-17 Version: v2.10.5
+- Update API ModifyScheduledTask: add param RegionId.
+
+
 2024-12-12 Version: v2.10.4
 - Generated golang 2022-02-22 for Ess.
 
