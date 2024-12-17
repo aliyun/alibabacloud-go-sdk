@@ -481,6 +481,122 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 	return s
 }
 
+type CancelActiveOperationTasksRequest struct {
+	// The IDs of O\\&M events that you want to cancel at a time. Separate multiple IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1508850,1508310,1507849,1506274,1505811
+	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CancelActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksRequest) SetIds(v string) *CancelActiveOperationTasksRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetSecurityToken(v string) *CancelActiveOperationTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponseBody struct {
+	// The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+	//
+	// example:
+	//
+	// 1508850,1508310,1507849,1506274
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F16A51B0-436E-5B84-8326-A18AA150D1C4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetIds(v string) *CancelActiveOperationTasksResponseBody {
+	s.Ids = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetRequestId(v string) *CancelActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponse) SetHeaders(v map[string]*string) *CancelActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetStatusCode(v int32) *CancelActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTasksResponseBody) *CancelActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type CheckCloudResourceAuthorizedRequest struct {
 	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
 	//
@@ -1661,7 +1777,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaCount *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -1700,6 +1817,7 @@ type CreateInstanceRequest struct {
 	//
 	// 2
 	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount  *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
 	//
 	// >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId*	- (recommended for cloud-native cluster instances), or **RestoreTime*	- parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
@@ -1904,6 +2022,11 @@ func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetReplicaCount(v int32) *CreateInstanceRequest {
+	s.ReplicaCount = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -1941,6 +2064,11 @@ func (s *CreateInstanceRequest) SetShardCount(v int32) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetSlaveReadOnlyCount(v int32) *CreateInstanceRequest {
 	s.SlaveReadOnlyCount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSlaveReplicaCount(v int32) *CreateInstanceRequest {
+	s.SlaveReplicaCount = &v
 	return s
 }
 
@@ -2568,18 +2696,42 @@ func (s *CreateInstancesResponse) SetBody(v *CreateInstancesResponseBody) *Creat
 }
 
 type CreateParameterGroupRequest struct {
+	// The service category. Valid values:
+	//
+	// 	- **standard**: Community Edition
+	//
+	// 	- **enterprise**: Enhanced Edition (Tair)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// enterprise
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The engine type. Valid values:
+	//
+	// 	- **redis**: ApsaraDB for Redis Community Edition instance or Tair DRAM-based instance
+	//
+	// 	- **tair_pena**: Tair persistent memory-optimized instance
+	//
+	// 	- **tair_pdb**: Tair ESSD/SSD-based instance
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// redis
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The compatible engine version. Valid values:
+	//
+	// 	- For ApsaraDB for Redis Community Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
+	//
+	// 	- For Tair DRAM-based instances that are compatible with Redis 5.0, 6.0, or 7.0, set the parameter to **5.0**, **6.0**, or **7.0**.
+	//
+	// 	- For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
+	//
+	// 	- For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2588,22 +2740,36 @@ type CreateParameterGroupRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the parameter template. The description must be 0 to 200 characters in length.
+	//
 	// example:
 	//
 	// test
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// The new name of the parameter template. The name must meet the following requirements:
+	//
+	// 	- The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	//
+	// 	- The name can be 8 to 64 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tw_test1
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
+	//
+	// >  The parameters that can be added for different editions are displayed in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"hz":"15","#no_loose_disabled-commands":"flushall"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2684,10 +2850,14 @@ func (s *CreateParameterGroupRequest) SetSecurityToken(v string) *CreateParamete
 }
 
 type CreateParameterGroupResponseBody struct {
+	// The parameter template ID.
+	//
 	// example:
 	//
 	// g-51ii2ienn0dg0xi8****
 	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 62DA5BE5-F9C9-527C-ACCB-4D783C297A3A
@@ -2737,6 +2907,383 @@ func (s *CreateParameterGroupResponse) SetStatusCode(v int32) *CreateParameterGr
 }
 
 func (s *CreateParameterGroupResponse) SetBody(v *CreateParameterGroupResponseBody) *CreateParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTCInstanceRequest struct {
+	// example:
+	//
+	// false
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// 1
+	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// false
+	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// example:
+	//
+	// 000000000
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	DataDisk []*CreateTCInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ubuntu_20_04_64_20G_alibase_20210412
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// PrePaid
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// example:
+	//
+	// tair.kvcache.guis.8.gu60
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// newinstancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NeedEni      *bool   `json:"NeedEni,omitempty" xml:"NeedEni,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 12
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4e******
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// sg-bpcfmyiu4ekp****
+	SecurityGroupId *string                       `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityToken   *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag             []*CreateTCInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vsw-bp1e7clcw529l773d****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1nme44gek34slfc****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateTCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTCInstanceRequest) SetAutoRenew(v string) *CreateTCInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetAutoRenewPeriod(v string) *CreateTCInstanceRequest {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetAutoUseCoupon(v string) *CreateTCInstanceRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetBusinessInfo(v string) *CreateTCInstanceRequest {
+	s.BusinessInfo = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetClientToken(v string) *CreateTCInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetCouponNo(v string) *CreateTCInstanceRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetDataDisk(v []*CreateTCInstanceRequestDataDisk) *CreateTCInstanceRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetDryRun(v bool) *CreateTCInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetImageId(v string) *CreateTCInstanceRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetInstanceChargeType(v string) *CreateTCInstanceRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetInstanceClass(v string) *CreateTCInstanceRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetInstanceName(v string) *CreateTCInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetNeedEni(v bool) *CreateTCInstanceRequest {
+	s.NeedEni = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetNetworkType(v string) *CreateTCInstanceRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetOwnerAccount(v string) *CreateTCInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetOwnerId(v int64) *CreateTCInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetPeriod(v string) *CreateTCInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetRegionId(v string) *CreateTCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetResourceGroupId(v string) *CreateTCInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetResourceOwnerAccount(v string) *CreateTCInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetResourceOwnerId(v int64) *CreateTCInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetSecurityGroupId(v string) *CreateTCInstanceRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetSecurityToken(v string) *CreateTCInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetTag(v []*CreateTCInstanceRequestTag) *CreateTCInstanceRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetVSwitchId(v string) *CreateTCInstanceRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetVpcId(v string) *CreateTCInstanceRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequest) SetZoneId(v string) *CreateTCInstanceRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateTCInstanceRequestDataDisk struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PL0
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateTCInstanceRequestDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTCInstanceRequestDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTCInstanceRequestDataDisk) SetCategory(v string) *CreateTCInstanceRequestDataDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequestDataDisk) SetPerformanceLevel(v string) *CreateTCInstanceRequestDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequestDataDisk) SetSize(v int32) *CreateTCInstanceRequestDataDisk {
+	s.Size = &v
+	return s
+}
+
+type CreateTCInstanceRequestTag struct {
+	// example:
+	//
+	// key1_test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testvalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTCInstanceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTCInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTCInstanceRequestTag) SetKey(v string) *CreateTCInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTCInstanceRequestTag) SetValue(v string) *CreateTCInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateTCInstanceResponseBody struct {
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22179******0904
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTCInstanceResponseBody) SetInstanceId(v string) *CreateTCInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTCInstanceResponseBody) SetOrderId(v int64) *CreateTCInstanceResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateTCInstanceResponseBody) SetRequestId(v string) *CreateTCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTCInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTCInstanceResponse) SetHeaders(v map[string]*string) *CreateTCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTCInstanceResponse) SetStatusCode(v int32) *CreateTCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTCInstanceResponse) SetBody(v *CreateTCInstanceResponseBody) *CreateTCInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2815,7 +3362,8 @@ type CreateTairInstanceRequest struct {
 	// example:
 	//
 	// cb-hyxdof5x9kqb****
-	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	ClusterBackupId        *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
+	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The coupon code.
 	//
 	// example:
@@ -2958,7 +3506,8 @@ type CreateTairInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaCount *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	// The ID of the resource group to which you want to assign the instance.
 	//
 	// >
@@ -3018,6 +3567,7 @@ type CreateTairInstanceRequest struct {
 	//
 	// 1
 	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount  *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
 	//
 	// >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId*	- (recommended for cloud-native cluster instances), or **RestoreTime*	- parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
@@ -3133,6 +3683,11 @@ func (s *CreateTairInstanceRequest) SetClusterBackupId(v string) *CreateTairInst
 	return s
 }
 
+func (s *CreateTairInstanceRequest) SetConnectionStringPrefix(v string) *CreateTairInstanceRequest {
+	s.ConnectionStringPrefix = &v
+	return s
+}
+
 func (s *CreateTairInstanceRequest) SetCouponNo(v string) *CreateTairInstanceRequest {
 	s.CouponNo = &v
 	return s
@@ -3223,6 +3778,11 @@ func (s *CreateTairInstanceRequest) SetRegionId(v string) *CreateTairInstanceReq
 	return s
 }
 
+func (s *CreateTairInstanceRequest) SetReplicaCount(v int32) *CreateTairInstanceRequest {
+	s.ReplicaCount = &v
+	return s
+}
+
 func (s *CreateTairInstanceRequest) SetResourceGroupId(v string) *CreateTairInstanceRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -3265,6 +3825,11 @@ func (s *CreateTairInstanceRequest) SetShardType(v string) *CreateTairInstanceRe
 
 func (s *CreateTairInstanceRequest) SetSlaveReadOnlyCount(v int32) *CreateTairInstanceRequest {
 	s.SlaveReadOnlyCount = &v
+	return s
+}
+
+func (s *CreateTairInstanceRequest) SetSlaveReplicaCount(v int32) *CreateTairInstanceRequest {
+	s.SlaveReplicaCount = &v
 	return s
 }
 
@@ -4845,40 +5410,78 @@ func (s *DescribeActiveOperationTaskResponse) SetBody(v *DescribeActiveOperation
 }
 
 type DescribeActiveOperationTasksRequest struct {
+	// The filter condition that is used to return tasks based on the settings of task cancellation. Default value: -1. Valid values:
+	//
+	// 	- **-1**: returns all tasks.
+	//
+	// 	- **0**: returns only tasks that cannot be canceled.
+	//
+	// 	- **1**: returns only tasks that can be canceled.
+	//
 	// example:
 	//
 	// 1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// The filter condition that is used to return tasks based on the settings of the switching time. Default value: -1. Valid values:
+	//
+	// 	- **-1**: returns all tasks.
+	//
+	// 	- **0**: returns only tasks for which the switching time cannot be changed.
+	//
+	// 	- **1**: returns only tasks for which the switching time can be changed.
+	//
 	// example:
 	//
 	// -1
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The type of task configuration change. Valid values:
+	//
+	// 	- **all*	- (default): The configurations of all O\\&M tasks are changed.
+	//
+	// 	- **S0**: The configurations of tasks initiated to fix exceptions are changed.
+	//
+	// 	- **S1**: The configurations of system O\\&M tasks are changed.
+	//
 	// example:
 	//
 	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The database type. Valid values: **redis**
+	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
+	//
 	// example:
 	//
 	// r-wz96fzmpvpr2qnqnlb
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 25. Maximum value: 100.
+	//
 	// example:
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For Redis instances, set the value to Redis.
+	//
 	// example:
 	//
 	// Redis
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The region ID of the O&M task. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	//
+	// > A value of **all*	- indicates all region IDs.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -4886,10 +5489,26 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The status of operation and maintenance events. It is used to filter and return tasks. The values are as follows:. Valid values:
+	//
+	// 	- **-1**: All events.
+	//
+	// 	- **3**: Events awaiting processing.
+	//
+	// 	- **4**: Events being processed.
+	//
+	// 	- **5**: Events that have successfully ended.
+	//
+	// 	- **6**: Events that have ended in failure.
+	//
+	// 	- **7**: Events that have been canceled.
+	//
 	// example:
 	//
 	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the O\\&M task. If left blank, all types will be queried.
+	//
 	// example:
 	//
 	// all
@@ -4985,19 +5604,28 @@ func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeAct
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
+	// The list of details of O\\&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default 25.
+	//
 	// example:
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2D9F3768-EDA9-4811-943E-42C8006E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	//
 	// example:
 	//
 	// 1
@@ -5038,93 +5666,158 @@ func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) 
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
+	// Indicates whether the task can be canceled. The value 1 indicates that the task can be canceled. The value 0 indicates that the task cannot be canceled.
+	//
 	// example:
 	//
 	// 1
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// Indicates whether the switching time can be changed. The value 1 indicates that the switching time can be changed. The value 0 indicates that the switching time cannot be changed.
+	//
 	// example:
 	//
 	// 1
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// The code of the task level. The value S1 indicates the system O\\&M level. The value S0 indicates the exception fixing level.
+	//
 	// example:
 	//
 	// S1
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// The level of the task in English.
+	//
 	// example:
 	//
 	// System maintenance
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	// The level of the task in Chinese.
+	//
+	// example:
+	//
+	// 系统运维
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The current zone.
+	//
 	// example:
 	//
 	// cn-beijing-h
 	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// The database type of the instance. The return value is **Redis**.
+	//
 	// example:
 	//
 	// redis
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The version of the database engine.
+	//
 	// example:
 	//
 	// 5.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The deadline before which the time to preform the O&M task can be modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+	//
 	// example:
 	//
 	// 2018-05-30T23:59:59Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// The ID of the O\\&M event.
+	//
 	// example:
 	//
 	// 11111
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The impact of the task.
+	//
 	// example:
 	//
 	// TransientDisconnection
 	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
+	// The impact of the task in English.
+	//
 	// example:
 	//
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	// The impact of the task in Chinese.
+	//
+	// example:
+	//
+	// 实例闪断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// The alias and description of the instance.
+	//
 	// example:
 	//
 	// test
 	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// r-bp1lgal1sdvxrz****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss	- format.
+	//
 	// example:
 	//
 	// 04:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-hanghzou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The information about the execution result.
+	//
 	// example:
 	//
 	// userCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// The time when the O\\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2018-05-30T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of operation and maintenance events. Return values
+	//
+	// 	- **3**: Events awaiting processing.
+	//
+	// 	- **4**: Events being processed.
+	//
+	// 	- **5**: Events that have successfully ended.
+	//
+	// 	- **6**: Events that have ended in failure.
+	//
+	// 	- **7**: Events that have been canceled.
+	//
 	// example:
 	//
 	// 5
-	Status      *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of the subinstances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
+	// The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The parameters of the task.
+	//
 	// example:
 	//
 	// {
@@ -5133,14 +5826,23 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// }
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
+	// The type of the O\\&M event.
+	//
 	// example:
 	//
 	// rds_apsaradb_transfer
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The reason for the task in English.
+	//
 	// example:
 	//
 	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	// The reason for the task in Chinese.
+	//
+	// example:
+	//
+	// 小版本升级
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 
@@ -7277,6 +7979,8 @@ type DescribeBackupsRequest struct {
 	//
 	// 11611111
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The backup task ID, returned by CreateBackup. If CreateBackup returns multiple BackupJobIds, you need to use this interface to query each of them separately.
+	//
 	// example:
 	//
 	// 10001
@@ -7311,13 +8015,13 @@ type DescribeBackupsRequest struct {
 	NeedAof      *string `json:"NeedAof,omitempty" xml:"NeedAof,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+	// The page number. The value must be an integer that is greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 30, 50, 100, 200, and 300.
+	// The maximum number of entries per page. Valid values: 30, 50, 100, 200, and 300.
 	//
 	// example:
 	//
@@ -7724,7 +8428,12 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	// example:
 	//
 	// r-bp10noxlhcoim2****-db-1
-	NodeInstanceId    *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	// If the backup includes account information, kernel parameters and whitelist details.
+	//
+	// example:
+	//
+	// {"whitelist":true,"config":true,"account":true}
 	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
 }
 
@@ -12192,19 +12901,21 @@ type DescribeHistoryMonitorValuesRequest struct {
 	IntervalForHistory *string `json:"IntervalForHistory,omitempty" xml:"IntervalForHistory,omitempty"`
 	// The monitoring metrics. Separate the metrics with commas (,). Take CpuUsage as an example:
 	//
-	// 	- To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
+	// 	- Cluster or read/write splitting instances
 	//
-	// 	- To query the CPU utilization of a single data node, specify **CpuUsage*	- and NodeId.
+	//     	- To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
 	//
-	// For more information about the monitoring metrics, see **Additional description of MonitorKeys**.
+	//     	- To query the CPU utilization of a single data node, specify **CpuUsage*	- and NodeId.
+	//
+	// 	- Standard master-replica instances: Specify only **CpuUsage**.
+	//
+	// For more information about monitoring metrics and their descriptions, see [Additional description of MonitorKeys](https://www.alibabacloud.com/help/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis#monitorKeys-note).
 	//
 	// >
 	//
 	// 	- This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
 	//
 	// 	- To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
-	//
-	// [Additional description of MonitorKeys](https://help.aliyun.com/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis)
 	//
 	// example:
 	//
@@ -13386,7 +14097,8 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaCount *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	// The ID of the replica node.
 	//
 	// example:
@@ -13435,6 +14147,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// 2
 	SlaveReadOnlyCount *int64 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount  *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	// The storage capacity of the cloud disk.
 	//
 	// example:
@@ -13688,6 +14401,11 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetR
 	return s
 }
 
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetReplicaCount(v int32) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.ReplicaCount = &v
+	return s
+}
+
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetReplicaId(v string) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.ReplicaId = &v
 	return s
@@ -13720,6 +14438,11 @@ func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetS
 
 func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetSlaveReadOnlyCount(v int64) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
 	s.SlaveReadOnlyCount = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute) SetSlaveReplicaCount(v int32) *DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute {
+	s.SlaveReplicaCount = &v
 	return s
 }
 
@@ -14170,7 +14893,13 @@ type DescribeInstanceConfigResponseBody struct {
 	// example:
 	//
 	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"list-max-ziplist-entries\\":512,\\"list-max-ziplist-value\\":64,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config                                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ParamNoLooseSentinelEnabled              *string `json:"ParamNoLooseSentinelEnabled,omitempty" xml:"ParamNoLooseSentinelEnabled,omitempty"`
+	ParamNoLooseSentinelPasswordFreeAccess   *string `json:"ParamNoLooseSentinelPasswordFreeAccess,omitempty" xml:"ParamNoLooseSentinelPasswordFreeAccess,omitempty"`
+	ParamNoLooseSentinelPasswordFreeCommands *string `json:"ParamNoLooseSentinelPasswordFreeCommands,omitempty" xml:"ParamNoLooseSentinelPasswordFreeCommands,omitempty"`
+	ParamReplMode                            *string `json:"ParamReplMode,omitempty" xml:"ParamReplMode,omitempty"`
+	ParamReplTimeout                         *string `json:"ParamReplTimeout,omitempty" xml:"ParamReplTimeout,omitempty"`
+	ParamSentinelCompatEnable                *string `json:"ParamSentinelCompatEnable,omitempty" xml:"ParamSentinelCompatEnable,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -14189,6 +14918,36 @@ func (s DescribeInstanceConfigResponseBody) GoString() string {
 
 func (s *DescribeInstanceConfigResponseBody) SetConfig(v string) *DescribeInstanceConfigResponseBody {
 	s.Config = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamNoLooseSentinelEnabled(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamNoLooseSentinelEnabled = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamNoLooseSentinelPasswordFreeAccess(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamNoLooseSentinelPasswordFreeAccess = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamNoLooseSentinelPasswordFreeCommands(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamNoLooseSentinelPasswordFreeCommands = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamReplMode(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamReplMode = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamReplTimeout(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamReplTimeout = &v
+	return s
+}
+
+func (s *DescribeInstanceConfigResponseBody) SetParamSentinelCompatEnable(v string) *DescribeInstanceConfigResponseBody {
+	s.ParamSentinelCompatEnable = &v
 	return s
 }
 
@@ -15225,7 +15984,8 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	// example:
 	//
 	// 100000
-	QPS *int64 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	QPS           *int64  `json:"QPS,omitempty" xml:"QPS,omitempty"`
+	ReadOnlyCount *string `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -15237,7 +15997,8 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	// example:
 	//
 	// grr-bp11381ebc16****
-	ReplacateId *string `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
+	ReplacateId  *string `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
+	ReplicaCount *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
@@ -15267,7 +16028,9 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	// example:
 	//
 	// 3
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	ShardCount         *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount  *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	// Details about the tags.
 	Tags *DescribeInstancesResponseBodyInstancesKVStoreInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The username used to connect to the instance. By default, a username named after the instance ID is included.
@@ -15449,6 +16212,11 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetQPS(v int64) 
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetReadOnlyCount(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.ReadOnlyCount = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.RegionId = &v
 	return s
@@ -15456,6 +16224,11 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetRegionId(v st
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetReplacateId(v string) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.ReplacateId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetReplicaCount(v int32) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.ReplicaCount = &v
 	return s
 }
 
@@ -15476,6 +16249,16 @@ func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetShardClass(v 
 
 func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetShardCount(v int32) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetSlaveReadOnlyCount(v int32) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.SlaveReadOnlyCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesKVStoreInstance) SetSlaveReplicaCount(v int32) *DescribeInstancesResponseBodyInstancesKVStoreInstance {
+	s.SlaveReplicaCount = &v
 	return s
 }
 
@@ -21982,6 +22765,1148 @@ func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsRespon
 	return s
 }
 
+type DescribeTairKVCacheCustomInstanceAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetInstanceId(v string) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetOwnerAccount(v string) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetOwnerId(v int64) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetResourceOwnerAccount(v string) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetResourceOwnerId(v int64) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeRequest) SetSecurityToken(v string) *DescribeTairKVCacheCustomInstanceAttributeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponseBody struct {
+	// example:
+	//
+	// tair_custom
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 2024-02-21T08:23Z
+	CreateTime *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Disks      *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-05-28T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// m-bp10k5694v6yfevajw**
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// tair.gpu.test.16g
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// newinstancename
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// TairCustom
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// true
+	IsOrderCompleted *bool `json:"IsOrderCompleted,omitempty" xml:"IsOrderCompleted,omitempty"`
+	// example:
+	//
+	// 262144
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// 172.16.49.***
+	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2BE6E619-A657-42E3-AD2D-18F8428A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// sg-bpcfmyiu4ekp****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// 60
+	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// example:
+	//
+	// essd_pl1
+	StorageType *string                                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// vsw-bp1e7clcw529l773d****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1nme44gek34slfc****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-b
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// singlezone
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetArchitectureType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ArchitectureType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetChargeType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetCpu(v int64) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetCreateTime(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetDisks(v *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.Disks = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetEndTime(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetImageId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetInstanceClass(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetInstanceId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetInstanceName(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetInstanceStatus(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetInstanceType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetIsOrderCompleted(v bool) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.IsOrderCompleted = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetMemory(v int64) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetNetworkType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetPrivateIp(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.PrivateIp = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetRegionId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetRequestId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetResourceGroupId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetSecurityGroupId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetStorage(v int64) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.Storage = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetStorageType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetTags(v *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetVSwitchId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetVpcId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetZoneId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBody) SetZoneType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBody {
+	s.ZoneType = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks struct {
+	Disk []*DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk `json:"Disk,omitempty" xml:"Disk,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks) SetDisk(v []*DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisks {
+	s.Disk = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk struct {
+	// example:
+	//
+	// d-5v1aggi3ffoxufb57**
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// data
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) SetDiskId(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) SetSize(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk) SetType(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyDisksDisk {
+	s.Type = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags struct {
+	Tag []*DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags) SetTag(v []*DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag struct {
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag) SetKey(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag) SetValue(v string) *DescribeTairKVCacheCustomInstanceAttributeResponseBodyTagsTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceAttributeResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTairKVCacheCustomInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponse) SetHeaders(v map[string]*string) *DescribeTairKVCacheCustomInstanceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponse) SetStatusCode(v int32) *DescribeTairKVCacheCustomInstanceAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceAttributeResponse) SetBody(v *DescribeTairKVCacheCustomInstanceAttributeResponseBody) *DescribeTairKVCacheCustomInstanceAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-20T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// {\\"extend\\":{\\"workers\\":\\"avg_dispatchers\\"}}
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1000
+	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// example:
+	//
+	// CPUUtilization
+	MetricName   *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 60
+	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-05T08:49:27Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetEndTime(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetExpress(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.Express = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetInstanceId(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetLength(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.Length = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetMetricName(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetOwnerAccount(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetOwnerId(v int64) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetPeriod(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetResourceOwnerAccount(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetResourceOwnerId(v int64) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetSecurityToken(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) SetStartTime(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody struct {
+	// example:
+	//
+	// { “timestamp”: 1490164200000, “Maximum”: 100, “userId”: “1234567898765432”, “Minimum”: 4.55, “instanceId”: “i-bp18abl200xk9599ck7c”, “Average”: 93.84 }
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	// example:
+	//
+	// 212db86sca4384811e0b5e8707ec2****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// F3F44BE3-5419-4B61-9BAC-E66E295A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) SetDatapoints(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody {
+	s.Datapoints = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) SetNextToken(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) SetPeriod(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) SetRequestId(v string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse struct {
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse) SetHeaders(v map[string]*string) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse) SetStatusCode(v int32) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse) SetBody(v *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponseBody) *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesRequest struct {
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// false
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// tair.gpu.test.16g
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// tc-bp16e70a4338****
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// example:
+	//
+	// Normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// TairCustom
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// apitest
+	SearchKey     *string                                         `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SecurityToken *string                                         `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DescribeTairKVCacheCustomInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vsw-bp1e7clcw529l773d****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1nme44gek34slfc****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetChargeType(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetExpired(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.Expired = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetInstanceClass(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetInstanceIds(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetInstanceStatus(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetInstanceType(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetNetworkType(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetOwnerAccount(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetOwnerId(v int64) *DescribeTairKVCacheCustomInstancesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetPageNumber(v int32) *DescribeTairKVCacheCustomInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetPageSize(v int32) *DescribeTairKVCacheCustomInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetRegionId(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetResourceGroupId(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetResourceOwnerAccount(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetResourceOwnerId(v int64) *DescribeTairKVCacheCustomInstancesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetSearchKey(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetSecurityToken(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetTag(v []*DescribeTairKVCacheCustomInstancesRequestTag) *DescribeTairKVCacheCustomInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetVSwitchId(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetVpcId(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequest) SetZoneId(v string) *DescribeTairKVCacheCustomInstancesRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesRequestTag struct {
+	// example:
+	//
+	// key1_test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1_test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequestTag) SetKey(v string) *DescribeTairKVCacheCustomInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesRequestTag) SetValue(v string) *DescribeTairKVCacheCustomInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponseBody struct {
+	Instances *DescribeTairKVCacheCustomInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// B79C1A90-495B-4E99-A2AA-A4DB13B8****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 40
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetInstances(v *DescribeTairKVCacheCustomInstancesResponseBodyInstances) *DescribeTairKVCacheCustomInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetPageNumber(v int32) *DescribeTairKVCacheCustomInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetPageSize(v int32) *DescribeTairKVCacheCustomInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetRequestId(v string) *DescribeTairKVCacheCustomInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBody) SetTotalCount(v int32) *DescribeTairKVCacheCustomInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponseBodyInstances struct {
+	KVStoreInstance []*DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance `json:"KVStoreInstance,omitempty" xml:"KVStoreInstance,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstances) SetKVStoreInstance(v []*DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) *DescribeTairKVCacheCustomInstancesResponseBodyInstances {
+	s.KVStoreInstance = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance struct {
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2018-11-07T08:49:00Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-04-28T10:03:01Z
+	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	// example:
+	//
+	// 2024-05-21T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// tair.gpu.test.16g
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// testdb
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// example:
+	//
+	// TairCustom
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 50
+	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	// example:
+	//
+	// essd_pl1
+	StorageType *string                                                                     `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// vsw-bp1e7clcw529l773d****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp1nme44gek34slfc****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetChargeType(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetCreateTime(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetDestroyTime(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.DestroyTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetEndTime(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetInstanceClass(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetInstanceId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetInstanceName(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetInstanceStatus(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetInstanceType(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetNetworkType(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetRegionId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetResourceGroupId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetStorage(v int64) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.Storage = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetStorageType(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetTags(v *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetVSwitchId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetVpcId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance) SetZoneId(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstance {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags struct {
+	Tag []*DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags) SetTag(v []*DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag struct {
+	// example:
+	//
+	// tagkey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tagvalue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag) SetKey(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag) SetValue(v string) *DescribeTairKVCacheCustomInstancesResponseBodyInstancesKVStoreInstanceTagsTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeTairKVCacheCustomInstancesResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTairKVCacheCustomInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTairKVCacheCustomInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponse) SetHeaders(v map[string]*string) *DescribeTairKVCacheCustomInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponse) SetStatusCode(v int32) *DescribeTairKVCacheCustomInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTairKVCacheCustomInstancesResponse) SetBody(v *DescribeTairKVCacheCustomInstancesResponseBody) *DescribeTairKVCacheCustomInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTasksRequest struct {
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
@@ -23831,6 +25756,175 @@ func (s *LockDBInstanceWriteResponse) SetBody(v *LockDBInstanceWriteResponseBody
 	return s
 }
 
+type MasterNodeShutDownFailOverRequest struct {
+	// The resource category. Set the value to instance.
+	//
+	// example:
+	//
+	// instance
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 	- Specify: This mode allows you to specify a database node to use.
+	//
+	// 	- Random: In this mode, a random database node is selected when no database node is specified.
+	//
+	// example:
+	//
+	// Random
+	DBFaultMode *string `json:"DBFaultMode,omitempty" xml:"DBFaultMode,omitempty"`
+	// The IDs of the database nodes.
+	//
+	// example:
+	//
+	// r-rdsdavinx01003-db-0,r-rdsdavinx01003-db-1
+	DBNodes *string `json:"DBNodes,omitempty" xml:"DBNodes,omitempty"`
+	// 	- Safe: safe shutdown. This mode involves using redis_safe to shut down the Redis process.
+	//
+	// 	- UnSafe: non-secure shutdown. This mode involves using the shutdown command to shut down the Redis process.
+	//
+	// example:
+	//
+	// Safe
+	FailMode *string `json:"FailMode,omitempty" xml:"FailMode,omitempty"`
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 	- Specify: This mode allows you to specify a proxy node to use.
+	//
+	// 	- Random: In this mode, a random proxy node is selected when no proxy node is specified.
+	//
+	// example:
+	//
+	// Specify
+	ProxyFaultMode *string `json:"ProxyFaultMode,omitempty" xml:"ProxyFaultMode,omitempty"`
+	// The IDs of the proxy nodes.
+	//
+	// example:
+	//
+	// 6981,6982
+	ProxyInstanceIds *string `json:"ProxyInstanceIds,omitempty" xml:"ProxyInstanceIds,omitempty"`
+}
+
+func (s MasterNodeShutDownFailOverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MasterNodeShutDownFailOverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetCategory(v string) *MasterNodeShutDownFailOverRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetDBFaultMode(v string) *MasterNodeShutDownFailOverRequest {
+	s.DBFaultMode = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetDBNodes(v string) *MasterNodeShutDownFailOverRequest {
+	s.DBNodes = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetFailMode(v string) *MasterNodeShutDownFailOverRequest {
+	s.FailMode = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetInstanceId(v string) *MasterNodeShutDownFailOverRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetProxyFaultMode(v string) *MasterNodeShutDownFailOverRequest {
+	s.ProxyFaultMode = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverRequest) SetProxyInstanceIds(v string) *MasterNodeShutDownFailOverRequest {
+	s.ProxyInstanceIds = &v
+	return s
+}
+
+type MasterNodeShutDownFailOverResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 12123216-4B00-4378-BE4B-08005BFC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID. For information about how to obtain the ID of a task, see [ListTasks](https://help.aliyun.com/document_detail/454662.html).
+	//
+	// example:
+	//
+	// 17566
+	TaskID *string `json:"TaskID,omitempty" xml:"TaskID,omitempty"`
+}
+
+func (s MasterNodeShutDownFailOverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MasterNodeShutDownFailOverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MasterNodeShutDownFailOverResponseBody) SetDBInstanceId(v string) *MasterNodeShutDownFailOverResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverResponseBody) SetRequestId(v string) *MasterNodeShutDownFailOverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverResponseBody) SetTaskID(v string) *MasterNodeShutDownFailOverResponseBody {
+	s.TaskID = &v
+	return s
+}
+
+type MasterNodeShutDownFailOverResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MasterNodeShutDownFailOverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MasterNodeShutDownFailOverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MasterNodeShutDownFailOverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MasterNodeShutDownFailOverResponse) SetHeaders(v map[string]*string) *MasterNodeShutDownFailOverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverResponse) SetStatusCode(v int32) *MasterNodeShutDownFailOverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MasterNodeShutDownFailOverResponse) SetBody(v *MasterNodeShutDownFailOverResponseBody) *MasterNodeShutDownFailOverResponse {
+	s.Body = v
+	return s
+}
+
 type MigrateToOtherZoneRequest struct {
 	// The ID of the ApsaraDB for Redis instance.
 	//
@@ -24296,7 +26390,7 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 type ModifyActiveOperationTaskRequest struct {
 	// The ID of the O\\&M task. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to query the ID of an O\\&M task.
+	// > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to query the ID of an O\\&M task.
 	//
 	// This parameter is required.
 	//
@@ -24311,7 +26405,7 @@ type ModifyActiveOperationTaskRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to obtain the latest operation time, which is the value of the **Deadline*	- parameter in the response.
+	// > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to obtain the latest operation time, which is the value of the **Deadline*	- parameter in the response.
 	//
 	// This parameter is required.
 	//
@@ -24427,12 +26521,22 @@ func (s *ModifyActiveOperationTaskResponse) SetBody(v *ModifyActiveOperationTask
 }
 
 type ModifyActiveOperationTasksRequest struct {
+	// The IDs of the O\\&M events. Separate multiple event IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1111721,1111718
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to immediately start scheduling. Valid values:
+	//
+	// 	- 0 (default): Scheduling is not started immediately.
+	//
+	// 	- 1: Scheduling is started immediately.
+	//
+	// >  If you set this parameter to 0, the SwitchTime parameter takes effect. If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the event is set to the current time, and the system determines the switching time based on the start time. Scheduling is started immediately, which is a prerequisite for the switchover. Then, the switchover is performed. You can call the DescribeActiveOperationTasks operation to query the preparation time that is returned for the PrepareInterval parameter.
+	//
 	// example:
 	//
 	// 0
@@ -24442,6 +26546,10 @@ type ModifyActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The scheduled switching time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The time that is specified by the SwitchTime parameter cannot be later than the time that is specified by the Deadline parameter. You can call the DescribeActiveOperationTasks operation to query the latest switching time that is returned for the Deadline parameter.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24499,10 +26607,14 @@ func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiv
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
+	// The IDs of the O\\&M events. Separate multiple event IDs with commas (,).
+	//
 	// example:
 	//
 	// 11111,22222
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// E278D833-BB4B-50BF-8646-7BC1BAB2373B
@@ -25885,20 +27997,8 @@ func (s *ModifyInstanceAutoRenewalAttributeResponse) SetBody(v *ModifyInstanceAu
 	return s
 }
 
-type ModifyInstanceConfigRequest struct {
-	// The instance parameter settings that you want to modify. Specify this parameter in the JSON format. The new value of a parameter overwrites the original value.
-	//
-	// **
-	//
-	// **Description*	- For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// {"maxmemory-policy":"volatile-lru","zset-max-ziplist-entries":128,"zset-max-ziplist-value":64,"hash-max-ziplist-entries":512,"set-max-intset-entries":512}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the instance.
+type ModifyInstanceBandwidthRequest struct {
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -25911,6 +28011,153 @@ type ModifyInstanceConfigRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The total expected bandwidth of the instance.
+	//
+	// > If the instance is a cluster instance, the TargetIntranetBandwidth must be divisible by the number of shards in the instance. This operation is not supported for read/write splitting instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 260
+	TargetIntranetBandwidth *string `json:"TargetIntranetBandwidth,omitempty" xml:"TargetIntranetBandwidth,omitempty"`
+}
+
+func (s ModifyInstanceBandwidthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBandwidthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetInstanceId(v string) *ModifyInstanceBandwidthRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetOwnerAccount(v string) *ModifyInstanceBandwidthRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetOwnerId(v int64) *ModifyInstanceBandwidthRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetResourceOwnerAccount(v string) *ModifyInstanceBandwidthRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetResourceOwnerId(v int64) *ModifyInstanceBandwidthRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetSecurityToken(v string) *ModifyInstanceBandwidthRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthRequest) SetTargetIntranetBandwidth(v string) *ModifyInstanceBandwidthRequest {
+	s.TargetIntranetBandwidth = &v
+	return s
+}
+
+type ModifyInstanceBandwidthResponseBody struct {
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 236934422960904
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D622714-AEDD-4609-9167-F5DDD3D1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceBandwidthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBandwidthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) SetOrderId(v string) *ModifyInstanceBandwidthResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) SetRequestId(v string) *ModifyInstanceBandwidthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceBandwidthResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceBandwidthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceBandwidthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBandwidthResponse) SetHeaders(v map[string]*string) *ModifyInstanceBandwidthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthResponse) SetStatusCode(v int32) *ModifyInstanceBandwidthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthResponse) SetBody(v *ModifyInstanceBandwidthResponseBody) *ModifyInstanceBandwidthResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceConfigRequest struct {
+	// The instance parameter settings that you want to modify. Specify this parameter in the JSON format. The new value of a parameter overwrites the original value.
+	//
+	// **
+	//
+	// **Description*	- For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
+	//
+	// example:
+	//
+	// {"maxmemory-policy":"volatile-lru","zset-max-ziplist-entries":128,"zset-max-ziplist-value":64,"hash-max-ziplist-entries":512,"set-max-intset-entries":512}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId                               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount                             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParamNoLooseSentinelEnabled              *string `json:"ParamNoLooseSentinelEnabled,omitempty" xml:"ParamNoLooseSentinelEnabled,omitempty"`
+	ParamNoLooseSentinelPasswordFreeAccess   *string `json:"ParamNoLooseSentinelPasswordFreeAccess,omitempty" xml:"ParamNoLooseSentinelPasswordFreeAccess,omitempty"`
+	ParamNoLooseSentinelPasswordFreeCommands *string `json:"ParamNoLooseSentinelPasswordFreeCommands,omitempty" xml:"ParamNoLooseSentinelPasswordFreeCommands,omitempty"`
+	ParamReplMode                            *string `json:"ParamReplMode,omitempty" xml:"ParamReplMode,omitempty"`
+	ParamSemisyncReplTimeout                 *string `json:"ParamSemisyncReplTimeout,omitempty" xml:"ParamSemisyncReplTimeout,omitempty"`
+	ParamSentinelCompatEnable                *string `json:"ParamSentinelCompatEnable,omitempty" xml:"ParamSentinelCompatEnable,omitempty"`
+	ResourceOwnerAccount                     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken                            *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s ModifyInstanceConfigRequest) String() string {
@@ -25938,6 +28185,36 @@ func (s *ModifyInstanceConfigRequest) SetOwnerAccount(v string) *ModifyInstanceC
 
 func (s *ModifyInstanceConfigRequest) SetOwnerId(v int64) *ModifyInstanceConfigRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamNoLooseSentinelEnabled(v string) *ModifyInstanceConfigRequest {
+	s.ParamNoLooseSentinelEnabled = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamNoLooseSentinelPasswordFreeAccess(v string) *ModifyInstanceConfigRequest {
+	s.ParamNoLooseSentinelPasswordFreeAccess = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamNoLooseSentinelPasswordFreeCommands(v string) *ModifyInstanceConfigRequest {
+	s.ParamNoLooseSentinelPasswordFreeCommands = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamReplMode(v string) *ModifyInstanceConfigRequest {
+	s.ParamReplMode = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamSemisyncReplTimeout(v string) *ModifyInstanceConfigRequest {
+	s.ParamSemisyncReplTimeout = &v
+	return s
+}
+
+func (s *ModifyInstanceConfigRequest) SetParamSentinelCompatEnable(v string) *ModifyInstanceConfigRequest {
+	s.ParamSentinelCompatEnable = &v
 	return s
 }
 
@@ -26641,6 +28918,8 @@ func (s *ModifyInstanceNetExpireTimeResponse) SetBody(v *ModifyInstanceNetExpire
 }
 
 type ModifyInstanceParameterRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26649,15 +28928,27 @@ type ModifyInstanceParameterRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The parameter template ID.
+	//
+	// > You can view the list of parameter templates in the target region, including the parameter template ID, through the DescribeParameterGroups interface.
+	//
 	// example:
 	//
 	// g-idhwofwofewhf****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	// The information about parameters.
+	//
 	// example:
 	//
 	// {"hz": "50"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -26718,6 +29009,8 @@ func (s *ModifyInstanceParameterRequest) SetSecurityToken(v string) *ModifyInsta
 }
 
 type ModifyInstanceParameterResponseBody struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -26728,6 +29021,8 @@ type ModifyInstanceParameterResponseBody struct {
 	//
 	// 561AFBF1-BE20-44DB-9BD1-6988B53E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// 578678678
@@ -27063,6 +29358,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplicaCount         *int32  `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -27078,12 +29374,15 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// 2
 	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
+	SlaveReplicaCount  *int32 `json:"SlaveReplicaCount,omitempty" xml:"SlaveReplicaCount,omitempty"`
 	// The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// SDK
-	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	SourceBiz   *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+	Storage     *int32  `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s ModifyInstanceSpecRequest) String() string {
@@ -27174,6 +29473,11 @@ func (s *ModifyInstanceSpecRequest) SetRegionId(v string) *ModifyInstanceSpecReq
 	return s
 }
 
+func (s *ModifyInstanceSpecRequest) SetReplicaCount(v int32) *ModifyInstanceSpecRequest {
+	s.ReplicaCount = &v
+	return s
+}
+
 func (s *ModifyInstanceSpecRequest) SetResourceOwnerAccount(v string) *ModifyInstanceSpecRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -27199,8 +29503,23 @@ func (s *ModifyInstanceSpecRequest) SetSlaveReadOnlyCount(v int32) *ModifyInstan
 	return s
 }
 
+func (s *ModifyInstanceSpecRequest) SetSlaveReplicaCount(v int32) *ModifyInstanceSpecRequest {
+	s.SlaveReplicaCount = &v
+	return s
+}
+
 func (s *ModifyInstanceSpecRequest) SetSourceBiz(v string) *ModifyInstanceSpecRequest {
 	s.SourceBiz = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetStorage(v int32) *ModifyInstanceSpecRequest {
+	s.Storage = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetStorageType(v string) *ModifyInstanceSpecRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -28295,6 +30614,281 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 	return s
 }
 
+type ModifyTairKVCacheCustomInstanceAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// redistest
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// SDK
+	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetInstanceId(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetInstanceName(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetOwnerAccount(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetOwnerId(v int64) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetResourceOwnerAccount(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetResourceOwnerId(v int64) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetSecurityToken(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeRequest) SetSourceBiz(v string) *ModifyTairKVCacheCustomInstanceAttributeRequest {
+	s.SourceBiz = &v
+	return s
+}
+
+type ModifyTairKVCacheCustomInstanceAttributeResponseBody struct {
+	// example:
+	//
+	// 2FF6158E-3394-4A90-B634-79C49184****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeResponseBody) SetRequestId(v string) *ModifyTairKVCacheCustomInstanceAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTairKVCacheCustomInstanceAttributeResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTairKVCacheCustomInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTairKVCacheCustomInstanceAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeResponse) SetHeaders(v map[string]*string) *ModifyTairKVCacheCustomInstanceAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeResponse) SetStatusCode(v int32) *ModifyTairKVCacheCustomInstanceAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTairKVCacheCustomInstanceAttributeResponse) SetBody(v *ModifyTairKVCacheCustomInstanceAttributeResponseBody) *ModifyTairKVCacheCustomInstanceAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTaskInfoRequest struct {
+	// example:
+	//
+	// {\\"recoverMode\\":\\"immediate\\"}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// exec_task
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// example:
+	//
+	// modifySwitchTime
+	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t-0mq3kfhn8i1nlt****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ModifyTaskInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTaskInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTaskInfoRequest) SetActionParams(v string) *ModifyTaskInfoRequest {
+	s.ActionParams = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetRegionId(v string) *ModifyTaskInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetResourceOwnerAccount(v string) *ModifyTaskInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetResourceOwnerId(v int64) *ModifyTaskInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetSecurityToken(v string) *ModifyTaskInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetStepName(v string) *ModifyTaskInfoRequest {
+	s.StepName = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetTaskAction(v string) *ModifyTaskInfoRequest {
+	s.TaskAction = &v
+	return s
+}
+
+func (s *ModifyTaskInfoRequest) SetTaskId(v string) *ModifyTaskInfoRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ModifyTaskInfoResponseBody struct {
+	// example:
+	//
+	// mst.errorcode.success.errormessage
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// t-0mqaj5hnyofczv****
+	ErrorTaskId *string `json:"ErrorTaskId,omitempty" xml:"ErrorTaskId,omitempty"`
+	// example:
+	//
+	// 2B98499B-E62B-56D4-8D7F-3D6D4DB260F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s ModifyTaskInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTaskInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTaskInfoResponseBody) SetErrorCode(v string) *ModifyTaskInfoResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ModifyTaskInfoResponseBody) SetErrorTaskId(v string) *ModifyTaskInfoResponseBody {
+	s.ErrorTaskId = &v
+	return s
+}
+
+func (s *ModifyTaskInfoResponseBody) SetRequestId(v string) *ModifyTaskInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTaskInfoResponseBody) SetSuccessCount(v string) *ModifyTaskInfoResponseBody {
+	s.SuccessCount = &v
+	return s
+}
+
+type ModifyTaskInfoResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTaskInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTaskInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTaskInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTaskInfoResponse) SetHeaders(v map[string]*string) *ModifyTaskInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTaskInfoResponse) SetStatusCode(v int32) *ModifyTaskInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTaskInfoResponse) SetBody(v *ModifyTaskInfoResponseBody) *ModifyTaskInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseDirectConnectionRequest struct {
 	// The ID of the instance.
 	//
@@ -29168,6 +31762,266 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 	return s
 }
 
+type ResetTairKVCacheCustomInstancePasswordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pass!123456
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// SDK
+	SourceBiz *string `json:"SourceBiz,omitempty" xml:"SourceBiz,omitempty"`
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetInstanceId(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetOwnerAccount(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetOwnerId(v int64) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetPassword(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetResourceOwnerAccount(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetResourceOwnerId(v int64) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetSecurityToken(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordRequest) SetSourceBiz(v string) *ResetTairKVCacheCustomInstancePasswordRequest {
+	s.SourceBiz = &v
+	return s
+}
+
+type ResetTairKVCacheCustomInstancePasswordResponseBody struct {
+	// example:
+	//
+	// AD425AD3-CC7B-4EE2-A5CB-2F61BA73****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordResponseBody) SetRequestId(v string) *ResetTairKVCacheCustomInstancePasswordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResetTairKVCacheCustomInstancePasswordResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetTairKVCacheCustomInstancePasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetTairKVCacheCustomInstancePasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordResponse) SetHeaders(v map[string]*string) *ResetTairKVCacheCustomInstancePasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordResponse) SetStatusCode(v int32) *ResetTairKVCacheCustomInstancePasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetTairKVCacheCustomInstancePasswordResponse) SetBody(v *ResetTairKVCacheCustomInstancePasswordResponseBody) *ResetTairKVCacheCustomInstancePasswordResponse {
+	s.Body = v
+	return s
+}
+
+type ResizeTairKVCacheCustomInstanceDiskRequest struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-5v1aggi3ffoxufb57**
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// example:
+	//
+	// 5000
+	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetAutoPay(v bool) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetDiskId(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetDiskSize(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetInstanceId(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetOwnerAccount(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetOwnerId(v int64) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetResourceOwnerAccount(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetResourceOwnerId(v int64) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskRequest) SetSecurityToken(v string) *ResizeTairKVCacheCustomInstanceDiskRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ResizeTairKVCacheCustomInstanceDiskResponseBody struct {
+	// example:
+	//
+	// 20905403119****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// ABAF95F6-35C1-4177-AF3A-70969EBD****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskResponseBody) SetOrderId(v string) *ResizeTairKVCacheCustomInstanceDiskResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskResponseBody) SetRequestId(v string) *ResizeTairKVCacheCustomInstanceDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResizeTairKVCacheCustomInstanceDiskResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResizeTairKVCacheCustomInstanceDiskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResizeTairKVCacheCustomInstanceDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskResponse) SetHeaders(v map[string]*string) *ResizeTairKVCacheCustomInstanceDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskResponse) SetStatusCode(v int32) *ResizeTairKVCacheCustomInstanceDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResizeTairKVCacheCustomInstanceDiskResponse) SetBody(v *ResizeTairKVCacheCustomInstanceDiskResponseBody) *ResizeTairKVCacheCustomInstanceDiskResponse {
+	s.Body = v
+	return s
+}
+
 type RestartInstanceRequest struct {
 	// The time when you want to restart the instance. Default value: Immediately. Valid values:
 	//
@@ -29323,6 +32177,125 @@ func (s *RestartInstanceResponse) SetStatusCode(v int32) *RestartInstanceRespons
 }
 
 func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *RestartInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RestartTairKVCacheCustomInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s RestartTairKVCacheCustomInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartTairKVCacheCustomInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetInstanceId(v string) *RestartTairKVCacheCustomInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetOwnerAccount(v string) *RestartTairKVCacheCustomInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetOwnerId(v int64) *RestartTairKVCacheCustomInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetResourceOwnerAccount(v string) *RestartTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetResourceOwnerId(v int64) *RestartTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceRequest) SetSecurityToken(v string) *RestartTairKVCacheCustomInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type RestartTairKVCacheCustomInstanceResponseBody struct {
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 5D622714-AEDD-4609-9167-F5DDD3D1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 578678678
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s RestartTairKVCacheCustomInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartTairKVCacheCustomInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponseBody) SetInstanceId(v string) *RestartTairKVCacheCustomInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponseBody) SetRequestId(v string) *RestartTairKVCacheCustomInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponseBody) SetTaskId(v string) *RestartTairKVCacheCustomInstanceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type RestartTairKVCacheCustomInstanceResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartTairKVCacheCustomInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartTairKVCacheCustomInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartTairKVCacheCustomInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponse) SetHeaders(v map[string]*string) *RestartTairKVCacheCustomInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponse) SetStatusCode(v int32) *RestartTairKVCacheCustomInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartTairKVCacheCustomInstanceResponse) SetBody(v *RestartTairKVCacheCustomInstanceResponseBody) *RestartTairKVCacheCustomInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -29501,6 +32474,244 @@ func (s *RestoreInstanceResponse) SetStatusCode(v int32) *RestoreInstanceRespons
 }
 
 func (s *RestoreInstanceResponse) SetBody(v *RestoreInstanceResponseBody) *RestoreInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StartTairKVCacheCustomInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s StartTairKVCacheCustomInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTairKVCacheCustomInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetInstanceId(v string) *StartTairKVCacheCustomInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetOwnerAccount(v string) *StartTairKVCacheCustomInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetOwnerId(v int64) *StartTairKVCacheCustomInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetResourceOwnerAccount(v string) *StartTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetResourceOwnerId(v int64) *StartTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceRequest) SetSecurityToken(v string) *StartTairKVCacheCustomInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type StartTairKVCacheCustomInstanceResponseBody struct {
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// AD425AD3-CC7B-4EE2-A5CB-2F61BA73****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11111****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StartTairKVCacheCustomInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTairKVCacheCustomInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartTairKVCacheCustomInstanceResponseBody) SetInstanceId(v string) *StartTairKVCacheCustomInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceResponseBody) SetRequestId(v string) *StartTairKVCacheCustomInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceResponseBody) SetTaskId(v string) *StartTairKVCacheCustomInstanceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StartTairKVCacheCustomInstanceResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTairKVCacheCustomInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartTairKVCacheCustomInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTairKVCacheCustomInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTairKVCacheCustomInstanceResponse) SetHeaders(v map[string]*string) *StartTairKVCacheCustomInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceResponse) SetStatusCode(v int32) *StartTairKVCacheCustomInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTairKVCacheCustomInstanceResponse) SetBody(v *StartTairKVCacheCustomInstanceResponseBody) *StartTairKVCacheCustomInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopTairKVCacheCustomInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s StopTairKVCacheCustomInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTairKVCacheCustomInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetInstanceId(v string) *StopTairKVCacheCustomInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetOwnerAccount(v string) *StopTairKVCacheCustomInstanceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetOwnerId(v int64) *StopTairKVCacheCustomInstanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetResourceOwnerAccount(v string) *StopTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetResourceOwnerId(v int64) *StopTairKVCacheCustomInstanceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceRequest) SetSecurityToken(v string) *StopTairKVCacheCustomInstanceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type StopTairKVCacheCustomInstanceResponseBody struct {
+	// example:
+	//
+	// tc-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20C8341E-B5AD-4B24-BD82-D73241522ABF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 578678678
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopTairKVCacheCustomInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTairKVCacheCustomInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTairKVCacheCustomInstanceResponseBody) SetInstanceId(v string) *StopTairKVCacheCustomInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceResponseBody) SetRequestId(v string) *StopTairKVCacheCustomInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceResponseBody) SetTaskId(v string) *StopTairKVCacheCustomInstanceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StopTairKVCacheCustomInstanceResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTairKVCacheCustomInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopTairKVCacheCustomInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTairKVCacheCustomInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTairKVCacheCustomInstanceResponse) SetHeaders(v map[string]*string) *StopTairKVCacheCustomInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceResponse) SetStatusCode(v int32) *StopTairKVCacheCustomInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTairKVCacheCustomInstanceResponse) SetBody(v *StopTairKVCacheCustomInstanceResponseBody) *StopTairKVCacheCustomInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -29758,6 +32969,109 @@ func (s *SwitchInstanceProxyResponse) SetStatusCode(v int32) *SwitchInstanceProx
 }
 
 func (s *SwitchInstanceProxyResponse) SetBody(v *SwitchInstanceProxyResponseBody) *SwitchInstanceProxyResponse {
+	s.Body = v
+	return s
+}
+
+type SwitchInstanceZoneFailOverRequest struct {
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The duration for which the fault lasts. Unit: minutes.
+	//
+	// Valid values:
+	//
+	// 	- 5
+	//
+	// 	- 10
+	//
+	// example:
+	//
+	// 5
+	SiteFaultTime *string `json:"SiteFaultTime,omitempty" xml:"SiteFaultTime,omitempty"`
+	// The ID of the destination zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
+	TargetZoneId *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
+}
+
+func (s SwitchInstanceZoneFailOverRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchInstanceZoneFailOverRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchInstanceZoneFailOverRequest) SetInstanceId(v string) *SwitchInstanceZoneFailOverRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SwitchInstanceZoneFailOverRequest) SetSiteFaultTime(v string) *SwitchInstanceZoneFailOverRequest {
+	s.SiteFaultTime = &v
+	return s
+}
+
+func (s *SwitchInstanceZoneFailOverRequest) SetTargetZoneId(v string) *SwitchInstanceZoneFailOverRequest {
+	s.TargetZoneId = &v
+	return s
+}
+
+type SwitchInstanceZoneFailOverResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 2D9F3768-EDA9-4811-943E-42C8006E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SwitchInstanceZoneFailOverResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchInstanceZoneFailOverResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchInstanceZoneFailOverResponseBody) SetRequestId(v string) *SwitchInstanceZoneFailOverResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SwitchInstanceZoneFailOverResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchInstanceZoneFailOverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SwitchInstanceZoneFailOverResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchInstanceZoneFailOverResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchInstanceZoneFailOverResponse) SetHeaders(v map[string]*string) *SwitchInstanceZoneFailOverResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchInstanceZoneFailOverResponse) SetStatusCode(v int32) *SwitchInstanceZoneFailOverResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchInstanceZoneFailOverResponse) SetBody(v *SwitchInstanceZoneFailOverResponseBody) *SwitchInstanceZoneFailOverResponse {
 	s.Body = v
 	return s
 }
@@ -30486,7 +33800,9 @@ type TransformToPrePaidRequest struct {
 	// example:
 	//
 	// true
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay         *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew       *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod *int64  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
 	//
 	// This parameter is required.
@@ -30520,6 +33836,16 @@ func (s TransformToPrePaidRequest) GoString() string {
 
 func (s *TransformToPrePaidRequest) SetAutoPay(v bool) *TransformToPrePaidRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *TransformToPrePaidRequest) SetAutoRenew(v string) *TransformToPrePaidRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *TransformToPrePaidRequest) SetAutoRenewPeriod(v int64) *TransformToPrePaidRequest {
+	s.AutoRenewPeriod = &v
 	return s
 }
 
@@ -31337,6 +34663,106 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 
 // Summary:
 //
+// Cancels O\\\\\\&M events at a time.
+//
+// Description:
+//
+// O\\&M events cannot be canceled in the following scenarios:
+//
+// 	- The allowCancel parameter is set to 0.
+//
+// 	- The current time is later than the start time of the O\\&M event.
+//
+// 	- The state value of the O\\&M event is not 3.
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelActiveOperationTasks"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels O\\\\\\&M events at a time.
+//
+// Description:
+//
+// O\\&M events cannot be canceled in the following scenarios:
+//
+// 	- The allowCancel parameter is set to 0.
+//
+// 	- The current time is later than the start time of the O\\&M event.
+//
+// 	- The state value of the O\\&M event is not 3.
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
 //
 // Description:
@@ -32086,6 +35512,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReplicaCount)) {
+		query["ReplicaCount"] = request.ReplicaCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -32116,6 +35546,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SlaveReadOnlyCount)) {
 		query["SlaveReadOnlyCount"] = request.SlaveReadOnlyCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveReplicaCount)) {
+		query["SlaveReplicaCount"] = request.SlaveReplicaCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcDBInstanceId)) {
@@ -32317,7 +35751,7 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 
 // Summary:
 //
-// 创建实例参数模板。
+// Creates a parameter template.
 //
 // @param request - CreateParameterGroupRequest
 //
@@ -32403,7 +35837,7 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 
 // Summary:
 //
-// 创建实例参数模板。
+// Creates a parameter template.
 //
 // @param request - CreateParameterGroupRequest
 //
@@ -32412,6 +35846,170 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateParameterGroupResponse{}
 	_body, _err := client.CreateParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建TairCustom实例
+//
+// @param request - CreateTCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTCInstanceResponse
+func (client *Client) CreateTCInstanceWithOptions(request *CreateTCInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateTCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessInfo)) {
+		query["BusinessInfo"] = request.BusinessInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
+		query["CouponNo"] = request.CouponNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
+		query["DataDisk"] = request.DataDisk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedEni)) {
+		query["NeedEni"] = request.NeedEni
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTCInstance"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建TairCustom实例
+//
+// @param request - CreateTCInstanceRequest
+//
+// @return CreateTCInstanceResponse
+func (client *Client) CreateTCInstance(request *CreateTCInstanceRequest) (_result *CreateTCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTCInstanceResponse{}
+	_body, _err := client.CreateTCInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32478,6 +36076,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterBackupId)) {
 		query["ClusterBackupId"] = request.ClusterBackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionStringPrefix)) {
+		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CouponNo)) {
@@ -32552,6 +36154,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReplicaCount)) {
+		query["ReplicaCount"] = request.ReplicaCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -32586,6 +36192,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 
 	if !tea.BoolValue(util.IsUnset(request.SlaveReadOnlyCount)) {
 		query["SlaveReadOnlyCount"] = request.SlaveReadOnlyCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveReplicaCount)) {
+		query["SlaveReplicaCount"] = request.SlaveReplicaCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcDBInstanceId)) {
@@ -33363,6 +36973,10 @@ func (client *Client) DescribeActiveOperationTask(request *DescribeActiveOperati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+//
 // @param request - DescribeActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33461,6 +37075,10 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about the O\\\\\\&M tasks of an ApsaraDB for Redis instance.
+//
 // @param request - DescribeActiveOperationTasksRequest
 //
 // @return DescribeActiveOperationTasksResponse
@@ -37913,6 +41531,174 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
+// 查看TairCustom实例
+//
+// @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairKVCacheCustomInstanceAttributeResponse
+func (client *Client) DescribeTairKVCacheCustomInstanceAttributeWithOptions(request *DescribeTairKVCacheCustomInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstanceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTairKVCacheCustomInstanceAttribute"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看TairCustom实例
+//
+// @param request - DescribeTairKVCacheCustomInstanceAttributeRequest
+//
+// @return DescribeTairKVCacheCustomInstanceAttributeResponse
+func (client *Client) DescribeTairKVCacheCustomInstanceAttribute(request *DescribeTairKVCacheCustomInstanceAttributeRequest) (_result *DescribeTairKVCacheCustomInstanceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.DescribeTairKVCacheCustomInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询TairCustom主机监控
+//
+// @param request - DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithOptions(request *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest, runtime *util.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTairKVCacheCustomInstanceHistoryMonitorValues"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询TairCustom主机监控
+//
+// @param request - DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest
+//
+// @return DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse
+func (client *Client) DescribeTairKVCacheCustomInstanceHistoryMonitorValues(request *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesRequest) (_result *DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTairKVCacheCustomInstanceHistoryMonitorValuesResponse{}
+	_body, _err := client.DescribeTairKVCacheCustomInstanceHistoryMonitorValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看TairCustom实例
+//
+// @param request - DescribeTairKVCacheCustomInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTairKVCacheCustomInstancesResponse
+func (client *Client) DescribeTairKVCacheCustomInstancesWithOptions(request *DescribeTairKVCacheCustomInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeTairKVCacheCustomInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTairKVCacheCustomInstances"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTairKVCacheCustomInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看TairCustom实例
+//
+// @param request - DescribeTairKVCacheCustomInstancesRequest
+//
+// @return DescribeTairKVCacheCustomInstancesResponse
+func (client *Client) DescribeTairKVCacheCustomInstances(request *DescribeTairKVCacheCustomInstancesRequest) (_result *DescribeTairKVCacheCustomInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTairKVCacheCustomInstancesResponse{}
+	_body, _err := client.DescribeTairKVCacheCustomInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
 //
 // Description:
@@ -38881,6 +42667,90 @@ func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (
 
 // Summary:
 //
+// Simulates database node failures.
+//
+// @param request - MasterNodeShutDownFailOverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MasterNodeShutDownFailOverResponse
+func (client *Client) MasterNodeShutDownFailOverWithOptions(request *MasterNodeShutDownFailOverRequest, runtime *util.RuntimeOptions) (_result *MasterNodeShutDownFailOverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBFaultMode)) {
+		query["DBFaultMode"] = request.DBFaultMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodes)) {
+		query["DBNodes"] = request.DBNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailMode)) {
+		query["FailMode"] = request.FailMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyFaultMode)) {
+		query["ProxyFaultMode"] = request.ProxyFaultMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyInstanceIds)) {
+		query["ProxyInstanceIds"] = request.ProxyInstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MasterNodeShutDownFailOver"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MasterNodeShutDownFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Simulates database node failures.
+//
+// @param request - MasterNodeShutDownFailOverRequest
+//
+// @return MasterNodeShutDownFailOverResponse
+func (client *Client) MasterNodeShutDownFailOver(request *MasterNodeShutDownFailOverRequest) (_result *MasterNodeShutDownFailOverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MasterNodeShutDownFailOverResponse{}
+	_body, _err := client.MasterNodeShutDownFailOverWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Migrates an ApsaraDB for Redis instance to another zone in the same region.
 //
 // Description:
@@ -39193,7 +43063,7 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 
 // Summary:
 //
-// Changes the scheduled switchover time of an O&M task.
+// Changes the scheduled switchover time of an O\\&amp;M task.
 //
 // Description:
 //
@@ -39263,7 +43133,7 @@ func (client *Client) ModifyActiveOperationTaskWithOptions(request *ModifyActive
 
 // Summary:
 //
-// Changes the scheduled switchover time of an O&M task.
+// Changes the scheduled switchover time of an O\\&amp;M task.
 //
 // Description:
 //
@@ -39283,6 +43153,10 @@ func (client *Client) ModifyActiveOperationTask(request *ModifyActiveOperationTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+//
 // @param request - ModifyActiveOperationTasksRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39349,6 +43223,10 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the switching time of scheduled O\\\\\\&M events for an instance.
+//
 // @param request - ModifyActiveOperationTasksRequest
 //
 // @return ModifyActiveOperationTasksResponse
@@ -40233,6 +44111,90 @@ func (client *Client) ModifyInstanceAutoRenewalAttribute(request *ModifyInstance
 
 // Summary:
 //
+// Modifies the bandwidth of an instance.
+//
+// @param request - ModifyInstanceBandwidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceBandwidthResponse
+func (client *Client) ModifyInstanceBandwidthWithOptions(request *ModifyInstanceBandwidthRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceBandwidthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetIntranetBandwidth)) {
+		query["TargetIntranetBandwidth"] = request.TargetIntranetBandwidth
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceBandwidth"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceBandwidthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the bandwidth of an instance.
+//
+// @param request - ModifyInstanceBandwidthRequest
+//
+// @return ModifyInstanceBandwidthResponse
+func (client *Client) ModifyInstanceBandwidth(request *ModifyInstanceBandwidthRequest) (_result *ModifyInstanceBandwidthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceBandwidthResponse{}
+	_body, _err := client.ModifyInstanceBandwidthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the parameter settings of an ApsaraDB for Redis instance.
 //
 // @param request - ModifyInstanceConfigRequest
@@ -40260,6 +44222,30 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamNoLooseSentinelEnabled)) {
+		query["ParamNoLooseSentinelEnabled"] = request.ParamNoLooseSentinelEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamNoLooseSentinelPasswordFreeAccess)) {
+		query["ParamNoLooseSentinelPasswordFreeAccess"] = request.ParamNoLooseSentinelPasswordFreeAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamNoLooseSentinelPasswordFreeCommands)) {
+		query["ParamNoLooseSentinelPasswordFreeCommands"] = request.ParamNoLooseSentinelPasswordFreeCommands
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamReplMode)) {
+		query["ParamReplMode"] = request.ParamReplMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamSemisyncReplTimeout)) {
+		query["ParamSemisyncReplTimeout"] = request.ParamSemisyncReplTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamSentinelCompatEnable)) {
+		query["ParamSentinelCompatEnable"] = request.ParamSentinelCompatEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -40717,7 +44703,7 @@ func (client *Client) ModifyInstanceNetExpireTime(request *ModifyInstanceNetExpi
 
 // Summary:
 //
-// 修改实例参数
+// Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
 //
 // @param request - ModifyInstanceParameterRequest
 //
@@ -40791,7 +44777,7 @@ func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstance
 
 // Summary:
 //
-// 修改实例参数
+// Applies a parameter template to specific instances. This indicates that the parameter values in the template take effect on the instances. After you modify a parameter template, you must reapply it to specific instances for the new parameter values to take effect on the instances.
 //
 // @param request - ModifyInstanceParameterRequest
 //
@@ -40986,6 +44972,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ReplicaCount)) {
+		query["ReplicaCount"] = request.ReplicaCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -41006,8 +44996,20 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		query["SlaveReadOnlyCount"] = request.SlaveReadOnlyCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SlaveReplicaCount)) {
+		query["SlaveReplicaCount"] = request.SlaveReplicaCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceBiz)) {
 		query["SourceBiz"] = request.SourceBiz
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Storage)) {
+		query["Storage"] = request.Storage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41753,6 +45755,182 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
+// 修改TairCustom实例基本参数
+//
+// @param request - ModifyTairKVCacheCustomInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTairKVCacheCustomInstanceAttributeResponse
+func (client *Client) ModifyTairKVCacheCustomInstanceAttributeWithOptions(request *ModifyTairKVCacheCustomInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyTairKVCacheCustomInstanceAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceBiz)) {
+		query["SourceBiz"] = request.SourceBiz
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTairKVCacheCustomInstanceAttribute"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改TairCustom实例基本参数
+//
+// @param request - ModifyTairKVCacheCustomInstanceAttributeRequest
+//
+// @return ModifyTairKVCacheCustomInstanceAttributeResponse
+func (client *Client) ModifyTairKVCacheCustomInstanceAttribute(request *ModifyTairKVCacheCustomInstanceAttributeRequest) (_result *ModifyTairKVCacheCustomInstanceAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTairKVCacheCustomInstanceAttributeResponse{}
+	_body, _err := client.ModifyTairKVCacheCustomInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务中心修改任务信息
+//
+// @param request - ModifyTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTaskInfoResponse
+func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyTaskInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionParams)) {
+		query["ActionParams"] = request.ActionParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepName)) {
+		query["StepName"] = request.StepName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskAction)) {
+		query["TaskAction"] = request.TaskAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTaskInfo"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务中心修改任务信息
+//
+// @param request - ModifyTaskInfoRequest
+//
+// @return ModifyTaskInfoResponse
+func (client *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (_result *ModifyTaskInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTaskInfoResponse{}
+	_body, _err := client.ModifyTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Releases the private endpoint of an ApsaraDB for Redis cluster instance.
 //
 // Description:
@@ -42357,6 +46535,186 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 
 // Summary:
 //
+// 重置TairCustom上主机密码
+//
+// @param request - ResetTairKVCacheCustomInstancePasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetTairKVCacheCustomInstancePasswordResponse
+func (client *Client) ResetTairKVCacheCustomInstancePasswordWithOptions(request *ResetTairKVCacheCustomInstancePasswordRequest, runtime *util.RuntimeOptions) (_result *ResetTairKVCacheCustomInstancePasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceBiz)) {
+		query["SourceBiz"] = request.SourceBiz
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetTairKVCacheCustomInstancePassword"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetTairKVCacheCustomInstancePasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置TairCustom上主机密码
+//
+// @param request - ResetTairKVCacheCustomInstancePasswordRequest
+//
+// @return ResetTairKVCacheCustomInstancePasswordResponse
+func (client *Client) ResetTairKVCacheCustomInstancePassword(request *ResetTairKVCacheCustomInstancePasswordRequest) (_result *ResetTairKVCacheCustomInstancePasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetTairKVCacheCustomInstancePasswordResponse{}
+	_body, _err := client.ResetTairKVCacheCustomInstancePasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 变配TairCustom的主机的磁盘
+//
+// @param request - ResizeTairKVCacheCustomInstanceDiskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeTairKVCacheCustomInstanceDiskResponse
+func (client *Client) ResizeTairKVCacheCustomInstanceDiskWithOptions(request *ResizeTairKVCacheCustomInstanceDiskRequest, runtime *util.RuntimeOptions) (_result *ResizeTairKVCacheCustomInstanceDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeTairKVCacheCustomInstanceDisk"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResizeTairKVCacheCustomInstanceDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 变配TairCustom的主机的磁盘
+//
+// @param request - ResizeTairKVCacheCustomInstanceDiskRequest
+//
+// @return ResizeTairKVCacheCustomInstanceDiskResponse
+func (client *Client) ResizeTairKVCacheCustomInstanceDisk(request *ResizeTairKVCacheCustomInstanceDiskRequest) (_result *ResizeTairKVCacheCustomInstanceDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResizeTairKVCacheCustomInstanceDiskResponse{}
+	_body, _err := client.ResizeTairKVCacheCustomInstanceDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Restarts a running ApsaraDB for Redis instance.
 //
 // @param request - RestartInstanceRequest
@@ -42436,6 +46794,86 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartInstanceResponse{}
 	_body, _err := client.RestartInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启TairCustom的主机
+//
+// @param request - RestartTairKVCacheCustomInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartTairKVCacheCustomInstanceResponse
+func (client *Client) RestartTairKVCacheCustomInstanceWithOptions(request *RestartTairKVCacheCustomInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartTairKVCacheCustomInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartTairKVCacheCustomInstance"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启TairCustom的主机
+//
+// @param request - RestartTairKVCacheCustomInstanceRequest
+//
+// @return RestartTairKVCacheCustomInstanceResponse
+func (client *Client) RestartTairKVCacheCustomInstance(request *RestartTairKVCacheCustomInstanceRequest) (_result *RestartTairKVCacheCustomInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.RestartTairKVCacheCustomInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42548,6 +46986,166 @@ func (client *Client) RestoreInstance(request *RestoreInstanceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RestoreInstanceResponse{}
 	_body, _err := client.RestoreInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动TairCustom的主机
+//
+// @param request - StartTairKVCacheCustomInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTairKVCacheCustomInstanceResponse
+func (client *Client) StartTairKVCacheCustomInstanceWithOptions(request *StartTairKVCacheCustomInstanceRequest, runtime *util.RuntimeOptions) (_result *StartTairKVCacheCustomInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTairKVCacheCustomInstance"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动TairCustom的主机
+//
+// @param request - StartTairKVCacheCustomInstanceRequest
+//
+// @return StartTairKVCacheCustomInstanceResponse
+func (client *Client) StartTairKVCacheCustomInstance(request *StartTairKVCacheCustomInstanceRequest) (_result *StartTairKVCacheCustomInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.StartTairKVCacheCustomInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止TairCustom的主机
+//
+// @param request - StopTairKVCacheCustomInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTairKVCacheCustomInstanceResponse
+func (client *Client) StopTairKVCacheCustomInstanceWithOptions(request *StopTairKVCacheCustomInstanceRequest, runtime *util.RuntimeOptions) (_result *StopTairKVCacheCustomInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTairKVCacheCustomInstance"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止TairCustom的主机
+//
+// @param request - StopTairKVCacheCustomInstanceRequest
+//
+// @return StopTairKVCacheCustomInstanceResponse
+func (client *Client) StopTairKVCacheCustomInstance(request *StopTairKVCacheCustomInstanceRequest) (_result *StopTairKVCacheCustomInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopTairKVCacheCustomInstanceResponse{}
+	_body, _err := client.StopTairKVCacheCustomInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42764,6 +47362,74 @@ func (client *Client) SwitchInstanceProxy(request *SwitchInstanceProxyRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchInstanceProxyResponse{}
 	_body, _err := client.SwitchInstanceProxyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Switches an instance from the current zone to the specified zone in the event of a fault.
+//
+// @param request - SwitchInstanceZoneFailOverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchInstanceZoneFailOverResponse
+func (client *Client) SwitchInstanceZoneFailOverWithOptions(request *SwitchInstanceZoneFailOverRequest, runtime *util.RuntimeOptions) (_result *SwitchInstanceZoneFailOverResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteFaultTime)) {
+		query["SiteFaultTime"] = request.SiteFaultTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetZoneId)) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchInstanceZoneFailOver"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchInstanceZoneFailOverResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Switches an instance from the current zone to the specified zone in the event of a fault.
+//
+// @param request - SwitchInstanceZoneFailOverRequest
+//
+// @return SwitchInstanceZoneFailOverResponse
+func (client *Client) SwitchInstanceZoneFailOver(request *SwitchInstanceZoneFailOverRequest) (_result *SwitchInstanceZoneFailOverResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchInstanceZoneFailOverResponse{}
+	_body, _err := client.SwitchInstanceZoneFailOverWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43222,6 +47888,14 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
