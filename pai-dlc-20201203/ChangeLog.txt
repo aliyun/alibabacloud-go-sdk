@@ -1,3 +1,6 @@
+2024-12-17 Version: v1.5.20
+- Generated golang 2020-12-03 for pai-dlc.
+
 2024-12-06 Version: v1.5.19
 - Update API ListJobs: add param OversoldInfo.
 
