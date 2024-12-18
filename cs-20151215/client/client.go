@@ -2863,7 +2863,7 @@ type CreateAutoscalingConfigRequest struct {
 	//
 	// 0
 	MinReplicaCount *int32 `json:"min_replica_count,omitempty" xml:"min_replica_count,omitempty"`
-	// Specifies whether to delete the corresponding Kubernetes node objects after nodes are removed in swift mode. For more information about the swift mode, see [Scaling mode](https://help.aliyun.com/document_detail/119099.html). Default value: false. Valid values:
+	// Specifies whether to delete the corresponding Kubernetes node objects after nodes are removed in swift mode. For more information about the swift mode, see [Scaling mode](https://help.aliyun.com/document_detail/119099.html). Default value: false Valid values:
 	//
 	// 	- `true`: deletes the corresponding Kubernetes node objects after nodes are removed in swift mode. We recommend that you do not set the value to true because data inconsistency may occur in Kubernetes objects.
 	//
@@ -3023,14 +3023,20 @@ func (s *CreateAutoscalingConfigRequest) SetUtilizationThreshold(v string) *Crea
 }
 
 type CreateAutoscalingConfigResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc212d04dfe184547bffaa596********
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AF8BE105-C32B-1269-9774-5510********
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// T-5fd211e924e1d007********
@@ -3755,7 +3761,7 @@ type CreateClusterRequest struct {
 	//
 	// 	- `iptables`: a mature and stable kube-proxy mode that uses iptables rules to conduct Service discovery and load balancing. The performance of this mode is limited by the size of the cluster. This mode is suitable for clusters that run a small number of Services.
 	//
-	// 	- `ipvs`: provides high performance and uses IP Virtual Server (IPVS). This allows you to configure service discovery and load balancing. This mode is suitable for clusters that are required to run a large number of services. We recommend that you use this mode in scenarios that require high load balancing performance.
+	// 	- `ipvs`: a mode that provides high performance and uses IP Virtual Server (IPVS) to conduct service discovery and load balancing. This mode is suitable for clusters that run a large number of Services. We recommend that you use this mode in scenarios that require high-performance load balancing.
 	//
 	// Default value: `ipvs`.
 	//
@@ -5837,11 +5843,11 @@ type CreateClusterNodePoolRequestManagementAutoVulFixPolicy struct {
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
 	// The severity levels of CVEs that can be automatically patched. Separate multiple levels with commas (,). Example: `asap,later`. Valid values:
 	//
-	// 	- `asap`: high severity.
+	// 	- `asap`: high
 	//
-	// 	- `later`: medium severity.
+	// 	- `later`: medium
 	//
-	// 	- `nntf`: low severity.
+	// 	- `nntf`: low
 	//
 	// If `auto_vul_fix` is set to true, the default value of this parameter is `asap`.
 	//
@@ -6341,7 +6347,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// 	- `cloud_ssd`: standard SSD.
 	//
-	// 	- `cloud_essd`: Enterprise SSD (ESSD).
+	// 	- `cloud_essd`: ESSD.
 	//
 	// 	- `cloud_auto`: ESSD AutoPL disk.
 	//
@@ -9532,7 +9538,7 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// 172.20.0.0/16
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
-	// The resource tags of the cluster.
+	// The resource labels of the cluster.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The time zone
 	//
@@ -9785,13 +9791,13 @@ func (s *DescribeClusterDetailResponseBody) SetZoneId(v string) *DescribeCluster
 }
 
 type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
-	// Indicates whether auto-renewal is enabled for the node.
+	// Indicates whether auto-renewal is enabled for the nodes.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	// The auto-renewal duration for the node.
+	// The auto-renewal duration for the nodes.
 	//
 	// example:
 	//
@@ -9833,7 +9839,7 @@ type DescribeClusterDetailResponseBodyControlPlaneConfig struct {
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The instance type of the node.
+	// The instance types of the nodes.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
 	// The name of the key pair. You must set key_pair or login_password.
 	//
@@ -35318,9 +35324,7 @@ func (client *Client) DescribeResourcesDeleteProtection(ClusterId *string, Resou
 //
 // Description:
 //
-// *
-//
-// ****Only Alibaba Cloud accounts can call this API operation.
+// You can call this operation only by using an Alibaba Cloud account.
 //
 // @param request - DescribeSubaccountK8sClusterUserConfigRequest
 //
@@ -35373,9 +35377,7 @@ func (client *Client) DescribeSubaccountK8sClusterUserConfigWithOptions(ClusterI
 //
 // Description:
 //
-// *
-//
-// ****Only Alibaba Cloud accounts can call this API operation.
+// You can call this operation only by using an Alibaba Cloud account.
 //
 // @param request - DescribeSubaccountK8sClusterUserConfigRequest
 //
