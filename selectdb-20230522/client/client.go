@@ -191,6 +191,8 @@ type CheckCreateDBInstanceRequest struct {
 	// selectdb.xlarge
 	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The database engine of the instance.
+	//
 	// example:
 	//
 	// SelectDB
@@ -512,6 +514,8 @@ type CreateDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The database engine of the instance.
+	//
 	// example:
 	//
 	// selectdb
@@ -543,7 +547,7 @@ type CreateDBClusterRequest struct {
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -1215,6 +1219,209 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 	return s
 }
 
+type CreateElasticRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb.2xlarge
+	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00:00
+	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Day
+	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateElasticRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticRuleRequest) SetClusterClass(v string) *CreateElasticRuleRequest {
+	s.ClusterClass = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetClusterId(v string) *CreateElasticRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetDbInstanceId(v string) *CreateElasticRuleRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetElasticRuleStartTime(v string) *CreateElasticRuleRequest {
+	s.ElasticRuleStartTime = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetExecutionPeriod(v string) *CreateElasticRuleRequest {
+	s.ExecutionPeriod = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetRegionId(v string) *CreateElasticRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateElasticRuleRequest) SetResourceOwnerId(v int64) *CreateElasticRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateElasticRuleResponseBody struct {
+	Data *CreateElasticRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateElasticRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticRuleResponseBody) SetData(v *CreateElasticRuleResponseBodyData) *CreateElasticRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBody) SetRequestId(v string) *CreateElasticRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateElasticRuleResponseBodyData struct {
+	// example:
+	//
+	// selectdb.2xlarge
+	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// 00:00
+	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// example:
+	//
+	// Day
+	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// example:
+	//
+	// 5465
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s CreateElasticRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetClusterClass(v string) *CreateElasticRuleResponseBodyData {
+	s.ClusterClass = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetClusterId(v string) *CreateElasticRuleResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetDbInstanceId(v string) *CreateElasticRuleResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetElasticRuleStartTime(v string) *CreateElasticRuleResponseBodyData {
+	s.ElasticRuleStartTime = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetExecutionPeriod(v string) *CreateElasticRuleResponseBodyData {
+	s.ExecutionPeriod = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponseBodyData) SetRuleId(v int64) *CreateElasticRuleResponseBodyData {
+	s.RuleId = &v
+	return s
+}
+
+type CreateElasticRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateElasticRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateElasticRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticRuleResponse) SetHeaders(v map[string]*string) *CreateElasticRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateElasticRuleResponse) SetStatusCode(v int32) *CreateElasticRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateElasticRuleResponse) SetBody(v *CreateElasticRuleResponseBody) *CreateElasticRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateServiceLinkedRoleForSelectDBRequest struct {
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1518,6 +1725,134 @@ func (s *DeleteDBInstanceResponse) SetStatusCode(v int32) *DeleteDBInstanceRespo
 }
 
 func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *DeleteDBInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteElasticRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxx302i5-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hanghzou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100458
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteElasticRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticRuleRequest) SetClusterId(v string) *DeleteElasticRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteElasticRuleRequest) SetDbInstanceId(v string) *DeleteElasticRuleRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *DeleteElasticRuleRequest) SetProduct(v string) *DeleteElasticRuleRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DeleteElasticRuleRequest) SetRegionId(v string) *DeleteElasticRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteElasticRuleRequest) SetResourceOwnerId(v int64) *DeleteElasticRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteElasticRuleRequest) SetRuleId(v int64) *DeleteElasticRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteElasticRuleResponseBody struct {
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteElasticRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticRuleResponseBody) SetRequestId(v string) *DeleteElasticRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteElasticRuleResponseBody) SetSuccess(v bool) *DeleteElasticRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteElasticRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteElasticRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteElasticRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteElasticRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteElasticRuleResponse) SetHeaders(v map[string]*string) *DeleteElasticRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteElasticRuleResponse) SetStatusCode(v int32) *DeleteElasticRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteElasticRuleResponse) SetBody(v *DeleteElasticRuleResponseBody) *DeleteElasticRuleResponse {
 	s.Body = v
 	return s
 }
@@ -4085,6 +4420,202 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 	return s
 }
 
+type DescribeElasticRulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-nwy3jv1oa02-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeElasticRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticRulesRequest) SetClusterId(v string) *DescribeElasticRulesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeElasticRulesRequest) SetDbInstanceId(v string) *DescribeElasticRulesRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *DescribeElasticRulesRequest) SetProduct(v string) *DescribeElasticRulesRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeElasticRulesRequest) SetRegionId(v string) *DescribeElasticRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeElasticRulesRequest) SetResourceOwnerId(v int64) *DescribeElasticRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeElasticRulesResponseBody struct {
+	Data *DescribeElasticRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeElasticRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticRulesResponseBody) SetData(v *DescribeElasticRulesResponseBodyData) *DescribeElasticRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBody) SetRequestId(v string) *DescribeElasticRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeElasticRulesResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-nwy3jv1oa02-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string                                      `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	Rules        []*DescribeElasticRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeElasticRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticRulesResponseBodyData) SetClusterId(v string) *DescribeElasticRulesResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBodyData) SetDbInstanceId(v string) *DescribeElasticRulesResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBodyData) SetRules(v []*DescribeElasticRulesResponseBodyDataRules) *DescribeElasticRulesResponseBodyData {
+	s.Rules = v
+	return s
+}
+
+type DescribeElasticRulesResponseBodyDataRules struct {
+	// example:
+	//
+	// selectdb.2xlarge
+	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// example:
+	//
+	// 00:00
+	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// example:
+	//
+	// Day
+	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// example:
+	//
+	// 5467
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeElasticRulesResponseBodyDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticRulesResponseBodyDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticRulesResponseBodyDataRules) SetClusterClass(v string) *DescribeElasticRulesResponseBodyDataRules {
+	s.ClusterClass = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBodyDataRules) SetElasticRuleStartTime(v string) *DescribeElasticRulesResponseBodyDataRules {
+	s.ElasticRuleStartTime = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBodyDataRules) SetExecutionPeriod(v string) *DescribeElasticRulesResponseBodyDataRules {
+	s.ExecutionPeriod = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponseBodyDataRules) SetRuleId(v int64) *DescribeElasticRulesResponseBodyDataRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeElasticRulesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeElasticRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeElasticRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeElasticRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeElasticRulesResponse) SetHeaders(v map[string]*string) *DescribeElasticRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeElasticRulesResponse) SetStatusCode(v int32) *DescribeElasticRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeElasticRulesResponse) SetBody(v *DescribeElasticRulesResponseBody) *DescribeElasticRulesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSecurityIPListRequest struct {
 	// The instance ID.
 	//
@@ -4263,6 +4794,169 @@ func (s *DescribeSecurityIPListResponse) SetStatusCode(v int32) *DescribeSecurit
 }
 
 func (s *DescribeSecurityIPListResponse) SetBody(v *DescribeSecurityIPListResponseBody) *DescribeSecurityIPListResponse {
+	s.Body = v
+	return s
+}
+
+type EnDisableScalingRulesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-nwy3jv1oa02-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// selectdb
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ScalingRulesEnable *bool `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
+}
+
+func (s EnDisableScalingRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnDisableScalingRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnDisableScalingRulesRequest) SetClusterId(v string) *EnDisableScalingRulesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesRequest) SetDbInstanceId(v string) *EnDisableScalingRulesRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesRequest) SetProduct(v string) *EnDisableScalingRulesRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesRequest) SetRegionId(v string) *EnDisableScalingRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesRequest) SetResourceOwnerId(v int64) *EnDisableScalingRulesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesRequest) SetScalingRulesEnable(v bool) *EnDisableScalingRulesRequest {
+	s.ScalingRulesEnable = &v
+	return s
+}
+
+type EnDisableScalingRulesResponseBody struct {
+	Data *EnDisableScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnDisableScalingRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnDisableScalingRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnDisableScalingRulesResponseBody) SetData(v *EnDisableScalingRulesResponseBodyData) *EnDisableScalingRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EnDisableScalingRulesResponseBody) SetRequestId(v string) *EnDisableScalingRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnDisableScalingRulesResponseBodyData struct {
+	// example:
+	//
+	// selectdb-cn-pe33jc1nd01-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// true
+	ScalingRulesEnable *bool `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
+}
+
+func (s EnDisableScalingRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnDisableScalingRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EnDisableScalingRulesResponseBodyData) SetClusterId(v string) *EnDisableScalingRulesResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesResponseBodyData) SetDbInstanceId(v string) *EnDisableScalingRulesResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesResponseBodyData) SetScalingRulesEnable(v bool) *EnDisableScalingRulesResponseBodyData {
+	s.ScalingRulesEnable = &v
+	return s
+}
+
+type EnDisableScalingRulesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnDisableScalingRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnDisableScalingRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnDisableScalingRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnDisableScalingRulesResponse) SetHeaders(v map[string]*string) *EnDisableScalingRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnDisableScalingRulesResponse) SetStatusCode(v int32) *EnDisableScalingRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnDisableScalingRulesResponse) SetBody(v *EnDisableScalingRulesResponseBody) *EnDisableScalingRulesResponse {
 	s.Body = v
 	return s
 }
@@ -4805,15 +5499,7 @@ type ModifyBEClusterAttributeRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The cluster parameter to be modified.
-	//
-	// 	- Valid values:****
-	//
-	// <!---->
-	//
-	// 	- MaintainTime
-	//
-	// 	- DBInstanceDescription
+	// The attribute type of the instance. Set this parameter to DBInstanceDescription.
 	//
 	// This parameter is required.
 	//
@@ -4828,7 +5514,7 @@ type ModifyBEClusterAttributeRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The modfied cluster name.
+	// The new name of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -4926,6 +5612,8 @@ func (s *ModifyBEClusterAttributeResponse) SetBody(v *ModifyBEClusterAttributeRe
 }
 
 type ModifyDBClusterRequest struct {
+	// The size of the reserved cache.
+	//
 	// example:
 	//
 	// 200
@@ -5444,6 +6132,223 @@ func (s *ModifyDBInstanceAttributeResponse) SetBody(v *ModifyDBInstanceAttribute
 	return s
 }
 
+type ModifyElasticRuleRequest struct {
+	// example:
+	//
+	// selectdb.2xlarge
+	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-nwy3jv1oa02-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// 00:00
+	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// example:
+	//
+	// Day
+	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// example:
+	//
+	// selectdb
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5467
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s ModifyElasticRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticRuleRequest) SetClusterClass(v string) *ModifyElasticRuleRequest {
+	s.ClusterClass = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetClusterId(v string) *ModifyElasticRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetDbInstanceId(v string) *ModifyElasticRuleRequest {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetElasticRuleStartTime(v string) *ModifyElasticRuleRequest {
+	s.ElasticRuleStartTime = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetExecutionPeriod(v string) *ModifyElasticRuleRequest {
+	s.ExecutionPeriod = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetProduct(v string) *ModifyElasticRuleRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetRegionId(v string) *ModifyElasticRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetResourceOwnerId(v int64) *ModifyElasticRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleRequest) SetRuleId(v int64) *ModifyElasticRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type ModifyElasticRuleResponseBody struct {
+	Data *ModifyElasticRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5ED62C81-9948-5612-81E1-EA3853752306
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyElasticRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticRuleResponseBody) SetData(v *ModifyElasticRuleResponseBodyData) *ModifyElasticRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBody) SetRequestId(v string) *ModifyElasticRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyElasticRuleResponseBodyData struct {
+	// example:
+	//
+	// selectdb.2xlarge
+	ClusterClass *string `json:"ClusterClass,omitempty" xml:"ClusterClass,omitempty"`
+	// example:
+	//
+	// selectdb-cn-zpr3if5wq03-be
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// example:
+	//
+	// 00:00
+	ElasticRuleStartTime *string `json:"ElasticRuleStartTime,omitempty" xml:"ElasticRuleStartTime,omitempty"`
+	// example:
+	//
+	// Day
+	ExecutionPeriod *string `json:"ExecutionPeriod,omitempty" xml:"ExecutionPeriod,omitempty"`
+	// example:
+	//
+	// 29252
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s ModifyElasticRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetClusterClass(v string) *ModifyElasticRuleResponseBodyData {
+	s.ClusterClass = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetClusterId(v string) *ModifyElasticRuleResponseBodyData {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetDbInstanceId(v string) *ModifyElasticRuleResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetElasticRuleStartTime(v string) *ModifyElasticRuleResponseBodyData {
+	s.ElasticRuleStartTime = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetExecutionPeriod(v string) *ModifyElasticRuleResponseBodyData {
+	s.ExecutionPeriod = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponseBodyData) SetRuleId(v int64) *ModifyElasticRuleResponseBodyData {
+	s.RuleId = &v
+	return s
+}
+
+type ModifyElasticRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyElasticRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyElasticRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyElasticRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyElasticRuleResponse) SetHeaders(v map[string]*string) *ModifyElasticRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyElasticRuleResponse) SetStatusCode(v int32) *ModifyElasticRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyElasticRuleResponse) SetBody(v *ModifyElasticRuleResponseBody) *ModifyElasticRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ModifySecurityIPListRequest struct {
 	// The instance ID.
 	//
@@ -5906,7 +6811,7 @@ type RestartDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID.
+	// The ID of the region in which the ApsaraDB for SelectDB instance resides.
 	//
 	// This parameter is required.
 	//
@@ -6676,7 +7581,11 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+// Creates a cluster in an ApsaraDB for SelectDB instance.
+//
+// Description:
+//
+// > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -6772,7 +7681,11 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 // Summary:
 //
-// Creates a cluster in an ApsaraDB for SelectDB instance. Note: You can create only pay-as-you-go clusters in a pay-as-you-go instance.
+// Creates a cluster in an ApsaraDB for SelectDB instance.
+//
+// Description:
+//
+// > : For an instance that uses the pay-as-you-go billing method, you can create only pay-as-you-go clusters. For an instance that uses the subscription billing method, you can create pay-as-you-go or subscription clusters.
 //
 // @param request - CreateDBClusterRequest
 //
@@ -6917,6 +7830,90 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
 	_body, _err := client.CreateDBInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性规则
+//
+// @param request - CreateElasticRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateElasticRuleResponse
+func (client *Client) CreateElasticRuleWithOptions(request *CreateElasticRuleRequest, runtime *util.RuntimeOptions) (_result *CreateElasticRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterClass)) {
+		query["ClusterClass"] = request.ClusterClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticRuleStartTime)) {
+		query["ElasticRuleStartTime"] = request.ElasticRuleStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionPeriod)) {
+		query["ExecutionPeriod"] = request.ExecutionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateElasticRule"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建分时弹性规则
+//
+// @param request - CreateElasticRuleRequest
+//
+// @return CreateElasticRuleResponse
+func (client *Client) CreateElasticRule(request *CreateElasticRuleRequest) (_result *CreateElasticRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateElasticRuleResponse{}
+	_body, _err := client.CreateElasticRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7138,7 +8135,87 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// 获取所有实例规格信息
+// 删除分时弹性规则
+//
+// @param request - DeleteElasticRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteElasticRuleResponse
+func (client *Client) DeleteElasticRuleWithOptions(request *DeleteElasticRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteElasticRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteElasticRule"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除分时弹性规则
+//
+// @param request - DeleteElasticRuleRequest
+//
+// @return DeleteElasticRuleResponse
+func (client *Client) DeleteElasticRule(request *DeleteElasticRuleRequest) (_result *DeleteElasticRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteElasticRuleResponse{}
+	_body, _err := client.DeleteElasticRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about all instance specifications.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -7184,7 +8261,7 @@ func (client *Client) DescribeAllDBInstanceClassWithOptions(request *DescribeAll
 
 // Summary:
 //
-// 获取所有实例规格信息
+// Queries the information about all instance specifications.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -7588,6 +8665,62 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
+// 查询分时弹性规则
+//
+// @param request - DescribeElasticRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeElasticRulesResponse
+func (client *Client) DescribeElasticRulesWithOptions(request *DescribeElasticRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeElasticRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeElasticRules"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeElasticRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询分时弹性规则
+//
+// @param request - DescribeElasticRulesRequest
+//
+// @return DescribeElasticRulesResponse
+func (client *Client) DescribeElasticRules(request *DescribeElasticRulesRequest) (_result *DescribeElasticRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeElasticRulesResponse{}
+	_body, _err := client.DescribeElasticRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the IP addresses in the whitelists of an ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeSecurityIPListRequest
@@ -7647,6 +8780,86 @@ func (client *Client) DescribeSecurityIPList(request *DescribeSecurityIPListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityIPListResponse{}
 	_body, _err := client.DescribeSecurityIPListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开关分时弹性策略
+//
+// @param request - EnDisableScalingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnDisableScalingRulesResponse
+func (client *Client) EnDisableScalingRulesWithOptions(request *EnDisableScalingRulesRequest, runtime *util.RuntimeOptions) (_result *EnDisableScalingRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingRulesEnable)) {
+		query["ScalingRulesEnable"] = request.ScalingRulesEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnDisableScalingRules"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnDisableScalingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开关分时弹性策略
+//
+// @param request - EnDisableScalingRulesRequest
+//
+// @return EnDisableScalingRulesResponse
+func (client *Client) EnDisableScalingRules(request *EnDisableScalingRulesRequest) (_result *EnDisableScalingRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnDisableScalingRulesResponse{}
+	_body, _err := client.EnDisableScalingRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7768,7 +8981,7 @@ func (client *Client) GetModifyBEClusterInquiry(request *GetModifyBEClusterInqui
 
 // Summary:
 //
-// 修改BE集群名称、属性、设置
+// Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -7830,7 +9043,7 @@ func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClust
 
 // Summary:
 //
-// 修改BE集群名称、属性、设置
+// Modifies the name of a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -8079,6 +9292,98 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceAttributeResponse{}
 	_body, _err := client.ModifyDBInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改分时弹性规则
+//
+// @param request - ModifyElasticRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyElasticRuleResponse
+func (client *Client) ModifyElasticRuleWithOptions(request *ModifyElasticRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyElasticRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterClass)) {
+		query["ClusterClass"] = request.ClusterClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbInstanceId)) {
+		query["DbInstanceId"] = request.DbInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ElasticRuleStartTime)) {
+		query["ElasticRuleStartTime"] = request.ElasticRuleStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionPeriod)) {
+		query["ExecutionPeriod"] = request.ExecutionPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyElasticRule"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改分时弹性规则
+//
+// @param request - ModifyElasticRuleRequest
+//
+// @return ModifyElasticRuleResponse
+func (client *Client) ModifyElasticRule(request *ModifyElasticRuleRequest) (_result *ModifyElasticRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyElasticRuleResponse{}
+	_body, _err := client.ModifyElasticRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
