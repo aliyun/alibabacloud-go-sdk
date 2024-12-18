@@ -1403,6 +1403,195 @@ func (s *DescribeJobMetricLastResponse) SetBody(v *DescribeJobMetricLastResponse
 	return s
 }
 
+type GetAppVersionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// V-Ray
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// Public
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// example:
+	//
+	// VM
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GetAppVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppVersionsRequest) SetAppName(v string) *GetAppVersionsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetAppVersionsRequest) SetImageCategory(v string) *GetAppVersionsRequest {
+	s.ImageCategory = &v
+	return s
+}
+
+func (s *GetAppVersionsRequest) SetImageType(v string) *GetAppVersionsRequest {
+	s.ImageType = &v
+	return s
+}
+
+func (s *GetAppVersionsRequest) SetPageNumber(v int64) *GetAppVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetAppVersionsRequest) SetPageSize(v int64) *GetAppVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GetAppVersionsResponseBody struct {
+	AppVersions []*GetAppVersionsResponseBodyAppVersions `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetAppVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppVersionsResponseBody) SetAppVersions(v []*GetAppVersionsResponseBodyAppVersions) *GetAppVersionsResponseBody {
+	s.AppVersions = v
+	return s
+}
+
+func (s *GetAppVersionsResponseBody) SetPageNumber(v int64) *GetAppVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBody) SetPageSize(v int64) *GetAppVersionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBody) SetRequestId(v string) *GetAppVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBody) SetSuccess(v bool) *GetAppVersionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBody) SetTotalCount(v int32) *GetAppVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetAppVersionsResponseBodyAppVersions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-f8z0dfa96luomqly****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// V-Ray
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// v1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetAppVersionsResponseBodyAppVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppVersionsResponseBodyAppVersions) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppVersionsResponseBodyAppVersions) SetImageId(v string) *GetAppVersionsResponseBodyAppVersions {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBodyAppVersions) SetName(v string) *GetAppVersionsResponseBodyAppVersions {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAppVersionsResponseBodyAppVersions) SetVersion(v string) *GetAppVersionsResponseBodyAppVersions {
+	s.Version = &v
+	return s
+}
+
+type GetAppVersionsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAppVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppVersionsResponse) SetHeaders(v map[string]*string) *GetAppVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppVersionsResponse) SetStatusCode(v int32) *GetAppVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppVersionsResponse) SetBody(v *GetAppVersionsResponseBody) *GetAppVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type GetImageRequest struct {
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	// This parameter is required.
@@ -1487,8 +1676,9 @@ type GetImageResponseBodyImage struct {
 	// example:
 	//
 	// 2022-12-23T09:51:39Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime   *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description  *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentInfo *GetImageResponseBodyImageDocumentInfo `json:"DocumentInfo,omitempty" xml:"DocumentInfo,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -1539,6 +1729,11 @@ func (s *GetImageResponseBodyImage) SetDescription(v string) *GetImageResponseBo
 	return s
 }
 
+func (s *GetImageResponseBodyImage) SetDocumentInfo(v *GetImageResponseBodyImageDocumentInfo) *GetImageResponseBodyImage {
+	s.DocumentInfo = v
+	return s
+}
+
 func (s *GetImageResponseBodyImage) SetImageType(v string) *GetImageResponseBodyImage {
 	s.ImageType = &v
 	return s
@@ -1570,6 +1765,7 @@ func (s *GetImageResponseBodyImage) SetVersion(v string) *GetImageResponseBodyIm
 }
 
 type GetImageResponseBodyImageContainerImageSpec struct {
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// example:
 	//
 	// True
@@ -1578,6 +1774,8 @@ type GetImageResponseBodyImageContainerImageSpec struct {
 	//
 	// True
 	IsACRRegistry      *bool                                                          `json:"IsACRRegistry,omitempty" xml:"IsACRRegistry,omitempty"`
+	OsTag              *string                                                        `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	Platform           *string                                                        `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	RegistryCredential *GetImageResponseBodyImageContainerImageSpecRegistryCredential `json:"RegistryCredential,omitempty" xml:"RegistryCredential,omitempty" type:"Struct"`
 	// example:
 	//
@@ -1597,6 +1795,11 @@ func (s GetImageResponseBodyImageContainerImageSpec) GoString() string {
 	return s.String()
 }
 
+func (s *GetImageResponseBodyImageContainerImageSpec) SetArchitecture(v string) *GetImageResponseBodyImageContainerImageSpec {
+	s.Architecture = &v
+	return s
+}
+
 func (s *GetImageResponseBodyImageContainerImageSpec) SetIsACREnterprise(v bool) *GetImageResponseBodyImageContainerImageSpec {
 	s.IsACREnterprise = &v
 	return s
@@ -1604,6 +1807,16 @@ func (s *GetImageResponseBodyImageContainerImageSpec) SetIsACREnterprise(v bool)
 
 func (s *GetImageResponseBodyImageContainerImageSpec) SetIsACRRegistry(v bool) *GetImageResponseBodyImageContainerImageSpec {
 	s.IsACRRegistry = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageContainerImageSpec) SetOsTag(v string) *GetImageResponseBodyImageContainerImageSpec {
+	s.OsTag = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageContainerImageSpec) SetPlatform(v string) *GetImageResponseBodyImageContainerImageSpec {
+	s.Platform = &v
 	return s
 }
 
@@ -1657,6 +1870,35 @@ func (s *GetImageResponseBodyImageContainerImageSpecRegistryCredential) SetServe
 
 func (s *GetImageResponseBodyImageContainerImageSpecRegistryCredential) SetUserName(v string) *GetImageResponseBodyImageContainerImageSpecRegistryCredential {
 	s.UserName = &v
+	return s
+}
+
+type GetImageResponseBodyImageDocumentInfo struct {
+	Document     *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	DocumentId   *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	EncodingMode *string `json:"EncodingMode,omitempty" xml:"EncodingMode,omitempty"`
+}
+
+func (s GetImageResponseBodyImageDocumentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageResponseBodyImageDocumentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageResponseBodyImageDocumentInfo) SetDocument(v string) *GetImageResponseBodyImageDocumentInfo {
+	s.Document = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageDocumentInfo) SetDocumentId(v string) *GetImageResponseBodyImageDocumentInfo {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *GetImageResponseBodyImageDocumentInfo) SetEncodingMode(v string) *GetImageResponseBodyImageDocumentInfo {
+	s.EncodingMode = &v
 	return s
 }
 
@@ -2739,6 +2981,7 @@ type ListImagesRequest struct {
 	ImageIds      []*string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty" type:"Repeated"`
 	ImageNames    []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
 	ImageType     *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Mode          *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// example:
 	//
 	// 1
@@ -2777,6 +3020,11 @@ func (s *ListImagesRequest) SetImageType(v string) *ListImagesRequest {
 	return s
 }
 
+func (s *ListImagesRequest) SetMode(v string) *ListImagesRequest {
+	s.Mode = &v
+	return s
+}
+
 func (s *ListImagesRequest) SetPageNumber(v int64) *ListImagesRequest {
 	s.PageNumber = &v
 	return s
@@ -2792,6 +3040,7 @@ type ListImagesShrinkRequest struct {
 	ImageIdsShrink   *string `json:"ImageIds,omitempty" xml:"ImageIds,omitempty"`
 	ImageNamesShrink *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
 	ImageType        *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	Mode             *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// example:
 	//
 	// 1
@@ -2827,6 +3076,11 @@ func (s *ListImagesShrinkRequest) SetImageNamesShrink(v string) *ListImagesShrin
 
 func (s *ListImagesShrinkRequest) SetImageType(v string) *ListImagesShrinkRequest {
 	s.ImageType = &v
+	return s
+}
+
+func (s *ListImagesShrinkRequest) SetMode(v string) *ListImagesShrinkRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -2910,6 +3164,7 @@ type ListImagesResponseBodyImages struct {
 	// 2022-12-09T07:06:34Z
 	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentId  *int32  `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2925,12 +3180,14 @@ type ListImagesResponseBodyImages struct {
 	// example:
 	//
 	// app-image
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OsTag *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OsTag      *string `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// example:
 	//
 	// v1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Weight  *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListImagesResponseBodyImages) String() string {
@@ -2956,6 +3213,11 @@ func (s *ListImagesResponseBodyImages) SetDescription(v string) *ListImagesRespo
 	return s
 }
 
+func (s *ListImagesResponseBodyImages) SetDocumentId(v int32) *ListImagesResponseBodyImages {
+	s.DocumentId = &v
+	return s
+}
+
 func (s *ListImagesResponseBodyImages) SetImageId(v string) *ListImagesResponseBodyImages {
 	s.ImageId = &v
 	return s
@@ -2976,8 +3238,18 @@ func (s *ListImagesResponseBodyImages) SetOsTag(v string) *ListImagesResponseBod
 	return s
 }
 
+func (s *ListImagesResponseBodyImages) SetUpdateTime(v string) *ListImagesResponseBodyImages {
+	s.UpdateTime = &v
+	return s
+}
+
 func (s *ListImagesResponseBodyImages) SetVersion(v string) *ListImagesResponseBodyImages {
 	s.Version = &v
+	return s
+}
+
+func (s *ListImagesResponseBodyImages) SetWeight(v int32) *ListImagesResponseBodyImages {
+	s.Weight = &v
 	return s
 }
 
@@ -4674,6 +4946,82 @@ func (client *Client) DescribeJobMetricLast(request *DescribeJobMetricLastReques
 
 // Summary:
 //
+// 查看应用版本列表
+//
+// @param request - GetAppVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppVersionsResponse
+func (client *Client) GetAppVersionsWithOptions(request *GetAppVersionsRequest, runtime *util.RuntimeOptions) (_result *GetAppVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageCategory)) {
+		query["ImageCategory"] = request.ImageCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppVersions"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看应用版本列表
+//
+// @param request - GetAppVersionsRequest
+//
+// @return GetAppVersionsResponse
+func (client *Client) GetAppVersions(request *GetAppVersionsRequest) (_result *GetAppVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppVersionsResponse{}
+	_body, _err := client.GetAppVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询托管侧镜像详情。
 //
 // @param request - GetImageRequest
@@ -4913,6 +5261,10 @@ func (client *Client) ListImagesWithOptions(tmpReq *ListImagesRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
 		query["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
