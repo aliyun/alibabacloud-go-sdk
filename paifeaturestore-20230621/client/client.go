@@ -13,6 +13,7 @@ type FeatureViewConfigValue struct {
 	Partitions map[string]*FeatureViewConfigValuePartitionsValue `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 	EventTime  *string                                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
 	Equal      *bool                                             `json:"Equal,omitempty" xml:"Equal,omitempty"`
+	UseMock    *bool                                             `json:"UseMock,omitempty" xml:"UseMock,omitempty"`
 }
 
 func (s FeatureViewConfigValue) String() string {
@@ -35,6 +36,11 @@ func (s *FeatureViewConfigValue) SetEventTime(v string) *FeatureViewConfigValue 
 
 func (s *FeatureViewConfigValue) SetEqual(v bool) *FeatureViewConfigValue {
 	s.Equal = &v
+	return s
+}
+
+func (s *FeatureViewConfigValue) SetUseMock(v bool) *FeatureViewConfigValue {
+	s.UseMock = &v
 	return s
 }
 
@@ -2064,6 +2070,10 @@ type GetFeatureViewResponseBody struct {
 	LastSyncConfig *string `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
 	// example:
 	//
+	// item_table_mock_1
+	MockTableName *string `json:"MockTableName,omitempty" xml:"MockTableName,omitempty"`
+	// example:
+	//
 	// featureView1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
@@ -2168,6 +2178,11 @@ func (s *GetFeatureViewResponseBody) SetJoinId(v string) *GetFeatureViewResponse
 
 func (s *GetFeatureViewResponseBody) SetLastSyncConfig(v string) *GetFeatureViewResponseBody {
 	s.LastSyncConfig = &v
+	return s
+}
+
+func (s *GetFeatureViewResponseBody) SetMockTableName(v string) *GetFeatureViewResponseBody {
+	s.MockTableName = &v
 	return s
 }
 
@@ -7575,9 +7590,8 @@ func (s *UpdateModelFeatureResponse) SetBody(v *UpdateModelFeatureResponseBody) 
 }
 
 type UpdateModelFeatureFGFeatureRequest struct {
-	LookupFeatures []*UpdateModelFeatureFGFeatureRequestLookupFeatures `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
-	RawFeatures    []*UpdateModelFeatureFGFeatureRequestRawFeatures    `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
-	// This parameter is required.
+	LookupFeatures   []*UpdateModelFeatureFGFeatureRequestLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	RawFeatures      []*UpdateModelFeatureFGFeatureRequestRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
 	Reserves         []*string                                             `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
 	SequenceFeatures []*UpdateModelFeatureFGFeatureRequestSequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
 }
