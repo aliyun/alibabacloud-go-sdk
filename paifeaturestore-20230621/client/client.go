@@ -1032,64 +1032,6 @@ func (s *CreateModelFeatureResponse) SetBody(v *CreateModelFeatureResponseBody) 
 	return s
 }
 
-type CreateModelFeatureTrainingSetFGTableResponseBody struct {
-	// example:
-	//
-	// project_model_training_set_fg
-	TrainingSetFGTableName *string `json:"TrainingSetFGTableName,omitempty" xml:"TrainingSetFGTableName,omitempty"`
-	// example:
-	//
-	// 93FF6A91-5326-5FA1-9D89-DB46DAA99E55
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s CreateModelFeatureTrainingSetFGTableResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateModelFeatureTrainingSetFGTableResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateModelFeatureTrainingSetFGTableResponseBody) SetTrainingSetFGTableName(v string) *CreateModelFeatureTrainingSetFGTableResponseBody {
-	s.TrainingSetFGTableName = &v
-	return s
-}
-
-func (s *CreateModelFeatureTrainingSetFGTableResponseBody) SetRequestId(v string) *CreateModelFeatureTrainingSetFGTableResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateModelFeatureTrainingSetFGTableResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateModelFeatureTrainingSetFGTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateModelFeatureTrainingSetFGTableResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateModelFeatureTrainingSetFGTableResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateModelFeatureTrainingSetFGTableResponse) SetHeaders(v map[string]*string) *CreateModelFeatureTrainingSetFGTableResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateModelFeatureTrainingSetFGTableResponse) SetStatusCode(v int32) *CreateModelFeatureTrainingSetFGTableResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateModelFeatureTrainingSetFGTableResponse) SetBody(v *CreateModelFeatureTrainingSetFGTableResponseBody) *CreateModelFeatureTrainingSetFGTableResponse {
-	s.Body = v
-	return s
-}
-
 type CreateProjectRequest struct {
 	// example:
 	//
@@ -1600,118 +1542,6 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 }
 
 func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
-	s.Body = v
-	return s
-}
-
-type ExportModelFeatureTrainingSetFGTableRequest struct {
-	// This parameter is required.
-	TrainingSetFgConfig *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig `json:"TrainingSetFgConfig,omitempty" xml:"TrainingSetFgConfig,omitempty" type:"Struct"`
-}
-
-func (s ExportModelFeatureTrainingSetFGTableRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportModelFeatureTrainingSetFGTableRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableRequest) SetTrainingSetFgConfig(v *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) *ExportModelFeatureTrainingSetFGTableRequest {
-	s.TrainingSetFgConfig = v
-	return s
-}
-
-type ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig struct {
-	// example:
-	//
-	// rank_v1_fg.json
-	FgJsonName *string `json:"FgJsonName,omitempty" xml:"FgJsonName,omitempty"`
-	// example:
-	//
-	// fg_on_odps-1.3.60-jar-with-dependencies.jar
-	JarName *string `json:"JarName,omitempty" xml:"JarName,omitempty"`
-	// This parameter is required.
-	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
-}
-
-func (s ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetFgJsonName(v string) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
-	s.FgJsonName = &v
-	return s
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetJarName(v string) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
-	s.JarName = &v
-	return s
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetPartitions(v map[string]map[string]interface{}) *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig {
-	s.Partitions = v
-	return s
-}
-
-type ExportModelFeatureTrainingSetFGTableResponseBody struct {
-	// example:
-	//
-	// 3
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// example:
-	//
-	// 514F82AF-3C04-5C3D-8F38-A11261BF37B0
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s ExportModelFeatureTrainingSetFGTableResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportModelFeatureTrainingSetFGTableResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableResponseBody) SetTaskId(v string) *ExportModelFeatureTrainingSetFGTableResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableResponseBody) SetRequestId(v string) *ExportModelFeatureTrainingSetFGTableResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ExportModelFeatureTrainingSetFGTableResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ExportModelFeatureTrainingSetFGTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ExportModelFeatureTrainingSetFGTableResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportModelFeatureTrainingSetFGTableResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableResponse) SetHeaders(v map[string]*string) *ExportModelFeatureTrainingSetFGTableResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableResponse) SetStatusCode(v int32) *ExportModelFeatureTrainingSetFGTableResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ExportModelFeatureTrainingSetFGTableResponse) SetBody(v *ExportModelFeatureTrainingSetFGTableResponseBody) *ExportModelFeatureTrainingSetFGTableResponse {
 	s.Body = v
 	return s
 }
@@ -4348,8 +4178,6 @@ type ListFeatureEntitiesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 3
@@ -4430,8 +4258,6 @@ type ListFeatureEntitiesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 3
@@ -4992,8 +4818,6 @@ type ListFeatureViewsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 3
@@ -5101,8 +4925,6 @@ type ListFeatureViewsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 3
@@ -5612,8 +5434,6 @@ type ListLabelTablesRequest struct {
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// project1
@@ -5694,8 +5514,6 @@ type ListLabelTablesShrinkRequest struct {
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// project1
@@ -6063,8 +5881,6 @@ type ListModelFeaturesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 4
@@ -6145,8 +5961,6 @@ type ListModelFeaturesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 4
@@ -6981,8 +6795,6 @@ type ListTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 4
@@ -7063,8 +6875,6 @@ type ListTasksShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 4
@@ -7625,6 +7435,10 @@ type UpdateModelFeatureRequest struct {
 	Features []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// example:
 	//
+	// 0
+	LabelPriorityLevel *int64 `json:"LabelPriorityLevel,omitempty" xml:"LabelPriorityLevel,omitempty"`
+	// example:
+	//
 	// 4
 	LabelTableId           *string   `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
 	SequenceFeatureViewIds []*string `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
@@ -7640,6 +7454,11 @@ func (s UpdateModelFeatureRequest) GoString() string {
 
 func (s *UpdateModelFeatureRequest) SetFeatures(v []*UpdateModelFeatureRequestFeatures) *UpdateModelFeatureRequest {
 	s.Features = v
+	return s
+}
+
+func (s *UpdateModelFeatureRequest) SetLabelPriorityLevel(v int64) *UpdateModelFeatureRequest {
+	s.LabelPriorityLevel = &v
 	return s
 }
 
@@ -8139,77 +7958,6 @@ func (s *UpdateModelFeatureFGFeatureResponse) SetStatusCode(v int32) *UpdateMode
 }
 
 func (s *UpdateModelFeatureFGFeatureResponse) SetBody(v *UpdateModelFeatureFGFeatureResponseBody) *UpdateModelFeatureFGFeatureResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateModelFeatureFGInfoRequest struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// {"features": [{"feature_name": "item_id","feature_type": "id_feature","value_type": "String","expression": "item:item_id","default_value": "-1024","combiner": "mean","need_prefix": false},{"feature_name": "f1","feature_type": "lookup_feature","value_type": "Integer","map": "item:f1","key": "user:1","default_value": "0","combiner": "mean","need_prefix": false,"needDiscrete": false,"needWeighting": false,"needKey": false}],"reserves": ["f1"]}
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-}
-
-func (s UpdateModelFeatureFGInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateModelFeatureFGInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateModelFeatureFGInfoRequest) SetContent(v string) *UpdateModelFeatureFGInfoRequest {
-	s.Content = &v
-	return s
-}
-
-type UpdateModelFeatureFGInfoResponseBody struct {
-	// example:
-	//
-	// E8CA47C5-B3E8-5BD7-9910-245432A365EB
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-}
-
-func (s UpdateModelFeatureFGInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateModelFeatureFGInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateModelFeatureFGInfoResponseBody) SetRequestId(v string) *UpdateModelFeatureFGInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateModelFeatureFGInfoResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateModelFeatureFGInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateModelFeatureFGInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateModelFeatureFGInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateModelFeatureFGInfoResponse) SetHeaders(v map[string]*string) *UpdateModelFeatureFGInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateModelFeatureFGInfoResponse) SetStatusCode(v int32) *UpdateModelFeatureFGInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateModelFeatureFGInfoResponse) SetBody(v *UpdateModelFeatureFGInfoResponseBody) *UpdateModelFeatureFGInfoResponse {
 	s.Body = v
 	return s
 }
@@ -9028,56 +8776,6 @@ func (client *Client) CreateModelFeature(InstanceId *string, request *CreateMode
 
 // Summary:
 //
-// 创建训练样本FG表。
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateModelFeatureTrainingSetFGTableResponse
-func (client *Client) CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateModelFeatureTrainingSetFGTable"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/trainingsetfgtable"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateModelFeatureTrainingSetFGTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建训练样本FG表。
-//
-// @return CreateModelFeatureTrainingSetFGTableResponse
-func (client *Client) CreateModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateModelFeatureTrainingSetFGTableResponse{}
-	_body, _err := client.CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId, ModelFeatureId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 创建FeatureStore项目
 //
 // @param request - CreateProjectRequest
@@ -9517,70 +9215,6 @@ func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_res
 	headers := make(map[string]*string)
 	_result = &DeleteProjectResponse{}
 	_body, _err := client.DeleteProjectWithOptions(InstanceId, ProjectId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 导出训练样本FG表。
-//
-// @param request - ExportModelFeatureTrainingSetFGTableRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ExportModelFeatureTrainingSetFGTableResponse
-func (client *Client) ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TrainingSetFgConfig)) {
-		body["TrainingSetFgConfig"] = request.TrainingSetFgConfig
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ExportModelFeatureTrainingSetFGTable"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/action/exporttrainingsetfgtable"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ExportModelFeatureTrainingSetFGTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 导出训练样本FG表。
-//
-// @param request - ExportModelFeatureTrainingSetFGTableRequest
-//
-// @return ExportModelFeatureTrainingSetFGTableResponse
-func (client *Client) ExportModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExportModelFeatureTrainingSetFGTableResponse{}
-	_body, _err := client.ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11747,6 +11381,10 @@ func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFea
 		body["Features"] = request.Features
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LabelPriorityLevel)) {
+		body["LabelPriorityLevel"] = request.LabelPriorityLevel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LabelTableId)) {
 		body["LabelTableId"] = request.LabelTableId
 	}
@@ -11867,70 +11505,6 @@ func (client *Client) UpdateModelFeatureFGFeature(InstanceId *string, ModelFeatu
 	headers := make(map[string]*string)
 	_result = &UpdateModelFeatureFGFeatureResponse{}
 	_body, _err := client.UpdateModelFeatureFGFeatureWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新模型特征的fg.json文件配置信息。
-//
-// @param request - UpdateModelFeatureFGInfoRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateModelFeatureFGInfoResponse
-func (client *Client) UpdateModelFeatureFGInfoWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Content)) {
-		body["Content"] = request.Content
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateModelFeatureFGInfo"),
-		Version:     tea.String("2023-06-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/fginfo"),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateModelFeatureFGInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新模型特征的fg.json文件配置信息。
-//
-// @param request - UpdateModelFeatureFGInfoRequest
-//
-// @return UpdateModelFeatureFGInfoResponse
-func (client *Client) UpdateModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateModelFeatureFGInfoResponse{}
-	_body, _err := client.UpdateModelFeatureFGInfoWithOptions(InstanceId, ModelFeatureId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
