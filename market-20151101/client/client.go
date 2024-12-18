@@ -1889,6 +1889,9 @@ func (s *DescribeInstanceForIsvRequest) SetInstanceId(v string) *DescribeInstanc
 }
 
 type DescribeInstanceForIsvResponseBody struct {
+	ActiveAddress *string `json:"ActiveAddress,omitempty" xml:"ActiveAddress,omitempty"`
+	AppJson       *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
+	AutoRenewal   *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// example:
 	//
 	// 1570634021000
@@ -1906,6 +1909,8 @@ type DescribeInstanceForIsvResponseBody struct {
 	// 1602259200000
 	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
 	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	HostJson   *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
+	ImageJson  *string `json:"ImageJson,omitempty" xml:"ImageJson,omitempty"`
 	// example:
 	//
 	// 1551111111
@@ -1913,7 +1918,8 @@ type DescribeInstanceForIsvResponseBody struct {
 	// example:
 	//
 	// true
-	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	IsTrial     *bool   `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 	// example:
 	//
 	// 204211111111111
@@ -1951,6 +1957,21 @@ func (s DescribeInstanceForIsvResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceForIsvResponseBody) SetActiveAddress(v string) *DescribeInstanceForIsvResponseBody {
+	s.ActiveAddress = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetAppJson(v string) *DescribeInstanceForIsvResponseBody {
+	s.AppJson = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetAutoRenewal(v string) *DescribeInstanceForIsvResponseBody {
+	s.AutoRenewal = &v
+	return s
+}
+
 func (s *DescribeInstanceForIsvResponseBody) SetBeganOn(v int64) *DescribeInstanceForIsvResponseBody {
 	s.BeganOn = &v
 	return s
@@ -1976,6 +1997,16 @@ func (s *DescribeInstanceForIsvResponseBody) SetExtendJson(v string) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstanceForIsvResponseBody) SetHostJson(v string) *DescribeInstanceForIsvResponseBody {
+	s.HostJson = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetImageJson(v string) *DescribeInstanceForIsvResponseBody {
+	s.ImageJson = &v
+	return s
+}
+
 func (s *DescribeInstanceForIsvResponseBody) SetInstanceId(v int64) *DescribeInstanceForIsvResponseBody {
 	s.InstanceId = &v
 	return s
@@ -1983,6 +2014,11 @@ func (s *DescribeInstanceForIsvResponseBody) SetInstanceId(v int64) *DescribeIns
 
 func (s *DescribeInstanceForIsvResponseBody) SetIsTrial(v bool) *DescribeInstanceForIsvResponseBody {
 	s.IsTrial = &v
+	return s
+}
+
+func (s *DescribeInstanceForIsvResponseBody) SetLicenseCode(v string) *DescribeInstanceForIsvResponseBody {
+	s.LicenseCode = &v
 	return s
 }
 
