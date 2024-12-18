@@ -743,6 +743,81 @@ func (s *AllocateReadWriteSplittingConnectionResponse) SetBody(v *AllocateReadWr
 	return s
 }
 
+type AssociateEipAddressWithRCInstanceRequest struct {
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AssociateEipAddressWithRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateEipAddressWithRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateEipAddressWithRCInstanceRequest) SetAllocationId(v string) *AssociateEipAddressWithRCInstanceRequest {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *AssociateEipAddressWithRCInstanceRequest) SetInstanceId(v string) *AssociateEipAddressWithRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AssociateEipAddressWithRCInstanceRequest) SetRegionId(v string) *AssociateEipAddressWithRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AssociateEipAddressWithRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateEipAddressWithRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateEipAddressWithRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateEipAddressWithRCInstanceResponseBody) SetRequestId(v string) *AssociateEipAddressWithRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateEipAddressWithRCInstanceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AssociateEipAddressWithRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AssociateEipAddressWithRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateEipAddressWithRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateEipAddressWithRCInstanceResponse) SetHeaders(v map[string]*string) *AssociateEipAddressWithRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateEipAddressWithRCInstanceResponse) SetStatusCode(v int32) *AssociateEipAddressWithRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateEipAddressWithRCInstanceResponse) SetBody(v *AssociateEipAddressWithRCInstanceResponseBody) *AssociateEipAddressWithRCInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type AttachRCDiskRequest struct {
 	// The reserved parameter. This parameter is not supported.
 	//
@@ -5366,6 +5441,18 @@ type CreateDBInstanceRequest struct {
 	//
 	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
+	// Specifies whether to enable the write optimization feature.
+	//
+	// 	- **optimized**: enables the feature.
+	//
+	// 	- **none**: disables the feature.
+	//
+	// >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+	//
+	// example:
+	//
+	// optimized
+	OptimizedWrites *string `json:"OptimizedWrites,omitempty" xml:"OptimizedWrites,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -5809,6 +5896,11 @@ func (s *CreateDBInstanceRequest) SetInstanceNetworkType(v string) *CreateDBInst
 
 func (s *CreateDBInstanceRequest) SetIoAccelerationEnabled(v string) *CreateDBInstanceRequest {
 	s.IoAccelerationEnabled = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetOptimizedWrites(v string) *CreateDBInstanceRequest {
+	s.OptimizedWrites = &v
 	return s
 }
 
@@ -6502,6 +6594,18 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
+	// Specifies whether to enable the write optimization feature.
+	//
+	// 	- **optimized**: enables the feature.
+	//
+	// 	- **none**: disables the feature.
+	//
+	// >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+	//
+	// example:
+	//
+	// optimized
+	OptimizedWrites *string `json:"OptimizedWrites,omitempty" xml:"OptimizedWrites,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -6945,6 +7049,11 @@ func (s *CreateDBInstanceShrinkRequest) SetInstanceNetworkType(v string) *Create
 
 func (s *CreateDBInstanceShrinkRequest) SetIoAccelerationEnabled(v string) *CreateDBInstanceShrinkRequest {
 	s.IoAccelerationEnabled = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetOptimizedWrites(v string) *CreateDBInstanceShrinkRequest {
+	s.OptimizedWrites = &v
 	return s
 }
 
@@ -12899,8 +13008,17 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// 	- **true**: uses a coupon.
+	//
+	// 	- **false*	- (default): does not use a coupon.
+	//
+	// example:
+	//
+	// true
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
@@ -13087,7 +13205,12 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// 172.16.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PromotionCode    *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 717446260784
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID. The read-only instance and the primary instance must reside in the same region. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -27592,6 +27715,16 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// true
 	MultipleTempUpgrade *bool `json:"MultipleTempUpgrade,omitempty" xml:"MultipleTempUpgrade,omitempty"`
+	// OptimizedWritesInfo contains two fields:
+	//
+	// - optimized_writes: Whether write optimization is enabled for the current instance.
+	//
+	// - init_optimized_writes: Whether write optimization can be enabled for the instance. Some instances do not display the write optimization switch in the console because init_optimized_writes is false.
+	//
+	// example:
+	//
+	// {"optimized_writes":true,"init_optimized_writes":true}
+	OptimizedWritesInfo *string `json:"OptimizedWritesInfo,omitempty" xml:"OptimizedWritesInfo,omitempty"`
 	// Indicates whether PgBouncer is enabled.
 	//
 	// >  This parameter is returned only for RDS instances that run PostgreSQL. If PgBouncer is enabled, the return value is **true**.
@@ -28040,6 +28173,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMax
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetMultipleTempUpgrade(v bool) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.MultipleTempUpgrade = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetOptimizedWritesInfo(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.OptimizedWritesInfo = &v
 	return s
 }
 
@@ -38365,7 +38503,12 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// DedicatedProxy
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	Dimension           *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	// Dimension.
+	//
+	// example:
+	//
+	// service
+	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// This parameter is required.
@@ -38582,7 +38725,12 @@ type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey struct 
 	// example:
 	//
 	// cpu_ratio
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The service dimension.
+	//
+	// example:
+	//
+	// reserve_3
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	// The format in which the value of the performance metric is returned.
 	//
@@ -53171,8 +53319,8 @@ type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet struct {
 	// example:
 	//
 	// LooseDispersion
-	Strategy     *string                                                                      `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	TagResources *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+	Strategy *string                                                              `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	Tags     *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) String() string {
@@ -53243,8 +53391,8 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetStr
 	return s
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetTagResources(v *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
-	s.TagResources = v
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet) SetTags(v *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet {
+	s.Tags = v
 	return s
 }
 
@@ -53326,54 +53474,54 @@ func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetInstance
 	return s
 }
 
-type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources struct {
-	TagResources []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags struct {
+	Tag []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
-func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources) String() string {
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources) GoString() string {
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources) SetTagResources(v []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResources {
-	s.TagResources = v
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags) SetTag(v []*DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags {
+	s.Tag = v
 	return s
 }
 
-type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources struct {
+type DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag struct {
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
-func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) String() string {
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) GoString() string {
+func (s DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) SetResourceId(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources {
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) SetResourceId(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag {
 	s.ResourceId = &v
 	return s
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) SetResourceType(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources {
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) SetResourceType(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) SetTagKey(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources {
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) SetTagKey(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag {
 	s.TagKey = &v
 	return s
 }
 
-func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources) SetTagValue(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagResourcesTagResources {
+func (s *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag) SetTagValue(v string) *DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTagsTag {
 	s.TagValue = &v
 	return s
 }
@@ -54287,12 +54435,11 @@ func (s *DescribeRCImageListResponse) SetBody(v *DescribeRCImageListResponseBody
 type DescribeRCInstanceAttributeRequest struct {
 	// The instance ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// rc-dh2jf9n6j4s14926****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -54311,6 +54458,11 @@ func (s DescribeRCInstanceAttributeRequest) GoString() string {
 
 func (s *DescribeRCInstanceAttributeRequest) SetInstanceId(v string) *DescribeRCInstanceAttributeRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeRequest) SetPrivateIpAddress(v string) *DescribeRCInstanceAttributeRequest {
+	s.PrivateIpAddress = &v
 	return s
 }
 
@@ -54548,7 +54700,8 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// Not-applicable
-	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	StoppedMode *string                                      `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	Tags        *DescribeRCInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The virtual LAN (VLAN) ID of the instance.
 	//
 	// >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
@@ -54770,6 +54923,11 @@ func (s *DescribeRCInstanceAttributeResponseBody) SetStatus(v string) *DescribeR
 
 func (s *DescribeRCInstanceAttributeResponseBody) SetStoppedMode(v string) *DescribeRCInstanceAttributeResponseBody {
 	s.StoppedMode = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBody) SetTags(v *DescribeRCInstanceAttributeResponseBodyTags) *DescribeRCInstanceAttributeResponseBody {
+	s.Tags = v
 	return s
 }
 
@@ -55070,6 +55228,58 @@ func (s DescribeRCInstanceAttributeResponseBodySecurityGroupIds) GoString() stri
 
 func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) SetSecurityGroupId(v []*string) *DescribeRCInstanceAttributeResponseBodySecurityGroupIds {
 	s.SecurityGroupId = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyTags struct {
+	Tag []*DescribeRCInstanceAttributeResponseBodyTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyTags) SetTag(v []*DescribeRCInstanceAttributeResponseBodyTagsTag) *DescribeRCInstanceAttributeResponseBodyTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeRCInstanceAttributeResponseBodyTagsTag struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstanceAttributeResponseBodyTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyTagsTag) SetResourceId(v string) *DescribeRCInstanceAttributeResponseBodyTagsTag {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyTagsTag) SetResourceType(v string) *DescribeRCInstanceAttributeResponseBodyTagsTag {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyTagsTag) SetTagKey(v string) *DescribeRCInstanceAttributeResponseBodyTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeRCInstanceAttributeResponseBodyTagsTag) SetTagValue(v string) *DescribeRCInstanceAttributeResponseBodyTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -55495,6 +55705,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// Running
 	Status       *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
 	TagResources []*DescribeRCInstancesResponseBodyRCInstancesTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	Tags         []*DescribeRCInstancesResponseBodyRCInstancesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The VPC ID.
 	//
 	// example:
@@ -55577,6 +55788,11 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) SetTagResources(v []*Descri
 	return s
 }
 
+func (s *DescribeRCInstancesResponseBodyRCInstances) SetTags(v []*DescribeRCInstancesResponseBodyRCInstancesTags) *DescribeRCInstancesResponseBodyRCInstances {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeRCInstancesResponseBodyRCInstances) SetVpcId(v string) *DescribeRCInstancesResponseBodyRCInstances {
 	s.VpcId = &v
 	return s
@@ -55618,6 +55834,41 @@ func (s *DescribeRCInstancesResponseBodyRCInstancesTagResources) SetTagKey(v str
 }
 
 func (s *DescribeRCInstancesResponseBodyRCInstancesTagResources) SetTagValue(v string) *DescribeRCInstancesResponseBodyRCInstancesTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type DescribeRCInstancesResponseBodyRCInstancesTags struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeRCInstancesResponseBodyRCInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCInstancesResponseBodyRCInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstancesTags) SetResourceId(v string) *DescribeRCInstancesResponseBodyRCInstancesTags {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstancesTags) SetResourceType(v string) *DescribeRCInstancesResponseBodyRCInstancesTags {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstancesTags) SetTagKey(v string) *DescribeRCInstancesResponseBodyRCInstancesTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeRCInstancesResponseBodyRCInstancesTags) SetTagValue(v string) *DescribeRCInstancesResponseBodyRCInstancesTags {
 	s.TagValue = &v
 	return s
 }
@@ -70180,6 +70431,24 @@ type ModifyDBInstanceConfigRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The update time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-05-06T09:24:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The time at which the modification takes effect. Valid values:
+	//
+	// - **Immediate**: immediately modifies the parameter. This is the default value.
+	//
+	// - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+	//
+	// - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
+	//
+	// example:
+	//
+	// Immediate
+	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigRequest) String() string {
@@ -70232,6 +70501,16 @@ func (s *ModifyDBInstanceConfigRequest) SetResourceOwnerAccount(v string) *Modif
 
 func (s *ModifyDBInstanceConfigRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceConfigRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetSwitchTime(v string) *ModifyDBInstanceConfigRequest {
+	s.SwitchTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConfigRequest) SetSwitchTimeMode(v string) *ModifyDBInstanceConfigRequest {
+	s.SwitchTimeMode = &v
 	return s
 }
 
@@ -73023,8 +73302,20 @@ type ModifyDBInstanceSpecRequest struct {
 	//
 	// None
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to enable the write optimization feature.
+	//
+	// 	- **optimized**: enables the feature.
+	//
+	// 	- **none**: disables the feature.
+	//
+	// >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+	//
+	// example:
+	//
+	// optimized
+	OptimizedWrites *string `json:"OptimizedWrites,omitempty" xml:"OptimizedWrites,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -73036,7 +73327,12 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// Postpaid
-	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 723298850895
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
 	//
@@ -73197,6 +73493,11 @@ func (s *ModifyDBInstanceSpecRequest) SetEngineVersion(v string) *ModifyDBInstan
 
 func (s *ModifyDBInstanceSpecRequest) SetIoAccelerationEnabled(v string) *ModifyDBInstanceSpecRequest {
 	s.IoAccelerationEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetOptimizedWrites(v string) *ModifyDBInstanceSpecRequest {
+	s.OptimizedWrites = &v
 	return s
 }
 
@@ -73549,8 +73850,20 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	//
 	// None
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to enable the write optimization feature.
+	//
+	// 	- **optimized**: enables the feature.
+	//
+	// 	- **none**: disables the feature.
+	//
+	// >  For more information about the write optimization feature, see [Write optimization](https://help.aliyun.com/document_detail/2858761.html).
+	//
+	// example:
+	//
+	// optimized
+	OptimizedWrites *string `json:"OptimizedWrites,omitempty" xml:"OptimizedWrites,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -73562,7 +73875,12 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// Postpaid
-	PayType       *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 723298850895
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// Target specifications for read-only instances when changing a MySQL high-availability local disk instance to a cloud disk.
 	//
@@ -73723,6 +74041,11 @@ func (s *ModifyDBInstanceSpecShrinkRequest) SetEngineVersion(v string) *ModifyDB
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetIoAccelerationEnabled(v string) *ModifyDBInstanceSpecShrinkRequest {
 	s.IoAccelerationEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetOptimizedWrites(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.OptimizedWrites = &v
 	return s
 }
 
@@ -75084,7 +75407,12 @@ type ModifyDBProxyEndpointRequest struct {
 	// example:
 	//
 	// test-proxy
-	DbEndpointAliases       *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	DbEndpointAliases *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	// The minimum number of reserved instances.
+	//
+	// example:
+	//
+	// 2
 	DbEndpointMinSlaveCount *string `json:"DbEndpointMinSlaveCount,omitempty" xml:"DbEndpointMinSlaveCount,omitempty"`
 	// The type of operation that you want to perform. Valid values:
 	//
@@ -75153,9 +75481,13 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// Standard
 	ReadOnlyInstanceDistributionType *string `json:"ReadOnlyInstanceDistributionType,omitempty" xml:"ReadOnlyInstanceDistributionType,omitempty"`
-	// The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. Unit: seconds If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0*	- to **3600**. Default value: **30**.
+	// The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0*	- to **3600**.
 	//
-	// > You must specify this parameter only when the read/write splitting feature is enabled.
+	// >
+	//
+	// 	- You must specify this parameter only when read/write splitting is enabled.
+	//
+	// 	- If the database proxy endpoint has the read and write attributes, the default value of this parameter is **30*	- and read/write splitting is supported. If the database proxy endpoint has the read-only attribute, the default value of this parameter is **-1*	- and read/write splitting is not supported. Unit: seconds.
 	//
 	// example:
 	//
@@ -79381,6 +79713,12 @@ type ModifyResourceGroupRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// Instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ModifyResourceGroupRequest) String() string {
@@ -79423,6 +79761,11 @@ func (s *ModifyResourceGroupRequest) SetResourceOwnerAccount(v string) *ModifyRe
 
 func (s *ModifyResourceGroupRequest) SetResourceOwnerId(v int64) *ModifyResourceGroupRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyResourceGroupRequest) SetResourceType(v string) *ModifyResourceGroupRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -83080,8 +83423,17 @@ type RenewInstanceRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// 	- **true**: uses a coupon.
+	//
+	// 	- **false*	- (default): does not use a coupon.
+	//
+	// example:
+	//
+	// true
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -83116,7 +83468,12 @@ type RenewInstanceRequest struct {
 	// example:
 	//
 	// 12
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 726702810223
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -86550,6 +86907,81 @@ func (s *SyncRCKeyPairResponse) SetBody(v *SyncRCKeyPairResponseBody) *SyncRCKey
 	return s
 }
 
+type SyncRCSecurityGroupRequest struct {
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s SyncRCSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCSecurityGroupRequest) SetInstanceId(v string) *SyncRCSecurityGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SyncRCSecurityGroupRequest) SetRegionId(v string) *SyncRCSecurityGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SyncRCSecurityGroupRequest) SetSecurityGroupId(v string) *SyncRCSecurityGroupRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type SyncRCSecurityGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SyncRCSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCSecurityGroupResponseBody) SetRequestId(v string) *SyncRCSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SyncRCSecurityGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncRCSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncRCSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncRCSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncRCSecurityGroupResponse) SetHeaders(v map[string]*string) *SyncRCSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncRCSecurityGroupResponse) SetStatusCode(v int32) *SyncRCSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncRCSecurityGroupResponse) SetBody(v *SyncRCSecurityGroupResponseBody) *SyncRCSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
@@ -86831,8 +87263,17 @@ type TransformDBInstancePayTypeRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to use vouchers to offset fees. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The additional business information about the instance.
 	//
 	// example:
@@ -86878,7 +87319,12 @@ type TransformDBInstancePayTypeRequest struct {
 	// example:
 	//
 	// Month
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 726702810223
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -87066,6 +87512,81 @@ func (s *TransformDBInstancePayTypeResponse) SetStatusCode(v int32) *TransformDB
 }
 
 func (s *TransformDBInstancePayTypeResponse) SetBody(v *TransformDBInstancePayTypeResponseBody) *TransformDBInstancePayTypeResponse {
+	s.Body = v
+	return s
+}
+
+type UnassociateEipAddressWithRCInstanceRequest struct {
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UnassociateEipAddressWithRCInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateEipAddressWithRCInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateEipAddressWithRCInstanceRequest) SetAllocationId(v string) *UnassociateEipAddressWithRCInstanceRequest {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *UnassociateEipAddressWithRCInstanceRequest) SetInstanceId(v string) *UnassociateEipAddressWithRCInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UnassociateEipAddressWithRCInstanceRequest) SetRegionId(v string) *UnassociateEipAddressWithRCInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UnassociateEipAddressWithRCInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnassociateEipAddressWithRCInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateEipAddressWithRCInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateEipAddressWithRCInstanceResponseBody) SetRequestId(v string) *UnassociateEipAddressWithRCInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnassociateEipAddressWithRCInstanceResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnassociateEipAddressWithRCInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnassociateEipAddressWithRCInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassociateEipAddressWithRCInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnassociateEipAddressWithRCInstanceResponse) SetHeaders(v map[string]*string) *UnassociateEipAddressWithRCInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnassociateEipAddressWithRCInstanceResponse) SetStatusCode(v int32) *UnassociateEipAddressWithRCInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnassociateEipAddressWithRCInstanceResponse) SetBody(v *UnassociateEipAddressWithRCInstanceResponseBody) *UnassociateEipAddressWithRCInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -89313,6 +89834,74 @@ func (client *Client) AllocateReadWriteSplittingConnection(request *AllocateRead
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateReadWriteSplittingConnectionResponse{}
 	_body, _err := client.AllocateReadWriteSplittingConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定弹性网卡到RDS Custom实例
+//
+// @param request - AssociateEipAddressWithRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateEipAddressWithRCInstanceResponse
+func (client *Client) AssociateEipAddressWithRCInstanceWithOptions(request *AssociateEipAddressWithRCInstanceRequest, runtime *util.RuntimeOptions) (_result *AssociateEipAddressWithRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateEipAddressWithRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateEipAddressWithRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定弹性网卡到RDS Custom实例
+//
+// @param request - AssociateEipAddressWithRCInstanceRequest
+//
+// @return AssociateEipAddressWithRCInstanceResponse
+func (client *Client) AssociateEipAddressWithRCInstance(request *AssociateEipAddressWithRCInstanceRequest) (_result *AssociateEipAddressWithRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateEipAddressWithRCInstanceResponse{}
+	_body, _err := client.AssociateEipAddressWithRCInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91849,6 +92438,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !tea.BoolValue(util.IsUnset(request.IoAccelerationEnabled)) {
 		query["IoAccelerationEnabled"] = request.IoAccelerationEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptimizedWrites)) {
+		query["OptimizedWrites"] = request.OptimizedWrites
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
@@ -108811,6 +109404,10 @@ func (client *Client) DescribeRCInstanceAttributeWithOptions(request *DescribeRC
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -115405,6 +116002,14 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SwitchTime)) {
+		query["SwitchTime"] = request.SwitchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTimeMode)) {
+		query["SwitchTimeMode"] = request.SwitchTimeMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -117345,6 +117950,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 
 	if !tea.BoolValue(util.IsUnset(request.IoAccelerationEnabled)) {
 		query["IoAccelerationEnabled"] = request.IoAccelerationEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptimizedWrites)) {
+		query["OptimizedWrites"] = request.OptimizedWrites
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -120631,6 +121240,10 @@ func (client *Client) ModifyResourceGroupWithOptions(request *ModifyResourceGrou
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -125062,6 +125675,74 @@ func (client *Client) SyncRCKeyPair(request *SyncRCKeyPairRequest) (_result *Syn
 
 // Summary:
 //
+// 同步RDS Custom的安全组
+//
+// @param request - SyncRCSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncRCSecurityGroupResponse
+func (client *Client) SyncRCSecurityGroupWithOptions(request *SyncRCSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *SyncRCSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncRCSecurityGroup"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncRCSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步RDS Custom的安全组
+//
+// @param request - SyncRCSecurityGroupRequest
+//
+// @return SyncRCSecurityGroupResponse
+func (client *Client) SyncRCSecurityGroup(request *SyncRCSecurityGroupRequest) (_result *SyncRCSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncRCSecurityGroupResponse{}
+	_body, _err := client.SyncRCSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates and adds tags to one or more instances.
 //
 // Description:
@@ -125429,6 +126110,74 @@ func (client *Client) TransformDBInstancePayType(request *TransformDBInstancePay
 	runtime := &util.RuntimeOptions{}
 	_result = &TransformDBInstancePayTypeResponse{}
 	_body, _err := client.TransformDBInstancePayTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑RDS Custom实例的弹性公网
+//
+// @param request - UnassociateEipAddressWithRCInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnassociateEipAddressWithRCInstanceResponse
+func (client *Client) UnassociateEipAddressWithRCInstanceWithOptions(request *UnassociateEipAddressWithRCInstanceRequest, runtime *util.RuntimeOptions) (_result *UnassociateEipAddressWithRCInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllocationId)) {
+		query["AllocationId"] = request.AllocationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnassociateEipAddressWithRCInstance"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnassociateEipAddressWithRCInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑RDS Custom实例的弹性公网
+//
+// @param request - UnassociateEipAddressWithRCInstanceRequest
+//
+// @return UnassociateEipAddressWithRCInstanceResponse
+func (client *Client) UnassociateEipAddressWithRCInstance(request *UnassociateEipAddressWithRCInstanceRequest) (_result *UnassociateEipAddressWithRCInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnassociateEipAddressWithRCInstanceResponse{}
+	_body, _err := client.UnassociateEipAddressWithRCInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
