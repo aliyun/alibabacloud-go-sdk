@@ -9,6 +9,425 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddDatasetDocumentRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Document *AddDatasetDocumentRequestDocument `json:"Document,omitempty" xml:"Document,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AddDatasetDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequest) SetDatasetId(v int64) *AddDatasetDocumentRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequest) SetDatasetName(v string) *AddDatasetDocumentRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequest) SetDocument(v *AddDatasetDocumentRequestDocument) *AddDatasetDocumentRequest {
+	s.Document = v
+	return s
+}
+
+func (s *AddDatasetDocumentRequest) SetWorkspaceId(v string) *AddDatasetDocumentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AddDatasetDocumentRequestDocument struct {
+	// example:
+	//
+	// xxx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// false
+	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// example:
+	//
+	// 业务文档唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 文档类型
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 扩展字段1
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// example:
+	//
+	// 扩展字段2
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// example:
+	//
+	// 扩展字段3
+	Extend3 *string `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	// example:
+	//
+	// 模型名称 todo 商业化 仅个别账号可传入
+	MultimodalIndexName *string                                              `json:"MultimodalIndexName,omitempty" xml:"MultimodalIndexName,omitempty"`
+	MultimodalMedias    []*AddDatasetDocumentRequestDocumentMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-12-09 13:35:40
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 来源
+	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xxxxx@xxxxx.com
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s AddDatasetDocumentRequestDocument) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocument) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetContent(v string) *AddDatasetDocumentRequestDocument {
+	s.Content = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetDisableHandleMultimodalMedia(v bool) *AddDatasetDocumentRequestDocument {
+	s.DisableHandleMultimodalMedia = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetDocId(v string) *AddDatasetDocumentRequestDocument {
+	s.DocId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetDocType(v string) *AddDatasetDocumentRequestDocument {
+	s.DocType = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetDocUuid(v string) *AddDatasetDocumentRequestDocument {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetExtend1(v string) *AddDatasetDocumentRequestDocument {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetExtend2(v string) *AddDatasetDocumentRequestDocument {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetExtend3(v string) *AddDatasetDocumentRequestDocument {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetMultimodalIndexName(v string) *AddDatasetDocumentRequestDocument {
+	s.MultimodalIndexName = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetMultimodalMedias(v []*AddDatasetDocumentRequestDocumentMultimodalMedias) *AddDatasetDocumentRequestDocument {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetPubTime(v string) *AddDatasetDocumentRequestDocument {
+	s.PubTime = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetSourceFrom(v string) *AddDatasetDocumentRequestDocument {
+	s.SourceFrom = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetSummary(v string) *AddDatasetDocumentRequestDocument {
+	s.Summary = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetTitle(v string) *AddDatasetDocumentRequestDocument {
+	s.Title = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocument) SetUrl(v string) *AddDatasetDocumentRequestDocument {
+	s.Url = &v
+	return s
+}
+
+type AddDatasetDocumentRequestDocumentMultimodalMedias struct {
+	// example:
+	//
+	// 图片或视频文件地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 多模态数据唯一标识
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 多模态数据类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s AddDatasetDocumentRequestDocumentMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentRequestDocumentMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentRequestDocumentMultimodalMedias) SetFileUrl(v string) *AddDatasetDocumentRequestDocumentMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMultimodalMedias) SetMediaId(v string) *AddDatasetDocumentRequestDocumentMultimodalMedias {
+	s.MediaId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentRequestDocumentMultimodalMedias) SetMediaType(v string) *AddDatasetDocumentRequestDocumentMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+type AddDatasetDocumentShrinkRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DocumentShrink *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s AddDatasetDocumentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentShrinkRequest) SetDatasetId(v int64) *AddDatasetDocumentShrinkRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentShrinkRequest) SetDatasetName(v string) *AddDatasetDocumentShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *AddDatasetDocumentShrinkRequest) SetDocumentShrink(v string) *AddDatasetDocumentShrinkRequest {
+	s.DocumentShrink = &v
+	return s
+}
+
+func (s *AddDatasetDocumentShrinkRequest) SetWorkspaceId(v string) *AddDatasetDocumentShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type AddDatasetDocumentResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AddDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddDatasetDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentResponseBody) SetCode(v string) *AddDatasetDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBody) SetData(v *AddDatasetDocumentResponseBodyData) *AddDatasetDocumentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBody) SetHttpStatusCode(v int32) *AddDatasetDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBody) SetMessage(v string) *AddDatasetDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBody) SetRequestId(v string) *AddDatasetDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBody) SetSuccess(v bool) *AddDatasetDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddDatasetDocumentResponseBodyData struct {
+	// example:
+	//
+	// 文档业务唯一标识
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 8df2d69d63a247b6b52ff455b2d426b6
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// Success
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s AddDatasetDocumentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentResponseBodyData) SetDocId(v string) *AddDatasetDocumentResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBodyData) SetDocUuid(v string) *AddDatasetDocumentResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBodyData) SetErrorCode(v string) *AddDatasetDocumentResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBodyData) SetErrorMessage(v string) *AddDatasetDocumentResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponseBodyData) SetStatus(v int32) *AddDatasetDocumentResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type AddDatasetDocumentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDatasetDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddDatasetDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDatasetDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDatasetDocumentResponse) SetHeaders(v map[string]*string) *AddDatasetDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDatasetDocumentResponse) SetStatusCode(v int32) *AddDatasetDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDatasetDocumentResponse) SetBody(v *AddDatasetDocumentResponseBody) *AddDatasetDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type CancelAsyncTaskRequest struct {
 	// This parameter is required.
 	//
@@ -269,6 +688,701 @@ func (s *ClearIntervenesResponse) SetStatusCode(v int32) *ClearIntervenesRespons
 }
 
 func (s *ClearIntervenesResponse) SetBody(v *ClearIntervenesResponseBody) *ClearIntervenesResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatasetRequest struct {
+	DatasetConfig *CreateDatasetRequestDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 企业自定义数据集
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// businessDataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType          *string                                   `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DocumentHandleConfig *CreateDatasetRequestDocumentHandleConfig `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequest) SetDatasetConfig(v *CreateDatasetRequestDatasetConfig) *CreateDatasetRequest {
+	s.DatasetConfig = v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetDescription(v string) *CreateDatasetRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetName(v string) *CreateDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDatasetType(v string) *CreateDatasetRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDocumentHandleConfig(v *CreateDatasetRequestDocumentHandleConfig) *CreateDatasetRequest {
+	s.DocumentHandleConfig = v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetSearchDatasetEnable(v int32) *CreateDatasetRequest {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetWorkspaceId(v string) *CreateDatasetRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfig struct {
+	SearchSourceConfigs []*CreateDatasetRequestDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s CreateDatasetRequestDatasetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfig) SetSearchSourceConfigs(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigs) *CreateDatasetRequestDatasetConfig {
+	s.SearchSourceConfigs = v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigs struct {
+	// example:
+	//
+	// 可以搜索到的关键词，用来验证是否可用
+	DemoQuery                  *string                                                                         `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
+	SearchSourceRequestConfig  *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig  `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	SearchSourceResponseConfig *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig `json:"SearchSourceResponseConfig,omitempty" xml:"SearchSourceResponseConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) SetDemoQuery(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.DemoQuery = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) SetSearchSourceRequestConfig(v *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) *CreateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.SearchSourceRequestConfig = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) SetSearchSourceResponseConfig(v *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) *CreateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.SearchSourceResponseConfig = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigs) SetSize(v int32) *CreateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.Size = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 3000
+	ConnectTimeout *int32                                                                                  `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Headers        []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 请求方式
+	Method *string                                                                                `json:"Method,omitempty" xml:"Method,omitempty"`
+	Params []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	PathParamsEnable *bool `json:"PathParamsEnable,omitempty" xml:"PathParamsEnable,omitempty"`
+	// example:
+	//
+	// 3000
+	SocketTimeout *int32 `json:"SocketTimeout,omitempty" xml:"SocketTimeout,omitempty"`
+	// example:
+	//
+	// api地址
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetBody(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Body = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetConnectTimeout(v int32) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetHeaders(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetMethod(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Method = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetParams(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Params = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetPathParamsEnable(v bool) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.PathParamsEnable = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetSocketTimeout(v int32) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.SocketTimeout = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetUrl(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Url = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetName(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValue(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueFormat(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueType(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueType = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetName(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValue(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueFormat(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueType(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueType = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig struct {
+	JqNodes []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) SetJqNodes(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig {
+	s.JqNodes = v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
+	JqNodes []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 节点key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 节点路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 节点数据类型：string number list object base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetJqNodes(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetKey(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetPath(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetType(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Type = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
+	JqNodes []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// title
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetJqNodes(v []*CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetKey(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetPath(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetType(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {
+	// example:
+	//
+	// title
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetKey(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetPath(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetType(v string) *CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type CreateDatasetRequestDocumentHandleConfig struct {
+	// example:
+	//
+	// false
+	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+}
+
+func (s CreateDatasetRequestDocumentHandleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetRequestDocumentHandleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestDocumentHandleConfig) SetDisableHandleMultimodalMedia(v bool) *CreateDatasetRequestDocumentHandleConfig {
+	s.DisableHandleMultimodalMedia = &v
+	return s
+}
+
+type CreateDatasetShrinkRequest struct {
+	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
+	// example:
+	//
+	// 企业自定义数据集
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// businessDataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType                *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DocumentHandleConfigShrink *string `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty"`
+	// example:
+	//
+	// 3
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateDatasetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetConfigShrink(v string) *CreateDatasetShrinkRequest {
+	s.DatasetConfigShrink = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetDescription(v string) *CreateDatasetShrinkRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetName(v string) *CreateDatasetShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDatasetType(v string) *CreateDatasetShrinkRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetDocumentHandleConfigShrink(v string) *CreateDatasetShrinkRequest {
+	s.DocumentHandleConfigShrink = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetSearchDatasetEnable(v int32) *CreateDatasetShrinkRequest {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetWorkspaceId(v string) *CreateDatasetShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateDatasetResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponseBody) SetCode(v string) *CreateDatasetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetData(v *CreateDatasetResponseBodyData) *CreateDatasetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetHttpStatusCode(v int32) *CreateDatasetResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetMessage(v string) *CreateDatasetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetRequestId(v string) *CreateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBody) SetSuccess(v bool) *CreateDatasetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDatasetResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-12 21:46:24
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxx
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// example:
+	//
+	// 1
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+}
+
+func (s CreateDatasetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponseBodyData) SetCreateTime(v string) *CreateDatasetResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetCreateUser(v string) *CreateDatasetResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetDatasetDescription(v string) *CreateDatasetResponseBodyData {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetDatasetId(v int64) *CreateDatasetResponseBodyData {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetDatasetName(v string) *CreateDatasetResponseBodyData {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetDatasetType(v string) *CreateDatasetResponseBodyData {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateDatasetResponseBodyData) SetSearchDatasetEnable(v int32) *CreateDatasetResponseBodyData {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+type CreateDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetResponse) SetHeaders(v map[string]*string) *CreateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetStatusCode(v int32) *CreateDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDatasetResponse {
 	s.Body = v
 	return s
 }
@@ -1058,6 +2172,273 @@ func (s *DeleteCustomTopicViewPointByIdResponse) SetStatusCode(v int32) *DeleteC
 }
 
 func (s *DeleteCustomTopicViewPointByIdResponse) SetBody(v *DeleteCustomTopicViewPointByIdResponseBody) *DeleteCustomTopicViewPointByIdResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetRequest) SetDatasetId(v int64) *DeleteDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteDatasetRequest) SetWorkspaceId(v string) *DeleteDatasetRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteDatasetResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponseBody) SetCode(v string) *DeleteDatasetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDatasetResponseBody) SetHttpStatusCode(v int32) *DeleteDatasetResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetResponseBody) SetMessage(v string) *DeleteDatasetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDatasetResponseBody) SetRequestId(v string) *DeleteDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDatasetResponseBody) SetSuccess(v bool) *DeleteDatasetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetResponse) SetHeaders(v map[string]*string) *DeleteDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetStatusCode(v int32) *DeleteDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDatasetDocumentRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// xxx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s DeleteDatasetDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetDocumentRequest) SetDatasetId(v int64) *DeleteDatasetDocumentRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentRequest) SetDatasetName(v string) *DeleteDatasetDocumentRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentRequest) SetDocId(v string) *DeleteDatasetDocumentRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentRequest) SetDocUuid(v string) *DeleteDatasetDocumentRequest {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentRequest) SetWorkspaceId(v string) *DeleteDatasetDocumentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteDatasetDocumentResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDatasetDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetCode(v string) *DeleteDatasetDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetData(v []*string) *DeleteDatasetDocumentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetHttpStatusCode(v int32) *DeleteDatasetDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetMessage(v string) *DeleteDatasetDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetRequestId(v string) *DeleteDatasetDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponseBody) SetSuccess(v bool) *DeleteDatasetDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDatasetDocumentResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatasetDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDatasetDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDatasetDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDatasetDocumentResponse) SetHeaders(v map[string]*string) *DeleteDatasetDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponse) SetStatusCode(v int32) *DeleteDatasetDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDatasetDocumentResponse) SetBody(v *DeleteDatasetDocumentResponseBody) *DeleteDatasetDocumentResponse {
 	s.Body = v
 	return s
 }
@@ -4722,6 +6103,850 @@ func (s *GetDataSourceOrderConfigResponse) SetStatusCode(v int32) *GetDataSource
 }
 
 func (s *GetDataSourceOrderConfigResponse) SetBody(v *GetDataSourceOrderConfigResponseBody) *GetDataSourceOrderConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// businessDataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetRequest) SetDatasetId(v int64) *GetDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetRequest) SetDatasetName(v string) *GetDatasetRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetDatasetRequest) SetWorkspaceId(v string) *GetDatasetRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDatasetResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBody) SetCode(v string) *GetDatasetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetData(v *GetDatasetResponseBodyData) *GetDatasetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetHttpStatusCode(v int32) *GetDatasetResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetMessage(v string) *GetDatasetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetRequestId(v string) *GetDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetSuccess(v bool) *GetDatasetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatasetResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-12 21:46:24
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxx
+	CreateUser    *string                                  `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DatasetConfig *GetDatasetResponseBodyDataDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType          *string                                         `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	DocumentHandleConfig *GetDatasetResponseBodyDataDocumentHandleConfig `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+}
+
+func (s GetDatasetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyData) SetCreateTime(v string) *GetDatasetResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetCreateUser(v string) *GetDatasetResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDatasetConfig(v *GetDatasetResponseBodyDataDatasetConfig) *GetDatasetResponseBodyData {
+	s.DatasetConfig = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDatasetDescription(v string) *GetDatasetResponseBodyData {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDatasetId(v int64) *GetDatasetResponseBodyData {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDatasetName(v string) *GetDatasetResponseBodyData {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDatasetType(v string) *GetDatasetResponseBodyData {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetDocumentHandleConfig(v *GetDatasetResponseBodyDataDocumentHandleConfig) *GetDatasetResponseBodyData {
+	s.DocumentHandleConfig = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyData) SetSearchDatasetEnable(v int32) *GetDatasetResponseBodyData {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfig struct {
+	SearchSourceConfigs []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfig) SetSearchSourceConfigs(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) *GetDatasetResponseBodyDataDatasetConfig {
+	s.SearchSourceConfigs = v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs struct {
+	// example:
+	//
+	// 可以搜索到的关键词，用来验证是否可用
+	DemoQuery                  *string                                                                               `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
+	SearchSourceRequestConfig  *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig  `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	SearchSourceResponseConfig *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig `json:"SearchSourceResponseConfig,omitempty" xml:"SearchSourceResponseConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) SetDemoQuery(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs {
+	s.DemoQuery = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) SetSearchSourceRequestConfig(v *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs {
+	s.SearchSourceRequestConfig = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) SetSearchSourceResponseConfig(v *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs {
+	s.SearchSourceResponseConfig = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs) SetSize(v int32) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs {
+	s.Size = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 30
+	ConnectTimeout *int32                                                                                        `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Headers        []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 请求方式
+	Method *string                                                                                      `json:"Method,omitempty" xml:"Method,omitempty"`
+	Params []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	PathParamsEnable *bool `json:"PathParamsEnable,omitempty" xml:"PathParamsEnable,omitempty"`
+	// example:
+	//
+	// 78
+	SocketTimeout *int32 `json:"SocketTimeout,omitempty" xml:"SocketTimeout,omitempty"`
+	// example:
+	//
+	// api地址
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetBody(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Body = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetConnectTimeout(v int32) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetHeaders(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetMethod(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Method = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetParams(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Params = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetPathParamsEnable(v bool) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.PathParamsEnable = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetSocketTimeout(v int32) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.SocketTimeout = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetUrl(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Url = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetName(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValue(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Value = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueFormat(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueType(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueType = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetName(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValue(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Value = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueFormat(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueType(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueType = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig struct {
+	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) SetJqNodes(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig {
+	s.JqNodes = v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
+	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 节点key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 节点路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 节点数据类型：string number list object base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetJqNodes(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetKey(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetPath(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetType(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Type = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
+	JqNodes []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// title
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// .title
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetJqNodes(v []*GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetKey(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetPath(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetType(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {
+	// example:
+	//
+	// title
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// .title
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetKey(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetPath(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetType(v string) *GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type GetDatasetResponseBodyDataDocumentHandleConfig struct {
+	// example:
+	//
+	// true
+	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDataDocumentHandleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDataDocumentHandleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDataDocumentHandleConfig) SetDisableHandleMultimodalMedia(v bool) *GetDatasetResponseBodyDataDocumentHandleConfig {
+	s.DisableHandleMultimodalMedia = &v
+	return s
+}
+
+type GetDatasetResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponse) SetHeaders(v map[string]*string) *GetDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetResponse) SetStatusCode(v int32) *GetDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetDocumentRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// xxx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDatasetDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentRequest) SetDatasetId(v int64) *GetDatasetDocumentRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetDocumentRequest) SetDatasetName(v string) *GetDatasetDocumentRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetDatasetDocumentRequest) SetDocId(v string) *GetDatasetDocumentRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetDatasetDocumentRequest) SetDocUuid(v string) *GetDatasetDocumentRequest {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *GetDatasetDocumentRequest) SetWorkspaceId(v string) *GetDatasetDocumentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDatasetDocumentResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatasetDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBody) SetCode(v string) *GetDatasetDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBody) SetData(v *GetDatasetDocumentResponseBodyData) *GetDatasetDocumentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBody) SetHttpStatusCode(v int32) *GetDatasetDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBody) SetMessage(v string) *GetDatasetDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBody) SetRequestId(v string) *GetDatasetDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBody) SetSuccess(v bool) *GetDatasetDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatasetDocumentResponseBodyData struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// true
+	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// example:
+	//
+	// 用户指定的文档唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-05-14 08:54:33
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 来源
+	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetDatasetDocumentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetContent(v string) *GetDatasetDocumentResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetDisableHandleMultimodalMedia(v bool) *GetDatasetDocumentResponseBodyData {
+	s.DisableHandleMultimodalMedia = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetDocId(v string) *GetDatasetDocumentResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetDocUuid(v string) *GetDatasetDocumentResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetPubTime(v string) *GetDatasetDocumentResponseBodyData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetSourceFrom(v string) *GetDatasetDocumentResponseBodyData {
+	s.SourceFrom = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetSummary(v string) *GetDatasetDocumentResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetTitle(v string) *GetDatasetDocumentResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponseBodyData) SetUrl(v string) *GetDatasetDocumentResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GetDatasetDocumentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatasetDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatasetDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetDocumentResponse) SetHeaders(v map[string]*string) *GetDatasetDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetDocumentResponse) SetStatusCode(v int32) *GetDatasetDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatasetDocumentResponse) SetBody(v *GetDatasetDocumentResponseBody) *GetDatasetDocumentResponse {
 	s.Body = v
 	return s
 }
@@ -12269,6 +14494,814 @@ func (s *ListCustomViewPointsResponse) SetBody(v *ListCustomViewPointsResponseBo
 	return s
 }
 
+type ListDatasetDocumentsRequest struct {
+	// example:
+	//
+	// xx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// text
+	DocType       *string   `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	ExcludeFields []*string `json:"ExcludeFields,omitempty" xml:"ExcludeFields,omitempty" type:"Repeated"`
+	IncludeFields []*string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 搜索条件
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// 100
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDatasetDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsRequest) SetDatasetDescription(v string) *ListDatasetDocumentsRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetDatasetId(v int64) *ListDatasetDocumentsRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetDatasetName(v string) *ListDatasetDocumentsRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetDocType(v string) *ListDatasetDocumentsRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetExcludeFields(v []*string) *ListDatasetDocumentsRequest {
+	s.ExcludeFields = v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetIncludeFields(v []*string) *ListDatasetDocumentsRequest {
+	s.IncludeFields = v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetPageNumber(v int32) *ListDatasetDocumentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetPageSize(v int32) *ListDatasetDocumentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetQuery(v string) *ListDatasetDocumentsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetStatus(v int32) *ListDatasetDocumentsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsRequest) SetWorkspaceId(v string) *ListDatasetDocumentsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDatasetDocumentsShrinkRequest struct {
+	// example:
+	//
+	// xx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// text
+	DocType             *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	ExcludeFieldsShrink *string `json:"ExcludeFields,omitempty" xml:"ExcludeFields,omitempty"`
+	IncludeFieldsShrink *string `json:"IncludeFields,omitempty" xml:"IncludeFields,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 搜索条件
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// 100
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDatasetDocumentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetDatasetDescription(v string) *ListDatasetDocumentsShrinkRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetDatasetId(v int64) *ListDatasetDocumentsShrinkRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetDatasetName(v string) *ListDatasetDocumentsShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetDocType(v string) *ListDatasetDocumentsShrinkRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetExcludeFieldsShrink(v string) *ListDatasetDocumentsShrinkRequest {
+	s.ExcludeFieldsShrink = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetIncludeFieldsShrink(v string) *ListDatasetDocumentsShrinkRequest {
+	s.IncludeFieldsShrink = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetPageNumber(v int32) *ListDatasetDocumentsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetPageSize(v int32) *ListDatasetDocumentsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetQuery(v string) *ListDatasetDocumentsShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetStatus(v int32) *ListDatasetDocumentsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsShrinkRequest) SetWorkspaceId(v string) *ListDatasetDocumentsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDatasetDocumentsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListDatasetDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatasetDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetCode(v string) *ListDatasetDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetData(v []*ListDatasetDocumentsResponseBodyData) *ListDatasetDocumentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetHttpStatusCode(v int32) *ListDatasetDocumentsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetMessage(v string) *ListDatasetDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetPageNumber(v int32) *ListDatasetDocumentsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetPageSize(v int32) *ListDatasetDocumentsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetRequestId(v string) *ListDatasetDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetSuccess(v bool) *ListDatasetDocumentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBody) SetTotalCount(v int32) *ListDatasetDocumentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatasetDocumentsResponseBodyData struct {
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// false
+	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// text
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// example:
+	//
+	// xx
+	Extend3          *string                                                 `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	MultimodalMedias []*ListDatasetDocumentsResponseBodyDataMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-01-01 00:00:00
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 来源
+	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// example:
+	//
+	// 100
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// url
+	//
+	// example:
+	//
+	// https://xxx/xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListDatasetDocumentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetCategoryUuid(v string) *ListDatasetDocumentsResponseBodyData {
+	s.CategoryUuid = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetContent(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetDisableHandleMultimodalMedia(v bool) *ListDatasetDocumentsResponseBodyData {
+	s.DisableHandleMultimodalMedia = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetDocId(v string) *ListDatasetDocumentsResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetDocType(v string) *ListDatasetDocumentsResponseBodyData {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetDocUuid(v string) *ListDatasetDocumentsResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetExtend1(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetExtend2(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetExtend3(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetMultimodalMedias(v []*ListDatasetDocumentsResponseBodyDataMultimodalMedias) *ListDatasetDocumentsResponseBodyData {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetPubTime(v string) *ListDatasetDocumentsResponseBodyData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetSourceFrom(v string) *ListDatasetDocumentsResponseBodyData {
+	s.SourceFrom = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetStatus(v int32) *ListDatasetDocumentsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetSummary(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetTitle(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetUrl(v string) *ListDatasetDocumentsResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type ListDatasetDocumentsResponseBodyDataMultimodalMedias struct {
+	// example:
+	//
+	// 图片或视频文件地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 多模态数据唯一标识
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 多模态数据类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s ListDatasetDocumentsResponseBodyDataMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsResponseBodyDataMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsResponseBodyDataMultimodalMedias) SetFileUrl(v string) *ListDatasetDocumentsResponseBodyDataMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyDataMultimodalMedias) SetMediaId(v string) *ListDatasetDocumentsResponseBodyDataMultimodalMedias {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyDataMultimodalMedias) SetMediaType(v string) *ListDatasetDocumentsResponseBodyDataMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+type ListDatasetDocumentsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatasetDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatasetDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetDocumentsResponse) SetHeaders(v map[string]*string) *ListDatasetDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponse) SetStatusCode(v int32) *ListDatasetDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponse) SetBody(v *ListDatasetDocumentsResponseBody) *ListDatasetDocumentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatasetsRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// businessDataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// example:
+	//
+	// 创建时间-结束
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// example:
+	//
+	// 创建时间-开始
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDatasetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsRequest) SetDatasetId(v int64) *ListDatasetsRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetDatasetName(v string) *ListDatasetsRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetDatasetType(v string) *ListDatasetsRequest {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetEndTime(v string) *ListDatasetsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetPageNumber(v int32) *ListDatasetsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetPageSize(v string) *ListDatasetsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetSearchDatasetEnable(v int32) *ListDatasetsRequest {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetStartTime(v string) *ListDatasetsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetWorkspaceId(v string) *ListDatasetsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDatasetsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListDatasetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatasetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBody) SetCode(v string) *ListDatasetsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetData(v []*ListDatasetsResponseBodyData) *ListDatasetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetHttpStatusCode(v int32) *ListDatasetsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetMessage(v string) *ListDatasetsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetPageNumber(v int32) *ListDatasetsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetPageSize(v int32) *ListDatasetsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetSuccess(v bool) *ListDatasetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetTotalCount(v int32) *ListDatasetsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatasetsResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-12 21:46:24
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxx
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// example:
+	//
+	// 1
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyData) SetCreateTime(v string) *ListDatasetsResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetCreateUser(v string) *ListDatasetsResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetDatasetDescription(v string) *ListDatasetsResponseBodyData {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetDatasetId(v int64) *ListDatasetsResponseBodyData {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetDatasetName(v string) *ListDatasetsResponseBodyData {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetDatasetType(v string) *ListDatasetsResponseBodyData {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetSearchDatasetEnable(v int32) *ListDatasetsResponseBodyData {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+type ListDatasetsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatasetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatasetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponse) SetHeaders(v map[string]*string) *ListDatasetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasetsResponse) SetStatusCode(v int32) *ListDatasetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDatasetsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDialoguesRequest struct {
 	// This parameter is required.
 	//
@@ -16771,6 +19804,1080 @@ func (s *ListPlanningProposalResponse) SetStatusCode(v int32) *ListPlanningPropo
 }
 
 func (s *ListPlanningProposalResponse) SetBody(v *ListPlanningProposalResponseBody) *ListPlanningProposalResponse {
+	s.Body = v
+	return s
+}
+
+type ListSearchTaskDialogueDatasRequest struct {
+	// example:
+	//
+	// true
+	IncludeContent *bool `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	// example:
+	//
+	// text
+	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
+	// example:
+	//
+	// xx
+	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xx
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// ClusterGenerate
+	SearchModel *string `json:"SearchModel,omitempty" xml:"SearchModel,omitempty"`
+	// example:
+	//
+	// xxx
+	SearchModelDataValue *string `json:"SearchModelDataValue,omitempty" xml:"SearchModelDataValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetIncludeContent(v bool) *ListSearchTaskDialogueDatasRequest {
+	s.IncludeContent = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetMultimodalSearchType(v string) *ListSearchTaskDialogueDatasRequest {
+	s.MultimodalSearchType = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetOriginalSessionId(v string) *ListSearchTaskDialogueDatasRequest {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetPageNumber(v int32) *ListSearchTaskDialogueDatasRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetPageSize(v int32) *ListSearchTaskDialogueDatasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetQuery(v string) *ListSearchTaskDialogueDatasRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetSearchModel(v string) *ListSearchTaskDialogueDatasRequest {
+	s.SearchModel = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetSearchModelDataValue(v string) *ListSearchTaskDialogueDatasRequest {
+	s.SearchModelDataValue = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetSessionId(v string) *ListSearchTaskDialogueDatasRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetTaskId(v string) *ListSearchTaskDialogueDatasRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasRequest) SetWorkspaceId(v string) *ListSearchTaskDialogueDatasRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponseBody struct {
+	Articles []*ListSearchTaskDialogueDatasResponseBodyArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Images         []*ListSearchTaskDialogueDatasResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// true
+	RealtimeSearch *bool `json:"RealtimeSearch,omitempty" xml:"RealtimeSearch,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// realtime
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Videos     []*ListSearchTaskDialogueDatasResponseBodyVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetArticles(v []*ListSearchTaskDialogueDatasResponseBodyArticles) *ListSearchTaskDialogueDatasResponseBody {
+	s.Articles = v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetCode(v string) *ListSearchTaskDialogueDatasResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetHttpStatusCode(v int32) *ListSearchTaskDialogueDatasResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetImages(v []*ListSearchTaskDialogueDatasResponseBodyImages) *ListSearchTaskDialogueDatasResponseBody {
+	s.Images = v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetMessage(v string) *ListSearchTaskDialogueDatasResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetPageNumber(v int32) *ListSearchTaskDialogueDatasResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetPageSize(v int32) *ListSearchTaskDialogueDatasResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetRealtimeSearch(v bool) *ListSearchTaskDialogueDatasResponseBody {
+	s.RealtimeSearch = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetRequestId(v string) *ListSearchTaskDialogueDatasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetSearchType(v string) *ListSearchTaskDialogueDatasResponseBody {
+	s.SearchType = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetSuccess(v bool) *ListSearchTaskDialogueDatasResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetTotalCount(v int32) *ListSearchTaskDialogueDatasResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetVideos(v []*ListSearchTaskDialogueDatasResponseBodyVideos) *ListSearchTaskDialogueDatasResponseBody {
+	s.Videos = v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponseBodyArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// xx
+	CategoryUuid *string `json:"CategoryUuid,omitempty" xml:"CategoryUuid,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// text
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// example:
+	//
+	// xx
+	Extend2 *string `json:"Extend2,omitempty" xml:"Extend2,omitempty"`
+	// example:
+	//
+	// xx
+	Extend3          *string                                                            `json:"Extend3,omitempty" xml:"Extend3,omitempty"`
+	MultimodalMedias []*ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-11-25 14:25:59
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 新华社
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyArticles) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetAuthor(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetCategoryUuid(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.CategoryUuid = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetContent(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetDocId(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetDocType(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.DocType = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetDocUuid(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetExtend1(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetExtend2(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Extend2 = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetExtend3(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Extend3 = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetMultimodalMedias(v []*ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetPubTime(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetSource(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetSummary(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetTitle(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticles) SetUrl(v string) *ListSearchTaskDialogueDatasResponseBodyArticles {
+	s.Url = &v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias struct {
+	// example:
+	//
+	// 图片或视频文件地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 多模态数据唯一标识
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 多模态数据类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) SetFileUrl(v string) *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) SetMediaId(v string) *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) SetMediaType(v string) *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponseBodyImages struct {
+	// example:
+	//
+	// 图片或视频文件地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 多模态数据唯一标识
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 多模态数据类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyImages) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyImages) SetFileUrl(v string) *ListSearchTaskDialogueDatasResponseBodyImages {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyImages) SetMediaId(v string) *ListSearchTaskDialogueDatasResponseBodyImages {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyImages) SetMediaType(v string) *ListSearchTaskDialogueDatasResponseBodyImages {
+	s.MediaType = &v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponseBodyVideos struct {
+	// example:
+	//
+	// 图片或视频文件地址
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 多模态数据唯一标识
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 多模态数据类型
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyVideos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyVideos) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyVideos) SetFileUrl(v string) *ListSearchTaskDialogueDatasResponseBodyVideos {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyVideos) SetMediaId(v string) *ListSearchTaskDialogueDatasResponseBodyVideos {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyVideos) SetMediaType(v string) *ListSearchTaskDialogueDatasResponseBodyVideos {
+	s.MediaType = &v
+	return s
+}
+
+type ListSearchTaskDialogueDatasResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSearchTaskDialogueDatasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponse) SetHeaders(v map[string]*string) *ListSearchTaskDialogueDatasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponse) SetStatusCode(v int32) *ListSearchTaskDialogueDatasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponse) SetBody(v *ListSearchTaskDialogueDatasResponseBody) *ListSearchTaskDialogueDatasResponse {
+	s.Body = v
+	return s
+}
+
+type ListSearchTaskDialoguesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesRequest) SetPageNumber(v int32) *ListSearchTaskDialoguesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesRequest) SetPageSize(v int32) *ListSearchTaskDialoguesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesRequest) SetTaskId(v string) *ListSearchTaskDialoguesRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesRequest) SetWorkspaceId(v string) *ListSearchTaskDialoguesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSearchTaskDialoguesResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListSearchTaskDialoguesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetCode(v string) *ListSearchTaskDialoguesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetData(v []*ListSearchTaskDialoguesResponseBodyData) *ListSearchTaskDialoguesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetHttpStatusCode(v int32) *ListSearchTaskDialoguesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetMessage(v string) *ListSearchTaskDialoguesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetPageNumber(v int32) *ListSearchTaskDialoguesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetPageSize(v int32) *ListSearchTaskDialoguesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetRequestId(v string) *ListSearchTaskDialoguesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetSuccess(v bool) *ListSearchTaskDialoguesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBody) SetTotalCount(v int32) *ListSearchTaskDialoguesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSearchTaskDialoguesResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-25 13:33:01
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 24
+	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	// example:
+	//
+	// xxx
+	GoodText *string `json:"GoodText,omitempty" xml:"GoodText,omitempty"`
+	// example:
+	//
+	// xxxx
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// xxx
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// thumbsUp
+	Rating *string `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	// example:
+	//
+	// {}
+	ResponseBodyStr *string `json:"ResponseBodyStr,omitempty" xml:"ResponseBodyStr,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// xxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetCreateTime(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetDialogueType(v int32) *ListSearchTaskDialoguesResponseBodyData {
+	s.DialogueType = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetGoodText(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.GoodText = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetOriginSessionId(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetPrompt(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.Prompt = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetRating(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.Rating = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetResponseBodyStr(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.ResponseBodyStr = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetSessionId(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetTags(v []*string) *ListSearchTaskDialoguesResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetTaskId(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetText(v string) *ListSearchTaskDialoguesResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+type ListSearchTaskDialoguesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSearchTaskDialoguesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponse) SetHeaders(v map[string]*string) *ListSearchTaskDialoguesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponse) SetStatusCode(v int32) *ListSearchTaskDialoguesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponse) SetBody(v *ListSearchTaskDialoguesResponseBody) *ListSearchTaskDialoguesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSearchTasksRequest struct {
+	// example:
+	//
+	// 24
+	DialogueTypes []*int32 `json:"DialogueTypes,omitempty" xml:"DialogueTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListSearchTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTasksRequest) SetDialogueTypes(v []*int32) *ListSearchTasksRequest {
+	s.DialogueTypes = v
+	return s
+}
+
+func (s *ListSearchTasksRequest) SetPageNumber(v int32) *ListSearchTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTasksRequest) SetPageSize(v int32) *ListSearchTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTasksRequest) SetWorkspaceId(v string) *ListSearchTasksRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSearchTasksShrinkRequest struct {
+	// example:
+	//
+	// 24
+	DialogueTypesShrink *string `json:"DialogueTypes,omitempty" xml:"DialogueTypes,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListSearchTasksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTasksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTasksShrinkRequest) SetDialogueTypesShrink(v string) *ListSearchTasksShrinkRequest {
+	s.DialogueTypesShrink = &v
+	return s
+}
+
+func (s *ListSearchTasksShrinkRequest) SetPageNumber(v int32) *ListSearchTasksShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTasksShrinkRequest) SetPageSize(v int32) *ListSearchTasksShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTasksShrinkRequest) SetWorkspaceId(v string) *ListSearchTasksShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSearchTasksResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListSearchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSearchTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTasksResponseBody) SetCode(v string) *ListSearchTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetData(v []*ListSearchTasksResponseBodyData) *ListSearchTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetHttpStatusCode(v int32) *ListSearchTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetMessage(v string) *ListSearchTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetPageNumber(v int32) *ListSearchTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetPageSize(v int32) *ListSearchTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetRequestId(v string) *ListSearchTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetSuccess(v bool) *ListSearchTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBody) SetTotalCount(v int32) *ListSearchTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSearchTasksResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-25 11:40:50
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 24
+	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// xxx
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 2024-11-25 11:40:50
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// xxxx
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListSearchTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTasksResponseBodyData) SetCreateTime(v string) *ListSearchTasksResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBodyData) SetDialogueType(v int32) *ListSearchTasksResponseBodyData {
+	s.DialogueType = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBodyData) SetTaskId(v string) *ListSearchTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBodyData) SetTaskName(v string) *ListSearchTasksResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBodyData) SetUpdateTime(v string) *ListSearchTasksResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListSearchTasksResponseBodyData) SetUsername(v string) *ListSearchTasksResponseBodyData {
+	s.Username = &v
+	return s
+}
+
+type ListSearchTasksResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSearchTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSearchTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTasksResponse) SetHeaders(v map[string]*string) *ListSearchTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSearchTasksResponse) SetStatusCode(v int32) *ListSearchTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSearchTasksResponse) SetBody(v *ListSearchTasksResponseBody) *ListSearchTasksResponse {
 	s.Body = v
 	return s
 }
@@ -21855,6 +25962,3775 @@ func (s *RunKeywordsExtractionGenerationResponse) SetBody(v *RunKeywordsExtracti
 	return s
 }
 
+type RunSearchGenerationRequest struct {
+	AgentContext *RunSearchGenerationRequestAgentContext `json:"AgentContext,omitempty" xml:"AgentContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	ChatConfig *RunSearchGenerationRequestChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxx
+	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// example:
+	//
+	// xxx
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunSearchGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequest) SetAgentContext(v *RunSearchGenerationRequestAgentContext) *RunSearchGenerationRequest {
+	s.AgentContext = v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetChatConfig(v *RunSearchGenerationRequestChatConfig) *RunSearchGenerationRequest {
+	s.ChatConfig = v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetOriginalSessionId(v string) *RunSearchGenerationRequest {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetPrompt(v string) *RunSearchGenerationRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetTaskId(v string) *RunSearchGenerationRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetWorkspaceId(v string) *RunSearchGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunSearchGenerationRequestAgentContext struct {
+	BizContext *RunSearchGenerationRequestAgentContextBizContext `json:"BizContext,omitempty" xml:"BizContext,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationRequestAgentContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestAgentContext) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestAgentContext) SetBizContext(v *RunSearchGenerationRequestAgentContextBizContext) *RunSearchGenerationRequestAgentContext {
+	s.BizContext = v
+	return s
+}
+
+type RunSearchGenerationRequestAgentContextBizContext struct {
+	MultimodalMediaSelection *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection `json:"MultimodalMediaSelection,omitempty" xml:"MultimodalMediaSelection,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContext) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetMultimodalMediaSelection(v *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) *RunSearchGenerationRequestAgentContextBizContext {
+	s.MultimodalMediaSelection = v
+	return s
+}
+
+type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection struct {
+	// example:
+	//
+	// 原始会话唯一标识：搜索结果取这个会话中的全量，目前仅媒资搜索场景需要
+	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// example:
+	//
+	// TextGenerate
+	SearchModel *string `json:"SearchModel,omitempty" xml:"SearchModel,omitempty"`
+	// example:
+	//
+	// 分类1
+	SearchModelDataValue *string `json:"SearchModelDataValue,omitempty" xml:"SearchModelDataValue,omitempty"`
+	// example:
+	//
+	// all
+	SelectionType *string `json:"SelectionType,omitempty" xml:"SelectionType,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId        *string                                                                                   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	TextSearchResult *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetOriginalSessionId(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetSearchModel(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.SearchModel = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetSearchModelDataValue(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.SearchModelDataValue = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetSelectionType(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.SelectionType = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetSessionId(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) SetTextSearchResult(v *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection {
+	s.TextSearchResult = v
+	return s
+}
+
+type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult struct {
+	SearchResult []*RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult) SetSearchResult(v []*RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+type RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult struct {
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xxx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-11-25 14:25:59
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 1
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// 新华社
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetChunks(v []*string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Chunks = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetContent(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetDocId(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetDocUuid(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetPubTime(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetScore(v float32) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetSearchSource(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetSearchSourceName(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetSearchSourceType(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetSource(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Source = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetSummary(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetTitle(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult) SetUrl(v string) *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationRequestChatConfig struct {
+	// example:
+	//
+	// concise
+	GenerateLevel *string `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	// example:
+	//
+	// copilotPrecise
+	GenerateTechnology *string                                          `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	SearchModels       []*string                                        `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
+	SearchParam        *RunSearchGenerationRequestChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationRequestChatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestChatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetGenerateLevel(v string) *RunSearchGenerationRequestChatConfig {
+	s.GenerateLevel = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetGenerateTechnology(v string) *RunSearchGenerationRequestChatConfig {
+	s.GenerateTechnology = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetSearchModels(v []*string) *RunSearchGenerationRequestChatConfig {
+	s.SearchModels = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfig) SetSearchParam(v *RunSearchGenerationRequestChatConfigSearchParam) *RunSearchGenerationRequestChatConfig {
+	s.SearchParam = v
+	return s
+}
+
+type RunSearchGenerationRequestChatConfigSearchParam struct {
+	// example:
+	//
+	// 1725983999999
+	EndTime               *int64                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MultimodalSearchTypes []*string                                                       `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
+	SearchSources         []*RunSearchGenerationRequestChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1725983999999
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s RunSearchGenerationRequestChatConfigSearchParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestChatConfigSearchParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetEndTime(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetMultimodalSearchTypes(v []*string) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.MultimodalSearchTypes = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetSearchSources(v []*RunSearchGenerationRequestChatConfigSearchParamSearchSources) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.SearchSources = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParam) SetStartTime(v int64) *RunSearchGenerationRequestChatConfigSearchParam {
+	s.StartTime = &v
+	return s
+}
+
+type RunSearchGenerationRequestChatConfigSearchParamSearchSources struct {
+	// example:
+	//
+	// SystemSearch
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+}
+
+func (s RunSearchGenerationRequestChatConfigSearchParamSearchSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationRequestChatConfigSearchParamSearchSources) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParamSearchSources) SetCode(v string) *RunSearchGenerationRequestChatConfigSearchParamSearchSources {
+	s.Code = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestChatConfigSearchParamSearchSources) SetDatasetName(v string) *RunSearchGenerationRequestChatConfigSearchParamSearchSources {
+	s.DatasetName = &v
+	return s
+}
+
+type RunSearchGenerationShrinkRequest struct {
+	AgentContextShrink *string `json:"AgentContext,omitempty" xml:"AgentContext,omitempty"`
+	// example:
+	//
+	// xxx
+	ChatConfigShrink *string `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
+	// example:
+	//
+	// xxx
+	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
+	// example:
+	//
+	// xxx
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 7AA2AE16-D873-5C5F-9708-15396C382EB1
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunSearchGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetAgentContextShrink(v string) *RunSearchGenerationShrinkRequest {
+	s.AgentContextShrink = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetChatConfigShrink(v string) *RunSearchGenerationShrinkRequest {
+	s.ChatConfigShrink = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetOriginalSessionId(v string) *RunSearchGenerationShrinkRequest {
+	s.OriginalSessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetPrompt(v string) *RunSearchGenerationShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetTaskId(v string) *RunSearchGenerationShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetWorkspaceId(v string) *RunSearchGenerationShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBody struct {
+	Header  *RunSearchGenerationResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunSearchGenerationResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBody) SetHeader(v *RunSearchGenerationResponseBodyHeader) *RunSearchGenerationResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBody) SetPayload(v *RunSearchGenerationResponseBodyPayload) *RunSearchGenerationResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBody) SetRequestId(v string) *RunSearchGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbid
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// xx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// xx
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 1
+	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	// example:
+	//
+	// x
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// x
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// xx
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetErrorCode(v string) *RunSearchGenerationResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetErrorMessage(v string) *RunSearchGenerationResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetEvent(v string) *RunSearchGenerationResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetEventInfo(v string) *RunSearchGenerationResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetOriginSessionId(v string) *RunSearchGenerationResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetResponseTime(v int64) *RunSearchGenerationResponseBodyHeader {
+	s.ResponseTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetSessionId(v string) *RunSearchGenerationResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetTaskId(v string) *RunSearchGenerationResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyHeader) SetTraceId(v string) *RunSearchGenerationResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayload struct {
+	Output *RunSearchGenerationResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunSearchGenerationResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayload) SetOutput(v *RunSearchGenerationResponseBodyPayloadOutput) *RunSearchGenerationResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayload) SetUsage(v *RunSearchGenerationResponseBodyPayloadUsage) *RunSearchGenerationResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutput struct {
+	AgentContext *RunSearchGenerationResponseBodyPayloadOutputAgentContext `json:"AgentContext,omitempty" xml:"AgentContext,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutput) SetAgentContext(v *RunSearchGenerationResponseBodyPayloadOutputAgentContext) *RunSearchGenerationResponseBodyPayloadOutput {
+	s.AgentContext = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContext struct {
+	BizContext *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext `json:"BizContext,omitempty" xml:"BizContext,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContext) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContext) SetBizContext(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) *RunSearchGenerationResponseBodyPayloadOutputAgentContext {
+	s.BizContext = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
+	// example:
+	//
+	// start
+	CurrentStep      *string                                                                             `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	GeneratedContent *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent `json:"GeneratedContent,omitempty" xml:"GeneratedContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// search
+	NextStep                 *string   `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
+	RecommendSearchQueryList []*string `json:"RecommendSearchQueryList,omitempty" xml:"RecommendSearchQueryList,omitempty" type:"Repeated"`
+	SearchKeywords           []*string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty" type:"Repeated"`
+	SearchQueryList          []*string `json:"SearchQueryList,omitempty" xml:"SearchQueryList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// searchQuery
+	SupplementDataType *string `json:"SupplementDataType,omitempty" xml:"SupplementDataType,omitempty"`
+	// example:
+	//
+	// true
+	SupplementEnable *bool `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetCurrentStep(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.CurrentStep = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetGeneratedContent(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.GeneratedContent = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetNextStep(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.NextStep = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetRecommendSearchQueryList(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.RecommendSearchQueryList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetSearchKeywords(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.SearchKeywords = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetSearchQueryList(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.SearchQueryList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetSupplementDataType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.SupplementDataType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetSupplementEnable(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.SupplementEnable = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent struct {
+	ClusterTopicResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult `json:"ClusterTopicResult,omitempty" xml:"ClusterTopicResult,omitempty" type:"Struct"`
+	ExcerptResult      *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult      `json:"ExcerptResult,omitempty" xml:"ExcerptResult,omitempty" type:"Struct"`
+	ImageSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult  `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
+	NewsElementResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult  `json:"NewsElementResult,omitempty" xml:"NewsElementResult,omitempty" type:"Struct"`
+	TextGenerateResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult `json:"TextGenerateResult,omitempty" xml:"TextGenerateResult,omitempty" type:"Struct"`
+	TimelineResult     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult     `json:"TimelineResult,omitempty" xml:"TimelineResult,omitempty" type:"Struct"`
+	VideoSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult  `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetClusterTopicResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.ClusterTopicResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetExcerptResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.ExcerptResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetImageSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.ImageSearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetNewsElementResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.NewsElementResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetTextGenerateResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.TextGenerateResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetTimelineResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.TimelineResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetVideoSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.VideoSearchResult = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult struct {
+	ClusterTopics []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics `json:"ClusterTopics,omitempty" xml:"ClusterTopics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// example:
+	//
+	// xx
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) SetClusterTopics(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult {
+	s.ClusterTopics = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult {
+	s.TextGenerate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics struct {
+	ImageSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
+	TextSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult  `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	Topic             *string                                                                                                                             `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VideoSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetImageSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
+	s.ImageSearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetTextSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
+	s.TextSearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetTopic(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
+	s.Topic = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetVideoSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
+	s.VideoSearchResult = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult struct {
+	// example:
+	//
+	// 1
+	Current      *int32                                                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult {
+	s.Total = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult struct {
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult struct {
+	// example:
+	//
+	// 1
+	Current      *int32                                                                                                                                           `json:"Current,omitempty" xml:"Current,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult {
+	s.Total = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid          *string                                                                                                                                                          `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04-04 08:39:09
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetMultimodalMedias(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias struct {
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult struct {
+	// example:
+	//
+	// 1
+	Current      *int32                                                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult {
+	s.Total = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.9
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// example:
+	//
+	// concise
+	GenerateLevel *string                                                                                                        `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	SearchResult  []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetGenerateLevel(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
+	s.GenerateLevel = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
+	s.TextGenerate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult struct {
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	Excerpt          *string                                                                                                                        `json:"Excerpt,omitempty" xml:"Excerpt,omitempty"`
+	MultimodalMedias []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias `json:"MultimodalMedias,omitempty" xml:"MultimodalMedias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04-04 08:39:09
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// true
+	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// example:
+	//
+	// xx
+	Summary                         *string                                                                                                                                       `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Chunks = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetExcerpt(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Excerpt = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetMultimodalMedias(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.MultimodalMedias = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetScore(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSelect(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Select = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetTextGenerateMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.TextGenerateMultimodalMediaList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetTraceabilityId(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.TraceabilityId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias struct {
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList struct {
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 1
+	End                 *int32                                                                                                                                                           `json:"End,omitempty" xml:"End,omitempty"`
+	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) SetEnd(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList {
+	s.End = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) SetMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList {
+	s.MultimodalMediaList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList) SetStart(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList {
+	s.Start = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xxx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult struct {
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult struct {
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished       *bool                                                                                                                        `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	NewsElementArticleList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList `json:"NewsElementArticleList,omitempty" xml:"NewsElementArticleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// x
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) SetNewsElementArticleList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult {
+	s.NewsElementArticleList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult {
+	s.TextGenerate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList struct {
+	Article         *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle           `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	NewsElementList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList `json:"NewsElementList,omitempty" xml:"NewsElementList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	TextGenerate *string `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) SetNewsElementList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList {
+	s.NewsElementList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList {
+	s.TextGenerate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle struct {
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2023-04-04 08:39:09
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// true
+	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetScore(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSelect(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Select = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList struct {
+	// example:
+	//
+	// task-started
+	Event *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// xx
+	People *string `json:"People,omitempty" xml:"People,omitempty"`
+	// example:
+	//
+	// 时间
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) SetEvent(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList {
+	s.Event = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) SetLocation(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList {
+	s.Location = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) SetPeople(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList {
+	s.People = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList) SetTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList {
+	s.Time = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent struct {
+	CauseList   []*string `json:"CauseList,omitempty" xml:"CauseList,omitempty" type:"Repeated"`
+	ProcessList []*string `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Repeated"`
+	ResultList  []*string `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) SetCauseList(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent {
+	s.CauseList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) SetProcessList(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent {
+	s.ProcessList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent) SetResultList(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementListEvent {
+	s.ResultList = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished *bool `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// example:
+	//
+	// concise
+	GenerateLevel              *string                                                                                                                           `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
+	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	TextGenerate                    *string                                                                                                                                `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetGenerateLevel(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.GenerateLevel = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetGenerateTraceability(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.GenerateTraceability = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetMultimodalSearchResultList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.MultimodalSearchResultList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetReferenceList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.ReferenceList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.TextGenerate = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetTextGenerateMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.TextGenerateMultimodalMediaList = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability struct {
+	Coordinates []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0.9
+	Duplicate *float64 `json:"Duplicate,omitempty" xml:"Duplicate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) SetCoordinates(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability {
+	s.Coordinates = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability) SetDuplicate(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability {
+	s.Duplicate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates struct {
+	GenerateCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate `json:"GenerateCoordinate,omitempty" xml:"GenerateCoordinate,omitempty" type:"Struct"`
+	NewsCoordinate     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate     `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) SetGenerateCoordinate(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates {
+	s.GenerateCoordinate = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates) SetNewsCoordinate(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates {
+	s.NewsCoordinate = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
+	// example:
+	//
+	// 1
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1
+	Z *int32 `json:"Z,omitempty" xml:"Z,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.X = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetY(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.Y = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetZ(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.Z = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
+	// example:
+	//
+	// 1
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1
+	Z *int32 `json:"Z,omitempty" xml:"Z,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.X = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) SetY(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.Y = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) SetZ(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.Z = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList struct {
+	// example:
+	//
+	// 1
+	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// example:
+	//
+	// xx
+	SearchQuery  *string                                                                                                                                       `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// realtime
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 时间脉络-时间
+	TimelineDateStr *string `json:"TimelineDateStr,omitempty" xml:"TimelineDateStr,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetSearchQuery(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetSearchType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.SearchType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetTimelineDateStr(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.TimelineDateStr = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList {
+	s.Total = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResult {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.1
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList struct {
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2023-04-04 08:39:09
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// true
+	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// example:
+	//
+	// 新华社
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Chunks = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetScore(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSelect(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Select = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Source = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetTraceabilityId(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.TraceabilityId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList struct {
+	// example:
+	//
+	// 1
+	End                 *int32                                                                                                                                                    `json:"End,omitempty" xml:"End,omitempty"`
+	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) SetEnd(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList {
+	s.End = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) SetMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList {
+	s.MultimodalMediaList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList) SetStart(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList {
+	s.Start = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult struct {
+	// example:
+	//
+	// true
+	GenerateFinished           *bool                                                                                                                         `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
+	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
+	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	TextGenerate                    *string                                                                                                                            `json:"TextGenerate,omitempty" xml:"TextGenerate,omitempty"`
+	TextGenerateMultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList `json:"TextGenerateMultimodalMediaList,omitempty" xml:"TextGenerateMultimodalMediaList,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetGenerateTraceability(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.GenerateTraceability = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetMultimodalSearchResultList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.MultimodalSearchResultList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetReferenceList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.ReferenceList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.TextGenerate = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetTextGenerateMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.TextGenerateMultimodalMediaList = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability struct {
+	Coordinates []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0.9
+	Duplicate *float64 `json:"Duplicate,omitempty" xml:"Duplicate,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) SetCoordinates(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability {
+	s.Coordinates = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability) SetDuplicate(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability {
+	s.Duplicate = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates struct {
+	GenerateCoordinate *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate `json:"GenerateCoordinate,omitempty" xml:"GenerateCoordinate,omitempty" type:"Struct"`
+	NewsCoordinate     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate     `json:"NewsCoordinate,omitempty" xml:"NewsCoordinate,omitempty" type:"Struct"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) SetGenerateCoordinate(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates {
+	s.GenerateCoordinate = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates) SetNewsCoordinate(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates {
+	s.NewsCoordinate = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate struct {
+	// example:
+	//
+	// 1
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1
+	Z *int32 `json:"Z,omitempty" xml:"Z,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.X = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetY(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.Y = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate) SetZ(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate {
+	s.Z = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
+	// example:
+	//
+	// 1
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 1
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 1
+	Z *int32 `json:"Z,omitempty" xml:"Z,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.X = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) SetY(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.Y = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) SetZ(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.Z = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList struct {
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-11
+	TimelineDateStr *string `json:"TimelineDateStr,omitempty" xml:"TimelineDateStr,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) SetTimelineDateStr(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList {
+	s.TimelineDateStr = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList struct {
+	Chunks []*string `json:"Chunks,omitempty" xml:"Chunks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2023-04-04 08:39:09
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 0.99
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// true
+	Select *bool `json:"Select,omitempty" xml:"Select,omitempty"`
+	// example:
+	//
+	// 新华社
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *int32 `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetChunks(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Chunks = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetScore(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSelect(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Select = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Source = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetTraceabilityId(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.TraceabilityId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList struct {
+	// example:
+	//
+	// 1
+	End                 *int32                                                                                                                                                `json:"End,omitempty" xml:"End,omitempty"`
+	MultimodalMediaList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList `json:"MultimodalMediaList,omitempty" xml:"MultimodalMediaList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) SetEnd(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList {
+	s.End = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) SetMultimodalMediaList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList {
+	s.MultimodalMediaList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList) SetStart(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList {
+	s.Start = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList struct {
+	Article *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList {
+	s.MediaType = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xxxx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult struct {
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 互联网搜索
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.8
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 3
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadUsage) SetInputTokens(v int64) *RunSearchGenerationResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunSearchGenerationResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunSearchGenerationResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunSearchGenerationResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSearchGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSearchGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponse) SetHeaders(v map[string]*string) *RunSearchGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSearchGenerationResponse) SetStatusCode(v int32) *RunSearchGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponse) SetBody(v *RunSearchGenerationResponseBody) *RunSearchGenerationResponse {
+	s.Body = v
+	return s
+}
+
 type RunStepByStepWritingRequest struct {
 	// example:
 	//
@@ -25942,6 +33818,275 @@ func (s *SaveMaterialDocumentResponse) SetBody(v *SaveMaterialDocumentResponseBo
 	return s
 }
 
+type SearchDatasetDocumentsRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// 业务参数
+	Extend1 *string `json:"Extend1,omitempty" xml:"Extend1,omitempty"`
+	// example:
+	//
+	// false
+	IncludeContent *bool `json:"IncludeContent,omitempty" xml:"IncludeContent,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 搜索内容
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SearchDatasetDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsRequest) SetDatasetId(v int64) *SearchDatasetDocumentsRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetDatasetName(v string) *SearchDatasetDocumentsRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetExtend1(v string) *SearchDatasetDocumentsRequest {
+	s.Extend1 = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetIncludeContent(v bool) *SearchDatasetDocumentsRequest {
+	s.IncludeContent = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetPageSize(v string) *SearchDatasetDocumentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetQuery(v string) *SearchDatasetDocumentsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsRequest) SetWorkspaceId(v string) *SearchDatasetDocumentsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SearchDatasetDocumentsResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SearchDatasetDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchDatasetDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetCode(v string) *SearchDatasetDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetData(v *SearchDatasetDocumentsResponseBodyData) *SearchDatasetDocumentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetHttpStatusCode(v int32) *SearchDatasetDocumentsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetMessage(v string) *SearchDatasetDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetRequestId(v string) *SearchDatasetDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBody) SetSuccess(v bool) *SearchDatasetDocumentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchDatasetDocumentsResponseBodyData struct {
+	Documents []*SearchDatasetDocumentsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+}
+
+func (s SearchDatasetDocumentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsResponseBodyData) SetDocuments(v []*SearchDatasetDocumentsResponseBodyDataDocuments) *SearchDatasetDocumentsResponseBodyData {
+	s.Documents = v
+	return s
+}
+
+type SearchDatasetDocumentsResponseBodyDataDocuments struct {
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 用户指定的文档唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-12-09 17:09:40
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 来源
+	SourceFrom *string `json:"SourceFrom,omitempty" xml:"SourceFrom,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SearchDatasetDocumentsResponseBodyDataDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsResponseBodyDataDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetContent(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetDocId(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.DocId = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetDocUuid(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetPubTime(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.PubTime = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSourceFrom(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.SourceFrom = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetSummary(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Summary = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetTitle(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponseBodyDataDocuments) SetUrl(v string) *SearchDatasetDocumentsResponseBodyDataDocuments {
+	s.Url = &v
+	return s
+}
+
+type SearchDatasetDocumentsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchDatasetDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchDatasetDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDatasetDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDatasetDocumentsResponse) SetHeaders(v map[string]*string) *SearchDatasetDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponse) SetStatusCode(v int32) *SearchDatasetDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchDatasetDocumentsResponse) SetBody(v *SearchDatasetDocumentsResponseBody) *SearchDatasetDocumentsResponse {
+	s.Body = v
+	return s
+}
+
 type SearchNewsRequest struct {
 	// This parameter is required.
 	//
@@ -28810,6 +36955,1040 @@ func (s *UpdateCustomTextResponse) SetBody(v *UpdateCustomTextResponseBody) *Upd
 	return s
 }
 
+type UpdateDatasetRequest struct {
+	DatasetConfig *UpdateDatasetRequestDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 企业自定义数据集
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 3
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDatasetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequest) SetDatasetConfig(v *UpdateDatasetRequestDatasetConfig) *UpdateDatasetRequest {
+	s.DatasetConfig = v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetDescription(v string) *UpdateDatasetRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetDatasetId(v int64) *UpdateDatasetRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetSearchDatasetEnable(v int32) *UpdateDatasetRequest {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetWorkspaceId(v string) *UpdateDatasetRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfig struct {
+	SearchSourceConfigs []*UpdateDatasetRequestDatasetConfigSearchSourceConfigs `json:"SearchSourceConfigs,omitempty" xml:"SearchSourceConfigs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDatasetRequestDatasetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfig) SetSearchSourceConfigs(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigs) *UpdateDatasetRequestDatasetConfig {
+	s.SearchSourceConfigs = v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigs struct {
+	// example:
+	//
+	// 可以搜索到的关键词，用来验证是否可用
+	DemoQuery                  *string                                                                         `json:"DemoQuery,omitempty" xml:"DemoQuery,omitempty"`
+	SearchSourceRequestConfig  *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig  `json:"SearchSourceRequestConfig,omitempty" xml:"SearchSourceRequestConfig,omitempty" type:"Struct"`
+	SearchSourceResponseConfig *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig `json:"SearchSourceResponseConfig,omitempty" xml:"SearchSourceResponseConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigs) SetDemoQuery(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.DemoQuery = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigs) SetSearchSourceRequestConfig(v *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) *UpdateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.SearchSourceRequestConfig = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigs) SetSearchSourceResponseConfig(v *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) *UpdateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.SearchSourceResponseConfig = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigs) SetSize(v int32) *UpdateDatasetRequestDatasetConfigSearchSourceConfigs {
+	s.Size = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig struct {
+	// example:
+	//
+	// {}
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 3000
+	ConnectTimeout *int32                                                                                  `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	Headers        []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 请求方式
+	Method *string                                                                                `json:"Method,omitempty" xml:"Method,omitempty"`
+	Params []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	PathParamsEnable *bool `json:"PathParamsEnable,omitempty" xml:"PathParamsEnable,omitempty"`
+	// example:
+	//
+	// 3000
+	SocketTimeout *int32 `json:"SocketTimeout,omitempty" xml:"SocketTimeout,omitempty"`
+	// example:
+	//
+	// api地址
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetBody(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Body = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetConnectTimeout(v int32) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetHeaders(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetMethod(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Method = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetParams(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetPathParamsEnable(v bool) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.PathParamsEnable = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetSocketTimeout(v int32) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.SocketTimeout = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig) SetUrl(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig {
+	s.Url = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetName(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValue(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueFormat(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders) SetValueType(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams struct {
+	// example:
+	//
+	// 参数名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 参数值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// valueType = time 时有效
+	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	// example:
+	//
+	// 参数值数据类型: 默认string
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetName(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValue(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueFormat(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueFormat = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams) SetValueType(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams {
+	s.ValueType = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig struct {
+	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig) SetJqNodes(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig {
+	s.JqNodes = v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes struct {
+	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 节点key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 节点路径
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 节点数据类型：string number list object base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetJqNodes(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetKey(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetPath(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes) SetType(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes {
+	s.Type = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes struct {
+	JqNodes []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes `json:"JqNodes,omitempty" xml:"JqNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// title
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// .title
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetJqNodes(v []*UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.JqNodes = v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetKey(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetPath(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes) SetType(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes struct {
+	// example:
+	//
+	// title
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// .title
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetKey(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetPath(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes) SetType(v string) *UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodesJqNodesJqNodes {
+	s.Type = &v
+	return s
+}
+
+type UpdateDatasetShrinkRequest struct {
+	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
+	// example:
+	//
+	// 企业自定义数据集
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 3
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDatasetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetConfigShrink(v string) *UpdateDatasetShrinkRequest {
+	s.DatasetConfigShrink = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetDescription(v string) *UpdateDatasetShrinkRequest {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetDatasetId(v int64) *UpdateDatasetShrinkRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetSearchDatasetEnable(v int32) *UpdateDatasetShrinkRequest {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetWorkspaceId(v string) *UpdateDatasetShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDatasetResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateDatasetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDatasetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBody) SetCode(v string) *UpdateDatasetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetData(v *UpdateDatasetResponseBodyData) *UpdateDatasetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetHttpStatusCode(v int32) *UpdateDatasetResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetMessage(v string) *UpdateDatasetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetRequestId(v string) *UpdateDatasetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBody) SetSuccess(v bool) *UpdateDatasetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDatasetResponseBodyData struct {
+	// example:
+	//
+	// 2024-11-12 21:46:24
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxx
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// xxx
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// CustomSemanticSearch
+	DatasetType        *string                                            `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	NewsArticleResults []*UpdateDatasetResponseBodyDataNewsArticleResults `json:"NewsArticleResults,omitempty" xml:"NewsArticleResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
+}
+
+func (s UpdateDatasetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBodyData) SetCreateTime(v string) *UpdateDatasetResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetCreateUser(v string) *UpdateDatasetResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetDatasetDescription(v string) *UpdateDatasetResponseBodyData {
+	s.DatasetDescription = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetDatasetId(v int64) *UpdateDatasetResponseBodyData {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetDatasetName(v string) *UpdateDatasetResponseBodyData {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetDatasetType(v string) *UpdateDatasetResponseBodyData {
+	s.DatasetType = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetNewsArticleResults(v []*UpdateDatasetResponseBodyDataNewsArticleResults) *UpdateDatasetResponseBodyData {
+	s.NewsArticleResults = v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyData) SetSearchDatasetEnable(v int32) *UpdateDatasetResponseBodyData {
+	s.SearchDatasetEnable = &v
+	return s
+}
+
+type UpdateDatasetResponseBodyDataNewsArticleResults struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int32                                                 `json:"Current,omitempty" xml:"Current,omitempty"`
+	Data    []*UpdateDatasetResponseBodyDataNewsArticleResultsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s UpdateDatasetResponseBodyDataNewsArticleResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBodyDataNewsArticleResults) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetCode(v string) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetCurrent(v int32) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Current = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetData(v []*UpdateDatasetResponseBodyDataNewsArticleResultsData) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetMessage(v string) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetSize(v int32) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Size = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResults) SetTotal(v int32) *UpdateDatasetResponseBodyDataNewsArticleResults {
+	s.Total = &v
+	return s
+}
+
+type UpdateDatasetResponseBodyDataNewsArticleResultsData struct {
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-11-12 15:12:14
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s UpdateDatasetResponseBodyDataNewsArticleResultsData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponseBodyDataNewsArticleResultsData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetContent(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetPubTime(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.PubTime = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetSource(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetSummary(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.Summary = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetTitle(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.Title = &v
+	return s
+}
+
+func (s *UpdateDatasetResponseBodyDataNewsArticleResultsData) SetUrl(v string) *UpdateDatasetResponseBodyDataNewsArticleResultsData {
+	s.Url = &v
+	return s
+}
+
+type UpdateDatasetResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDatasetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDatasetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetResponse) SetHeaders(v map[string]*string) *UpdateDatasetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetResponse) SetStatusCode(v int32) *UpdateDatasetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDatasetResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDatasetDocumentRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Document *UpdateDatasetDocumentRequestDocument `json:"Document,omitempty" xml:"Document,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDatasetDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentRequest) SetDatasetId(v int64) *UpdateDatasetDocumentRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequest) SetDatasetName(v string) *UpdateDatasetDocumentRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequest) SetDocument(v *UpdateDatasetDocumentRequestDocument) *UpdateDatasetDocumentRequest {
+	s.Document = v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequest) SetWorkspaceId(v string) *UpdateDatasetDocumentRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDatasetDocumentRequestDocument struct {
+	// example:
+	//
+	// 用户指定的文档唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateDatasetDocumentRequestDocument) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentRequestDocument) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetDocId(v string) *UpdateDatasetDocumentRequestDocument {
+	s.DocId = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetDocUuid(v string) *UpdateDatasetDocumentRequestDocument {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentRequestDocument) SetTitle(v string) *UpdateDatasetDocumentRequestDocument {
+	s.Title = &v
+	return s
+}
+
+type UpdateDatasetDocumentShrinkRequest struct {
+	// example:
+	//
+	// 1
+	DatasetId *int64 `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// 数据集名称
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	DocumentShrink *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateDatasetDocumentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentShrinkRequest) SetDatasetId(v int64) *UpdateDatasetDocumentShrinkRequest {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentShrinkRequest) SetDatasetName(v string) *UpdateDatasetDocumentShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentShrinkRequest) SetDocumentShrink(v string) *UpdateDatasetDocumentShrinkRequest {
+	s.DocumentShrink = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentShrinkRequest) SetWorkspaceId(v string) *UpdateDatasetDocumentShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateDatasetDocumentResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateDatasetDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDatasetDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetCode(v string) *UpdateDatasetDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetData(v *UpdateDatasetDocumentResponseBodyData) *UpdateDatasetDocumentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetHttpStatusCode(v int32) *UpdateDatasetDocumentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetMessage(v string) *UpdateDatasetDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetRequestId(v string) *UpdateDatasetDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBody) SetSuccess(v bool) *UpdateDatasetDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDatasetDocumentResponseBodyData struct {
+	// example:
+	//
+	// 用户指定的文档唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 内部文档唯一ID
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateDatasetDocumentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetDocId(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetDocUuid(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponseBodyData) SetTitle(v string) *UpdateDatasetDocumentResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type UpdateDatasetDocumentResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDatasetDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDatasetDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDatasetDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDatasetDocumentResponse) SetHeaders(v map[string]*string) *UpdateDatasetDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponse) SetStatusCode(v int32) *UpdateDatasetDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDatasetDocumentResponse) SetBody(v *UpdateDatasetDocumentResponseBody) *UpdateDatasetDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -29862,6 +39041,84 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加文档到数据集
+//
+// @param tmpReq - AddDatasetDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDatasetDocumentResponse
+func (client *Client) AddDatasetDocumentWithOptions(tmpReq *AddDatasetDocumentRequest, runtime *util.RuntimeOptions) (_result *AddDatasetDocumentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddDatasetDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Document)) {
+		request.DocumentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Document, tea.String("Document"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentShrink)) {
+		body["Document"] = request.DocumentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDatasetDocument"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDatasetDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加文档到数据集
+//
+// @param request - AddDatasetDocumentRequest
+//
+// @return AddDatasetDocumentResponse
+func (client *Client) AddDatasetDocument(request *AddDatasetDocumentRequest) (_result *AddDatasetDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDatasetDocumentResponse{}
+	_body, _err := client.AddDatasetDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消异步任务
 //
 // @param request - CancelAsyncTaskRequest
@@ -29979,6 +39236,100 @@ func (client *Client) ClearIntervenes(request *ClearIntervenesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ClearIntervenesResponse{}
 	_body, _err := client.ClearIntervenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-创建
+//
+// @param tmpReq - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DatasetConfig)) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, tea.String("DatasetConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentHandleConfig)) {
+		request.DocumentHandleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentHandleConfig, tea.String("DocumentHandleConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetConfigShrink)) {
+		body["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetDescription)) {
+		body["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
+		body["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentHandleConfigShrink)) {
+		body["DocumentHandleConfig"] = request.DocumentHandleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchDatasetEnable)) {
+		body["SearchDatasetEnable"] = request.SearchDatasetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataset"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-创建
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30341,6 +39692,146 @@ func (client *Client) DeleteCustomTopicViewPointById(request *DeleteCustomTopicV
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCustomTopicViewPointByIdResponse{}
 	_body, _err := client.DeleteCustomTopicViewPointByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-删除
+//
+// @param request - DeleteDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataset"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-删除
+//
+// @param request - DeleteDatasetRequest
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集文档
+//
+// @param request - DeleteDatasetDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetDocumentResponse
+func (client *Client) DeleteDatasetDocumentWithOptions(request *DeleteDatasetDocumentRequest, runtime *util.RuntimeOptions) (_result *DeleteDatasetDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocUuid)) {
+		body["DocUuid"] = request.DocUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDatasetDocument"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDatasetDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集文档
+//
+// @param request - DeleteDatasetDocumentRequest
+//
+// @return DeleteDatasetDocumentResponse
+func (client *Client) DeleteDatasetDocument(request *DeleteDatasetDocumentRequest) (_result *DeleteDatasetDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDatasetDocumentResponse{}
+	_body, _err := client.DeleteDatasetDocumentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31705,6 +41196,150 @@ func (client *Client) GetDataSourceOrderConfig(request *GetDataSourceOrderConfig
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataSourceOrderConfigResponse{}
 	_body, _err := client.GetDataSourceOrderConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-详情
+//
+// @param request - GetDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
+func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataset"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-详情
+//
+// @param request - GetDatasetRequest
+//
+// @return GetDatasetResponse
+func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集文档
+//
+// @param request - GetDatasetDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetDocumentResponse
+func (client *Client) GetDatasetDocumentWithOptions(request *GetDatasetDocumentRequest, runtime *util.RuntimeOptions) (_result *GetDatasetDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocUuid)) {
+		body["DocUuid"] = request.DocUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatasetDocument"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatasetDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集文档
+//
+// @param request - GetDatasetDocumentRequest
+//
+// @return GetDatasetDocumentResponse
+func (client *Client) GetDatasetDocument(request *GetDatasetDocumentRequest) (_result *GetDatasetDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatasetDocumentResponse{}
+	_body, _err := client.GetDatasetDocumentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33392,6 +43027,208 @@ func (client *Client) ListCustomViewPoints(request *ListCustomViewPointsRequest)
 
 // Summary:
 //
+// 查询数据集文档列表
+//
+// @param tmpReq - ListDatasetDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetDocumentsResponse
+func (client *Client) ListDatasetDocumentsWithOptions(tmpReq *ListDatasetDocumentsRequest, runtime *util.RuntimeOptions) (_result *ListDatasetDocumentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDatasetDocumentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExcludeFields)) {
+		request.ExcludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeFields, tea.String("ExcludeFields"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IncludeFields)) {
+		request.IncludeFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncludeFields, tea.String("IncludeFields"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetDescription)) {
+		body["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		body["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeFieldsShrink)) {
+		body["ExcludeFields"] = request.ExcludeFieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeFieldsShrink)) {
+		body["IncludeFields"] = request.IncludeFieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatasetDocuments"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatasetDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集文档列表
+//
+// @param request - ListDatasetDocumentsRequest
+//
+// @return ListDatasetDocumentsResponse
+func (client *Client) ListDatasetDocuments(request *ListDatasetDocumentsRequest) (_result *ListDatasetDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatasetDocumentsResponse{}
+	_body, _err := client.ListDatasetDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-查询
+//
+// @param request - ListDatasetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
+		body["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchDatasetEnable)) {
+		body["SearchDatasetEnable"] = request.SearchDatasetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatasets"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-查询
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成历史列表
 //
 // @param request - ListDialoguesRequest
@@ -34603,6 +44440,256 @@ func (client *Client) ListPlanningProposal(request *ListPlanningProposalRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPlanningProposalResponse{}
 	_body, _err := client.ListPlanningProposalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询搜索生成任务对话详情中数据列表
+//
+// @param request - ListSearchTaskDialogueDatasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSearchTaskDialogueDatasResponse
+func (client *Client) ListSearchTaskDialogueDatasWithOptions(request *ListSearchTaskDialogueDatasRequest, runtime *util.RuntimeOptions) (_result *ListSearchTaskDialogueDatasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludeContent)) {
+		body["IncludeContent"] = request.IncludeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultimodalSearchType)) {
+		body["MultimodalSearchType"] = request.MultimodalSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalSessionId)) {
+		body["OriginalSessionId"] = request.OriginalSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchModel)) {
+		body["SearchModel"] = request.SearchModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchModelDataValue)) {
+		body["SearchModelDataValue"] = request.SearchModelDataValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchTaskDialogueDatas"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchTaskDialogueDatasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询搜索生成任务对话详情中数据列表
+//
+// @param request - ListSearchTaskDialogueDatasRequest
+//
+// @return ListSearchTaskDialogueDatasResponse
+func (client *Client) ListSearchTaskDialogueDatas(request *ListSearchTaskDialogueDatasRequest) (_result *ListSearchTaskDialogueDatasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSearchTaskDialogueDatasResponse{}
+	_body, _err := client.ListSearchTaskDialogueDatasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询妙搜搜索生成任务详情列表
+//
+// @param request - ListSearchTaskDialoguesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSearchTaskDialoguesResponse
+func (client *Client) ListSearchTaskDialoguesWithOptions(request *ListSearchTaskDialoguesRequest, runtime *util.RuntimeOptions) (_result *ListSearchTaskDialoguesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchTaskDialogues"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchTaskDialoguesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询妙搜搜索生成任务详情列表
+//
+// @param request - ListSearchTaskDialoguesRequest
+//
+// @return ListSearchTaskDialoguesResponse
+func (client *Client) ListSearchTaskDialogues(request *ListSearchTaskDialoguesRequest) (_result *ListSearchTaskDialoguesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSearchTaskDialoguesResponse{}
+	_body, _err := client.ListSearchTaskDialoguesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询妙搜搜索生成历史任务列表
+//
+// @param tmpReq - ListSearchTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSearchTasksResponse
+func (client *Client) ListSearchTasksWithOptions(tmpReq *ListSearchTasksRequest, runtime *util.RuntimeOptions) (_result *ListSearchTasksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSearchTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DialogueTypes)) {
+		request.DialogueTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DialogueTypes, tea.String("DialogueTypes"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DialogueTypesShrink)) {
+		body["DialogueTypes"] = request.DialogueTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSearchTasks"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSearchTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询妙搜搜索生成历史任务列表
+//
+// @param request - ListSearchTasksRequest
+//
+// @return ListSearchTasksResponse
+func (client *Client) ListSearchTasks(request *ListSearchTasksRequest) (_result *ListSearchTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSearchTasksResponse{}
+	_body, _err := client.ListSearchTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35874,6 +45961,96 @@ func (client *Client) RunKeywordsExtractionGeneration(request *RunKeywordsExtrac
 
 // Summary:
 //
+// AI妙搜-智能搜索生成
+//
+// @param tmpReq - RunSearchGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSearchGenerationResponse
+func (client *Client) RunSearchGenerationWithOptions(tmpReq *RunSearchGenerationRequest, runtime *util.RuntimeOptions) (_result *RunSearchGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunSearchGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AgentContext)) {
+		request.AgentContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentContext, tea.String("AgentContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ChatConfig)) {
+		request.ChatConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatConfig, tea.String("ChatConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentContextShrink)) {
+		body["AgentContext"] = request.AgentContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatConfigShrink)) {
+		body["ChatConfig"] = request.ChatConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalSessionId)) {
+		body["OriginalSessionId"] = request.OriginalSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSearchGeneration"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSearchGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI妙搜-智能搜索生成
+//
+// @param request - RunSearchGenerationRequest
+//
+// @return RunSearchGenerationResponse
+func (client *Client) RunSearchGeneration(request *RunSearchGenerationRequest) (_result *RunSearchGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunSearchGenerationResponse{}
+	_body, _err := client.RunSearchGenerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创作-分步骤写作
 //
 // @param tmpReq - RunStepByStepWritingRequest
@@ -36772,6 +46949,90 @@ func (client *Client) SaveMaterialDocument(request *SaveMaterialDocumentRequest)
 
 // Summary:
 //
+// 搜索数据集文档
+//
+// @param request - SearchDatasetDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchDatasetDocumentsResponse
+func (client *Client) SearchDatasetDocumentsWithOptions(request *SearchDatasetDocumentsRequest, runtime *util.RuntimeOptions) (_result *SearchDatasetDocumentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend1)) {
+		body["Extend1"] = request.Extend1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeContent)) {
+		body["IncludeContent"] = request.IncludeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchDatasetDocuments"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchDatasetDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索数据集文档
+//
+// @param request - SearchDatasetDocumentsRequest
+//
+// @return SearchDatasetDocumentsResponse
+func (client *Client) SearchDatasetDocuments(request *SearchDatasetDocumentsRequest) (_result *SearchDatasetDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchDatasetDocumentsResponse{}
+	_body, _err := client.SearchDatasetDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新闻检索
 //
 // @param tmpReq - SearchNewsRequest
@@ -37537,6 +47798,166 @@ func (client *Client) UpdateCustomText(request *UpdateCustomTextRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCustomTextResponse{}
 	_body, _err := client.UpdateCustomTextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-更新
+//
+// @param tmpReq - UpdateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDatasetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DatasetConfig)) {
+		request.DatasetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatasetConfig, tea.String("DatasetConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetConfigShrink)) {
+		body["DatasetConfig"] = request.DatasetConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetDescription)) {
+		body["DatasetDescription"] = request.DatasetDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchDatasetEnable)) {
+		body["SearchDatasetEnable"] = request.SearchDatasetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDataset"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 数据集管理-更新
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改数据集文档
+//
+// @param tmpReq - UpdateDatasetDocumentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetDocumentResponse
+func (client *Client) UpdateDatasetDocumentWithOptions(tmpReq *UpdateDatasetDocumentRequest, runtime *util.RuntimeOptions) (_result *UpdateDatasetDocumentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDatasetDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Document)) {
+		request.DocumentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Document, tea.String("Document"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetId)) {
+		body["DatasetId"] = request.DatasetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentShrink)) {
+		body["Document"] = request.DocumentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDatasetDocument"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDatasetDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改数据集文档
+//
+// @param request - UpdateDatasetDocumentRequest
+//
+// @return UpdateDatasetDocumentResponse
+func (client *Client) UpdateDatasetDocument(request *UpdateDatasetDocumentRequest) (_result *UpdateDatasetDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDatasetDocumentResponse{}
+	_body, _err := client.UpdateDatasetDocumentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
