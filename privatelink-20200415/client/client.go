@@ -347,11 +347,13 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	// 	- **slb**: Classic Load Balancer (CLB) instance
 	//
-	// 	- **alb**: an Application Load Balancer (ALB) instance
+	// 	- **alb**: Application Load Balancer (ALB) instance
 	//
-	// 	- **nlb**: a Network Load Balancer (NLB) instance
+	// 	- **nlb**: Network Load Balancer (NLB) instance
+	//
+	// >  You cannot access TCP/SSL listeners configured for NLB instances.
 	//
 	// This parameter is required.
 	//
@@ -801,14 +803,61 @@ type CreateVpcEndpointRequest struct {
 	//
 	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The type of the endpoint.
+	// The endpoint type. Valid values:
 	//
-	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+	// 	- **Interface*	- You can specify an Application Load Balancer (ALB) instance, a Classic Load Balancer (CLB) instance, or a Network Load Balancer (NLB) instance.
+	//
+	// 	- **Reverse*	- You can specify a Virtual Private Cloud (VPC) NAT gateway.
+	//
+	// >  Services that support reverse endpoints are provided by Alibaba Cloud or Alibaba Cloud partners. To create such a service on your own, contact your account manager.
 	//
 	// example:
 	//
 	// Interface
-	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Version": "1",
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Action": [
+	//
+	//         "oss:List*",
+	//
+	//         "oss:PutObject",
+	//
+	//         "oss:GetObject"
+	//
+	//       ],
+	//
+	//       "Resource": [
+	//
+	//         "acs:oss:oss-*:*:pvl-policy-test/policy-test.txt"
+	//
+	//       ],
+	//
+	//       "Principal": {
+	//
+	//         "RAM": [
+	//
+	//           "acs:ram::14199xxxxxx:*"
+	//
+	//         ]
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	//
@@ -1297,13 +1346,11 @@ type CreateVpcEndpointServiceRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The payer of the endpoint service. Valid values:
+	// The payer. Valid values:
 	//
-	// 	- **Endpoint**: the service consumer
+	// 	- **Endpoint**: service consumer
 	//
-	// 	- **EndpointService**: the service provider
-	//
-	// > By default, the feature of allowing the service provider to pay is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas) and click Privileges in the left-side navigation pane. On the **Privileges*	- page, enter the quota ID `privatelink_whitelist/epsvc_payer_mode`, and click Apply in the Actions column.
+	// 	- **EndpointService**: service provider
 	//
 	// example:
 	//
@@ -1335,11 +1382,13 @@ type CreateVpcEndpointServiceRequest struct {
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	// 	- **slb**: Classic Load Balancer (CLB) instance
 	//
-	// 	- **alb**: an Application Load Balancer (ALB) instance
+	// 	- **alb**: Application Load Balancer (ALB) instance
 	//
-	// 	- **nlb**: a Network Load Balancer (NLB) instance
+	// 	- **nlb**: Network Load Balancer (NLB) instance
+	//
+	// >  You cannot access TCP/SSL listeners configured for NLB instances.
 	//
 	// example:
 	//
@@ -1453,19 +1502,19 @@ type CreateVpcEndpointServiceRequestResource struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
 	//
-	// 	- **slb**: Classic Load Balancer (CLB) instance
+	// 	- **slb**: CLB instance
 	//
-	// 	- **alb**: Application Load Balancer (ALB) instance
+	// 	- **alb**: ALB instance
 	//
-	// 	- **nlb**: Network Load Balancer (NLB) instance
+	// 	- **nlb**: NLB instance
 	//
-	// >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service.
+	// >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service. You cannot access TCP/SSL listeners configured for NLB instances.
 	//
 	// example:
 	//
 	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The zone ID.
+	// The ID of the zone.
 	//
 	// example:
 	//
@@ -1973,7 +2022,8 @@ type DescribeRegionsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -1986,6 +2036,11 @@ func (s DescribeRegionsRequest) GoString() string {
 
 func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetServiceResourceType(v string) *DescribeRegionsRequest {
+	s.ServiceResourceType = &v
 	return s
 }
 
@@ -2053,7 +2108,8 @@ type DescribeRegionsResponseBodyRegionsRegion struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId             *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceResourceTypes *DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes `json:"ServiceResourceTypes,omitempty" xml:"ServiceResourceTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -2076,6 +2132,28 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *
 
 func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetServiceResourceTypes(v *DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes) *DescribeRegionsResponseBodyRegionsRegion {
+	s.ServiceResourceTypes = v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes struct {
+	ServiceResourceType []*string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes) SetServiceResourceType(v []*string) *DescribeRegionsResponseBodyRegionsRegionServiceResourceTypes {
+	s.ServiceResourceType = v
 	return s
 }
 
@@ -2116,7 +2194,8 @@ type DescribeZonesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 }
 
 func (s DescribeZonesRequest) String() string {
@@ -2129,6 +2208,11 @@ func (s DescribeZonesRequest) GoString() string {
 
 func (s *DescribeZonesRequest) SetRegionId(v string) *DescribeZonesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeZonesRequest) SetServiceResourceType(v string) *DescribeZonesRequest {
+	s.ServiceResourceType = &v
 	return s
 }
 
@@ -2692,13 +2776,13 @@ type DisableVpcEndpointZoneConnectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to disconnect the endpoint from the previous connection after the service resource is smoothly migrated. Valid values:
+	// Specifies whether to close connections in the endpoint zone after migration. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: yes
 	//
-	// 	- **false*	- (default)
+	// 	- **false*	- (default): no
 	//
-	// > Set the value to true if you want to disconnect the endpoint from the previous connection in the zone after the service resource is smoothly migrated.
+	// >  Set the value to true if you want to close connections in the endpoint zone after migration.
 	//
 	// example:
 	//
@@ -3238,7 +3322,50 @@ type GetVpcEndpointAttributeResponseBody struct {
 	// example:
 	//
 	// Endpoint
-	Payer          *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Version": "1",
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Action": [
+	//
+	//         "oss:List*",
+	//
+	//         "oss:PutObject",
+	//
+	//         "oss:GetObject"
+	//
+	//       ],
+	//
+	//       "Resource": [
+	//
+	//         "acs:oss:oss-*:*:pvl-policy-test/policy-test.txt"
+	//
+	//       ],
+	//
+	//       "Principal": {
+	//
+	//         "RAM": [
+	//
+	//           "acs:ram::14199xxxxxx:*"
+	//
+	//         ]
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The region ID of the endpoint.
 	//
@@ -3554,11 +3681,11 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	//
 	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The service state of the endpoint service. Valid values:
+	// The service status of the endpoint service. Valid values:
 	//
 	// 	- **Normal**: The endpoint service runs as expected.
 	//
-	// 	- **FinacialLocked**: The endpoint service is locked due to overdue payments.
+	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
 	//
 	// example:
 	//
@@ -3616,7 +3743,7 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// Deprecated
 	//
-	// Indicates whether IPv6 is enabled for the endpoint service. Valid values:
+	// Specifies whether the endpoint service supports IPv6. Valid values:
 	//
 	// 	- **true**
 	//
@@ -5880,7 +6007,7 @@ func (s *ListVpcEndpointServicesResponse) SetBody(v *ListVpcEndpointServicesResp
 }
 
 type ListVpcEndpointServicesByEndUserRequest struct {
-	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **50**.
 	//
 	// example:
 	//
@@ -6044,7 +6171,7 @@ type ListVpcEndpointServicesByEndUserResponseBody struct {
 	//
 	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The endpoint services.
+	// The information about endpoint services.
 	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -6613,9 +6740,11 @@ type ListVpcEndpointsRequest struct {
 	//
 	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The type of the endpoint.
+	// The type of the endpoint. Valid values:
 	//
-	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+	// 	- **Interface**: interface endpoint
+	//
+	// 	- **Reverse**: reverse endpoint
 	//
 	// example:
 	//
@@ -6927,14 +7056,21 @@ type ListVpcEndpointsResponseBodyEndpoints struct {
 	//
 	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
-	// The type of the endpoint.
+	// The type of the endpoint. Valid values:
 	//
-	// Only **Interface*	- may be returned, which indicates an interface endpoint. You can specify Application Load Balancer (ALB) instances, Classic Load Balancer (CLB) instances, and Network Load Balancer (NLB) instances as service resources.
+	// 	- **Interface**: interface endpoint
+	//
+	// 	- **Reverse**: reverse endpoint
 	//
 	// example:
 	//
 	// Interface
-	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The Resource Access Management (RAM) policy. For more information about policy definitions, see [Policy elements](https://help.aliyun.com/document_detail/93738.html).
+	//
+	// example:
+	//
+	// {\\n  \\"Version\\": \\"1\\",\\n  \\"Statement\\": [\\n    {\\n      \\"Effect\\": \\"Allow\\",\\n      \\"Action\\": \\"*\\",\\n      \\"Principal\\": \\"*\\",\\n      \\"Resource\\": \\"*\\"\\n    }\\n  ]\\n}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The region ID of the endpoint.
 	//
@@ -7690,11 +7826,11 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// 	- **true**: removes all tags from the resource.
+	// 	- **true**
 	//
-	// 	- **false**: does not remove all tags from the resource.
+	// 	- **false**
 	//
-	// >  If you specify both this parameter and **TagKey**, this parameter is invalid.
+	// >  If you specify both the All and TagKey.N parameters, the All parameter does not take effect.
 	//
 	// example:
 	//
@@ -7746,7 +7882,7 @@ type UntagResourcesRequest struct {
 	//
 	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags that you want to remove from the resource. You can specify up to 20 tag keys.
+	// The keys of the tags that you want to remove from the resources. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -7887,7 +8023,50 @@ type UpdateVpcEndpointAttributeRequest struct {
 	// example:
 	//
 	// test
-	EndpointName   *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "Version": "1",
+	//
+	//   "Statement": [
+	//
+	//     {
+	//
+	//       "Effect": "Allow",
+	//
+	//       "Action": [
+	//
+	//         "oss:List*",
+	//
+	//         "oss:PutObject",
+	//
+	//         "oss:GetObject"
+	//
+	//       ],
+	//
+	//       "Resource": [
+	//
+	//         "acs:oss:oss-*:*:pvl-policy-test/policy-test.txt"
+	//
+	//       ],
+	//
+	//       "Principal": {
+	//
+	//         "RAM": [
+	//
+	//           "acs:ram::14199xxxxxx:*"
+	//
+	//         ]
+	//
+	//       }
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The region ID of the endpoint whose attributes you want to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
 	//
@@ -9767,6 +9946,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ServiceResourceType)) {
+		query["ServiceResourceType"] = request.ServiceResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9829,6 +10012,10 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceResourceType)) {
+		query["ServiceResourceType"] = request.ServiceResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10174,7 +10361,7 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 
 // Summary:
 //
-// Disconnects an endpoint from a connection in the specified zone.
+// Closes connections in an endpoint zone.
 //
 // Description:
 //
@@ -10256,7 +10443,7 @@ func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *Disab
 
 // Summary:
 //
-// Disconnects an endpoint from a connection in the specified zone.
+// Closes connections in an endpoint zone.
 //
 // Description:
 //
@@ -10390,7 +10577,7 @@ func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConn
 
 // Summary:
 //
-// Accepts a connection request from an endpoint in the specified zone.
+// Allows connections to endpoint zones.
 //
 // Description:
 //
@@ -10468,7 +10655,7 @@ func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *Enable
 
 // Summary:
 //
-// Accepts a connection request from an endpoint in the specified zone.
+// Allows connections to endpoint zones.
 //
 // Description:
 //
@@ -11817,7 +12004,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+// Removes tags from one or more endpoints or endpoint services at a time.
 //
 // @param request - UntagResourcesRequest
 //
@@ -11890,7 +12077,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+// Removes tags from one or more endpoints or endpoint services at a time.
 //
 // @param request - UntagResourcesRequest
 //
