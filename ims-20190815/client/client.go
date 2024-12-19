@@ -4188,6 +4188,7 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 20
 	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
+	ConditionsPerAKPolicyQuota         *int32 `json:"ConditionsPerAKPolicyQuota,omitempty" xml:"ConditionsPerAKPolicyQuota,omitempty"`
 	// The number of RAM user groups.
 	//
 	// example:
@@ -4205,7 +4206,8 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	// example:
 	//
 	// 50
-	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	GroupsQuota             *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	IPItemsPerAKPolicyQuota *int32 `json:"IPItemsPerAKPolicyQuota,omitempty" xml:"IPItemsPerAKPolicyQuota,omitempty"`
 	// The number of virtual multi-factor authentication (MFA) devices.
 	//
 	// example:
@@ -4317,6 +4319,11 @@ func (s *GetAccountSummaryResponseBodySummaryMap) SetAttachedSystemPoliciesPerUs
 	return s
 }
 
+func (s *GetAccountSummaryResponseBodySummaryMap) SetConditionsPerAKPolicyQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
+	s.ConditionsPerAKPolicyQuota = &v
+	return s
+}
+
 func (s *GetAccountSummaryResponseBodySummaryMap) SetGroups(v int32) *GetAccountSummaryResponseBodySummaryMap {
 	s.Groups = &v
 	return s
@@ -4329,6 +4336,11 @@ func (s *GetAccountSummaryResponseBodySummaryMap) SetGroupsPerUserQuota(v int32)
 
 func (s *GetAccountSummaryResponseBodySummaryMap) SetGroupsQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
 	s.GroupsQuota = &v
+	return s
+}
+
+func (s *GetAccountSummaryResponseBodySummaryMap) SetIPItemsPerAKPolicyQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
+	s.IPItemsPerAKPolicyQuota = &v
 	return s
 }
 
@@ -5311,6 +5323,7 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
+	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
 	// The time of the most recent logon. The time is displayed in UTC.
 	//
 	// example:
@@ -5367,6 +5380,11 @@ func (s GetLoginProfileResponseBodyLoginProfile) String() string {
 
 func (s GetLoginProfileResponseBodyLoginProfile) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginProfileResponseBodyLoginProfile) SetAutoDisableLoginStatus(v string) *GetLoginProfileResponseBodyLoginProfile {
+	s.AutoDisableLoginStatus = &v
+	return s
 }
 
 func (s *GetLoginProfileResponseBodyLoginProfile) SetLastLoginTime(v string) *GetLoginProfileResponseBodyLoginProfile {
@@ -6025,6 +6043,7 @@ type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	// The MFA preference.
 	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	MaxIdleDays   *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays   `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
 	// The personal information preference.
 	PersonalInfoPreference *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 	// The MFA method preference.
@@ -6051,6 +6070,11 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePre
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
 	s.MFAPreference = v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetMaxIdleDays(v *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) *GetSecurityPreferenceResponseBodySecurityPreference {
+	s.MaxIdleDays = v
 	return s
 }
 
@@ -6208,6 +6232,29 @@ func (s GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) GoStri
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAllowUserToManageMFADevices(v bool) *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference {
 	s.AllowUserToManageMFADevices = &v
+	return s
+}
+
+type GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
+	MaxIdleDaysForUsers      *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) SetMaxIdleDaysForAccessKeys(v int32) *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays {
+	s.MaxIdleDaysForAccessKeys = &v
+	return s
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) SetMaxIdleDaysForUsers(v int32) *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays {
+	s.MaxIdleDaysForUsers = &v
 	return s
 }
 
@@ -11260,6 +11307,7 @@ type SetSecurityPreferenceResponseBodySecurityPreference struct {
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	// The MFA preference.
 	MFAPreference *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	MaxIdleDays   *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays   `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
 	// The personal information preference.
 	PersonalInfoPreference *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 	// The MFA method preference.
@@ -11286,6 +11334,11 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetLoginProfilePre
 
 func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
 	s.MFAPreference = v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetMaxIdleDays(v *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) *SetSecurityPreferenceResponseBodySecurityPreference {
+	s.MaxIdleDays = v
 	return s
 }
 
@@ -11417,6 +11470,29 @@ func (s SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) GoStri
 
 func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAllowUserToManageMFADevices(v bool) *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference {
 	s.AllowUserToManageMFADevices = &v
+	return s
+}
+
+type SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
+	MaxIdleDaysForUsers      *int32 `json:"MaxIdleDaysForUsers,omitempty" xml:"MaxIdleDaysForUsers,omitempty"`
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) GoString() string {
+	return s.String()
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) SetMaxIdleDaysForAccessKeys(v int32) *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays {
+	s.MaxIdleDaysForAccessKeys = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays) SetMaxIdleDaysForUsers(v int32) *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays {
+	s.MaxIdleDaysForUsers = &v
 	return s
 }
 
@@ -12896,6 +12972,7 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponseBodyLoginProfile struct {
+	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
 	// Indicates whether MFA must be enabled.
 	//
 	// example:
@@ -12934,6 +13011,11 @@ func (s UpdateLoginProfileResponseBodyLoginProfile) String() string {
 
 func (s UpdateLoginProfileResponseBodyLoginProfile) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateLoginProfileResponseBodyLoginProfile) SetAutoDisableLoginStatus(v string) *UpdateLoginProfileResponseBodyLoginProfile {
+	s.AutoDisableLoginStatus = &v
+	return s
 }
 
 func (s *UpdateLoginProfileResponseBodyLoginProfile) SetMFABindRequired(v bool) *UpdateLoginProfileResponseBodyLoginProfile {
