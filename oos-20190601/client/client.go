@@ -506,8 +506,13 @@ func (s *ContinueDeployApplicationGroupResponse) SetBody(v *ContinueDeployApplic
 
 type CreateApplicationRequest struct {
 	// The configurations of application alerts.
-	AlarmConfig       *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
-	ApplicationSource *string                              `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
+	AlarmConfig *CreateApplicationRequestAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	// The source of application.
+	//
+	// example:
+	//
+	// {"Platform":"github","Owner":"githubUser","RepoName":"githubUser/repoName"}
+	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
@@ -540,7 +545,7 @@ type CreateApplicationRequest struct {
 	//
 	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the service.
+	// The ID of the Compute Nest service that corresponds to the application template.
 	//
 	// example:
 	//
@@ -646,6 +651,11 @@ func (s *CreateApplicationRequestAlarmConfig) SetTemplateIds(v []*string) *Creat
 type CreateApplicationShrinkRequest struct {
 	// The configurations of application alerts.
 	AlarmConfigShrink *string `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty"`
+	// The source of application.
+	//
+	// example:
+	//
+	// {"Platform":"github","Owner":"githubUser","RepoName":"githubUser/repoName"}
 	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -679,7 +689,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the service.
+	// The ID of the Compute Nest service that corresponds to the application template.
 	//
 	// example:
 	//
@@ -6353,7 +6363,12 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// example:
 	//
 	// MyApplication
-	ApplicationName   *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The source of application.
+	//
+	// example:
+	//
+	// {"Platform":"github","RepoName":"wenle/springboot-ecs-sourcecode-demo","Owner":"wenle","Branch":"main","CommitHash":"8559ff3ac7568fc7951ff63f841883ee3f06c6fe","CommitMessage":"Init computenest project"}
 	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The ID of the application group in CloudMonitor.
 	//
@@ -6409,11 +6424,11 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	//
 	// MyApplicationGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The operation metadata.
+	// The hosted O\\&M configurations.
 	//
 	// example:
 	//
-	// {\\"PrometheusConfigMap\\":{\\"模板1\\":{\\"EnablePrometheus\\":false}}}
+	// {\\\\"PrometheusConfigMap\\\\":{\\\\"Template 1\\\\":{\\\\"EnablePrometheus\\\\":false}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	// The creation progress of the application instance.
 	//
@@ -9889,14 +9904,20 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTemplateParameterConstraintsRequest struct {
+	// The information about the parameters.
+	//
 	// example:
 	//
 	// {\\"endDate\\": \\"2022-04-13T03:31:20Z\\", \\"Status\\": \\"Stopped\\"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
 	// example:
 	//
 	// {
@@ -9933,14 +9954,20 @@ type GetTemplateParameterConstraintsRequest struct {
 	//
 	// }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// The name of the template.
+	//
 	// example:
 	//
 	// MyTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The URL that is used to store the content of the Operation Orchestration Service (OOS) template in the Alibaba Cloud Object Storage Service (OSS). Only the public-read URL is supported. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
+	//
 	// example:
 	//
 	// http://oos-template.cn-hangzhou.oss.aliyun-inc.com/oos-test-template.json
 	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	// The version of the template. The default value is the latest version of the template.
+	//
 	// example:
 	//
 	// v1
@@ -9986,6 +10013,8 @@ func (s *GetTemplateParameterConstraintsRequest) SetTemplateVersion(v string) *G
 }
 
 type GetTemplateParameterConstraintsResponseBody struct {
+	// The constraints of the parameters.
+	//
 	// example:
 	//
 	// [
@@ -10050,6 +10079,8 @@ type GetTemplateParameterConstraintsResponseBody struct {
 	//
 	//   ]
 	ParameterConstraints map[string]interface{} `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBEC8072-BEC2-478E-8EAE-E723BA79CF19
@@ -28354,11 +28385,7 @@ func (client *Client) GetServiceSettingsWithOptions(request *GetServiceSettingsR
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28367,7 +28394,7 @@ func (client *Client) GetServiceSettingsWithOptions(request *GetServiceSettingsR
 		Version:     tea.String("2019-06-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
+		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
