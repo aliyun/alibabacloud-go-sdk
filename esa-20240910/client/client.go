@@ -181,13 +181,14 @@ type WafRuleConfig struct {
 	ManagedGroupId  *int64                          `json:"ManagedGroupId,omitempty" xml:"ManagedGroupId,omitempty"`
 	ManagedList     *string                         `json:"ManagedList,omitempty" xml:"ManagedList,omitempty"`
 	ManagedRulesets []*WafRuleConfigManagedRulesets `json:"ManagedRulesets,omitempty" xml:"ManagedRulesets,omitempty" type:"Repeated"`
-	Match           *WafRuleMatch                   `json:"Match,omitempty" xml:"Match,omitempty"`
 	Name            *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Notes           *string                         `json:"Notes,omitempty" xml:"Notes,omitempty"`
 	RateLimit       *WafRuleConfigRateLimit         `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
 	Sigchl          []*string                       `json:"Sigchl,omitempty" xml:"Sigchl,omitempty" type:"Repeated"`
 	Status          *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
 	Timer           *WafTimer                       `json:"Timer,omitempty" xml:"Timer,omitempty"`
 	Type            *string                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value           *string                         `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s WafRuleConfig) String() string {
@@ -243,13 +244,13 @@ func (s *WafRuleConfig) SetManagedRulesets(v []*WafRuleConfigManagedRulesets) *W
 	return s
 }
 
-func (s *WafRuleConfig) SetMatch(v *WafRuleMatch) *WafRuleConfig {
-	s.Match = v
+func (s *WafRuleConfig) SetName(v string) *WafRuleConfig {
+	s.Name = &v
 	return s
 }
 
-func (s *WafRuleConfig) SetName(v string) *WafRuleConfig {
-	s.Name = &v
+func (s *WafRuleConfig) SetNotes(v string) *WafRuleConfig {
+	s.Notes = &v
 	return s
 }
 
@@ -275,6 +276,11 @@ func (s *WafRuleConfig) SetTimer(v *WafTimer) *WafRuleConfig {
 
 func (s *WafRuleConfig) SetType(v string) *WafRuleConfig {
 	s.Type = &v
+	return s
+}
+
+func (s *WafRuleConfig) SetValue(v string) *WafRuleConfig {
+	s.Value = &v
 	return s
 }
 
@@ -900,6 +906,7 @@ func (s *WafRuleMatch2CriteriaCriteriaCriteria) SetNegate(v bool) *WafRuleMatch2
 type WafSiteSettings struct {
 	AddBotProtectionHeaders *WafSiteSettingsAddBotProtectionHeaders `json:"AddBotProtectionHeaders,omitempty" xml:"AddBotProtectionHeaders,omitempty" type:"Struct"`
 	AddSecurityHeaders      *WafSiteSettingsAddSecurityHeaders      `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
+	BotManagement           *WafSiteSettingsBotManagement           `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
 	ClientIpIdentifier      *WafSiteSettingsClientIpIdentifier      `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
 	SecurityLevel           *WafSiteSettingsSecurityLevel           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
 }
@@ -919,6 +926,11 @@ func (s *WafSiteSettings) SetAddBotProtectionHeaders(v *WafSiteSettingsAddBotPro
 
 func (s *WafSiteSettings) SetAddSecurityHeaders(v *WafSiteSettingsAddSecurityHeaders) *WafSiteSettings {
 	s.AddSecurityHeaders = v
+	return s
+}
+
+func (s *WafSiteSettings) SetBotManagement(v *WafSiteSettingsBotManagement) *WafSiteSettings {
+	s.BotManagement = v
 	return s
 }
 
@@ -963,6 +975,150 @@ func (s WafSiteSettingsAddSecurityHeaders) GoString() string {
 
 func (s *WafSiteSettingsAddSecurityHeaders) SetEnable(v bool) *WafSiteSettingsAddSecurityHeaders {
 	s.Enable = &v
+	return s
+}
+
+type WafSiteSettingsBotManagement struct {
+	DefiniteBots   *WafSiteSettingsBotManagementDefiniteBots   `json:"DefiniteBots,omitempty" xml:"DefiniteBots,omitempty" type:"Struct"`
+	EffectOnStatic *WafSiteSettingsBotManagementEffectOnStatic `json:"EffectOnStatic,omitempty" xml:"EffectOnStatic,omitempty" type:"Struct"`
+	JSDetection    *WafSiteSettingsBotManagementJSDetection    `json:"JSDetection,omitempty" xml:"JSDetection,omitempty" type:"Struct"`
+	LikelyBots     *WafSiteSettingsBotManagementLikelyBots     `json:"LikelyBots,omitempty" xml:"LikelyBots,omitempty" type:"Struct"`
+	VerifiedBots   *WafSiteSettingsBotManagementVerifiedBots   `json:"VerifiedBots,omitempty" xml:"VerifiedBots,omitempty" type:"Struct"`
+}
+
+func (s WafSiteSettingsBotManagement) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagement) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagement) SetDefiniteBots(v *WafSiteSettingsBotManagementDefiniteBots) *WafSiteSettingsBotManagement {
+	s.DefiniteBots = v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagement) SetEffectOnStatic(v *WafSiteSettingsBotManagementEffectOnStatic) *WafSiteSettingsBotManagement {
+	s.EffectOnStatic = v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagement) SetJSDetection(v *WafSiteSettingsBotManagementJSDetection) *WafSiteSettingsBotManagement {
+	s.JSDetection = v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagement) SetLikelyBots(v *WafSiteSettingsBotManagementLikelyBots) *WafSiteSettingsBotManagement {
+	s.LikelyBots = v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagement) SetVerifiedBots(v *WafSiteSettingsBotManagementVerifiedBots) *WafSiteSettingsBotManagement {
+	s.VerifiedBots = v
+	return s
+}
+
+type WafSiteSettingsBotManagementDefiniteBots struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s WafSiteSettingsBotManagementDefiniteBots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagementDefiniteBots) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagementDefiniteBots) SetAction(v string) *WafSiteSettingsBotManagementDefiniteBots {
+	s.Action = &v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagementDefiniteBots) SetId(v int64) *WafSiteSettingsBotManagementDefiniteBots {
+	s.Id = &v
+	return s
+}
+
+type WafSiteSettingsBotManagementEffectOnStatic struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s WafSiteSettingsBotManagementEffectOnStatic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagementEffectOnStatic) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagementEffectOnStatic) SetEnable(v bool) *WafSiteSettingsBotManagementEffectOnStatic {
+	s.Enable = &v
+	return s
+}
+
+type WafSiteSettingsBotManagementJSDetection struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s WafSiteSettingsBotManagementJSDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagementJSDetection) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagementJSDetection) SetEnable(v bool) *WafSiteSettingsBotManagementJSDetection {
+	s.Enable = &v
+	return s
+}
+
+type WafSiteSettingsBotManagementLikelyBots struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s WafSiteSettingsBotManagementLikelyBots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagementLikelyBots) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagementLikelyBots) SetAction(v string) *WafSiteSettingsBotManagementLikelyBots {
+	s.Action = &v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagementLikelyBots) SetId(v int64) *WafSiteSettingsBotManagementLikelyBots {
+	s.Id = &v
+	return s
+}
+
+type WafSiteSettingsBotManagementVerifiedBots struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s WafSiteSettingsBotManagementVerifiedBots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WafSiteSettingsBotManagementVerifiedBots) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBotManagementVerifiedBots) SetAction(v string) *WafSiteSettingsBotManagementVerifiedBots {
+	s.Action = &v
+	return s
+}
+
+func (s *WafSiteSettingsBotManagementVerifiedBots) SetId(v int64) *WafSiteSettingsBotManagementVerifiedBots {
+	s.Id = &v
 	return s
 }
 
@@ -2552,191 +2708,6 @@ func (s *BatchCreateRecordsResponse) SetBody(v *BatchCreateRecordsResponseBody) 
 	return s
 }
 
-type BatchCreateWafRulesRequest struct {
-	// The configurations of the rules.
-	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The configurations shared by multiple rules.
-	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s BatchCreateWafRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateWafRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateWafRulesRequest) SetConfigs(v []*WafRuleConfig) *BatchCreateWafRulesRequest {
-	s.Configs = v
-	return s
-}
-
-func (s *BatchCreateWafRulesRequest) SetPhase(v string) *BatchCreateWafRulesRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesRequest) SetShared(v *WafBatchRuleShared) *BatchCreateWafRulesRequest {
-	s.Shared = v
-	return s
-}
-
-func (s *BatchCreateWafRulesRequest) SetSiteId(v int64) *BatchCreateWafRulesRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesRequest) SetSiteVersion(v int32) *BatchCreateWafRulesRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type BatchCreateWafRulesShrinkRequest struct {
-	// The configurations of the rules.
-	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The configurations shared by multiple rules.
-	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s BatchCreateWafRulesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateWafRulesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateWafRulesShrinkRequest) SetConfigsShrink(v string) *BatchCreateWafRulesShrinkRequest {
-	s.ConfigsShrink = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesShrinkRequest) SetPhase(v string) *BatchCreateWafRulesShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesShrinkRequest) SetSharedShrink(v string) *BatchCreateWafRulesShrinkRequest {
-	s.SharedShrink = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesShrinkRequest) SetSiteId(v int64) *BatchCreateWafRulesShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchCreateWafRulesShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type BatchCreateWafRulesResponseBody struct {
-	// The IDs of the WAF rules.[](~~2850237~~)
-	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the WAF ruleset.[](~~2850233~~)
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-}
-
-func (s BatchCreateWafRulesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateWafRulesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateWafRulesResponseBody) SetIds(v []*int64) *BatchCreateWafRulesResponseBody {
-	s.Ids = v
-	return s
-}
-
-func (s *BatchCreateWafRulesResponseBody) SetRequestId(v string) *BatchCreateWafRulesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesResponseBody) SetRulesetId(v int64) *BatchCreateWafRulesResponseBody {
-	s.RulesetId = &v
-	return s
-}
-
-type BatchCreateWafRulesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BatchCreateWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BatchCreateWafRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateWafRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateWafRulesResponse) SetHeaders(v map[string]*string) *BatchCreateWafRulesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchCreateWafRulesResponse) SetStatusCode(v int32) *BatchCreateWafRulesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchCreateWafRulesResponse) SetBody(v *BatchCreateWafRulesResponseBody) *BatchCreateWafRulesResponse {
-	s.Body = v
-	return s
-}
-
 type BatchDeleteKvRequest struct {
 	// The keys that you want to delete. You can delete a maximum of 10,000 key-value pairs at a time.
 	//
@@ -3540,195 +3511,6 @@ func (s *BatchPutKvWithHighCapacityResponse) SetStatusCode(v int32) *BatchPutKvW
 }
 
 func (s *BatchPutKvWithHighCapacityResponse) SetBody(v *BatchPutKvWithHighCapacityResponseBody) *BatchPutKvWithHighCapacityResponse {
-	s.Body = v
-	return s
-}
-
-type BatchUpdateWafRulesRequest struct {
-	// The configurations of rules.
-	Configs []*WafRuleConfig `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The configurations shared by multiple rules.
-	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s BatchUpdateWafRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateWafRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateWafRulesRequest) SetConfigs(v []*WafRuleConfig) *BatchUpdateWafRulesRequest {
-	s.Configs = v
-	return s
-}
-
-func (s *BatchUpdateWafRulesRequest) SetPhase(v string) *BatchUpdateWafRulesRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesRequest) SetRulesetId(v int64) *BatchUpdateWafRulesRequest {
-	s.RulesetId = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesRequest) SetShared(v *WafBatchRuleShared) *BatchUpdateWafRulesRequest {
-	s.Shared = v
-	return s
-}
-
-func (s *BatchUpdateWafRulesRequest) SetSiteId(v int64) *BatchUpdateWafRulesRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesRequest) SetSiteVersion(v int32) *BatchUpdateWafRulesRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type BatchUpdateWafRulesShrinkRequest struct {
-	// The configurations of rules.
-	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The configurations shared by multiple rules.
-	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s BatchUpdateWafRulesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateWafRulesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetConfigsShrink(v string) *BatchUpdateWafRulesShrinkRequest {
-	s.ConfigsShrink = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetPhase(v string) *BatchUpdateWafRulesShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetRulesetId(v int64) *BatchUpdateWafRulesShrinkRequest {
-	s.RulesetId = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetSharedShrink(v string) *BatchUpdateWafRulesShrinkRequest {
-	s.SharedShrink = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetSiteId(v int64) *BatchUpdateWafRulesShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesShrinkRequest) SetSiteVersion(v int32) *BatchUpdateWafRulesShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type BatchUpdateWafRulesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s BatchUpdateWafRulesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateWafRulesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateWafRulesResponseBody) SetRequestId(v string) *BatchUpdateWafRulesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type BatchUpdateWafRulesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *BatchUpdateWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s BatchUpdateWafRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchUpdateWafRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchUpdateWafRulesResponse) SetHeaders(v map[string]*string) *BatchUpdateWafRulesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchUpdateWafRulesResponse) SetStatusCode(v int32) *BatchUpdateWafRulesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *BatchUpdateWafRulesResponse) SetBody(v *BatchUpdateWafRulesResponseBody) *BatchUpdateWafRulesResponse {
 	s.Body = v
 	return s
 }
@@ -10275,189 +10057,6 @@ func (s *CreateUserDeliveryTaskResponse) SetBody(v *CreateUserDeliveryTaskRespon
 	return s
 }
 
-type CreateWafRuleRequest struct {
-	// The configuration of the rule that you want to create.
-	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The WAF rule category.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s CreateWafRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWafRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWafRuleRequest) SetConfig(v *WafRuleConfig) *CreateWafRuleRequest {
-	s.Config = v
-	return s
-}
-
-func (s *CreateWafRuleRequest) SetPhase(v string) *CreateWafRuleRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *CreateWafRuleRequest) SetSiteId(v int64) *CreateWafRuleRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *CreateWafRuleRequest) SetSiteVersion(v int32) *CreateWafRuleRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type CreateWafRuleShrinkRequest struct {
-	// The configuration of the rule that you want to create.
-	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The WAF rule category.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s CreateWafRuleShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWafRuleShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWafRuleShrinkRequest) SetConfigShrink(v string) *CreateWafRuleShrinkRequest {
-	s.ConfigShrink = &v
-	return s
-}
-
-func (s *CreateWafRuleShrinkRequest) SetPhase(v string) *CreateWafRuleShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *CreateWafRuleShrinkRequest) SetSiteId(v int64) *CreateWafRuleShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *CreateWafRuleShrinkRequest) SetSiteVersion(v int32) *CreateWafRuleShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type CreateWafRuleResponseBody struct {
-	// The ID of the WAF rule.[](~~2850237~~)
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the WAF ruleset.[](~~2850233~~)
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-}
-
-func (s CreateWafRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWafRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWafRuleResponseBody) SetId(v int64) *CreateWafRuleResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateWafRuleResponseBody) SetRequestId(v string) *CreateWafRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateWafRuleResponseBody) SetRulesetId(v int64) *CreateWafRuleResponseBody {
-	s.RulesetId = &v
-	return s
-}
-
-type CreateWafRuleResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateWafRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateWafRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateWafRuleResponse) SetHeaders(v map[string]*string) *CreateWafRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateWafRuleResponse) SetStatusCode(v int32) *CreateWafRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateWafRuleResponse) SetBody(v *CreateWafRuleResponseBody) *CreateWafRuleResponse {
-	s.Body = v
-	return s
-}
-
 type CreateWaitingRoomRequest struct {
 	// The name of the custom cookie.
 	//
@@ -11539,12 +11138,16 @@ func (s *CreateWaitingRoomRuleResponse) SetBody(v *CreateWaitingRoomRuleResponse
 }
 
 type DeleteCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11572,18 +11175,26 @@ func (s *DeleteCertificateRequest) SetSiteId(v int64) *DeleteCertificateRequest 
 }
 
 type DeleteCertificateResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// babaded901474b9693acf530e0fb1d95
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -11648,12 +11259,16 @@ func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *D
 }
 
 type DeleteClientCaCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11681,18 +11296,26 @@ func (s *DeleteClientCaCertificateRequest) SetSiteId(v int64) *DeleteClientCaCer
 }
 
 type DeleteClientCaCertificateResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -13529,202 +13152,6 @@ func (s *DeleteUserDeliveryTaskResponse) SetStatusCode(v int32) *DeleteUserDeliv
 }
 
 func (s *DeleteUserDeliveryTaskResponse) SetBody(v *DeleteUserDeliveryTaskResponseBody) *DeleteUserDeliveryTaskResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteWafRuleRequest struct {
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s DeleteWafRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRuleRequest) SetId(v int64) *DeleteWafRuleRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *DeleteWafRuleRequest) SetSiteId(v int64) *DeleteWafRuleRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *DeleteWafRuleRequest) SetSiteVersion(v int32) *DeleteWafRuleRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type DeleteWafRuleResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteWafRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRuleResponseBody) SetRequestId(v string) *DeleteWafRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteWafRuleResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteWafRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRuleResponse) SetHeaders(v map[string]*string) *DeleteWafRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteWafRuleResponse) SetStatusCode(v int32) *DeleteWafRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteWafRuleResponse) SetBody(v *DeleteWafRuleResponseBody) *DeleteWafRuleResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s DeleteWafRulesetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRulesetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRulesetRequest) SetId(v int64) *DeleteWafRulesetRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *DeleteWafRulesetRequest) SetSiteId(v int64) *DeleteWafRulesetRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *DeleteWafRulesetRequest) SetSiteVersion(v int32) *DeleteWafRulesetRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type DeleteWafRulesetResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteWafRulesetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRulesetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRulesetResponseBody) SetRequestId(v string) *DeleteWafRulesetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteWafRulesetResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteWafRulesetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteWafRulesetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteWafRulesetResponse) SetHeaders(v map[string]*string) *DeleteWafRulesetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteWafRulesetResponse) SetStatusCode(v int32) *DeleteWafRulesetResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteWafRulesetResponse) SetBody(v *DeleteWafRulesetResponseBody) *DeleteWafRulesetResponse {
 	s.Body = v
 	return s
 }
@@ -16327,12 +15754,16 @@ func (s *GetClientCaCertificateResponse) SetBody(v *GetClientCaCertificateRespon
 }
 
 type GetClientCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16360,23 +15791,34 @@ func (s *GetClientCertificateRequest) SetSiteId(v int64) *GetClientCertificateRe
 }
 
 type GetClientCertificateResponseBody struct {
+	// The certificate content.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetClientCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// active
@@ -16422,58 +15864,86 @@ func (s *GetClientCertificateResponseBody) SetStatus(v string) *GetClientCertifi
 }
 
 type GetClientCertificateResponseBodyResult struct {
+	// The ID of the CA certificate.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
 	// example:
 	//
 	// dcdn
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
 	// example:
 	//
 	// 2024-09-22 05:33:13
@@ -16588,10 +16058,14 @@ func (s *GetClientCertificateResponse) SetBody(v *GetClientCertificateResponseBo
 }
 
 type GetClientCertificateHostnamesRequest struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16619,19 +16093,28 @@ func (s *GetClientCertificateHostnamesRequest) SetSiteId(v int64) *GetClientCert
 }
 
 type GetClientCertificateHostnamesResponseBody struct {
+	// The domain names with which the certificate is associated.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The ID of the client CA certificate.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEBE525-F576-1196-8DAF-2D70CA3F4D2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -22270,6 +21753,7 @@ func (s *GetSiteLogDeliveryQuotaResponse) SetBody(v *GetSiteLogDeliveryQuotaResp
 }
 
 type GetSiteWafSettingsRequest struct {
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
@@ -22290,6 +21774,11 @@ func (s GetSiteWafSettingsRequest) String() string {
 
 func (s GetSiteWafSettingsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetSiteWafSettingsRequest) SetPath(v string) *GetSiteWafSettingsRequest {
+	s.Path = &v
+	return s
 }
 
 func (s *GetSiteWafSettingsRequest) SetSiteId(v int64) *GetSiteWafSettingsRequest {
@@ -23555,339 +23044,6 @@ func (s *GetWafQuotaResponse) SetBody(v *GetWafQuotaResponseBody) *GetWafQuotaRe
 	return s
 }
 
-type GetWafRuleRequest struct {
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s GetWafRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRuleRequest) SetId(v int64) *GetWafRuleRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetWafRuleRequest) SetSiteId(v int64) *GetWafRuleRequest {
-	s.SiteId = &v
-	return s
-}
-
-type GetWafRuleResponseBody struct {
-	// The configuration of the rule.
-	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule.[](~~2850237~~)
-	//
-	// example:
-	//
-	// 2000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule category.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The order of the rule in the ruleset.
-	//
-	// example:
-	//
-	// 1
-	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the rule is enabled.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the rule was last modified.
-	//
-	// example:
-	//
-	// 2024-01-01T00:00:00Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s GetWafRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRuleResponseBody) SetConfig(v *WafRuleConfig) *GetWafRuleResponseBody {
-	s.Config = v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetId(v int64) *GetWafRuleResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetName(v string) *GetWafRuleResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetPhase(v string) *GetWafRuleResponseBody {
-	s.Phase = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetPosition(v int64) *GetWafRuleResponseBody {
-	s.Position = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetRequestId(v string) *GetWafRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetStatus(v string) *GetWafRuleResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetWafRuleResponseBody) SetUpdateTime(v string) *GetWafRuleResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-type GetWafRuleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetWafRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRuleResponse) SetHeaders(v map[string]*string) *GetWafRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetWafRuleResponse) SetStatusCode(v int32) *GetWafRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetWafRuleResponse) SetBody(v *GetWafRuleResponseBody) *GetWafRuleResponse {
-	s.Body = v
-	return s
-}
-
-type GetWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-	//
-	// example:
-	//
-	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The WAF rule category of rulesets to query.
-	//
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s GetWafRulesetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRulesetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRulesetRequest) SetId(v int64) *GetWafRulesetRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetWafRulesetRequest) SetPhase(v string) *GetWafRulesetRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *GetWafRulesetRequest) SetSiteId(v int64) *GetWafRulesetRequest {
-	s.SiteId = &v
-	return s
-}
-
-type GetWafRulesetResponseBody struct {
-	// The ruleset ID.
-	//
-	// example:
-	//
-	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ruleset name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule category of the ruleset.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The rule configurations in the ruleset.
-	Rules []*WafRuleConfig `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The configurations shared by the rules in the ruleset.
-	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The ruleset status.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the ruleset was last modified.
-	//
-	// example:
-	//
-	// 2024-01-01T00:00:00Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s GetWafRulesetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRulesetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRulesetResponseBody) SetId(v int64) *GetWafRulesetResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetName(v string) *GetWafRulesetResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetPhase(v string) *GetWafRulesetResponseBody {
-	s.Phase = &v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetRequestId(v string) *GetWafRulesetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetRules(v []*WafRuleConfig) *GetWafRulesetResponseBody {
-	s.Rules = v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetShared(v *WafBatchRuleShared) *GetWafRulesetResponseBody {
-	s.Shared = v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetStatus(v string) *GetWafRulesetResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *GetWafRulesetResponseBody) SetUpdateTime(v string) *GetWafRulesetResponseBody {
-	s.UpdateTime = &v
-	return s
-}
-
-type GetWafRulesetResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetWafRulesetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetWafRulesetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetWafRulesetResponse) SetHeaders(v map[string]*string) *GetWafRulesetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetWafRulesetResponse) SetStatusCode(v int32) *GetWafRulesetResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetWafRulesetResponse) SetBody(v *GetWafRulesetResponseBody) *GetWafRulesetResponse {
-	s.Body = v
-	return s
-}
-
 type ListCacheReserveInstancesRequest struct {
 	// The ID of the cache reserve instance.
 	//
@@ -24278,14 +23434,20 @@ func (s *ListCiphersResponse) SetBody(v *ListCiphersResponseBody) *ListCiphersRe
 }
 
 type ListClientCaCertificatesRequest struct {
+	// The page number. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24318,27 +23480,40 @@ func (s *ListClientCaCertificatesRequest) SetSiteId(v int64) *ListClientCaCertif
 }
 
 type ListClientCaCertificatesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F61CDR30-E83C-4FDA-BF73-9A94CDD44229
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListClientCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried client CA certificates.
+	Result []*ListClientCaCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
 	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 16
@@ -24389,54 +23564,80 @@ func (s *ListClientCaCertificatesResponseBody) SetTotalCount(v int64) *ListClien
 }
 
 type ListClientCaCertificatesResponseBodyResult struct {
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
 	// example:
 	//
 	// 2024-06-24 07:48:51
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The certificate ID.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The CA that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-03-31 02:08:00
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
 	// example:
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	// The certificate status.
+	//
 	// example:
 	//
 	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
 	// example:
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
 	// example:
 	//
 	// 2024-07-20 06:18:42
@@ -30275,8 +29476,11 @@ type ListSitesRequest struct {
 	// example:
 	//
 	// false
-	OnlyEnterprise *bool   `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	OrderBy        *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// example:
+	//
+	// visitTime
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Default value: **1**.
 	//
 	// example:
@@ -30468,8 +29672,11 @@ type ListSitesShrinkRequest struct {
 	// example:
 	//
 	// false
-	OnlyEnterprise *bool   `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
-	OrderBy        *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OnlyEnterprise *bool `json:"OnlyEnterprise,omitempty" xml:"OnlyEnterprise,omitempty"`
+	// example:
+	//
+	// visitTime
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Default value: **1**.
 	//
 	// example:
@@ -30771,7 +29978,10 @@ type ListSitesResponseBodySites struct {
 	//
 	// verify_d516cb3740f81f0cef77d162edd1****
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	VisitTime  *string `json:"VisitTime,omitempty" xml:"VisitTime,omitempty"`
+	// example:
+	//
+	// 2023-12-24T02:01:11Z
+	VisitTime *string `json:"VisitTime,omitempty" xml:"VisitTime,omitempty"`
 }
 
 func (s ListSitesResponseBodySites) String() string {
@@ -32110,7 +31320,7 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32143,7 +31353,7 @@ type ListWafManagedRulesRequest struct {
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The query conditions.
 	QueryArgs *ListWafManagedRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32216,7 +31426,7 @@ type ListWafManagedRulesRequestQueryArgs struct {
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
 	// The protection levels of the rules.
 	ProtectionLevels []*int32 `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Repeated"`
-	// The status.
+	// The status of the rule.
 	//
 	// example:
 	//
@@ -32281,7 +31491,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](~~ListWafRules~~) operation.
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32314,7 +31524,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The query conditions.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -32690,930 +31900,6 @@ func (s *ListWafPhasesResponse) SetStatusCode(v int32) *ListWafPhasesResponse {
 }
 
 func (s *ListWafPhasesResponse) SetBody(v *ListWafPhasesResponseBody) *ListWafPhasesResponse {
-	s.Body = v
-	return s
-}
-
-type ListWafRulesRequest struct {
-	// The page number.
-	//
-	// example:
-	//
-	// http_custom
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 1
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule category. You can filter rules of a specific category.
-	//
-	// example:
-	//
-	// 0
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The filter conditions.
-	//
-	// example:
-	//
-	// http_custom
-	QueryArgs *ListWafRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s ListWafRulesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesRequest) SetPageNumber(v int32) *ListWafRulesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesRequest) SetPageSize(v int32) *ListWafRulesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesRequest) SetPhase(v string) *ListWafRulesRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesRequest) SetQueryArgs(v *ListWafRulesRequestQueryArgs) *ListWafRulesRequest {
-	s.QueryArgs = v
-	return s
-}
-
-func (s *ListWafRulesRequest) SetSiteId(v int64) *ListWafRulesRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *ListWafRulesRequest) SetSiteVersion(v int32) *ListWafRulesRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type ListWafRulesRequestQueryArgs struct {
-	// Specifies whether to sort the returned data in descending order.
-	//
-	// example:
-	//
-	// true
-	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The ID of a WAF rule for exact search.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID or name of a WAF rule for fuzzy search.
-	//
-	// example:
-	//
-	// example
-	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// The name of a WAF rule for fuzzy search.
-	//
-	// example:
-	//
-	// example
-	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// The column by which you want to sort the returned data.
-	//
-	// example:
-	//
-	// position
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The ID of a WAF ruleset for exact search.
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The status of a WAF rule for exact search.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListWafRulesRequestQueryArgs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesRequestQueryArgs) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetDesc(v bool) *ListWafRulesRequestQueryArgs {
-	s.Desc = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetId(v int64) *ListWafRulesRequestQueryArgs {
-	s.Id = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetIdNameLike(v string) *ListWafRulesRequestQueryArgs {
-	s.IdNameLike = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetNameLike(v string) *ListWafRulesRequestQueryArgs {
-	s.NameLike = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetOrderBy(v string) *ListWafRulesRequestQueryArgs {
-	s.OrderBy = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetRulesetId(v int64) *ListWafRulesRequestQueryArgs {
-	s.RulesetId = &v
-	return s
-}
-
-func (s *ListWafRulesRequestQueryArgs) SetStatus(v string) *ListWafRulesRequestQueryArgs {
-	s.Status = &v
-	return s
-}
-
-type ListWafRulesShrinkRequest struct {
-	// The page number.
-	//
-	// example:
-	//
-	// http_custom
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 1
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule category. You can filter rules of a specific category.
-	//
-	// example:
-	//
-	// 0
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The filter conditions.
-	//
-	// example:
-	//
-	// http_custom
-	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s ListWafRulesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesShrinkRequest) SetPageNumber(v int32) *ListWafRulesShrinkRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesShrinkRequest) SetPageSize(v int32) *ListWafRulesShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesShrinkRequest) SetPhase(v string) *ListWafRulesShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesShrinkRequest) SetQueryArgsShrink(v string) *ListWafRulesShrinkRequest {
-	s.QueryArgsShrink = &v
-	return s
-}
-
-func (s *ListWafRulesShrinkRequest) SetSiteId(v int64) *ListWafRulesShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *ListWafRulesShrinkRequest) SetSiteVersion(v int32) *ListWafRulesShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type ListWafRulesResponseBody struct {
-	// The rule usage of the instance that corresponds to the website in the WAF rule category.
-	//
-	// example:
-	//
-	// 10
-	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The rules returned.
-	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The rule usage of the website.
-	//
-	// example:
-	//
-	// 5
-	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
-	// The total number of filtered rules.
-	//
-	// example:
-	//
-	// 20
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListWafRulesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesResponseBody) SetInstanceUsage(v int64) *ListWafRulesResponseBody {
-	s.InstanceUsage = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetPageNumber(v int32) *ListWafRulesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetPageSize(v int32) *ListWafRulesResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetRequestId(v string) *ListWafRulesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetRules(v []*ListWafRulesResponseBodyRules) *ListWafRulesResponseBody {
-	s.Rules = v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetSiteUsage(v int64) *ListWafRulesResponseBody {
-	s.SiteUsage = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBody) SetTotalCount(v int64) *ListWafRulesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListWafRulesResponseBodyRules struct {
-	// The action triggered when requests match conditions defined in the rule.
-	//
-	// example:
-	//
-	// deny
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The fields in rate limiting rules.
-	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
-	// The configuration of the rule.
-	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The fields in the rule.
-	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The rule ID.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule name.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_custom
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The position of the rule in the ruleset.
-	//
-	// example:
-	//
-	// 1
-	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The ruleset ID.
-	//
-	// example:
-	//
-	// 10000001
-	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The skip scope applied when requests match conditions defined in the whitelist rule.
-	//
-	// example:
-	//
-	// part
-	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// Indicates whether the rule is enabled.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The skipped WAF rule categories when requests match conditions defined in the whitelist rule.
-	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the rule takes effect.
-	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
-	// The WAF rule type.
-	//
-	// example:
-	//
-	// http_custom
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the rule was modified.
-	//
-	// example:
-	//
-	// 2024-01-01T00:00:00Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s ListWafRulesResponseBodyRules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesResponseBodyRules) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesResponseBodyRules) SetAction(v string) *ListWafRulesResponseBodyRules {
-	s.Action = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetCharacteristicsFields(v []*string) *ListWafRulesResponseBodyRules {
-	s.CharacteristicsFields = v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetConfig(v *WafRuleConfig) *ListWafRulesResponseBodyRules {
-	s.Config = v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetFields(v []*string) *ListWafRulesResponseBodyRules {
-	s.Fields = v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetId(v int64) *ListWafRulesResponseBodyRules {
-	s.Id = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetName(v string) *ListWafRulesResponseBodyRules {
-	s.Name = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetPhase(v string) *ListWafRulesResponseBodyRules {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetPosition(v int64) *ListWafRulesResponseBodyRules {
-	s.Position = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetRulesetId(v int64) *ListWafRulesResponseBodyRules {
-	s.RulesetId = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetSkip(v string) *ListWafRulesResponseBodyRules {
-	s.Skip = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetStatus(v string) *ListWafRulesResponseBodyRules {
-	s.Status = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetTags(v []*string) *ListWafRulesResponseBodyRules {
-	s.Tags = v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetTimer(v *WafTimer) *ListWafRulesResponseBodyRules {
-	s.Timer = v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetType(v string) *ListWafRulesResponseBodyRules {
-	s.Type = &v
-	return s
-}
-
-func (s *ListWafRulesResponseBodyRules) SetUpdateTime(v string) *ListWafRulesResponseBodyRules {
-	s.UpdateTime = &v
-	return s
-}
-
-type ListWafRulesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListWafRulesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesResponse) SetHeaders(v map[string]*string) *ListWafRulesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListWafRulesResponse) SetStatusCode(v int32) *ListWafRulesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListWafRulesResponse) SetBody(v *ListWafRulesResponseBody) *ListWafRulesResponse {
-	s.Body = v
-	return s
-}
-
-type ListWafRulesetsRequest struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule category of rulesets to query.
-	//
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query arguments in the JSON format, which contain filter conditions.
-	//
-	// example:
-	//
-	// http_bot
-	QueryArgs *ListWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s ListWafRulesetsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsRequest) SetPageNumber(v int32) *ListWafRulesetsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequest) SetPageSize(v int32) *ListWafRulesetsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequest) SetPhase(v string) *ListWafRulesetsRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequest) SetQueryArgs(v *ListWafRulesetsRequestQueryArgs) *ListWafRulesetsRequest {
-	s.QueryArgs = v
-	return s
-}
-
-func (s *ListWafRulesetsRequest) SetSiteId(v int64) *ListWafRulesetsRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequest) SetSiteVersion(v int32) *ListWafRulesetsRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type ListWafRulesetsRequestQueryArgs struct {
-	// The ruleset ID, ruleset name, rule ID, or rule name for fuzzy search.
-	//
-	// example:
-	//
-	// example
-	AnyLike *string `json:"AnyLike,omitempty" xml:"AnyLike,omitempty"`
-	// Specifies whether to sort the returned data in descending order.
-	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The ruleset name for fuzzy search.
-	//
-	// example:
-	//
-	// example
-	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// The column by which you want to sort the returned data.
-	//
-	// example:
-	//
-	// id
-	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-}
-
-func (s ListWafRulesetsRequestQueryArgs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsRequestQueryArgs) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsRequestQueryArgs) SetAnyLike(v string) *ListWafRulesetsRequestQueryArgs {
-	s.AnyLike = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequestQueryArgs) SetDesc(v bool) *ListWafRulesetsRequestQueryArgs {
-	s.Desc = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequestQueryArgs) SetNameLike(v string) *ListWafRulesetsRequestQueryArgs {
-	s.NameLike = &v
-	return s
-}
-
-func (s *ListWafRulesetsRequestQueryArgs) SetOrderBy(v string) *ListWafRulesetsRequestQueryArgs {
-	s.OrderBy = &v
-	return s
-}
-
-type ListWafRulesetsShrinkRequest struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule category of rulesets to query.
-	//
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query arguments in the JSON format, which contain filter conditions.
-	//
-	// example:
-	//
-	// http_bot
-	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-}
-
-func (s ListWafRulesetsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetPageNumber(v int32) *ListWafRulesetsShrinkRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetPageSize(v int32) *ListWafRulesetsShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetPhase(v string) *ListWafRulesetsShrinkRequest {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetQueryArgsShrink(v string) *ListWafRulesetsShrinkRequest {
-	s.QueryArgsShrink = &v
-	return s
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetSiteId(v int64) *ListWafRulesetsShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *ListWafRulesetsShrinkRequest) SetSiteVersion(v int32) *ListWafRulesetsShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-type ListWafRulesetsResponseBody struct {
-	// The number of WAF rulesets that are used by the instance in the WAF rule category.
-	//
-	// example:
-	//
-	// 10
-	InstanceUsage *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
-	// The page number returned.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the rulesets.
-	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
-	// The number of WAF rulesets that are used by the website in the WAF rule category.
-	//
-	// example:
-	//
-	// 5
-	SiteUsage *int64 `json:"SiteUsage,omitempty" xml:"SiteUsage,omitempty"`
-	// The total number of filtered rulesets.
-	//
-	// example:
-	//
-	// 5
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListWafRulesetsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsResponseBody) SetInstanceUsage(v int64) *ListWafRulesetsResponseBody {
-	s.InstanceUsage = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetPageNumber(v int32) *ListWafRulesetsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetPageSize(v int32) *ListWafRulesetsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetRequestId(v string) *ListWafRulesetsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetRulesets(v []*ListWafRulesetsResponseBodyRulesets) *ListWafRulesetsResponseBody {
-	s.Rulesets = v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetSiteUsage(v int64) *ListWafRulesetsResponseBody {
-	s.SiteUsage = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBody) SetTotalCount(v int64) *ListWafRulesetsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListWafRulesetsResponseBodyRulesets struct {
-	// The matched objects.
-	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the WAF ruleset.[](~~2850233~~)
-	//
-	// example:
-	//
-	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ruleset name.
-	//
-	// example:
-	//
-	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule category.
-	//
-	// example:
-	//
-	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ruleset status.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the protection target in the http_bot rule category.
-	//
-	// example:
-	//
-	// web
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The types of rules.
-	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// The time when the ruleset was last modified.
-	//
-	// example:
-	//
-	// 2024-01-01T00:00:00Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-}
-
-func (s ListWafRulesetsResponseBodyRulesets) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsResponseBodyRulesets) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetFields(v []*string) *ListWafRulesetsResponseBodyRulesets {
-	s.Fields = v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetId(v int64) *ListWafRulesetsResponseBodyRulesets {
-	s.Id = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetName(v string) *ListWafRulesetsResponseBodyRulesets {
-	s.Name = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetPhase(v string) *ListWafRulesetsResponseBodyRulesets {
-	s.Phase = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetStatus(v string) *ListWafRulesetsResponseBodyRulesets {
-	s.Status = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetTarget(v string) *ListWafRulesetsResponseBodyRulesets {
-	s.Target = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetTypes(v []*string) *ListWafRulesetsResponseBodyRulesets {
-	s.Types = v
-	return s
-}
-
-func (s *ListWafRulesetsResponseBodyRulesets) SetUpdateTime(v string) *ListWafRulesetsResponseBodyRulesets {
-	s.UpdateTime = &v
-	return s
-}
-
-type ListWafRulesetsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListWafRulesetsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListWafRulesetsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListWafRulesetsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListWafRulesetsResponse) SetHeaders(v map[string]*string) *ListWafRulesetsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListWafRulesetsResponse) SetStatusCode(v int32) *ListWafRulesetsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListWafRulesetsResponse) SetBody(v *ListWafRulesetsResponseBody) *ListWafRulesetsResponse {
 	s.Body = v
 	return s
 }
@@ -36439,12 +34725,16 @@ func (s *ResetScheduledPreloadJobResponse) SetBody(v *ResetScheduledPreloadJobRe
 }
 
 type RevokeClientCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36472,18 +34762,26 @@ func (s *RevokeClientCertificateRequest) SetSiteId(v int64) *RevokeClientCertifi
 }
 
 type RevokeClientCertificateResponseBody struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -36828,12 +35126,18 @@ func (s *SetCertificateResponse) SetBody(v *SetCertificateResponseBody) *SetCert
 }
 
 type SetClientCertificateHostnamesRequest struct {
+	// The domain names to associate.
+	//
 	// This parameter is required.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The ID of the client CA certificate.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36866,12 +35170,18 @@ func (s *SetClientCertificateHostnamesRequest) SetSiteId(v int64) *SetClientCert
 }
 
 type SetClientCertificateHostnamesShrinkRequest struct {
+	// The domain names to associate.
+	//
 	// This parameter is required.
 	HostnamesShrink *string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty"`
+	// The ID of the client CA certificate.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36904,18 +35214,26 @@ func (s *SetClientCertificateHostnamesShrinkRequest) SetSiteId(v int64) *SetClie
 }
 
 type SetClientCertificateHostnamesResponseBody struct {
+	// The ID of the client CA certificate.
+	//
 	// example:
 	//
 	// babab9db65ee5efcca9f3d41d4b50d66
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ET5BF670-09D5-4D0B-BEBY-D96A2A528000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -40245,330 +38563,6 @@ func (s *UpdateUserDeliveryTaskStatusResponse) SetBody(v *UpdateUserDeliveryTask
 	return s
 }
 
-type UpdateWafRuleRequest struct {
-	// The configuration of the rule.
-	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The order of the rule in the ruleset.
-	//
-	// example:
-	//
-	// 1
-	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The status of the rule.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s UpdateWafRuleRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRuleRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRuleRequest) SetConfig(v *WafRuleConfig) *UpdateWafRuleRequest {
-	s.Config = v
-	return s
-}
-
-func (s *UpdateWafRuleRequest) SetId(v int64) *UpdateWafRuleRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateWafRuleRequest) SetPosition(v int64) *UpdateWafRuleRequest {
-	s.Position = &v
-	return s
-}
-
-func (s *UpdateWafRuleRequest) SetSiteId(v int64) *UpdateWafRuleRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *UpdateWafRuleRequest) SetSiteVersion(v int32) *UpdateWafRuleRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-func (s *UpdateWafRuleRequest) SetStatus(v string) *UpdateWafRuleRequest {
-	s.Status = &v
-	return s
-}
-
-type UpdateWafRuleShrinkRequest struct {
-	// The configuration of the rule.
-	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The order of the rule in the ruleset.
-	//
-	// example:
-	//
-	// 1
-	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 0
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The status of the rule.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s UpdateWafRuleShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRuleShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetConfigShrink(v string) *UpdateWafRuleShrinkRequest {
-	s.ConfigShrink = &v
-	return s
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetId(v int64) *UpdateWafRuleShrinkRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetPosition(v int64) *UpdateWafRuleShrinkRequest {
-	s.Position = &v
-	return s
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetSiteId(v int64) *UpdateWafRuleShrinkRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetSiteVersion(v int32) *UpdateWafRuleShrinkRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-func (s *UpdateWafRuleShrinkRequest) SetStatus(v string) *UpdateWafRuleShrinkRequest {
-	s.Status = &v
-	return s
-}
-
-type UpdateWafRuleResponseBody struct {
-	// The ID of the WAF rule.[](~~2850237~~)
-	//
-	// example:
-	//
-	// 20000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateWafRuleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRuleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRuleResponseBody) SetId(v int64) *UpdateWafRuleResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateWafRuleResponseBody) SetRequestId(v string) *UpdateWafRuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateWafRuleResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateWafRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRuleResponse) SetHeaders(v map[string]*string) *UpdateWafRuleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateWafRuleResponse) SetStatusCode(v int32) *UpdateWafRuleResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateWafRuleResponse) SetBody(v *UpdateWafRuleResponseBody) *UpdateWafRuleResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
-	//
-	// example:
-	//
-	// 1
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the website.
-	//
-	// example:
-	//
-	// 1
-	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The status to which you want to change the ruleset.
-	//
-	// example:
-	//
-	// on
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s UpdateWafRulesetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRulesetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRulesetRequest) SetId(v int64) *UpdateWafRulesetRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *UpdateWafRulesetRequest) SetSiteId(v int64) *UpdateWafRulesetRequest {
-	s.SiteId = &v
-	return s
-}
-
-func (s *UpdateWafRulesetRequest) SetSiteVersion(v int32) *UpdateWafRulesetRequest {
-	s.SiteVersion = &v
-	return s
-}
-
-func (s *UpdateWafRulesetRequest) SetStatus(v string) *UpdateWafRulesetRequest {
-	s.Status = &v
-	return s
-}
-
-type UpdateWafRulesetResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateWafRulesetResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRulesetResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRulesetResponseBody) SetRequestId(v string) *UpdateWafRulesetResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateWafRulesetResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateWafRulesetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateWafRulesetResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateWafRulesetResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateWafRulesetResponse) SetHeaders(v map[string]*string) *UpdateWafRulesetResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateWafRulesetResponse) SetStatusCode(v int32) *UpdateWafRulesetResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateWafRulesetResponse) SetBody(v *UpdateWafRulesetResponseBody) *UpdateWafRulesetResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateWaitingRoomRequest struct {
 	// The name of the custom cookie.
 	//
@@ -42261,94 +40255,6 @@ func (client *Client) BatchCreateRecords(request *BatchCreateRecordsRequest) (_r
 
 // Summary:
 //
-// Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
-//
-// @param tmpReq - BatchCreateWafRulesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BatchCreateWafRulesResponse
-func (client *Client) BatchCreateWafRulesWithOptions(tmpReq *BatchCreateWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchCreateWafRulesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BatchCreateWafRulesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Configs)) {
-		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, tea.String("Configs"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Shared)) {
-		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, tea.String("Shared"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigsShrink)) {
-		body["Configs"] = request.ConfigsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		body["Phase"] = request.Phase
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SharedShrink)) {
-		body["Shared"] = request.SharedShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchCreateWafRules"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchCreateWafRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates multiple rules of a specific Web Application Firewall (WAF) rule category at a time. You can also configure shared settings for the rules.
-//
-// @param request - BatchCreateWafRulesRequest
-//
-// @return BatchCreateWafRulesResponse
-func (client *Client) BatchCreateWafRules(request *BatchCreateWafRulesRequest) (_result *BatchCreateWafRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchCreateWafRulesResponse{}
-	_body, _err := client.BatchCreateWafRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes key-value pairs from a namespace at a time based on keys.
 //
 // @param tmpReq - BatchDeleteKvRequest
@@ -43234,98 +41140,6 @@ func (client *Client) BatchPutKvWithHighCapacityAdvance(request *BatchPutKvWithH
 	}
 
 	_result = batchPutKvWithHighCapacityResp
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
-//
-// @param tmpReq - BatchUpdateWafRulesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BatchUpdateWafRulesResponse
-func (client *Client) BatchUpdateWafRulesWithOptions(tmpReq *BatchUpdateWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchUpdateWafRulesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &BatchUpdateWafRulesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Configs)) {
-		request.ConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configs, tea.String("Configs"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Shared)) {
-		request.SharedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shared, tea.String("Shared"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigsShrink)) {
-		body["Configs"] = request.ConfigsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		body["Phase"] = request.Phase
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RulesetId)) {
-		body["RulesetId"] = request.RulesetId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SharedShrink)) {
-		body["Shared"] = request.SharedShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchUpdateWafRules"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchUpdateWafRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies multiple rules in a specific Web Application Firewall (WAF) ruleset at a time.
-//
-// @param request - BatchUpdateWafRulesRequest
-//
-// @return BatchUpdateWafRulesResponse
-func (client *Client) BatchUpdateWafRules(request *BatchUpdateWafRulesRequest) (_result *BatchUpdateWafRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchUpdateWafRulesResponse{}
-	_body, _err := client.BatchUpdateWafRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -45347,86 +43161,6 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 
 // Summary:
 //
-// Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
-//
-// @param tmpReq - CreateWafRuleRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateWafRuleResponse
-func (client *Client) CreateWafRuleWithOptions(tmpReq *CreateWafRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWafRuleResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateWafRuleShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
-		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
-		body["Config"] = request.ConfigShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		body["Phase"] = request.Phase
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateWafRule"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateWafRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Web Application Firewall (WAF) rule. This allows you to configure fine-grained WAF settings to improve the security of your website or application.
-//
-// @param request - CreateWafRuleRequest
-//
-// @return CreateWafRuleResponse
-func (client *Client) CreateWafRule(request *CreateWafRuleRequest) (_result *CreateWafRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateWafRuleResponse{}
-	_body, _err := client.CreateWafRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Creates a waiting room for a website.
 //
 // @param tmpReq - CreateWaitingRoomRequest
@@ -45769,7 +43503,7 @@ func (client *Client) CreateWaitingRoomRule(request *CreateWaitingRoomRuleReques
 
 // Summary:
 //
-// 删除证书
+// Deletes a certificate for a website.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -45807,7 +43541,7 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 
 // Summary:
 //
-// 删除证书
+// Deletes a certificate for a website.
 //
 // @param request - DeleteCertificateRequest
 //
@@ -45825,7 +43559,7 @@ func (client *Client) DeleteCertificate(request *DeleteCertificateRequest) (_res
 
 // Summary:
 //
-// 删除客户端CA证书
+// Deletes a client CA certificate.
 //
 // @param request - DeleteClientCaCertificateRequest
 //
@@ -45863,7 +43597,7 @@ func (client *Client) DeleteClientCaCertificateWithOptions(request *DeleteClient
 
 // Summary:
 //
-// 删除客户端CA证书
+// Deletes a client CA certificate.
 //
 // @param request - DeleteClientCaCertificateRequest
 //
@@ -47147,146 +44881,6 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 
 // Summary:
 //
-// Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
-//
-// @param request - DeleteWafRuleRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteWafRuleResponse
-func (client *Client) DeleteWafRuleWithOptions(request *DeleteWafRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWafRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteWafRule"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteWafRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Web Application Firewall (WAF) rule, including its configurations and match conditions.
-//
-// @param request - DeleteWafRuleRequest
-//
-// @return DeleteWafRuleResponse
-func (client *Client) DeleteWafRule(request *DeleteWafRuleRequest) (_result *DeleteWafRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteWafRuleResponse{}
-	_body, _err := client.DeleteWafRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
-//
-// @param request - DeleteWafRulesetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteWafRulesetResponse
-func (client *Client) DeleteWafRulesetWithOptions(request *DeleteWafRulesetRequest, runtime *util.RuntimeOptions) (_result *DeleteWafRulesetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["Id"] = request.Id
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteWafRuleset"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteWafRulesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Web Application Firewall (WAF) ruleset that is no longer needed.
-//
-// @param request - DeleteWafRulesetRequest
-//
-// @return DeleteWafRulesetResponse
-func (client *Client) DeleteWafRuleset(request *DeleteWafRulesetRequest) (_result *DeleteWafRulesetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteWafRulesetResponse{}
-	_body, _err := client.DeleteWafRulesetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes a waiting room.
 //
 // @param request - DeleteWaitingRoomRequest
@@ -48317,7 +45911,7 @@ func (client *Client) GetClientCaCertificate(request *GetClientCaCertificateRequ
 
 // Summary:
 //
-// 获取客户端证书以及证书信息
+// Queries information about a client certificate.
 //
 // @param request - GetClientCertificateRequest
 //
@@ -48355,7 +45949,7 @@ func (client *Client) GetClientCertificateWithOptions(request *GetClientCertific
 
 // Summary:
 //
-// 获取客户端证书以及证书信息
+// Queries information about a client certificate.
 //
 // @param request - GetClientCertificateRequest
 //
@@ -48373,7 +45967,7 @@ func (client *Client) GetClientCertificate(request *GetClientCertificateRequest)
 
 // Summary:
 //
-// 获取客户端证书绑定的域名列表
+// Queries domain names associated with a client CA certificate. If no certificate is specified, domain names associated with an Edge Security Acceleration(ESA)-managed CA certificate are returned.
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -48411,7 +46005,7 @@ func (client *Client) GetClientCertificateHostnamesWithOptions(request *GetClien
 
 // Summary:
 //
-// 获取客户端证书绑定的域名列表
+// Queries domain names associated with a client CA certificate. If no certificate is specified, domain names associated with an Edge Security Acceleration(ESA)-managed CA certificate are returned.
 //
 // @param request - GetClientCertificateHostnamesRequest
 //
@@ -50023,6 +47617,10 @@ func (client *Client) GetSiteWafSettingsWithOptions(request *GetSiteWafSettingsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
 		query["SiteId"] = request.SiteId
 	}
@@ -50445,138 +48043,6 @@ func (client *Client) GetWafQuota(request *GetWafQuotaRequest) (_result *GetWafQ
 
 // Summary:
 //
-// Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
-//
-// @param request - GetWafRuleRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetWafRuleResponse
-func (client *Client) GetWafRuleWithOptions(request *GetWafRuleRequest, runtime *util.RuntimeOptions) (_result *GetWafRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetWafRule"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetWafRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Web Application Firewall (WAF) rule, such as its configuration and status.
-//
-// @param request - GetWafRuleRequest
-//
-// @return GetWafRuleResponse
-func (client *Client) GetWafRule(request *GetWafRuleRequest) (_result *GetWafRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetWafRuleResponse{}
-	_body, _err := client.GetWafRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
-//
-// @param request - GetWafRulesetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetWafRulesetResponse
-func (client *Client) GetWafRulesetWithOptions(request *GetWafRulesetRequest, runtime *util.RuntimeOptions) (_result *GetWafRulesetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		query["Phase"] = request.Phase
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetWafRuleset"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetWafRulesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Web Application Firewall (WAF) ruleset, such as the configuration and status.
-//
-// @param request - GetWafRulesetRequest
-//
-// @return GetWafRulesetResponse
-func (client *Client) GetWafRuleset(request *GetWafRulesetRequest) (_result *GetWafRulesetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetWafRulesetResponse{}
-	_body, _err := client.GetWafRulesetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the cache reserve instances in your Alibaba Cloud account.
 //
 // @param request - ListCacheReserveInstancesRequest
@@ -50689,7 +48155,7 @@ func (client *Client) ListCiphers(request *ListCiphersRequest) (_result *ListCip
 
 // Summary:
 //
-// 查询站点下客户端CA证书列表
+// Queries a list of client certificate authority (CA) certificates for a website.
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -50727,7 +48193,7 @@ func (client *Client) ListClientCaCertificatesWithOptions(request *ListClientCaC
 
 // Summary:
 //
-// 查询站点下客户端CA证书列表
+// Queries a list of client certificate authority (CA) certificates for a website.
 //
 // @param request - ListClientCaCertificatesRequest
 //
@@ -52404,178 +49870,6 @@ func (client *Client) ListWafPhases(request *ListWafPhasesRequest) (_result *Lis
 
 // Summary:
 //
-// Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
-//
-// @param tmpReq - ListWafRulesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListWafRulesResponse
-func (client *Client) ListWafRulesWithOptions(tmpReq *ListWafRulesRequest, runtime *util.RuntimeOptions) (_result *ListWafRulesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ListWafRulesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
-		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		query["Phase"] = request.Phase
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
-		query["QueryArgs"] = request.QueryArgsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListWafRules"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListWafRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists all Web Application Firewall (WAF) rules or some of them based on specific conditions. You can call this operation to query the details of WAF rules by page.
-//
-// @param request - ListWafRulesRequest
-//
-// @return ListWafRulesResponse
-func (client *Client) ListWafRules(request *ListWafRulesRequest) (_result *ListWafRulesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListWafRulesResponse{}
-	_body, _err := client.ListWafRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
-//
-// @param tmpReq - ListWafRulesetsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListWafRulesetsResponse
-func (client *Client) ListWafRulesetsWithOptions(tmpReq *ListWafRulesetsRequest, runtime *util.RuntimeOptions) (_result *ListWafRulesetsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ListWafRulesetsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.QueryArgs)) {
-		request.QueryArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryArgs, tea.String("QueryArgs"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Phase)) {
-		query["Phase"] = request.Phase
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryArgsShrink)) {
-		query["QueryArgs"] = request.QueryArgsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListWafRulesets"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListWafRulesetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists the rulesets in a Web Application Firewall (WAF) rule category. You can call this operation to query the basic information about and status of rulesets by page.
-//
-// @param request - ListWafRulesetsRequest
-//
-// @return ListWafRulesetsResponse
-func (client *Client) ListWafRulesets(request *ListWafRulesetsRequest) (_result *ListWafRulesetsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListWafRulesetsResponse{}
-	_body, _err := client.ListWafRulesetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries template rules in Web Application Firewall (WAF). In most cases, these rules are pre-defined rulesets that are used to quickly enable protection against common types of attacks.
 //
 // @param tmpReq - ListWafTemplateRulesRequest
@@ -53777,7 +51071,7 @@ func (client *Client) ResetScheduledPreloadJob(request *ResetScheduledPreloadJob
 
 // Summary:
 //
-// 吊销客户端证书
+// Revokes an activated client certificate.
 //
 // @param request - RevokeClientCertificateRequest
 //
@@ -53815,7 +51109,7 @@ func (client *Client) RevokeClientCertificateWithOptions(request *RevokeClientCe
 
 // Summary:
 //
-// 吊销客户端证书
+// Revokes an activated client certificate.
 //
 // @param request - RevokeClientCertificateRequest
 //
@@ -54005,7 +51299,7 @@ func (client *Client) SetCertificate(request *SetCertificateRequest) (_result *S
 
 // Summary:
 //
-// 为客户端证书绑定域名
+// Associates domain names with a client CA certificate. If no certificate is specified, domain names are associated with an Edge Security Acceleration (ESA)-managed CA certificate.
 //
 // @param tmpReq - SetClientCertificateHostnamesRequest
 //
@@ -54063,7 +51357,7 @@ func (client *Client) SetClientCertificateHostnamesWithOptions(tmpReq *SetClient
 
 // Summary:
 //
-// 为客户端证书绑定域名
+// Associates domain names with a client CA certificate. If no certificate is specified, domain names are associated with an Edge Security Acceleration (ESA)-managed CA certificate.
 //
 // @param request - SetClientCertificateHostnamesRequest
 //
@@ -55608,168 +52902,6 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserDeliveryTaskStatusResponse{}
 	_body, _err := client.UpdateUserDeliveryTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration or status of a Web Application Firewall (WAF) rule.
-//
-// @param tmpReq - UpdateWafRuleRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateWafRuleResponse
-func (client *Client) UpdateWafRuleWithOptions(tmpReq *UpdateWafRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateWafRuleResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &UpdateWafRuleShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
-		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
-		body["Config"] = request.ConfigShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Position)) {
-		body["Position"] = request.Position
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		body["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateWafRule"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateWafRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration or status of a Web Application Firewall (WAF) rule.
-//
-// @param request - UpdateWafRuleRequest
-//
-// @return UpdateWafRuleResponse
-func (client *Client) UpdateWafRule(request *UpdateWafRuleRequest) (_result *UpdateWafRuleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateWafRuleResponse{}
-	_body, _err := client.UpdateWafRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a WAF ruleset based on its ID.
-//
-// @param request - UpdateWafRulesetRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateWafRulesetResponse
-func (client *Client) UpdateWafRulesetWithOptions(request *UpdateWafRulesetRequest, runtime *util.RuntimeOptions) (_result *UpdateWafRulesetResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		query["SiteId"] = request.SiteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteVersion)) {
-		query["SiteVersion"] = request.SiteVersion
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		body["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		body["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateWafRuleset"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateWafRulesetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a WAF ruleset based on its ID.
-//
-// @param request - UpdateWafRulesetRequest
-//
-// @return UpdateWafRulesetResponse
-func (client *Client) UpdateWafRuleset(request *UpdateWafRulesetRequest) (_result *UpdateWafRulesetResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateWafRulesetResponse{}
-	_body, _err := client.UpdateWafRulesetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,7 @@
+2024-12-19 Version: v2.7.3
+- Update API GetSiteWafSettings: add param Path.
+
+
 2024-12-07 Version: v2.7.2
 - Update API PurgeCaches: update param SiteId.
 - Update API PurgeCaches: update param Type.
