@@ -521,6 +521,7 @@ type CreateIpamPoolRequest struct {
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
@@ -605,6 +606,11 @@ func (s *CreateIpamPoolRequest) SetPoolRegionId(v string) *CreateIpamPoolRequest
 
 func (s *CreateIpamPoolRequest) SetRegionId(v string) *CreateIpamPoolRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIpamPoolRequest) SetResourceGroupId(v string) *CreateIpamPoolRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -901,6 +907,7 @@ type CreateIpamScopeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId             *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Tag                  []*CreateIpamScopeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -956,6 +963,11 @@ func (s *CreateIpamScopeRequest) SetOwnerId(v int64) *CreateIpamScopeRequest {
 
 func (s *CreateIpamScopeRequest) SetRegionId(v string) *CreateIpamScopeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIpamScopeRequest) SetResourceGroupId(v string) *CreateIpamScopeRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1634,6 +1646,205 @@ func (s *DeleteIpamScopeResponse) SetStatusCode(v int32) *DeleteIpamScopeRespons
 }
 
 func (s *DeleteIpamScopeResponse) SetBody(v *DeleteIpamScopeResponseBody) *DeleteIpamScopeResponse {
+	s.Body = v
+	return s
+}
+
+type GetIpamPoolAllocationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ipam-pool-alloc-112za33e4****
+	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetIpamPoolAllocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolAllocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolAllocationRequest) SetIpamPoolAllocationId(v string) *GetIpamPoolAllocationRequest {
+	s.IpamPoolAllocationId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationRequest) SetRegionId(v string) *GetIpamPoolAllocationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetIpamPoolAllocationResponseBody struct {
+	// example:
+	//
+	// 192.168.1.0/24
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	// example:
+	//
+	// 2024-10-15T10:24:19+08:00
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// ipam pool allocation description
+	IpamPoolAllocationDescription *string `json:"IpamPoolAllocationDescription,omitempty" xml:"IpamPoolAllocationDescription,omitempty"`
+	// example:
+	//
+	// ipam-pool-alloc-112za33e4****
+	IpamPoolAllocationId *string `json:"IpamPoolAllocationId,omitempty" xml:"IpamPoolAllocationId,omitempty"`
+	// example:
+	//
+	// ipam pool allocation name
+	IpamPoolAllocationName *string `json:"IpamPoolAllocationName,omitempty" xml:"IpamPoolAllocationName,omitempty"`
+	// example:
+	//
+	// ipam-pool-6rcq3tobayc20t****
+	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 3748DEFF-68BE-5EED-9937-7C1D0C21BAB4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// vpc-bp16qjewdsunr41m1****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 1616080591216318
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
+	// VPC
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 192.168.0.0/16
+	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
+	// example:
+	//
+	// Created
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetIpamPoolAllocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolAllocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetCidr(v string) *GetIpamPoolAllocationResponseBody {
+	s.Cidr = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetCreationTime(v string) *GetIpamPoolAllocationResponseBody {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetIpamPoolAllocationDescription(v string) *GetIpamPoolAllocationResponseBody {
+	s.IpamPoolAllocationDescription = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetIpamPoolAllocationId(v string) *GetIpamPoolAllocationResponseBody {
+	s.IpamPoolAllocationId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetIpamPoolAllocationName(v string) *GetIpamPoolAllocationResponseBody {
+	s.IpamPoolAllocationName = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetIpamPoolId(v string) *GetIpamPoolAllocationResponseBody {
+	s.IpamPoolId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetRegionId(v string) *GetIpamPoolAllocationResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetRequestId(v string) *GetIpamPoolAllocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetResourceId(v string) *GetIpamPoolAllocationResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetResourceOwnerId(v int64) *GetIpamPoolAllocationResponseBody {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetResourceRegionId(v string) *GetIpamPoolAllocationResponseBody {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetResourceType(v string) *GetIpamPoolAllocationResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetSourceCidr(v string) *GetIpamPoolAllocationResponseBody {
+	s.SourceCidr = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponseBody) SetStatus(v string) *GetIpamPoolAllocationResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetIpamPoolAllocationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIpamPoolAllocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIpamPoolAllocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIpamPoolAllocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIpamPoolAllocationResponse) SetHeaders(v map[string]*string) *GetIpamPoolAllocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponse) SetStatusCode(v int32) *GetIpamPoolAllocationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIpamPoolAllocationResponse) SetBody(v *GetIpamPoolAllocationResponseBody) *GetIpamPoolAllocationResponse {
 	s.Body = v
 	return s
 }
@@ -2776,7 +2987,8 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// ipam-pool-lfnwi4jok1ss0g****
@@ -2888,6 +3100,11 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetPoolRegionId(v string) *ListIpam
 
 func (s *ListIpamPoolsResponseBodyIpamPools) SetRegionId(v string) *ListIpamPoolsResponseBodyIpamPools {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamPoolsResponseBodyIpamPools) SetResourceGroupId(v string) *ListIpamPoolsResponseBodyIpamPools {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3897,7 +4114,8 @@ type ListIpamScopesResponseBodyIpamScopes struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// Created
@@ -3960,6 +4178,11 @@ func (s *ListIpamScopesResponseBodyIpamScopes) SetPoolCount(v int32) *ListIpamSc
 
 func (s *ListIpamScopesResponseBodyIpamScopes) SetRegionId(v string) *ListIpamScopesResponseBodyIpamScopes {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIpamScopesResponseBodyIpamScopes) SetResourceGroupId(v string) *ListIpamScopesResponseBodyIpamScopes {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6001,6 +6224,10 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -6179,6 +6406,10 @@ func (client *Client) CreateIpamScopeWithOptions(request *CreateIpamScopeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -6595,6 +6826,62 @@ func (client *Client) DeleteIpamScope(request *DeleteIpamScopeRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIpamScopeResponse{}
 	_body, _err := client.DeleteIpamScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定IPAM地址池CIDR分配的信息
+//
+// @param request - GetIpamPoolAllocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIpamPoolAllocationResponse
+func (client *Client) GetIpamPoolAllocationWithOptions(request *GetIpamPoolAllocationRequest, runtime *util.RuntimeOptions) (_result *GetIpamPoolAllocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIpamPoolAllocation"),
+		Version:     tea.String("2023-02-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIpamPoolAllocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定IPAM地址池CIDR分配的信息
+//
+// @param request - GetIpamPoolAllocationRequest
+//
+// @return GetIpamPoolAllocationResponse
+func (client *Client) GetIpamPoolAllocation(request *GetIpamPoolAllocationRequest) (_result *GetIpamPoolAllocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIpamPoolAllocationResponse{}
+	_body, _err := client.GetIpamPoolAllocationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
