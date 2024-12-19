@@ -9,6 +9,127 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelActiveOperationTasksRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2355,2352
+	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s CancelActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetRegionId(v string) *CancelActiveOperationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetResourceOwnerId(v int64) *CancelActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetSecurityToken(v string) *CancelActiveOperationTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksRequest) SetTaskIds(v string) *CancelActiveOperationTasksRequest {
+	s.TaskIds = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponseBody struct {
+	// example:
+	//
+	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2355,2352
+	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetRequestId(v string) *CancelActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponseBody) SetTaskIds(v string) *CancelActiveOperationTasksResponseBody {
+	s.TaskIds = &v
+	return s
+}
+
+type CancelActiveOperationTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelActiveOperationTasksResponse) SetHeaders(v map[string]*string) *CancelActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetStatusCode(v int32) *CancelActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTasksResponseBody) *CancelActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type CancelScheduleTasksRequest struct {
 	// The cluster ID.
 	//
@@ -917,9 +1038,9 @@ type CreateAccountRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account. The password must meet the following requirements:
 	//
-	// 	- It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- It must be 8 to 32 characters in length.
+	// 	- The password must be 8 to 32 characters in length.
 	//
 	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
 	//
@@ -957,15 +1078,15 @@ type CreateAccountRequest struct {
 	//
 	// 	- **Normal**: standard account
 	//
-	// 	- **Super**: privileged account
+	// 	- **Super**: privileged account.
 	//
 	// >
 	//
 	// 	- If you leave this parameter empty, the default value **Super*	- is used.
 	//
-	// 	- You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	// 	- You can create multiple privileged accounts for a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster. A privileged account has more permissions than a standard account. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
 	//
-	// 	- You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	// 	- You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account has more permissions than a standard account. For more information, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
 	//
 	// example:
 	//
@@ -992,24 +1113,9 @@ type CreateAccountRequest struct {
 	// example:
 	//
 	// testdb
-	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to grant the specified account required permissions on all existing databases in the current cluster and databases that will be further created for the current cluster. Valid values:
-	//
-	// 	- **0 or unspecified**: does not grant required permissions.
-	//
-	// 	- **1**: grants required permissions.
-	//
-	// >
-	//
-	// 	- The parameter is valid only after you configure the `AccountPrivilege` parameter.
-	//
-	// 	- If you set the parameter to `1`, the current account is granted to the required permissions on all databases in the current cluster that are specified by the `AccountPrivilege` parameter.
-	//
-	// example:
-	//
-	// 0
+	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PrivForAllDB         *string `json:"PrivForAllDB,omitempty" xml:"PrivForAllDB,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -7557,6 +7663,476 @@ func (s *DescribeActivationCodesResponse) SetBody(v *DescribeActivationCodesResp
 	return s
 }
 
+type DescribeActiveOperationTasksRequest struct {
+	// example:
+	//
+	// -1
+	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// -1
+	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// all
+	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// example:
+	//
+	// pc-3ns***********d5d
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// MySQL
+	DBType       *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// -1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DatabaseProxyUpgrading
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetAllowCancel(v int64) *DescribeActiveOperationTasksRequest {
+	s.AllowCancel = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetAllowChange(v int64) *DescribeActiveOperationTasksRequest {
+	s.AllowChange = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetChangeLevel(v string) *DescribeActiveOperationTasksRequest {
+	s.ChangeLevel = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetDBClusterId(v string) *DescribeActiveOperationTasksRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetDBType(v string) *DescribeActiveOperationTasksRequest {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetOwnerAccount(v string) *DescribeActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetOwnerId(v int64) *DescribeActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetPageNumber(v int32) *DescribeActiveOperationTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetPageSize(v int32) *DescribeActiveOperationTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetRegionId(v string) *DescribeActiveOperationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *DescribeActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetResourceOwnerId(v int64) *DescribeActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetSecurityToken(v string) *DescribeActiveOperationTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetStatus(v int64) *DescribeActiveOperationTasksRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeActiveOperationTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeActiveOperationTasksResponseBody struct {
+	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// FAF88508-D5F8-52B1-8824-262601769E31
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTasksResponseBody) SetItems(v []*DescribeActiveOperationTasksResponseBodyItems) *DescribeActiveOperationTasksResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBody) SetPageNumber(v int32) *DescribeActiveOperationTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBody) SetPageSize(v int32) *DescribeActiveOperationTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBody) SetRequestId(v string) *DescribeActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) *DescribeActiveOperationTasksResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeActiveOperationTasksResponseBodyItems struct {
+	// example:
+	//
+	// 0
+	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// 0
+	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// S0
+	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// example:
+	//
+	// System maintenance
+	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// example:
+	//
+	// 2020-06-09T22:00:42Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// cn-beijing-h
+	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// example:
+	//
+	// pc-*****************
+	DBClusterId *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBNodeIds   []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MySQL
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 8.0
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// example:
+	//
+	// 2020-06-11T15:59:59Z
+	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// example:
+	//
+	// TransientDisconnection
+	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
+	// example:
+	//
+	// Transient instance disconnection
+	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// example:
+	//
+	// test
+	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// example:
+	//
+	// 2020-06-09T22:00:42Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 04:00:00
+	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// userCancel
+	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// example:
+	//
+	// 2023-05-19T02:48:17Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 3
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2020-06-09T22:00:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// example:
+	//
+	// 107202351
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "Action": "UpgradeDBInstance"
+	//
+	// }
+	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
+	// example:
+	//
+	// DatabaseSoftwareUpgrading
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// Minor version update
+	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
+}
+
+func (s DescribeActiveOperationTasksResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTasksResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetAllowCancel(v int64) *DescribeActiveOperationTasksResponseBodyItems {
+	s.AllowCancel = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetAllowChange(v int64) *DescribeActiveOperationTasksResponseBodyItems {
+	s.AllowChange = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevel(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ChangeLevel = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevelEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ChangeLevelEn = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetChangeLevelZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ChangeLevelZh = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetCreatedTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetCurrentAVZ(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.CurrentAVZ = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetDBClusterId(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetDBNodeIds(v []*string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.DBNodeIds = v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetDBType(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.DBType = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetDBVersion(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetDeadline(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.Deadline = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetImpact(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.Impact = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetImpactEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ImpactEn = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetImpactZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ImpactZh = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetInsComment(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.InsComment = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetModifiedTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetPrepareInterval(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.PrepareInterval = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetRegion(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetResultInfo(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.ResultInfo = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetStartTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetStatus(v int32) *DescribeActiveOperationTasksResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetSwitchTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.SwitchTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskId(v int32) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskParams(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskParams = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskType(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskTypeEn(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskTypeEn = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskTypeZh(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskTypeZh = &v
+	return s
+}
+
+type DescribeActiveOperationTasksResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeActiveOperationTasksResponse) SetHeaders(v map[string]*string) *DescribeActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponse) SetStatusCode(v int32) *DescribeActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponse) SetBody(v *DescribeActiveOperationTasksResponseBody) *DescribeActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAutoRenewAttributeRequest struct {
 	// The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
 	//
@@ -12462,7 +13038,7 @@ type DescribeDBClusterMigrationResponseBody struct {
 	//
 	// RDS2POLARDB_SYNCING
 	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
-	// The port number.
+	// The endpoints of the ApsaraDB RDS instance.
 	RdsEndpointList []*DescribeDBClusterMigrationResponseBodyRdsEndpointList `json:"RdsEndpointList,omitempty" xml:"RdsEndpointList,omitempty" type:"Repeated"`
 	// The ID of the synchronous task.
 	//
@@ -12482,6 +13058,12 @@ type DescribeDBClusterMigrationResponseBody struct {
 	//
 	// rm-************
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
+	// The type of the source database. Valid values:
+	//
+	// - **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
+	//
+	// - **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+	//
 	// example:
 	//
 	// PolarDBMySQL
@@ -12746,6 +13328,8 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	// The VPC ID.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
+	// The instance type.
+	//
 	// example:
 	//
 	// ReadOnly
@@ -12754,10 +13338,18 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	//
 	// Primary
 	CustinsType *string `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
+	// The ID of the endpoint.
+	//
 	// example:
 	//
 	// rm-************-normal
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// The type of the endpoint. Valid values:
+	//
+	// - **Normal**: the standard endpoint
+	//
+	// - **ReadWriteSplitting**: the read/write splitting endpoint
+	//
 	// example:
 	//
 	// Normal
@@ -12829,6 +13421,12 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Indicates whether SSL encryption is enabled. Valid values:
+	//
+	// - **Enabled**
+	//
+	// - **Disabled**
+	//
 	// example:
 	//
 	// Enabled
@@ -14029,7 +14627,8 @@ type DescribeDBClusterSSLResponseBodyItems struct {
 	// example:
 	//
 	// pe-************
-	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	DBEndpointId  *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
 	// The SSL connection string.
 	//
 	// example:
@@ -14064,6 +14663,11 @@ func (s DescribeDBClusterSSLResponseBodyItems) GoString() string {
 
 func (s *DescribeDBClusterSSLResponseBodyItems) SetDBEndpointId(v string) *DescribeDBClusterSSLResponseBodyItems {
 	s.DBEndpointId = &v
+	return s
+}
+
+func (s *DescribeDBClusterSSLResponseBodyItems) SetSSLAutoRotate(v string) *DescribeDBClusterSSLResponseBodyItems {
+	s.SSLAutoRotate = &v
 	return s
 }
 
@@ -14112,7 +14716,7 @@ func (s *DescribeDBClusterSSLResponse) SetBody(v *DescribeDBClusterSSLResponseBo
 }
 
 type DescribeDBClusterServerlessConfRequest struct {
-	// The ID of the serverless cluster.
+	// Serverless cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -14161,65 +14765,103 @@ func (s *DescribeDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *De
 
 type DescribeDBClusterServerlessConfResponseBody struct {
 	AgileScaleMax *string `json:"AgileScaleMax,omitempty" xml:"AgileScaleMax,omitempty"`
-	// Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
+	// Whether to enable idle shutdown. Values:
 	//
-	// 	- **true**
+	// - **true**: Enable
 	//
-	// 	- **false**
+	// - **false**: Disable (default)
 	//
 	// example:
 	//
 	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	// The ID of the serverless cluster.
+	// Serverless cluster ID.
 	//
 	// example:
 	//
 	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Maximum limit for the number of read-only column storage nodes. Range: 0~7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
+	// Minimum limit for the number of read-only column storage nodes. Range: 0~7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// Maximum scaling limit for a single node. Range: 1 PCU~32 PCU.
 	//
 	// example:
 	//
 	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// Minimum scaling limit for a single node. Range: 1 PCU~31 PCU.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// Maximum scaling limit for the number of read-only nodes. Range: 0~15.
 	//
 	// example:
 	//
 	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// Minimum scaling limit for the number of read-only nodes. Range: 0~15.
 	//
 	// example:
 	//
 	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
-	// The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
+	// Detection duration for idle shutdown. Range: 300~86,400. Unit: seconds. The detection duration must be a multiple of 300 seconds.
 	//
 	// example:
 	//
 	// 10
-	SecondsUntilAutoPause             *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	// CPU upscale threshold.
+	//
+	// example:
+	//
+	// 60
 	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
-	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
-	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
-	Switchs                           *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
-	TraditionalScaleMaxThreshold      *string `json:"TraditionalScaleMaxThreshold,omitempty" xml:"TraditionalScaleMaxThreshold,omitempty"`
+	// CPU downscale threshold.
+	//
+	// example:
+	//
+	// 30
+	ServerlessRuleCpuShrinkThreshold *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	// Elasticity sensitivity. Values:
+	//
+	// - normal: Standard
+	//
+	// - flexible: Sensitive
+	//
+	// example:
+	//
+	// normal
+	ServerlessRuleMode *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	// Whether steady state is enabled. Values:
+	//
+	// 1: Enabled
+	//
+	// 0: Disabled
+	//
+	// example:
+	//
+	// 1
+	Switchs                      *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
+	TraditionalScaleMaxThreshold *string `json:"TraditionalScaleMaxThreshold,omitempty" xml:"TraditionalScaleMaxThreshold,omitempty"`
 }
 
 func (s DescribeDBClusterServerlessConfResponseBody) String() string {
@@ -20637,6 +21279,10 @@ type DescribeLicenseOrdersRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to query only virtual orders.
+	//
+	// example:
+	//
+	// true
 	VirtualOrder *bool `json:"VirtualOrder,omitempty" xml:"VirtualOrder,omitempty"`
 }
 
@@ -27372,6 +28018,145 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 	return s
 }
 
+type ModifyActiveOperationTasksRequest struct {
+	// example:
+	//
+	// 0
+	ImmediateStart *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// 2023-04-25T06:00:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11111,22222
+	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetImmediateStart(v int32) *ModifyActiveOperationTasksRequest {
+	s.ImmediateStart = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetRegionId(v string) *ModifyActiveOperationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerAccount(v string) *ModifyActiveOperationTasksRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetResourceOwnerId(v int64) *ModifyActiveOperationTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetSecurityToken(v string) *ModifyActiveOperationTasksRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiveOperationTasksRequest {
+	s.SwitchTime = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetTaskIds(v string) *ModifyActiveOperationTasksRequest {
+	s.TaskIds = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponseBody struct {
+	// example:
+	//
+	// 42CD2EF5-D77E-5AD4-961B-159330D98286
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 11111,22222
+	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetRequestId(v string) *ModifyActiveOperationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponseBody) SetTaskIds(v string) *ModifyActiveOperationTasksResponseBody {
+	s.TaskIds = &v
+	return s
+}
+
+type ModifyActiveOperationTasksResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyActiveOperationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyActiveOperationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetHeaders(v map[string]*string) *ModifyActiveOperationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetStatusCode(v int32) *ModifyActiveOperationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTasksResponseBody) *ModifyActiveOperationTasksResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAutoRenewAttributeRequest struct {
 	// The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
 	//
@@ -28430,9 +29215,10 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
-	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PlannedStartTime               *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	StandbyClusterIdListNeedToSync *string `json:"StandbyClusterIdListNeedToSync,omitempty" xml:"StandbyClusterIdListNeedToSync,omitempty"`
 }
 
 func (s ModifyDBClusterAndNodesParametersRequest) String() string {
@@ -28495,6 +29281,11 @@ func (s *ModifyDBClusterAndNodesParametersRequest) SetResourceOwnerAccount(v str
 
 func (s *ModifyDBClusterAndNodesParametersRequest) SetResourceOwnerId(v int64) *ModifyDBClusterAndNodesParametersRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterAndNodesParametersRequest) SetStandbyClusterIdListNeedToSync(v string) *ModifyDBClusterAndNodesParametersRequest {
+	s.StandbyClusterIdListNeedToSync = &v
 	return s
 }
 
@@ -35838,6 +36629,90 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 用户侧取消任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelActiveOperationTasks"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户侧取消任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
+func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelActiveOperationTasksResponse{}
+	_body, _err := client.CancelActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels scheduled tasks that are not yet started.
 //
 // @param request - CancelScheduleTasksRequest
@@ -39582,6 +40457,122 @@ func (client *Client) DescribeActivationCodes(request *DescribeActivationCodesRe
 
 // Summary:
 //
+// 用户侧查询运维任务
+//
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTasksResponse
+func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowCancel)) {
+		query["AllowCancel"] = request.AllowCancel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowChange)) {
+		query["AllowChange"] = request.AllowChange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeLevel)) {
+		query["ChangeLevel"] = request.ChangeLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBType)) {
+		query["DBType"] = request.DBType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeActiveOperationTasks"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户侧查询运维任务
+//
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @return DescribeActiveOperationTasksResponse
+func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperationTasksRequest) (_result *DescribeActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeActiveOperationTasksResponse{}
+	_body, _err := client.DescribeActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the auto-renewal attributes of a subscription PolarDB cluster.
 //
 // @param request - DescribeAutoRenewAttributeRequest
@@ -41158,7 +42149,7 @@ func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest)
 
 // Summary:
 //
-// Queries the configurations of a serverless cluster.
+// Query serverless configuration.
 //
 // @param request - DescribeDBClusterServerlessConfRequest
 //
@@ -41216,7 +42207,7 @@ func (client *Client) DescribeDBClusterServerlessConfWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the configurations of a serverless cluster.
+// Query serverless configuration.
 //
 // @param request - DescribeDBClusterServerlessConfRequest
 //
@@ -45342,6 +46333,98 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 
 // Summary:
 //
+// 用户侧修改任务
+//
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationTasksResponse
+func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImmediateStart)) {
+		query["ImmediateStart"] = request.ImmediateStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTime)) {
+		query["SwitchTime"] = request.SwitchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyActiveOperationTasks"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户侧修改任务
+//
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @return ModifyActiveOperationTasksResponse
+func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyActiveOperationTasksResponse{}
+	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the auto-renewal attributes of a subscription PolarDB cluster.
 //
 // @param request - ModifyAutoRenewAttributeRequest
@@ -45837,6 +46920,10 @@ func (client *Client) ModifyDBClusterAndNodesParametersWithOptions(request *Modi
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyClusterIdListNeedToSync)) {
+		query["StandbyClusterIdListNeedToSync"] = request.StandbyClusterIdListNeedToSync
 	}
 
 	req := &openapi.OpenApiRequest{
