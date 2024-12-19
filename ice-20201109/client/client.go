@@ -21146,7 +21146,8 @@ type GetSmartHandleJobResponseBodyJobResult struct {
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 	// The token usage. This parameter is returned only for keyword-based text generation jobs.
 	//
 	// example:
@@ -21170,6 +21171,11 @@ func (s *GetSmartHandleJobResponseBodyJobResult) SetAiResult(v string) *GetSmart
 
 func (s *GetSmartHandleJobResponseBodyJobResult) SetMediaId(v string) *GetSmartHandleJobResponseBodyJobResult {
 	s.MediaId = &v
+	return s
+}
+
+func (s *GetSmartHandleJobResponseBodyJobResult) SetMediaUrl(v string) *GetSmartHandleJobResponseBodyJobResult {
+	s.MediaUrl = &v
 	return s
 }
 
