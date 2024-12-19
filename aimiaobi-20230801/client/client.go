@@ -3244,6 +3244,178 @@ func (s *DocumentExtractionResponse) SetBody(v *DocumentExtractionResponseBody) 
 	return s
 }
 
+type ExportAnalysisTagDetailByTaskIdRequest struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetCategories(v []*string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetTaskId(v string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetWorkspaceId(v string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdShrinkRequest struct {
+	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetCategoriesShrink(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetTaskId(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetWorkspaceId(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxx.xlsx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetCode(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetData(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetHttpStatusCode(v int32) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetMessage(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetRequestId(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetSuccess(v bool) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportAnalysisTagDetailByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetHeaders(v map[string]*string) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetStatusCode(v int32) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetBody(v *ExportAnalysisTagDetailByTaskIdResponseBody) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
 type ExportGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -40176,6 +40348,80 @@ func (client *Client) DocumentExtraction(request *DocumentExtractionRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DocumentExtractionResponse{}
 	_body, _err := client.DocumentExtractionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出企业VOC分析任务明细列表
+//
+// @param tmpReq - ExportAnalysisTagDetailByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportAnalysisTagDetailByTaskIdResponse
+func (client *Client) ExportAnalysisTagDetailByTaskIdWithOptions(tmpReq *ExportAnalysisTagDetailByTaskIdRequest, runtime *util.RuntimeOptions) (_result *ExportAnalysisTagDetailByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExportAnalysisTagDetailByTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Categories)) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, tea.String("Categories"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoriesShrink)) {
+		body["Categories"] = request.CategoriesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportAnalysisTagDetailByTaskId"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出企业VOC分析任务明细列表
+//
+// @param request - ExportAnalysisTagDetailByTaskIdRequest
+//
+// @return ExportAnalysisTagDetailByTaskIdResponse
+func (client *Client) ExportAnalysisTagDetailByTaskId(request *ExportAnalysisTagDetailByTaskIdRequest) (_result *ExportAnalysisTagDetailByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.ExportAnalysisTagDetailByTaskIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
