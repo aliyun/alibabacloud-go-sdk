@@ -507,6 +507,509 @@ func (s *Personalizedtxt2imgModelTrainJobInfoDTO) SetId(v string) *Personalizedt
 	return s
 }
 
+type AITeacherExpansionPracticeTaskGenerateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13
+	Grade        *string   `json:"grade,omitempty" xml:"grade,omitempty"`
+	KeySentences []*string `json:"keySentences,omitempty" xml:"keySentences,omitempty" type:"Repeated"`
+	KeyWords     []*string `json:"keyWords,omitempty" xml:"keyWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Understanding unique professions such as dog walkers, hotel test sleepers, and food tasters, including their job responsibilities and the benefits or challenges associated with each role.
+	LearningObject *string `json:"learningObject,omitempty" xml:"learningObject,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dog walker Dog walking, as a profession, originated in the US. Some may think that it\\"s a perfect job, because dog walkers won\\"t be imprisoned in an office. But it\\"s actually manual labour. At their busiest, dog walkers may have more than ten dogs to take care of in a day. Hotel test sleeper A hotel test sleeper, as the name suggests, has to write expert reviews about the facilities, locations, prices, dining and other services of hotels, in order to provide evaluations and guides for travelers. Hotel test sleepers don\\"t need to punch in for work and they get about ten thousand yuan as income every month. What a comfortable job! Food taster In ancient times, a food taster was a person who tasted foods (or drinks) to be served to someone else, to confirm that it was safe to eat. But now, those working as food tasters just get to taste various new foods and drinks aimed at specific regions across the world. They then give their opinions on these products to the companies and suggest improvements.
+	TextContent *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
+	Textbook    *string `json:"textbook,omitempty" xml:"textbook,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// talk about your dream job.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6440xxxxxxxxxx5fafc98c421
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetGrade(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetKeySentences(v []*string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.KeySentences = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetKeyWords(v []*string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.KeyWords = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetLearningObject(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.LearningObject = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetTextContent(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.TextContent = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetTextbook(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.Textbook = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetTopic(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateRequest) SetUserId(v string) *AITeacherExpansionPracticeTaskGenerateRequest {
+	s.UserId = &v
+	return s
+}
+
+type AITeacherExpansionPracticeTaskGenerateResponseBody struct {
+	Data *AITeacherExpansionPracticeTaskGenerateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetData(v *AITeacherExpansionPracticeTaskGenerateResponseBodyData) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetErrCode(v string) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetErrMessage(v string) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetHttpStatusCode(v int32) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetRequestId(v string) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBody) SetSuccess(v bool) *AITeacherExpansionPracticeTaskGenerateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AITeacherExpansionPracticeTaskGenerateResponseBodyData struct {
+	// example:
+	//
+	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
+	BackgroundDescription *string                                                        `json:"backgroundDescription,omitempty" xml:"backgroundDescription,omitempty"`
+	RoleSet               *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet `json:"roleSet,omitempty" xml:"roleSet,omitempty" type:"Struct"`
+	// example:
+	//
+	// Hey Jamie, do you know what a travel blogger does?
+	StartSentence *string                                                              `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	TaskContent   []*AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent `json:"taskContent,omitempty" xml:"taskContent,omitempty" type:"Repeated"`
+	// example:
+	//
+	// textbook_dialogue
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) SetBackgroundDescription(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyData {
+	s.BackgroundDescription = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) SetRoleSet(v *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) *AITeacherExpansionPracticeTaskGenerateResponseBodyData {
+	s.RoleSet = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) SetStartSentence(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyData {
+	s.StartSentence = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) SetTaskContent(v []*AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent) *AITeacherExpansionPracticeTaskGenerateResponseBodyData {
+	s.TaskContent = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyData) SetTaskType(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+type AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet struct {
+	// example:
+	//
+	// Alex
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// Jamie
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) SetAssistant(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet {
+	s.Assistant = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet) SetUser(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyDataRoleSet {
+	s.User = &v
+	return s
+}
+
+type AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent struct {
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent) SetAssistant(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent {
+	s.Assistant = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent) SetUser(v string) *AITeacherExpansionPracticeTaskGenerateResponseBodyDataTaskContent {
+	s.User = &v
+	return s
+}
+
+type AITeacherExpansionPracticeTaskGenerateResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AITeacherExpansionPracticeTaskGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherExpansionPracticeTaskGenerateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponse) SetHeaders(v map[string]*string) *AITeacherExpansionPracticeTaskGenerateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponse) SetStatusCode(v int32) *AITeacherExpansionPracticeTaskGenerateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AITeacherExpansionPracticeTaskGenerateResponse) SetBody(v *AITeacherExpansionPracticeTaskGenerateResponseBody) *AITeacherExpansionPracticeTaskGenerateResponse {
+	s.Body = v
+	return s
+}
+
+type AITeacherSyncPracticeTaskGenerateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13
+	Grade        *string   `json:"grade,omitempty" xml:"grade,omitempty"`
+	KeySentences []*string `json:"keySentences,omitempty" xml:"keySentences,omitempty" type:"Repeated"`
+	KeyWords     []*string `json:"keyWords,omitempty" xml:"keyWords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Understanding unique professions such as dog walkers, hotel test sleepers, and food tasters, including their job responsibilities and the benefits or challenges associated with each role.
+	LearningObject *string `json:"learningObject,omitempty" xml:"learningObject,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Dog walker Dog walking, as a profession, originated in the US. Some may think that it\\"s a perfect job, because dog walkers won\\"t be imprisoned in an office. But it\\"s actually manual labour. At their busiest, dog walkers may have more than ten dogs to take care of in a day. Hotel test sleeper A hotel test sleeper, as the name suggests, has to write expert reviews about the facilities, locations, prices, dining and other services of hotels, in order to provide evaluations and guides for travelers. Hotel test sleepers don\\"t need to punch in for work and they get about ten thousand yuan as income every month. What a comfortable job! Food taster In ancient times, a food taster was a person who tasted foods (or drinks) to be served to someone else, to confirm that it was safe to eat. But now, those working as food tasters just get to taste various new foods and drinks aimed at specific regions across the world. They then give their opinions on these products to the companies and suggest improvements.
+	TextContent *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
+	Textbook    *string `json:"textbook,omitempty" xml:"textbook,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// talk about your dream job.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6440xxxxxxxxxx5fafc98c421
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s AITeacherSyncPracticeTaskGenerateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherSyncPracticeTaskGenerateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetGrade(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetKeySentences(v []*string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.KeySentences = v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetKeyWords(v []*string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.KeyWords = v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetLearningObject(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.LearningObject = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetTextContent(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.TextContent = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetTextbook(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.Textbook = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetTopic(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateRequest) SetUserId(v string) *AITeacherSyncPracticeTaskGenerateRequest {
+	s.UserId = &v
+	return s
+}
+
+type AITeacherSyncPracticeTaskGenerateResponseBody struct {
+	Data *AITeacherSyncPracticeTaskGenerateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode    *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetData(v *AITeacherSyncPracticeTaskGenerateResponseBodyData) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetErrCode(v string) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetErrMessage(v string) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetHttpStatusCode(v int32) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetRequestId(v string) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBody) SetSuccess(v bool) *AITeacherSyncPracticeTaskGenerateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AITeacherSyncPracticeTaskGenerateResponseBodyData struct {
+	TaskContent []*AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent `json:"taskContent,omitempty" xml:"taskContent,omitempty" type:"Repeated"`
+	// example:
+	//
+	// textbook_question_answering
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBodyData) SetTaskContent(v []*AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent) *AITeacherSyncPracticeTaskGenerateResponseBodyData {
+	s.TaskContent = v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBodyData) SetTaskType(v string) *AITeacherSyncPracticeTaskGenerateResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+type AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent struct {
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent) SetAssistant(v string) *AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent {
+	s.Assistant = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent) SetUser(v string) *AITeacherSyncPracticeTaskGenerateResponseBodyDataTaskContent {
+	s.User = &v
+	return s
+}
+
+type AITeacherSyncPracticeTaskGenerateResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AITeacherSyncPracticeTaskGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AITeacherSyncPracticeTaskGenerateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponse) SetHeaders(v map[string]*string) *AITeacherSyncPracticeTaskGenerateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponse) SetStatusCode(v int32) *AITeacherSyncPracticeTaskGenerateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AITeacherSyncPracticeTaskGenerateResponse) SetBody(v *AITeacherSyncPracticeTaskGenerateResponseBody) *AITeacherSyncPracticeTaskGenerateResponse {
+	s.Body = v
+	return s
+}
+
 type AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponseBody struct {
 	// example:
 	//
@@ -2506,6 +3009,190 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练问答对生成
+//
+// @param request - AITeacherExpansionPracticeTaskGenerateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AITeacherExpansionPracticeTaskGenerateResponse
+func (client *Client) AITeacherExpansionPracticeTaskGenerateWithOptions(request *AITeacherExpansionPracticeTaskGenerateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AITeacherExpansionPracticeTaskGenerateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySentences)) {
+		body["keySentences"] = request.KeySentences
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWords)) {
+		body["keyWords"] = request.KeyWords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LearningObject)) {
+		body["learningObject"] = request.LearningObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextContent)) {
+		body["textContent"] = request.TextContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Textbook)) {
+		body["textbook"] = request.Textbook
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AITeacherExpansionPracticeTaskGenerate"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/expansionPractice/generateTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练问答对生成
+//
+// @param request - AITeacherExpansionPracticeTaskGenerateRequest
+//
+// @return AITeacherExpansionPracticeTaskGenerateResponse
+func (client *Client) AITeacherExpansionPracticeTaskGenerate(request *AITeacherExpansionPracticeTaskGenerateRequest) (_result *AITeacherExpansionPracticeTaskGenerateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
+	_body, _err := client.AITeacherExpansionPracticeTaskGenerateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步基础练问答对生成
+//
+// @param request - AITeacherSyncPracticeTaskGenerateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AITeacherSyncPracticeTaskGenerateResponse
+func (client *Client) AITeacherSyncPracticeTaskGenerateWithOptions(request *AITeacherSyncPracticeTaskGenerateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AITeacherSyncPracticeTaskGenerateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		body["grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySentences)) {
+		body["keySentences"] = request.KeySentences
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyWords)) {
+		body["keyWords"] = request.KeyWords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LearningObject)) {
+		body["learningObject"] = request.LearningObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextContent)) {
+		body["textContent"] = request.TextContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Textbook)) {
+		body["textbook"] = request.Textbook
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AITeacherSyncPracticeTaskGenerate"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/syncPractice/generateTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AITeacherSyncPracticeTaskGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步基础练问答对生成
+//
+// @param request - AITeacherSyncPracticeTaskGenerateRequest
+//
+// @return AITeacherSyncPracticeTaskGenerateResponse
+func (client *Client) AITeacherSyncPracticeTaskGenerate(request *AITeacherSyncPracticeTaskGenerateRequest) (_result *AITeacherSyncPracticeTaskGenerateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AITeacherSyncPracticeTaskGenerateResponse{}
+	_body, _err := client.AITeacherSyncPracticeTaskGenerateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
