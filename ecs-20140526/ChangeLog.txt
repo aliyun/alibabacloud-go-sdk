@@ -1,3 +1,12 @@
+2024-12-20 Version: v4.26.10
+- Update API DescribeImages: update response param.
+- Update API DescribeInstanceModificationPrice: update response param.
+- Update API DescribePrice: update param DataDisk.
+- Update API StartImagePipelineExecution: add param Tag.
+- Update API StartImagePipelineExecution: update param TemplateTag.
+- Update API StartImagePipelineExecution: update response param.
+
+
 2024-12-16 Version: v4.26.9
 - Update API CreateImage: add param Features.
 - Update API DescribeImages: update response param.
