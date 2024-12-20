@@ -2276,6 +2276,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	BizRegionId         *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	ChargeType          *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// example:
 	//
@@ -2302,7 +2303,8 @@ type DescribeAndroidInstancesRequest struct {
 	// example:
 	//
 	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*DescribeAndroidInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAndroidInstancesRequest) String() string {
@@ -2320,6 +2322,11 @@ func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceIds(v []*string) *De
 
 func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceName(v string) *DescribeAndroidInstancesRequest {
 	s.AndroidInstanceName = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetBizRegionId(v string) *DescribeAndroidInstancesRequest {
+	s.BizRegionId = &v
 	return s
 }
 
@@ -2365,6 +2372,34 @@ func (s *DescribeAndroidInstancesRequest) SetSaleMode(v string) *DescribeAndroid
 
 func (s *DescribeAndroidInstancesRequest) SetStatus(v string) *DescribeAndroidInstancesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetTag(v []*DescribeAndroidInstancesRequestTag) *DescribeAndroidInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeAndroidInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAndroidInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesRequestTag) SetKey(v string) *DescribeAndroidInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequestTag) SetValue(v string) *DescribeAndroidInstancesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2485,8 +2520,9 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	RegionId      *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenderingType *string                                                  `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	Tags          []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -2627,6 +2663,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v s
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetTags(v []*DescribeAndroidInstancesResponseBodyInstanceModelTags) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.Tags = v
+	return s
+}
+
 type DescribeAndroidInstancesResponseBodyInstanceModelDisks struct {
 	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
@@ -2647,6 +2688,29 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) SetDiskSize(v i
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModelDisks) SetDiskType(v string) *DescribeAndroidInstancesResponseBodyInstanceModelDisks {
 	s.DiskType = &v
+	return s
+}
+
+type DescribeAndroidInstancesResponseBodyInstanceModelTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelTags) SetKey(v string) *DescribeAndroidInstancesResponseBodyInstanceModelTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelTags) SetValue(v string) *DescribeAndroidInstancesResponseBodyInstanceModelTags {
+	s.Value = &v
 	return s
 }
 
@@ -8355,6 +8419,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 		query["AndroidInstanceName"] = request.AndroidInstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -8389,6 +8457,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
