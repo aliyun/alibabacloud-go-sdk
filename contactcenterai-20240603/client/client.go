@@ -11,10 +11,10 @@ import (
 
 type AnalyzeConversationRequest struct {
 	CategoryTags []*AnalyzeConversationRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
-	// This parameter is required.
-	Dialogue *AnalyzeConversationRequestDialogue   `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
-	Examples []*AnalyzeConversationRequestExamples `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	Fields   []*AnalyzeConversationRequestFields   `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	CustomPrompt *string                                   `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	Dialogue     *AnalyzeConversationRequestDialogue       `json:"dialogue,omitempty" xml:"dialogue,omitempty" type:"Struct"`
+	Examples     []*AnalyzeConversationRequestExamples     `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	Fields       []*AnalyzeConversationRequestFields       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
 	// example:
 	//
 	// tyxmTurbo
@@ -44,6 +44,11 @@ func (s AnalyzeConversationRequest) GoString() string {
 
 func (s *AnalyzeConversationRequest) SetCategoryTags(v []*AnalyzeConversationRequestCategoryTags) *AnalyzeConversationRequest {
 	s.CategoryTags = v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetCustomPrompt(v string) *AnalyzeConversationRequest {
+	s.CustomPrompt = &v
 	return s
 }
 
@@ -1810,6 +1815,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CategoryTags)) {
 		body["categoryTags"] = request.CategoryTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPrompt)) {
+		body["customPrompt"] = request.CustomPrompt
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Dialogue)) {
