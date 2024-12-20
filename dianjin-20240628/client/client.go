@@ -239,6 +239,195 @@ func (s *CreateAnnualDocSummaryTaskResponse) SetBody(v *CreateAnnualDocSummaryTa
 	return s
 }
 
+type CreateDialogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// taobao
+	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	// example:
+	//
+	// null
+	MetaData map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// live_broadcast_qa
+	PlayCode *string `json:"playCode,omitempty" xml:"playCode,omitempty"`
+	// This parameter is required.
+	QaLibraryList []*string `json:"qaLibraryList,omitempty" xml:"qaLibraryList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ebf83826-dc1c-46f8-9759-0fb6da4c8xxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateDialogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogRequest) SetChannel(v string) *CreateDialogRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *CreateDialogRequest) SetMetaData(v map[string]interface{}) *CreateDialogRequest {
+	s.MetaData = v
+	return s
+}
+
+func (s *CreateDialogRequest) SetPlayCode(v string) *CreateDialogRequest {
+	s.PlayCode = &v
+	return s
+}
+
+func (s *CreateDialogRequest) SetQaLibraryList(v []*string) *CreateDialogRequest {
+	s.QaLibraryList = v
+	return s
+}
+
+func (s *CreateDialogRequest) SetRequestId(v string) *CreateDialogRequest {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDialogResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                        `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *CreateDialogResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 003D019A-1BB3-53EC-A0D2-CE76DA5D73B1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s CreateDialogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogResponseBody) SetCost(v int64) *CreateDialogResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetData(v *CreateDialogResponseBodyData) *CreateDialogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetDataType(v string) *CreateDialogResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetErrCode(v string) *CreateDialogResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetMessage(v string) *CreateDialogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetRequestId(v string) *CreateDialogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetSuccess(v bool) *CreateDialogResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateDialogResponseBody) SetTime(v string) *CreateDialogResponseBody {
+	s.Time = &v
+	return s
+}
+
+type CreateDialogResponseBodyData struct {
+	// example:
+	//
+	// 1728545917713234
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s CreateDialogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogResponseBodyData) SetSessionId(v string) *CreateDialogResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+type CreateDialogResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDialogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDialogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDialogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDialogResponse) SetHeaders(v map[string]*string) *CreateDialogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDialogResponse) SetStatusCode(v int32) *CreateDialogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDialogResponse) SetBody(v *CreateDialogResponseBody) *CreateDialogResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDocsSummaryTaskRequest struct {
 	// This parameter is required.
 	DocInfos []*CreateDocsSummaryTaskRequestDocInfos `json:"docInfos,omitempty" xml:"docInfos,omitempty" type:"Repeated"`
@@ -2282,6 +2471,226 @@ func (s *EvictTaskResponse) SetBody(v *EvictTaskResponseBody) *EvictTaskResponse
 	return s
 }
 
+type GenDocQaResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 182364872346
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sjdgdsfg
+	LibraryId *string `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GenDocQaResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenDocQaResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenDocQaResultRequest) SetDocId(v string) *GenDocQaResultRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *GenDocQaResultRequest) SetLibraryId(v string) *GenDocQaResultRequest {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *GenDocQaResultRequest) SetRequestId(v string) *GenDocQaResultRequest {
+	s.RequestId = &v
+	return s
+}
+
+type GenDocQaResultResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                          `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GenDocQaResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GenDocQaResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenDocQaResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenDocQaResultResponseBody) SetCost(v int64) *GenDocQaResultResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetData(v *GenDocQaResultResponseBodyData) *GenDocQaResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetDataType(v string) *GenDocQaResultResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetErrCode(v string) *GenDocQaResultResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetMessage(v string) *GenDocQaResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetRequestId(v string) *GenDocQaResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetSuccess(v bool) *GenDocQaResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBody) SetTime(v string) *GenDocQaResultResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GenDocQaResultResponseBodyData struct {
+	// example:
+	//
+	// PROCESSING
+	CurrentStatus *string `json:"currentStatus,omitempty" xml:"currentStatus,omitempty"`
+	// example:
+	//
+	// 873648346573245
+	DocId *string `json:"docId,omitempty" xml:"docId,omitempty"`
+	// example:
+	//
+	// 7wxwrjpabj
+	LibraryId      *string                                         `json:"libraryId,omitempty" xml:"libraryId,omitempty"`
+	ParseQaResults []*GenDocQaResultResponseBodyDataParseQaResults `json:"parseQaResults,omitempty" xml:"parseQaResults,omitempty" type:"Repeated"`
+}
+
+func (s GenDocQaResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenDocQaResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenDocQaResultResponseBodyData) SetCurrentStatus(v string) *GenDocQaResultResponseBodyData {
+	s.CurrentStatus = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBodyData) SetDocId(v string) *GenDocQaResultResponseBodyData {
+	s.DocId = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBodyData) SetLibraryId(v string) *GenDocQaResultResponseBodyData {
+	s.LibraryId = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBodyData) SetParseQaResults(v []*GenDocQaResultResponseBodyDataParseQaResults) *GenDocQaResultResponseBodyData {
+	s.ParseQaResults = v
+	return s
+}
+
+type GenDocQaResultResponseBodyDataParseQaResults struct {
+	Answer   *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+}
+
+func (s GenDocQaResultResponseBodyDataParseQaResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenDocQaResultResponseBodyDataParseQaResults) GoString() string {
+	return s.String()
+}
+
+func (s *GenDocQaResultResponseBodyDataParseQaResults) SetAnswer(v string) *GenDocQaResultResponseBodyDataParseQaResults {
+	s.Answer = &v
+	return s
+}
+
+func (s *GenDocQaResultResponseBodyDataParseQaResults) SetQuestion(v string) *GenDocQaResultResponseBodyDataParseQaResults {
+	s.Question = &v
+	return s
+}
+
+type GenDocQaResultResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenDocQaResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenDocQaResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenDocQaResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenDocQaResultResponse) SetHeaders(v map[string]*string) *GenDocQaResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenDocQaResultResponse) SetStatusCode(v int32) *GenDocQaResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenDocQaResultResponse) SetBody(v *GenDocQaResultResponseBody) *GenDocQaResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetAppConfigResponseBody struct {
 	// example:
 	//
@@ -2434,6 +2843,239 @@ func (s *GetAppConfigResponse) SetStatusCode(v int32) *GetAppConfigResponse {
 }
 
 func (s *GetAppConfigResponse) SetBody(v *GetAppConfigResponseBody) *GetAppConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatQuestionRespRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1869307330227937280
+	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 237645726354
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s GetChatQuestionRespRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatQuestionRespRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatQuestionRespRequest) SetBatchId(v string) *GetChatQuestionRespRequest {
+	s.BatchId = &v
+	return s
+}
+
+func (s *GetChatQuestionRespRequest) SetSessionId(v string) *GetChatQuestionRespRequest {
+	s.SessionId = &v
+	return s
+}
+
+type GetChatQuestionRespResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                               `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GetChatQuestionRespResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 44BD277A-87F9-5310-8D63-3E6645F1DA85
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-01-01 00:00:00
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetChatQuestionRespResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatQuestionRespResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatQuestionRespResponseBody) SetCost(v int64) *GetChatQuestionRespResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetData(v *GetChatQuestionRespResponseBodyData) *GetChatQuestionRespResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetDataType(v string) *GetChatQuestionRespResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetErrCode(v string) *GetChatQuestionRespResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetMessage(v string) *GetChatQuestionRespResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetRequestId(v string) *GetChatQuestionRespResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetSuccess(v bool) *GetChatQuestionRespResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBody) SetTime(v string) *GetChatQuestionRespResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetChatQuestionRespResponseBodyData struct {
+	// example:
+	//
+	// PROCESSING
+	CurrentState *string                                            `json:"currentState,omitempty" xml:"currentState,omitempty"`
+	QuestionList []*GetChatQuestionRespResponseBodyDataQuestionList `json:"questionList,omitempty" xml:"questionList,omitempty" type:"Repeated"`
+}
+
+func (s GetChatQuestionRespResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatQuestionRespResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatQuestionRespResponseBodyData) SetCurrentState(v string) *GetChatQuestionRespResponseBodyData {
+	s.CurrentState = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyData) SetQuestionList(v []*GetChatQuestionRespResponseBodyDataQuestionList) *GetChatQuestionRespResponseBodyData {
+	s.QuestionList = v
+	return s
+}
+
+type GetChatQuestionRespResponseBodyDataQuestionList struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 2024-11-17 10:05:00
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Reply     *string `json:"reply,omitempty" xml:"reply,omitempty"`
+	// example:
+	//
+	// 1732846760323001
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// PRODUCT_QA
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 39847834568436
+	UserId   *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s GetChatQuestionRespResponseBodyDataQuestionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatQuestionRespResponseBodyDataQuestionList) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetContent(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.Content = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetGmtCreate(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetReply(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.Reply = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetSessionId(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetType(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.Type = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetUserId(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponseBodyDataQuestionList) SetUserName(v string) *GetChatQuestionRespResponseBodyDataQuestionList {
+	s.UserName = &v
+	return s
+}
+
+type GetChatQuestionRespResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatQuestionRespResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatQuestionRespResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatQuestionRespResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatQuestionRespResponse) SetHeaders(v map[string]*string) *GetChatQuestionRespResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatQuestionRespResponse) SetStatusCode(v int32) *GetChatQuestionRespResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatQuestionRespResponse) SetBody(v *GetChatQuestionRespResponseBody) *GetChatQuestionRespResponse {
 	s.Body = v
 	return s
 }
@@ -9507,6 +10149,275 @@ func (s *RunLibraryChatGenerationResponse) SetBody(v *RunLibraryChatGenerationRe
 	return s
 }
 
+type SubmitChatQuestionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtService *string `json:"gmtService,omitempty" xml:"gmtService,omitempty"`
+	// This parameter is required.
+	LiveScriptContent *string `json:"liveScriptContent,omitempty" xml:"liveScriptContent,omitempty"`
+	// example:
+	//
+	// true
+	OpenSmallTalk *bool `json:"openSmallTalk,omitempty" xml:"openSmallTalk,omitempty"`
+	// This parameter is required.
+	QuestionList []*SubmitChatQuestionRequestQuestionList `json:"questionList,omitempty" xml:"questionList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 237645726354
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s SubmitChatQuestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitChatQuestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitChatQuestionRequest) SetGmtService(v string) *SubmitChatQuestionRequest {
+	s.GmtService = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequest) SetLiveScriptContent(v string) *SubmitChatQuestionRequest {
+	s.LiveScriptContent = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequest) SetOpenSmallTalk(v bool) *SubmitChatQuestionRequest {
+	s.OpenSmallTalk = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequest) SetQuestionList(v []*SubmitChatQuestionRequestQuestionList) *SubmitChatQuestionRequest {
+	s.QuestionList = v
+	return s
+}
+
+func (s *SubmitChatQuestionRequest) SetRequestId(v string) *SubmitChatQuestionRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequest) SetSessionId(v string) *SubmitChatQuestionRequest {
+	s.SessionId = &v
+	return s
+}
+
+type SubmitChatQuestionRequestQuestionList struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-11-17 10:05:00
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Reply     *string `json:"reply,omitempty" xml:"reply,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1869300950603128834
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// PRODUCT_QA
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39485783475638465
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// This parameter is required.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s SubmitChatQuestionRequestQuestionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitChatQuestionRequestQuestionList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetContent(v string) *SubmitChatQuestionRequestQuestionList {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetGmtCreate(v string) *SubmitChatQuestionRequestQuestionList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetReply(v string) *SubmitChatQuestionRequestQuestionList {
+	s.Reply = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetSessionId(v string) *SubmitChatQuestionRequestQuestionList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetType(v string) *SubmitChatQuestionRequestQuestionList {
+	s.Type = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetUserId(v string) *SubmitChatQuestionRequestQuestionList {
+	s.UserId = &v
+	return s
+}
+
+func (s *SubmitChatQuestionRequestQuestionList) SetUserName(v string) *SubmitChatQuestionRequestQuestionList {
+	s.UserName = &v
+	return s
+}
+
+type SubmitChatQuestionResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                              `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *SubmitChatQuestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 915AAAB9-4908-5224-9E53-9E9D7D0AA94B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s SubmitChatQuestionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitChatQuestionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitChatQuestionResponseBody) SetCost(v int64) *SubmitChatQuestionResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetData(v *SubmitChatQuestionResponseBodyData) *SubmitChatQuestionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetDataType(v string) *SubmitChatQuestionResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetErrCode(v string) *SubmitChatQuestionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetMessage(v string) *SubmitChatQuestionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetRequestId(v string) *SubmitChatQuestionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetSuccess(v bool) *SubmitChatQuestionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponseBody) SetTime(v string) *SubmitChatQuestionResponseBody {
+	s.Time = &v
+	return s
+}
+
+type SubmitChatQuestionResponseBodyData struct {
+	// example:
+	//
+	// 1869307330227937280
+	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
+}
+
+func (s SubmitChatQuestionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitChatQuestionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitChatQuestionResponseBodyData) SetBatchId(v string) *SubmitChatQuestionResponseBodyData {
+	s.BatchId = &v
+	return s
+}
+
+type SubmitChatQuestionResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitChatQuestionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitChatQuestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitChatQuestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitChatQuestionResponse) SetHeaders(v map[string]*string) *SubmitChatQuestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitChatQuestionResponse) SetStatusCode(v int32) *SubmitChatQuestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitChatQuestionResponse) SetBody(v *SubmitChatQuestionResponseBody) *SubmitChatQuestionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDocumentRequest struct {
 	// This parameter is required.
 	//
@@ -10226,6 +11137,198 @@ func (s *UpdateLibraryResponse) SetBody(v *UpdateLibraryResponseBody) *UpdateLib
 	return s
 }
 
+type UpdateQaLibraryRequest struct {
+	// This parameter is required.
+	ParseQaResults []*UpdateQaLibraryRequestParseQaResults `json:"parseQaResults,omitempty" xml:"parseQaResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6jh378d
+	QaLibraryId *string `json:"qaLibraryId,omitempty" xml:"qaLibraryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0FC6636E-380A-5369-AE01-D1C15BB9B254
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateQaLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQaLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQaLibraryRequest) SetParseQaResults(v []*UpdateQaLibraryRequestParseQaResults) *UpdateQaLibraryRequest {
+	s.ParseQaResults = v
+	return s
+}
+
+func (s *UpdateQaLibraryRequest) SetQaLibraryId(v string) *UpdateQaLibraryRequest {
+	s.QaLibraryId = &v
+	return s
+}
+
+func (s *UpdateQaLibraryRequest) SetRequestId(v string) *UpdateQaLibraryRequest {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateQaLibraryRequestParseQaResults struct {
+	// This parameter is required.
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// This parameter is required.
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+}
+
+func (s UpdateQaLibraryRequestParseQaResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQaLibraryRequestParseQaResults) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQaLibraryRequestParseQaResults) SetAnswer(v string) *UpdateQaLibraryRequestParseQaResults {
+	s.Answer = &v
+	return s
+}
+
+func (s *UpdateQaLibraryRequestParseQaResults) SetQuestion(v string) *UpdateQaLibraryRequestParseQaResults {
+	s.Question = &v
+	return s
+}
+
+type UpdateQaLibraryResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                           `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *UpdateQaLibraryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// EF4B5C9B-3BC8-5171-A47B-4C5CF3DC3258
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s UpdateQaLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQaLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQaLibraryResponseBody) SetCost(v int64) *UpdateQaLibraryResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetData(v *UpdateQaLibraryResponseBodyData) *UpdateQaLibraryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetDataType(v string) *UpdateQaLibraryResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetErrCode(v string) *UpdateQaLibraryResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetMessage(v string) *UpdateQaLibraryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetRequestId(v string) *UpdateQaLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetSuccess(v bool) *UpdateQaLibraryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponseBody) SetTime(v string) *UpdateQaLibraryResponseBody {
+	s.Time = &v
+	return s
+}
+
+type UpdateQaLibraryResponseBodyData struct {
+	// example:
+	//
+	// 6jh378d
+	QaLibraryId *string `json:"qaLibraryId,omitempty" xml:"qaLibraryId,omitempty"`
+}
+
+func (s UpdateQaLibraryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQaLibraryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQaLibraryResponseBodyData) SetQaLibraryId(v string) *UpdateQaLibraryResponseBodyData {
+	s.QaLibraryId = &v
+	return s
+}
+
+type UpdateQaLibraryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateQaLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateQaLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQaLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQaLibraryResponse) SetHeaders(v map[string]*string) *UpdateQaLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateQaLibraryResponse) SetStatusCode(v int32) *UpdateQaLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateQaLibraryResponse) SetBody(v *UpdateQaLibraryResponseBody) *UpdateQaLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type UploadDocumentRequest struct {
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// This parameter is required.
@@ -10558,6 +11661,86 @@ func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *C
 	headers := make(map[string]*string)
 	_result = &CreateAnnualDocSummaryTaskResponse{}
 	_body, _err := client.CreateAnnualDocSummaryTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外呼会话
+//
+// @param request - CreateDialogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDialogResponse
+func (client *Client) CreateDialogWithOptions(workspaceId *string, request *CreateDialogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDialogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		body["channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
+		body["metaData"] = request.MetaData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayCode)) {
+		body["playCode"] = request.PlayCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QaLibraryList)) {
+		body["qaLibraryList"] = request.QaLibraryList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDialog"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/dialog/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDialogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建外呼会话
+//
+// @param request - CreateDialogRequest
+//
+// @return CreateDialogResponse
+func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogRequest) (_result *CreateDialogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDialogResponse{}
+	_body, _err := client.CreateDialogWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11243,6 +12426,78 @@ func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) 
 
 // Summary:
 //
+// 根据文档解析问答QA
+//
+// @param request - GenDocQaResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenDocQaResultResponse
+func (client *Client) GenDocQaResultWithOptions(workspaceId *string, request *GenDocQaResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenDocQaResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["docId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryId)) {
+		body["libraryId"] = request.LibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenDocQaResult"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/qa/parse"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenDocQaResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据文档解析问答QA
+//
+// @param request - GenDocQaResultRequest
+//
+// @return GenDocQaResultResponse
+func (client *Client) GenDocQaResult(workspaceId *string, request *GenDocQaResultRequest) (_result *GenDocQaResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenDocQaResultResponse{}
+	_body, _err := client.GenDocQaResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取app配置
 //
 // @param headers - map
@@ -11284,6 +12539,74 @@ func (client *Client) GetAppConfig(workspaceId *string) (_result *GetAppConfigRe
 	headers := make(map[string]*string)
 	_result = &GetAppConfigResponse{}
 	_body, _err := client.GetAppConfigWithOptions(workspaceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取问答结果
+//
+// @param request - GetChatQuestionRespRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatQuestionRespResponse
+func (client *Client) GetChatQuestionRespWithOptions(workspaceId *string, request *GetChatQuestionRespRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChatQuestionRespResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchId)) {
+		body["batchId"] = request.BatchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatQuestionResp"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/chat/query"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatQuestionRespResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取问答结果
+//
+// @param request - GetChatQuestionRespRequest
+//
+// @return GetChatQuestionRespResponse
+func (client *Client) GetChatQuestionResp(workspaceId *string, request *GetChatQuestionRespRequest) (_result *GetChatQuestionRespResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChatQuestionRespResponse{}
+	_body, _err := client.GetChatQuestionRespWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12801,6 +14124,90 @@ func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *Run
 
 // Summary:
 //
+// 提交问题列表
+//
+// @param request - SubmitChatQuestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitChatQuestionResponse
+func (client *Client) SubmitChatQuestionWithOptions(workspaceId *string, request *SubmitChatQuestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitChatQuestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GmtService)) {
+		body["gmtService"] = request.GmtService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveScriptContent)) {
+		body["liveScriptContent"] = request.LiveScriptContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenSmallTalk)) {
+		body["openSmallTalk"] = request.OpenSmallTalk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuestionList)) {
+		body["questionList"] = request.QuestionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitChatQuestion"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/chat/submit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitChatQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交问题列表
+//
+// @param request - SubmitChatQuestionRequest
+//
+// @return SubmitChatQuestionResponse
+func (client *Client) SubmitChatQuestion(workspaceId *string, request *SubmitChatQuestionRequest) (_result *SubmitChatQuestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitChatQuestionResponse{}
+	_body, _err := client.SubmitChatQuestionWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新文档
 //
 // @param request - UpdateDocumentRequest
@@ -12944,6 +14351,78 @@ func (client *Client) UpdateLibrary(workspaceId *string, request *UpdateLibraryR
 	headers := make(map[string]*string)
 	_result = &UpdateLibraryResponse{}
 	_body, _err := client.UpdateLibraryWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新QA问答库
+//
+// @param request - UpdateQaLibraryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQaLibraryResponse
+func (client *Client) UpdateQaLibraryWithOptions(workspaceId *string, request *UpdateQaLibraryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateQaLibraryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParseQaResults)) {
+		body["parseQaResults"] = request.ParseQaResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QaLibraryId)) {
+		body["qaLibraryId"] = request.QaLibraryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateQaLibrary"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/qa/upload"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateQaLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新QA问答库
+//
+// @param request - UpdateQaLibraryRequest
+//
+// @return UpdateQaLibraryResponse
+func (client *Client) UpdateQaLibrary(workspaceId *string, request *UpdateQaLibraryRequest) (_result *UpdateQaLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateQaLibraryResponse{}
+	_body, _err := client.UpdateQaLibraryWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
