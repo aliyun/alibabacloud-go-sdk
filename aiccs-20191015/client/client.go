@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,17 +10,63 @@ import (
 )
 
 type AddHotlineNumberRequest struct {
-	Description              *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableInbound            *bool                                       `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
-	EnableInboundEvaluation  *bool                                       `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
-	EnableOutbound           *bool                                       `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
-	EnableOutboundEvaluation *bool                                       `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
-	EvaluationLevel          *int32                                      `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	HotlineNumber            *string                                     `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InboundFlowId            *int64                                      `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
-	InstanceId               *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundAllDepart        *bool                                       `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
-	OutboundRangeList        []*AddHotlineNumberRequestOutboundRangeList `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInbound *bool `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInboundEvaluation *bool `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutbound *bool `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutboundEvaluation *bool `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05710000****
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// example:
+	//
+	// 123456
+	InboundFlowId *int64 `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	OutboundAllDepart *bool                                       `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
+	OutboundRangeList []*AddHotlineNumberRequestOutboundRangeList `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty" type:"Repeated"`
 }
 
 func (s AddHotlineNumberRequest) String() string {
@@ -90,6 +133,9 @@ func (s *AddHotlineNumberRequest) SetOutboundRangeList(v []*AddHotlineNumberRequ
 }
 
 type AddHotlineNumberRequestOutboundRangeList struct {
+	// example:
+	//
+	// 123456
 	DepartmentId *int64   `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	GroupIdList  []*int64 `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
 }
@@ -113,17 +159,63 @@ func (s *AddHotlineNumberRequestOutboundRangeList) SetGroupIdList(v []*int64) *A
 }
 
 type AddHotlineNumberShrinkRequest struct {
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableInbound            *bool   `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
-	EnableInboundEvaluation  *bool   `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
-	EnableOutbound           *bool   `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
-	EnableOutboundEvaluation *bool   `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
-	EvaluationLevel          *int32  `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	HotlineNumber            *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InboundFlowId            *int64  `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
-	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundAllDepart        *bool   `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
-	OutboundRangeListShrink  *string `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInbound *bool `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInboundEvaluation *bool `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutbound *bool `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutboundEvaluation *bool `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05710000****
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// example:
+	//
+	// 123456
+	InboundFlowId *int64 `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	OutboundAllDepart       *bool   `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
+	OutboundRangeListShrink *string `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty"`
 }
 
 func (s AddHotlineNumberShrinkRequest) String() string {
@@ -190,11 +282,26 @@ func (s *AddHotlineNumberShrinkRequest) SetOutboundRangeListShrink(v string) *Ad
 }
 
 type AddHotlineNumberResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE339D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddHotlineNumberResponseBody) String() string {
@@ -231,9 +338,9 @@ func (s *AddHotlineNumberResponseBody) SetSuccess(v bool) *AddHotlineNumberRespo
 }
 
 type AddHotlineNumberResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddHotlineNumberResponse) String() string {
@@ -260,16 +367,41 @@ func (s *AddHotlineNumberResponse) SetBody(v *AddHotlineNumberResponseBody) *Add
 }
 
 type AddOuterAccountRequest struct {
-	Avatar              *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Ext                 *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	OuterAccountId      *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
-	OuterAccountName    *string `json:"OuterAccountName,omitempty" xml:"OuterAccountName,omitempty"`
-	OuterAccountType    *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
-	OuterDepartmentId   *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// http://****
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Ext    *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1212
+	OuterAccountId   *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	OuterAccountName *string `json:"OuterAccountName,omitempty" xml:"OuterAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alipay
+	OuterAccountType *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
+	// example:
+	//
+	// 3
+	OuterDepartmentId *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// type_invalid
 	OuterDepartmentType *string `json:"OuterDepartmentType,omitempty" xml:"OuterDepartmentType,omitempty"`
-	OuterGroupIds       *string `json:"OuterGroupIds,omitempty" xml:"OuterGroupIds,omitempty"`
-	OuterGroupType      *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
-	RealName            *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// example:
+	//
+	// ["222","333","444"]
+	OuterGroupIds *string `json:"OuterGroupIds,omitempty" xml:"OuterGroupIds,omitempty"`
+	// example:
+	//
+	// mybank
+	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
+	RealName       *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
 }
 
 func (s AddOuterAccountRequest) String() string {
@@ -331,11 +463,26 @@ func (s *AddOuterAccountRequest) SetRealName(v string) *AddOuterAccountRequest {
 }
 
 type AddOuterAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddOuterAccountResponseBody) String() string {
@@ -372,9 +519,9 @@ func (s *AddOuterAccountResponseBody) SetSuccess(v bool) *AddOuterAccountRespons
 }
 
 type AddOuterAccountResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddOuterAccountResponse) String() string {
@@ -401,11 +548,28 @@ func (s *AddOuterAccountResponse) SetBody(v *AddOuterAccountResponseBody) *AddOu
 }
 
 type AddSkillGroupRequest struct {
-	OuterDepartmentId   *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// 123456
+	OuterDepartmentId *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// type_invalid
 	OuterDepartmentType *string `json:"OuterDepartmentType,omitempty" xml:"OuterDepartmentType,omitempty"`
-	OuterGroupId        *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
-	OuterGroupName      *string `json:"OuterGroupName,omitempty" xml:"OuterGroupName,omitempty"`
-	OuterGroupType      *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// This parameter is required.
+	OuterGroupName *string `json:"OuterGroupName,omitempty" xml:"OuterGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mybank
+	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
 }
 
 func (s AddSkillGroupRequest) String() string {
@@ -442,11 +606,26 @@ func (s *AddSkillGroupRequest) SetOuterGroupType(v string) *AddSkillGroupRequest
 }
 
 type AddSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddSkillGroupResponseBody) String() string {
@@ -483,9 +662,9 @@ func (s *AddSkillGroupResponseBody) SetSuccess(v bool) *AddSkillGroupResponseBod
 }
 
 type AddSkillGroupResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSkillGroupResponse) String() string {
@@ -512,38 +691,128 @@ func (s *AddSkillGroupResponse) SetBody(v *AddSkillGroupResponseBody) *AddSkillG
 }
 
 type AiccsSmartCallRequest struct {
-	ActionCodeBreak      *bool   `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
-	ActionCodeTimeBreak  *int32  `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
-	AsrAlsAmId           *string `json:"AsrAlsAmId,omitempty" xml:"AsrAlsAmId,omitempty"`
-	AsrBaseId            *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
-	BackgroundFileCode   *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
-	BackgroundSpeed      *int32  `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
-	BackgroundVolume     *int32  `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	DynamicId            *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	EnableITN            *bool   `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
-	MuteTime             *int32  `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PauseTime            *int32  `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
-	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// example:
+	//
+	// true
+	ActionCodeBreak *bool `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
+	// example:
+	//
+	// 120
+	ActionCodeTimeBreak *int32 `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
+	// example:
+	//
+	// 23387****
+	AsrAlsAmId *string `json:"AsrAlsAmId,omitempty" xml:"AsrAlsAmId,omitempty"`
+	// example:
+	//
+	// customer_service_8k
+	AsrBaseId *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
+	// example:
+	//
+	// bf71664d30d2478fb8cb8c39c6b6****
+	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	// example:
+	//
+	// 6689****
+	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav
+	BackgroundFileCode *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
+	// example:
+	//
+	// 1
+	BackgroundSpeed *int32 `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
+	// example:
+	//
+	// 1
+	BackgroundVolume *int32 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1862222****
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571000****
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// example:
+	//
+	// 2234****
+	DynamicId *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
+	// example:
+	//
+	// fasle
+	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// example:
+	//
+	// true
+	EnableITN *bool `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
+	// example:
+	//
+	// 10000
+	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	// example:
+	//
+	// 222356****
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 800
+	PauseTime *int32 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+	// example:
+	//
+	// 1
+	PlayTimes *int32 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
+	// example:
+	//
+	// aiccs
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// example:
+	//
+	// true
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	TtsConf              *bool   `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
-	TtsSpeed             *int32  `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	TtsStyle             *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	TtsVolume            *int32  `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	VoiceCodeParam       *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// example:
+	//
+	// 120
+	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// true
+	TtsConf *bool `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
+	// example:
+	//
+	// 100
+	TtsSpeed *int32 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
+	// example:
+	//
+	// xiaoyun
+	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
+	// example:
+	//
+	// 10
+	TtsVolume *int32 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav,$name$
+	VoiceCode      *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	VoiceCodeParam *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
+	// example:
+	//
+	// 1
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s AiccsSmartCallRequest) String() string {
@@ -715,9 +984,21 @@ func (s *AiccsSmartCallRequest) SetVolume(v int32) *AiccsSmartCallRequest {
 }
 
 type AiccsSmartCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 116012854210^10281427****
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -750,9 +1031,9 @@ func (s *AiccsSmartCallResponseBody) SetRequestId(v string) *AiccsSmartCallRespo
 }
 
 type AiccsSmartCallResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AiccsSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AiccsSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AiccsSmartCallResponse) String() string {
@@ -779,10 +1060,22 @@ func (s *AiccsSmartCallResponse) SetBody(v *AiccsSmartCallResponseBody) *AiccsSm
 }
 
 type AiccsSmartCallOperateRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// example:
+	//
+	// 116012854210^102814279****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// parallelBridge
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// Param
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// example:
+	//
+	// aiccs
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -832,9 +1125,21 @@ func (s *AiccsSmartCallOperateRequest) SetResourceOwnerId(v int64) *AiccsSmartCa
 }
 
 type AiccsSmartCallOperateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -867,9 +1172,9 @@ func (s *AiccsSmartCallOperateResponseBody) SetRequestId(v string) *AiccsSmartCa
 }
 
 type AiccsSmartCallOperateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AiccsSmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AiccsSmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AiccsSmartCallOperateResponse) String() string {
@@ -896,12 +1201,34 @@ func (s *AiccsSmartCallOperateResponse) SetBody(v *AiccsSmartCallOperateResponse
 }
 
 type AnswerCallRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId       *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s AnswerCallRequest) String() string {
@@ -943,10 +1270,22 @@ func (s *AnswerCallRequest) SetJobId(v string) *AnswerCallRequest {
 }
 
 type AnswerCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AnswerCallResponseBody) String() string {
@@ -978,9 +1317,9 @@ func (s *AnswerCallResponseBody) SetSuccess(v bool) *AnswerCallResponseBody {
 }
 
 type AnswerCallResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AnswerCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnswerCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AnswerCallResponse) String() string {
@@ -1011,7 +1350,12 @@ type AttachTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachTaskRequest) String() string {
@@ -1048,11 +1392,26 @@ func (s *AttachTaskRequest) SetTaskId(v int64) *AttachTaskRequest {
 }
 
 type AttachTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 10
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AttachTaskResponseBody) String() string {
@@ -1089,9 +1448,9 @@ func (s *AttachTaskResponseBody) SetSuccess(v bool) *AttachTaskResponseBody {
 }
 
 type AttachTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachTaskResponse) String() string {
@@ -1118,13 +1477,17 @@ func (s *AttachTaskResponse) SetBody(v *AttachTaskResponseBody) *AttachTaskRespo
 }
 
 type BatchCreateQualityProjectsRequest struct {
-	AnalysisIds      []*int64  `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
-	ChannelTouchType []*int32  `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
-	CheckFreqType    *int32    `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
-	InstanceList     []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	ProjectName      *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TimeRangeEnd     *string   `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	TimeRangeStart   *string   `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
+	// This parameter is required.
+	AnalysisIds      []*int64 `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
+	ChannelTouchType []*int32 `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
+	// This parameter is required.
+	CheckFreqType *int32 `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	// This parameter is required.
+	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TimeRangeEnd   *string `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
+	TimeRangeStart *string `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
 }
 
 func (s BatchCreateQualityProjectsRequest) String() string {
@@ -1241,9 +1604,9 @@ func (s *BatchCreateQualityProjectsResponseBodyData) SetVersion(v int32) *BatchC
 }
 
 type BatchCreateQualityProjectsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchCreateQualityProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreateQualityProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchCreateQualityProjectsResponse) String() string {
@@ -1273,7 +1636,12 @@ type CancelTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelTaskRequest) String() string {
@@ -1305,11 +1673,26 @@ func (s *CancelTaskRequest) SetTaskId(v int64) *CancelTaskRequest {
 }
 
 type CancelTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelTaskResponseBody) String() string {
@@ -1346,9 +1729,9 @@ func (s *CancelTaskResponseBody) SetSuccess(v bool) *CancelTaskResponseBody {
 }
 
 type CancelTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelTaskResponse) String() string {
@@ -1375,10 +1758,28 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type ChangeChatAgentStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// requestLogout
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
 }
 
 func (s ChangeChatAgentStatusRequest) String() string {
@@ -1410,12 +1811,30 @@ func (s *ChangeChatAgentStatusRequest) SetMethod(v string) *ChangeChatAgentStatu
 }
 
 type ChangeChatAgentStatusResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 0
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DF6A3FB7-A5AA-43BE-A65B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChangeChatAgentStatusResponseBody) String() string {
@@ -1457,9 +1876,9 @@ func (s *ChangeChatAgentStatusResponseBody) SetSuccess(v bool) *ChangeChatAgentS
 }
 
 type ChangeChatAgentStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeChatAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeChatAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeChatAgentStatusResponse) String() string {
@@ -1486,9 +1905,12 @@ func (s *ChangeChatAgentStatusResponse) SetBody(v *ChangeChatAgentStatusResponse
 }
 
 type ChangeQualityProjectStatusRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ChangeQualityProjectStatusRequest) String() string {
@@ -1556,9 +1978,9 @@ func (s *ChangeQualityProjectStatusResponseBody) SetSuccess(v bool) *ChangeQuali
 }
 
 type ChangeQualityProjectStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeQualityProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeQualityProjectStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeQualityProjectStatusResponse) String() string {
@@ -1585,9 +2007,23 @@ func (s *ChangeQualityProjectStatusResponse) SetBody(v *ChangeQualityProjectStat
 }
 
 type CreateAgentRequest struct {
-	AccountName      *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ClientToken      *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisplayName      *string  `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId       *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SkillGroupId     []*int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty" type:"Repeated"`
 	SkillGroupIdList []*int64 `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
@@ -1632,12 +2068,30 @@ func (s *CreateAgentRequest) SetSkillGroupIdList(v []*int64) *CreateAgentRequest
 }
 
 type CreateAgentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2578****
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAgentResponseBody) String() string {
@@ -1679,9 +2133,9 @@ func (s *CreateAgentResponseBody) SetSuccess(v bool) *CreateAgentResponseBody {
 }
 
 type CreateAgentResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAgentResponse) String() string {
@@ -1708,17 +2162,57 @@ func (s *CreateAgentResponse) SetBody(v *CreateAgentResponseBody) *CreateAgentRe
 }
 
 type CreateAiOutboundTaskRequest struct {
-	ConcurrentRate   *int32                                 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionTime    *string                                `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	ForecastCallRate *float32                               `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	HandlerId        *int64                                 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	InstanceId       *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name             *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	NumRepeated      *int32                                 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	OutboundNums     []*string                              `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
-	RecallRule       *CreateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
-	Type             *int32                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 10
+	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 1.5
+	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	// This parameter is required.
+	OutboundNums []*string                              `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
+	RecallRule   *CreateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateAiOutboundTaskRequest) String() string {
@@ -1785,7 +2279,13 @@ func (s *CreateAiOutboundTaskRequest) SetType(v int32) *CreateAiOutboundTaskRequ
 }
 
 type CreateAiOutboundTaskRequestRecallRule struct {
-	Count    *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 }
 
@@ -1808,17 +2308,57 @@ func (s *CreateAiOutboundTaskRequestRecallRule) SetInterval(v int32) *CreateAiOu
 }
 
 type CreateAiOutboundTaskShrinkRequest struct {
-	ConcurrentRate     *int32   `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description        *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionTime      *string  `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	ForecastCallRate   *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	HandlerId          *int64   `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name               *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NumRepeated        *int32   `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	OutboundNumsShrink *string  `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty"`
-	RecallRuleShrink   *string  `json:"RecallRule,omitempty" xml:"RecallRule,omitempty"`
-	Type               *int32   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 10
+	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 1.5
+	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	// This parameter is required.
+	OutboundNumsShrink *string `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty"`
+	RecallRuleShrink   *string `json:"RecallRule,omitempty" xml:"RecallRule,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateAiOutboundTaskShrinkRequest) String() string {
@@ -1885,11 +2425,26 @@ func (s *CreateAiOutboundTaskShrinkRequest) SetType(v int32) *CreateAiOutboundTa
 }
 
 type CreateAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAiOutboundTaskResponseBody) String() string {
@@ -1926,9 +2481,9 @@ func (s *CreateAiOutboundTaskResponseBody) SetSuccess(v bool) *CreateAiOutboundT
 }
 
 type CreateAiOutboundTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAiOutboundTaskResponse) String() string {
@@ -1955,8 +2510,18 @@ func (s *CreateAiOutboundTaskResponse) SetBody(v *CreateAiOutboundTaskResponseBo
 }
 
 type CreateAiOutboundTaskBatchRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateAiOutboundTaskBatchRequest) String() string {
@@ -1978,11 +2543,26 @@ func (s *CreateAiOutboundTaskBatchRequest) SetTaskId(v int64) *CreateAiOutboundT
 }
 
 type CreateAiOutboundTaskBatchResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAiOutboundTaskBatchResponseBody) String() string {
@@ -2019,9 +2599,9 @@ func (s *CreateAiOutboundTaskBatchResponseBody) SetSuccess(v bool) *CreateAiOutb
 }
 
 type CreateAiOutboundTaskBatchResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAiOutboundTaskBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAiOutboundTaskBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAiOutboundTaskBatchResponse) String() string {
@@ -2048,8 +2628,14 @@ func (s *CreateAiOutboundTaskBatchResponse) SetBody(v *CreateAiOutboundTaskBatch
 }
 
 type CreateDepartmentRequest struct {
+	// This parameter is required.
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CreateDepartmentRequest) String() string {
@@ -2071,12 +2657,30 @@ func (s *CreateDepartmentRequest) SetInstanceId(v string) *CreateDepartmentReque
 }
 
 type CreateDepartmentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDepartmentResponseBody) String() string {
@@ -2118,9 +2722,9 @@ func (s *CreateDepartmentResponseBody) SetSuccess(v bool) *CreateDepartmentRespo
 }
 
 type CreateDepartmentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDepartmentResponse) String() string {
@@ -2147,23 +2751,32 @@ func (s *CreateDepartmentResponse) SetBody(v *CreateDepartmentResponseBody) *Cre
 }
 
 type CreateOutboundTaskRequest struct {
-	Ani           *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
-	CallInfos     *string `json:"CallInfos,omitempty" xml:"CallInfos,omitempty"`
-	DepartmentId  *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExtAttrs      *string `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	Ani          *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
+	CallInfos    *string `json:"CallInfos,omitempty" xml:"CallInfos,omitempty"`
+	DepartmentId *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExtAttrs  *string `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Model         *int32  `json:"Model,omitempty" xml:"Model,omitempty"`
 	RetryInterval *int32  `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
 	RetryTime     *int32  `json:"RetryTime,omitempty" xml:"RetryTime,omitempty"`
-	SkillGroup    *int64  `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
-	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType      *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	SkillGroup *int64 `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	// This parameter is required.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	TaskType *int32 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateOutboundTaskRequest) String() string {
@@ -2301,9 +2914,9 @@ func (s *CreateOutboundTaskResponseBody) SetSuccess(v bool) *CreateOutboundTaskR
 }
 
 type CreateOutboundTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOutboundTaskResponse) String() string {
@@ -2330,17 +2943,22 @@ func (s *CreateOutboundTaskResponse) SetBody(v *CreateOutboundTaskResponseBody) 
 }
 
 type CreateQualityProjectRequest struct {
-	AnalysisIds      []*int64  `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
-	ChannelTouchType []*int32  `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
-	CheckFreqType    *int32    `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
-	DepList          []*int64  `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
-	GroupList        []*int64  `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProjectName      *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ScopeType        *int32    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	ServicerList     []*string `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
-	TimeRangeEnd     *string   `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	TimeRangeStart   *string   `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
+	// This parameter is required.
+	AnalysisIds      []*int64 `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
+	ChannelTouchType []*int32 `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
+	// This parameter is required.
+	CheckFreqType *int32   `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	DepList       []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
+	GroupList     []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	ScopeType      *int32    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ServicerList   []*string `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
+	TimeRangeEnd   *string   `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
+	TimeRangeStart *string   `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
 }
 
 func (s CreateQualityProjectRequest) String() string {
@@ -2477,9 +3095,9 @@ func (s *CreateQualityProjectResponseBodyData) SetVersion(v int32) *CreateQualit
 }
 
 type CreateQualityProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateQualityProjectResponse) String() string {
@@ -2506,11 +3124,16 @@ func (s *CreateQualityProjectResponse) SetBody(v *CreateQualityProjectResponseBo
 }
 
 type CreateQualityRuleRequest struct {
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	KeyWords   []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
-	MatchType  *int32    `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleTag    *int32    `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	KeyWords []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	RuleTag *int32 `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
 }
 
 func (s CreateQualityRuleRequest) String() string {
@@ -2582,9 +3205,9 @@ func (s *CreateQualityRuleResponseBody) SetSuccess(v bool) *CreateQualityRuleRes
 }
 
 type CreateQualityRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateQualityRuleResponse) String() string {
@@ -2611,12 +3234,29 @@ func (s *CreateQualityRuleResponse) SetBody(v *CreateQualityRuleResponseBody) *C
 }
 
 type CreateSkillGroupRequest struct {
-	ChannelType    *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-****-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 123
+	DepartmentId *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 
@@ -2664,11 +3304,26 @@ func (s *CreateSkillGroupRequest) SetSkillGroupName(v string) *CreateSkillGroupR
 }
 
 type CreateSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSkillGroupResponseBody) String() string {
@@ -2705,9 +3360,9 @@ func (s *CreateSkillGroupResponseBody) SetSuccess(v bool) *CreateSkillGroupRespo
 }
 
 type CreateSkillGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSkillGroupResponse) String() string {
@@ -2734,22 +3389,65 @@ func (s *CreateSkillGroupResponse) SetBody(v *CreateSkillGroupResponseBody) *Cre
 }
 
 type CreateTaskRequest struct {
-	CallString           *string `json:"CallString,omitempty" xml:"CallString,omitempty"`
-	CallStringType       *string `json:"CallStringType,omitempty" xml:"CallStringType,omitempty"`
+	CallString *string `json:"CallString,omitempty" xml:"CallString,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// JSON
+	CallStringType *string `json:"CallStringType,omitempty" xml:"CallStringType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****5678,0571****5679
 	Caller               *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetryCount           *int32  `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	RetryFlag            *int32  `json:"RetryFlag,omitempty" xml:"RetryFlag,omitempty"`
-	RetryInterval        *int32  `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	RetryStatusCode      *string `json:"RetryStatusCode,omitempty" xml:"RetryStatusCode,omitempty"`
-	RobotId              *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	SeatCount            *string `json:"SeatCount,omitempty" xml:"SeatCount,omitempty"`
-	StartNow             *bool   `json:"StartNow,omitempty" xml:"StartNow,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	WorkDay              *string `json:"WorkDay,omitempty" xml:"WorkDay,omitempty"`
-	WorkTimeList         *string `json:"WorkTimeList,omitempty" xml:"WorkTimeList,omitempty"`
+	// example:
+	//
+	// 2
+	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// example:
+	//
+	// 1
+	RetryFlag *int32 `json:"RetryFlag,omitempty" xml:"RetryFlag,omitempty"`
+	// example:
+	//
+	// 2
+	RetryInterval *int32 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// example:
+	//
+	// 200010,200011
+	RetryStatusCode *string `json:"RetryStatusCode,omitempty" xml:"RetryStatusCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	RobotId *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SeatCount *string `json:"SeatCount,omitempty" xml:"SeatCount,omitempty"`
+	StartNow  *bool   `json:"StartNow,omitempty" xml:"StartNow,omitempty"`
+	// This parameter is required.
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	WorkDay *string `json:"WorkDay,omitempty" xml:"WorkDay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10:00-12:00,13:00-14:00
+	WorkTimeList *string `json:"WorkTimeList,omitempty" xml:"WorkTimeList,omitempty"`
 }
 
 func (s CreateTaskRequest) String() string {
@@ -2841,11 +3539,26 @@ func (s *CreateTaskRequest) SetWorkTimeList(v string) *CreateTaskRequest {
 }
 
 type CreateTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTaskResponseBody) String() string {
@@ -2882,9 +3595,9 @@ func (s *CreateTaskResponseBody) SetSuccess(v bool) *CreateTaskResponseBody {
 }
 
 type CreateTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTaskResponse) String() string {
@@ -2911,11 +3624,34 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 }
 
 type CreateThirdSsoAgentRequest struct {
-	AccountId     *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName   *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ClientId      *string  `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientToken   *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisplayName   *string  `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountId1
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountName1
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
 	InstanceId    *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RoleIds       []*int64 `json:"RoleIds,omitempty" xml:"RoleIds,omitempty" type:"Repeated"`
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty" type:"Repeated"`
@@ -2970,13 +3706,32 @@ func (s *CreateThirdSsoAgentRequest) SetSkillGroupIds(v []*int64) *CreateThirdSs
 }
 
 type CreateThirdSsoAgentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 123456
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateThirdSsoAgentResponseBody) String() string {
@@ -3018,9 +3773,9 @@ func (s *CreateThirdSsoAgentResponseBody) SetSuccess(v bool) *CreateThirdSsoAgen
 }
 
 type CreateThirdSsoAgentResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateThirdSsoAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateThirdSsoAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateThirdSsoAgentResponse) String() string {
@@ -3047,9 +3802,22 @@ func (s *CreateThirdSsoAgentResponse) SetBody(v *CreateThirdSsoAgentResponseBody
 }
 
 type DeleteAgentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteAgentRequest) String() string {
@@ -3076,11 +3844,26 @@ func (s *DeleteAgentRequest) SetInstanceId(v string) *DeleteAgentRequest {
 }
 
 type DeleteAgentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAgentResponseBody) String() string {
@@ -3117,9 +3900,9 @@ func (s *DeleteAgentResponseBody) SetSuccess(v bool) *DeleteAgentResponseBody {
 }
 
 type DeleteAgentResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAgentResponse) String() string {
@@ -3146,8 +3929,18 @@ func (s *DeleteAgentResponse) SetBody(v *DeleteAgentResponseBody) *DeleteAgentRe
 }
 
 type DeleteAiOutboundTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteAiOutboundTaskRequest) String() string {
@@ -3169,10 +3962,22 @@ func (s *DeleteAiOutboundTaskRequest) SetTaskId(v int64) *DeleteAiOutboundTaskRe
 }
 
 type DeleteAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAiOutboundTaskResponseBody) String() string {
@@ -3204,9 +4009,9 @@ func (s *DeleteAiOutboundTaskResponseBody) SetSuccess(v bool) *DeleteAiOutboundT
 }
 
 type DeleteAiOutboundTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAiOutboundTaskResponse) String() string {
@@ -3233,8 +4038,18 @@ func (s *DeleteAiOutboundTaskResponse) SetBody(v *DeleteAiOutboundTaskResponseBo
 }
 
 type DeleteDepartmentRequest struct {
-	DepartmentId *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteDepartmentRequest) String() string {
@@ -3256,12 +4071,30 @@ func (s *DeleteDepartmentRequest) SetInstanceId(v string) *DeleteDepartmentReque
 }
 
 type DeleteDepartmentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// seccessful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDepartmentResponseBody) String() string {
@@ -3303,9 +4136,9 @@ func (s *DeleteDepartmentResponseBody) SetSuccess(v bool) *DeleteDepartmentRespo
 }
 
 type DeleteDepartmentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDepartmentResponse) String() string {
@@ -3332,8 +4165,18 @@ func (s *DeleteDepartmentResponse) SetBody(v *DeleteDepartmentResponseBody) *Del
 }
 
 type DeleteHotlineNumberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 05710000****
 	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteHotlineNumberRequest) String() string {
@@ -3355,11 +4198,26 @@ func (s *DeleteHotlineNumberRequest) SetInstanceId(v string) *DeleteHotlineNumbe
 }
 
 type DeleteHotlineNumberResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHotlineNumberResponseBody) String() string {
@@ -3396,9 +4254,9 @@ func (s *DeleteHotlineNumberResponseBody) SetSuccess(v bool) *DeleteHotlineNumbe
 }
 
 type DeleteHotlineNumberResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteHotlineNumberResponse) String() string {
@@ -3425,8 +4283,10 @@ func (s *DeleteHotlineNumberResponse) SetBody(v *DeleteHotlineNumberResponseBody
 }
 
 type DeleteOutboundTaskRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId *int64  `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	OutboundTaskId *int64 `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
 }
 
 func (s DeleteOutboundTaskRequest) String() string {
@@ -3489,9 +4349,9 @@ func (s *DeleteOutboundTaskResponseBody) SetSuccess(v bool) *DeleteOutboundTaskR
 }
 
 type DeleteOutboundTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteOutboundTaskResponse) String() string {
@@ -3518,7 +4378,17 @@ func (s *DeleteOutboundTaskResponse) SetBody(v *DeleteOutboundTaskResponseBody) 
 }
 
 type DeleteOuterAccountRequest struct {
-	OuterAccountId   *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	OuterAccountId *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun
 	OuterAccountType *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
 }
 
@@ -3541,11 +4411,26 @@ func (s *DeleteOuterAccountRequest) SetOuterAccountType(v string) *DeleteOuterAc
 }
 
 type DeleteOuterAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteOuterAccountResponseBody) String() string {
@@ -3582,9 +4467,9 @@ func (s *DeleteOuterAccountResponseBody) SetSuccess(v bool) *DeleteOuterAccountR
 }
 
 type DeleteOuterAccountResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteOuterAccountResponse) String() string {
@@ -3611,6 +4496,7 @@ func (s *DeleteOuterAccountResponse) SetBody(v *DeleteOuterAccountResponseBody) 
 }
 
 type DeleteQualityProjectRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
@@ -3675,9 +4561,9 @@ func (s *DeleteQualityProjectResponseBody) SetSuccess(v bool) *DeleteQualityProj
 }
 
 type DeleteQualityProjectResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteQualityProjectResponse) String() string {
@@ -3704,7 +4590,9 @@ func (s *DeleteQualityProjectResponse) SetBody(v *DeleteQualityProjectResponseBo
 }
 
 type DeleteQualityRuleRequest struct {
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3768,9 +4656,9 @@ func (s *DeleteQualityRuleResponseBody) SetSuccess(v bool) *DeleteQualityRuleRes
 }
 
 type DeleteQualityRuleResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteQualityRuleResponse) String() string {
@@ -3797,7 +4685,13 @@ func (s *DeleteQualityRuleResponse) SetBody(v *DeleteQualityRuleResponseBody) *D
 }
 
 type DeleteSkillGroupRequest struct {
-	OuterGroupId   *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// example:
+	//
+	// 123456
+	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// example:
+	//
+	// 2
 	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
 }
 
@@ -3820,11 +4714,26 @@ func (s *DeleteSkillGroupRequest) SetOuterGroupType(v string) *DeleteSkillGroupR
 }
 
 type DeleteSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSkillGroupResponseBody) String() string {
@@ -3861,9 +4770,9 @@ func (s *DeleteSkillGroupResponseBody) SetSuccess(v bool) *DeleteSkillGroupRespo
 }
 
 type DeleteSkillGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSkillGroupResponse) String() string {
@@ -3890,14 +4799,29 @@ func (s *DeleteSkillGroupResponse) SetBody(v *DeleteSkillGroupResponseBody) *Del
 }
 
 type DescribeRecordDataRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Acid                 *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 2235****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// BUC_TYPE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// 1004849****
+	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// aiccs
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecLevel             *int32  `json:"SecLevel,omitempty" xml:"SecLevel,omitempty"`
+	// example:
+	//
+	// 2
+	SecLevel *int32 `json:"SecLevel,omitempty" xml:"SecLevel,omitempty"`
 }
 
 func (s DescribeRecordDataRequest) String() string {
@@ -3949,11 +4873,29 @@ func (s *DescribeRecordDataRequest) SetSecLevel(v int32) *DescribeRecordDataRequ
 }
 
 type DescribeRecordDataResponseBody struct {
-	Acid      *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OssLink   *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
+	// example:
+	//
+	// 1004849****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// 1212****
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// https://****
+	OssLink *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3996,9 +4938,9 @@ func (s *DescribeRecordDataResponseBody) SetRequestId(v string) *DescribeRecordD
 }
 
 type DescribeRecordDataResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRecordDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRecordDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRecordDataResponse) String() string {
@@ -4025,19 +4967,27 @@ func (s *DescribeRecordDataResponse) SetBody(v *DescribeRecordDataResponseBody) 
 }
 
 type EditQualityProjectRequest struct {
-	AnalysisIds      []*int64  `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
-	ChannelTouchType []*int32  `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
-	CheckFreqType    *int32    `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
-	DepList          []*int64  `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
-	GroupList        []*int64  `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProjectId        *int64    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName      *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion   *int32    `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
-	ScopeType        *int32    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	ServicerList     []*string `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
-	TimeRangeEnd     *string   `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
-	TimeRangeStart   *string   `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
+	// This parameter is required.
+	AnalysisIds []*int64 `json:"AnalysisIds,omitempty" xml:"AnalysisIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ChannelTouchType []*int32 `json:"ChannelTouchType,omitempty" xml:"ChannelTouchType,omitempty" type:"Repeated"`
+	// This parameter is required.
+	CheckFreqType *int32   `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	DepList       []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
+	GroupList     []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	ProjectVersion *int32 `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// This parameter is required.
+	ScopeType      *int32    `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ServicerList   []*string `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
+	TimeRangeEnd   *string   `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
+	TimeRangeStart *string   `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
 }
 
 func (s EditQualityProjectRequest) String() string {
@@ -4184,9 +5134,9 @@ func (s *EditQualityProjectResponseBodyData) SetVersion(v int32) *EditQualityPro
 }
 
 type EditQualityProjectResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditQualityProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditQualityProjectResponse) String() string {
@@ -4213,12 +5163,18 @@ func (s *EditQualityProjectResponse) SetBody(v *EditQualityProjectResponseBody) 
 }
 
 type EditQualityRuleRequest struct {
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	KeyWords      []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
-	MatchType     *int32    `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	QualityRuleId *int64    `json:"QualityRuleId,omitempty" xml:"QualityRuleId,omitempty"`
-	RuleTag       *int32    `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	KeyWords []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MatchType *int32 `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	QualityRuleId *int64 `json:"QualityRuleId,omitempty" xml:"QualityRuleId,omitempty"`
+	// This parameter is required.
+	RuleTag *int32 `json:"RuleTag,omitempty" xml:"RuleTag,omitempty"`
 }
 
 func (s EditQualityRuleRequest) String() string {
@@ -4295,9 +5251,9 @@ func (s *EditQualityRuleResponseBody) SetSuccess(v bool) *EditQualityRuleRespons
 }
 
 type EditQualityRuleResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditQualityRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditQualityRuleResponse) String() string {
@@ -4324,8 +5280,10 @@ func (s *EditQualityRuleResponse) SetBody(v *EditQualityRuleResponseBody) *EditQ
 }
 
 type EditQualityRuleTagRequest struct {
+	// This parameter is required.
 	AnalysisTypes []*EditQualityRuleTagRequestAnalysisTypes `json:"AnalysisTypes,omitempty" xml:"AnalysisTypes,omitempty" type:"Repeated"`
-	InstanceId    *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s EditQualityRuleTagRequest) String() string {
@@ -4411,9 +5369,9 @@ func (s *EditQualityRuleTagResponseBody) SetSuccess(v bool) *EditQualityRuleTagR
 }
 
 type EditQualityRuleTagResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditQualityRuleTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditQualityRuleTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditQualityRuleTagResponse) String() string {
@@ -4440,8 +5398,18 @@ func (s *EditQualityRuleTagResponse) SetBody(v *EditQualityRuleTagResponseBody) 
 }
 
 type EncryptPhoneNumRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PhoneNum   *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130****0000
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 }
 
 func (s EncryptPhoneNumRequest) String() string {
@@ -4463,11 +5431,23 @@ func (s *EncryptPhoneNumRequest) SetPhoneNum(v string) *EncryptPhoneNumRequest {
 }
 
 type EncryptPhoneNumResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EncryptPhoneNumResponseBody) String() string {
@@ -4504,9 +5484,9 @@ func (s *EncryptPhoneNumResponseBody) SetSuccess(v bool) *EncryptPhoneNumRespons
 }
 
 type EncryptPhoneNumResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EncryptPhoneNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EncryptPhoneNumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EncryptPhoneNumResponse) String() string {
@@ -4533,13 +5513,38 @@ func (s *EncryptPhoneNumResponse) SetBody(v *EncryptPhoneNumResponseBody) *Encry
 }
 
 type FetchCallRequest struct {
-	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId           *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConnectionId     *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// example:
+	//
+	// 0
 	HoldConnectionId *string `json:"HoldConnectionId,omitempty" xml:"HoldConnectionId,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s FetchCallRequest) String() string {
@@ -4586,10 +5591,22 @@ func (s *FetchCallRequest) SetJobId(v string) *FetchCallRequest {
 }
 
 type FetchCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FetchCallResponseBody) String() string {
@@ -4621,9 +5638,9 @@ func (s *FetchCallResponseBody) SetSuccess(v bool) *FetchCallResponseBody {
 }
 
 type FetchCallResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FetchCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FetchCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FetchCallResponse) String() string {
@@ -4650,9 +5667,22 @@ func (s *FetchCallResponse) SetBody(v *FetchCallResponseBody) *FetchCallResponse
 }
 
 type FinishHotlineServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s FinishHotlineServiceRequest) String() string {
@@ -4679,11 +5709,26 @@ func (s *FinishHotlineServiceRequest) SetInstanceId(v string) *FinishHotlineServ
 }
 
 type FinishHotlineServiceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FinishHotlineServiceResponseBody) String() string {
@@ -4720,9 +5765,9 @@ func (s *FinishHotlineServiceResponseBody) SetSuccess(v bool) *FinishHotlineServ
 }
 
 type FinishHotlineServiceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FinishHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FinishHotlineServiceResponse) String() string {
@@ -4749,9 +5794,22 @@ func (s *FinishHotlineServiceResponse) SetBody(v *FinishHotlineServiceResponseBo
 }
 
 type GenerateWebSocketSignRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GenerateWebSocketSignRequest) String() string {
@@ -4778,12 +5836,30 @@ func (s *GenerateWebSocketSignRequest) SetInstanceId(v string) *GenerateWebSocke
 }
 
 type GenerateWebSocketSignResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// dnthF_oinHg7JMJDmKqex3UxDD7
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GenerateWebSocketSignResponseBody) String() string {
@@ -4825,9 +5901,9 @@ func (s *GenerateWebSocketSignResponseBody) SetSuccess(v bool) *GenerateWebSocke
 }
 
 type GenerateWebSocketSignResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateWebSocketSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateWebSocketSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateWebSocketSignResponse) String() string {
@@ -4854,9 +5930,22 @@ func (s *GenerateWebSocketSignResponse) SetBody(v *GenerateWebSocketSignResponse
 }
 
 type GetAgentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetAgentRequest) String() string {
@@ -4883,11 +5972,23 @@ func (s *GetAgentRequest) SetInstanceId(v string) *GetAgentRequest {
 }
 
 type GetAgentResponseBody struct {
-	Code           *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentResponseBody) String() string {
@@ -4924,12 +6025,24 @@ func (s *GetAgentResponseBody) SetSuccess(v bool) *GetAgentResponseBody {
 }
 
 type GetAgentResponseBodyData struct {
-	AccountName *string                              `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 222222
 	AgentId     *int64                               `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	DisplayName *string                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	GroupList   []*GetAgentResponseBodyDataGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	Status      *int32                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId    *int64                               `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetAgentResponseBodyData) String() string {
@@ -4971,11 +6084,17 @@ func (s *GetAgentResponseBodyData) SetTenantId(v int64) *GetAgentResponseBodyDat
 }
 
 type GetAgentResponseBodyDataGroupList struct {
-	ChannelType  *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillGroupId *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123456
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s GetAgentResponseBodyDataGroupList) String() string {
@@ -5012,9 +6131,9 @@ func (s *GetAgentResponseBodyDataGroupList) SetSkillGroupId(v int64) *GetAgentRe
 }
 
 type GetAgentResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentResponse) String() string {
@@ -5041,13 +6160,30 @@ func (s *GetAgentResponse) SetBody(v *GetAgentResponseBody) *GetAgentResponse {
 }
 
 type GetAgentBasisStatusRequest struct {
-	AgentIds    []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
 	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate     *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate   *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetAgentBasisStatusRequest) String() string {
@@ -5095,12 +6231,29 @@ func (s *GetAgentBasisStatusRequest) SetStartDate(v int64) *GetAgentBasisStatusR
 
 type GetAgentBasisStatusShrinkRequest struct {
 	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink   *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate        *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate      *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetAgentBasisStatusShrinkRequest) String() string {
@@ -5147,11 +6300,23 @@ func (s *GetAgentBasisStatusShrinkRequest) SetStartDate(v int64) *GetAgentBasisS
 }
 
 type GetAgentBasisStatusResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAgentBasisStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentBasisStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentBasisStatusResponseBody) String() string {
@@ -5188,10 +6353,19 @@ func (s *GetAgentBasisStatusResponseBody) SetSuccess(v string) *GetAgentBasisSta
 }
 
 type GetAgentBasisStatusResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetAgentBasisStatusResponseBodyData) String() string {
@@ -5223,9 +6397,9 @@ func (s *GetAgentBasisStatusResponseBodyData) SetTotalNum(v int32) *GetAgentBasi
 }
 
 type GetAgentBasisStatusResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentBasisStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentBasisStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentBasisStatusResponse) String() string {
@@ -5252,7 +6426,9 @@ func (s *GetAgentBasisStatusResponse) SetBody(v *GetAgentBasisStatusResponseBody
 }
 
 type GetAgentByIdRequest struct {
-	AgentId    *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// This parameter is required.
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5369,9 +6545,9 @@ func (s *GetAgentByIdResponseBodyData) SetShowName(v string) *GetAgentByIdRespon
 }
 
 type GetAgentByIdResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentByIdResponse) String() string {
@@ -5398,16 +6574,42 @@ func (s *GetAgentByIdResponse) SetBody(v *GetAgentByIdResponseBody) *GetAgentByI
 }
 
 type GetAgentDetailReportRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true/false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true/false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// day
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentDetailReportRequest) String() string {
@@ -5469,16 +6671,42 @@ func (s *GetAgentDetailReportRequest) SetTimeLatitudeType(v string) *GetAgentDet
 }
 
 type GetAgentDetailReportShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true/false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true/false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// day
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentDetailReportShrinkRequest) String() string {
@@ -5540,11 +6768,23 @@ func (s *GetAgentDetailReportShrinkRequest) SetTimeLatitudeType(v string) *GetAg
 }
 
 type GetAgentDetailReportResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAgentDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentDetailReportResponseBody) String() string {
@@ -5581,10 +6821,22 @@ func (s *GetAgentDetailReportResponseBody) SetSuccess(v string) *GetAgentDetailR
 }
 
 type GetAgentDetailReportResponseBodyData struct {
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// {"t_wait":379322.0,"hotline_time_outcall_avg":"32.00","n_ringing":0,"t_outbound_40":0.0,"hotline_time_incall_avg":-1,"t_calldialing":0.0,"n_inbound":276,"servicer_id":"-1","call_in_sep_sat_cnt":13,"request_cnt":231,"n_not_ready_99":811,"t_work_outbound":49338.0,"hotline_rate_handle_in_60s":"96%","n_not_ready_login":811,"t_not_ready_login":0.0,"n_work_inbound":176,"}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetAgentDetailReportResponseBodyData) String() string {
@@ -5616,9 +6868,9 @@ func (s *GetAgentDetailReportResponseBodyData) SetTotalNum(v int64) *GetAgentDet
 }
 
 type GetAgentDetailReportResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentDetailReportResponse) String() string {
@@ -5645,11 +6897,22 @@ func (s *GetAgentDetailReportResponse) SetBody(v *GetAgentDetailReportResponseBo
 }
 
 type GetAgentIndexRealTimeRequest struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
 	GroupIds    []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s GetAgentIndexRealTimeRequest) String() string {
@@ -5686,11 +6949,23 @@ func (s *GetAgentIndexRealTimeRequest) SetPageSize(v int32) *GetAgentIndexRealTi
 }
 
 type GetAgentIndexRealTimeResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAgentIndexRealTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentIndexRealTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentIndexRealTimeResponseBody) String() string {
@@ -5727,11 +7002,20 @@ func (s *GetAgentIndexRealTimeResponseBody) SetSuccess(v bool) *GetAgentIndexRea
 }
 
 type GetAgentIndexRealTimeResponseBodyData struct {
-	Columns  []*GetAgentIndexRealTimeResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Page     *int32                                          `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{}                        `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	Total    *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	Columns []*GetAgentIndexRealTimeResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetAgentIndexRealTimeResponseBodyData) String() string {
@@ -5768,7 +7052,10 @@ func (s *GetAgentIndexRealTimeResponseBodyData) SetTotal(v int32) *GetAgentIndex
 }
 
 type GetAgentIndexRealTimeResponseBodyDataColumns struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// servicerId
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -5791,9 +7078,9 @@ func (s *GetAgentIndexRealTimeResponseBodyDataColumns) SetTitle(v string) *GetAg
 }
 
 type GetAgentIndexRealTimeResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentIndexRealTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentIndexRealTimeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentIndexRealTimeResponse) String() string {
@@ -5820,16 +7107,42 @@ func (s *GetAgentIndexRealTimeResponse) SetBody(v *GetAgentIndexRealTimeResponse
 }
 
 type GetAgentServiceStatusRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentServiceStatusRequest) String() string {
@@ -5891,16 +7204,42 @@ func (s *GetAgentServiceStatusRequest) SetTimeLatitudeType(v string) *GetAgentSe
 }
 
 type GetAgentServiceStatusShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentServiceStatusShrinkRequest) String() string {
@@ -5962,11 +7301,23 @@ func (s *GetAgentServiceStatusShrinkRequest) SetTimeLatitudeType(v string) *GetA
 }
 
 type GetAgentServiceStatusResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAgentServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentServiceStatusResponseBody) String() string {
@@ -6003,10 +7354,22 @@ func (s *GetAgentServiceStatusResponseBody) SetSuccess(v bool) *GetAgentServiceS
 }
 
 type GetAgentServiceStatusResponseBodyData struct {
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// {"online_40s_transfer_ready_cnt":81,"minute_id":"-1","online_unsatis_cnt":0,"online_simple_cnt":0,"average_queue_time":-1,"service_pickup":"2086","total_waiting_time":"981","online_service_time_len":58208,"online_direct_give_up_len":0,"break_ratio":"2%"}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetAgentServiceStatusResponseBodyData) String() string {
@@ -6038,9 +7401,9 @@ func (s *GetAgentServiceStatusResponseBodyData) SetTotalNum(v int64) *GetAgentSe
 }
 
 type GetAgentServiceStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentServiceStatusResponse) String() string {
@@ -6067,16 +7430,42 @@ func (s *GetAgentServiceStatusResponse) SetBody(v *GetAgentServiceStatusResponse
 }
 
 type GetAgentStatisticsRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentStatisticsRequest) String() string {
@@ -6138,16 +7527,42 @@ func (s *GetAgentStatisticsRequest) SetTimeLatitudeType(v string) *GetAgentStati
 }
 
 type GetAgentStatisticsShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetAgentStatisticsShrinkRequest) String() string {
@@ -6209,11 +7624,23 @@ func (s *GetAgentStatisticsShrinkRequest) SetTimeLatitudeType(v string) *GetAgen
 }
 
 type GetAgentStatisticsResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAgentStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAgentStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAgentStatisticsResponseBody) String() string {
@@ -6250,10 +7677,22 @@ func (s *GetAgentStatisticsResponseBody) SetSuccess(v string) *GetAgentStatistic
 }
 
 type GetAgentStatisticsResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// {"n_resttype_1":15,"t_outcall_speak":829747,"average_incoming_time":"8451.29","n_resttype_3":0,"minute_id":"-1","n_conference_speak":0,"n_resttype_2":0,"n_resttype_5":0,"n_resttype_4":0,"n_resttype_7":0,"n_resttype_6":0,"n_resttype_9":0,"n_resttype_8":0,"n_outcall_dial":25,"total_break_time":"58555","n_internal_speak":0,"n_send_step_transfer":7,"n_consulted_internal_speak":0}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetAgentStatisticsResponseBodyData) String() string {
@@ -6285,9 +7724,9 @@ func (s *GetAgentStatisticsResponseBodyData) SetTotalNum(v int32) *GetAgentStati
 }
 
 type GetAgentStatisticsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAgentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAgentStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAgentStatisticsResponse) String() string {
@@ -6314,7 +7753,17 @@ func (s *GetAgentStatisticsResponse) SetBody(v *GetAgentStatisticsResponseBody) 
 }
 
 type GetAiOutboundTaskBizDataRequest struct {
-	ChannelId  *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6337,11 +7786,23 @@ func (s *GetAiOutboundTaskBizDataRequest) SetInstanceId(v string) *GetAiOutbound
 }
 
 type GetAiOutboundTaskBizDataResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAiOutboundTaskBizDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAiOutboundTaskBizDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAiOutboundTaskBizDataResponseBody) String() string {
@@ -6378,10 +7839,22 @@ func (s *GetAiOutboundTaskBizDataResponseBody) SetSuccess(v bool) *GetAiOutbound
 }
 
 type GetAiOutboundTaskBizDataResponseBodyData struct {
-	BizData  *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
-	CaseId   *int64  `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// {"customer":123}
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// 123
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 158****0000
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAiOutboundTaskBizDataResponseBodyData) String() string {
@@ -6413,9 +7886,9 @@ func (s *GetAiOutboundTaskBizDataResponseBodyData) SetTaskId(v int64) *GetAiOutb
 }
 
 type GetAiOutboundTaskBizDataResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAiOutboundTaskBizDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAiOutboundTaskBizDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAiOutboundTaskBizDataResponse) String() string {
@@ -6442,8 +7915,18 @@ func (s *GetAiOutboundTaskBizDataResponse) SetBody(v *GetAiOutboundTaskBizDataRe
 }
 
 type GetAiOutboundTaskDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAiOutboundTaskDetailRequest) String() string {
@@ -6465,11 +7948,23 @@ func (s *GetAiOutboundTaskDetailRequest) SetTaskId(v int64) *GetAiOutboundTaskDe
 }
 
 type GetAiOutboundTaskDetailResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAiOutboundTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAiOutboundTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAiOutboundTaskDetailResponseBody) String() string {
@@ -6506,20 +8001,53 @@ func (s *GetAiOutboundTaskDetailResponseBody) SetSuccess(v bool) *GetAiOutboundT
 }
 
 type GetAiOutboundTaskDetailResponseBodyData struct {
-	ConcurrentRate   *int32                                             `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description      *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionTime    *string                                            `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	ForecastCallRate *float32                                           `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	HandlerId        *int64                                             `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	HandlerName      *string                                            `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	Name             *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	NumRepeated      *int32                                             `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	OutboundNums     []*string                                          `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
-	RecallRule       *GetAiOutboundTaskDetailResponseBodyDataRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
-	Status           *int32                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc       *string                                            `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TaskId           *int64                                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type             *int32                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 10
+	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 1.2
+	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// example:
+	//
+	// 123456
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// example:
+	//
+	// 热线技能组
+	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	NumRepeated  *int32                                             `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	OutboundNums []*string                                          `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
+	RecallRule   *GetAiOutboundTaskDetailResponseBodyDataRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 未开始
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAiOutboundTaskDetailResponseBodyData) String() string {
@@ -6601,7 +8129,13 @@ func (s *GetAiOutboundTaskDetailResponseBodyData) SetType(v int32) *GetAiOutboun
 }
 
 type GetAiOutboundTaskDetailResponseBodyDataRecallRule struct {
-	Count    *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 }
 
@@ -6624,9 +8158,9 @@ func (s *GetAiOutboundTaskDetailResponseBodyDataRecallRule) SetInterval(v int32)
 }
 
 type GetAiOutboundTaskDetailResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAiOutboundTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAiOutboundTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAiOutboundTaskDetailResponse) String() string {
@@ -6653,16 +8187,54 @@ func (s *GetAiOutboundTaskDetailResponse) SetBody(v *GetAiOutboundTaskDetailResp
 }
 
 type GetAiOutboundTaskExecDetailRequest struct {
-	BatchVersion    *int32  `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
-	CaseId          *int64  `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	CaseStatus      *int32  `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
-	CreateTimeEnd   *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PhoneNum        *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	TaskId          *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1
+	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// example:
+	//
+	// 123456
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 1
+	CaseStatus *int32 `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
+	// example:
+	//
+	// 1632290119000
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1632289999000
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 150****000
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAiOutboundTaskExecDetailRequest) String() string {
@@ -6724,11 +8296,23 @@ func (s *GetAiOutboundTaskExecDetailRequest) SetTaskId(v int64) *GetAiOutboundTa
 }
 
 type GetAiOutboundTaskExecDetailResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAiOutboundTaskExecDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAiOutboundTaskExecDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAiOutboundTaskExecDetailResponseBody) String() string {
@@ -6765,11 +8349,23 @@ func (s *GetAiOutboundTaskExecDetailResponseBody) SetSuccess(v bool) *GetAiOutbo
 }
 
 type GetAiOutboundTaskExecDetailResponseBodyData struct {
-	CurrentPage  *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	HasNextPage  *bool                                              `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
-	List         []*GetAiOutboundTaskExecDetailResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageSize     *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalResults *int32                                             `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// true
+	HasNextPage *bool                                              `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+	List        []*GetAiOutboundTaskExecDetailResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 199
+	TotalResults *int32 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s GetAiOutboundTaskExecDetailResponseBodyData) String() string {
@@ -6806,15 +8402,42 @@ func (s *GetAiOutboundTaskExecDetailResponseBodyData) SetTotalResults(v int32) *
 }
 
 type GetAiOutboundTaskExecDetailResponseBodyDataList struct {
-	BatchVersion   *int32  `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
-	BizData        *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
-	CallCount      *int32  `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
-	CaseId         *int64  `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// example:
+	//
+	// 123
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// 1
+	CallCount *int32 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
+	// example:
+	//
+	// 123456
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 1632289999000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 未接通
 	LastCallResult *string `json:"LastCallResult,omitempty" xml:"LastCallResult,omitempty"`
-	PhoneNum       *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc     *int32  `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// example:
+	//
+	// 150****0000
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 待呼叫
+	StatusDesc *int32 `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 }
 
 func (s GetAiOutboundTaskExecDetailResponseBodyDataList) String() string {
@@ -6871,9 +8494,9 @@ func (s *GetAiOutboundTaskExecDetailResponseBodyDataList) SetStatusDesc(v int32)
 }
 
 type GetAiOutboundTaskExecDetailResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAiOutboundTaskExecDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAiOutboundTaskExecDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAiOutboundTaskExecDetailResponse) String() string {
@@ -6900,14 +8523,46 @@ func (s *GetAiOutboundTaskExecDetailResponse) SetBody(v *GetAiOutboundTaskExecDe
 }
 
 type GetAiOutboundTaskListRequest struct {
-	CreateTimeEnd   *int64  `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	CreateTimeStart *int64  `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKey       *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1763****
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAiOutboundTaskListRequest) String() string {
@@ -6959,11 +8614,23 @@ func (s *GetAiOutboundTaskListRequest) SetType(v int32) *GetAiOutboundTaskListRe
 }
 
 type GetAiOutboundTaskListResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAiOutboundTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAiOutboundTaskListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAiOutboundTaskListResponseBody) String() string {
@@ -7000,11 +8667,23 @@ func (s *GetAiOutboundTaskListResponseBody) SetSuccess(v bool) *GetAiOutboundTas
 }
 
 type GetAiOutboundTaskListResponseBodyData struct {
-	CurrentPage  *int32                                       `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	HasNextPage  *bool                                        `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
-	List         []*GetAiOutboundTaskListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageSize     *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalResults *int32                                       `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// false
+	HasNextPage *bool                                        `json:"HasNextPage,omitempty" xml:"HasNextPage,omitempty"`
+	List        []*GetAiOutboundTaskListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalResults *int32 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s GetAiOutboundTaskListResponseBodyData) String() string {
@@ -7041,18 +8720,51 @@ func (s *GetAiOutboundTaskListResponseBodyData) SetTotalResults(v int32) *GetAiO
 }
 
 type GetAiOutboundTaskListResponseBodyDataList struct {
-	ConcurrentRate *int32   `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	CreateTime     *int64   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	FinishCount    *int32   `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	FinishRate     *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
-	HandlerId      *int64   `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	HandlerName    *string  `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
-	Name           *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status         *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc     *string  `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TaskId         *int64   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TotalCount     *int32   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	ConcurrentRate *int32 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 70
+	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// example:
+	//
+	// 0.7
+	FinishRate *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	// example:
+	//
+	// 2468****
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// example:
+	//
+	// 热线技能组
+	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 未开始
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// example:
+	//
+	// 1763****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAiOutboundTaskListResponseBodyDataList) String() string {
@@ -7124,9 +8836,9 @@ func (s *GetAiOutboundTaskListResponseBodyDataList) SetTotalCount(v int32) *GetA
 }
 
 type GetAiOutboundTaskListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAiOutboundTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAiOutboundTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAiOutboundTaskListResponse) String() string {
@@ -7153,9 +8865,22 @@ func (s *GetAiOutboundTaskListResponse) SetBody(v *GetAiOutboundTaskListResponse
 }
 
 type GetAiOutboundTaskProgressRequest struct {
-	BatchVersion *int32  `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1
+	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressRequest) String() string {
@@ -7182,11 +8907,23 @@ func (s *GetAiOutboundTaskProgressRequest) SetTaskId(v int64) *GetAiOutboundTask
 }
 
 type GetAiOutboundTaskProgressResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAiOutboundTaskProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ok
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAiOutboundTaskProgressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressResponseBody) String() string {
@@ -7224,9 +8961,15 @@ func (s *GetAiOutboundTaskProgressResponseBody) SetSuccess(v bool) *GetAiOutboun
 
 type GetAiOutboundTaskProgressResponseBodyData struct {
 	CalloutProgress *GetAiOutboundTaskProgressResponseBodyDataCalloutProgress `json:"CalloutProgress,omitempty" xml:"CalloutProgress,omitempty" type:"Struct"`
-	TaskId          *int64                                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskProgress    *GetAiOutboundTaskProgressResponseBodyDataTaskProgress    `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty" type:"Struct"`
-	Type            *int32                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 123456
+	TaskId       *int64                                                 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProgress *GetAiOutboundTaskProgressResponseBodyDataTaskProgress `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressResponseBodyData) String() string {
@@ -7258,15 +9001,42 @@ func (s *GetAiOutboundTaskProgressResponseBodyData) SetType(v int32) *GetAiOutbo
 }
 
 type GetAiOutboundTaskProgressResponseBodyDataCalloutProgress struct {
-	CallLossCount              *int32   `json:"CallLossCount,omitempty" xml:"CallLossCount,omitempty"`
-	CallLossRate               *float32 `json:"CallLossRate,omitempty" xml:"CallLossRate,omitempty"`
-	CallOutConnectCount        *int32   `json:"CallOutConnectCount,omitempty" xml:"CallOutConnectCount,omitempty"`
-	CallOutConnectRate         *float32 `json:"CallOutConnectRate,omitempty" xml:"CallOutConnectRate,omitempty"`
-	CallOutCount               *int32   `json:"CallOutCount,omitempty" xml:"CallOutCount,omitempty"`
-	CallOutServicerPickupCount *int32   `json:"CallOutServicerPickupCount,omitempty" xml:"CallOutServicerPickupCount,omitempty"`
-	CallOutServicerPickupRate  *float32 `json:"CallOutServicerPickupRate,omitempty" xml:"CallOutServicerPickupRate,omitempty"`
-	CallOutUserPickupCount     *int32   `json:"CallOutUserPickupCount,omitempty" xml:"CallOutUserPickupCount,omitempty"`
-	CallOutUserPickupRate      *float32 `json:"CallOutUserPickupRate,omitempty" xml:"CallOutUserPickupRate,omitempty"`
+	// example:
+	//
+	// 1
+	CallLossCount *int32 `json:"CallLossCount,omitempty" xml:"CallLossCount,omitempty"`
+	// example:
+	//
+	// 0.01
+	CallLossRate *float32 `json:"CallLossRate,omitempty" xml:"CallLossRate,omitempty"`
+	// example:
+	//
+	// 5
+	CallOutConnectCount *int32 `json:"CallOutConnectCount,omitempty" xml:"CallOutConnectCount,omitempty"`
+	// example:
+	//
+	// 0.5
+	CallOutConnectRate *float32 `json:"CallOutConnectRate,omitempty" xml:"CallOutConnectRate,omitempty"`
+	// example:
+	//
+	// 10
+	CallOutCount *int32 `json:"CallOutCount,omitempty" xml:"CallOutCount,omitempty"`
+	// example:
+	//
+	// 4
+	CallOutServicerPickupCount *int32 `json:"CallOutServicerPickupCount,omitempty" xml:"CallOutServicerPickupCount,omitempty"`
+	// example:
+	//
+	// 0.4
+	CallOutServicerPickupRate *float32 `json:"CallOutServicerPickupRate,omitempty" xml:"CallOutServicerPickupRate,omitempty"`
+	// example:
+	//
+	// 5
+	CallOutUserPickupCount *int32 `json:"CallOutUserPickupCount,omitempty" xml:"CallOutUserPickupCount,omitempty"`
+	// example:
+	//
+	// 0.5
+	CallOutUserPickupRate *float32 `json:"CallOutUserPickupRate,omitempty" xml:"CallOutUserPickupRate,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressResponseBodyDataCalloutProgress) String() string {
@@ -7323,19 +9093,58 @@ func (s *GetAiOutboundTaskProgressResponseBodyDataCalloutProgress) SetCallOutUse
 }
 
 type GetAiOutboundTaskProgressResponseBodyDataTaskProgress struct {
-	CallingCount        *int32   `json:"CallingCount,omitempty" xml:"CallingCount,omitempty"`
-	ConnectCount        *int32   `json:"ConnectCount,omitempty" xml:"ConnectCount,omitempty"`
-	ConnectRate         *float32 `json:"ConnectRate,omitempty" xml:"ConnectRate,omitempty"`
-	FinishCount         *int32   `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
-	FinishRate          *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
-	ServicerPickupCount *int32   `json:"ServicerPickupCount,omitempty" xml:"ServicerPickupCount,omitempty"`
-	ServicerPickupRate  *float32 `json:"ServicerPickupRate,omitempty" xml:"ServicerPickupRate,omitempty"`
-	TerminateCount      *int32   `json:"TerminateCount,omitempty" xml:"TerminateCount,omitempty"`
-	TotalCount          *int32   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UserPickupCount     *int32   `json:"UserPickupCount,omitempty" xml:"UserPickupCount,omitempty"`
-	UserPickupRate      *float32 `json:"UserPickupRate,omitempty" xml:"UserPickupRate,omitempty"`
-	WaitingCallCount    *int32   `json:"WaitingCallCount,omitempty" xml:"WaitingCallCount,omitempty"`
-	WaitingRecallCount  *int32   `json:"WaitingRecallCount,omitempty" xml:"WaitingRecallCount,omitempty"`
+	// example:
+	//
+	// 2
+	CallingCount *int32 `json:"CallingCount,omitempty" xml:"CallingCount,omitempty"`
+	// example:
+	//
+	// 2
+	ConnectCount *int32 `json:"ConnectCount,omitempty" xml:"ConnectCount,omitempty"`
+	// example:
+	//
+	// 0.2
+	ConnectRate *float32 `json:"ConnectRate,omitempty" xml:"ConnectRate,omitempty"`
+	// example:
+	//
+	// 2
+	FinishCount *int32 `json:"FinishCount,omitempty" xml:"FinishCount,omitempty"`
+	// example:
+	//
+	// 0.20
+	FinishRate *float32 `json:"FinishRate,omitempty" xml:"FinishRate,omitempty"`
+	// example:
+	//
+	// 2
+	ServicerPickupCount *int32 `json:"ServicerPickupCount,omitempty" xml:"ServicerPickupCount,omitempty"`
+	// example:
+	//
+	// 0.2
+	ServicerPickupRate *float32 `json:"ServicerPickupRate,omitempty" xml:"ServicerPickupRate,omitempty"`
+	// example:
+	//
+	// 2
+	TerminateCount *int32 `json:"TerminateCount,omitempty" xml:"TerminateCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	UserPickupCount *int32 `json:"UserPickupCount,omitempty" xml:"UserPickupCount,omitempty"`
+	// example:
+	//
+	// 0.2
+	UserPickupRate *float32 `json:"UserPickupRate,omitempty" xml:"UserPickupRate,omitempty"`
+	// example:
+	//
+	// 2
+	WaitingCallCount *int32 `json:"WaitingCallCount,omitempty" xml:"WaitingCallCount,omitempty"`
+	// example:
+	//
+	// 2
+	WaitingRecallCount *int32 `json:"WaitingRecallCount,omitempty" xml:"WaitingRecallCount,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressResponseBodyDataTaskProgress) String() string {
@@ -7412,9 +9221,9 @@ func (s *GetAiOutboundTaskProgressResponseBodyDataTaskProgress) SetWaitingRecall
 }
 
 type GetAiOutboundTaskProgressResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAiOutboundTaskProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAiOutboundTaskProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAiOutboundTaskProgressResponse) String() string {
@@ -7441,6 +9250,11 @@ func (s *GetAiOutboundTaskProgressResponse) SetBody(v *GetAiOutboundTaskProgress
 }
 
 type GetAllDepartmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7458,12 +9272,27 @@ func (s *GetAllDepartmentRequest) SetInstanceId(v string) *GetAllDepartmentReque
 }
 
 type GetAllDepartmentResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*GetAllDepartmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetAllDepartmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 98B032F5-6473-4EAC-8BA8-C28993513A1F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAllDepartmentResponseBody) String() string {
@@ -7505,6 +9334,9 @@ func (s *GetAllDepartmentResponseBody) SetSuccess(v bool) *GetAllDepartmentRespo
 }
 
 type GetAllDepartmentResponseBodyData struct {
+	// example:
+	//
+	// 10
 	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
 }
@@ -7528,9 +9360,9 @@ func (s *GetAllDepartmentResponseBodyData) SetDepartmentName(v string) *GetAllDe
 }
 
 type GetAllDepartmentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAllDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAllDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAllDepartmentResponse) String() string {
@@ -7557,7 +9389,17 @@ func (s *GetAllDepartmentResponse) SetBody(v *GetAllDepartmentResponseBody) *Get
 }
 
 type GetCallSoundRecordRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 125165515022^11195613****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-10-15 08:56:23
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -7598,11 +9440,26 @@ func (s *GetCallSoundRecordRequest) SetResourceOwnerId(v int64) *GetCallSoundRec
 }
 
 type GetCallSoundRecordResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com/accrec_tmp/1001067****.wav
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCallSoundRecordResponseBody) String() string {
@@ -7639,9 +9496,9 @@ func (s *GetCallSoundRecordResponseBody) SetSuccess(v bool) *GetCallSoundRecordR
 }
 
 type GetCallSoundRecordResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCallSoundRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCallSoundRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCallSoundRecordResponse) String() string {
@@ -7668,9 +9525,20 @@ func (s *GetCallSoundRecordResponse) SetBody(v *GetCallSoundRecordResponseBody) 
 }
 
 type GetConfigNumListRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DepartmentId *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 12345
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetConfigNumListRequest) String() string {
@@ -7697,11 +9565,23 @@ func (s *GetConfigNumListRequest) SetInstanceId(v string) *GetConfigNumListReque
 }
 
 type GetConfigNumListResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE339D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConfigNumListResponseBody) String() string {
@@ -7738,9 +9618,9 @@ func (s *GetConfigNumListResponseBody) SetSuccess(v bool) *GetConfigNumListRespo
 }
 
 type GetConfigNumListResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConfigNumListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigNumListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConfigNumListResponse) String() string {
@@ -7767,8 +9647,18 @@ func (s *GetConfigNumListResponse) SetBody(v *GetConfigNumListResponseBody) *Get
 }
 
 type GetCustomerInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberId   *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 82345678****
+	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 }
 
 func (s GetCustomerInfoRequest) String() string {
@@ -7790,11 +9680,23 @@ func (s *GetCustomerInfoRequest) SetMemberId(v int64) *GetCustomerInfoRequest {
 }
 
 type GetCustomerInfoResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCustomerInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCustomerInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DF6A3FB7-A5AA-43BE-A65B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCustomerInfoResponseBody) String() string {
@@ -7833,10 +9735,19 @@ func (s *GetCustomerInfoResponseBody) SetSuccess(v bool) *GetCustomerInfoRespons
 type GetCustomerInfoResponseBodyData struct {
 	CustomizeFields map[string]interface{} `json:"CustomizeFields,omitempty" xml:"CustomizeFields,omitempty"`
 	Nick            *string                `json:"Nick,omitempty" xml:"Nick,omitempty"`
-	OuterId         *string                `json:"OuterId,omitempty" xml:"OuterId,omitempty"`
-	Photo           *string                `json:"Photo,omitempty" xml:"Photo,omitempty"`
-	RealName        *string                `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	UserId          *int64                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 6666666
+	OuterId *string `json:"OuterId,omitempty" xml:"OuterId,omitempty"`
+	// example:
+	//
+	// https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLSW7XPFlJDwVunXP8pr84TvltwtLlNqTlOVSFeM3bCgn57mAB4JuZZmvMW0qicqW0PyzyUdZpxiaFQ
+	Photo    *string `json:"Photo,omitempty" xml:"Photo,omitempty"`
+	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// example:
+	//
+	// 823456789023
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetCustomerInfoResponseBodyData) String() string {
@@ -7878,9 +9789,9 @@ func (s *GetCustomerInfoResponseBodyData) SetUserId(v int64) *GetCustomerInfoRes
 }
 
 type GetCustomerInfoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCustomerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCustomerInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCustomerInfoResponse) String() string {
@@ -7907,7 +9818,17 @@ func (s *GetCustomerInfoResponse) SetBody(v *GetCustomerInfoResponseBody) *GetCu
 }
 
 type GetDepGroupTreeDataRequest struct {
-	AgentId    *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7930,11 +9851,23 @@ func (s *GetDepGroupTreeDataRequest) SetInstanceId(v string) *GetDepGroupTreeDat
 }
 
 type GetDepGroupTreeDataResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetDepGroupTreeDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetDepGroupTreeDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDepGroupTreeDataResponseBody) String() string {
@@ -7971,6 +9904,9 @@ func (s *GetDepGroupTreeDataResponseBody) SetSuccess(v string) *GetDepGroupTreeD
 }
 
 type GetDepGroupTreeDataResponseBodyData struct {
+	// example:
+	//
+	// 10
 	DepGroupId   *string                                         `json:"DepGroupId,omitempty" xml:"DepGroupId,omitempty"`
 	DepGroupName *string                                         `json:"DepGroupName,omitempty" xml:"DepGroupName,omitempty"`
 	GroupDTOS    []*GetDepGroupTreeDataResponseBodyDataGroupDTOS `json:"GroupDTOS,omitempty" xml:"GroupDTOS,omitempty" type:"Repeated"`
@@ -8000,8 +9936,11 @@ func (s *GetDepGroupTreeDataResponseBodyData) SetGroupDTOS(v []*GetDepGroupTreeD
 }
 
 type GetDepGroupTreeDataResponseBodyDataGroupDTOS struct {
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillGroupId *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 555555
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s GetDepGroupTreeDataResponseBodyDataGroupDTOS) String() string {
@@ -8023,9 +9962,9 @@ func (s *GetDepGroupTreeDataResponseBodyDataGroupDTOS) SetSkillGroupId(v int64) 
 }
 
 type GetDepGroupTreeDataResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDepGroupTreeDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDepGroupTreeDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDepGroupTreeDataResponse) String() string {
@@ -8052,13 +9991,33 @@ func (s *GetDepGroupTreeDataResponse) SetBody(v *GetDepGroupTreeDataResponseBody
 }
 
 type GetDepartmentalLatitudeAgentStatusRequest struct {
-	CurrentPage             *int64   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetDepartmentalLatitudeAgentStatusRequest) String() string {
@@ -8105,13 +10064,33 @@ func (s *GetDepartmentalLatitudeAgentStatusRequest) SetStartDate(v int64) *GetDe
 }
 
 type GetDepartmentalLatitudeAgentStatusShrinkRequest struct {
-	CurrentPage             *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetDepartmentalLatitudeAgentStatusShrinkRequest) String() string {
@@ -8158,11 +10137,23 @@ func (s *GetDepartmentalLatitudeAgentStatusShrinkRequest) SetStartDate(v int64) 
 }
 
 type GetDepartmentalLatitudeAgentStatusResponseBody struct {
-	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetDepartmentalLatitudeAgentStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDepartmentalLatitudeAgentStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDepartmentalLatitudeAgentStatusResponseBody) String() string {
@@ -8199,10 +10190,19 @@ func (s *GetDepartmentalLatitudeAgentStatusResponseBody) SetSuccess(v bool) *Get
 }
 
 type GetDepartmentalLatitudeAgentStatusResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetDepartmentalLatitudeAgentStatusResponseBodyData) String() string {
@@ -8234,9 +10234,9 @@ func (s *GetDepartmentalLatitudeAgentStatusResponseBodyData) SetTotalNum(v int32
 }
 
 type GetDepartmentalLatitudeAgentStatusResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDepartmentalLatitudeAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDepartmentalLatitudeAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDepartmentalLatitudeAgentStatusResponse) String() string {
@@ -8263,9 +10263,22 @@ func (s *GetDepartmentalLatitudeAgentStatusResponse) SetBody(v *GetDepartmentalL
 }
 
 type GetHotlineAgentDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetHotlineAgentDetailRequest) String() string {
@@ -8292,12 +10305,27 @@ func (s *GetHotlineAgentDetailRequest) SetInstanceId(v string) *GetHotlineAgentD
 }
 
 type GetHotlineAgentDetailResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetHotlineAgentDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotlineAgentDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineAgentDetailResponseBody) String() string {
@@ -8339,13 +10367,34 @@ func (s *GetHotlineAgentDetailResponseBody) SetSuccess(v bool) *GetHotlineAgentD
 }
 
 type GetHotlineAgentDetailResponseBodyData struct {
-	AgentId         *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentStatus     *int32  `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// example:
+	//
+	// 2235****
+	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 1
+	AgentStatus *int32 `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	// example:
+	//
+	// AgentCheckout
 	AgentStatusCode *string `json:"AgentStatusCode,omitempty" xml:"AgentStatusCode,omitempty"`
-	Assigned        *bool   `json:"Assigned,omitempty" xml:"Assigned,omitempty"`
-	RestType        *int32  `json:"RestType,omitempty" xml:"RestType,omitempty"`
-	TenantId        *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Token           *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// false
+	Assigned *bool `json:"Assigned,omitempty" xml:"Assigned,omitempty"`
+	// example:
+	//
+	// 1
+	RestType *int32 `json:"RestType,omitempty" xml:"RestType,omitempty"`
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// dnthF_oinHg7JMJDmKqex3Ux****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetHotlineAgentDetailResponseBodyData) String() string {
@@ -8392,9 +10441,9 @@ func (s *GetHotlineAgentDetailResponseBodyData) SetToken(v string) *GetHotlineAg
 }
 
 type GetHotlineAgentDetailResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineAgentDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineAgentDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineAgentDetailResponse) String() string {
@@ -8421,13 +10470,34 @@ func (s *GetHotlineAgentDetailResponse) SetBody(v *GetHotlineAgentDetailResponse
 }
 
 type GetHotlineAgentDetailReportRequest struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate     *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	GroupIds    []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate   *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614824972
+	EndDate  *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	GroupIds []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614824872
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetHotlineAgentDetailReportRequest) String() string {
@@ -8474,12 +10544,27 @@ func (s *GetHotlineAgentDetailReportRequest) SetStartDate(v int64) *GetHotlineAg
 }
 
 type GetHotlineAgentDetailReportResponseBody struct {
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetHotlineAgentDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotlineAgentDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineAgentDetailReportResponseBody) String() string {
@@ -8521,11 +10606,20 @@ func (s *GetHotlineAgentDetailReportResponseBody) SetSuccess(v string) *GetHotli
 }
 
 type GetHotlineAgentDetailReportResponseBodyData struct {
-	Columns  []*GetHotlineAgentDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Page     *int32                                                `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{}                              `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	Total    *int32                                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	Columns []*GetHotlineAgentDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetHotlineAgentDetailReportResponseBodyData) String() string {
@@ -8562,6 +10656,9 @@ func (s *GetHotlineAgentDetailReportResponseBodyData) SetTotal(v int32) *GetHotl
 }
 
 type GetHotlineAgentDetailReportResponseBodyDataColumns struct {
+	// example:
+	//
+	// realName
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -8585,9 +10682,9 @@ func (s *GetHotlineAgentDetailReportResponseBodyDataColumns) SetTitle(v string) 
 }
 
 type GetHotlineAgentDetailReportResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineAgentDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineAgentDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineAgentDetailReportResponse) String() string {
@@ -8614,8 +10711,18 @@ func (s *GetHotlineAgentDetailReportResponse) SetBody(v *GetHotlineAgentDetailRe
 }
 
 type GetHotlineAgentStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetHotlineAgentStatusRequest) String() string {
@@ -8637,12 +10744,27 @@ func (s *GetHotlineAgentStatusRequest) SetInstanceId(v string) *GetHotlineAgentS
 }
 
 type GetHotlineAgentStatusResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineAgentStatusResponseBody) String() string {
@@ -8684,9 +10806,9 @@ func (s *GetHotlineAgentStatusResponseBody) SetSuccess(v bool) *GetHotlineAgentS
 }
 
 type GetHotlineAgentStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineAgentStatusResponse) String() string {
@@ -8713,13 +10835,36 @@ func (s *GetHotlineAgentStatusResponse) SetBody(v *GetHotlineAgentStatusResponse
 }
 
 type GetHotlineCallActionRequest struct {
-	Acc         *string `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// example:
+	//
+	// {"time":1}
+	Acc *string `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// example:
+	//
+	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Act         *int32  `json:"Act,omitempty" xml:"Act,omitempty"`
-	Biz         *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	// example:
+	//
+	// 1
+	Act *int32 `json:"Act,omitempty" xml:"Act,omitempty"`
+	// example:
+	//
+	// {"name":123}
+	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	FromSource  *string `json:"FromSource,omitempty" xml:"FromSource,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// hotlinebs_out
+	FromSource *string `json:"FromSource,omitempty" xml:"FromSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetHotlineCallActionRequest) String() string {
@@ -8766,11 +10911,23 @@ func (s *GetHotlineCallActionRequest) SetInstanceId(v string) *GetHotlineCallAct
 }
 
 type GetHotlineCallActionResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetHotlineCallActionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotlineCallActionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE339D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineCallActionResponseBody) String() string {
@@ -8807,23 +10964,65 @@ func (s *GetHotlineCallActionResponseBody) SetSuccess(v bool) *GetHotlineCallAct
 }
 
 type GetHotlineCallActionResponseBodyData struct {
-	ActionId     *int64  `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
-	BuId         *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	CalloutId    *int64  `json:"CalloutId,omitempty" xml:"CalloutId,omitempty"`
-	CalloutName  *string `json:"CalloutName,omitempty" xml:"CalloutName,omitempty"`
-	CaseId       *int64  `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelType  *int64  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	DepId        *int64  `json:"DepId,omitempty" xml:"DepId,omitempty"`
-	IsTransfer   *string `json:"IsTransfer,omitempty" xml:"IsTransfer,omitempty"`
-	MemberId     *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberList   *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
-	MemberName   *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 8999****
+	ActionId *int64 `json:"ActionId,omitempty" xml:"ActionId,omitempty"`
+	// example:
+	//
+	// 2367****
+	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// example:
+	//
+	// 1122****
+	CalloutId   *int64  `json:"CalloutId,omitempty" xml:"CalloutId,omitempty"`
+	CalloutName *string `json:"CalloutName,omitempty" xml:"CalloutName,omitempty"`
+	// example:
+	//
+	// 1138902****
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 2377****
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelType *int64 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 1223****
+	DepId *int64 `json:"DepId,omitempty" xml:"DepId,omitempty"`
+	// example:
+	//
+	// true
+	IsTransfer *string `json:"IsTransfer,omitempty" xml:"IsTransfer,omitempty"`
+	// example:
+	//
+	// 7856876****
+	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// 8900****
+	MemberList *string `json:"MemberList,omitempty" xml:"MemberList,omitempty"`
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 1332****
 	ServicerId   *int64  `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	SubTouchId   *int64  `json:"SubTouchId,omitempty" xml:"SubTouchId,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TouchId      *int64  `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
+	// example:
+	//
+	// 3423****
+	SubTouchId *int64 `json:"SubTouchId,omitempty" xml:"SubTouchId,omitempty"`
+	// example:
+	//
+	// 12345****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2235****
+	TouchId *int64 `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
 }
 
 func (s GetHotlineCallActionResponseBodyData) String() string {
@@ -8920,9 +11119,9 @@ func (s *GetHotlineCallActionResponseBodyData) SetTouchId(v int64) *GetHotlineCa
 }
 
 type GetHotlineCallActionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineCallActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineCallActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineCallActionResponse) String() string {
@@ -8949,13 +11148,34 @@ func (s *GetHotlineCallActionResponse) SetBody(v *GetHotlineCallActionResponseBo
 }
 
 type GetHotlineGroupDetailReportRequest struct {
+	// example:
+	//
+	// 1
 	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate     *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	GroupIds    []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate   *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614824972
+	EndDate  *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	GroupIds []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1614824872
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetHotlineGroupDetailReportRequest) String() string {
@@ -9002,11 +11222,23 @@ func (s *GetHotlineGroupDetailReportRequest) SetStartDate(v int64) *GetHotlineGr
 }
 
 type GetHotlineGroupDetailReportResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetHotlineGroupDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotlineGroupDetailReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Public
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineGroupDetailReportResponseBody) String() string {
@@ -9043,11 +11275,20 @@ func (s *GetHotlineGroupDetailReportResponseBody) SetSuccess(v string) *GetHotli
 }
 
 type GetHotlineGroupDetailReportResponseBodyData struct {
-	Columns  []*GetHotlineGroupDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	Page     *int32                                                `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     []map[string]interface{}                              `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	Total    *int32                                                `json:"Total,omitempty" xml:"Total,omitempty"`
+	Columns []*GetHotlineGroupDetailReportResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rows     []map[string]interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetHotlineGroupDetailReportResponseBodyData) String() string {
@@ -9084,6 +11325,9 @@ func (s *GetHotlineGroupDetailReportResponseBodyData) SetTotal(v int32) *GetHotl
 }
 
 type GetHotlineGroupDetailReportResponseBodyDataColumns struct {
+	// example:
+	//
+	// skillGroupName
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -9107,9 +11351,9 @@ func (s *GetHotlineGroupDetailReportResponseBodyDataColumns) SetTitle(v string) 
 }
 
 type GetHotlineGroupDetailReportResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineGroupDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineGroupDetailReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineGroupDetailReportResponse) String() string {
@@ -9136,7 +11380,17 @@ func (s *GetHotlineGroupDetailReportResponse) SetBody(v *GetHotlineGroupDetailRe
 }
 
 type GetHotlineMessageLogRequest struct {
-	Acid       *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100****2077
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9159,11 +11413,23 @@ func (s *GetHotlineMessageLogRequest) SetInstanceId(v string) *GetHotlineMessage
 }
 
 type GetHotlineMessageLogResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*GetHotlineMessageLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetHotlineMessageLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineMessageLogResponseBody) String() string {
@@ -9200,12 +11466,27 @@ func (s *GetHotlineMessageLogResponseBody) SetSuccess(v bool) *GetHotlineMessage
 }
 
 type GetHotlineMessageLogResponseBodyData struct {
-	Acid       *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Mid        *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	SenderType *int32  `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 100****2077
+	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1623738027480
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 11deca999****
+	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+	// example:
+	//
+	// 1
+	SenderType *int32 `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// example:
+	//
+	// 1623738026460
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetHotlineMessageLogResponseBodyData) String() string {
@@ -9247,9 +11528,9 @@ func (s *GetHotlineMessageLogResponseBodyData) SetStartTime(v int64) *GetHotline
 }
 
 type GetHotlineMessageLogResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineMessageLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineMessageLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineMessageLogResponse) String() string {
@@ -9276,8 +11557,18 @@ func (s *GetHotlineMessageLogResponse) SetBody(v *GetHotlineMessageLogResponseBo
 }
 
 type GetHotlineRuntimeInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetHotlineRuntimeInfoRequest) String() string {
@@ -9299,11 +11590,23 @@ func (s *GetHotlineRuntimeInfoRequest) SetInstanceId(v string) *GetHotlineRuntim
 }
 
 type GetHotlineRuntimeInfoResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineRuntimeInfoResponseBody) String() string {
@@ -9340,9 +11643,9 @@ func (s *GetHotlineRuntimeInfoResponseBody) SetSuccess(v bool) *GetHotlineRuntim
 }
 
 type GetHotlineRuntimeInfoResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineRuntimeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineRuntimeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineRuntimeInfoResponse) String() string {
@@ -9369,18 +11672,47 @@ func (s *GetHotlineRuntimeInfoResponse) SetBody(v *GetHotlineRuntimeInfoResponse
 }
 
 type GetHotlineServiceStatisticsRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetHotlineServiceStatisticsRequest) String() string {
@@ -9452,18 +11784,47 @@ func (s *GetHotlineServiceStatisticsRequest) SetTimeLatitudeType(v string) *GetH
 }
 
 type GetHotlineServiceStatisticsShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetHotlineServiceStatisticsShrinkRequest) String() string {
@@ -9535,11 +11896,23 @@ func (s *GetHotlineServiceStatisticsShrinkRequest) SetTimeLatitudeType(v string)
 }
 
 type GetHotlineServiceStatisticsResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetHotlineServiceStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetHotlineServiceStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineServiceStatisticsResponseBody) String() string {
@@ -9576,10 +11949,19 @@ func (s *GetHotlineServiceStatisticsResponseBody) SetSuccess(v string) *GetHotli
 }
 
 type GetHotlineServiceStatisticsResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetHotlineServiceStatisticsResponseBodyData) String() string {
@@ -9611,9 +11993,9 @@ func (s *GetHotlineServiceStatisticsResponseBodyData) SetTotalNum(v int32) *GetH
 }
 
 type GetHotlineServiceStatisticsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineServiceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineServiceStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineServiceStatisticsResponse) String() string {
@@ -9640,9 +12022,22 @@ func (s *GetHotlineServiceStatisticsResponse) SetBody(v *GetHotlineServiceStatis
 }
 
 type GetHotlineWaitingNumberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetHotlineWaitingNumberRequest) String() string {
@@ -9669,11 +12064,26 @@ func (s *GetHotlineWaitingNumberRequest) SetInstanceId(v string) *GetHotlineWait
 }
 
 type GetHotlineWaitingNumberResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetHotlineWaitingNumberResponseBody) String() string {
@@ -9710,9 +12120,9 @@ func (s *GetHotlineWaitingNumberResponseBody) SetSuccess(v string) *GetHotlineWa
 }
 
 type GetHotlineWaitingNumberResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetHotlineWaitingNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetHotlineWaitingNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetHotlineWaitingNumberResponse) String() string {
@@ -9739,8 +12149,17 @@ func (s *GetHotlineWaitingNumberResponse) SetBody(v *GetHotlineWaitingNumberResp
 }
 
 type GetIndexCurrentValueRequest struct {
-	DepIds     *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	GroupIds   *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	// example:
+	//
+	// 2332****,2334****
+	DepIds *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 2323****,2324****
+	GroupIds *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9768,11 +12187,23 @@ func (s *GetIndexCurrentValueRequest) SetInstanceId(v string) *GetIndexCurrentVa
 }
 
 type GetIndexCurrentValueResponseBody struct {
-	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetIndexCurrentValueResponseBody) String() string {
@@ -9809,9 +12240,9 @@ func (s *GetIndexCurrentValueResponseBody) SetSuccess(v bool) *GetIndexCurrentVa
 }
 
 type GetIndexCurrentValueResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetIndexCurrentValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIndexCurrentValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetIndexCurrentValueResponse) String() string {
@@ -9955,9 +12386,9 @@ func (s *GetInstanceListResponseBodyCommodityInstances) SetName(v string) *GetIn
 }
 
 type GetInstanceListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetInstanceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetInstanceListResponse) String() string {
@@ -9984,6 +12415,11 @@ func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetIn
 }
 
 type GetMcuLvsIpRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10001,11 +12437,26 @@ func (s *GetMcuLvsIpRequest) SetInstanceId(v string) *GetMcuLvsIpRequest {
 }
 
 type GetMcuLvsIpResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// { "xmculvs":[ 0:{ "port":00 "ip":"0.0.0.0" "name":"lvs1" } ]}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMcuLvsIpResponseBody) String() string {
@@ -10042,9 +12493,9 @@ func (s *GetMcuLvsIpResponseBody) SetSuccess(v bool) *GetMcuLvsIpResponseBody {
 }
 
 type GetMcuLvsIpResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMcuLvsIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMcuLvsIpResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMcuLvsIpResponse) String() string {
@@ -10071,9 +12522,22 @@ func (s *GetMcuLvsIpResponse) SetBody(v *GetMcuLvsIpResponseBody) *GetMcuLvsIpRe
 }
 
 type GetNumLocationRequest struct {
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PhoneNum    *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1360987****
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 }
 
 func (s GetNumLocationRequest) String() string {
@@ -10100,11 +12564,23 @@ func (s *GetNumLocationRequest) SetPhoneNum(v string) *GetNumLocationRequest {
 }
 
 type GetNumLocationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetNumLocationResponseBody) String() string {
@@ -10141,9 +12617,9 @@ func (s *GetNumLocationResponseBody) SetSuccess(v bool) *GetNumLocationResponseB
 }
 
 type GetNumLocationResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetNumLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetNumLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetNumLocationResponse) String() string {
@@ -10170,13 +12646,30 @@ func (s *GetNumLocationResponse) SetBody(v *GetNumLocationResponseBody) *GetNumL
 }
 
 type GetOnlineSeatInformationRequest struct {
-	AgentIds    []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
 	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate     *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate   *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetOnlineSeatInformationRequest) String() string {
@@ -10224,12 +12717,29 @@ func (s *GetOnlineSeatInformationRequest) SetStartDate(v int64) *GetOnlineSeatIn
 
 type GetOnlineSeatInformationShrinkRequest struct {
 	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink   *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate        *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate      *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetOnlineSeatInformationShrinkRequest) String() string {
@@ -10276,11 +12786,23 @@ func (s *GetOnlineSeatInformationShrinkRequest) SetStartDate(v int64) *GetOnline
 }
 
 type GetOnlineSeatInformationResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetOnlineSeatInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetOnlineSeatInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOnlineSeatInformationResponseBody) String() string {
@@ -10317,10 +12839,19 @@ func (s *GetOnlineSeatInformationResponseBody) SetSuccess(v string) *GetOnlineSe
 }
 
 type GetOnlineSeatInformationResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetOnlineSeatInformationResponseBodyData) String() string {
@@ -10352,9 +12883,9 @@ func (s *GetOnlineSeatInformationResponseBodyData) SetTotalNum(v int32) *GetOnli
 }
 
 type GetOnlineSeatInformationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOnlineSeatInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOnlineSeatInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOnlineSeatInformationResponse) String() string {
@@ -10381,18 +12912,47 @@ func (s *GetOnlineSeatInformationResponse) SetBody(v *GetOnlineSeatInformationRe
 }
 
 type GetOnlineServiceVolumeRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetOnlineServiceVolumeRequest) String() string {
@@ -10464,18 +13024,47 @@ func (s *GetOnlineServiceVolumeRequest) SetTimeLatitudeType(v string) *GetOnline
 }
 
 type GetOnlineServiceVolumeShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetOnlineServiceVolumeShrinkRequest) String() string {
@@ -10547,11 +13136,23 @@ func (s *GetOnlineServiceVolumeShrinkRequest) SetTimeLatitudeType(v string) *Get
 }
 
 type GetOnlineServiceVolumeResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetOnlineServiceVolumeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetOnlineServiceVolumeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOnlineServiceVolumeResponseBody) String() string {
@@ -10588,10 +13189,22 @@ func (s *GetOnlineServiceVolumeResponseBody) SetSuccess(v string) *GetOnlineServ
 }
 
 type GetOnlineServiceVolumeResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// {"tenant_id":"905","online_40s_transfer_ready_cnt":109,"minute_id":"-1","wait_time_len":1215,"pickup_rate":"63.09%","thirty_seconds_to_pickUp":"2560","date_id":"-1","online_over_out_cnt":0,"online_20s_transfer_ready_cnt":109,"thirty_seconds_response_rate":"63.09%","abandonment_rate":"63.09%","service_time_len":68378,"service_pickup":"2560","hour_id":"-1","online_10s_transfer_ready_cnt":109}
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetOnlineServiceVolumeResponseBodyData) String() string {
@@ -10623,9 +13236,9 @@ func (s *GetOnlineServiceVolumeResponseBodyData) SetTotalNum(v int32) *GetOnline
 }
 
 type GetOnlineServiceVolumeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOnlineServiceVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOnlineServiceVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOnlineServiceVolumeResponse) String() string {
@@ -10652,9 +13265,22 @@ func (s *GetOnlineServiceVolumeResponse) SetBody(v *GetOnlineServiceVolumeRespon
 }
 
 type GetOutbounNumListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetOutbounNumListRequest) String() string {
@@ -10681,12 +13307,27 @@ func (s *GetOutbounNumListRequest) SetInstanceId(v string) *GetOutbounNumListReq
 }
 
 type GetOutbounNumListResponseBody struct {
-	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetOutbounNumListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetOutbounNumListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOutbounNumListResponseBody) String() string {
@@ -10752,8 +13393,14 @@ func (s *GetOutbounNumListResponseBodyData) SetNumGroup(v []*GetOutbounNumListRe
 
 type GetOutbounNumListResponseBodyDataNum struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 07512234****
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetOutbounNumListResponseBodyDataNum) String() string {
@@ -10780,9 +13427,18 @@ func (s *GetOutbounNumListResponseBodyDataNum) SetValue(v string) *GetOutbounNum
 }
 
 type GetOutbounNumListResponseBodyDataNumGroup struct {
+	// example:
+	//
+	// Jella
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 2
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 7688****
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetOutbounNumListResponseBodyDataNumGroup) String() string {
@@ -10809,9 +13465,9 @@ func (s *GetOutbounNumListResponseBodyDataNumGroup) SetValue(v string) *GetOutbo
 }
 
 type GetOutbounNumListResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOutbounNumListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOutbounNumListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOutbounNumListResponse) String() string {
@@ -10838,8 +13494,18 @@ func (s *GetOutbounNumListResponse) SetBody(v *GetOutbounNumListResponseBody) *G
 }
 
 type GetQualityProjectDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15977801
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s GetQualityProjectDetailRequest) String() string {
@@ -10861,11 +13527,23 @@ func (s *GetQualityProjectDetailRequest) SetProjectId(v int64) *GetQualityProjec
 }
 
 type GetQualityProjectDetailResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetQualityProjectDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetQualityProjectDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQualityProjectDetailResponseBody) String() string {
@@ -10902,18 +13580,39 @@ func (s *GetQualityProjectDetailResponseBody) SetSuccess(v string) *GetQualityPr
 }
 
 type GetQualityProjectDetailResponseBodyData struct {
-	CheckFreqType  *int32   `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
-	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DepList        []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
-	GroupList      []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	Id             *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	CheckFreqType *int32 `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	// example:
+	//
+	// 2021-04-07 18:07:18
+	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DepList    []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
+	GroupList  []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15977801
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2021-04-07 18:07:19
 	ModifyTime     *string  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ProjectName    *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	QualityRuleIds []*int64 `json:"QualityRuleIds,omitempty" xml:"QualityRuleIds,omitempty" type:"Repeated"`
-	QualityType    *int32   `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
-	ServicerList   []*int64 `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
-	Status         *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version        *int32   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	QualityType  *int32   `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
+	ServicerList []*int64 `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetQualityProjectDetailResponseBodyData) String() string {
@@ -10985,9 +13684,9 @@ func (s *GetQualityProjectDetailResponseBodyData) SetVersion(v int32) *GetQualit
 }
 
 type GetQualityProjectDetailResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityProjectDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityProjectDetailResponse) String() string {
@@ -11014,13 +13713,33 @@ func (s *GetQualityProjectDetailResponse) SetBody(v *GetQualityProjectDetailResp
 }
 
 type GetQualityProjectListRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	CheckFreqType *int64  `json:"checkFreqType,omitempty" xml:"checkFreqType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 15
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	CheckFreqType *int64 `json:"checkFreqType,omitempty" xml:"checkFreqType,omitempty"`
 }
 
 func (s GetQualityProjectListRequest) String() string {
@@ -11067,11 +13786,23 @@ func (s *GetQualityProjectListRequest) SetCheckFreqType(v int64) *GetQualityProj
 }
 
 type GetQualityProjectListResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetQualityProjectListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetQualityProjectListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQualityProjectListResponseBody) String() string {
@@ -11108,10 +13839,19 @@ func (s *GetQualityProjectListResponseBody) SetSuccess(v bool) *GetQualityProjec
 }
 
 type GetQualityProjectListResponseBodyData struct {
-	PageNo             *int32                                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize           *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	QualityProjectList []*GetQualityProjectListResponseBodyDataQualityProjectList `json:"QualityProjectList,omitempty" xml:"QualityProjectList,omitempty" type:"Repeated"`
-	Total              *int64                                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 35
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetQualityProjectListResponseBodyData) String() string {
@@ -11143,18 +13883,39 @@ func (s *GetQualityProjectListResponseBodyData) SetTotal(v int64) *GetQualityPro
 }
 
 type GetQualityProjectListResponseBodyDataQualityProjectList struct {
-	CheckFreqType  *int32   `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
-	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DepList        []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
-	GroupList      []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	Id             *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	CheckFreqType *int32 `json:"CheckFreqType,omitempty" xml:"CheckFreqType,omitempty"`
+	// example:
+	//
+	// 2021-04-07 18:07:18
+	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DepList    []*int64 `json:"DepList,omitempty" xml:"DepList,omitempty" type:"Repeated"`
+	GroupList  []*int64 `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15977801
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2021-04-07 18:07:19
 	ModifyTime     *string  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ProjectName    *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	QualityRuleIds []*int64 `json:"QualityRuleIds,omitempty" xml:"QualityRuleIds,omitempty" type:"Repeated"`
-	QualityType    *int32   `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
-	ServicerList   []*int64 `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
-	Status         *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version        *int32   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	QualityType  *int32   `json:"QualityType,omitempty" xml:"QualityType,omitempty"`
+	ServicerList []*int64 `json:"ServicerList,omitempty" xml:"ServicerList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetQualityProjectListResponseBodyDataQualityProjectList) String() string {
@@ -11226,9 +13987,9 @@ func (s *GetQualityProjectListResponseBodyDataQualityProjectList) SetVersion(v i
 }
 
 type GetQualityProjectListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityProjectListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityProjectListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityProjectListResponse) String() string {
@@ -11255,6 +14016,7 @@ func (s *GetQualityProjectListResponse) SetBody(v *GetQualityProjectListResponse
 }
 
 type GetQualityProjectLogRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
@@ -11360,9 +14122,9 @@ func (s *GetQualityProjectLogResponseBodyData) SetProjectId(v int64) *GetQuality
 }
 
 type GetQualityProjectLogResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityProjectLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityProjectLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityProjectLogResponse) String() string {
@@ -11389,16 +14151,19 @@ func (s *GetQualityProjectLogResponse) SetBody(v *GetQualityProjectLogResponseBo
 }
 
 type GetQualityResultRequest struct {
-	ChannelType    *string  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	GroupIds       []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	HitStatus      *int32   `json:"HitStatus,omitempty" xml:"HitStatus,omitempty"`
+	ChannelType *string  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	GroupIds    []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	HitStatus   *int32   `json:"HitStatus,omitempty" xml:"HitStatus,omitempty"`
+	// This parameter is required.
 	InstanceId     *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo         *int32   `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize       *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectIds     []*int64 `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
 	QualityRuleIds []*int64 `json:"QualityRuleIds,omitempty" xml:"QualityRuleIds,omitempty" type:"Repeated"`
-	TouchEndTime   *string  `json:"TouchEndTime,omitempty" xml:"TouchEndTime,omitempty"`
-	TouchStartTime *string  `json:"TouchStartTime,omitempty" xml:"TouchStartTime,omitempty"`
+	// This parameter is required.
+	TouchEndTime *string `json:"TouchEndTime,omitempty" xml:"TouchEndTime,omitempty"`
+	// This parameter is required.
+	TouchStartTime *string `json:"TouchStartTime,omitempty" xml:"TouchStartTime,omitempty"`
 }
 
 func (s GetQualityResultRequest) String() string {
@@ -11649,9 +14414,9 @@ func (s *GetQualityResultResponseBodyDataQualityResultResponseList) SetTouchStar
 }
 
 type GetQualityResultResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityResultResponse) String() string {
@@ -11678,8 +14443,10 @@ func (s *GetQualityResultResponse) SetBody(v *GetQualityResultResponseBody) *Get
 }
 
 type GetQualityRuleDetailRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	QualityRuleId *int64  `json:"QualityRuleId,omitempty" xml:"QualityRuleId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	QualityRuleId *int64 `json:"QualityRuleId,omitempty" xml:"QualityRuleId,omitempty"`
 }
 
 func (s GetQualityRuleDetailRequest) String() string {
@@ -11789,9 +14556,9 @@ func (s *GetQualityRuleDetailResponseBodyData) SetRuleTag(v int32) *GetQualityRu
 }
 
 type GetQualityRuleDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityRuleDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityRuleDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityRuleDetailResponse) String() string {
@@ -11818,6 +14585,7 @@ func (s *GetQualityRuleDetailResponse) SetBody(v *GetQualityRuleDetailResponseBo
 }
 
 type GetQualityRuleListRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -11970,9 +14738,9 @@ func (s *GetQualityRuleListResponseBodyDataQualityRuleList) SetRuleTag(v int32) 
 }
 
 type GetQualityRuleListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityRuleListResponse) String() string {
@@ -11999,6 +14767,7 @@ func (s *GetQualityRuleListResponse) SetBody(v *GetQualityRuleListResponseBody) 
 }
 
 type GetQualityRuleTagListRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12080,9 +14849,9 @@ func (s *GetQualityRuleTagListResponseBodyData) SetRuleTagName(v string) *GetQua
 }
 
 type GetQualityRuleTagListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQualityRuleTagListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualityRuleTagListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQualityRuleTagListResponse) String() string {
@@ -12109,15 +14878,38 @@ func (s *GetQualityRuleTagListResponse) SetBody(v *GetQualityRuleTagListResponse
 }
 
 type GetQueueInformationRequest struct {
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetQueueInformationRequest) String() string {
@@ -12174,15 +14966,38 @@ func (s *GetQueueInformationRequest) SetStartDate(v int64) *GetQueueInformationR
 }
 
 type GetQueueInformationShrinkRequest struct {
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetQueueInformationShrinkRequest) String() string {
@@ -12239,11 +15054,23 @@ func (s *GetQueueInformationShrinkRequest) SetStartDate(v int64) *GetQueueInform
 }
 
 type GetQueueInformationResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetQueueInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetQueueInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQueueInformationResponseBody) String() string {
@@ -12280,10 +15107,19 @@ func (s *GetQueueInformationResponseBody) SetSuccess(v string) *GetQueueInformat
 }
 
 type GetQueueInformationResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetQueueInformationResponseBodyData) String() string {
@@ -12315,9 +15151,9 @@ func (s *GetQueueInformationResponseBodyData) SetTotalNum(v int32) *GetQueueInfo
 }
 
 type GetQueueInformationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueueInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueueInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueueInformationResponse) String() string {
@@ -12344,7 +15180,17 @@ func (s *GetQueueInformationResponse) SetBody(v *GetQueueInformationResponseBody
 }
 
 type GetRecordDataRequest struct {
-	Acid       *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1001067****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12367,12 +15213,27 @@ func (s *GetRecordDataRequest) SetInstanceId(v string) *GetRecordDataRequest {
 }
 
 type GetRecordDataResponseBody struct {
-	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetRecordDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int64                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetRecordDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetRecordDataResponseBody) String() string {
@@ -12414,7 +15275,13 @@ func (s *GetRecordDataResponseBody) SetSuccess(v bool) *GetRecordDataResponseBod
 }
 
 type GetRecordDataResponseBodyData struct {
-	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// 1001067****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com/accrec_tmp/10010679716-12-01-56.wav?***
 	OssLink *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
 }
 
@@ -12437,9 +15304,9 @@ func (s *GetRecordDataResponseBodyData) SetOssLink(v string) *GetRecordDataRespo
 }
 
 type GetRecordDataResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRecordDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRecordDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRecordDataResponse) String() string {
@@ -12466,8 +15333,23 @@ func (s *GetRecordDataResponse) SetBody(v *GetRecordDataResponseBody) *GetRecord
 }
 
 type GetRecordUrlRequest struct {
-	Acid       *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1001067****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DUP_CALL
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
 }
 
@@ -12495,10 +15377,19 @@ func (s *GetRecordUrlRequest) SetRecordType(v string) *GetRecordUrlRequest {
 }
 
 type GetRecordUrlResponseBody struct {
-	Data      *GetRecordUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *GetRecordUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetRecordUrlResponseBody) String() string {
@@ -12530,7 +15421,13 @@ func (s *GetRecordUrlResponseBody) SetSuccess(v bool) *GetRecordUrlResponseBody 
 }
 
 type GetRecordUrlResponseBodyData struct {
-	Acid    *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// 1001067****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com/accrec_tmp/10010679716-12-01-56.wav?***
 	OssLink *string `json:"OssLink,omitempty" xml:"OssLink,omitempty"`
 }
 
@@ -12553,9 +15450,9 @@ func (s *GetRecordUrlResponseBodyData) SetOssLink(v string) *GetRecordUrlRespons
 }
 
 type GetRecordUrlResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRecordUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRecordUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRecordUrlResponse) String() string {
@@ -12582,8 +15479,18 @@ func (s *GetRecordUrlResponse) SetBody(v *GetRecordUrlResponseBody) *GetRecordUr
 }
 
 type GetRtcTokenRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetRtcTokenRequest) String() string {
@@ -12605,11 +15512,26 @@ func (s *GetRtcTokenRequest) SetInstanceId(v string) *GetRtcTokenRequest {
 }
 
 type GetRtcTokenResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetRtcTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"cleansession":true,"clientId":"GID_VOIP@@@ClientId_2000000001271771_100685295007","conferenceTopic":"cs_alicom_voip_conference_pre","dataTopic":"alicom_voip_data_pre","host":"mqtt-cn-4590mdhb901.mqtt.aliyuncs.com","meetingEventKeepAliveInterval":0,"phoneTopic":"alicom_voip_phone","port":0,"reconnectTimeout":2000,"registerTime":0,"sdkClientPort":8883,"serverId":"GID_VOIP@@@MTEuMjIuMTQ1Ljgy","sgwServerTopic":"alicom_voip_server_pre","tlsport":443,"tokenData":"LzMT+XLFl5s/YWJ/MlDz4t/Lq5HC1iGU1P28HAMaxYzmBSHQsWXgdISJ1ZJ+2cxaU0jwYsoyG8Q8cCIbLZTwwaFHf7gc7pPXbJGYgJWUr5ooKsoHaVvvG34cww7W8woWE1OsmZGFDODvooOIjF1CZSorVrR8OwRdprW99yqhMhkJKh7r5f3HfiQgoJWL8b3A85RrRGCSP057skgQ5rIqVAlx7jDFrOTdLtz+krken8qYvpaVBO9wRfFyWQLvxAgNJNx3Oql/hpzc2o3+xbKGTA/P2siLn6Nee1FYk5ClpXcnvfSTM4BAauuWR+oES10VblKEKTU5R/pfjXj3UKOlZ1+OdGO93WA16BR/l1uRb3cOLqya5pjWM+oSmo0sOR7B0ATLz6K1xA0Pc+p6Mu8hZl+OdGO93WA1kj1L0h9Z6CAZG4ol/BNdIg9z6noy7yFmX450Y73dYDWSPUvSH1noIBkbiiX8E10iT0a6ypXxupQdyyrhh8j1yw6otqnw5AT5Tj5VsVWVfflXeZ8nPt1ydXC9nWeHX7K80O6vtOU9M8Qn5VrhkP0F1umbOoYs3NfM+WYZIQx4pkViQo6qqkxgbEg1l6oHJbmOVzrxYRrDTIxqgE/pb0YVJQ==","useTLS":false,"username":"LTAI27GqAW1VrcQA"}
+	Data *GetRtcTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetRtcTokenResponseBody) String() string {
@@ -12646,9 +15568,18 @@ func (s *GetRtcTokenResponseBody) SetSuccess(v bool) *GetRtcTokenResponseBody {
 }
 
 type GetRtcTokenResponseBodyData struct {
+	// example:
+	//
+	// 139000000
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	RtcId       *string `json:"RtcId,omitempty" xml:"RtcId,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 200000000*******
+	RtcId *string `json:"RtcId,omitempty" xml:"RtcId,omitempty"`
+	// example:
+	//
+	// {“cleansession”:true,”clientId”:”GID_VOIP@@@ClientId_****”,”conferenceTopic”:”cs_alicom_voip_conference”,”host”:”mqtt-cn-4590mdhb901.mqtt.aliyuncs.com”,”meetingEventKeepAliveInterval”:0,”phoneTopic”:”alicom_voip_phone”,”port”:0,”reconnectTimeout”:2000,”registerTime”:0,”sdkClientPort”:8883,”serverId”:”GID_VOIP@@@MTEuMTMuMTM2LjExOA==”,”sgwServerTopic”:”alicom_voip_server_pre”,”tlsport”:443,”tokenData”:”abcdef”,”useTLS”:false}
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetRtcTokenResponseBodyData) String() string {
@@ -12675,9 +15606,9 @@ func (s *GetRtcTokenResponseBodyData) SetToken(v string) *GetRtcTokenResponseBod
 }
 
 type GetRtcTokenResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRtcTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRtcTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRtcTokenResponse) String() string {
@@ -12704,13 +15635,33 @@ func (s *GetRtcTokenResponse) SetBody(v *GetRtcTokenResponseBody) *GetRtcTokenRe
 }
 
 type GetSeatInformationRequest struct {
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CurrentPage             *int32   `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	DepIds                  []*int64 `json:"depIds,omitempty" xml:"depIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"existDepartmentGrouping,omitempty" xml:"existDepartmentGrouping,omitempty"`
-	PageSize                *int32   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	StartDate               *int64   `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	DepIds      []*int64 `json:"depIds,omitempty" xml:"depIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"existDepartmentGrouping,omitempty" xml:"existDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
 }
 
 func (s GetSeatInformationRequest) String() string {
@@ -12757,13 +15708,33 @@ func (s *GetSeatInformationRequest) SetStartDate(v int64) *GetSeatInformationReq
 }
 
 type GetSeatInformationShrinkRequest struct {
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CurrentPage             *int32  `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	DepIdsShrink            *string `json:"depIds,omitempty" xml:"depIds,omitempty"`
-	EndDate                 *int64  `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"existDepartmentGrouping,omitempty" xml:"existDepartmentGrouping,omitempty"`
-	PageSize                *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	StartDate               *int64  `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	DepIdsShrink *string `json:"depIds,omitempty" xml:"depIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"existDepartmentGrouping,omitempty" xml:"existDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
 }
 
 func (s GetSeatInformationShrinkRequest) String() string {
@@ -12810,11 +15781,23 @@ func (s *GetSeatInformationShrinkRequest) SetStartDate(v int64) *GetSeatInformat
 }
 
 type GetSeatInformationResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSeatInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSeatInformationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSeatInformationResponseBody) String() string {
@@ -12851,10 +15834,19 @@ func (s *GetSeatInformationResponseBody) SetSuccess(v string) *GetSeatInformatio
 }
 
 type GetSeatInformationResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rowr     *string `json:"Rowr,omitempty" xml:"Rowr,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSeatInformationResponseBodyData) String() string {
@@ -12886,9 +15878,9 @@ func (s *GetSeatInformationResponseBodyData) SetTotalNum(v int32) *GetSeatInform
 }
 
 type GetSeatInformationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSeatInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSeatInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSeatInformationResponse) String() string {
@@ -12915,15 +15907,38 @@ func (s *GetSeatInformationResponse) SetBody(v *GetSeatInformationResponseBody) 
 }
 
 type GetSkillGroupAgentStatusDetailsRequest struct {
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1614824972
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1614824872
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupAgentStatusDetailsRequest) String() string {
@@ -12980,15 +15995,38 @@ func (s *GetSkillGroupAgentStatusDetailsRequest) SetStartDate(v int64) *GetSkill
 }
 
 type GetSkillGroupAgentStatusDetailsShrinkRequest struct {
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1614824972
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1614824872
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupAgentStatusDetailsShrinkRequest) String() string {
@@ -13045,11 +16083,23 @@ func (s *GetSkillGroupAgentStatusDetailsShrinkRequest) SetStartDate(v int64) *Ge
 }
 
 type GetSkillGroupAgentStatusDetailsResponseBody struct {
-	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupAgentStatusDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupAgentStatusDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupAgentStatusDetailsResponseBody) String() string {
@@ -13086,10 +16136,19 @@ func (s *GetSkillGroupAgentStatusDetailsResponseBody) SetSuccess(v string) *GetS
 }
 
 type GetSkillGroupAgentStatusDetailsResponseBodyData struct {
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupAgentStatusDetailsResponseBodyData) String() string {
@@ -13121,9 +16180,9 @@ func (s *GetSkillGroupAgentStatusDetailsResponseBodyData) SetTotalNum(v int64) *
 }
 
 type GetSkillGroupAgentStatusDetailsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupAgentStatusDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupAgentStatusDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupAgentStatusDetailsResponse) String() string {
@@ -13150,15 +16209,38 @@ func (s *GetSkillGroupAgentStatusDetailsResponse) SetBody(v *GetSkillGroupAgentS
 }
 
 type GetSkillGroupAndAgentStatusSummaryRequest struct {
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupAndAgentStatusSummaryRequest) String() string {
@@ -13215,15 +16297,38 @@ func (s *GetSkillGroupAndAgentStatusSummaryRequest) SetStartDate(v int64) *GetSk
 }
 
 type GetSkillGroupAndAgentStatusSummaryShrinkRequest struct {
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupAndAgentStatusSummaryShrinkRequest) String() string {
@@ -13280,11 +16385,23 @@ func (s *GetSkillGroupAndAgentStatusSummaryShrinkRequest) SetStartDate(v int64) 
 }
 
 type GetSkillGroupAndAgentStatusSummaryResponseBody struct {
-	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupAndAgentStatusSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupAndAgentStatusSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupAndAgentStatusSummaryResponseBody) String() string {
@@ -13321,10 +16438,19 @@ func (s *GetSkillGroupAndAgentStatusSummaryResponseBody) SetSuccess(v string) *G
 }
 
 type GetSkillGroupAndAgentStatusSummaryResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupAndAgentStatusSummaryResponseBodyData) String() string {
@@ -13356,9 +16482,9 @@ func (s *GetSkillGroupAndAgentStatusSummaryResponseBodyData) SetTotalNum(v int32
 }
 
 type GetSkillGroupAndAgentStatusSummaryResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupAndAgentStatusSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupAndAgentStatusSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupAndAgentStatusSummaryResponse) String() string {
@@ -13385,15 +16511,38 @@ func (s *GetSkillGroupAndAgentStatusSummaryResponse) SetBody(v *GetSkillGroupAnd
 }
 
 type GetSkillGroupLatitudeStateRequest struct {
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupLatitudeStateRequest) String() string {
@@ -13450,15 +16599,38 @@ func (s *GetSkillGroupLatitudeStateRequest) SetStartDate(v int64) *GetSkillGroup
 }
 
 type GetSkillGroupLatitudeStateShrinkRequest struct {
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupLatitudeStateShrinkRequest) String() string {
@@ -13515,11 +16687,23 @@ func (s *GetSkillGroupLatitudeStateShrinkRequest) SetStartDate(v int64) *GetSkil
 }
 
 type GetSkillGroupLatitudeStateResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupLatitudeStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupLatitudeStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupLatitudeStateResponseBody) String() string {
@@ -13556,10 +16740,19 @@ func (s *GetSkillGroupLatitudeStateResponseBody) SetSuccess(v string) *GetSkillG
 }
 
 type GetSkillGroupLatitudeStateResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupLatitudeStateResponseBodyData) String() string {
@@ -13591,9 +16784,9 @@ func (s *GetSkillGroupLatitudeStateResponseBodyData) SetTotalNum(v int32) *GetSk
 }
 
 type GetSkillGroupLatitudeStateResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupLatitudeStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupLatitudeStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupLatitudeStateResponse) String() string {
@@ -13620,15 +16813,38 @@ func (s *GetSkillGroupLatitudeStateResponse) SetBody(v *GetSkillGroupLatitudeSta
 }
 
 type GetSkillGroupServiceCapabilityRequest struct {
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupServiceCapabilityRequest) String() string {
@@ -13685,15 +16901,38 @@ func (s *GetSkillGroupServiceCapabilityRequest) SetStartDate(v int64) *GetSkillG
 }
 
 type GetSkillGroupServiceCapabilityShrinkRequest struct {
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// true
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// true
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetSkillGroupServiceCapabilityShrinkRequest) String() string {
@@ -13750,11 +16989,23 @@ func (s *GetSkillGroupServiceCapabilityShrinkRequest) SetStartDate(v int64) *Get
 }
 
 type GetSkillGroupServiceCapabilityResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupServiceCapabilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupServiceCapabilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupServiceCapabilityResponseBody) String() string {
@@ -13791,10 +17042,19 @@ func (s *GetSkillGroupServiceCapabilityResponseBody) SetSuccess(v string) *GetSk
 }
 
 type GetSkillGroupServiceCapabilityResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupServiceCapabilityResponseBodyData) String() string {
@@ -13826,9 +17086,9 @@ func (s *GetSkillGroupServiceCapabilityResponseBodyData) SetTotalNum(v int64) *G
 }
 
 type GetSkillGroupServiceCapabilityResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupServiceCapabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupServiceCapabilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupServiceCapabilityResponse) String() string {
@@ -13855,20 +17115,55 @@ func (s *GetSkillGroupServiceCapabilityResponse) SetBody(v *GetSkillGroupService
 }
 
 type GetSkillGroupServiceStatusRequest struct {
-	AgentIds                     []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage                  *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                       []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                      *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping           *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistChannelInstanceGrouping *bool    `json:"ExistChannelInstanceGrouping,omitempty" xml:"ExistChannelInstanceGrouping,omitempty"`
-	ExistDepartmentGrouping      *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	ExistRobotInstanceGrouping   *bool    `json:"ExistRobotInstanceGrouping,omitempty" xml:"ExistRobotInstanceGrouping,omitempty"`
-	ExistSkillGroupGrouping      *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
-	GroupIds                     []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId                   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                     *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate                    *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType             *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistChannelInstanceGrouping *bool `json:"ExistChannelInstanceGrouping,omitempty" xml:"ExistChannelInstanceGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistRobotInstanceGrouping *bool `json:"ExistRobotInstanceGrouping,omitempty" xml:"ExistRobotInstanceGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
+	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetSkillGroupServiceStatusRequest) String() string {
@@ -13950,20 +17245,55 @@ func (s *GetSkillGroupServiceStatusRequest) SetTimeLatitudeType(v string) *GetSk
 }
 
 type GetSkillGroupServiceStatusShrinkRequest struct {
-	AgentIdsShrink               *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage                  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink                 *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                      *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping           *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistChannelInstanceGrouping *bool   `json:"ExistChannelInstanceGrouping,omitempty" xml:"ExistChannelInstanceGrouping,omitempty"`
-	ExistDepartmentGrouping      *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
-	ExistRobotInstanceGrouping   *bool   `json:"ExistRobotInstanceGrouping,omitempty" xml:"ExistRobotInstanceGrouping,omitempty"`
-	ExistSkillGroupGrouping      *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
-	GroupIdsShrink               *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate                    *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType             *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistChannelInstanceGrouping *bool `json:"ExistChannelInstanceGrouping,omitempty" xml:"ExistChannelInstanceGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistRobotInstanceGrouping *bool `json:"ExistRobotInstanceGrouping,omitempty" xml:"ExistRobotInstanceGrouping,omitempty"`
+	// example:
+	//
+	// false
+	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
+	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetSkillGroupServiceStatusShrinkRequest) String() string {
@@ -14045,11 +17375,23 @@ func (s *GetSkillGroupServiceStatusShrinkRequest) SetTimeLatitudeType(v string) 
 }
 
 type GetSkillGroupServiceStatusResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupServiceStatusResponseBody) String() string {
@@ -14086,10 +17428,19 @@ func (s *GetSkillGroupServiceStatusResponseBody) SetSuccess(v string) *GetSkillG
 }
 
 type GetSkillGroupServiceStatusResponseBodyData struct {
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int32  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupServiceStatusResponseBodyData) String() string {
@@ -14121,9 +17472,9 @@ func (s *GetSkillGroupServiceStatusResponseBodyData) SetTotalNum(v int32) *GetSk
 }
 
 type GetSkillGroupServiceStatusResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupServiceStatusResponse) String() string {
@@ -14150,18 +17501,47 @@ func (s *GetSkillGroupServiceStatusResponse) SetBody(v *GetSkillGroupServiceStat
 }
 
 type GetSkillGroupStatusTotalRequest struct {
-	AgentIds                []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	CurrentPage             *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIds                  []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
-	EndDate                 *int64   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool    `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool    `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIds      []*int64 `json:"DepIds,omitempty" xml:"DepIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
 	ExistSkillGroupGrouping *bool    `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIds                []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string  `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetSkillGroupStatusTotalRequest) String() string {
@@ -14233,18 +17613,47 @@ func (s *GetSkillGroupStatusTotalRequest) SetTimeLatitudeType(v string) *GetSkil
 }
 
 type GetSkillGroupStatusTotalShrinkRequest struct {
-	AgentIdsShrink          *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	CurrentPage             *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepIdsShrink            *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
-	EndDate                 *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExistAgentGrouping      *bool   `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
-	ExistDepartmentGrouping *bool   `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DepIdsShrink *string `json:"DepIds,omitempty" xml:"DepIds,omitempty"`
+	// example:
+	//
+	// 1617761765000
+	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// false
+	ExistAgentGrouping *bool `json:"ExistAgentGrouping,omitempty" xml:"ExistAgentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
+	ExistDepartmentGrouping *bool `json:"ExistDepartmentGrouping,omitempty" xml:"ExistDepartmentGrouping,omitempty"`
+	// example:
+	//
+	// fasle
 	ExistSkillGroupGrouping *bool   `json:"ExistSkillGroupGrouping,omitempty" xml:"ExistSkillGroupGrouping,omitempty"`
 	GroupIdsShrink          *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate               *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TimeLatitudeType        *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1615083365000
+	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// minute
+	TimeLatitudeType *string `json:"TimeLatitudeType,omitempty" xml:"TimeLatitudeType,omitempty"`
 }
 
 func (s GetSkillGroupStatusTotalShrinkRequest) String() string {
@@ -14316,11 +17725,23 @@ func (s *GetSkillGroupStatusTotalShrinkRequest) SetTimeLatitudeType(v string) *G
 }
 
 type GetSkillGroupStatusTotalResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSkillGroupStatusTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSkillGroupStatusTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetSkillGroupStatusTotalResponseBody) String() string {
@@ -14357,10 +17778,19 @@ func (s *GetSkillGroupStatusTotalResponseBody) SetSuccess(v string) *GetSkillGro
 }
 
 type GetSkillGroupStatusTotalResponseBodyData struct {
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 2000
 	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Rows     *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	TotalNum *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 4
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s GetSkillGroupStatusTotalResponseBodyData) String() string {
@@ -14392,9 +17822,9 @@ func (s *GetSkillGroupStatusTotalResponseBodyData) SetTotalNum(v int64) *GetSkil
 }
 
 type GetSkillGroupStatusTotalResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSkillGroupStatusTotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSkillGroupStatusTotalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSkillGroupStatusTotalResponse) String() string {
@@ -14421,7 +17851,13 @@ func (s *GetSkillGroupStatusTotalResponse) SetBody(v *GetSkillGroupStatusTotalRe
 }
 
 type HangUpDoubleCallRequest struct {
-	Acid       *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// 68255155****
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -14444,10 +17880,22 @@ func (s *HangUpDoubleCallRequest) SetInstanceId(v string) *HangUpDoubleCallReque
 }
 
 type HangUpDoubleCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s HangUpDoubleCallResponseBody) String() string {
@@ -14479,9 +17927,9 @@ func (s *HangUpDoubleCallResponseBody) SetSuccess(v bool) *HangUpDoubleCallRespo
 }
 
 type HangUpDoubleCallResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *HangUpDoubleCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HangUpDoubleCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s HangUpDoubleCallResponse) String() string {
@@ -14508,12 +17956,34 @@ func (s *HangUpDoubleCallResponse) SetBody(v *HangUpDoubleCallResponseBody) *Han
 }
 
 type HangupCallRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId       *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s HangupCallRequest) String() string {
@@ -14555,10 +18025,22 @@ func (s *HangupCallRequest) SetJobId(v string) *HangupCallRequest {
 }
 
 type HangupCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s HangupCallResponseBody) String() string {
@@ -14590,9 +18072,9 @@ func (s *HangupCallResponseBody) SetSuccess(v bool) *HangupCallResponseBody {
 }
 
 type HangupCallResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *HangupCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HangupCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s HangupCallResponse) String() string {
@@ -14619,12 +18101,34 @@ func (s *HangupCallResponse) SetBody(v *HangupCallResponseBody) *HangupCallRespo
 }
 
 type HangupThirdCallRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId       *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s HangupThirdCallRequest) String() string {
@@ -14666,10 +18170,22 @@ func (s *HangupThirdCallRequest) SetJobId(v string) *HangupThirdCallRequest {
 }
 
 type HangupThirdCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s HangupThirdCallResponseBody) String() string {
@@ -14701,9 +18217,9 @@ func (s *HangupThirdCallResponseBody) SetSuccess(v bool) *HangupThirdCallRespons
 }
 
 type HangupThirdCallResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *HangupThirdCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HangupThirdCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s HangupThirdCallResponse) String() string {
@@ -14730,12 +18246,34 @@ func (s *HangupThirdCallResponse) SetBody(v *HangupThirdCallResponseBody) *Hangu
 }
 
 type HoldCallRequest struct {
-	AccountName  *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId       *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s HoldCallRequest) String() string {
@@ -14777,10 +18315,22 @@ func (s *HoldCallRequest) SetJobId(v string) *HoldCallRequest {
 }
 
 type HoldCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s HoldCallResponseBody) String() string {
@@ -14812,9 +18362,9 @@ func (s *HoldCallResponseBody) SetSuccess(v bool) *HoldCallResponseBody {
 }
 
 type HoldCallResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *HoldCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HoldCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s HoldCallResponse) String() string {
@@ -14841,33 +18391,83 @@ func (s *HoldCallResponse) SetBody(v *HoldCallResponseBody) *HoldCallResponse {
 }
 
 type HotlineSessionQueryRequest struct {
-	Acid              *string   `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	AcidList          []*string `json:"AcidList,omitempty" xml:"AcidList,omitempty" type:"Repeated"`
-	CallResult        *string   `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	CallResultList    []*string `json:"CallResultList,omitempty" xml:"CallResultList,omitempty" type:"Repeated"`
-	CallType          *int32    `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	CallTypeList      []*int32  `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty" type:"Repeated"`
-	CalledNumber      *string   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledNumberList  []*string `json:"CalledNumberList,omitempty" xml:"CalledNumberList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7719786****
+	Acid     *string   `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	AcidList []*string `json:"AcidList,omitempty" xml:"AcidList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// normal
+	CallResult     *string   `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	CallResultList []*string `json:"CallResultList,omitempty" xml:"CallResultList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CallType     *int32   `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallTypeList []*int32 `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 135615****
+	CalledNumber     *string   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumberList []*string `json:"CalledNumberList,omitempty" xml:"CalledNumberList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 057177****
 	CallingNumber     *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	CallingNumberList []*string `json:"CallingNumberList,omitempty" xml:"CallingNumberList,omitempty" type:"Repeated"`
-	GroupId           *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupIdList       []*int64  `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
-	GroupName         *string   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Id                *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberId          *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberIdList      []*string `json:"MemberIdList,omitempty" xml:"MemberIdList,omitempty" type:"Repeated"`
-	MemberName        *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	PageNo            *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Params            *string   `json:"Params,omitempty" xml:"Params,omitempty"`
-	QueryEndTime      *int64    `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
-	QueryStartTime    *int64    `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServicerId        *string   `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	ServicerIdList    []*string `json:"ServicerIdList,omitempty" xml:"ServicerIdList,omitempty" type:"Repeated"`
-	ServicerName      *string   `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// example:
+	//
+	// 123456
+	GroupId     *int64   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupIdList []*int64 `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
+	GroupName   *string  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// acc1c58dab4a4dd280e3813c66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7856****
+	MemberId     *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	MemberIdList []*string `json:"MemberIdList,omitempty" xml:"MemberIdList,omitempty" type:"Repeated"`
+	MemberName   *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxxx
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 161482972
+	QueryEndTime *int64 `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
+	// example:
+	//
+	// 161482872
+	QueryStartTime *int64 `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 555555
+	ServicerId     *string   `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	ServicerIdList []*string `json:"ServicerIdList,omitempty" xml:"ServicerIdList,omitempty" type:"Repeated"`
+	ServicerName   *string   `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
 }
 
 func (s HotlineSessionQueryRequest) String() string {
@@ -15014,11 +18614,23 @@ func (s *HotlineSessionQueryRequest) SetServicerName(v string) *HotlineSessionQu
 }
 
 type HotlineSessionQueryResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *HotlineSessionQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *HotlineSessionQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE339D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s HotlineSessionQueryResponseBody) String() string {
@@ -15056,9 +18668,18 @@ func (s *HotlineSessionQueryResponseBody) SetSuccess(v bool) *HotlineSessionQuer
 
 type HotlineSessionQueryResponseBodyData struct {
 	CallDetailRecord []*HotlineSessionQueryResponseBodyDataCallDetailRecord `json:"CallDetailRecord,omitempty" xml:"CallDetailRecord,omitempty" type:"Repeated"`
-	PageNumber       *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount       *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 26
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s HotlineSessionQueryResponseBodyData) String() string {
@@ -15090,35 +18711,113 @@ func (s *HotlineSessionQueryResponseBodyData) SetTotalCount(v int32) *HotlineSes
 }
 
 type HotlineSessionQueryResponseBodyDataCallDetailRecord struct {
-	Acid                  *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	ActiveTransferId      *string `json:"ActiveTransferId,omitempty" xml:"ActiveTransferId,omitempty"`
-	CallContinueTime      *int32  `json:"CallContinueTime,omitempty" xml:"CallContinueTime,omitempty"`
-	CallResult            *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
-	CallType              *int32  `json:"CallType,omitempty" xml:"CallType,omitempty"`
-	CalledNumber          *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber         *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EvaluationLevel       *int32  `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	EvaluationScore       *int32  `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
-	GroupId               *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName             *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	HangUpRole            *string `json:"HangUpRole,omitempty" xml:"HangUpRole,omitempty"`
-	HangUpTime            *string `json:"HangUpTime,omitempty" xml:"HangUpTime,omitempty"`
-	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	InQueueTime           *string `json:"InQueueTime,omitempty" xml:"InQueueTime,omitempty"`
-	MemberId              *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberName            *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	OutQueueTime          *string `json:"OutQueueTime,omitempty" xml:"OutQueueTime,omitempty"`
-	PassiveTransferId     *string `json:"PassiveTransferId,omitempty" xml:"PassiveTransferId,omitempty"`
+	// example:
+	//
+	// 7719786
+	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// example:
+	//
+	// 12
+	ActiveTransferId *string `json:"ActiveTransferId,omitempty" xml:"ActiveTransferId,omitempty"`
+	// example:
+	//
+	// 37
+	CallContinueTime *int32 `json:"CallContinueTime,omitempty" xml:"CallContinueTime,omitempty"`
+	// example:
+	//
+	// normal
+	CallResult *string `json:"CallResult,omitempty" xml:"CallResult,omitempty"`
+	// example:
+	//
+	// 1
+	CallType *int32 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// example:
+	//
+	// 135615*****
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 0571773
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:32:55
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 4
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// example:
+	//
+	// 4
+	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
+	// example:
+	//
+	// 123456
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 2
+	HangUpRole *string `json:"HangUpRole,omitempty" xml:"HangUpRole,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:33:46
+	HangUpTime *string `json:"HangUpTime,omitempty" xml:"HangUpTime,omitempty"`
+	// example:
+	//
+	// acc1c58dab4a4dd280e3813c66
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:32:55
+	InQueueTime *string `json:"InQueueTime,omitempty" xml:"InQueueTime,omitempty"`
+	// example:
+	//
+	// 7856876
+	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:32:59
+	OutQueueTime *string `json:"OutQueueTime,omitempty" xml:"OutQueueTime,omitempty"`
+	// example:
+	//
+	// 12
+	PassiveTransferId *string `json:"PassiveTransferId,omitempty" xml:"PassiveTransferId,omitempty"`
+	// example:
+	//
+	// 1
 	PassiveTransferIdType *string `json:"PassiveTransferIdType,omitempty" xml:"PassiveTransferIdType,omitempty"`
-	PickUpTime            *string `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
-	QueueUpContinueTime   *int32  `json:"QueueUpContinueTime,omitempty" xml:"QueueUpContinueTime,omitempty"`
-	RingContinueTime      *int32  `json:"RingContinueTime,omitempty" xml:"RingContinueTime,omitempty"`
-	RingEndTime           *string `json:"RingEndTime,omitempty" xml:"RingEndTime,omitempty"`
-	RingStartTime         *string `json:"RingStartTime,omitempty" xml:"RingStartTime,omitempty"`
-	ServicerId            *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	ServicerName          *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	TrunkCall             *string `json:"TrunkCall,omitempty" xml:"TrunkCall,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:33:09
+	PickUpTime *string `json:"PickUpTime,omitempty" xml:"PickUpTime,omitempty"`
+	// example:
+	//
+	// 4
+	QueueUpContinueTime *int32 `json:"QueueUpContinueTime,omitempty" xml:"QueueUpContinueTime,omitempty"`
+	// example:
+	//
+	// 10
+	RingContinueTime *int32 `json:"RingContinueTime,omitempty" xml:"RingContinueTime,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:33:09
+	RingEndTime *string `json:"RingEndTime,omitempty" xml:"RingEndTime,omitempty"`
+	// example:
+	//
+	// 2020-10-02 22:32:59
+	RingStartTime *string `json:"RingStartTime,omitempty" xml:"RingStartTime,omitempty"`
+	// example:
+	//
+	// 555555
+	ServicerId   *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// example:
+	//
+	// 1861111****
+	TrunkCall *string `json:"TrunkCall,omitempty" xml:"TrunkCall,omitempty"`
 }
 
 func (s HotlineSessionQueryResponseBodyDataCallDetailRecord) String() string {
@@ -15275,9 +18974,9 @@ func (s *HotlineSessionQueryResponseBodyDataCallDetailRecord) SetTrunkCall(v str
 }
 
 type HotlineSessionQueryResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *HotlineSessionQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotlineSessionQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s HotlineSessionQueryResponse) String() string {
@@ -15304,10 +19003,24 @@ func (s *HotlineSessionQueryResponse) SetBody(v *HotlineSessionQueryResponseBody
 }
 
 type InsertAiOutboundPhoneNumsRequest struct {
-	BatchVersion *int32                                     `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
-	Details      []*InsertAiOutboundPhoneNumsRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	InstanceId   *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId       *int64                                     `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 2
+	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// This parameter is required.
+	Details []*InsertAiOutboundPhoneNumsRequestDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s InsertAiOutboundPhoneNumsRequest) String() string {
@@ -15339,7 +19052,13 @@ func (s *InsertAiOutboundPhoneNumsRequest) SetTaskId(v int64) *InsertAiOutboundP
 }
 
 type InsertAiOutboundPhoneNumsRequestDetails struct {
-	BizData  *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// xxxx
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// 150****0000
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 }
 
@@ -15362,10 +19081,24 @@ func (s *InsertAiOutboundPhoneNumsRequestDetails) SetPhoneNum(v string) *InsertA
 }
 
 type InsertAiOutboundPhoneNumsShrinkRequest struct {
-	BatchVersion  *int32  `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// example:
+	//
+	// 2
+	BatchVersion *int32 `json:"BatchVersion,omitempty" xml:"BatchVersion,omitempty"`
+	// This parameter is required.
 	DetailsShrink *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId        *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s InsertAiOutboundPhoneNumsShrinkRequest) String() string {
@@ -15397,11 +19130,23 @@ func (s *InsertAiOutboundPhoneNumsShrinkRequest) SetTaskId(v int64) *InsertAiOut
 }
 
 type InsertAiOutboundPhoneNumsResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *InsertAiOutboundPhoneNumsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *InsertAiOutboundPhoneNumsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InsertAiOutboundPhoneNumsResponseBody) String() string {
@@ -15438,9 +19183,15 @@ func (s *InsertAiOutboundPhoneNumsResponseBody) SetSuccess(v bool) *InsertAiOutb
 }
 
 type InsertAiOutboundPhoneNumsResponseBodyData struct {
-	FailInfo     []*InsertAiOutboundPhoneNumsResponseBodyDataFailInfo `json:"FailInfo,omitempty" xml:"FailInfo,omitempty" type:"Repeated"`
-	SuccessCount *int32                                               `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TotalCount   *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	FailInfo []*InsertAiOutboundPhoneNumsResponseBodyDataFailInfo `json:"FailInfo,omitempty" xml:"FailInfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s InsertAiOutboundPhoneNumsResponseBodyData) String() string {
@@ -15467,8 +19218,17 @@ func (s *InsertAiOutboundPhoneNumsResponseBodyData) SetTotalCount(v int32) *Inse
 }
 
 type InsertAiOutboundPhoneNumsResponseBodyDataFailInfo struct {
-	BizData  *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
-	Msg      *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// xxxx
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// 号码格式异常
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 150****0000
 	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
 }
 
@@ -15496,9 +19256,9 @@ func (s *InsertAiOutboundPhoneNumsResponseBodyDataFailInfo) SetPhoneNum(v string
 }
 
 type InsertAiOutboundPhoneNumsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InsertAiOutboundPhoneNumsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertAiOutboundPhoneNumsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InsertAiOutboundPhoneNumsResponse) String() string {
@@ -15525,9 +19285,12 @@ func (s *InsertAiOutboundPhoneNumsResponse) SetBody(v *InsertAiOutboundPhoneNums
 }
 
 type InsertTaskDetailRequest struct {
-	CallInfos      *string `json:"CallInfos,omitempty" xml:"CallInfos,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId *int64  `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
+	// This parameter is required.
+	CallInfos *string `json:"CallInfos,omitempty" xml:"CallInfos,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	OutboundTaskId *int64 `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
 }
 
 func (s InsertTaskDetailRequest) String() string {
@@ -15595,9 +19358,9 @@ func (s *InsertTaskDetailResponseBody) SetSuccess(v bool) *InsertTaskDetailRespo
 }
 
 type InsertTaskDetailResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InsertTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InsertTaskDetailResponse) String() string {
@@ -15624,13 +19387,38 @@ func (s *InsertTaskDetailResponse) SetBody(v *InsertTaskDetailResponseBody) *Ins
 }
 
 type JoinThirdCallRequest struct {
-	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId           *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConnectionId     *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// example:
+	//
+	// 0
 	HoldConnectionId *string `json:"HoldConnectionId,omitempty" xml:"HoldConnectionId,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
 func (s JoinThirdCallRequest) String() string {
@@ -15677,10 +19465,22 @@ func (s *JoinThirdCallRequest) SetJobId(v string) *JoinThirdCallRequest {
 }
 
 type JoinThirdCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s JoinThirdCallResponseBody) String() string {
@@ -15712,9 +19512,9 @@ func (s *JoinThirdCallResponseBody) SetSuccess(v bool) *JoinThirdCallResponseBod
 }
 
 type JoinThirdCallResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *JoinThirdCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *JoinThirdCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s JoinThirdCallResponse) String() string {
@@ -15741,9 +19541,22 @@ func (s *JoinThirdCallResponse) SetBody(v *JoinThirdCallResponseBody) *JoinThird
 }
 
 type ListAgentBySkillGroupIdRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SkillGroupId *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 666666
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s ListAgentBySkillGroupIdRequest) String() string {
@@ -15770,11 +19583,23 @@ func (s *ListAgentBySkillGroupIdRequest) SetSkillGroupId(v int64) *ListAgentBySk
 }
 
 type ListAgentBySkillGroupIdResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListAgentBySkillGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAgentBySkillGroupIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAgentBySkillGroupIdResponseBody) String() string {
@@ -15811,11 +19636,23 @@ func (s *ListAgentBySkillGroupIdResponseBody) SetSuccess(v bool) *ListAgentBySki
 }
 
 type ListAgentBySkillGroupIdResponseBodyData struct {
+	// example:
+	//
+	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 666666
 	AgentId     *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId    *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListAgentBySkillGroupIdResponseBodyData) String() string {
@@ -15852,9 +19689,9 @@ func (s *ListAgentBySkillGroupIdResponseBodyData) SetTenantId(v int64) *ListAgen
 }
 
 type ListAgentBySkillGroupIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAgentBySkillGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAgentBySkillGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAgentBySkillGroupIdResponse) String() string {
@@ -15916,11 +19753,23 @@ func (s *ListAiccsRobotRequest) SetRobotName(v string) *ListAiccsRobotRequest {
 }
 
 type ListAiccsRobotResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListAiccsRobotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListAiccsRobotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAiccsRobotResponseBody) String() string {
@@ -15959,9 +19808,15 @@ func (s *ListAiccsRobotResponseBody) SetSuccess(v bool) *ListAiccsRobotResponseB
 type ListAiccsRobotResponseBodyData struct {
 	AtProfession *string `json:"AtProfession,omitempty" xml:"AtProfession,omitempty"`
 	AtSence      *string `json:"AtSence,omitempty" xml:"AtSence,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RobotName    *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	RobotType    *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	// example:
+	//
+	// 123456
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// example:
+	//
+	// CUSTOM
+	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
 }
 
 func (s ListAiccsRobotResponseBodyData) String() string {
@@ -15998,9 +19853,9 @@ func (s *ListAiccsRobotResponseBodyData) SetRobotType(v string) *ListAiccsRobotR
 }
 
 type ListAiccsRobotResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAiccsRobotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAiccsRobotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAiccsRobotResponse) String() string {
@@ -16027,12 +19882,32 @@ func (s *ListAiccsRobotResponse) SetBody(v *ListAiccsRobotResponseBody) *ListAic
 }
 
 type ListChatRecordDetailRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CloseTimeEnd   *int64  `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
-	CloseTimeStart *int64  `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 1614582000000
+	CloseTimeEnd *int64 `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
+	// example:
+	//
+	// 1614578400000
+	CloseTimeStart *int64 `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListChatRecordDetailRequest) String() string {
@@ -16074,12 +19949,27 @@ func (s *ListChatRecordDetailRequest) SetPageSize(v int32) *ListChatRecordDetail
 }
 
 type ListChatRecordDetailResponseBody struct {
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultData     *ListChatRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultData *ListChatRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListChatRecordDetailResponseBody) String() string {
@@ -16121,11 +20011,23 @@ func (s *ListChatRecordDetailResponseBody) SetSuccess(v bool) *ListChatRecordDet
 }
 
 type ListChatRecordDetailResponseBodyResultData struct {
-	CurrentPage  *int64                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data         []*ListChatRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	OnePageSize  *int64                                            `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	TotalPage    *int64                                            `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	TotalResults *int64                                            `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64                                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListChatRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	OnePageSize *int64 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 100
+	TotalResults *int64 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s ListChatRecordDetailResponseBodyResultData) String() string {
@@ -16162,10 +20064,19 @@ func (s *ListChatRecordDetailResponseBodyResultData) SetTotalResults(v int64) *L
 }
 
 type ListChatRecordDetailResponseBodyResultDataData struct {
-	EndTime      *int64                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MessageList  []*ListChatRecordDetailResponseBodyResultDataDataMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
-	ServicerName *string                                                      `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	StartTime    *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1614578410000
+	EndTime     *int64                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MessageList []*ListChatRecordDetailResponseBodyResultDataDataMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123@123.com
+	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// example:
+	//
+	// 1614578400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListChatRecordDetailResponseBodyResultDataData) String() string {
@@ -16197,11 +20108,23 @@ func (s *ListChatRecordDetailResponseBodyResultDataData) SetStartTime(v int64) *
 }
 
 type ListChatRecordDetailResponseBodyResultDataDataMessageList struct {
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	MsgType    *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1614578400000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// MSG
+	MsgType *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
+	// example:
+	//
+	// account1
 	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
-	SenderType *int64  `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// example:
+	//
+	// 2
+	SenderType *int64 `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
 }
 
 func (s ListChatRecordDetailResponseBodyResultDataDataMessageList) String() string {
@@ -16238,9 +20161,9 @@ func (s *ListChatRecordDetailResponseBodyResultDataDataMessageList) SetSenderTyp
 }
 
 type ListChatRecordDetailResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListChatRecordDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChatRecordDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListChatRecordDetailResponse) String() string {
@@ -16267,11 +20190,21 @@ func (s *ListChatRecordDetailResponse) SetBody(v *ListChatRecordDetailResponseBo
 }
 
 type ListDialogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130****0000
 	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListDialogRequest) String() string {
@@ -16308,11 +20241,23 @@ func (s *ListDialogRequest) SetTaskId(v int64) *ListDialogRequest {
 }
 
 type ListDialogResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDialogResponseBody) String() string {
@@ -16349,11 +20294,20 @@ func (s *ListDialogResponseBody) SetSuccess(v bool) *ListDialogResponseBody {
 }
 
 type ListDialogResponseBodyData struct {
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// normal
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Time     *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// robot
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 1619763900718
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s ListDialogResponseBodyData) String() string {
@@ -16390,9 +20344,9 @@ func (s *ListDialogResponseBodyData) SetTime(v string) *ListDialogResponseBodyDa
 }
 
 type ListDialogResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDialogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDialogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDialogResponse) String() string {
@@ -16419,9 +20373,22 @@ func (s *ListDialogResponse) SetBody(v *ListDialogResponseBody) *ListDialogRespo
 }
 
 type ListHotlineRecordRequest struct {
-	CallId      *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100365558
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListHotlineRecordRequest) String() string {
@@ -16448,11 +20415,23 @@ func (s *ListHotlineRecordRequest) SetInstanceId(v string) *ListHotlineRecordReq
 }
 
 type ListHotlineRecordResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListHotlineRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListHotlineRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListHotlineRecordResponseBody) String() string {
@@ -16489,11 +20468,26 @@ func (s *ListHotlineRecordResponseBody) SetSuccess(v bool) *ListHotlineRecordRes
 }
 
 type ListHotlineRecordResponseBodyData struct {
-	CallId       *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 100365558
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 100365548
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 16128694810
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 16128694110
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// http://aliccrec-shvpc.oss-cn-shanghai.aliyuncs.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListHotlineRecordResponseBodyData) String() string {
@@ -16530,9 +20524,9 @@ func (s *ListHotlineRecordResponseBodyData) SetUrl(v string) *ListHotlineRecordR
 }
 
 type ListHotlineRecordResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHotlineRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotlineRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHotlineRecordResponse) String() string {
@@ -16559,12 +20553,32 @@ func (s *ListHotlineRecordResponse) SetBody(v *ListHotlineRecordResponseBody) *L
 }
 
 type ListHotlineRecordDetailRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CloseTimeEnd   *int64  `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
-	CloseTimeStart *int64  `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 1614582000000
+	CloseTimeEnd *int64 `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
+	// example:
+	//
+	// 1614578400000
+	CloseTimeStart *int64 `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListHotlineRecordDetailRequest) String() string {
@@ -16606,12 +20620,27 @@ func (s *ListHotlineRecordDetailRequest) SetPageSize(v int32) *ListHotlineRecord
 }
 
 type ListHotlineRecordDetailResponseBody struct {
-	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultData     *ListHotlineRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultData *ListHotlineRecordDetailResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListHotlineRecordDetailResponseBody) String() string {
@@ -16653,11 +20682,23 @@ func (s *ListHotlineRecordDetailResponseBody) SetSuccess(v bool) *ListHotlineRec
 }
 
 type ListHotlineRecordDetailResponseBodyResultData struct {
-	CurrentPage  *int64                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data         []*ListHotlineRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	OnePageSize  *int64                                               `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	TotalPage    *int64                                               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	TotalResults *int64                                               `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int64                                               `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*ListHotlineRecordDetailResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	OnePageSize *int64 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 945
+	TotalResults *int64 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s ListHotlineRecordDetailResponseBodyResultData) String() string {
@@ -16694,10 +20735,22 @@ func (s *ListHotlineRecordDetailResponseBodyResultData) SetTotalResults(v int64)
 }
 
 type ListHotlineRecordDetailResponseBodyResultDataData struct {
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OssUrl       *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// example:
+	//
+	// 1614578410000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// http://xxx.xxxxx/xx.wav
+	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// example:
+	//
+	// 123@123.com
 	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1614578400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListHotlineRecordDetailResponseBodyResultDataData) String() string {
@@ -16729,9 +20782,9 @@ func (s *ListHotlineRecordDetailResponseBodyResultDataData) SetStartTime(v int64
 }
 
 type ListHotlineRecordDetailResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListHotlineRecordDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListHotlineRecordDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListHotlineRecordDetailResponse) String() string {
@@ -16758,9 +20811,20 @@ func (s *ListHotlineRecordDetailResponse) SetBody(v *ListHotlineRecordDetailResp
 }
 
 type ListOutboundPhoneNumberRequest struct {
+	// example:
+	//
+	// 123@****.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListOutboundPhoneNumberRequest) String() string {
@@ -16787,12 +20851,27 @@ func (s *ListOutboundPhoneNumberRequest) SetInstanceId(v string) *ListOutboundPh
 }
 
 type ListOutboundPhoneNumberResponseBody struct {
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int64    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListOutboundPhoneNumberResponseBody) String() string {
@@ -16834,9 +20913,9 @@ func (s *ListOutboundPhoneNumberResponseBody) SetSuccess(v bool) *ListOutboundPh
 }
 
 type ListOutboundPhoneNumberResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOutboundPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOutboundPhoneNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOutboundPhoneNumberResponse) String() string {
@@ -16862,107 +20941,18 @@ func (s *ListOutboundPhoneNumberResponse) SetBody(v *ListOutboundPhoneNumberResp
 	return s
 }
 
-type ListOuterOrderedNumbersRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListOuterOrderedNumbersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOuterOrderedNumbersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListOuterOrderedNumbersRequest) SetOwnerId(v int64) *ListOuterOrderedNumbersRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersRequest) SetProdCode(v string) *ListOuterOrderedNumbersRequest {
-	s.ProdCode = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersRequest) SetResourceOwnerAccount(v string) *ListOuterOrderedNumbersRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersRequest) SetResourceOwnerId(v int64) *ListOuterOrderedNumbersRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListOuterOrderedNumbersResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Numbers   []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListOuterOrderedNumbersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOuterOrderedNumbersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListOuterOrderedNumbersResponseBody) SetCode(v string) *ListOuterOrderedNumbersResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersResponseBody) SetMessage(v string) *ListOuterOrderedNumbersResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersResponseBody) SetNumbers(v []*string) *ListOuterOrderedNumbersResponseBody {
-	s.Numbers = v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersResponseBody) SetRequestId(v string) *ListOuterOrderedNumbersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListOuterOrderedNumbersResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOuterOrderedNumbersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListOuterOrderedNumbersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListOuterOrderedNumbersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListOuterOrderedNumbersResponse) SetHeaders(v map[string]*string) *ListOuterOrderedNumbersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersResponse) SetStatusCode(v int32) *ListOuterOrderedNumbersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListOuterOrderedNumbersResponse) SetBody(v *ListOuterOrderedNumbersResponseBody) *ListOuterOrderedNumbersResponse {
-	s.Body = v
-	return s
-}
-
 type ListRobotCallDialogRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 125165515022^11195613****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-05-20 00:00:00
 	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -17003,11 +20993,23 @@ func (s *ListRobotCallDialogRequest) SetResourceOwnerId(v int64) *ListRobotCallD
 }
 
 type ListRobotCallDialogResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListRobotCallDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListRobotCallDialogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRobotCallDialogResponseBody) String() string {
@@ -17044,11 +21046,20 @@ func (s *ListRobotCallDialogResponseBody) SetSuccess(v bool) *ListRobotCallDialo
 }
 
 type ListRobotCallDialogResponseBodyData struct {
-	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// normal
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Time     *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// robot
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 1621483557000
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s ListRobotCallDialogResponseBodyData) String() string {
@@ -17085,9 +21096,9 @@ func (s *ListRobotCallDialogResponseBodyData) SetTime(v string) *ListRobotCallDi
 }
 
 type ListRobotCallDialogResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRobotCallDialogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRobotCallDialogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRobotCallDialogResponse) String() string {
@@ -17117,7 +21128,12 @@ type ListRobotNodeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RobotId              *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100002674****
+	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 
 func (s ListRobotNodeRequest) String() string {
@@ -17149,11 +21165,23 @@ func (s *ListRobotNodeRequest) SetRobotId(v int64) *ListRobotNodeRequest {
 }
 
 type ListRobotNodeResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListRobotNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Ok
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListRobotNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRobotNodeResponseBody) String() string {
@@ -17190,8 +21218,14 @@ func (s *ListRobotNodeResponseBody) SetSuccess(v bool) *ListRobotNodeResponseBod
 }
 
 type ListRobotNodeResponseBodyData struct {
-	IsOutput       *int32  `json:"IsOutput,omitempty" xml:"IsOutput,omitempty"`
-	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// 1
+	IsOutput  *int32  `json:"IsOutput,omitempty" xml:"IsOutput,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// 123456
 	NodeIdentifier *string `json:"NodeIdentifier,omitempty" xml:"NodeIdentifier,omitempty"`
 	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	ProcessName    *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
@@ -17231,9 +21265,9 @@ func (s *ListRobotNodeResponseBodyData) SetProcessName(v string) *ListRobotNodeR
 }
 
 type ListRobotNodeResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRobotNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRobotNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRobotNodeResponse) String() string {
@@ -17263,7 +21297,12 @@ type ListRobotParamsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RobotId              *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 
 func (s ListRobotParamsRequest) String() string {
@@ -17295,11 +21334,23 @@ func (s *ListRobotParamsRequest) SetRobotId(v int64) *ListRobotParamsRequest {
 }
 
 type ListRobotParamsResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListRobotParamsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListRobotParamsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FF67D4D5-4E90-1DF5-BB8F-060BBFAD72DB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRobotParamsResponseBody) String() string {
@@ -17336,7 +21387,13 @@ func (s *ListRobotParamsResponseBody) SetSuccess(v bool) *ListRobotParamsRespons
 }
 
 type ListRobotParamsResponseBodyData struct {
-	IsEmpty   *int32  `json:"IsEmpty,omitempty" xml:"IsEmpty,omitempty"`
+	// example:
+	//
+	// 0
+	IsEmpty *int32 `json:"IsEmpty,omitempty" xml:"IsEmpty,omitempty"`
+	// example:
+	//
+	// name
 	ParamCode *string `json:"ParamCode,omitempty" xml:"ParamCode,omitempty"`
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 }
@@ -17365,9 +21422,9 @@ func (s *ListRobotParamsResponseBodyData) SetParamName(v string) *ListRobotParam
 }
 
 type ListRobotParamsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRobotParamsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRobotParamsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRobotParamsResponse) String() string {
@@ -17394,8 +21451,16 @@ func (s *ListRobotParamsResponse) SetBody(v *ListRobotParamsResponseBody) *ListR
 }
 
 type ListRolesRequest struct {
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListRolesRequest) String() string {
@@ -17417,11 +21482,23 @@ func (s *ListRolesRequest) SetInstanceId(v string) *ListRolesRequest {
 }
 
 type ListRolesResponseBody struct {
-	Data           []*ListRolesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*ListRolesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -17458,14 +21535,32 @@ func (s *ListRolesResponseBody) SetSuccess(v bool) *ListRolesResponseBody {
 }
 
 type ListRolesResponseBodyData struct {
-	BuId          *int64  `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1
+	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// example:
+	//
+	// admin
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2020-01-03T20:25:33Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// Admin
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 0
 	RoleGroupId   *int64  `json:"RoleGroupId,omitempty" xml:"RoleGroupId,omitempty"`
 	RoleGroupName *string `json:"RoleGroupName,omitempty" xml:"RoleGroupName,omitempty"`
-	RoleId        *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1
+	RoleId *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListRolesResponseBodyData) String() string {
@@ -17517,9 +21612,9 @@ func (s *ListRolesResponseBodyData) SetTitle(v string) *ListRolesResponseBodyDat
 }
 
 type ListRolesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRolesResponse) String() string {
@@ -17546,9 +21641,20 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 }
 
 type ListSkillGroupRequest struct {
-	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListSkillGroupRequest) String() string {
@@ -17575,11 +21681,23 @@ func (s *ListSkillGroupRequest) SetInstanceId(v string) *ListSkillGroupRequest {
 }
 
 type ListSkillGroupResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListSkillGroupResponseBody) String() string {
@@ -17616,11 +21734,17 @@ func (s *ListSkillGroupResponseBody) SetSuccess(v bool) *ListSkillGroupResponseB
 }
 
 type ListSkillGroupResponseBodyData struct {
-	ChannelType  *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillGroupId *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123456
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s ListSkillGroupResponseBodyData) String() string {
@@ -17657,9 +21781,9 @@ func (s *ListSkillGroupResponseBodyData) SetSkillGroupId(v int64) *ListSkillGrou
 }
 
 type ListSkillGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSkillGroupResponse) String() string {
@@ -17686,15 +21810,24 @@ func (s *ListSkillGroupResponse) SetBody(v *ListSkillGroupResponseBody) *ListSki
 }
 
 type ListTaskRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RobotName            *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName             *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// STOP
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s ListTaskRequest) String() string {
@@ -17751,11 +21884,23 @@ func (s *ListTaskRequest) SetTaskName(v string) *ListTaskRequest {
 }
 
 type ListTaskResponseBody struct {
-	Code      *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListTaskResponseBody) String() string {
@@ -17792,10 +21937,19 @@ func (s *ListTaskResponseBody) SetSuccess(v bool) *ListTaskResponseBody {
 }
 
 type ListTaskResponseBodyData struct {
-	PageNo   *int64                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Record   []*ListTaskResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
-	Total    *int64                            `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 50
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTaskResponseBodyData) String() string {
@@ -17827,15 +21981,36 @@ func (s *ListTaskResponseBodyData) SetTotal(v int64) *ListTaskResponseBodyData {
 }
 
 type ListTaskResponseBodyDataRecord struct {
-	CompleteCount *int32  `json:"CompleteCount,omitempty" xml:"CompleteCount,omitempty"`
-	FireTime      *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
-	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RobotId       *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
-	RobotName     *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskName      *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TotalCount    *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	CompleteCount *int32 `json:"CompleteCount,omitempty" xml:"CompleteCount,omitempty"`
+	// example:
+	//
+	// 1618477232000
+	FireTime *string `json:"FireTime,omitempty" xml:"FireTime,omitempty"`
+	// example:
+	//
+	// 1618477232000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 123456
+	RobotId   *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
+	// example:
+	//
+	// RELEASE
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTaskResponseBodyDataRecord) String() string {
@@ -17892,9 +22067,9 @@ func (s *ListTaskResponseBodyDataRecord) SetTotalCount(v int32) *ListTaskRespons
 }
 
 type ListTaskResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTaskResponse) String() string {
@@ -17921,16 +22096,39 @@ func (s *ListTaskResponse) SetBody(v *ListTaskResponseBody) *ListTaskResponse {
 }
 
 type ListTaskDetailRequest struct {
-	Called               *string `json:"Called,omitempty" xml:"Called,omitempty"`
-	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 186****0000
+	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// example:
+	//
+	// 123456
+	Id      *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusCode           *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 000001
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListTaskDetailRequest) String() string {
@@ -17992,11 +22190,23 @@ func (s *ListTaskDetailRequest) SetTaskId(v int64) *ListTaskDetailRequest {
 }
 
 type ListTaskDetailResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListTaskDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListTaskDetailResponseBody) String() string {
@@ -18033,10 +22243,19 @@ func (s *ListTaskDetailResponseBody) SetSuccess(v bool) *ListTaskDetailResponseB
 }
 
 type ListTaskDetailResponseBodyData struct {
-	PageNo   *int64                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
 	PageSize *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Record   []*ListTaskDetailResponseBodyDataRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
-	Total    *int64                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 50
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTaskDetailResponseBodyData) String() string {
@@ -18068,16 +22287,46 @@ func (s *ListTaskDetailResponseBodyData) SetTotal(v int64) *ListTaskDetailRespon
 }
 
 type ListTaskDetailResponseBodyDataRecord struct {
-	Called         *string `json:"Called,omitempty" xml:"Called,omitempty"`
-	Caller         *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	Direction      *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	Duration       *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RetryCurTimes  *int32  `json:"RetryCurTimes,omitempty" xml:"RetryCurTimes,omitempty"`
-	RetryTimes     *int32  `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 186****0000
+	Called *string `json:"Called,omitempty" xml:"Called,omitempty"`
+	// example:
+	//
+	// 136****0000
+	Caller    *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// example:
+	//
+	// 30
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2021-05-20 00:03:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	RetryCurTimes *int32 `json:"RetryCurTimes,omitempty" xml:"RetryCurTimes,omitempty"`
+	// example:
+	//
+	// 1
+	RetryTimes *int32 `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
+	// example:
+	//
+	// 2021-05-20 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 00001
 	StatusCode     *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	StatusCodeDesc *string `json:"StatusCodeDesc,omitempty" xml:"StatusCodeDesc,omitempty"`
 	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -18157,9 +22406,9 @@ func (s *ListTaskDetailResponseBodyDataRecord) SetTags(v string) *ListTaskDetail
 }
 
 type ListTaskDetailResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTaskDetailResponse) String() string {
@@ -18185,12 +22434,244 @@ func (s *ListTaskDetailResponse) SetBody(v *ListTaskDetailResponseBody) *ListTas
 	return s
 }
 
+type LlmSmartCallRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// F32XXX2CF9
+	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****0000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 057188040000
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// example:
+	//
+	// 222356****
+	OutId          *string                `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PromptParam    map[string]interface{} `json:"PromptParam,omitempty" xml:"PromptParam,omitempty"`
+	StartWordParam map[string]interface{} `json:"StartWordParam,omitempty" xml:"StartWordParam,omitempty"`
+}
+
+func (s LlmSmartCallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmSmartCallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LlmSmartCallRequest) SetApplicationCode(v string) *LlmSmartCallRequest {
+	s.ApplicationCode = &v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetCalledNumber(v string) *LlmSmartCallRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetCallerNumber(v string) *LlmSmartCallRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetOutId(v string) *LlmSmartCallRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetPromptParam(v map[string]interface{}) *LlmSmartCallRequest {
+	s.PromptParam = v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetStartWordParam(v map[string]interface{}) *LlmSmartCallRequest {
+	s.StartWordParam = v
+	return s
+}
+
+type LlmSmartCallShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// F32XXX2CF9
+	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****0000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 057188040000
+	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	// example:
+	//
+	// 222356****
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PromptParamShrink    *string `json:"PromptParam,omitempty" xml:"PromptParam,omitempty"`
+	StartWordParamShrink *string `json:"StartWordParam,omitempty" xml:"StartWordParam,omitempty"`
+}
+
+func (s LlmSmartCallShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmSmartCallShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LlmSmartCallShrinkRequest) SetApplicationCode(v string) *LlmSmartCallShrinkRequest {
+	s.ApplicationCode = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetCalledNumber(v string) *LlmSmartCallShrinkRequest {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetCallerNumber(v string) *LlmSmartCallShrinkRequest {
+	s.CallerNumber = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetOutId(v string) *LlmSmartCallShrinkRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetPromptParamShrink(v string) *LlmSmartCallShrinkRequest {
+	s.PromptParamShrink = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetStartWordParamShrink(v string) *LlmSmartCallShrinkRequest {
+	s.StartWordParamShrink = &v
+	return s
+}
+
+type LlmSmartCallResponseBody struct {
+	// example:
+	//
+	// 125165515***^11195613****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EE338D98-9BD3-XX13-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LlmSmartCallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmSmartCallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LlmSmartCallResponseBody) SetCallId(v string) *LlmSmartCallResponseBody {
+	s.CallId = &v
+	return s
+}
+
+func (s *LlmSmartCallResponseBody) SetCode(v string) *LlmSmartCallResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *LlmSmartCallResponseBody) SetMessage(v string) *LlmSmartCallResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *LlmSmartCallResponseBody) SetRequestId(v string) *LlmSmartCallResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LlmSmartCallResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LlmSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LlmSmartCallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LlmSmartCallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LlmSmartCallResponse) SetHeaders(v map[string]*string) *LlmSmartCallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LlmSmartCallResponse) SetStatusCode(v int32) *LlmSmartCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LlmSmartCallResponse) SetBody(v *LlmSmartCallResponseBody) *LlmSmartCallResponse {
+	s.Body = v
+	return s
+}
+
 type MakeCallRequest struct {
-	CalledNumber     *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber    *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	CommandCode      *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
-	ExtInfo          *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	OuterAccountId   *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130****0000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571456****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// outBound_Call
+	CommandCode *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
+	// example:
+	//
+	// {"bizId": 23323}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	OuterAccountId *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIPAY
 	OuterAccountType *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
 }
 
@@ -18233,11 +22714,26 @@ func (s *MakeCallRequest) SetOuterAccountType(v string) *MakeCallRequest {
 }
 
 type MakeCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MakeCallResponseBody) String() string {
@@ -18274,9 +22770,9 @@ func (s *MakeCallResponseBody) SetSuccess(v bool) *MakeCallResponseBody {
 }
 
 type MakeCallResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MakeCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MakeCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MakeCallResponse) String() string {
@@ -18303,12 +22799,38 @@ func (s *MakeCallResponse) SetBody(v *MakeCallResponseBody) *MakeCallResponse {
 }
 
 type MakeDoubleCallRequest struct {
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	BizData            *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberPhone        *string `json:"MemberPhone,omitempty" xml:"MemberPhone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// {"bizId": 123456}
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1502123****
+	MemberPhone *string `json:"MemberPhone,omitempty" xml:"MemberPhone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571000****
 	OutboundCallNumber *string `json:"OutboundCallNumber,omitempty" xml:"OutboundCallNumber,omitempty"`
-	ServicerPhone      *string `json:"ServicerPhone,omitempty" xml:"ServicerPhone,omitempty"`
+	// example:
+	//
+	// 150****1234
+	ServicerPhone *string `json:"ServicerPhone,omitempty" xml:"ServicerPhone,omitempty"`
 }
 
 func (s MakeDoubleCallRequest) String() string {
@@ -18350,11 +22872,23 @@ func (s *MakeDoubleCallRequest) SetServicerPhone(v string) *MakeDoubleCallReques
 }
 
 type MakeDoubleCallResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *MakeDoubleCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *MakeDoubleCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MakeDoubleCallResponseBody) String() string {
@@ -18391,6 +22925,9 @@ func (s *MakeDoubleCallResponseBody) SetSuccess(v bool) *MakeDoubleCallResponseB
 }
 
 type MakeDoubleCallResponseBodyData struct {
+	// example:
+	//
+	// 68255155365620598
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
 }
 
@@ -18408,9 +22945,9 @@ func (s *MakeDoubleCallResponseBodyData) SetAcid(v string) *MakeDoubleCallRespon
 }
 
 type MakeDoubleCallResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MakeDoubleCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MakeDoubleCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MakeDoubleCallResponse) String() string {
@@ -18437,7 +22974,17 @@ func (s *MakeDoubleCallResponse) SetBody(v *MakeDoubleCallResponseBody) *MakeDou
 }
 
 type QueryHotlineInQueueRequest struct {
-	OuterGroupId   *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	OuterGroupId *string `json:"OuterGroupId,omitempty" xml:"OuterGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mybank
 	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
 }
 
@@ -18460,11 +23007,26 @@ func (s *QueryHotlineInQueueRequest) SetOuterGroupType(v string) *QueryHotlineIn
 }
 
 type QueryHotlineInQueueResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"n_online_now":10,"n_idle_now":3,"n_resttype_now":3,"n_acw_now":1}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryHotlineInQueueResponseBody) String() string {
@@ -18501,9 +23063,9 @@ func (s *QueryHotlineInQueueResponseBody) SetSuccess(v bool) *QueryHotlineInQueu
 }
 
 type QueryHotlineInQueueResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryHotlineInQueueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryHotlineInQueueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryHotlineInQueueResponse) String() string {
@@ -18530,12 +23092,33 @@ func (s *QueryHotlineInQueueResponse) SetBody(v *QueryHotlineInQueueResponseBody
 }
 
 type QueryHotlineNumberRequest struct {
-	CurrentPage   *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DepartmentId  *int64   `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	GroupIds      []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	HotlineNumber *string  `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InstanceId    *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize      *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 2256****
+	DepartmentId *int64   `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	GroupIds     []*int64 `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0571****2211
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryHotlineNumberRequest) String() string {
@@ -18577,12 +23160,33 @@ func (s *QueryHotlineNumberRequest) SetPageSize(v int32) *QueryHotlineNumberRequ
 }
 
 type QueryHotlineNumberShrinkRequest struct {
-	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 2256****
 	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	GroupIdsShrink *string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty"`
-	HotlineNumber  *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0571****2211
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryHotlineNumberShrinkRequest) String() string {
@@ -18624,11 +23228,23 @@ func (s *QueryHotlineNumberShrinkRequest) SetPageSize(v int32) *QueryHotlineNumb
 }
 
 type QueryHotlineNumberResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryHotlineNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryHotlineNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE339D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryHotlineNumberResponseBody) String() string {
@@ -18665,10 +23281,19 @@ func (s *QueryHotlineNumberResponseBody) SetSuccess(v bool) *QueryHotlineNumberR
 }
 
 type QueryHotlineNumberResponseBodyData struct {
+	// example:
+	//
+	// 1
 	CurrentPage    *int64                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	HotlineNumList []*QueryHotlineNumberResponseBodyDataHotlineNumList `json:"HotlineNumList,omitempty" xml:"HotlineNumList,omitempty" type:"Repeated"`
-	PageSize       *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 123
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryHotlineNumberResponseBodyData) String() string {
@@ -18700,17 +23325,47 @@ func (s *QueryHotlineNumberResponseBodyData) SetTotalCount(v int64) *QueryHotlin
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumList struct {
+	// example:
+	//
+	// true
 	CalloutAllDepartment *bool                                                               `json:"CalloutAllDepartment,omitempty" xml:"CalloutAllDepartment,omitempty"`
 	CalloutRangeList     []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList `json:"CalloutRangeList,omitempty" xml:"CalloutRangeList,omitempty" type:"Repeated"`
-	Description          *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	EvaluationStatus     *int32                                                              `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
-	FlowId               *int64                                                              `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	FlowName             *string                                                             `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	HotlineNumber        *string                                                             `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InBoundEnabled       *bool                                                               `json:"InBoundEnabled,omitempty" xml:"InBoundEnabled,omitempty"`
-	Location             *string                                                             `json:"Location,omitempty" xml:"Location,omitempty"`
-	OutboundEnabled      *bool                                                               `json:"OutboundEnabled,omitempty" xml:"OutboundEnabled,omitempty"`
-	Sp                   *string                                                             `json:"Sp,omitempty" xml:"Sp,omitempty"`
+	// example:
+	//
+	// 测试
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 0
+	EvaluationStatus *int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
+	// example:
+	//
+	// 12
+	FlowId *int64 `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// example:
+	//
+	// 测试流程
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// example:
+	//
+	// 0571****2211
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// example:
+	//
+	// true
+	InBoundEnabled *bool `json:"InBoundEnabled,omitempty" xml:"InBoundEnabled,omitempty"`
+	// example:
+	//
+	// 浙江杭州
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// true
+	OutboundEnabled *bool `json:"OutboundEnabled,omitempty" xml:"OutboundEnabled,omitempty"`
+	// example:
+	//
+	// 电信
+	Sp *string `json:"Sp,omitempty" xml:"Sp,omitempty"`
 }
 
 func (s QueryHotlineNumberResponseBodyDataHotlineNumList) String() string {
@@ -18777,6 +23432,9 @@ func (s *QueryHotlineNumberResponseBodyDataHotlineNumList) SetSp(v string) *Quer
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList struct {
+	// example:
+	//
+	// 2256****
 	DepartmentId   *int64                                                                         `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	DepartmentName *string                                                                        `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
 	GroupDOList    []*QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList `json:"GroupDOList,omitempty" xml:"GroupDOList,omitempty" type:"Repeated"`
@@ -18806,6 +23464,9 @@ func (s *QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeList) SetGr
 }
 
 type QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDOList struct {
+	// example:
+	//
+	// 6083****
 	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
@@ -18829,9 +23490,9 @@ func (s *QueryHotlineNumberResponseBodyDataHotlineNumListCalloutRangeListGroupDO
 }
 
 type QueryHotlineNumberResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryHotlineNumberResponse) String() string {
@@ -18864,15 +23525,16 @@ type QueryOutboundTaskRequest struct {
 	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SkillGroup   *int64  `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
-	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType     *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SkillGroup *int64  `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType   *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s QueryOutboundTaskRequest) String() string {
@@ -19184,9 +23846,9 @@ func (s *QueryOutboundTaskResponseBodyDataList) SetType(v int32) *QueryOutboundT
 }
 
 type QueryOutboundTaskResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryOutboundTaskResponse) String() string {
@@ -19213,12 +23875,36 @@ func (s *QueryOutboundTaskResponse) SetBody(v *QueryOutboundTaskResponseBody) *Q
 }
 
 type QuerySkillGroupsRequest struct {
-	ChannelType  *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DepartmentId *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 1023****
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QuerySkillGroupsRequest) String() string {
@@ -19260,12 +23946,27 @@ func (s *QuerySkillGroupsRequest) SetPageSize(v int32) *QuerySkillGroupsRequest 
 }
 
 type QuerySkillGroupsResponseBody struct {
-	CurrentPage  *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data         []*QuerySkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	OnePageSize  *int32                              `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalPage    *int32                              `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	TotalResults *int32                              `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*QuerySkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 76
+	TotalResults *int32 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s QuerySkillGroupsResponseBody) String() string {
@@ -19307,9 +24008,15 @@ func (s *QuerySkillGroupsResponseBody) SetTotalResults(v int32) *QuerySkillGroup
 }
 
 type QuerySkillGroupsResponseBodyData struct {
-	ChannelType    *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 123456
 	SkillGroupId   *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
@@ -19348,9 +24055,9 @@ func (s *QuerySkillGroupsResponseBodyData) SetSkillGroupName(v string) *QuerySki
 }
 
 type QuerySkillGroupsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySkillGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySkillGroupsResponse) String() string {
@@ -19382,16 +24089,17 @@ type QueryTaskDetailRequest struct {
 	DepartmentIdList *string `json:"DepartmentIdList,omitempty" xml:"DepartmentIdList,omitempty"`
 	Dnis             *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
 	EndReasonList    *string `json:"EndReasonList,omitempty" xml:"EndReasonList,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId   *string `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PriorityList     *string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty"`
-	ServicerId       *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	ServicerName     *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	Sid              *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	SkillGroup       *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
-	StatusList       *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
-	TaskId           *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OutboundTaskId *string `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PriorityList   *string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty"`
+	ServicerId     *string `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	ServicerName   *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	Sid            *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	SkillGroup     *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	StatusList     *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	TaskId         *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s QueryTaskDetailRequest) String() string {
@@ -19685,9 +24393,9 @@ func (s *QueryTaskDetailResponseBodyDataList) SetStatus(v int32) *QueryTaskDetai
 }
 
 type QueryTaskDetailResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskDetailResponse) String() string {
@@ -19714,19 +24422,57 @@ func (s *QueryTaskDetailResponse) SetBody(v *QueryTaskDetailResponseBody) *Query
 }
 
 type QueryTicketsRequest struct {
-	CaseId      *int64                 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	CaseStatus  *int32                 `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
-	CaseType    *int32                 `json:"CaseType,omitempty" xml:"CaseType,omitempty"`
-	ChannelId   *string                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelType *int32                 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	CurrentPage *int32                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	DealId      *int64                 `json:"DealId,omitempty" xml:"DealId,omitempty"`
-	Extra       map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	InstanceId  *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SrType      *int64                 `json:"SrType,omitempty" xml:"SrType,omitempty"`
-	TaskStatus  *int32                 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TouchId     *int64                 `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
+	// example:
+	//
+	// 223468****
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 2
+	CaseStatus *int32 `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
+	// example:
+	//
+	// 1223
+	CaseType *int32 `json:"CaseType,omitempty" xml:"CaseType,omitempty"`
+	// example:
+	//
+	// 02acfefd3fa14049826ac1a89e1xxxxx
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 123456
+	DealId *int64                 `json:"DealId,omitempty" xml:"DealId,omitempty"`
+	Extra  map[string]interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 29506
+	SrType *int64 `json:"SrType,omitempty" xml:"SrType,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 15030609
+	TouchId *int64 `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
 }
 
 func (s QueryTicketsRequest) String() string {
@@ -19803,19 +24549,57 @@ func (s *QueryTicketsRequest) SetTouchId(v int64) *QueryTicketsRequest {
 }
 
 type QueryTicketsShrinkRequest struct {
-	CaseId      *int64  `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
-	CaseStatus  *int32  `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
-	CaseType    *int32  `json:"CaseType,omitempty" xml:"CaseType,omitempty"`
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelType *int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 223468****
+	CaseId *int64 `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// example:
+	//
+	// 2
+	CaseStatus *int32 `json:"CaseStatus,omitempty" xml:"CaseStatus,omitempty"`
+	// example:
+	//
+	// 1223
+	CaseType *int32 `json:"CaseType,omitempty" xml:"CaseType,omitempty"`
+	// example:
+	//
+	// 02acfefd3fa14049826ac1a89e1xxxxx
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 123456
 	DealId      *int64  `json:"DealId,omitempty" xml:"DealId,omitempty"`
 	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SrType      *int64  `json:"SrType,omitempty" xml:"SrType,omitempty"`
-	TaskStatus  *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TouchId     *int64  `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 29506
+	SrType *int64 `json:"SrType,omitempty" xml:"SrType,omitempty"`
+	// example:
+	//
+	// 3
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// 15030609
+	TouchId *int64 `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
 }
 
 func (s QueryTicketsShrinkRequest) String() string {
@@ -19892,11 +24676,26 @@ func (s *QueryTicketsShrinkRequest) SetTouchId(v int64) *QueryTicketsShrinkReque
 }
 
 type QueryTicketsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// { "totalResults":1 "previousPage":1 "data":[ 0:{ "serviceType":1 "lastUrgeTime":0 "queueId":0 "sopCateId":252011 "totalUrgeMemo":"" "taskGmtModified":0 "departmentId":10 "groupId":0 "channelType":1 "questionInfo":"" "templateId":0 "deadLine":0 "srType":30701 "caseId":2000000001165962}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTicketsResponseBody) String() string {
@@ -19933,9 +24732,9 @@ func (s *QueryTicketsResponseBody) SetSuccess(v bool) *QueryTicketsResponseBody 
 }
 
 type QueryTicketsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTicketsResponse) String() string {
@@ -19962,25 +24761,48 @@ func (s *QueryTicketsResponse) SetBody(v *QueryTicketsResponseBody) *QueryTicket
 }
 
 type QueryTouchListRequest struct {
-	ChannelId        []*string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty" type:"Repeated"`
-	ChannelType      []*int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty" type:"Repeated"`
-	CloseTimeEnd     *int64    `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
-	CloseTimeStart   *int64    `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
-	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EvaluationLevel  []*int32  `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty" type:"Repeated"`
-	EvaluationScore  []*int32  `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty" type:"Repeated"`
-	EvaluationStatus []*int32  `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty" type:"Repeated"`
-	FirstTimeEnd     *int64    `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
-	FirstTimeStart   *int64    `json:"FirstTimeStart,omitempty" xml:"FirstTimeStart,omitempty"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemberId         []*int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty" type:"Repeated"`
-	MemberName       []*string `json:"MemberName,omitempty" xml:"MemberName,omitempty" type:"Repeated"`
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueueId          []*int64  `json:"QueueId,omitempty" xml:"QueueId,omitempty" type:"Repeated"`
-	ServicerId       []*int64  `json:"ServicerId,omitempty" xml:"ServicerId,omitempty" type:"Repeated"`
-	ServicerName     []*string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty" type:"Repeated"`
-	TouchId          []*int64  `json:"TouchId,omitempty" xml:"TouchId,omitempty" type:"Repeated"`
-	TouchType        []*int32  `json:"TouchType,omitempty" xml:"TouchType,omitempty" type:"Repeated"`
+	ChannelId   []*string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty" type:"Repeated"`
+	ChannelType []*int32  `json:"ChannelType,omitempty" xml:"ChannelType,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1614600500000
+	CloseTimeEnd *int64 `json:"CloseTimeEnd,omitempty" xml:"CloseTimeEnd,omitempty"`
+	// example:
+	//
+	// 1614600400000
+	CloseTimeStart *int64 `json:"CloseTimeStart,omitempty" xml:"CloseTimeStart,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage      *int32   `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EvaluationLevel  []*int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty" type:"Repeated"`
+	EvaluationScore  []*int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty" type:"Repeated"`
+	EvaluationStatus []*int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1614599400000
+	FirstTimeEnd *int64 `json:"FirstTimeEnd,omitempty" xml:"FirstTimeEnd,omitempty"`
+	// example:
+	//
+	// 1614596400000
+	FirstTimeStart *int64 `json:"FirstTimeStart,omitempty" xml:"FirstTimeStart,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MemberId   []*int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty" type:"Repeated"`
+	MemberName []*string `json:"MemberName,omitempty" xml:"MemberName,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueueId      []*int64  `json:"QueueId,omitempty" xml:"QueueId,omitempty" type:"Repeated"`
+	ServicerId   []*int64  `json:"ServicerId,omitempty" xml:"ServicerId,omitempty" type:"Repeated"`
+	ServicerName []*string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty" type:"Repeated"`
+	TouchId      []*int64  `json:"TouchId,omitempty" xml:"TouchId,omitempty" type:"Repeated"`
+	TouchType    []*int32  `json:"TouchType,omitempty" xml:"TouchType,omitempty" type:"Repeated"`
 }
 
 func (s QueryTouchListRequest) String() string {
@@ -20087,11 +24909,23 @@ func (s *QueryTouchListRequest) SetTouchType(v []*int32) *QueryTouchListRequest 
 }
 
 type QueryTouchListResponseBody struct {
-	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 865658FD-80DE-5D49-ABEB-F3CC9863F4F1
 	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultData *QueryTouchListResponseBodyResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Struct"`
-	Success    *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTouchListResponseBody) String() string {
@@ -20128,14 +24962,35 @@ func (s *QueryTouchListResponseBody) SetSuccess(v bool) *QueryTouchListResponseB
 }
 
 type QueryTouchListResponseBodyResultData struct {
-	CurrentPage  *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data         []*QueryTouchListResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Empty        *bool                                       `json:"Empty,omitempty" xml:"Empty,omitempty"`
-	NextPage     *int32                                      `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	OnePageSize  *int32                                      `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
-	PreviousPage *int32                                      `json:"PreviousPage,omitempty" xml:"PreviousPage,omitempty"`
-	TotalPage    *int32                                      `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	TotalResults *int32                                      `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*QueryTouchListResponseBodyResultDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	Empty *bool `json:"Empty,omitempty" xml:"Empty,omitempty"`
+	// example:
+	//
+	// 2
+	NextPage *int32 `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 2
+	OnePageSize *int32 `json:"OnePageSize,omitempty" xml:"OnePageSize,omitempty"`
+	// example:
+	//
+	// 2
+	PreviousPage *int32 `json:"PreviousPage,omitempty" xml:"PreviousPage,omitempty"`
+	// example:
+	//
+	// 4
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 100
+	TotalResults *int32 `json:"TotalResults,omitempty" xml:"TotalResults,omitempty"`
 }
 
 func (s QueryTouchListResponseBodyResultData) String() string {
@@ -20187,34 +25042,106 @@ func (s *QueryTouchListResponseBodyResultData) SetTotalResults(v int32) *QueryTo
 }
 
 type QueryTouchListResponseBodyResultDataData struct {
-	BuId            *int64                                            `json:"BuId,omitempty" xml:"BuId,omitempty"`
-	ChannelId       *string                                           `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelType     *int32                                            `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	CloseTime       *int64                                            `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
-	CommonQueueName *string                                           `json:"CommonQueueName,omitempty" xml:"CommonQueueName,omitempty"`
-	DepId           *int64                                            `json:"DepId,omitempty" xml:"DepId,omitempty"`
-	ExtAttrs        *QueryTouchListResponseBodyResultDataDataExtAttrs `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty" type:"Struct"`
-	ExtAttrsString  map[string]interface{}                            `json:"ExtAttrsString,omitempty" xml:"ExtAttrsString,omitempty"`
-	Feedback        *string                                           `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	FirstTime       *int64                                            `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	FromId          *int64                                            `json:"FromId,omitempty" xml:"FromId,omitempty"`
-	GmtCreate       *int64                                            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *int64                                            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MemberId        *int64                                            `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberName      *string                                           `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	ParentTouchId   *int64                                            `json:"ParentTouchId,omitempty" xml:"ParentTouchId,omitempty"`
-	QueueId         *int64                                            `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	ServicerId      *int64                                            `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
-	ServicerName    *string                                           `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
-	Status          *int32                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	SwitchUser      *string                                           `json:"SwitchUser,omitempty" xml:"SwitchUser,omitempty"`
-	ToId            *int64                                            `json:"ToId,omitempty" xml:"ToId,omitempty"`
-	TouchContent    *string                                           `json:"TouchContent,omitempty" xml:"TouchContent,omitempty"`
-	TouchEndReason  *int32                                            `json:"TouchEndReason,omitempty" xml:"TouchEndReason,omitempty"`
-	TouchId         *string                                           `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
-	TouchTime       *string                                           `json:"TouchTime,omitempty" xml:"TouchTime,omitempty"`
-	TouchType       *int32                                            `json:"TouchType,omitempty" xml:"TouchType,omitempty"`
-	UserTouchId     *int64                                            `json:"UserTouchId,omitempty" xml:"UserTouchId,omitempty"`
+	// example:
+	//
+	// 905
+	BuId *int64 `json:"BuId,omitempty" xml:"BuId,omitempty"`
+	// example:
+	//
+	// 4f8807a9de024507a3090b5b66a8****
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1
+	ChannelType *int32 `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// example:
+	//
+	// 1611207976000
+	CloseTime       *int64  `json:"CloseTime,omitempty" xml:"CloseTime,omitempty"`
+	CommonQueueName *string `json:"CommonQueueName,omitempty" xml:"CommonQueueName,omitempty"`
+	// example:
+	//
+	// 100
+	DepId          *int64                                            `json:"DepId,omitempty" xml:"DepId,omitempty"`
+	ExtAttrs       *QueryTouchListResponseBodyResultDataDataExtAttrs `json:"ExtAttrs,omitempty" xml:"ExtAttrs,omitempty" type:"Struct"`
+	ExtAttrsString map[string]interface{}                            `json:"ExtAttrsString,omitempty" xml:"ExtAttrsString,omitempty"`
+	// example:
+	//
+	// xxxx
+	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// example:
+	//
+	// 1611209971000
+	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// example:
+	//
+	// 6400665****
+	FromId *int64 `json:"FromId,omitempty" xml:"FromId,omitempty"`
+	// example:
+	//
+	// 1611209971000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1611207979000
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 6400665****
+	MemberId   *int64  `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 0
+	ParentTouchId *int64 `json:"ParentTouchId,omitempty" xml:"ParentTouchId,omitempty"`
+	// example:
+	//
+	// 111
+	QueueId *int64 `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// example:
+	//
+	// 67****
+	ServicerId *int64 `json:"ServicerId,omitempty" xml:"ServicerId,omitempty"`
+	// example:
+	//
+	// 13900001234
+	ServicerName *string `json:"ServicerName,omitempty" xml:"ServicerName,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// null
+	SwitchUser *string `json:"SwitchUser,omitempty" xml:"SwitchUser,omitempty"`
+	// example:
+	//
+	// 678026
+	ToId *int64 `json:"ToId,omitempty" xml:"ToId,omitempty"`
+	// example:
+	//
+	// 1
+	TouchContent *string `json:"TouchContent,omitempty" xml:"TouchContent,omitempty"`
+	// example:
+	//
+	// 2
+	TouchEndReason *int32 `json:"TouchEndReason,omitempty" xml:"TouchEndReason,omitempty"`
+	// example:
+	//
+	// 1386****
+	TouchId *string `json:"TouchId,omitempty" xml:"TouchId,omitempty"`
+	// example:
+	//
+	// 111
+	TouchTime *string `json:"TouchTime,omitempty" xml:"TouchTime,omitempty"`
+	// example:
+	//
+	// 2
+	TouchType *int32 `json:"TouchType,omitempty" xml:"TouchType,omitempty"`
+	// example:
+	//
+	// 1386****
+	UserTouchId *int64 `json:"UserTouchId,omitempty" xml:"UserTouchId,omitempty"`
 }
 
 func (s QueryTouchListResponseBodyResultDataData) String() string {
@@ -20366,15 +25293,42 @@ func (s *QueryTouchListResponseBodyResultDataData) SetUserTouchId(v int64) *Quer
 }
 
 type QueryTouchListResponseBodyResultDataDataExtAttrs struct {
-	Ani                    *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
-	Dnis                   *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
-	EvaluationLevel        *int32  `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	EvaluationScore        *int32  `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
-	EvaluationSolution     *int32  `json:"EvaluationSolution,omitempty" xml:"EvaluationSolution,omitempty"`
-	EvaluationStatus       *int32  `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
-	OnlineJoinRespInterval *int32  `json:"OnlineJoinRespInterval,omitempty" xml:"OnlineJoinRespInterval,omitempty"`
-	OnlineSessionSource    *int32  `json:"OnlineSessionSource,omitempty" xml:"OnlineSessionSource,omitempty"`
-	OutCallRouteNumber     *string `json:"OutCallRouteNumber,omitempty" xml:"OutCallRouteNumber,omitempty"`
+	// example:
+	//
+	// 187****0000
+	Ani *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
+	// example:
+	//
+	// 05712688****
+	Dnis *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// example:
+	//
+	// 1
+	EvaluationScore *int32 `json:"EvaluationScore,omitempty" xml:"EvaluationScore,omitempty"`
+	// example:
+	//
+	// 0
+	EvaluationSolution *int32 `json:"EvaluationSolution,omitempty" xml:"EvaluationSolution,omitempty"`
+	// example:
+	//
+	// 1
+	EvaluationStatus *int32 `json:"EvaluationStatus,omitempty" xml:"EvaluationStatus,omitempty"`
+	// example:
+	//
+	// 1
+	OnlineJoinRespInterval *int32 `json:"OnlineJoinRespInterval,omitempty" xml:"OnlineJoinRespInterval,omitempty"`
+	// example:
+	//
+	// 0
+	OnlineSessionSource *int32 `json:"OnlineSessionSource,omitempty" xml:"OnlineSessionSource,omitempty"`
+	// example:
+	//
+	// 05712688****
+	OutCallRouteNumber *string `json:"OutCallRouteNumber,omitempty" xml:"OutCallRouteNumber,omitempty"`
 }
 
 func (s QueryTouchListResponseBodyResultDataDataExtAttrs) String() string {
@@ -20431,9 +25385,9 @@ func (s *QueryTouchListResponseBodyResultDataDataExtAttrs) SetOutCallRouteNumber
 }
 
 type QueryTouchListResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTouchListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTouchListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTouchListResponse) String() string {
@@ -20460,9 +25414,20 @@ func (s *QueryTouchListResponse) SetBody(v *QueryTouchListResponseBody) *QueryTo
 }
 
 type RemoveAgentFromSkillGroupRequest struct {
-	AgentIds     []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
-	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SkillGroupId *int64   `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// This parameter is required.
+	AgentIds []*int64 `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1146****
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s RemoveAgentFromSkillGroupRequest) String() string {
@@ -20489,9 +25454,20 @@ func (s *RemoveAgentFromSkillGroupRequest) SetSkillGroupId(v int64) *RemoveAgent
 }
 
 type RemoveAgentFromSkillGroupShrinkRequest struct {
+	// This parameter is required.
 	AgentIdsShrink *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SkillGroupId   *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1146****
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s RemoveAgentFromSkillGroupShrinkRequest) String() string {
@@ -20518,11 +25494,23 @@ func (s *RemoveAgentFromSkillGroupShrinkRequest) SetSkillGroupId(v int64) *Remov
 }
 
 type RemoveAgentFromSkillGroupResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RemoveAgentFromSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *RemoveAgentFromSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveAgentFromSkillGroupResponseBody) String() string {
@@ -20559,6 +25547,9 @@ func (s *RemoveAgentFromSkillGroupResponseBody) SetSuccess(v bool) *RemoveAgentF
 }
 
 type RemoveAgentFromSkillGroupResponseBodyData struct {
+	// example:
+	//
+	// 2
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
@@ -20576,9 +25567,9 @@ func (s *RemoveAgentFromSkillGroupResponseBodyData) SetSuccessCount(v int32) *Re
 }
 
 type RemoveAgentFromSkillGroupResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveAgentFromSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveAgentFromSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveAgentFromSkillGroupResponse) String() string {
@@ -20605,8 +25596,21 @@ func (s *RemoveAgentFromSkillGroupResponse) SetBody(v *RemoveAgentFromSkillGroup
 }
 
 type RemoveSkillGroupRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
@@ -20634,10 +25638,22 @@ func (s *RemoveSkillGroupRequest) SetSkillGroupId(v string) *RemoveSkillGroupReq
 }
 
 type RemoveSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RemoveSkillGroupResponseBody) String() string {
@@ -20669,9 +25685,9 @@ func (s *RemoveSkillGroupResponseBody) SetSuccess(v bool) *RemoveSkillGroupRespo
 }
 
 type RemoveSkillGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveSkillGroupResponse) String() string {
@@ -20698,17 +25714,63 @@ func (s *RemoveSkillGroupResponse) SetBody(v *RemoveSkillGroupResponseBody) *Rem
 }
 
 type ResetHotlineNumberRequest struct {
-	Description              *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableInbound            *bool                                         `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
-	EnableInboundEvaluation  *bool                                         `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
-	EnableOutbound           *bool                                         `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
-	EnableOutboundEvaluation *bool                                         `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
-	EvaluationLevel          *int32                                        `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	HotlineNumber            *string                                       `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InboundFlowId            *int64                                        `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
-	InstanceId               *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundAllDepart        *bool                                         `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
-	OutboundRangeList        []*ResetHotlineNumberRequestOutboundRangeList `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInbound *bool `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInboundEvaluation *bool `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutbound *bool `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutboundEvaluation *bool `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571********
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// example:
+	//
+	// 123456
+	InboundFlowId *int64 `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	OutboundAllDepart *bool                                         `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
+	OutboundRangeList []*ResetHotlineNumberRequestOutboundRangeList `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty" type:"Repeated"`
 }
 
 func (s ResetHotlineNumberRequest) String() string {
@@ -20775,6 +25837,9 @@ func (s *ResetHotlineNumberRequest) SetOutboundRangeList(v []*ResetHotlineNumber
 }
 
 type ResetHotlineNumberRequestOutboundRangeList struct {
+	// example:
+	//
+	// 123456
 	DepartmentId *int64   `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
 	GroupIdList  []*int64 `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty" type:"Repeated"`
 }
@@ -20798,17 +25863,63 @@ func (s *ResetHotlineNumberRequestOutboundRangeList) SetGroupIdList(v []*int64) 
 }
 
 type ResetHotlineNumberShrinkRequest struct {
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnableInbound            *bool   `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
-	EnableInboundEvaluation  *bool   `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
-	EnableOutbound           *bool   `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
-	EnableOutboundEvaluation *bool   `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
-	EvaluationLevel          *int32  `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
-	HotlineNumber            *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
-	InboundFlowId            *int64  `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
-	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundAllDepart        *bool   `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
-	OutboundRangeListShrink  *string `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInbound *bool `json:"EnableInbound,omitempty" xml:"EnableInbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableInboundEvaluation *bool `json:"EnableInboundEvaluation,omitempty" xml:"EnableInboundEvaluation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutbound *bool `json:"EnableOutbound,omitempty" xml:"EnableOutbound,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableOutboundEvaluation *bool `json:"EnableOutboundEvaluation,omitempty" xml:"EnableOutboundEvaluation,omitempty"`
+	// example:
+	//
+	// 2
+	EvaluationLevel *int32 `json:"EvaluationLevel,omitempty" xml:"EvaluationLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571********
+	HotlineNumber *string `json:"HotlineNumber,omitempty" xml:"HotlineNumber,omitempty"`
+	// example:
+	//
+	// 123456
+	InboundFlowId *int64 `json:"InboundFlowId,omitempty" xml:"InboundFlowId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	OutboundAllDepart       *bool   `json:"OutboundAllDepart,omitempty" xml:"OutboundAllDepart,omitempty"`
+	OutboundRangeListShrink *string `json:"OutboundRangeList,omitempty" xml:"OutboundRangeList,omitempty"`
 }
 
 func (s ResetHotlineNumberShrinkRequest) String() string {
@@ -20875,11 +25986,26 @@ func (s *ResetHotlineNumberShrinkRequest) SetOutboundRangeListShrink(v string) *
 }
 
 type ResetHotlineNumberResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// xxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResetHotlineNumberResponseBody) String() string {
@@ -20916,9 +26042,9 @@ func (s *ResetHotlineNumberResponseBody) SetSuccess(v bool) *ResetHotlineNumberR
 }
 
 type ResetHotlineNumberResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetHotlineNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetHotlineNumberResponse) String() string {
@@ -20945,8 +26071,10 @@ func (s *ResetHotlineNumberResponse) SetBody(v *ResetHotlineNumberResponseBody) 
 }
 
 type RestartOutboundTaskRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId *int64  `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	OutboundTaskId *int64 `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
 }
 
 func (s RestartOutboundTaskRequest) String() string {
@@ -21009,9 +26137,9 @@ func (s *RestartOutboundTaskResponseBody) SetSuccess(v bool) *RestartOutboundTas
 }
 
 type RestartOutboundTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestartOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestartOutboundTaskResponse) String() string {
@@ -21038,16 +26166,40 @@ func (s *RestartOutboundTaskResponse) SetBody(v *RestartOutboundTaskResponseBody
 }
 
 type RobotCallRequest struct {
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Params               *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 131****2204
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****5678
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// example:
+	//
+	// false
+	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// example:
+	//
+	// abcdefgh
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Params  *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// true
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RobotId              *int64  `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 350000****
+	RobotId *int64 `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
 }
 
 func (s RobotCallRequest) String() string {
@@ -21109,9 +26261,21 @@ func (s *RobotCallRequest) SetRobotId(v int64) *RobotCallRequest {
 }
 
 type RobotCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 116012854210^10281427*****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21144,9 +26308,9 @@ func (s *RobotCallResponseBody) SetRequestId(v string) *RobotCallResponseBody {
 }
 
 type RobotCallResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RobotCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RobotCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RobotCallResponse) String() string {
@@ -21173,38 +26337,128 @@ func (s *RobotCallResponse) SetBody(v *RobotCallResponseBody) *RobotCallResponse
 }
 
 type SendCcoSmartCallRequest struct {
-	ActionCodeBreak      *bool   `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
-	ActionCodeTimeBreak  *int32  `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
-	AsrAlsAmId           *string `json:"AsrAlsAmId,omitempty" xml:"AsrAlsAmId,omitempty"`
-	AsrBaseId            *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
-	BackgroundFileCode   *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
-	BackgroundSpeed      *int32  `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
-	BackgroundVolume     *int32  `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	DynamicId            *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
-	EarlyMediaAsr        *bool   `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
-	EnableITN            *bool   `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
-	MuteTime             *int32  `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PauseTime            *int32  `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
-	PlayTimes            *int32  `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
-	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// example:
+	//
+	// true
+	ActionCodeBreak *bool `json:"ActionCodeBreak,omitempty" xml:"ActionCodeBreak,omitempty"`
+	// example:
+	//
+	// 120
+	ActionCodeTimeBreak *int32 `json:"ActionCodeTimeBreak,omitempty" xml:"ActionCodeTimeBreak,omitempty"`
+	// example:
+	//
+	// 123456
+	AsrAlsAmId *string `json:"AsrAlsAmId,omitempty" xml:"AsrAlsAmId,omitempty"`
+	// example:
+	//
+	// customer_service_8k
+	AsrBaseId *string `json:"AsrBaseId,omitempty" xml:"AsrBaseId,omitempty"`
+	// example:
+	//
+	// bf71664d30d2478fb8cb8c39c6b6****
+	AsrModelId *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
+	// example:
+	//
+	// 123456
+	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav
+	BackgroundFileCode *string `json:"BackgroundFileCode,omitempty" xml:"BackgroundFileCode,omitempty"`
+	// example:
+	//
+	// 1
+	BackgroundSpeed *int32 `json:"BackgroundSpeed,omitempty" xml:"BackgroundSpeed,omitempty"`
+	// example:
+	//
+	// 1
+	BackgroundVolume *int32 `json:"BackgroundVolume,omitempty" xml:"BackgroundVolume,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****0000
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0571****0000
+	CalledShowNumber *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
+	// example:
+	//
+	// 123456
+	DynamicId *string `json:"DynamicId,omitempty" xml:"DynamicId,omitempty"`
+	// example:
+	//
+	// fasle
+	EarlyMediaAsr *bool `json:"EarlyMediaAsr,omitempty" xml:"EarlyMediaAsr,omitempty"`
+	// example:
+	//
+	// true
+	EnableITN *bool `json:"EnableITN,omitempty" xml:"EnableITN,omitempty"`
+	// example:
+	//
+	// 10000
+	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
+	// example:
+	//
+	// 222356****
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 800
+	PauseTime *int32 `json:"PauseTime,omitempty" xml:"PauseTime,omitempty"`
+	// example:
+	//
+	// 1
+	PlayTimes *int32 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
+	// example:
+	//
+	// aiccs
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// example:
+	//
+	// true
 	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	Speed                *int32  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	TtsConf              *bool   `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
-	TtsSpeed             *int32  `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
-	TtsStyle             *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
-	TtsVolume            *int32  `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
-	VoiceCode            *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
-	VoiceCodeParam       *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
-	Volume               *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// example:
+	//
+	// 120
+	SessionTimeout *int32 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// true
+	TtsConf *bool `json:"TtsConf,omitempty" xml:"TtsConf,omitempty"`
+	// example:
+	//
+	// 100
+	TtsSpeed *int32 `json:"TtsSpeed,omitempty" xml:"TtsSpeed,omitempty"`
+	// example:
+	//
+	// xiaoyun
+	TtsStyle *string `json:"TtsStyle,omitempty" xml:"TtsStyle,omitempty"`
+	// example:
+	//
+	// 10
+	TtsVolume *int32 `json:"TtsVolume,omitempty" xml:"TtsVolume,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2d4c-4e78-8d2a-afbb06cf****.wav,$name$
+	VoiceCode      *string `json:"VoiceCode,omitempty" xml:"VoiceCode,omitempty"`
+	VoiceCodeParam *string `json:"VoiceCodeParam,omitempty" xml:"VoiceCodeParam,omitempty"`
+	// example:
+	//
+	// 1
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s SendCcoSmartCallRequest) String() string {
@@ -21376,9 +26630,21 @@ func (s *SendCcoSmartCallRequest) SetVolume(v int32) *SendCcoSmartCallRequest {
 }
 
 type SendCcoSmartCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 16012854210^10281427****
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21411,9 +26677,9 @@ func (s *SendCcoSmartCallResponseBody) SetRequestId(v string) *SendCcoSmartCallR
 }
 
 type SendCcoSmartCallResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendCcoSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendCcoSmartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendCcoSmartCallResponse) String() string {
@@ -21440,10 +26706,26 @@ func (s *SendCcoSmartCallResponse) SetBody(v *SendCcoSmartCallResponseBody) *Sen
 }
 
 type SendCcoSmartCallOperateRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Command              *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 116012854210^102814279****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// parallelBridge
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// Param
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// example:
+	//
+	// aiccs
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -21493,9 +26775,21 @@ func (s *SendCcoSmartCallOperateRequest) SetResourceOwnerId(v int64) *SendCcoSma
 }
 
 type SendCcoSmartCallOperateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21528,9 +26822,9 @@ func (s *SendCcoSmartCallOperateResponseBody) SetRequestId(v string) *SendCcoSma
 }
 
 type SendCcoSmartCallOperateResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendCcoSmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendCcoSmartCallOperateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendCcoSmartCallOperateResponse) String() string {
@@ -21557,10 +26851,28 @@ func (s *SendCcoSmartCallOperateResponse) SetBody(v *SendCcoSmartCallOperateResp
 }
 
 type SendHotlineHeartBeatRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0079e7a845e373****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s SendHotlineHeartBeatRequest) String() string {
@@ -21592,10 +26904,22 @@ func (s *SendHotlineHeartBeatRequest) SetToken(v string) *SendHotlineHeartBeatRe
 }
 
 type SendHotlineHeartBeatResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendHotlineHeartBeatResponseBody) String() string {
@@ -21627,9 +26951,9 @@ func (s *SendHotlineHeartBeatResponseBody) SetSuccess(v bool) *SendHotlineHeartB
 }
 
 type SendHotlineHeartBeatResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendHotlineHeartBeatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendHotlineHeartBeatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendHotlineHeartBeatResponse) String() string {
@@ -21656,8 +26980,18 @@ func (s *SendHotlineHeartBeatResponse) SetBody(v *SendHotlineHeartBeatResponseBo
 }
 
 type StartAiOutboundTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1763****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartAiOutboundTaskRequest) String() string {
@@ -21679,10 +27013,22 @@ func (s *StartAiOutboundTaskRequest) SetTaskId(v int64) *StartAiOutboundTaskRequ
 }
 
 type StartAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartAiOutboundTaskResponseBody) String() string {
@@ -21714,9 +27060,9 @@ func (s *StartAiOutboundTaskResponseBody) SetSuccess(v bool) *StartAiOutboundTas
 }
 
 type StartAiOutboundTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartAiOutboundTaskResponse) String() string {
@@ -21743,11 +27089,34 @@ func (s *StartAiOutboundTaskResponse) SetBody(v *StartAiOutboundTaskResponseBody
 }
 
 type StartCallRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Callee      *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	Caller      *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1360987****
+	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 906****
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s StartCallRequest) String() string {
@@ -21784,10 +27153,22 @@ func (s *StartCallRequest) SetInstanceId(v string) *StartCallRequest {
 }
 
 type StartCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartCallResponseBody) String() string {
@@ -21819,9 +27200,9 @@ func (s *StartCallResponseBody) SetSuccess(v bool) *StartCallResponseBody {
 }
 
 type StartCallResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartCallResponse) String() string {
@@ -21848,12 +27229,40 @@ func (s *StartCallResponse) SetBody(v *StartCallResponseBody) *StartCallResponse
 }
 
 type StartCallV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	Callee      *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	Caller      *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	CallerType  *int32  `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 136****1111
+	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9065****
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CallerType *int32 `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s StartCallV2Request) String() string {
@@ -21895,10 +27304,22 @@ func (s *StartCallV2Request) SetInstanceId(v string) *StartCallV2Request {
 }
 
 type StartCallV2ResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartCallV2ResponseBody) String() string {
@@ -21930,9 +27351,9 @@ func (s *StartCallV2ResponseBody) SetSuccess(v bool) *StartCallV2ResponseBody {
 }
 
 type StartCallV2Response struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartCallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartCallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartCallV2Response) String() string {
@@ -21959,8 +27380,18 @@ func (s *StartCallV2Response) SetBody(v *StartCallV2ResponseBody) *StartCallV2Re
 }
 
 type StartChatWorkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s StartChatWorkRequest) String() string {
@@ -21982,12 +27413,30 @@ func (s *StartChatWorkRequest) SetInstanceId(v string) *StartChatWorkRequest {
 }
 
 type StartChatWorkResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartChatWorkResponseBody) String() string {
@@ -22029,9 +27478,9 @@ func (s *StartChatWorkResponseBody) SetSuccess(v bool) *StartChatWorkResponseBod
 }
 
 type StartChatWorkResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartChatWorkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartChatWorkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartChatWorkResponse) String() string {
@@ -22058,9 +27507,22 @@ func (s *StartChatWorkResponse) SetBody(v *StartChatWorkResponseBody) *StartChat
 }
 
 type StartHotlineServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s StartHotlineServiceRequest) String() string {
@@ -22087,12 +27549,30 @@ func (s *StartHotlineServiceRequest) SetInstanceId(v string) *StartHotlineServic
 }
 
 type StartHotlineServiceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 0079e7a845e37334ff
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartHotlineServiceResponseBody) String() string {
@@ -22134,9 +27614,9 @@ func (s *StartHotlineServiceResponseBody) SetSuccess(v bool) *StartHotlineServic
 }
 
 type StartHotlineServiceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartHotlineServiceResponse) String() string {
@@ -22163,14 +27643,38 @@ func (s *StartHotlineServiceResponse) SetBody(v *StartHotlineServiceResponseBody
 }
 
 type StartMicroOutboundRequest struct {
-	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	CommandCode          *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
-	ExtInfo              *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 223457****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// BUC_TYPE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// aliyun
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0571456****
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 1367123****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// outBound_Call
+	CommandCode *string `json:"CommandCode,omitempty" xml:"CommandCode,omitempty"`
+	// example:
+	//
+	// {"caseId":23232****}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// aiccs
 	ProdCode             *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22240,12 +27744,30 @@ func (s *StartMicroOutboundRequest) SetResourceOwnerId(v int64) *StartMicroOutbo
 }
 
 type StartMicroOutboundResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CustomerInfo     *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
-	InvokeCmdId      *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {\\"caseId\\":2323****}
+	CustomerInfo *string `json:"CustomerInfo,omitempty" xml:"CustomerInfo,omitempty"`
+	// example:
+	//
+	// 8883f165-4a0d-4da2-a2d2
+	InvokeCmdId *string `json:"InvokeCmdId,omitempty" xml:"InvokeCmdId,omitempty"`
+	// example:
+	//
+	// 2019-05-23 17:30:32.525
 	InvokeCreateTime *string `json:"InvokeCreateTime,omitempty" xml:"InvokeCreateTime,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartMicroOutboundResponseBody) String() string {
@@ -22287,9 +27809,9 @@ func (s *StartMicroOutboundResponseBody) SetRequestId(v string) *StartMicroOutbo
 }
 
 type StartMicroOutboundResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartMicroOutboundResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartMicroOutboundResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartMicroOutboundResponse) String() string {
@@ -22319,8 +27841,16 @@ type StartTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartNow             *bool   `json:"StartNow,omitempty" xml:"StartNow,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	StartNow *bool `json:"StartNow,omitempty" xml:"StartNow,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartTaskRequest) String() string {
@@ -22357,11 +27887,26 @@ func (s *StartTaskRequest) SetTaskId(v int64) *StartTaskRequest {
 }
 
 type StartTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartTaskResponseBody) String() string {
@@ -22398,9 +27943,9 @@ func (s *StartTaskResponseBody) SetSuccess(v bool) *StartTaskResponseBody {
 }
 
 type StartTaskResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StartTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StartTaskResponse) String() string {
@@ -22427,8 +27972,18 @@ func (s *StartTaskResponse) SetBody(v *StartTaskResponseBody) *StartTaskResponse
 }
 
 type StopAiOutboundTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopAiOutboundTaskRequest) String() string {
@@ -22450,10 +28005,22 @@ func (s *StopAiOutboundTaskRequest) SetTaskId(v int64) *StopAiOutboundTaskReques
 }
 
 type StopAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopAiOutboundTaskResponseBody) String() string {
@@ -22485,9 +28052,9 @@ func (s *StopAiOutboundTaskResponseBody) SetSuccess(v bool) *StopAiOutboundTaskR
 }
 
 type StopAiOutboundTaskResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopAiOutboundTaskResponse) String() string {
@@ -22517,7 +28084,12 @@ type StopTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StopTaskRequest) String() string {
@@ -22549,11 +28121,26 @@ func (s *StopTaskRequest) SetTaskId(v int64) *StopTaskRequest {
 }
 
 type StopTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Ok
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D9CB3933-9FE3-4870-BA8E-2BEE91B69D23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopTaskResponseBody) String() string {
@@ -22590,9 +28177,9 @@ func (s *StopTaskResponseBody) SetSuccess(v bool) *StopTaskResponseBody {
 }
 
 type StopTaskResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopTaskResponse) String() string {
@@ -22619,10 +28206,26 @@ func (s *StopTaskResponse) SetBody(v *StopTaskResponseBody) *StopTaskResponse {
 }
 
 type SuspendHotlineServiceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SuspendHotlineServiceRequest) String() string {
@@ -22654,10 +28257,22 @@ func (s *SuspendHotlineServiceRequest) SetType(v int32) *SuspendHotlineServiceRe
 }
 
 type SuspendHotlineServiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SuspendHotlineServiceResponseBody) String() string {
@@ -22689,9 +28304,9 @@ func (s *SuspendHotlineServiceResponseBody) SetSuccess(v bool) *SuspendHotlineSe
 }
 
 type SuspendHotlineServiceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendHotlineServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendHotlineServiceResponse) String() string {
@@ -22718,8 +28333,10 @@ func (s *SuspendHotlineServiceResponse) SetBody(v *SuspendHotlineServiceResponse
 }
 
 type SuspendOutboundTaskRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OutboundTaskId *int64  `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	OutboundTaskId *int64 `json:"OutboundTaskId,omitempty" xml:"OutboundTaskId,omitempty"`
 }
 
 func (s SuspendOutboundTaskRequest) String() string {
@@ -22782,9 +28399,9 @@ func (s *SuspendOutboundTaskResponseBody) SetSuccess(v bool) *SuspendOutboundTas
 }
 
 type SuspendOutboundTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SuspendOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SuspendOutboundTaskResponse) String() string {
@@ -22811,8 +28428,18 @@ func (s *SuspendOutboundTaskResponse) SetBody(v *SuspendOutboundTaskResponseBody
 }
 
 type TerminateAiOutboundTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1763****
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s TerminateAiOutboundTaskRequest) String() string {
@@ -22834,10 +28461,22 @@ func (s *TerminateAiOutboundTaskRequest) SetTaskId(v int64) *TerminateAiOutbound
 }
 
 type TerminateAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TerminateAiOutboundTaskResponseBody) String() string {
@@ -22869,9 +28508,9 @@ func (s *TerminateAiOutboundTaskResponseBody) SetSuccess(v bool) *TerminateAiOut
 }
 
 type TerminateAiOutboundTaskResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TerminateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TerminateAiOutboundTaskResponse) String() string {
@@ -22898,16 +28537,52 @@ func (s *TerminateAiOutboundTaskResponse) SetBody(v *TerminateAiOutboundTaskResp
 }
 
 type TransferCallToSkillGroupRequest struct {
-	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	CallId           *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConnectionId     *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username@example.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 7719786
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 7719788
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// example:
+	//
+	// 0
 	HoldConnectionId *string `json:"HoldConnectionId,omitempty" xml:"HoldConnectionId,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSingleTransfer *bool   `json:"IsSingleTransfer,omitempty" xml:"IsSingleTransfer,omitempty"`
-	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	SkillGroupId     *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsSingleTransfer *bool `json:"IsSingleTransfer,omitempty" xml:"IsSingleTransfer,omitempty"`
+	// example:
+	//
+	// 7719787
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 356543
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s TransferCallToSkillGroupRequest) String() string {
@@ -22969,10 +28644,22 @@ func (s *TransferCallToSkillGroupRequest) SetType(v int32) *TransferCallToSkillG
 }
 
 type TransferCallToSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TransferCallToSkillGroupResponseBody) String() string {
@@ -23004,9 +28691,9 @@ func (s *TransferCallToSkillGroupResponseBody) SetSuccess(v bool) *TransferCallT
 }
 
 type TransferCallToSkillGroupResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferCallToSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferCallToSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferCallToSkillGroupResponse) String() string {
@@ -23033,9 +28720,23 @@ func (s *TransferCallToSkillGroupResponse) SetBody(v *TransferCallToSkillGroupRe
 }
 
 type UpdateAgentRequest struct {
-	AccountName      *string  `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ClientToken      *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DisplayName      *string  `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123@123.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
 	InstanceId       *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SkillGroupId     []*int64 `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty" type:"Repeated"`
 	SkillGroupIdList []*int64 `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
@@ -23080,11 +28781,26 @@ func (s *UpdateAgentRequest) SetSkillGroupIdList(v []*int64) *UpdateAgentRequest
 }
 
 type UpdateAgentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateAgentResponseBody) String() string {
@@ -23121,9 +28837,9 @@ func (s *UpdateAgentResponseBody) SetSuccess(v bool) *UpdateAgentResponseBody {
 }
 
 type UpdateAgentResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAgentResponse) String() string {
@@ -23150,17 +28866,54 @@ func (s *UpdateAgentResponse) SetBody(v *UpdateAgentResponseBody) *UpdateAgentRe
 }
 
 type UpdateAiOutboundTaskRequest struct {
-	ConcurrentRate   *int32                                 `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionTime    *string                                `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	ForecastCallRate *float32                               `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	HandlerId        *int64                                 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	InstanceId       *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name             *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	NumRepeated      *int32                                 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	OutboundNums     []*string                              `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
-	RecallRule       *UpdateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
-	TaskId           *int64                                 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 10
+	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 1.2
+	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	// This parameter is required.
+	OutboundNums []*string                              `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty" type:"Repeated"`
+	RecallRule   *UpdateAiOutboundTaskRequestRecallRule `json:"RecallRule,omitempty" xml:"RecallRule,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpdateAiOutboundTaskRequest) String() string {
@@ -23227,7 +28980,13 @@ func (s *UpdateAiOutboundTaskRequest) SetTaskId(v int64) *UpdateAiOutboundTaskRe
 }
 
 type UpdateAiOutboundTaskRequestRecallRule struct {
-	Count    *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 5
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 }
 
@@ -23250,17 +29009,54 @@ func (s *UpdateAiOutboundTaskRequestRecallRule) SetInterval(v int32) *UpdateAiOu
 }
 
 type UpdateAiOutboundTaskShrinkRequest struct {
-	ConcurrentRate     *int32   `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
-	Description        *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExecutionTime      *string  `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	ForecastCallRate   *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
-	HandlerId          *int64   `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
-	InstanceId         *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name               *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NumRepeated        *int32   `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
-	OutboundNumsShrink *string  `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty"`
-	RecallRuleShrink   *string  `json:"RecallRule,omitempty" xml:"RecallRule,omitempty"`
-	TaskId             *int64   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 10
+	ConcurrentRate *int32  `json:"ConcurrentRate,omitempty" xml:"ConcurrentRate,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"TUESDAY":[{"start":"06:00","end":"06:05"}],"MONDAY":[{"start":"09:00","end":"18:00"},{"start":"20:30","end":"21:45"},{"start":"22:30","end":"22:50"}],"WEDNESDAY":[{"start":"09:00","end":"18:00"}],"THURSDAY":[{"start":"09:00","end":"18:00"}],"FRIDAY":[{"start":"09:00","end":"18:00"}],"SATURDAY":[{"start":"09:00","end":"18:00"}],"SUNDAY":[{"start":"17:00","end":"23:45"}]}
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 1.2
+	ForecastCallRate *float32 `json:"ForecastCallRate,omitempty" xml:"ForecastCallRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	HandlerId *int64 `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agent_***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx外呼任务
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	NumRepeated *int32 `json:"NumRepeated,omitempty" xml:"NumRepeated,omitempty"`
+	// This parameter is required.
+	OutboundNumsShrink *string `json:"OutboundNums,omitempty" xml:"OutboundNums,omitempty"`
+	RecallRuleShrink   *string `json:"RecallRule,omitempty" xml:"RecallRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpdateAiOutboundTaskShrinkRequest) String() string {
@@ -23327,10 +29123,22 @@ func (s *UpdateAiOutboundTaskShrinkRequest) SetTaskId(v int64) *UpdateAiOutbound
 }
 
 type UpdateAiOutboundTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ok
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateAiOutboundTaskResponseBody) String() string {
@@ -23362,9 +29170,9 @@ func (s *UpdateAiOutboundTaskResponseBody) SetSuccess(v bool) *UpdateAiOutboundT
 }
 
 type UpdateAiOutboundTaskResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAiOutboundTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAiOutboundTaskResponse) String() string {
@@ -23391,9 +29199,20 @@ func (s *UpdateAiOutboundTaskResponse) SetBody(v *UpdateAiOutboundTaskResponseBo
 }
 
 type UpdateDepartmentRequest struct {
-	DepartmentId   *int64  `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	DepartmentId *int64 `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
 	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s UpdateDepartmentRequest) String() string {
@@ -23420,12 +29239,30 @@ func (s *UpdateDepartmentRequest) SetInstanceId(v string) *UpdateDepartmentReque
 }
 
 type UpdateDepartmentResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 98B032F5-6473-4EAC-8BA8-C28993513A1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDepartmentResponseBody) String() string {
@@ -23467,9 +29304,9 @@ func (s *UpdateDepartmentResponseBody) SetSuccess(v bool) *UpdateDepartmentRespo
 }
 
 type UpdateDepartmentResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDepartmentResponse) String() string {
@@ -23496,16 +29333,41 @@ func (s *UpdateDepartmentResponse) SetBody(v *UpdateDepartmentResponseBody) *Upd
 }
 
 type UpdateOuterAccountRequest struct {
-	Avatar              *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	Ext                 *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	OuterAccountId      *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
-	OuterAccountName    *string `json:"OuterAccountName,omitempty" xml:"OuterAccountName,omitempty"`
-	OuterAccountType    *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
-	OuterDepartmentId   *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// http://****
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	Ext    *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	OuterAccountId   *string `json:"OuterAccountId,omitempty" xml:"OuterAccountId,omitempty"`
+	OuterAccountName *string `json:"OuterAccountName,omitempty" xml:"OuterAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alipay
+	OuterAccountType *string `json:"OuterAccountType,omitempty" xml:"OuterAccountType,omitempty"`
+	// example:
+	//
+	// 3
+	OuterDepartmentId *string `json:"OuterDepartmentId,omitempty" xml:"OuterDepartmentId,omitempty"`
+	// example:
+	//
+	// type_invalid
 	OuterDepartmentType *string `json:"OuterDepartmentType,omitempty" xml:"OuterDepartmentType,omitempty"`
-	OuterGroupIds       *string `json:"OuterGroupIds,omitempty" xml:"OuterGroupIds,omitempty"`
-	OuterGroupType      *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
-	RealName            *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
+	// example:
+	//
+	// ["222","333","444"]
+	OuterGroupIds *string `json:"OuterGroupIds,omitempty" xml:"OuterGroupIds,omitempty"`
+	// example:
+	//
+	// mybank
+	OuterGroupType *string `json:"OuterGroupType,omitempty" xml:"OuterGroupType,omitempty"`
+	RealName       *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
 }
 
 func (s UpdateOuterAccountRequest) String() string {
@@ -23567,11 +29429,26 @@ func (s *UpdateOuterAccountRequest) SetRealName(v string) *UpdateOuterAccountReq
 }
 
 type UpdateOuterAccountResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateOuterAccountResponseBody) String() string {
@@ -23608,9 +29485,9 @@ func (s *UpdateOuterAccountResponseBody) SetSuccess(v bool) *UpdateOuterAccountR
 }
 
 type UpdateOuterAccountResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateOuterAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateOuterAccountResponse) String() string {
@@ -23637,10 +29514,23 @@ func (s *UpdateOuterAccountResponse) SetBody(v *UpdateOuterAccountResponseBody) 
 }
 
 type UpdateSkillGroupRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 46c1341e-2648-447a-9b11-70b6a298d94d
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc_xp_pre-cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	SkillGroupId   *int64  `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
@@ -23684,10 +29574,22 @@ func (s *UpdateSkillGroupRequest) SetSkillGroupName(v string) *UpdateSkillGroupR
 }
 
 type UpdateSkillGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxxx
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE338D98-9BD3-4413-B165
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSkillGroupResponseBody) String() string {
@@ -23719,9 +29621,9 @@ func (s *UpdateSkillGroupResponseBody) SetSuccess(v bool) *UpdateSkillGroupRespo
 }
 
 type UpdateSkillGroupResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSkillGroupResponse) String() string {
@@ -23794,6 +29696,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增热线号码
+//
+// @param tmpReq - AddHotlineNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddHotlineNumberResponse
 func (client *Client) AddHotlineNumberWithOptions(tmpReq *AddHotlineNumberRequest, runtime *util.RuntimeOptions) (_result *AddHotlineNumberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23873,6 +29784,13 @@ func (client *Client) AddHotlineNumberWithOptions(tmpReq *AddHotlineNumberReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 新增热线号码
+//
+// @param request - AddHotlineNumberRequest
+//
+// @return AddHotlineNumberResponse
 func (client *Client) AddHotlineNumber(request *AddHotlineNumberRequest) (_result *AddHotlineNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddHotlineNumberResponse{}
@@ -23884,6 +29802,11 @@ func (client *Client) AddHotlineNumber(request *AddHotlineNumberRequest) (_resul
 	return _result, _err
 }
 
+// @param request - AddOuterAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddOuterAccountResponse
 func (client *Client) AddOuterAccountWithOptions(request *AddOuterAccountRequest, runtime *util.RuntimeOptions) (_result *AddOuterAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23913,6 +29836,9 @@ func (client *Client) AddOuterAccountWithOptions(request *AddOuterAccountRequest
 	return _result, _err
 }
 
+// @param request - AddOuterAccountRequest
+//
+// @return AddOuterAccountResponse
 func (client *Client) AddOuterAccount(request *AddOuterAccountRequest) (_result *AddOuterAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddOuterAccountResponse{}
@@ -23924,6 +29850,11 @@ func (client *Client) AddOuterAccount(request *AddOuterAccountRequest) (_result 
 	return _result, _err
 }
 
+// @param request - AddSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSkillGroupResponse
 func (client *Client) AddSkillGroupWithOptions(request *AddSkillGroupRequest, runtime *util.RuntimeOptions) (_result *AddSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23953,6 +29884,9 @@ func (client *Client) AddSkillGroupWithOptions(request *AddSkillGroupRequest, ru
 	return _result, _err
 }
 
+// @param request - AddSkillGroupRequest
+//
+// @return AddSkillGroupResponse
 func (client *Client) AddSkillGroup(request *AddSkillGroupRequest) (_result *AddSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSkillGroupResponse{}
@@ -23964,6 +29898,11 @@ func (client *Client) AddSkillGroup(request *AddSkillGroupRequest) (_result *Add
 	return _result, _err
 }
 
+// @param request - AiccsSmartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AiccsSmartCallResponse
 func (client *Client) AiccsSmartCallWithOptions(request *AiccsSmartCallRequest, runtime *util.RuntimeOptions) (_result *AiccsSmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24121,6 +30060,9 @@ func (client *Client) AiccsSmartCallWithOptions(request *AiccsSmartCallRequest, 
 	return _result, _err
 }
 
+// @param request - AiccsSmartCallRequest
+//
+// @return AiccsSmartCallResponse
 func (client *Client) AiccsSmartCall(request *AiccsSmartCallRequest) (_result *AiccsSmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AiccsSmartCallResponse{}
@@ -24132,6 +30074,11 @@ func (client *Client) AiccsSmartCall(request *AiccsSmartCallRequest) (_result *A
 	return _result, _err
 }
 
+// @param request - AiccsSmartCallOperateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AiccsSmartCallOperateResponse
 func (client *Client) AiccsSmartCallOperateWithOptions(request *AiccsSmartCallOperateRequest, runtime *util.RuntimeOptions) (_result *AiccsSmartCallOperateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24189,6 +30136,9 @@ func (client *Client) AiccsSmartCallOperateWithOptions(request *AiccsSmartCallOp
 	return _result, _err
 }
 
+// @param request - AiccsSmartCallOperateRequest
+//
+// @return AiccsSmartCallOperateResponse
 func (client *Client) AiccsSmartCallOperate(request *AiccsSmartCallOperateRequest) (_result *AiccsSmartCallOperateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AiccsSmartCallOperateResponse{}
@@ -24200,6 +30150,11 @@ func (client *Client) AiccsSmartCallOperate(request *AiccsSmartCallOperateReques
 	return _result, _err
 }
 
+// @param request - AnswerCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnswerCallResponse
 func (client *Client) AnswerCallWithOptions(request *AnswerCallRequest, runtime *util.RuntimeOptions) (_result *AnswerCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24253,6 +30208,9 @@ func (client *Client) AnswerCallWithOptions(request *AnswerCallRequest, runtime 
 	return _result, _err
 }
 
+// @param request - AnswerCallRequest
+//
+// @return AnswerCallResponse
 func (client *Client) AnswerCall(request *AnswerCallRequest) (_result *AnswerCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AnswerCallResponse{}
@@ -24264,6 +30222,15 @@ func (client *Client) AnswerCall(request *AnswerCallRequest) (_result *AnswerCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 追加任务明细
+//
+// @param request - AttachTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachTaskResponse
 func (client *Client) AttachTaskWithOptions(request *AttachTaskRequest, runtime *util.RuntimeOptions) (_result *AttachTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24313,6 +30280,13 @@ func (client *Client) AttachTaskWithOptions(request *AttachTaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 追加任务明细
+//
+// @param request - AttachTaskRequest
+//
+// @return AttachTaskResponse
 func (client *Client) AttachTask(request *AttachTaskRequest) (_result *AttachTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachTaskResponse{}
@@ -24324,6 +30298,11 @@ func (client *Client) AttachTask(request *AttachTaskRequest) (_result *AttachTas
 	return _result, _err
 }
 
+// @param request - BatchCreateQualityProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateQualityProjectsResponse
 func (client *Client) BatchCreateQualityProjectsWithOptions(request *BatchCreateQualityProjectsRequest, runtime *util.RuntimeOptions) (_result *BatchCreateQualityProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24381,6 +30360,9 @@ func (client *Client) BatchCreateQualityProjectsWithOptions(request *BatchCreate
 	return _result, _err
 }
 
+// @param request - BatchCreateQualityProjectsRequest
+//
+// @return BatchCreateQualityProjectsResponse
 func (client *Client) BatchCreateQualityProjects(request *BatchCreateQualityProjectsRequest) (_result *BatchCreateQualityProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCreateQualityProjectsResponse{}
@@ -24392,6 +30374,15 @@ func (client *Client) BatchCreateQualityProjects(request *BatchCreateQualityProj
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除智能外呼任务
+//
+// @param request - CancelTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24437,6 +30428,13 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除智能外呼任务
+//
+// @param request - CancelTaskRequest
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelTaskResponse{}
@@ -24448,6 +30446,15 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改在线客服状态
+//
+// @param request - ChangeChatAgentStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeChatAgentStatusResponse
 func (client *Client) ChangeChatAgentStatusWithOptions(request *ChangeChatAgentStatusRequest, runtime *util.RuntimeOptions) (_result *ChangeChatAgentStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24493,6 +30500,13 @@ func (client *Client) ChangeChatAgentStatusWithOptions(request *ChangeChatAgentS
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改在线客服状态
+//
+// @param request - ChangeChatAgentStatusRequest
+//
+// @return ChangeChatAgentStatusResponse
 func (client *Client) ChangeChatAgentStatus(request *ChangeChatAgentStatusRequest) (_result *ChangeChatAgentStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeChatAgentStatusResponse{}
@@ -24504,6 +30518,11 @@ func (client *Client) ChangeChatAgentStatus(request *ChangeChatAgentStatusReques
 	return _result, _err
 }
 
+// @param request - ChangeQualityProjectStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeQualityProjectStatusResponse
 func (client *Client) ChangeQualityProjectStatusWithOptions(request *ChangeQualityProjectStatusRequest, runtime *util.RuntimeOptions) (_result *ChangeQualityProjectStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24545,6 +30564,9 @@ func (client *Client) ChangeQualityProjectStatusWithOptions(request *ChangeQuali
 	return _result, _err
 }
 
+// @param request - ChangeQualityProjectStatusRequest
+//
+// @return ChangeQualityProjectStatusResponse
 func (client *Client) ChangeQualityProjectStatus(request *ChangeQualityProjectStatusRequest) (_result *ChangeQualityProjectStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeQualityProjectStatusResponse{}
@@ -24556,6 +30578,11 @@ func (client *Client) ChangeQualityProjectStatus(request *ChangeQualityProjectSt
 	return _result, _err
 }
 
+// @param request - CreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResponse
 func (client *Client) CreateAgentWithOptions(request *CreateAgentRequest, runtime *util.RuntimeOptions) (_result *CreateAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24612,6 +30639,9 @@ func (client *Client) CreateAgentWithOptions(request *CreateAgentRequest, runtim
 	return _result, _err
 }
 
+// @param request - CreateAgentRequest
+//
+// @return CreateAgentResponse
 func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAgentResponse{}
@@ -24623,6 +30653,15 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建智能外呼任务（预测式外呼、自动外呼）
+//
+// @param tmpReq - CreateAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiOutboundTaskResponse
 func (client *Client) CreateAiOutboundTaskWithOptions(tmpReq *CreateAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *CreateAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24706,6 +30745,13 @@ func (client *Client) CreateAiOutboundTaskWithOptions(tmpReq *CreateAiOutboundTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建智能外呼任务（预测式外呼、自动外呼）
+//
+// @param request - CreateAiOutboundTaskRequest
+//
+// @return CreateAiOutboundTaskResponse
 func (client *Client) CreateAiOutboundTask(request *CreateAiOutboundTaskRequest) (_result *CreateAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAiOutboundTaskResponse{}
@@ -24717,6 +30763,15 @@ func (client *Client) CreateAiOutboundTask(request *CreateAiOutboundTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建智能外呼任务批次
+//
+// @param request - CreateAiOutboundTaskBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAiOutboundTaskBatchResponse
 func (client *Client) CreateAiOutboundTaskBatchWithOptions(request *CreateAiOutboundTaskBatchRequest, runtime *util.RuntimeOptions) (_result *CreateAiOutboundTaskBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24754,6 +30809,13 @@ func (client *Client) CreateAiOutboundTaskBatchWithOptions(request *CreateAiOutb
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建智能外呼任务批次
+//
+// @param request - CreateAiOutboundTaskBatchRequest
+//
+// @return CreateAiOutboundTaskBatchResponse
 func (client *Client) CreateAiOutboundTaskBatch(request *CreateAiOutboundTaskBatchRequest) (_result *CreateAiOutboundTaskBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAiOutboundTaskBatchResponse{}
@@ -24765,6 +30827,15 @@ func (client *Client) CreateAiOutboundTaskBatch(request *CreateAiOutboundTaskBat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建部门信息
+//
+// @param request - CreateDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDepartmentResponse
 func (client *Client) CreateDepartmentWithOptions(request *CreateDepartmentRequest, runtime *util.RuntimeOptions) (_result *CreateDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24802,6 +30873,13 @@ func (client *Client) CreateDepartmentWithOptions(request *CreateDepartmentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建部门信息
+//
+// @param request - CreateDepartmentRequest
+//
+// @return CreateDepartmentResponse
 func (client *Client) CreateDepartment(request *CreateDepartmentRequest) (_result *CreateDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDepartmentResponse{}
@@ -24813,6 +30891,11 @@ func (client *Client) CreateDepartment(request *CreateDepartmentRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOutboundTaskResponse
 func (client *Client) CreateOutboundTaskWithOptions(request *CreateOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *CreateOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24910,6 +30993,9 @@ func (client *Client) CreateOutboundTaskWithOptions(request *CreateOutboundTaskR
 	return _result, _err
 }
 
+// @param request - CreateOutboundTaskRequest
+//
+// @return CreateOutboundTaskResponse
 func (client *Client) CreateOutboundTask(request *CreateOutboundTaskRequest) (_result *CreateOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOutboundTaskResponse{}
@@ -24921,6 +31007,11 @@ func (client *Client) CreateOutboundTask(request *CreateOutboundTaskRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateQualityProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQualityProjectResponse
 func (client *Client) CreateQualityProjectWithOptions(request *CreateQualityProjectRequest, runtime *util.RuntimeOptions) (_result *CreateQualityProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24994,6 +31085,9 @@ func (client *Client) CreateQualityProjectWithOptions(request *CreateQualityProj
 	return _result, _err
 }
 
+// @param request - CreateQualityProjectRequest
+//
+// @return CreateQualityProjectResponse
 func (client *Client) CreateQualityProject(request *CreateQualityProjectRequest) (_result *CreateQualityProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateQualityProjectResponse{}
@@ -25005,6 +31099,11 @@ func (client *Client) CreateQualityProject(request *CreateQualityProjectRequest)
 	return _result, _err
 }
 
+// @param request - CreateQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQualityRuleResponse
 func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleRequest, runtime *util.RuntimeOptions) (_result *CreateQualityRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25054,6 +31153,9 @@ func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleReq
 	return _result, _err
 }
 
+// @param request - CreateQualityRuleRequest
+//
+// @return CreateQualityRuleResponse
 func (client *Client) CreateQualityRule(request *CreateQualityRuleRequest) (_result *CreateQualityRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateQualityRuleResponse{}
@@ -25065,6 +31167,11 @@ func (client *Client) CreateQualityRule(request *CreateQualityRuleRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSkillGroupResponse
 func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25122,6 +31229,9 @@ func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupReque
 	return _result, _err
 }
 
+// @param request - CreateSkillGroupRequest
+//
+// @return CreateSkillGroupResponse
 func (client *Client) CreateSkillGroup(request *CreateSkillGroupRequest) (_result *CreateSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSkillGroupResponse{}
@@ -25133,6 +31243,15 @@ func (client *Client) CreateSkillGroup(request *CreateSkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建外呼任务
+//
+// @param request - CreateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25226,6 +31345,13 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建外呼任务
+//
+// @param request - CreateTaskRequest
+//
+// @return CreateTaskResponse
 func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTaskResponse{}
@@ -25237,6 +31363,15 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建坐席并开通sso登录能力
+//
+// @param request - CreateThirdSsoAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateThirdSsoAgentResponse
 func (client *Client) CreateThirdSsoAgentWithOptions(request *CreateThirdSsoAgentRequest, runtime *util.RuntimeOptions) (_result *CreateThirdSsoAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25301,6 +31436,13 @@ func (client *Client) CreateThirdSsoAgentWithOptions(request *CreateThirdSsoAgen
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建坐席并开通sso登录能力
+//
+// @param request - CreateThirdSsoAgentRequest
+//
+// @return CreateThirdSsoAgentResponse
 func (client *Client) CreateThirdSsoAgent(request *CreateThirdSsoAgentRequest) (_result *CreateThirdSsoAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateThirdSsoAgentResponse{}
@@ -25312,6 +31454,15 @@ func (client *Client) CreateThirdSsoAgent(request *CreateThirdSsoAgentRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除坐席账号
+//
+// @param request - DeleteAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentResponse
 func (client *Client) DeleteAgentWithOptions(request *DeleteAgentRequest, runtime *util.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25353,6 +31504,13 @@ func (client *Client) DeleteAgentWithOptions(request *DeleteAgentRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除坐席账号
+//
+// @param request - DeleteAgentRequest
+//
+// @return DeleteAgentResponse
 func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAgentResponse{}
@@ -25364,6 +31522,15 @@ func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteA
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除智能外呼任务
+//
+// @param request - DeleteAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAiOutboundTaskResponse
 func (client *Client) DeleteAiOutboundTaskWithOptions(request *DeleteAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25401,6 +31568,13 @@ func (client *Client) DeleteAiOutboundTaskWithOptions(request *DeleteAiOutboundT
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除智能外呼任务
+//
+// @param request - DeleteAiOutboundTaskRequest
+//
+// @return DeleteAiOutboundTaskResponse
 func (client *Client) DeleteAiOutboundTask(request *DeleteAiOutboundTaskRequest) (_result *DeleteAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAiOutboundTaskResponse{}
@@ -25412,6 +31586,15 @@ func (client *Client) DeleteAiOutboundTask(request *DeleteAiOutboundTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除部门信息
+//
+// @param request - DeleteDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDepartmentResponse
 func (client *Client) DeleteDepartmentWithOptions(request *DeleteDepartmentRequest, runtime *util.RuntimeOptions) (_result *DeleteDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25449,6 +31632,13 @@ func (client *Client) DeleteDepartmentWithOptions(request *DeleteDepartmentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除部门信息
+//
+// @param request - DeleteDepartmentRequest
+//
+// @return DeleteDepartmentResponse
 func (client *Client) DeleteDepartment(request *DeleteDepartmentRequest) (_result *DeleteDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDepartmentResponse{}
@@ -25460,6 +31650,15 @@ func (client *Client) DeleteDepartment(request *DeleteDepartmentRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除热线号码
+//
+// @param request - DeleteHotlineNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHotlineNumberResponse
 func (client *Client) DeleteHotlineNumberWithOptions(request *DeleteHotlineNumberRequest, runtime *util.RuntimeOptions) (_result *DeleteHotlineNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25497,6 +31696,13 @@ func (client *Client) DeleteHotlineNumberWithOptions(request *DeleteHotlineNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除热线号码
+//
+// @param request - DeleteHotlineNumberRequest
+//
+// @return DeleteHotlineNumberResponse
 func (client *Client) DeleteHotlineNumber(request *DeleteHotlineNumberRequest) (_result *DeleteHotlineNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHotlineNumberResponse{}
@@ -25508,6 +31714,11 @@ func (client *Client) DeleteHotlineNumber(request *DeleteHotlineNumberRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOutboundTaskResponse
 func (client *Client) DeleteOutboundTaskWithOptions(request *DeleteOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25545,6 +31756,9 @@ func (client *Client) DeleteOutboundTaskWithOptions(request *DeleteOutboundTaskR
 	return _result, _err
 }
 
+// @param request - DeleteOutboundTaskRequest
+//
+// @return DeleteOutboundTaskResponse
 func (client *Client) DeleteOutboundTask(request *DeleteOutboundTaskRequest) (_result *DeleteOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOutboundTaskResponse{}
@@ -25556,6 +31770,11 @@ func (client *Client) DeleteOutboundTask(request *DeleteOutboundTaskRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteOuterAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOuterAccountResponse
 func (client *Client) DeleteOuterAccountWithOptions(request *DeleteOuterAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteOuterAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25585,6 +31804,9 @@ func (client *Client) DeleteOuterAccountWithOptions(request *DeleteOuterAccountR
 	return _result, _err
 }
 
+// @param request - DeleteOuterAccountRequest
+//
+// @return DeleteOuterAccountResponse
 func (client *Client) DeleteOuterAccount(request *DeleteOuterAccountRequest) (_result *DeleteOuterAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOuterAccountResponse{}
@@ -25596,6 +31818,11 @@ func (client *Client) DeleteOuterAccount(request *DeleteOuterAccountRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteQualityProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualityProjectResponse
 func (client *Client) DeleteQualityProjectWithOptions(request *DeleteQualityProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteQualityProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25633,6 +31860,9 @@ func (client *Client) DeleteQualityProjectWithOptions(request *DeleteQualityProj
 	return _result, _err
 }
 
+// @param request - DeleteQualityProjectRequest
+//
+// @return DeleteQualityProjectResponse
 func (client *Client) DeleteQualityProject(request *DeleteQualityProjectRequest) (_result *DeleteQualityProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteQualityProjectResponse{}
@@ -25644,6 +31874,11 @@ func (client *Client) DeleteQualityProject(request *DeleteQualityProjectRequest)
 	return _result, _err
 }
 
+// @param request - DeleteQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQualityRuleResponse
 func (client *Client) DeleteQualityRuleWithOptions(request *DeleteQualityRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteQualityRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25681,6 +31916,9 @@ func (client *Client) DeleteQualityRuleWithOptions(request *DeleteQualityRuleReq
 	return _result, _err
 }
 
+// @param request - DeleteQualityRuleRequest
+//
+// @return DeleteQualityRuleResponse
 func (client *Client) DeleteQualityRule(request *DeleteQualityRuleRequest) (_result *DeleteQualityRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteQualityRuleResponse{}
@@ -25692,6 +31930,11 @@ func (client *Client) DeleteQualityRule(request *DeleteQualityRuleRequest) (_res
 	return _result, _err
 }
 
+// @param request - DeleteSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSkillGroupResponse
 func (client *Client) DeleteSkillGroupWithOptions(request *DeleteSkillGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25721,6 +31964,9 @@ func (client *Client) DeleteSkillGroupWithOptions(request *DeleteSkillGroupReque
 	return _result, _err
 }
 
+// @param request - DeleteSkillGroupRequest
+//
+// @return DeleteSkillGroupResponse
 func (client *Client) DeleteSkillGroup(request *DeleteSkillGroupRequest) (_result *DeleteSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSkillGroupResponse{}
@@ -25732,6 +31978,11 @@ func (client *Client) DeleteSkillGroup(request *DeleteSkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeRecordDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecordDataResponse
 func (client *Client) DescribeRecordDataWithOptions(request *DescribeRecordDataRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25793,6 +32044,9 @@ func (client *Client) DescribeRecordDataWithOptions(request *DescribeRecordDataR
 	return _result, _err
 }
 
+// @param request - DescribeRecordDataRequest
+//
+// @return DescribeRecordDataResponse
 func (client *Client) DescribeRecordData(request *DescribeRecordDataRequest) (_result *DescribeRecordDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordDataResponse{}
@@ -25804,6 +32058,11 @@ func (client *Client) DescribeRecordData(request *DescribeRecordDataRequest) (_r
 	return _result, _err
 }
 
+// @param request - EditQualityProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditQualityProjectResponse
 func (client *Client) EditQualityProjectWithOptions(request *EditQualityProjectRequest, runtime *util.RuntimeOptions) (_result *EditQualityProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25887,6 +32146,9 @@ func (client *Client) EditQualityProjectWithOptions(request *EditQualityProjectR
 	return _result, _err
 }
 
+// @param request - EditQualityProjectRequest
+//
+// @return EditQualityProjectResponse
 func (client *Client) EditQualityProject(request *EditQualityProjectRequest) (_result *EditQualityProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditQualityProjectResponse{}
@@ -25898,6 +32160,11 @@ func (client *Client) EditQualityProject(request *EditQualityProjectRequest) (_r
 	return _result, _err
 }
 
+// @param request - EditQualityRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditQualityRuleResponse
 func (client *Client) EditQualityRuleWithOptions(request *EditQualityRuleRequest, runtime *util.RuntimeOptions) (_result *EditQualityRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25951,6 +32218,9 @@ func (client *Client) EditQualityRuleWithOptions(request *EditQualityRuleRequest
 	return _result, _err
 }
 
+// @param request - EditQualityRuleRequest
+//
+// @return EditQualityRuleResponse
 func (client *Client) EditQualityRule(request *EditQualityRuleRequest) (_result *EditQualityRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditQualityRuleResponse{}
@@ -25962,6 +32232,11 @@ func (client *Client) EditQualityRule(request *EditQualityRuleRequest) (_result 
 	return _result, _err
 }
 
+// @param request - EditQualityRuleTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditQualityRuleTagResponse
 func (client *Client) EditQualityRuleTagWithOptions(request *EditQualityRuleTagRequest, runtime *util.RuntimeOptions) (_result *EditQualityRuleTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25999,6 +32274,9 @@ func (client *Client) EditQualityRuleTagWithOptions(request *EditQualityRuleTagR
 	return _result, _err
 }
 
+// @param request - EditQualityRuleTagRequest
+//
+// @return EditQualityRuleTagResponse
 func (client *Client) EditQualityRuleTag(request *EditQualityRuleTagRequest) (_result *EditQualityRuleTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditQualityRuleTagResponse{}
@@ -26010,6 +32288,15 @@ func (client *Client) EditQualityRuleTag(request *EditQualityRuleTagRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线号码加密
+//
+// @param request - EncryptPhoneNumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EncryptPhoneNumResponse
 func (client *Client) EncryptPhoneNumWithOptions(request *EncryptPhoneNumRequest, runtime *util.RuntimeOptions) (_result *EncryptPhoneNumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26039,6 +32326,13 @@ func (client *Client) EncryptPhoneNumWithOptions(request *EncryptPhoneNumRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线号码加密
+//
+// @param request - EncryptPhoneNumRequest
+//
+// @return EncryptPhoneNumResponse
 func (client *Client) EncryptPhoneNum(request *EncryptPhoneNumRequest) (_result *EncryptPhoneNumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EncryptPhoneNumResponse{}
@@ -26050,6 +32344,11 @@ func (client *Client) EncryptPhoneNum(request *EncryptPhoneNumRequest) (_result 
 	return _result, _err
 }
 
+// @param request - FetchCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchCallResponse
 func (client *Client) FetchCallWithOptions(request *FetchCallRequest, runtime *util.RuntimeOptions) (_result *FetchCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26107,6 +32406,9 @@ func (client *Client) FetchCallWithOptions(request *FetchCallRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - FetchCallRequest
+//
+// @return FetchCallResponse
 func (client *Client) FetchCall(request *FetchCallRequest) (_result *FetchCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FetchCallResponse{}
@@ -26118,6 +32420,11 @@ func (client *Client) FetchCall(request *FetchCallRequest) (_result *FetchCallRe
 	return _result, _err
 }
 
+// @param request - FinishHotlineServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishHotlineServiceResponse
 func (client *Client) FinishHotlineServiceWithOptions(request *FinishHotlineServiceRequest, runtime *util.RuntimeOptions) (_result *FinishHotlineServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26159,6 +32466,9 @@ func (client *Client) FinishHotlineServiceWithOptions(request *FinishHotlineServ
 	return _result, _err
 }
 
+// @param request - FinishHotlineServiceRequest
+//
+// @return FinishHotlineServiceResponse
 func (client *Client) FinishHotlineService(request *FinishHotlineServiceRequest) (_result *FinishHotlineServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FinishHotlineServiceResponse{}
@@ -26170,6 +32480,11 @@ func (client *Client) FinishHotlineService(request *FinishHotlineServiceRequest)
 	return _result, _err
 }
 
+// @param request - GenerateWebSocketSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateWebSocketSignResponse
 func (client *Client) GenerateWebSocketSignWithOptions(request *GenerateWebSocketSignRequest, runtime *util.RuntimeOptions) (_result *GenerateWebSocketSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26211,6 +32526,9 @@ func (client *Client) GenerateWebSocketSignWithOptions(request *GenerateWebSocke
 	return _result, _err
 }
 
+// @param request - GenerateWebSocketSignRequest
+//
+// @return GenerateWebSocketSignResponse
 func (client *Client) GenerateWebSocketSign(request *GenerateWebSocketSignRequest) (_result *GenerateWebSocketSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateWebSocketSignResponse{}
@@ -26222,6 +32540,11 @@ func (client *Client) GenerateWebSocketSign(request *GenerateWebSocketSignReques
 	return _result, _err
 }
 
+// @param request - GetAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentResponse
 func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *util.RuntimeOptions) (_result *GetAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26251,6 +32574,9 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - GetAgentRequest
+//
+// @return GetAgentResponse
 func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentResponse{}
@@ -26262,6 +32588,15 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席纬度基础状态量
+//
+// @param tmpReq - GetAgentBasisStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentBasisStatusResponse
 func (client *Client) GetAgentBasisStatusWithOptions(tmpReq *GetAgentBasisStatusRequest, runtime *util.RuntimeOptions) (_result *GetAgentBasisStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26301,6 +32636,13 @@ func (client *Client) GetAgentBasisStatusWithOptions(tmpReq *GetAgentBasisStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席纬度基础状态量
+//
+// @param request - GetAgentBasisStatusRequest
+//
+// @return GetAgentBasisStatusResponse
 func (client *Client) GetAgentBasisStatus(request *GetAgentBasisStatusRequest) (_result *GetAgentBasisStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentBasisStatusResponse{}
@@ -26312,6 +32654,11 @@ func (client *Client) GetAgentBasisStatus(request *GetAgentBasisStatusRequest) (
 	return _result, _err
 }
 
+// @param request - GetAgentByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentByIdResponse
 func (client *Client) GetAgentByIdWithOptions(request *GetAgentByIdRequest, runtime *util.RuntimeOptions) (_result *GetAgentByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26349,6 +32696,9 @@ func (client *Client) GetAgentByIdWithOptions(request *GetAgentByIdRequest, runt
 	return _result, _err
 }
 
+// @param request - GetAgentByIdRequest
+//
+// @return GetAgentByIdResponse
 func (client *Client) GetAgentById(request *GetAgentByIdRequest) (_result *GetAgentByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentByIdResponse{}
@@ -26360,6 +32710,15 @@ func (client *Client) GetAgentById(request *GetAgentByIdRequest) (_result *GetAg
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线坐席纬度详情汇总
+//
+// @param tmpReq - GetAgentDetailReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentDetailReportResponse
 func (client *Client) GetAgentDetailReportWithOptions(tmpReq *GetAgentDetailReportRequest, runtime *util.RuntimeOptions) (_result *GetAgentDetailReportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26399,6 +32758,13 @@ func (client *Client) GetAgentDetailReportWithOptions(tmpReq *GetAgentDetailRepo
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线坐席纬度详情汇总
+//
+// @param request - GetAgentDetailReportRequest
+//
+// @return GetAgentDetailReportResponse
 func (client *Client) GetAgentDetailReport(request *GetAgentDetailReportRequest) (_result *GetAgentDetailReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentDetailReportResponse{}
@@ -26410,6 +32776,11 @@ func (client *Client) GetAgentDetailReport(request *GetAgentDetailReportRequest)
 	return _result, _err
 }
 
+// @param request - GetAgentIndexRealTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentIndexRealTimeResponse
 func (client *Client) GetAgentIndexRealTimeWithOptions(request *GetAgentIndexRealTimeRequest, runtime *util.RuntimeOptions) (_result *GetAgentIndexRealTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26459,6 +32830,9 @@ func (client *Client) GetAgentIndexRealTimeWithOptions(request *GetAgentIndexRea
 	return _result, _err
 }
 
+// @param request - GetAgentIndexRealTimeRequest
+//
+// @return GetAgentIndexRealTimeResponse
 func (client *Client) GetAgentIndexRealTime(request *GetAgentIndexRealTimeRequest) (_result *GetAgentIndexRealTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentIndexRealTimeResponse{}
@@ -26470,6 +32844,15 @@ func (client *Client) GetAgentIndexRealTime(request *GetAgentIndexRealTimeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席服务状态量
+//
+// @param tmpReq - GetAgentServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentServiceStatusResponse
 func (client *Client) GetAgentServiceStatusWithOptions(tmpReq *GetAgentServiceStatusRequest, runtime *util.RuntimeOptions) (_result *GetAgentServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26509,6 +32892,13 @@ func (client *Client) GetAgentServiceStatusWithOptions(tmpReq *GetAgentServiceSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席服务状态量
+//
+// @param request - GetAgentServiceStatusRequest
+//
+// @return GetAgentServiceStatusResponse
 func (client *Client) GetAgentServiceStatus(request *GetAgentServiceStatusRequest) (_result *GetAgentServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentServiceStatusResponse{}
@@ -26520,6 +32910,15 @@ func (client *Client) GetAgentServiceStatus(request *GetAgentServiceStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席纬度统计量
+//
+// @param tmpReq - GetAgentStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentStatisticsResponse
 func (client *Client) GetAgentStatisticsWithOptions(tmpReq *GetAgentStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetAgentStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26559,6 +32958,13 @@ func (client *Client) GetAgentStatisticsWithOptions(tmpReq *GetAgentStatisticsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席纬度统计量
+//
+// @param request - GetAgentStatisticsRequest
+//
+// @return GetAgentStatisticsResponse
 func (client *Client) GetAgentStatistics(request *GetAgentStatisticsRequest) (_result *GetAgentStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAgentStatisticsResponse{}
@@ -26570,6 +32976,15 @@ func (client *Client) GetAgentStatistics(request *GetAgentStatisticsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取智能外呼任务业务自定义信息
+//
+// @param request - GetAiOutboundTaskBizDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiOutboundTaskBizDataResponse
 func (client *Client) GetAiOutboundTaskBizDataWithOptions(request *GetAiOutboundTaskBizDataRequest, runtime *util.RuntimeOptions) (_result *GetAiOutboundTaskBizDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26599,6 +33014,13 @@ func (client *Client) GetAiOutboundTaskBizDataWithOptions(request *GetAiOutbound
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取智能外呼任务业务自定义信息
+//
+// @param request - GetAiOutboundTaskBizDataRequest
+//
+// @return GetAiOutboundTaskBizDataResponse
 func (client *Client) GetAiOutboundTaskBizData(request *GetAiOutboundTaskBizDataRequest) (_result *GetAiOutboundTaskBizDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAiOutboundTaskBizDataResponse{}
@@ -26610,6 +33032,15 @@ func (client *Client) GetAiOutboundTaskBizData(request *GetAiOutboundTaskBizData
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务配置详情查询
+//
+// @param request - GetAiOutboundTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiOutboundTaskDetailResponse
 func (client *Client) GetAiOutboundTaskDetailWithOptions(request *GetAiOutboundTaskDetailRequest, runtime *util.RuntimeOptions) (_result *GetAiOutboundTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26639,6 +33070,13 @@ func (client *Client) GetAiOutboundTaskDetailWithOptions(request *GetAiOutboundT
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务配置详情查询
+//
+// @param request - GetAiOutboundTaskDetailRequest
+//
+// @return GetAiOutboundTaskDetailResponse
 func (client *Client) GetAiOutboundTaskDetail(request *GetAiOutboundTaskDetailRequest) (_result *GetAiOutboundTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAiOutboundTaskDetailResponse{}
@@ -26650,6 +33088,15 @@ func (client *Client) GetAiOutboundTaskDetail(request *GetAiOutboundTaskDetailRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务执行详情
+//
+// @param request - GetAiOutboundTaskExecDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiOutboundTaskExecDetailResponse
 func (client *Client) GetAiOutboundTaskExecDetailWithOptions(request *GetAiOutboundTaskExecDetailRequest, runtime *util.RuntimeOptions) (_result *GetAiOutboundTaskExecDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26679,6 +33126,13 @@ func (client *Client) GetAiOutboundTaskExecDetailWithOptions(request *GetAiOutbo
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务执行详情
+//
+// @param request - GetAiOutboundTaskExecDetailRequest
+//
+// @return GetAiOutboundTaskExecDetailResponse
 func (client *Client) GetAiOutboundTaskExecDetail(request *GetAiOutboundTaskExecDetailRequest) (_result *GetAiOutboundTaskExecDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAiOutboundTaskExecDetailResponse{}
@@ -26690,6 +33144,15 @@ func (client *Client) GetAiOutboundTaskExecDetail(request *GetAiOutboundTaskExec
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务列表查询
+//
+// @param request - GetAiOutboundTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiOutboundTaskListResponse
 func (client *Client) GetAiOutboundTaskListWithOptions(request *GetAiOutboundTaskListRequest, runtime *util.RuntimeOptions) (_result *GetAiOutboundTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26719,6 +33182,13 @@ func (client *Client) GetAiOutboundTaskListWithOptions(request *GetAiOutboundTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务列表查询
+//
+// @param request - GetAiOutboundTaskListRequest
+//
+// @return GetAiOutboundTaskListResponse
 func (client *Client) GetAiOutboundTaskList(request *GetAiOutboundTaskListRequest) (_result *GetAiOutboundTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAiOutboundTaskListResponse{}
@@ -26730,6 +33200,15 @@ func (client *Client) GetAiOutboundTaskList(request *GetAiOutboundTaskListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务执行进度
+//
+// @param request - GetAiOutboundTaskProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAiOutboundTaskProgressResponse
 func (client *Client) GetAiOutboundTaskProgressWithOptions(request *GetAiOutboundTaskProgressRequest, runtime *util.RuntimeOptions) (_result *GetAiOutboundTaskProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26759,6 +33238,13 @@ func (client *Client) GetAiOutboundTaskProgressWithOptions(request *GetAiOutboun
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务执行进度
+//
+// @param request - GetAiOutboundTaskProgressRequest
+//
+// @return GetAiOutboundTaskProgressResponse
 func (client *Client) GetAiOutboundTaskProgress(request *GetAiOutboundTaskProgressRequest) (_result *GetAiOutboundTaskProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAiOutboundTaskProgressResponse{}
@@ -26770,6 +33256,15 @@ func (client *Client) GetAiOutboundTaskProgress(request *GetAiOutboundTaskProgre
 	return _result, _err
 }
 
+// Summary:
+//
+// getAllDepartment
+//
+// @param request - GetAllDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAllDepartmentResponse
 func (client *Client) GetAllDepartmentWithOptions(request *GetAllDepartmentRequest, runtime *util.RuntimeOptions) (_result *GetAllDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26799,6 +33294,13 @@ func (client *Client) GetAllDepartmentWithOptions(request *GetAllDepartmentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// getAllDepartment
+//
+// @param request - GetAllDepartmentRequest
+//
+// @return GetAllDepartmentResponse
 func (client *Client) GetAllDepartment(request *GetAllDepartmentRequest) (_result *GetAllDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAllDepartmentResponse{}
@@ -26810,6 +33312,15 @@ func (client *Client) GetAllDepartment(request *GetAllDepartmentRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话录音文件
+//
+// @param request - GetCallSoundRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCallSoundRecordResponse
 func (client *Client) GetCallSoundRecordWithOptions(request *GetCallSoundRecordRequest, runtime *util.RuntimeOptions) (_result *GetCallSoundRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26859,6 +33370,13 @@ func (client *Client) GetCallSoundRecordWithOptions(request *GetCallSoundRecordR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话录音文件
+//
+// @param request - GetCallSoundRecordRequest
+//
+// @return GetCallSoundRecordResponse
 func (client *Client) GetCallSoundRecord(request *GetCallSoundRecordRequest) (_result *GetCallSoundRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCallSoundRecordResponse{}
@@ -26870,6 +33388,15 @@ func (client *Client) GetCallSoundRecord(request *GetCallSoundRecordRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线配置号码列表
+//
+// @param request - GetConfigNumListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConfigNumListResponse
 func (client *Client) GetConfigNumListWithOptions(request *GetConfigNumListRequest, runtime *util.RuntimeOptions) (_result *GetConfigNumListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26899,6 +33426,13 @@ func (client *Client) GetConfigNumListWithOptions(request *GetConfigNumListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线配置号码列表
+//
+// @param request - GetConfigNumListRequest
+//
+// @return GetConfigNumListResponse
 func (client *Client) GetConfigNumList(request *GetConfigNumListRequest) (_result *GetConfigNumListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigNumListResponse{}
@@ -26910,6 +33444,15 @@ func (client *Client) GetConfigNumList(request *GetConfigNumListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取会员信息
+//
+// @param request - GetCustomerInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomerInfoResponse
 func (client *Client) GetCustomerInfoWithOptions(request *GetCustomerInfoRequest, runtime *util.RuntimeOptions) (_result *GetCustomerInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26939,6 +33482,13 @@ func (client *Client) GetCustomerInfoWithOptions(request *GetCustomerInfoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取会员信息
+//
+// @param request - GetCustomerInfoRequest
+//
+// @return GetCustomerInfoResponse
 func (client *Client) GetCustomerInfo(request *GetCustomerInfoRequest) (_result *GetCustomerInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCustomerInfoResponse{}
@@ -26950,6 +33500,15 @@ func (client *Client) GetCustomerInfo(request *GetCustomerInfoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取技能组分组
+//
+// @param request - GetDepGroupTreeDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDepGroupTreeDataResponse
 func (client *Client) GetDepGroupTreeDataWithOptions(request *GetDepGroupTreeDataRequest, runtime *util.RuntimeOptions) (_result *GetDepGroupTreeDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26979,6 +33538,13 @@ func (client *Client) GetDepGroupTreeDataWithOptions(request *GetDepGroupTreeDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取技能组分组
+//
+// @param request - GetDepGroupTreeDataRequest
+//
+// @return GetDepGroupTreeDataResponse
 func (client *Client) GetDepGroupTreeData(request *GetDepGroupTreeDataRequest) (_result *GetDepGroupTreeDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDepGroupTreeDataResponse{}
@@ -26990,6 +33556,15 @@ func (client *Client) GetDepGroupTreeData(request *GetDepGroupTreeDataRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 部门纬度坐席状态量
+//
+// @param tmpReq - GetDepartmentalLatitudeAgentStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDepartmentalLatitudeAgentStatusResponse
 func (client *Client) GetDepartmentalLatitudeAgentStatusWithOptions(tmpReq *GetDepartmentalLatitudeAgentStatusRequest, runtime *util.RuntimeOptions) (_result *GetDepartmentalLatitudeAgentStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27025,6 +33600,13 @@ func (client *Client) GetDepartmentalLatitudeAgentStatusWithOptions(tmpReq *GetD
 	return _result, _err
 }
 
+// Summary:
+//
+// 部门纬度坐席状态量
+//
+// @param request - GetDepartmentalLatitudeAgentStatusRequest
+//
+// @return GetDepartmentalLatitudeAgentStatusResponse
 func (client *Client) GetDepartmentalLatitudeAgentStatus(request *GetDepartmentalLatitudeAgentStatusRequest) (_result *GetDepartmentalLatitudeAgentStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDepartmentalLatitudeAgentStatusResponse{}
@@ -27036,6 +33618,11 @@ func (client *Client) GetDepartmentalLatitudeAgentStatus(request *GetDepartmenta
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineAgentDetailResponse
 func (client *Client) GetHotlineAgentDetailWithOptions(request *GetHotlineAgentDetailRequest, runtime *util.RuntimeOptions) (_result *GetHotlineAgentDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27065,6 +33652,9 @@ func (client *Client) GetHotlineAgentDetailWithOptions(request *GetHotlineAgentD
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentDetailRequest
+//
+// @return GetHotlineAgentDetailResponse
 func (client *Client) GetHotlineAgentDetail(request *GetHotlineAgentDetailRequest) (_result *GetHotlineAgentDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineAgentDetailResponse{}
@@ -27076,6 +33666,11 @@ func (client *Client) GetHotlineAgentDetail(request *GetHotlineAgentDetailReques
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentDetailReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineAgentDetailReportResponse
 func (client *Client) GetHotlineAgentDetailReportWithOptions(request *GetHotlineAgentDetailReportRequest, runtime *util.RuntimeOptions) (_result *GetHotlineAgentDetailReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27133,6 +33728,9 @@ func (client *Client) GetHotlineAgentDetailReportWithOptions(request *GetHotline
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentDetailReportRequest
+//
+// @return GetHotlineAgentDetailReportResponse
 func (client *Client) GetHotlineAgentDetailReport(request *GetHotlineAgentDetailReportRequest) (_result *GetHotlineAgentDetailReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineAgentDetailReportResponse{}
@@ -27144,6 +33742,11 @@ func (client *Client) GetHotlineAgentDetailReport(request *GetHotlineAgentDetail
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineAgentStatusResponse
 func (client *Client) GetHotlineAgentStatusWithOptions(request *GetHotlineAgentStatusRequest, runtime *util.RuntimeOptions) (_result *GetHotlineAgentStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27181,6 +33784,9 @@ func (client *Client) GetHotlineAgentStatusWithOptions(request *GetHotlineAgentS
 	return _result, _err
 }
 
+// @param request - GetHotlineAgentStatusRequest
+//
+// @return GetHotlineAgentStatusResponse
 func (client *Client) GetHotlineAgentStatus(request *GetHotlineAgentStatusRequest) (_result *GetHotlineAgentStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineAgentStatusResponse{}
@@ -27192,6 +33798,15 @@ func (client *Client) GetHotlineAgentStatus(request *GetHotlineAgentStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询话务动作结果数据
+//
+// @param request - GetHotlineCallActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineCallActionResponse
 func (client *Client) GetHotlineCallActionWithOptions(request *GetHotlineCallActionRequest, runtime *util.RuntimeOptions) (_result *GetHotlineCallActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27249,6 +33864,13 @@ func (client *Client) GetHotlineCallActionWithOptions(request *GetHotlineCallAct
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询话务动作结果数据
+//
+// @param request - GetHotlineCallActionRequest
+//
+// @return GetHotlineCallActionResponse
 func (client *Client) GetHotlineCallAction(request *GetHotlineCallActionRequest) (_result *GetHotlineCallActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineCallActionResponse{}
@@ -27260,6 +33882,11 @@ func (client *Client) GetHotlineCallAction(request *GetHotlineCallActionRequest)
 	return _result, _err
 }
 
+// @param request - GetHotlineGroupDetailReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineGroupDetailReportResponse
 func (client *Client) GetHotlineGroupDetailReportWithOptions(request *GetHotlineGroupDetailReportRequest, runtime *util.RuntimeOptions) (_result *GetHotlineGroupDetailReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27317,6 +33944,9 @@ func (client *Client) GetHotlineGroupDetailReportWithOptions(request *GetHotline
 	return _result, _err
 }
 
+// @param request - GetHotlineGroupDetailReportRequest
+//
+// @return GetHotlineGroupDetailReportResponse
 func (client *Client) GetHotlineGroupDetailReport(request *GetHotlineGroupDetailReportRequest) (_result *GetHotlineGroupDetailReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineGroupDetailReportResponse{}
@@ -27328,6 +33958,15 @@ func (client *Client) GetHotlineGroupDetailReport(request *GetHotlineGroupDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线聊天记录
+//
+// @param request - GetHotlineMessageLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineMessageLogResponse
 func (client *Client) GetHotlineMessageLogWithOptions(request *GetHotlineMessageLogRequest, runtime *util.RuntimeOptions) (_result *GetHotlineMessageLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27357,6 +33996,13 @@ func (client *Client) GetHotlineMessageLogWithOptions(request *GetHotlineMessage
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线聊天记录
+//
+// @param request - GetHotlineMessageLogRequest
+//
+// @return GetHotlineMessageLogResponse
 func (client *Client) GetHotlineMessageLog(request *GetHotlineMessageLogRequest) (_result *GetHotlineMessageLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineMessageLogResponse{}
@@ -27368,6 +34014,15 @@ func (client *Client) GetHotlineMessageLog(request *GetHotlineMessageLogRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线当前信息
+//
+// @param request - GetHotlineRuntimeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineRuntimeInfoResponse
 func (client *Client) GetHotlineRuntimeInfoWithOptions(request *GetHotlineRuntimeInfoRequest, runtime *util.RuntimeOptions) (_result *GetHotlineRuntimeInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27397,6 +34052,13 @@ func (client *Client) GetHotlineRuntimeInfoWithOptions(request *GetHotlineRuntim
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取热线当前信息
+//
+// @param request - GetHotlineRuntimeInfoRequest
+//
+// @return GetHotlineRuntimeInfoResponse
 func (client *Client) GetHotlineRuntimeInfo(request *GetHotlineRuntimeInfoRequest) (_result *GetHotlineRuntimeInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineRuntimeInfoResponse{}
@@ -27408,6 +34070,15 @@ func (client *Client) GetHotlineRuntimeInfo(request *GetHotlineRuntimeInfoReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务统计量数据
+//
+// @param tmpReq - GetHotlineServiceStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineServiceStatisticsResponse
 func (client *Client) GetHotlineServiceStatisticsWithOptions(tmpReq *GetHotlineServiceStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetHotlineServiceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27451,6 +34122,13 @@ func (client *Client) GetHotlineServiceStatisticsWithOptions(tmpReq *GetHotlineS
 	return _result, _err
 }
 
+// Summary:
+//
+// 服务统计量数据
+//
+// @param request - GetHotlineServiceStatisticsRequest
+//
+// @return GetHotlineServiceStatisticsResponse
 func (client *Client) GetHotlineServiceStatistics(request *GetHotlineServiceStatisticsRequest) (_result *GetHotlineServiceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineServiceStatisticsResponse{}
@@ -27462,6 +34140,11 @@ func (client *Client) GetHotlineServiceStatistics(request *GetHotlineServiceStat
 	return _result, _err
 }
 
+// @param request - GetHotlineWaitingNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHotlineWaitingNumberResponse
 func (client *Client) GetHotlineWaitingNumberWithOptions(request *GetHotlineWaitingNumberRequest, runtime *util.RuntimeOptions) (_result *GetHotlineWaitingNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27491,6 +34174,9 @@ func (client *Client) GetHotlineWaitingNumberWithOptions(request *GetHotlineWait
 	return _result, _err
 }
 
+// @param request - GetHotlineWaitingNumberRequest
+//
+// @return GetHotlineWaitingNumberResponse
 func (client *Client) GetHotlineWaitingNumber(request *GetHotlineWaitingNumberRequest) (_result *GetHotlineWaitingNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHotlineWaitingNumberResponse{}
@@ -27502,6 +34188,11 @@ func (client *Client) GetHotlineWaitingNumber(request *GetHotlineWaitingNumberRe
 	return _result, _err
 }
 
+// @param request - GetIndexCurrentValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIndexCurrentValueResponse
 func (client *Client) GetIndexCurrentValueWithOptions(request *GetIndexCurrentValueRequest, runtime *util.RuntimeOptions) (_result *GetIndexCurrentValueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27543,6 +34234,9 @@ func (client *Client) GetIndexCurrentValueWithOptions(request *GetIndexCurrentVa
 	return _result, _err
 }
 
+// @param request - GetIndexCurrentValueRequest
+//
+// @return GetIndexCurrentValueResponse
 func (client *Client) GetIndexCurrentValue(request *GetIndexCurrentValueRequest) (_result *GetIndexCurrentValueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIndexCurrentValueResponse{}
@@ -27554,6 +34248,11 @@ func (client *Client) GetIndexCurrentValue(request *GetIndexCurrentValueRequest)
 	return _result, _err
 }
 
+// @param request - GetInstanceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceListResponse
 func (client *Client) GetInstanceListWithOptions(request *GetInstanceListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27595,6 +34294,9 @@ func (client *Client) GetInstanceListWithOptions(request *GetInstanceListRequest
 	return _result, _err
 }
 
+// @param request - GetInstanceListRequest
+//
+// @return GetInstanceListResponse
 func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result *GetInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceListResponse{}
@@ -27606,6 +34308,15 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线检测获取mcu ip地址
+//
+// @param request - GetMcuLvsIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcuLvsIpResponse
 func (client *Client) GetMcuLvsIpWithOptions(request *GetMcuLvsIpRequest, runtime *util.RuntimeOptions) (_result *GetMcuLvsIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27635,6 +34346,13 @@ func (client *Client) GetMcuLvsIpWithOptions(request *GetMcuLvsIpRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 热线检测获取mcu ip地址
+//
+// @param request - GetMcuLvsIpRequest
+//
+// @return GetMcuLvsIpResponse
 func (client *Client) GetMcuLvsIp(request *GetMcuLvsIpRequest) (_result *GetMcuLvsIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMcuLvsIpResponse{}
@@ -27646,6 +34364,11 @@ func (client *Client) GetMcuLvsIp(request *GetMcuLvsIpRequest) (_result *GetMcuL
 	return _result, _err
 }
 
+// @param request - GetNumLocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNumLocationResponse
 func (client *Client) GetNumLocationWithOptions(request *GetNumLocationRequest, runtime *util.RuntimeOptions) (_result *GetNumLocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27675,6 +34398,9 @@ func (client *Client) GetNumLocationWithOptions(request *GetNumLocationRequest, 
 	return _result, _err
 }
 
+// @param request - GetNumLocationRequest
+//
+// @return GetNumLocationResponse
 func (client *Client) GetNumLocation(request *GetNumLocationRequest) (_result *GetNumLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNumLocationResponse{}
@@ -27686,6 +34412,15 @@ func (client *Client) GetNumLocation(request *GetNumLocationRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线坐席信息
+//
+// @param tmpReq - GetOnlineSeatInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOnlineSeatInformationResponse
 func (client *Client) GetOnlineSeatInformationWithOptions(tmpReq *GetOnlineSeatInformationRequest, runtime *util.RuntimeOptions) (_result *GetOnlineSeatInformationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27725,6 +34460,13 @@ func (client *Client) GetOnlineSeatInformationWithOptions(tmpReq *GetOnlineSeatI
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线坐席信息
+//
+// @param request - GetOnlineSeatInformationRequest
+//
+// @return GetOnlineSeatInformationResponse
 func (client *Client) GetOnlineSeatInformation(request *GetOnlineSeatInformationRequest) (_result *GetOnlineSeatInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOnlineSeatInformationResponse{}
@@ -27736,6 +34478,15 @@ func (client *Client) GetOnlineSeatInformation(request *GetOnlineSeatInformation
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线服务总量
+//
+// @param tmpReq - GetOnlineServiceVolumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOnlineServiceVolumeResponse
 func (client *Client) GetOnlineServiceVolumeWithOptions(tmpReq *GetOnlineServiceVolumeRequest, runtime *util.RuntimeOptions) (_result *GetOnlineServiceVolumeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27779,6 +34530,13 @@ func (client *Client) GetOnlineServiceVolumeWithOptions(tmpReq *GetOnlineService
 	return _result, _err
 }
 
+// Summary:
+//
+// 在线服务总量
+//
+// @param request - GetOnlineServiceVolumeRequest
+//
+// @return GetOnlineServiceVolumeResponse
 func (client *Client) GetOnlineServiceVolume(request *GetOnlineServiceVolumeRequest) (_result *GetOnlineServiceVolumeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOnlineServiceVolumeResponse{}
@@ -27790,6 +34548,11 @@ func (client *Client) GetOnlineServiceVolume(request *GetOnlineServiceVolumeRequ
 	return _result, _err
 }
 
+// @param request - GetOutbounNumListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOutbounNumListResponse
 func (client *Client) GetOutbounNumListWithOptions(request *GetOutbounNumListRequest, runtime *util.RuntimeOptions) (_result *GetOutbounNumListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27831,6 +34594,9 @@ func (client *Client) GetOutbounNumListWithOptions(request *GetOutbounNumListReq
 	return _result, _err
 }
 
+// @param request - GetOutbounNumListRequest
+//
+// @return GetOutbounNumListResponse
 func (client *Client) GetOutbounNumList(request *GetOutbounNumListRequest) (_result *GetOutbounNumListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOutbounNumListResponse{}
@@ -27842,6 +34608,11 @@ func (client *Client) GetOutbounNumList(request *GetOutbounNumListRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetQualityProjectDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityProjectDetailResponse
 func (client *Client) GetQualityProjectDetailWithOptions(request *GetQualityProjectDetailRequest, runtime *util.RuntimeOptions) (_result *GetQualityProjectDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27879,6 +34650,9 @@ func (client *Client) GetQualityProjectDetailWithOptions(request *GetQualityProj
 	return _result, _err
 }
 
+// @param request - GetQualityProjectDetailRequest
+//
+// @return GetQualityProjectDetailResponse
 func (client *Client) GetQualityProjectDetail(request *GetQualityProjectDetailRequest) (_result *GetQualityProjectDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityProjectDetailResponse{}
@@ -27890,6 +34664,11 @@ func (client *Client) GetQualityProjectDetail(request *GetQualityProjectDetailRe
 	return _result, _err
 }
 
+// @param request - GetQualityProjectListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityProjectListResponse
 func (client *Client) GetQualityProjectListWithOptions(request *GetQualityProjectListRequest, runtime *util.RuntimeOptions) (_result *GetQualityProjectListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27947,6 +34726,9 @@ func (client *Client) GetQualityProjectListWithOptions(request *GetQualityProjec
 	return _result, _err
 }
 
+// @param request - GetQualityProjectListRequest
+//
+// @return GetQualityProjectListResponse
 func (client *Client) GetQualityProjectList(request *GetQualityProjectListRequest) (_result *GetQualityProjectListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityProjectListResponse{}
@@ -27958,6 +34740,11 @@ func (client *Client) GetQualityProjectList(request *GetQualityProjectListReques
 	return _result, _err
 }
 
+// @param request - GetQualityProjectLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityProjectLogResponse
 func (client *Client) GetQualityProjectLogWithOptions(request *GetQualityProjectLogRequest, runtime *util.RuntimeOptions) (_result *GetQualityProjectLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27995,6 +34782,9 @@ func (client *Client) GetQualityProjectLogWithOptions(request *GetQualityProject
 	return _result, _err
 }
 
+// @param request - GetQualityProjectLogRequest
+//
+// @return GetQualityProjectLogResponse
 func (client *Client) GetQualityProjectLog(request *GetQualityProjectLogRequest) (_result *GetQualityProjectLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityProjectLogResponse{}
@@ -28006,6 +34796,11 @@ func (client *Client) GetQualityProjectLog(request *GetQualityProjectLogRequest)
 	return _result, _err
 }
 
+// @param request - GetQualityResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityResultResponse
 func (client *Client) GetQualityResultWithOptions(request *GetQualityResultRequest, runtime *util.RuntimeOptions) (_result *GetQualityResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28075,6 +34870,9 @@ func (client *Client) GetQualityResultWithOptions(request *GetQualityResultReque
 	return _result, _err
 }
 
+// @param request - GetQualityResultRequest
+//
+// @return GetQualityResultResponse
 func (client *Client) GetQualityResult(request *GetQualityResultRequest) (_result *GetQualityResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityResultResponse{}
@@ -28086,6 +34884,11 @@ func (client *Client) GetQualityResult(request *GetQualityResultRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetQualityRuleDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleDetailResponse
 func (client *Client) GetQualityRuleDetailWithOptions(request *GetQualityRuleDetailRequest, runtime *util.RuntimeOptions) (_result *GetQualityRuleDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28123,6 +34926,9 @@ func (client *Client) GetQualityRuleDetailWithOptions(request *GetQualityRuleDet
 	return _result, _err
 }
 
+// @param request - GetQualityRuleDetailRequest
+//
+// @return GetQualityRuleDetailResponse
 func (client *Client) GetQualityRuleDetail(request *GetQualityRuleDetailRequest) (_result *GetQualityRuleDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityRuleDetailResponse{}
@@ -28134,6 +34940,11 @@ func (client *Client) GetQualityRuleDetail(request *GetQualityRuleDetailRequest)
 	return _result, _err
 }
 
+// @param request - GetQualityRuleListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleListResponse
 func (client *Client) GetQualityRuleListWithOptions(request *GetQualityRuleListRequest, runtime *util.RuntimeOptions) (_result *GetQualityRuleListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28175,6 +34986,9 @@ func (client *Client) GetQualityRuleListWithOptions(request *GetQualityRuleListR
 	return _result, _err
 }
 
+// @param request - GetQualityRuleListRequest
+//
+// @return GetQualityRuleListResponse
 func (client *Client) GetQualityRuleList(request *GetQualityRuleListRequest) (_result *GetQualityRuleListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityRuleListResponse{}
@@ -28186,6 +35000,11 @@ func (client *Client) GetQualityRuleList(request *GetQualityRuleListRequest) (_r
 	return _result, _err
 }
 
+// @param request - GetQualityRuleTagListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityRuleTagListResponse
 func (client *Client) GetQualityRuleTagListWithOptions(request *GetQualityRuleTagListRequest, runtime *util.RuntimeOptions) (_result *GetQualityRuleTagListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28219,6 +35038,9 @@ func (client *Client) GetQualityRuleTagListWithOptions(request *GetQualityRuleTa
 	return _result, _err
 }
 
+// @param request - GetQualityRuleTagListRequest
+//
+// @return GetQualityRuleTagListResponse
 func (client *Client) GetQualityRuleTagList(request *GetQualityRuleTagListRequest) (_result *GetQualityRuleTagListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQualityRuleTagListResponse{}
@@ -28230,6 +35052,15 @@ func (client *Client) GetQualityRuleTagList(request *GetQualityRuleTagListReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度队列信息
+//
+// @param tmpReq - GetQueueInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueueInformationResponse
 func (client *Client) GetQueueInformationWithOptions(tmpReq *GetQueueInformationRequest, runtime *util.RuntimeOptions) (_result *GetQueueInformationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28269,6 +35100,13 @@ func (client *Client) GetQueueInformationWithOptions(tmpReq *GetQueueInformation
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度队列信息
+//
+// @param request - GetQueueInformationRequest
+//
+// @return GetQueueInformationResponse
 func (client *Client) GetQueueInformation(request *GetQueueInformationRequest) (_result *GetQueueInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQueueInformationResponse{}
@@ -28280,6 +35118,11 @@ func (client *Client) GetQueueInformation(request *GetQueueInformationRequest) (
 	return _result, _err
 }
 
+// @param request - GetRecordDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordDataResponse
 func (client *Client) GetRecordDataWithOptions(request *GetRecordDataRequest, runtime *util.RuntimeOptions) (_result *GetRecordDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28317,6 +35160,9 @@ func (client *Client) GetRecordDataWithOptions(request *GetRecordDataRequest, ru
 	return _result, _err
 }
 
+// @param request - GetRecordDataRequest
+//
+// @return GetRecordDataResponse
 func (client *Client) GetRecordData(request *GetRecordDataRequest) (_result *GetRecordDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordDataResponse{}
@@ -28328,6 +35174,15 @@ func (client *Client) GetRecordData(request *GetRecordDataRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音链接
+//
+// @param request - GetRecordUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRecordUrlResponse
 func (client *Client) GetRecordUrlWithOptions(request *GetRecordUrlRequest, runtime *util.RuntimeOptions) (_result *GetRecordUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28357,6 +35212,13 @@ func (client *Client) GetRecordUrlWithOptions(request *GetRecordUrlRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音链接
+//
+// @param request - GetRecordUrlRequest
+//
+// @return GetRecordUrlResponse
 func (client *Client) GetRecordUrl(request *GetRecordUrlRequest) (_result *GetRecordUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRecordUrlResponse{}
@@ -28368,6 +35230,15 @@ func (client *Client) GetRecordUrl(request *GetRecordUrlRequest) (_result *GetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取RtcToken
+//
+// @param request - GetRtcTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRtcTokenResponse
 func (client *Client) GetRtcTokenWithOptions(request *GetRtcTokenRequest, runtime *util.RuntimeOptions) (_result *GetRtcTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28397,6 +35268,13 @@ func (client *Client) GetRtcTokenWithOptions(request *GetRtcTokenRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取RtcToken
+//
+// @param request - GetRtcTokenRequest
+//
+// @return GetRtcTokenResponse
 func (client *Client) GetRtcToken(request *GetRtcTokenRequest) (_result *GetRtcTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRtcTokenResponse{}
@@ -28408,6 +35286,15 @@ func (client *Client) GetRtcToken(request *GetRtcTokenRequest) (_result *GetRtcT
 	return _result, _err
 }
 
+// Summary:
+//
+// 部门纬度坐席信息数据
+//
+// @param tmpReq - GetSeatInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSeatInformationResponse
 func (client *Client) GetSeatInformationWithOptions(tmpReq *GetSeatInformationRequest, runtime *util.RuntimeOptions) (_result *GetSeatInformationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28443,6 +35330,13 @@ func (client *Client) GetSeatInformationWithOptions(tmpReq *GetSeatInformationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 部门纬度坐席信息数据
+//
+// @param request - GetSeatInformationRequest
+//
+// @return GetSeatInformationResponse
 func (client *Client) GetSeatInformation(request *GetSeatInformationRequest) (_result *GetSeatInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSeatInformationResponse{}
@@ -28454,6 +35348,15 @@ func (client *Client) GetSeatInformation(request *GetSeatInformationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组坐席状态详情
+//
+// @param tmpReq - GetSkillGroupAgentStatusDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupAgentStatusDetailsResponse
 func (client *Client) GetSkillGroupAgentStatusDetailsWithOptions(tmpReq *GetSkillGroupAgentStatusDetailsRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupAgentStatusDetailsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28493,6 +35396,13 @@ func (client *Client) GetSkillGroupAgentStatusDetailsWithOptions(tmpReq *GetSkil
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组坐席状态详情
+//
+// @param request - GetSkillGroupAgentStatusDetailsRequest
+//
+// @return GetSkillGroupAgentStatusDetailsResponse
 func (client *Client) GetSkillGroupAgentStatusDetails(request *GetSkillGroupAgentStatusDetailsRequest) (_result *GetSkillGroupAgentStatusDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupAgentStatusDetailsResponse{}
@@ -28504,6 +35414,15 @@ func (client *Client) GetSkillGroupAgentStatusDetails(request *GetSkillGroupAgen
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组坐席汇总状态量
+//
+// @param tmpReq - GetSkillGroupAndAgentStatusSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupAndAgentStatusSummaryResponse
 func (client *Client) GetSkillGroupAndAgentStatusSummaryWithOptions(tmpReq *GetSkillGroupAndAgentStatusSummaryRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupAndAgentStatusSummaryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28543,6 +35462,13 @@ func (client *Client) GetSkillGroupAndAgentStatusSummaryWithOptions(tmpReq *GetS
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组坐席汇总状态量
+//
+// @param request - GetSkillGroupAndAgentStatusSummaryRequest
+//
+// @return GetSkillGroupAndAgentStatusSummaryResponse
 func (client *Client) GetSkillGroupAndAgentStatusSummary(request *GetSkillGroupAndAgentStatusSummaryRequest) (_result *GetSkillGroupAndAgentStatusSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupAndAgentStatusSummaryResponse{}
@@ -28554,6 +35480,15 @@ func (client *Client) GetSkillGroupAndAgentStatusSummary(request *GetSkillGroupA
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度状态量
+//
+// @param tmpReq - GetSkillGroupLatitudeStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupLatitudeStateResponse
 func (client *Client) GetSkillGroupLatitudeStateWithOptions(tmpReq *GetSkillGroupLatitudeStateRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupLatitudeStateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28593,6 +35528,13 @@ func (client *Client) GetSkillGroupLatitudeStateWithOptions(tmpReq *GetSkillGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度状态量
+//
+// @param request - GetSkillGroupLatitudeStateRequest
+//
+// @return GetSkillGroupLatitudeStateResponse
 func (client *Client) GetSkillGroupLatitudeState(request *GetSkillGroupLatitudeStateRequest) (_result *GetSkillGroupLatitudeStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupLatitudeStateResponse{}
@@ -28604,6 +35546,15 @@ func (client *Client) GetSkillGroupLatitudeState(request *GetSkillGroupLatitudeS
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度服务能力
+//
+// @param tmpReq - GetSkillGroupServiceCapabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupServiceCapabilityResponse
 func (client *Client) GetSkillGroupServiceCapabilityWithOptions(tmpReq *GetSkillGroupServiceCapabilityRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupServiceCapabilityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28643,6 +35594,13 @@ func (client *Client) GetSkillGroupServiceCapabilityWithOptions(tmpReq *GetSkill
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组纬度服务能力
+//
+// @param request - GetSkillGroupServiceCapabilityRequest
+//
+// @return GetSkillGroupServiceCapabilityResponse
 func (client *Client) GetSkillGroupServiceCapability(request *GetSkillGroupServiceCapabilityRequest) (_result *GetSkillGroupServiceCapabilityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupServiceCapabilityResponse{}
@@ -28654,6 +35612,15 @@ func (client *Client) GetSkillGroupServiceCapability(request *GetSkillGroupServi
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组服务状态量
+//
+// @param tmpReq - GetSkillGroupServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupServiceStatusResponse
 func (client *Client) GetSkillGroupServiceStatusWithOptions(tmpReq *GetSkillGroupServiceStatusRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28697,6 +35664,13 @@ func (client *Client) GetSkillGroupServiceStatusWithOptions(tmpReq *GetSkillGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组服务状态量
+//
+// @param request - GetSkillGroupServiceStatusRequest
+//
+// @return GetSkillGroupServiceStatusResponse
 func (client *Client) GetSkillGroupServiceStatus(request *GetSkillGroupServiceStatusRequest) (_result *GetSkillGroupServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupServiceStatusResponse{}
@@ -28708,6 +35682,15 @@ func (client *Client) GetSkillGroupServiceStatus(request *GetSkillGroupServiceSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组状态总量
+//
+// @param tmpReq - GetSkillGroupStatusTotalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSkillGroupStatusTotalResponse
 func (client *Client) GetSkillGroupStatusTotalWithOptions(tmpReq *GetSkillGroupStatusTotalRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupStatusTotalResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28751,6 +35734,13 @@ func (client *Client) GetSkillGroupStatusTotalWithOptions(tmpReq *GetSkillGroupS
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组状态总量
+//
+// @param request - GetSkillGroupStatusTotalRequest
+//
+// @return GetSkillGroupStatusTotalResponse
 func (client *Client) GetSkillGroupStatusTotal(request *GetSkillGroupStatusTotalRequest) (_result *GetSkillGroupStatusTotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupStatusTotalResponse{}
@@ -28762,6 +35752,15 @@ func (client *Client) GetSkillGroupStatusTotal(request *GetSkillGroupStatusTotal
 	return _result, _err
 }
 
+// Summary:
+//
+// 移动端呼叫挂断
+//
+// @param request - HangUpDoubleCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HangUpDoubleCallResponse
 func (client *Client) HangUpDoubleCallWithOptions(request *HangUpDoubleCallRequest, runtime *util.RuntimeOptions) (_result *HangUpDoubleCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28799,6 +35798,13 @@ func (client *Client) HangUpDoubleCallWithOptions(request *HangUpDoubleCallReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 移动端呼叫挂断
+//
+// @param request - HangUpDoubleCallRequest
+//
+// @return HangUpDoubleCallResponse
 func (client *Client) HangUpDoubleCall(request *HangUpDoubleCallRequest) (_result *HangUpDoubleCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HangUpDoubleCallResponse{}
@@ -28810,6 +35816,11 @@ func (client *Client) HangUpDoubleCall(request *HangUpDoubleCallRequest) (_resul
 	return _result, _err
 }
 
+// @param request - HangupCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HangupCallResponse
 func (client *Client) HangupCallWithOptions(request *HangupCallRequest, runtime *util.RuntimeOptions) (_result *HangupCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28863,6 +35874,9 @@ func (client *Client) HangupCallWithOptions(request *HangupCallRequest, runtime 
 	return _result, _err
 }
 
+// @param request - HangupCallRequest
+//
+// @return HangupCallResponse
 func (client *Client) HangupCall(request *HangupCallRequest) (_result *HangupCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HangupCallResponse{}
@@ -28874,6 +35888,11 @@ func (client *Client) HangupCall(request *HangupCallRequest) (_result *HangupCal
 	return _result, _err
 }
 
+// @param request - HangupThirdCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HangupThirdCallResponse
 func (client *Client) HangupThirdCallWithOptions(request *HangupThirdCallRequest, runtime *util.RuntimeOptions) (_result *HangupThirdCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28927,6 +35946,9 @@ func (client *Client) HangupThirdCallWithOptions(request *HangupThirdCallRequest
 	return _result, _err
 }
 
+// @param request - HangupThirdCallRequest
+//
+// @return HangupThirdCallResponse
 func (client *Client) HangupThirdCall(request *HangupThirdCallRequest) (_result *HangupThirdCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HangupThirdCallResponse{}
@@ -28938,6 +35960,11 @@ func (client *Client) HangupThirdCall(request *HangupThirdCallRequest) (_result 
 	return _result, _err
 }
 
+// @param request - HoldCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HoldCallResponse
 func (client *Client) HoldCallWithOptions(request *HoldCallRequest, runtime *util.RuntimeOptions) (_result *HoldCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28991,6 +36018,9 @@ func (client *Client) HoldCallWithOptions(request *HoldCallRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - HoldCallRequest
+//
+// @return HoldCallResponse
 func (client *Client) HoldCall(request *HoldCallRequest) (_result *HoldCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HoldCallResponse{}
@@ -29002,6 +36032,11 @@ func (client *Client) HoldCall(request *HoldCallRequest) (_result *HoldCallRespo
 	return _result, _err
 }
 
+// @param request - HotlineSessionQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotlineSessionQueryResponse
 func (client *Client) HotlineSessionQueryWithOptions(request *HotlineSessionQueryRequest, runtime *util.RuntimeOptions) (_result *HotlineSessionQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29139,6 +36174,9 @@ func (client *Client) HotlineSessionQueryWithOptions(request *HotlineSessionQuer
 	return _result, _err
 }
 
+// @param request - HotlineSessionQueryRequest
+//
+// @return HotlineSessionQueryResponse
 func (client *Client) HotlineSessionQuery(request *HotlineSessionQueryRequest) (_result *HotlineSessionQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &HotlineSessionQueryResponse{}
@@ -29150,6 +36188,15 @@ func (client *Client) HotlineSessionQuery(request *HotlineSessionQueryRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务导入号码
+//
+// @param tmpReq - InsertAiOutboundPhoneNumsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertAiOutboundPhoneNumsResponse
 func (client *Client) InsertAiOutboundPhoneNumsWithOptions(tmpReq *InsertAiOutboundPhoneNumsRequest, runtime *util.RuntimeOptions) (_result *InsertAiOutboundPhoneNumsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29201,6 +36248,13 @@ func (client *Client) InsertAiOutboundPhoneNumsWithOptions(tmpReq *InsertAiOutbo
 	return _result, _err
 }
 
+// Summary:
+//
+// 智能外呼任务导入号码
+//
+// @param request - InsertAiOutboundPhoneNumsRequest
+//
+// @return InsertAiOutboundPhoneNumsResponse
 func (client *Client) InsertAiOutboundPhoneNums(request *InsertAiOutboundPhoneNumsRequest) (_result *InsertAiOutboundPhoneNumsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InsertAiOutboundPhoneNumsResponse{}
@@ -29212,6 +36266,11 @@ func (client *Client) InsertAiOutboundPhoneNums(request *InsertAiOutboundPhoneNu
 	return _result, _err
 }
 
+// @param request - InsertTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertTaskDetailResponse
 func (client *Client) InsertTaskDetailWithOptions(request *InsertTaskDetailRequest, runtime *util.RuntimeOptions) (_result *InsertTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29253,6 +36312,9 @@ func (client *Client) InsertTaskDetailWithOptions(request *InsertTaskDetailReque
 	return _result, _err
 }
 
+// @param request - InsertTaskDetailRequest
+//
+// @return InsertTaskDetailResponse
 func (client *Client) InsertTaskDetail(request *InsertTaskDetailRequest) (_result *InsertTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InsertTaskDetailResponse{}
@@ -29264,6 +36326,11 @@ func (client *Client) InsertTaskDetail(request *InsertTaskDetailRequest) (_resul
 	return _result, _err
 }
 
+// @param request - JoinThirdCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return JoinThirdCallResponse
 func (client *Client) JoinThirdCallWithOptions(request *JoinThirdCallRequest, runtime *util.RuntimeOptions) (_result *JoinThirdCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29321,6 +36388,9 @@ func (client *Client) JoinThirdCallWithOptions(request *JoinThirdCallRequest, ru
 	return _result, _err
 }
 
+// @param request - JoinThirdCallRequest
+//
+// @return JoinThirdCallResponse
 func (client *Client) JoinThirdCall(request *JoinThirdCallRequest) (_result *JoinThirdCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &JoinThirdCallResponse{}
@@ -29332,6 +36402,11 @@ func (client *Client) JoinThirdCall(request *JoinThirdCallRequest) (_result *Joi
 	return _result, _err
 }
 
+// @param request - ListAgentBySkillGroupIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentBySkillGroupIdResponse
 func (client *Client) ListAgentBySkillGroupIdWithOptions(request *ListAgentBySkillGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListAgentBySkillGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29361,6 +36436,9 @@ func (client *Client) ListAgentBySkillGroupIdWithOptions(request *ListAgentBySki
 	return _result, _err
 }
 
+// @param request - ListAgentBySkillGroupIdRequest
+//
+// @return ListAgentBySkillGroupIdResponse
 func (client *Client) ListAgentBySkillGroupId(request *ListAgentBySkillGroupIdRequest) (_result *ListAgentBySkillGroupIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAgentBySkillGroupIdResponse{}
@@ -29372,6 +36450,15 @@ func (client *Client) ListAgentBySkillGroupId(request *ListAgentBySkillGroupIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询所有机器人列表
+//
+// @param request - ListAiccsRobotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAiccsRobotResponse
 func (client *Client) ListAiccsRobotWithOptions(request *ListAiccsRobotRequest, runtime *util.RuntimeOptions) (_result *ListAiccsRobotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29417,6 +36504,13 @@ func (client *Client) ListAiccsRobotWithOptions(request *ListAiccsRobotRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询所有机器人列表
+//
+// @param request - ListAiccsRobotRequest
+//
+// @return ListAiccsRobotResponse
 func (client *Client) ListAiccsRobot(request *ListAiccsRobotRequest) (_result *ListAiccsRobotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAiccsRobotResponse{}
@@ -29428,6 +36522,15 @@ func (client *Client) ListAiccsRobot(request *ListAiccsRobotRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据时间段查询在线会话详情，包含会话内容，时间段范围最长不超过1天
+//
+// @param request - ListChatRecordDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatRecordDetailResponse
 func (client *Client) ListChatRecordDetailWithOptions(request *ListChatRecordDetailRequest, runtime *util.RuntimeOptions) (_result *ListChatRecordDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29457,6 +36560,13 @@ func (client *Client) ListChatRecordDetailWithOptions(request *ListChatRecordDet
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据时间段查询在线会话详情，包含会话内容，时间段范围最长不超过1天
+//
+// @param request - ListChatRecordDetailRequest
+//
+// @return ListChatRecordDetailResponse
 func (client *Client) ListChatRecordDetail(request *ListChatRecordDetailRequest) (_result *ListChatRecordDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChatRecordDetailResponse{}
@@ -29468,6 +36578,15 @@ func (client *Client) ListChatRecordDetail(request *ListChatRecordDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看对话记录
+//
+// @param request - ListDialogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDialogResponse
 func (client *Client) ListDialogWithOptions(request *ListDialogRequest, runtime *util.RuntimeOptions) (_result *ListDialogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29517,6 +36636,13 @@ func (client *Client) ListDialogWithOptions(request *ListDialogRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看对话记录
+//
+// @param request - ListDialogRequest
+//
+// @return ListDialogResponse
 func (client *Client) ListDialog(request *ListDialogRequest) (_result *ListDialogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDialogResponse{}
@@ -29528,6 +36654,11 @@ func (client *Client) ListDialog(request *ListDialogRequest) (_result *ListDialo
 	return _result, _err
 }
 
+// @param request - ListHotlineRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotlineRecordResponse
 func (client *Client) ListHotlineRecordWithOptions(request *ListHotlineRecordRequest, runtime *util.RuntimeOptions) (_result *ListHotlineRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29557,6 +36688,9 @@ func (client *Client) ListHotlineRecordWithOptions(request *ListHotlineRecordReq
 	return _result, _err
 }
 
+// @param request - ListHotlineRecordRequest
+//
+// @return ListHotlineRecordResponse
 func (client *Client) ListHotlineRecord(request *ListHotlineRecordRequest) (_result *ListHotlineRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineRecordResponse{}
@@ -29568,6 +36702,15 @@ func (client *Client) ListHotlineRecord(request *ListHotlineRecordRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据时间段查询热线详情列表，包含热线通话信息，时间段范围最长不超过1天
+//
+// @param request - ListHotlineRecordDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHotlineRecordDetailResponse
 func (client *Client) ListHotlineRecordDetailWithOptions(request *ListHotlineRecordDetailRequest, runtime *util.RuntimeOptions) (_result *ListHotlineRecordDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29597,6 +36740,13 @@ func (client *Client) ListHotlineRecordDetailWithOptions(request *ListHotlineRec
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据时间段查询热线详情列表，包含热线通话信息，时间段范围最长不超过1天
+//
+// @param request - ListHotlineRecordDetailRequest
+//
+// @return ListHotlineRecordDetailResponse
 func (client *Client) ListHotlineRecordDetail(request *ListHotlineRecordDetailRequest) (_result *ListHotlineRecordDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHotlineRecordDetailResponse{}
@@ -29608,6 +36758,11 @@ func (client *Client) ListHotlineRecordDetail(request *ListHotlineRecordDetailRe
 	return _result, _err
 }
 
+// @param request - ListOutboundPhoneNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOutboundPhoneNumberResponse
 func (client *Client) ListOutboundPhoneNumberWithOptions(request *ListOutboundPhoneNumberRequest, runtime *util.RuntimeOptions) (_result *ListOutboundPhoneNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29637,6 +36792,9 @@ func (client *Client) ListOutboundPhoneNumberWithOptions(request *ListOutboundPh
 	return _result, _err
 }
 
+// @param request - ListOutboundPhoneNumberRequest
+//
+// @return ListOutboundPhoneNumberResponse
 func (client *Client) ListOutboundPhoneNumber(request *ListOutboundPhoneNumberRequest) (_result *ListOutboundPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOutboundPhoneNumberResponse{}
@@ -29648,62 +36806,15 @@ func (client *Client) ListOutboundPhoneNumber(request *ListOutboundPhoneNumberRe
 	return _result, _err
 }
 
-func (client *Client) ListOuterOrderedNumbersWithOptions(request *ListOuterOrderedNumbersRequest, runtime *util.RuntimeOptions) (_result *ListOuterOrderedNumbersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
-		query["ProdCode"] = request.ProdCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListOuterOrderedNumbers"),
-		Version:     tea.String("2019-10-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListOuterOrderedNumbersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListOuterOrderedNumbers(request *ListOuterOrderedNumbersRequest) (_result *ListOuterOrderedNumbersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListOuterOrderedNumbersResponse{}
-	_body, _err := client.ListOuterOrderedNumbersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 查看对话记录
+//
+// @param request - ListRobotCallDialogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRobotCallDialogResponse
 func (client *Client) ListRobotCallDialogWithOptions(request *ListRobotCallDialogRequest, runtime *util.RuntimeOptions) (_result *ListRobotCallDialogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29753,6 +36864,13 @@ func (client *Client) ListRobotCallDialogWithOptions(request *ListRobotCallDialo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看对话记录
+//
+// @param request - ListRobotCallDialogRequest
+//
+// @return ListRobotCallDialogResponse
 func (client *Client) ListRobotCallDialog(request *ListRobotCallDialogRequest) (_result *ListRobotCallDialogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRobotCallDialogResponse{}
@@ -29764,6 +36882,15 @@ func (client *Client) ListRobotCallDialog(request *ListRobotCallDialogRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机器人输出列表
+//
+// @param request - ListRobotNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRobotNodeResponse
 func (client *Client) ListRobotNodeWithOptions(request *ListRobotNodeRequest, runtime *util.RuntimeOptions) (_result *ListRobotNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29809,6 +36936,13 @@ func (client *Client) ListRobotNodeWithOptions(request *ListRobotNodeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询机器人输出列表
+//
+// @param request - ListRobotNodeRequest
+//
+// @return ListRobotNodeResponse
 func (client *Client) ListRobotNode(request *ListRobotNodeRequest) (_result *ListRobotNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRobotNodeResponse{}
@@ -29820,6 +36954,15 @@ func (client *Client) ListRobotNode(request *ListRobotNodeRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询参数列表
+//
+// @param request - ListRobotParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRobotParamsResponse
 func (client *Client) ListRobotParamsWithOptions(request *ListRobotParamsRequest, runtime *util.RuntimeOptions) (_result *ListRobotParamsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29865,6 +37008,13 @@ func (client *Client) ListRobotParamsWithOptions(request *ListRobotParamsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询参数列表
+//
+// @param request - ListRobotParamsRequest
+//
+// @return ListRobotParamsResponse
 func (client *Client) ListRobotParams(request *ListRobotParamsRequest) (_result *ListRobotParamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRobotParamsResponse{}
@@ -29876,6 +37026,15 @@ func (client *Client) ListRobotParams(request *ListRobotParamsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下的所有角色
+//
+// @param request - ListRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRolesResponse
 func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29905,6 +37064,13 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取租户下的所有角色
+//
+// @param request - ListRolesRequest
+//
+// @return ListRolesResponse
 func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRolesResponse{}
@@ -29916,6 +37082,11 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
+// @param request - ListSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSkillGroupResponse
 func (client *Client) ListSkillGroupWithOptions(request *ListSkillGroupRequest, runtime *util.RuntimeOptions) (_result *ListSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29945,6 +37116,9 @@ func (client *Client) ListSkillGroupWithOptions(request *ListSkillGroupRequest, 
 	return _result, _err
 }
 
+// @param request - ListSkillGroupRequest
+//
+// @return ListSkillGroupResponse
 func (client *Client) ListSkillGroup(request *ListSkillGroupRequest) (_result *ListSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSkillGroupResponse{}
@@ -29956,6 +37130,15 @@ func (client *Client) ListSkillGroup(request *ListSkillGroupRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务列表
+//
+// @param request - ListTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskResponse
 func (client *Client) ListTaskWithOptions(request *ListTaskRequest, runtime *util.RuntimeOptions) (_result *ListTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30021,6 +37204,13 @@ func (client *Client) ListTaskWithOptions(request *ListTaskRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务列表
+//
+// @param request - ListTaskRequest
+//
+// @return ListTaskResponse
 func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTaskResponse{}
@@ -30032,6 +37222,15 @@ func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 任务详情查看通话列表
+//
+// @param request - ListTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskDetailResponse
 func (client *Client) ListTaskDetailWithOptions(request *ListTaskDetailRequest, runtime *util.RuntimeOptions) (_result *ListTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30101,6 +37300,13 @@ func (client *Client) ListTaskDetailWithOptions(request *ListTaskDetailRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 任务详情查看通话列表
+//
+// @param request - ListTaskDetailRequest
+//
+// @return ListTaskDetailResponse
 func (client *Client) ListTaskDetail(request *ListTaskDetailRequest) (_result *ListTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTaskDetailResponse{}
@@ -30112,6 +37318,101 @@ func (client *Client) ListTaskDetail(request *ListTaskDetailRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 基于大模型的智能外呼
+//
+// @param tmpReq - LlmSmartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LlmSmartCallResponse
+func (client *Client) LlmSmartCallWithOptions(tmpReq *LlmSmartCallRequest, runtime *util.RuntimeOptions) (_result *LlmSmartCallResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &LlmSmartCallShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PromptParam)) {
+		request.PromptParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromptParam, tea.String("PromptParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StartWordParam)) {
+		request.StartWordParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StartWordParam, tea.String("StartWordParam"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationCode)) {
+		query["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallerNumber)) {
+		query["CallerNumber"] = request.CallerNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromptParamShrink)) {
+		query["PromptParam"] = request.PromptParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartWordParamShrink)) {
+		query["StartWordParam"] = request.StartWordParamShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LlmSmartCall"),
+		Version:     tea.String("2019-10-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LlmSmartCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于大模型的智能外呼
+//
+// @param request - LlmSmartCallRequest
+//
+// @return LlmSmartCallResponse
+func (client *Client) LlmSmartCall(request *LlmSmartCallRequest) (_result *LlmSmartCallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LlmSmartCallResponse{}
+	_body, _err := client.LlmSmartCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - MakeCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MakeCallResponse
 func (client *Client) MakeCallWithOptions(request *MakeCallRequest, runtime *util.RuntimeOptions) (_result *MakeCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30165,6 +37466,9 @@ func (client *Client) MakeCallWithOptions(request *MakeCallRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - MakeCallRequest
+//
+// @return MakeCallResponse
 func (client *Client) MakeCall(request *MakeCallRequest) (_result *MakeCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MakeCallResponse{}
@@ -30176,6 +37480,15 @@ func (client *Client) MakeCall(request *MakeCallRequest) (_result *MakeCallRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 移动端发起呼叫
+//
+// @param request - MakeDoubleCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MakeDoubleCallResponse
 func (client *Client) MakeDoubleCallWithOptions(request *MakeDoubleCallRequest, runtime *util.RuntimeOptions) (_result *MakeDoubleCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30229,6 +37542,13 @@ func (client *Client) MakeDoubleCallWithOptions(request *MakeDoubleCallRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 移动端发起呼叫
+//
+// @param request - MakeDoubleCallRequest
+//
+// @return MakeDoubleCallResponse
 func (client *Client) MakeDoubleCall(request *MakeDoubleCallRequest) (_result *MakeDoubleCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MakeDoubleCallResponse{}
@@ -30240,6 +37560,11 @@ func (client *Client) MakeDoubleCall(request *MakeDoubleCallRequest) (_result *M
 	return _result, _err
 }
 
+// @param request - QueryHotlineInQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotlineInQueueResponse
 func (client *Client) QueryHotlineInQueueWithOptions(request *QueryHotlineInQueueRequest, runtime *util.RuntimeOptions) (_result *QueryHotlineInQueueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30269,6 +37594,9 @@ func (client *Client) QueryHotlineInQueueWithOptions(request *QueryHotlineInQueu
 	return _result, _err
 }
 
+// @param request - QueryHotlineInQueueRequest
+//
+// @return QueryHotlineInQueueResponse
 func (client *Client) QueryHotlineInQueue(request *QueryHotlineInQueueRequest) (_result *QueryHotlineInQueueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryHotlineInQueueResponse{}
@@ -30280,6 +37608,15 @@ func (client *Client) QueryHotlineInQueue(request *QueryHotlineInQueueRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询热线号码配置
+//
+// @param tmpReq - QueryHotlineNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHotlineNumberResponse
 func (client *Client) QueryHotlineNumberWithOptions(tmpReq *QueryHotlineNumberRequest, runtime *util.RuntimeOptions) (_result *QueryHotlineNumberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30315,6 +37652,13 @@ func (client *Client) QueryHotlineNumberWithOptions(tmpReq *QueryHotlineNumberRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询热线号码配置
+//
+// @param request - QueryHotlineNumberRequest
+//
+// @return QueryHotlineNumberResponse
 func (client *Client) QueryHotlineNumber(request *QueryHotlineNumberRequest) (_result *QueryHotlineNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryHotlineNumberResponse{}
@@ -30326,6 +37670,11 @@ func (client *Client) QueryHotlineNumber(request *QueryHotlineNumberRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOutboundTaskResponse
 func (client *Client) QueryOutboundTaskWithOptions(request *QueryOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *QueryOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30415,6 +37764,9 @@ func (client *Client) QueryOutboundTaskWithOptions(request *QueryOutboundTaskReq
 	return _result, _err
 }
 
+// @param request - QueryOutboundTaskRequest
+//
+// @return QueryOutboundTaskResponse
 func (client *Client) QueryOutboundTask(request *QueryOutboundTaskRequest) (_result *QueryOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOutboundTaskResponse{}
@@ -30426,6 +37778,11 @@ func (client *Client) QueryOutboundTask(request *QueryOutboundTaskRequest) (_res
 	return _result, _err
 }
 
+// @param request - QuerySkillGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySkillGroupsResponse
 func (client *Client) QuerySkillGroupsWithOptions(request *QuerySkillGroupsRequest, runtime *util.RuntimeOptions) (_result *QuerySkillGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30479,6 +37836,9 @@ func (client *Client) QuerySkillGroupsWithOptions(request *QuerySkillGroupsReque
 	return _result, _err
 }
 
+// @param request - QuerySkillGroupsRequest
+//
+// @return QuerySkillGroupsResponse
 func (client *Client) QuerySkillGroups(request *QuerySkillGroupsRequest) (_result *QuerySkillGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySkillGroupsResponse{}
@@ -30490,6 +37850,11 @@ func (client *Client) QuerySkillGroups(request *QuerySkillGroupsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskDetailResponse
 func (client *Client) QueryTaskDetailWithOptions(request *QueryTaskDetailRequest, runtime *util.RuntimeOptions) (_result *QueryTaskDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30579,6 +37944,9 @@ func (client *Client) QueryTaskDetailWithOptions(request *QueryTaskDetailRequest
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailRequest
+//
+// @return QueryTaskDetailResponse
 func (client *Client) QueryTaskDetail(request *QueryTaskDetailRequest) (_result *QueryTaskDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskDetailResponse{}
@@ -30590,6 +37958,11 @@ func (client *Client) QueryTaskDetail(request *QueryTaskDetailRequest) (_result 
 	return _result, _err
 }
 
+// @param tmpReq - QueryTicketsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTicketsResponse
 func (client *Client) QueryTicketsWithOptions(tmpReq *QueryTicketsRequest, runtime *util.RuntimeOptions) (_result *QueryTicketsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30677,6 +38050,9 @@ func (client *Client) QueryTicketsWithOptions(tmpReq *QueryTicketsRequest, runti
 	return _result, _err
 }
 
+// @param request - QueryTicketsRequest
+//
+// @return QueryTicketsResponse
 func (client *Client) QueryTickets(request *QueryTicketsRequest) (_result *QueryTicketsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTicketsResponse{}
@@ -30688,6 +38064,11 @@ func (client *Client) QueryTickets(request *QueryTicketsRequest) (_result *Query
 	return _result, _err
 }
 
+// @param request - QueryTouchListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTouchListResponse
 func (client *Client) QueryTouchListWithOptions(request *QueryTouchListRequest, runtime *util.RuntimeOptions) (_result *QueryTouchListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30793,6 +38174,9 @@ func (client *Client) QueryTouchListWithOptions(request *QueryTouchListRequest, 
 	return _result, _err
 }
 
+// @param request - QueryTouchListRequest
+//
+// @return QueryTouchListResponse
 func (client *Client) QueryTouchList(request *QueryTouchListRequest) (_result *QueryTouchListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTouchListResponse{}
@@ -30804,6 +38188,15 @@ func (client *Client) QueryTouchList(request *QueryTouchListRequest) (_result *Q
 	return _result, _err
 }
 
+// Summary:
+//
+// 从技能组中移除坐席
+//
+// @param tmpReq - RemoveAgentFromSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveAgentFromSkillGroupResponse
 func (client *Client) RemoveAgentFromSkillGroupWithOptions(tmpReq *RemoveAgentFromSkillGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveAgentFromSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30851,6 +38244,13 @@ func (client *Client) RemoveAgentFromSkillGroupWithOptions(tmpReq *RemoveAgentFr
 	return _result, _err
 }
 
+// Summary:
+//
+// 从技能组中移除坐席
+//
+// @param request - RemoveAgentFromSkillGroupRequest
+//
+// @return RemoveAgentFromSkillGroupResponse
 func (client *Client) RemoveAgentFromSkillGroup(request *RemoveAgentFromSkillGroupRequest) (_result *RemoveAgentFromSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveAgentFromSkillGroupResponse{}
@@ -30862,6 +38262,11 @@ func (client *Client) RemoveAgentFromSkillGroup(request *RemoveAgentFromSkillGro
 	return _result, _err
 }
 
+// @param request - RemoveSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveSkillGroupResponse
 func (client *Client) RemoveSkillGroupWithOptions(request *RemoveSkillGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30903,6 +38308,9 @@ func (client *Client) RemoveSkillGroupWithOptions(request *RemoveSkillGroupReque
 	return _result, _err
 }
 
+// @param request - RemoveSkillGroupRequest
+//
+// @return RemoveSkillGroupResponse
 func (client *Client) RemoveSkillGroup(request *RemoveSkillGroupRequest) (_result *RemoveSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveSkillGroupResponse{}
@@ -30914,6 +38322,15 @@ func (client *Client) RemoveSkillGroup(request *RemoveSkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置热线号码
+//
+// @param tmpReq - ResetHotlineNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetHotlineNumberResponse
 func (client *Client) ResetHotlineNumberWithOptions(tmpReq *ResetHotlineNumberRequest, runtime *util.RuntimeOptions) (_result *ResetHotlineNumberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30993,6 +38410,13 @@ func (client *Client) ResetHotlineNumberWithOptions(tmpReq *ResetHotlineNumberRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置热线号码
+//
+// @param request - ResetHotlineNumberRequest
+//
+// @return ResetHotlineNumberResponse
 func (client *Client) ResetHotlineNumber(request *ResetHotlineNumberRequest) (_result *ResetHotlineNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetHotlineNumberResponse{}
@@ -31004,6 +38428,11 @@ func (client *Client) ResetHotlineNumber(request *ResetHotlineNumberRequest) (_r
 	return _result, _err
 }
 
+// @param request - RestartOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartOutboundTaskResponse
 func (client *Client) RestartOutboundTaskWithOptions(request *RestartOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *RestartOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31041,6 +38470,9 @@ func (client *Client) RestartOutboundTaskWithOptions(request *RestartOutboundTas
 	return _result, _err
 }
 
+// @param request - RestartOutboundTaskRequest
+//
+// @return RestartOutboundTaskResponse
 func (client *Client) RestartOutboundTask(request *RestartOutboundTaskRequest) (_result *RestartOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartOutboundTaskResponse{}
@@ -31052,6 +38484,11 @@ func (client *Client) RestartOutboundTask(request *RestartOutboundTaskRequest) (
 	return _result, _err
 }
 
+// @param request - RobotCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RobotCallResponse
 func (client *Client) RobotCallWithOptions(request *RobotCallRequest, runtime *util.RuntimeOptions) (_result *RobotCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31121,6 +38558,9 @@ func (client *Client) RobotCallWithOptions(request *RobotCallRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - RobotCallRequest
+//
+// @return RobotCallResponse
 func (client *Client) RobotCall(request *RobotCallRequest) (_result *RobotCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RobotCallResponse{}
@@ -31132,6 +38572,11 @@ func (client *Client) RobotCall(request *RobotCallRequest) (_result *RobotCallRe
 	return _result, _err
 }
 
+// @param request - SendCcoSmartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendCcoSmartCallResponse
 func (client *Client) SendCcoSmartCallWithOptions(request *SendCcoSmartCallRequest, runtime *util.RuntimeOptions) (_result *SendCcoSmartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31289,6 +38734,9 @@ func (client *Client) SendCcoSmartCallWithOptions(request *SendCcoSmartCallReque
 	return _result, _err
 }
 
+// @param request - SendCcoSmartCallRequest
+//
+// @return SendCcoSmartCallResponse
 func (client *Client) SendCcoSmartCall(request *SendCcoSmartCallRequest) (_result *SendCcoSmartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendCcoSmartCallResponse{}
@@ -31300,6 +38748,11 @@ func (client *Client) SendCcoSmartCall(request *SendCcoSmartCallRequest) (_resul
 	return _result, _err
 }
 
+// @param request - SendCcoSmartCallOperateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendCcoSmartCallOperateResponse
 func (client *Client) SendCcoSmartCallOperateWithOptions(request *SendCcoSmartCallOperateRequest, runtime *util.RuntimeOptions) (_result *SendCcoSmartCallOperateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31357,6 +38810,9 @@ func (client *Client) SendCcoSmartCallOperateWithOptions(request *SendCcoSmartCa
 	return _result, _err
 }
 
+// @param request - SendCcoSmartCallOperateRequest
+//
+// @return SendCcoSmartCallOperateResponse
 func (client *Client) SendCcoSmartCallOperate(request *SendCcoSmartCallOperateRequest) (_result *SendCcoSmartCallOperateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendCcoSmartCallOperateResponse{}
@@ -31368,6 +38824,11 @@ func (client *Client) SendCcoSmartCallOperate(request *SendCcoSmartCallOperateRe
 	return _result, _err
 }
 
+// @param request - SendHotlineHeartBeatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendHotlineHeartBeatResponse
 func (client *Client) SendHotlineHeartBeatWithOptions(request *SendHotlineHeartBeatRequest, runtime *util.RuntimeOptions) (_result *SendHotlineHeartBeatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31413,6 +38874,9 @@ func (client *Client) SendHotlineHeartBeatWithOptions(request *SendHotlineHeartB
 	return _result, _err
 }
 
+// @param request - SendHotlineHeartBeatRequest
+//
+// @return SendHotlineHeartBeatResponse
 func (client *Client) SendHotlineHeartBeat(request *SendHotlineHeartBeatRequest) (_result *SendHotlineHeartBeatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendHotlineHeartBeatResponse{}
@@ -31424,6 +38888,15 @@ func (client *Client) SendHotlineHeartBeat(request *SendHotlineHeartBeatRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动智能外呼任务
+//
+// @param request - StartAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartAiOutboundTaskResponse
 func (client *Client) StartAiOutboundTaskWithOptions(request *StartAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *StartAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31461,6 +38934,13 @@ func (client *Client) StartAiOutboundTaskWithOptions(request *StartAiOutboundTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动智能外呼任务
+//
+// @param request - StartAiOutboundTaskRequest
+//
+// @return StartAiOutboundTaskResponse
 func (client *Client) StartAiOutboundTask(request *StartAiOutboundTaskRequest) (_result *StartAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAiOutboundTaskResponse{}
@@ -31472,6 +38952,11 @@ func (client *Client) StartAiOutboundTask(request *StartAiOutboundTaskRequest) (
 	return _result, _err
 }
 
+// @param request - StartCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCallResponse
 func (client *Client) StartCallWithOptions(request *StartCallRequest, runtime *util.RuntimeOptions) (_result *StartCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31521,6 +39006,9 @@ func (client *Client) StartCallWithOptions(request *StartCallRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - StartCallRequest
+//
+// @return StartCallResponse
 func (client *Client) StartCall(request *StartCallRequest) (_result *StartCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartCallResponse{}
@@ -31532,6 +39020,11 @@ func (client *Client) StartCall(request *StartCallRequest) (_result *StartCallRe
 	return _result, _err
 }
 
+// @param request - StartCallV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCallV2Response
 func (client *Client) StartCallV2WithOptions(request *StartCallV2Request, runtime *util.RuntimeOptions) (_result *StartCallV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31585,6 +39078,9 @@ func (client *Client) StartCallV2WithOptions(request *StartCallV2Request, runtim
 	return _result, _err
 }
 
+// @param request - StartCallV2Request
+//
+// @return StartCallV2Response
 func (client *Client) StartCallV2(request *StartCallV2Request) (_result *StartCallV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartCallV2Response{}
@@ -31596,6 +39092,15 @@ func (client *Client) StartCallV2(request *StartCallV2Request) (_result *StartCa
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改在线客服为上班状态
+//
+// @param request - StartChatWorkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartChatWorkResponse
 func (client *Client) StartChatWorkWithOptions(request *StartChatWorkRequest, runtime *util.RuntimeOptions) (_result *StartChatWorkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31633,6 +39138,13 @@ func (client *Client) StartChatWorkWithOptions(request *StartChatWorkRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改在线客服为上班状态
+//
+// @param request - StartChatWorkRequest
+//
+// @return StartChatWorkResponse
 func (client *Client) StartChatWork(request *StartChatWorkRequest) (_result *StartChatWorkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartChatWorkResponse{}
@@ -31644,6 +39156,11 @@ func (client *Client) StartChatWork(request *StartChatWorkRequest) (_result *Sta
 	return _result, _err
 }
 
+// @param request - StartHotlineServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartHotlineServiceResponse
 func (client *Client) StartHotlineServiceWithOptions(request *StartHotlineServiceRequest, runtime *util.RuntimeOptions) (_result *StartHotlineServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31685,6 +39202,9 @@ func (client *Client) StartHotlineServiceWithOptions(request *StartHotlineServic
 	return _result, _err
 }
 
+// @param request - StartHotlineServiceRequest
+//
+// @return StartHotlineServiceResponse
 func (client *Client) StartHotlineService(request *StartHotlineServiceRequest) (_result *StartHotlineServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartHotlineServiceResponse{}
@@ -31696,6 +39216,11 @@ func (client *Client) StartHotlineService(request *StartHotlineServiceRequest) (
 	return _result, _err
 }
 
+// @param request - StartMicroOutboundRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartMicroOutboundResponse
 func (client *Client) StartMicroOutboundWithOptions(request *StartMicroOutboundRequest, runtime *util.RuntimeOptions) (_result *StartMicroOutboundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31769,6 +39294,9 @@ func (client *Client) StartMicroOutboundWithOptions(request *StartMicroOutboundR
 	return _result, _err
 }
 
+// @param request - StartMicroOutboundRequest
+//
+// @return StartMicroOutboundResponse
 func (client *Client) StartMicroOutbound(request *StartMicroOutboundRequest) (_result *StartMicroOutboundResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartMicroOutboundResponse{}
@@ -31780,6 +39308,15 @@ func (client *Client) StartMicroOutbound(request *StartMicroOutboundRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 立即或定时启动智能外呼任务
+//
+// @param request - StartTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTaskResponse
 func (client *Client) StartTaskWithOptions(request *StartTaskRequest, runtime *util.RuntimeOptions) (_result *StartTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31829,6 +39366,13 @@ func (client *Client) StartTaskWithOptions(request *StartTaskRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 立即或定时启动智能外呼任务
+//
+// @param request - StartTaskRequest
+//
+// @return StartTaskResponse
 func (client *Client) StartTask(request *StartTaskRequest) (_result *StartTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartTaskResponse{}
@@ -31840,6 +39384,15 @@ func (client *Client) StartTask(request *StartTaskRequest) (_result *StartTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 手动暂停智能外呼任务
+//
+// @param request - StopAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAiOutboundTaskResponse
 func (client *Client) StopAiOutboundTaskWithOptions(request *StopAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *StopAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31877,6 +39430,13 @@ func (client *Client) StopAiOutboundTaskWithOptions(request *StopAiOutboundTaskR
 	return _result, _err
 }
 
+// Summary:
+//
+// 手动暂停智能外呼任务
+//
+// @param request - StopAiOutboundTaskRequest
+//
+// @return StopAiOutboundTaskResponse
 func (client *Client) StopAiOutboundTask(request *StopAiOutboundTaskRequest) (_result *StopAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAiOutboundTaskResponse{}
@@ -31888,6 +39448,15 @@ func (client *Client) StopAiOutboundTask(request *StopAiOutboundTaskRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停外呼任务
+//
+// @param request - StopTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTaskResponse
 func (client *Client) StopTaskWithOptions(request *StopTaskRequest, runtime *util.RuntimeOptions) (_result *StopTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31933,6 +39502,13 @@ func (client *Client) StopTaskWithOptions(request *StopTaskRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 暂停外呼任务
+//
+// @param request - StopTaskRequest
+//
+// @return StopTaskResponse
 func (client *Client) StopTask(request *StopTaskRequest) (_result *StopTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopTaskResponse{}
@@ -31944,6 +39520,11 @@ func (client *Client) StopTask(request *StopTaskRequest) (_result *StopTaskRespo
 	return _result, _err
 }
 
+// @param request - SuspendHotlineServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendHotlineServiceResponse
 func (client *Client) SuspendHotlineServiceWithOptions(request *SuspendHotlineServiceRequest, runtime *util.RuntimeOptions) (_result *SuspendHotlineServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31989,6 +39570,9 @@ func (client *Client) SuspendHotlineServiceWithOptions(request *SuspendHotlineSe
 	return _result, _err
 }
 
+// @param request - SuspendHotlineServiceRequest
+//
+// @return SuspendHotlineServiceResponse
 func (client *Client) SuspendHotlineService(request *SuspendHotlineServiceRequest) (_result *SuspendHotlineServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendHotlineServiceResponse{}
@@ -32000,6 +39584,11 @@ func (client *Client) SuspendHotlineService(request *SuspendHotlineServiceReques
 	return _result, _err
 }
 
+// @param request - SuspendOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendOutboundTaskResponse
 func (client *Client) SuspendOutboundTaskWithOptions(request *SuspendOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *SuspendOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32037,6 +39626,9 @@ func (client *Client) SuspendOutboundTaskWithOptions(request *SuspendOutboundTas
 	return _result, _err
 }
 
+// @param request - SuspendOutboundTaskRequest
+//
+// @return SuspendOutboundTaskResponse
 func (client *Client) SuspendOutboundTask(request *SuspendOutboundTaskRequest) (_result *SuspendOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SuspendOutboundTaskResponse{}
@@ -32048,6 +39640,15 @@ func (client *Client) SuspendOutboundTask(request *SuspendOutboundTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 终止智能外呼任务
+//
+// @param request - TerminateAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateAiOutboundTaskResponse
 func (client *Client) TerminateAiOutboundTaskWithOptions(request *TerminateAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *TerminateAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32085,6 +39686,13 @@ func (client *Client) TerminateAiOutboundTaskWithOptions(request *TerminateAiOut
 	return _result, _err
 }
 
+// Summary:
+//
+// 终止智能外呼任务
+//
+// @param request - TerminateAiOutboundTaskRequest
+//
+// @return TerminateAiOutboundTaskResponse
 func (client *Client) TerminateAiOutboundTask(request *TerminateAiOutboundTaskRequest) (_result *TerminateAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TerminateAiOutboundTaskResponse{}
@@ -32096,6 +39704,11 @@ func (client *Client) TerminateAiOutboundTask(request *TerminateAiOutboundTaskRe
 	return _result, _err
 }
 
+// @param request - TransferCallToSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferCallToSkillGroupResponse
 func (client *Client) TransferCallToSkillGroupWithOptions(request *TransferCallToSkillGroupRequest, runtime *util.RuntimeOptions) (_result *TransferCallToSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32165,6 +39778,9 @@ func (client *Client) TransferCallToSkillGroupWithOptions(request *TransferCallT
 	return _result, _err
 }
 
+// @param request - TransferCallToSkillGroupRequest
+//
+// @return TransferCallToSkillGroupResponse
 func (client *Client) TransferCallToSkillGroup(request *TransferCallToSkillGroupRequest) (_result *TransferCallToSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferCallToSkillGroupResponse{}
@@ -32176,6 +39792,11 @@ func (client *Client) TransferCallToSkillGroup(request *TransferCallToSkillGroup
 	return _result, _err
 }
 
+// @param request - UpdateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentResponse
 func (client *Client) UpdateAgentWithOptions(request *UpdateAgentRequest, runtime *util.RuntimeOptions) (_result *UpdateAgentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32229,6 +39850,9 @@ func (client *Client) UpdateAgentWithOptions(request *UpdateAgentRequest, runtim
 	return _result, _err
 }
 
+// @param request - UpdateAgentRequest
+//
+// @return UpdateAgentResponse
 func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateAgentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAgentResponse{}
@@ -32240,6 +39864,15 @@ func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateA
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新智能外呼任务（预测式外呼、自动外呼）
+//
+// @param tmpReq - UpdateAiOutboundTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAiOutboundTaskResponse
 func (client *Client) UpdateAiOutboundTaskWithOptions(tmpReq *UpdateAiOutboundTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateAiOutboundTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -32323,6 +39956,13 @@ func (client *Client) UpdateAiOutboundTaskWithOptions(tmpReq *UpdateAiOutboundTa
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新智能外呼任务（预测式外呼、自动外呼）
+//
+// @param request - UpdateAiOutboundTaskRequest
+//
+// @return UpdateAiOutboundTaskResponse
 func (client *Client) UpdateAiOutboundTask(request *UpdateAiOutboundTaskRequest) (_result *UpdateAiOutboundTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAiOutboundTaskResponse{}
@@ -32334,6 +39974,15 @@ func (client *Client) UpdateAiOutboundTask(request *UpdateAiOutboundTaskRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新部门信息
+//
+// @param request - UpdateDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDepartmentResponse
 func (client *Client) UpdateDepartmentWithOptions(request *UpdateDepartmentRequest, runtime *util.RuntimeOptions) (_result *UpdateDepartmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32375,6 +40024,13 @@ func (client *Client) UpdateDepartmentWithOptions(request *UpdateDepartmentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新部门信息
+//
+// @param request - UpdateDepartmentRequest
+//
+// @return UpdateDepartmentResponse
 func (client *Client) UpdateDepartment(request *UpdateDepartmentRequest) (_result *UpdateDepartmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDepartmentResponse{}
@@ -32386,6 +40042,11 @@ func (client *Client) UpdateDepartment(request *UpdateDepartmentRequest) (_resul
 	return _result, _err
 }
 
+// @param request - UpdateOuterAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOuterAccountResponse
 func (client *Client) UpdateOuterAccountWithOptions(request *UpdateOuterAccountRequest, runtime *util.RuntimeOptions) (_result *UpdateOuterAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32415,6 +40076,9 @@ func (client *Client) UpdateOuterAccountWithOptions(request *UpdateOuterAccountR
 	return _result, _err
 }
 
+// @param request - UpdateOuterAccountRequest
+//
+// @return UpdateOuterAccountResponse
 func (client *Client) UpdateOuterAccount(request *UpdateOuterAccountRequest) (_result *UpdateOuterAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOuterAccountResponse{}
@@ -32426,6 +40090,11 @@ func (client *Client) UpdateOuterAccount(request *UpdateOuterAccountRequest) (_r
 	return _result, _err
 }
 
+// @param request - UpdateSkillGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSkillGroupResponse
 func (client *Client) UpdateSkillGroupWithOptions(request *UpdateSkillGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateSkillGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32479,6 +40148,9 @@ func (client *Client) UpdateSkillGroupWithOptions(request *UpdateSkillGroupReque
 	return _result, _err
 }
 
+// @param request - UpdateSkillGroupRequest
+//
+// @return UpdateSkillGroupResponse
 func (client *Client) UpdateSkillGroup(request *UpdateSkillGroupRequest) (_result *UpdateSkillGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSkillGroupResponse{}
