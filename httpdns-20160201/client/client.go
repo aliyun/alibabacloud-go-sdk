@@ -374,7 +374,10 @@ type GetAccountInfoResponseBodyAccountInfo struct {
 	// example:
 	//
 	// 1337****
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	DohEnabled           *bool   `json:"DohEnabled,omitempty" xml:"DohEnabled,omitempty"`
+	DohResolveAllEnabled *bool   `json:"DohResolveAllEnabled,omitempty" xml:"DohResolveAllEnabled,omitempty"`
+	MonthDohResolveCount *int64  `json:"MonthDohResolveCount,omitempty" xml:"MonthDohResolveCount,omitempty"`
 	// example:
 	//
 	// 1500000
@@ -423,6 +426,21 @@ func (s GetAccountInfoResponseBodyAccountInfo) GoString() string {
 
 func (s *GetAccountInfoResponseBodyAccountInfo) SetAccountId(v string) *GetAccountInfoResponseBodyAccountInfo {
 	s.AccountId = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfo) SetDohEnabled(v bool) *GetAccountInfoResponseBodyAccountInfo {
+	s.DohEnabled = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfo) SetDohResolveAllEnabled(v bool) *GetAccountInfoResponseBodyAccountInfo {
+	s.DohResolveAllEnabled = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthDohResolveCount(v int64) *GetAccountInfoResponseBodyAccountInfo {
+	s.MonthDohResolveCount = &v
 	return s
 }
 
@@ -560,6 +578,7 @@ func (s *GetResolveCountSummaryResponseBody) SetResolveSummary(v *GetResolveCoun
 }
 
 type GetResolveCountSummaryResponseBodyResolveSummary struct {
+	Doh *int64 `json:"Doh,omitempty" xml:"Doh,omitempty"`
 	// example:
 	//
 	// 123
@@ -584,6 +603,11 @@ func (s GetResolveCountSummaryResponseBodyResolveSummary) String() string {
 
 func (s GetResolveCountSummaryResponseBodyResolveSummary) GoString() string {
 	return s.String()
+}
+
+func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetDoh(v int64) *GetResolveCountSummaryResponseBodyResolveSummary {
+	s.Doh = &v
+	return s
 }
 
 func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttp(v int64) *GetResolveCountSummaryResponseBodyResolveSummary {
@@ -912,7 +936,8 @@ type ListDomainsResponseBodyDomainInfosDomainInfo struct {
 	// example:
 	//
 	// 20
-	Resolved6 *int64 `json:"Resolved6,omitempty" xml:"Resolved6,omitempty"`
+	Resolved6   *int64 `json:"Resolved6,omitempty" xml:"Resolved6,omitempty"`
+	ResolvedDoh *int64 `json:"ResolvedDoh,omitempty" xml:"ResolvedDoh,omitempty"`
 	// example:
 	//
 	// 10
@@ -944,6 +969,11 @@ func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolved(v int64) *Lis
 
 func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolved6(v int64) *ListDomainsResponseBodyDomainInfosDomainInfo {
 	s.Resolved6 = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolvedDoh(v int64) *ListDomainsResponseBodyDomainInfosDomainInfo {
+	s.ResolvedDoh = &v
 	return s
 }
 
@@ -1038,6 +1068,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加域名
+//
 // @param request - AddDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1080,6 +1114,10 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加域名
+//
 // @param request - AddDomainRequest
 //
 // @return AddDomainResponse
@@ -1094,6 +1132,10 @@ func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名
+//
 // @param request - DeleteDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1136,6 +1178,10 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名
+//
 // @param request - DeleteDomainRequest
 //
 // @return DeleteDomainResponse
@@ -1210,6 +1256,10 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户信息包含配置项
+//
 // @param request - GetAccountInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1237,6 +1287,10 @@ func (client *Client) GetAccountInfoWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户信息包含配置项
+//
 // @return GetAccountInfoResponse
 func (client *Client) GetAccountInfo() (_result *GetAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -1249,6 +1303,10 @@ func (client *Client) GetAccountInfo() (_result *GetAccountInfoResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// 解析次数概览
+//
 // @param request - GetResolveCountSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1291,6 +1349,10 @@ func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCount
 	return _result, _err
 }
 
+// Summary:
+//
+// 解析次数概览
+//
 // @param request - GetResolveCountSummaryRequest
 //
 // @return GetResolveCountSummaryResponse
@@ -1369,6 +1431,10 @@ func (client *Client) GetResolveStatistics(request *GetResolveStatisticsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举域名以及解析统计信息
+//
 // @param request - ListDomainsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1419,6 +1485,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举域名以及解析统计信息
+//
 // @param request - ListDomainsRequest
 //
 // @return ListDomainsResponse
