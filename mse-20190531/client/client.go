@@ -9794,25 +9794,13 @@ type CreateClusterRequest struct {
 	//
 	// alicloud-disk-ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Specifies whether to enable Internet access (Elastic IP Address) if ConnectionType is set to `single_eni`.
+	// Specifies whether to enable elastic IP addresses. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
 	//
 	// Valid values:
 	//
 	// 	- true
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// if can be null:
 	// false
@@ -9920,12 +9908,6 @@ type CreateClusterRequest struct {
 	// rg-aekzcqmoay3dlyq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the security group to which the instance belongs. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
-	//
-	// Valid values:
-	//
-	// 	- enterprise
-	//
-	// 	- normal
 	//
 	// example:
 	//
@@ -35072,6 +35054,10 @@ type ImportServicesRequest struct {
 	//
 	// DNS
 	ServiceList []*ImportServicesRequestServiceList `json:"ServiceList,omitempty" xml:"ServiceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The service source. Valid values:
 	//
 	// 	- MSE: MSE Nacos instance
@@ -35149,6 +35135,11 @@ func (s *ImportServicesRequest) SetGatewayUniqueId(v string) *ImportServicesRequ
 
 func (s *ImportServicesRequest) SetServiceList(v []*ImportServicesRequestServiceList) *ImportServicesRequest {
 	s.ServiceList = v
+	return s
+}
+
+func (s *ImportServicesRequest) SetSourceId(v int64) *ImportServicesRequest {
+	s.SourceId = &v
 	return s
 }
 
@@ -35267,6 +35258,10 @@ type ImportServicesShrinkRequest struct {
 	//
 	// DNS
 	ServiceListShrink *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
+	// example:
+	//
+	// 100
+	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The service source. Valid values:
 	//
 	// 	- MSE: MSE Nacos instance
@@ -35344,6 +35339,11 @@ func (s *ImportServicesShrinkRequest) SetGatewayUniqueId(v string) *ImportServic
 
 func (s *ImportServicesShrinkRequest) SetServiceListShrink(v string) *ImportServicesShrinkRequest {
 	s.ServiceListShrink = &v
+	return s
+}
+
+func (s *ImportServicesShrinkRequest) SetSourceId(v int64) *ImportServicesShrinkRequest {
+	s.SourceId = &v
 	return s
 }
 
@@ -57197,6 +57197,10 @@ type PullServicesRequest struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 100
+	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The type of the service source.
 	//
 	// example:
@@ -57225,6 +57229,11 @@ func (s *PullServicesRequest) SetGatewayUniqueId(v string) *PullServicesRequest 
 
 func (s *PullServicesRequest) SetNamespace(v string) *PullServicesRequest {
 	s.Namespace = &v
+	return s
+}
+
+func (s *PullServicesRequest) SetSourceId(v int64) *PullServicesRequest {
+	s.SourceId = &v
 	return s
 }
 
@@ -57385,7 +57394,8 @@ type PullServicesResponseBodyDataServices struct {
 	// example:
 	//
 	// 1
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceId     *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceIdList []*int64 `json:"SourceIdList,omitempty" xml:"SourceIdList,omitempty" type:"Repeated"`
 	// The type of the service source.
 	//
 	// example:
@@ -57419,6 +57429,11 @@ func (s *PullServicesResponseBodyDataServices) SetNamespace(v string) *PullServi
 
 func (s *PullServicesResponseBodyDataServices) SetSourceId(v string) *PullServicesResponseBodyDataServices {
 	s.SourceId = &v
+	return s
+}
+
+func (s *PullServicesResponseBodyDataServices) SetSourceIdList(v []*int64) *PullServicesResponseBodyDataServices {
+	s.SourceIdList = v
 	return s
 }
 
@@ -87796,6 +87811,10 @@ func (client *Client) ImportServicesWithOptions(tmpReq *ImportServicesRequest, r
 		query["ServiceList"] = request.ServiceListShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
 	}
@@ -92184,6 +92203,10 @@ func (client *Client) PullServicesWithOptions(request *PullServicesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
 		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
