@@ -2471,7 +2471,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	// example:
 	//
 	// true
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// 	- **true**
@@ -2575,6 +2577,16 @@ func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForClientSrcPort
 
 func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
 	s.XForwardedForEnabled = &v
+	return s
+}
+
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForHostEnabled(v bool) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForHostEnabled = &v
+	return s
+}
+
+func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForProcessingMode(v string) *CreateListenerRequestXForwardedForConfig {
+	s.XForwardedForProcessingMode = &v
 	return s
 }
 
@@ -5621,7 +5633,24 @@ type CreateServerGroupRequest struct {
 	//
 	// >	- Server groups of the instance and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
 	ConnectionDrainConfig *CreateServerGroupRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
-	CrossZoneEnabled      *bool                                          `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	// Specifies whether to enable cross-zone load balancing. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// >
+	//
+	// 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+	//
+	// 	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+	//
+	// 	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
+	//
+	// example:
+	//
+	// true
+	CrossZoneEnabled *bool `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -7024,7 +7053,7 @@ type DeleteRulesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the forwarding rule. Valid values of N: **1*	- to **5**.
+	// The forwarding rules.
 	//
 	// This parameter is required.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
@@ -7335,7 +7364,7 @@ func (s *DeleteServerGroupResponse) SetBody(v *DeleteServerGroupResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the response. Valid values:
+	// The supported language. Valid values:
 	//
 	// 	- **zh-CN*	- (default): Chinese
 	//
@@ -7465,7 +7494,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeZonesRequest struct {
-	// The language of the response. Valid values:
+	// The supported language. Valid values:
 	//
 	// 	- **zh-CN*	- (default): Chinese
 	//
@@ -9746,7 +9775,9 @@ type GetListenerAttributeResponseBodyXForwardedForConfig struct {
 	// example:
 	//
 	// true
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
 	//
 	// 	- **true**
@@ -9850,6 +9881,16 @@ func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForCl
 
 func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForEnabled(v bool) *GetListenerAttributeResponseBodyXForwardedForConfig {
 	s.XForwardedForEnabled = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForHostEnabled(v bool) *GetListenerAttributeResponseBodyXForwardedForConfig {
+	s.XForwardedForHostEnabled = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBodyXForwardedForConfig) SetXForwardedForProcessingMode(v string) *GetListenerAttributeResponseBodyXForwardedForConfig {
+	s.XForwardedForProcessingMode = &v
 	return s
 }
 
@@ -13950,7 +13991,9 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	// example:
 	//
 	// true
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
 	//
 	// 	- **true**
@@ -14054,6 +14097,16 @@ func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedFor
 
 func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
 	s.XForwardedForEnabled = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForHostEnabled(v bool) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForHostEnabled = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListenersXForwardedForConfig) SetXForwardedForProcessingMode(v string) *ListListenersResponseBodyListenersXForwardedForConfig {
+	s.XForwardedForProcessingMode = &v
 	return s
 }
 
@@ -17326,7 +17379,11 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否开启跨可用区转发。（默认开启）
+	// Indicates whether cross-zone load balancing is enabled. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
 	//
 	// example:
 	//
@@ -21532,7 +21589,9 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	// example:
 	//
 	// true
-	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForEnabled        *bool   `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
+	XForwardedForHostEnabled    *bool   `json:"XForwardedForHostEnabled,omitempty" xml:"XForwardedForHostEnabled,omitempty"`
+	XForwardedForProcessingMode *string `json:"XForwardedForProcessingMode,omitempty" xml:"XForwardedForProcessingMode,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// 	- **true**
@@ -21636,6 +21695,16 @@ func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForClie
 
 func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForEnabled(v bool) *UpdateListenerAttributeRequestXForwardedForConfig {
 	s.XForwardedForEnabled = &v
+	return s
+}
+
+func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForHostEnabled(v bool) *UpdateListenerAttributeRequestXForwardedForConfig {
+	s.XForwardedForHostEnabled = &v
+	return s
+}
+
+func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForProcessingMode(v string) *UpdateListenerAttributeRequestXForwardedForConfig {
+	s.XForwardedForProcessingMode = &v
 	return s
 }
 
@@ -24891,7 +24960,24 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// 	- Server groups of the server and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
 	ConnectionDrainConfig *UpdateServerGroupAttributeRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
-	CrossZoneEnabled      *bool                                                   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// >
+	//
+	// 	- Basic ALB instances do not support server groups that have cross-zone load balancing disabled. Only Standard and WAF-enabled ALB instances support server groups that have cross-zone load balancing.
+	//
+	// 	- Cross-zone load balancing can be disabled for server groups of the server and IP type, but not for server groups of the Function Compute type.
+	//
+	// 	- When cross-zone load balancing is disabled, session persistence cannot be enabled.
+	//
+	// example:
+	//
+	// true
+	CrossZoneEnabled *bool `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
