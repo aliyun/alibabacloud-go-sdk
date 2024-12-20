@@ -34863,6 +34863,7 @@ type GetRumExceptionStackRequest struct {
 	//
 	// 16643
 	ExceptionThreadId *string `json:"ExceptionThreadId,omitempty" xml:"ExceptionThreadId,omitempty"`
+	ExtraInfo         *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The application ID.
 	//
 	// This parameter is required.
@@ -34911,6 +34912,11 @@ func (s *GetRumExceptionStackRequest) SetExceptionStack(v string) *GetRumExcepti
 
 func (s *GetRumExceptionStackRequest) SetExceptionThreadId(v string) *GetRumExceptionStackRequest {
 	s.ExceptionThreadId = &v
+	return s
+}
+
+func (s *GetRumExceptionStackRequest) SetExtraInfo(v string) *GetRumExceptionStackRequest {
+	s.ExtraInfo = &v
 	return s
 }
 
@@ -83190,6 +83196,10 @@ func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionSt
 
 	if !tea.BoolValue(util.IsUnset(request.ExceptionThreadId)) {
 		query["ExceptionThreadId"] = request.ExceptionThreadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		query["ExtraInfo"] = request.ExtraInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Pid)) {
