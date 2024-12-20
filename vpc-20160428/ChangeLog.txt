@@ -1,3 +1,7 @@
+2024-12-20 Version: v6.11.0
+- Support API TransformEipSegmentToPublicIpAddressPool.
+
+
 2024-12-18 Version: v6.10.7
 - Update API CreateExpressConnectTrafficQos: add param ResourceGroupId.
 - Update API CreateExpressConnectTrafficQos: add param Tags.
