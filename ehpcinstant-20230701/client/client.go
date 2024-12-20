@@ -947,6 +947,151 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 	return s
 }
 
+type CreatePoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority       *int32                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceLimits *CreatePoolRequestResourceLimits `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty" type:"Struct"`
+}
+
+func (s CreatePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolRequest) SetPoolName(v string) *CreatePoolRequest {
+	s.PoolName = &v
+	return s
+}
+
+func (s *CreatePoolRequest) SetPriority(v int32) *CreatePoolRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreatePoolRequest) SetResourceLimits(v *CreatePoolRequestResourceLimits) *CreatePoolRequest {
+	s.ResourceLimits = v
+	return s
+}
+
+type CreatePoolRequestResourceLimits struct {
+	// example:
+	//
+	// 2000
+	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+}
+
+func (s CreatePoolRequestResourceLimits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePoolRequestResourceLimits) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolRequestResourceLimits) SetMaxExectorNum(v int32) *CreatePoolRequestResourceLimits {
+	s.MaxExectorNum = &v
+	return s
+}
+
+type CreatePoolShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceLimitsShrink *string `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
+}
+
+func (s CreatePoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolShrinkRequest) SetPoolName(v string) *CreatePoolShrinkRequest {
+	s.PoolName = &v
+	return s
+}
+
+func (s *CreatePoolShrinkRequest) SetPriority(v int32) *CreatePoolShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreatePoolShrinkRequest) SetResourceLimitsShrink(v string) *CreatePoolShrinkRequest {
+	s.ResourceLimitsShrink = &v
+	return s
+}
+
+type CreatePoolResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolResponseBody) SetRequestId(v string) *CreatePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePoolResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePoolResponse) SetHeaders(v map[string]*string) *CreatePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePoolResponse) SetStatusCode(v int32) *CreatePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePoolResponse) SetBody(v *CreatePoolResponseBody) *CreatePoolResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteJobsRequest struct {
 	ExecutorIds []*string                   `json:"ExecutorIds,omitempty" xml:"ExecutorIds,omitempty" type:"Repeated"`
 	JobSpec     []*DeleteJobsRequestJobSpec `json:"JobSpec,omitempty" xml:"JobSpec,omitempty" type:"Repeated"`
@@ -1090,6 +1235,79 @@ func (s *DeleteJobsResponse) SetStatusCode(v int32) *DeleteJobsResponse {
 }
 
 func (s *DeleteJobsResponse) SetBody(v *DeleteJobsResponseBody) *DeleteJobsResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+}
+
+func (s DeletePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePoolRequest) SetPoolName(v string) *DeletePoolRequest {
+	s.PoolName = &v
+	return s
+}
+
+type DeletePoolResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePoolResponseBody) SetRequestId(v string) *DeletePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePoolResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePoolResponse) SetHeaders(v map[string]*string) *DeletePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePoolResponse) SetStatusCode(v int32) *DeletePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePoolResponse) SetBody(v *DeletePoolResponseBody) *DeletePoolResponse {
 	s.Body = v
 	return s
 }
@@ -2537,6 +2755,177 @@ func (s *GetJobResponse) SetStatusCode(v int32) *GetJobResponse {
 }
 
 func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetPoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+}
+
+func (s GetPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPoolRequest) SetPoolName(v string) *GetPoolRequest {
+	s.PoolName = &v
+	return s
+}
+
+type GetPoolResponseBody struct {
+	PoolInfo *GetPoolResponseBodyPoolInfo `json:"PoolInfo,omitempty" xml:"PoolInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPoolResponseBody) SetPoolInfo(v *GetPoolResponseBodyPoolInfo) *GetPoolResponseBody {
+	s.PoolInfo = v
+	return s
+}
+
+func (s *GetPoolResponseBody) SetRequestId(v string) *GetPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPoolResponseBodyPoolInfo struct {
+	// example:
+	//
+	// 2024-12-01 20:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1
+	ExectorUsage *int32 `json:"ExectorUsage,omitempty" xml:"ExectorUsage,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// 2000
+	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Fails to **	- pool: ***.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// Working
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-12-01 20:00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetPoolResponseBodyPoolInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPoolResponseBodyPoolInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetCreateTime(v string) *GetPoolResponseBodyPoolInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetExectorUsage(v int32) *GetPoolResponseBodyPoolInfo {
+	s.ExectorUsage = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetIsDefault(v bool) *GetPoolResponseBodyPoolInfo {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetMaxExectorNum(v int32) *GetPoolResponseBodyPoolInfo {
+	s.MaxExectorNum = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetPoolName(v string) *GetPoolResponseBodyPoolInfo {
+	s.PoolName = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetPriority(v int32) *GetPoolResponseBodyPoolInfo {
+	s.Priority = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetReason(v string) *GetPoolResponseBodyPoolInfo {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetStatus(v string) *GetPoolResponseBodyPoolInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *GetPoolResponseBodyPoolInfo) SetUpdateTime(v string) *GetPoolResponseBodyPoolInfo {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetPoolResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPoolResponse) SetHeaders(v map[string]*string) *GetPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPoolResponse) SetStatusCode(v int32) *GetPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPoolResponse) SetBody(v *GetPoolResponseBody) *GetPoolResponse {
 	s.Body = v
 	return s
 }
@@ -3991,6 +4380,257 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 	return s
 }
 
+type ListPoolsRequest struct {
+	Filter *ListPoolsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListPoolsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsRequest) SetFilter(v *ListPoolsRequestFilter) *ListPoolsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListPoolsRequest) SetPageNumber(v int32) *ListPoolsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoolsRequest) SetPageSize(v int32) *ListPoolsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListPoolsRequestFilter struct {
+	PoolName []*string `json:"PoolName,omitempty" xml:"PoolName,omitempty" type:"Repeated"`
+	Status   []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1703819914
+	TimeCreatedAfter *int32 `json:"TimeCreatedAfter,omitempty" xml:"TimeCreatedAfter,omitempty"`
+	// example:
+	//
+	// 1703820113
+	TimeCreatedBefore *int32 `json:"TimeCreatedBefore,omitempty" xml:"TimeCreatedBefore,omitempty"`
+}
+
+func (s ListPoolsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsRequestFilter) SetPoolName(v []*string) *ListPoolsRequestFilter {
+	s.PoolName = v
+	return s
+}
+
+func (s *ListPoolsRequestFilter) SetStatus(v []*string) *ListPoolsRequestFilter {
+	s.Status = v
+	return s
+}
+
+func (s *ListPoolsRequestFilter) SetTimeCreatedAfter(v int32) *ListPoolsRequestFilter {
+	s.TimeCreatedAfter = &v
+	return s
+}
+
+func (s *ListPoolsRequestFilter) SetTimeCreatedBefore(v int32) *ListPoolsRequestFilter {
+	s.TimeCreatedBefore = &v
+	return s
+}
+
+type ListPoolsShrinkRequest struct {
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListPoolsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsShrinkRequest) SetFilterShrink(v string) *ListPoolsShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
+func (s *ListPoolsShrinkRequest) SetPageNumber(v int32) *ListPoolsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoolsShrinkRequest) SetPageSize(v int32) *ListPoolsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListPoolsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PoolList []*ListPoolsResponseBodyPoolList `json:"PoolList,omitempty" xml:"PoolList,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 896D338C-E4F4-41EC-A154-D605E5DE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPoolsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsResponseBody) SetPageNumber(v int32) *ListPoolsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPoolsResponseBody) SetPageSize(v int32) *ListPoolsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPoolsResponseBody) SetPoolList(v []*ListPoolsResponseBodyPoolList) *ListPoolsResponseBody {
+	s.PoolList = v
+	return s
+}
+
+func (s *ListPoolsResponseBody) SetRequestId(v string) *ListPoolsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPoolsResponseBody) SetTotalCount(v int32) *ListPoolsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPoolsResponseBodyPoolList struct {
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// 2000
+	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Working
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListPoolsResponseBodyPoolList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsResponseBodyPoolList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetIsDefault(v bool) *ListPoolsResponseBodyPoolList {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetMaxExectorNum(v int32) *ListPoolsResponseBodyPoolList {
+	s.MaxExectorNum = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetPoolName(v string) *ListPoolsResponseBodyPoolList {
+	s.PoolName = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetPriority(v int32) *ListPoolsResponseBodyPoolList {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListPoolsResponseBodyPoolList) SetStatus(v string) *ListPoolsResponseBodyPoolList {
+	s.Status = &v
+	return s
+}
+
+type ListPoolsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPoolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPoolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPoolsResponse) SetHeaders(v map[string]*string) *ListPoolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPoolsResponse) SetStatusCode(v int32) *ListPoolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPoolsResponse) SetBody(v *ListPoolsResponseBody) *ListPoolsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// example:
 	//
@@ -4495,6 +5135,151 @@ func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagRe
 	return s
 }
 
+type UpdatePoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority       *int32                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceLimits *UpdatePoolRequestResourceLimits `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty" type:"Struct"`
+}
+
+func (s UpdatePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePoolRequest) SetPoolName(v string) *UpdatePoolRequest {
+	s.PoolName = &v
+	return s
+}
+
+func (s *UpdatePoolRequest) SetPriority(v int32) *UpdatePoolRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdatePoolRequest) SetResourceLimits(v *UpdatePoolRequestResourceLimits) *UpdatePoolRequest {
+	s.ResourceLimits = v
+	return s
+}
+
+type UpdatePoolRequestResourceLimits struct {
+	// example:
+	//
+	// 2000
+	MaxExectorNum *int32 `json:"MaxExectorNum,omitempty" xml:"MaxExectorNum,omitempty"`
+}
+
+func (s UpdatePoolRequestResourceLimits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePoolRequestResourceLimits) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePoolRequestResourceLimits) SetMaxExectorNum(v int32) *UpdatePoolRequestResourceLimits {
+	s.MaxExectorNum = &v
+	return s
+}
+
+type UpdatePoolShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PoolTest
+	PoolName *string `json:"PoolName,omitempty" xml:"PoolName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceLimitsShrink *string `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
+}
+
+func (s UpdatePoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePoolShrinkRequest) SetPoolName(v string) *UpdatePoolShrinkRequest {
+	s.PoolName = &v
+	return s
+}
+
+func (s *UpdatePoolShrinkRequest) SetPriority(v int32) *UpdatePoolShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdatePoolShrinkRequest) SetResourceLimitsShrink(v string) *UpdatePoolShrinkRequest {
+	s.ResourceLimitsShrink = &v
+	return s
+}
+
+type UpdatePoolResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePoolResponseBody) SetRequestId(v string) *UpdatePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePoolResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePoolResponse) SetHeaders(v map[string]*string) *UpdatePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePoolResponse) SetStatusCode(v int32) *UpdatePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePoolResponse) SetBody(v *UpdatePoolResponseBody) *UpdatePoolResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4720,6 +5505,80 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
+// 创建资源池
+//
+// @param tmpReq - CreatePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePoolResponse
+func (client *Client) CreatePoolWithOptions(tmpReq *CreatePoolRequest, runtime *util.RuntimeOptions) (_result *CreatePoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceLimits)) {
+		request.ResourceLimitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceLimits, tea.String("ResourceLimits"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PoolName)) {
+		query["PoolName"] = request.PoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceLimitsShrink)) {
+		query["ResourceLimits"] = request.ResourceLimitsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePool"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资源池
+//
+// @param request - CreatePoolRequest
+//
+// @return CreatePoolResponse
+func (client *Client) CreatePool(request *CreatePoolRequest) (_result *CreatePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePoolResponse{}
+	_body, _err := client.CreatePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除作业
 //
 // @param tmpReq - DeleteJobsRequest
@@ -4785,6 +5644,66 @@ func (client *Client) DeleteJobs(request *DeleteJobsRequest) (_result *DeleteJob
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteJobsResponse{}
 	_body, _err := client.DeleteJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源池
+//
+// @param request - DeletePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePoolResponse
+func (client *Client) DeletePoolWithOptions(request *DeletePoolRequest, runtime *util.RuntimeOptions) (_result *DeletePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PoolName)) {
+		query["PoolName"] = request.PoolName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePool"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源池
+//
+// @param request - DeletePoolRequest
+//
+// @return DeletePoolResponse
+func (client *Client) DeletePool(request *DeletePoolRequest) (_result *DeletePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePoolResponse{}
+	_body, _err := client.DeletePoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5150,6 +6069,66 @@ func (client *Client) GetJob(request *GetJobRequest) (_result *GetJobResponse, _
 
 // Summary:
 //
+// 查询队列详细信息
+//
+// @param request - GetPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPoolResponse
+func (client *Client) GetPoolWithOptions(request *GetPoolRequest, runtime *util.RuntimeOptions) (_result *GetPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PoolName)) {
+		query["PoolName"] = request.PoolName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPool"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询队列详细信息
+//
+// @param request - GetPoolRequest
+//
+// @return GetPoolResponse
+func (client *Client) GetPool(request *GetPoolRequest) (_result *GetPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPoolResponse{}
+	_body, _err := client.GetPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询全局Executor信息
 //
 // @param tmpReq - ListExecutorsRequest
@@ -5472,6 +6451,80 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
+// 查询资源池列表
+//
+// @param tmpReq - ListPoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoolsResponse
+func (client *Client) ListPoolsWithOptions(tmpReq *ListPoolsRequest, runtime *util.RuntimeOptions) (_result *ListPoolsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPoolsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filter)) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, tea.String("Filter"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterShrink)) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPools"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源池列表
+//
+// @param request - ListPoolsRequest
+//
+// @return ListPoolsResponse
+func (client *Client) ListPools(request *ListPoolsRequest) (_result *ListPoolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPoolsResponse{}
+	_body, _err := client.ListPoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询一个或多个资源已经绑定的标签列表
 //
 // @param request - ListTagResourcesRequest
@@ -5743,6 +6796,80 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UnTagResourcesResponse{}
 	_body, _err := client.UnTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新资源池
+//
+// @param tmpReq - UpdatePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePoolResponse
+func (client *Client) UpdatePoolWithOptions(tmpReq *UpdatePoolRequest, runtime *util.RuntimeOptions) (_result *UpdatePoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdatePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceLimits)) {
+		request.ResourceLimitsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceLimits, tea.String("ResourceLimits"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PoolName)) {
+		query["PoolName"] = request.PoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceLimitsShrink)) {
+		query["ResourceLimits"] = request.ResourceLimitsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePool"),
+		Version:     tea.String("2023-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新资源池
+//
+// @param request - UpdatePoolRequest
+//
+// @return UpdatePoolResponse
+func (client *Client) UpdatePool(request *UpdatePoolRequest) (_result *UpdatePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePoolResponse{}
+	_body, _err := client.UpdatePoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
