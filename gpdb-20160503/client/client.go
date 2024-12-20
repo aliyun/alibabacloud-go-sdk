@@ -757,7 +757,12 @@ type CancelUpsertCollectionDataJobRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -1027,21 +1032,32 @@ func (s *CheckHadoopDataSourceResponse) SetBody(v *CheckHadoopDataSourceResponse
 }
 
 type CheckHadoopNetConnectionRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CheckHadoopNetConnection
+	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// 1. Either DataSourceId or EmrInstanceId must be specified as input, otherwise an error will occur.
+	//
+	// 2. If both of the above parameters are specified, EmrInstanceId will be used preferentially.
+	//
+	// 3. If the data source specified by DataSourceId is a self-built Hadoop cluster, an error will occur directly.
+	//
+	// example:
+	//
+	// 126
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The E-MapReduce (EMR) Hadoop cluster ID.
+	// EMR instance ID.
 	//
 	// example:
 	//
 	// c-xxx
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1077,19 +1093,23 @@ func (s *CheckHadoopNetConnectionRequest) SetRegionId(v string) *CheckHadoopNetC
 }
 
 type CheckHadoopNetConnectionResponseBody struct {
-	// The returned message. If the connection failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
+	// Return message: Returns error information if the connection fails, otherwise returns an empty string ("").
 	//
 	// example:
 	//
-	// xxx
+	// connection timeout
 	ConnectionMessage *string `json:"ConnectionMessage,omitempty" xml:"ConnectionMessage,omitempty"`
-	// The connection status. Valid values: Success and Failed.
+	// Connection status:
+	//
+	// - Network connected: Success
+	//
+	// - Network not connected: Failed
 	//
 	// example:
 	//
 	// Success
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -1150,7 +1170,7 @@ func (s *CheckHadoopNetConnectionResponse) SetBody(v *CheckHadoopNetConnectionRe
 }
 
 type CheckJDBCSourceNetConnectionRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -1158,14 +1178,19 @@ type CheckJDBCSourceNetConnectionRequest struct {
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The JDBC connection string.
+	// Either DataSourceId or JdbcConnectionString must be specified as input, otherwise an error will occur. If both parameters are specified, JdbcConnectionString will be used preferentially.
 	//
 	// example:
 	//
-	// xxx
+	// 123
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// JDBC connection string.
+	//
+	// example:
+	//
+	// jdbc:mysql://rm-xxx.mysql.rds.aliyuncs.com:3306/testadmin
 	JdbcConnectionString *string `json:"JdbcConnectionString,omitempty" xml:"JdbcConnectionString,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance is located.
 	//
 	// example:
 	//
@@ -1202,23 +1227,23 @@ func (s *CheckJDBCSourceNetConnectionRequest) SetRegionId(v string) *CheckJDBCSo
 }
 
 type CheckJDBCSourceNetConnectionResponseBody struct {
-	// The returned message. If the connection failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
+	// Return message: Error message returned when the connection fails, otherwise returns an empty string ("").
 	//
 	// example:
 	//
-	// xxx
+	// connection timeout
 	ConnectionMessage *string `json:"ConnectionMessage,omitempty" xml:"ConnectionMessage,omitempty"`
-	// The connection status. Valid values:
+	// Service status:
 	//
-	// 	- Success
+	// - Network connected: Success
 	//
-	// 	- Failed
+	// - Network not connected: Failed
 	//
 	// example:
 	//
 	// Success
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -1433,12 +1458,6 @@ type CreateAccountRequest struct {
 	// test01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is no longer used.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -1481,11 +1500,6 @@ func (s *CreateAccountRequest) SetDatabaseName(v string) *CreateAccountRequest {
 
 func (s *CreateAccountRequest) SetOwnerId(v int64) *CreateAccountRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateAccountRequest) SetResourceGroupId(v string) *CreateAccountRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1579,6 +1593,8 @@ type CreateCollectionRequest struct {
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+	//
 	// example:
 	//
 	// title,content
@@ -1599,12 +1615,18 @@ type CreateCollectionRequest struct {
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// Name of the management account with rds_superuser permissions.
+	//
+	// > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// The password of the manager account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1613,24 +1635,33 @@ type CreateCollectionRequest struct {
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
 	//
-	// >
+	// >  Supported data types:
 	//
-	// 	- For information about the supported data types, see [Data types](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/data-types-1/?spm=a2c4g.11186623.0.0.43e567a1C35QRD).
+	// 	- For information about the supported data types, see [Data types](https://www.alibabacloud.com/help/zh/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
 	//
 	// 	- The money data type is not supported.
 	//
 	// **
 	//
-	// **Warning**
-	//
-	// Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+	// **Warning*	- Reserved fields such as id, vector, to_tsvector, and source cannot be used.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"title":"text","content":"text","response":"int"}
-	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata        *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
+	// Method used when building the vector index.
+	//
+	// Value description:
+	//
+	// - **l2**: Euclidean distance.
+	//
+	// - **ip**: Inner product (dot product) distance.
+	//
+	// - **cosine*	- (default): Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
@@ -1644,6 +1675,8 @@ type CreateCollectionRequest struct {
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The analyzer that is used for full-text search.
+	//
 	// example:
 	//
 	// zh_cn
@@ -1666,6 +1699,8 @@ type CreateCollectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -1725,6 +1760,11 @@ func (s *CreateCollectionRequest) SetMetadata(v string) *CreateCollectionRequest
 	return s
 }
 
+func (s *CreateCollectionRequest) SetMetadataIndices(v string) *CreateCollectionRequest {
+	s.MetadataIndices = &v
+	return s
+}
+
 func (s *CreateCollectionRequest) SetMetrics(v string) *CreateCollectionRequest {
 	s.Metrics = &v
 	return s
@@ -1761,10 +1801,14 @@ func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequ
 }
 
 type CreateCollectionResponseBody struct {
+	// Return message.
+	//
 	// example:
 	//
 	// create successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -1834,75 +1878,75 @@ func (s *CreateCollectionResponse) SetBody(v *CreateCollectionResponseBody) *Cre
 }
 
 type CreateDBInstanceRequest struct {
-	// The ID of the backup set.
+	// Backup set ID.
 	//
-	// >  You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the IDs of all backup sets in the instance.
+	// > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) interface to view the backup set IDs of all backup sets under the target instance.
 	//
 	// example:
 	//
 	// 1111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
+	// Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
 	//
 	// 0c593ea1-3bea-11e9-b96b-88**********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to load a sample dataset after the instance is created. Valid values:
+	// Whether to load sample datasets after the instance is created. The values are as follows:
 	//
-	// 	- **true**
+	// - **true**: Load sample datasets.
 	//
-	// 	- **false**
+	// - **false**: Do not load sample datasets.
 	//
-	// >  If you do not specify this parameter, no sample dataset is loaded.
+	// > If this parameter is not specified, it defaults to not loading sample datasets.
 	//
 	// example:
 	//
 	// false
 	CreateSampleData *bool `json:"CreateSampleData,omitempty" xml:"CreateSampleData,omitempty"`
-	// The edition of the instance. Valid values:
+	// Instance series. The value description is as follows:
 	//
-	// - **HighAvailability**: High-availability Edition.
+	// - **HighAvailability**: High availability version.
 	//
-	// - **Basic**: Basic Edition.
+	// - **Basic**: Basic version.
 	//
-	// > This parameter must be specified when you create an instance in elastic storage mode.
+	// > This parameter is required when creating an instance in the storage elastic mode.
 	//
 	// example:
 	//
 	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	// The instance type of the instance. For information, see [Instance types](https://help.aliyun.com/document_detail/86942.html).
+	// Instance type. For more details, see the supplementary description of the DBInstanceClass parameter.
 	//
-	// > This parameter must be specified when you create an instance in reserved storage mode.
+	// > This parameter is required when creating a reserved storage mode instance.
 	//
 	// example:
 	//
 	// gpdb.group.segsdx1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The description of the instance.
+	// Instance description.
 	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The number of compute groups. Valid values: 2, 4, 8, 12, 16, 24, 32, 64, 96, and 128.
+	// Number of compute groups. The values are: 2, 4, 8, 12, 16, 24, 32, 64, 96, 128.
 	//
-	// > This parameter must be specified when you create an instance in reserved storage mode.
+	// > This parameter is required when creating a reserved storage mode instance.
 	//
 	// example:
 	//
 	// 2
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	// The resource type of the instance. Valid values:
+	// Instance resource type. The value description is as follows:
 	//
-	// - **StorageElastic**: elastic storage mode.
+	// - **StorageElastic**: Storage elastic mode.
 	//
 	// - **Serverless**: Serverless mode.
 	//
-	// - **Classic**: reserved storage mode.
+	// - **Classic**: Storage reserved mode.
 	//
-	// > This parameter must be specified.
+	// > This parameter is required.
 	//
 	// This parameter is required.
 	//
@@ -1910,28 +1954,53 @@ type CreateDBInstanceRequest struct {
 	//
 	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	EnableSSL      *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// The ID of the encryption key.
+	// Deployment mode. The values are as follows:
 	//
-	// > If EncryptionType is set to CloudDisk, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
+	// - multiple: Multi-zone deployment.
+	//
+	// - single: Single-zone deployment.
+	//
+	// >
+	//
+	// > - If this parameter is not specified, the default value is single-zone deployment.
+	//
+	// > - Currently, only single-zone deployment is supported.
+	//
+	// example:
+	//
+	// single
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// Indicates whether to enable SSL encryption. The values are as follows:
+	//
+	// - **true**: Enable SSL encryption.
+	//
+	// - **false*	- (default): Do not enable SSL encryption.
+	//
+	// example:
+	//
+	// false
+	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// Key ID.
+	//
+	// > If the value of the **EncryptionType*	- parameter is **CloudDisk**, you need to specify the encryption key ID within the same region through this parameter; otherwise, it should be empty.
 	//
 	// example:
 	//
 	// 0d2470df-da7b-4786-b981-88888888****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The encryption type. Valid values:
+	// Encryption type. The value description is as follows:
 	//
-	// - **NULL*	- (default): Encryption is disabled.
+	// - **NULL**: No encryption (default).
 	//
-	// - **CloudDisk**: Encryption is enabled on cloud disks, and EncryptionKey is used to specify an encryption key.
+	// - **CloudDisk**: Enable cloud disk encryption and specify the key through the **EncryptionKey*	- parameter.
 	//
-	// > Disk encryption cannot be disabled after it is enabled.
+	// > Once cloud disk encryption is enabled, it cannot be disabled.
 	//
 	// example:
 	//
 	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The database engine of the instance. Set the value to gpdb.
+	// Database engine, with the value **gpdb**.
 	//
 	// This parameter is required.
 	//
@@ -1939,11 +2008,11 @@ type CreateDBInstanceRequest struct {
 	//
 	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine. Valid values:
+	// Engine version. The values are as follows:
 	//
-	// - 6.0
+	// - **6.0**: Version 6.0.
 	//
-	// - 7.0
+	// - **7.0**: Version 7.0.
 	//
 	// This parameter is required.
 	//
@@ -1951,29 +2020,27 @@ type CreateDBInstanceRequest struct {
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The wait time for the instance that has no traffic to become idle. Minimum value: 60. Default value: 600. Unit: seconds.
+	// The idle release wait time. When the duration without business traffic reaches the specified time, the instance will enter the idle state. The unit is seconds, with a minimum value of 60, and the default value is 600.
 	//
-	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	// > This parameter is required only for Serverless auto-scheduling mode instances.
 	//
 	// example:
 	//
 	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	// The network type of the instance. Set the value to **VPC**.
+	// Instance network type, with the value **VPC**.
 	//
-	// >
+	// > - Only VPC networks are supported in public cloud.
 	//
-	// 	- Only the Virtual Private Cloud (VPC) type is supported in Alibaba Cloud public cloud.
-	//
-	// 	- If you do not specify this parameter, VPC is used.
+	// > - If not specified, it defaults to VPC type.
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The specifications of compute nodes.
+	// Compute node specifications.
 	//
-	// Valid values for High-availability Edition instances in elastic storage mode:
+	// For high-availability versions of the elastic storage mode, the values are as follows:
 	//
 	// - **2C16G**
 	//
@@ -1981,7 +2048,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **16C128G**
 	//
-	// Valid values for Basic Edition instances in elastic storage mode:
+	// For basic versions of the elastic storage mode, the values are as follows:
 	//
 	// - **2C8G**
 	//
@@ -1991,79 +2058,90 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **16C64G**
 	//
-	// Valid values for instances in Serverless mode:
+	// For Serverless mode, the values are as follows:
 	//
 	// - **4C16G**
 	//
 	// - **8C32G**
 	//
-	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	// > This parameter is required when creating an elastic storage mode instance or a Serverless mode instance.
 	//
 	// example:
 	//
 	// 2C16G
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The amount of coordinator node resources. Valid values:
+	// Master resources, with the following values:
 	//
-	// 	- 2 CU
+	// - 2 CU
 	//
-	// 	- 4 CU
+	// - 4 CU
 	//
-	// 	- 8 CU
+	// - 8 CU
 	//
-	// 	- 16 CU
+	// - 16 CU
 	//
-	// 	- 32 CU
+	// - 32 CU
 	//
-	// >  You are charged for coordinator node resources of more than 8 CUs.
+	// > Master resources above 8 CU will incur charges.
 	//
 	// example:
 	//
 	// 8 CU
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	// This parameter is no longer used.
+	// This parameter is deprecated and should not be passed.
 	//
 	// example:
 	//
-	// 1
+	// null
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing method of the instance. Valid values:
+	// Billing type. The values are as follows:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-as-you-go
 	//
-	// 	- **Prepaid**: subscription.
+	// - **Prepaid**: Subscription
 	//
-	// >
+	// > - If not specified, it will default to pay-as-you-go.
 	//
-	// 	- If you do not specify this parameter, Postpaid is used.
-	//
-	// 	- You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+	// > - When using the subscription billing model, there may be discounts for purchasing one year or longer at once. It is recommended to choose the billing type according to your needs.
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. Valid values:
+	// Unit of the duration for which resources are purchased. The values are as follows:
 	//
-	// - **Month**
+	// - **Month**: Month
 	//
-	// - **Year**
+	// - **Year**: Year
 	//
-	// > This parameter must be specified when PayType is set to Prepaid.
+	// > This parameter is required when creating a subscription-billed instance.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// This parameter is no longer used.
+	// This parameter is deprecated and should not be passed.
 	//
 	// example:
 	//
-	// 1.1.1.*
+	// null
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	ProdType         *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// Product type. The values are as follows:
+	//
+	// - **standard**: Standard Edition.
+	//
+	// - **cost-effective**: Cost-Effective Edition.
+	//
+	// > If this parameter is not specified, the default value is Standard Edition.
+	//
+	// example:
+	//
+	// standard
+	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -2071,157 +2149,177 @@ type CreateDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the enterprise resource group where the instance is located.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The IP address whitelist of the instance.
+	// IP whitelist.
 	//
-	// A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
+	// 127.0.0.1 indicates that no external IP addresses are allowed to access. You can modify the IP whitelist by calling the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) interface after the instance is created.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The performance level of ESSDs. Valid values:
+	// ESSD cloud disk performance level. The values are as follows:
 	//
-	// 	- **pl0**
+	// - **pl0**: PL0 level.
 	//
-	// 	- **pl1**
+	// - **pl1**: PL1 level.
 	//
-	// 	- **pl2**
+	// - **pl2**: PL2 level.
 	//
-	// >
+	// > - This parameter is effective only if the disk storage type is ESSD cloud disk.
 	//
-	// 	- This parameter takes effect only when SegStorageType is set to cloud_essd.
-	//
-	// 	- If you do not specify this parameter, pl1 is used.
+	// > - If not specified, it defaults to PL1 level.
 	//
 	// example:
 	//
 	// pl1
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
-	// The number of compute nodes.
+	// The number of compute nodes. The value description is as follows:
 	//
-	// - Valid values for High-availability Edition instances in elastic storage mode: multiples of 4 in the range of 4 to 512.
+	// - For the high-availability version of the storage elastic mode, the value range is 4 to 512, and the value must be a multiple of 4.
 	//
-	// - Valid values for Basic Edition instances in elastic storage mode: multiples of 2 in the range of 2 to 512.
+	// - For the basic version of the storage elastic mode, the value range is 2 to 512, and the value must be a multiple of 2.
 	//
-	// - Valid values for instances in Serverless mode: multiples of 2 in the range of 2 to 512.
+	// - For the Serverless mode, the value range is 2 to 512, and the value must be a multiple of 2.
 	//
-	// > This parameter must be specified when you create an instance in elastic storage mode or Serverless mode.
+	// > This parameter is required when creating instances in the storage elastic mode or Serverless mode.
 	//
 	// example:
 	//
 	// 4
 	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	// The disk storage type of the instance. Only enhanced SSDs (ESSDs) are supported. Set the value to cloud_essd.
+	// Disk storage type, currently only ESSD cloud disks are supported, with the value **cloud_essd**.
 	//
-	// > This parameter must be specified when you create an instance in elastic storage mode.
+	// > This parameter is required when creating an elastic storage mode instance.
 	//
 	// example:
 	//
 	// cloud_essd
 	SegStorageType *string `json:"SegStorageType,omitempty" xml:"SegStorageType,omitempty"`
-	// The type of the Serverless mode. Valid values:
+	// The mode of the Serverless instance. The values are as follows:
 	//
-	// - **Manual*	- (default): manual scheduling.
+	// - **Manual**: Manual scheduling (default).
 	//
-	// - **Auto**: automatic scheduling.
+	// - **Auto**: Auto scheduling.
 	//
-	// > This parameter must be specified only when you create an instance in Serverless mode.
+	// > This parameter is required only for Serverless mode instances.
 	//
 	// example:
 	//
 	// Auto
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	// The threshold of computing resources. Unit: AnalyticDB compute unit (ACU). Valid values: 8 to 32. The value must be in increments of 8 ACUs. Default value: 32.
+	// The threshold for computing resources. The value range is 8 to 32, with a step of 8, and the unit is ACU. The default value is 32.
 	//
-	// > This parameter must be specified only when you create an instance in automatic Serverless mode.
+	// > This parameter is required only for Serverless auto-scheduling mode instances.
 	//
 	// example:
 	//
 	// 32
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	// The ID of the source instance.
+	// ID of the source instance to be cloned.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) interface to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
 	//
 	// example:
 	//
 	// gp-bp***************
 	SrcDbInstanceName *string `json:"SrcDbInstanceName,omitempty" xml:"SrcDbInstanceName,omitempty"`
-	// The storage capacity of the instance. Unit: GB. Valid values: 50 to 6000.
+	// VSwitch ID of the standby zone.
 	//
-	// >  This parameter must be specified when you create an instance in elastic storage mode.
+	// >
+	//
+	// > - This parameter is required for multi-zone deployment.
+	//
+	// > - The VSwitch ID of the standby zone must be in the same zone as the StandbyZoneId.
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// ID of the standby zone.
+	//
+	// >
+	//
+	// > - This parameter is required for multi-zone deployment.
+	//
+	// > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available zone IDs.
+	//
+	// > - The ID of the standby zone must be different from the ID of the primary zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The size of the storage space, in GB, with a value range of <props="china">50~8000<props="intl">50~6000.
+	//
+	// > This parameter is required when creating an instance in the storage elastic mode.
 	//
 	// example:
 	//
 	// 200
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// This parameter is no longer used.
+	// This parameter is deprecated and should not be passed.
 	//
 	// example:
 	//
 	// null
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The list of tags.
+	// The Nth tag. The value of N ranges from 1 to 20.
 	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The subscription duration.
+	// Duration for which resources are purchased. The values are as follows:
 	//
-	// - Valid values when Period is set to Month: 1 to 9.
+	// - When **Period*	- is **Month**, the value ranges from 1 to 9.
 	//
-	// - Valid values when Period is set to Year: 1 to 3.
+	// - When **Period*	- is **Year**, the value ranges from 1 to 3.
 	//
-	// > This parameter must be specified when PayType is set to Prepaid.
+	// > This parameter is required when creating a subscription-billed instance.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The VPC ID of the instance.
+	// VPC ID.
 	//
-	// >
+	// > - **VPCId*	- is required.
 	//
-	// 	- **This parameter*	- must be specified.
-	//
-	// 	- The region where the **VPC*	- resides must be the same as the region that is specified by **RegionId**.
+	// > - The region of the **VPC*	- must be consistent with **RegionId**.
 	//
 	// example:
 	//
-	// vpc-bp*******************
+	// vpc-bp19ame5m1r3oejns****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
+	// vSwitch ID.
 	//
-	// >
+	// > - **vSwitchId*	- is required.
 	//
-	// 	- **This parameter*	- must be specified.
-	//
-	// 	- The zone where the **vSwitch*	- resides must be the same as the zone that is specified by **ZoneId**.
+	// > - The availability zone of the **vSwitch*	- must be consistent with **ZoneId**.
 	//
 	// example:
 	//
-	// vsw-bp*******************
+	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Specifies whether to enable vector search engine optimization. Valid values:
+	// Whether to enable vector engine optimization. The value description is as follows:
 	//
-	// 	- **enabled**
+	// - **enabled**: Enable vector engine optimization.
 	//
-	// 	- **disabled*	- (default)
+	// - **disabled*	- (default): Do not enable vector engine optimization.
 	//
-	// >
+	// > - For mainstream analysis scenarios, data warehouse scenarios, and real-time data warehouse scenarios, it is recommended to **not enable*	- vector engine optimization.
 	//
-	// 	- We recommend that you **do not enable*	- vector search engine optimization in mainstream analysis, data warehousing, and real-time data warehousing scenarios.
-	//
-	// 	- We recommend that you **enable*	- vector search engine optimization in AI-generated content (AIGC) and vector retrieval scenarios that require the vector analysis engine.
+	// > - For users using the vector analysis engine for AIGC, vector retrieval, and other scenarios, it is recommended to **enable*	- vector engine optimization.
 	//
 	// example:
 	//
 	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
-	// The zone ID of the read-only instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+	// Zone ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available zone IDs.
 	//
 	// This parameter is required.
 	//
@@ -2276,6 +2374,11 @@ func (s *CreateDBInstanceRequest) SetDBInstanceGroupCount(v string) *CreateDBIns
 
 func (s *CreateDBInstanceRequest) SetDBInstanceMode(v string) *CreateDBInstanceRequest {
 	s.DBInstanceMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetDeployMode(v string) *CreateDBInstanceRequest {
+	s.DeployMode = &v
 	return s
 }
 
@@ -2399,6 +2502,16 @@ func (s *CreateDBInstanceRequest) SetSrcDbInstanceName(v string) *CreateDBInstan
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetStandbyVSwitchId(v string) *CreateDBInstanceRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetStandbyZoneId(v string) *CreateDBInstanceRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetStorageSize(v int64) *CreateDBInstanceRequest {
 	s.StorageSize = &v
 	return s
@@ -2440,25 +2553,25 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 }
 
 type CreateDBInstanceRequestTag struct {
-	// The key of tag N. Take note of the following requirements:
+	// Tag key. The restrictions are as follows:
 	//
-	// - The tag key cannot be an empty string.
+	// - It cannot be an empty string.
 	//
-	// - The tag key can be up to 128 characters in length.
+	// - It supports up to 128 characters.
 	//
-	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
+	// - It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Take note of the following requirements:
+	// Tag value. The restrictions are as follows:
 	//
-	// - The tag key cannot be an empty string.
+	// - It can be an empty string.
 	//
-	// - The tag key can be up to 128 characters in length.
+	// - It supports up to 128 characters.
 	//
-	// - The tag key cannot start with `aliyun` or `acs:`, and contain `http://` or `https://`.
+	// - It cannot start with `acs:`, and it cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -2485,35 +2598,35 @@ func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequest
 }
 
 type CreateDBInstanceResponseBody struct {
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter is deprecated and will not return a value.
 	//
-	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the endpoint that is used to connect to the instance.
+	// You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the connection address of the instance.
 	//
 	// example:
 	//
-	// gp-bp***************.gpdb.rds.aliyuncs.com
+	// gp-bp12ga6v69h86****.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
-	// gp-bp***************
+	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The order ID.
+	// Order ID.
 	//
 	// example:
 	//
 	// 111111111111
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter is deprecated and will not return a value.
 	//
-	// You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number that is used to connect to the instance.
+	// You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the port number of the instance.
 	//
 	// example:
 	//
-	// 5432
+	// 3432
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -2947,141 +3060,162 @@ func (s *CreateDBResourceGroupResponse) SetBody(v *CreateDBResourceGroupResponse
 }
 
 type CreateDocumentCollectionRequest struct {
+	// Name of the document library to be created.
+	//
+	// > The name must comply with PostgreSQL object naming restrictions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The vectorization algorithm.
+	// Vectorization algorithm.
 	//
-	// >  Valid values:
+	// > Supported algorithms:
 	//
-	// 	- text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
+	// > - text-embedding-v1: 1536 dimensions
 	//
-	// 	- text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
+	// > - text-embedding-v2: 1536 dimensions
 	//
-	// 	- text2vec: the algorithm that produces 1024-dimensional vectors.
+	// > - text2vec: 1024 dimensions
 	//
-	// 	- m3e-base: the algorithm that produces 768-dimensional vectors.
+	// > - m3e-base: 768 dimensions
 	//
-	// 	- m3e-small: the algorithm that produces 512-dimensional vectors.
+	// > - m3e-small: 512 dimensions
 	//
-	// 	- multimodal-embedding-one-peace-v1: the image vectorization algorithm that produces 1536-dimensional vectors.
+	// > - clip-vit-b-32: CLIP ViT-B/32 model, 512 dimensions, image vectorization algorithm
 	//
-	// 	- clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
+	// > - clip-vit-b-16: CLIP ViT-B/16 model, 512 dimensions, image vectorization algorithm
 	//
-	// 	- clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
+	// > - clip-vit-l-14: CLIP ViT-L/14 model, 768 dimensions, image vectorization algorithm
 	//
-	// 	- clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
+	// > - clip-vit-l-14-336px: CLIP ViT-L/14@336px model, 768 dimensions, image vectorization algorithm
 	//
-	// 	- clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
+	// > - clip-rn50: CLIP RN50 model, 1024 dimensions, image vectorization algorithm
 	//
-	// 	- clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
+	// > - clip-rn101: CLIP RN101 model, 512 dimensions, image vectorization algorithm
 	//
-	// 	- clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
+	// > - clip-rn50x4: CLIP RN50x4 model, 640 dimensions, image vectorization algorithm
 	//
-	// 	- clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
+	// > - clip-rn50x16: CLIP RN50x16 model, 768 dimensions, image vectorization algorithm
 	//
-	// 	- clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
-	//
-	// 	- clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
+	// > - clip-rn50x64: CLIP RN50x64 model, 1024 dimensions, image vectorization algorithm
 	//
 	// example:
 	//
 	// text-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+	// Whether to use mmap to build HNSW index, default is 0. If the data does not need to be deleted and there are requirements for the speed of uploading data, it is recommended to set this to 1.
 	//
 	// >
 	//
-	// 	- 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+	// > - When set to 0, segment-page storage will be used by default to build the index. This mode can use PostgreSQL\\"s shared_buffer as a cache and supports operations such as deletion and updates.
 	//
-	// 	- 1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+	// > - When set to 1, the index will be built using mmap. This mode does not support deletion or update operations.
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
+	// Fields used for full-text search, separated by commas (,). These fields must be keys defined in Metadata.
+	//
 	// example:
 	//
 	// title,page
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+	// The maximum number of neighbors in the HNSW algorithm, ranging from 1 to 1000. The interface will automatically set this value based on the vector dimension, and it generally does not need to be manually configured.
 	//
-	// >  We recommend that you configure this parameter based on the value of the Dimension parameter.
-	//
-	// 	- If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
-	//
-	// 	- If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
-	//
-	// 	- If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
-	//
-	// 	- If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+	// > It is recommended to set according to the vector dimension: >- For dimensions less than or equal to 384: 16 >- For dimensions greater than 384 but less than or equal to 768: 32 >- For dimensions greater than 768 but less than or equal to 1024: 64 >- For dimensions greater than 1024: 128
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// Name of the management account with rds_superuser permissions.
+	//
+	// > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// Management account password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+	// Metadata of vector data, in the form of a MAP JSON string. The key represents the field name, and the value represents the data type.
 	//
-	// >
+	// > Supported data types
 	//
-	// 	- For information about the supported data types, see [Data types](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/data-types-1/?spm=a2c4g.11186623.0.0.43e567a1C35QRD).
+	// > - For a list of data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
 	//
-	// 	- The money data type is not supported.
+	// > - The money type is not supported at this time.
 	//
-	// **
-	//
-	// **Warning**
-	//
-	// Reserved fields such as id, vector, doc_name, content, loader_metadata, source, and to_tsvector cannot be used.
+	// 	Warning: The fields id, vector, doc_name, content, loader_metadata, source, and to_tsvector are reserved and should not be used.
 	//
 	// example:
 	//
 	// {"title":"text","page":"int"}
-	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata        *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
+	// Method used when building the vector index.
+	//
+	// Value description:
+	//
+	// - **l2**: Euclidean distance.
+	//
+	// - **ip**: Inner product (dot product) distance.
+	//
+	// - **cosine*	- (default): Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// Namespace, default is public.
+	//
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Tokenizer used for full-text search, default is zh_cn.
+	//
 	// example:
 	//
 	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+	// Whether to enable PQ (Product Quantization) algorithm for index acceleration. It is recommended to enable this when the data volume exceeds 500,000. Value description:
 	//
-	// 	- 0: no.
+	// - 0: Disabled.
 	//
-	// 	- 1 (default): yes.
+	// - 1: Enabled (default).
 	//
 	// example:
 	//
-	// 0
+	// 1
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// ID of the region where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3143,6 +3277,11 @@ func (s *CreateDocumentCollectionRequest) SetMetadata(v string) *CreateDocumentC
 	return s
 }
 
+func (s *CreateDocumentCollectionRequest) SetMetadataIndices(v string) *CreateDocumentCollectionRequest {
+	s.MetadataIndices = &v
+	return s
+}
+
 func (s *CreateDocumentCollectionRequest) SetMetrics(v string) *CreateDocumentCollectionRequest {
 	s.Metrics = &v
 	return s
@@ -3174,14 +3313,24 @@ func (s *CreateDocumentCollectionRequest) SetRegionId(v string) *CreateDocumentC
 }
 
 type CreateDocumentCollectionResponseBody struct {
+	// Return message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution status, with the following values:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// successs
@@ -3368,39 +3517,43 @@ func (s *CreateExtensionsResponse) SetBody(v *CreateExtensionsResponseBody) *Cre
 }
 
 type CreateExternalDataServiceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// Region ID, you can view available region IDs through the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the service.
+	// Service description.
 	//
 	// example:
 	//
-	// test-adbpgss
+	// pxf test
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// Service name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-adbpgss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The specifications of the service. Unit: compute units (CUs). Valid values:
+	// Service specification (in CU), value:
 	//
-	// 	- 8
+	// - 8
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2
+	// 8
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -3438,10 +3591,14 @@ func (s *CreateExternalDataServiceRequest) SetServiceSpec(v string) *CreateExter
 }
 
 type CreateExternalDataServiceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Service ID.
+	//
 	// example:
 	//
 	// 100
@@ -3496,73 +3653,195 @@ func (s *CreateExternalDataServiceResponse) SetBody(v *CreateExternalDataService
 }
 
 type CreateHadoopDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Service description.
+	//
 	// example:
 	//
 	// pxf for hdfs data source
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// hdfs_pxf
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Type of Hadoop external table to be enabled, with values:
+	//
+	// - HDFS
+	//
+	// - Hive
+	//
 	// example:
 	//
 	// HDFS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// When HadoopCreateType=Emr, this field should contain the EMR instance ID.
+	//
 	// example:
 	//
 	// c-1234567
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
-	// The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
+	// Content string of the Hadoop hdfs-site.xml file. This field is required when enabling an HDFS external table.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:43.945 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>dfs.datanode.cache.revocation.timeout.ms</name>
+	//
+	//         <value>900000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>dfs.namenode.resource.check.interval</name>
+	//
+	//         <value>5000</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
-	// The string that specifies the content of the Hadoop core-site.xml file.
+	// Content string of the Hadoop core-site.xml file.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:39.527 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>hadoop.http.authentication.kerberos.keytab</name>
+	//
+	//         <value>/etc/emr/hadoop-conf/http.keytab</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>fs.oss.idle.timeout.millisecond</name>
+	//
+	//         <value>30000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>fs.oss.download.thread.concurrency</name>
+	//
+	//         <value>32</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
+	// External service type:
+	//
+	// - emr
+	//
+	// - hadoop: Self-built Hadoop
+	//
 	// example:
 	//
 	// emr
 	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
-	// The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
+	// Address and hostname of the Hadoop cluster\\"s source node in the /etc/hosts file.
 	//
 	// example:
 	//
-	// 127.0.0.1 localhost
+	// 192.168.220.128 master-1-1.c-xxx.cn-shanghai.emr.aliyuncs.com
+	//
+	// 192.168.220.129 core-1-1.c-xxx.cn-shanghai.emr.aliyuncs.com
+	//
+	// 192.168.220.130 core-1-2.c-xxx.cn-shanghai.emr.aliyuncs.com
 	HadoopHostsAddress *string `json:"HadoopHostsAddress,omitempty" xml:"HadoopHostsAddress,omitempty"`
-	// The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
+	// Content string of the Hadoop hive-site.xml file. This field is required when enabling a HIVE external table.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:52:50.646 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>hive.exec.reducers.bytes.per.reducer</name>
+	//
+	//         <value>256000000</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>hive.stats.column.autogather</name>
+	//
+	//         <value>false</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// Content string of the Hadoop mapred-site.xml file. This field is required when enabling an HDFS external table.
+	//
 	// example:
 	//
 	// xxxxxx
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
+	// Content string of the Hadoop yarn-site.xml file. This field is required when enabling an HDFS external table.
 	//
 	// example:
 	//
-	// xxxxxx
+	// <?xml version="1.0" ?>
+	//
+	// <!-- Created at 2023-08-15 13:53:29.021 -->
+	//
+	// <configuration>
+	//
+	//     <property>
+	//
+	//         <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user</name>
+	//
+	//         <value>hadoop</value>
+	//
+	//     </property>
+	//
+	//     <property>
+	//
+	//         <name>yarn.scheduler.fair.dynamic.max.assign</name>
+	//
+	//         <value>true</value>
+	//
+	//     </property>
+	//
+	// </configuration>
 	YarnConf *string `json:"YarnConf,omitempty" xml:"YarnConf,omitempty"`
 }
 
@@ -3640,10 +3919,14 @@ func (s *CreateHadoopDataSourceRequest) SetYarnConf(v string) *CreateHadoopDataS
 }
 
 type CreateHadoopDataSourceResponseBody struct {
+	// Data source ID.
+	//
 	// example:
 	//
 	// 123
 	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
@@ -3698,20 +3981,28 @@ func (s *CreateHadoopDataSourceResponse) SetBody(v *CreateHadoopDataSourceRespon
 }
 
 type CreateJDBCDataSourceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Data source description.
+	//
 	// example:
 	//
 	// test
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// The name of data soruce
+	//
 	// example:
 	//
 	// jdbc_pxf
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// mysql
@@ -3791,10 +4082,14 @@ func (s *CreateJDBCDataSourceRequest) SetRegionId(v string) *CreateJDBCDataSourc
 }
 
 type CreateJDBCDataSourceResponseBody struct {
+	// Data source ID.
+	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
@@ -3899,7 +4194,12 @@ type CreateNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4024,6 +4324,341 @@ func (s *CreateNamespaceResponse) SetStatusCode(v int32) *CreateNamespaceRespons
 }
 
 func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *CreateNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRemoteADBDataSourceRequest struct {
+	// Customer-specified DataSourceName.
+	//
+	// example:
+	//
+	// test
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Instance ID of the data being used (required).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-test1
+	LocalDBInstanceId *string `json:"LocalDBInstanceId,omitempty" xml:"LocalDBInstanceId,omitempty"`
+	// Database name of the data being used (required)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db1
+	LocalDatabase *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
+	// Management account of the data-using instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// managerAccount
+	ManagerUserName *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
+	// Password of the management account of the data-using instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// password2
+	ManagerUserPassword *string `json:"ManagerUserPassword,omitempty" xml:"ManagerUserPassword,omitempty"`
+	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Instance ID providing the data (required).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-test2
+	RemoteDBInstanceId *string `json:"RemoteDBInstanceId,omitempty" xml:"RemoteDBInstanceId,omitempty"`
+	// Database name providing the data (required).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// db2
+	RemoteDatabase *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
+	// Account name of the data-providing instance used for user mapping (required).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account1
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Password of the data-providing instance account used for user mapping.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// password1
+	UserPassword *string `json:"UserPassword,omitempty" xml:"UserPassword,omitempty"`
+}
+
+func (s CreateRemoteADBDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoteADBDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetDataSourceName(v string) *CreateRemoteADBDataSourceRequest {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetLocalDBInstanceId(v string) *CreateRemoteADBDataSourceRequest {
+	s.LocalDBInstanceId = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetLocalDatabase(v string) *CreateRemoteADBDataSourceRequest {
+	s.LocalDatabase = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetManagerUserName(v string) *CreateRemoteADBDataSourceRequest {
+	s.ManagerUserName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetManagerUserPassword(v string) *CreateRemoteADBDataSourceRequest {
+	s.ManagerUserPassword = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetOwnerId(v int64) *CreateRemoteADBDataSourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetRemoteDBInstanceId(v string) *CreateRemoteADBDataSourceRequest {
+	s.RemoteDBInstanceId = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetRemoteDatabase(v string) *CreateRemoteADBDataSourceRequest {
+	s.RemoteDatabase = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetUserName(v string) *CreateRemoteADBDataSourceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceRequest) SetUserPassword(v string) *CreateRemoteADBDataSourceRequest {
+	s.UserPassword = &v
+	return s
+}
+
+type CreateRemoteADBDataSourceResponseBody struct {
+	// Returns the successfully added data sharing service data.
+	DataSourceItem *CreateRemoteADBDataSourceResponseBodyDataSourceItem `json:"DataSourceItem,omitempty" xml:"DataSourceItem,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// e9d60eb1-e90d-4bc6-a470-c8b767460858
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Workflow task ID.
+	//
+	// example:
+	//
+	// 90000
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateRemoteADBDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoteADBDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoteADBDataSourceResponseBody) SetDataSourceItem(v *CreateRemoteADBDataSourceResponseBodyDataSourceItem) *CreateRemoteADBDataSourceResponseBody {
+	s.DataSourceItem = v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBody) SetRequestId(v string) *CreateRemoteADBDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBody) SetTaskId(v int32) *CreateRemoteADBDataSourceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateRemoteADBDataSourceResponseBodyDataSourceItem struct {
+	// Data source name.
+	//
+	// example:
+	//
+	// db1_gptest1_to_db2_gp-test2
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// userName
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Local database name
+	//
+	// example:
+	//
+	// db1
+	LocalDatabase *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
+	// Local instance name
+	//
+	// example:
+	//
+	// gp-test1
+	LocalInstanceName *string `json:"LocalInstanceName,omitempty" xml:"LocalInstanceName,omitempty"`
+	// Management account user name
+	//
+	// example:
+	//
+	// manager_user
+	ManagerUserName *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Remote database name
+	//
+	// example:
+	//
+	// db2
+	RemoteDatabase *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
+	// Remote instance name
+	//
+	// example:
+	//
+	// gp-test2
+	RemoteInstanceName *string `json:"RemoteInstanceName,omitempty" xml:"RemoteInstanceName,omitempty"`
+	// Synchronization status
+	//
+	// example:
+	//
+	// creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User name
+	//
+	// example:
+	//
+	// user1
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateRemoteADBDataSourceResponseBodyDataSourceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoteADBDataSourceResponseBodyDataSourceItem) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetDataSourceName(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetDescription(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetId(v int64) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetLocalDatabase(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.LocalDatabase = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetLocalInstanceName(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.LocalInstanceName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetManagerUserName(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.ManagerUserName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetRegionId(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetRemoteDatabase(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RemoteDatabase = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetRemoteInstanceName(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RemoteInstanceName = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetStatus(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponseBodyDataSourceItem) SetUserName(v string) *CreateRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.UserName = &v
+	return s
+}
+
+type CreateRemoteADBDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRemoteADBDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRemoteADBDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoteADBDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoteADBDataSourceResponse) SetHeaders(v map[string]*string) *CreateRemoteADBDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponse) SetStatusCode(v int32) *CreateRemoteADBDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRemoteADBDataSourceResponse) SetBody(v *CreateRemoteADBDataSourceResponseBody) *CreateRemoteADBDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -4433,6 +5068,8 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 }
 
 type CreateStreamingDataServiceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4441,22 +5078,28 @@ type CreateStreamingDataServiceRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent list of regions.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of the service.
+	//
 	// example:
 	//
 	// test-adbpgss
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// The name of the service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-adbpgss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The specifications of the service.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4499,6 +5142,8 @@ func (s *CreateStreamingDataServiceRequest) SetServiceSpec(v string) *CreateStre
 }
 
 type CreateStreamingDataServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -4559,39 +5204,55 @@ func (s *CreateStreamingDataServiceResponse) SetBody(v *CreateStreamingDataServi
 }
 
 type CreateStreamingDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CreateExternalDataSource
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Data source configuration information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"broker_list":"broker0:9091,broker1:9091","topic":"topic"}
 	DataSourceConfig *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	// Data source description.
+	//
 	// example:
 	//
 	// test-kafka
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// Data source name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Data source type. Values:
+	//
+	//  -  kafka
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kafka
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// Region ID.
+	//
+	// > You can view available region IDs through the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The real-time data service ID.
+	// Real-time data service ID.
 	//
 	// This parameter is required.
 	//
@@ -4645,10 +5306,14 @@ func (s *CreateStreamingDataSourceRequest) SetServiceId(v int32) *CreateStreamin
 }
 
 type CreateStreamingDataSourceResponseBody struct {
+	// Data source ID.
+	//
 	// example:
 	//
 	// 1
 	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -4703,25 +5368,19 @@ func (s *CreateStreamingDataSourceResponse) SetBody(v *CreateStreamingDataSource
 }
 
 type CreateStreamingJobRequest struct {
-	// The name of the database account.
+	// Target database account.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The delivery guarantee setting.
-	//
-	// Valid values:
-	//
-	// 	- ATLEAST
-	//
-	// 	- EXACTLY
+	// Delivery guarantee.
 	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -4729,7 +5388,7 @@ type CreateStreamingJobRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The data source ID.
+	// Data source ID.
 	//
 	// This parameter is required.
 	//
@@ -4737,39 +5396,47 @@ type CreateStreamingJobRequest struct {
 	//
 	// 1
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The destination fields.
+	// Target data table mapping field list.
 	DestColumns []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
-	// The name of the destination database.
+	// Target database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	// Target namespace.
+	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// The name of the destination table.
+	// Target table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
-	// The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
+	// When data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
 	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int64 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// FallbackOffset, fallback offset
+	//
+	// - The FallbackOffset parameter defines the behavior when the consumer does not request a specific offset or the requested offset exceeds the current Kafka cluster\\"s recorded offset information. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+	//
 	// example:
 	//
-	// earliest /  latest
+	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// Kafka group name
+	//
 	// example:
 	//
-	// group_name。
+	// group_name.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
+	// Job configuration file, required for professional mode.
 	//
 	// example:
 	//
@@ -5013,13 +5680,13 @@ type CreateStreamingJobRequest struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// The description of the job.
+	// Job description.
 	//
 	// example:
 	//
 	// test-job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The name of the job.
+	// Job name.
 	//
 	// This parameter is required.
 	//
@@ -5027,35 +5694,39 @@ type CreateStreamingJobRequest struct {
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The update condition columns that are used to join the source data and the destination table. Typically, the columns are all the primary key columns of the destination table. If the values of all columns specified by this parameter in different rows are the same, the rows are considered duplicates.
+	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
 	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
-	// The configuration mode. Valid values:
+	// Configuration mode
 	//
-	// 1.  basic: In basic mode, you must configure the configuration parameters.
+	// 1. Basic mode requires specifying some configuration fields
 	//
-	// 2.  professional: In professional mode, you can submit a YAML configuration file.
+	// 1. Professional mode supports submitting a YAML file
 	//
 	// example:
 	//
 	// basic / professional
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The password of the database account.
+	// Target database password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source fields.
+	// Source data field list.
 	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
-	// Specifies whether to test the real-time job. Valid values:
+	// Whether to test the real-time task, values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -5063,21 +5734,13 @@ type CreateStreamingJobRequest struct {
 	//
 	// true
 	TryRun *bool `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
-	// The columns to be updated if a row of data meets the update condition. Typically, the columns are all non-primary key columns of the destination table. When the columns specified by the MatchColumns parameter are used as conditions to join the source data and the destination table, data in columns of the UpdateColumns type is updated if data is matched.
+	// Update columns, usually all non-primary key columns of the target table. When data is determined to be duplicate through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
 	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
-	// The write mode.
-	//
-	// Valid values:
-	//
-	// 	- insert
-	//
-	// 	- update
-	//
-	// 	- merge
+	// Write mode.
 	//
 	// example:
 	//
-	// insert/update/merge
+	// INSERT/UPDATE/MERGE
 	WriteMode *string `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
 }
 
@@ -5200,25 +5863,19 @@ func (s *CreateStreamingJobRequest) SetWriteMode(v string) *CreateStreamingJobRe
 }
 
 type CreateStreamingJobShrinkRequest struct {
-	// The name of the database account.
+	// Target database account.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The delivery guarantee setting.
-	//
-	// Valid values:
-	//
-	// 	- ATLEAST
-	//
-	// 	- EXACTLY
+	// Delivery guarantee.
 	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -5226,7 +5883,7 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The data source ID.
+	// Data source ID.
 	//
 	// This parameter is required.
 	//
@@ -5234,39 +5891,47 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	// 1
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The destination fields.
+	// Target data table mapping field list.
 	DestColumnsShrink *string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty"`
-	// The name of the destination database.
+	// Target database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	// Target namespace.
+	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// The name of the destination table.
+	// Target table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
-	// The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
+	// When data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
 	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int64 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// FallbackOffset, fallback offset
+	//
+	// - The FallbackOffset parameter defines the behavior when the consumer does not request a specific offset or the requested offset exceeds the current Kafka cluster\\"s recorded offset information. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+	//
 	// example:
 	//
-	// earliest /  latest
+	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// Kafka group name
+	//
 	// example:
 	//
-	// group_name。
+	// group_name.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
+	// Job configuration file, required for professional mode.
 	//
 	// example:
 	//
@@ -5510,13 +6175,13 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// The description of the job.
+	// Job description.
 	//
 	// example:
 	//
 	// test-job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The name of the job.
+	// Job name.
 	//
 	// This parameter is required.
 	//
@@ -5524,35 +6189,39 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The update condition columns that are used to join the source data and the destination table. Typically, the columns are all the primary key columns of the destination table. If the values of all columns specified by this parameter in different rows are the same, the rows are considered duplicates.
+	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
 	MatchColumnsShrink *string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty"`
-	// The configuration mode. Valid values:
+	// Configuration mode
 	//
-	// 1.  basic: In basic mode, you must configure the configuration parameters.
+	// 1. Basic mode requires specifying some configuration fields
 	//
-	// 2.  professional: In professional mode, you can submit a YAML configuration file.
+	// 1. Professional mode supports submitting a YAML file
 	//
 	// example:
 	//
 	// basic / professional
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The password of the database account.
+	// Target database password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source fields.
+	// Source data field list.
 	SrcColumnsShrink *string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty"`
-	// Specifies whether to test the real-time job. Valid values:
+	// Whether to test the real-time task, values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -5560,21 +6229,13 @@ type CreateStreamingJobShrinkRequest struct {
 	//
 	// true
 	TryRun *bool `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
-	// The columns to be updated if a row of data meets the update condition. Typically, the columns are all non-primary key columns of the destination table. When the columns specified by the MatchColumns parameter are used as conditions to join the source data and the destination table, data in columns of the UpdateColumns type is updated if data is matched.
+	// Update columns, usually all non-primary key columns of the target table. When data is determined to be duplicate through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
 	UpdateColumnsShrink *string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty"`
-	// The write mode.
-	//
-	// Valid values:
-	//
-	// 	- insert
-	//
-	// 	- update
-	//
-	// 	- merge
+	// Write mode.
 	//
 	// example:
 	//
-	// insert/update/merge
+	// INSERT/UPDATE/MERGE
 	WriteMode *string `json:"WriteMode,omitempty" xml:"WriteMode,omitempty"`
 }
 
@@ -5697,13 +6358,13 @@ func (s *CreateStreamingJobShrinkRequest) SetWriteMode(v string) *CreateStreamin
 }
 
 type CreateStreamingJobResponseBody struct {
-	// The job ID.
+	// Job ID.
 	//
 	// example:
 	//
 	// 1
 	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -5759,89 +6420,115 @@ func (s *CreateStreamingJobResponse) SetBody(v *CreateStreamingJobResponseBody) 
 }
 
 type CreateVectorIndexRequest struct {
+	// Collection name.
+	//
+	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Vector dimension.
+	//
+	// > This value must be consistent with the length of the vector data (Rows. Vector) uploaded via the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+	// Whether to use mmap to build the HNSW index, default is 0. If the data does not need to be deleted and there are performance requirements for uploading data, it is recommended to set this to 1.
 	//
-	// 	- 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+	// >
 	//
-	// 	- 1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+	// > - When set to 0, the segment-page storage mode is used to build the index, which can use the shared_buffer in PostgreSQL for caching and supports deletion and update operations.
+	//
+	// > - When set to 1, the index is built using mmap, which does not support deletion and update operations.
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+	// The maximum number of neighbors in the HNSW algorithm, ranging from 1 to 1000. The API will automatically set this value based on the vector dimension, and it generally does not need to be manually set.
 	//
-	// >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+	// > It is suggested to set this based on the vector dimension as follows:
 	//
-	// 	- If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+	// > - Less than or equal to 384: 16
 	//
-	// 	- If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+	// > - Greater than 384 and less than or equal to 768: 32
 	//
-	// 	- If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+	// > - Greater than 768 and less than or equal to 1024: 64
 	//
-	// 	- If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+	// > - Greater than 1024: 128
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	// Name of the management account with rds_superuser permissions.
+	//
+	// > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// Management account password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// The method that is used to create vector indexes.Valid values:
+	// Method used for building the vector index. Value description:
 	//
 	// - l2: Euclidean distance.
 	//
-	// - ip: inner product distance.
+	// - ip: Inner product (dot product) distance.
 	//
-	// - cosine: cosine similarity.
+	// - cosine: Cosine similarity.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// Namespace, default is public.
+	//
+	// > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+	// Whether to enable PQ (Product Quantization) algorithm acceleration for the index. It is recommended to enable this when the data volume exceeds 500,000. Value description:
 	//
-	// 	- 0: no.
+	// - 0: Disabled.
 	//
-	// 	- 1 (default): yes.
+	// - 1: Enabled (default).
 	//
 	// example:
 	//
 	// 1
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5919,14 +6606,24 @@ func (s *CreateVectorIndexRequest) SetRegionId(v string) *CreateVectorIndexReque
 }
 
 type CreateVectorIndexResponseBody struct {
+	// Detailed information returned by the API.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution status. Value description:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// success
@@ -6092,6 +6789,8 @@ type DeleteCollectionRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace.
 	//
+	// >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	//
 	// example:
 	//
 	// mynamespace
@@ -6114,7 +6813,12 @@ type DeleteCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -6267,7 +6971,9 @@ type DeleteCollectionDataRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace.
+	// The name of the namespace. Default value: public.
+	//
+	// >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
 	//
 	// example:
 	//
@@ -6291,7 +6997,12 @@ type DeleteCollectionDataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -6784,9 +7495,10 @@ func (s *DeleteDBResourceGroupResponse) SetBody(v *DeleteDBResourceGroupResponse
 }
 
 type DeleteDocumentRequest struct {
-	// The name of the document collection.
+	// Document collection name.
 	//
-	// >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the list of created document collections.
 	//
 	// This parameter is required.
 	//
@@ -6794,15 +7506,19 @@ type DeleteDocumentRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the document.
+	// File name.
 	//
-	// >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
+	// > The name of an uploaded file. You can query the list of files using the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) API.
 	//
 	// This parameter is required.
 	//
@@ -6810,17 +7526,17 @@ type DeleteDocumentRequest struct {
 	//
 	// music.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password for the namespace.
 	//
-	// >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
 	//
 	// This parameter is required.
 	//
@@ -6829,6 +7545,8 @@ type DeleteDocumentRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6881,14 +7599,20 @@ func (s *DeleteDocumentRequest) SetRegionId(v string) *DeleteDocumentRequest {
 }
 
 type DeleteDocumentResponseBody struct {
+	// Detailed information returned by the API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Creation status, value description: - **success**: Success - **fail**: Fail
+	//
 	// example:
 	//
 	// success
@@ -6948,29 +7672,35 @@ func (s *DeleteDocumentResponse) SetBody(v *DeleteDocumentResponseBody) *DeleteD
 }
 
 type DeleteDocumentCollectionRequest struct {
+	// The name of the document collection to be deleted.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password for the namespace.
 	//
-	// >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
 	//
 	// This parameter is required.
 	//
@@ -6979,7 +7709,7 @@ type DeleteDocumentCollectionRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance is located.
 	//
 	// This parameter is required.
 	//
@@ -7028,19 +7758,23 @@ func (s *DeleteDocumentCollectionRequest) SetRegionId(v string) *DeleteDocumentC
 }
 
 type DeleteDocumentCollectionResponseBody struct {
+	// Return message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Status, with the following possible values:
 	//
-	// 	- **success**
+	// - **success**: Success.
 	//
-	// 	- **fail**
+	// - **fail**: Failure.
 	//
 	// example:
 	//
@@ -7215,22 +7949,24 @@ func (s *DeleteExtensionResponse) SetBody(v *DeleteExtensionResponseBody) *Delet
 }
 
 type DeleteExternalDataServiceRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// gp-bp10g78o9807yv9h3
+	// gp-xxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7263,6 +7999,8 @@ func (s *DeleteExternalDataServiceRequest) SetServiceId(v string) *DeleteExterna
 }
 
 type DeleteExternalDataServiceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -7409,13 +8147,15 @@ func (s *DeleteHadoopDataSourceResponse) SetBody(v *DeleteHadoopDataSourceRespon
 }
 
 type DeleteJDBCDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The data source ID.
+	// Data source ID.
 	//
 	// This parameter is required.
 	//
@@ -7423,9 +8163,9 @@ type DeleteJDBCDataSourceRequest struct {
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
 	//
 	// example:
 	//
@@ -7457,6 +8197,8 @@ func (s *DeleteJDBCDataSourceRequest) SetRegionId(v string) *DeleteJDBCDataSourc
 }
 
 type DeleteJDBCDataSourceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -7551,6 +8293,8 @@ type DeleteNamespaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -7673,6 +8417,111 @@ func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceRespons
 }
 
 func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRemoteADBDataSourceRequest struct {
+	// The service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The ID of the instance that uses the data provided by another instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-test
+	LocalDBInstanceId *string `json:"LocalDBInstanceId,omitempty" xml:"LocalDBInstanceId,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DeleteRemoteADBDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemoteADBDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemoteADBDataSourceRequest) SetDataSourceId(v string) *DeleteRemoteADBDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteRemoteADBDataSourceRequest) SetLocalDBInstanceId(v string) *DeleteRemoteADBDataSourceRequest {
+	s.LocalDBInstanceId = &v
+	return s
+}
+
+func (s *DeleteRemoteADBDataSourceRequest) SetOwnerId(v int64) *DeleteRemoteADBDataSourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DeleteRemoteADBDataSourceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// e9d60eb1-e90d-4bc6-a470-c8b767460858
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The job ID.
+	//
+	// example:
+	//
+	// 90000
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteRemoteADBDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemoteADBDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemoteADBDataSourceResponseBody) SetRequestId(v string) *DeleteRemoteADBDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRemoteADBDataSourceResponseBody) SetTaskId(v int32) *DeleteRemoteADBDataSourceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteRemoteADBDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRemoteADBDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRemoteADBDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemoteADBDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemoteADBDataSourceResponse) SetHeaders(v map[string]*string) *DeleteRemoteADBDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRemoteADBDataSourceResponse) SetStatusCode(v int32) *DeleteRemoteADBDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRemoteADBDataSourceResponse) SetBody(v *DeleteRemoteADBDataSourceResponseBody) *DeleteRemoteADBDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -8340,6 +9189,11 @@ type DescribeAccountsRequest struct {
 	//
 	// testuser
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The type of the database account that you want to query. Valid values: Super, Normal, and All. Default value: Super. If you set this parameter to Super, the information about the privileged account is returned. If you set this parameter to Normal, the information about all standard accounts is returned. If you set this parameter to All, the information about all database accounts is returned.
+	//
+	// example:
+	//
+	// Super
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The instance ID.
 	//
@@ -8377,7 +9231,7 @@ func (s *DescribeAccountsRequest) SetDBInstanceId(v string) *DescribeAccountsReq
 }
 
 type DescribeAccountsResponseBody struct {
-	// The name of the database account.
+	// The queried database accounts.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -8447,7 +9301,12 @@ type DescribeAccountsResponseBodyAccountsDBInstanceAccount struct {
 	//
 	// 1
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The type of the database account. Valid values: Super and Normal. Super indicates a privileged account and Normal indicates a standard account.
+	//
+	// example:
+	//
+	// Super
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -8529,30 +9388,46 @@ type DescribeActiveSQLRecordsRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2022-05-07T07:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The keyword used to filter queries.
+	//
 	// example:
 	//
 	// SELECT
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The maxmum amount of time consumed by traces. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 600
 	MaxDuration *string `json:"MaxDuration,omitempty" xml:"MaxDuration,omitempty"`
+	// The minimum amount of time consumed by traces. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 300
 	MinDuration *string `json:"MinDuration,omitempty" xml:"MinDuration,omitempty"`
+	// The field used to sort lock diagnostics records and the sorting order.
+	//
+	// Default value: `{"Field":"StartTime","Type":"Desc"}`, which indicates that lock diagnostics records are sorted by the start time in descending order. No other values are supported.
+	//
 	// example:
 	//
 	// {"Field":"StartTime","Type":"Desc"}
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2021-08-03T09:30Z
@@ -8627,6 +9502,8 @@ type DescribeActiveSQLRecordsResponseBody struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The queried SQL records.
 	Queries []*DescribeActiveSQLRecordsResponseBodyQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -9006,6 +9883,10 @@ type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIns
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of compute node specifications.
+	//
+	// example:
+	//
+	// 2C16G
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The specifications of each compute node.
 	//
@@ -9401,6 +10282,8 @@ type DescribeCollectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -10063,9 +10946,9 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) interface to view the instance IDs of all AnalyticDB for PostgreSQL instances in the target region.
 	//
 	// This parameter is required.
 	//
@@ -10074,11 +10957,11 @@ type DescribeDBInstanceAttributeRequest struct {
 	// gp-bp13ue79qk8y1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is no longer used.
+	// This parameter is deprecated and should not be passed.
 	//
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -10108,7 +10991,7 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceGroupId(v string) *Descr
 type DescribeDBInstanceAttributeResponseBody struct {
 	// The queried instance.
 	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -10152,484 +11035,501 @@ func (s *DescribeDBInstanceAttributeResponseBodyItems) SetDBInstanceAttribute(v 
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
-	// The service availability of the instance. Unit: %.
+	// Queries the current instance availability status, in percentage (%).
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to instances in the storage reserved mode.
 	//
 	// example:
 	//
 	// 100.0%
 	AvailabilityValue *string `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
-	// The access mode of the instance. Valid values:
+	// Access mode, with the following values:
 	//
-	// 	- **Performance**: standard mode.
+	// - **Performance**: Standard access mode.
 	//
-	// 	- **Safety**: safe mode.
+	// - **Safty**: High-security access mode.
 	//
-	// 	- **LVS**: Linux Virtual Server (LVS) mode.
+	// - **LVS**: LVS link mode.
 	//
 	// example:
 	//
 	// LVS
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The endpoint that is used to connect to the instance.
+	// Instance connection address.
 	//
 	// example:
 	//
 	// gp-bp13ue79qk8y1****-master.gpdb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The number of the minor version.
+	// Minor version number of the kernel.
 	//
 	// example:
 	//
 	// mm.v6.3.10.1-202207141918
 	CoreVersion *string `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
-	// The number of CPU cores per compute node.
+	// Number of CPU cores for the compute node, unit: Core.
 	//
 	// example:
 	//
 	// 2
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The number of CPU cores per node.
+	// Number of CPU cores per node.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to instances in the storage reserved mode.
 	//
 	// example:
 	//
 	// 0
 	CpuCoresPerNode *int32 `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
-	// The time when the instance was created.
+	// Instance creation time.
 	//
 	// example:
 	//
 	// 2022-08-11T09:16:26Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The edition of the instance. Valid values:
+	// Instance series, with the following values:
 	//
-	// 	- **Basic**: Basic Edition.
+	// - **Basic**: Basic Edition.
 	//
-	// 	- **HighAvailability**: High-availability Edition.
+	// - **HighAvailability**: High Availability Edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
-	// The instance type of the instance.
+	// Instance specification.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to reserved storage mode instances.
 	//
 	// example:
 	//
 	// gpdb.group.segsdx1
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The instance family of the instance. Valid values:
+	// Instance family, with the following values:
 	//
-	// 	- **s**: shared.
+	// - **s**: Shared type.
 	//
-	// 	- **x**: general-purpose.
+	// - **x**: General type.
 	//
-	// 	- **d**: dedicated.
+	// - **d**: Dedicated package.
 	//
-	// 	- **h**: dedicated host.
+	// - **h**: Dedicated physical machine.
 	//
 	// example:
 	//
 	// x
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	// The number of CPU cores.
+	// Number of CPU cores.
 	//
 	// example:
 	//
 	// 2
 	DBInstanceCpuCores *int32 `json:"DBInstanceCpuCores,omitempty" xml:"DBInstanceCpuCores,omitempty"`
-	// The description of the instance.
+	// Instance description.
 	//
 	// example:
 	//
 	// gp-bp13ue79qk8y1****
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The maximum disk throughput of the compute group. Unit: Mbit/s.
+	// Maximum BPS (disk throughput) of the compute group, in Mbps.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to reserved storage mode instances.
 	//
 	// example:
 	//
 	// 0
 	DBInstanceDiskMBPS *int64 `json:"DBInstanceDiskMBPS,omitempty" xml:"DBInstanceDiskMBPS,omitempty"`
-	// The number of compute groups.
+	// Number of compute groups.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to reserved storage mode instances.
 	//
 	// example:
 	//
 	// 0
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// gp-bp13ue79qk8y1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The memory capacity per compute node.
+	// Memory of the compute node.
 	//
-	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
+	// > The unit for storage-reserved mode is MB; for Serverless and storage-elastic modes, it is GB.
 	//
 	// example:
 	//
 	// 16
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
-	// The resource type of the instance. Valid values:
+	// Instance resource type, with the following values:
 	//
-	// 	- **Serverless**: Serverless mode.
+	// - **Serverless**: Serverless mode.
 	//
-	// 	- **StorageElastic**: elastic storage mode.
+	// - **StorageElastic**: Storage elastic mode.
 	//
-	// 	- **Classic**: reserved storage mode.
+	// - **Classic**: Storage reserved mode.
 	//
 	// example:
 	//
 	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter is deprecated and will not return any value.
 	//
 	// example:
 	//
-	// 2
+	// null
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The state of the instance. For more information, see the "Additional description of DBInstanceStatus" section of this topic.
+	// Instance status. For more details, see the supplementary explanation of the DBInstanceStatus parameter.
 	//
 	// example:
 	//
 	// Running
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The maximum storage capacity per node. Unit: GB.
+	// Maximum storage space of a single replica, in GB.
 	//
 	// example:
 	//
 	// 50
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The encryption key.
+	// The deployment mode.
 	//
-	// >  This parameter is returned only for instances that have disk encryption enabled.
+	// example:
+	//
+	// single
+	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// Encryption key.
+	//
+	// > This parameter is returned only for instances with disk encryption enabled.
 	//
 	// example:
 	//
 	// 0d2470df-da7b-4786-b981-************
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The encryption type. Valid values:
+	// Encryption type, with the following value:
 	//
-	// 	- **CloudDisk**: disk encryption.
+	// - **CloudDisk**: Cloud disk encryption.
 	//
-	// >  This parameter is returned only for instances that have disk encryption enabled.
+	// > This parameter is returned only for instances with cloud disk encryption.
 	//
 	// example:
 	//
 	// CloudDisk
 	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	// The database engine of the instance.
+	// Database engine.
 	//
 	// example:
 	//
 	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
+	// Database version.
 	//
 	// example:
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the instance. The time is displayed in UTC.
+	// Instance expiration time (in UTC).
 	//
-	// >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
+	// > The expiration time for pay-as-you-go instances is `2999-09-08T16:00:00Z`.
 	//
 	// example:
 	//
 	// 2999-09-08T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The disk type of the compute group. Valid values:
+	// Compute group machine type, with the following values:
 	//
-	// 	- **0**: SSD.
+	// - **0**: SSD
 	//
-	// 	- **1**: HDD.
+	// - **1**: HDD
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter applies only to storage-reserved mode instances.
 	//
 	// example:
 	//
 	// 0
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The wait period for the instance that has no traffic to become idle. Unit: seconds.
+	// Idle release waiting time. Unit: seconds.
 	//
-	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
+	// > This parameter is returned only for instances in the Serverless automatic scheduling mode.
 	//
 	// example:
 	//
 	// 600
 	IdleTime *int32 `json:"IdleTime,omitempty" xml:"IdleTime,omitempty"`
-	// The network type of the instance. Valid values:
+	// Instance network type, with the following values:
 	//
-	// 	- **Classic**: classic network.
+	// - **Classic**: Classic network.
 	//
-	// 	- **VPC**: VPC.
+	// - **VPC**: VPC network.
 	//
 	// example:
 	//
 	// VPC
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The lock mode of the instance. Valid values:
+	// Lock mode, with the following values:
 	//
-	// 	- **Unlock**: The instance is not locked.
+	// - **Unlock**: Normal.
 	//
-	// 	- **ManualLock**: The instance is manually locked.
+	// - **ManualLock**: Manually triggered lock.
 	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	// - **LockByExpiration**: Automatically locked when the instance expires.
 	//
-	// 	- **LockByRestoration**: The instance is automatically locked due to instance restoration.
+	// - **LockByRestoration**: Automatically locked before the instance rolls back.
 	//
-	// 	- **LockByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is full.
+	// - **LockByDiskQuota**: Automatically locked when the instance space is full.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter is deprecated and will not return any value.
 	//
 	// example:
 	//
 	// null
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The end time of the maintenance window.
+	// Maintenance end time.
 	//
 	// example:
 	//
 	// 22:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
+	// Maintenance start time.
 	//
 	// example:
 	//
 	// 18:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The amount of coordinator node resources.
+	// Master resources.
 	//
 	// example:
 	//
 	// 4
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	// The number of coordinator nodes.
+	// Number of Master nodes.
 	//
 	// example:
 	//
 	// 1
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
-	// The maximum number of concurrent connections to the instance.
+	// Maximum number of concurrent connections for the instance.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to reserved storage mode instances.
 	//
 	// example:
 	//
 	// 500
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The memory capacity per node. The unit of this parameter can be one of the valid values of **MemoryUnit**.
+	// Memory size per replica, see the **MemoryUnit*	- parameter for the unit.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to instances in the storage reserved mode.
 	//
 	// example:
 	//
 	// 0
 	MemoryPerNode *int32 `json:"MemoryPerNode,omitempty" xml:"MemoryPerNode,omitempty"`
-	// The memory capacity per compute node.
+	// Memory size of the compute node.
 	//
-	// >  The unit of this parameter is MB for instances in reserved storage mode and GB for instances in Serverless mode or elastic storage mode.
+	// > The unit is MB for the storage reserved mode; GB for Serverless and storage elastic modes.
 	//
 	// example:
 	//
 	// 16
 	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The unit of the memory capacity.
+	// Memory unit.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to reserved storage mode instances.
 	//
 	// example:
 	//
 	// GB
 	MemoryUnit *string `json:"MemoryUnit,omitempty" xml:"MemoryUnit,omitempty"`
-	// The minor version of the instance.
+	// Minor version of the kernel.
 	//
 	// example:
 	//
 	// 6.3.10.1-202207141918
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The billing method of the instance. Valid values:
+	// Billing type, with the following values:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-as-you-go.
 	//
-	// 	- **Prepaid**: subscription.
+	// - **Prepaid**: Subscription.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The port number that is used to connect to the instance.
+	// Instance port number.
 	//
 	// example:
 	//
 	// 5432
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The service type.
+	//
+	// example:
+	//
+	// standard
 	ProdType *string `json:"ProdType,omitempty" xml:"ProdType,omitempty"`
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter has been deprecated and will not return a value.
 	//
 	// example:
 	//
 	// null
 	ReadDelayTime *string `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
-	// The region ID of the instance.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// ID of the resource group where the instance is located.
 	//
 	// example:
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The running duration of the instance.
+	// Instance running time.
 	//
 	// example:
 	//
 	// 4 days 22:58:55
 	RunningTime *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// An invalid parameter. It is no longer returned when you call this operation.
+	// This parameter is deprecated and will not return any value.
 	//
 	// example:
 	//
-	// 127.0.0.1
+	// null
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The performance level of ESSDs. Only **PL1*	- is supported.
+	// Performance Level (PL), currently only **PL1*	- is supported.
 	//
 	// example:
 	//
 	// PL1
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
-	// The number of compute nodes.
+	// Number of Segment nodes.
 	//
-	// >  This parameter is returned only for instances in elastic storage mode or Serverless manual scheduling mode.
+	// > This parameter applies only to instances in the storage elastic mode and Serverless manual scheduling mode.
 	//
 	// example:
 	//
 	// 4
 	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	// The number of compute groups.
+	// Number of compute groups.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter applies only to storage-reserved mode instances.
 	//
 	// example:
 	//
 	// 0
 	SegmentCounts *int32 `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
-	// The type of the Serverless mode. Valid values:
+	// The mode of the Serverless instance, with the following values:
 	//
-	// 	- **Manual**: manual scheduling.
+	// - **Manual**: Manual scheduling.
 	//
-	// 	- **Auto**: automatic scheduling.
+	// - **Auto**: Automatic scheduling.
 	//
-	// >  This parameter is returned only for instances in Serverless mode.
+	// > This parameter is returned only for Serverless mode instances.
 	//
 	// example:
 	//
 	// Auto
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	// The threshold of computing resources. Unit: AnalyticDB compute units (ACUs).
+	// Compute resource threshold. Unit: ACU.
 	//
-	// >  This parameter is returned only for instances in Serverless automatic scheduling mode.
+	// > This parameter is returned only for instances in the Serverless automatic scheduling mode.
 	//
 	// example:
 	//
 	// 32
 	ServerlessResource *int32 `json:"ServerlessResource,omitempty" xml:"ServerlessResource,omitempty"`
-	// The time when the instance started to run.
+	// The secondary zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The time when the instance started running.
 	//
 	// example:
 	//
 	// 2022-08-11T09:26:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The storage capacity per node. The unit of this parameter can be one of the valid values of **StorageUnit**.
+	// Storage size per replica, see the **StorageUnit*	- parameter for units.
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter applies only to storage-reserved mode instances.
 	//
 	// example:
 	//
 	// 0
 	StoragePerNode *int32 `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
-	// The storage capacity of the instance. Unit: GB.
+	// Storage space size, unit: GB.
 	//
 	// example:
 	//
 	// 50
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The storage type of the instance. Valid values:
+	// Storage type, with the following values:
 	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD).
+	// - **cloud_essd**: ESSD cloud disk.
 	//
-	// 	- **cloud_efficiency**: ultra disk.
+	// - **cloud_efficiency**: Efficient cloud disk.
 	//
-	// >  This parameter is returned only for instances in elastic storage mode.
+	// > This parameter is only applicable to instances in the storage elastic mode.
 	//
 	// example:
 	//
 	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The unit of the storage capacity. Valid values:
+	// Storage unit, with the following values:
 	//
-	// 	- **GB SSD**
+	// - **GB SSD**
 	//
-	// 	- **TB SSD**
+	// - **TB SSD**
 	//
-	// 	- **GB HDD**
+	// - **GB HDD**
 	//
-	// >  This parameter is returned only for instances in reserved storage mode.
+	// > This parameter is only applicable to instances in the storage reserved mode.
 	//
 	// example:
 	//
 	// GB SSD
 	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
-	// Indicates whether the instance supports backup and restoration. Valid values:
+	// Indicates whether backup recovery is supported, with the following values:
 	//
-	// 	- **true**
+	// - **true**: Backup recovery is supported.
 	//
-	// 	- **false**
+	// - **false**: Backup recovery is not supported.
 	//
 	// example:
 	//
 	// true
 	SupportRestore *bool `json:"SupportRestore,omitempty" xml:"SupportRestore,omitempty"`
-	// The tags that are added to the instance.
+	// Tag key-value pairs.
 	Tags *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch ID of the instance.
+	// vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1cpq8mr64paltkb****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether vector search engine optimization is enabled. Valid values:
+	// Indicates whether vector engine optimization is enabled. The values are as follows:
 	//
-	// 	- **enabled**
+	// - **enabled**: Indicates that vector engine optimization is enabled.
 	//
-	// 	- **disabled**
+	// - **disabled**: Indicates that vector engine optimization is disabled.
 	//
 	// example:
 	//
 	// enabled
 	VectorConfigurationStatus *string `json:"VectorConfigurationStatus,omitempty" xml:"VectorConfigurationStatus,omitempty"`
-	// The virtual private cloud (VPC) ID of the instance.
+	// VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp19ame5m1r3oejns****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// Zone ID.
 	//
 	// example:
 	//
@@ -10742,6 +11642,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBI
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceStorage(v int64) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.DBInstanceStorage = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDeployMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DeployMode = &v
 	return s
 }
 
@@ -10905,6 +11810,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSer
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetStandbyZoneId(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.StandbyZoneId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetStartTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.StartTime = &v
 	return s
@@ -10978,13 +11888,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTags) Se
 }
 
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag struct {
-	// The tag key.
+	// Tag key.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// Tag value.
 	//
 	// example:
 	//
@@ -11050,8 +11960,18 @@ type DescribeDBInstanceDataBloatRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The sorting order.
+	//
+	// example:
+	//
+	// {Field: TableName, Type: Desc}
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
@@ -11351,8 +12271,18 @@ type DescribeDBInstanceDataSkewRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// order by condition
+	//
+	// example:
+	//
+	// {Field: TableSkew, Type: Desc}
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// example:
@@ -12593,8 +13523,18 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// order by search condition
+	//
+	// example:
+	//
+	// {Field: TableName, Type: Desc}
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
 	// example:
@@ -13813,7 +14753,8 @@ type DescribeDBInstanceSupportMaxPerformanceResponseBody struct {
 	// example:
 	//
 	// gp-bp***************
-	DBInstanceId *string                                                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The queried performance metric.
 	Performances *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -13871,8 +14812,16 @@ type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance 
 	// ecs or disk
 	Bottleneck *string `json:"Bottleneck,omitempty" xml:"Bottleneck,omitempty"`
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// adbpg_status,adbpg_disk_status,adbpg_connection_status,adbgp_segment_disk_usage_percent_max,adbpg_master_disk_usage_percent_max,adbpg_disk_usage_percent
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The unit of the performance metric.
+	//
+	// example:
+	//
+	// %
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The value of the performance metric.
 	//
@@ -14561,6 +15510,8 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// product type
+	//
 	// example:
 	//
 	// standard
@@ -17494,9 +18445,9 @@ func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoRe
 }
 
 type DescribeDocumentRequest struct {
-	// The name of the document collection.
+	// Document collection name.
 	//
-	// >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
 	//
 	// This parameter is required.
 	//
@@ -17504,15 +18455,19 @@ type DescribeDocumentRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the document.
+	// Document name.
 	//
-	// >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
+	// > You can view the list of documents using the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) API.
 	//
 	// This parameter is required.
 	//
@@ -17520,17 +18475,17 @@ type DescribeDocumentRequest struct {
 	//
 	// music.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create it via the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list through the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password for the namespace.
 	//
-	// >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
 	//
 	// This parameter is required.
 	//
@@ -17539,6 +18494,8 @@ type DescribeDocumentRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17591,66 +18548,102 @@ func (s *DescribeDocumentRequest) SetRegionId(v string) *DescribeDocumentRequest
 }
 
 type DescribeDocumentResponseBody struct {
+	// URL of the split file, valid for 2 hours. The file format is JSONL, with each line formatted as `{"page_content":"*****", "metadata": {"**":"***","**":"***"}`.
+	//
 	// example:
 	//
 	// http://oss.xxx/music_chunk.jsonl
 	ChunkFileUrl *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	// Number of documents after splitting.
+	//
 	// example:
 	//
 	// 100
 	DocsCount *int32 `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	// Name of the document loader.
+	//
 	// example:
 	//
 	// RapidOCRPDFLoader
 	DocumentLoader *string `json:"DocumentLoader,omitempty" xml:"DocumentLoader,omitempty"`
+	// File extension.
+	//
 	// example:
 	//
 	// txt
 	FileExt *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	// MD5 value of the file.
+	//
 	// example:
 	//
 	// b8078c9591413550f8963e37e24abcea
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	// The last modified time of the document.
+	//
 	// example:
 	//
 	// 2023-11-01 10:01:01.123456
 	FileMtime *string `json:"FileMtime,omitempty" xml:"FileMtime,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// music.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// File size, in bytes.
+	//
 	// example:
 	//
 	// 10000
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// Download URL of the document, valid for 2 hours.
+	//
 	// example:
 	//
 	// http://oss.xxx/music.txt
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// Document version. This value increments by 1 each time the same document is updated and uploaded.
+	//
 	// example:
 	//
 	// 1
 	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// Detailed information returned by the API.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Download URL for the plain text (without metadata) after splitting, each line is a chunk, valid for 2 hours.
+	//
 	// example:
 	//
 	// http://oss.xxx/music_plain_chunk.txt
 	PlainChunkFileUrl *string `json:"PlainChunkFileUrl,omitempty" xml:"PlainChunkFileUrl,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Source of the document.
+	//
 	// example:
 	//
-	// http://oss.xxx/music.txt
+	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// API execution status, with values as follows:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Name of the text splitter.
+	//
 	// example:
 	//
 	// ChineseRecursiveTextSplitter
@@ -17931,9 +18924,9 @@ func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResp
 }
 
 type DescribeDownloadSQLLogsRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -17957,9 +18950,9 @@ func (s *DescribeDownloadSQLLogsRequest) SetDBInstanceId(v string) *DescribeDown
 }
 
 type DescribeDownloadSQLLogsResponseBody struct {
-	// The URL that is used to download the file.
+	// List of download records.
 	Records []*DescribeDownloadSQLLogsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -17986,22 +18979,38 @@ func (s *DescribeDownloadSQLLogsResponseBody) SetRequestId(v string) *DescribeDo
 }
 
 type DescribeDownloadSQLLogsResponseBodyRecords struct {
+	// Download record ID.
+	//
 	// example:
 	//
 	// 1150
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	// Download link.
+	//
 	// example:
 	//
 	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/*****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// Error message
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// 20220509113448-20220509173448.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Task status, with possible values being:
+	//
+	// - **running**: Downloading.
+	//
+	// - **finished**: Completed.
+	//
+	// - **failed**: Download failed.
+	//
 	// example:
 	//
 	// finished
@@ -18087,6 +19096,8 @@ type DescribeExternalDataServiceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18119,14 +19130,20 @@ func (s *DescribeExternalDataServiceRequest) SetServiceId(v string) *DescribeExt
 }
 
 type DescribeExternalDataServiceResponseBody struct {
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the service was last modified.
+	//
 	// example:
 	//
 	// 2019-09-08T17:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -18137,6 +19154,8 @@ type DescribeExternalDataServiceResponseBody struct {
 	//
 	// test-adbpgss
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// 1
@@ -18153,6 +19172,8 @@ type DescribeExternalDataServiceResponseBody struct {
 	//
 	// 2
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// The status of the operation.
+	//
 	// example:
 	//
 	// Running
@@ -18363,6 +19384,10 @@ type DescribeHadoopConfigsRequest struct {
 	//
 	// c-xxx
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18414,6 +19439,8 @@ type DescribeHadoopConfigsResponseBody struct {
 	//
 	// hdfs-site
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The configuration value.
+	//
 	// example:
 	//
 	// <?xml version="1.0"?>
@@ -18497,6 +19524,10 @@ type DescribeHadoopDataSourceRequest struct {
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -18559,16 +19590,18 @@ type DescribeHadoopDataSourceResponseBody struct {
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The status of the service. Valid values:
 	//
-	// 	- init
+	// 	- Init
 	//
-	// 	- running
+	// 	- Running
 	//
-	// 	- exception
+	// 	- Exception
 	//
 	// example:
 	//
 	// Running
 	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// hive
@@ -18578,7 +19611,12 @@ type DescribeHadoopDataSourceResponseBody struct {
 	// example:
 	//
 	// c-1234567
-	EmrInstanceId         *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
+	// The Id of External Data Service
+	//
+	// example:
+	//
+	// 2988
 	ExternalDataServiceId *string `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
 	// The content of the Hadoop hdfs-site.xml file.
 	//
@@ -18594,17 +19632,15 @@ type DescribeHadoopDataSourceResponseBody struct {
 	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
 	// The type of the external service. Valid values:
 	//
-	// 	- HDFS
+	// 	- emr
 	//
-	// 	- HIVE
+	// 	- selfCreate
 	//
 	// example:
 	//
 	// HDFS
 	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
-	// 	- The address and hostname of the Hadoop cluster (data source) in the /etc/hosts directory.
-	//
-	// *
+	// The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
 	//
 	// example:
 	//
@@ -18616,13 +19652,18 @@ type DescribeHadoopDataSourceResponseBody struct {
 	//
 	// xxxxxx
 	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
-	// The content of the Hadoop MapReduceConf file.
+	// The content of the Hadoop mapred-site.xml file.
 	//
 	// example:
 	//
 	// xxxxxx
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
-	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The time when the service was last modified.
+	//
+	// example:
+	//
+	// 2024-08-23T02:11:47Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -19582,18 +20623,24 @@ func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBo
 }
 
 type DescribeIMVInfosRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The name of MV
+	//
 	// example:
 	//
 	// public."mv1"
@@ -19624,12 +20671,18 @@ func (s *DescribeIMVInfosRequest) SetMVName(v string) *DescribeIMVInfosRequest {
 }
 
 type DescribeIMVInfosResponseBody struct {
+	// The ID of the instance.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The queried materialized views.
 	ImvInfos []*DescribeIMVInfosResponseBodyImvInfos `json:"ImvInfos,omitempty" xml:"ImvInfos,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -19733,6 +20786,10 @@ func (s *DescribeIMVInfosResponse) SetBody(v *DescribeIMVInfosResponseBody) *Des
 }
 
 type DescribeJDBCDataSourceRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19768,6 +20825,8 @@ func (s *DescribeJDBCDataSourceRequest) SetDataSourceId(v string) *DescribeJDBCD
 }
 
 type DescribeJDBCDataSourceResponseBody struct {
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
@@ -19778,10 +20837,14 @@ type DescribeJDBCDataSourceResponseBody struct {
 	//
 	// mysql data source config
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The name of data soruce
+	//
 	// example:
 	//
 	// hdfs_pxf
@@ -19803,7 +20866,12 @@ type DescribeJDBCDataSourceResponseBody struct {
 	// example:
 	//
 	// MySQL
-	DataSourceType        *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The id of the external data service
+	//
+	// example:
+	//
+	// 2989
 	ExternalDataServiceId *string `json:"ExternalDataServiceId,omitempty" xml:"ExternalDataServiceId,omitempty"`
 	// The JDBC connection string.
 	//
@@ -19823,11 +20891,20 @@ type DescribeJDBCDataSourceResponseBody struct {
 	//
 	// xxxxxx
 	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
-	ModifyTime   *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The time when the data source was last modified.
+	//
+	// example:
+	//
+	// 2024-08-27T02:01:10Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The message of the status
+	//
 	// example:
 	//
 	// ""
@@ -20415,6 +21492,8 @@ type DescribeNamespaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -22782,7 +23861,13 @@ func (s *DescribeSQLLogsV2Request) SetUser(v string) *DescribeSQLLogsV2Request {
 }
 
 type DescribeSQLLogsV2ResponseBody struct {
-	// Details of the SQL logs.
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// account name invalid
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The queried SQL execution logs.
 	Items []*DescribeSQLLogsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -22810,6 +23895,11 @@ func (s DescribeSQLLogsV2ResponseBody) String() string {
 
 func (s DescribeSQLLogsV2ResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSQLLogsV2ResponseBody) SetAccessDeniedDetail(v string) *DescribeSQLLogsV2ResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeSQLLogsV2ResponseBody) SetItems(v []*DescribeSQLLogsV2ResponseBodyItems) *DescribeSQLLogsV2ResponseBody {
@@ -22851,6 +23941,18 @@ type DescribeSQLLogsV2ResponseBodyItems struct {
 	//
 	// master
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// InternalError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// User not authorized to operate on the specified resource.
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// The execution duration of the SQL statement.
 	//
 	// example:
@@ -22885,6 +23987,12 @@ type DescribeSQLLogsV2ResponseBodyItems struct {
 	//
 	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The query ID.
+	//
+	// example:
+	//
+	// 2548026401648157601713924318883
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The number of entries returned.
 	//
 	// example:
@@ -22903,6 +24011,12 @@ type DescribeSQLLogsV2ResponseBodyItems struct {
 	//
 	// 1
 	ScanRowCounts *int64 `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
+	// The ID of the session.
+	//
+	// example:
+	//
+	// efc33bd7-f1dc-4b24-b4fb-ab0d5329b7bb
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The source IP address.
 	//
 	// example:
@@ -22940,6 +24054,16 @@ func (s *DescribeSQLLogsV2ResponseBodyItems) SetDBRole(v string) *DescribeSQLLog
 	return s
 }
 
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetErrorCode(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetErrorMsg(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.ErrorMsg = &v
+	return s
+}
+
 func (s *DescribeSQLLogsV2ResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogsV2ResponseBodyItems {
 	s.ExecuteCost = &v
 	return s
@@ -22965,6 +24089,11 @@ func (s *DescribeSQLLogsV2ResponseBodyItems) SetOperationType(v string) *Describ
 	return s
 }
 
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetQueryId(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.QueryId = &v
+	return s
+}
+
 func (s *DescribeSQLLogsV2ResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogsV2ResponseBodyItems {
 	s.ReturnRowCounts = &v
 	return s
@@ -22977,6 +24106,11 @@ func (s *DescribeSQLLogsV2ResponseBodyItems) SetSQLText(v string) *DescribeSQLLo
 
 func (s *DescribeSQLLogsV2ResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogsV2ResponseBodyItems {
 	s.ScanRowCounts = &v
+	return s
+}
+
+func (s *DescribeSQLLogsV2ResponseBodyItems) SetSessionId(v string) *DescribeSQLLogsV2ResponseBodyItems {
+	s.SessionId = &v
 	return s
 }
 
@@ -23165,6 +24299,10 @@ type DescribeStreamingDataServiceRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -23238,14 +24376,24 @@ type DescribeStreamingDataServiceResponseBody struct {
 	// example:
 	//
 	// 192.168.0.1
-	ServiceIp      *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceManaged *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// The service is managed by other aliyun product or not.
+	//
+	// example:
+	//
+	// False
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	// The name of the service.
 	//
 	// example:
 	//
 	// test-adbpgss
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service account uid of the aliyun product
+	//
+	// example:
+	//
+	// 123456
 	ServiceOwnerId *string `json:"ServiceOwnerId,omitempty" xml:"ServiceOwnerId,omitempty"`
 	// The port number of the service.
 	//
@@ -23373,18 +24521,26 @@ func (s *DescribeStreamingDataServiceResponse) SetBody(v *DescribeStreamingDataS
 }
 
 type DescribeStreamingDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -23415,49 +24571,69 @@ func (s *DescribeStreamingDataSourceRequest) SetRegionId(v string) *DescribeStre
 }
 
 type DescribeStreamingDataSourceResponseBody struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Data source configuration information.
+	//
 	// example:
 	//
 	// {"brokers":"broker0:9091,broker1:9091","topic":"topic"}
 	DataSourceConfig *string `json:"DataSourceConfig,omitempty" xml:"DataSourceConfig,omitempty"`
+	// Data source description.
+	//
 	// example:
 	//
 	// test-kafka
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// Data source ID.
+	//
 	// example:
 	//
 	// 1
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Data source name.
+	//
 	// example:
 	//
 	// test-kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Data source type, values include:
+	//
+	//  -  kafka
+	//
 	// example:
 	//
 	// kafka
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// Service status message, for example, in case of an exception, it will show the reason for the exception. In normal Running state, this value is empty.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// External data service ID.
+	//
 	// example:
 	//
 	// 1
 	ServiceId *int32 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The status of the service. Valid values:
+	// Service status:
 	//
-	// 	- init
+	// - Initializing init
 	//
-	// 	- running
+	// - Running running
 	//
-	// 	- exception
+	// - Exception exception
 	//
 	// example:
 	//
@@ -23553,7 +24729,7 @@ func (s *DescribeStreamingDataSourceResponse) SetBody(v *DescribeStreamingDataSo
 }
 
 type DescribeStreamingJobRequest struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -23561,7 +24737,7 @@ type DescribeStreamingJobRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The job ID.
+	// Job ID.
 	//
 	// This parameter is required.
 	//
@@ -23569,6 +24745,10 @@ type DescribeStreamingJobRequest struct {
 	//
 	// 1
 	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -23599,17 +24779,19 @@ func (s *DescribeStreamingJobRequest) SetRegionId(v string) *DescribeStreamingJo
 }
 
 type DescribeStreamingJobResponseBody struct {
-	// The username of the account.
+	// Target database account.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// Delivery guarantee.
+	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// The time when the job was created.
+	// Creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -23617,52 +24799,66 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the data source.
+	// Data source ID.
 	//
 	// example:
 	//
-	// test-kafka
+	// 2
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Data source name.
+	//
 	// example:
 	//
 	// test_kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The destination fields.
+	// Target data table mapping field list.
 	DestColumns []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
-	// The name of the destination database.
+	// Target database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	// Target namespace.
+	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// The name of the destination table.
+	// Target table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	// When data in Kafka does not match the ADBPG target table, it can cause write failures. This value represents the number of error rows allowed; if exceeded, the task will fail.
+	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int32 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
-	// The information about the job status. For example, if the job is in the Exception state, the cause of the exception is displayed. If the job is in the Running state, this parameter is left empty.
+	// Service status information, such as the reason for an exception. It is empty in the normal Running state.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Fallback offset, which is the fallback position
+	//
+	// - The FallbackOffset parameter defines the behavior when the consumer has not requested a specific offset to consume or the requested offset exceeds the current record\\"s offset information in the Kafka cluster. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+	//
 	// example:
 	//
 	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// Kafka group name
+	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Job configuration file.
+	//
 	// example:
 	//
 	// DATABASE: adbpgss_test
@@ -23905,30 +25101,37 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// The description of the job.
+	// Job description.
 	//
 	// example:
 	//
 	// test_job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The job ID.
+	// Job ID.
 	//
 	// example:
 	//
 	// 1
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the job.
+	// Job name.
 	//
 	// example:
 	//
 	// test-job
-	JobName      *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
 	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
+	// Configuration mode
+	//
+	// 1. Basic mode requires specifying some configuration fields
+	//
+	// 1. Professional mode supports submitting YAML files
+	//
 	// example:
 	//
 	// basic/professional
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The time when the job was last modified.
+	// Last modified time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -23936,36 +25139,37 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	// 2019-09-08T17:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The password of the account.
+	// Target database password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The source fields.
+	// Source field list.
 	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
-	// The status of the job. Valid values:
+	// Service status, with possible values:
 	//
-	// 	- Init: The job is being initialized.
+	// - Init: Initializing
 	//
-	// 	- Running: The job is running.
+	// - Running: Running
 	//
-	// 	- Exception: The job encounters an exception.
+	// - Exception: Exception
 	//
-	// 	- Paused: The job is paused.
+	// - Paused: Paused
 	//
 	// example:
 	//
 	// Running
-	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
 	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
-	// The write mode.
+	// Write mode.
 	//
 	// example:
 	//
@@ -27051,6 +28255,12 @@ type GetUploadDocumentJobResponseBodyJob struct {
 	//
 	// Failed to connect database.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// InternalError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The job ID.
 	//
 	// example:
@@ -27114,6 +28324,11 @@ func (s *GetUploadDocumentJobResponseBodyJob) SetError(v string) *GetUploadDocum
 	return s
 }
 
+func (s *GetUploadDocumentJobResponseBodyJob) SetErrorCode(v string) *GetUploadDocumentJobResponseBodyJob {
+	s.ErrorCode = &v
+	return s
+}
+
 func (s *GetUploadDocumentJobResponseBodyJob) SetId(v string) *GetUploadDocumentJobResponseBodyJob {
 	s.Id = &v
 	return s
@@ -27135,6 +28350,11 @@ func (s *GetUploadDocumentJobResponseBodyJob) SetUpdateTime(v string) *GetUpload
 }
 
 type GetUploadDocumentJobResponseBodyUsage struct {
+	// The count of embedding entries.
+	//
+	// example:
+	//
+	// 10
 	EmbeddingEntries *int32 `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
 	// The number of tokens that are used for vectorization.
 	//
@@ -27246,7 +28466,12 @@ type GetUpsertCollectionDataJobRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -27907,6 +29132,8 @@ type InitVectorDatabaseRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -28062,6 +29289,8 @@ type ListCollectionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -28742,6 +29971,10 @@ type ListDocumentsRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28846,6 +30079,8 @@ type ListDocumentsResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The queried documents.
 	Items *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Successful
@@ -28856,6 +30091,8 @@ type ListDocumentsResponseBody struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -28990,16 +30227,24 @@ func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocum
 }
 
 type ListExternalDataServicesRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
@@ -29041,16 +30286,22 @@ func (s *ListExternalDataServicesRequest) SetRegionId(v string) *ListExternalDat
 }
 
 type ListExternalDataServicesResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried services.
 	ServiceItems []*ListExternalDataServicesResponseBodyServiceItems `json:"ServiceItems,omitempty" xml:"ServiceItems,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -29252,6 +30503,8 @@ type ListExternalDataSourcesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -29386,6 +30639,8 @@ type ListExternalDataSourcesResponseBodyItems struct {
 	//
 	// HDFS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The Id of external data service
+	//
 	// example:
 	//
 	// 123
@@ -29587,6 +30842,7 @@ func (s *ListInstanceExtensionsRequest) SetRegionId(v string) *ListInstanceExten
 }
 
 type ListInstanceExtensionsResponseBody struct {
+	// The queried extensions.
 	Items []*ListInstanceExtensionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -29811,6 +31067,8 @@ type ListNamespacesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -29985,6 +31243,267 @@ func (s *ListNamespacesResponse) SetStatusCode(v int32) *ListNamespacesResponse 
 }
 
 func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNamespacesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRemoteADBDataSourcesRequest struct {
+	// Instance name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Data source ID.
+	//
+	// example:
+	//
+	// 119
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ListRemoteADBDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemoteADBDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemoteADBDataSourcesRequest) SetDBInstanceId(v string) *ListRemoteADBDataSourcesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesRequest) SetDataSourceId(v string) *ListRemoteADBDataSourcesRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesRequest) SetOwnerId(v int64) *ListRemoteADBDataSourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ListRemoteADBDataSourcesResponseBody struct {
+	// Returns the successfully added data sharing service data.
+	DataSourceItems *ListRemoteADBDataSourcesResponseBodyDataSourceItems `json:"DataSourceItems,omitempty" xml:"DataSourceItems,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// e9d60eb1-e90d-4bc6-a470-c8b767460858
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID.
+	//
+	// example:
+	//
+	// 90000
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListRemoteADBDataSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemoteADBDataSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemoteADBDataSourcesResponseBody) SetDataSourceItems(v *ListRemoteADBDataSourcesResponseBodyDataSourceItems) *ListRemoteADBDataSourcesResponseBody {
+	s.DataSourceItems = v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBody) SetRequestId(v string) *ListRemoteADBDataSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBody) SetTaskId(v int32) *ListRemoteADBDataSourcesResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ListRemoteADBDataSourcesResponseBodyDataSourceItems struct {
+	RemoteDataSources []*ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources `json:"RemoteDataSources,omitempty" xml:"RemoteDataSources,omitempty" type:"Repeated"`
+}
+
+func (s ListRemoteADBDataSourcesResponseBodyDataSourceItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemoteADBDataSourcesResponseBodyDataSourceItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItems) SetRemoteDataSources(v []*ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) *ListRemoteADBDataSourcesResponseBodyDataSourceItems {
+	s.RemoteDataSources = v
+	return s
+}
+
+type ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources struct {
+	// Data source name
+	//
+	// example:
+	//
+	// db1_gptest1_to_db2_gp-test2
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Local database name
+	//
+	// example:
+	//
+	// db1
+	LocalDatabase *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
+	// Local instance name
+	//
+	// example:
+	//
+	// gp-test1
+	LocalInstanceName *string `json:"LocalInstanceName,omitempty" xml:"LocalInstanceName,omitempty"`
+	// Manager user name
+	//
+	// example:
+	//
+	// admin
+	ManagerUserName *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Remote database name
+	//
+	// example:
+	//
+	// db2
+	RemoteDatabase *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
+	// Remote instance name
+	//
+	// example:
+	//
+	// gp-test2
+	RemoteInstanceName *string `json:"RemoteInstanceName,omitempty" xml:"RemoteInstanceName,omitempty"`
+	// Data source status
+	//
+	// example:
+	//
+	// creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User name
+	//
+	// example:
+	//
+	// user1
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetDataSourceName(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetDescription(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetId(v int64) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetLocalDatabase(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.LocalDatabase = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetLocalInstanceName(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.LocalInstanceName = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetManagerUserName(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.ManagerUserName = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetRegionId(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetRemoteDatabase(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.RemoteDatabase = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetRemoteInstanceName(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.RemoteInstanceName = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetStatus(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources) SetUserName(v string) *ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources {
+	s.UserName = &v
+	return s
+}
+
+type ListRemoteADBDataSourcesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRemoteADBDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRemoteADBDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemoteADBDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemoteADBDataSourcesResponse) SetHeaders(v map[string]*string) *ListRemoteADBDataSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponse) SetStatusCode(v int32) *ListRemoteADBDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRemoteADBDataSourcesResponse) SetBody(v *ListRemoteADBDataSourcesResponseBody) *ListRemoteADBDataSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -30453,21 +31972,33 @@ func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsRe
 }
 
 type ListStreamingDataServicesRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Page number, greater than 0 and not exceeding the maximum value of Integer, default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page, with the following values:
+	//
+	// - 30 (default)
+	//
+	// - 50
+	//
+	// - 100
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
+	// Region ID
 	//
 	// example:
 	//
@@ -30504,11 +32035,16 @@ func (s *ListStreamingDataServicesRequest) SetRegionId(v string) *ListStreamingD
 }
 
 type ListStreamingDataServicesResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns real-time data service items
 	ServiceItems []*ListStreamingDataServicesResponseBodyServiceItems `json:"ServiceItems,omitempty" xml:"ServiceItems,omitempty" type:"Repeated"`
+	// Total record count.
+	//
 	// example:
 	//
 	// 1
@@ -30539,44 +32075,84 @@ func (s *ListStreamingDataServicesResponseBody) SetTotalRecordCount(v int32) *Li
 }
 
 type ListStreamingDataServicesResponseBodyServiceItems struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Last modified time
+	//
 	// example:
 	//
 	// 2019-09-08T17:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Service description.
+	//
 	// example:
 	//
 	// test-adbpgss
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// Service ID.
+	//
 	// example:
 	//
 	// 1
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// Service IP.
+	//
 	// example:
 	//
 	// 192.168.0.1
-	ServiceIp      *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	ServiceManaged *bool   `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
+	// Whether it is a managed service.
+	//
+	// example:
+	//
+	// true
+	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	// Service name.
+	//
 	// example:
 	//
 	// test-adbpgss
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// Service owner ID.
+	//
+	// example:
+	//
+	// 123
 	ServiceOwnerId *string `json:"ServiceOwnerId,omitempty" xml:"ServiceOwnerId,omitempty"`
+	// Service port.
+	//
 	// example:
 	//
 	// 5432
 	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// Service specification (in CU).
+	//
 	// example:
 	//
-	// 2
+	// 8
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+	// Service type, with the following value:
+	//
+	// - **adbpgss**
+	//
 	// example:
 	//
 	// adbpgss
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// Service status, with the following values:
+	//
+	// - Init: Initializing
+	//
+	// - Running: In operation
+	//
+	// - Exception: Abnormal
+	//
+	// - Paused: Suspended
+	//
 	// example:
 	//
 	// Running
@@ -30957,16 +32533,26 @@ func (s *ListStreamingDataSourcesResponse) SetBody(v *ListStreamingDataSourcesRe
 }
 
 type ListStreamingJobsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Page number, greater than 0 and not exceeding the maximum value of Integer. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page, with the following options:
+	//
+	// - **30*	- - **50*	- - **100**
+	//
+	// Default value: 30.
+	//
 	// example:
 	//
 	// kafka
@@ -31012,18 +32598,26 @@ func (s *ListStreamingJobsRequest) SetRegionId(v string) *ListStreamingJobsReque
 type ListStreamingJobsResponseBody struct {
 	// The queried jobs.
 	JobItems []*ListStreamingJobsResponseBodyJobItems `json:"JobItems,omitempty" xml:"JobItems,omitempty" type:"Repeated"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 2
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 2
@@ -31865,8 +33459,6 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// 	- The description must be 2 to 256 characters in length.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// testAccoutdescribe
@@ -31879,6 +33471,12 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// testAccout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID.
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
@@ -31906,6 +33504,11 @@ func (s *ModifyAccountDescriptionRequest) SetAccountDescription(v string) *Modif
 
 func (s *ModifyAccountDescriptionRequest) SetAccountName(v string) *ModifyAccountDescriptionRequest {
 	s.AccountName = &v
+	return s
+}
+
+func (s *ModifyAccountDescriptionRequest) SetClientToken(v string) *ModifyAccountDescriptionRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -32288,6 +33891,12 @@ func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigRespon
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
+	// Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88**********
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The endpoint prefix of the instance.
 	//
 	// This parameter is required.
@@ -32328,6 +33937,11 @@ func (s ModifyDBInstanceConnectionStringRequest) String() string {
 
 func (s ModifyDBInstanceConnectionStringRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetClientToken(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetConnectionStringPrefix(v string) *ModifyDBInstanceConnectionStringRequest {
@@ -32614,6 +34228,133 @@ func (s *ModifyDBInstanceMaintainTimeResponse) SetStatusCode(v int32) *ModifyDBI
 }
 
 func (s *ModifyDBInstanceMaintainTimeResponse) SetBody(v *ModifyDBInstanceMaintainTimeResponseBody) *ModifyDBInstanceMaintainTimeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceNetworkTypeRequest struct {
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-bp12ga6v69h86****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The new network type of the instance. Valid values:
+	//
+	// 	- VPC
+	//
+	// 	- Classic
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPC
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The internal IP address of the instance.
+	//
+	// example:
+	//
+	// 10.10.XX.XX
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// The virtual private cloud (VPC) ID of the instance.
+	//
+	// example:
+	//
+	// vpc-bp19ame5m1r3oejns****
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID of the instance. This parameter must be specified when VPCId is specified.
+	//
+	// example:
+	//
+	// vsw-bp1cpq8mr64paltkb****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s ModifyDBInstanceNetworkTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceNetworkTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceNetworkTypeRequest) SetDBInstanceId(v string) *ModifyDBInstanceNetworkTypeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeRequest) SetInstanceNetworkType(v string) *ModifyDBInstanceNetworkTypeRequest {
+	s.InstanceNetworkType = &v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeRequest) SetPrivateIpAddress(v string) *ModifyDBInstanceNetworkTypeRequest {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeRequest) SetVPCId(v string) *ModifyDBInstanceNetworkTypeRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeRequest) SetVSwitchId(v string) *ModifyDBInstanceNetworkTypeRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type ModifyDBInstanceNetworkTypeResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 2d0c35a9-f5da-44ba-852d-741e27b7eb0b
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceNetworkTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceNetworkTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceNetworkTypeResponseBody) SetRequestId(v string) *ModifyDBInstanceNetworkTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceNetworkTypeResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceNetworkTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceNetworkTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceNetworkTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceNetworkTypeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceNetworkTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeResponse) SetStatusCode(v int32) *ModifyDBInstanceNetworkTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceNetworkTypeResponse) SetBody(v *ModifyDBInstanceNetworkTypeResponseBody) *ModifyDBInstanceNetworkTypeResponse {
 	s.Body = v
 	return s
 }
@@ -33179,41 +34920,45 @@ func (s *ModifyDBResourceGroupResponse) SetBody(v *ModifyDBResourceGroupResponse
 }
 
 type ModifyExternalDataServiceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the service.
+	// Service description.
 	//
 	// example:
 	//
-	// test-adbpgss
+	// pxf test
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
+	// Service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The specifications of the service. Unit: compute units (CUs). Valid values:
+	// Service specification (in CU), value:
 	//
-	// 	- 8
+	// - 8
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2
+	// 8
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -33251,6 +34996,8 @@ func (s *ModifyExternalDataServiceRequest) SetServiceSpec(v string) *ModifyExter
 }
 
 type ModifyExternalDataServiceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
@@ -33300,12 +35047,16 @@ func (s *ModifyExternalDataServiceResponse) SetBody(v *ModifyExternalDataService
 }
 
 type ModifyHadoopDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Service description, with a maximum length of 256 characters.
+	//
 	// example:
 	//
 	// pxf for hdfs data source
@@ -33330,6 +35081,8 @@ type ModifyHadoopDataSourceRequest struct {
 	//
 	// mysql
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// When HadoopCreateType is Emr, the value of this field is the EMR instance ID.
+	//
 	// example:
 	//
 	// c-1234567
@@ -33486,6 +35239,8 @@ func (s *ModifyHadoopDataSourceRequest) SetYarnConf(v string) *ModifyHadoopDataS
 }
 
 type ModifyHadoopDataSourceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
@@ -33535,22 +35290,30 @@ func (s *ModifyHadoopDataSourceResponse) SetBody(v *ModifyHadoopDataSourceRespon
 }
 
 type ModifyJDBCDataSourceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Data source description.
+	//
 	// example:
 	//
 	// test
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
+	// Data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Database type: - mysql - postgresql - sqlserver
+	//
 	// example:
 	//
 	// mysql
@@ -33630,6 +35393,8 @@ func (s *ModifyJDBCDataSourceRequest) SetRegionId(v string) *ModifyJDBCDataSourc
 }
 
 type ModifyJDBCDataSourceResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 2C125605-266F-41CA-8AC5-3A643D4F42C5
@@ -33948,6 +35713,287 @@ func (s *ModifyParametersResponse) SetBody(v *ModifyParametersResponseBody) *Mod
 	return s
 }
 
+type ModifyRemoteADBDataSourceRequest struct {
+	// Service ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Specified dataSourceName.
+	//
+	// example:
+	//
+	// test
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The ID of the local data instance being used.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-test
+	LocalDBInstanceId *string `json:"LocalDBInstanceId,omitempty" xml:"LocalDBInstanceId,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// New user name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// newUserName
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// New user password, which must be transmitted in encrypted form.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// newUserPassword
+	UserPassword *string `json:"UserPassword,omitempty" xml:"UserPassword,omitempty"`
+}
+
+func (s ModifyRemoteADBDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRemoteADBDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetDataSourceId(v string) *ModifyRemoteADBDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetDataSourceName(v string) *ModifyRemoteADBDataSourceRequest {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetLocalDBInstanceId(v string) *ModifyRemoteADBDataSourceRequest {
+	s.LocalDBInstanceId = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetOwnerId(v int64) *ModifyRemoteADBDataSourceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetUserName(v string) *ModifyRemoteADBDataSourceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceRequest) SetUserPassword(v string) *ModifyRemoteADBDataSourceRequest {
+	s.UserPassword = &v
+	return s
+}
+
+type ModifyRemoteADBDataSourceResponseBody struct {
+	// Returns the successfully modified data sharing service data.
+	DataSourceItem *ModifyRemoteADBDataSourceResponseBodyDataSourceItem `json:"DataSourceItem,omitempty" xml:"DataSourceItem,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// e9d60eb1-e90d-4bc6-a470-c8b767460858
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID.
+	//
+	// example:
+	//
+	// 90000
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ModifyRemoteADBDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRemoteADBDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBody) SetDataSourceItem(v *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) *ModifyRemoteADBDataSourceResponseBody {
+	s.DataSourceItem = v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBody) SetRequestId(v string) *ModifyRemoteADBDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBody) SetTaskId(v int32) *ModifyRemoteADBDataSourceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ModifyRemoteADBDataSourceResponseBodyDataSourceItem struct {
+	// Data source name.
+	//
+	// example:
+	//
+	// db1_gptest1_to_db2_gp-test2
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ID
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Local database name
+	//
+	// example:
+	//
+	// db1
+	LocalDatabase *string `json:"LocalDatabase,omitempty" xml:"LocalDatabase,omitempty"`
+	// Local instance name
+	//
+	// example:
+	//
+	// gp-test1
+	LocalInstanceName *string `json:"LocalInstanceName,omitempty" xml:"LocalInstanceName,omitempty"`
+	// Manager user name
+	//
+	// example:
+	//
+	// test
+	ManagerUserName *string `json:"ManagerUserName,omitempty" xml:"ManagerUserName,omitempty"`
+	// Region ID where the instance is located.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Remote database name
+	//
+	// example:
+	//
+	// db2
+	RemoteDatabase *string `json:"RemoteDatabase,omitempty" xml:"RemoteDatabase,omitempty"`
+	// Remote instance name
+	//
+	// example:
+	//
+	// gp-test2
+	RemoteInstanceName *string `json:"RemoteInstanceName,omitempty" xml:"RemoteInstanceName,omitempty"`
+	// Data source status
+	//
+	// example:
+	//
+	// creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// User name
+	//
+	// example:
+	//
+	// user1
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ModifyRemoteADBDataSourceResponseBodyDataSourceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRemoteADBDataSourceResponseBodyDataSourceItem) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetDataSourceName(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetDescription(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetId(v int64) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetLocalDatabase(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.LocalDatabase = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetLocalInstanceName(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.LocalInstanceName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetManagerUserName(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.ManagerUserName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetRegionId(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetRemoteDatabase(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RemoteDatabase = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetRemoteInstanceName(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.RemoteInstanceName = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetStatus(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponseBodyDataSourceItem) SetUserName(v string) *ModifyRemoteADBDataSourceResponseBodyDataSourceItem {
+	s.UserName = &v
+	return s
+}
+
+type ModifyRemoteADBDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRemoteADBDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyRemoteADBDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRemoteADBDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRemoteADBDataSourceResponse) SetHeaders(v map[string]*string) *ModifyRemoteADBDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponse) SetStatusCode(v int32) *ModifyRemoteADBDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRemoteADBDataSourceResponse) SetBody(v *ModifyRemoteADBDataSourceResponseBody) *ModifyRemoteADBDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifySQLCollectorPolicyRequest struct {
 	// The ID of the instance.
 	//
@@ -34095,7 +36141,7 @@ type ModifySecurityIpsRequest struct {
 	//
 	// example:
 	//
-	// 10.10.\*\*.**
+	// ``10.10.**.**``
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -34445,25 +36491,19 @@ func (s *ModifyStreamingDataSourceResponse) SetBody(v *ModifyStreamingDataSource
 }
 
 type ModifyStreamingJobRequest struct {
-	// The name of the database account.
+	// Account name.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The delivery guarantee setting.
-	//
-	// Valid values:
-	//
-	// 	- ATLEAST
-	//
-	// 	- EXACTLY
+	// Delivery guarantee.
 	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// The instance ID.
+	// Instance ID
 	//
 	// This parameter is required.
 	//
@@ -34471,37 +36511,47 @@ type ModifyStreamingJobRequest struct {
 	//
 	// ModifyStreamingJob
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The destination fields.
+	// Target data table mapping field list.
 	DestColumns []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
-	// The name of the destination database.
+	// Target database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	// Target schema.
+	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// The name of the destination table.
+	// Target table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	// When the data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
+	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int64 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// FallbackOffset rollback position, offset rollback
+	//
+	// - The FallbackOffset parameter defines the behavior when the consumer does not request a specific consumption point or the requested consumption point exceeds the current Kafka cluster\\"s recorded points. You can choose to start consuming from the earliest (newest) or latest (oldest) point.
+	//
 	// example:
 	//
-	// earliest /  latest
+	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// Kafka group name
+	//
 	// example:
 	//
 	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
+	// Job configuration file, required for professional mode.
 	//
 	// example:
 	//
@@ -34745,55 +36795,53 @@ type ModifyStreamingJobRequest struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// The description of the job.
+	// Job description.
 	//
 	// example:
 	//
 	// test-job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The job ID.
+	// Job ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	JobId        *int64    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
 	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
-	// The password of the database account.
+	// Password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source fields.
+	// Source data field list.
 	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
-	// Specifies whether to test the real-time job. Valid values:
+	// Whether to test the real-time task, values:
 	//
-	// 	- true
+	// -  true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	TryRun        *bool     `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	TryRun *bool `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	// Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
 	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
-	// The write mode.
-	//
-	// Valid values:
-	//
-	// 	- insert
-	//
-	// 	- update
-	//
-	// 	- merge
+	// Write mode.
 	//
 	// example:
 	//
@@ -34910,25 +36958,19 @@ func (s *ModifyStreamingJobRequest) SetWriteMode(v string) *ModifyStreamingJobRe
 }
 
 type ModifyStreamingJobShrinkRequest struct {
-	// The name of the database account.
+	// Account name.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The delivery guarantee setting.
-	//
-	// Valid values:
-	//
-	// 	- ATLEAST
-	//
-	// 	- EXACTLY
+	// Delivery guarantee.
 	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// The instance ID.
+	// Instance ID
 	//
 	// This parameter is required.
 	//
@@ -34936,37 +36978,47 @@ type ModifyStreamingJobShrinkRequest struct {
 	//
 	// ModifyStreamingJob
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The destination fields.
+	// Target data table mapping field list.
 	DestColumnsShrink *string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty"`
-	// The name of the destination database.
+	// Target database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	// Target schema.
+	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// The name of the destination table.
+	// Target table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
+	// When the data in Kafka does not match the ADBPG target table, it will cause a write failure. This value is the number of error rows allowed; exceeding this will cause the task to fail.
+	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int64 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
+	// FallbackOffset rollback position, offset rollback
+	//
+	// - The FallbackOffset parameter defines the behavior when the consumer does not request a specific consumption point or the requested consumption point exceeds the current Kafka cluster\\"s recorded points. You can choose to start consuming from the earliest (newest) or latest (oldest) point.
+	//
 	// example:
 	//
-	// earliest /  latest
+	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
+	// Kafka group name
+	//
 	// example:
 	//
 	// group_name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
+	// Job configuration file, required for professional mode.
 	//
 	// example:
 	//
@@ -35210,55 +37262,53 @@ type ModifyStreamingJobShrinkRequest struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// The description of the job.
+	// Job description.
 	//
 	// example:
 	//
 	// test-job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// The job ID.
+	// Job ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	JobId              *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
 	MatchColumnsShrink *string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty"`
-	// The password of the database account.
+	// Password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source fields.
+	// Source data field list.
 	SrcColumnsShrink *string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty"`
-	// Specifies whether to test the real-time job. Valid values:
+	// Whether to test the real-time task, values:
 	//
-	// 	- true
+	// -  true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
 	// example:
 	//
 	// true
-	TryRun              *bool   `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	TryRun *bool `json:"TryRun,omitempty" xml:"TryRun,omitempty"`
+	// Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
 	UpdateColumnsShrink *string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty"`
-	// The write mode.
-	//
-	// Valid values:
-	//
-	// 	- insert
-	//
-	// 	- update
-	//
-	// 	- merge
+	// Write mode.
 	//
 	// example:
 	//
@@ -35375,7 +37425,7 @@ func (s *ModifyStreamingJobShrinkRequest) SetWriteMode(v string) *ModifyStreamin
 }
 
 type ModifyStreamingJobResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -35770,9 +37820,9 @@ func (s *PauseInstanceResponse) SetBody(v *PauseInstanceResponseBody) *PauseInst
 }
 
 type QueryCollectionDataRequest struct {
-	// The name of the collection.
+	// Collection name.
 	//
-	// >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
 	//
 	// This parameter is required.
 	//
@@ -35780,41 +37830,41 @@ type QueryCollectionDataRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
+	// Content for full-text search. When this value is empty, only vector search is used; when it is not empty, both vector and full-text search are used.
 	//
-	// >  You must specify at least one of the Content and Vector parameters.
+	// > The Vector parameter cannot be empty at the same time.
 	//
 	// example:
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	// Filter conditions for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). Conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), as well as conditions using keywords like IN, BETWEEN, and LIKE.
 	//
 	// >
 	//
-	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	// > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
 	// response > 200
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+	// Dual-path recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full-text).
 	//
-	// Valid values:
+	// Available values:
 	//
-	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	// - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
 	//
-	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	// - Weight: Weighted sorting, using a parameter alpha to control the score ratio of vectors and full-text, then sorting. See HybridSearchArgs configuration for details;
 	//
-	// 	- Cascaded: This algorithm performs first full-text search and then vector search.
+	// - Cascaded: Perform full-text search first, then vector search based on the full-text results;
 	//
 	// example:
 	//
@@ -35850,98 +37900,107 @@ type QueryCollectionDataRequest struct {
 	//
 	//     }
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	// The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
+	// Defaults to empty, indicating the metadata fields to return. Multiple fields should be separated by commas.
 	//
 	// example:
 	//
 	// title,content
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
-	// Specifies whether to return vector data. Valid values:
+	// Whether to return vector data. Value descriptions:
 	//
-	// 	- **true**: returns vector data.
+	// - **true**: Return vector data.
 	//
-	// 	- **false**: does not return vector data. In full-text search scenarios, set this parameter to false.
+	// - **false**: Do not return vector data, used for full-text search scenarios.
 	//
 	// example:
 	//
 	// true
 	IncludeValues *bool `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	// The similarity algorithm for search. Valid values:
+	// Similarity algorithm used during retrieval. Value descriptions:
 	//
-	// 	- **l2**: Euclidean distance.
+	// - **l2**: Euclidean distance.
 	//
-	// 	- **ip**: inner product distance.
+	// - **ip**: Inner product (dot product) distance.
 	//
-	// 	- **cosine**: cosine similarity.
+	// - **cosine**: Cosine similarity.
 	//
-	// >  If you leave this parameter empty, the l2, ip, or cosine algorithm that is specified when you create an index is used.
+	// > If this value is empty, the algorithm specified during index creation is used.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace.
+	// Namespace.
 	//
-	// >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Password for the namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	// The starting point for paginated queries. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+	// Defaults to empty, indicating the starting point for pagination queries. Does not support hybrid search scenarios.
 	//
-	// The value must be greater than or equal to 0. If you do not leave this parameter empty, the Total parameter is returned to indicate the total number of matched entries. You must specify this parameter and the TopK parameter in pairs. For example, to paginate 20 chunks at a time for a total of 45 chunks whose chunk_id values are 0 to 44, three requests are involved:
+	// The value must be >= 0. When this value is not empty, it will return `Total`, which indicates the total number of hits. This parameter works with `TopK`. For example, to paginate 20 and retrieve chunks with `chunk_id` from 0 to 44, you need to make three requests:
 	//
-	// 	- First request: Set the Offset value to 0 and the TopK value to 20. The chunks whose chunk_id values are 0 to 19 are returned.
+	// - `Offset=0, TopK=20` returns `chunk_id` 0~19
 	//
-	// 	- Second request: Set the Offset value to 20 and the TopK value to 20. The chunks whose chunk_id values are 20 to 39 are returned.
+	// - `Offset=20, TopK=20` returns `chunk_id` 20~39
 	//
-	// 	- Third request: Set the Offset value to 30 and the TopK value to 20. The chunks whose chunk_id values are 40 to 44 are returned.
+	// - `Offset=30, TopK=20` returns `chunk_id` 40~44
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The fields by which to sort the results. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+	// Defaults to empty, indicating the field for sorting. Does not support hybrid search scenarios.
 	//
-	// You must specify the default fields in the metadata or the table, such as id. You can specify the following number of fields:
+	// The field must belong to metadata or be a default field in the table, such as `id`. The supported formats are:
 	//
-	// 	- One field, such as chunk_id.
+	// - A single field, e.g., `chunk_id`;
 	//
-	// 	- Multiple fields that are sorted in ascending order and separated by commas (,), such as block_id and chunk_id.
+	// - Multiple fields, separated by commas, e.g., `block_id, chunk_id`;
 	//
-	// 	- Multiple fields that are sorted in descending order and separated by commas (,), such as block_id DESC, chunk_id DESC.
+	// - Supports reverse order, e.g., `block_id DESC, chunk_id DESC`;
 	//
 	// example:
 	//
 	// chunk_id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// Region ID where the instance is located.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId              *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Uses another relational table to filter vector data (similar to a Join function).
+	//
+	// > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
 	RelationalTableFilter *QueryCollectionDataRequestRelationalTableFilter `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty" type:"Struct"`
+	// Set the number of top results to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+	// Vector data, with the same dimension as specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) API.
 	//
-	// >  If you leave this parameter empty, only full-text search results are returned.
+	// > When the vector is empty, only full-text search results are returned.
 	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	// The ID of the Workspace composed of multiple database instances. This parameter and `DBInstanceId` cannot both be empty. If both are specified, this parameter takes precedence.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -36052,18 +38111,26 @@ func (s *QueryCollectionDataRequest) SetWorkspaceId(v string) *QueryCollectionDa
 }
 
 type QueryCollectionDataRequestRelationalTableFilter struct {
+	// The Metadata field of the vector collection, used to associate with the fields in the vector table.
+	//
 	// example:
 	//
 	// doc_id
 	CollectionMetadataField *string `json:"CollectionMetadataField,omitempty" xml:"CollectionMetadataField,omitempty"`
+	// The filtering condition for the relational table.
+	//
 	// example:
 	//
 	// tags @> ARRAY[\\"art\\"]
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The field in the relational table, used to associate with the Metadata field of the vector collection.
+	//
 	// example:
 	//
 	// id
 	TableField *string `json:"TableField,omitempty" xml:"TableField,omitempty"`
+	// The name of the relational table.
+	//
 	// example:
 	//
 	// my_rds_table
@@ -36099,9 +38166,9 @@ func (s *QueryCollectionDataRequestRelationalTableFilter) SetTableName(v string)
 }
 
 type QueryCollectionDataShrinkRequest struct {
-	// The name of the collection.
+	// Collection name.
 	//
-	// >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
 	//
 	// This parameter is required.
 	//
@@ -36109,41 +38176,41 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
+	// Content for full-text search. When this value is empty, only vector search is used; when it is not empty, both vector and full-text search are used.
 	//
-	// >  You must specify at least one of the Content and Vector parameters.
+	// > The Vector parameter cannot be empty at the same time.
 	//
 	// example:
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	// Filter conditions for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). Conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), as well as conditions using keywords like IN, BETWEEN, and LIKE.
 	//
 	// >
 	//
-	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	// > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
 	// response > 200
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+	// Dual-path recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full-text).
 	//
-	// Valid values:
+	// Available values:
 	//
-	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	// - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
 	//
-	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	// - Weight: Weighted sorting, using a parameter alpha to control the score ratio of vectors and full-text, then sorting. See HybridSearchArgs configuration for details;
 	//
-	// 	- Cascaded: This algorithm performs first full-text search and then vector search.
+	// - Cascaded: Perform full-text search first, then vector search based on the full-text results;
 	//
 	// example:
 	//
@@ -36179,98 +38246,107 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	//     }
 	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	// The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
+	// Defaults to empty, indicating the metadata fields to return. Multiple fields should be separated by commas.
 	//
 	// example:
 	//
 	// title,content
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
-	// Specifies whether to return vector data. Valid values:
+	// Whether to return vector data. Value descriptions:
 	//
-	// 	- **true**: returns vector data.
+	// - **true**: Return vector data.
 	//
-	// 	- **false**: does not return vector data. In full-text search scenarios, set this parameter to false.
+	// - **false**: Do not return vector data, used for full-text search scenarios.
 	//
 	// example:
 	//
 	// true
 	IncludeValues *bool `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	// The similarity algorithm for search. Valid values:
+	// Similarity algorithm used during retrieval. Value descriptions:
 	//
-	// 	- **l2**: Euclidean distance.
+	// - **l2**: Euclidean distance.
 	//
-	// 	- **ip**: inner product distance.
+	// - **ip**: Inner product (dot product) distance.
 	//
-	// 	- **cosine**: cosine similarity.
+	// - **cosine**: Cosine similarity.
 	//
-	// >  If you leave this parameter empty, the l2, ip, or cosine algorithm that is specified when you create an index is used.
+	// > If this value is empty, the algorithm specified during index creation is used.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace.
+	// Namespace.
 	//
-	// >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Password for the namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	// The starting point for paginated queries. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+	// Defaults to empty, indicating the starting point for pagination queries. Does not support hybrid search scenarios.
 	//
-	// The value must be greater than or equal to 0. If you do not leave this parameter empty, the Total parameter is returned to indicate the total number of matched entries. You must specify this parameter and the TopK parameter in pairs. For example, to paginate 20 chunks at a time for a total of 45 chunks whose chunk_id values are 0 to 44, three requests are involved:
+	// The value must be >= 0. When this value is not empty, it will return `Total`, which indicates the total number of hits. This parameter works with `TopK`. For example, to paginate 20 and retrieve chunks with `chunk_id` from 0 to 44, you need to make three requests:
 	//
-	// 	- First request: Set the Offset value to 0 and the TopK value to 20. The chunks whose chunk_id values are 0 to 19 are returned.
+	// - `Offset=0, TopK=20` returns `chunk_id` 0~19
 	//
-	// 	- Second request: Set the Offset value to 20 and the TopK value to 20. The chunks whose chunk_id values are 20 to 39 are returned.
+	// - `Offset=20, TopK=20` returns `chunk_id` 20~39
 	//
-	// 	- Third request: Set the Offset value to 30 and the TopK value to 20. The chunks whose chunk_id values are 40 to 44 are returned.
+	// - `Offset=30, TopK=20` returns `chunk_id` 40~44
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The fields by which to sort the results. This parameter is empty by default. This parameter does not support two-way retrieval scenarios.
+	// Defaults to empty, indicating the field for sorting. Does not support hybrid search scenarios.
 	//
-	// You must specify the default fields in the metadata or the table, such as id. You can specify the following number of fields:
+	// The field must belong to metadata or be a default field in the table, such as `id`. The supported formats are:
 	//
-	// 	- One field, such as chunk_id.
+	// - A single field, e.g., `chunk_id`;
 	//
-	// 	- Multiple fields that are sorted in ascending order and separated by commas (,), such as block_id and chunk_id.
+	// - Multiple fields, separated by commas, e.g., `block_id, chunk_id`;
 	//
-	// 	- Multiple fields that are sorted in descending order and separated by commas (,), such as block_id DESC, chunk_id DESC.
+	// - Supports reverse order, e.g., `block_id DESC, chunk_id DESC`;
 	//
 	// example:
 	//
 	// chunk_id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// Region ID where the instance is located.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Uses another relational table to filter vector data (similar to a Join function).
+	//
+	// > Data from the relational table can be returned by setting the `IncludeMetadataFields` parameter. For example, `rds_table_name.id` indicates returning the `id` field from the relational table.
 	RelationalTableFilterShrink *string `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty"`
+	// Set the number of top results to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+	// Vector data, with the same dimension as specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) API.
 	//
-	// >  If you leave this parameter empty, only full-text search results are returned.
+	// > When the vector is empty, only full-text search results are returned.
 	VectorShrink *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
+	// The ID of the Workspace composed of multiple database instances. This parameter and `DBInstanceId` cannot both be empty. If both are specified, this parameter takes precedence.
+	//
 	// example:
 	//
 	// gp-ws-*****
@@ -36381,21 +38457,31 @@ func (s *QueryCollectionDataShrinkRequest) SetWorkspaceId(v string) *QueryCollec
 }
 
 type QueryCollectionDataResponseBody struct {
-	// The retrieved data.
+	// Data list.
 	Matches *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	// Detailed information when the request fails.
+	//
 	// example:
 	//
 	// 0.1234
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Status, with the following values:
+	//
+	// - **success**: Success.
+	//
+	// - **fail**: Failure.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of entries that match the search conditions. This parameter is returned only when the Offset parameter is not 0.
+	// Only returned when the Offset is not 0, this value represents the total number of hits for the search criteria.
 	//
 	// example:
 	//
@@ -36460,15 +38546,15 @@ type QueryCollectionDataResponseBodyMatchesMatch struct {
 	//
 	// doca-1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The metadata.
+	// Metadata.
 	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
+	// The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
 	//
 	// example:
 	//
 	// 0.12345
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The retrieved vector data.
+	// List of vector data.
 	Values *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
 
@@ -36547,46 +38633,67 @@ func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody
 }
 
 type QueryContentRequest struct {
+	// Document collection name.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the list of created document collections.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Text content for retrieval.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// In image search scenarios, the source file name of the image to be searched.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// test.jpg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// In image search scenarios, the publicly accessible URL of the image file.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// https://xx/myImage.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	// Filter condition for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). The conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), and conditions using keywords like IN, BETWEEN, LIKE, etc.
 	//
 	// >
 	//
-	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	// > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
-	// title = \\"test\\"
+	// title = \\"test\\" AND name like \\"test%\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
-	// Valid values:
+	// Available values:
 	//
-	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	// - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
 	//
-	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	// - Weight: Weighted ranking, using a parameter alpha to control the weight of vector and full-text scores, then sorting. See HybridSearchArgs configuration for details;
 	//
-	// 	- Cascaded: This algorithm performs first full-text search and then vector search.
+	// - Cascaded: Perform full-text retrieval first, then vector retrieval on top of it;
 	//
 	// example:
 	//
@@ -36634,22 +38741,42 @@ type QueryContentRequest struct {
 	//
 	// title,page
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	// Whether to return vectors. Default is false.
+	//
+	// > - **false**: Do not return vectors.
+	//
+	// > - **true**: Return vectors.
+	//
 	// example:
 	//
 	// true
 	IncludeVector *bool `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// Similarity algorithm used during retrieval. If this value is empty, the algorithm specified at the time of knowledge base creation is used. It is recommended not to set this unless there is a specific need.
+	//
+	// > Value description:
+	//
+	// > - **l2**: Euclidean distance.
+	//
+	// > - **ip**: Inner product (dot product) distance.
+	//
+	// > - **cosine**: Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Password for the namespace.
+	//
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36657,29 +38784,37 @@ type QueryContentRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
-	// >
+	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
 	//
-	// 	- We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
-	//
-	// 	- The context of the search result is retrieved based on the recall window after the search result is reranked.
+	// > - Re-ranking takes precedence over windowing, i.e., re-rank first, then apply windowing.
 	RecallWindow []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// The region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Re-ranking factor. When this value is not empty, it will re-rank the vector search results. The value range is 1 < RerankFactor <= 5.
+	//
+	// > - Re-ranking is slower when documents are sparsely split.
+	//
+	// > - It is recommended that the re-ranked count (TopK 	- Factor, rounded up) does not exceed 50.
+	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// Set the number of top results to return.
+	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
+	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
 	//
@@ -36796,46 +38931,67 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 type QueryContentAdvanceRequest struct {
+	// Document collection name.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the list of created document collections.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Text content for retrieval.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// In image search scenarios, the source file name of the image to be searched.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// test.jpg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// In image search scenarios, the publicly accessible URL of the image file.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// https://xx/myImage.jpg
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	// Filter condition for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). The conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), and conditions using keywords like IN, BETWEEN, LIKE, etc.
 	//
 	// >
 	//
-	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	// > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
-	// title = \\"test\\"
+	// title = \\"test\\" AND name like \\"test%\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
-	// Valid values:
+	// Available values:
 	//
-	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	// - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
 	//
-	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	// - Weight: Weighted ranking, using a parameter alpha to control the weight of vector and full-text scores, then sorting. See HybridSearchArgs configuration for details;
 	//
-	// 	- Cascaded: This algorithm performs first full-text search and then vector search.
+	// - Cascaded: Perform full-text retrieval first, then vector retrieval on top of it;
 	//
 	// example:
 	//
@@ -36883,22 +39039,42 @@ type QueryContentAdvanceRequest struct {
 	//
 	// title,page
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	// Whether to return vectors. Default is false.
+	//
+	// > - **false**: Do not return vectors.
+	//
+	// > - **true**: Return vectors.
+	//
 	// example:
 	//
 	// true
 	IncludeVector *bool `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// Similarity algorithm used during retrieval. If this value is empty, the algorithm specified at the time of knowledge base creation is used. It is recommended not to set this unless there is a specific need.
+	//
+	// > Value description:
+	//
+	// > - **l2**: Euclidean distance.
+	//
+	// > - **ip**: Inner product (dot product) distance.
+	//
+	// > - **cosine**: Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Password for the namespace.
+	//
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36906,29 +39082,37 @@ type QueryContentAdvanceRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
-	// >
+	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
 	//
-	// 	- We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
-	//
-	// 	- The context of the search result is retrieved based on the recall window after the search result is reranked.
+	// > - Re-ranking takes precedence over windowing, i.e., re-rank first, then apply windowing.
 	RecallWindow []*int32 `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty" type:"Repeated"`
+	// The region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Re-ranking factor. When this value is not empty, it will re-rank the vector search results. The value range is 1 < RerankFactor <= 5.
+	//
+	// > - Re-ranking is slower when documents are sparsely split.
+	//
+	// > - It is recommended that the re-ranked count (TopK 	- Factor, rounded up) does not exceed 50.
+	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// Set the number of top results to return.
+	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
+	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
 	//
@@ -37045,46 +39229,67 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 type QueryContentShrinkRequest struct {
+	// Document collection name.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the list of created document collections.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Text content for retrieval.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// In image search scenarios, the source file name of the image to be searched.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// test.jpg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// In image search scenarios, the publicly accessible URL of the image file.
+	//
+	// > The image file must have a file extension. Currently supported image extensions: bmp, jpg, jpeg, png, tiff.
+	//
 	// example:
 	//
 	// https://xx/myImage.jpg
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+	// Filter condition for the data to be queried, in SQL WHERE format. It is an expression that returns a boolean value (true or false). The conditions can be simple comparison operators such as equal (=), not equal (<> or !=), greater than (>), less than (<), greater than or equal to (>=), less than or equal to (<=), or more complex expressions combined with logical operators (AND, OR, NOT), and conditions using keywords like IN, BETWEEN, LIKE, etc.
 	//
 	// >
 	//
-	// 	- For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
+	// > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
-	// title = \\"test\\"
+	// title = \\"test\\" AND name like \\"test%\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
-	// Valid values:
+	// Available values:
 	//
-	// 	- RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+	// - RRF: Reciprocal rank fusion, with a parameter k controlling the fusion effect. See HybridSearchArgs configuration for details;
 	//
-	// 	- Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+	// - Weight: Weighted ranking, using a parameter alpha to control the weight of vector and full-text scores, then sorting. See HybridSearchArgs configuration for details;
 	//
-	// 	- Cascaded: This algorithm performs first full-text search and then vector search.
+	// - Cascaded: Perform full-text retrieval first, then vector retrieval on top of it;
 	//
 	// example:
 	//
@@ -37132,22 +39337,42 @@ type QueryContentShrinkRequest struct {
 	//
 	// title,page
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	// Whether to return vectors. Default is false.
+	//
+	// > - **false**: Do not return vectors.
+	//
+	// > - **true**: Return vectors.
+	//
 	// example:
 	//
 	// true
 	IncludeVector *bool `json:"IncludeVector,omitempty" xml:"IncludeVector,omitempty"`
+	// Similarity algorithm used during retrieval. If this value is empty, the algorithm specified at the time of knowledge base creation is used. It is recommended not to set this unless there is a specific need.
+	//
+	// > Value description:
+	//
+	// > - **l2**: Euclidean distance.
+	//
+	// > - **ip**: Inner product (dot product) distance.
+	//
+	// > - **cosine**: Cosine similarity.
+	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create a namespace using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list of namespaces using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Password for the namespace.
+	//
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37155,29 +39380,37 @@ type QueryContentShrinkRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+	// Recall window. When this value is not empty, it adds context to the returned search results. The format is an array of 2 elements: List<A, B>, where -10 <= A <= 0 and 0 <= B <= 10.
 	//
-	// >
+	// > - Recommended when documents are fragmented and retrieval may lose contextual information.
 	//
-	// 	- We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
-	//
-	// 	- The context of the search result is retrieved based on the recall window after the search result is reranked.
+	// > - Re-ranking takes precedence over windowing, i.e., re-rank first, then apply windowing.
 	RecallWindowShrink *string `json:"RecallWindow,omitempty" xml:"RecallWindow,omitempty"`
+	// The region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Re-ranking factor. When this value is not empty, it will re-rank the vector search results. The value range is 1 < RerankFactor <= 5.
+	//
+	// > - Re-ranking is slower when documents are sparsely split.
+	//
+	// > - It is recommended that the re-ranked count (TopK 	- Factor, rounded up) does not exceed 50.
+	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	// Set the number of top results to return.
+	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
+	// Whether to use full-text retrieval (dual recall). Default is false, which means only vector retrieval is used.
 	//
 	// example:
 	//
@@ -37294,24 +39527,41 @@ func (s *QueryContentShrinkRequest) SetUseFullTextRetrieval(v bool) *QueryConten
 }
 
 type QueryContentResponseBody struct {
+	// Number of tokens used for vectorization.
+	//
+	// > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
+	//
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string                          `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	Matches         *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	// The retrieved data.
+	Matches *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The execution state of the operation. Valid values:
+	//
+	// 	- **false**: The operation fails.
+	//
+	// 	- **true**: The operation is successful.
+	//
 	// example:
 	//
 	// success
-	Status        *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage         *QueryContentResponseBodyUsage         `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Resource usage for this query.
+	Usage *QueryContentResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// List of windowed matches.
 	WindowMatches *QueryContentResponseBodyWindowMatches `json:"WindowMatches,omitempty" xml:"WindowMatches,omitempty" type:"Struct"`
 }
 
@@ -37376,36 +39626,69 @@ func (s *QueryContentResponseBodyMatches) SetMatchList(v []*QueryContentResponse
 }
 
 type QueryContentResponseBodyMatchesMatchList struct {
+	// The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
+	//
+	// >  You must specify at least one of the Content and Vector parameters.
+	//
+	// example:
+	//
+	// Cloud-native data warehouse AnalyticDB PostgreSQL Edition provides a simple, fast, and cost-effective PB-level cloud data warehouse solution.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the document.
+	//
+	// >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
+	//
 	// example:
 	//
 	// my_doc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The public URL of the query result image, valid for 2 hours
+	//
 	// example:
 	//
 	// https://xxx-cn-beijing.aliyuncs.com/image/test.png
 	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	// The unique ID of the vector data.
+	//
 	// example:
 	//
 	// doca-1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Metadata during document loader loading.
+	//
 	// example:
 	//
 	// {"page_pos": 1}
-	LoaderMetadata *string            `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	Metadata       map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	LoaderMetadata *string `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	// The metadata.
+	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Re-ranking score.
+	//
 	// example:
 	//
 	// 6.2345
 	RerankScore *float64 `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
+	// Source of the retrieval results:
+	//
+	// - 1 indicates vector retrieval
+	//
+	// - 2 indicates full-text retrieval
+	//
+	// - 3 indicates dual-path recall
+	//
 	// example:
 	//
 	// 1
 	RetrievalSource *int32 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
+	// The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
+	//
 	// example:
 	//
 	// 0.12345
-	Score  *float64                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
+	//
+	// >  If you leave this parameter empty, only full-text search results are returned.
 	Vector *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
 }
 
@@ -37485,10 +39768,18 @@ func (s *QueryContentResponseBodyMatchesMatchListVector) SetVectorList(v []*floa
 }
 
 type QueryContentResponseBodyUsage struct {
+	// The number of entries used for vectorization.
+	//
+	// > An entry refers to the number of processing items when performing vectorization on text or images. For example, processing one piece of text counts as 1 entry, while processing one image counts as 2 entries.
+	//
 	// example:
 	//
 	// 10
 	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
+	// Number of tokens used for vectorization.
+	//
+	// > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
+	//
 	// example:
 	//
 	// 100
@@ -37531,6 +39822,7 @@ func (s *QueryContentResponseBodyWindowMatches) SetWindowMatches(v []*QueryConte
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatches struct {
+	// List of individual top windowed matches.
 	WindowMatch *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch `json:"WindowMatch,omitempty" xml:"WindowMatch,omitempty" type:"Struct"`
 }
 
@@ -37565,20 +39857,32 @@ func (s *QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch) SetWindo
 }
 
 type QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch struct {
+	// Text content.
+	//
+	// example:
+	//
+	// AnalyticDB for PostgreSQL is a cloud-native data warehouse service that provides large-scale parallel processing (MPP) capabilities for massive online data analysis.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// File name.
+	//
 	// example:
 	//
 	// my_doc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Unique ID of the vector data.
+	//
 	// example:
 	//
 	// doca-2345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Metadata information when the document loader was loaded.
+	//
 	// example:
 	//
 	// {"page_pos": 2}
-	LoaderMetadata *string            `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
-	Metadata       map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	LoaderMetadata *string `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	// Metadata map.
+	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 }
 
 func (s QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch) String() string {
@@ -37841,33 +40145,65 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type RerankRequest struct {
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
-	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Documents    []*string `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// List of documents to be re-ordered.
+	Documents []*string `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// Maximum number of chunks allowed when the text exceeds the model window:
+	//
+	// - bge-reranker-v2-m3: default value is 10.
+	//
+	// - bge-reranker-v2-minicpm-layerwise: default value is 5:
+	//
+	// > Example of splitting
+	//
+	// > - If using the bge-reranker-v2-minicpm-layerwise model, the maximum single inference window is 2048 tokens. If the query is 48 tokens and the content of a single document parameter is 9000 tokens, it will be divided as follows: 1-2000 for the first, 2001-4000 for the second, and so on. If the number of splits exceeds MaxChunksPerDoc, the remaining sentences will be discarded.
+	//
 	// example:
 	//
 	// 10
 	MaxChunksPerDoc *int32 `json:"MaxChunksPerDoc,omitempty" xml:"MaxChunksPerDoc,omitempty"`
+	// Rerank model, currently supports:
+	//
+	// - bge-reranker-v2-m3: (default), better performance, supports 8192 tokens per inference, if exceeded, it will be split, which may reduce the effect.
+	//
+	// - bge-reranker-v2-minicpm-layerwise: better performance than v2-m3, supports 2048 tokens per inference, if exceeded, it will be split, which may reduce the effect.
+	//
 	// example:
 	//
 	// bge-reranker-v2-m3
 	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Query statement for Rerank.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// If set to false, does not return the Documents text, only returns the index of the document order and the rerank score.
+	//
 	// example:
 	//
 	// false
 	ReturnDocuments *bool `json:"ReturnDocuments,omitempty" xml:"ReturnDocuments,omitempty"`
+	// Number of most relevant documents to return.
+	//
 	// example:
 	//
 	// 3
@@ -37928,33 +40264,65 @@ func (s *RerankRequest) SetTopK(v int32) *RerankRequest {
 }
 
 type RerankShrinkRequest struct {
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
-	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// List of documents to be re-ordered.
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// Maximum number of chunks allowed when the text exceeds the model window:
+	//
+	// - bge-reranker-v2-m3: default value is 10.
+	//
+	// - bge-reranker-v2-minicpm-layerwise: default value is 5:
+	//
+	// > Example of splitting
+	//
+	// > - If using the bge-reranker-v2-minicpm-layerwise model, the maximum single inference window is 2048 tokens. If the query is 48 tokens and the content of a single document parameter is 9000 tokens, it will be divided as follows: 1-2000 for the first, 2001-4000 for the second, and so on. If the number of splits exceeds MaxChunksPerDoc, the remaining sentences will be discarded.
+	//
 	// example:
 	//
 	// 10
 	MaxChunksPerDoc *int32 `json:"MaxChunksPerDoc,omitempty" xml:"MaxChunksPerDoc,omitempty"`
+	// Rerank model, currently supports:
+	//
+	// - bge-reranker-v2-m3: (default), better performance, supports 8192 tokens per inference, if exceeded, it will be split, which may reduce the effect.
+	//
+	// - bge-reranker-v2-minicpm-layerwise: better performance than v2-m3, supports 2048 tokens per inference, if exceeded, it will be split, which may reduce the effect.
+	//
 	// example:
 	//
 	// bge-reranker-v2-m3
 	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Query   *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Query statement for Rerank.
+	//
+	// example:
+	//
+	// What is ADBPG?
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// If set to false, does not return the Documents text, only returns the index of the document order and the rerank score.
+	//
 	// example:
 	//
 	// false
 	ReturnDocuments *bool `json:"ReturnDocuments,omitempty" xml:"ReturnDocuments,omitempty"`
+	// Number of most relevant documents to return.
+	//
 	// example:
 	//
 	// 3
@@ -38015,19 +40383,32 @@ func (s *RerankShrinkRequest) SetTopK(v int32) *RerankShrinkRequest {
 }
 
 type RerankResponseBody struct {
+	// Detailed information returned by the interface.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rerank results.
+	Results *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// API execution status, value description:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Number of consumed tokens.
+	//
 	// example:
 	//
 	// 100
@@ -38085,11 +40466,20 @@ func (s *RerankResponseBodyResults) SetResults(v []*RerankResponseBodyResultsRes
 }
 
 type RerankResponseBodyResultsResults struct {
+	// Re-ordered document information.
+	//
+	// example:
+	//
+	// ADBPG is the OLAP database of Alibaba Cloud.
 	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// Index of this document in the request parameter Documents, starting from 0.
+	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// Rerank similarity score.
+	//
 	// example:
 	//
 	// 2.31412
@@ -39282,6 +41672,256 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type TextEmbeddingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Input        []*string `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// example:
+	//
+	// text-embedding-v2
+	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s TextEmbeddingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingRequest) SetDBInstanceId(v string) *TextEmbeddingRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *TextEmbeddingRequest) SetInput(v []*string) *TextEmbeddingRequest {
+	s.Input = v
+	return s
+}
+
+func (s *TextEmbeddingRequest) SetModel(v string) *TextEmbeddingRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *TextEmbeddingRequest) SetOwnerId(v int64) *TextEmbeddingRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TextEmbeddingRequest) SetRegionId(v string) *TextEmbeddingRequest {
+	s.RegionId = &v
+	return s
+}
+
+type TextEmbeddingShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	InputShrink  *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// text-embedding-v2
+	Model   *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s TextEmbeddingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingShrinkRequest) SetDBInstanceId(v string) *TextEmbeddingShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *TextEmbeddingShrinkRequest) SetInputShrink(v string) *TextEmbeddingShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *TextEmbeddingShrinkRequest) SetModel(v string) *TextEmbeddingShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *TextEmbeddingShrinkRequest) SetOwnerId(v int64) *TextEmbeddingShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TextEmbeddingShrinkRequest) SetRegionId(v string) *TextEmbeddingShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type TextEmbeddingResponseBody struct {
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   *TextEmbeddingResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1000
+	TextTokens *int32 `json:"TextTokens,omitempty" xml:"TextTokens,omitempty"`
+}
+
+func (s TextEmbeddingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingResponseBody) SetMessage(v string) *TextEmbeddingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TextEmbeddingResponseBody) SetRequestId(v string) *TextEmbeddingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TextEmbeddingResponseBody) SetResults(v *TextEmbeddingResponseBodyResults) *TextEmbeddingResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *TextEmbeddingResponseBody) SetStatus(v string) *TextEmbeddingResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *TextEmbeddingResponseBody) SetTextTokens(v int32) *TextEmbeddingResponseBody {
+	s.TextTokens = &v
+	return s
+}
+
+type TextEmbeddingResponseBodyResults struct {
+	Results []*TextEmbeddingResponseBodyResultsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s TextEmbeddingResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingResponseBodyResults) SetResults(v []*TextEmbeddingResponseBodyResultsResults) *TextEmbeddingResponseBodyResults {
+	s.Results = v
+	return s
+}
+
+type TextEmbeddingResponseBodyResultsResults struct {
+	Embedding *TextEmbeddingResponseBodyResultsResultsEmbedding `json:"Embedding,omitempty" xml:"Embedding,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+}
+
+func (s TextEmbeddingResponseBodyResultsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingResponseBodyResultsResults) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingResponseBodyResultsResults) SetEmbedding(v *TextEmbeddingResponseBodyResultsResultsEmbedding) *TextEmbeddingResponseBodyResultsResults {
+	s.Embedding = v
+	return s
+}
+
+func (s *TextEmbeddingResponseBodyResultsResults) SetIndex(v int32) *TextEmbeddingResponseBodyResultsResults {
+	s.Index = &v
+	return s
+}
+
+type TextEmbeddingResponseBodyResultsResultsEmbedding struct {
+	Embedding []*float64 `json:"Embedding,omitempty" xml:"Embedding,omitempty" type:"Repeated"`
+}
+
+func (s TextEmbeddingResponseBodyResultsResultsEmbedding) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingResponseBodyResultsResultsEmbedding) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingResponseBodyResultsResultsEmbedding) SetEmbedding(v []*float64) *TextEmbeddingResponseBodyResultsResultsEmbedding {
+	s.Embedding = v
+	return s
+}
+
+type TextEmbeddingResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TextEmbeddingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TextEmbeddingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TextEmbeddingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TextEmbeddingResponse) SetHeaders(v map[string]*string) *TextEmbeddingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TextEmbeddingResponse) SetStatusCode(v int32) *TextEmbeddingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TextEmbeddingResponse) SetBody(v *TextEmbeddingResponseBody) *TextEmbeddingResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindDBResourceGroupWithRoleRequest struct {
 	// The instance ID.
 	//
@@ -39562,13 +42202,13 @@ func (s *UnloadSampleDataResponse) SetBody(v *UnloadSampleDataResponseBody) *Unl
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to unbind all tags from an instance. This parameter is valid only when the TagKey.N parameter is not specified. Valid values:
+	// Whether to untag all tags on the instance. This parameter is only effective when TagKey.N is not set in the request. The value range is:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
-	// Default value: false.
+	// Default value: false
 	//
 	// example:
 	//
@@ -39576,7 +42216,7 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// Region ID, you can view available region IDs through the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -39584,23 +42224,26 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Instance ID. N\\"s value range: 1~50
+	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage mode of the instance. Valid values:
+	// Resource type. The value range is:
 	//
-	// 	- `instance`: reserved storage mode
+	// - `instance`: Reserved mode instance.
 	//
-	// 	- `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+	// - `ALIYUN::GPDB::INSTANCE`: Elastic mode instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// instance
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Resource tag key. N\\"s value range: 1~20
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -39657,7 +42300,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
@@ -39708,7 +42351,9 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCollectionDataMetadataRequest struct {
-	// The name of the collection.
+	// Collection name.
+	//
+	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
 	//
 	// This parameter is required.
 	//
@@ -39716,23 +42361,23 @@ type UpdateCollectionDataMetadataRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-j788ghhjjxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
+	// Filter condition for the data to be updated, in SQL WHERE format. This field cannot be empty at the same time as the Ids field.
 	//
 	// example:
 	//
 	// business_value = \\"chat_file_1\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The row IDs of the data to be updated. You cannot leave both this parameter and Filter empty.
+	// ID list of the data to be updated, i.e., the Row.Id specified when uploading the data. This field cannot be empty at the same time as the Filter field.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	// The data to be updated, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+	// Data to be updated, in a JSON string of MAP format. The key is the field name, and the value is the new data value.
 	//
 	// This parameter is required.
 	//
@@ -39746,13 +42391,15 @@ type UpdateCollectionDataMetadataRequest struct {
 	//
 	// }
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The name of the namespace.
+	// Namespace.
+	//
+	// > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password corresponding to the namespace.
 	//
 	// This parameter is required.
 	//
@@ -39761,16 +42408,19 @@ type UpdateCollectionDataMetadataRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
-	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// Region ID where the instance is located.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ID of the Workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. When both are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -39833,7 +42483,9 @@ func (s *UpdateCollectionDataMetadataRequest) SetWorkspaceId(v string) *UpdateCo
 }
 
 type UpdateCollectionDataMetadataShrinkRequest struct {
-	// The name of the collection.
+	// Collection name.
+	//
+	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
 	//
 	// This parameter is required.
 	//
@@ -39841,23 +42493,23 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
 	//
 	// example:
 	//
-	// gp-xxxxxxxxx
+	// gp-j788ghhjjxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
+	// Filter condition for the data to be updated, in SQL WHERE format. This field cannot be empty at the same time as the Ids field.
 	//
 	// example:
 	//
 	// business_value = \\"chat_file_1\\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The row IDs of the data to be updated. You cannot leave both this parameter and Filter empty.
+	// ID list of the data to be updated, i.e., the Row.Id specified when uploading the data. This field cannot be empty at the same time as the Filter field.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The data to be updated, which is a JSON string in the MAP format. In the JSON string, key specifies the field name and value specifies the new data value.
+	// Data to be updated, in a JSON string of MAP format. The key is the field name, and the value is the new data value.
 	//
 	// This parameter is required.
 	//
@@ -39871,13 +42523,15 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	//
 	// }
 	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The name of the namespace.
+	// Namespace.
+	//
+	// > You can use the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API to view the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password corresponding to the namespace.
 	//
 	// This parameter is required.
 	//
@@ -39886,16 +42540,19 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
-	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// Region ID where the instance is located.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ID of the Workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. When both are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -39958,29 +42615,29 @@ func (s *UpdateCollectionDataMetadataShrinkRequest) SetWorkspaceId(v string) *Up
 }
 
 type UpdateCollectionDataMetadataResponseBody struct {
-	// The number of effective rows.
+	// Number of effective entries.
 	//
 	// example:
 	//
 	// 10
 	AppliedRows *int64 `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
-	// The error message returned.
+	// Detailed information when the request fails.
 	//
 	// example:
 	//
 	// failed to connect database, detailMsg: getConnection fail::SQL State: 28P01, Error Code: 0, Error Message: FATAL: password
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Status, with the following values:
 	//
-	// 	- **success**
+	// - **success**: Success.
 	//
-	// 	- **fail**
+	// - **fail**: Failure.
 	//
 	// example:
 	//
@@ -40316,7 +42973,7 @@ type UpgradeDBInstanceRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The performance level of enhanced SSDs (ESSDs). Valid values:
+	// The performance level of Enterprise SSDs (ESSDs). Valid values:
 	//
 	// 	- **pl0**
 	//
@@ -40366,7 +43023,7 @@ type UpgradeDBInstanceRequest struct {
 	//
 	// >
 	//
-	// 	- The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "[Usage notes](https://help.aliyun.com/document_detail/50956.html)" section of the Change compute node configurations topic.
+	// 	- The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "Usage notes" section of the [Change compute node configurations](https://help.aliyun.com/document_detail/50956.html) topic.
 	//
 	// 	- After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType*	- to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
 	//
@@ -40711,6 +43368,12 @@ type UpgradeExtensionsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Database name.
+	//
+	// example:
+	//
+	// test01
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The extensions that you want to update. Separate multiple extensions with commas (,).
 	//
 	// This parameter is required.
@@ -40737,6 +43400,11 @@ func (s UpgradeExtensionsRequest) GoString() string {
 
 func (s *UpgradeExtensionsRequest) SetDBInstanceId(v string) *UpgradeExtensionsRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpgradeExtensionsRequest) SetDatabaseName(v string) *UpgradeExtensionsRequest {
+	s.DatabaseName = &v
 	return s
 }
 
@@ -40810,16 +43478,24 @@ type UploadDocumentAsyncRequest struct {
 	//
 	// 50
 	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// Strategy for processing large data: the size of each chunk when the data is split into smaller parts. Maximum value is 2048.
+	//
 	// example:
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The name of the document library.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the document libraries that have already been created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID with vector engine optimization acceleration enabled. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40876,6 +43552,10 @@ type UploadDocumentAsyncRequest struct {
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The URL of the publicly accessible document.
+	//
+	// >  > - It is recommended to call this interface using the SDK, which provides a method called UploadDocumentAsyncAdvance for directly uploading local files. > - If the URL points to an image archive, the number of images in the archive should not exceed 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -40884,10 +43564,14 @@ type UploadDocumentAsyncRequest struct {
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Namespace, default is public. You can create one through the CreateNamespace interface and view the list via the ListNamespaces interface.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password corresponding to the namespace.  > This value is specified by the CreateNamespace interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41032,16 +43716,24 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	//
 	// 50
 	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// Strategy for processing large data: the size of each chunk when the data is split into smaller parts. Maximum value is 2048.
+	//
 	// example:
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The name of the document library.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the document libraries that have already been created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID with vector engine optimization acceleration enabled. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41098,6 +43790,10 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The URL of the publicly accessible document.
+	//
+	// >  > - It is recommended to call this interface using the SDK, which provides a method called UploadDocumentAsyncAdvance for directly uploading local files. > - If the URL points to an image archive, the number of images in the archive should not exceed 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41106,10 +43802,14 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Namespace, default is public. You can create one through the CreateNamespace interface and view the list via the ListNamespaces interface.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password corresponding to the namespace.  > This value is specified by the CreateNamespace interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41254,16 +43954,24 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// 50
 	ChunkOverlap *int32 `json:"ChunkOverlap,omitempty" xml:"ChunkOverlap,omitempty"`
+	// Strategy for processing large data: the size of each chunk when the data is split into smaller parts. Maximum value is 2048.
+	//
 	// example:
 	//
 	// 250
 	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// The name of the document library.
+	//
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the document libraries that have already been created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID with vector engine optimization acceleration enabled. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41320,6 +44028,10 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The URL of the publicly accessible document.
+	//
+	// >  > - It is recommended to call this interface using the SDK, which provides a method called UploadDocumentAsyncAdvance for directly uploading local files. > - If the URL points to an image archive, the number of images in the archive should not exceed 100.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41328,10 +44040,14 @@ type UploadDocumentAsyncShrinkRequest struct {
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
 	MetadataShrink *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// Namespace, default is public. You can create one through the CreateNamespace interface and view the list via the ListNamespaces interface.
+	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password corresponding to the namespace.  > This value is specified by the CreateNamespace interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -41468,18 +44184,30 @@ func (s *UploadDocumentAsyncShrinkRequest) SetZhTitleEnhance(v bool) *UploadDocu
 }
 
 type UploadDocumentAsyncResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution status, with the following values:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// success
@@ -41544,9 +44272,9 @@ func (s *UploadDocumentAsyncResponse) SetBody(v *UploadDocumentAsyncResponseBody
 }
 
 type UpsertChunksRequest struct {
-	// The name of the document collection.
+	// Document collection name.
 	//
-	// >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
 	//
 	// This parameter is required.
 	//
@@ -41554,27 +44282,35 @@ type UpsertChunksRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// File name.
+	//
+	// > If a file name is specified and not empty, it will overwrite the data for this file name; if empty, the chunks data will be appended directly to the document collection.
+	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create it using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password corresponding to the namespace.
 	//
-	// >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
 	//
 	// This parameter is required.
 	//
@@ -41583,12 +44319,15 @@ type UpsertChunksRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of split documents.
 	TextChunks []*UpsertChunksRequestTextChunks `json:"TextChunks,omitempty" xml:"TextChunks,omitempty" type:"Repeated"`
 }
 
@@ -41641,8 +44380,16 @@ func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) 
 }
 
 type UpsertChunksRequestTextChunks struct {
+	// Document content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Cloud-native data warehouse AnalyticDB PostgreSQL Edition provides a simple, fast, and cost-effective PB-level cloud data warehouse solution.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Metadata.
+	//
 	// example:
 	//
 	// {"title":"test"}
@@ -41668,9 +44415,9 @@ func (s *UpsertChunksRequestTextChunks) SetMetadata(v map[string]interface{}) *U
 }
 
 type UpsertChunksShrinkRequest struct {
-	// The name of the document collection.
+	// Document collection name.
 	//
-	// >  You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	// > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can use the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the already created document collections.
 	//
 	// This parameter is required.
 	//
@@ -41678,27 +44425,35 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// Instance ID.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// File name.
+	//
+	// > If a file name is specified and not empty, it will overwrite the data for this file name; if empty, the chunks data will be appended directly to the document collection.
+	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The name of the namespace. Default value: public.
+	// Namespace, default is public.
 	//
-	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can create it using the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API and view the list using the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) API.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// Password corresponding to the namespace.
 	//
-	// >  This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) API.
 	//
 	// This parameter is required.
 	//
@@ -41707,12 +44462,15 @@ type UpsertChunksShrinkRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID where the instance is located.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// List of split documents.
 	TextChunksShrink *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
 }
 
@@ -41765,18 +44523,32 @@ func (s *UpsertChunksShrinkRequest) SetTextChunksShrink(v string) *UpsertChunksS
 }
 
 type UpsertChunksResponseBody struct {
+	// Number of tokens used during vectorization.
+	//
+	// > A token refers to the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, a character, etc.
+	//
 	// example:
 	//
 	// 100
 	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// API execution status, with the following values:
+	//
+	// - **success**: Execution succeeded.
+	//
+	// - **fail**: Execution failed.
+	//
 	// example:
 	//
 	// success
@@ -41857,7 +44629,9 @@ type UpsertCollectionDataRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace.
+	// The name of the namespace. Default value: public.
+	//
+	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
 	//
 	// example:
 	//
@@ -41881,9 +44655,14 @@ type UpsertCollectionDataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Rows        []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
-	WorkspaceId *string                            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rows     []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpsertCollectionDataRequest) String() string {
@@ -41981,7 +44760,9 @@ type UpsertCollectionDataShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace.
+	// The name of the namespace. Default value: public.
+	//
+	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
 	//
 	// example:
 	//
@@ -42005,8 +44786,13 @@ type UpsertCollectionDataShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RowsShrink  *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RowsShrink *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -42162,7 +44948,7 @@ type UpsertCollectionDataAsyncRequest struct {
 	//
 	// 	- Data format of each line: `{String Id; Map<String, Object> Metadata; List<Double> Vector}`. Example: `{"Id":"myid", "Metadata": {"my_meta_key": "my_meta_value"}, "Vector": [1.234, -0.123]}`.
 	//
-	// 	- We recommend that you SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
+	// 	- We recommend that you use SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
 	//
 	// This parameter is required.
 	//
@@ -42196,7 +44982,12 @@ type UpsertCollectionDataAsyncRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. When both are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -42275,7 +45066,7 @@ type UpsertCollectionDataAsyncAdvanceRequest struct {
 	//
 	// 	- Data format of each line: `{String Id; Map<String, Object> Metadata; List<Double> Vector}`. Example: `{"Id":"myid", "Metadata": {"my_meta_key": "my_meta_value"}, "Vector": [1.234, -0.123]}`.
 	//
-	// 	- We recommend that you SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
+	// 	- We recommend that you use SDKs to call this operation. SDKs encapsulate the UpsertCollectionDataAsyncAdvance method to upload on-premises files as data sources.
 	//
 	// This parameter is required.
 	//
@@ -42309,7 +45100,12 @@ type UpsertCollectionDataAsyncAdvanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Workspace composed of multiple database instances. This parameter and the DBInstanceId parameter cannot both be empty. When both are specified, this parameter takes precedence.
+	//
+	// example:
+	//
+	// gp-ws-*****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -42963,7 +45759,7 @@ func (client *Client) CheckHadoopDataSource(request *CheckHadoopDataSourceReques
 
 // Summary:
 //
-// 检查hadoop集群网络连通性
+// Check Hadoop Cluster Network Connectivity
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -43017,7 +45813,7 @@ func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNe
 
 // Summary:
 //
-// 检查hadoop集群网络连通性
+// Check Hadoop Cluster Network Connectivity
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -43035,7 +45831,7 @@ func (client *Client) CheckHadoopNetConnection(request *CheckHadoopNetConnection
 
 // Summary:
 //
-// Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+// Check the network connectivity of the JDBC connection string
 //
 // @param request - CheckJDBCSourceNetConnectionRequest
 //
@@ -43089,7 +45885,7 @@ func (client *Client) CheckJDBCSourceNetConnectionWithOptions(request *CheckJDBC
 
 // Summary:
 //
-// Checks the network connectivity of a connection specified by a Java Database Connectivity (JDBC) connection string.
+// Check the network connectivity of the JDBC connection string
 //
 // @param request - CheckJDBCSourceNetConnectionRequest
 //
@@ -43218,10 +46014,6 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		query["OwnerId"] = request.OwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -43324,6 +46116,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 		query["Metadata"] = request.Metadata
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MetadataIndices)) {
+		query["MetadataIndices"] = request.MetadataIndices
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
 		query["Metrics"] = request.Metrics
 	}
@@ -43395,17 +46191,11 @@ func (client *Client) CreateCollection(request *CreateCollectionRequest) (_resul
 
 // Summary:
 //
-// Creates an AnalyticDB for PostgreSQL instance.
+// Create Instance
 //
 // Description:
 //
-// You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-//
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -43448,6 +46238,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceMode)) {
 		query["DBInstanceMode"] = request.DBInstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeployMode)) {
+		query["DeployMode"] = request.DeployMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSSL)) {
@@ -43546,6 +46340,14 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["SrcDbInstanceName"] = request.SrcDbInstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
 		query["StorageSize"] = request.StorageSize
 	}
@@ -43603,17 +46405,11 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 // Summary:
 //
-// Creates an AnalyticDB for PostgreSQL instance.
+// Create Instance
 //
 // Description:
 //
-// You can call this operation when you need to create AnalyticDB for PostgreSQL instances to meet the requirements of new applications or services.
-//
-// Before you call this operation, make sure that you are familiar with the billing of AnalyticDB for PostgreSQL instances. For more information, see [Billing methods](https://help.aliyun.com/document_detail/35406.html) and [AnalyticDB for PostgreSQL pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing).
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+// Before using this interface, please make sure you have fully understood the [billing method](https://help.aliyun.com/document_detail/35406.html) and <props="china">[pricing](https://www.aliyun.com/price/product#/gpdb/detail/GreenplumPost)<props="intl">[pricing](https://www.alibabacloud.com/zh/product/hybriddb-postgresql/pricing) of the AnalyticDB for PostgreSQL product.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -43811,7 +46607,7 @@ func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupReques
 
 // Summary:
 //
-// Creates a document collection.
+// Create Knowledge Base
 //
 // @param request - CreateDocumentCollectionRequest
 //
@@ -43858,6 +46654,10 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
 		query["Metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetadataIndices)) {
+		query["MetadataIndices"] = request.MetadataIndices
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
@@ -43909,7 +46709,7 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 // Summary:
 //
-// Creates a document collection.
+// Create Knowledge Base
 //
 // @param request - CreateDocumentCollectionRequest
 //
@@ -43999,7 +46799,7 @@ func (client *Client) CreateExtensions(request *CreateExtensionsRequest) (_resul
 
 // Summary:
 //
-// Creates an external data service.
+// Create External Data Service
 //
 // @param request - CreateExternalDataServiceRequest
 //
@@ -44057,7 +46857,7 @@ func (client *Client) CreateExternalDataServiceWithOptions(request *CreateExtern
 
 // Summary:
 //
-// Creates an external data service.
+// Create External Data Service
 //
 // @param request - CreateExternalDataServiceRequest
 //
@@ -44075,7 +46875,7 @@ func (client *Client) CreateExternalDataService(request *CreateExternalDataServi
 
 // Summary:
 //
-// Creates the configurations for a Hadoop data source.
+// Create Hadoop data source configuration
 //
 // @param request - CreateHadoopDataSourceRequest
 //
@@ -44165,7 +46965,7 @@ func (client *Client) CreateHadoopDataSourceWithOptions(request *CreateHadoopDat
 
 // Summary:
 //
-// Creates the configurations for a Hadoop data source.
+// Create Hadoop data source configuration
 //
 // @param request - CreateHadoopDataSourceRequest
 //
@@ -44183,7 +46983,7 @@ func (client *Client) CreateHadoopDataSource(request *CreateHadoopDataSourceRequ
 
 // Summary:
 //
-// Creates a Java Database Connectivity (JDBC) data source.
+// Creates a JDBC data source.
 //
 // @param request - CreateJDBCDataSourceRequest
 //
@@ -44253,7 +47053,7 @@ func (client *Client) CreateJDBCDataSourceWithOptions(request *CreateJDBCDataSou
 
 // Summary:
 //
-// Creates a Java Database Connectivity (JDBC) data source.
+// Creates a JDBC data source.
 //
 // @param request - CreateJDBCDataSourceRequest
 //
@@ -44350,6 +47150,102 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNamespaceResponse{}
 	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create Homogeneous Data Source
+//
+// @param request - CreateRemoteADBDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRemoteADBDataSourceResponse
+func (client *Client) CreateRemoteADBDataSourceWithOptions(request *CreateRemoteADBDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateRemoteADBDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceName)) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDBInstanceId)) {
+		query["LocalDBInstanceId"] = request.LocalDBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDatabase)) {
+		query["LocalDatabase"] = request.LocalDatabase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerUserName)) {
+		query["ManagerUserName"] = request.ManagerUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerUserPassword)) {
+		query["ManagerUserPassword"] = request.ManagerUserPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteDBInstanceId)) {
+		query["RemoteDBInstanceId"] = request.RemoteDBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteDatabase)) {
+		query["RemoteDatabase"] = request.RemoteDatabase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPassword)) {
+		query["UserPassword"] = request.UserPassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRemoteADBDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRemoteADBDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Create Homogeneous Data Source
+//
+// @param request - CreateRemoteADBDataSourceRequest
+//
+// @return CreateRemoteADBDataSourceResponse
+func (client *Client) CreateRemoteADBDataSource(request *CreateRemoteADBDataSourceRequest) (_result *CreateRemoteADBDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRemoteADBDataSourceResponse{}
+	_body, _err := client.CreateRemoteADBDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44587,7 +47483,7 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 
 // Summary:
 //
-// Creates a real-time data service.
+// Create External Data Source Configuration
 //
 // @param request - CreateStreamingDataServiceRequest
 //
@@ -44645,7 +47541,7 @@ func (client *Client) CreateStreamingDataServiceWithOptions(request *CreateStrea
 
 // Summary:
 //
-// Creates a real-time data service.
+// Create External Data Source Configuration
 //
 // @param request - CreateStreamingDataServiceRequest
 //
@@ -44663,7 +47559,7 @@ func (client *Client) CreateStreamingDataService(request *CreateStreamingDataSer
 
 // Summary:
 //
-// Creates a real-time data source.
+// Create External Data Source Configuration
 //
 // @param request - CreateStreamingDataSourceRequest
 //
@@ -44729,7 +47625,7 @@ func (client *Client) CreateStreamingDataSourceWithOptions(request *CreateStream
 
 // Summary:
 //
-// Creates a real-time data source.
+// Create External Data Source Configuration
 //
 // @param request - CreateStreamingDataSourceRequest
 //
@@ -44747,7 +47643,7 @@ func (client *Client) CreateStreamingDataSource(request *CreateStreamingDataSour
 
 // Summary:
 //
-// Creates the configurations for an external data source.
+// Create External Data Source Configuration
 //
 // @param tmpReq - CreateStreamingJobRequest
 //
@@ -44891,7 +47787,7 @@ func (client *Client) CreateStreamingJobWithOptions(tmpReq *CreateStreamingJobRe
 
 // Summary:
 //
-// Creates the configurations for an external data source.
+// Create External Data Source Configuration
 //
 // @param request - CreateStreamingJobRequest
 //
@@ -44909,7 +47805,7 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 
 // Summary:
 //
-// Creates a vector index.
+// Create Vector Index
 //
 // @param request - CreateVectorIndexRequest
 //
@@ -44995,7 +47891,7 @@ func (client *Client) CreateVectorIndexWithOptions(request *CreateVectorIndexReq
 
 // Summary:
 //
-// Creates a vector index.
+// Create Vector Index
 //
 // @param request - CreateVectorIndexRequest
 //
@@ -45497,7 +48393,7 @@ func (client *Client) DeleteDBResourceGroup(request *DeleteDBResourceGroupReques
 
 // Summary:
 //
-// Deletes a document from a document collection.
+// Delete Document
 //
 // @param request - DeleteDocumentRequest
 //
@@ -45563,7 +48459,7 @@ func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, 
 
 // Summary:
 //
-// Deletes a document from a document collection.
+// Delete Document
 //
 // @param request - DeleteDocumentRequest
 //
@@ -45581,7 +48477,7 @@ func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *D
 
 // Summary:
 //
-// Deletes a document collection.
+// Delete Knowledge Base
 //
 // @param request - DeleteDocumentCollectionRequest
 //
@@ -45643,7 +48539,7 @@ func (client *Client) DeleteDocumentCollectionWithOptions(request *DeleteDocumen
 
 // Summary:
 //
-// Deletes a document collection.
+// Delete Knowledge Base
 //
 // @param request - DeleteDocumentCollectionRequest
 //
@@ -45733,7 +48629,7 @@ func (client *Client) DeleteExtension(request *DeleteExtensionRequest) (_result 
 
 // Summary:
 //
-// Deletes an external data service.
+// Delete External Data Service
 //
 // @param request - DeleteExternalDataServiceRequest
 //
@@ -45783,7 +48679,7 @@ func (client *Client) DeleteExternalDataServiceWithOptions(request *DeleteExtern
 
 // Summary:
 //
-// Deletes an external data service.
+// Delete External Data Service
 //
 // @param request - DeleteExternalDataServiceRequest
 //
@@ -45869,7 +48765,7 @@ func (client *Client) DeleteHadoopDataSource(request *DeleteHadoopDataSourceRequ
 
 // Summary:
 //
-// Deletes a Java Database Connectivity (JDBC) data source.
+// Delete JDBC data source
 //
 // @param request - DeleteJDBCDataSourceRequest
 //
@@ -45919,7 +48815,7 @@ func (client *Client) DeleteJDBCDataSourceWithOptions(request *DeleteJDBCDataSou
 
 // Summary:
 //
-// Deletes a Java Database Connectivity (JDBC) data source.
+// Delete JDBC data source
 //
 // @param request - DeleteJDBCDataSourceRequest
 //
@@ -46012,6 +48908,74 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
 	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a remote AnalyticDB data source.
+//
+// @param request - DeleteRemoteADBDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRemoteADBDataSourceResponse
+func (client *Client) DeleteRemoteADBDataSourceWithOptions(request *DeleteRemoteADBDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteRemoteADBDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDBInstanceId)) {
+		query["LocalDBInstanceId"] = request.LocalDBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRemoteADBDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRemoteADBDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a remote AnalyticDB data source.
+//
+// @param request - DeleteRemoteADBDataSourceRequest
+//
+// @return DeleteRemoteADBDataSourceResponse
+func (client *Client) DeleteRemoteADBDataSource(request *DeleteRemoteADBDataSourceRequest) (_result *DeleteRemoteADBDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRemoteADBDataSourceResponse{}
+	_body, _err := client.DeleteRemoteADBDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46973,17 +49937,19 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 
 // Summary:
 //
-// Queries the information about an AnalyticDB for PostgreSQL instance.
+// Query detailed information about the instance
 //
 // Description:
 //
-// ##
+// ## Usage Instructions
 //
-// You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+// This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
 //
-// ## Limits
+// ## QPS Limitation
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+//
+// <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -47033,17 +49999,19 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the information about an AnalyticDB for PostgreSQL instance.
+// Query detailed information about the instance
 //
 // Description:
 //
-// ##
+// ## Usage Instructions
 //
-// You can call this operation to query the information about an AnalyticDB for PostgreSQL instance, such as the instance type, network type, and instance state.
+// This interface is generally used to view information such as the specifications, network type, and instance status of AnalyticDB for PostgreSQL instances.
 //
-// ## Limits
+// ## QPS Limitation
 //
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The default single-user QPS limit for this interface is 1000 times/second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please use it reasonably.
+//
+// <props="china">The QPS in this document is only a default reference value. For accurate information, please refer to the [API Rate Quota List](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -49047,7 +52015,7 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 
 // Summary:
 //
-// Queries the information about a document.
+// Get Document Details
 //
 // @param request - DescribeDocumentRequest
 //
@@ -49113,7 +52081,7 @@ func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentReque
 
 // Summary:
 //
-// Queries the information about a document.
+// Get Document Details
 //
 // @param request - DescribeDocumentRequest
 //
@@ -49203,7 +52171,7 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 
 // Summary:
 //
-// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+// Get download records
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -49245,7 +52213,7 @@ func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownlo
 
 // Summary:
 //
-// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+// Get download records
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -49395,7 +52363,7 @@ func (client *Client) DescribeHadoopClustersInSameNet(request *DescribeHadoopClu
 
 // Summary:
 //
-// 获取hadoop配置信息
+// Queries the configuration information about a Hadoop cluster.
 //
 // @param request - DescribeHadoopConfigsRequest
 //
@@ -49449,7 +52417,7 @@ func (client *Client) DescribeHadoopConfigsWithOptions(request *DescribeHadoopCo
 
 // Summary:
 //
-// 获取hadoop配置信息
+// Queries the configuration information about a Hadoop cluster.
 //
 // @param request - DescribeHadoopConfigsRequest
 //
@@ -50923,7 +53891,7 @@ func (client *Client) DescribeStreamingDataService(request *DescribeStreamingDat
 
 // Summary:
 //
-// Queries a real-time data source.
+// Get external data source configuration information
 //
 // @param request - DescribeStreamingDataSourceRequest
 //
@@ -50973,7 +53941,7 @@ func (client *Client) DescribeStreamingDataSourceWithOptions(request *DescribeSt
 
 // Summary:
 //
-// Queries a real-time data source.
+// Get external data source configuration information
 //
 // @param request - DescribeStreamingDataSourceRequest
 //
@@ -50991,7 +53959,7 @@ func (client *Client) DescribeStreamingDataSource(request *DescribeStreamingData
 
 // Summary:
 //
-// Queries a real-time data service.
+// Delete External Data Source Configuration
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -51041,7 +54009,7 @@ func (client *Client) DescribeStreamingJobWithOptions(request *DescribeStreaming
 
 // Summary:
 //
-// Queries a real-time data service.
+// Delete External Data Source Configuration
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -52963,7 +55931,7 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of external data sources.
+// Queries a list of external data services.
 //
 // @param request - ListExternalDataServicesRequest
 //
@@ -53017,7 +55985,7 @@ func (client *Client) ListExternalDataServicesWithOptions(request *ListExternalD
 
 // Summary:
 //
-// Queries a list of external data sources.
+// Queries a list of external data services.
 //
 // @param request - ListExternalDataServicesRequest
 //
@@ -53267,6 +56235,74 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
+// Get Homogeneous Data Source
+//
+// @param request - ListRemoteADBDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRemoteADBDataSourcesResponse
+func (client *Client) ListRemoteADBDataSourcesWithOptions(request *ListRemoteADBDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListRemoteADBDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRemoteADBDataSources"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRemoteADBDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Homogeneous Data Source
+//
+// @param request - ListRemoteADBDataSourcesRequest
+//
+// @return ListRemoteADBDataSourcesResponse
+func (client *Client) ListRemoteADBDataSources(request *ListRemoteADBDataSourcesRequest) (_result *ListRemoteADBDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRemoteADBDataSourcesResponse{}
+	_body, _err := client.ListRemoteADBDataSourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of schemas.
 //
 // @param request - ListSchemasRequest
@@ -53423,7 +56459,7 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 
 // Summary:
 //
-// Queries the information about real-time data services.
+// Create External Data Source Configuration
 //
 // @param request - ListStreamingDataServicesRequest
 //
@@ -53477,7 +56513,7 @@ func (client *Client) ListStreamingDataServicesWithOptions(request *ListStreamin
 
 // Summary:
 //
-// Queries the information about real-time data services.
+// Create External Data Source Configuration
 //
 // @param request - ListStreamingDataServicesRequest
 //
@@ -53567,7 +56603,7 @@ func (client *Client) ListStreamingDataSources(request *ListStreamingDataSources
 
 // Summary:
 //
-// Queries real-time data service jobs.
+// Queries real-time data synchronization jobs.
 //
 // @param request - ListStreamingJobsRequest
 //
@@ -53621,7 +56657,7 @@ func (client *Client) ListStreamingJobsWithOptions(request *ListStreamingJobsReq
 
 // Summary:
 //
-// Queries real-time data service jobs.
+// Queries real-time data synchronization jobs.
 //
 // @param request - ListStreamingJobsRequest
 //
@@ -53844,6 +56880,10 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		query["AccountName"] = request.AccountName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -54060,6 +57100,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConnectionStringPrefix)) {
 		query["ConnectionStringPrefix"] = request.ConnectionStringPrefix
 	}
@@ -54282,6 +57326,102 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceMaintainTimeResponse{}
 	_body, _err := client.ModifyDBInstanceMaintainTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the network type of an AnalyticDB for PostgreSQL instance.
+//
+// Description:
+//
+// ##
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+//
+// ## QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceNetworkTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceNetworkTypeResponse
+func (client *Client) ModifyDBInstanceNetworkTypeWithOptions(request *ModifyDBInstanceNetworkTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceNetworkTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
+		query["InstanceNetworkType"] = request.InstanceNetworkType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceNetworkType"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceNetworkTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the network type of an AnalyticDB for PostgreSQL instance.
+//
+// Description:
+//
+// ##
+//
+// This operation is available only for AnalyticDB for PostgreSQL instances in reserved storage mode.
+//
+// ## QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifyDBInstanceNetworkTypeRequest
+//
+// @return ModifyDBInstanceNetworkTypeResponse
+func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetworkTypeRequest) (_result *ModifyDBInstanceNetworkTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceNetworkTypeResponse{}
+	_body, _err := client.ModifyDBInstanceNetworkTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54597,7 +57737,7 @@ func (client *Client) ModifyDBResourceGroup(request *ModifyDBResourceGroupReques
 
 // Summary:
 //
-// Modifies an external data service.
+// Modify External Data Service
 //
 // @param request - ModifyExternalDataServiceRequest
 //
@@ -54655,7 +57795,7 @@ func (client *Client) ModifyExternalDataServiceWithOptions(request *ModifyExtern
 
 // Summary:
 //
-// Modifies an external data service.
+// Modify External Data Service
 //
 // @param request - ModifyExternalDataServiceRequest
 //
@@ -55037,6 +58177,86 @@ func (client *Client) ModifyParameters(request *ModifyParametersRequest) (_resul
 
 // Summary:
 //
+// Modify Homogeneous Data Source
+//
+// @param request - ModifyRemoteADBDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRemoteADBDataSourceResponse
+func (client *Client) ModifyRemoteADBDataSourceWithOptions(request *ModifyRemoteADBDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyRemoteADBDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceName)) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalDBInstanceId)) {
+		query["LocalDBInstanceId"] = request.LocalDBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPassword)) {
+		query["UserPassword"] = request.UserPassword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRemoteADBDataSource"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRemoteADBDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify Homogeneous Data Source
+//
+// @param request - ModifyRemoteADBDataSourceRequest
+//
+// @return ModifyRemoteADBDataSourceResponse
+func (client *Client) ModifyRemoteADBDataSource(request *ModifyRemoteADBDataSourceRequest) (_result *ModifyRemoteADBDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRemoteADBDataSourceResponse{}
+	_body, _err := client.ModifyRemoteADBDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables or disables the SQL Explorer feature for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -55361,7 +58581,7 @@ func (client *Client) ModifyStreamingDataSource(request *ModifyStreamingDataSour
 
 // Summary:
 //
-// 创建外部数据源配置
+// Create External Data Source Configuration
 //
 // @param tmpReq - ModifyStreamingJobRequest
 //
@@ -55497,7 +58717,7 @@ func (client *Client) ModifyStreamingJobWithOptions(tmpReq *ModifyStreamingJobRe
 
 // Summary:
 //
-// 创建外部数据源配置
+// Create External Data Source Configuration
 //
 // @param request - ModifyStreamingJobRequest
 //
@@ -55735,7 +58955,7 @@ func (client *Client) PauseInstance(request *PauseInstanceRequest) (_result *Pau
 
 // Summary:
 //
-// Retrieves vector data.
+// Query Vector Data
 //
 // @param tmpReq - QueryCollectionDataRequest
 //
@@ -55863,7 +59083,7 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 // Summary:
 //
-// Retrieves vector data.
+// Query Vector Data
 //
 // @param request - QueryCollectionDataRequest
 //
@@ -55881,7 +59101,7 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 
 // Summary:
 //
-// Retrieves vector data and metadata from a document collection by using natural statements.
+// Query
 //
 // @param tmpReq - QueryContentRequest
 //
@@ -56009,7 +59229,7 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 // Summary:
 //
-// Retrieves vector data and metadata from a document collection by using natural statements.
+// Query
 //
 // @param request - QueryContentRequest
 //
@@ -56270,7 +59490,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// 通过模型对文档进行打分和重排序
+// Score and re-order documents using a model
 //
 // @param tmpReq - RerankRequest
 //
@@ -56352,7 +59572,7 @@ func (client *Client) RerankWithOptions(tmpReq *RerankRequest, runtime *util.Run
 
 // Summary:
 //
-// 通过模型对文档进行打分和重排序
+// Score and re-order documents using a model
 //
 // @param request - RerankRequest
 //
@@ -57080,6 +60300,90 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
+// 通过模型对文本文档进行向量化
+//
+// @param tmpReq - TextEmbeddingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TextEmbeddingResponse
+func (client *Client) TextEmbeddingWithOptions(tmpReq *TextEmbeddingRequest, runtime *util.RuntimeOptions) (_result *TextEmbeddingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TextEmbeddingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TextEmbedding"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TextEmbeddingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过模型对文本文档进行向量化
+//
+// @param request - TextEmbeddingRequest
+//
+// @return TextEmbeddingResponse
+func (client *Client) TextEmbedding(request *TextEmbeddingRequest) (_result *TextEmbeddingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TextEmbeddingResponse{}
+	_body, _err := client.TextEmbeddingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds database roles from a resource group.
 //
 // @param tmpReq - UnbindDBResourceGroupWithRoleRequest
@@ -57238,7 +60542,7 @@ func (client *Client) UnloadSampleData(request *UnloadSampleDataRequest) (_resul
 
 // Summary:
 //
-// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+// Remove resource tags
 //
 // @param request - UntagResourcesRequest
 //
@@ -57312,7 +60616,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from AnalyticDB for PostgreSQL instances. If the tags that you remove are not added to other instances, the tags are automatically deleted.
+// Remove resource tags
 //
 // @param request - UntagResourcesRequest
 //
@@ -57330,7 +60634,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates metadata in the vector data.
+// Update Metadata of Collection Data
 //
 // @param tmpReq - UpdateCollectionDataMetadataRequest
 //
@@ -57418,7 +60722,7 @@ func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateColl
 
 // Summary:
 //
-// Updates metadata in the vector data.
+// Update Metadata of Collection Data
 //
 // @param request - UpdateCollectionDataMetadataRequest
 //
@@ -57765,6 +61069,10 @@ func (client *Client) UpgradeExtensionsWithOptions(request *UpgradeExtensionsReq
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Extensions)) {
 		query["Extensions"] = request.Extensions
 	}
@@ -57816,7 +61124,7 @@ func (client *Client) UpgradeExtensions(request *UpgradeExtensionsRequest) (_res
 
 // Summary:
 //
-// Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+// Asynchronous Document Upload
 //
 // Description:
 //
@@ -57948,7 +61256,7 @@ func (client *Client) UploadDocumentAsyncWithOptions(tmpReq *UploadDocumentAsync
 
 // Summary:
 //
-// Uploads a document in an asynchronous manner by using an on-premises file or an Internet-accessible file URL. After a document is uploaded, the server loads, chunks, embeds, and stores the document. A document can be up to 200 MB in size.
+// Asynchronous Document Upload
 //
 // Description:
 //
@@ -58095,7 +61403,11 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 
 // Summary:
 //
-// Splits a document into chunks and uploads the vectorized chunks to a document collection.
+// Upload split text
+//
+// Description:
+//
+// The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
 //
 // @param tmpReq - UpsertChunksRequest
 //
@@ -58173,7 +61485,11 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 
 // Summary:
 //
-// Splits a document into chunks and uploads the vectorized chunks to a document collection.
+// Upload split text
+//
+// Description:
+//
+// The vectorization algorithm for the document is specified by the CreateDocumentCollection API.
 //
 // @param request - UpsertChunksRequest
 //
