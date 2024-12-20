@@ -69,7 +69,8 @@ func (s *AISearchQuery) SetTimeRange(v string) *AISearchQuery {
 }
 
 type GenericSearchResult struct {
-	PageItems []*ScorePageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	PageItems    []*ScorePageItem `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	QueryContext *QueryContext    `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
 	// example:
 	//
 	// 123456
@@ -89,6 +90,11 @@ func (s GenericSearchResult) GoString() string {
 
 func (s *GenericSearchResult) SetPageItems(v []*ScorePageItem) *GenericSearchResult {
 	s.PageItems = v
+	return s
+}
+
+func (s *GenericSearchResult) SetQueryContext(v *QueryContext) *GenericSearchResult {
+	s.QueryContext = v
 	return s
 }
 
@@ -147,6 +153,87 @@ func (s *IncludeImage) SetImageLink(v string) *IncludeImage {
 
 func (s *IncludeImage) SetWidth(v int32) *IncludeImage {
 	s.Width = &v
+	return s
+}
+
+type QueryContext struct {
+	OriginalQuery *QueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
+	Rewrite       *QueryContextRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
+}
+
+func (s QueryContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContext) SetOriginalQuery(v *QueryContextOriginalQuery) *QueryContext {
+	s.OriginalQuery = v
+	return s
+}
+
+func (s *QueryContext) SetRewrite(v *QueryContextRewrite) *QueryContext {
+	s.Rewrite = v
+	return s
+}
+
+type QueryContextOriginalQuery struct {
+	Industry  *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	Page      *string `json:"page,omitempty" xml:"page,omitempty"`
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s QueryContextOriginalQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContextOriginalQuery) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContextOriginalQuery) SetIndustry(v string) *QueryContextOriginalQuery {
+	s.Industry = &v
+	return s
+}
+
+func (s *QueryContextOriginalQuery) SetPage(v string) *QueryContextOriginalQuery {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryContextOriginalQuery) SetQuery(v string) *QueryContextOriginalQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *QueryContextOriginalQuery) SetTimeRange(v string) *QueryContextOriginalQuery {
+	s.TimeRange = &v
+	return s
+}
+
+type QueryContextRewrite struct {
+	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s QueryContextRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContextRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContextRewrite) SetEnabled(v bool) *QueryContextRewrite {
+	s.Enabled = &v
+	return s
+}
+
+func (s *QueryContextRewrite) SetTimeRange(v string) *QueryContextRewrite {
+	s.TimeRange = &v
 	return s
 }
 
@@ -536,7 +623,8 @@ type AiSearchResponseBodyHeader struct {
 	// example:
 	//
 	// 988021f0-951a-43d0-ba4d-785359e7e7be
-	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	EventId      *string                                 `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	QueryContext *AiSearchResponseBodyHeaderQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1293
@@ -561,8 +649,94 @@ func (s *AiSearchResponseBodyHeader) SetEventId(v string) *AiSearchResponseBodyH
 	return s
 }
 
+func (s *AiSearchResponseBodyHeader) SetQueryContext(v *AiSearchResponseBodyHeaderQueryContext) *AiSearchResponseBodyHeader {
+	s.QueryContext = v
+	return s
+}
+
 func (s *AiSearchResponseBodyHeader) SetResponseTime(v int64) *AiSearchResponseBodyHeader {
 	s.ResponseTime = &v
+	return s
+}
+
+type AiSearchResponseBodyHeaderQueryContext struct {
+	OriginalQuery *AiSearchResponseBodyHeaderQueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
+	Rewrite       *AiSearchResponseBodyHeaderQueryContextRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty" type:"Struct"`
+}
+
+func (s AiSearchResponseBodyHeaderQueryContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponseBodyHeaderQueryContext) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContext) SetOriginalQuery(v *AiSearchResponseBodyHeaderQueryContextOriginalQuery) *AiSearchResponseBodyHeaderQueryContext {
+	s.OriginalQuery = v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContext) SetRewrite(v *AiSearchResponseBodyHeaderQueryContextRewrite) *AiSearchResponseBodyHeaderQueryContext {
+	s.Rewrite = v
+	return s
+}
+
+type AiSearchResponseBodyHeaderQueryContextOriginalQuery struct {
+	Industry  *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s AiSearchResponseBodyHeaderQueryContextOriginalQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponseBodyHeaderQueryContextOriginalQuery) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) SetIndustry(v string) *AiSearchResponseBodyHeaderQueryContextOriginalQuery {
+	s.Industry = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) SetPage(v int32) *AiSearchResponseBodyHeaderQueryContextOriginalQuery {
+	s.Page = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) SetQuery(v string) *AiSearchResponseBodyHeaderQueryContextOriginalQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextOriginalQuery) SetTimeRange(v string) *AiSearchResponseBodyHeaderQueryContextOriginalQuery {
+	s.TimeRange = &v
+	return s
+}
+
+type AiSearchResponseBodyHeaderQueryContextRewrite struct {
+	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s AiSearchResponseBodyHeaderQueryContextRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AiSearchResponseBodyHeaderQueryContextRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextRewrite) SetEnabled(v bool) *AiSearchResponseBodyHeaderQueryContextRewrite {
+	s.Enabled = &v
+	return s
+}
+
+func (s *AiSearchResponseBodyHeaderQueryContextRewrite) SetTimeRange(v string) *AiSearchResponseBodyHeaderQueryContextRewrite {
+	s.TimeRange = &v
 	return s
 }
 
