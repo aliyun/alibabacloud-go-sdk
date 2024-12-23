@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,22 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the new resource group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aek3bgek3kxhyky
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID, which is the instance name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// first-ins
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -36,6 +47,11 @@ func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGrou
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 39871ED2-62C0-578F-A32E-B88072D5582F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -81,17 +97,315 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CheckInstancePolicyRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// workshop-bj-ots1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance policy in the JSON format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Version": "1",
+	//
+	//     "Statement": [
+	//
+	//         {
+	//
+	//             "Action": [
+	//
+	//                 "ots:*"
+	//
+	//             ],
+	//
+	//             "Resource": [
+	//
+	//                 "acs:ots:*:13791xxxxxxxxxxx:instance/myinstance*"
+	//
+	//             ],
+	//
+	//             "Principal": [
+	//
+	//                 "*"
+	//
+	//             ],
+	//
+	//             "Effect": "Allow",
+	//
+	//             "Condition": {
+	//
+	//                 "StringEquals": {
+	//
+	//                     "ots:TLSVersion": [
+	//
+	//                         "1.2"
+	//
+	//                     ]
+	//
+	//                 },
+	//
+	//                 "IpAddress": {
+	//
+	//                     "acs:SourceIp": [
+	//
+	//                         "192.168.0.1",
+	//
+	//                         "172.16.0.1"
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+}
+
+func (s CheckInstancePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstancePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstancePolicyRequest) SetInstanceName(v string) *CheckInstancePolicyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CheckInstancePolicyRequest) SetPolicy(v string) *CheckInstancePolicyRequest {
+	s.Policy = &v
+	return s
+}
+
+type CheckInstancePolicyResponseBody struct {
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// Verification passed.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 757E172A-F94B-5E78-8A23-D9068E42F2E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckInstancePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstancePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstancePolicyResponseBody) SetCode(v string) *CheckInstancePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckInstancePolicyResponseBody) SetMessage(v string) *CheckInstancePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckInstancePolicyResponseBody) SetRequestId(v string) *CheckInstancePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckInstancePolicyResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckInstancePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstancePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstancePolicyResponse) SetHeaders(v map[string]*string) *CheckInstancePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckInstancePolicyResponse) SetStatusCode(v int32) *CheckInstancePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckInstancePolicyResponse) SetBody(v *CheckInstancePolicyResponseBody) *CheckInstancePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceRequest struct {
-	ClusterType         *string                      `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	DisableReplication  *bool                        `json:"DisableReplication,omitempty" xml:"DisableReplication,omitempty"`
-	InstanceDescription *string                      `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceName        *string                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Network             *string                      `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkSourceACL    []*string                    `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
-	NetworkTypeACL      []*string                    `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
-	Policy              *string                      `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	ResourceGroupId     *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags                []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the instance.
+	//
+	// 	- SSD: high-performance instance
+	//
+	// 	- HYBRID: capacity instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SSD
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// (Deprecated) Specifies whether to enable disaster recovery for the instance.
+	//
+	// Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	DisableReplication *bool `json:"DisableReplication,omitempty" xml:"DisableReplication,omitempty"`
+	// The description of the instance. The instance description must be 3 to 256 characters in length.
+	//
+	// example:
+	//
+	// the test instance
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance. Instance naming conventions:
+	//
+	// 	- The name can contain only letters, digits, and hyphens (-).
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name cannot end with a hyphen (-).
+	//
+	// 	- The name is case-insensitive.
+	//
+	// 	- The name must be 3 to 16 characters in length.
+	//
+	// 	- The name cannot contain the following words: ali, ay, ots, taobao, and admin.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// (Deprecated) The network type of the instance. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
+	//
+	// example:
+	//
+	// NORMAL
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The types of the source from which access is allowed. By default, the following source type is allowed:
+	//
+	// TRUST_PROXY: console
+	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
+	// The types of the network from which access is allowed. By default, the following network types are allowed:
+	//
+	// 	- INTERNET: Internet
+	//
+	// 	- VPC: virtual private cloud (VPC)
+	//
+	// 	- CLASSIC: classic network
+	NetworkTypeACL []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
+	// The instance policy in the JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Version": "1",
+	//
+	//     "Statement": [
+	//
+	//         {
+	//
+	//             "Action": [
+	//
+	//                 "ots:*"
+	//
+	//             ],
+	//
+	//             "Resource": [
+	//
+	//                 "acs:ots:*:13791xxxxxxxxxxx:instance/myinstance*"
+	//
+	//             ],
+	//
+	//             "Principal": [
+	//
+	//                 "*"
+	//
+	//             ],
+	//
+	//             "Effect": "Allow",
+	//
+	//             "Condition": {
+	//
+	//                 "StringEquals": {
+	//
+	//                     "ots:TLSVersion": [
+	//
+	//                         "1.2"
+	//
+	//                     ]
+	//
+	//                 },
+	//
+	//                 "IpAddress": {
+	//
+	//                     "acs:SourceIp": [
+	//
+	//                         "192.168.0.1",
+	//
+	//                         "198.51.100.1"
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmxh4em5jnbcd
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -153,7 +467,21 @@ func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateI
 }
 
 type CreateInstanceRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. The tag key can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p_instance
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0woauavextilfqr61
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -176,8 +504,23 @@ func (s *CreateInstanceRequestTags) SetValue(v string) *CreateInstanceRequestTag
 }
 
 type CreateInstanceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 39871ED2-62C0-578F-A32E-B88072D5582F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -234,6 +577,13 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type DeleteInstanceRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -251,6 +601,11 @@ func (s *DeleteInstanceRequest) SetInstanceName(v string) *DeleteInstanceRequest
 }
 
 type DeleteInstanceResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 17827FB1-CC71-559D-BBDF-9D41534322E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -296,7 +651,124 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 	return s
 }
 
+type DeleteInstancePolicyRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-test-12345
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The version of the instance policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	PolicyVersion *int64 `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s DeleteInstancePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancePolicyRequest) SetInstanceName(v string) *DeleteInstancePolicyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DeleteInstancePolicyRequest) SetPolicyVersion(v int64) *DeleteInstancePolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type DeleteInstancePolicyResponseBody struct {
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 3104C83E-6E82-57FB-BB88-8C64CCFDEF89
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstancePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancePolicyResponseBody) SetCode(v string) *DeleteInstancePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstancePolicyResponseBody) SetMessage(v string) *DeleteInstancePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstancePolicyResponseBody) SetRequestId(v string) *DeleteInstancePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstancePolicyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstancePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancePolicyResponse) SetHeaders(v map[string]*string) *DeleteInstancePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstancePolicyResponse) SetStatusCode(v int32) *DeleteInstancePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstancePolicyResponse) SetBody(v *DeleteInstancePolicyResponseBody) *DeleteInstancePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// >  #### You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -314,8 +786,14 @@ func (s *DescribeRegionsRequest) SetClientToken(v string) *DescribeRegionsReques
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// B37BBA04-D827-55C8-B901-5264B904E8C6
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -337,7 +815,17 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	I18nKey  *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	// The key of the region.
+	//
+	// example:
+	//
+	// yunjiankong.cloud.region.cn-hangzhou
+	I18nKey *string `json:"I18nKey,omitempty" xml:"I18nKey,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -389,6 +877,13 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetInstanceRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
@@ -406,27 +901,211 @@ func (s *GetInstanceRequest) SetInstanceName(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
-	AliasName             *string                        `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	CreateTime            *string                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceDescription   *string                        `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceName          *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceSpecification *string                        `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	InstanceStatus        *string                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	Network               *string                        `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkSourceACL      []*string                      `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
-	NetworkTypeACL        []*string                      `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
-	PaymentType           *string                        `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Policy                *string                        `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PolicyVersion         *int64                         `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	RegionId              *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId             *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId       *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SPInstanceId          *string                        `json:"SPInstanceId,omitempty" xml:"SPInstanceId,omitempty"`
-	StorageType           *string                        `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	TableQuota            *int32                         `json:"TableQuota,omitempty" xml:"TableQuota,omitempty"`
-	Tags                  []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserId                *string                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VCUQuota              *int32                         `json:"VCUQuota,omitempty" xml:"VCUQuota,omitempty"`
+	// The alias of the instance.
+	//
+	// example:
+	//
+	// instance-test
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2019-12-23T07:24:33Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// Description of the test instance.
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// instance-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the instance.
+	//
+	// 	- SSD: high-performance instance
+	//
+	// 	- HYBRID: capacity instance
+	//
+	// example:
+	//
+	// SSD
+	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
+	// The status of the instance.
+	//
+	// 	- normal: The instance works as expected.
+	//
+	// 	- forbidden: The instance is disabled.
+	//
+	// 	- Deleting: The instance is being deleted.
+	//
+	// example:
+	//
+	// normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	IsMultiAZ      *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	// The network type of the instance. Valid values:
+	//
+	// 	- VPC: The instance can be accessed only over the bound virtual private clouds (VPCs).
+	//
+	// 	- VPC_CONSOLE: The instance can be accessed from the Tablestore console or over the bound VPCs.
+	//
+	// 	- NORMAL: The instance can be accessed from networks of the custom types.
+	//
+	// example:
+	//
+	// VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The sources of the network from which access is allowed. Valid value:
+	//
+	// TRUST_PROXY: console
+	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
+	// The types of the network from which access is allowed. Valid values:
+	//
+	// 	- CLASSIC: the classic network
+	//
+	// 	- INTERNET: the Internet
+	//
+	// 	- VPC: VPCs
+	NetworkTypeACL []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
+	// The billing method. Valid values:
+	//
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// Subscription
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The instance policy.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Version": "1",
+	//
+	//     "Statement": [
+	//
+	//         {
+	//
+	//             "Action": [
+	//
+	//                 "ots:*"
+	//
+	//             ],
+	//
+	//             "Resource": [
+	//
+	//                 "acs:ots:*:13791xxxxxxxxxxx:instance/myinstance*"
+	//
+	//             ],
+	//
+	//             "Principal": [
+	//
+	//                 "*"
+	//
+	//             ],
+	//
+	//             "Effect": "Allow",
+	//
+	//             "Condition": {
+	//
+	//                 "StringEquals": {
+	//
+	//                     "ots:TLSVersion": [
+	//
+	//                         "1.2"
+	//
+	//                     ]
+	//
+	//                 },
+	//
+	//                 "IpAddress": {
+	//
+	//                     "acs:SourceIp": [
+	//
+	//                         "192.168.0.1",
+	//
+	//                         "198.51.100.1"
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The version of the instance policy.
+	//
+	// example:
+	//
+	// 1
+	PolicyVersion *int64 `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-chengdu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 757E172A-F94B-5E78-8A23-D9068E42F2E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmxh4em5jncda
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// ots_standard_public_cn-9lb34u7u5001
+	SPInstanceId *string `json:"SPInstanceId,omitempty" xml:"SPInstanceId,omitempty"`
+	// The storage type.
+	//
+	// 	- SSD: high-performance
+	//
+	// 	- HYBRID: capacity
+	//
+	// example:
+	//
+	// HYBRID
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The total number of tables in the instance.
+	//
+	// example:
+	//
+	// 100
+	TableQuota *int32 `json:"TableQuota,omitempty" xml:"TableQuota,omitempty"`
+	// The tags of the instance.
+	Tags []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 16542312566
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The VCU quota.
+	//
+	// example:
+	//
+	// 20
+	VCUQuota *int32 `json:"VCUQuota,omitempty" xml:"VCUQuota,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -464,6 +1143,11 @@ func (s *GetInstanceResponseBody) SetInstanceSpecification(v string) *GetInstanc
 
 func (s *GetInstanceResponseBody) SetInstanceStatus(v string) *GetInstanceResponseBody {
 	s.InstanceStatus = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetIsMultiAZ(v bool) *GetInstanceResponseBody {
+	s.IsMultiAZ = &v
 	return s
 }
 
@@ -543,10 +1227,30 @@ func (s *GetInstanceResponseBody) SetVCUQuota(v int32) *GetInstanceResponseBody 
 }
 
 type GetInstanceResponseBodyTags struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// (Deprecated) The tag key.
+	//
+	// example:
+	//
+	// keyTestA
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// (Deprecated) The tag value.
+	//
+	// example:
+	//
+	// 00004a20240452b0
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 333
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetInstanceResponseBodyTags) String() string {
@@ -607,11 +1311,44 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type ListInstancesRequest struct {
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the instance. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// instance
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The names of the instances. This parameter is used to specify multiple instances that you want to query at the same time.
+	InstanceNameList []*string `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty" type:"Repeated"`
+	// The maximum number of instances that you want to return. Valid values: 0 to 200. If you do not configure this parameter or set this parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call. Instances are returned in lexicographical order starting from the position that is specified by this parameter. The first time you call the operation, leave this parameter empty.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
+	//
+	// example:
+	//
+	// rg-aek24upgom6p5ri
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The instance status.
+	//
+	// 	- normal: The instance is running as expected.
+	//
+	// 	- forbidden: The instance is disabled.
+	//
+	// 	- Deleting: The instance is being deleted.
+	//
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -624,6 +1361,11 @@ func (s ListInstancesRequest) GoString() string {
 
 func (s *ListInstancesRequest) SetInstanceName(v string) *ListInstancesRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceNameList(v []*string) *ListInstancesRequest {
+	s.InstanceNameList = v
 	return s
 }
 
@@ -647,11 +1389,106 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 	return s
 }
 
+type ListInstancesShrinkRequest struct {
+	// The name of the instance. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// instance
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The names of the instances. This parameter is used to specify multiple instances that you want to query at the same time.
+	InstanceNameListShrink *string `json:"InstanceNameList,omitempty" xml:"InstanceNameList,omitempty"`
+	// The maximum number of instances that you want to return. Valid values: 0 to 200. If you do not configure this parameter or set this parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start position of the query. Set this parameter to the value of the NextToken parameter that is returned from the last call. Instances are returned in lexicographical order starting from the position that is specified by this parameter. The first time you call the operation, leave this parameter empty.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource group ID. You can query the ID on the Resource Group page in the Resource Management console.
+	//
+	// example:
+	//
+	// rg-aek24upgom6p5ri
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The instance status.
+	//
+	// 	- normal: The instance is running as expected.
+	//
+	// 	- forbidden: The instance is disabled.
+	//
+	// 	- Deleting: The instance is being deleted.
+	//
+	// example:
+	//
+	// normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceName(v string) *ListInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceNameListShrink(v string) *ListInstancesShrinkRequest {
+	s.InstanceNameListShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetMaxResults(v int32) *ListInstancesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetNextToken(v string) *ListInstancesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetResourceGroupId(v string) *ListInstancesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetStatus(v string) *ListInstancesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The instances.
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The token that determines the start position of the next query. If this parameter is empty, all instances that you want to query are returned.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// E734979F-5A44-5993-9CE5-C23103576923
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of instances returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -683,19 +1520,97 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	AliasName             *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceDescription   *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance alias.
+	//
+	// example:
+	//
+	// instance-test
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2019-04-07T09:19:21Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// Description of the test instance.
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance, which is used to uniquely identify the instance.
+	//
+	// example:
+	//
+	// instance-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the instance.
+	//
+	// 	- SSD: high-performance instance
+	//
+	// 	- HYBRID: capacity instance
+	//
+	// example:
+	//
+	// HYBRID
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	PaymentType           *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SPInstanceId          *string `json:"SPInstanceId,omitempty" xml:"SPInstanceId,omitempty"`
-	StorageType           *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VCUQuota              *int32  `json:"VCUQuota,omitempty" xml:"VCUQuota,omitempty"`
+	// The instance status.
+	//
+	// example:
+	//
+	// normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	IsMultiAZ      *bool   `json:"IsMultiAZ,omitempty" xml:"IsMultiAZ,omitempty"`
+	// The billing method.
+	//
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay as you go
+	//
+	// example:
+	//
+	// Subscription
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-huhehaote
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxh4em5jnbcd
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// ots_standard_public_cn-g4t3igqjj002
+	SPInstanceId *string `json:"SPInstanceId,omitempty" xml:"SPInstanceId,omitempty"`
+	// The storage type.
+	//
+	// 	- SSD: high-performance
+	//
+	// 	- HYBRID: capacity
+	//
+	// example:
+	//
+	// HYBRID
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 13542356466
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The VCU quota.
+	//
+	// example:
+	//
+	// 3
+	VCUQuota *int32 `json:"VCUQuota,omitempty" xml:"VCUQuota,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -733,6 +1648,11 @@ func (s *ListInstancesResponseBodyInstances) SetInstanceSpecification(v string) 
 
 func (s *ListInstancesResponseBodyInstances) SetInstanceStatus(v string) *ListInstancesResponseBodyInstances {
 	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetIsMultiAZ(v bool) *ListInstancesResponseBodyInstances {
+	s.IsMultiAZ = &v
 	return s
 }
 
@@ -801,11 +1721,30 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListTagResourcesRequest struct {
-	MaxResults   *int32                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceIds  []*string                      `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string                        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags         []*ListTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The maximum number of tagged resources that you want to return. Valid values: 0 to 200. If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. Tagged resources are returned in lexicographical order starting from the position that is specified by this parameter.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs, which are instance names.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The type of the resource. valid value:
+	//
+	// instance: instance
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tags []*ListTagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -842,7 +1781,17 @@ func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *Lis
 }
 
 type ListTagResourcesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// Owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// Tester
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -865,11 +1814,30 @@ func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesReques
 }
 
 type ListTagResourcesShrinkRequest struct {
-	MaxResults        *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of tagged resources that you want to return. Valid values: 0 to 200. If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. Tagged resources are returned in lexicographical order starting from the position that is specified by this parameter.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs, which are instance names.
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the resource. valid value:
+	//
+	// instance: instance
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -906,10 +1874,26 @@ func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResource
 }
 
 type ListTagResourcesResponseBody struct {
-	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of tagged resources that are returned for the query.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// CAESCG15aC1xxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 31D8120C-AC52-5CA9-BE4A-E4C6316E19AD
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListTagResourcesResponseBody) String() string {
@@ -941,10 +1925,30 @@ func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesR
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID, which is the instance name.
+	//
+	// example:
+	//
+	// instance-test
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// example:
+	//
+	// ALIYUN::OTS::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// Owner
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// Tester
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -1005,9 +2009,24 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type TagResourcesRequest struct {
-	ResourceIds  []*string                  `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags         []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The resource IDs, which are instance names.
+	//
+	// This parameter is required.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The type of the resource. valid value:
+	//
+	// instance: instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	//
+	// This parameter is required.
+	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -1034,7 +2053,21 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// created
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// job-0007z8j1omiabo5i872l
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1057,6 +2090,11 @@ func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 44FDC379-4443-560E-B652-9F7476D8854F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1103,10 +2141,28 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKeys      []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the resources. Default value: false. Valid values:
+	//
+	// 	- true: removes all tags from the resources.
+	//
+	// 	- false: removes the tags that are specified by the TagKeys parameter from the resources.
+	//
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The resource IDs, which are instance names.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The type of the resource. valid value:
+	//
+	// instance: instance
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys.
+	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -1138,6 +2194,11 @@ func (s *UntagResourcesRequest) SetTagKeys(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 26B43C99-F5C9-5341-B462-37427C5BF201
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1184,12 +2245,44 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceRequest struct {
-	AliasName           *string   `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	InstanceDescription *string   `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceName        *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Network             *string   `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkSourceACL    []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
-	NetworkTypeACL      []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
+	// The alias of the instance.
+	//
+	// example:
+	//
+	// instance-test
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// the test instance
+	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The name of the instance whose information you want to update.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// (Deprecated) The network type of the instance. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
+	//
+	// example:
+	//
+	// VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The new sources of the network from which access is allowed. By default, all sources of networks are allowed. Valid value:
+	//
+	// TRUST_PROXY: the console
+	NetworkSourceACL []*string `json:"NetworkSourceACL,omitempty" xml:"NetworkSourceACL,omitempty" type:"Repeated"`
+	// The new types of the network from which access is allowed. By default, all types of networks are allowed. Valid values:
+	//
+	// 	- INTERNET: the Internet
+	//
+	// 	- VPC: VPCs
+	//
+	// 	- CLASSIC: the classic network
+	NetworkTypeACL []*string `json:"NetworkTypeACL,omitempty" xml:"NetworkTypeACL,omitempty" type:"Repeated"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -1231,6 +2324,11 @@ func (s *UpdateInstanceRequest) SetNetworkTypeACL(v []*string) *UpdateInstanceRe
 }
 
 type UpdateInstanceResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 3104C83E-6E82-57FB-BB88-8C64CCFDEF89
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1272,6 +2370,277 @@ func (s *UpdateInstanceResponse) SetStatusCode(v int32) *UpdateInstanceResponse 
 }
 
 func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstanceElasticVCUUpperLimitRequest struct {
+	// The upper limit for the VCUs of the instance.
+	//
+	// >  Valid values of the upper limit for the VCUs of an instance: **Number of reserved VCUs+0.1 to 2000**. You can upgrade or downgrade configurations to modify the number of reserved VCUs by increments or decrements of 1. You can dynamically modify the upper limit for the VCUs of an instance by increments or decrements of 0.1
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
+	ElasticVCUUpperLimit *float32 `json:"ElasticVCUUpperLimit,omitempty" xml:"ElasticVCUUpperLimit,omitempty"`
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// workshop-bj-ots1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitRequest) SetElasticVCUUpperLimit(v float32) *UpdateInstanceElasticVCUUpperLimitRequest {
+	s.ElasticVCUUpperLimit = &v
+	return s
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitRequest) SetInstanceName(v string) *UpdateInstanceElasticVCUUpperLimitRequest {
+	s.InstanceName = &v
+	return s
+}
+
+type UpdateInstanceElasticVCUUpperLimitResponseBody struct {
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// B37BBA04-D827-55C8-B901-5264B904E8C6
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitResponseBody) SetRequestId(v string) *UpdateInstanceElasticVCUUpperLimitResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstanceElasticVCUUpperLimitResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceElasticVCUUpperLimitResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceElasticVCUUpperLimitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitResponse) SetHeaders(v map[string]*string) *UpdateInstanceElasticVCUUpperLimitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitResponse) SetStatusCode(v int32) *UpdateInstanceElasticVCUUpperLimitResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceElasticVCUUpperLimitResponse) SetBody(v *UpdateInstanceElasticVCUUpperLimitResponseBody) *UpdateInstanceElasticVCUUpperLimitResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstancePolicyRequest struct {
+	// The name of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-test-12345
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance policy in the JSON format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Version": "1",
+	//
+	//     "Statement": [
+	//
+	//         {
+	//
+	//             "Action": [
+	//
+	//                 "ots:*"
+	//
+	//             ],
+	//
+	//             "Resource": [
+	//
+	//                 "acs:ots:*:13791xxxxxxxxxxx:instance/myinstance*"
+	//
+	//             ],
+	//
+	//             "Principal": [
+	//
+	//                 "*"
+	//
+	//             ],
+	//
+	//             "Effect": "Allow",
+	//
+	//             "Condition": {
+	//
+	//                 "StringEquals": {
+	//
+	//                     "ots:TLSVersion": [
+	//
+	//                         "1.2"
+	//
+	//                     ]
+	//
+	//                 },
+	//
+	//                 "IpAddress": {
+	//
+	//                     "acs:SourceIp": [
+	//
+	//                         "192.168.0.1",
+	//
+	//                         "172.16.0.1"
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	//             }
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The version of the instance policy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	PolicyVersion *int64 `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s UpdateInstancePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePolicyRequest) SetInstanceName(v string) *UpdateInstancePolicyRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstancePolicyRequest) SetPolicy(v string) *UpdateInstancePolicyRequest {
+	s.Policy = &v
+	return s
+}
+
+func (s *UpdateInstancePolicyRequest) SetPolicyVersion(v int64) *UpdateInstancePolicyRequest {
+	s.PolicyVersion = &v
+	return s
+}
+
+type UpdateInstancePolicyResponseBody struct {
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID, which can be used to troubleshoot issues.
+	//
+	// example:
+	//
+	// 31D8120C-AC52-5CA9-BE4A-E4C6316E19AD
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateInstancePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePolicyResponseBody) SetCode(v string) *UpdateInstancePolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstancePolicyResponseBody) SetMessage(v string) *UpdateInstancePolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateInstancePolicyResponseBody) SetRequestId(v string) *UpdateInstancePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstancePolicyResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstancePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePolicyResponse) SetHeaders(v map[string]*string) *UpdateInstancePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstancePolicyResponse) SetStatusCode(v int32) *UpdateInstancePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstancePolicyResponse) SetBody(v *UpdateInstancePolicyResponseBody) *UpdateInstancePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -1323,6 +2692,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which an instance belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1361,6 +2741,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which an instance belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1373,6 +2760,93 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks the validity of a Resource Access Management (RAM) policy for an instance.
+//
+// @param request - CheckInstancePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInstancePolicyResponse
+func (client *Client) CheckInstancePolicyWithOptions(request *CheckInstancePolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckInstancePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		body["Policy"] = request.Policy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckInstancePolicy"),
+		Version:     tea.String("2020-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/openapi/checkinstancepolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckInstancePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks the validity of a Resource Access Management (RAM) policy for an instance.
+//
+// @param request - CheckInstancePolicyRequest
+//
+// @return CheckInstancePolicyResponse
+func (client *Client) CheckInstancePolicy(request *CheckInstancePolicyRequest) (_result *CheckInstancePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckInstancePolicyResponse{}
+	_body, _err := client.CheckInstancePolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an instance.
+//
+// Description:
+//
+//   **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// 	- Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
+//
+// 	- After you create an instance, you cannot change the type of the instance. Proceed with caution.
+//
+// @param request - CreateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1443,6 +2917,21 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an instance.
+//
+// Description:
+//
+//   **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// 	- Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
+//
+// 	- After you create an instance, you cannot change the type of the instance. Proceed with caution.
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1455,6 +2944,25 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an instance.
+//
+// Description:
+//
+//   Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
+//
+// 	- To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
+//
+// 	- After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
+//
+// @param request - DeleteInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1489,6 +2997,21 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an instance.
+//
+// Description:
+//
+//   Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
+//
+// 	- To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
+//
+// 	- After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1501,6 +3024,97 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) policy of an instance.
+//
+// Description:
+//
+//   You cannot recover a deleted instance policy. Proceed with caution.
+//
+// 	- After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
+//
+// @param request - DeleteInstancePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstancePolicyResponse
+func (client *Client) DeleteInstancePolicyWithOptions(request *DeleteInstancePolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstancePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		body["PolicyVersion"] = request.PolicyVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstancePolicy"),
+		Version:     tea.String("2020-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/openapi/deleteinstancepolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstancePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) policy of an instance.
+//
+// Description:
+//
+//   You cannot recover a deleted instance policy. Proceed with caution.
+//
+// 	- After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
+//
+// @param request - DeleteInstancePolicyRequest
+//
+// @return DeleteInstancePolicyResponse
+func (client *Client) DeleteInstancePolicy(request *DeleteInstancePolicyRequest) (_result *DeleteInstancePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstancePolicyResponse{}
+	_body, _err := client.DeleteInstancePolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries supported regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1535,6 +3149,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries supported regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1547,6 +3168,17 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance information.
+//
+// @param request - GetInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1581,6 +3213,13 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instance information.
+//
+// @param request - GetInstanceRequest
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1593,14 +3232,35 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+// Summary:
+//
+// Queries instances.
+//
+// @param tmpReq - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceNameList)) {
+		request.InstanceNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceNameList, tea.String("InstanceNameList"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNameListShrink)) {
+		query["InstanceNameList"] = request.InstanceNameListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -1643,6 +3303,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances.
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1655,6 +3322,17 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tagged resources.
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1715,6 +3393,13 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tagged resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1727,6 +3412,17 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instances.
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1769,6 +3465,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to instances.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1781,6 +3484,21 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// Description:
+//
+// Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1827,6 +3545,17 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// Description:
+//
+// Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1839,6 +3568,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates instance information.
+//
+// @param request - UpdateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1893,11 +3633,174 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates instance information.
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateInstanceResponse{}
 	_body, _err := client.UpdateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
+//
+// Description:
+//
+//   **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// 	- After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
+//
+// 	- To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
+//
+// @param request - UpdateInstanceElasticVCUUpperLimitRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceElasticVCUUpperLimitResponse
+func (client *Client) UpdateInstanceElasticVCUUpperLimitWithOptions(request *UpdateInstanceElasticVCUUpperLimitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceElasticVCUUpperLimitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElasticVCUUpperLimit)) {
+		body["ElasticVCUUpperLimit"] = request.ElasticVCUUpperLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceElasticVCUUpperLimit"),
+		Version:     tea.String("2020-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/openapi/updateinstanceelasticvcuupperlimit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceElasticVCUUpperLimitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
+//
+// Description:
+//
+//   **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**
+//
+// 	- After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
+//
+// 	- To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
+//
+// @param request - UpdateInstanceElasticVCUUpperLimitRequest
+//
+// @return UpdateInstanceElasticVCUUpperLimitResponse
+func (client *Client) UpdateInstanceElasticVCUUpperLimit(request *UpdateInstanceElasticVCUUpperLimitRequest) (_result *UpdateInstanceElasticVCUUpperLimitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceElasticVCUUpperLimitResponse{}
+	_body, _err := client.UpdateInstanceElasticVCUUpperLimitWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a Resource Access Management (RAM) policy for an instance.
+//
+// @param request - UpdateInstancePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstancePolicyResponse
+func (client *Client) UpdateInstancePolicyWithOptions(request *UpdateInstancePolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstancePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		body["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyVersion)) {
+		body["PolicyVersion"] = request.PolicyVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstancePolicy"),
+		Version:     tea.String("2020-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/openapi/updateinstancepolicy"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstancePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a Resource Access Management (RAM) policy for an instance.
+//
+// @param request - UpdateInstancePolicyRequest
+//
+// @return UpdateInstancePolicyResponse
+func (client *Client) UpdateInstancePolicy(request *UpdateInstancePolicyRequest) (_result *UpdateInstancePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstancePolicyResponse{}
+	_body, _err := client.UpdateInstancePolicyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
