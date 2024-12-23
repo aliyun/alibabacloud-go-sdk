@@ -167,7 +167,7 @@ func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryRe
 }
 
 type AddFileRequest struct {
-	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId`<props="china"> returned by the [AddCategory](https://www.alibabacloud.com/help/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
 	//
 	// This parameter is required.
 	//
@@ -175,7 +175,7 @@ type AddFileRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
 	//
 	// This parameter is required.
 	//
@@ -226,7 +226,7 @@ func (s *AddFileRequest) SetTags(v []*string) *AddFileRequest {
 }
 
 type AddFileShrinkRequest struct {
-	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId` returned by the [AddCategory](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.aliyun.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
+	// The primary key ID of the category to which the document is uploaded. This parameter corresponds to the `CategoryId`<props="china"> returned by the [AddCategory](https://www.alibabacloud.com/help/zh/model-studio/developer-reference/api-bailian-2023-12-29-addcategory) operation. You can also click the ID icon next to the category name on the Unstructured Data tab of the [Data Management](https://bailian.console.alibabacloud.com/#/data-center) page to view the ID. You can set the parameter to default, which specifies the Default Category created by the system.
 	//
 	// This parameter is required.
 	//
@@ -234,7 +234,7 @@ type AddFileShrinkRequest struct {
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
+	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
 	//
 	// This parameter is required.
 	//
@@ -676,6 +676,7 @@ type CreateAndPulishAgentRequest struct {
 	Instructions      *string                                       `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	ModelId           *string                                       `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Name              *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibrary     *CreateAndPulishAgentRequestSampleLibrary     `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty" type:"Struct"`
 }
 
 func (s CreateAndPulishAgentRequest) String() string {
@@ -703,6 +704,11 @@ func (s *CreateAndPulishAgentRequest) SetModelId(v string) *CreateAndPulishAgent
 
 func (s *CreateAndPulishAgentRequest) SetName(v string) *CreateAndPulishAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequest) SetSampleLibrary(v *CreateAndPulishAgentRequestSampleLibrary) *CreateAndPulishAgentRequest {
+	s.SampleLibrary = v
 	return s
 }
 
@@ -847,9 +853,17 @@ func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetTemperature(
 }
 
 type CreateAndPulishAgentRequestApplicationConfigRagConfig struct {
+	AnswerScope           *string   `json:"answerScope,omitempty" xml:"answerScope,omitempty"`
 	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
 	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	EnableWebSearch       *bool     `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
+	FixedReplyDetail      *string   `json:"fixedReplyDetail,omitempty" xml:"fixedReplyDetail,omitempty"`
 	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	PromptStrategy        *string   `json:"promptStrategy,omitempty" xml:"promptStrategy,omitempty"`
+	RagRejectType         *string   `json:"ragRejectType,omitempty" xml:"ragRejectType,omitempty"`
+	RejectFilterPrompt    *string   `json:"rejectFilterPrompt,omitempty" xml:"rejectFilterPrompt,omitempty"`
+	RejectFilterType      *string   `json:"rejectFilterType,omitempty" xml:"rejectFilterType,omitempty"`
+	RetrieveMaxLength     *int32    `json:"retrieveMaxLength,omitempty" xml:"retrieveMaxLength,omitempty"`
 	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
 }
 
@@ -859,6 +873,11 @@ func (s CreateAndPulishAgentRequestApplicationConfigRagConfig) String() string {
 
 func (s CreateAndPulishAgentRequestApplicationConfigRagConfig) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetAnswerScope(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.AnswerScope = &v
+	return s
 }
 
 func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetEnableCitation(v bool) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
@@ -871,8 +890,43 @@ func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetEnableSearch(
 	return s
 }
 
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetEnableWebSearch(v bool) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.EnableWebSearch = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetFixedReplyDetail(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.FixedReplyDetail = &v
+	return s
+}
+
 func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
 	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetPromptStrategy(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.PromptStrategy = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetRagRejectType(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.RagRejectType = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetRejectFilterPrompt(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.RejectFilterPrompt = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetRejectFilterType(v string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.RejectFilterType = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetRetrieveMaxLength(v int32) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.RetrieveMaxLength = &v
 	return s
 }
 
@@ -932,11 +986,41 @@ func (s *CreateAndPulishAgentRequestApplicationConfigWorkFlows) SetType(v string
 	return s
 }
 
+type CreateAndPulishAgentRequestSampleLibrary struct {
+	EnableSample        *bool     `json:"enableSample,omitempty" xml:"enableSample,omitempty"`
+	SampleLibraryIdList []*string `json:"sampleLibraryIdList,omitempty" xml:"sampleLibraryIdList,omitempty" type:"Repeated"`
+	TopK                *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestSampleLibrary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestSampleLibrary) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestSampleLibrary) SetEnableSample(v bool) *CreateAndPulishAgentRequestSampleLibrary {
+	s.EnableSample = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestSampleLibrary) SetSampleLibraryIdList(v []*string) *CreateAndPulishAgentRequestSampleLibrary {
+	s.SampleLibraryIdList = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestSampleLibrary) SetTopK(v int32) *CreateAndPulishAgentRequestSampleLibrary {
+	s.TopK = &v
+	return s
+}
+
 type CreateAndPulishAgentShrinkRequest struct {
 	ApplicationConfigShrink *string `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty"`
 	Instructions            *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	ModelId                 *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibraryShrink     *string `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty"`
 }
 
 func (s CreateAndPulishAgentShrinkRequest) String() string {
@@ -964,6 +1048,11 @@ func (s *CreateAndPulishAgentShrinkRequest) SetModelId(v string) *CreateAndPulis
 
 func (s *CreateAndPulishAgentShrinkRequest) SetName(v string) *CreateAndPulishAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentShrinkRequest) SetSampleLibraryShrink(v string) *CreateAndPulishAgentShrinkRequest {
+	s.SampleLibraryShrink = &v
 	return s
 }
 
@@ -7276,6 +7365,7 @@ type UpdateAndPublishAgentRequest struct {
 	Instructions      *string                                        `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	ModelId           *string                                        `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Name              *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibrary     *UpdateAndPublishAgentRequestSampleLibrary     `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty" type:"Struct"`
 }
 
 func (s UpdateAndPublishAgentRequest) String() string {
@@ -7303,6 +7393,11 @@ func (s *UpdateAndPublishAgentRequest) SetModelId(v string) *UpdateAndPublishAge
 
 func (s *UpdateAndPublishAgentRequest) SetName(v string) *UpdateAndPublishAgentRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequest) SetSampleLibrary(v *UpdateAndPublishAgentRequestSampleLibrary) *UpdateAndPublishAgentRequest {
+	s.SampleLibrary = v
 	return s
 }
 
@@ -7447,9 +7542,17 @@ func (s *UpdateAndPublishAgentRequestApplicationConfigParameters) SetTemperature
 }
 
 type UpdateAndPublishAgentRequestApplicationConfigRagConfig struct {
+	AnswerScope           *string   `json:"answerScope,omitempty" xml:"answerScope,omitempty"`
 	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
 	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	EnableWebSearch       *bool     `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
+	FixedReplyDetail      *string   `json:"fixedReplyDetail,omitempty" xml:"fixedReplyDetail,omitempty"`
 	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	PromptStrategy        *string   `json:"promptStrategy,omitempty" xml:"promptStrategy,omitempty"`
+	RagRejectType         *string   `json:"ragRejectType,omitempty" xml:"ragRejectType,omitempty"`
+	RejectFilterPrompt    *string   `json:"rejectFilterPrompt,omitempty" xml:"rejectFilterPrompt,omitempty"`
+	RejectFilterType      *string   `json:"rejectFilterType,omitempty" xml:"rejectFilterType,omitempty"`
+	RetrieveMaxLength     *int32    `json:"retrieveMaxLength,omitempty" xml:"retrieveMaxLength,omitempty"`
 	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
 }
 
@@ -7459,6 +7562,11 @@ func (s UpdateAndPublishAgentRequestApplicationConfigRagConfig) String() string 
 
 func (s UpdateAndPublishAgentRequestApplicationConfigRagConfig) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetAnswerScope(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.AnswerScope = &v
+	return s
 }
 
 func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetEnableCitation(v bool) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
@@ -7471,8 +7579,43 @@ func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetEnableSearch
 	return s
 }
 
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetEnableWebSearch(v bool) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.EnableWebSearch = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetFixedReplyDetail(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.FixedReplyDetail = &v
+	return s
+}
+
 func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
 	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetPromptStrategy(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.PromptStrategy = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetRagRejectType(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.RagRejectType = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetRejectFilterPrompt(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.RejectFilterPrompt = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetRejectFilterType(v string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.RejectFilterType = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetRetrieveMaxLength(v int32) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.RetrieveMaxLength = &v
 	return s
 }
 
@@ -7532,11 +7675,41 @@ func (s *UpdateAndPublishAgentRequestApplicationConfigWorkFlows) SetType(v strin
 	return s
 }
 
+type UpdateAndPublishAgentRequestSampleLibrary struct {
+	EnableSample        *bool     `json:"enableSample,omitempty" xml:"enableSample,omitempty"`
+	SampleLibraryIdList []*string `json:"sampleLibraryIdList,omitempty" xml:"sampleLibraryIdList,omitempty" type:"Repeated"`
+	TopK                *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestSampleLibrary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestSampleLibrary) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestSampleLibrary) SetEnableSample(v bool) *UpdateAndPublishAgentRequestSampleLibrary {
+	s.EnableSample = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestSampleLibrary) SetSampleLibraryIdList(v []*string) *UpdateAndPublishAgentRequestSampleLibrary {
+	s.SampleLibraryIdList = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestSampleLibrary) SetTopK(v int32) *UpdateAndPublishAgentRequestSampleLibrary {
+	s.TopK = &v
+	return s
+}
+
 type UpdateAndPublishAgentShrinkRequest struct {
 	ApplicationConfigShrink *string `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty"`
 	Instructions            *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
 	ModelId                 *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibraryShrink     *string `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty"`
 }
 
 func (s UpdateAndPublishAgentShrinkRequest) String() string {
@@ -7564,6 +7737,11 @@ func (s *UpdateAndPublishAgentShrinkRequest) SetModelId(v string) *UpdateAndPubl
 
 func (s *UpdateAndPublishAgentShrinkRequest) SetName(v string) *UpdateAndPublishAgentShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentShrinkRequest) SetSampleLibraryShrink(v string) *UpdateAndPublishAgentShrinkRequest {
+	s.SampleLibraryShrink = &v
 	return s
 }
 
@@ -7639,6 +7817,467 @@ func (s *UpdateAndPublishAgentResponse) SetStatusCode(v int32) *UpdateAndPublish
 }
 
 func (s *UpdateAndPublishAgentResponse) SetBody(v *UpdateAndPublishAgentResponseBody) *UpdateAndPublishAgentResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequest struct {
+	ApplicationConfig *UpdateAndPublishAgentSelectiveRequestApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
+	Instructions      *string                                                 `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId           *string                                                 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name              *string                                                 `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibrary     *UpdateAndPublishAgentSelectiveRequestSampleLibrary     `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty" type:"Struct"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequest) SetApplicationConfig(v *UpdateAndPublishAgentSelectiveRequestApplicationConfig) *UpdateAndPublishAgentSelectiveRequest {
+	s.ApplicationConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequest) SetInstructions(v string) *UpdateAndPublishAgentSelectiveRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequest) SetModelId(v string) *UpdateAndPublishAgentSelectiveRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequest) SetName(v string) *UpdateAndPublishAgentSelectiveRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequest) SetSampleLibrary(v *UpdateAndPublishAgentSelectiveRequestSampleLibrary) *UpdateAndPublishAgentSelectiveRequest {
+	s.SampleLibrary = v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfig struct {
+	HistoryConfig  *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig  `json:"historyConfig,omitempty" xml:"historyConfig,omitempty" type:"Struct"`
+	LongTermMemory *UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory `json:"longTermMemory,omitempty" xml:"longTermMemory,omitempty" type:"Struct"`
+	Parameters     *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters     `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	RagConfig      *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig      `json:"ragConfig,omitempty" xml:"ragConfig,omitempty" type:"Struct"`
+	Security       *UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity       `json:"security,omitempty" xml:"security,omitempty" type:"Struct"`
+	Tools          []*UpdateAndPublishAgentSelectiveRequestApplicationConfigTools        `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	WorkFlows      []*UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows    `json:"workFlows,omitempty" xml:"workFlows,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetHistoryConfig(v *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.HistoryConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetLongTermMemory(v *UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.LongTermMemory = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetParameters(v *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetRagConfig(v *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetSecurity(v *UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.Security = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetTools(v []*UpdateAndPublishAgentSelectiveRequestApplicationConfigTools) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.Tools = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfig) SetWorkFlows(v []*UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows) *UpdateAndPublishAgentSelectiveRequestApplicationConfig {
+	s.WorkFlows = v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig struct {
+	EnableAdbRecord *bool   `json:"enableAdbRecord,omitempty" xml:"enableAdbRecord,omitempty"`
+	EnableRecord    *bool   `json:"enableRecord,omitempty" xml:"enableRecord,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	StoreCode       *string `json:"storeCode,omitempty" xml:"storeCode,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) SetEnableAdbRecord(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig {
+	s.EnableAdbRecord = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) SetEnableRecord(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig {
+	s.EnableRecord = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) SetInstanceId(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) SetRegion(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig) SetStoreCode(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig {
+	s.StoreCode = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory) SetEnable(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory {
+	s.Enable = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters struct {
+	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) SetDialogRound(v int32) *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters {
+	s.DialogRound = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) SetMaxTokens(v int32) *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters) SetTemperature(v float64) *UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters {
+	s.Temperature = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig struct {
+	AnswerScope           *string   `json:"answerScope,omitempty" xml:"answerScope,omitempty"`
+	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
+	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	EnableWebSearch       *string   `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
+	FixedReplyDetail      *string   `json:"fixedReplyDetail,omitempty" xml:"fixedReplyDetail,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	PromptStrategy        *string   `json:"promptStrategy,omitempty" xml:"promptStrategy,omitempty"`
+	RagRejectType         *string   `json:"ragRejectType,omitempty" xml:"ragRejectType,omitempty"`
+	RejectFilterPrompt    *string   `json:"rejectFilterPrompt,omitempty" xml:"rejectFilterPrompt,omitempty"`
+	RejectFilterType      *string   `json:"rejectFilterType,omitempty" xml:"rejectFilterType,omitempty"`
+	RetrieveMaxLength     *int32    `json:"retrieveMaxLength,omitempty" xml:"retrieveMaxLength,omitempty"`
+	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetAnswerScope(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.AnswerScope = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEnableCitation(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.EnableCitation = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEnableSearch(v bool) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetEnableWebSearch(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.EnableWebSearch = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetFixedReplyDetail(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.FixedReplyDetail = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetPromptStrategy(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.PromptStrategy = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetRagRejectType(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.RagRejectType = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetRejectFilterPrompt(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.RejectFilterPrompt = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetRejectFilterType(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.RejectFilterType = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetRetrieveMaxLength(v int32) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.RetrieveMaxLength = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig) SetTopK(v int32) *UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity struct {
+	ProcessingStrategy *string `json:"processingStrategy,omitempty" xml:"processingStrategy,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity) SetProcessingStrategy(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity {
+	s.ProcessingStrategy = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigTools struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigTools) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigTools) SetType(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigTools {
+	s.Type = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows) SetType(v string) *UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows {
+	s.Type = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveRequestSampleLibrary struct {
+	EnableSample        *bool     `json:"enableSample,omitempty" xml:"enableSample,omitempty"`
+	SampleLibraryIdList []*string `json:"sampleLibraryIdList,omitempty" xml:"sampleLibraryIdList,omitempty" type:"Repeated"`
+	TopK                *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestSampleLibrary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveRequestSampleLibrary) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestSampleLibrary) SetEnableSample(v bool) *UpdateAndPublishAgentSelectiveRequestSampleLibrary {
+	s.EnableSample = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestSampleLibrary) SetSampleLibraryIdList(v []*string) *UpdateAndPublishAgentSelectiveRequestSampleLibrary {
+	s.SampleLibraryIdList = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveRequestSampleLibrary) SetTopK(v int32) *UpdateAndPublishAgentSelectiveRequestSampleLibrary {
+	s.TopK = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveShrinkRequest struct {
+	ApplicationConfigShrink *string `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty"`
+	Instructions            *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId                 *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+	SampleLibraryShrink     *string `json:"sampleLibrary,omitempty" xml:"sampleLibrary,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveShrinkRequest) SetApplicationConfigShrink(v string) *UpdateAndPublishAgentSelectiveShrinkRequest {
+	s.ApplicationConfigShrink = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveShrinkRequest) SetInstructions(v string) *UpdateAndPublishAgentSelectiveShrinkRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveShrinkRequest) SetModelId(v string) *UpdateAndPublishAgentSelectiveShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveShrinkRequest) SetName(v string) *UpdateAndPublishAgentSelectiveShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveShrinkRequest) SetSampleLibraryShrink(v string) *UpdateAndPublishAgentSelectiveShrinkRequest {
+	s.SampleLibraryShrink = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetCode(v string) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetData(v string) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetHttpStatusCode(v int32) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetMessage(v string) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetRequestId(v string) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponseBody) SetSuccess(v bool) *UpdateAndPublishAgentSelectiveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAndPublishAgentSelectiveResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAndPublishAgentSelectiveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAndPublishAgentSelectiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentSelectiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponse) SetHeaders(v map[string]*string) *UpdateAndPublishAgentSelectiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponse) SetStatusCode(v int32) *UpdateAndPublishAgentSelectiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentSelectiveResponse) SetBody(v *UpdateAndPublishAgentSelectiveResponseBody) *UpdateAndPublishAgentSelectiveResponse {
 	s.Body = v
 	return s
 }
@@ -8110,15 +8749,15 @@ func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryReque
 
 // Summary:
 //
-// Imports an unstructured document stored in the temporary storage space to Data Management.
+// Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
 //
 // Description:
 //
-//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
 //
 // >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
 //
-// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
 //
 // 	- After you call this operation, the system parses and imports your document. The process takes some time.
 //
@@ -8185,15 +8824,15 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 
 // Summary:
 //
-// Imports an unstructured document stored in the temporary storage space to Data Management.
+// Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
 //
 // Description:
 //
-//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://help.aliyun.com/zh/model-studio/developer-reference/upload-files-by-calling-api).
+//   Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
 //
 // >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
 //
-// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://help.aliyun.com/zh/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
+// 	- You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
 //
 // 	- After you call this operation, the system parses and imports your document. The process takes some time.
 //
@@ -8328,6 +8967,10 @@ func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpRe
 		request.ApplicationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfig, tea.String("applicationConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SampleLibrary)) {
+		request.SampleLibraryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SampleLibrary, tea.String("sampleLibrary"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigShrink)) {
 		body["applicationConfig"] = request.ApplicationConfigShrink
@@ -8343,6 +8986,10 @@ func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpRe
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleLibraryShrink)) {
+		body["sampleLibrary"] = request.SampleLibraryShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10652,6 +11299,10 @@ func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appC
 		request.ApplicationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfig, tea.String("applicationConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SampleLibrary)) {
+		request.SampleLibraryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SampleLibrary, tea.String("sampleLibrary"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigShrink)) {
 		body["applicationConfig"] = request.ApplicationConfigShrink
@@ -10667,6 +11318,10 @@ func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appC
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleLibraryShrink)) {
+		body["sampleLibrary"] = request.SampleLibraryShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10705,6 +11360,96 @@ func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string
 	headers := make(map[string]*string)
 	_result = &UpdateAndPublishAgentResponse{}
 	_body, _err := client.UpdateAndPublishAgentWithOptions(workspaceId, appCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 选择更新并发布智能体应用
+//
+// @param tmpReq - UpdateAndPublishAgentSelectiveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAndPublishAgentSelectiveResponse
+func (client *Client) UpdateAndPublishAgentSelectiveWithOptions(workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentSelectiveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAndPublishAgentSelectiveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationConfig)) {
+		request.ApplicationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfig, tea.String("applicationConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SampleLibrary)) {
+		request.SampleLibraryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SampleLibrary, tea.String("sampleLibrary"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigShrink)) {
+		body["applicationConfig"] = request.ApplicationConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SampleLibraryShrink)) {
+		body["sampleLibrary"] = request.SampleLibraryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAndPublishAgentSelective"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents/" + tea.StringValue(openapiutil.GetEncodeParam(appCode)) + "/updateAndPublishAgentSelective"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAndPublishAgentSelectiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 选择更新并发布智能体应用
+//
+// @param request - UpdateAndPublishAgentSelectiveRequest
+//
+// @return UpdateAndPublishAgentSelectiveResponse
+func (client *Client) UpdateAndPublishAgentSelective(workspaceId *string, appCode *string, request *UpdateAndPublishAgentSelectiveRequest) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAndPublishAgentSelectiveResponse{}
+	_body, _err := client.UpdateAndPublishAgentSelectiveWithOptions(workspaceId, appCode, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
