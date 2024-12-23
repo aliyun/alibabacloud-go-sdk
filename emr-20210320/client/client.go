@@ -7855,7 +7855,7 @@ func (s *CreateApiTemplateResponse) SetBody(v *CreateApiTemplateResponseBody) *C
 }
 
 type CreateClusterRequest struct {
-	// The service configurations. Number of elements in the array: 1 to 1000.
+	// The application configurations. Number of elements in the array: 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The services. Number of elements in the array: 1 to 100.
 	//
@@ -7910,11 +7910,13 @@ type CreateClusterRequest struct {
 	//
 	// HA
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
+	// The cluster description.
+	//
 	// example:
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The attributes of all ECS instances. The basic attributes of all ECS instances in the cluster.
+	// The attributes of all ECS instances.
 	//
 	// This parameter is required.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
@@ -7946,7 +7948,7 @@ type CreateClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The version of EMR. You can view the EMR release version on the EMR cluster purchase page.
+	// The EMR version. You can query available E-MapReduce (EMR) versions in the EMR console.
 	//
 	// This parameter is required.
 	//
@@ -7970,9 +7972,9 @@ type CreateClusterRequest struct {
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The list of tags. Number of elements in the array: 0 to 20.
+	// The tags. Number of elements in the array: 0 to 20.
 	//
 	// example:
 	//
@@ -8385,8 +8387,10 @@ func (s *CreateScriptResponse) SetBody(v *CreateScriptResponseBody) *CreateScrip
 }
 
 type DecreaseNodesRequest struct {
+	// The cooldown interval between two batches.
 	BatchInterval *int32 `json:"BatchInterval,omitempty" xml:"BatchInterval,omitempty"`
-	BatchSize     *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The number of nodes to be removed in a single batch.
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -8531,7 +8535,7 @@ func (s *DecreaseNodesResponse) SetBody(v *DecreaseNodesResponseBody) *DecreaseN
 }
 
 type DeleteApiTemplateRequest struct {
-	// 接口名。
+	// Interface name.
 	//
 	// This parameter is required.
 	//
@@ -8539,7 +8543,7 @@ type DeleteApiTemplateRequest struct {
 	//
 	// CreateCluster
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// 区域ID。
+	// Region ID
 	//
 	// This parameter is required.
 	//
@@ -8547,13 +8551,13 @@ type DeleteApiTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID。
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmzabjyop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 集群模板id。
+	// Cluster template ID.
 	//
 	// This parameter is required.
 	//
@@ -8592,13 +8596,15 @@ func (s *DeleteApiTemplateRequest) SetTemplateId(v string) *DeleteApiTemplateReq
 }
 
 type DeleteApiTemplateResponseBody struct {
-	// 请求ID。
+	// Request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Deprecated
+	//
+	// Whether the call was successful: - true: Call succeeded - false: Call failed.
 	//
 	// example:
 	//
@@ -10131,7 +10137,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	//
 	// 	- True
 	ExistCloneConfig *bool `json:"ExistCloneConfig,omitempty" xml:"ExistCloneConfig,omitempty"`
-	// The attributes of all ECS instances.
+	// The node attributes.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
 	// The node groups. Number of elements in the array: 1 to 100.
 	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
@@ -10177,7 +10183,7 @@ type GetClusterCloneMetaResponseBodyClusterCloneMeta struct {
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
 	// The subscription configurations.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -10314,7 +10320,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPolicies struct {
 	// example:
 	//
 	// asp-asduwe23znl***
-	ScalingPolicyId   *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
+	// The type of the auto scaling policy.
 	ScalingPolicyType *string `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
 	// The list of auto scaling rules.
 	ScalingRules []*GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
@@ -10364,7 +10371,8 @@ type GetClusterCloneMetaResponseBodyClusterCloneMetaScalingPoliciesConstraints s
 	// example:
 	//
 	// 200
-	MaxCapacity         *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// The maximum number of nodes that you can configure based on your business requirements.
 	MaxOnDemandCapacity *int32 `json:"MaxOnDemandCapacity,omitempty" xml:"MaxOnDemandCapacity,omitempty"`
 	// The minimum number of nodes in the node group. Default value: 0.
 	//
@@ -48518,7 +48526,7 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 }
 
 type ListScriptsRequest struct {
-	// 集群ID。
+	// Cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -48526,19 +48534,19 @@ type ListScriptsRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The maximum number of records to retrieve at once.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// Marks the current position to start reading from.
 	//
 	// example:
 	//
 	// dd6b1b2a-5837-5237-abe4-ff0c89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 区域ID。
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -48546,7 +48554,11 @@ type ListScriptsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群脚本类型。
+	// Type of cluster script. Possible values:
+	//
+	// - BOOTSTRAP: Bootstrap script.
+	//
+	// - NORMAL: Regular cluster script.
 	//
 	// This parameter is required.
 	//
@@ -48590,27 +48602,27 @@ func (s *ListScriptsRequest) SetScriptType(v string) *ListScriptsRequest {
 }
 
 type ListScriptsResponseBody struct {
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The position of the data read.
 	//
 	// example:
 	//
 	// dd6b1b2a-5837-5237-abe4-ff0c89568982
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// Request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scripts.
+	// List of scripts.
 	Scripts []*ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量。
+	// The total amount of data under the conditions of this request.
 	//
 	// example:
 	//
@@ -48652,89 +48664,89 @@ func (s *ListScriptsResponseBody) SetTotalCount(v int32) *ListScriptsResponseBod
 }
 
 type ListScriptsResponseBodyScripts struct {
-	// The name of the API operation.
+	// API name.
 	//
 	// example:
 	//
 	// ListScripts
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The time when the system finishes the running of the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
+	// End execution time. This value is returned only when `ScriptType` is `NORMAL`.
 	//
 	// example:
 	//
 	// 1639715635819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The policy that is used to handle execution failures of the script. Valid values:
+	// Execution failure strategy. Possible values:
 	//
-	// 	- FAILED_CONTINUE
+	// - FAILED_CONTINUE: Continue after failure.
 	//
-	// 	- FAILED_BLOCK
+	// - FAILED_BLOCK: Block after failure.
 	//
 	// example:
 	//
 	// FAILED_CONTINUE
 	ExecutionFailStrategy *string `json:"ExecutionFailStrategy,omitempty" xml:"ExecutionFailStrategy,omitempty"`
-	// The time based on which the system runs the script. Valid values:
+	// Execution timing. Possible values:
 	//
-	// 	- BEFORE_INSTALL
+	// - BEFORE_INSTALL: Before application installation.
 	//
-	// 	- AFTER_STARTED
+	// - AFTER_STARTED: After application startup.
 	//
 	// example:
 	//
 	// BEFORE_INSTALL
 	ExecutionMoment *string `json:"ExecutionMoment,omitempty" xml:"ExecutionMoment,omitempty"`
-	// The status of the script. This parameter is returned only if the `ScriptType` parameter is set to `NORMAL`. Valid values:
+	// Script execution state. This value is returned only when `ScriptType` is `NORMAL`. Possible values:
 	//
-	// 	- SCRIPT_COMPLETED
+	// - SCRIPT_COMPLETED: Script executed successfully.
 	//
-	// 	- SCRIPT_SUBMISSION_FAILED
+	// - SCRIPT_SUBMISSION_FAILED: Script execution failed.
 	//
-	// 	- SCRIPT_RUNNING
+	// - SCRIPT_RUNNING: Script is running.
 	//
 	// example:
 	//
 	// SCRIPT_COMPLETED
 	ExecutionState *string `json:"ExecutionState,omitempty" xml:"ExecutionState,omitempty"`
-	// The time when the script was last modified.
+	// Time of the last update.
 	//
 	// example:
 	//
 	// 1639714634819
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The node selector.
+	// Node selector.
 	NodeSelector *NodeSelector `json:"NodeSelector,omitempty" xml:"NodeSelector,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The runtime parameters of the script.
+	// Script execution parameters.
 	//
 	// example:
 	//
 	// --mode=client -h -p
 	ScriptArgs *string `json:"ScriptArgs,omitempty" xml:"ScriptArgs,omitempty"`
-	// The script ID.
+	// Script ID.
 	//
 	// example:
 	//
 	// cs-bf25219d103043a0820613e32781****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// The name of the script.
+	// Script name.
 	//
 	// example:
 	//
 	// check_env
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// The path in which the script is stored.
+	// Script path.
 	//
 	// example:
 	//
 	// oss://bucket1/check_evn.sh
 	ScriptPath *string `json:"ScriptPath,omitempty" xml:"ScriptPath,omitempty"`
-	// The time when the system starts to run the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
+	// Start execution time. This value is returned only when `ScriptType` is `NORMAL`.
 	//
 	// example:
 	//
@@ -49643,9 +49655,9 @@ func (s *RunApplicationActionResponse) SetBody(v *RunApplicationActionResponseBo
 }
 
 type RunClusterRequest struct {
-	// The service configurations. Number of elements in the array: 1 to 1,000.
+	// The application configurations. Number of elements in the array: 1 to 1000.
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// The list of services. Number of elements in the array: 1 to 100.
+	// The services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	Applications []*Application `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
@@ -49704,7 +49716,7 @@ type RunClusterRequest struct {
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The basic attributes of all ECS instances in the cluster.
+	// The attributes of all ECS instances.
 	NodeAttributes *NodeAttributes `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
 	// The node groups. Number of elements in the array: 1 to 100.
 	//
@@ -49754,9 +49766,9 @@ type RunClusterRequest struct {
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfig *SubscriptionConfig `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The list of tags. Number of elements in the array: 0 to 20.
+	// The tags. Number of elements in the array: 0 to 20.
 	Tags []*Tag `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -49859,9 +49871,9 @@ func (s *RunClusterRequest) SetTags(v []*Tag) *RunClusterRequest {
 }
 
 type RunClusterShrinkRequest struct {
-	// The service configurations. Number of elements in the array: 1 to 1,000.
+	// The application configurations. Number of elements in the array: 1 to 1000.
 	ApplicationConfigsShrink *string `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty"`
-	// The list of services. Number of elements in the array: 1 to 100.
+	// The services. Number of elements in the array: 1 to 100.
 	//
 	// This parameter is required.
 	ApplicationsShrink *string `json:"Applications,omitempty" xml:"Applications,omitempty"`
@@ -49920,7 +49932,7 @@ type RunClusterShrinkRequest struct {
 	//
 	// Emr cluster for ETL
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The basic attributes of all ECS instances in the cluster.
+	// The attributes of all ECS instances.
 	NodeAttributesShrink *string `json:"NodeAttributes,omitempty" xml:"NodeAttributes,omitempty"`
 	// The node groups. Number of elements in the array: 1 to 100.
 	//
@@ -49970,9 +49982,9 @@ type RunClusterShrinkRequest struct {
 	//
 	// NORMAL
 	SecurityMode *string `json:"SecurityMode,omitempty" xml:"SecurityMode,omitempty"`
-	// The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
+	// The subscription configurations. This parameter takes effect only if you set the PaymentType parameter to Subscription.
 	SubscriptionConfigShrink *string `json:"SubscriptionConfig,omitempty" xml:"SubscriptionConfig,omitempty"`
-	// The list of tags. Number of elements in the array: 0 to 20.
+	// The tags. Number of elements in the array: 0 to 20.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -50734,6 +50746,123 @@ func (s *UpdateApplicationConfigsResponse) SetStatusCode(v int32) *UpdateApplica
 }
 
 func (s *UpdateApplicationConfigsResponse) SetBody(v *UpdateApplicationConfigsResponseBody) *UpdateApplicationConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateClusterAttributeRequest struct {
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 集群名称。
+	//
+	// example:
+	//
+	// emrtest
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// example:
+	//
+	// Emr cluster for ETL
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateClusterAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAttributeRequest) SetClusterId(v string) *UpdateClusterAttributeRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateClusterAttributeRequest) SetClusterName(v string) *UpdateClusterAttributeRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *UpdateClusterAttributeRequest) SetDeletionProtection(v bool) *UpdateClusterAttributeRequest {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *UpdateClusterAttributeRequest) SetDescription(v string) *UpdateClusterAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateClusterAttributeRequest) SetRegionId(v string) *UpdateClusterAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateClusterAttributeResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateClusterAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAttributeResponseBody) SetRequestId(v string) *UpdateClusterAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateClusterAttributeResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClusterAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateClusterAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAttributeResponse) SetHeaders(v map[string]*string) *UpdateClusterAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClusterAttributeResponse) SetStatusCode(v int32) *UpdateClusterAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClusterAttributeResponse) SetBody(v *UpdateClusterAttributeResponseBody) *UpdateClusterAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -55530,7 +55659,7 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Summary:
 //
-// Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+// Query EMR cluster bootstrap scripts or regular scripts.
 //
 // @param request - ListScriptsRequest
 //
@@ -55588,7 +55717,7 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 
 // Summary:
 //
-// Queries the bootstrap actions or common scripts of an E-MapReduce (EMR) cluster.
+// Query EMR cluster bootstrap scripts or regular scripts.
 //
 // @param request - ListScriptsRequest
 //
@@ -55982,7 +56111,7 @@ func (client *Client) RunApplicationAction(request *RunApplicationActionRequest)
 //
 // Description:
 //
-// RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+// RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
 //
 // @param tmpReq - RunClusterRequest
 //
@@ -56128,7 +56257,7 @@ func (client *Client) RunClusterWithOptions(tmpReq *RunClusterRequest, runtime *
 //
 // Description:
 //
-// RunCluster is an upgraded version of CreateCluster and supports more parameters. Parameters of the object and array types are in the JSON format, which are friendly for users who use CLI.
+// RunCluster is an upgraded version of CreateCluster. RunCluster uses HTTPS POST requests and supports more parameters. Complex parameters, such as parameters of the object and array types, are in the JSON format and are more friendly for users who use CLI.
 //
 // @param request - RunClusterRequest
 //
@@ -56466,6 +56595,74 @@ func (client *Client) UpdateApplicationConfigs(request *UpdateApplicationConfigs
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationConfigsResponse{}
 	_body, _err := client.UpdateApplicationConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateClusterAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClusterAttributeResponse
+func (client *Client) UpdateClusterAttributeWithOptions(request *UpdateClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateClusterAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
+		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClusterAttribute"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClusterAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateClusterAttributeRequest
+//
+// @return UpdateClusterAttributeResponse
+func (client *Client) UpdateClusterAttribute(request *UpdateClusterAttributeRequest) (_result *UpdateClusterAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClusterAttributeResponse{}
+	_body, _err := client.UpdateClusterAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
