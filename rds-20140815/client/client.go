@@ -27384,7 +27384,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// Chinese_PRC_CI_AS
-	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	Collation        *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
+	CompressionMode  *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
+	CompressionRatio *string `json:"CompressionRatio,omitempty" xml:"CompressionRatio,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
 	// 	- **Standard**: standard mode
@@ -27813,6 +27815,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// Disabled
 	SuperPermissionMode *string `json:"SuperPermissionMode,omitempty" xml:"SuperPermissionMode,omitempty"`
+	SupportCompression  *bool   `json:"SupportCompression,omitempty" xml:"SupportCompression,omitempty"`
 	// The ID of the temporary instance that is attached to the primary instance.
 	//
 	// example:
@@ -27953,6 +27956,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCol
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCollation(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.Collation = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCompressionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CompressionMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCompressionRatio(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CompressionRatio = &v
 	return s
 }
 
@@ -28243,6 +28256,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSla
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSuperPermissionMode(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SuperPermissionMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSupportCompression(v bool) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.SupportCompression = &v
 	return s
 }
 
@@ -73187,7 +73205,8 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// true
-	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
 	// > 	- You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -73448,6 +73467,11 @@ func (s *ModifyDBInstanceSpecRequest) SetCategory(v string) *ModifyDBInstanceSpe
 
 func (s *ModifyDBInstanceSpecRequest) SetColdDataEnabled(v bool) *ModifyDBInstanceSpecRequest {
 	s.ColdDataEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetCompressionMode(v string) *ModifyDBInstanceSpecRequest {
+	s.CompressionMode = &v
 	return s
 }
 
@@ -73735,7 +73759,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// example:
 	//
 	// true
-	ColdDataEnabled *bool `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ColdDataEnabled *bool   `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	CompressionMode *string `json:"CompressionMode,omitempty" xml:"CompressionMode,omitempty"`
 	// The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
 	//
 	// > 	- You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
@@ -73996,6 +74021,11 @@ func (s *ModifyDBInstanceSpecShrinkRequest) SetCategory(v string) *ModifyDBInsta
 
 func (s *ModifyDBInstanceSpecShrinkRequest) SetColdDataEnabled(v bool) *ModifyDBInstanceSpecShrinkRequest {
 	s.ColdDataEnabled = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecShrinkRequest) SetCompressionMode(v string) *ModifyDBInstanceSpecShrinkRequest {
+	s.CompressionMode = &v
 	return s
 }
 
@@ -83600,12 +83630,30 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type ReplaceRCInstanceSystemDiskRequest struct {
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsLocalDisk *bool   `json:"IsLocalDisk,omitempty" xml:"IsLocalDisk,omitempty"`
+	// example:
+	//
+	// m-2zec4lvlhcdkyd13****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// rc-m5ei7b1w38w2l91x****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// None
+	IsLocalDisk *bool `json:"IsLocalDisk,omitempty" xml:"IsLocalDisk,omitempty"`
+	// example:
+	//
+	// testKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// testPassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReplaceRCInstanceSystemDiskRequest) String() string {
@@ -83647,6 +83695,9 @@ func (s *ReplaceRCInstanceSystemDiskRequest) SetRegionId(v string) *ReplaceRCIns
 }
 
 type ReplaceRCInstanceSystemDiskResponseBody struct {
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -85269,7 +85320,8 @@ type RunRCInstancesRequestSystemDisk struct {
 	// example:
 	//
 	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. Only performance level 1 (PL1) ESSDs are supported. Valid values: 20 to 2048.
 	//
 	// example:
@@ -85288,6 +85340,11 @@ func (s RunRCInstancesRequestSystemDisk) GoString() string {
 
 func (s *RunRCInstancesRequestSystemDisk) SetCategory(v string) *RunRCInstancesRequestSystemDisk {
 	s.Category = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestSystemDisk) SetPerformanceLevel(v string) *RunRCInstancesRequestSystemDisk {
+	s.PerformanceLevel = &v
 	return s
 }
 
@@ -117914,6 +117971,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 
 	if !tea.BoolValue(util.IsUnset(request.ColdDataEnabled)) {
 		query["ColdDataEnabled"] = request.ColdDataEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompressionMode)) {
+		query["CompressionMode"] = request.CompressionMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceClass)) {
