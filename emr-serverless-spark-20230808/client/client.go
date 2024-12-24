@@ -1413,6 +1413,840 @@ func (s *CancelJobRunResponse) SetBody(v *CancelJobRunResponseBody) *CancelJobRu
 	return s
 }
 
+type CreateProcessDefinitionWithScheduleRequest struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods batch workflow
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PARALLEL
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_batch_workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SS
+	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// example:
+	//
+	// true
+	Publish *bool `json:"publish,omitempty" xml:"publish,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// root_queue
+	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
+	// example:
+	//
+	// 1
+	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
+	// example:
+	//
+	// 113***************
+	RunAs    *string                                             `json:"runAs,omitempty" xml:"runAs,omitempty"`
+	Schedule *CreateProcessDefinitionWithScheduleRequestSchedule `json:"schedule,omitempty" xml:"schedule,omitempty" type:"Struct"`
+	Tags     map[string]*string                                  `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskDefinitionJson []*CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
+	// This parameter is required.
+	TaskRelationJson []*CreateProcessDefinitionWithScheduleRequestTaskRelationJson `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetAlertEmailAddress(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetDescription(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetExecutionType(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.ExecutionType = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetName(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetProductNamespace(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.ProductNamespace = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetPublish(v bool) *CreateProcessDefinitionWithScheduleRequest {
+	s.Publish = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetRegionId(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetResourceQueue(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.ResourceQueue = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetRetryTimes(v int32) *CreateProcessDefinitionWithScheduleRequest {
+	s.RetryTimes = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetRunAs(v string) *CreateProcessDefinitionWithScheduleRequest {
+	s.RunAs = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetSchedule(v *CreateProcessDefinitionWithScheduleRequestSchedule) *CreateProcessDefinitionWithScheduleRequest {
+	s.Schedule = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetTags(v map[string]*string) *CreateProcessDefinitionWithScheduleRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetTaskDefinitionJson(v []*CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) *CreateProcessDefinitionWithScheduleRequest {
+	s.TaskDefinitionJson = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetTaskParallelism(v int32) *CreateProcessDefinitionWithScheduleRequest {
+	s.TaskParallelism = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetTaskRelationJson(v []*CreateProcessDefinitionWithScheduleRequestTaskRelationJson) *CreateProcessDefinitionWithScheduleRequest {
+	s.TaskRelationJson = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequest) SetTimeout(v int32) *CreateProcessDefinitionWithScheduleRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleRequestSchedule struct {
+	// example:
+	//
+	// 0 0 0 	- 	- ?
+	Crontab *string `json:"crontab,omitempty" xml:"crontab,omitempty"`
+	// example:
+	//
+	// 2025-12-23 16:13:27
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2024-12-23 16:13:27
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimezoneId *string `json:"timezoneId,omitempty" xml:"timezoneId,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestSchedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestSchedule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestSchedule) SetCrontab(v string) *CreateProcessDefinitionWithScheduleRequestSchedule {
+	s.Crontab = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestSchedule) SetEndTime(v string) *CreateProcessDefinitionWithScheduleRequestSchedule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestSchedule) SetStartTime(v string) *CreateProcessDefinitionWithScheduleRequestSchedule {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestSchedule) SetTimezoneId(v string) *CreateProcessDefinitionWithScheduleRequestSchedule {
+	s.TimezoneId = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 36************
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ods transform task
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// false
+	FailAlertEnable *bool `json:"failAlertEnable,omitempty" xml:"failAlertEnable,omitempty"`
+	// example:
+	//
+	// 1
+	FailRetryTimes *int32 `json:"failRetryTimes,omitempty" xml:"failRetryTimes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_transform_task
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// false
+	StartAlertEnable *bool              `json:"startAlertEnable,omitempty" xml:"startAlertEnable,omitempty"`
+	Tags             map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskParams *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams `json:"taskParams,omitempty" xml:"taskParams,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MigrateData
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// example:
+	//
+	// 1200
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetAlertEmailAddress(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetCode(v int64) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetDescription(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetFailAlertEnable(v bool) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.FailAlertEnable = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetFailRetryTimes(v int32) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.FailRetryTimes = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetName(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetStartAlertEnable(v bool) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.StartAlertEnable = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTags(v map[string]*string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTaskParams(v *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.TaskParams = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTaskType(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTimeout(v int32) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Timeout = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams struct {
+	// example:
+	//
+	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
+	DisplaySparkVersion *string `json:"displaySparkVersion,omitempty" xml:"displaySparkVersion,omitempty"`
+	// example:
+	//
+	// env-crhq2h5lhtgju93buhkg
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// root_queue
+	ResourceQueueId *string                                                                            `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	SparkConf       []*CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
+	// example:
+	//
+	// 4g
+	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	// example:
+	//
+	// 1
+	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
+	// example:
+	//
+	// 4g
+	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
+	// example:
+	//
+	// INFO
+	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
+	SparkLogPath  *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	// example:
+	//
+	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
+	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TSK-d87******************
+	TaskBizId *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// w-d8********
+	WorkspaceBizId *string `json:"workspaceBizId,omitempty" xml:"workspaceBizId,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetDisplaySparkVersion(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.DisplaySparkVersion = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetEnvironmentId(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetFusion(v bool) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.Fusion = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetResourceQueueId(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkConf(v []*CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkConf = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkDriverCores(v int32) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkDriverCores = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkDriverMemory(v int64) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkDriverMemory = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkExecutorCores(v int32) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkExecutorCores = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkExecutorMemory(v int64) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkExecutorMemory = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkLogLevel(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkLogLevel = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkLogPath(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkLogPath = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkVersion(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkVersion = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetTaskBizId(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.TaskBizId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetType(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetWorkspaceBizId(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.WorkspaceBizId = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf struct {
+	// example:
+	//
+	// spark.dynamicAllocation.enabled
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// true
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) SetKey(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) SetValue(v string) *CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf {
+	s.Value = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods batch workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 28************
+	PostTaskCode *int64 `json:"postTaskCode,omitempty" xml:"postTaskCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PostTaskVersion *int32 `json:"postTaskVersion,omitempty" xml:"postTaskVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16************
+	PreTaskCode *int64 `json:"preTaskCode,omitempty" xml:"preTaskCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PreTaskVersion *int32 `json:"preTaskVersion,omitempty" xml:"preTaskVersion,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskRelationJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleRequestTaskRelationJson) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskRelationJson) SetName(v string) *CreateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPostTaskCode(v int64) *CreateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PostTaskCode = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPostTaskVersion(v int32) *CreateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PostTaskVersion = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPreTaskCode(v int64) *CreateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PreTaskCode = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPreTaskVersion(v int32) *CreateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PreTaskVersion = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleShrinkRequest struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods batch workflow
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PARALLEL
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_batch_workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SS
+	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// example:
+	//
+	// true
+	Publish *bool `json:"publish,omitempty" xml:"publish,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// root_queue
+	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
+	// example:
+	//
+	// 1
+	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
+	// example:
+	//
+	// 113***************
+	RunAs          *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
+	ScheduleShrink *string `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	TagsShrink     *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskDefinitionJsonShrink *string `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty"`
+	// example:
+	//
+	// 1
+	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
+	// This parameter is required.
+	TaskRelationJsonShrink *string `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetAlertEmailAddress(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetDescription(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetExecutionType(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.ExecutionType = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetName(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetProductNamespace(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.ProductNamespace = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetPublish(v bool) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.Publish = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetRegionId(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetResourceQueue(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.ResourceQueue = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetRetryTimes(v int32) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.RetryTimes = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetRunAs(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.RunAs = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetScheduleShrink(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.ScheduleShrink = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetTagsShrink(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetTaskDefinitionJsonShrink(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskDefinitionJsonShrink = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetTaskParallelism(v int32) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskParallelism = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetTaskRelationJsonShrink(v string) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskRelationJsonShrink = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleShrinkRequest) SetTimeout(v int32) *CreateProcessDefinitionWithScheduleShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleResponseBody struct {
+	// example:
+	//
+	// 1400009
+	Code *int32                                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreateProcessDefinitionWithScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	Failed *string `json:"failed,omitempty" xml:"failed,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// No permission for resource action
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetCode(v int32) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetData(v *CreateProcessDefinitionWithScheduleResponseBodyData) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetFailed(v string) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.Failed = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetHttpStatusCode(v int32) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetMsg(v string) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetRequestId(v string) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBody) SetSuccess(v string) *CreateProcessDefinitionWithScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleResponseBodyData struct {
+	// example:
+	//
+	// 160************
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 12342
+	Id *int32 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBodyData) SetCode(v int64) *CreateProcessDefinitionWithScheduleResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponseBodyData) SetId(v int32) *CreateProcessDefinitionWithScheduleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type CreateProcessDefinitionWithScheduleResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProcessDefinitionWithScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProcessDefinitionWithScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProcessDefinitionWithScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponse) SetHeaders(v map[string]*string) *CreateProcessDefinitionWithScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponse) SetStatusCode(v int32) *CreateProcessDefinitionWithScheduleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProcessDefinitionWithScheduleResponse) SetBody(v *CreateProcessDefinitionWithScheduleResponseBody) *CreateProcessDefinitionWithScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSqlStatementRequest struct {
 	// The SQL code. You can specify one or more SQL statements.
 	//
@@ -1699,7 +2533,7 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags of the job.
+	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The web UI of the job.
 	//
@@ -1904,6 +2738,8 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 }
 
 type GetSessionClusterRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1924,12 +2760,13 @@ func (s *GetSessionClusterRequest) SetRegionId(v string) *GetSessionClusterReque
 }
 
 type GetSessionClusterResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId      *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session.
 	SessionCluster *GetSessionClusterResponseBodySessionCluster `json:"sessionCluster,omitempty" xml:"sessionCluster,omitempty" type:"Struct"`
 }
 
@@ -1952,78 +2789,123 @@ func (s *GetSessionClusterResponseBody) SetSessionCluster(v *GetSessionClusterRe
 }
 
 type GetSessionClusterResponseBodySessionCluster struct {
-	ApplicationConfigs     []*GetSessionClusterResponseBodySessionClusterApplicationConfigs   `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	// The Spark configurations.
+	ApplicationConfigs []*GetSessionClusterResponseBodySessionClusterApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	// The automatic startup configurations.
 	AutoStartConfiguration *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	AutoStopConfiguration  *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The automatic termination configurations.
+	AutoStopConfiguration *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The version of the Spark engine.
+	//
 	// example:
 	//
 	// esr-2.2(Java Runtime)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
+	// The domain name to which the Spark UI of the session belongs.
+	//
 	// example:
 	//
 	// your.domain.com
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The internal endpoint.
+	//
+	// example:
+	//
+	// emr-spark-gateway-cn-hangzhou-internal.data.aliyuncs.com
 	DomainInner *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
+	// The ID of the job that is associated with the session.
+	//
 	// example:
 	//
 	// TSK-xxxxxxxx
 	DraftId *string `json:"draftId,omitempty" xml:"draftId,omitempty"`
+	// The environment ID.
+	//
 	// example:
 	//
 	// env-cpv569tlhtgndjl86t40
 	EnvId *string `json:"envId,omitempty" xml:"envId,omitempty"`
+	// Indicates whether the Fusion engine is used for acceleration.
+	//
 	// example:
 	//
 	// false
-	Fusion    *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-09-01 06:23:01
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The type of the job. This parameter is required and cannot be modified after the deployment is created. Valid values:
+	//
+	// 	- SQLSCRIPT
+	//
+	// 	- JAR
+	//
+	// 	- PYTHON
+	//
 	// example:
 	//
 	// SQL
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The name of the session.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 作业实例名称。
+	// The queue name.
 	//
 	// example:
 	//
 	// jobName
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The version of E-MapReduce (EMR) Serverless Spark.
+	//
 	// example:
 	//
-	// esr-2.2（Java Runtime）
+	// esr-2.2(Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// 交互式作业会话id。
+	// The session ID.
 	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-1234567890ab
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	StartTime        *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 作业状态。
+	// The start time.
+	//
+	// example:
+	//
+	// 2024-09-01 06:23:01
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The job status.
 	//
 	// example:
 	//
 	// Running
-	State             *string                                                       `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The reason of the job status change.
 	StateChangeReason *GetSessionClusterResponseBodySessionClusterStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// 任务实例ID。
+	// The user ID.
 	//
 	// example:
 	//
 	// jr-231231
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The name of the account that is used to create the session.
+	//
 	// example:
 	//
 	// user1
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The Spark UI of the session.
+	//
 	// example:
 	//
 	// https://spark-ui/link
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
-	// 工作空间id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -2150,14 +3032,20 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetWorkspaceId(v string) *
 }
 
 type GetSessionClusterResponseBodySessionClusterApplicationConfigs struct {
+	// The name of the configuration file.
+	//
 	// example:
 	//
 	// spark-defaults.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// The key of the configuration.
+	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// The configuration value.
+	//
 	// example:
 	//
 	// test
@@ -2188,6 +3076,8 @@ func (s *GetSessionClusterResponseBodySessionClusterApplicationConfigs) SetConfi
 }
 
 type GetSessionClusterResponseBodySessionClusterAutoStartConfiguration struct {
+	// Indicates whether automatic startup is enabled.
+	//
 	// example:
 	//
 	// false
@@ -2208,10 +3098,14 @@ func (s *GetSessionClusterResponseBodySessionClusterAutoStartConfiguration) SetE
 }
 
 type GetSessionClusterResponseBodySessionClusterAutoStopConfiguration struct {
+	// Indicates whether automatic termination is enabled.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The idle timeout period. The session is automatically terminated when the idle timeout period is exceeded.
+	//
 	// example:
 	//
 	// 60
@@ -2237,10 +3131,14 @@ func (s *GetSessionClusterResponseBodySessionClusterAutoStopConfiguration) SetId
 }
 
 type GetSessionClusterResponseBodySessionClusterStateChangeReason struct {
+	// The status change code.
+	//
 	// example:
 	//
 	// 1000000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The status change message.
+	//
 	// example:
 	//
 	// ok
@@ -2317,7 +3215,7 @@ func (s *GetSqlStatementRequest) SetRegionId(v string) *GetSqlStatementRequest {
 }
 
 type GetSqlStatementResponseBody struct {
-	// The data returned.
+	// The response parameters.
 	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -2489,10 +3387,18 @@ func (s *GetSqlStatementResponse) SetBody(v *GetSqlStatementResponseBody) *GetSq
 }
 
 type GetTemplateRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The template type.
+	//
+	// 	- TASK
+	//
+	// 	- SESSION
+	//
 	// example:
 	//
 	// TASK
@@ -2518,25 +3424,38 @@ func (s *GetTemplateRequest) SetTemplateType(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
+	// The data returned.
 	Data *Template `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// 040003
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// InvalidUser.NotFound
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Id of the request
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 484D9DDA-300D-525E-AF7A-0CCCA5C64A7A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -3053,7 +3972,7 @@ func (s *ListJobRunsShrinkRequest) SetTagsShrink(v string) *ListJobRunsShrinkReq
 }
 
 type ListJobRunsResponseBody struct {
-	// The list of Spark jobs.
+	// The Spark jobs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
 	//
@@ -3134,8 +4053,14 @@ type ListJobRunsResponseBodyJobRuns struct {
 	// example:
 	//
 	// 1509789347011222
-	Creator               *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	CuHours               *int64  `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// 2.059
+	CuHours *int64 `json:"cuHours,omitempty" xml:"cuHours,omitempty"`
+	// example:
+	//
+	// esr-3.0.0 (Spark 3.4.3, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
 	// The end time of the job.
 	//
@@ -3149,7 +4074,10 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 3600
 	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	Fusion                  *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// example:
+	//
+	// true
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
 	// The information about Spark Driver.
 	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
 	// The job ID.
@@ -3159,8 +4087,11 @@ type ListJobRunsResponseBodyJobRuns struct {
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
 	// The path where the operational logs are stored.
-	Log       *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	MbSeconds *int64  `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
+	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
+	// example:
+	//
+	// 33030784
+	MbSeconds *int64 `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
 	// The job name.
 	//
 	// example:
@@ -3187,8 +4118,11 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// The tags of the job.
-	Tags         []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8236
 	VcoreSeconds *int64 `json:"vcoreSeconds,omitempty" xml:"vcoreSeconds,omitempty"`
 	// The web UI of the job.
 	//
@@ -3922,7 +4856,7 @@ type ListSessionClustersResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// A pagination token.
 	//
 	// example:
 	//
@@ -3934,7 +4868,7 @@ type ListSessionClustersResponseBody struct {
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of sessions.
+	// The sessions.
 	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -3985,9 +4919,23 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// The configurations of automatic termination.
 	AutoStopConfiguration *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
 	// The version of the Spark engine.
+	//
+	// example:
+	//
+	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
 	DisplayReleaseVersion *string `json:"displayReleaseVersion,omitempty" xml:"displayReleaseVersion,omitempty"`
-	Domain                *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	DomainInner           *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
+	// The public endpoint of the Thrift server.
+	//
+	// example:
+	//
+	// emr-spark-gateway-cn-hangzhou.data.aliyun.com
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The internal endpoint of the Thrift server.
+	//
+	// example:
+	//
+	// emr-spark-gateway-cn-hangzhou-internal.data.aliyuncs.com
+	DomainInner *string `json:"domainInner,omitempty" xml:"domainInner,omitempty"`
 	// The ID of the job that is associated with the session.
 	//
 	// example:
@@ -3999,7 +4947,12 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// example:
 	//
 	// false
-	Fusion    *bool  `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1732267598000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The session type.
 	//
@@ -4039,8 +4992,23 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	//
 	// sc-123131
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	StartTime        *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 1732267598000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The status of the session.
+	//
+	// 	- Starting
+	//
+	// 	- Running
+	//
+	// 	- Stopping
+	//
+	// 	- Stopped
+	//
+	// 	- Error
 	//
 	// example:
 	//
@@ -5157,7 +6125,7 @@ type StartJobRunRequest struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// The tags of the job.
+	// The tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -5360,6 +6328,189 @@ func (s *StartJobRunResponse) SetStatusCode(v int32) *StartJobRunResponse {
 }
 
 func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunResponse {
+	s.Body = v
+	return s
+}
+
+type StartProcessInstanceRequest struct {
+	// example:
+	//
+	// false
+	IsProd *bool `json:"isProd,omitempty" xml:"isProd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12***********
+	ProcessDefinitionCode *int64 `json:"processDefinitionCode,omitempty" xml:"processDefinitionCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SS
+	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// root_queue
+	RuntimeQueue *string `json:"runtimeQueue,omitempty" xml:"runtimeQueue,omitempty"`
+	// example:
+	//
+	// dh*********
+	VersionHashCode *string `json:"versionHashCode,omitempty" xml:"versionHashCode,omitempty"`
+	// example:
+	//
+	// 1
+	VersionNumber *int32 `json:"versionNumber,omitempty" xml:"versionNumber,omitempty"`
+}
+
+func (s StartProcessInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProcessInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartProcessInstanceRequest) SetIsProd(v bool) *StartProcessInstanceRequest {
+	s.IsProd = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetProcessDefinitionCode(v int64) *StartProcessInstanceRequest {
+	s.ProcessDefinitionCode = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetProductNamespace(v string) *StartProcessInstanceRequest {
+	s.ProductNamespace = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetRegionId(v string) *StartProcessInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetRuntimeQueue(v string) *StartProcessInstanceRequest {
+	s.RuntimeQueue = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetVersionHashCode(v string) *StartProcessInstanceRequest {
+	s.VersionHashCode = &v
+	return s
+}
+
+func (s *StartProcessInstanceRequest) SetVersionNumber(v int32) *StartProcessInstanceRequest {
+	s.VersionNumber = &v
+	return s
+}
+
+type StartProcessInstanceResponseBody struct {
+	// example:
+	//
+	// 1400009
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// {\\"sessionBizId\\": \\"sc-dc85644dba1c8c63\\", \\"bizId\\": \\"st-aeed3b0d4f87418a9a9dcbd757477658\\", \\"gmtCreated\\": \\"Thu Sep 12 02:28:45 UTC 2024\\"}
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// false
+	Failed *bool `json:"failed,omitempty" xml:"failed,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// No permission for resource action
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StartProcessInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProcessInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartProcessInstanceResponseBody) SetCode(v int32) *StartProcessInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetData(v interface{}) *StartProcessInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetFailed(v bool) *StartProcessInstanceResponseBody {
+	s.Failed = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetHttpStatusCode(v int32) *StartProcessInstanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetMsg(v string) *StartProcessInstanceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetRequestId(v string) *StartProcessInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponseBody) SetSuccess(v bool) *StartProcessInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartProcessInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartProcessInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartProcessInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProcessInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartProcessInstanceResponse) SetHeaders(v map[string]*string) *StartProcessInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartProcessInstanceResponse) SetStatusCode(v int32) *StartProcessInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartProcessInstanceResponse) SetBody(v *StartProcessInstanceResponseBody) *StartProcessInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -5649,6 +6800,1009 @@ func (s *TerminateSqlStatementResponse) SetBody(v *TerminateSqlStatementResponse
 	return s
 }
 
+type UpdateProcessDefinitionWithScheduleRequest struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// example:
+	//
+	// ods batch workflow
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PARALLEL
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_batch_workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SS
+	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// example:
+	//
+	// true
+	Publish *bool `json:"publish,omitempty" xml:"publish,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// ONLINE
+	ReleaseState *string `json:"releaseState,omitempty" xml:"releaseState,omitempty"`
+	// example:
+	//
+	// root_queue
+	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
+	// example:
+	//
+	// 1
+	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
+	// example:
+	//
+	// 113***************
+	RunAs    *string                                             `json:"runAs,omitempty" xml:"runAs,omitempty"`
+	Schedule *UpdateProcessDefinitionWithScheduleRequestSchedule `json:"schedule,omitempty" xml:"schedule,omitempty" type:"Struct"`
+	Tags     map[string]*string                                  `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskDefinitionJson []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
+	// This parameter is required.
+	TaskRelationJson []*UpdateProcessDefinitionWithScheduleRequestTaskRelationJson `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 300
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetAlertEmailAddress(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetDescription(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetExecutionType(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.ExecutionType = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetName(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetProductNamespace(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.ProductNamespace = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetPublish(v bool) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Publish = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetRegionId(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetReleaseState(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.ReleaseState = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetResourceQueue(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.ResourceQueue = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetRetryTimes(v int32) *UpdateProcessDefinitionWithScheduleRequest {
+	s.RetryTimes = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetRunAs(v string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.RunAs = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetSchedule(v *UpdateProcessDefinitionWithScheduleRequestSchedule) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Schedule = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetTags(v map[string]*string) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetTaskDefinitionJson(v []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) *UpdateProcessDefinitionWithScheduleRequest {
+	s.TaskDefinitionJson = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetTaskParallelism(v int32) *UpdateProcessDefinitionWithScheduleRequest {
+	s.TaskParallelism = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetTaskRelationJson(v []*UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) *UpdateProcessDefinitionWithScheduleRequest {
+	s.TaskRelationJson = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequest) SetTimeout(v int32) *UpdateProcessDefinitionWithScheduleRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleRequestSchedule struct {
+	// example:
+	//
+	// 0 0 0 	- 	- ?
+	Crontab *string `json:"crontab,omitempty" xml:"crontab,omitempty"`
+	// example:
+	//
+	// 2025-12-23 16:13:27
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 2024-12-23 16:13:27
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimezoneId *string `json:"timezoneId,omitempty" xml:"timezoneId,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestSchedule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestSchedule) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestSchedule) SetCrontab(v string) *UpdateProcessDefinitionWithScheduleRequestSchedule {
+	s.Crontab = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestSchedule) SetEndTime(v string) *UpdateProcessDefinitionWithScheduleRequestSchedule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestSchedule) SetStartTime(v string) *UpdateProcessDefinitionWithScheduleRequestSchedule {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestSchedule) SetTimezoneId(v string) *UpdateProcessDefinitionWithScheduleRequestSchedule {
+	s.TimezoneId = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23************
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// ods transform task
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// true
+	FailAlertEnable *bool `json:"failAlertEnable,omitempty" xml:"failAlertEnable,omitempty"`
+	// example:
+	//
+	// 1
+	FailRetryTimes *int32 `json:"failRetryTimes,omitempty" xml:"failRetryTimes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_transform_task
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// true
+	StartAlertEnable *bool              `json:"startAlertEnable,omitempty" xml:"startAlertEnable,omitempty"`
+	Tags             map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskParams *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams `json:"taskParams,omitempty" xml:"taskParams,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EMR-SERVERLESS-SPARK
+	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
+	// example:
+	//
+	// 30
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetAlertEmailAddress(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetCode(v int64) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetDescription(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetFailAlertEnable(v bool) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.FailAlertEnable = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetFailRetryTimes(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.FailRetryTimes = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetName(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetStartAlertEnable(v bool) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.StartAlertEnable = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTags(v map[string]*string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Tags = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTaskParams(v *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.TaskParams = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTaskType(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.TaskType = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson) SetTimeout(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams struct {
+	// example:
+	//
+	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
+	DisplaySparkVersion *string `json:"displaySparkVersion,omitempty" xml:"displaySparkVersion,omitempty"`
+	// example:
+	//
+	// ev-h*************
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// false
+	Fusion *bool `json:"fusion,omitempty" xml:"fusion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// root_queue
+	ResourceQueueId *string                                                                            `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	SparkConf       []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
+	// example:
+	//
+	// 4g
+	SparkDriverMemory *int64 `json:"sparkDriverMemory,omitempty" xml:"sparkDriverMemory,omitempty"`
+	// example:
+	//
+	// 1
+	SparkExecutorCores *int32 `json:"sparkExecutorCores,omitempty" xml:"sparkExecutorCores,omitempty"`
+	// example:
+	//
+	// 4g
+	SparkExecutorMemory *int64 `json:"sparkExecutorMemory,omitempty" xml:"sparkExecutorMemory,omitempty"`
+	// example:
+	//
+	// INFO
+	SparkLogLevel *string `json:"sparkLogLevel,omitempty" xml:"sparkLogLevel,omitempty"`
+	SparkLogPath  *string `json:"sparkLogPath,omitempty" xml:"sparkLogPath,omitempty"`
+	// example:
+	//
+	// esr-4.0.0 (Spark 3.5.2, Scala 2.12)
+	SparkVersion *string `json:"sparkVersion,omitempty" xml:"sparkVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TSK-d87******************
+	TaskBizId *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
+	// example:
+	//
+	// SQL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// w-d8********
+	WorkspaceBizId *string `json:"workspaceBizId,omitempty" xml:"workspaceBizId,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetDisplaySparkVersion(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.DisplaySparkVersion = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetEnvironmentId(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetFusion(v bool) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.Fusion = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetResourceQueueId(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkConf(v []*UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkConf = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkDriverCores(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkDriverCores = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkDriverMemory(v int64) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkDriverMemory = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkExecutorCores(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkExecutorCores = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkExecutorMemory(v int64) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkExecutorMemory = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkLogLevel(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkLogLevel = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkLogPath(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkLogPath = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetSparkVersion(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.SparkVersion = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetTaskBizId(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.TaskBizId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetType(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams) SetWorkspaceBizId(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams {
+	s.WorkspaceBizId = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf struct {
+	// example:
+	//
+	// spark.dynamicAllocation.enabled
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// true
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) SetKey(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf) SetValue(v string) *UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf {
+	s.Value = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleRequestTaskRelationJson struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods batch workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 19************
+	PostTaskCode *int64 `json:"postTaskCode,omitempty" xml:"postTaskCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PostTaskVersion *int32 `json:"postTaskVersion,omitempty" xml:"postTaskVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16************
+	PreTaskCode *int64 `json:"preTaskCode,omitempty" xml:"preTaskCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PreTaskVersion *int32 `json:"preTaskVersion,omitempty" xml:"preTaskVersion,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) SetName(v string) *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPostTaskCode(v int64) *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PostTaskCode = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPostTaskVersion(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PostTaskVersion = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPreTaskCode(v int64) *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PreTaskCode = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson) SetPreTaskVersion(v int32) *UpdateProcessDefinitionWithScheduleRequestTaskRelationJson {
+	s.PreTaskVersion = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleShrinkRequest struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// example:
+	//
+	// ods batch workflow
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PARALLEL
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ods_batch_workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SS
+	ProductNamespace *string `json:"productNamespace,omitempty" xml:"productNamespace,omitempty"`
+	// example:
+	//
+	// true
+	Publish *bool `json:"publish,omitempty" xml:"publish,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// ONLINE
+	ReleaseState *string `json:"releaseState,omitempty" xml:"releaseState,omitempty"`
+	// example:
+	//
+	// root_queue
+	ResourceQueue *string `json:"resourceQueue,omitempty" xml:"resourceQueue,omitempty"`
+	// example:
+	//
+	// 1
+	RetryTimes *int32 `json:"retryTimes,omitempty" xml:"retryTimes,omitempty"`
+	// example:
+	//
+	// 113***************
+	RunAs          *string `json:"runAs,omitempty" xml:"runAs,omitempty"`
+	ScheduleShrink *string `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	TagsShrink     *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// This parameter is required.
+	TaskDefinitionJsonShrink *string `json:"taskDefinitionJson,omitempty" xml:"taskDefinitionJson,omitempty"`
+	// example:
+	//
+	// 1
+	TaskParallelism *int32 `json:"taskParallelism,omitempty" xml:"taskParallelism,omitempty"`
+	// This parameter is required.
+	TaskRelationJsonShrink *string `json:"taskRelationJson,omitempty" xml:"taskRelationJson,omitempty"`
+	// example:
+	//
+	// 300
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetAlertEmailAddress(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetDescription(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetExecutionType(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.ExecutionType = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetName(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetProductNamespace(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.ProductNamespace = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetPublish(v bool) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.Publish = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetRegionId(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetReleaseState(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.ReleaseState = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetResourceQueue(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.ResourceQueue = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetRetryTimes(v int32) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.RetryTimes = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetRunAs(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.RunAs = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetScheduleShrink(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.ScheduleShrink = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetTagsShrink(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetTaskDefinitionJsonShrink(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskDefinitionJsonShrink = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetTaskParallelism(v int32) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskParallelism = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetTaskRelationJsonShrink(v string) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.TaskRelationJsonShrink = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleShrinkRequest) SetTimeout(v int32) *UpdateProcessDefinitionWithScheduleShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleResponseBody struct {
+	// example:
+	//
+	// 1400009
+	Code *int32                                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *UpdateProcessDefinitionWithScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	Failed *string `json:"failed,omitempty" xml:"failed,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// No permission for resource action
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetCode(v int32) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetData(v *UpdateProcessDefinitionWithScheduleResponseBodyData) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetFailed(v string) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.Failed = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetHttpStatusCode(v int32) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetMsg(v string) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetRequestId(v string) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBody) SetSuccess(v string) *UpdateProcessDefinitionWithScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleResponseBodyData struct {
+	// example:
+	//
+	// foo_bar@spark.alert.invalid.com
+	AlertEmailAddress *string `json:"alertEmailAddress,omitempty" xml:"alertEmailAddress,omitempty"`
+	// example:
+	//
+	// alicloud_ack_one_cluster
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// example:
+	//
+	// 12***********
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 2024-09-05T02:03:19Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 0 0 0 	- 	- ?
+	Crontab *string `json:"crontab,omitempty" xml:"crontab,omitempty"`
+	// example:
+	//
+	// 1
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 1710432000000
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// SERIAL
+	ExecutionType *string `json:"executionType,omitempty" xml:"executionType,omitempty"`
+	// example:
+	//
+	// 123223
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// ods_batch_workflow
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// w-********
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// ONLINE
+	ReleaseState *string `json:"releaseState,omitempty" xml:"releaseState,omitempty"`
+	// example:
+	//
+	// 0
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// Asia/Shanghai
+	TimezoneId *string `json:"timezoneId,omitempty" xml:"timezoneId,omitempty"`
+	// example:
+	//
+	// 2024-03-05T06:24:27Z
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// example:
+	//
+	// 113*********
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// w-********
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// dwerf*********
+	VersionHashCode *string `json:"versionHashCode,omitempty" xml:"versionHashCode,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetAlertEmailAddress(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.AlertEmailAddress = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetBizId(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.BizId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetCode(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetCreateTime(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetCrontab(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Crontab = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetDescription(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetEndTime(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetExecutionType(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.ExecutionType = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetId(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetName(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetProjectName(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetReleaseState(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.ReleaseState = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetStartTime(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetTimezoneId(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.TimezoneId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetUpdateTime(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetUserId(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetUserName(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetVersion(v int32) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponseBodyData) SetVersionHashCode(v string) *UpdateProcessDefinitionWithScheduleResponseBodyData {
+	s.VersionHashCode = &v
+	return s
+}
+
+type UpdateProcessDefinitionWithScheduleResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateProcessDefinitionWithScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProcessDefinitionWithScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponse) SetHeaders(v map[string]*string) *UpdateProcessDefinitionWithScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponse) SetStatusCode(v int32) *UpdateProcessDefinitionWithScheduleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateProcessDefinitionWithScheduleResponse) SetBody(v *UpdateProcessDefinitionWithScheduleResponseBody) *UpdateProcessDefinitionWithScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5836,6 +7990,148 @@ func (client *Client) CancelJobRun(workspaceId *string, jobRunId *string, reques
 
 // Summary:
 //
+// 创建工作流定义
+//
+// @param tmpReq - CreateProcessDefinitionWithScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProcessDefinitionWithScheduleResponse
+func (client *Client) CreateProcessDefinitionWithScheduleWithOptions(bizId *string, tmpReq *CreateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProcessDefinitionWithScheduleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Schedule)) {
+		request.ScheduleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Schedule, tea.String("schedule"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskDefinitionJson)) {
+		request.TaskDefinitionJsonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskDefinitionJson, tea.String("taskDefinitionJson"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskRelationJson)) {
+		request.TaskRelationJsonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskRelationJson, tea.String("taskRelationJson"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertEmailAddress)) {
+		query["alertEmailAddress"] = request.AlertEmailAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionType)) {
+		query["executionType"] = request.ExecutionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductNamespace)) {
+		query["productNamespace"] = request.ProductNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Publish)) {
+		query["publish"] = request.Publish
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceQueue)) {
+		query["resourceQueue"] = request.ResourceQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryTimes)) {
+		query["retryTimes"] = request.RetryTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunAs)) {
+		query["runAs"] = request.RunAs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleShrink)) {
+		query["schedule"] = request.ScheduleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDefinitionJsonShrink)) {
+		query["taskDefinitionJson"] = request.TaskDefinitionJsonShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParallelism)) {
+		query["taskParallelism"] = request.TaskParallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskRelationJsonShrink)) {
+		query["taskRelationJson"] = request.TaskRelationJsonShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProcessDefinitionWithSchedule"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/projects/" + tea.StringValue(openapiutil.GetEncodeParam(bizId)) + "/process-definition"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProcessDefinitionWithScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作流定义
+//
+// @param request - CreateProcessDefinitionWithScheduleRequest
+//
+// @return CreateProcessDefinitionWithScheduleResponse
+func (client *Client) CreateProcessDefinitionWithSchedule(bizId *string, request *CreateProcessDefinitionWithScheduleRequest) (_result *CreateProcessDefinitionWithScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProcessDefinitionWithScheduleResponse{}
+	_body, _err := client.CreateProcessDefinitionWithScheduleWithOptions(bizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an SQL query task.
 //
 // @param request - CreateSqlStatementRequest
@@ -5986,7 +8282,7 @@ func (client *Client) GetJobRun(workspaceId *string, jobRunId *string, request *
 
 // Summary:
 //
-// 查询SessionCluster集群
+// Queries a list of sessions.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -6031,7 +8327,7 @@ func (client *Client) GetSessionClusterWithOptions(workspaceId *string, sessionC
 
 // Summary:
 //
-// 查询SessionCluster集群
+// Queries a list of sessions.
 //
 // @param request - GetSessionClusterRequest
 //
@@ -6114,7 +8410,7 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 
 // Summary:
 //
-// 获取任务模板
+// Queries task templates.
 //
 // @param request - GetTemplateRequest
 //
@@ -6163,7 +8459,7 @@ func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *Ge
 
 // Summary:
 //
-// 获取任务模板
+// Queries task templates.
 //
 // @param request - GetTemplateRequest
 //
@@ -6884,6 +9180,94 @@ func (client *Client) StartJobRun(workspaceId *string, request *StartJobRunReque
 
 // Summary:
 //
+// 启动工作流实例
+//
+// @param request - StartProcessInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartProcessInstanceResponse
+func (client *Client) StartProcessInstanceWithOptions(bizId *string, request *StartProcessInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartProcessInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsProd)) {
+		query["isProd"] = request.IsProd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessDefinitionCode)) {
+		query["processDefinitionCode"] = request.ProcessDefinitionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductNamespace)) {
+		query["productNamespace"] = request.ProductNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeQueue)) {
+		query["runtimeQueue"] = request.RuntimeQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionHashCode)) {
+		query["versionHashCode"] = request.VersionHashCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionNumber)) {
+		query["versionNumber"] = request.VersionNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartProcessInstance"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/projects/" + tea.StringValue(openapiutil.GetEncodeParam(bizId)) + "/executors/start-process-instance"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartProcessInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动工作流实例
+//
+// @param request - StartProcessInstanceRequest
+//
+// @return StartProcessInstanceResponse
+func (client *Client) StartProcessInstance(bizId *string, request *StartProcessInstanceRequest) (_result *StartProcessInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartProcessInstanceResponse{}
+	_body, _err := client.StartProcessInstanceWithOptions(bizId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts a session.
 //
 // @param request - StartSessionClusterRequest
@@ -7087,6 +9471,152 @@ func (client *Client) TerminateSqlStatement(workspaceId *string, statementId *st
 	headers := make(map[string]*string)
 	_result = &TerminateSqlStatementResponse{}
 	_body, _err := client.TerminateSqlStatementWithOptions(workspaceId, statementId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流定义和定时调度
+//
+// @param tmpReq - UpdateProcessDefinitionWithScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProcessDefinitionWithScheduleResponse
+func (client *Client) UpdateProcessDefinitionWithScheduleWithOptions(bizId *string, code *string, tmpReq *UpdateProcessDefinitionWithScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateProcessDefinitionWithScheduleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Schedule)) {
+		request.ScheduleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Schedule, tea.String("schedule"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskDefinitionJson)) {
+		request.TaskDefinitionJsonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskDefinitionJson, tea.String("taskDefinitionJson"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskRelationJson)) {
+		request.TaskRelationJsonShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskRelationJson, tea.String("taskRelationJson"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertEmailAddress)) {
+		query["alertEmailAddress"] = request.AlertEmailAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionType)) {
+		query["executionType"] = request.ExecutionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductNamespace)) {
+		query["productNamespace"] = request.ProductNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Publish)) {
+		query["publish"] = request.Publish
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseState)) {
+		query["releaseState"] = request.ReleaseState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceQueue)) {
+		query["resourceQueue"] = request.ResourceQueue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetryTimes)) {
+		query["retryTimes"] = request.RetryTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunAs)) {
+		query["runAs"] = request.RunAs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleShrink)) {
+		query["schedule"] = request.ScheduleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDefinitionJsonShrink)) {
+		query["taskDefinitionJson"] = request.TaskDefinitionJsonShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParallelism)) {
+		query["taskParallelism"] = request.TaskParallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskRelationJsonShrink)) {
+		query["taskRelationJson"] = request.TaskRelationJsonShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateProcessDefinitionWithSchedule"),
+		Version:     tea.String("2023-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dolphinscheduler/projects/" + tea.StringValue(openapiutil.GetEncodeParam(bizId)) + "/process-definition/" + tea.StringValue(openapiutil.GetEncodeParam(code))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateProcessDefinitionWithScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流定义和定时调度
+//
+// @param request - UpdateProcessDefinitionWithScheduleRequest
+//
+// @return UpdateProcessDefinitionWithScheduleResponse
+func (client *Client) UpdateProcessDefinitionWithSchedule(bizId *string, code *string, request *UpdateProcessDefinitionWithScheduleRequest) (_result *UpdateProcessDefinitionWithScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateProcessDefinitionWithScheduleResponse{}
+	_body, _err := client.UpdateProcessDefinitionWithScheduleWithOptions(bizId, code, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
