@@ -248,7 +248,8 @@ type GetAbnormalEventsCountRequest struct {
 	// example:
 	//
 	// test-pod
-	Pod *string `json:"pod,omitempty" xml:"pod,omitempty"`
+	Pod     *string `json:"pod,omitempty" xml:"pod,omitempty"`
+	ShowPod *int32  `json:"showPod,omitempty" xml:"showPod,omitempty"`
 	// example:
 	//
 	// 1725797727754
@@ -285,6 +286,11 @@ func (s *GetAbnormalEventsCountRequest) SetNamespace(v string) *GetAbnormalEvent
 
 func (s *GetAbnormalEventsCountRequest) SetPod(v string) *GetAbnormalEventsCountRequest {
 	s.Pod = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetShowPod(v int32) *GetAbnormalEventsCountRequest {
+	s.ShowPod = &v
 	return s
 }
 
@@ -1559,6 +1565,10 @@ func (client *Client) GetAbnormalEventsCountWithOptions(request *GetAbnormalEven
 
 	if !tea.BoolValue(util.IsUnset(request.Pod)) {
 		query["pod"] = request.Pod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowPod)) {
+		query["showPod"] = request.ShowPod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Start)) {
