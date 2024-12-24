@@ -12404,7 +12404,8 @@ type CreateScheduleConferenceRequest struct {
 	// example:
 	//
 	// 1687928400000L
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime                  *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ScheduleConfSettingModel *CreateScheduleConferenceRequestScheduleConfSettingModel `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -12433,6 +12434,11 @@ func (s *CreateScheduleConferenceRequest) SetEndTime(v int64) *CreateScheduleCon
 	return s
 }
 
+func (s *CreateScheduleConferenceRequest) SetScheduleConfSettingModel(v *CreateScheduleConferenceRequestScheduleConfSettingModel) *CreateScheduleConferenceRequest {
+	s.ScheduleConfSettingModel = v
+	return s
+}
+
 func (s *CreateScheduleConferenceRequest) SetStartTime(v int64) *CreateScheduleConferenceRequest {
 	s.StartTime = &v
 	return s
@@ -12445,6 +12451,263 @@ func (s *CreateScheduleConferenceRequest) SetTenantContext(v *CreateScheduleConf
 
 func (s *CreateScheduleConferenceRequest) SetTitle(v string) *CreateScheduleConferenceRequest {
 	s.Title = &v
+	return s
+}
+
+type CreateScheduleConferenceRequestScheduleConfSettingModel struct {
+	CohostUserIds []*string `json:"CohostUserIds,omitempty" xml:"CohostUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dingc02f685fa06381c44ac5d6980864d335
+	ConfAllowedCorpId *string `json:"ConfAllowedCorpId,omitempty" xml:"ConfAllowedCorpId,omitempty"`
+	// example:
+	//
+	// 2iPOLbpUNMLzB5LuwggiiqiPwiEiE
+	HostUserId *string `json:"HostUserId,omitempty" xml:"HostUserId,omitempty"`
+	// example:
+	//
+	// 0
+	LockRoom                    *int32                                                                              `json:"LockRoom,omitempty" xml:"LockRoom,omitempty"`
+	MoziConfOpenRecordSetting   *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting   `json:"MoziConfOpenRecordSetting,omitempty" xml:"MoziConfOpenRecordSetting,omitempty" type:"Struct"`
+	MoziConfVirtualExtraSetting *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting `json:"MoziConfVirtualExtraSetting,omitempty" xml:"MoziConfVirtualExtraSetting,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	MuteOnJoin *int32 `json:"MuteOnJoin,omitempty" xml:"MuteOnJoin,omitempty"`
+	// example:
+	//
+	// 0
+	ScreenShareForbidden *int32 `json:"ScreenShareForbidden,omitempty" xml:"ScreenShareForbidden,omitempty"`
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetCohostUserIds(v []*string) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.CohostUserIds = v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetConfAllowedCorpId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.ConfAllowedCorpId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetHostUserId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.HostUserId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetLockRoom(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.LockRoom = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetMoziConfOpenRecordSetting(v *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.MoziConfOpenRecordSetting = v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetMoziConfVirtualExtraSetting(v *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.MoziConfVirtualExtraSetting = v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetMuteOnJoin(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.MuteOnJoin = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetScreenShareForbidden(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.ScreenShareForbidden = &v
+	return s
+}
+
+type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting struct {
+	IsFollowHost *bool `json:"IsFollowHost,omitempty" xml:"IsFollowHost,omitempty"`
+	// example:
+	//
+	// grid
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 0
+	RecordAutoStart *int32 `json:"RecordAutoStart,omitempty" xml:"RecordAutoStart,omitempty"`
+	// example:
+	//
+	// 0
+	RecordAutoStartType *int32 `json:"RecordAutoStartType,omitempty" xml:"RecordAutoStartType,omitempty"`
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetIsFollowHost(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.IsFollowHost = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetMode(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetRecordAutoStart(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.RecordAutoStart = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetRecordAutoStartType(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.RecordAutoStartType = &v
+	return s
+}
+
+type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting struct {
+	// example:
+	//
+	// 2iPOLbpUNMLzB5LuwggiiqiPwiEiE
+	CloudRecordOwnerUserId *string `json:"CloudRecordOwnerUserId,omitempty" xml:"CloudRecordOwnerUserId,omitempty"`
+	// example:
+	//
+	// 0
+	EnableChat             *int32 `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
+	EnableWebAnonymousJoin *bool  `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
+	// example:
+	//
+	// 0
+	JoinBeforeHost *int32 `json:"JoinBeforeHost,omitempty" xml:"JoinBeforeHost,omitempty"`
+	// example:
+	//
+	// 0
+	LockMediaStatusMicMute *int32 `json:"LockMediaStatusMicMute,omitempty" xml:"LockMediaStatusMicMute,omitempty"`
+	// example:
+	//
+	// 0
+	LockNick                     *int32                                                                                                            `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
+	MinutesOwnerUserId           *string                                                                                                           `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
+	MoziConfExtensionAppSettings []*CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings `json:"MoziConfExtensionAppSettings,omitempty" xml:"MoziConfExtensionAppSettings,omitempty" type:"Repeated"`
+	PushAllMeetingRecords        *bool                                                                                                             `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
+	PushCloudRecordCard          *bool                                                                                                             `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
+	PushMinutesCard              *bool                                                                                                             `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
+	// example:
+	//
+	// 1
+	WaitingRoom *int32 `json:"WaitingRoom,omitempty" xml:"WaitingRoom,omitempty"`
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetCloudRecordOwnerUserId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.CloudRecordOwnerUserId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetEnableChat(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.EnableChat = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetEnableWebAnonymousJoin(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.EnableWebAnonymousJoin = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetJoinBeforeHost(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.JoinBeforeHost = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetLockMediaStatusMicMute(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.LockMediaStatusMicMute = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetLockNick(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.LockNick = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesOwnerUserId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MinutesOwnerUserId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMoziConfExtensionAppSettings(v []*CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MoziConfExtensionAppSettings = v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushAllMeetingRecords(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushAllMeetingRecords = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushCloudRecordCard(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushCloudRecordCard = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushMinutesCard(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.PushMinutesCard = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetWaitingRoom(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.WaitingRoom = &v
+	return s
+}
+
+type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings struct {
+	// example:
+	//
+	// 0
+	AutoOpenMode *int32 `json:"AutoOpenMode,omitempty" xml:"AutoOpenMode,omitempty"`
+	// example:
+	//
+	// xxx
+	CoolAppCode *string `json:"CoolAppCode,omitempty" xml:"CoolAppCode,omitempty"`
+	// example:
+	//
+	// xxx
+	ExtensionAppBizData *string `json:"ExtensionAppBizData,omitempty" xml:"ExtensionAppBizData,omitempty"`
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetAutoOpenMode(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.AutoOpenMode = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetCoolAppCode(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.CoolAppCode = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetExtensionAppBizData(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.ExtensionAppBizData = &v
 	return s
 }
 
@@ -12474,7 +12737,8 @@ type CreateScheduleConferenceShrinkRequest struct {
 	// example:
 	//
 	// 1687928400000L
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime                        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ScheduleConfSettingModelShrink *string `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -12500,6 +12764,11 @@ func (s CreateScheduleConferenceShrinkRequest) GoString() string {
 
 func (s *CreateScheduleConferenceShrinkRequest) SetEndTime(v int64) *CreateScheduleConferenceShrinkRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceShrinkRequest) SetScheduleConfSettingModelShrink(v string) *CreateScheduleConferenceShrinkRequest {
+	s.ScheduleConfSettingModelShrink = &v
 	return s
 }
 
@@ -33309,6 +33578,7 @@ type GetOrgLiveListResponseBodyResultNewLiveLiveList struct {
 	//
 	// nickName
 	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	AnchorUnionId  *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
 	// example:
 	//
 	// ersqqdddf
@@ -33345,6 +33615,11 @@ func (s GetOrgLiveListResponseBodyResultNewLiveLiveList) GoString() string {
 
 func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorNickname(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
 	s.AnchorNickname = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorUnionId(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.AnchorUnionId = &v
 	return s
 }
 
@@ -33439,6 +33714,7 @@ type GetOrgLiveListResponseBodyResultUpdateLiveLiveList struct {
 	//
 	// nickName
 	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	AnchorUnionId  *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
 	// example:
 	//
 	// 012345
@@ -33471,6 +33747,11 @@ func (s GetOrgLiveListResponseBodyResultUpdateLiveLiveList) GoString() string {
 
 func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorNickname(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
 	s.AnchorNickname = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorUnionId(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.AnchorUnionId = &v
 	return s
 }
 
@@ -33524,6 +33805,256 @@ func (s *GetOrgLiveListResponse) SetStatusCode(v int32) *GetOrgLiveListResponse 
 }
 
 func (s *GetOrgLiveListResponse) SetBody(v *GetOrgLiveListResponseBody) *GetOrgLiveListResponse {
+	s.Body = v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdHeaders struct {
+	CommonHeaders  map[string]*string                                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdHeaders) SetCommonHeaders(v map[string]*string) *GetOrgOrWebOpenDocContentTaskIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdHeaders) SetAccountContext(v *GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext) *GetOrgOrWebOpenDocContentTaskIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext) SetAccountId(v string) *GetOrgOrWebOpenDocContentTaskIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetOrgOrWebOpenDocContentTaskIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkHeaders) SetAccountContextShrink(v string) *GetOrgOrWebOpenDocContentTaskIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20eMKjyp810mMdK4Hz4B5BA6JxAZB1Gv
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
+	// example:
+	//
+	// markdown
+	TargetFormat  *string                                              `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContext *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetDentryUuid(v string) *GetOrgOrWebOpenDocContentTaskIdRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetGenerateCp(v bool) *GetOrgOrWebOpenDocContentTaskIdRequest {
+	s.GenerateCp = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetTargetFormat(v string) *GetOrgOrWebOpenDocContentTaskIdRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequest) SetTenantContext(v *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext) *GetOrgOrWebOpenDocContentTaskIdRequest {
+	s.TenantContext = v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext) SetTenantId(v string) *GetOrgOrWebOpenDocContentTaskIdRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20eMKjyp810mMdK4Hz4B5BA6JxAZB1Gv
+	DentryUuid *string `json:"DentryUuid,omitempty" xml:"DentryUuid,omitempty"`
+	GenerateCp *bool   `json:"GenerateCp,omitempty" xml:"GenerateCp,omitempty"`
+	// example:
+	//
+	// markdown
+	TargetFormat        *string `json:"TargetFormat,omitempty" xml:"TargetFormat,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetDentryUuid(v string) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
+	s.DentryUuid = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetGenerateCp(v bool) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
+	s.GenerateCp = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetTargetFormat(v string) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
+	s.TargetFormat = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdShrinkRequest) SetTenantContextShrink(v string) *GetOrgOrWebOpenDocContentTaskIdShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 158740210521
+	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponseBody) SetRequestId(v string) *GetOrgOrWebOpenDocContentTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponseBody) SetTaskId(v int64) *GetOrgOrWebOpenDocContentTaskIdResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponseBody) SetVendorRequestId(v string) *GetOrgOrWebOpenDocContentTaskIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponseBody) SetVendorType(v string) *GetOrgOrWebOpenDocContentTaskIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetOrgOrWebOpenDocContentTaskIdResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOrgOrWebOpenDocContentTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrgOrWebOpenDocContentTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponse) SetHeaders(v map[string]*string) *GetOrgOrWebOpenDocContentTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponse) SetStatusCode(v int32) *GetOrgOrWebOpenDocContentTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrgOrWebOpenDocContentTaskIdResponse) SetBody(v *GetOrgOrWebOpenDocContentTaskIdResponseBody) *GetOrgOrWebOpenDocContentTaskIdResponse {
 	s.Body = v
 	return s
 }
@@ -52616,6 +53147,415 @@ func (s *QueryConferenceInfoResponse) SetBody(v *QueryConferenceInfoResponseBody
 	return s
 }
 
+type QueryConferenceInfoByRoomCodeHeaders struct {
+	CommonHeaders  map[string]*string                                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryConferenceInfoByRoomCodeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryConferenceInfoByRoomCodeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeHeaders) SetCommonHeaders(v map[string]*string) *QueryConferenceInfoByRoomCodeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeHeaders) SetAccountContext(v *QueryConferenceInfoByRoomCodeHeadersAccountContext) *QueryConferenceInfoByRoomCodeHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeHeadersAccountContext) SetAccountId(v string) *QueryConferenceInfoByRoomCodeHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryConferenceInfoByRoomCodeShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkHeaders) SetAccountContextShrink(v string) *QueryConferenceInfoByRoomCodeShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeRequest struct {
+	TenantContext *QueryConferenceInfoByRoomCodeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 583 480 813
+	RoomCode *string `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeRequest) SetTenantContext(v *QueryConferenceInfoByRoomCodeRequestTenantContext) *QueryConferenceInfoByRoomCodeRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeRequest) SetMaxResults(v int32) *QueryConferenceInfoByRoomCodeRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeRequest) SetNextToken(v string) *QueryConferenceInfoByRoomCodeRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeRequest) SetRoomCode(v string) *QueryConferenceInfoByRoomCodeRequest {
+	s.RoomCode = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeRequestTenantContext) SetTenantId(v string) *QueryConferenceInfoByRoomCodeRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 583 480 813
+	RoomCode *string `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkRequest) SetTenantContextShrink(v string) *QueryConferenceInfoByRoomCodeShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkRequest) SetMaxResults(v int32) *QueryConferenceInfoByRoomCodeShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkRequest) SetNextToken(v string) *QueryConferenceInfoByRoomCodeShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeShrinkRequest) SetRoomCode(v string) *QueryConferenceInfoByRoomCodeShrinkRequest {
+	s.RoomCode = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeResponseBody struct {
+	// example:
+	//
+	// []
+	ConferenceList []*QueryConferenceInfoByRoomCodeResponseBodyConferenceList `json:"conferenceList,omitempty" xml:"conferenceList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	DingtalkRequestId *string `json:"dingtalkRequestId,omitempty" xml:"dingtalkRequestId,omitempty"`
+	// example:
+	//
+	// true
+	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	// example:
+	//
+	// 1296
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetConferenceList(v []*QueryConferenceInfoByRoomCodeResponseBodyConferenceList) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.ConferenceList = v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetDingtalkRequestId(v string) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.DingtalkRequestId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetHasMore(v bool) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.HasMore = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetNextToken(v string) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetRequestId(v string) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetTotalCount(v int32) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetVendorRequestId(v string) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBody) SetVendorType(v string) *QueryConferenceInfoByRoomCodeResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeResponseBodyConferenceList struct {
+	// example:
+	//
+	// 3
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 1000
+	ConfDuration *int64 `json:"ConfDuration,omitempty" xml:"ConfDuration,omitempty"`
+	// example:
+	//
+	// 636cf59f2b032f014ae32902
+	ConferenceId *string `json:"ConferenceId,omitempty" xml:"ConferenceId,omitempty"`
+	// example:
+	//
+	// 527079
+	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNick *string `json:"CreatorNick,omitempty" xml:"CreatorNick,omitempty"`
+	// example:
+	//
+	// 1668087732000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// https//:xxx
+	ExternalLinkUrl *string `json:"ExternalLinkUrl,omitempty" xml:"ExternalLinkUrl,omitempty"`
+	// example:
+	//
+	// 123456789
+	RoomCode *string `json:"RoomCode,omitempty" xml:"RoomCode,omitempty"`
+	// example:
+	//
+	// 2d79cbde-b9d8-4256-9788-78b05834944e
+	ScheduleConferenceId *string `json:"ScheduleConferenceId,omitempty" xml:"ScheduleConferenceId,omitempty"`
+	// example:
+	//
+	// 1668087731000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeResponseBodyConferenceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeResponseBodyConferenceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetBizType(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetConfDuration(v int64) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.ConfDuration = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetConferenceId(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetCreatorId(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetCreatorNick(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.CreatorNick = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetEndTime(v int64) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetExternalLinkUrl(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.ExternalLinkUrl = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetRoomCode(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.RoomCode = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetScheduleConferenceId(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.ScheduleConferenceId = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetStartTime(v int64) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetStatus(v int32) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponseBodyConferenceList) SetTitle(v string) *QueryConferenceInfoByRoomCodeResponseBodyConferenceList {
+	s.Title = &v
+	return s
+}
+
+type QueryConferenceInfoByRoomCodeResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryConferenceInfoByRoomCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryConferenceInfoByRoomCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryConferenceInfoByRoomCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponse) SetHeaders(v map[string]*string) *QueryConferenceInfoByRoomCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponse) SetStatusCode(v int32) *QueryConferenceInfoByRoomCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryConferenceInfoByRoomCodeResponse) SetBody(v *QueryConferenceInfoByRoomCodeResponseBody) *QueryConferenceInfoByRoomCodeResponse {
+	s.Body = v
+	return s
+}
+
 type QueryConferenceMembersHeaders struct {
 	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *QueryConferenceMembersHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -71436,6 +72376,7 @@ type UpdateScheduleConfSettingsRequestScheduleConfSettingModel struct {
 	//
 	// 1
 	LockRoom                    *int32                                                                                `json:"LockRoom,omitempty" xml:"LockRoom,omitempty"`
+	MoziConfOpenRecordSetting   *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting   `json:"MoziConfOpenRecordSetting,omitempty" xml:"MoziConfOpenRecordSetting,omitempty" type:"Struct"`
 	MoziConfVirtualExtraSetting *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting `json:"MoziConfVirtualExtraSetting,omitempty" xml:"MoziConfVirtualExtraSetting,omitempty" type:"Struct"`
 	// example:
 	//
@@ -71475,6 +72416,11 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetLockRoom(
 	return s
 }
 
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetMoziConfOpenRecordSetting(v *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) *UpdateScheduleConfSettingsRequestScheduleConfSettingModel {
+	s.MoziConfOpenRecordSetting = v
+	return s
+}
+
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetMoziConfVirtualExtraSetting(v *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) *UpdateScheduleConfSettingsRequestScheduleConfSettingModel {
 	s.MoziConfVirtualExtraSetting = v
 	return s
@@ -71487,6 +72433,50 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetMuteOnJoi
 
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModel) SetScreenShareForbidden(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModel {
 	s.ScreenShareForbidden = &v
+	return s
+}
+
+type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting struct {
+	IsFollowHost *bool `json:"IsFollowHost,omitempty" xml:"IsFollowHost,omitempty"`
+	// example:
+	//
+	// grid
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 0
+	RecordAutoStart *int32 `json:"RecordAutoStart,omitempty" xml:"RecordAutoStart,omitempty"`
+	// example:
+	//
+	// 0
+	RecordAutoStartType *int32 `json:"RecordAutoStartType,omitempty" xml:"RecordAutoStartType,omitempty"`
+}
+
+func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetIsFollowHost(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.IsFollowHost = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetMode(v string) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.Mode = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetRecordAutoStart(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.RecordAutoStart = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetRecordAutoStartType(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.RecordAutoStartType = &v
 	return s
 }
 
@@ -71508,11 +72498,12 @@ type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExt
 	// example:
 	//
 	// 1
-	LockNick              *int32  `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
-	MinutesOwnerUserId    *string `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
-	PushAllMeetingRecords *bool   `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
-	PushCloudRecordCard   *bool   `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
-	PushMinutesCard       *bool   `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
+	LockNick                     *int32                                                                                                              `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
+	MinutesOwnerUserId           *string                                                                                                             `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
+	MoziConfExtensionAppSettings []*UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings `json:"MoziConfExtensionAppSettings,omitempty" xml:"MoziConfExtensionAppSettings,omitempty" type:"Repeated"`
+	PushAllMeetingRecords        *bool                                                                                                               `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
+	PushCloudRecordCard          *bool                                                                                                               `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
+	PushMinutesCard              *bool                                                                                                               `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
 	// example:
 	//
 	// 1
@@ -71562,6 +72553,11 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtua
 	return s
 }
 
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMoziConfExtensionAppSettings(v []*UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MoziConfExtensionAppSettings = v
+	return s
+}
+
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetPushAllMeetingRecords(v bool) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.PushAllMeetingRecords = &v
 	return s
@@ -71579,6 +72575,44 @@ func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtua
 
 func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetWaitingRoom(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.WaitingRoom = &v
+	return s
+}
+
+type UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings struct {
+	// example:
+	//
+	// 0
+	AutoOpenMode *int32 `json:"AutoOpenMode,omitempty" xml:"AutoOpenMode,omitempty"`
+	// example:
+	//
+	// xxxx
+	CoolAppCode *string `json:"CoolAppCode,omitempty" xml:"CoolAppCode,omitempty"`
+	// example:
+	//
+	// xxx
+	ExtensionAppBizData *string `json:"ExtensionAppBizData,omitempty" xml:"ExtensionAppBizData,omitempty"`
+}
+
+func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetAutoOpenMode(v int32) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.AutoOpenMode = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetCoolAppCode(v string) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.CoolAppCode = &v
+	return s
+}
+
+func (s *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings) SetExtensionAppBizData(v string) *UpdateScheduleConfSettingsRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
+	s.ExtensionAppBizData = &v
 	return s
 }
 
@@ -78477,6 +79511,10 @@ func (client *Client) CreateScheduleConferenceWithOptions(tmpReq *CreateSchedule
 		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ScheduleConfSettingModel)) {
+		request.ScheduleConfSettingModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScheduleConfSettingModel, tea.String("ScheduleConfSettingModel"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
 		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
 	}
@@ -78484,6 +79522,10 @@ func (client *Client) CreateScheduleConferenceWithOptions(tmpReq *CreateSchedule
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleConfSettingModelShrink)) {
+		body["ScheduleConfSettingModel"] = request.ScheduleConfSettingModelShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -85153,6 +86195,103 @@ func (client *Client) GetOrgLiveList(request *GetOrgLiveListRequest) (_result *G
 
 // Summary:
 //
+// 委托权限获取组织或者互联网公开文档内容taskId
+//
+// @param tmpReq - GetOrgOrWebOpenDocContentTaskIdRequest
+//
+// @param tmpHeader - GetOrgOrWebOpenDocContentTaskIdHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrgOrWebOpenDocContentTaskIdResponse
+func (client *Client) GetOrgOrWebOpenDocContentTaskIdWithOptions(tmpReq *GetOrgOrWebOpenDocContentTaskIdRequest, tmpHeader *GetOrgOrWebOpenDocContentTaskIdHeaders, runtime *util.RuntimeOptions) (_result *GetOrgOrWebOpenDocContentTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetOrgOrWebOpenDocContentTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetOrgOrWebOpenDocContentTaskIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DentryUuid)) {
+		body["DentryUuid"] = request.DentryUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateCp)) {
+		body["GenerateCp"] = request.GenerateCp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFormat)) {
+		body["TargetFormat"] = request.TargetFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrgOrWebOpenDocContentTaskId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v2/documents/getOrgOrWebOpenDocContentTaskId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrgOrWebOpenDocContentTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 委托权限获取组织或者互联网公开文档内容taskId
+//
+// @param request - GetOrgOrWebOpenDocContentTaskIdRequest
+//
+// @return GetOrgOrWebOpenDocContentTaskIdResponse
+func (client *Client) GetOrgOrWebOpenDocContentTaskId(request *GetOrgOrWebOpenDocContentTaskIdRequest) (_result *GetOrgOrWebOpenDocContentTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetOrgOrWebOpenDocContentTaskIdHeaders{}
+	_result = &GetOrgOrWebOpenDocContentTaskIdResponse{}
+	_body, _err := client.GetOrgOrWebOpenDocContentTaskIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取流程定义
 //
 // @param request - GetProcessDefinitionRequest
@@ -89799,6 +90938,103 @@ func (client *Client) QueryConferenceInfo(request *QueryConferenceInfoRequest) (
 	headers := &QueryConferenceInfoHeaders{}
 	_result = &QueryConferenceInfoResponse{}
 	_body, _err := client.QueryConferenceInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据会议码查询视频会议信息
+//
+// @param tmpReq - QueryConferenceInfoByRoomCodeRequest
+//
+// @param tmpHeader - QueryConferenceInfoByRoomCodeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConferenceInfoByRoomCodeResponse
+func (client *Client) QueryConferenceInfoByRoomCodeWithOptions(tmpReq *QueryConferenceInfoByRoomCodeRequest, tmpHeader *QueryConferenceInfoByRoomCodeHeaders, runtime *util.RuntimeOptions) (_result *QueryConferenceInfoByRoomCodeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryConferenceInfoByRoomCodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryConferenceInfoByRoomCodeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomCode)) {
+		body["roomCode"] = request.RoomCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryConferenceInfoByRoomCode"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/queryConferenceInfoByRoomCode"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryConferenceInfoByRoomCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据会议码查询视频会议信息
+//
+// @param request - QueryConferenceInfoByRoomCodeRequest
+//
+// @return QueryConferenceInfoByRoomCodeResponse
+func (client *Client) QueryConferenceInfoByRoomCode(request *QueryConferenceInfoByRoomCodeRequest) (_result *QueryConferenceInfoByRoomCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryConferenceInfoByRoomCodeHeaders{}
+	_result = &QueryConferenceInfoByRoomCodeResponse{}
+	_body, _err := client.QueryConferenceInfoByRoomCodeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
