@@ -393,6 +393,7 @@ type GetInstanceDetailResponseBodyData struct {
 	//
 	// aliyun-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	EnableHa    *bool   `json:"EnableHa,omitempty" xml:"EnableHa,omitempty"`
 	// example:
 	//
 	// 1721664000000
@@ -406,6 +407,7 @@ type GetInstanceDetailResponseBodyData struct {
 	// running
 	InstanceStatus *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	MeasureConfig  *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
+	NodeType       *string                                         `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// example:
 	//
 	// true
@@ -502,6 +504,11 @@ func (s *GetInstanceDetailResponseBodyData) SetClusterName(v string) *GetInstanc
 	return s
 }
 
+func (s *GetInstanceDetailResponseBodyData) SetEnableHa(v bool) *GetInstanceDetailResponseBodyData {
+	s.EnableHa = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBodyData) SetExpireTime(v int64) *GetInstanceDetailResponseBodyData {
 	s.ExpireTime = &v
 	return s
@@ -519,6 +526,11 @@ func (s *GetInstanceDetailResponseBodyData) SetInstanceStatus(v string) *GetInst
 
 func (s *GetInstanceDetailResponseBodyData) SetMeasureConfig(v *GetInstanceDetailResponseBodyDataMeasureConfig) *GetInstanceDetailResponseBodyData {
 	s.MeasureConfig = v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetNodeType(v string) *GetInstanceDetailResponseBodyData {
+	s.NodeType = &v
 	return s
 }
 
@@ -689,7 +701,8 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	// example:
 	//
 	// 8
-	CuNum *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
+	CuNum   *int32 `json:"CuNum,omitempty" xml:"CuNum,omitempty"`
+	CuRatio *int32 `json:"CuRatio,omitempty" xml:"CuRatio,omitempty"`
 	// example:
 	//
 	// 100
@@ -719,6 +732,11 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Set
 
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetCuNum(v int32) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
 	s.CuNum = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetCuRatio(v int32) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.CuRatio = &v
 	return s
 }
 
@@ -1004,6 +1022,7 @@ type ListInstancesResponseBodyData struct {
 	//
 	// running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	NodeType       *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// example:
 	//
 	// true
@@ -1085,6 +1104,11 @@ func (s *ListInstancesResponseBodyData) SetInstanceId(v string) *ListInstancesRe
 
 func (s *ListInstancesResponseBodyData) SetInstanceStatus(v string) *ListInstancesResponseBodyData {
 	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetNodeType(v string) *ListInstancesResponseBodyData {
+	s.NodeType = &v
 	return s
 }
 
