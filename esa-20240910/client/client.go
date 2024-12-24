@@ -17982,116 +17982,6 @@ func (s *GetEdgeContainerTerminalResponse) SetBody(v *GetEdgeContainerTerminalRe
 	return s
 }
 
-type GetErServiceRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s GetErServiceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetErServiceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetErServiceRequest) SetOwnerId(v int64) *GetErServiceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetErServiceRequest) SetSecurityToken(v string) *GetErServiceRequest {
-	s.SecurityToken = &v
-	return s
-}
-
-type GetErServiceResponseBody struct {
-	// The billing mode. Valid values:
-	//
-	// 	- er_paymode: billed for customers on the China site.
-	//
-	// 	- er_freemode: free for customers on the China site.
-	//
-	// 	- er_paymodeintl: billed for customers on the International site.
-	//
-	// 	- err_freemodeintl: free for customers on the International site
-	//
-	// example:
-	//
-	// er_paymode
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service status. Valid values:
-	//
-	// 	- Creating
-	//
-	// 	- Running
-	//
-	// 	- NotOpened
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetErServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetErServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetErServiceResponseBody) SetPlanName(v string) *GetErServiceResponseBody {
-	s.PlanName = &v
-	return s
-}
-
-func (s *GetErServiceResponseBody) SetRequestId(v string) *GetErServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetErServiceResponseBody) SetStatus(v string) *GetErServiceResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetErServiceResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetErServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetErServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetErServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetErServiceResponse) SetHeaders(v map[string]*string) *GetErServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetErServiceResponse) SetStatusCode(v int32) *GetErServiceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetErServiceResponse) SetBody(v *GetErServiceResponseBody) *GetErServiceResponse {
-	s.Body = v
-	return s
-}
-
 type GetKvRequest struct {
 	// Specifies whether to decode the value by using Base 64. If you call the [PutKv](https://help.aliyun.com/document_detail/2850482.html) operation and set the Base64 parameter to true, set this parameter to true to read the original content.
 	//
@@ -18758,6 +18648,8 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 
 type GetOriginProtectionRequest struct {
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -46257,62 +46149,6 @@ func (client *Client) GetEdgeContainerTerminal(request *GetEdgeContainerTerminal
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEdgeContainerTerminalResponse{}
 	_body, _err := client.GetEdgeContainerTerminalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks the status of Edge Routine.
-//
-// @param request - GetErServiceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetErServiceResponse
-func (client *Client) GetErServiceWithOptions(request *GetErServiceRequest, runtime *util.RuntimeOptions) (_result *GetErServiceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetErService"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetErServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks the status of Edge Routine.
-//
-// @param request - GetErServiceRequest
-//
-// @return GetErServiceResponse
-func (client *Client) GetErService(request *GetErServiceRequest) (_result *GetErServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetErServiceResponse{}
-	_body, _err := client.GetErServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
