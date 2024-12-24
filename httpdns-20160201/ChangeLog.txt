@@ -1,3 +1,7 @@
+2024-12-24 Version: v3.1.0
+- Support API RefreshResolveCache.
+
+
 2024-12-20 Version: v3.0.3
 - Update API AddDomain: update param AccessKeyId.
 - Update API DeleteDomain: update param AccessKeyId.

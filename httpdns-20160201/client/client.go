@@ -1021,6 +1021,109 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type RefreshResolveCacheRequest struct {
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+}
+
+func (s RefreshResolveCacheRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshResolveCacheRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshResolveCacheRequest) SetDomains(v []*string) *RefreshResolveCacheRequest {
+	s.Domains = v
+	return s
+}
+
+type RefreshResolveCacheShrinkRequest struct {
+	DomainsShrink *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+}
+
+func (s RefreshResolveCacheShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshResolveCacheShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshResolveCacheShrinkRequest) SetDomainsShrink(v string) *RefreshResolveCacheShrinkRequest {
+	s.DomainsShrink = &v
+	return s
+}
+
+type RefreshResolveCacheResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FA8C2599-362D-4113-8FB4-E88A40C2****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshResolveCacheResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshResolveCacheResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshResolveCacheResponseBody) SetCode(v string) *RefreshResolveCacheResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefreshResolveCacheResponseBody) SetMessage(v string) *RefreshResolveCacheResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefreshResolveCacheResponseBody) SetRequestId(v string) *RefreshResolveCacheResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshResolveCacheResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshResolveCacheResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshResolveCacheResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshResolveCacheResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshResolveCacheResponse) SetHeaders(v map[string]*string) *RefreshResolveCacheResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshResolveCacheResponse) SetStatusCode(v int32) *RefreshResolveCacheResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshResolveCacheResponse) SetBody(v *RefreshResolveCacheResponseBody) *RefreshResolveCacheResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1496,6 +1599,72 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDomainsResponse{}
 	_body, _err := client.ListDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 刷新域名缓存
+//
+// @param tmpReq - RefreshResolveCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshResolveCacheResponse
+func (client *Client) RefreshResolveCacheWithOptions(tmpReq *RefreshResolveCacheRequest, runtime *util.RuntimeOptions) (_result *RefreshResolveCacheResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RefreshResolveCacheShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Domains)) {
+		request.DomainsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Domains, tea.String("Domains"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainsShrink)) {
+		query["Domains"] = request.DomainsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshResolveCache"),
+		Version:     tea.String("2016-02-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshResolveCacheResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 刷新域名缓存
+//
+// @param request - RefreshResolveCacheRequest
+//
+// @return RefreshResolveCacheResponse
+func (client *Client) RefreshResolveCache(request *RefreshResolveCacheRequest) (_result *RefreshResolveCacheResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshResolveCacheResponse{}
+	_body, _err := client.RefreshResolveCacheWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
