@@ -37669,6 +37669,7 @@ func (s *ListSearchLibResponseBody) SetTotal(v int64) *ListSearchLibResponseBody
 }
 
 type ListSearchLibResponseBodySearchLibInfoList struct {
+	IndexInfo []*ListSearchLibResponseBodySearchLibInfoListIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
 	// The search library.
 	//
 	// example:
@@ -37697,6 +37698,11 @@ func (s ListSearchLibResponseBodySearchLibInfoList) GoString() string {
 	return s.String()
 }
 
+func (s *ListSearchLibResponseBodySearchLibInfoList) SetIndexInfo(v []*ListSearchLibResponseBodySearchLibInfoListIndexInfo) *ListSearchLibResponseBodySearchLibInfoList {
+	s.IndexInfo = v
+	return s
+}
+
 func (s *ListSearchLibResponseBodySearchLibInfoList) SetSearchLibName(v string) *ListSearchLibResponseBodySearchLibInfoList {
 	s.SearchLibName = &v
 	return s
@@ -37704,6 +37710,35 @@ func (s *ListSearchLibResponseBodySearchLibInfoList) SetSearchLibName(v string) 
 
 func (s *ListSearchLibResponseBodySearchLibInfoList) SetStatus(v string) *ListSearchLibResponseBodySearchLibInfoList {
 	s.Status = &v
+	return s
+}
+
+type ListSearchLibResponseBodySearchLibInfoListIndexInfo struct {
+	IndexReadiness *string `json:"IndexReadiness,omitempty" xml:"IndexReadiness,omitempty"`
+	IndexStatus    *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	IndexType      *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+}
+
+func (s ListSearchLibResponseBodySearchLibInfoListIndexInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchLibResponseBodySearchLibInfoListIndexInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoListIndexInfo) SetIndexReadiness(v string) *ListSearchLibResponseBodySearchLibInfoListIndexInfo {
+	s.IndexReadiness = &v
+	return s
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoListIndexInfo) SetIndexStatus(v string) *ListSearchLibResponseBodySearchLibInfoListIndexInfo {
+	s.IndexStatus = &v
+	return s
+}
+
+func (s *ListSearchLibResponseBodySearchLibInfoListIndexInfo) SetIndexType(v string) *ListSearchLibResponseBodySearchLibInfoListIndexInfo {
+	s.IndexType = &v
 	return s
 }
 
@@ -45513,7 +45548,8 @@ type QuerySearchLibResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	IndexInfo []*QuerySearchLibResponseBodyIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -45565,6 +45601,11 @@ func (s *QuerySearchLibResponseBody) SetCode(v string) *QuerySearchLibResponseBo
 	return s
 }
 
+func (s *QuerySearchLibResponseBody) SetIndexInfo(v []*QuerySearchLibResponseBodyIndexInfo) *QuerySearchLibResponseBody {
+	s.IndexInfo = v
+	return s
+}
+
 func (s *QuerySearchLibResponseBody) SetRequestId(v string) *QuerySearchLibResponseBody {
 	s.RequestId = &v
 	return s
@@ -45582,6 +45623,35 @@ func (s *QuerySearchLibResponseBody) SetStatus(v string) *QuerySearchLibResponse
 
 func (s *QuerySearchLibResponseBody) SetSuccess(v string) *QuerySearchLibResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QuerySearchLibResponseBodyIndexInfo struct {
+	IndexReadiness *string `json:"IndexReadiness,omitempty" xml:"IndexReadiness,omitempty"`
+	IndexStatus    *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
+	IndexType      *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+}
+
+func (s QuerySearchLibResponseBodyIndexInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchLibResponseBodyIndexInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchLibResponseBodyIndexInfo) SetIndexReadiness(v string) *QuerySearchLibResponseBodyIndexInfo {
+	s.IndexReadiness = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBodyIndexInfo) SetIndexStatus(v string) *QuerySearchLibResponseBodyIndexInfo {
+	s.IndexStatus = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBodyIndexInfo) SetIndexType(v string) *QuerySearchLibResponseBodyIndexInfo {
+	s.IndexType = &v
 	return s
 }
 
@@ -53225,7 +53295,7 @@ type SubmitBatchMediaProducingJobRequest struct {
 	//
 	// }
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
-	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html?spm=a2c4g.439285.0.i1#section-urj-v3f-0s1).
+	// The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -74373,9 +74443,9 @@ func (client *Client) DeleteSmartJob(request *DeleteSmartJobRequest) (_result *D
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - DeleteTemplateRequest
 //
@@ -74419,9 +74489,9 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 //
 // A template is an encapsulation of the timeline of a media editing and production job. You can define a common timeline as a template. When you have the same requirements, you need to only specify key parameters and materials to produce videos.
 //
-// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/270942.html).
+// 	- For more information about how to use a regular template, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html).
 //
-// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/291418.html).
+// 	- For more information about how to use an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
 //
 // @param request - DeleteTemplateRequest
 //
