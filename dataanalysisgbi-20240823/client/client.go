@@ -9,6 +9,120 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BatchDeleteSynonymsRequest struct {
+	// This parameter is required.
+	SynonymIdKeys []*string `json:"synonymIdKeys,omitempty" xml:"synonymIdKeys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s BatchDeleteSynonymsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteSynonymsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteSynonymsRequest) SetSynonymIdKeys(v []*string) *BatchDeleteSynonymsRequest {
+	s.SynonymIdKeys = v
+	return s
+}
+
+func (s *BatchDeleteSynonymsRequest) SetWorkspaceId(v string) *BatchDeleteSynonymsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type BatchDeleteSynonymsResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 45390C6D-016D-5030-BF65-031ED1F65003
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s BatchDeleteSynonymsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteSynonymsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteSynonymsResponseBody) SetCode(v string) *BatchDeleteSynonymsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponseBody) SetData(v interface{}) *BatchDeleteSynonymsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponseBody) SetErrorMsg(v string) *BatchDeleteSynonymsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponseBody) SetRequestId(v string) *BatchDeleteSynonymsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponseBody) SetSuccess(v bool) *BatchDeleteSynonymsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchDeleteSynonymsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteSynonymsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchDeleteSynonymsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteSynonymsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteSynonymsResponse) SetHeaders(v map[string]*string) *BatchDeleteSynonymsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponse) SetStatusCode(v int32) *BatchDeleteSynonymsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchDeleteSynonymsResponse) SetBody(v *BatchDeleteSynonymsResponseBody) *BatchDeleteSynonymsResponse {
+	s.Body = v
+	return s
+}
+
 type CancelDatasourceAuthorizationRequest struct {
 	// This parameter is required.
 	//
@@ -112,6 +226,128 @@ func (s *CancelDatasourceAuthorizationResponse) SetStatusCode(v int32) *CancelDa
 }
 
 func (s *CancelDatasourceAuthorizationResponse) SetBody(v *CancelDatasourceAuthorizationResponseBody) *CancelDatasourceAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBusinessLogicRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s CreateBusinessLogicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessLogicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessLogicRequest) SetDescription(v string) *CreateBusinessLogicRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBusinessLogicRequest) SetType(v int32) *CreateBusinessLogicRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateBusinessLogicRequest) SetWorkspaceId(v string) *CreateBusinessLogicRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateBusinessLogicResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateBusinessLogicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessLogicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessLogicResponseBody) SetCode(v string) *CreateBusinessLogicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBusinessLogicResponseBody) SetData(v interface{}) *CreateBusinessLogicResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateBusinessLogicResponseBody) SetErrorMsg(v string) *CreateBusinessLogicResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateBusinessLogicResponseBody) SetRequestId(v string) *CreateBusinessLogicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBusinessLogicResponseBody) SetSuccess(v bool) *CreateBusinessLogicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBusinessLogicResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBusinessLogicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBusinessLogicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessLogicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessLogicResponse) SetHeaders(v map[string]*string) *CreateBusinessLogicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBusinessLogicResponse) SetStatusCode(v int32) *CreateBusinessLogicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBusinessLogicResponse) SetBody(v *CreateBusinessLogicResponseBody) *CreateBusinessLogicResponse {
 	s.Body = v
 	return s
 }
@@ -270,6 +506,133 @@ func (s *CreateDatasourceAuthorizationResponse) SetBody(v *CreateDatasourceAutho
 	return s
 }
 
+type CreateSynonymsRequest struct {
+	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Word *string `json:"word,omitempty" xml:"word,omitempty"`
+	// This parameter is required.
+	WordSynonyms []*string `json:"wordSynonyms,omitempty" xml:"wordSynonyms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s CreateSynonymsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSynonymsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSynonymsRequest) SetColumns(v []*string) *CreateSynonymsRequest {
+	s.Columns = v
+	return s
+}
+
+func (s *CreateSynonymsRequest) SetWord(v string) *CreateSynonymsRequest {
+	s.Word = &v
+	return s
+}
+
+func (s *CreateSynonymsRequest) SetWordSynonyms(v []*string) *CreateSynonymsRequest {
+	s.WordSynonyms = v
+	return s
+}
+
+func (s *CreateSynonymsRequest) SetWorkspaceId(v string) *CreateSynonymsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateSynonymsResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateSynonymsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSynonymsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSynonymsResponseBody) SetCode(v string) *CreateSynonymsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSynonymsResponseBody) SetData(v interface{}) *CreateSynonymsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateSynonymsResponseBody) SetErrorMsg(v string) *CreateSynonymsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *CreateSynonymsResponseBody) SetRequestId(v string) *CreateSynonymsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSynonymsResponseBody) SetSuccess(v bool) *CreateSynonymsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSynonymsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSynonymsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSynonymsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSynonymsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSynonymsResponse) SetHeaders(v map[string]*string) *CreateSynonymsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSynonymsResponse) SetStatusCode(v int32) *CreateSynonymsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSynonymsResponse) SetBody(v *CreateSynonymsResponseBody) *CreateSynonymsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVirtualDatasourceInstanceRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
@@ -398,6 +761,356 @@ func (s *CreateVirtualDatasourceInstanceResponse) SetBody(v *CreateVirtualDataso
 	return s
 }
 
+type DeleteBusinessLogicRequest struct {
+	// This parameter is required.
+	BusinessLogicIdKeys []*string `json:"businessLogicIdKeys,omitempty" xml:"businessLogicIdKeys,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s DeleteBusinessLogicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessLogicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessLogicRequest) SetBusinessLogicIdKeys(v []*string) *DeleteBusinessLogicRequest {
+	s.BusinessLogicIdKeys = v
+	return s
+}
+
+func (s *DeleteBusinessLogicRequest) SetWorkspaceId(v string) *DeleteBusinessLogicRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteBusinessLogicResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteBusinessLogicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessLogicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessLogicResponseBody) SetCode(v string) *DeleteBusinessLogicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponseBody) SetData(v interface{}) *DeleteBusinessLogicResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponseBody) SetErrorMsg(v string) *DeleteBusinessLogicResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponseBody) SetRequestId(v string) *DeleteBusinessLogicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponseBody) SetSuccess(v bool) *DeleteBusinessLogicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteBusinessLogicResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBusinessLogicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBusinessLogicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessLogicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessLogicResponse) SetHeaders(v map[string]*string) *DeleteBusinessLogicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponse) SetStatusCode(v int32) *DeleteBusinessLogicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBusinessLogicResponse) SetBody(v *DeleteBusinessLogicResponseBody) *DeleteBusinessLogicResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteColumnRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// column-AAAAAAAAh6Q9ERazKYFvkA
+	ColumnIdKey *string `json:"columnIdKey,omitempty" xml:"columnIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s DeleteColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteColumnRequest) SetColumnIdKey(v string) *DeleteColumnRequest {
+	s.ColumnIdKey = &v
+	return s
+}
+
+func (s *DeleteColumnRequest) SetWorkspaceId(v string) *DeleteColumnRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteColumnResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// D02D895A-5E58-5A9F-963D-D8B027AB7AE2
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteColumnResponseBody) SetCode(v string) *DeleteColumnResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteColumnResponseBody) SetData(v interface{}) *DeleteColumnResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteColumnResponseBody) SetErrorMsg(v string) *DeleteColumnResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteColumnResponseBody) SetRequestId(v string) *DeleteColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteColumnResponseBody) SetSuccess(v bool) *DeleteColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteColumnResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteColumnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteColumnResponse) SetHeaders(v map[string]*string) *DeleteColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteColumnResponse) SetStatusCode(v int32) *DeleteColumnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteColumnResponse) SetBody(v *DeleteColumnResponseBody) *DeleteColumnResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSelectedTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s DeleteSelectedTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSelectedTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSelectedTableRequest) SetTableIdKey(v string) *DeleteSelectedTableRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *DeleteSelectedTableRequest) SetWorkspaceId(v string) *DeleteSelectedTableRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type DeleteSelectedTableResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 45390C6D-016D-5030-BF65-031ED1F65003
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteSelectedTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSelectedTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSelectedTableResponseBody) SetCode(v string) *DeleteSelectedTableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSelectedTableResponseBody) SetData(v interface{}) *DeleteSelectedTableResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteSelectedTableResponseBody) SetErrorMsg(v string) *DeleteSelectedTableResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteSelectedTableResponseBody) SetRequestId(v string) *DeleteSelectedTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSelectedTableResponseBody) SetSuccess(v bool) *DeleteSelectedTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSelectedTableResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSelectedTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSelectedTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSelectedTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSelectedTableResponse) SetHeaders(v map[string]*string) *DeleteSelectedTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSelectedTableResponse) SetStatusCode(v int32) *DeleteSelectedTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSelectedTableResponse) SetBody(v *DeleteSelectedTableResponseBody) *DeleteSelectedTableResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVirtualDatasourceInstanceRequest struct {
 	// This parameter is required.
 	//
@@ -512,6 +1225,674 @@ func (s *DeleteVirtualDatasourceInstanceResponse) SetStatusCode(v int32) *Delete
 }
 
 func (s *DeleteVirtualDatasourceInstanceResponse) SetBody(v *DeleteVirtualDatasourceInstanceResponseBody) *DeleteVirtualDatasourceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ListBusinessLogicRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// e8Z0nRyY51ZQmYljqGNK
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListBusinessLogicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessLogicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessLogicRequest) SetMaxResults(v int32) *ListBusinessLogicRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBusinessLogicRequest) SetNextToken(v string) *ListBusinessLogicRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListBusinessLogicRequest) SetWorkspaceId(v string) *ListBusinessLogicRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListBusinessLogicResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListBusinessLogicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessLogicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessLogicResponseBody) SetCode(v string) *ListBusinessLogicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBusinessLogicResponseBody) SetData(v interface{}) *ListBusinessLogicResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBusinessLogicResponseBody) SetErrorMsg(v string) *ListBusinessLogicResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListBusinessLogicResponseBody) SetRequestId(v string) *ListBusinessLogicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBusinessLogicResponseBody) SetSuccess(v bool) *ListBusinessLogicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListBusinessLogicResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBusinessLogicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBusinessLogicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessLogicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessLogicResponse) SetHeaders(v map[string]*string) *ListBusinessLogicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBusinessLogicResponse) SetStatusCode(v int32) *ListBusinessLogicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBusinessLogicResponse) SetBody(v *ListBusinessLogicResponseBody) *ListBusinessLogicResponse {
+	s.Body = v
+	return s
+}
+
+type ListColumnRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// e8Z0nRyY51ZQmYljqGNK
+	NextToken *int32 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnRequest) SetMaxResults(v int32) *ListColumnRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListColumnRequest) SetNextToken(v int32) *ListColumnRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListColumnRequest) SetTableIdKey(v string) *ListColumnRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *ListColumnRequest) SetWorkspaceId(v string) *ListColumnRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListColumnResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnResponseBody) SetCode(v string) *ListColumnResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListColumnResponseBody) SetData(v interface{}) *ListColumnResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListColumnResponseBody) SetErrorMsg(v string) *ListColumnResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListColumnResponseBody) SetRequestId(v string) *ListColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListColumnResponseBody) SetSuccess(v bool) *ListColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListColumnResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListColumnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnResponse) SetHeaders(v map[string]*string) *ListColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListColumnResponse) SetStatusCode(v int32) *ListColumnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListColumnResponse) SetBody(v *ListColumnResponseBody) *ListColumnResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnumMappingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// column-AAAAAAAAh6cWOUPagYstkg
+	ColumnIdKey *string `json:"columnIdKey,omitempty" xml:"columnIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListEnumMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnumMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnumMappingRequest) SetColumnIdKey(v string) *ListEnumMappingRequest {
+	s.ColumnIdKey = &v
+	return s
+}
+
+func (s *ListEnumMappingRequest) SetTableIdKey(v string) *ListEnumMappingRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *ListEnumMappingRequest) SetWorkspaceId(v string) *ListEnumMappingRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListEnumMappingResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListEnumMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnumMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnumMappingResponseBody) SetCode(v string) *ListEnumMappingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnumMappingResponseBody) SetData(v interface{}) *ListEnumMappingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnumMappingResponseBody) SetErrorMsg(v string) *ListEnumMappingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListEnumMappingResponseBody) SetRequestId(v string) *ListEnumMappingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnumMappingResponseBody) SetSuccess(v bool) *ListEnumMappingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnumMappingResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEnumMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEnumMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnumMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnumMappingResponse) SetHeaders(v map[string]*string) *ListEnumMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnumMappingResponse) SetStatusCode(v int32) *ListEnumMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnumMappingResponse) SetBody(v *ListEnumMappingResponseBody) *ListEnumMappingResponse {
+	s.Body = v
+	return s
+}
+
+type ListSelectedTablesRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// e8Z0nRyY51ZQmYljqGNK
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListSelectedTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectedTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectedTablesRequest) SetMaxResults(v int32) *ListSelectedTablesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSelectedTablesRequest) SetNextToken(v string) *ListSelectedTablesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSelectedTablesRequest) SetWorkspaceId(v string) *ListSelectedTablesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSelectedTablesResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string     `json:"code,omitempty" xml:"code,omitempty"`
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListSelectedTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectedTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectedTablesResponseBody) SetCode(v string) *ListSelectedTablesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSelectedTablesResponseBody) SetData(v interface{}) *ListSelectedTablesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSelectedTablesResponseBody) SetErrorMsg(v string) *ListSelectedTablesResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListSelectedTablesResponseBody) SetRequestId(v string) *ListSelectedTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSelectedTablesResponseBody) SetSuccess(v bool) *ListSelectedTablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSelectedTablesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSelectedTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSelectedTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSelectedTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSelectedTablesResponse) SetHeaders(v map[string]*string) *ListSelectedTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSelectedTablesResponse) SetStatusCode(v int32) *ListSelectedTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSelectedTablesResponse) SetBody(v *ListSelectedTablesResponseBody) *ListSelectedTablesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSynonymsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// e8Z0nRyY51ZQmYljqGNK
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ListSynonymsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynonymsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynonymsRequest) SetMaxResults(v int64) *ListSynonymsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSynonymsRequest) SetNextToken(v string) *ListSynonymsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSynonymsRequest) SetWorkspaceId(v string) *ListSynonymsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListSynonymsResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "data": {
+	//
+	//     "data": [
+	//
+	//       {
+	//
+	//         "gmtModified": 1734401404000,
+	//
+	//         "columns": [
+	//
+	//           "test.id",
+	//
+	//           "user_info.createdt"
+	//
+	//         ],
+	//
+	//         "synonymIdKey": "synonyms-AAAAAAAAAVLaD8z63NnFhA",
+	//
+	//         "wordSynonyms": [
+	//
+	//           "1"
+	//
+	//         ],
+	//
+	//         "workSpaceId": "10024809",
+	//
+	//         "gmtCreate": 1734401404000,
+	//
+	//         "word": "1",
+	//
+	//         "status": 1
+	//
+	//       }
+	//
+	//     ],
+	//
+	//     "nextToken": "k1BLjEN114wyfrhDHoJlbg==",
+	//
+	//     "totalCount": 0
+	//
+	//   }
+	//
+	// }
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// D02D895A-5E58-5A9F-963D-D8B027AB7AE2
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListSynonymsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynonymsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynonymsResponseBody) SetCode(v string) *ListSynonymsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSynonymsResponseBody) SetData(v interface{}) *ListSynonymsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSynonymsResponseBody) SetErrorMsg(v string) *ListSynonymsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListSynonymsResponseBody) SetRequestId(v string) *ListSynonymsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSynonymsResponseBody) SetSuccess(v bool) *ListSynonymsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSynonymsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSynonymsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSynonymsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynonymsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynonymsResponse) SetHeaders(v map[string]*string) *ListSynonymsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSynonymsResponse) SetStatusCode(v int32) *ListSynonymsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSynonymsResponse) SetBody(v *ListSynonymsResponseBody) *ListSynonymsResponse {
 	s.Body = v
 	return s
 }
@@ -634,6 +2015,253 @@ func (s *ListVirtualDatasourceInstanceResponse) SetStatusCode(v int32) *ListVirt
 }
 
 func (s *ListVirtualDatasourceInstanceResponse) SetBody(v *ListVirtualDatasourceInstanceResponseBody) *ListVirtualDatasourceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RecoverColumnRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// column-AAAAAAAAh6cWOUPagYstkg
+	ColumnIdKey *string `json:"columnIdKey,omitempty" xml:"columnIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s RecoverColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverColumnRequest) SetColumnIdKey(v string) *RecoverColumnRequest {
+	s.ColumnIdKey = &v
+	return s
+}
+
+func (s *RecoverColumnRequest) SetTableIdKey(v string) *RecoverColumnRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *RecoverColumnRequest) SetWorkspaceId(v string) *RecoverColumnRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RecoverColumnResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RecoverColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverColumnResponseBody) SetCode(v string) *RecoverColumnResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecoverColumnResponseBody) SetData(v interface{}) *RecoverColumnResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecoverColumnResponseBody) SetErrorMsg(v string) *RecoverColumnResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *RecoverColumnResponseBody) SetRequestId(v string) *RecoverColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecoverColumnResponseBody) SetSuccess(v bool) *RecoverColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RecoverColumnResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverColumnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecoverColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverColumnResponse) SetHeaders(v map[string]*string) *RecoverColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecoverColumnResponse) SetStatusCode(v int32) *RecoverColumnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecoverColumnResponse) SetBody(v *RecoverColumnResponseBody) *RecoverColumnResponse {
+	s.Body = v
+	return s
+}
+
+type ResyncTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s ResyncTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResyncTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResyncTableRequest) SetTableIdKey(v string) *ResyncTableRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *ResyncTableRequest) SetWorkspaceId(v string) *ResyncTableRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ResyncTableResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ResyncTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResyncTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResyncTableResponseBody) SetCode(v string) *ResyncTableResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResyncTableResponseBody) SetData(v interface{}) *ResyncTableResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ResyncTableResponseBody) SetErrorMsg(v string) *ResyncTableResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ResyncTableResponseBody) SetRequestId(v string) *ResyncTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResyncTableResponseBody) SetSuccess(v bool) *ResyncTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResyncTableResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResyncTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResyncTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResyncTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResyncTableResponse) SetHeaders(v map[string]*string) *ResyncTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResyncTableResponse) SetStatusCode(v int32) *ResyncTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResyncTableResponse) SetBody(v *ResyncTableResponseBody) *ResyncTableResponse {
 	s.Body = v
 	return s
 }
@@ -1180,6 +2808,736 @@ func (s *SyncRemoteTablesResponse) SetBody(v *SyncRemoteTablesResponseBody) *Syn
 	return s
 }
 
+type UpdateBusinessLogicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// businessLogic-AAAAAAAAAGAIyJoP7LbKuA
+	BusinessLogicIdKey *string `json:"businessLogicIdKey,omitempty" xml:"businessLogicIdKey,omitempty"`
+	// This parameter is required.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Type *int64 `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateBusinessLogicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessLogicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessLogicRequest) SetBusinessLogicIdKey(v string) *UpdateBusinessLogicRequest {
+	s.BusinessLogicIdKey = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicRequest) SetDescription(v string) *UpdateBusinessLogicRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicRequest) SetType(v int64) *UpdateBusinessLogicRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicRequest) SetWorkspaceId(v string) *UpdateBusinessLogicRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateBusinessLogicResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateBusinessLogicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessLogicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessLogicResponseBody) SetCode(v string) *UpdateBusinessLogicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponseBody) SetData(v interface{}) *UpdateBusinessLogicResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponseBody) SetErrorMsg(v string) *UpdateBusinessLogicResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponseBody) SetRequestId(v string) *UpdateBusinessLogicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponseBody) SetSuccess(v bool) *UpdateBusinessLogicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateBusinessLogicResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateBusinessLogicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateBusinessLogicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessLogicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessLogicResponse) SetHeaders(v map[string]*string) *UpdateBusinessLogicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponse) SetStatusCode(v int32) *UpdateBusinessLogicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBusinessLogicResponse) SetBody(v *UpdateBusinessLogicResponseBody) *UpdateBusinessLogicResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateColumnRequest struct {
+	ChineseName *string `json:"chineseName,omitempty" xml:"chineseName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// column-AAAAAAAAh6cWOUPagYstkg
+	ColumnIdKey *string `json:"columnIdKey,omitempty" xml:"columnIdKey,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	EnumType   *int32    `json:"enumType,omitempty" xml:"enumType,omitempty"`
+	EnumValues []*string `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000
+	RangeMax *int64 `json:"rangeMax,omitempty" xml:"rangeMax,omitempty"`
+	// example:
+	//
+	// 0
+	RangeMin *int64    `json:"rangeMin,omitempty" xml:"rangeMin,omitempty"`
+	Samples  []*string `json:"samples,omitempty" xml:"samples,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnRequest) SetChineseName(v string) *UpdateColumnRequest {
+	s.ChineseName = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetColumnIdKey(v string) *UpdateColumnRequest {
+	s.ColumnIdKey = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetDescription(v string) *UpdateColumnRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetEnumType(v int32) *UpdateColumnRequest {
+	s.EnumType = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetEnumValues(v []*string) *UpdateColumnRequest {
+	s.EnumValues = v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetRangeMax(v int64) *UpdateColumnRequest {
+	s.RangeMax = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetRangeMin(v int64) *UpdateColumnRequest {
+	s.RangeMin = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetSamples(v []*string) *UpdateColumnRequest {
+	s.Samples = v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetTableIdKey(v string) *UpdateColumnRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *UpdateColumnRequest) SetWorkspaceId(v string) *UpdateColumnRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateColumnResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 45390C6D-016D-5030-BF65-031ED1F65003
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnResponseBody) SetCode(v string) *UpdateColumnResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateColumnResponseBody) SetData(v interface{}) *UpdateColumnResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateColumnResponseBody) SetErrorMsg(v string) *UpdateColumnResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateColumnResponseBody) SetRequestId(v string) *UpdateColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateColumnResponseBody) SetSuccess(v bool) *UpdateColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateColumnResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateColumnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnResponse) SetHeaders(v map[string]*string) *UpdateColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateColumnResponse) SetStatusCode(v int32) *UpdateColumnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateColumnResponse) SetBody(v *UpdateColumnResponseBody) *UpdateColumnResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEnumMappingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// column-AAAAAAAAh6cWOUPagYstkg
+	ColumnIdKey *string              `json:"columnIdKey,omitempty" xml:"columnIdKey,omitempty"`
+	EnumMapping map[string][]*string `json:"enumMapping,omitempty" xml:"enumMapping,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateEnumMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnumMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnumMappingRequest) SetColumnIdKey(v string) *UpdateEnumMappingRequest {
+	s.ColumnIdKey = &v
+	return s
+}
+
+func (s *UpdateEnumMappingRequest) SetEnumMapping(v map[string][]*string) *UpdateEnumMappingRequest {
+	s.EnumMapping = v
+	return s
+}
+
+func (s *UpdateEnumMappingRequest) SetTableIdKey(v string) *UpdateEnumMappingRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *UpdateEnumMappingRequest) SetWorkspaceId(v string) *UpdateEnumMappingRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateEnumMappingResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// FB11F719-9AC8-5C99-AB0A-4709D437FCFC
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateEnumMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnumMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnumMappingResponseBody) SetCode(v string) *UpdateEnumMappingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEnumMappingResponseBody) SetData(v interface{}) *UpdateEnumMappingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateEnumMappingResponseBody) SetErrorMsg(v string) *UpdateEnumMappingResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateEnumMappingResponseBody) SetRequestId(v string) *UpdateEnumMappingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEnumMappingResponseBody) SetSuccess(v bool) *UpdateEnumMappingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateEnumMappingResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEnumMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEnumMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnumMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnumMappingResponse) SetHeaders(v map[string]*string) *UpdateEnumMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnumMappingResponse) SetStatusCode(v int32) *UpdateEnumMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnumMappingResponse) SetBody(v *UpdateEnumMappingResponseBody) *UpdateEnumMappingResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSynonymsRequest struct {
+	Columns []*string `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// synonyms-AAAAAAAAAUpwTTVrwTFJwQ
+	SynonymIdKey *string `json:"synonymIdKey,omitempty" xml:"synonymIdKey,omitempty"`
+	// This parameter is required.
+	Word *string `json:"word,omitempty" xml:"word,omitempty"`
+	// This parameter is required.
+	WordSynonyms []*string `json:"wordSynonyms,omitempty" xml:"wordSynonyms,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateSynonymsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSynonymsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSynonymsRequest) SetColumns(v []*string) *UpdateSynonymsRequest {
+	s.Columns = v
+	return s
+}
+
+func (s *UpdateSynonymsRequest) SetSynonymIdKey(v string) *UpdateSynonymsRequest {
+	s.SynonymIdKey = &v
+	return s
+}
+
+func (s *UpdateSynonymsRequest) SetWord(v string) *UpdateSynonymsRequest {
+	s.Word = &v
+	return s
+}
+
+func (s *UpdateSynonymsRequest) SetWordSynonyms(v []*string) *UpdateSynonymsRequest {
+	s.WordSynonyms = v
+	return s
+}
+
+func (s *UpdateSynonymsRequest) SetWorkspaceId(v string) *UpdateSynonymsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateSynonymsResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 7D63529B-5D42-5BF0-84E4-F742FFE02E7F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateSynonymsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSynonymsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSynonymsResponseBody) SetCode(v string) *UpdateSynonymsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSynonymsResponseBody) SetData(v interface{}) *UpdateSynonymsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSynonymsResponseBody) SetErrorMsg(v string) *UpdateSynonymsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateSynonymsResponseBody) SetRequestId(v string) *UpdateSynonymsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSynonymsResponseBody) SetSuccess(v bool) *UpdateSynonymsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSynonymsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSynonymsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSynonymsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSynonymsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSynonymsResponse) SetHeaders(v map[string]*string) *UpdateSynonymsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSynonymsResponse) SetStatusCode(v int32) *UpdateSynonymsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSynonymsResponse) SetBody(v *UpdateSynonymsResponseBody) *UpdateSynonymsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTableInfoRequest struct {
+	Description *string   `json:"description,omitempty" xml:"description,omitempty"`
+	ForeignKeys []*string `json:"foreignKeys,omitempty" xml:"foreignKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// id
+	PrimaryKey *string `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table-AAAAAAAAFQBwSLJkUj4CYg
+	TableIdKey *string `json:"tableIdKey,omitempty" xml:"tableIdKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s UpdateTableInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableInfoRequest) SetDescription(v string) *UpdateTableInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTableInfoRequest) SetForeignKeys(v []*string) *UpdateTableInfoRequest {
+	s.ForeignKeys = v
+	return s
+}
+
+func (s *UpdateTableInfoRequest) SetPrimaryKey(v string) *UpdateTableInfoRequest {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *UpdateTableInfoRequest) SetTableIdKey(v string) *UpdateTableInfoRequest {
+	s.TableIdKey = &v
+	return s
+}
+
+func (s *UpdateTableInfoRequest) SetWorkspaceId(v string) *UpdateTableInfoRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateTableInfoResponseBody struct {
+	// example:
+	//
+	// NoAuth
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// NoAuth
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// E9563C85-5810-5835-B68C-78580BC3169E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateTableInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableInfoResponseBody) SetCode(v string) *UpdateTableInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTableInfoResponseBody) SetData(v interface{}) *UpdateTableInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateTableInfoResponseBody) SetErrorMsg(v string) *UpdateTableInfoResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateTableInfoResponseBody) SetRequestId(v string) *UpdateTableInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTableInfoResponseBody) SetSuccess(v bool) *UpdateTableInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTableInfoResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTableInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTableInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableInfoResponse) SetHeaders(v map[string]*string) *UpdateTableInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTableInfoResponse) SetStatusCode(v int32) *UpdateTableInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTableInfoResponse) SetBody(v *UpdateTableInfoResponseBody) *UpdateTableInfoResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateVirtualDatasourceInstanceRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -1363,6 +3721,76 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 批量删除当前指定业务空间下的同义词
+//
+// @param request - BatchDeleteSynonymsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteSynonymsResponse
+func (client *Client) BatchDeleteSynonymsWithOptions(request *BatchDeleteSynonymsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchDeleteSynonymsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SynonymIdKeys)) {
+		body["synonymIdKeys"] = request.SynonymIdKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteSynonyms"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/batchDelete/synonyms"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteSynonymsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除当前指定业务空间下的同义词
+//
+// @param request - BatchDeleteSynonymsRequest
+//
+// @return BatchDeleteSynonymsResponse
+func (client *Client) BatchDeleteSynonyms(request *BatchDeleteSynonymsRequest) (_result *BatchDeleteSynonymsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchDeleteSynonymsResponse{}
+	_body, _err := client.BatchDeleteSynonymsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消关联的数据源授权
 //
 // @param request - CancelDatasourceAuthorizationRequest
@@ -1418,6 +3846,80 @@ func (client *Client) CancelDatasourceAuthorization(request *CancelDatasourceAut
 	headers := make(map[string]*string)
 	_result = &CancelDatasourceAuthorizationResponse{}
 	_body, _err := client.CancelDatasourceAuthorizationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 在指定的业务空间下创建新的业务逻辑解释
+//
+// @param request - CreateBusinessLogicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBusinessLogicResponse
+func (client *Client) CreateBusinessLogicWithOptions(request *CreateBusinessLogicRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBusinessLogicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBusinessLogic"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/create/logic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBusinessLogicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在指定的业务空间下创建新的业务逻辑解释
+//
+// @param request - CreateBusinessLogicRequest
+//
+// @return CreateBusinessLogicResponse
+func (client *Client) CreateBusinessLogic(request *CreateBusinessLogicRequest) (_result *CreateBusinessLogicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateBusinessLogicResponse{}
+	_body, _err := client.CreateBusinessLogicWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1513,6 +4015,84 @@ func (client *Client) CreateDatasourceAuthorization(request *CreateDatasourceAut
 
 // Summary:
 //
+// 在当前指定的业务空间下面，新建同义词
+//
+// @param request - CreateSynonymsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSynonymsResponse
+func (client *Client) CreateSynonymsWithOptions(request *CreateSynonymsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSynonymsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Columns)) {
+		body["columns"] = request.Columns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Word)) {
+		body["word"] = request.Word
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordSynonyms)) {
+		body["wordSynonyms"] = request.WordSynonyms
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSynonyms"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/create/synonyms"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSynonymsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在当前指定的业务空间下面，新建同义词
+//
+// @param request - CreateSynonymsRequest
+//
+// @return CreateSynonymsResponse
+func (client *Client) CreateSynonyms(request *CreateSynonymsRequest) (_result *CreateSynonymsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSynonymsResponse{}
+	_body, _err := client.CreateSynonymsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 在指定的业务空间创建虚拟数据源
 //
 // @param request - CreateVirtualDatasourceInstanceRequest
@@ -1582,6 +4162,216 @@ func (client *Client) CreateVirtualDatasourceInstance(request *CreateVirtualData
 	headers := make(map[string]*string)
 	_result = &CreateVirtualDatasourceInstanceResponse{}
 	_body, _err := client.CreateVirtualDatasourceInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定业务空间下所指定的业务逻辑解释
+//
+// @param request - DeleteBusinessLogicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBusinessLogicResponse
+func (client *Client) DeleteBusinessLogicWithOptions(request *DeleteBusinessLogicRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteBusinessLogicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessLogicIdKeys)) {
+		body["businessLogicIdKeys"] = request.BusinessLogicIdKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBusinessLogic"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/delete/logic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBusinessLogicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定业务空间下所指定的业务逻辑解释
+//
+// @param request - DeleteBusinessLogicRequest
+//
+// @return DeleteBusinessLogicResponse
+func (client *Client) DeleteBusinessLogic(request *DeleteBusinessLogicRequest) (_result *DeleteBusinessLogicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteBusinessLogicResponse{}
+	_body, _err := client.DeleteBusinessLogicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从当前所指定的业务空间中，删除所指定的列
+//
+// @param request - DeleteColumnRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteColumnResponse
+func (client *Client) DeleteColumnWithOptions(request *DeleteColumnRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnIdKey)) {
+		body["columnIdKey"] = request.ColumnIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteColumn"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/delete/column"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteColumnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从当前所指定的业务空间中，删除所指定的列
+//
+// @param request - DeleteColumnRequest
+//
+// @return DeleteColumnResponse
+func (client *Client) DeleteColumn(request *DeleteColumnRequest) (_result *DeleteColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteColumnResponse{}
+	_body, _err := client.DeleteColumnWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将当前指定数据表从指定业务空间管控中删除
+//
+// @param request - DeleteSelectedTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSelectedTableResponse
+func (client *Client) DeleteSelectedTableWithOptions(request *DeleteSelectedTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSelectedTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSelectedTable"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/delete/table"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSelectedTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将当前指定数据表从指定业务空间管控中删除
+//
+// @param request - DeleteSelectedTableRequest
+//
+// @return DeleteSelectedTableResponse
+func (client *Client) DeleteSelectedTable(request *DeleteSelectedTableRequest) (_result *DeleteSelectedTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSelectedTableResponse{}
+	_body, _err := client.DeleteSelectedTableWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1661,6 +4451,380 @@ func (client *Client) DeleteVirtualDatasourceInstance(request *DeleteVirtualData
 
 // Summary:
 //
+// 获取当前指定业务空间下的企业知识名词解释列表
+//
+// @param request - ListBusinessLogicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBusinessLogicResponse
+func (client *Client) ListBusinessLogicWithOptions(request *ListBusinessLogicRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBusinessLogicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBusinessLogic"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/list/logic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBusinessLogicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前指定业务空间下的企业知识名词解释列表
+//
+// @param request - ListBusinessLogicRequest
+//
+// @return ListBusinessLogicResponse
+func (client *Client) ListBusinessLogic(request *ListBusinessLogicRequest) (_result *ListBusinessLogicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBusinessLogicResponse{}
+	_body, _err := client.ListBusinessLogicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前指定业务空间，指定表下面的列信息
+//
+// @param request - ListColumnRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListColumnResponse
+func (client *Client) ListColumnWithOptions(request *ListColumnRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListColumn"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/list/column"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListColumnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前指定业务空间，指定表下面的列信息
+//
+// @param request - ListColumnRequest
+//
+// @return ListColumnResponse
+func (client *Client) ListColumn(request *ListColumnRequest) (_result *ListColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListColumnResponse{}
+	_body, _err := client.ListColumnWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前业务空间，指定表、列下的枚举值
+//
+// @param request - ListEnumMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnumMappingResponse
+func (client *Client) ListEnumMappingWithOptions(request *ListEnumMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEnumMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnIdKey)) {
+		body["columnIdKey"] = request.ColumnIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnumMapping"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/list/mapping"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnumMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前业务空间，指定表、列下的枚举值
+//
+// @param request - ListEnumMappingRequest
+//
+// @return ListEnumMappingResponse
+func (client *Client) ListEnumMapping(request *ListEnumMappingRequest) (_result *ListEnumMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEnumMappingResponse{}
+	_body, _err := client.ListEnumMappingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前业务空间处于以关联状态的数据表
+//
+// @param request - ListSelectedTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSelectedTablesResponse
+func (client *Client) ListSelectedTablesWithOptions(request *ListSelectedTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSelectedTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSelectedTables"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/list/datasource/table"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSelectedTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前业务空间处于以关联状态的数据表
+//
+// @param request - ListSelectedTablesRequest
+//
+// @return ListSelectedTablesResponse
+func (client *Client) ListSelectedTables(request *ListSelectedTablesRequest) (_result *ListSelectedTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSelectedTablesResponse{}
+	_body, _err := client.ListSelectedTablesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前指定业务空间下的同义词列表
+//
+// @param request - ListSynonymsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSynonymsResponse
+func (client *Client) ListSynonymsWithOptions(request *ListSynonymsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSynonymsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["nextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSynonyms"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/list/synonyms"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSynonymsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前指定业务空间下的同义词列表
+//
+// @param request - ListSynonymsRequest
+//
+// @return ListSynonymsResponse
+func (client *Client) ListSynonyms(request *ListSynonymsRequest) (_result *ListSynonymsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSynonymsResponse{}
+	_body, _err := client.ListSynonymsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取当前业务空间下的数据源实例列表
 //
 // @param request - ListVirtualDatasourceInstanceRequest
@@ -1726,6 +4890,150 @@ func (client *Client) ListVirtualDatasourceInstance(request *ListVirtualDatasour
 	headers := make(map[string]*string)
 	_result = &ListVirtualDatasourceInstanceResponse{}
 	_body, _err := client.ListVirtualDatasourceInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 将指定数据表的数据列恢复到初始话状态
+//
+// @param request - RecoverColumnRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverColumnResponse
+func (client *Client) RecoverColumnWithOptions(request *RecoverColumnRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RecoverColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnIdKey)) {
+		body["columnIdKey"] = request.ColumnIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecoverColumn"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/recover/column"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecoverColumnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将指定数据表的数据列恢复到初始话状态
+//
+// @param request - RecoverColumnRequest
+//
+// @return RecoverColumnResponse
+func (client *Client) RecoverColumn(request *RecoverColumnRequest) (_result *RecoverColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RecoverColumnResponse{}
+	_body, _err := client.RecoverColumnWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从远程数据库刷新当前所关联的数据表信息
+//
+// @param request - ResyncTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResyncTableResponse
+func (client *Client) ResyncTableWithOptions(request *ResyncTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResyncTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResyncTable"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/refresh/table"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResyncTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从远程数据库刷新当前所关联的数据表信息
+//
+// @param request - ResyncTableRequest
+//
+// @return ResyncTableResponse
+func (client *Client) ResyncTable(request *ResyncTableRequest) (_result *ResyncTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResyncTableResponse{}
+	_body, _err := client.ResyncTableWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1954,6 +5262,428 @@ func (client *Client) SyncRemoteTables(request *SyncRemoteTablesRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &SyncRemoteTablesResponse{}
 	_body, _err := client.SyncRemoteTablesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间下所指定的业务逻辑解释
+//
+// @param request - UpdateBusinessLogicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBusinessLogicResponse
+func (client *Client) UpdateBusinessLogicWithOptions(request *UpdateBusinessLogicRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBusinessLogicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessLogicIdKey)) {
+		body["businessLogicIdKey"] = request.BusinessLogicIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBusinessLogic"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/update/logic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBusinessLogicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间下所指定的业务逻辑解释
+//
+// @param request - UpdateBusinessLogicRequest
+//
+// @return UpdateBusinessLogicResponse
+func (client *Client) UpdateBusinessLogic(request *UpdateBusinessLogicRequest) (_result *UpdateBusinessLogicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateBusinessLogicResponse{}
+	_body, _err := client.UpdateBusinessLogicWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间中，指定列的信息
+//
+// @param request - UpdateColumnRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateColumnResponse
+func (client *Client) UpdateColumnWithOptions(request *UpdateColumnRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChineseName)) {
+		body["chineseName"] = request.ChineseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColumnIdKey)) {
+		body["columnIdKey"] = request.ColumnIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnumType)) {
+		body["enumType"] = request.EnumType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnumValues)) {
+		body["enumValues"] = request.EnumValues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RangeMax)) {
+		body["rangeMax"] = request.RangeMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RangeMin)) {
+		body["rangeMin"] = request.RangeMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Samples)) {
+		body["samples"] = request.Samples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateColumn"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/update/column"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateColumnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间中，指定列的信息
+//
+// @param request - UpdateColumnRequest
+//
+// @return UpdateColumnResponse
+func (client *Client) UpdateColumn(request *UpdateColumnRequest) (_result *UpdateColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateColumnResponse{}
+	_body, _err := client.UpdateColumnWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间指定列下的枚举值信息
+//
+// @param request - UpdateEnumMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnumMappingResponse
+func (client *Client) UpdateEnumMappingWithOptions(request *UpdateEnumMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEnumMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnIdKey)) {
+		body["columnIdKey"] = request.ColumnIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnumMapping)) {
+		body["enumMapping"] = request.EnumMapping
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnumMapping"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/update/mapping"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnumMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前指定业务空间指定列下的枚举值信息
+//
+// @param request - UpdateEnumMappingRequest
+//
+// @return UpdateEnumMappingResponse
+func (client *Client) UpdateEnumMapping(request *UpdateEnumMappingRequest) (_result *UpdateEnumMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEnumMappingResponse{}
+	_body, _err := client.UpdateEnumMappingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前业务空间指定的同义词信息
+//
+// @param request - UpdateSynonymsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSynonymsResponse
+func (client *Client) UpdateSynonymsWithOptions(request *UpdateSynonymsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSynonymsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Columns)) {
+		body["columns"] = request.Columns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynonymIdKey)) {
+		body["synonymIdKey"] = request.SynonymIdKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Word)) {
+		body["word"] = request.Word
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordSynonyms)) {
+		body["wordSynonyms"] = request.WordSynonyms
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSynonyms"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/update/synonyms"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSynonymsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前业务空间指定的同义词信息
+//
+// @param request - UpdateSynonymsRequest
+//
+// @return UpdateSynonymsResponse
+func (client *Client) UpdateSynonyms(request *UpdateSynonymsRequest) (_result *UpdateSynonymsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSynonymsResponse{}
+	_body, _err := client.UpdateSynonymsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前所指定的数据表的信息
+//
+// @param request - UpdateTableInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableInfoResponse
+func (client *Client) UpdateTableInfoWithOptions(request *UpdateTableInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTableInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForeignKeys)) {
+		body["foreignKeys"] = request.ForeignKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKey)) {
+		body["primaryKey"] = request.PrimaryKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableIdKey)) {
+		body["tableIdKey"] = request.TableIdKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTableInfo"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/update/table"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTableInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改当前所指定的数据表的信息
+//
+// @param request - UpdateTableInfoRequest
+//
+// @return UpdateTableInfoResponse
+func (client *Client) UpdateTableInfo(request *UpdateTableInfoRequest) (_result *UpdateTableInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTableInfoResponse{}
+	_body, _err := client.UpdateTableInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
