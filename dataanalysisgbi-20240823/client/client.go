@@ -2267,6 +2267,7 @@ func (s *ResyncTableResponse) SetBody(v *ResyncTableResponseBody) *ResyncTableRe
 }
 
 type RunDataAnalysisRequest struct {
+	DataRole []*string `json:"dataRole,omitempty" xml:"dataRole,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -2280,7 +2281,8 @@ type RunDataAnalysisRequest struct {
 	// example:
 	//
 	// STANDARD_MIX
-	SpecificationType *string `json:"specificationType,omitempty" xml:"specificationType,omitempty"`
+	SpecificationType *string                `json:"specificationType,omitempty" xml:"specificationType,omitempty"`
+	UserParams        map[string]interface{} `json:"userParams,omitempty" xml:"userParams,omitempty"`
 }
 
 func (s RunDataAnalysisRequest) String() string {
@@ -2289,6 +2291,11 @@ func (s RunDataAnalysisRequest) String() string {
 
 func (s RunDataAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunDataAnalysisRequest) SetDataRole(v []*string) *RunDataAnalysisRequest {
+	s.DataRole = v
+	return s
 }
 
 func (s *RunDataAnalysisRequest) SetGenerateSqlOnly(v bool) *RunDataAnalysisRequest {
@@ -2308,6 +2315,11 @@ func (s *RunDataAnalysisRequest) SetSessionId(v string) *RunDataAnalysisRequest 
 
 func (s *RunDataAnalysisRequest) SetSpecificationType(v string) *RunDataAnalysisRequest {
 	s.SpecificationType = &v
+	return s
+}
+
+func (s *RunDataAnalysisRequest) SetUserParams(v map[string]interface{}) *RunDataAnalysisRequest {
+	s.UserParams = v
 	return s
 }
 
@@ -2550,6 +2562,413 @@ func (s *RunDataAnalysisResponse) SetStatusCode(v int32) *RunDataAnalysisRespons
 }
 
 func (s *RunDataAnalysisResponse) SetBody(v *RunDataAnalysisResponseBody) *RunDataAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type RunDataResultAnalysisRequest struct {
+	// example:
+	//
+	// all
+	AnalysisMode *string `json:"analysisMode,omitempty" xml:"analysisMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FF76AD3F-8B32-567E-819B-0D3738917006
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SqlData   *RunDataResultAnalysisRequestSqlData `json:"sqlData,omitempty" xml:"sqlData,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s RunDataResultAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisRequest) SetAnalysisMode(v string) *RunDataResultAnalysisRequest {
+	s.AnalysisMode = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisRequest) SetRequestId(v string) *RunDataResultAnalysisRequest {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisRequest) SetSqlData(v *RunDataResultAnalysisRequestSqlData) *RunDataResultAnalysisRequest {
+	s.SqlData = v
+	return s
+}
+
+func (s *RunDataResultAnalysisRequest) SetWorkspaceId(v string) *RunDataResultAnalysisRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDataResultAnalysisRequestSqlData struct {
+	Column []*string            `json:"column,omitempty" xml:"column,omitempty" type:"Repeated"`
+	Data   []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+}
+
+func (s RunDataResultAnalysisRequestSqlData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisRequestSqlData) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisRequestSqlData) SetColumn(v []*string) *RunDataResultAnalysisRequestSqlData {
+	s.Column = v
+	return s
+}
+
+func (s *RunDataResultAnalysisRequestSqlData) SetData(v []map[string]*string) *RunDataResultAnalysisRequestSqlData {
+	s.Data = v
+	return s
+}
+
+type RunDataResultAnalysisResponseBody struct {
+	Data *RunDataResultAnalysisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s RunDataResultAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisResponseBody) SetData(v *RunDataResultAnalysisResponseBodyData) *RunDataResultAnalysisResponseBody {
+	s.Data = v
+	return s
+}
+
+type RunDataResultAnalysisResponseBodyData struct {
+	// example:
+	//
+	// Access was denied, message: No such namespace namespaces/tech-scp-chain7.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// result
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// DA2578F7-88A5-5D6E-9305-33E724E97D60
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Rewrite   *string `json:"rewrite,omitempty" xml:"rewrite,omitempty"`
+	// example:
+	//
+	// select p.product_id, p.product_name, sum(o.quantity) as total_sales from products p join orders o on p.product_id = o.product_id where o.order_date between \\"2022-10-22\\" and \\"2024-10-22\\" group by p.product_id, p.product_name having total_sales > 5
+	Sql           *string                                             `json:"sql,omitempty" xml:"sql,omitempty"`
+	Visualization *RunDataResultAnalysisResponseBodyDataVisualization `json:"visualization,omitempty" xml:"visualization,omitempty" type:"Struct"`
+}
+
+func (s RunDataResultAnalysisResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetErrorMessage(v string) *RunDataResultAnalysisResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetEvent(v string) *RunDataResultAnalysisResponseBodyData {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetRequestId(v string) *RunDataResultAnalysisResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetRewrite(v string) *RunDataResultAnalysisResponseBodyData {
+	s.Rewrite = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetSql(v string) *RunDataResultAnalysisResponseBodyData {
+	s.Sql = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyData) SetVisualization(v *RunDataResultAnalysisResponseBodyDataVisualization) *RunDataResultAnalysisResponseBodyData {
+	s.Visualization = v
+	return s
+}
+
+type RunDataResultAnalysisResponseBodyDataVisualization struct {
+	Data *RunDataResultAnalysisResponseBodyDataVisualizationData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Text *string                                                 `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunDataResultAnalysisResponseBodyDataVisualization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisResponseBodyDataVisualization) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisResponseBodyDataVisualization) SetData(v *RunDataResultAnalysisResponseBodyDataVisualizationData) *RunDataResultAnalysisResponseBodyDataVisualization {
+	s.Data = v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyDataVisualization) SetText(v string) *RunDataResultAnalysisResponseBodyDataVisualization {
+	s.Text = &v
+	return s
+}
+
+type RunDataResultAnalysisResponseBodyDataVisualizationData struct {
+	// example:
+	//
+	// bar
+	PlotType *string   `json:"plotType,omitempty" xml:"plotType,omitempty"`
+	XAxis    []*string `json:"xAxis,omitempty" xml:"xAxis,omitempty" type:"Repeated"`
+	YAxis    []*string `json:"yAxis,omitempty" xml:"yAxis,omitempty" type:"Repeated"`
+}
+
+func (s RunDataResultAnalysisResponseBodyDataVisualizationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisResponseBodyDataVisualizationData) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisResponseBodyDataVisualizationData) SetPlotType(v string) *RunDataResultAnalysisResponseBodyDataVisualizationData {
+	s.PlotType = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyDataVisualizationData) SetXAxis(v []*string) *RunDataResultAnalysisResponseBodyDataVisualizationData {
+	s.XAxis = v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponseBodyDataVisualizationData) SetYAxis(v []*string) *RunDataResultAnalysisResponseBodyDataVisualizationData {
+	s.YAxis = v
+	return s
+}
+
+type RunDataResultAnalysisResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDataResultAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDataResultAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDataResultAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDataResultAnalysisResponse) SetHeaders(v map[string]*string) *RunDataResultAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponse) SetStatusCode(v int32) *RunDataResultAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDataResultAnalysisResponse) SetBody(v *RunDataResultAnalysisResponseBody) *RunDataResultAnalysisResponse {
+	s.Body = v
+	return s
+}
+
+type RunSqlGenerationRequest struct {
+	// This parameter is required.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// d5eced84-fd25-43ee-a245-adb4e4a8c3be
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// STANDARD_MIX
+	SpecificationType *string `json:"specificationType,omitempty" xml:"specificationType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2v3934xtp49esw64
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+}
+
+func (s RunSqlGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSqlGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSqlGenerationRequest) SetQuery(v string) *RunSqlGenerationRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSqlGenerationRequest) SetSessionId(v string) *RunSqlGenerationRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunSqlGenerationRequest) SetSpecificationType(v string) *RunSqlGenerationRequest {
+	s.SpecificationType = &v
+	return s
+}
+
+func (s *RunSqlGenerationRequest) SetWorkspaceId(v string) *RunSqlGenerationRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunSqlGenerationResponseBody struct {
+	Data *RunSqlGenerationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+}
+
+func (s RunSqlGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSqlGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSqlGenerationResponseBody) SetData(v *RunSqlGenerationResponseBodyData) *RunSqlGenerationResponseBody {
+	s.Data = v
+	return s
+}
+
+type RunSqlGenerationResponseBodyData struct {
+	// example:
+	//
+	// Access was denied, message: No such namespace namespaces/tech-scp-chain7.
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// sql
+	Event    *string `json:"event,omitempty" xml:"event,omitempty"`
+	Evidence *string `json:"evidence,omitempty" xml:"evidence,omitempty"`
+	// example:
+	//
+	// DA2578F7-88A5-5D6E-9305-33E724E97D60
+	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Rewrite   *string   `json:"rewrite,omitempty" xml:"rewrite,omitempty"`
+	Selector  []*string `json:"selector,omitempty" xml:"selector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// f64c38dd-a235-4bb4-ae6c-79eaedcba699
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// select p.product_id, p.product_name, sum(o.quantity) as total_sales from products p join orders o on p.product_id = o.product_id where o.order_date between \\"2022-10-22\\" and \\"2024-10-22\\" group by p.product_id, p.product_name having total_sales > 5
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// example:
+	//
+	// Can not issue data manipulation statements with executeQuery()
+	SqlError *string `json:"sqlError,omitempty" xml:"sqlError,omitempty"`
+}
+
+func (s RunSqlGenerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSqlGenerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetErrorMessage(v string) *RunSqlGenerationResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetEvent(v string) *RunSqlGenerationResponseBodyData {
+	s.Event = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetEvidence(v string) *RunSqlGenerationResponseBodyData {
+	s.Evidence = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetRequestId(v string) *RunSqlGenerationResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetRewrite(v string) *RunSqlGenerationResponseBodyData {
+	s.Rewrite = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetSelector(v []*string) *RunSqlGenerationResponseBodyData {
+	s.Selector = v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetSessionId(v string) *RunSqlGenerationResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetSql(v string) *RunSqlGenerationResponseBodyData {
+	s.Sql = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponseBodyData) SetSqlError(v string) *RunSqlGenerationResponseBodyData {
+	s.SqlError = &v
+	return s
+}
+
+type RunSqlGenerationResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSqlGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSqlGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSqlGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSqlGenerationResponse) SetHeaders(v map[string]*string) *RunSqlGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSqlGenerationResponse) SetStatusCode(v int32) *RunSqlGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSqlGenerationResponse) SetBody(v *RunSqlGenerationResponseBody) *RunSqlGenerationResponse {
 	s.Body = v
 	return s
 }
@@ -5058,6 +5477,10 @@ func (client *Client) RunDataAnalysisWithOptions(workspaceId *string, request *R
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataRole)) {
+		body["dataRole"] = request.DataRole
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GenerateSqlOnly)) {
 		body["generateSqlOnly"] = request.GenerateSqlOnly
 	}
@@ -5072,6 +5495,10 @@ func (client *Client) RunDataAnalysisWithOptions(workspaceId *string, request *R
 
 	if !tea.BoolValue(util.IsUnset(request.SpecificationType)) {
 		body["specificationType"] = request.SpecificationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserParams)) {
+		body["userParams"] = request.UserParams
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5110,6 +5537,162 @@ func (client *Client) RunDataAnalysis(workspaceId *string, request *RunDataAnaly
 	headers := make(map[string]*string)
 	_result = &RunDataAnalysisResponse{}
 	_body, _err := client.RunDataAnalysisWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 对结构化结果进行分析、可视化信息生成
+//
+// @param request - RunDataResultAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDataResultAnalysisResponse
+func (client *Client) RunDataResultAnalysisWithOptions(request *RunDataResultAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunDataResultAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnalysisMode)) {
+		body["analysisMode"] = request.AnalysisMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlData)) {
+		body["sqlData"] = request.SqlData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDataResultAnalysis"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/runDataResultAnalysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDataResultAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 对结构化结果进行分析、可视化信息生成
+//
+// @param request - RunDataResultAnalysisRequest
+//
+// @return RunDataResultAnalysisResponse
+func (client *Client) RunDataResultAnalysis(request *RunDataResultAnalysisRequest) (_result *RunDataResultAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunDataResultAnalysisResponse{}
+	_body, _err := client.RunDataResultAnalysisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行sql生成
+//
+// @param request - RunSqlGenerationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSqlGenerationResponse
+func (client *Client) RunSqlGenerationWithOptions(request *RunSqlGenerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunSqlGenerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificationType)) {
+		body["specificationType"] = request.SpecificationType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSqlGeneration"),
+		Version:     tea.String("2024-08-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gbi/runSqlGeneration"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSqlGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行sql生成
+//
+// @param request - RunSqlGenerationRequest
+//
+// @return RunSqlGenerationResponse
+func (client *Client) RunSqlGeneration(request *RunSqlGenerationRequest) (_result *RunSqlGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunSqlGenerationResponse{}
+	_body, _err := client.RunSqlGenerationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
