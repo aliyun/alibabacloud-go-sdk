@@ -10197,6 +10197,77 @@ func (s *DeleteDiskResponse) SetBody(v *DeleteDiskResponseBody) *DeleteDiskRespo
 	return s
 }
 
+type DeleteEipRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-5sg1owx0g4ojy66ab2tez77r2
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteEipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEipRequest) SetInstanceId(v string) *DeleteEipRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteEipResponseBody struct {
+	// example:
+	//
+	// 9341CDC2-D6AC-5992-86C8-D5774CFCC708
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEipResponseBody) SetRequestId(v string) *DeleteEipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEipResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEipResponse) SetHeaders(v map[string]*string) *DeleteEipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEipResponse) SetStatusCode(v int32) *DeleteEipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEipResponse) SetBody(v *DeleteEipResponseBody) *DeleteEipResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEnsRouteEntryRequest struct {
 	// The ID of the route that you want to delete.
 	//
@@ -65147,6 +65218,66 @@ func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDis
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDiskResponse{}
 	_body, _err := client.DeleteDiskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用DeleteEip删除后付费的弹性公网EIP实例。
+//
+// @param request - DeleteEipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEipResponse
+func (client *Client) DeleteEipWithOptions(request *DeleteEipRequest, runtime *util.RuntimeOptions) (_result *DeleteEipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEip"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEipResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用DeleteEip删除后付费的弹性公网EIP实例。
+//
+// @param request - DeleteEipRequest
+//
+// @return DeleteEipResponse
+func (client *Client) DeleteEip(request *DeleteEipRequest) (_result *DeleteEipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEipResponse{}
+	_body, _err := client.DeleteEipWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
