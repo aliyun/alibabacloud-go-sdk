@@ -421,6 +421,189 @@ func (s *BackupFileResponse) SetBody(v *BackupFileResponseBody) *BackupFileRespo
 	return s
 }
 
+type BatchGetAcpConnectionTicketRequest struct {
+	// example:
+	//
+	// user
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// ag-25nt4kk9whjh****
+	InstanceGroupId *string                                            `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceIds     []*string                                          `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceTasks   []*BatchGetAcpConnectionTicketRequestInstanceTasks `json:"InstanceTasks,omitempty" xml:"InstanceTasks,omitempty" type:"Repeated"`
+}
+
+func (s BatchGetAcpConnectionTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetAcpConnectionTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetEndUserId(v string) *BatchGetAcpConnectionTicketRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetInstanceGroupId(v string) *BatchGetAcpConnectionTicketRequest {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetInstanceIds(v []*string) *BatchGetAcpConnectionTicketRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketRequest) SetInstanceTasks(v []*BatchGetAcpConnectionTicketRequestInstanceTasks) *BatchGetAcpConnectionTicketRequest {
+	s.InstanceTasks = v
+	return s
+}
+
+type BatchGetAcpConnectionTicketRequestInstanceTasks struct {
+	// example:
+	//
+	// acp-fkuit0cmyfvzz****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s BatchGetAcpConnectionTicketRequestInstanceTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetAcpConnectionTicketRequestInstanceTasks) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetAcpConnectionTicketRequestInstanceTasks) SetInstanceId(v string) *BatchGetAcpConnectionTicketRequestInstanceTasks {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketRequestInstanceTasks) SetTaskId(v string) *BatchGetAcpConnectionTicketRequestInstanceTasks {
+	s.TaskId = &v
+	return s
+}
+
+type BatchGetAcpConnectionTicketResponseBody struct {
+	InstanceConnectionModels []*BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels `json:"InstanceConnectionModels,omitempty" xml:"InstanceConnectionModels,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7B9EFA4F-4305-5968-BAEE-BD8B8DE5****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchGetAcpConnectionTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetAcpConnectionTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBody) SetInstanceConnectionModels(v []*BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) *BatchGetAcpConnectionTicketResponseBody {
+	s.InstanceConnectionModels = v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBody) SetRequestId(v string) *BatchGetAcpConnectionTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels struct {
+	// example:
+	//
+	// aig-1uzb6heg797z3****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// acp-ajxvwo1u0hqvd****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou@c9f5c2e8-f5c4-4b01-8602-000cae94****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// FINISHED
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// piVE58_AdmVSVW7SEW3*AE5*p8mmO5gvItsNOmv4S_f_cNpoU_BOTwChTBoNM1ZJeedfK9zxYnbN5hossqIZCr6t7SGxRigm2Cb4fGaCdBZWIzmgdHq6sXXZQg4KFWufyvpeV*0*Cm58slMT1tJw3****
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+}
+
+func (s BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetAppInstanceGroupId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetInstanceId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetTaskId(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.TaskId = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetTaskStatus(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels) SetTicket(v string) *BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels {
+	s.Ticket = &v
+	return s
+}
+
+type BatchGetAcpConnectionTicketResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetAcpConnectionTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchGetAcpConnectionTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetAcpConnectionTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetAcpConnectionTicketResponse) SetHeaders(v map[string]*string) *BatchGetAcpConnectionTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponse) SetStatusCode(v int32) *BatchGetAcpConnectionTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchGetAcpConnectionTicketResponse) SetBody(v *BatchGetAcpConnectionTicketResponseBody) *BatchGetAcpConnectionTicketResponse {
+	s.Body = v
+	return s
+}
+
 type CheckResourceStockRequest struct {
 	// example:
 	//
@@ -7485,6 +7668,78 @@ func (client *Client) BackupFile(request *BackupFileRequest) (_result *BackupFil
 	runtime := &util.RuntimeOptions{}
 	_result = &BackupFileResponse{}
 	_body, _err := client.BackupFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量获取ticket
+//
+// @param request - BatchGetAcpConnectionTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetAcpConnectionTicketResponse
+func (client *Client) BatchGetAcpConnectionTicketWithOptions(request *BatchGetAcpConnectionTicketRequest, runtime *util.RuntimeOptions) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
+		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTasks)) {
+		query["InstanceTasks"] = request.InstanceTasks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetAcpConnectionTicket"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchGetAcpConnectionTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量获取ticket
+//
+// @param request - BatchGetAcpConnectionTicketRequest
+//
+// @return BatchGetAcpConnectionTicketResponse
+func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnectionTicketRequest) (_result *BatchGetAcpConnectionTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchGetAcpConnectionTicketResponse{}
+	_body, _err := client.BatchGetAcpConnectionTicketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
