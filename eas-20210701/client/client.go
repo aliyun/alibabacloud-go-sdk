@@ -6313,6 +6313,135 @@ func (s *DescribeGroupResponse) SetBody(v *Group) *DescribeGroupResponse {
 	return s
 }
 
+type DescribeGroupEndpointsResponseBody struct {
+	// example:
+	//
+	// Nzc5N2FhNTM4OTQ0YzBmYTIy****ZTUxN2NkYjg4MTJmMWQxZmY1****
+	AccessToken *string                                      `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	Endpoints   *DescribeGroupEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 890772EF-3AD6-129A-8E15-8F349C944783
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGroupEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupEndpointsResponseBody) SetAccessToken(v string) *DescribeGroupEndpointsResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBody) SetEndpoints(v *DescribeGroupEndpointsResponseBodyEndpoints) *DescribeGroupEndpointsResponseBody {
+	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBody) SetMessage(v string) *DescribeGroupEndpointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBody) SetRequestId(v string) *DescribeGroupEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGroupEndpointsResponseBodyEndpoints struct {
+	// example:
+	//
+	// gw-26340kjxjx8l3r****
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// example:
+	//
+	// PrivateGateway
+	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Group
+	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// example:
+	//
+	// 9090
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeGroupEndpointsResponseBodyEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupEndpointsResponseBodyEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetBackendId(v string) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetEndpointType(v string) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetInternetEndpoints(v []*string) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.InternetEndpoints = v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetIntranetEndpoints(v []*string) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.IntranetEndpoints = v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetPathType(v string) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.PathType = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponseBodyEndpoints) SetPort(v int32) *DescribeGroupEndpointsResponseBodyEndpoints {
+	s.Port = &v
+	return s
+}
+
+type DescribeGroupEndpointsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGroupEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGroupEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGroupEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupEndpointsResponse) SetHeaders(v map[string]*string) *DescribeGroupEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponse) SetStatusCode(v int32) *DescribeGroupEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGroupEndpointsResponse) SetBody(v *DescribeGroupEndpointsResponseBody) *DescribeGroupEndpointsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeResourceResponseBody struct {
 	// The ID of the cluster to which the resource group belongs.
 	//
@@ -7258,6 +7387,135 @@ func (s *DescribeServiceDiagnosisResponse) SetStatusCode(v int32) *DescribeServi
 }
 
 func (s *DescribeServiceDiagnosisResponse) SetBody(v *DescribeServiceDiagnosisResponseBody) *DescribeServiceDiagnosisResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceEndpointsResponseBody struct {
+	// example:
+	//
+	// Nzc5N2FhN****TQ0YzBmYTIyN2MxZTUxN2NkYjg4MTJmMWQxZmY1****
+	AccessToken *string                                        `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	Endpoints   *DescribeServiceEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	Message     *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 739998B5-FB39-12A3-8323-0FA340317298
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeServiceEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEndpointsResponseBody) SetAccessToken(v string) *DescribeServiceEndpointsResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBody) SetEndpoints(v *DescribeServiceEndpointsResponseBodyEndpoints) *DescribeServiceEndpointsResponseBody {
+	s.Endpoints = v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBody) SetMessage(v string) *DescribeServiceEndpointsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBody) SetRequestId(v string) *DescribeServiceEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeServiceEndpointsResponseBodyEndpoints struct {
+	// example:
+	//
+	// nlb-5q4sp7u6oorkha****
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// example:
+	//
+	// Nlb
+	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Service
+	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// example:
+	//
+	// 9090
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeServiceEndpointsResponseBodyEndpoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEndpointsResponseBodyEndpoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetBackendId(v string) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.BackendId = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetEndpointType(v string) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetInternetEndpoints(v []*string) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.InternetEndpoints = v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetIntranetEndpoints(v []*string) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.IntranetEndpoints = v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetPathType(v string) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.PathType = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponseBodyEndpoints) SetPort(v int32) *DescribeServiceEndpointsResponseBodyEndpoints {
+	s.Port = &v
+	return s
+}
+
+type DescribeServiceEndpointsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServiceEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeServiceEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceEndpointsResponse) SetHeaders(v map[string]*string) *DescribeServiceEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponse) SetStatusCode(v int32) *DescribeServiceEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServiceEndpointsResponse) SetBody(v *DescribeServiceEndpointsResponseBody) *DescribeServiceEndpointsResponse {
 	s.Body = v
 	return s
 }
@@ -9195,6 +9453,8 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// Specifies whether to enable HTTP to HTTPS redirection.
+	//
 	// example:
 	//
 	// true
@@ -9769,11 +10029,14 @@ func (s *ListGatewayIntranetLinkedVpcPeerResponse) SetBody(v *ListGatewayIntrane
 }
 
 type ListGatewayIntranetSupportedZoneResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The zones that are supported by the region.
+	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListGatewayIntranetSupportedZoneResponseBody) String() string {
@@ -17559,6 +17822,56 @@ func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_resu
 
 // Summary:
 //
+// 获取群组端点列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupEndpointsResponse
+func (client *Client) DescribeGroupEndpointsWithOptions(ClusterId *string, GroupName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeGroupEndpointsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGroupEndpoints"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName)) + "/endpoints"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGroupEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取群组端点列表
+//
+// @return DescribeGroupEndpointsResponse
+func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *string) (_result *DescribeGroupEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeGroupEndpointsResponse{}
+	_body, _err := client.DescribeGroupEndpointsWithOptions(ClusterId, GroupName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a resource group.
 //
 // @param headers - map
@@ -17900,6 +18213,56 @@ func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *s
 	headers := make(map[string]*string)
 	_result = &DescribeServiceDiagnosisResponse{}
 	_body, _err := client.DescribeServiceDiagnosisWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务端点列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceEndpointsResponse
+func (client *Client) DescribeServiceEndpointsWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceEndpointsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceEndpoints"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/endpoints"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务端点列表
+//
+// @return DescribeServiceEndpointsResponse
+func (client *Client) DescribeServiceEndpoints(ClusterId *string, ServiceName *string) (_result *DescribeServiceEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeServiceEndpointsResponse{}
+	_body, _err := client.DescribeServiceEndpointsWithOptions(ClusterId, ServiceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18825,7 +19188,7 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeer(ClusterId *string, Gatewa
 
 // Summary:
 //
-// 获取网关内网支持的可用区
+// Obtains the zones supported by a gateway within an intranet.
 //
 // @param headers - map
 //
@@ -18858,7 +19221,7 @@ func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *str
 
 // Summary:
 //
-// 获取网关内网支持的可用区
+// Obtains the zones supported by a gateway within an intranet.
 //
 // @return ListGatewayIntranetSupportedZoneResponse
 func (client *Client) ListGatewayIntranetSupportedZone(GatewayId *string, ClusterId *string) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
