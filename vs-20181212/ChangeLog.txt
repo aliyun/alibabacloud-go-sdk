@@ -1,3 +1,27 @@
+2024-12-25 Version: v4.0.0
+- Support API CreateRenderingDataPackage.
+- Support API CreateRenderingInstanceGateway.
+- Support API DeleteRenderingInstanceGateway.
+- Support API ListRenderingInstanceGateway.
+- Support API ModifyRenderingInstance.
+- Support API ReleaseRenderingDataPackage.
+- Delete API CreateCluster.
+- Delete API DeleteCluster.
+- Delete API DescribeCluster.
+- Delete API DescribeClusterDevices.
+- Delete API DescribeClusters.
+- Delete API DescribeContainerInstanceId.
+- Delete API DescribeUserDevices.
+- Delete API UpdateCluster.
+- Update API CreateRenderingInstance: add param InstanceBillingCycle.
+- Update API CreateRenderingInstance: add param StorageSize.
+- Update API CreateRenderingInstance: update param InstanceChargeType.
+- Update API CreateRenderingInstance: update param InternetChargeType.
+- Update API DescribeRenderingInstance: update response param.
+- Update API ListRenderingInstances: add param StorageSize.
+- Update API ListRenderingInstances: update response param.
+
+
 2024-09-12 Version: v3.0.1
 - Update API ListPublicKeys: add param KeyType.
 - Update API ListPublicKeys: update response param.

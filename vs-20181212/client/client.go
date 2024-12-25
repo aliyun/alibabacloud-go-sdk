@@ -3494,106 +3494,6 @@ func (s *ContinuousMoveResponse) SetBody(v *ContinuousMoveResponseBody) *Continu
 	return s
 }
 
-type CreateClusterRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InternalPorts *string `json:"InternalPorts,omitempty" xml:"InternalPorts,omitempty"`
-	MaintainTime  *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	// This parameter is required.
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-}
-
-func (s CreateClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterRequest) SetDescription(v string) *CreateClusterRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetInternalPorts(v string) *CreateClusterRequest {
-	s.InternalPorts = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMaintainTime(v string) *CreateClusterRequest {
-	s.MaintainTime = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetName(v string) *CreateClusterRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetOwnerId(v int64) *CreateClusterRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSecurityGroupId(v string) *CreateClusterRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-type CreateClusterResponseBody struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterResponseBody) SetClusterId(v string) *CreateClusterResponseBody {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateClusterResponse) SetHeaders(v map[string]*string) *CreateClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateClusterResponse) SetStatusCode(v int32) *CreateClusterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClusterResponse {
-	s.Body = v
-	return s
-}
-
 type CreateDeviceRequest struct {
 	// example:
 	//
@@ -4508,12 +4408,102 @@ func (s *CreateParentPlatformResponse) SetBody(v *CreateParentPlatformResponseBo
 	return s
 }
 
+type CreateRenderingDataPackageRequest struct {
+	// example:
+	//
+	// testdescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s CreateRenderingDataPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingDataPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingDataPackageRequest) SetDescription(v string) *CreateRenderingDataPackageRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRenderingDataPackageRequest) SetRenderingInstanceId(v string) *CreateRenderingDataPackageRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type CreateRenderingDataPackageResponseBody struct {
+	// example:
+	//
+	// dp-9f8c57355d224ad7beaf95e145f22111
+	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRenderingDataPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingDataPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingDataPackageResponseBody) SetDataPackageId(v string) *CreateRenderingDataPackageResponseBody {
+	s.DataPackageId = &v
+	return s
+}
+
+func (s *CreateRenderingDataPackageResponseBody) SetRequestId(v string) *CreateRenderingDataPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRenderingDataPackageResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRenderingDataPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRenderingDataPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingDataPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingDataPackageResponse) SetHeaders(v map[string]*string) *CreateRenderingDataPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRenderingDataPackageResponse) SetStatusCode(v int32) *CreateRenderingDataPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRenderingDataPackageResponse) SetBody(v *CreateRenderingDataPackageResponseBody) *CreateRenderingDataPackageResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRenderingInstanceRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew  *bool                                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClientInfo *CreateRenderingInstanceRequestClientInfo `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty" type:"Struct"`
+	AutoRenew            *bool                                     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientInfo           *CreateRenderingInstanceRequestClientInfo `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty" type:"Struct"`
+	InstanceBillingCycle *string                                   `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// example:
 	//
 	// PrePaid
@@ -4536,6 +4526,7 @@ type CreateRenderingInstanceRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	StorageSize   *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s CreateRenderingInstanceRequest) String() string {
@@ -4553,6 +4544,11 @@ func (s *CreateRenderingInstanceRequest) SetAutoRenew(v bool) *CreateRenderingIn
 
 func (s *CreateRenderingInstanceRequest) SetClientInfo(v *CreateRenderingInstanceRequestClientInfo) *CreateRenderingInstanceRequest {
 	s.ClientInfo = v
+	return s
+}
+
+func (s *CreateRenderingInstanceRequest) SetInstanceBillingCycle(v string) *CreateRenderingInstanceRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -4581,6 +4577,11 @@ func (s *CreateRenderingInstanceRequest) SetRenderingSpec(v string) *CreateRende
 	return s
 }
 
+func (s *CreateRenderingInstanceRequest) SetStorageSize(v string) *CreateRenderingInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
 type CreateRenderingInstanceRequestClientInfo struct {
 	// example:
 	//
@@ -4605,8 +4606,9 @@ type CreateRenderingInstanceShrinkRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew        *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClientInfoShrink *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientInfoShrink     *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// example:
 	//
 	// PrePaid
@@ -4629,6 +4631,7 @@ type CreateRenderingInstanceShrinkRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	StorageSize   *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s CreateRenderingInstanceShrinkRequest) String() string {
@@ -4646,6 +4649,11 @@ func (s *CreateRenderingInstanceShrinkRequest) SetAutoRenew(v bool) *CreateRende
 
 func (s *CreateRenderingInstanceShrinkRequest) SetClientInfoShrink(v string) *CreateRenderingInstanceShrinkRequest {
 	s.ClientInfoShrink = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceShrinkRequest) SetInstanceBillingCycle(v string) *CreateRenderingInstanceShrinkRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -4671,6 +4679,11 @@ func (s *CreateRenderingInstanceShrinkRequest) SetPeriod(v string) *CreateRender
 
 func (s *CreateRenderingInstanceShrinkRequest) SetRenderingSpec(v string) *CreateRenderingInstanceShrinkRequest {
 	s.RenderingSpec = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceShrinkRequest) SetStorageSize(v string) *CreateRenderingInstanceShrinkRequest {
+	s.StorageSize = &v
 	return s
 }
 
@@ -4730,6 +4743,88 @@ func (s *CreateRenderingInstanceResponse) SetStatusCode(v int32) *CreateRenderin
 }
 
 func (s *CreateRenderingInstanceResponse) SetBody(v *CreateRenderingInstanceResponseBody) *CreateRenderingInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRenderingInstanceGatewayRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-xxx
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s CreateRenderingInstanceGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingInstanceGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingInstanceGatewayRequest) SetGatewayInstanceId(v string) *CreateRenderingInstanceGatewayRequest {
+	s.GatewayInstanceId = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceGatewayRequest) SetRenderingInstanceId(v string) *CreateRenderingInstanceGatewayRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type CreateRenderingInstanceGatewayResponseBody struct {
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRenderingInstanceGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingInstanceGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingInstanceGatewayResponseBody) SetRequestId(v string) *CreateRenderingInstanceGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRenderingInstanceGatewayResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRenderingInstanceGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRenderingInstanceGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRenderingInstanceGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingInstanceGatewayResponse) SetHeaders(v map[string]*string) *CreateRenderingInstanceGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRenderingInstanceGatewayResponse) SetStatusCode(v int32) *CreateRenderingInstanceGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceGatewayResponse) SetBody(v *CreateRenderingInstanceGatewayResponseBody) *CreateRenderingInstanceGatewayResponse {
 	s.Body = v
 	return s
 }
@@ -5220,76 +5315,6 @@ func (s *DeleteCloudAppResponse) SetStatusCode(v int32) *DeleteCloudAppResponse 
 }
 
 func (s *DeleteCloudAppResponse) SetBody(v *DeleteCloudAppResponseBody) *DeleteCloudAppResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteClusterRequest struct {
-	// This parameter is required.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DeleteClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DeleteClusterRequest) SetOwnerId(v int64) *DeleteClusterRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DeleteClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteClusterResponse) SetStatusCode(v int32) *DeleteClusterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClusterResponse {
 	s.Body = v
 	return s
 }
@@ -5979,12 +6004,77 @@ func (s *DeleteRenderingInstanceConfigurationResponse) SetBody(v *DeleteRenderin
 	return s
 }
 
-type DeleteTemplateRequest struct {
-	// This parameter is required.
-	//
+type DeleteRenderingInstanceGatewayRequest struct {
 	// example:
 	//
-	// 323*****998-cn-qingdao
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s DeleteRenderingInstanceGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRenderingInstanceGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRenderingInstanceGatewayRequest) SetRenderingInstanceId(v string) *DeleteRenderingInstanceGatewayRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type DeleteRenderingInstanceGatewayResponseBody struct {
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRenderingInstanceGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRenderingInstanceGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRenderingInstanceGatewayResponseBody) SetRequestId(v string) *DeleteRenderingInstanceGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRenderingInstanceGatewayResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRenderingInstanceGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRenderingInstanceGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRenderingInstanceGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRenderingInstanceGatewayResponse) SetHeaders(v map[string]*string) *DeleteRenderingInstanceGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRenderingInstanceGatewayResponse) SetStatusCode(v int32) *DeleteRenderingInstanceGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRenderingInstanceGatewayResponse) SetBody(v *DeleteRenderingInstanceGatewayResponseBody) *DeleteRenderingInstanceGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTemplateRequest struct {
+	// This parameter is required.
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -6008,9 +6098,6 @@ func (s *DeleteTemplateRequest) SetOwnerId(v int64) *DeleteTemplateRequest {
 }
 
 type DeleteTemplateResponseBody struct {
-	// example:
-	//
-	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6347,771 +6434,6 @@ func (s *DescribeAccountStatResponse) SetStatusCode(v int32) *DescribeAccountSta
 }
 
 func (s *DescribeAccountStatResponse) SetBody(v *DescribeAccountStatResponseBody) *DescribeAccountStatResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClusterRequest struct {
-	// This parameter is required.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterRequest) SetClusterId(v string) *DescribeClusterRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeClusterRequest) SetOwnerId(v int64) *DescribeClusterRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeClusterResponseBody struct {
-	ClusterId     *string                                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description   *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	InternalPorts []*DescribeClusterResponseBodyInternalPorts `json:"InternalPorts,omitempty" xml:"InternalPorts,omitempty" type:"Repeated"`
-	MaintainTime  *string                                     `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	Name          *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterResponseBody) SetClusterId(v string) *DescribeClusterResponseBody {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetDescription(v string) *DescribeClusterResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetInternalPorts(v []*DescribeClusterResponseBodyInternalPorts) *DescribeClusterResponseBody {
-	s.InternalPorts = v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetMaintainTime(v string) *DescribeClusterResponseBody {
-	s.MaintainTime = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetName(v string) *DescribeClusterResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetRequestId(v string) *DescribeClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBody) SetStatus(v string) *DescribeClusterResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DescribeClusterResponseBodyInternalPorts struct {
-	IpProtocol *string   `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Platform   *string   `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Port       []*string `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-}
-
-func (s DescribeClusterResponseBodyInternalPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterResponseBodyInternalPorts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterResponseBodyInternalPorts) SetIpProtocol(v string) *DescribeClusterResponseBodyInternalPorts {
-	s.IpProtocol = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBodyInternalPorts) SetPlatform(v string) *DescribeClusterResponseBodyInternalPorts {
-	s.Platform = &v
-	return s
-}
-
-func (s *DescribeClusterResponseBodyInternalPorts) SetPort(v []*string) *DescribeClusterResponseBodyInternalPorts {
-	s.Port = v
-	return s
-}
-
-type DescribeClusterResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterResponse) SetHeaders(v map[string]*string) *DescribeClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterResponse) SetStatusCode(v int32) *DescribeClusterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *DescribeClusterResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClusterDevicesRequest struct {
-	// This parameter is required.
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EdgeNodeName *string `json:"EdgeNodeName,omitempty" xml:"EdgeNodeName,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo       *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	Platform      *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-}
-
-func (s DescribeClusterDevicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesRequest) SetClusterId(v string) *DescribeClusterDevicesRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetDescription(v string) *DescribeClusterDevicesRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetEdgeNodeName(v string) *DescribeClusterDevicesRequest {
-	s.EdgeNodeName = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetOwnerId(v int64) *DescribeClusterDevicesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetPageNo(v int64) *DescribeClusterDevicesRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetPageSize(v int64) *DescribeClusterDevicesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetPlatform(v string) *DescribeClusterDevicesRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesRequest) SetSpecification(v string) *DescribeClusterDevicesRequest {
-	s.Specification = &v
-	return s
-}
-
-type DescribeClusterDevicesResponseBody struct {
-	Devices   []*DescribeClusterDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponseBody) SetDevices(v []*DescribeClusterDevicesResponseBodyDevices) *DescribeClusterDevicesResponseBody {
-	s.Devices = v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBody) SetRequestId(v string) *DescribeClusterDevicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBody) SetTotal(v int64) *DescribeClusterDevicesResponseBody {
-	s.Total = &v
-	return s
-}
-
-type DescribeClusterDevicesResponseBodyDevices struct {
-	AutoRenew          *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod    *int32                                               `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	Description        *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	EdgeNodeName       *string                                              `json:"EdgeNodeName,omitempty" xml:"EdgeNodeName,omitempty"`
-	HostRom            *string                                              `json:"HostRom,omitempty" xml:"HostRom,omitempty"`
-	ImageId            *string                                              `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceChargeType *string                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceId         *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IpInfos            []*DescribeClusterDevicesResponseBodyDevicesIpInfos  `json:"IpInfos,omitempty" xml:"IpInfos,omitempty" type:"Repeated"`
-	MacAddress         *string                                              `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	Period             *int32                                               `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string                                              `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PlatformType       *string                                              `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
-	PodInfos           []*DescribeClusterDevicesResponseBodyDevicesPodInfos `json:"PodInfos,omitempty" xml:"PodInfos,omitempty" type:"Repeated"`
-	Server             *string                                              `json:"Server,omitempty" xml:"Server,omitempty"`
-	Status             *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponseBodyDevices) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponseBodyDevices) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetAutoRenew(v bool) *DescribeClusterDevicesResponseBodyDevices {
-	s.AutoRenew = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetAutoRenewPeriod(v int32) *DescribeClusterDevicesResponseBodyDevices {
-	s.AutoRenewPeriod = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetDescription(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetEdgeNodeName(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.EdgeNodeName = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetHostRom(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.HostRom = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetImageId(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.ImageId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetInstanceChargeType(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.InstanceChargeType = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetInstanceId(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetInstanceName(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetIpInfos(v []*DescribeClusterDevicesResponseBodyDevicesIpInfos) *DescribeClusterDevicesResponseBodyDevices {
-	s.IpInfos = v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetMacAddress(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.MacAddress = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetPeriod(v int32) *DescribeClusterDevicesResponseBodyDevices {
-	s.Period = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetPeriodUnit(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetPlatformType(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.PlatformType = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetPodInfos(v []*DescribeClusterDevicesResponseBodyDevicesPodInfos) *DescribeClusterDevicesResponseBodyDevices {
-	s.PodInfos = v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetServer(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.Server = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevices) SetStatus(v string) *DescribeClusterDevicesResponseBodyDevices {
-	s.Status = &v
-	return s
-}
-
-type DescribeClusterDevicesResponseBodyDevicesIpInfos struct {
-	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatType      *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesIpInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesIpInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetExternalIp(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.ExternalIp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetExternalPort(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.ExternalPort = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetISP(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.ISP = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetInternalIp(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.InternalIp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetInternalPort(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.InternalPort = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetIpProtocol(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.IpProtocol = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesIpInfos) SetNatType(v string) *DescribeClusterDevicesResponseBodyDevicesIpInfos {
-	s.NatType = &v
-	return s
-}
-
-type DescribeClusterDevicesResponseBodyDevicesPodInfos struct {
-	Network []*DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Repeated"`
-	PodId   *string                                                     `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodIp   *string                                                     `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	Status  *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesPodInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesPodInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfos) SetNetwork(v []*DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) *DescribeClusterDevicesResponseBodyDevicesPodInfos {
-	s.Network = v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfos) SetPodId(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfos {
-	s.PodId = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfos) SetPodIp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfos {
-	s.PodIp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfos) SetStatus(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfos {
-	s.Status = &v
-	return s
-}
-
-type DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork struct {
-	ContainerPorts *string `json:"ContainerPorts,omitempty" xml:"ContainerPorts,omitempty"`
-	ExternalIp     *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalIsp    *string `json:"ExternalIsp,omitempty" xml:"ExternalIsp,omitempty"`
-	ExternalPorts  *string `json:"ExternalPorts,omitempty" xml:"ExternalPorts,omitempty"`
-	OutgoingIp     *string `json:"OutgoingIp,omitempty" xml:"OutgoingIp,omitempty"`
-	OutgoingIsp    *string `json:"OutgoingIsp,omitempty" xml:"OutgoingIsp,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetContainerPorts(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.ContainerPorts = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalIp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.ExternalIp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalIsp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.ExternalIsp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalPorts(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.ExternalPorts = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.OutgoingIp = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIsp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
-	s.OutgoingIsp = &v
-	return s
-}
-
-type DescribeClusterDevicesResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeClusterDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeClusterDevicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterDevicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterDevicesResponse) SetHeaders(v map[string]*string) *DescribeClusterDevicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponse) SetStatusCode(v int32) *DescribeClusterDevicesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeClusterDevicesResponse) SetBody(v *DescribeClusterDevicesResponseBody) *DescribeClusterDevicesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeClustersRequest struct {
-	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo   *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s DescribeClustersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersRequest) SetOwnerId(v int64) *DescribeClustersRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeClustersRequest) SetPageNo(v int64) *DescribeClustersRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribeClustersRequest) SetPageSize(v int64) *DescribeClustersRequest {
-	s.PageSize = &v
-	return s
-}
-
-type DescribeClustersResponseBody struct {
-	Clusters  []*DescribeClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int64                                  `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s DescribeClustersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponseBody) SetClusters(v []*DescribeClustersResponseBodyClusters) *DescribeClustersResponseBody {
-	s.Clusters = v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetRequestId(v string) *DescribeClustersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBody) SetTotal(v int64) *DescribeClustersResponseBody {
-	s.Total = &v
-	return s
-}
-
-type DescribeClustersResponseBodyClusters struct {
-	ClusterId     *string                                              `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description   *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
-	InternalPorts []*DescribeClustersResponseBodyClustersInternalPorts `json:"InternalPorts,omitempty" xml:"InternalPorts,omitempty" type:"Repeated"`
-	MaintainTime  *string                                              `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	Name          *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status        *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeClustersResponseBodyClusters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponseBodyClusters) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetClusterId(v string) *DescribeClustersResponseBodyClusters {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetDescription(v string) *DescribeClustersResponseBodyClusters {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetInternalPorts(v []*DescribeClustersResponseBodyClustersInternalPorts) *DescribeClustersResponseBodyClusters {
-	s.InternalPorts = v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetMaintainTime(v string) *DescribeClustersResponseBodyClusters {
-	s.MaintainTime = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetName(v string) *DescribeClustersResponseBodyClusters {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClusters) SetStatus(v string) *DescribeClustersResponseBodyClusters {
-	s.Status = &v
-	return s
-}
-
-type DescribeClustersResponseBodyClustersInternalPorts struct {
-	IpProtocol *string   `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Platform   *string   `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Port       []*string `json:"Port,omitempty" xml:"Port,omitempty" type:"Repeated"`
-}
-
-func (s DescribeClustersResponseBodyClustersInternalPorts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponseBodyClustersInternalPorts) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponseBodyClustersInternalPorts) SetIpProtocol(v string) *DescribeClustersResponseBodyClustersInternalPorts {
-	s.IpProtocol = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClustersInternalPorts) SetPlatform(v string) *DescribeClustersResponseBodyClustersInternalPorts {
-	s.Platform = &v
-	return s
-}
-
-func (s *DescribeClustersResponseBodyClustersInternalPorts) SetPort(v []*string) *DescribeClustersResponseBodyClustersInternalPorts {
-	s.Port = v
-	return s
-}
-
-type DescribeClustersResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeClustersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClustersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClustersResponse) SetHeaders(v map[string]*string) *DescribeClustersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClustersResponse) SetStatusCode(v int32) *DescribeClustersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeClustersResponse) SetBody(v *DescribeClustersResponseBody) *DescribeClustersResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeContainerInstanceIdRequest struct {
-	// This parameter is required.
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// This parameter is required.
-	PodIndex *int32 `json:"PodIndex,omitempty" xml:"PodIndex,omitempty"`
-}
-
-func (s DescribeContainerInstanceIdRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerInstanceIdRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerInstanceIdRequest) SetNodeName(v string) *DescribeContainerInstanceIdRequest {
-	s.NodeName = &v
-	return s
-}
-
-func (s *DescribeContainerInstanceIdRequest) SetOwnerId(v int64) *DescribeContainerInstanceIdRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeContainerInstanceIdRequest) SetPodIndex(v int32) *DescribeContainerInstanceIdRequest {
-	s.PodIndex = &v
-	return s
-}
-
-type DescribeContainerInstanceIdResponseBody struct {
-	InstanceDetail *DescribeContainerInstanceIdResponseBodyInstanceDetail `json:"InstanceDetail,omitempty" xml:"InstanceDetail,omitempty" type:"Struct"`
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeContainerInstanceIdResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerInstanceIdResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerInstanceIdResponseBody) SetInstanceDetail(v *DescribeContainerInstanceIdResponseBodyInstanceDetail) *DescribeContainerInstanceIdResponseBody {
-	s.InstanceDetail = v
-	return s
-}
-
-func (s *DescribeContainerInstanceIdResponseBody) SetRequestId(v string) *DescribeContainerInstanceIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeContainerInstanceIdResponseBodyInstanceDetail struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-}
-
-func (s DescribeContainerInstanceIdResponseBodyInstanceDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerInstanceIdResponseBodyInstanceDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerInstanceIdResponseBodyInstanceDetail) SetInstanceId(v string) *DescribeContainerInstanceIdResponseBodyInstanceDetail {
-	s.InstanceId = &v
-	return s
-}
-
-type DescribeContainerInstanceIdResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeContainerInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeContainerInstanceIdResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeContainerInstanceIdResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeContainerInstanceIdResponse) SetHeaders(v map[string]*string) *DescribeContainerInstanceIdResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeContainerInstanceIdResponse) SetStatusCode(v int32) *DescribeContainerInstanceIdResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeContainerInstanceIdResponse) SetBody(v *DescribeContainerInstanceIdResponseBody) *DescribeContainerInstanceIdResponse {
 	s.Body = v
 	return s
 }
@@ -11585,12 +10907,14 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string                                               `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	RenderingSpec       *string                                               `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
 	RenderingStatus     *DescribeRenderingInstanceResponseBodyRenderingStatus `json:"RenderingStatus,omitempty" xml:"RenderingStatus,omitempty" type:"Struct"`
 	// example:
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemInfo *DescribeRenderingInstanceResponseBodySystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageSize *int32                                           `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SystemInfo  *DescribeRenderingInstanceResponseBodySystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenderingInstanceResponseBody) String() string {
@@ -11626,6 +10950,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetRenderingInstanceId(v string)
 	return s
 }
 
+func (s *DescribeRenderingInstanceResponseBody) SetRenderingSpec(v string) *DescribeRenderingInstanceResponseBody {
+	s.RenderingSpec = &v
+	return s
+}
+
 func (s *DescribeRenderingInstanceResponseBody) SetRenderingStatus(v *DescribeRenderingInstanceResponseBodyRenderingStatus) *DescribeRenderingInstanceResponseBody {
 	s.RenderingStatus = v
 	return s
@@ -11633,6 +10962,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetRenderingStatus(v *DescribeRe
 
 func (s *DescribeRenderingInstanceResponseBody) SetRequestId(v string) *DescribeRenderingInstanceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBody) SetStorageSize(v int32) *DescribeRenderingInstanceResponseBody {
+	s.StorageSize = &v
 	return s
 }
 
@@ -13713,146 +13047,6 @@ func (s *DescribeTemplatesResponse) SetStatusCode(v int32) *DescribeTemplatesRes
 }
 
 func (s *DescribeTemplatesResponse) SetBody(v *DescribeTemplatesResponseBody) *DescribeTemplatesResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeUserDevicesRequest struct {
-	EnsInstanceIds *string `json:"EnsInstanceIds,omitempty" xml:"EnsInstanceIds,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ServerName     *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
-}
-
-func (s DescribeUserDevicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserDevicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserDevicesRequest) SetEnsInstanceIds(v string) *DescribeUserDevicesRequest {
-	s.EnsInstanceIds = &v
-	return s
-}
-
-func (s *DescribeUserDevicesRequest) SetOwnerId(v int64) *DescribeUserDevicesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeUserDevicesRequest) SetServerName(v string) *DescribeUserDevicesRequest {
-	s.ServerName = &v
-	return s
-}
-
-type DescribeUserDevicesResponseBody struct {
-	List      []*DescribeUserDevicesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeUserDevicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserDevicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserDevicesResponseBody) SetList(v []*DescribeUserDevicesResponseBodyList) *DescribeUserDevicesResponseBody {
-	s.List = v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBody) SetRequestId(v string) *DescribeUserDevicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeUserDevicesResponseBodyList struct {
-	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	EdgeNodeName  *string `json:"EdgeNodeName,omitempty" xml:"EdgeNodeName,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	MatrixId      *string `json:"MatrixId,omitempty" xml:"MatrixId,omitempty"`
-	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeUserDevicesResponseBodyList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserDevicesResponseBodyList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetAliUid(v string) *DescribeUserDevicesResponseBodyList {
-	s.AliUid = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetEdgeNodeName(v string) *DescribeUserDevicesResponseBodyList {
-	s.EdgeNodeName = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetInstanceId(v string) *DescribeUserDevicesResponseBodyList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetMacAddress(v string) *DescribeUserDevicesResponseBodyList {
-	s.MacAddress = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetMatrixId(v string) *DescribeUserDevicesResponseBodyList {
-	s.MatrixId = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetServer(v string) *DescribeUserDevicesResponseBodyList {
-	s.Server = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetSpecification(v string) *DescribeUserDevicesResponseBodyList {
-	s.Specification = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponseBodyList) SetStatus(v string) *DescribeUserDevicesResponseBodyList {
-	s.Status = &v
-	return s
-}
-
-type DescribeUserDevicesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DescribeUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DescribeUserDevicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserDevicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserDevicesResponse) SetHeaders(v map[string]*string) *DescribeUserDevicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeUserDevicesResponse) SetStatusCode(v int32) *DescribeUserDevicesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeUserDevicesResponse) SetBody(v *DescribeUserDevicesResponseBody) *DescribeUserDevicesResponse {
 	s.Body = v
 	return s
 }
@@ -19978,6 +19172,191 @@ func (s *ListPublicKeysResponse) SetBody(v *ListPublicKeysResponseBody) *ListPub
 	return s
 }
 
+type ListRenderingInstanceGatewayRequest struct {
+	// example:
+	//
+	// render-xxx
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s ListRenderingInstanceGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingInstanceGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetGatewayInstanceId(v string) *ListRenderingInstanceGatewayRequest {
+	s.GatewayInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetPageNumber(v int64) *ListRenderingInstanceGatewayRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetPageSize(v int64) *ListRenderingInstanceGatewayRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayRequest) SetRenderingInstanceId(v string) *ListRenderingInstanceGatewayRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type ListRenderingInstanceGatewayResponseBody struct {
+	GatewayConfigurationInfos []*ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos `json:"GatewayConfigurationInfos,omitempty" xml:"GatewayConfigurationInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRenderingInstanceGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingInstanceGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingInstanceGatewayResponseBody) SetGatewayConfigurationInfos(v []*ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) *ListRenderingInstanceGatewayResponseBody {
+	s.GatewayConfigurationInfos = v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBody) SetPageNumber(v string) *ListRenderingInstanceGatewayResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBody) SetPageSize(v string) *ListRenderingInstanceGatewayResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBody) SetRequestId(v string) *ListRenderingInstanceGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBody) SetTotalCount(v string) *ListRenderingInstanceGatewayResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos struct {
+	// example:
+	//
+	// 2024-10-15 10:19:13
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// render-xxx
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" xml:"GatewayInstanceId,omitempty"`
+	// example:
+	//
+	// render-342012a227dc4ddf91f024639e43051a
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// example:
+	//
+	// available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-11-02 12:08:26
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) SetCreationTime(v string) *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) SetGatewayInstanceId(v string) *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos {
+	s.GatewayInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) SetRenderingInstanceId(v string) *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) SetStatus(v string) *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos) SetUpdateTime(v string) *ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListRenderingInstanceGatewayResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRenderingInstanceGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRenderingInstanceGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingInstanceGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingInstanceGatewayResponse) SetHeaders(v map[string]*string) *ListRenderingInstanceGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponse) SetStatusCode(v int32) *ListRenderingInstanceGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRenderingInstanceGatewayResponse) SetBody(v *ListRenderingInstanceGatewayResponseBody) *ListRenderingInstanceGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type ListRenderingInstancesRequest struct {
 	// example:
 	//
@@ -19995,6 +19374,7 @@ type ListRenderingInstancesRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	StorageSize   *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s ListRenderingInstancesRequest) String() string {
@@ -20022,6 +19402,11 @@ func (s *ListRenderingInstancesRequest) SetRenderingInstanceId(v string) *ListRe
 
 func (s *ListRenderingInstancesRequest) SetRenderingSpec(v string) *ListRenderingInstancesRequest {
 	s.RenderingSpec = &v
+	return s
+}
+
+func (s *ListRenderingInstancesRequest) SetStorageSize(v int32) *ListRenderingInstancesRequest {
+	s.StorageSize = &v
 	return s
 }
 
@@ -20073,6 +19458,7 @@ type ListRenderingInstancesResponseBodyRenderingInstances struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	StorageSize   *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 }
 
 func (s ListRenderingInstancesResponseBodyRenderingInstances) String() string {
@@ -20095,6 +19481,11 @@ func (s *ListRenderingInstancesResponseBodyRenderingInstances) SetRenderingInsta
 
 func (s *ListRenderingInstancesResponseBodyRenderingInstances) SetRenderingSpec(v string) *ListRenderingInstancesResponseBodyRenderingInstances {
 	s.RenderingSpec = &v
+	return s
+}
+
+func (s *ListRenderingInstancesResponseBodyRenderingInstances) SetStorageSize(v int32) *ListRenderingInstancesResponseBodyRenderingInstances {
+	s.StorageSize = &v
 	return s
 }
 
@@ -21268,6 +20659,97 @@ func (s *ModifyParentPlatformResponse) SetBody(v *ModifyParentPlatformResponseBo
 	return s
 }
 
+type ModifyRenderingInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// example:
+	//
+	// crs.cp.l1
+	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
+	// example:
+	//
+	// 20
+	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+}
+
+func (s ModifyRenderingInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRenderingInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRenderingInstanceRequest) SetRenderingInstanceId(v string) *ModifyRenderingInstanceRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ModifyRenderingInstanceRequest) SetRenderingSpec(v string) *ModifyRenderingInstanceRequest {
+	s.RenderingSpec = &v
+	return s
+}
+
+func (s *ModifyRenderingInstanceRequest) SetStorageSize(v string) *ModifyRenderingInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+type ModifyRenderingInstanceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 6DFE7B89-8532-566F-B5CE-924B10FCE7AC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyRenderingInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRenderingInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRenderingInstanceResponseBody) SetRequestId(v string) *ModifyRenderingInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyRenderingInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyRenderingInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyRenderingInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRenderingInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRenderingInstanceResponse) SetHeaders(v map[string]*string) *ModifyRenderingInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRenderingInstanceResponse) SetStatusCode(v int32) *ModifyRenderingInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRenderingInstanceResponse) SetBody(v *ModifyRenderingInstanceResponseBody) *ModifyRenderingInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyRenderingInstanceBandwidthRequest struct {
 	// example:
 	//
@@ -21815,6 +21297,79 @@ func (s *RebootRenderingInstanceResponse) SetStatusCode(v int32) *RebootRenderin
 }
 
 func (s *RebootRenderingInstanceResponse) SetBody(v *RebootRenderingInstanceResponseBody) *RebootRenderingInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ReleaseRenderingDataPackageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dp-9f8c57355d224ad7beaf95e145f22111
+	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+}
+
+func (s ReleaseRenderingDataPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseRenderingDataPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseRenderingDataPackageRequest) SetDataPackageId(v string) *ReleaseRenderingDataPackageRequest {
+	s.DataPackageId = &v
+	return s
+}
+
+type ReleaseRenderingDataPackageResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 5BEF36E7-3838-5B92-BA32-87DBF1425ABC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseRenderingDataPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseRenderingDataPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseRenderingDataPackageResponseBody) SetRequestId(v string) *ReleaseRenderingDataPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseRenderingDataPackageResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseRenderingDataPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseRenderingDataPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseRenderingDataPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseRenderingDataPackageResponse) SetHeaders(v map[string]*string) *ReleaseRenderingDataPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseRenderingDataPackageResponse) SetStatusCode(v int32) *ReleaseRenderingDataPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseRenderingDataPackageResponse) SetBody(v *ReleaseRenderingDataPackageResponseBody) *ReleaseRenderingDataPackageResponse {
 	s.Body = v
 	return s
 }
@@ -24521,112 +24076,6 @@ func (s *UpdateCloudAppInfoResponse) SetBody(v *UpdateCloudAppInfoResponseBody) 
 	return s
 }
 
-type UpdateClusterRequest struct {
-	// This parameter is required.
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EffectiveTime   *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	InternalPorts   *string `json:"InternalPorts,omitempty" xml:"InternalPorts,omitempty"`
-	MaintainTime    *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-}
-
-func (s UpdateClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterRequest) SetClusterId(v string) *UpdateClusterRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetDescription(v string) *UpdateClusterRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetEffectiveTime(v string) *UpdateClusterRequest {
-	s.EffectiveTime = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetInternalPorts(v string) *UpdateClusterRequest {
-	s.InternalPorts = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetMaintainTime(v string) *UpdateClusterRequest {
-	s.MaintainTime = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetName(v string) *UpdateClusterRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetOwnerId(v int64) *UpdateClusterRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateClusterRequest) SetSecurityGroupId(v string) *UpdateClusterRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-type UpdateClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterResponseBody) SetRequestId(v string) *UpdateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateClusterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdateClusterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdateClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateClusterResponse) SetHeaders(v map[string]*string) *UpdateClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateClusterResponse) SetStatusCode(v int32) *UpdateClusterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateClusterResponse) SetBody(v *UpdateClusterResponseBody) *UpdateClusterResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateFileInfoRequest struct {
 	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -27162,78 +26611,6 @@ func (client *Client) ContinuousMove(request *ContinuousMoveRequest) (_result *C
 	return _result, _err
 }
 
-// @param request - CreateClusterRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateClusterResponse
-func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InternalPorts)) {
-		query["InternalPorts"] = request.InternalPorts
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaintainTime)) {
-		query["MaintainTime"] = request.MaintainTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		query["SecurityGroupId"] = request.SecurityGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateCluster"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateClusterRequest
-//
-// @return CreateClusterResponse
-func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateClusterResponse{}
-	_body, _err := client.CreateClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // @param request - CreateDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -27712,6 +27089,70 @@ func (client *Client) CreateParentPlatform(request *CreateParentPlatformRequest)
 
 // Summary:
 //
+// 创建云渲染数据包
+//
+// @param request - CreateRenderingDataPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRenderingDataPackageResponse
+func (client *Client) CreateRenderingDataPackageWithOptions(request *CreateRenderingDataPackageRequest, runtime *util.RuntimeOptions) (_result *CreateRenderingDataPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRenderingDataPackage"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRenderingDataPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建云渲染数据包
+//
+// @param request - CreateRenderingDataPackageRequest
+//
+// @return CreateRenderingDataPackageResponse
+func (client *Client) CreateRenderingDataPackage(request *CreateRenderingDataPackageRequest) (_result *CreateRenderingDataPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRenderingDataPackageResponse{}
+	_body, _err := client.CreateRenderingDataPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 申请云渲染资源实例
 //
 // @param tmpReq - CreateRenderingInstanceRequest
@@ -27739,6 +27180,10 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 		query["ClientInfo"] = request.ClientInfoShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
@@ -27757,6 +27202,10 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 
 	if !tea.BoolValue(util.IsUnset(request.RenderingSpec)) {
 		query["RenderingSpec"] = request.RenderingSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27793,6 +27242,70 @@ func (client *Client) CreateRenderingInstance(request *CreateRenderingInstanceRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRenderingInstanceResponse{}
 	_body, _err := client.CreateRenderingInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义网关
+//
+// @param request - CreateRenderingInstanceGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRenderingInstanceGatewayResponse
+func (client *Client) CreateRenderingInstanceGatewayWithOptions(request *CreateRenderingInstanceGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateRenderingInstanceGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayInstanceId)) {
+		query["GatewayInstanceId"] = request.GatewayInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRenderingInstanceGateway"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRenderingInstanceGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自定义网关
+//
+// @param request - CreateRenderingInstanceGatewayRequest
+//
+// @return CreateRenderingInstanceGatewayResponse
+func (client *Client) CreateRenderingInstanceGateway(request *CreateRenderingInstanceGatewayRequest) (_result *CreateRenderingInstanceGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRenderingInstanceGatewayResponse{}
+	_body, _err := client.CreateRenderingInstanceGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28045,62 +27558,6 @@ func (client *Client) DeleteCloudApp(request *DeleteCloudAppRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCloudAppResponse{}
 	_body, _err := client.DeleteCloudAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DeleteClusterRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteClusterResponse
-func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteCluster"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteClusterRequest
-//
-// @return DeleteClusterResponse
-func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *DeleteClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteClusterResponse{}
-	_body, _err := client.DeleteClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28584,6 +28041,66 @@ func (client *Client) DeleteRenderingInstanceConfiguration(request *DeleteRender
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义网关
+//
+// @param request - DeleteRenderingInstanceGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRenderingInstanceGatewayResponse
+func (client *Client) DeleteRenderingInstanceGatewayWithOptions(request *DeleteRenderingInstanceGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteRenderingInstanceGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRenderingInstanceGateway"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRenderingInstanceGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义网关
+//
+// @param request - DeleteRenderingInstanceGatewayRequest
+//
+// @return DeleteRenderingInstanceGatewayResponse
+func (client *Client) DeleteRenderingInstanceGateway(request *DeleteRenderingInstanceGatewayRequest) (_result *DeleteRenderingInstanceGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRenderingInstanceGatewayResponse{}
+	_body, _err := client.DeleteRenderingInstanceGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -28809,262 +28326,6 @@ func (client *Client) DescribeAccountStat(request *DescribeAccountStatRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountStatResponse{}
 	_body, _err := client.DescribeAccountStatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DescribeClusterRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeClusterResponse
-func (client *Client) DescribeClusterWithOptions(request *DescribeClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeCluster"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeClusterRequest
-//
-// @return DescribeClusterResponse
-func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result *DescribeClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeClusterResponse{}
-	_body, _err := client.DescribeClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DescribeClusterDevicesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeClusterDevicesResponse
-func (client *Client) DescribeClusterDevicesWithOptions(request *DescribeClusterDevicesRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterDevicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EdgeNodeName)) {
-		query["EdgeNodeName"] = request.EdgeNodeName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Platform)) {
-		query["Platform"] = request.Platform
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Specification)) {
-		query["Specification"] = request.Specification
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeClusterDevices"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeClusterDevicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeClusterDevicesRequest
-//
-// @return DescribeClusterDevicesResponse
-func (client *Client) DescribeClusterDevices(request *DescribeClusterDevicesRequest) (_result *DescribeClusterDevicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeClusterDevicesResponse{}
-	_body, _err := client.DescribeClusterDevicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DescribeClustersRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeClustersResponse
-func (client *Client) DescribeClustersWithOptions(request *DescribeClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeClustersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeClusters"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeClustersRequest
-//
-// @return DescribeClustersResponse
-func (client *Client) DescribeClusters(request *DescribeClustersRequest) (_result *DescribeClustersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeClustersResponse{}
-	_body, _err := client.DescribeClustersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DescribeContainerInstanceIdRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeContainerInstanceIdResponse
-func (client *Client) DescribeContainerInstanceIdWithOptions(request *DescribeContainerInstanceIdRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerInstanceIdResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
-		query["NodeName"] = request.NodeName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PodIndex)) {
-		query["PodIndex"] = request.PodIndex
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeContainerInstanceId"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeContainerInstanceIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeContainerInstanceIdRequest
-//
-// @return DescribeContainerInstanceIdResponse
-func (client *Client) DescribeContainerInstanceId(request *DescribeContainerInstanceIdRequest) (_result *DescribeContainerInstanceIdResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeContainerInstanceIdResponse{}
-	_body, _err := client.DescribeContainerInstanceIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30851,66 +30112,6 @@ func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTemplatesResponse{}
 	_body, _err := client.DescribeTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - DescribeUserDevicesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeUserDevicesResponse
-func (client *Client) DescribeUserDevicesWithOptions(request *DescribeUserDevicesRequest, runtime *util.RuntimeOptions) (_result *DescribeUserDevicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EnsInstanceIds)) {
-		query["EnsInstanceIds"] = request.EnsInstanceIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServerName)) {
-		query["ServerName"] = request.ServerName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeUserDevices"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeUserDevicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeUserDevicesRequest
-//
-// @return DescribeUserDevicesResponse
-func (client *Client) DescribeUserDevices(request *DescribeUserDevicesRequest) (_result *DescribeUserDevicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeUserDevicesResponse{}
-	_body, _err := client.DescribeUserDevicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33100,6 +32301,78 @@ func (client *Client) ListPublicKeys(request *ListPublicKeysRequest) (_result *L
 
 // Summary:
 //
+// 查询自定义网关
+//
+// @param request - ListRenderingInstanceGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRenderingInstanceGatewayResponse
+func (client *Client) ListRenderingInstanceGatewayWithOptions(request *ListRenderingInstanceGatewayRequest, runtime *util.RuntimeOptions) (_result *ListRenderingInstanceGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayInstanceId)) {
+		query["GatewayInstanceId"] = request.GatewayInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRenderingInstanceGateway"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRenderingInstanceGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义网关
+//
+// @param request - ListRenderingInstanceGatewayRequest
+//
+// @return ListRenderingInstanceGatewayResponse
+func (client *Client) ListRenderingInstanceGateway(request *ListRenderingInstanceGatewayRequest) (_result *ListRenderingInstanceGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRenderingInstanceGatewayResponse{}
+	_body, _err := client.ListRenderingInstanceGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询所有云渲染实例信息，支持分页查询。
 //
 // @param request - ListRenderingInstancesRequest
@@ -33820,6 +33093,74 @@ func (client *Client) ModifyParentPlatform(request *ModifyParentPlatformRequest)
 
 // Summary:
 //
+// 变配云渲染资源实例
+//
+// @param request - ModifyRenderingInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRenderingInstanceResponse
+func (client *Client) ModifyRenderingInstanceWithOptions(request *ModifyRenderingInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyRenderingInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingSpec)) {
+		query["RenderingSpec"] = request.RenderingSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRenderingInstance"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRenderingInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 变配云渲染资源实例
+//
+// @param request - ModifyRenderingInstanceRequest
+//
+// @return ModifyRenderingInstanceResponse
+func (client *Client) ModifyRenderingInstance(request *ModifyRenderingInstanceRequest) (_result *ModifyRenderingInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRenderingInstanceResponse{}
+	_body, _err := client.ModifyRenderingInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改云渲染实例限速带宽
 //
 // @param request - ModifyRenderingInstanceBandwidthRequest
@@ -34174,6 +33515,66 @@ func (client *Client) RebootRenderingInstance(request *RebootRenderingInstanceRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootRenderingInstanceResponse{}
 	_body, _err := client.RebootRenderingInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放云渲染数据包
+//
+// @param request - ReleaseRenderingDataPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseRenderingDataPackageResponse
+func (client *Client) ReleaseRenderingDataPackageWithOptions(request *ReleaseRenderingDataPackageRequest, runtime *util.RuntimeOptions) (_result *ReleaseRenderingDataPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataPackageId)) {
+		query["DataPackageId"] = request.DataPackageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseRenderingDataPackage"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseRenderingDataPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放云渲染数据包
+//
+// @param request - ReleaseRenderingDataPackageRequest
+//
+// @return ReleaseRenderingDataPackageResponse
+func (client *Client) ReleaseRenderingDataPackage(request *ReleaseRenderingDataPackageRequest) (_result *ReleaseRenderingDataPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseRenderingDataPackageResponse{}
+	_body, _err := client.ReleaseRenderingDataPackageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35944,86 +35345,6 @@ func (client *Client) UpdateCloudAppInfo(request *UpdateCloudAppInfoRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCloudAppInfoResponse{}
 	_body, _err := client.UpdateCloudAppInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// @param request - UpdateClusterRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateClusterResponse
-func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
-		query["EffectiveTime"] = request.EffectiveTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InternalPorts)) {
-		query["InternalPorts"] = request.InternalPorts
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaintainTime)) {
-		query["MaintainTime"] = request.MaintainTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		query["SecurityGroupId"] = request.SecurityGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateCluster"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateClusterRequest
-//
-// @return UpdateClusterResponse
-func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *UpdateClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateClusterResponse{}
-	_body, _err := client.UpdateClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
