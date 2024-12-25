@@ -245,7 +245,8 @@ type CreateDialogRequest struct {
 	// example:
 	//
 	// taobao
-	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	Channel       *string `json:"channel,omitempty" xml:"channel,omitempty"`
+	EnableLibrary *bool   `json:"enableLibrary,omitempty" xml:"enableLibrary,omitempty"`
 	// example:
 	//
 	// null
@@ -255,15 +256,15 @@ type CreateDialogRequest struct {
 	// example:
 	//
 	// live_broadcast_qa
-	PlayCode *string `json:"playCode,omitempty" xml:"playCode,omitempty"`
-	// This parameter is required.
+	PlayCode      *string   `json:"playCode,omitempty" xml:"playCode,omitempty"`
 	QaLibraryList []*string `json:"qaLibraryList,omitempty" xml:"qaLibraryList,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ebf83826-dc1c-46f8-9759-0fb6da4c8xxx
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SelfDirected *bool   `json:"selfDirected,omitempty" xml:"selfDirected,omitempty"`
 }
 
 func (s CreateDialogRequest) String() string {
@@ -276,6 +277,11 @@ func (s CreateDialogRequest) GoString() string {
 
 func (s *CreateDialogRequest) SetChannel(v string) *CreateDialogRequest {
 	s.Channel = &v
+	return s
+}
+
+func (s *CreateDialogRequest) SetEnableLibrary(v bool) *CreateDialogRequest {
+	s.EnableLibrary = &v
 	return s
 }
 
@@ -296,6 +302,11 @@ func (s *CreateDialogRequest) SetQaLibraryList(v []*string) *CreateDialogRequest
 
 func (s *CreateDialogRequest) SetRequestId(v string) *CreateDialogRequest {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDialogRequest) SetSelfDirected(v bool) *CreateDialogRequest {
+	s.SelfDirected = &v
 	return s
 }
 
@@ -380,6 +391,7 @@ func (s *CreateDialogResponseBody) SetTime(v string) *CreateDialogResponseBody {
 }
 
 type CreateDialogResponseBodyData struct {
+	OpeningRemarks *string `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
 	// example:
 	//
 	// 1728545917713234
@@ -392,6 +404,11 @@ func (s CreateDialogResponseBodyData) String() string {
 
 func (s CreateDialogResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDialogResponseBodyData) SetOpeningRemarks(v string) *CreateDialogResponseBodyData {
+	s.OpeningRemarks = &v
+	return s
 }
 
 func (s *CreateDialogResponseBodyData) SetSessionId(v string) *CreateDialogResponseBodyData {
@@ -7716,6 +7733,488 @@ func (s *ReIndexResponse) SetBody(v *ReIndexResponseBody) *ReIndexResponse {
 	return s
 }
 
+type RealTimeDialogRequest struct {
+	// example:
+	//
+	// false
+	Analysis *bool `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// example:
+	//
+	// mixIntentChat
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// This parameter is required.
+	ConversationModel []*RealTimeDialogRequestConversationModel `json:"conversationModel,omitempty" xml:"conversationModel,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	DialogMemoryTurns *int32                 `json:"dialogMemoryTurns,omitempty" xml:"dialogMemoryTurns,omitempty"`
+	MetaData          map[string]interface{} `json:"metaData,omitempty" xml:"metaData,omitempty"`
+	// example:
+	//
+	// false
+	Recommend *bool `json:"recommend,omitempty" xml:"recommend,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 237645726354
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// false
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s RealTimeDialogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogRequest) SetAnalysis(v bool) *RealTimeDialogRequest {
+	s.Analysis = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetBizType(v string) *RealTimeDialogRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetConversationModel(v []*RealTimeDialogRequestConversationModel) *RealTimeDialogRequest {
+	s.ConversationModel = v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetDialogMemoryTurns(v int32) *RealTimeDialogRequest {
+	s.DialogMemoryTurns = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetMetaData(v map[string]interface{}) *RealTimeDialogRequest {
+	s.MetaData = v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetRecommend(v bool) *RealTimeDialogRequest {
+	s.Recommend = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetSessionId(v string) *RealTimeDialogRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RealTimeDialogRequest) SetStream(v bool) *RealTimeDialogRequest {
+	s.Stream = &v
+	return s
+}
+
+type RealTimeDialogRequestConversationModel struct {
+	// example:
+	//
+	// 5
+	Begin *int32 `json:"begin,omitempty" xml:"begin,omitempty"`
+	// example:
+	//
+	// 2024-11-08 09:51:16
+	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 98457834685635
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// example:
+	//
+	// 1374683645635
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// example:
+	//
+	// 0
+	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// 10
+	End *int32 `json:"end,omitempty" xml:"end,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Role *int32 `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// audio
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s RealTimeDialogRequestConversationModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogRequestConversationModel) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetBegin(v int32) *RealTimeDialogRequestConversationModel {
+	s.Begin = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetBeginTime(v string) *RealTimeDialogRequestConversationModel {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetContent(v string) *RealTimeDialogRequestConversationModel {
+	s.Content = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetCustomerId(v string) *RealTimeDialogRequestConversationModel {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetCustomerServiceId(v string) *RealTimeDialogRequestConversationModel {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetCustomerServiceType(v string) *RealTimeDialogRequestConversationModel {
+	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetEnd(v int32) *RealTimeDialogRequestConversationModel {
+	s.End = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetRole(v int32) *RealTimeDialogRequestConversationModel {
+	s.Role = &v
+	return s
+}
+
+func (s *RealTimeDialogRequestConversationModel) SetType(v string) *RealTimeDialogRequestConversationModel {
+	s.Type = &v
+	return s
+}
+
+type RealTimeDialogResponseBody struct {
+	Choices []*RealTimeDialogResponseBodyChoices `json:"choices,omitempty" xml:"choices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1735139569523
+	Created *string `json:"created,omitempty" xml:"created,omitempty"`
+	// example:
+	//
+	// eb2b6139-ddf1-91a0-a47f-df7617ae9032
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RealTimeDialogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogResponseBody) SetChoices(v []*RealTimeDialogResponseBodyChoices) *RealTimeDialogResponseBody {
+	s.Choices = v
+	return s
+}
+
+func (s *RealTimeDialogResponseBody) SetCreated(v string) *RealTimeDialogResponseBody {
+	s.Created = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBody) SetId(v string) *RealTimeDialogResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBody) SetRequestId(v string) *RealTimeDialogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBody) SetSuccess(v bool) *RealTimeDialogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RealTimeDialogResponseBodyChoices struct {
+	Delta *RealTimeDialogResponseBodyChoicesDelta `json:"delta,omitempty" xml:"delta,omitempty" type:"Struct"`
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// 0
+	Index   *int32                                    `json:"index,omitempty" xml:"index,omitempty"`
+	Message *RealTimeDialogResponseBodyChoicesMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
+}
+
+func (s RealTimeDialogResponseBodyChoices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogResponseBodyChoices) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogResponseBodyChoices) SetDelta(v *RealTimeDialogResponseBodyChoicesDelta) *RealTimeDialogResponseBodyChoices {
+	s.Delta = v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoices) SetFinishReason(v string) *RealTimeDialogResponseBodyChoices {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoices) SetIndex(v int32) *RealTimeDialogResponseBodyChoices {
+	s.Index = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoices) SetMessage(v *RealTimeDialogResponseBodyChoicesMessage) *RealTimeDialogResponseBodyChoices {
+	s.Message = v
+	return s
+}
+
+type RealTimeDialogResponseBodyChoicesDelta struct {
+	// example:
+	//
+	// null
+	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// time
+	//
+	// example:
+	//
+	// null
+	CallTime *string `json:"callTime,omitempty" xml:"callTime,omitempty"`
+	// example:
+	//
+	// false
+	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
+	// example:
+	//
+	// 1853360771162058752
+	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	// example:
+	//
+	// null
+	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
+	// example:
+	//
+	// null
+	RecommendScript               *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+	SelfDirectedScript            *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	SelfDirectedScriptFullContent *string `json:"selfDirectedScriptFullContent,omitempty" xml:"selfDirectedScriptFullContent,omitempty"`
+}
+
+func (s RealTimeDialogResponseBodyChoicesDelta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogResponseBodyChoicesDelta) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetAnalysisProcess(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.AnalysisProcess = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetCallTime(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.CallTime = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetHangUpDialog(v bool) *RealTimeDialogResponseBodyChoicesDelta {
+	s.HangUpDialog = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetIntentionCode(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.IntentionCode = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetIntentionName(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.IntentionName = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetIntentionScript(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.IntentionScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetRecommendIntention(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.RecommendIntention = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetRecommendScript(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.RecommendScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetSelfDirectedScript(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.SelfDirectedScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesDelta) SetSelfDirectedScriptFullContent(v string) *RealTimeDialogResponseBodyChoicesDelta {
+	s.SelfDirectedScriptFullContent = &v
+	return s
+}
+
+type RealTimeDialogResponseBodyChoicesMessage struct {
+	// example:
+	//
+	// null
+	AnalysisProcess *string `json:"analysisProcess,omitempty" xml:"analysisProcess,omitempty"`
+	// time
+	//
+	// example:
+	//
+	// 1735139569523
+	CallTime *string `json:"callTime,omitempty" xml:"callTime,omitempty"`
+	// example:
+	//
+	// false
+	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
+	// example:
+	//
+	// 1853360771162058752
+	IntentionCode   *string `json:"intentionCode,omitempty" xml:"intentionCode,omitempty"`
+	IntentionName   *string `json:"intentionName,omitempty" xml:"intentionName,omitempty"`
+	IntentionScript *string `json:"intentionScript,omitempty" xml:"intentionScript,omitempty"`
+	// example:
+	//
+	// null
+	RecommendIntention *string `json:"recommendIntention,omitempty" xml:"recommendIntention,omitempty"`
+	// example:
+	//
+	// null
+	RecommendScript *string `json:"recommendScript,omitempty" xml:"recommendScript,omitempty"`
+	// example:
+	//
+	// null
+	SelfDirectedScript            *string `json:"selfDirectedScript,omitempty" xml:"selfDirectedScript,omitempty"`
+	SelfDirectedScriptFullContent *string `json:"selfDirectedScriptFullContent,omitempty" xml:"selfDirectedScriptFullContent,omitempty"`
+}
+
+func (s RealTimeDialogResponseBodyChoicesMessage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogResponseBodyChoicesMessage) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetAnalysisProcess(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.AnalysisProcess = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetCallTime(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.CallTime = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetHangUpDialog(v bool) *RealTimeDialogResponseBodyChoicesMessage {
+	s.HangUpDialog = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetIntentionCode(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.IntentionCode = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetIntentionName(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.IntentionName = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetIntentionScript(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.IntentionScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetRecommendIntention(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.RecommendIntention = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetRecommendScript(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.RecommendScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetSelfDirectedScript(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.SelfDirectedScript = &v
+	return s
+}
+
+func (s *RealTimeDialogResponseBodyChoicesMessage) SetSelfDirectedScriptFullContent(v string) *RealTimeDialogResponseBodyChoicesMessage {
+	s.SelfDirectedScriptFullContent = &v
+	return s
+}
+
+type RealTimeDialogResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RealTimeDialogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RealTimeDialogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RealTimeDialogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RealTimeDialogResponse) SetHeaders(v map[string]*string) *RealTimeDialogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RealTimeDialogResponse) SetStatusCode(v int32) *RealTimeDialogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RealTimeDialogResponse) SetBody(v *RealTimeDialogResponseBody) *RealTimeDialogResponse {
+	s.Body = v
+	return s
+}
+
 type RebuildTaskRequest struct {
 	// This parameter is required.
 	TaskIds []*string `json:"taskIds,omitempty" xml:"taskIds,omitempty" type:"Repeated"`
@@ -11689,6 +12188,10 @@ func (client *Client) CreateDialogWithOptions(workspaceId *string, request *Crea
 		body["channel"] = request.Channel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableLibrary)) {
+		body["enableLibrary"] = request.EnableLibrary
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
 		body["metaData"] = request.MetaData
 	}
@@ -11703,6 +12206,10 @@ func (client *Client) CreateDialogWithOptions(workspaceId *string, request *Crea
 
 	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
 		body["requestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelfDirected)) {
+		body["selfDirected"] = request.SelfDirected
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13663,6 +14170,98 @@ func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_re
 	headers := make(map[string]*string)
 	_result = &ReIndexResponse{}
 	_body, _err := client.ReIndexWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 实时对话
+//
+// @param request - RealTimeDialogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RealTimeDialogResponse
+func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RealTimeDialogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Analysis)) {
+		body["analysis"] = request.Analysis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["bizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConversationModel)) {
+		body["conversationModel"] = request.ConversationModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogMemoryTurns)) {
+		body["dialogMemoryTurns"] = request.DialogMemoryTurns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaData)) {
+		body["metaData"] = request.MetaData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
+		body["recommend"] = request.Recommend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RealTimeDialog"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/realtime/dialog/chat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RealTimeDialogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实时对话
+//
+// @param request - RealTimeDialogRequest
+//
+// @return RealTimeDialogResponse
+func (client *Client) RealTimeDialog(workspaceId *string, request *RealTimeDialogRequest) (_result *RealTimeDialogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RealTimeDialogResponse{}
+	_body, _err := client.RealTimeDialogWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
