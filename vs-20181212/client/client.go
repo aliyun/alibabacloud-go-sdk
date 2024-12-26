@@ -6075,6 +6075,10 @@ func (s *DeleteRenderingInstanceGatewayResponse) SetBody(v *DeleteRenderingInsta
 
 type DeleteTemplateRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 323*****998-cn-qingdao
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -6098,6 +6102,9 @@ func (s *DeleteTemplateRequest) SetOwnerId(v int64) *DeleteTemplateRequest {
 }
 
 type DeleteTemplateResponseBody struct {
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19172,6 +19179,202 @@ func (s *ListPublicKeysResponse) SetBody(v *ListPublicKeysResponseBody) *ListPub
 	return s
 }
 
+type ListRenderingDataPackagesRequest struct {
+	// example:
+	//
+	// dp-449ea3d16c0841b8bf33ec5bbc86a152
+	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListRenderingDataPackagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingDataPackagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingDataPackagesRequest) SetDataPackageId(v string) *ListRenderingDataPackagesRequest {
+	s.DataPackageId = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesRequest) SetPageNumber(v int32) *ListRenderingDataPackagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesRequest) SetPageSize(v int32) *ListRenderingDataPackagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesRequest) SetSize(v int32) *ListRenderingDataPackagesRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesRequest) SetStatus(v string) *ListRenderingDataPackagesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListRenderingDataPackagesResponseBody struct {
+	DataPackages []*ListRenderingDataPackagesResponseBodyDataPackages `json:"DataPackages,omitempty" xml:"DataPackages,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRenderingDataPackagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingDataPackagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingDataPackagesResponseBody) SetDataPackages(v []*ListRenderingDataPackagesResponseBodyDataPackages) *ListRenderingDataPackagesResponseBody {
+	s.DataPackages = v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBody) SetRequestId(v string) *ListRenderingDataPackagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBody) SetTotalCount(v int64) *ListRenderingDataPackagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRenderingDataPackagesResponseBodyDataPackages struct {
+	// example:
+	//
+	// 2024-10-15T10:23:06+08:00
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// dp-449ea3d16c0841b8bf33ec5bbc86a152
+	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// render-342012a227dc4ddf91f024639e43051a
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2024-12-06T02:03:59Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListRenderingDataPackagesResponseBodyDataPackages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingDataPackagesResponseBodyDataPackages) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetCreationTime(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetDataPackageId(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.DataPackageId = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetDescription(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetRenderingInstanceId(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetSize(v int32) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.Size = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetStatus(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponseBodyDataPackages) SetUpdateTime(v string) *ListRenderingDataPackagesResponseBodyDataPackages {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListRenderingDataPackagesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRenderingDataPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRenderingDataPackagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRenderingDataPackagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRenderingDataPackagesResponse) SetHeaders(v map[string]*string) *ListRenderingDataPackagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponse) SetStatusCode(v int32) *ListRenderingDataPackagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRenderingDataPackagesResponse) SetBody(v *ListRenderingDataPackagesResponseBody) *ListRenderingDataPackagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListRenderingInstanceGatewayRequest struct {
 	// example:
 	//
@@ -21297,6 +21500,90 @@ func (s *RebootRenderingInstanceResponse) SetStatusCode(v int32) *RebootRenderin
 }
 
 func (s *RebootRenderingInstanceResponse) SetBody(v *RebootRenderingInstanceResponseBody) *RebootRenderingInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RecoverRenderingDataPackageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dp-449ea3d16c0841b8bf33ec5bbc86a152
+	DataPackageId *string `json:"DataPackageId,omitempty" xml:"DataPackageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// render-9f8c57355d224ad7beaf95e145f22111
+	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+}
+
+func (s RecoverRenderingDataPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverRenderingDataPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverRenderingDataPackageRequest) SetDataPackageId(v string) *RecoverRenderingDataPackageRequest {
+	s.DataPackageId = &v
+	return s
+}
+
+func (s *RecoverRenderingDataPackageRequest) SetRenderingInstanceId(v string) *RecoverRenderingDataPackageRequest {
+	s.RenderingInstanceId = &v
+	return s
+}
+
+type RecoverRenderingDataPackageResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// BEA5625F-8FCF-48F4-851B-CA63946DA664
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecoverRenderingDataPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverRenderingDataPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverRenderingDataPackageResponseBody) SetRequestId(v string) *RecoverRenderingDataPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecoverRenderingDataPackageResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecoverRenderingDataPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecoverRenderingDataPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverRenderingDataPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverRenderingDataPackageResponse) SetHeaders(v map[string]*string) *RecoverRenderingDataPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecoverRenderingDataPackageResponse) SetStatusCode(v int32) *RecoverRenderingDataPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecoverRenderingDataPackageResponse) SetBody(v *RecoverRenderingDataPackageResponseBody) *RecoverRenderingDataPackageResponse {
 	s.Body = v
 	return s
 }
@@ -32301,6 +32588,82 @@ func (client *Client) ListPublicKeys(request *ListPublicKeysRequest) (_result *L
 
 // Summary:
 //
+// 查询所有云应用数据包信息，支持分页查询。
+//
+// @param request - ListRenderingDataPackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRenderingDataPackagesResponse
+func (client *Client) ListRenderingDataPackagesWithOptions(request *ListRenderingDataPackagesRequest, runtime *util.RuntimeOptions) (_result *ListRenderingDataPackagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataPackageId)) {
+		query["DataPackageId"] = request.DataPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRenderingDataPackages"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRenderingDataPackagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有云应用数据包信息，支持分页查询。
+//
+// @param request - ListRenderingDataPackagesRequest
+//
+// @return ListRenderingDataPackagesResponse
+func (client *Client) ListRenderingDataPackages(request *ListRenderingDataPackagesRequest) (_result *ListRenderingDataPackagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRenderingDataPackagesResponse{}
+	_body, _err := client.ListRenderingDataPackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询自定义网关
 //
 // @param request - ListRenderingInstanceGatewayRequest
@@ -33515,6 +33878,70 @@ func (client *Client) RebootRenderingInstance(request *RebootRenderingInstanceRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootRenderingInstanceResponse{}
 	_body, _err := client.RebootRenderingInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复数据到云渲染实例
+//
+// @param request - RecoverRenderingDataPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecoverRenderingDataPackageResponse
+func (client *Client) RecoverRenderingDataPackageWithOptions(request *RecoverRenderingDataPackageRequest, runtime *util.RuntimeOptions) (_result *RecoverRenderingDataPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataPackageId)) {
+		query["DataPackageId"] = request.DataPackageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenderingInstanceId)) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecoverRenderingDataPackage"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecoverRenderingDataPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复数据到云渲染实例
+//
+// @param request - RecoverRenderingDataPackageRequest
+//
+// @return RecoverRenderingDataPackageResponse
+func (client *Client) RecoverRenderingDataPackage(request *RecoverRenderingDataPackageRequest) (_result *RecoverRenderingDataPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecoverRenderingDataPackageResponse{}
+	_body, _err := client.RecoverRenderingDataPackageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
