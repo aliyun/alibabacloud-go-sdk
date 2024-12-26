@@ -916,29 +916,27 @@ func (s *CheckRoleResponse) SetBody(v *CheckRoleResponseBody) *CheckRoleResponse
 }
 
 type CreateBackupJobRequest struct {
-	// The backup type. Valid values:
+	// The backup type. This parameter is required only if you set the SourceType parameter to UDM_ECS.
 	//
 	// 	- **COMPLETE**: full backup
-	//
-	// 	- **INCREMENTAL**: incremental backup
 	//
 	// example:
 	//
 	// INCREMENTAL
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the cluster.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// cl-00068btz******oku
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the cluster. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// cc-000xxxxxxxxxxxxxxi00
 	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
-	// The cluster resources. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -966,7 +964,7 @@ type CreateBackupJobRequest struct {
 	//
 	// 158975xxxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The details about ECS instance backup. The value is a JSON string.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. The value is a JSON string. Valid values:
 	//
 	// 	- doCopy: specifies whether to enable remote replication.
 	//
@@ -986,7 +984,7 @@ type CreateBackupJobRequest struct {
 	//
 	// 	- enableWriters: This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to create application-consistent snapshots.
 	//
-	//     	- true (default): creates application-consistent snapshots.
+	//     	- true: creates application-consistent snapshots.
 	//
 	//     	- false: creates file system-consistent snapshots.
 	//
@@ -1022,25 +1020,25 @@ type CreateBackupJobRequest struct {
 	//
 	// }
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the paths to the files that are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	// false or left empty
 	//
 	// example:
 	//
 	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the Elastic Compute Service (ECS) instance.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
 	//
 	// example:
 	//
@@ -1052,13 +1050,7 @@ type CreateBackupJobRequest struct {
 	//
 	// k8s-backup-infra-20220131150046-hbr
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
-	//
-	// 	- This parameter is available only for Windows ECS instances.
-	//
-	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	//
-	// 	- If you use VSS, you cannot back up data from multiple directories.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -1072,11 +1064,7 @@ type CreateBackupJobRequest struct {
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
-	//
-	// 	- **UDM_ECS**: ECS instances
-	//
-	// 	- **CONTAINER**: containers
+	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance
 	//
 	// This parameter is required.
 	//
@@ -1084,7 +1072,7 @@ type CreateBackupJobRequest struct {
 	//
 	// CONTAINER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
 	//
 	// 	- **start**: the start hour.
 	//
@@ -1096,7 +1084,7 @@ type CreateBackupJobRequest struct {
 	//
 	// 0:24:NaN
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The ID of the backup vault.
+	// The ID of the backup vault. This parameter is not required if you set the SourceType parameter to UDM_ECS.
 	//
 	// example:
 	//
@@ -1203,29 +1191,27 @@ func (s *CreateBackupJobRequest) SetVaultId(v string) *CreateBackupJobRequest {
 }
 
 type CreateBackupJobShrinkRequest struct {
-	// The backup type. Valid values:
+	// The backup type. This parameter is required only if you set the SourceType parameter to UDM_ECS.
 	//
 	// 	- **COMPLETE**: full backup
-	//
-	// 	- **INCREMENTAL**: incremental backup
 	//
 	// example:
 	//
 	// INCREMENTAL
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the cluster.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// cl-00068btz******oku
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the cluster. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// cc-000xxxxxxxxxxxxxxi00
 	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
-	// The cluster resources. This parameter is required only if you set the **SourceType*	- parameter to **CONTAINER**.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -1253,7 +1239,7 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// 158975xxxxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The details about ECS instance backup. The value is a JSON string.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. The value is a JSON string. Valid values:
 	//
 	// 	- doCopy: specifies whether to enable remote replication.
 	//
@@ -1273,7 +1259,7 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// 	- enableWriters: This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to create application-consistent snapshots.
 	//
-	//     	- true (default): creates application-consistent snapshots.
+	//     	- true: creates application-consistent snapshots.
 	//
 	//     	- false: creates file system-consistent snapshots.
 	//
@@ -1309,25 +1295,25 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// }
 	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the paths to the files that are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter specifies whether to initiate the request by using Container Service for Kubernetes (ACK). Default value: false.
+	// false or left empty
 	//
 	// example:
 	//
 	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the Elastic Compute Service (ECS) instance.
+	// This parameter is required only if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the ID of the ECS instance.
 	//
 	// example:
 	//
@@ -1339,13 +1325,7 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// k8s-backup-infra-20220131150046-hbr
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a source path.
-	//
-	// 	- This parameter is available only for Windows ECS instances.
-	//
-	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before you can set this parameter to `["UseVSS":true]`.
-	//
-	// 	- If you use VSS, you cannot back up data from multiple directories.
+	// You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -1359,11 +1339,7 @@ type CreateBackupJobShrinkRequest struct {
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
-	//
-	// 	- **UDM_ECS**: ECS instances
-	//
-	// 	- **CONTAINER**: containers
+	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance
 	//
 	// This parameter is required.
 	//
@@ -1371,7 +1347,7 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// CONTAINER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// This parameter does not take effect if you set the **SourceType*	- parameter to **UDM_ECS**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
 	//
 	// 	- **start**: the start hour.
 	//
@@ -1383,7 +1359,7 @@ type CreateBackupJobShrinkRequest struct {
 	//
 	// 0:24:NaN
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The ID of the backup vault.
+	// The ID of the backup vault. This parameter is not required if you set the SourceType parameter to UDM_ECS.
 	//
 	// example:
 	//
@@ -1589,7 +1565,7 @@ func (s *CreateBackupJobResponse) SetBody(v *CreateBackupJobResponseBody) *Creat
 }
 
 type CreateBackupPlanRequest struct {
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	// Backup type. Value: **COMPLETE**, indicating a full backup.
 	//
 	// This parameter is required.
 	//
@@ -1597,135 +1573,141 @@ type CreateBackupPlanRequest struct {
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the OSS bucket name.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	// Configuration for the incremental file synchronization list. (Required only for synchronization)
 	//
 	// example:
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	// The role name created in the RAM of the original account for cross-account backup.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// Cross-account backup type. Supported values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backup within the same account
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Cross-account backup
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	// The original account ID used for cross-account backup.
 	//
 	// example:
 	//
 	// 15897534xxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// Destination data source details. (Required only for synchronization)
+	//
 	// example:
 	//
 	// {\\"prefix\\":\\"/\\"}
 	DestDataSourceDetail map[string]interface{} `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// Destination data source ID. (Required only for synchronization)
+	//
 	// example:
 	//
 	// ds-*********************
 	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// Destination data source type. (Required only for synchronization)
+	//
 	// example:
 	//
 	// OSS
 	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
-	// The details about ECS instance backup. The value is a JSON string.
+	// Details of the whole machine backup, in JSON string format.
 	//
-	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	// 	- snapshotGroup: Whether to use a consistent snapshot group (only valid if all instance disks are ESSD).
 	//
-	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	// 	- appConsistent: Whether to use application consistency (requires the use of preScriptPath and postScriptPath parameters).
 	//
-	// 	- preScriptPath: the path to the prescript file.
+	// 	- preScriptPath: Path to the freeze script.
 	//
-	// 	- postScriptPath: the path to the postscript file.
+	// 	- postScriptPath: Path to the thaw script.
 	//
 	// example:
 	//
 	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Specifies whether to disable the plan by default.
+	// Is the plan disabled by default
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the file system ID.
 	//
 	// example:
 	//
 	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the path to be backed up, and all files under this path will be backed up. Supports up to 255 characters.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the ECS instance ID.
 	//
 	// example:
 	//
 	// i-m5e*****6q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Tablestore instance.
+	// Table store instance name.
 	//
 	// example:
 	//
 	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
+	// Whether to enable retaining at least one backup version.
 	//
-	// 	- 0: The feature is disabled.
+	// - 0 - Do not retain
 	//
-	// 	- 1: The feature is enabled.
+	// - 1 - Retain
 	//
 	// example:
 	//
 	// 1
 	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It indicates whether to use the Windows system VSS to define the backup path.
 	//
-	// 	- This parameter is available only for Windows ECS instances.
+	// - This feature only supports Windows type ECS instances.
 	//
-	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
+	// - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
 	//
-	// 	- If you use VSS, you cannot back up data from multiple directories.
+	// - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
 	//
 	// example:
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
+	// Table store instance details.
 	OtsDetail *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// The backup paths.
+	// Backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	// The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+	// Name of the backup plan. 1 to 64 characters. The name must be unique for each data source type within a single backup vault.
 	//
 	// This parameter is required.
 	//
@@ -1733,25 +1715,25 @@ type CreateBackupPlanRequest struct {
 	//
 	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the backup prefix. When specified, only objects matching the prefix are backed up.
 	//
 	// example:
 	//
 	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The retention period of backup data. Minimum value: 1. Unit: days.
+	// Number of days to retain the backup, with a minimum value of 1, in days.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The rules of the backup schedule.
+	// Backup plan rules.
 	Rule []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// Backup policy. Optional format: `I|{startTime}|{interval}`. This indicates that a backup task will be executed every `{interval}` starting from `{startTime}`. It does not compensate for missed backup tasks due to past time. If the previous backup task has not been completed, the next backup task will not be triggered. For example, `I|1631685600|P1D` means a backup is performed every day starting from 2021-09-15 14:00:00.
 	//
-	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	// - **startTime**: Start time of the backup, in UNIX timestamp, in seconds.
 	//
-	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// - **interval**: ISO8601 time interval. For example, PT1H indicates an interval of one hour, and P1D indicates an interval of one day.
 	//
 	// This parameter is required.
 	//
@@ -1759,17 +1741,17 @@ type CreateBackupPlanRequest struct {
 	//
 	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The type of the data source. Valid values:
+	// Data source type, with the following options:
 	//
-	// 	- **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
+	// - **ECS_FILE**: Backs up ECS files
 	//
-	// 	- **OSS**: backs up Object Storage Service (OSS) buckets.
+	// - **OSS**: Backs up Alibaba Cloud OSS
 	//
-	// 	- **NAS**: backs up Apsara File Storage NAS file systems.
+	// - **NAS**: Backs up Alibaba Cloud NAS
 	//
-	// 	- **OTS**: backs up Tablestore instances.
+	// - **OTS**: Backs up Alibaba Cloud OTS
 	//
-	// 	- **UDM_ECS**: backs up ECS instances.
+	// - **UDM_ECS**: Backs up the entire ECS instance
 	//
 	// This parameter is required.
 	//
@@ -1777,25 +1759,25 @@ type CreateBackupPlanRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the backup traffic control. Format: `{start}:{end}:{bandwidth}`. Multiple traffic control configurations are separated by |, and the configured times should not overlap.
 	//
-	// 	- **start**: the start hour.
+	// - **start**: Start hour.
 	//
-	// 	- **end**: the end hour.
+	// - **end**: End hour.
 	//
-	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	// - **bandwidth**: Limit rate, in KB/s.
 	//
 	// example:
 	//
 	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The region in which the ECS instance that you want to back up resides.
+	// Region where the whole machine backup instance is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// The ID of the backup vault.
+	// Backup vault ID.
 	//
 	// example:
 	//
@@ -1962,51 +1944,53 @@ func (s *CreateBackupPlanRequest) SetVaultId(v string) *CreateBackupPlanRequest 
 }
 
 type CreateBackupPlanRequestRule struct {
-	// The backup type.
+	// Backup type.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the region to which data is replicated.
+	// ID of the region for offsite replication.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The retention period of the backup data in geo-redundancy mode. Unit: days.
+	// Number of days to retain offsite backups.
 	//
 	// example:
 	//
 	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// Specifies whether to enable the rule.
+	// Whether the rule is enabled.
 	//
 	// example:
 	//
-	// false
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Specifies whether to enable cross-region replication.
+	// Whether to enable offsite replication.
 	//
 	// example:
 	//
-	// false
+	// true
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// The retention period of the backup data. Unit: days.
+	// Backup retention period.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The name of the rule.
+	// Rule name.
 	//
 	// example:
 	//
 	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. This means that a backup task is executed every {interval} starting from {startTime}. Backup tasks for past times will not be executed. If the previous backup task has not been completed, the next backup task will not be triggered. For example, I|1631685600|P1D means a backup is performed every day starting from 2021-09-15 14:00:00.
 	//
-	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// - startTime: The start time of the backup, in UNIX time, in seconds.
+	//
+	// - interval: ISO8601 time interval. For example, PT1H means an interval of one hour. P1D means an interval of one day.
 	//
 	// example:
 	//
@@ -2063,7 +2047,7 @@ func (s *CreateBackupPlanRequestRule) SetSchedule(v string) *CreateBackupPlanReq
 }
 
 type CreateBackupPlanShrinkRequest struct {
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	// Backup type. Value: **COMPLETE**, indicating a full backup.
 	//
 	// This parameter is required.
 	//
@@ -2071,135 +2055,141 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the name of the OSS bucket.
+	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the OSS bucket name.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The configurations of the incremental file synchronization. This parameter is required for data synchronization only.
+	// Configuration for the incremental file synchronization list. (Required only for synchronization)
 	//
 	// example:
 	//
 	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
 	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the time to create the file system. The value must be a UNIX timestamp. Unit: seconds.
+	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	// The role name created in the RAM of the original account for cross-account backup.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// Cross-account backup type. Supported values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backup within the same account
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Cross-account backup
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up and restore data across Alibaba Cloud accounts.
+	// The original account ID used for cross-account backup.
 	//
 	// example:
 	//
 	// 15897534xxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// Destination data source details. (Required only for synchronization)
+	//
 	// example:
 	//
 	// {\\"prefix\\":\\"/\\"}
 	DestDataSourceDetailShrink *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	// Destination data source ID. (Required only for synchronization)
+	//
 	// example:
 	//
 	// ds-*********************
 	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	// Destination data source type. (Required only for synchronization)
+	//
 	// example:
 	//
 	// OSS
 	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
-	// The details about ECS instance backup. The value is a JSON string.
+	// Details of the whole machine backup, in JSON string format.
 	//
-	// 	- snapshotGroup: specifies whether to use a snapshot-consistent group. This parameter is valid only if all disks of the ECS instance are enhanced SSDs (ESSDs).
+	// 	- snapshotGroup: Whether to use a consistent snapshot group (only valid if all instance disks are ESSD).
 	//
-	// 	- appConsistent: specifies whether to enable application consistency. If you set this parameter to true, you must also specify the preScriptPath and postScriptPath parameters.
+	// 	- appConsistent: Whether to use application consistency (requires the use of preScriptPath and postScriptPath parameters).
 	//
-	// 	- preScriptPath: the path to the prescript file.
+	// 	- preScriptPath: Path to the freeze script.
 	//
-	// 	- postScriptPath: the path to the postscript file.
+	// 	- postScriptPath: Path to the thaw script.
 	//
 	// example:
 	//
 	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Specifies whether to disable the plan by default.
+	// Is the plan disabled by default
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value can be up to 255 characters in length.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **NAS**. This parameter specifies the ID of the NAS file system.
+	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the file system ID.
 	//
 	// example:
 	//
 	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value can be up to 255 characters in length.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the path to be backed up, and all files under this path will be backed up. Supports up to 255 characters.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the ID of the ECS instance.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the ECS instance ID.
 	//
 	// example:
 	//
 	// i-m5e*****6q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Tablestore instance.
+	// Table store instance name.
 	//
 	// example:
 	//
 	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Specifies whether to enable the "Keep at least one backup version" feature. Valid values:
+	// Whether to enable retaining at least one backup version.
 	//
-	// 	- 0: The feature is disabled.
+	// - 0 - Do not retain
 	//
-	// 	- 1: The feature is enabled.
+	// - 1 - Retain
 	//
 	// example:
 	//
 	// 1
 	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies whether to use Windows Volume Shadow Copy Service (VSS) to define a backup path.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It indicates whether to use the Windows system VSS to define the backup path.
 	//
-	// 	- This parameter is available only for Windows ECS instances.
+	// - This feature only supports Windows type ECS instances.
 	//
-	// 	- If data changes occur in the backup source, the source data must be the same as the data to be backed up before the system sets this parameter to `["UseVSS":true]`.
+	// - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
 	//
-	// 	- If you use VSS, you cannot back up data from multiple directories.
+	// - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
 	//
 	// example:
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
+	// Table store instance details.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// The backup paths.
+	// Backup paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	// The name of the backup schedule. The name must be 1 to 64 characters in length. The name of a backup schedule for each type of data source must be unique within a backup vault.
+	// Name of the backup plan. 1 to 64 characters. The name must be unique for each data source type within a single backup vault.
 	//
 	// This parameter is required.
 	//
@@ -2207,25 +2197,25 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **OSS**. This parameter specifies the prefix of objects that you want to back up. After a prefix is specified, only objects whose names start with the prefix are backed up.
+	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the backup prefix. When specified, only objects matching the prefix are backed up.
 	//
 	// example:
 	//
 	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The retention period of backup data. Minimum value: 1. Unit: days.
+	// Number of days to retain the backup, with a minimum value of 1, in days.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The rules of the backup schedule.
+	// Backup plan rules.
 	Rule []*CreateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the `{startTime}` parameter and the subsequent backup jobs at an interval that is specified in the `{interval}` parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// Backup policy. Optional format: `I|{startTime}|{interval}`. This indicates that a backup task will be executed every `{interval}` starting from `{startTime}`. It does not compensate for missed backup tasks due to past time. If the previous backup task has not been completed, the next backup task will not be triggered. For example, `I|1631685600|P1D` means a backup is performed every day starting from 2021-09-15 14:00:00.
 	//
-	// 	- **startTime**: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	// - **startTime**: Start time of the backup, in UNIX timestamp, in seconds.
 	//
-	// 	- **interval**: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// - **interval**: ISO8601 time interval. For example, PT1H indicates an interval of one hour, and P1D indicates an interval of one day.
 	//
 	// This parameter is required.
 	//
@@ -2233,17 +2223,17 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// I|1602673264|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The type of the data source. Valid values:
+	// Data source type, with the following options:
 	//
-	// 	- **ECS_FILE**: backs up Elastic Compute Service (ECS) files.
+	// - **ECS_FILE**: Backs up ECS files
 	//
-	// 	- **OSS**: backs up Object Storage Service (OSS) buckets.
+	// - **OSS**: Backs up Alibaba Cloud OSS
 	//
-	// 	- **NAS**: backs up Apsara File Storage NAS file systems.
+	// - **NAS**: Backs up Alibaba Cloud NAS
 	//
-	// 	- **OTS**: backs up Tablestore instances.
+	// - **OTS**: Backs up Alibaba Cloud OTS
 	//
-	// 	- **UDM_ECS**: backs up ECS instances.
+	// - **UDM_ECS**: Backs up the entire ECS instance
 	//
 	// This parameter is required.
 	//
@@ -2251,25 +2241,25 @@ type CreateBackupPlanShrinkRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the throttling rules. Format: `{start}|{end}|{bandwidth}`. Separate multiple throttling rules with vertical bars (|). A specified time range cannot overlap with another time range.
+	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the backup traffic control. Format: `{start}:{end}:{bandwidth}`. Multiple traffic control configurations are separated by |, and the configured times should not overlap.
 	//
-	// 	- **start**: the start hour.
+	// - **start**: Start hour.
 	//
-	// 	- **end**: the end hour.
+	// - **end**: End hour.
 	//
-	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	// - **bandwidth**: Limit rate, in KB/s.
 	//
 	// example:
 	//
 	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The region in which the ECS instance that you want to back up resides.
+	// Region where the whole machine backup instance is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// The ID of the backup vault.
+	// Backup vault ID.
 	//
 	// example:
 	//
@@ -2436,51 +2426,53 @@ func (s *CreateBackupPlanShrinkRequest) SetVaultId(v string) *CreateBackupPlanSh
 }
 
 type CreateBackupPlanShrinkRequestRule struct {
-	// The backup type.
+	// Backup type.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the region to which data is replicated.
+	// ID of the region for offsite replication.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The retention period of the backup data in geo-redundancy mode. Unit: days.
+	// Number of days to retain offsite backups.
 	//
 	// example:
 	//
 	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// Specifies whether to enable the rule.
+	// Whether the rule is enabled.
 	//
 	// example:
 	//
-	// false
+	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Specifies whether to enable cross-region replication.
+	// Whether to enable offsite replication.
 	//
 	// example:
 	//
-	// false
+	// true
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// The retention period of the backup data. Unit: days.
+	// Backup retention period.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The name of the rule.
+	// Rule name.
 	//
 	// example:
 	//
 	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The backup policy. Format: I|{startTime}|{interval}. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// Backup strategy. Optional format: I|{startTime}|{interval}. This means that a backup task is executed every {interval} starting from {startTime}. Backup tasks for past times will not be executed. If the previous backup task has not been completed, the next backup task will not be triggered. For example, I|1631685600|P1D means a backup is performed every day starting from 2021-09-15 14:00:00.
 	//
-	// startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	// - startTime: The start time of the backup, in UNIX time, in seconds.
+	//
+	// - interval: ISO8601 time interval. For example, PT1H means an interval of one hour. P1D means an interval of one day.
 	//
 	// example:
 	//
@@ -2537,35 +2529,35 @@ func (s *CreateBackupPlanShrinkRequestRule) SetSchedule(v string) *CreateBackupP
 }
 
 type CreateBackupPlanResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request is successful.
+	// Return code, 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the request is successful, a value of successful is returned. If the request fails, an error message is returned.
+	// Description of the return message, usually returns \\"successful\\" upon success, and corresponding error messages in case of failure.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the backup schedule.
+	// Backup plan ID.
 	//
 	// example:
 	//
 	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Whether the request was successful.
 	//
-	// 	- true: The request is successful.
+	// - true: Success.
 	//
-	// 	- false: The request fails.
+	// - false: Failure.
 	//
 	// example:
 	//
@@ -3789,7 +3781,7 @@ type CreatePolicyBindingsRequestPolicyBindingList struct {
 	//
 	// 	- **OSS**: the name of the Object Storage Service (OSS) bucket
 	//
-	// 	- **NAS**: the ID of the Apsara File Storage NAS (NAS) file system
+	// 	- **NAS**: the ID of the File Storage NAS (NAS) file system
 	//
 	// 	- **COMMON_NAS**: the ID of the on-premises NAS file system
 	//
@@ -3813,13 +3805,13 @@ type CreatePolicyBindingsRequestPolicyBindingList struct {
 	//
 	// true
 	Disabled *string `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -3833,7 +3825,9 @@ type CreatePolicyBindingsRequestPolicyBindingList struct {
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
 	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
 	//
-	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths are backed up.
+	//
+	// 	- This parameter is required if the SourceType parameter is set to **COMMON_FILE_SYSTEM**. This parameter specifies the path to be backed up. To back up the /src path, enter ["/src"]. To back up the root path, enter ["/"].
 	//
 	// example:
 	//
@@ -3948,7 +3942,7 @@ type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions struct {
 	CommonNasDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
 	// The advanced options for file backup.
 	FileDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	// The advanced options for OSS backup.
+	// The advanced options for Object Storage Service (OSS) backup.
 	OssDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
 	// The advanced options for ECS instance backup.
 	UdmDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
@@ -4114,6 +4108,11 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) 
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail struct {
+	// Do not prompt for archival type objects in task statistics and failed file lists.
+	//
+	// example:
+	//
+	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
 	// Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
 	//
@@ -4465,9 +4464,15 @@ type CreatePolicyV2RequestRules struct {
 	// example:
 	//
 	// COMPLETE
-	BackupType        *string                                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the data source filter rule.
 	DataSourceFilters []*CreatePolicyV2RequestRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
-	Immutable         *bool                                          `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
+	// This parameter is required only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**. This parameter specifies whether to enable the immutable backup feature.
+	//
+	// example:
+	//
+	// true
+	Immutable *bool `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
 	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
 	//
 	// 	- 0: The feature is disabled.
@@ -4519,8 +4524,11 @@ type CreatePolicyV2RequestRules struct {
 	// example:
 	//
 	// I|1648647166|P1D
-	Schedule   *string                                 `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
 	TagFilters []*CreatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
+	// This parameter is required only if the RuleType parameter is set to BACKUP. The ID of the backup vault.
+	//
 	// example:
 	//
 	// v-0001************aseg
@@ -4591,7 +4599,20 @@ func (s *CreatePolicyV2RequestRules) SetVaultId(v string) *CreatePolicyV2Request
 }
 
 type CreatePolicyV2RequestRulesDataSourceFilters struct {
+	// This parameter is deprecated.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// The type of the data source. Valid value:
+	//
+	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType*	- parameter is set to **UDM_ECS_ONLY**.
+	//
+	// 	- **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **OTS**: Tablestore instance This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -4669,14 +4690,24 @@ func (s *CreatePolicyV2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *Cr
 }
 
 type CreatePolicyV2RequestRulesTagFilters struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag-based matching rule. Valid values:
+	//
+	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	//
+	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The tag value. If you leave this parameter empty, the value is any value.
+	//
 	// example:
 	//
 	// prod
@@ -4873,10 +4904,18 @@ type CreateReplicationVaultRequest struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The method that is used to encrypt the source data. This parameter is valid only if you set the VaultType parameter to STANDARD or OTS_BACKUP. Valid values:
+	//
+	// 	- **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
+	//
+	// 	- **KMS**: The source data is encrypted by using Key Management Service (KMS).
+	//
 	// example:
 	//
 	// HBR_PRIVATE
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
+	//
 	// example:
 	//
 	// alias/test
@@ -4923,7 +4962,7 @@ type CreateReplicationVaultRequest struct {
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
+	// The storage type of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
 	//
 	// example:
 	//
@@ -5122,7 +5161,8 @@ type CreateRestoreJobRequest struct {
 	// example:
 	//
 	// ["/var", "/proc"]
-	Exclude        *string                `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// Details of restoration to local.
 	FailbackDetail map[string]interface{} `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
 	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
 	//
@@ -5135,8 +5175,13 @@ type CreateRestoreJobRequest struct {
 	// example:
 	//
 	// false
-	InitiatedByAck *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	// Parameters for restoring a task
+	//
+	// example:
+	//
+	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetail *OtsTableRestoreDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The type of the restore destination. Valid values:
@@ -5444,7 +5489,8 @@ type CreateRestoreJobShrinkRequest struct {
 	// example:
 	//
 	// ["/var", "/proc"]
-	Exclude              *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// Details of restoration to local.
 	FailbackDetailShrink *string `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
 	// The paths to the files that you want to restore. All files in the specified paths are restored. The value must be 1 to 255 characters in length.
 	//
@@ -5457,8 +5503,13 @@ type CreateRestoreJobShrinkRequest struct {
 	// example:
 	//
 	// false
-	InitiatedByAck *bool   `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
+	// Parameters for restoring a task
+	//
+	// example:
+	//
+	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The details about the Tablestore instance.
 	OtsDetailShrink *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
 	// The type of the restore destination. Valid values:
@@ -6236,6 +6287,163 @@ func (s *CreateVaultResponse) SetBody(v *CreateVaultResponseBody) *CreateVaultRe
 	return s
 }
 
+type DeleteAirEcsInstanceRequest struct {
+	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-uf6ir9y******hvisj
+	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	// The data sources for which the client needs to be uninstalled.
+	UninstallClientSourceTypes []*string `json:"UninstallClientSourceTypes,omitempty" xml:"UninstallClientSourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s DeleteAirEcsInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAirEcsInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAirEcsInstanceRequest) SetEcsInstanceId(v string) *DeleteAirEcsInstanceRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceRequest) SetUninstallClientSourceTypes(v []*string) *DeleteAirEcsInstanceRequest {
+	s.UninstallClientSourceTypes = v
+	return s
+}
+
+type DeleteAirEcsInstanceShrinkRequest struct {
+	// The ID of the ECS instance.
+	//
+	// example:
+	//
+	// i-uf6ir9y******hvisj
+	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	// The data sources for which the client needs to be uninstalled.
+	UninstallClientSourceTypesShrink *string `json:"UninstallClientSourceTypes,omitempty" xml:"UninstallClientSourceTypes,omitempty"`
+}
+
+func (s DeleteAirEcsInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAirEcsInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAirEcsInstanceShrinkRequest) SetEcsInstanceId(v string) *DeleteAirEcsInstanceShrinkRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceShrinkRequest) SetUninstallClientSourceTypesShrink(v string) *DeleteAirEcsInstanceShrinkRequest {
+	s.UninstallClientSourceTypesShrink = &v
+	return s
+}
+
+type DeleteAirEcsInstanceResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 33AA3AAE-89E1-5D3A-A51D-0C0A80850F68
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	//
+	// example:
+	//
+	// t-*********************
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteAirEcsInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAirEcsInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAirEcsInstanceResponseBody) SetCode(v string) *DeleteAirEcsInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponseBody) SetMessage(v string) *DeleteAirEcsInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponseBody) SetRequestId(v string) *DeleteAirEcsInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponseBody) SetSuccess(v bool) *DeleteAirEcsInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponseBody) SetTaskId(v string) *DeleteAirEcsInstanceResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteAirEcsInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAirEcsInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAirEcsInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAirEcsInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAirEcsInstanceResponse) SetHeaders(v map[string]*string) *DeleteAirEcsInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponse) SetStatusCode(v int32) *DeleteAirEcsInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAirEcsInstanceResponse) SetBody(v *DeleteAirEcsInstanceResponseBody) *DeleteAirEcsInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBackupClientRequest struct {
 	// The ID of the Cloud Backup client.
 	//
@@ -6640,14 +6848,20 @@ func (s *DeleteBackupPlanResponse) SetBody(v *DeleteBackupPlanResponseBody) *Del
 }
 
 type DeleteClientRequest struct {
+	// The ID of the client.
+	//
 	// example:
 	//
 	// c-000************f3h
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-acf************kwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the backup vault.
+	//
 	// example:
 	//
 	// v-000************gs3
@@ -6678,18 +6892,30 @@ func (s *DeleteClientRequest) SetVaultId(v string) *DeleteClientRequest {
 }
 
 type DeleteClientResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// C51A9094-64B7-5DC0-B9FE-5FC1AC7E081D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// 	- true: The call is successful.
+	//
+	// 	- false: The call fails.
+	//
 	// example:
 	//
 	// true
@@ -9232,6 +9458,10 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	// 10
 	FilesTotal *int64 `json:"FilesTotal,omitempty" xml:"FilesTotal,omitempty"`
 	// The identifier of the cluster that is backed up in the container backup job. This parameter is returned only if the value of SourceType is CONTAINER. If the cluster is a Container Service for Kubernetes (ACK) cluster, the value of this parameter is the ACK cluster ID.
+	//
+	// example:
+	//
+	// c83**************************b76
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The paths to the files that are included in the backup job.
 	//
@@ -9659,7 +9889,40 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJobDetail struct {
 	// example:
 	//
 	// true
-	DoCopy        *bool                  `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	// ECS instance information, including ECS instance name, instance type, etc.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "i-xxxxxxxx": {
+	//
+	//     "hostName": "test",
+	//
+	//     "instanceName": "test",
+	//
+	//     "instanceType": "ecs.c7.xlarge",
+	//
+	//     "osType": "linux",
+	//
+	//     "diskIds": [
+	//
+	//       "d-xxxxxxxx01",
+	//
+	//       "d-xxxxxxxx02"
+	//
+	//     ],
+	//
+	//     "osNameEn": "Rocky Linux 8.8 64 bit",
+	//
+	//     "osName": "Rocky Linux 8.8 64位",
+	//
+	//     "platform": "Rocky Linux"
+	//
+	//   }
+	//
+	// }
 	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 	// The ID of the backup snapshot.
 	//
@@ -9826,7 +10089,7 @@ func (s *DescribeBackupJobs2Response) SetBody(v *DescribeBackupJobs2ResponseBody
 }
 
 type DescribeBackupPlansRequest struct {
-	// The filter.
+	// The filters.
 	Filters []*DescribeBackupPlansRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
@@ -10091,8 +10354,13 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	// example:
 	//
 	// 1554347313
-	CreateTime   *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedByTag *bool  `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether a backup plan is automatically created based on tags.
+	//
+	// example:
+	//
+	// false
+	CreatedByTag *bool `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
 	// The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
@@ -10172,8 +10440,9 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	// example:
 	//
 	// 00594
-	FileSystemId *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	HitTags      *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Struct"`
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The matched tag rules.
+	HitTags *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Struct"`
 	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
 	//
 	// example:
@@ -10542,9 +10811,28 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) SetHitTag(
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag struct {
-	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// type
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag-based matching rule. Valid values:
+	//
+	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	//
+	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	//
+	// example:
+	//
+	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) String() string {
@@ -13667,7 +13955,7 @@ type DescribeHanaRestoresRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. Default value: 10.\\`
 	//
 	// example:
 	//
@@ -15232,9 +15520,15 @@ type DescribePoliciesV2ResponseBodyPoliciesRules struct {
 	// example:
 	//
 	// COMPLETE
-	BackupType        *string                                                         `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is required only when **RuleType*	- is set to **TAG**. It defines the data source filtering rule.
 	DataSourceFilters []*DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
-	Immutable         *bool                                                           `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
+	// This parameter is returned only if the **PolicyType*	- is **UDM_ECS_ONLY**. This parameter indicates whether the immutable backup feature is enabled.
+	//
+	// example:
+	//
+	// true
+	Immutable *bool `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
 	// Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
 	//
 	// 	- **0**: The feature is disabled.
@@ -15290,7 +15584,8 @@ type DescribePoliciesV2ResponseBodyPoliciesRules struct {
 	// example:
 	//
 	// I|1648647166|P1D
-	Schedule   *string                                                  `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// This parameter is required only when **RuleType*	- is set to **TAG**. It defines the resource tag filtering rule.
 	TagFilters []*DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
 	// This parameter is returned only if the value of the RuleType parameter is BACKUP. The ID of the backup vault.
 	//
@@ -15374,7 +15669,20 @@ func (s *DescribePoliciesV2ResponseBodyPoliciesRules) SetVaultId(v string) *Desc
 }
 
 type DescribePoliciesV2ResponseBodyPoliciesRulesDataSourceFilters struct {
+	// Deprecated.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// Data source type. The value range is as follows:
+	//
+	// - **UDM_ECS**: Indicates ECS server backup.
+	//
+	// - **OSS**: Indicates OSS backup.
+	//
+	// - **NAS**: Indicates Alibaba Cloud NAS backup.
+	//
+	// - **ECS_FILE**: Indicates ECS file backup.
+	//
+	// - **OTS**: Indicates Tablestore backup.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -15450,14 +15758,20 @@ func (s *DescribePoliciesV2ResponseBodyPoliciesRulesRetentionRules) SetWhichSnap
 }
 
 type DescribePoliciesV2ResponseBodyPoliciesRulesTagFilters struct {
+	// Tag key
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag matching rules, supporting: - **EQUAL**: Matches both the tag key and tag value. - **NOT**: Matches the tag key but not the tag value.
+	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// prod
@@ -15517,24 +15831,34 @@ func (s *DescribePoliciesV2Response) SetBody(v *DescribePoliciesV2ResponseBody) 
 }
 
 type DescribePolicyBindingsRequest struct {
-	DataSourceIds []*string                               `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	Filters       []*DescribePolicyBindingsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of results for each query.
+	// List of data source IDs.
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// Query filters.
+	Filters []*DescribePolicyBindingsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// Number of results per query.
 	//
-	// Valid values: 10 to 100. Default value: 10.
+	// Range: 10~100. Default: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token required to fetch the next page of policy and data source associations.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// po-000************hky
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Data source type. Possible values:
+	//
+	// 	- **UDM_ECS**: Indicates ECS full machine backup.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -15580,15 +15904,42 @@ func (s *DescribePolicyBindingsRequest) SetSourceType(v string) *DescribePolicyB
 }
 
 type DescribePolicyBindingsRequestFilters struct {
+	// Key in the query filter. Possible values include:
+	//
+	// - **PolicyId**: Backup policy ID
+	//
+	// - **DataSourceId**: ECS instance ID
+	//
+	// - **DataSourceType**: Data source type
+	//
 	// example:
 	//
 	// DataSourceType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+	//
+	// - **EQUAL**: Equal to
+	//
+	// - **NOT_EQUAL**: Not equal to
+	//
+	// - **GREATER_THAN**: Greater than
+	//
+	// - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+	//
+	// - **LESS_THAN**: Less than
+	//
+	// - **LESS_THAN_OR_EQUAL**: Less than or equal to
+	//
+	// - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
+	//
+	// - **IN**: In the set, where value is an array.
+	//
 	// example:
 	//
 	// IN
-	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Values to be matched in the query filter.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolicyBindingsRequestFilters) String() string {
@@ -15615,24 +15966,34 @@ func (s *DescribePolicyBindingsRequestFilters) SetValues(v []*string) *DescribeP
 }
 
 type DescribePolicyBindingsShrinkRequest struct {
-	DataSourceIdsShrink *string                                       `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
-	Filters             []*DescribePolicyBindingsShrinkRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of results for each query.
+	// List of data source IDs.
+	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	// Query filters.
+	Filters []*DescribePolicyBindingsShrinkRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// Number of results per query.
 	//
-	// Valid values: 10 to 100. Default value: 10.
+	// Range: 10~100. Default: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Token required to fetch the next page of policy and data source associations.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Policy ID.
+	//
 	// example:
 	//
 	// po-000************hky
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Data source type. Possible values:
+	//
+	// 	- **UDM_ECS**: Indicates ECS full machine backup.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -15678,15 +16039,42 @@ func (s *DescribePolicyBindingsShrinkRequest) SetSourceType(v string) *DescribeP
 }
 
 type DescribePolicyBindingsShrinkRequestFilters struct {
+	// Key in the query filter. Possible values include:
+	//
+	// - **PolicyId**: Backup policy ID
+	//
+	// - **DataSourceId**: ECS instance ID
+	//
+	// - **DataSourceType**: Data source type
+	//
 	// example:
 	//
 	// DataSourceType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+	//
+	// - **EQUAL**: Equal to
+	//
+	// - **NOT_EQUAL**: Not equal to
+	//
+	// - **GREATER_THAN**: Greater than
+	//
+	// - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+	//
+	// - **LESS_THAN**: Less than
+	//
+	// - **LESS_THAN_OR_EQUAL**: Less than or equal to
+	//
+	// - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
+	//
+	// - **IN**: In the set, where value is an array.
+	//
 	// example:
 	//
 	// IN
-	Operator *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Values   []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Values to be matched in the query filter.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolicyBindingsShrinkRequestFilters) String() string {
@@ -15713,32 +16101,52 @@ func (s *DescribePolicyBindingsShrinkRequestFilters) SetValues(v []*string) *Des
 }
 
 type DescribePolicyBindingsResponseBody struct {
+	// Return code, 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of results per query.
+	//
+	// Range: 10~100. Default: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Description of the return message. A successful response usually returns \\"successful\\", while an error will return a corresponding error message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token required to fetch the next page of policy and data source bindings.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The association between the backup policy and data sources.
+	// List of bound policies.
 	PolicyBindings []*DescribePolicyBindingsResponseBodyPolicyBindings `json:"PolicyBindings,omitempty" xml:"PolicyBindings,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 5225929A-4EBD-55EE-9FE1-4A130E582A76
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: Success
+	//
+	// - false: Failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 38
@@ -15794,119 +16202,119 @@ func (s *DescribePolicyBindingsResponseBody) SetTotalCount(v int64) *DescribePol
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindings struct {
-	// The advanced options.
+	// Advanced options.
 	AdvancedOptions *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
-	// Indicates whether the resource is automatically associated with the related resource tag in the backup policy.
+	// Whether the resource is automatically associated through the backup policy resource tag.
 	//
 	// example:
 	//
 	// false
 	CreatedByTag *bool `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
-	// The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
+	// Creation time. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1661399570
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the role created in the RAM of the original account for cross-account backup.
 	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// Cross-account backup type. Supported values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backup within the same account
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Cross-account backup
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The ID of the original account for cross-account backup.
 	//
 	// example:
 	//
 	// 1480************
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the data source.
+	// Data source ID.
 	//
 	// example:
 	//
 	// i-8vb************5ly
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Indicates whether the backup policy is enabled for the data source. Valid values:
+	// 策略是否对该数据源生效。
 	//
-	// 	- true: The backup policy is disabled.
+	// - true：暂停
 	//
-	// 	- false: The backup policy is enabled.
+	// - false：未暂停
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the file types that should not be backed up, and all files of these types will be excluded. Supports up to 255 characters.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// The matched tag rules.
+	// Hit tag rules.
 	HitTags []*DescribePolicyBindingsResponseBodyPolicyBindingsHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Repeated"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the file types to be backed up, and all files of these types will be backed up. Supports up to 255 characters.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The description of the association.
+	// Bound policy description.
 	//
 	// example:
 	//
 	// po-000************eslc-i-uf6************y5g
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	// The ID of the association.
+	// Bound policy ID.
 	//
 	// example:
 	//
 	// pd-000************slc
 	PolicyBindingId *string `json:"PolicyBindingId,omitempty" xml:"PolicyBindingId,omitempty"`
-	// The ID of the backup policy.
+	// Policy ID.
 	//
 	// example:
 	//
 	// po-000************56y
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+	// - When **SourceType*	- is **OSS**, it indicates the prefix to be backed up. If not specified, it means backing up the entire root directory of the Bucket.
 	//
-	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+	// - When **SourceType*	- is **ECS_FILE*	- or **File**, it indicates the file directory to be backed up. If not specified, it means backing up all directories.
 	//
 	// example:
 	//
 	// backup/
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the data source. Valid values:
+	// Data source type, with the value range:
 	//
-	// 	- **UDM_ECS**: ECS instances
+	// - **UDM_ECS**: indicates ECS full machine backup
 	//
 	// example:
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by commas, and the configured times must not overlap.
 	//
-	// 	- **start**: the start hour.
+	// - **start**: Start hour.
 	//
-	// 	- **end**: the end hour.
+	// - **end**: End hour.
 	//
-	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	// - **bandwidth**: Limit rate, in KB/s.
 	//
 	// example:
 	//
 	// 0:24:10240
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The time when the backup policy was updated. The value is a UNIX timestamp. Unit: seconds.
+	// Update time. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
@@ -16013,15 +16421,15 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetUpdatedTime(v int6
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions struct {
-	// The advanced options for large-scale file system backup.
+	// Advanced options for large-scale file system backup.
 	CommonFileSystemDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
-	// The advanced options for on-premises NAS backup.
+	// Advanced options for local NAS.
 	CommonNasDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
-	// The advanced options for file backup.
+	// Advanced options for file backup.
 	FileDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	// The advanced options for OSS backup.
+	// Advanced options for OSS backup.
 	OssDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// The advanced options for ECS instance backup.
+	// Advanced options for full machine backup.
 	UdmDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -16059,17 +16467,17 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetUdm
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail struct {
-	// The size of backup shards (the number of files).
+	// Backup shard size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Specifies whether the system performs full backup if incremental backup fails. Valid values:
+	// Whether to switch to a full backup when an incremental backup fails. Values:
 	//
-	// 	- **true**: The system performs full backup if incremental backup fails.
+	// - **true**: Switch to full backup on failure.
 	//
-	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	// - **false**: Do not switch to full backup on failure.
 	//
 	// example:
 	//
@@ -16096,29 +16504,29 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFi
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail struct {
-	// The ID of the Cloud Backup client.
+	// Backup client ID.
 	//
 	// example:
 	//
 	// c-0001eg6mcvjs93f46s2d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The ID of the client group.
+	// Client group ID.
 	//
 	// example:
 	//
 	// cl-000gkcofngi04j6k680a
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The size of backup shards (the number of files).
+	// Backup slice size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Indicates whether the system performs full backup if incremental backup fails. Valid values:
+	// Whether to switch to a full backup when an incremental backup fails. Values:
 	//
-	// 	- **true**: The system performs full backup if incremental backup fails.
+	// - **true**: Switch to full backup on failure.
 	//
-	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	// - **false**: Do not switch to full backup on failure.
 	//
 	// example:
 	//
@@ -16155,21 +16563,21 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNa
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail struct {
-	// Indicates whether an advanced policy is used. Valid values:
+	// Whether to use advanced policies. Values:
 	//
-	// 	- **true**
+	// - **true**: Use.
 	//
-	// 	- **false**
+	// - **false**: Do not use.
 	//
 	// example:
 	//
 	// false
 	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
-	// Indicates whether the Volume Shadow Copy Service (VSS) feature is enabled. Valid values:
+	// Whether to enable VSS (Windows) functionality. Values:
 	//
-	// 	- **true**: The feature is enabled.
+	// - **true**: Enable.
 	//
-	// 	- **false**: The feature is disabled.
+	// - **false**: Disable.
 	//
 	// example:
 	//
@@ -16196,29 +16604,29 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDeta
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail struct {
-	// 不在任务统计和失败文件列表中提示归档型对象
+	// Do not prompt for archive-type objects in the task statistics and failed file list.
 	//
 	// example:
 	//
 	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
-	// Indicates whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
+	// Whether to delete the inventory file after the backup. This is only effective when using an OSS inventory. Supported values:
 	//
-	// 	- **NO_CLEANUP**: Inventory lists are not deleted.
+	// - **NO_CLEANUP**: Do not delete.
 	//
-	// 	- **DELETE_CURRENT**: The current inventory list is deleted.
+	// - **DELETE_CURRENT**: Delete the current file.
 	//
-	// 	- **DELETE_CURRENT_AND_PREVIOUS**: All inventory lists are deleted.
+	// - **DELETE_CURRENT_AND_PREVIOUS**: Delete all files.
 	//
 	// example:
 	//
 	// DELETE_CURRENT_AND_PREVIOUS
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	// The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
+	// The name of the OSS inventory. If this value is not empty, the OSS inventory will be used for performance optimization.
 	//
-	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+	// - It is recommended to use an inventory for backing up more than 100 million OSS objects to improve incremental performance. Storage costs for the inventory files are charged separately by the OSS service.
 	//
-	// 	- A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	// - The generation of the OSS inventory file takes time, and the backup may fail before the inventory file is generated. You can wait for the next cycle to execute.
 	//
 	// example:
 	//
@@ -16250,65 +16658,65 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail struct {
-	// Indicates whether application consistency is enabled. You can enable application consistency only if all disks are ESSDs.
+	// 是否创建应用一致性。仅云盘类型全部为ESSD时，支持创建快照应用一致性。
 	//
 	// example:
 	//
 	// false
 	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The ID of the custom KMS key in the destination region. If this parameter is not empty and geo-replication is enabled, the key is used for encrypted geo-replication.
+	// The custom KMS key ID in the destination region. When this field is not empty and cross-region replication is enabled, the specified key will be used for encrypting the cross-region replication.
 	//
 	// example:
 	//
 	// 4ed37b1e-da51-4187-aceb-9db4f9b7148b
 	DestinationKmsKeyId *string `json:"DestinationKmsKeyId,omitempty" xml:"DestinationKmsKeyId,omitempty"`
-	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+	// List of disk IDs that need protection. This value is empty when protecting all disks.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	// This parameter is required when **AppConsistent*	- is **true**. It indicates whether to use the Linux FsFreeze mechanism to ensure the file system is in a read-only consistent state before creating an application-consistent snapshot. The default value is true.
 	//
 	// example:
 	//
 	// true
 	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates whether application-consistent snapshots are created. Valid values:
+	// This parameter is required when **AppConsistent*	- is **true**. It determines whether to set an application-consistent snapshot:
 	//
-	// 	- true: Application-consistent snapshots are created.
+	// - **true**: Create an application-consistent snapshot
 	//
-	// 	- false: File system-consistent snapshots are created.
+	// - **false**: Create a file system-consistent snapshot
 	//
-	// Default value: true.
+	// The default value is true.
 	//
 	// example:
 	//
 	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
-	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
+	// List of disk IDs that do not need protection. This parameter is ignored if DiskIdList is not empty.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	// This parameter is required when **AppConsistent*	- is **true**. It specifies the path of the unfreeze script to be executed after creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	// This parameter is required when **AppConsistent*	- is **true**. It specifies the path of the freeze script to be executed before creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the name of the RAM role that is required to create application-consistent snapshots.
+	// This parameter is required when **AppConsistent*	- is **true**. It specifies the RAM role name needed for creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// Indicates whether a snapshot-consistent group is created. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+	// Indicates whether to create a snapshot consistency group. Only supported when all disk types are ESSD.
 	//
 	// example:
 	//
 	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter indicates the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	// This parameter is required when **AppConsistent*	- is **true**. It specifies the IO freeze timeout duration. The default value is 30 seconds.
 	//
 	// example:
 	//
@@ -16380,23 +16788,23 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsHitTags struct {
-	// The tag key.
+	// Tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag-based matching rule.
+	// Tag matching rule.
 	//
-	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	// - **EQUAL**: Matches both the tag key and tag value.
 	//
-	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	// - **NOT**: Matches the tag key but not the tag value.
 	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The tag value.
+	// Tag value.
 	//
 	// example:
 	//
@@ -18867,7 +19275,7 @@ func (s *DescribeUdmSnapshotsResponse) SetBody(v *DescribeUdmSnapshotsResponseBo
 }
 
 type DescribeVaultReplicationRegionsRequest struct {
-	// The access token.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
@@ -18875,7 +19283,7 @@ type DescribeVaultReplicationRegionsRequest struct {
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// Deprecated
 	//
-	// The ID of the backup vault.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
@@ -19026,6 +19434,8 @@ type DescribeVaultsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-*********************
@@ -19044,18 +19454,30 @@ type DescribeVaultsRequest struct {
 	//
 	// CREATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Tag information. Supports up to 20 tags.
+	//
 	// example:
 	//
 	// 6a745bceffb042959b3b5206d6f12ad1
 	Tag []*DescribeVaultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Backup vault ID.
+	//
 	// example:
 	//
 	// v-*********************
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The region ID to which the backup vault belongs.
+	//
 	// example:
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	// Backup repository type. The values are as follows:
+	//
+	// - **STANDARD**: Represents a standard repository, which can be used for ECS file backups, OSS backups, NAS backups, etc.
+	//
+	// - **OTS_BACKUP**: Represents a TableStore repository, which is only used for TableStore backups, and TableStore must use this type of repository.
+	//
 	// example:
 	//
 	// STANDARD
@@ -19111,10 +19533,14 @@ func (s *DescribeVaultsRequest) SetVaultType(v string) *DescribeVaultsRequest {
 }
 
 type DescribeVaultsRequestTag struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The Value of the tag.
+	//
 	// example:
 	//
 	// value1
@@ -19140,30 +19566,46 @@ func (s *DescribeVaultsRequestTag) SetValue(v string) *DescribeVaultsRequestTag 
 }
 
 type DescribeVaultsResponseBody struct {
+	// The HTTP status code. The status code 200 indicates that the call is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Page number for pagination, starting from 1. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, with a minimum value of 1, a maximum value of 99, and a default value of 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the request was successful.
+	//
+	// - true: Success - false: Failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Returns the total number of backup repositories.
+	//
 	// example:
 	//
 	// 8
@@ -19242,6 +19684,8 @@ func (s *DescribeVaultsResponseBodyVaults) SetVault(v []*DescribeVaultsResponseB
 }
 
 type DescribeVaultsResponseBodyVaultsVault struct {
+	// Archival tier backup data volume. Unit: bytes.
+	//
 	// example:
 	//
 	// 1024000
@@ -19400,6 +19844,8 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	//
 	// v-*********************
 	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	// Target region for remote backup repository.
+	//
 	// example:
 	//
 	// cn-shanghai
@@ -19728,6 +20174,8 @@ type DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics struct {
 	//
 	// 1
 	Archive *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
+	// The number of Cloud Parallel File Storage (CPFS) backup plans.
+	//
 	// example:
 	//
 	// 1
@@ -21005,22 +21453,32 @@ func (s *ExecuteBackupPlanResponse) SetBody(v *ExecuteBackupPlanResponseBody) *E
 }
 
 type ExecutePolicyV2Request struct {
+	// Data source ID.
+	//
 	// example:
 	//
 	// i-bp1************dtv
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// Policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// po-000************hky
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// Rule ID, limited to executing rules of **RuleType*	- **BACKUP**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rule-0002*****ux8
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Data source type, with the value range as follows:
+	//
+	// - **UDM_ECS**: Represents ECS full machine backup.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -21056,22 +21514,36 @@ func (s *ExecutePolicyV2Request) SetSourceType(v string) *ExecutePolicyV2Request
 }
 
 type ExecutePolicyV2ResponseBody struct {
+	// Return code, 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Backup job ID.
+	//
 	// example:
 	//
 	// job-*********************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Description of the return message, usually returns \\"successful\\" on success, and corresponding error messages on failure.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F4EEB401-DD21-588D-AE3B-1E835C7655E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: Success
+	//
+	// - false: Failure
+	//
 	// example:
 	//
 	// true
@@ -21852,7 +22324,7 @@ type SearchHistoricalSnapshotsRequest struct {
 	//
 	//     	- Bucket: specifies the name of the Object Storage Service (OSS) bucket. If the SourceType parameter is set to OSS, this field is required.
 	//
-	//     	- FileSystemId: specifies the ID of the Apsara File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
+	//     	- FileSystemId: specifies the ID of the File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
 	//
 	//     	- CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
 	//
@@ -22017,7 +22489,7 @@ type SearchHistoricalSnapshotsShrinkRequest struct {
 	//
 	//     	- Bucket: specifies the name of the Object Storage Service (OSS) bucket. If the SourceType parameter is set to OSS, this field is required.
 	//
-	//     	- FileSystemId: specifies the ID of the Apsara File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
+	//     	- FileSystemId: specifies the ID of the File Storage NAS (NAS) file system. If the SourceType parameter is set to NAS, this field is required.
 	//
 	//     	- CreateTime: specifies the time when the NAS file system was created. If the SourceType parameter is set to NAS, this field is required.
 	//
@@ -22236,6 +22708,8 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// 6
 	ActualItems *int64 `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	// Time to archive
+	//
 	// example:
 	//
 	// 1640334062
@@ -22294,6 +22768,8 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// Item	Error Message C:\\Program Files (x86)\\Symantec\\Symantec Endpoint Protection\\14.3.558.0000.105\\Bin\\service.dat	Open: open \\\\?\\C:\\Program Files (x86)\\Symantec\\Symantec Endpoint Protection\\14.3.558.0000.105\\Bin\\service.dat: The process cannot access the file because it is being used by another process. C:\\ProgramData\\McAfee\\Agent\\data\\InstallerFiles\\172e8a3b04b7ab0fd0215f4fb7707e3744b37d83b6743b3eacb94447c74dc9af_contrib.ini	Open: open \\\\?\\C:\\ProgramData\\McAfee\\Agent\\data\\InstallerFiles\\172e8a3b04b7ab0fd0215f4fb7707e3744b37d83b6743b3eacb94447c74dc9af_contrib.ini: Access is denied.
 	ErrorFile *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	// Backup paths not included in the backup job.
+	//
 	// example:
 	//
 	// [\\"/test/example_cn-hangzhou_7.txt\\", \\"/test/example_cn-hangzhou_1.txt\\", \\"/test/example_cn-hangzhou_3.txt\\", \\"/test/example_cn-hangzhou_9.txt\\", \\"/test/example_cn-hangzhou_6.txt\\"]
@@ -22310,6 +22786,8 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// Backup paths included in the backup job.
+	//
 	// example:
 	//
 	// [\\"/test/example_cn-huhehaote_3.txt\\", \\"/test/example_cn-huhehaote_9.txt\\", \\"/test/example_cn-huhehaote_5.txt\\", \\"/test/example_cn-huhehaote_1.txt\\", \\"/test/example_cn-huhehaote_7.txt\\"]
@@ -22402,10 +22880,14 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// s-*********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// Parent snapshot HASH value before archiving.
+	//
 	// example:
 	//
 	// qwer***
 	SourceParentSnapshotHash *string `json:"SourceParentSnapshotHash,omitempty" xml:"SourceParentSnapshotHash,omitempty"`
+	// Snapshot HASH value before archiving
+	//
 	// example:
 	//
 	// qwer***
@@ -22440,6 +22922,14 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Storage type. Values:
+	//
+	// - **Standard**: Standard.
+	//
+	// - **Archive**: Archive.
+	//
+	// - **ColdArchive**: Cold Archive.
+	//
 	// example:
 	//
 	// STANDARD
@@ -22456,6 +22946,8 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// Whether to use local NAS.
+	//
 	// example:
 	//
 	// false
@@ -23041,7 +23533,7 @@ type UninstallBackupClientsRequest struct {
 	//
 	// 129349237xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+	// The IDs of Elastic Compute Service (ECS) instances. You can specify a maximum of 20 ECS instances.
 	//
 	// example:
 	//
@@ -23111,7 +23603,7 @@ type UninstallBackupClientsShrinkRequest struct {
 	//
 	// 129349237xxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The IDs of ECS instances. You can specify a maximum of 20 ECS instances.
+	// The IDs of Elastic Compute Service (ECS) instances. You can specify a maximum of 20 ECS instances.
 	//
 	// example:
 	//
@@ -24503,24 +24995,38 @@ func (s *UpdateClientSettingsResponse) SetBody(v *UpdateClientSettingsResponseBo
 }
 
 type UpdateContainerClusterRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-000**************134
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Cluster description.
+	//
 	// example:
 	//
 	// description ack pv backup
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Cluster name.
+	//
 	// example:
 	//
 	// ack_pv_backup_location
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Network type, with possible values including:
+	//
+	// 	- **CLASSIC**: Classic Network.
+	//
+	// 	- **VPC**: Virtual Private Cloud.
+	//
 	// example:
 	//
 	// VPC
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// Whether to regenerate the token.
+	//
 	// example:
 	//
 	// false
@@ -24561,26 +25067,42 @@ func (s *UpdateContainerClusterRequest) SetRenewToken(v bool) *UpdateContainerCl
 }
 
 type UpdateContainerClusterResponseBody struct {
+	// Return code, 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return information.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates if the request was successful.
+	//
+	// - true: Success
+	//
+	// - false: Failure
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Cluster token, used for registering HBR clients within the cluster.
+	//
 	// example:
 	//
 	// eyJhY2NvdW*****VnZpgXQC5A==
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Indicates whether the cluster token has been updated.
+	//
 	// example:
 	//
 	// false
@@ -25507,10 +26029,14 @@ type UpdatePolicyBindingRequest struct {
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
@@ -25529,6 +26055,10 @@ type UpdatePolicyBindingRequest struct {
 	//
 	// po-000************ky9
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+	//
+	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+	//
 	// example:
 	//
 	// backup/
@@ -25543,6 +26073,14 @@ type UpdatePolicyBindingRequest struct {
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
 	// example:
 	//
 	// 0:24:5120
@@ -25608,10 +26146,11 @@ func (s *UpdatePolicyBindingRequest) SetSpeedLimit(v string) *UpdatePolicyBindin
 }
 
 type UpdatePolicyBindingRequestAdvancedOptions struct {
+	// The details about large-scale file system backup.
 	CommonFileSystemDetail *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
-	// The details of the Object Storage Service (OSS) backup.
+	// The details about Object Storage Service (OSS) backup.
 	OssDetail *UpdatePolicyBindingRequestAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// The backup details of the Elastic Compute Service (ECS) instance.
+	// The details about Elastic Compute Service (ECS) instance backup.
 	UdmDetail *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -25639,10 +26178,18 @@ func (s *UpdatePolicyBindingRequestAdvancedOptions) SetUdmDetail(v *UpdatePolicy
 }
 
 type UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail struct {
+	// The size of backup shards (the number of files).
+	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
+	// Specifies whether the system performs full backup if incremental backup fails. Valid values:
+	//
+	// 	- **true**: The system performs full backup if incremental backup fails.
+	//
+	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	//
 	// example:
 	//
 	// true
@@ -25668,24 +26215,29 @@ func (s *UpdatePolicyBindingRequestAdvancedOptionsCommonFileSystemDetail) SetFul
 }
 
 type UpdatePolicyBindingRequestAdvancedOptionsOssDetail struct {
+	// Do not prompt for archival type objects in task statistics and failed file lists.
+	//
+	// example:
+	//
+	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
-	// Specifies whether the system deletes the inventory lists after a backup is complete. This parameter is available only when OSS inventory lists are used. Valid values:
+	// Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
 	//
-	// 	- **NO_CLEANUP**: Does not delete inventory lists.
+	// 	- **NO_CLEANUP**: does not delete inventory lists.
 	//
-	// 	- **DELETE_CURRENT**: Deletes the current inventory list.
+	// 	- **DELETE_CURRENT**: deletes the current inventory list.
 	//
-	// 	- **DELETE_CURRENT_AND_PREVIOUS**: Deletes all inventory lists.
+	// 	- **DELETE_CURRENT_AND_PREVIOUS**: deletes all inventory lists.
 	//
 	// example:
 	//
 	// NO_CLEANUP
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	// The name of the OSS inventory list. The OSS inventory list specified for this parameter is used for performance optimization.
+	// The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
 	//
-	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included in your OSS bills.
+	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
 	//
-	// 	- An extended period of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	// 	- A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
 	//
 	// example:
 	//
@@ -25723,19 +26275,19 @@ type UpdatePolicyBindingRequestAdvancedOptionsUdmDetail struct {
 	//
 	// false
 	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The IDs of the disks that require protection. This parameter is not required if all disks require protection.
+	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
 	//
-	// 	- true: creates application-consistent snapshots.
+	// 	- true: creates application-consistent snapshots
 	//
-	// 	- false: creates file system-consistent snapshots.
+	// 	- false: creates file system-consistent snapshots
 	//
 	// Default value: true.
 	//
@@ -25743,33 +26295,33 @@ type UpdatePolicyBindingRequestAdvancedOptionsUdmDetail struct {
 	//
 	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
-	// The IDs of the disks that require no protection. This parameter is not required if the DiskIdList parameter is specified.
+	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
 	//
 	// example:
 	//
 	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
 	//
 	// example:
 	//
 	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are enhanced SSDs (ESSDs).
+	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are Enterprise SSDs (ESSDs).
 	//
 	// example:
 	//
 	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required only if the **AppConsistent*	- parameter is set to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
 	//
 	// example:
 	//
@@ -25856,10 +26408,14 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
@@ -25878,6 +26434,10 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// po-000************ky9
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+	//
+	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+	//
 	// example:
 	//
 	// backup/
@@ -25892,6 +26452,14 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+	//
+	// 	- **start**: the start hour.
+	//
+	// 	- **end**: the end hour.
+	//
+	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	//
 	// example:
 	//
 	// 0:24:5120
@@ -26113,9 +26681,15 @@ type UpdatePolicyV2RequestRules struct {
 	// example:
 	//
 	// 365
-	ColdArchiveDays   *int64                                         `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	ColdArchiveDays *int64 `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the data source filter rule.
 	DataSourceFilters []*UpdatePolicyV2RequestRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
-	Immutable         *bool                                          `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
+	// This parameter is required only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**. This parameter specifies whether to enable the immutable backup feature.
+	//
+	// example:
+	//
+	// true
+	Immutable *bool `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
 	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
 	//
 	// 	- 0: The feature is disabled.
@@ -26142,7 +26716,7 @@ type UpdatePolicyV2RequestRules struct {
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
+	// This parameter is required only if the value of the **RuleType*	- parameter is **TRANSITION**. This parameter specifies the special retention rules.
 	RetentionRules []*UpdatePolicyV2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -26171,7 +26745,8 @@ type UpdatePolicyV2RequestRules struct {
 	// example:
 	//
 	// I|1648647166|P1D
-	Schedule   *string                                 `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
 	TagFilters []*UpdatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
 }
 
@@ -26249,7 +26824,20 @@ func (s *UpdatePolicyV2RequestRules) SetTagFilters(v []*UpdatePolicyV2RequestRul
 }
 
 type UpdatePolicyV2RequestRulesDataSourceFilters struct {
+	// This parameter is deprecated.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	// The type of the data source. Valid values:
+	//
+	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **RuleType*	- parameter is set to **UDM_ECS_ONLY**.
+	//
+	// 	- **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **ECS_FILE**: ECS file This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
+	// 	- **OTS**: Tablestore instance This type of data source is supported only if the **RuleType*	- parameter is set to **STANDARD**.
+	//
 	// example:
 	//
 	// UDM_ECS
@@ -26325,14 +26913,24 @@ func (s *UpdatePolicyV2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *Up
 }
 
 type UpdatePolicyV2RequestRulesTagFilters struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag-based matching rule. Valid values:
+	//
+	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	//
+	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The tag value. If you leave this parameter empty, the value is any value.
+	//
 	// example:
 	//
 	// prod
@@ -27664,17 +28262,17 @@ func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result 
 
 // Summary:
 //
-// Creates a backup plan.
+// Create a backup plan.
 //
 // Description:
 //
-//   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+// - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
 //
-// 	- You can specify only one type of data source in a backup schedule.
+// - A backup plan supports only one type of data source.
 //
-// 	- You can specify only one interval as a backup cycle in a backup schedule.
+// - A backup plan supports only a single fixed interval backup cycle strategy.
 //
-// 	- Each backup schedule allows you to back up data to only one backup vault.
+// - A backup plan can back up to only one backup vault.
 //
 // @param tmpReq - CreateBackupPlanRequest
 //
@@ -27848,17 +28446,17 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 // Summary:
 //
-// Creates a backup plan.
+// Create a backup plan.
 //
 // Description:
 //
-//   A backup schedule defines the data source, backup policy, and other configurations. After you execute a backup schedule, a backup job is generated to record the backup progress and the backup result. If a backup job is complete, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+// - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
 //
-// 	- You can specify only one type of data source in a backup schedule.
+// - A backup plan supports only one type of data source.
 //
-// 	- You can specify only one interval as a backup cycle in a backup schedule.
+// - A backup plan supports only a single fixed interval backup cycle strategy.
 //
-// 	- Each backup schedule allows you to back up data to only one backup vault.
+// - A backup plan can back up to only one backup vault.
 //
 // @param request - CreateBackupPlanRequest
 //
@@ -27876,7 +28474,7 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 
 // Summary:
 //
-// Installs one or more HBR clients on specified instances.
+// Installs one or more Cloud Backup clients on specified instances.
 //
 // Description:
 //
@@ -27950,7 +28548,7 @@ func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, ru
 
 // Summary:
 //
-// Installs one or more HBR clients on specified instances.
+// Installs one or more Cloud Backup clients on specified instances.
 //
 // Description:
 //
@@ -28994,6 +29592,76 @@ func (client *Client) CreateVault(request *CreateVaultRequest) (_result *CreateV
 
 // Summary:
 //
+// Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+//
+// @param tmpReq - DeleteAirEcsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAirEcsInstanceResponse
+func (client *Client) DeleteAirEcsInstanceWithOptions(tmpReq *DeleteAirEcsInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteAirEcsInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAirEcsInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UninstallClientSourceTypes)) {
+		request.UninstallClientSourceTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UninstallClientSourceTypes, tea.String("UninstallClientSourceTypes"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UninstallClientSourceTypesShrink)) {
+		query["UninstallClientSourceTypes"] = request.UninstallClientSourceTypesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAirEcsInstance"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAirEcsInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+//
+// @param request - DeleteAirEcsInstanceRequest
+//
+// @return DeleteAirEcsInstanceResponse
+func (client *Client) DeleteAirEcsInstance(request *DeleteAirEcsInstanceRequest) (_result *DeleteAirEcsInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAirEcsInstanceResponse{}
+	_body, _err := client.DeleteAirEcsInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Cloud Backup client.
 //
 // Description:
@@ -29684,7 +30352,7 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 
 // Summary:
 //
-// 取消保护云盘
+// Cancels a protected disk.
 //
 // @param request - DeleteUdmDiskRequest
 //
@@ -29726,7 +30394,7 @@ func (client *Client) DeleteUdmDiskWithOptions(request *DeleteUdmDiskRequest, ru
 
 // Summary:
 //
-// 取消保护云盘
+// Cancels a protected disk.
 //
 // @param request - DeleteUdmDiskRequest
 //
@@ -31171,7 +31839,7 @@ func (client *Client) DescribePoliciesV2(request *DescribePoliciesV2Request) (_r
 
 // Summary:
 //
-// Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+// Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
 //
 // @param tmpReq - DescribePolicyBindingsRequest
 //
@@ -31241,7 +31909,7 @@ func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBi
 
 // Summary:
 //
-// Queries one or more data sources bound to a backup policy or queries one or more backup policies bound to a data source.
+// Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
 //
 // @param request - DescribePolicyBindingsRequest
 //
@@ -31764,7 +32432,7 @@ func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *D
 
 // Summary:
 //
-// Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+// Deletes an internal mount target created by Cloud Backup.
 //
 // Description:
 //
@@ -31828,7 +32496,7 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 
 // Summary:
 //
-// Deletes a mount target that is created by Hybrid Backup Recovery (HBR).
+// Deletes an internal mount target created by Cloud Backup.
 //
 // Description:
 //
@@ -32234,6 +32902,10 @@ func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Execute a policy for one or all bound data sources.
+//
 // @param request - ExecutePolicyV2Request
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32286,6 +32958,10 @@ func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request
 	return _result, _err
 }
 
+// Summary:
+//
+// Execute a policy for one or all bound data sources.
+//
 // @param request - ExecutePolicyV2Request
 //
 // @return ExecutePolicyV2Response
@@ -33251,7 +33927,7 @@ func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest)
 
 // Summary:
 //
-// Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+// Update container cluster information, including the container cluster name, network type, etc.
 //
 // @param request - UpdateContainerClusterRequest
 //
@@ -33309,7 +33985,7 @@ func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainer
 
 // Summary:
 //
-// Updates the name and network type of a Container Service for Kubernetes (ACK) cluster.
+// Update container cluster information, including the container cluster name, network type, etc.
 //
 // @param request - UpdateContainerClusterRequest
 //
