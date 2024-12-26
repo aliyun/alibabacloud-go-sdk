@@ -12,6 +12,14 @@ import (
 type CancelActiveOperationTasksRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
+	//
+	// 	- If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21,6 +29,8 @@ type CancelActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -73,10 +83,14 @@ func (s *CancelActiveOperationTasksRequest) SetTaskIds(v string) *CancelActiveOp
 }
 
 type CancelActiveOperationTasksResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// 2355,2352
@@ -2271,7 +2285,9 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// Enable
-	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	StorageAutoScale     *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	StorageEncryption    *bool   `json:"StorageEncryption,omitempty" xml:"StorageEncryption,omitempty"`
+	StorageEncryptionKey *string `json:"StorageEncryptionKey,omitempty" xml:"StorageEncryptionKey,omitempty"`
 	// The storage billing type, with valid values as follows:
 	//
 	// - Postpaid: Pay-as-you-go (hourly).
@@ -2610,6 +2626,16 @@ func (s *CreateDBClusterRequest) SetStandbyAZ(v string) *CreateDBClusterRequest 
 
 func (s *CreateDBClusterRequest) SetStorageAutoScale(v string) *CreateDBClusterRequest {
 	s.StorageAutoScale = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetStorageEncryption(v bool) *CreateDBClusterRequest {
+	s.StorageEncryption = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetStorageEncryptionKey(v string) *CreateDBClusterRequest {
+	s.StorageEncryptionKey = &v
 	return s
 }
 
@@ -10177,7 +10203,12 @@ type DescribeClassListResponseBodyItems struct {
 	// example:
 	//
 	// 8
-	Cpu                    *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The maximum ESSD storage capacity. Unit: TB.
+	//
+	// example:
+	//
+	// 64
 	EssdMaxStorageCapacity *string `json:"EssdMaxStorageCapacity,omitempty" xml:"EssdMaxStorageCapacity,omitempty"`
 	// The maximum number of concurrent connections in the cluster.
 	//
@@ -10220,7 +10251,12 @@ type DescribeClassListResponseBodyItems struct {
 	// example:
 	//
 	// 1000000
-	Pl3MaxIOPS                   *string `json:"Pl3MaxIOPS,omitempty" xml:"Pl3MaxIOPS,omitempty"`
+	Pl3MaxIOPS *string `json:"Pl3MaxIOPS,omitempty" xml:"Pl3MaxIOPS,omitempty"`
+	// The maximum PSL4/PSL5 storage capacity. Unit: TB.
+	//
+	// example:
+	//
+	// 500
 	PolarStoreMaxStorageCapacity *string `json:"PolarStoreMaxStorageCapacity,omitempty" xml:"PolarStoreMaxStorageCapacity,omitempty"`
 	// The maximum Input/output operations per second (IOPS) for PolarStore Level 4 (PSL4). Unit: operations per second.
 	//
@@ -15065,7 +15101,8 @@ type DescribeDBClusterTDEResponseBody struct {
 	// example:
 	//
 	// 2a4f4ac2-****-****-****-************
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionKey       *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -15125,6 +15162,11 @@ func (s *DescribeDBClusterTDEResponseBody) SetEncryptNewTables(v string) *Descri
 
 func (s *DescribeDBClusterTDEResponseBody) SetEncryptionKey(v string) *DescribeDBClusterTDEResponseBody {
 	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeDBClusterTDEResponseBody) SetEncryptionKeyStatus(v string) *DescribeDBClusterTDEResponseBody {
+	s.EncryptionKeyStatus = &v
 	return s
 }
 
@@ -25838,8 +25880,6 @@ type DescribeUserEncryptionKeyListRequest struct {
 	//
 	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// pc-************
@@ -28019,12 +28059,28 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 }
 
 type ModifyActiveOperationTasksRequest struct {
+	// Specifies whether to immediately start scheduling. Valid values:
+	//
+	// 	- 0: No. This is the default value.
+	//
+	// 	- 1: Yes.
+	//
+	// >
+	//
+	// 	- If you set this parameter to 0, you must specify the SwitchTime parameter.
+	//
+	// 	- If you set this parameter to 1, the SwitchTime parameter does not take effect. In this case, the start time of the event is set to the current time, and the system determines the switching time based on the start time. Scheduling is started immediately, which is a prerequisite for the switchover. Then, the switchover is performed. You can call the DescribeActiveOperationTasks operation and check the return value of the PrepareInterval parameter for the preparation time.
+	//
 	// example:
 	//
 	// 0
 	ImmediateStart *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28034,10 +28090,20 @@ type ModifyActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >
+	//
+	// 	- The time that is specified by this parameter cannot be later than the latest execution time.
+	//
+	// 	- You can call the DescribeActiveOperationTasks operation and check the return value of the Deadline parameter for the latest execution time.
+	//
 	// example:
 	//
 	// 2023-04-25T06:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The task IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -28100,10 +28166,14 @@ func (s *ModifyActiveOperationTasksRequest) SetTaskIds(v string) *ModifyActiveOp
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 42CD2EF5-D77E-5AD4-961B-159330D98286
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task IDs.
+	//
 	// example:
 	//
 	// 11111,22222
@@ -29152,7 +29222,7 @@ func (s *ModifyDBClusterAccessWhitelistResponse) SetBody(v *ModifyDBClusterAcces
 }
 
 type ModifyDBClusterAndNodesParametersRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -29160,9 +29230,9 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The node ID. You can set this parameter to modify the parameters of a specified node or of the cluster. Separate multiple node IDs with commas (,).
+	// The IDs of nodes. You can specify this parameter, or leave this parameter empty. Separate multiple node IDs with commas (,).
 	//
-	// > If you do not specify this parameter, only the cluster parameters are modified.
+	// >  If you do not specify this parameter, only the cluster parameters are modified.
 	//
 	// example:
 	//
@@ -29180,7 +29250,7 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template that is used for the instance.
+	// The ID of the parameter template.
 	//
 	// example:
 	//
@@ -29215,9 +29285,14 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	// example:
 	//
 	// 2021-01-14T09:00:00Z
-	PlannedStartTime               *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
-	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The secondary clusters in the GDN to which the parameter settings are synchronized.
+	//
+	// example:
+	//
+	// gdn-**********,gdn-**********
 	StandbyClusterIdListNeedToSync *string `json:"StandbyClusterIdListNeedToSync,omitempty" xml:"StandbyClusterIdListNeedToSync,omitempty"`
 }
 
@@ -36629,7 +36704,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 用户侧取消任务
+// Cancels O\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -36695,7 +36770,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// 用户侧取消任务
+// Cancels O\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -37864,6 +37939,14 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.StorageAutoScale)) {
 		query["StorageAutoScale"] = request.StorageAutoScale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageEncryption)) {
+		query["StorageEncryption"] = request.StorageEncryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageEncryptionKey)) {
+		query["StorageEncryptionKey"] = request.StorageEncryptionKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StoragePayType)) {
@@ -46333,7 +46416,7 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 
 // Summary:
 //
-// 用户侧修改任务
+// Modifies the switching time of scheduled O\\&M events for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -46407,7 +46490,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// 用户侧修改任务
+// Modifies the switching time of scheduled O\\&M events for an instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
