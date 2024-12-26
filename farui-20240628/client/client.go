@@ -1364,6 +1364,1174 @@ func (s *RunLegalAdviceConsultationResponse) SetBody(v *RunLegalAdviceConsultati
 	return s
 }
 
+type RunSearchCaseFullTextRequest struct {
+	// example:
+	//
+	// farui
+	AppId           *string                                      `json:"appId,omitempty" xml:"appId,omitempty"`
+	FilterCondition *RunSearchCaseFullTextRequestFilterCondition `json:"filterCondition,omitempty" xml:"filterCondition,omitempty" type:"Struct"`
+	// This parameter is required.
+	PageParam *RunSearchCaseFullTextRequestPageParam `json:"pageParam,omitempty" xml:"pageParam,omitempty" type:"Struct"`
+	// This parameter is required.
+	Query               *string                             `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywords       []*string                           `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty" type:"Repeated"`
+	SortKeyAndDirection map[string]*string                  `json:"sortKeyAndDirection,omitempty" xml:"sortKeyAndDirection,omitempty"`
+	Thread              *RunSearchCaseFullTextRequestThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
+}
+
+func (s RunSearchCaseFullTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextRequest) SetAppId(v string) *RunSearchCaseFullTextRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetFilterCondition(v *RunSearchCaseFullTextRequestFilterCondition) *RunSearchCaseFullTextRequest {
+	s.FilterCondition = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetPageParam(v *RunSearchCaseFullTextRequestPageParam) *RunSearchCaseFullTextRequest {
+	s.PageParam = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetQuery(v string) *RunSearchCaseFullTextRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetQueryKeywords(v []*string) *RunSearchCaseFullTextRequest {
+	s.QueryKeywords = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetSortKeyAndDirection(v map[string]*string) *RunSearchCaseFullTextRequest {
+	s.SortKeyAndDirection = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetThread(v *RunSearchCaseFullTextRequestThread) *RunSearchCaseFullTextRequest {
+	s.Thread = v
+	return s
+}
+
+type RunSearchCaseFullTextRequestFilterCondition struct {
+	CaseNo    *string `json:"caseNo,omitempty" xml:"caseNo,omitempty"`
+	CaseTitle *string `json:"caseTitle,omitempty" xml:"caseTitle,omitempty"`
+}
+
+func (s RunSearchCaseFullTextRequestFilterCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextRequestFilterCondition) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextRequestFilterCondition) SetCaseNo(v string) *RunSearchCaseFullTextRequestFilterCondition {
+	s.CaseNo = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequestFilterCondition) SetCaseTitle(v string) *RunSearchCaseFullTextRequestFilterCondition {
+	s.CaseTitle = &v
+	return s
+}
+
+type RunSearchCaseFullTextRequestPageParam struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s RunSearchCaseFullTextRequestPageParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextRequestPageParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextRequestPageParam) SetPageNumber(v int32) *RunSearchCaseFullTextRequestPageParam {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequestPageParam) SetPageSize(v int32) *RunSearchCaseFullTextRequestPageParam {
+	s.PageSize = &v
+	return s
+}
+
+type RunSearchCaseFullTextRequestThread struct {
+	Messages []*RunSearchCaseFullTextRequestThreadMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchCaseFullTextRequestThread) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextRequestThread) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextRequestThread) SetMessages(v []*RunSearchCaseFullTextRequestThreadMessages) *RunSearchCaseFullTextRequestThread {
+	s.Messages = v
+	return s
+}
+
+type RunSearchCaseFullTextRequestThreadMessages struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s RunSearchCaseFullTextRequestThreadMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextRequestThreadMessages) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextRequestThreadMessages) SetContent(v string) *RunSearchCaseFullTextRequestThreadMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequestThreadMessages) SetRole(v string) *RunSearchCaseFullTextRequestThreadMessages {
+	s.Role = &v
+	return s
+}
+
+type RunSearchCaseFullTextShrinkRequest struct {
+	// example:
+	//
+	// farui
+	AppId                 *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	FilterConditionShrink *string `json:"filterCondition,omitempty" xml:"filterCondition,omitempty"`
+	// This parameter is required.
+	PageParamShrink *string `json:"pageParam,omitempty" xml:"pageParam,omitempty"`
+	// This parameter is required.
+	Query                     *string `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywordsShrink       *string `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty"`
+	SortKeyAndDirectionShrink *string `json:"sortKeyAndDirection,omitempty" xml:"sortKeyAndDirection,omitempty"`
+	ThreadShrink              *string `json:"thread,omitempty" xml:"thread,omitempty"`
+}
+
+func (s RunSearchCaseFullTextShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetAppId(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetFilterConditionShrink(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.FilterConditionShrink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetPageParamShrink(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.PageParamShrink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetQuery(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetQueryKeywordsShrink(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.QueryKeywordsShrink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetSortKeyAndDirectionShrink(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.SortKeyAndDirectionShrink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetThreadShrink(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.ThreadShrink = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponseBody struct {
+	// example:
+	//
+	// null
+	Code *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Data *RunSearchCaseFullTextResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C844BE6B-33A9-5AC4-A1AE-97B131849E0F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetCode(v string) *RunSearchCaseFullTextResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetData(v *RunSearchCaseFullTextResponseBodyData) *RunSearchCaseFullTextResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetHttpStatusCode(v int64) *RunSearchCaseFullTextResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetMessage(v string) *RunSearchCaseFullTextResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetRequestId(v string) *RunSearchCaseFullTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBody) SetSuccess(v bool) *RunSearchCaseFullTextResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponseBodyData struct {
+	CaseResult []*RunSearchCaseFullTextResponseBodyDataCaseResult `json:"caseResult,omitempty" xml:"caseResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Query         *string   `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywords []*string `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetCaseResult(v []*RunSearchCaseFullTextResponseBodyDataCaseResult) *RunSearchCaseFullTextResponseBodyData {
+	s.CaseResult = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetCurrentPage(v int32) *RunSearchCaseFullTextResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetPageSize(v int32) *RunSearchCaseFullTextResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetQuery(v string) *RunSearchCaseFullTextResponseBodyData {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetQueryKeywords(v []*string) *RunSearchCaseFullTextResponseBodyData {
+	s.QueryKeywords = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetTotalCount(v int64) *RunSearchCaseFullTextResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponseBodyDataCaseResult struct {
+	CaseDomain *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain `json:"caseDomain,omitempty" xml:"caseDomain,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0.88
+	Similarity *string `json:"similarity,omitempty" xml:"similarity,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetCaseDomain(v *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) *RunSearchCaseFullTextResponseBodyDataCaseResult {
+	s.CaseDomain = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetSimilarity(v string) *RunSearchCaseFullTextResponseBodyDataCaseResult {
+	s.Similarity = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain struct {
+	AbstractObj           *string                                                              `json:"abstractObj,omitempty" xml:"abstractObj,omitempty"`
+	AppliedLaws           *string                                                              `json:"appliedLaws,omitempty" xml:"appliedLaws,omitempty"`
+	CaseBasic             *string                                                              `json:"caseBasic,omitempty" xml:"caseBasic,omitempty"`
+	CaseFeature           *string                                                              `json:"caseFeature,omitempty" xml:"caseFeature,omitempty"`
+	CaseId                *string                                                              `json:"caseId,omitempty" xml:"caseId,omitempty"`
+	CaseNo                *string                                                              `json:"caseNo,omitempty" xml:"caseNo,omitempty"`
+	CaseSummary           *string                                                              `json:"caseSummary,omitempty" xml:"caseSummary,omitempty"`
+	CaseTitle             *string                                                              `json:"caseTitle,omitempty" xml:"caseTitle,omitempty"`
+	CaseType              *string                                                              `json:"caseType,omitempty" xml:"caseType,omitempty"`
+	CloseCaseCause        *string                                                              `json:"closeCaseCause,omitempty" xml:"closeCaseCause,omitempty"`
+	CourtFindOut          *string                                                              `json:"courtFindOut,omitempty" xml:"courtFindOut,omitempty"`
+	CourtThink            *string                                                              `json:"courtThink,omitempty" xml:"courtThink,omitempty"`
+	DataFrom              *string                                                              `json:"dataFrom,omitempty" xml:"dataFrom,omitempty"`
+	DisputeFocus          *string                                                              `json:"disputeFocus,omitempty" xml:"disputeFocus,omitempty"`
+	DisputeFocusTag       []*string                                                            `json:"disputeFocusTag,omitempty" xml:"disputeFocusTag,omitempty" type:"Repeated"`
+	Disputedpoints        *string                                                              `json:"disputedpoints,omitempty" xml:"disputedpoints,omitempty"`
+	DocumentType          *string                                                              `json:"documentType,omitempty" xml:"documentType,omitempty"`
+	Keyfacts              *string                                                              `json:"keyfacts,omitempty" xml:"keyfacts,omitempty"`
+	LegalBasis            *string                                                              `json:"legalBasis,omitempty" xml:"legalBasis,omitempty"`
+	Litigants             *string                                                              `json:"litigants,omitempty" xml:"litigants,omitempty"`
+	LitigationParticipant *string                                                              `json:"litigationParticipant,omitempty" xml:"litigationParticipant,omitempty"`
+	OpenCaseCause         *string                                                              `json:"openCaseCause,omitempty" xml:"openCaseCause,omitempty"`
+	PreTrialProcess       *string                                                              `json:"preTrialProcess,omitempty" xml:"preTrialProcess,omitempty"`
+	ReferLevel            *string                                                              `json:"referLevel,omitempty" xml:"referLevel,omitempty"`
+	SourceContent         *string                                                              `json:"sourceContent,omitempty" xml:"sourceContent,omitempty"`
+	TrialCourt            *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt `json:"trialCourt,omitempty" xml:"trialCourt,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2018-09-27
+	TrialDate    *string `json:"trialDate,omitempty" xml:"trialDate,omitempty"`
+	TrialLevel   *string `json:"trialLevel,omitempty" xml:"trialLevel,omitempty"`
+	TrialProcess *string `json:"trialProcess,omitempty" xml:"trialProcess,omitempty"`
+	TrialProgram *string `json:"trialProgram,omitempty" xml:"trialProgram,omitempty"`
+	Verdict      *string `json:"verdict,omitempty" xml:"verdict,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetAbstractObj(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.AbstractObj = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetAppliedLaws(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.AppliedLaws = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseBasic(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseBasic = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseFeature(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseFeature = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseId(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseId = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseNo(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseNo = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseSummary(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseSummary = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseTitle(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseTitle = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseType(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseType = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCloseCaseCause(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CloseCaseCause = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCourtFindOut(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CourtFindOut = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCourtThink(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CourtThink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDataFrom(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.DataFrom = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDisputeFocus(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.DisputeFocus = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDisputeFocusTag(v []*string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.DisputeFocusTag = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDisputedpoints(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.Disputedpoints = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDocumentType(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.DocumentType = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetKeyfacts(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.Keyfacts = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetLegalBasis(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.LegalBasis = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetLitigants(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.Litigants = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetLitigationParticipant(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.LitigationParticipant = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetOpenCaseCause(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.OpenCaseCause = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetPreTrialProcess(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.PreTrialProcess = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetReferLevel(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.ReferLevel = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetSourceContent(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.SourceContent = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetTrialCourt(v *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.TrialCourt = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetTrialDate(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.TrialDate = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetTrialLevel(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.TrialLevel = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetTrialProcess(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.TrialProcess = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetTrialProgram(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.TrialProgram = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetVerdict(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.Verdict = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt struct {
+	City        *string `json:"city,omitempty" xml:"city,omitempty"`
+	CommonLevel *string `json:"commonLevel,omitempty" xml:"commonLevel,omitempty"`
+	Country     *string `json:"country,omitempty" xml:"country,omitempty"`
+	County      *string `json:"county,omitempty" xml:"county,omitempty"`
+	District    *string `json:"district,omitempty" xml:"district,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Province    *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// “”
+	SpecialLevel *string `json:"specialLevel,omitempty" xml:"specialLevel,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetCity(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.City = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetCommonLevel(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.CommonLevel = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetCountry(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.Country = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetCounty(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.County = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetDistrict(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.District = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetName(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.Name = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetProvince(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.Province = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt) SetSpecialLevel(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt {
+	s.SpecialLevel = &v
+	return s
+}
+
+type RunSearchCaseFullTextResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSearchCaseFullTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSearchCaseFullTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchCaseFullTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponse) SetHeaders(v map[string]*string) *RunSearchCaseFullTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponse) SetStatusCode(v int32) *RunSearchCaseFullTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponse) SetBody(v *RunSearchCaseFullTextResponseBody) *RunSearchCaseFullTextResponse {
+	s.Body = v
+	return s
+}
+
+type RunSearchLawQueryRequest struct {
+	// example:
+	//
+	// farui
+	AppId           *string                                  `json:"appId,omitempty" xml:"appId,omitempty"`
+	FilterCondition *RunSearchLawQueryRequestFilterCondition `json:"filterCondition,omitempty" xml:"filterCondition,omitempty" type:"Struct"`
+	PageParam       *RunSearchLawQueryRequestPageParam       `json:"pageParam,omitempty" xml:"pageParam,omitempty" type:"Struct"`
+	// This parameter is required.
+	Query         *string                         `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywords []*string                       `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty" type:"Repeated"`
+	Thread        *RunSearchLawQueryRequestThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
+}
+
+func (s RunSearchLawQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryRequest) SetAppId(v string) *RunSearchLawQueryRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunSearchLawQueryRequest) SetFilterCondition(v *RunSearchLawQueryRequestFilterCondition) *RunSearchLawQueryRequest {
+	s.FilterCondition = v
+	return s
+}
+
+func (s *RunSearchLawQueryRequest) SetPageParam(v *RunSearchLawQueryRequestPageParam) *RunSearchLawQueryRequest {
+	s.PageParam = v
+	return s
+}
+
+func (s *RunSearchLawQueryRequest) SetQuery(v string) *RunSearchLawQueryRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchLawQueryRequest) SetQueryKeywords(v []*string) *RunSearchLawQueryRequest {
+	s.QueryKeywords = v
+	return s
+}
+
+func (s *RunSearchLawQueryRequest) SetThread(v *RunSearchLawQueryRequestThread) *RunSearchLawQueryRequest {
+	s.Thread = v
+	return s
+}
+
+type RunSearchLawQueryRequestFilterCondition struct {
+	LawName *string `json:"lawName,omitempty" xml:"lawName,omitempty"`
+}
+
+func (s RunSearchLawQueryRequestFilterCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryRequestFilterCondition) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryRequestFilterCondition) SetLawName(v string) *RunSearchLawQueryRequestFilterCondition {
+	s.LawName = &v
+	return s
+}
+
+type RunSearchLawQueryRequestPageParam struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s RunSearchLawQueryRequestPageParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryRequestPageParam) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryRequestPageParam) SetPageNumber(v int32) *RunSearchLawQueryRequestPageParam {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RunSearchLawQueryRequestPageParam) SetPageSize(v int32) *RunSearchLawQueryRequestPageParam {
+	s.PageSize = &v
+	return s
+}
+
+type RunSearchLawQueryRequestThread struct {
+	Messages []*RunSearchLawQueryRequestThreadMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchLawQueryRequestThread) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryRequestThread) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryRequestThread) SetMessages(v []*RunSearchLawQueryRequestThreadMessages) *RunSearchLawQueryRequestThread {
+	s.Messages = v
+	return s
+}
+
+type RunSearchLawQueryRequestThreadMessages struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s RunSearchLawQueryRequestThreadMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryRequestThreadMessages) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryRequestThreadMessages) SetContent(v string) *RunSearchLawQueryRequestThreadMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchLawQueryRequestThreadMessages) SetRole(v string) *RunSearchLawQueryRequestThreadMessages {
+	s.Role = &v
+	return s
+}
+
+type RunSearchLawQueryShrinkRequest struct {
+	// example:
+	//
+	// farui
+	AppId                 *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	FilterConditionShrink *string `json:"filterCondition,omitempty" xml:"filterCondition,omitempty"`
+	PageParamShrink       *string `json:"pageParam,omitempty" xml:"pageParam,omitempty"`
+	// This parameter is required.
+	Query               *string `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywordsShrink *string `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty"`
+	ThreadShrink        *string `json:"thread,omitempty" xml:"thread,omitempty"`
+}
+
+func (s RunSearchLawQueryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetAppId(v string) *RunSearchLawQueryShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetFilterConditionShrink(v string) *RunSearchLawQueryShrinkRequest {
+	s.FilterConditionShrink = &v
+	return s
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetPageParamShrink(v string) *RunSearchLawQueryShrinkRequest {
+	s.PageParamShrink = &v
+	return s
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetQuery(v string) *RunSearchLawQueryShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetQueryKeywordsShrink(v string) *RunSearchLawQueryShrinkRequest {
+	s.QueryKeywordsShrink = &v
+	return s
+}
+
+func (s *RunSearchLawQueryShrinkRequest) SetThreadShrink(v string) *RunSearchLawQueryShrinkRequest {
+	s.ThreadShrink = &v
+	return s
+}
+
+type RunSearchLawQueryResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data *RunSearchLawQueryResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 05062567-EB51-50F6-AF56-0BE44955848D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RunSearchLawQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponseBody) SetCode(v string) *RunSearchLawQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBody) SetData(v *RunSearchLawQueryResponseBodyData) *RunSearchLawQueryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBody) SetHttpStatusCode(v int64) *RunSearchLawQueryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBody) SetMessage(v string) *RunSearchLawQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBody) SetRequestId(v string) *RunSearchLawQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBody) SetSuccess(v bool) *RunSearchLawQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RunSearchLawQueryResponseBodyData struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                        `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	LawResult   []*RunSearchLawQueryResponseBodyDataLawResult `json:"lawResult,omitempty" xml:"lawResult,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	PageSize            *int32                                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Query               *string                                               `json:"query,omitempty" xml:"query,omitempty"`
+	QueryKeywords       []*string                                             `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty" type:"Repeated"`
+	SortKeyAndDirection *RunSearchLawQueryResponseBodyDataSortKeyAndDirection `json:"sortKeyAndDirection,omitempty" xml:"sortKeyAndDirection,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s RunSearchLawQueryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetCurrentPage(v int32) *RunSearchLawQueryResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetLawResult(v []*RunSearchLawQueryResponseBodyDataLawResult) *RunSearchLawQueryResponseBodyData {
+	s.LawResult = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetPageSize(v int32) *RunSearchLawQueryResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetQuery(v string) *RunSearchLawQueryResponseBodyData {
+	s.Query = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetQueryKeywords(v []*string) *RunSearchLawQueryResponseBodyData {
+	s.QueryKeywords = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetSortKeyAndDirection(v *RunSearchLawQueryResponseBodyDataSortKeyAndDirection) *RunSearchLawQueryResponseBodyData {
+	s.SortKeyAndDirection = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyData) SetTotalCount(v int64) *RunSearchLawQueryResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type RunSearchLawQueryResponseBodyDataLawResult struct {
+	LawDomain *RunSearchLawQueryResponseBodyDataLawResultLawDomain `json:"lawDomain,omitempty" xml:"lawDomain,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0.0050
+	Similarity *string `json:"similarity,omitempty" xml:"similarity,omitempty"`
+}
+
+func (s RunSearchLawQueryResponseBodyDataLawResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponseBodyDataLawResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResult) SetLawDomain(v *RunSearchLawQueryResponseBodyDataLawResultLawDomain) *RunSearchLawQueryResponseBodyDataLawResult {
+	s.LawDomain = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResult) SetSimilarity(v string) *RunSearchLawQueryResponseBodyDataLawResult {
+	s.Similarity = &v
+	return s
+}
+
+type RunSearchLawQueryResponseBodyDataLawResultLawDomain struct {
+	AbolitionBasis         *string `json:"abolitionBasis,omitempty" xml:"abolitionBasis,omitempty"`
+	ImplementYearMonthDate *string `json:"implementYearMonthDate,omitempty" xml:"implementYearMonthDate,omitempty"`
+	// example:
+	//
+	// null
+	InvalidBasis *string `json:"invalidBasis,omitempty" xml:"invalidBasis,omitempty"`
+	// example:
+	//
+	// ""
+	IssuingNo    *string `json:"issuingNo,omitempty" xml:"issuingNo,omitempty"`
+	IssuingOrgan *string `json:"issuingOrgan,omitempty" xml:"issuingOrgan,omitempty"`
+	// example:
+	//
+	// b2274825c8c3bc2343ca73680243ddc8
+	LawId *string `json:"lawId,omitempty" xml:"lawId,omitempty"`
+	// example:
+	//
+	// ccc209683be1509676174fd6890f24b8
+	LawItemId        *string `json:"lawItemId,omitempty" xml:"lawItemId,omitempty"`
+	LawName          *string `json:"lawName,omitempty" xml:"lawName,omitempty"`
+	LawOrder         *string `json:"lawOrder,omitempty" xml:"lawOrder,omitempty"`
+	LawSourceContent *string `json:"lawSourceContent,omitempty" xml:"lawSourceContent,omitempty"`
+	LawTitle         *string `json:"lawTitle,omitempty" xml:"lawTitle,omitempty"`
+	// example:
+	//
+	// "[]"
+	ModifyBasis          *string `json:"modifyBasis,omitempty" xml:"modifyBasis,omitempty"`
+	PotencyLevel         *string `json:"potencyLevel,omitempty" xml:"potencyLevel,omitempty"`
+	ReleaseYearMonthDate *string `json:"releaseYearMonthDate,omitempty" xml:"releaseYearMonthDate,omitempty"`
+	// example:
+	//
+	// null
+	ThematicClassify *string `json:"thematicClassify,omitempty" xml:"thematicClassify,omitempty"`
+	Timeliness       *string `json:"timeliness,omitempty" xml:"timeliness,omitempty"`
+}
+
+func (s RunSearchLawQueryResponseBodyDataLawResultLawDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponseBodyDataLawResultLawDomain) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetAbolitionBasis(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.AbolitionBasis = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetImplementYearMonthDate(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.ImplementYearMonthDate = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetInvalidBasis(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.InvalidBasis = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetIssuingNo(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.IssuingNo = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetIssuingOrgan(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.IssuingOrgan = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawId(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawId = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawItemId(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawItemId = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawName(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawName = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawOrder(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawOrder = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawSourceContent(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawSourceContent = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetLawTitle(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.LawTitle = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetModifyBasis(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.ModifyBasis = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetPotencyLevel(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.PotencyLevel = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetReleaseYearMonthDate(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.ReleaseYearMonthDate = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetThematicClassify(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.ThematicClassify = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataLawResultLawDomain) SetTimeliness(v string) *RunSearchLawQueryResponseBodyDataLawResultLawDomain {
+	s.Timeliness = &v
+	return s
+}
+
+type RunSearchLawQueryResponseBodyDataSortKeyAndDirection struct {
+	// example:
+	//
+	// desc
+	ReleaseYearMonthDate *string `json:"releaseYearMonthDate,omitempty" xml:"releaseYearMonthDate,omitempty"`
+	// example:
+	//
+	// desc
+	Similarity *string `json:"similarity,omitempty" xml:"similarity,omitempty"`
+}
+
+func (s RunSearchLawQueryResponseBodyDataSortKeyAndDirection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponseBodyDataSortKeyAndDirection) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponseBodyDataSortKeyAndDirection) SetReleaseYearMonthDate(v string) *RunSearchLawQueryResponseBodyDataSortKeyAndDirection {
+	s.ReleaseYearMonthDate = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponseBodyDataSortKeyAndDirection) SetSimilarity(v string) *RunSearchLawQueryResponseBodyDataSortKeyAndDirection {
+	s.Similarity = &v
+	return s
+}
+
+type RunSearchLawQueryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSearchLawQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSearchLawQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchLawQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchLawQueryResponse) SetHeaders(v map[string]*string) *RunSearchLawQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSearchLawQueryResponse) SetStatusCode(v int32) *RunSearchLawQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSearchLawQueryResponse) SetBody(v *RunSearchLawQueryResponseBody) *RunSearchLawQueryResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1833,6 +3001,218 @@ func (client *Client) RunLegalAdviceConsultation(workspaceId *string, request *R
 	headers := make(map[string]*string)
 	_result = &RunLegalAdviceConsultationResponse{}
 	_body, _err := client.RunLegalAdviceConsultationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 案例检索
+//
+// @param tmpReq - RunSearchCaseFullTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSearchCaseFullTextResponse
+func (client *Client) RunSearchCaseFullTextWithOptions(workspaceId *string, tmpReq *RunSearchCaseFullTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunSearchCaseFullTextResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunSearchCaseFullTextShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterCondition)) {
+		request.FilterConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterCondition, tea.String("filterCondition"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PageParam)) {
+		request.PageParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PageParam, tea.String("pageParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryKeywords)) {
+		request.QueryKeywordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryKeywords, tea.String("queryKeywords"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SortKeyAndDirection)) {
+		request.SortKeyAndDirectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SortKeyAndDirection, tea.String("sortKeyAndDirection"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Thread)) {
+		request.ThreadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Thread, tea.String("thread"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["appId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterConditionShrink)) {
+		body["filterCondition"] = request.FilterConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageParamShrink)) {
+		body["pageParam"] = request.PageParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywordsShrink)) {
+		body["queryKeywords"] = request.QueryKeywordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKeyAndDirectionShrink)) {
+		body["sortKeyAndDirection"] = request.SortKeyAndDirectionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadShrink)) {
+		body["thread"] = request.ThreadShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSearchCaseFullText"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/farui/search/case/fulltext"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSearchCaseFullTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 案例检索
+//
+// @param request - RunSearchCaseFullTextRequest
+//
+// @return RunSearchCaseFullTextResponse
+func (client *Client) RunSearchCaseFullText(workspaceId *string, request *RunSearchCaseFullTextRequest) (_result *RunSearchCaseFullTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunSearchCaseFullTextResponse{}
+	_body, _err := client.RunSearchCaseFullTextWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 法规搜索
+//
+// @param tmpReq - RunSearchLawQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSearchLawQueryResponse
+func (client *Client) RunSearchLawQueryWithOptions(workspaceId *string, tmpReq *RunSearchLawQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunSearchLawQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunSearchLawQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterCondition)) {
+		request.FilterConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterCondition, tea.String("filterCondition"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PageParam)) {
+		request.PageParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PageParam, tea.String("pageParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryKeywords)) {
+		request.QueryKeywordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryKeywords, tea.String("queryKeywords"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Thread)) {
+		request.ThreadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Thread, tea.String("thread"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["appId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterConditionShrink)) {
+		body["filterCondition"] = request.FilterConditionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageParamShrink)) {
+		body["pageParam"] = request.PageParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywordsShrink)) {
+		body["queryKeywords"] = request.QueryKeywordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadShrink)) {
+		body["thread"] = request.ThreadShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSearchLawQuery"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/farui/search/law/query"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSearchLawQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 法规搜索
+//
+// @param request - RunSearchLawQueryRequest
+//
+// @return RunSearchLawQueryResponse
+func (client *Client) RunSearchLawQuery(workspaceId *string, request *RunSearchLawQueryRequest) (_result *RunSearchLawQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunSearchLawQueryResponse{}
+	_body, _err := client.RunSearchLawQueryWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
