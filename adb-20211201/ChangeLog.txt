@@ -1,3 +1,15 @@
+2024-12-26 Version: v3.5.0
+- Support API ModifyUserEniVswitchOptions.
+- Update API AttachUserENI: update param AccessKeyId.
+- Update API DescribeBackupPolicy: update param AccessKeyId.
+- Update API DescribeDBClusterAttribute: update param AccessKeyId.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API DetachUserENI: update param AccessKeyId.
+- Update API ModifyAccountDescription: update param AccessKeyId.
+- Update API ModifyDBClusterDescription: update param AccessKeyId.
+- Update API ModifyDBClusterMaintainTime: update param AccessKeyId.
+
+
 2024-12-18 Version: v3.4.0
 - Support API GetCreateTableSQL.
 - Update API CreatePerformanceView: update param AccessKeyId.

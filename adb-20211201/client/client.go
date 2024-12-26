@@ -11491,7 +11491,10 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// false
-	UserENIStatus *bool `json:"UserENIStatus,omitempty" xml:"UserENIStatus,omitempty"`
+	UserENIStatus         *bool   `json:"UserENIStatus,omitempty" xml:"UserENIStatus,omitempty"`
+	UserENIVSwitchOptions *string `json:"UserENIVSwitchOptions,omitempty" xml:"UserENIVSwitchOptions,omitempty"`
+	UserENIVpcId          *string `json:"UserENIVpcId,omitempty" xml:"UserENIVpcId,omitempty"`
+	UserENIZoneOptions    *string `json:"UserENIZoneOptions,omitempty" xml:"UserENIZoneOptions,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
 	//
 	// example:
@@ -11702,6 +11705,21 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetTaskInfo(v *De
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetUserENIStatus(v bool) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.UserENIStatus = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetUserENIVSwitchOptions(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.UserENIVSwitchOptions = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetUserENIVpcId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.UserENIVpcId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetUserENIZoneOptions(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.UserENIZoneOptions = &v
 	return s
 }
 
@@ -31474,6 +31492,157 @@ func (s *ModifyPerformanceViewResponse) SetBody(v *ModifyPerformanceViewResponse
 	return s
 }
 
+type ModifyUserEniVswitchOptionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp11q28kvl688****
+	DbClusterId  *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-rj9ixufmywqq98z******,vsw-rj95ij6wcz656v7******
+	VSwitchOptions *string `json:"VSwitchOptions,omitempty" xml:"VSwitchOptions,omitempty"`
+}
+
+func (s ModifyUserEniVswitchOptionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserEniVswitchOptionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetDbClusterId(v string) *ModifyUserEniVswitchOptionsRequest {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetOwnerAccount(v string) *ModifyUserEniVswitchOptionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetOwnerId(v int64) *ModifyUserEniVswitchOptionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetRegionId(v string) *ModifyUserEniVswitchOptionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetResourceOwnerAccount(v string) *ModifyUserEniVswitchOptionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetResourceOwnerId(v int64) *ModifyUserEniVswitchOptionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsRequest) SetVSwitchOptions(v string) *ModifyUserEniVswitchOptionsRequest {
+	s.VSwitchOptions = &v
+	return s
+}
+
+type ModifyUserEniVswitchOptionsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyUserEniVswitchOptionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserEniVswitchOptionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserEniVswitchOptionsResponseBody) SetCode(v string) *ModifyUserEniVswitchOptionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponseBody) SetHttpStatusCode(v int32) *ModifyUserEniVswitchOptionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponseBody) SetMessage(v string) *ModifyUserEniVswitchOptionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponseBody) SetRequestId(v string) *ModifyUserEniVswitchOptionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponseBody) SetSuccess(v bool) *ModifyUserEniVswitchOptionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyUserEniVswitchOptionsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyUserEniVswitchOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyUserEniVswitchOptionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyUserEniVswitchOptionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyUserEniVswitchOptionsResponse) SetHeaders(v map[string]*string) *ModifyUserEniVswitchOptionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponse) SetStatusCode(v int32) *ModifyUserEniVswitchOptionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyUserEniVswitchOptionsResponse) SetBody(v *ModifyUserEniVswitchOptionsResponseBody) *ModifyUserEniVswitchOptionsResponse {
+	s.Body = v
+	return s
+}
+
 type PreloadSparkAppMetricsRequest struct {
 	// The Spark application ID.
 	//
@@ -36315,6 +36484,10 @@ func (client *Client) DescribeAuditLogRecords(request *DescribeAuditLogRecordsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看集群备份设置
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -36373,6 +36546,10 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看集群备份设置
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -40059,6 +40236,10 @@ func (client *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户弹性网卡
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -40101,6 +40282,10 @@ func (client *Client) DetachUserENIWithOptions(request *DetachUserENIRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户弹性网卡
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -44636,6 +44821,92 @@ func (client *Client) ModifyPerformanceView(request *ModifyPerformanceViewReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPerformanceViewResponse{}
 	_body, _err := client.ModifyPerformanceViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户eni交换机
+//
+// @param request - ModifyUserEniVswitchOptionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserEniVswitchOptionsResponse
+func (client *Client) ModifyUserEniVswitchOptionsWithOptions(request *ModifyUserEniVswitchOptionsRequest, runtime *util.RuntimeOptions) (_result *ModifyUserEniVswitchOptionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbClusterId)) {
+		query["DbClusterId"] = request.DbClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VSwitchOptions)) {
+		body["VSwitchOptions"] = request.VSwitchOptions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUserEniVswitchOptions"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyUserEniVswitchOptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户eni交换机
+//
+// @param request - ModifyUserEniVswitchOptionsRequest
+//
+// @return ModifyUserEniVswitchOptionsResponse
+func (client *Client) ModifyUserEniVswitchOptions(request *ModifyUserEniVswitchOptionsRequest) (_result *ModifyUserEniVswitchOptionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyUserEniVswitchOptionsResponse{}
+	_body, _err := client.ModifyUserEniVswitchOptionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
