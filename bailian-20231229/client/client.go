@@ -174,7 +174,8 @@ type AddFileRequest struct {
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
 	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
 	//
 	// This parameter is required.
@@ -210,6 +211,11 @@ func (s *AddFileRequest) SetCategoryId(v string) *AddFileRequest {
 	return s
 }
 
+func (s *AddFileRequest) SetCategoryType(v string) *AddFileRequest {
+	s.CategoryType = &v
+	return s
+}
+
 func (s *AddFileRequest) SetLeaseId(v string) *AddFileRequest {
 	s.LeaseId = &v
 	return s
@@ -233,7 +239,8 @@ type AddFileShrinkRequest struct {
 	// example:
 	//
 	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
 	// The lease ID, which corresponds to the `FileUploadLeaseId` parameter returned by the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation.
 	//
 	// This parameter is required.
@@ -266,6 +273,11 @@ func (s AddFileShrinkRequest) GoString() string {
 
 func (s *AddFileShrinkRequest) SetCategoryId(v string) *AddFileShrinkRequest {
 	s.CategoryId = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetCategoryType(v string) *AddFileShrinkRequest {
+	s.CategoryType = &v
 	return s
 }
 
@@ -426,6 +438,7 @@ func (s *AddFileResponse) SetBody(v *AddFileResponseBody) *AddFileResponse {
 }
 
 type ApplyFileUploadLeaseRequest struct {
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
 	// The name of the uploaded document, including the extension. Supported formats: pdf, doc, docx, md, txt, ppt, and pptx. The document name must be 4 to 128 characters in length.
 	//
 	// This parameter is required.
@@ -454,6 +467,11 @@ func (s ApplyFileUploadLeaseRequest) String() string {
 
 func (s ApplyFileUploadLeaseRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ApplyFileUploadLeaseRequest) SetCategoryType(v string) *ApplyFileUploadLeaseRequest {
+	s.CategoryType = &v
+	return s
 }
 
 func (s *ApplyFileUploadLeaseRequest) SetFileName(v string) *ApplyFileUploadLeaseRequest {
@@ -8786,6 +8804,10 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 		body["CategoryId"] = request.CategoryId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
+		body["CategoryType"] = request.CategoryType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LeaseId)) {
 		body["LeaseId"] = request.LeaseId
 	}
@@ -8880,6 +8902,10 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
+		body["CategoryType"] = request.CategoryType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		body["FileName"] = request.FileName
 	}
