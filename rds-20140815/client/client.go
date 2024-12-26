@@ -12816,6 +12816,594 @@ func (s *CreateRCDiskResponse) SetBody(v *CreateRCDiskResponseBody) *CreateRCDis
 	return s
 }
 
+type CreateRCNodePoolRequest struct {
+	Amount      *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay     *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	ClusterId          *string                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateMode         *string                            `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDisk           []*CreateRCNodePoolRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	DeploymentSetId    *string                            `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description        *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun             *bool                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HostName           *string                            `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId            *string                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType *string                            `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName       *string                            `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NodePoolName            *string `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	RegionId                    *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityEnhancementStrategy *string                            `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy                *string                            `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDisk                  *CreateRCNodePoolRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tag                         []*CreateRCNodePoolRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateRCNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolRequest) SetAmount(v int32) *CreateRCNodePoolRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetAutoPay(v bool) *CreateRCNodePoolRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetAutoRenew(v bool) *CreateRCNodePoolRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetClientToken(v string) *CreateRCNodePoolRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetClusterId(v string) *CreateRCNodePoolRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetCreateMode(v string) *CreateRCNodePoolRequest {
+	s.CreateMode = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetDataDisk(v []*CreateRCNodePoolRequestDataDisk) *CreateRCNodePoolRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetDeploymentSetId(v string) *CreateRCNodePoolRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetDescription(v string) *CreateRCNodePoolRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetDryRun(v bool) *CreateRCNodePoolRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetHostName(v string) *CreateRCNodePoolRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetImageId(v string) *CreateRCNodePoolRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetInstanceChargeType(v string) *CreateRCNodePoolRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetInstanceName(v string) *CreateRCNodePoolRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetInstanceType(v string) *CreateRCNodePoolRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetInternetChargeType(v string) *CreateRCNodePoolRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetInternetMaxBandwidthOut(v int32) *CreateRCNodePoolRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetIoOptimized(v string) *CreateRCNodePoolRequest {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetKeyPairName(v string) *CreateRCNodePoolRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetNodePoolName(v string) *CreateRCNodePoolRequest {
+	s.NodePoolName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetPassword(v string) *CreateRCNodePoolRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetPeriod(v int32) *CreateRCNodePoolRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetPeriodUnit(v string) *CreateRCNodePoolRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetRegionId(v string) *CreateRCNodePoolRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetResourceGroupId(v string) *CreateRCNodePoolRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetSecurityEnhancementStrategy(v string) *CreateRCNodePoolRequest {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetSecurityGroupId(v string) *CreateRCNodePoolRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetSpotStrategy(v string) *CreateRCNodePoolRequest {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetSystemDisk(v *CreateRCNodePoolRequestSystemDisk) *CreateRCNodePoolRequest {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetTag(v []*CreateRCNodePoolRequestTag) *CreateRCNodePoolRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetVSwitchId(v string) *CreateRCNodePoolRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequest) SetZoneId(v string) *CreateRCNodePoolRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateRCNodePoolRequestDataDisk struct {
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size               *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateRCNodePoolRequestDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolRequestDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolRequestDataDisk) SetCategory(v string) *CreateRCNodePoolRequestDataDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestDataDisk) SetDeleteWithInstance(v bool) *CreateRCNodePoolRequestDataDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestDataDisk) SetEncrypted(v string) *CreateRCNodePoolRequestDataDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestDataDisk) SetPerformanceLevel(v string) *CreateRCNodePoolRequestDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestDataDisk) SetSize(v int32) *CreateRCNodePoolRequestDataDisk {
+	s.Size = &v
+	return s
+}
+
+type CreateRCNodePoolRequestSystemDisk struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateRCNodePoolRequestSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolRequestSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolRequestSystemDisk) SetCategory(v string) *CreateRCNodePoolRequestSystemDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestSystemDisk) SetSize(v int32) *CreateRCNodePoolRequestSystemDisk {
+	s.Size = &v
+	return s
+}
+
+type CreateRCNodePoolRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateRCNodePoolRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolRequestTag) SetKey(v string) *CreateRCNodePoolRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateRCNodePoolRequestTag) SetValue(v string) *CreateRCNodePoolRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateRCNodePoolShrinkRequest struct {
+	Amount      *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoPay     *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateMode         *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDiskShrink     *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	DeploymentSetId    *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// This parameter is required.
+	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized             *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NodePoolName            *string `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
+	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	RegionId                    *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityEnhancementStrategy *string                             `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string                             `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy                *string                             `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDiskShrink            *string                             `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	Tag                         []*CreateRCNodePoolShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateRCNodePoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetAmount(v int32) *CreateRCNodePoolShrinkRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetAutoPay(v bool) *CreateRCNodePoolShrinkRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetAutoRenew(v bool) *CreateRCNodePoolShrinkRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetClientToken(v string) *CreateRCNodePoolShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetClusterId(v string) *CreateRCNodePoolShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetCreateMode(v string) *CreateRCNodePoolShrinkRequest {
+	s.CreateMode = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetDataDiskShrink(v string) *CreateRCNodePoolShrinkRequest {
+	s.DataDiskShrink = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetDeploymentSetId(v string) *CreateRCNodePoolShrinkRequest {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetDescription(v string) *CreateRCNodePoolShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetDryRun(v bool) *CreateRCNodePoolShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetHostName(v string) *CreateRCNodePoolShrinkRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetImageId(v string) *CreateRCNodePoolShrinkRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetInstanceChargeType(v string) *CreateRCNodePoolShrinkRequest {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetInstanceName(v string) *CreateRCNodePoolShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetInstanceType(v string) *CreateRCNodePoolShrinkRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetInternetChargeType(v string) *CreateRCNodePoolShrinkRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetInternetMaxBandwidthOut(v int32) *CreateRCNodePoolShrinkRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetIoOptimized(v string) *CreateRCNodePoolShrinkRequest {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetKeyPairName(v string) *CreateRCNodePoolShrinkRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetNodePoolName(v string) *CreateRCNodePoolShrinkRequest {
+	s.NodePoolName = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetPassword(v string) *CreateRCNodePoolShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetPeriod(v int32) *CreateRCNodePoolShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetPeriodUnit(v string) *CreateRCNodePoolShrinkRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetRegionId(v string) *CreateRCNodePoolShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetResourceGroupId(v string) *CreateRCNodePoolShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetSecurityEnhancementStrategy(v string) *CreateRCNodePoolShrinkRequest {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetSecurityGroupId(v string) *CreateRCNodePoolShrinkRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetSpotStrategy(v string) *CreateRCNodePoolShrinkRequest {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetSystemDiskShrink(v string) *CreateRCNodePoolShrinkRequest {
+	s.SystemDiskShrink = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetTag(v []*CreateRCNodePoolShrinkRequestTag) *CreateRCNodePoolShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetVSwitchId(v string) *CreateRCNodePoolShrinkRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequest) SetZoneId(v string) *CreateRCNodePoolShrinkRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateRCNodePoolShrinkRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateRCNodePoolShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolShrinkRequestTag) SetKey(v string) *CreateRCNodePoolShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateRCNodePoolShrinkRequestTag) SetValue(v string) *CreateRCNodePoolShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateRCNodePoolResponseBody struct {
+	InstanceIdSets []*string `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Repeated"`
+	NodePoolId     *string   `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	OrderId        *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRCNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolResponseBody) SetInstanceIdSets(v []*string) *CreateRCNodePoolResponseBody {
+	s.InstanceIdSets = v
+	return s
+}
+
+func (s *CreateRCNodePoolResponseBody) SetNodePoolId(v string) *CreateRCNodePoolResponseBody {
+	s.NodePoolId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolResponseBody) SetOrderId(v string) *CreateRCNodePoolResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateRCNodePoolResponseBody) SetRequestId(v string) *CreateRCNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRCNodePoolResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRCNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRCNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRCNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRCNodePoolResponse) SetHeaders(v map[string]*string) *CreateRCNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRCNodePoolResponse) SetStatusCode(v int32) *CreateRCNodePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRCNodePoolResponse) SetBody(v *CreateRCNodePoolResponseBody) *CreateRCNodePoolResponse {
+	s.Body = v
+	return s
+}
+
 type CreateRCSnapshotRequest struct {
 	// The snapshot description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -17112,6 +17700,84 @@ func (s *DeleteRCInstancesResponse) SetStatusCode(v int32) *DeleteRCInstancesRes
 }
 
 func (s *DeleteRCInstancesResponse) SetBody(v *DeleteRCInstancesResponseBody) *DeleteRCInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRCNodePoolRequest struct {
+	// This parameter is required.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteRCNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCNodePoolRequest) SetClusterId(v string) *DeleteRCNodePoolRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteRCNodePoolRequest) SetNodePoolId(v string) *DeleteRCNodePoolRequest {
+	s.NodePoolId = &v
+	return s
+}
+
+func (s *DeleteRCNodePoolRequest) SetRegionId(v string) *DeleteRCNodePoolRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteRCNodePoolResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRCNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCNodePoolResponseBody) SetRequestId(v string) *DeleteRCNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRCNodePoolResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRCNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRCNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRCNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRCNodePoolResponse) SetHeaders(v map[string]*string) *DeleteRCNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRCNodePoolResponse) SetStatusCode(v int32) *DeleteRCNodePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRCNodePoolResponse) SetBody(v *DeleteRCNodePoolResponseBody) *DeleteRCNodePoolResponse {
 	s.Body = v
 	return s
 }
@@ -52931,6 +53597,7 @@ func (s *DescribeRCClusterNodesResponse) SetBody(v *DescribeRCClusterNodesRespon
 }
 
 type DescribeRCClustersRequest struct {
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -52946,6 +53613,11 @@ func (s DescribeRCClustersRequest) String() string {
 
 func (s DescribeRCClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRCClustersRequest) SetProfile(v string) *DescribeRCClustersRequest {
+	s.Profile = &v
+	return s
 }
 
 func (s *DescribeRCClustersRequest) SetRegionId(v string) *DescribeRCClustersRequest {
@@ -53001,6 +53673,7 @@ type DescribeRCClustersResponseBodyClusters struct {
 	//
 	// 2024-10-30T02:16:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The cluster status. Valid values:
 	//
 	// 	- **Pending**
@@ -53040,6 +53713,11 @@ func (s *DescribeRCClustersResponseBodyClusters) SetClusterName(v string) *Descr
 
 func (s *DescribeRCClustersResponseBodyClusters) SetCreateTime(v string) *DescribeRCClustersResponseBodyClusters {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeRCClustersResponseBodyClusters) SetProfile(v string) *DescribeRCClustersResponseBodyClusters {
+	s.Profile = &v
 	return s
 }
 
@@ -56161,6 +56839,365 @@ func (s *DescribeRCMetricListResponse) SetStatusCode(v int32) *DescribeRCMetricL
 }
 
 func (s *DescribeRCMetricListResponse) SetBody(v *DescribeRCMetricListResponseBody) *DescribeRCMetricListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRCNodePoolRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRCNodePoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolRequest) SetClusterId(v string) *DescribeRCNodePoolRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolRequest) SetNodePoolId(v string) *DescribeRCNodePoolRequest {
+	s.NodePoolId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolRequest) SetRegionId(v string) *DescribeRCNodePoolRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRCNodePoolResponseBody struct {
+	NodePoolList []*DescribeRCNodePoolResponseBodyNodePoolList `json:"NodePoolList,omitempty" xml:"NodePoolList,omitempty" type:"Repeated"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponseBody) SetNodePoolList(v []*DescribeRCNodePoolResponseBodyNodePoolList) *DescribeRCNodePoolResponseBody {
+	s.NodePoolList = v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBody) SetRequestId(v string) *DescribeRCNodePoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRCNodePoolResponseBodyNodePoolList struct {
+	AutoPay                     *bool                                                 `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew                   *bool                                                 `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClusterId                   *string                                               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateMode                  *string                                               `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDisk                    []*DescribeRCNodePoolResponseBodyNodePoolListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	DeploymentSetId             *string                                               `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description                 *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostName                    *string                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                     *string                                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType          *string                                               `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName                *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType                *string                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType          *string                                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut     *int32                                                `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized                 *string                                               `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName                 *string                                               `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NodePoolId                  *string                                               `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	NodePoolName                *string                                               `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
+	Password                    *string                                               `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                      *int32                                                `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit                  *string                                               `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId                    *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityEnhancementStrategy *string                                               `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy                *string                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDisk                  *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tag                         []*DescribeRCNodePoolResponseBodyNodePoolListTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId                   *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                      *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetAutoPay(v bool) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetAutoRenew(v bool) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetClusterId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetCreateMode(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.CreateMode = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetDataDisk(v []*DescribeRCNodePoolResponseBodyNodePoolListDataDisk) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.DataDisk = v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetDeploymentSetId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.DeploymentSetId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetDescription(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetHostName(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetImageId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetInstanceChargeType(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetInstanceName(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetInstanceType(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetInternetChargeType(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetInternetMaxBandwidthOut(v int32) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetIoOptimized(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.IoOptimized = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetKeyPairName(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetNodePoolId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.NodePoolId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetNodePoolName(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.NodePoolName = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetPassword(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.Password = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetPeriod(v int32) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetPeriodUnit(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetRegionId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetResourceGroupId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetSecurityEnhancementStrategy(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.SecurityEnhancementStrategy = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetSecurityGroupId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetSpotStrategy(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetSystemDisk(v *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetTag(v []*DescribeRCNodePoolResponseBodyNodePoolListTag) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetVSwitchId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolList) SetZoneId(v string) *DescribeRCNodePoolResponseBodyNodePoolList {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRCNodePoolResponseBodyNodePoolListDataDisk struct {
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size               *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetCategory(v string) *DescribeRCNodePoolResponseBodyNodePoolListDataDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetDeleteWithInstance(v bool) *DescribeRCNodePoolResponseBodyNodePoolListDataDisk {
+	s.DeleteWithInstance = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetEncrypted(v string) *DescribeRCNodePoolResponseBodyNodePoolListDataDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetPerformanceLevel(v string) *DescribeRCNodePoolResponseBodyNodePoolListDataDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) SetSize(v int32) *DescribeRCNodePoolResponseBodyNodePoolListDataDisk {
+	s.Size = &v
+	return s
+}
+
+type DescribeRCNodePoolResponseBodyNodePoolListSystemDisk struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) SetCategory(v string) *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) SetSize(v int32) *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk {
+	s.Size = &v
+	return s
+}
+
+type DescribeRCNodePoolResponseBodyNodePoolListTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponseBodyNodePoolListTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListTag) SetKey(v string) *DescribeRCNodePoolResponseBodyNodePoolListTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponseBodyNodePoolListTag) SetValue(v string) *DescribeRCNodePoolResponseBodyNodePoolListTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeRCNodePoolResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRCNodePoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRCNodePoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRCNodePoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRCNodePoolResponse) SetHeaders(v map[string]*string) *DescribeRCNodePoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponse) SetStatusCode(v int32) *DescribeRCNodePoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRCNodePoolResponse) SetBody(v *DescribeRCNodePoolResponseBody) *DescribeRCNodePoolResponse {
 	s.Body = v
 	return s
 }
@@ -84940,8 +85977,9 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateExtraParam *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
+	CreateMode       *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDisk []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	// The deployment set ID.
@@ -85063,6 +86101,7 @@ type RunRCInstancesRequest struct {
 	// sg-uf6av412xaxixuezol6w
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase     *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	// The specification of the system disk.
 	SystemDisk *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Tag        []*RunRCInstancesRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85111,6 +86150,11 @@ func (s *RunRCInstancesRequest) SetAutoRenew(v bool) *RunRCInstancesRequest {
 
 func (s *RunRCInstancesRequest) SetClientToken(v string) *RunRCInstancesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetCreateExtraParam(v string) *RunRCInstancesRequest {
+	s.CreateExtraParam = &v
 	return s
 }
 
@@ -85221,6 +86265,11 @@ func (s *RunRCInstancesRequest) SetSecurityGroupId(v string) *RunRCInstancesRequ
 
 func (s *RunRCInstancesRequest) SetSpotStrategy(v string) *RunRCInstancesRequest {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetSupportCase(v string) *RunRCInstancesRequest {
+	s.SupportCase = &v
 	return s
 }
 
@@ -85414,8 +86463,9 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CreateExtraParam *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
+	CreateMode       *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
 	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
 	// The deployment set ID.
@@ -85537,6 +86587,7 @@ type RunRCInstancesShrinkRequest struct {
 	// sg-uf6av412xaxixuezol6w
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SupportCase     *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	// The specification of the system disk.
 	SystemDiskShrink *string                           `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	Tag              []*RunRCInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -85585,6 +86636,11 @@ func (s *RunRCInstancesShrinkRequest) SetAutoRenew(v bool) *RunRCInstancesShrink
 
 func (s *RunRCInstancesShrinkRequest) SetClientToken(v string) *RunRCInstancesShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetCreateExtraParam(v string) *RunRCInstancesShrinkRequest {
+	s.CreateExtraParam = &v
 	return s
 }
 
@@ -85695,6 +86751,11 @@ func (s *RunRCInstancesShrinkRequest) SetSecurityGroupId(v string) *RunRCInstanc
 
 func (s *RunRCInstancesShrinkRequest) SetSpotStrategy(v string) *RunRCInstancesShrinkRequest {
 	s.SpotStrategy = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetSupportCase(v string) *RunRCInstancesShrinkRequest {
+	s.SupportCase = &v
 	return s
 }
 
@@ -95052,6 +96113,200 @@ func (client *Client) CreateRCDisk(request *CreateRCDiskRequest) (_result *Creat
 
 // Summary:
 //
+// 创建RC节点池模版
+//
+// @param tmpReq - CreateRCNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRCNodePoolResponse
+func (client *Client) CreateRCNodePoolWithOptions(tmpReq *CreateRCNodePoolRequest, runtime *util.RuntimeOptions) (_result *CreateRCNodePoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateRCNodePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataDisk)) {
+		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, tea.String("DataDisk"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SystemDisk)) {
+		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, tea.String("SystemDisk"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateMode)) {
+		query["CreateMode"] = request.CreateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataDiskShrink)) {
+		query["DataDisk"] = request.DataDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeploymentSetId)) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
+		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoOptimized)) {
+		query["IoOptimized"] = request.IoOptimized
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodePoolName)) {
+		query["NodePoolName"] = request.NodePoolName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityEnhancementStrategy)) {
+		query["SecurityEnhancementStrategy"] = request.SecurityEnhancementStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpotStrategy)) {
+		query["SpotStrategy"] = request.SpotStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
+		query["SystemDisk"] = request.SystemDiskShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRCNodePool"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRCNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建RC节点池模版
+//
+// @param request - CreateRCNodePoolRequest
+//
+// @return CreateRCNodePoolResponse
+func (client *Client) CreateRCNodePool(request *CreateRCNodePoolRequest) (_result *CreateRCNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRCNodePoolResponse{}
+	_body, _err := client.CreateRCNodePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a snapshot for a cloud disk.
 //
 // Description:
@@ -97955,6 +99210,74 @@ func (client *Client) DeleteRCInstances(request *DeleteRCInstancesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRCInstancesResponse{}
 	_body, _err := client.DeleteRCInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RC模版
+//
+// @param request - DeleteRCNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRCNodePoolResponse
+func (client *Client) DeleteRCNodePoolWithOptions(request *DeleteRCNodePoolRequest, runtime *util.RuntimeOptions) (_result *DeleteRCNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodePoolId)) {
+		query["NodePoolId"] = request.NodePoolId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRCNodePool"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRCNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除RC模版
+//
+// @param request - DeleteRCNodePoolRequest
+//
+// @return DeleteRCNodePoolResponse
+func (client *Client) DeleteRCNodePool(request *DeleteRCNodePoolRequest) (_result *DeleteRCNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRCNodePoolResponse{}
+	_body, _err := client.DeleteRCNodePoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -109225,6 +110548,10 @@ func (client *Client) DescribeRCClustersWithOptions(request *DescribeRCClustersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["Profile"] = request.Profile
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -109715,6 +111042,62 @@ func (client *Client) DescribeRCMetricList(request *DescribeRCMetricListRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRCMetricListResponse{}
 	_body, _err := client.DescribeRCMetricListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述RC模版
+//
+// @param request - DescribeRCNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRCNodePoolResponse
+func (client *Client) DescribeRCNodePoolWithOptions(request *DescribeRCNodePoolRequest, runtime *util.RuntimeOptions) (_result *DescribeRCNodePoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRCNodePool"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRCNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述RC模版
+//
+// @param request - DescribeRCNodePoolRequest
+//
+// @return DescribeRCNodePoolResponse
+func (client *Client) DescribeRCNodePool(request *DescribeRCNodePoolRequest) (_result *DescribeRCNodePoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRCNodePoolResponse{}
+	_body, _err := client.DescribeRCNodePoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -124729,6 +126112,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateExtraParam)) {
+		query["CreateExtraParam"] = request.CreateExtraParam
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CreateMode)) {
 		query["CreateMode"] = request.CreateMode
 	}
@@ -124815,6 +126202,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.SpotStrategy)) {
 		query["SpotStrategy"] = request.SpotStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportCase)) {
+		query["SupportCase"] = request.SupportCase
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskShrink)) {
