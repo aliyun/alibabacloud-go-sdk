@@ -165,6 +165,10 @@ type Instance struct {
 	InstancePort         *int32  `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
 	// example:
 	//
+	// ecs.c7.large
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
 	// false
 	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
 	// example:
@@ -252,6 +256,11 @@ func (s *Instance) SetInstanceName(v string) *Instance {
 
 func (s *Instance) SetInstancePort(v int32) *Instance {
 	s.InstancePort = &v
+	return s
+}
+
+func (s *Instance) SetInstanceType(v string) *Instance {
+	s.InstanceType = &v
 	return s
 }
 
@@ -8144,6 +8153,104 @@ func (s *DescribeServiceMirrorResponse) SetStatusCode(v int32) *DescribeServiceM
 }
 
 func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponseBody) *DescribeServiceMirrorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceSignedUrlRequest struct {
+	// example:
+	//
+	// 43200
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// false
+	Internal *bool `json:"Internal,omitempty" xml:"Internal,omitempty"`
+	// example:
+	//
+	// webview
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeServiceSignedUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceSignedUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceSignedUrlRequest) SetExpire(v int64) *DescribeServiceSignedUrlRequest {
+	s.Expire = &v
+	return s
+}
+
+func (s *DescribeServiceSignedUrlRequest) SetInternal(v bool) *DescribeServiceSignedUrlRequest {
+	s.Internal = &v
+	return s
+}
+
+func (s *DescribeServiceSignedUrlRequest) SetType(v string) *DescribeServiceSignedUrlRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeServiceSignedUrlResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// https://foo-115**.console.cn-hangzhou.eas.pai-ml.com?expire=1735202661&signature=ey*******
+	SignedUrl *string `json:"SignedUrl,omitempty" xml:"SignedUrl,omitempty"`
+}
+
+func (s DescribeServiceSignedUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceSignedUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceSignedUrlResponseBody) SetRequestId(v string) *DescribeServiceSignedUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServiceSignedUrlResponseBody) SetSignedUrl(v string) *DescribeServiceSignedUrlResponseBody {
+	s.SignedUrl = &v
+	return s
+}
+
+type DescribeServiceSignedUrlResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeServiceSignedUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeServiceSignedUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceSignedUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceSignedUrlResponse) SetHeaders(v map[string]*string) *DescribeServiceSignedUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceSignedUrlResponse) SetStatusCode(v int32) *DescribeServiceSignedUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServiceSignedUrlResponse) SetBody(v *DescribeServiceSignedUrlResponseBody) *DescribeServiceSignedUrlResponse {
 	s.Body = v
 	return s
 }
@@ -18543,6 +18650,78 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 	headers := make(map[string]*string)
 	_result = &DescribeServiceMirrorResponse{}
 	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务监控签名地址
+//
+// @param request - DescribeServiceSignedUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceSignedUrlResponse
+func (client *Client) DescribeServiceSignedUrlWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceSignedUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceSignedUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Expire)) {
+		query["Expire"] = request.Expire
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Internal)) {
+		query["Internal"] = request.Internal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceSignedUrl"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/signed_url"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceSignedUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务监控签名地址
+//
+// @param request - DescribeServiceSignedUrlRequest
+//
+// @return DescribeServiceSignedUrlResponse
+func (client *Client) DescribeServiceSignedUrl(ClusterId *string, ServiceName *string, request *DescribeServiceSignedUrlRequest) (_result *DescribeServiceSignedUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeServiceSignedUrlResponse{}
+	_body, _err := client.DescribeServiceSignedUrlWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
