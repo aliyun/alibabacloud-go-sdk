@@ -288,6 +288,253 @@ func (s *GenerateBroadcastNewsResponse) SetBody(v *GenerateBroadcastNewsResponse
 	return s
 }
 
+type GenerateOutputFormatRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// This parameter is required.
+	Tags []*GenerateOutputFormatRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s GenerateOutputFormatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatRequest) SetBusinessType(v string) *GenerateOutputFormatRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *GenerateOutputFormatRequest) SetContent(v string) *GenerateOutputFormatRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *GenerateOutputFormatRequest) SetExtraInfo(v string) *GenerateOutputFormatRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GenerateOutputFormatRequest) SetTags(v []*GenerateOutputFormatRequestTags) *GenerateOutputFormatRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *GenerateOutputFormatRequest) SetTaskDescription(v string) *GenerateOutputFormatRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type GenerateOutputFormatRequestTags struct {
+	// example:
+	//
+	// xxxx
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// example:
+	//
+	// xxxx
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s GenerateOutputFormatRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatRequestTags) SetTagDefinePrompt(v string) *GenerateOutputFormatRequestTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *GenerateOutputFormatRequestTags) SetTagName(v string) *GenerateOutputFormatRequestTags {
+	s.TagName = &v
+	return s
+}
+
+type GenerateOutputFormatShrinkRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// This parameter is required.
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s GenerateOutputFormatShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatShrinkRequest) SetBusinessType(v string) *GenerateOutputFormatShrinkRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *GenerateOutputFormatShrinkRequest) SetContent(v string) *GenerateOutputFormatShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *GenerateOutputFormatShrinkRequest) SetExtraInfo(v string) *GenerateOutputFormatShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GenerateOutputFormatShrinkRequest) SetTagsShrink(v string) *GenerateOutputFormatShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *GenerateOutputFormatShrinkRequest) SetTaskDescription(v string) *GenerateOutputFormatShrinkRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type GenerateOutputFormatResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GenerateOutputFormatResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GenerateOutputFormatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatResponseBody) SetCode(v string) *GenerateOutputFormatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateOutputFormatResponseBody) SetData(v *GenerateOutputFormatResponseBodyData) *GenerateOutputFormatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GenerateOutputFormatResponseBody) SetHttpStatusCode(v int32) *GenerateOutputFormatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GenerateOutputFormatResponseBody) SetMessage(v string) *GenerateOutputFormatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateOutputFormatResponseBody) SetRequestId(v string) *GenerateOutputFormatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateOutputFormatResponseBody) SetSuccess(v bool) *GenerateOutputFormatResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateOutputFormatResponseBodyData struct {
+	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+}
+
+func (s GenerateOutputFormatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatResponseBodyData) SetOutputFormat(v string) *GenerateOutputFormatResponseBodyData {
+	s.OutputFormat = &v
+	return s
+}
+
+type GenerateOutputFormatResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateOutputFormatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateOutputFormatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOutputFormatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOutputFormatResponse) SetHeaders(v map[string]*string) *GenerateOutputFormatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateOutputFormatResponse) SetStatusCode(v int32) *GenerateOutputFormatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateOutputFormatResponse) SetBody(v *GenerateOutputFormatResponseBody) *GenerateOutputFormatResponse {
+	s.Body = v
+	return s
+}
+
 type ListHotTopicSummariesRequest struct {
 	// example:
 	//
@@ -3174,6 +3421,387 @@ func (s *RunStyleWritingResponse) SetBody(v *RunStyleWritingResponseBody) *RunSt
 	return s
 }
 
+type RunTagMiningAnalysisRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 请返回如下JSON格式，{"key1":"","key2":""}
+	OutputFormat *string                            `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	Tags         []*RunTagMiningAnalysisRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunTagMiningAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisRequest) SetBusinessType(v string) *RunTagMiningAnalysisRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetContent(v string) *RunTagMiningAnalysisRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetExtraInfo(v string) *RunTagMiningAnalysisRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetModelId(v string) *RunTagMiningAnalysisRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetOutputFormat(v string) *RunTagMiningAnalysisRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetTags(v []*RunTagMiningAnalysisRequestTags) *RunTagMiningAnalysisRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequest) SetTaskDescription(v string) *RunTagMiningAnalysisRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunTagMiningAnalysisRequestTags struct {
+	// example:
+	//
+	// xxxx
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// example:
+	//
+	// xxxx
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s RunTagMiningAnalysisRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisRequestTags) SetTagDefinePrompt(v string) *RunTagMiningAnalysisRequestTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisRequestTags) SetTagName(v string) *RunTagMiningAnalysisRequestTags {
+	s.TagName = &v
+	return s
+}
+
+type RunTagMiningAnalysisShrinkRequest struct {
+	// example:
+	//
+	// clueMining
+	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 待分析文本
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 额外信息
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// example:
+	//
+	// 请返回如下JSON格式，{"key1":"","key2":""}
+	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	TagsShrink   *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// 给你一条待分析文本数据，请你按照标签体系来对数据进行打标。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunTagMiningAnalysisShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetBusinessType(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetContent(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetExtraInfo(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetModelId(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetOutputFormat(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetTagsShrink(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetTaskDescription(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunTagMiningAnalysisResponseBody struct {
+	Header  *RunTagMiningAnalysisResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunTagMiningAnalysisResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 085BE2D2-BB7E-59A6-B688-F2CB32124E7F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunTagMiningAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponseBody) SetHeader(v *RunTagMiningAnalysisResponseBodyHeader) *RunTagMiningAnalysisResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBody) SetPayload(v *RunTagMiningAnalysisResponseBodyPayload) *RunTagMiningAnalysisResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBody) SetRequestId(v string) *RunTagMiningAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunTagMiningAnalysisResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunTagMiningAnalysisResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetErrorCode(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetErrorMessage(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetEvent(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetSessionId(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetTaskId(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyHeader) SetTraceId(v string) *RunTagMiningAnalysisResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunTagMiningAnalysisResponseBodyPayload struct {
+	Output *RunTagMiningAnalysisResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunTagMiningAnalysisResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayload) SetOutput(v *RunTagMiningAnalysisResponseBodyPayloadOutput) *RunTagMiningAnalysisResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayload) SetUsage(v *RunTagMiningAnalysisResponseBodyPayloadUsage) *RunTagMiningAnalysisResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunTagMiningAnalysisResponseBodyPayloadOutput struct {
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayloadOutput) SetText(v string) *RunTagMiningAnalysisResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunTagMiningAnalysisResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunTagMiningAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunTagMiningAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunTagMiningAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunTagMiningAnalysisResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunTagMiningAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunTagMiningAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunTagMiningAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunTagMiningAnalysisResponse) SetHeaders(v map[string]*string) *RunTagMiningAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponse) SetStatusCode(v int32) *RunTagMiningAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunTagMiningAnalysisResponse) SetBody(v *RunTagMiningAnalysisResponseBody) *RunTagMiningAnalysisResponse {
+	s.Body = v
+	return s
+}
+
 type RunVideoAnalysisRequest struct {
 	GenerateOptions           []*string `json:"generateOptions,omitempty" xml:"generateOptions,omitempty" type:"Repeated"`
 	ModelCustomPromptTemplate *string   `json:"modelCustomPromptTemplate,omitempty" xml:"modelCustomPromptTemplate,omitempty"`
@@ -4174,6 +4802,92 @@ func (client *Client) GenerateBroadcastNews(workspaceId *string, request *Genera
 
 // Summary:
 //
+// 轻应用-标签挖掘-获取示例输出格式
+//
+// @param tmpReq - GenerateOutputFormatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateOutputFormatResponse
+func (client *Client) GenerateOutputFormatWithOptions(workspaceId *string, tmpReq *GenerateOutputFormatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateOutputFormatResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GenerateOutputFormatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		body["businessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["extraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDescription)) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateOutputFormat"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/generateOutputFormat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateOutputFormatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-标签挖掘-获取示例输出格式
+//
+// @param request - GenerateOutputFormatRequest
+//
+// @return GenerateOutputFormatResponse
+func (client *Client) GenerateOutputFormat(workspaceId *string, request *GenerateOutputFormatRequest) (_result *GenerateOutputFormatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateOutputFormatResponse{}
+	_body, _err := client.GenerateOutputFormatWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 轻应用-新闻播报-获取热点话题摘要列表
 //
 // @param request - ListHotTopicSummariesRequest
@@ -4869,6 +5583,100 @@ func (client *Client) RunStyleWriting(workspaceId *string, request *RunStyleWrit
 	headers := make(map[string]*string)
 	_result = &RunStyleWritingResponse{}
 	_body, _err := client.RunStyleWritingWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-标签挖掘
+//
+// @param tmpReq - RunTagMiningAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTagMiningAnalysisResponse
+func (client *Client) RunTagMiningAnalysisWithOptions(workspaceId *string, tmpReq *RunTagMiningAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunTagMiningAnalysisResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunTagMiningAnalysisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		body["businessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["extraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDescription)) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunTagMiningAnalysis"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runTagMiningAnalysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunTagMiningAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轻应用-标签挖掘
+//
+// @param request - RunTagMiningAnalysisRequest
+//
+// @return RunTagMiningAnalysisResponse
+func (client *Client) RunTagMiningAnalysis(workspaceId *string, request *RunTagMiningAnalysisRequest) (_result *RunTagMiningAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunTagMiningAnalysisResponse{}
+	_body, _err := client.RunTagMiningAnalysisWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
