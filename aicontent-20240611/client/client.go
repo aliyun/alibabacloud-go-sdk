@@ -1292,6 +1292,2447 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetBody(v *A
 	return s
 }
 
+type ExecuteAITeacherExpansionDialogueRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
+	Background *string `json:"background,omitempty" xml:"background,omitempty"`
+	// This parameter is required.
+	DialogueTasks []*ExecuteAITeacherExpansionDialogueRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en-gb
+	LanguageCode *string                                            `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	Records      []*ExecuteAITeacherExpansionDialogueRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	RoleInfo *ExecuteAITeacherExpansionDialogueRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// Hello Lily, could you please come to the kitchen for a moment?
+	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Let\\"s talk about traffic rules.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetBackground(v string) *ExecuteAITeacherExpansionDialogueRequest {
+	s.Background = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetDialogueTasks(v []*ExecuteAITeacherExpansionDialogueRequestDialogueTasks) *ExecuteAITeacherExpansionDialogueRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetLanguageCode(v string) *ExecuteAITeacherExpansionDialogueRequest {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetRecords(v []*ExecuteAITeacherExpansionDialogueRequestRecords) *ExecuteAITeacherExpansionDialogueRequest {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetRoleInfo(v *ExecuteAITeacherExpansionDialogueRequestRoleInfo) *ExecuteAITeacherExpansionDialogueRequest {
+	s.RoleInfo = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetStartSentence(v string) *ExecuteAITeacherExpansionDialogueRequest {
+	s.StartSentence = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetTopic(v string) *ExecuteAITeacherExpansionDialogueRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequest) SetUserId(v string) *ExecuteAITeacherExpansionDialogueRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestDialogueTasks) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestDialogueTasks) SetAssistantTranslate(v string) *ExecuteAITeacherExpansionDialogueRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestDialogueTasks) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestDialogueTasks) SetUser(v string) *ExecuteAITeacherExpansionDialogueRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRecords) SetContent(v string) *ExecuteAITeacherExpansionDialogueRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRecords) SetIsOffTopicControl(v bool) *ExecuteAITeacherExpansionDialogueRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRecords) SetIsOnTopic(v bool) *ExecuteAITeacherExpansionDialogueRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRecords) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRecords) SetRole(v string) *ExecuteAITeacherExpansionDialogueRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRequestRoleInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Alex
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Jamie
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestRoleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRequestRoleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRoleInfo) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueRequestRoleInfo {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRequestRoleInfo) SetUser(v string) *ExecuteAITeacherExpansionDialogueRequestRoleInfo {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherExpansionDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetData(v *ExecuteAITeacherExpansionDialogueResponseBodyData) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetErrCode(v string) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetErrMessage(v string) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetRequestId(v string) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBody) SetSuccess(v bool) *ExecuteAITeacherExpansionDialogueResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueResponseBodyData struct {
+	// example:
+	//
+	// 1
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// example:
+	//
+	// 1
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	// example:
+	//
+	// true
+	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	// example:
+	//
+	// true
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// true
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// example:
+	//
+	// 2
+	QuestionIndex *int32 `json:"questionIndex,omitempty" xml:"questionIndex,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetChineseResult(v string) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetEnglishResult(v string) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.EnglishResult = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetIsFinish(v bool) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetIsOffTopicControl(v bool) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetIsOnTopic(v bool) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponseBodyData) SetQuestionIndex(v int32) *ExecuteAITeacherExpansionDialogueResponseBodyData {
+	s.QuestionIndex = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherExpansionDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherExpansionDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponse) SetStatusCode(v int32) *ExecuteAITeacherExpansionDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueResponse) SetBody(v *ExecuteAITeacherExpansionDialogueResponseBody) *ExecuteAITeacherExpansionDialogueResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
+	Background *string `json:"background,omitempty" xml:"background,omitempty"`
+	// This parameter is required.
+	DialogueTasks []*ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en-gb
+	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	// This parameter is required.
+	Records []*ExecuteAITeacherExpansionDialogueRefineRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	RoleInfo *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// Hello Lily, could you please come to the kitchen for a moment?
+	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// talk about your dream job.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetBackground(v string) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.Background = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetDialogueTasks(v []*ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetLanguageCode(v string) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetRecords(v []*ExecuteAITeacherExpansionDialogueRefineRequestRecords) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetRoleInfo(v *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.RoleInfo = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetStartSentence(v string) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.StartSentence = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetTopic(v string) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequest) SetUserId(v string) *ExecuteAITeacherExpansionDialogueRefineRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) SetAssistantTranslate(v string) *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks) SetUser(v string) *ExecuteAITeacherExpansionDialogueRefineRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRecords) SetContent(v string) *ExecuteAITeacherExpansionDialogueRefineRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRecords) SetIsOffTopicControl(v bool) *ExecuteAITeacherExpansionDialogueRefineRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRecords) SetIsOnTopic(v bool) *ExecuteAITeacherExpansionDialogueRefineRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRecords) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueRefineRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRecords) SetRole(v string) *ExecuteAITeacherExpansionDialogueRefineRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Jane, a caring mother
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Lily, a friendly student
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo) SetUser(v string) *ExecuteAITeacherExpansionDialogueRefineRequestRoleInfo {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherExpansionDialogueRefineResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetData(v *ExecuteAITeacherExpansionDialogueRefineResponseBodyData) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetErrCode(v string) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetErrMessage(v string) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetRequestId(v string) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBody) SetSuccess(v bool) *ExecuteAITeacherExpansionDialogueRefineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineResponseBodyData struct {
+	// example:
+	//
+	// Yes, I\\"ll be right there.
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponseBodyData) SetResult(v string) *ExecuteAITeacherExpansionDialogueRefineResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueRefineResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherExpansionDialogueRefineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueRefineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherExpansionDialogueRefineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponse) SetStatusCode(v int32) *ExecuteAITeacherExpansionDialogueRefineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueRefineResponse) SetBody(v *ExecuteAITeacherExpansionDialogueRefineResponseBody) *ExecuteAITeacherExpansionDialogueRefineResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// In this dialogue, you will be playing the role of Lily, a young girl. I will be Jane, Lily\\"s mother. We are in the kitchen, where I am preparing dinner. I am asking you about your food preferences, specifically if you like meat, fish, and milk. You like meat and milk, but you don\\"t like fish because of its smell. I explain to you the nutritional benefits of these foods and suggest alternatives for the ones you don\\"t like. Finally, I invite you to start eating.
+	Background *string `json:"background,omitempty" xml:"background,omitempty"`
+	// This parameter is required.
+	DialogueTasks []*ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	Records       []*ExecuteAITeacherExpansionDialogueTranslateRequestRecords       `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	RoleInfo *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// Hello Lily, could you please come to the kitchen for a moment?
+	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// talk about food.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetBackground(v string) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.Background = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetDialogueTasks(v []*ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetRecords(v []*ExecuteAITeacherExpansionDialogueTranslateRequestRecords) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetRoleInfo(v *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.RoleInfo = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetStartSentence(v string) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.StartSentence = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetTopic(v string) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequest) SetUserId(v string) *ExecuteAITeacherExpansionDialogueTranslateRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) SetAssistantTranslate(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks) SetUser(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) SetContent(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) SetIsOffTopicControl(v bool) *ExecuteAITeacherExpansionDialogueTranslateRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) SetIsOnTopic(v bool) *ExecuteAITeacherExpansionDialogueTranslateRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) SetOrder(v int32) *ExecuteAITeacherExpansionDialogueTranslateRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRecords) SetRole(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Jane, a caring mother
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Lily, a friendly student
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo) SetAssistant(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo) SetUser(v string) *ExecuteAITeacherExpansionDialogueTranslateRequestRoleInfo {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherExpansionDialogueTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetData(v *ExecuteAITeacherExpansionDialogueTranslateResponseBodyData) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetErrCode(v string) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetErrMessage(v string) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetRequestId(v string) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBody) SetSuccess(v bool) *ExecuteAITeacherExpansionDialogueTranslateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateResponseBodyData struct {
+	// example:
+	//
+	// 太好了，谢谢你过来，莉莉。你喜欢吃肉吗？
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponseBodyData) SetResult(v string) *ExecuteAITeacherExpansionDialogueTranslateResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type ExecuteAITeacherExpansionDialogueTranslateResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherExpansionDialogueTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherExpansionDialogueTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherExpansionDialogueTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponse) SetStatusCode(v int32) *ExecuteAITeacherExpansionDialogueTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherExpansionDialogueTranslateResponse) SetBody(v *ExecuteAITeacherExpansionDialogueTranslateResponseBody) *ExecuteAITeacherExpansionDialogueTranslateResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherGrammarCheckRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i is good
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherGrammarCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherGrammarCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherGrammarCheckRequest) SetContent(v string) *ExecuteAITeacherGrammarCheckRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckRequest) SetUserId(v string) *ExecuteAITeacherGrammarCheckRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherGrammarCheckResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherGrammarCheckResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherGrammarCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherGrammarCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetData(v *ExecuteAITeacherGrammarCheckResponseBodyData) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetErrCode(v string) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetErrMessage(v string) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetRequestId(v string) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBody) SetSuccess(v bool) *ExecuteAITeacherGrammarCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherGrammarCheckResponseBodyData struct {
+	// example:
+	//
+	// 主语 "I" 对应的动词应该是 "am" 而不是 "is"。
+	Analysis *string `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// example:
+	//
+	// I am good.
+	Correction *string `json:"correction,omitempty" xml:"correction,omitempty"`
+	// example:
+	//
+	// Has_Error
+	CorrectionStatus *string `json:"correctionStatus,omitempty" xml:"correctionStatus,omitempty"`
+	ErrorReason      *string `json:"errorReason,omitempty" xml:"errorReason,omitempty"`
+}
+
+func (s ExecuteAITeacherGrammarCheckResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherGrammarCheckResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBodyData) SetAnalysis(v string) *ExecuteAITeacherGrammarCheckResponseBodyData {
+	s.Analysis = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBodyData) SetCorrection(v string) *ExecuteAITeacherGrammarCheckResponseBodyData {
+	s.Correction = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBodyData) SetCorrectionStatus(v string) *ExecuteAITeacherGrammarCheckResponseBodyData {
+	s.CorrectionStatus = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponseBodyData) SetErrorReason(v string) *ExecuteAITeacherGrammarCheckResponseBodyData {
+	s.ErrorReason = &v
+	return s
+}
+
+type ExecuteAITeacherGrammarCheckResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherGrammarCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherGrammarCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherGrammarCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherGrammarCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponse) SetStatusCode(v int32) *ExecuteAITeacherGrammarCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherGrammarCheckResponse) SetBody(v *ExecuteAITeacherGrammarCheckResponseBody) *ExecuteAITeacherGrammarCheckResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueRequest struct {
+	// This parameter is required.
+	DialogueTasks []*ExecuteAITeacherSyncDialogueRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en-gb
+	LanguageCode *string                                       `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	Records      []*ExecuteAITeacherSyncDialogueRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequest) SetDialogueTasks(v []*ExecuteAITeacherSyncDialogueRequestDialogueTasks) *ExecuteAITeacherSyncDialogueRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequest) SetLanguageCode(v string) *ExecuteAITeacherSyncDialogueRequest {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequest) SetRecords(v []*ExecuteAITeacherSyncDialogueRequestRecords) *ExecuteAITeacherSyncDialogueRequest {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequest) SetUserId(v string) *ExecuteAITeacherSyncDialogueRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestDialogueTasks) SetAssistant(v string) *ExecuteAITeacherSyncDialogueRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestDialogueTasks) SetAssistantTranslate(v string) *ExecuteAITeacherSyncDialogueRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestDialogueTasks) SetOrder(v int32) *ExecuteAITeacherSyncDialogueRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestDialogueTasks) SetUser(v string) *ExecuteAITeacherSyncDialogueRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestRecords) SetContent(v string) *ExecuteAITeacherSyncDialogueRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestRecords) SetIsOffTopicControl(v bool) *ExecuteAITeacherSyncDialogueRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestRecords) SetIsOnTopic(v bool) *ExecuteAITeacherSyncDialogueRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestRecords) SetOrder(v int32) *ExecuteAITeacherSyncDialogueRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueRequestRecords) SetRole(v string) *ExecuteAITeacherSyncDialogueRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherSyncDialogueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetData(v *ExecuteAITeacherSyncDialogueResponseBodyData) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetErrCode(v string) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetErrMessage(v string) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetRequestId(v string) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBody) SetSuccess(v bool) *ExecuteAITeacherSyncDialogueResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueResponseBodyData struct {
+	// example:
+	//
+	// Thanks, Lily. Do you like meat, Lily?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	// example:
+	//
+	// true
+	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	// example:
+	//
+	// true
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// example:
+	//
+	// 2
+	QuestionIndex *int32 `json:"questionIndex,omitempty" xml:"questionIndex,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBodyData) SetEnglishResult(v string) *ExecuteAITeacherSyncDialogueResponseBodyData {
+	s.EnglishResult = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBodyData) SetIsFinish(v bool) *ExecuteAITeacherSyncDialogueResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBodyData) SetIsOnTopic(v bool) *ExecuteAITeacherSyncDialogueResponseBodyData {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponseBodyData) SetQuestionIndex(v int32) *ExecuteAITeacherSyncDialogueResponseBodyData {
+	s.QuestionIndex = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherSyncDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherSyncDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponse) SetStatusCode(v int32) *ExecuteAITeacherSyncDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueResponse) SetBody(v *ExecuteAITeacherSyncDialogueResponseBody) *ExecuteAITeacherSyncDialogueResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateRequest struct {
+	// This parameter is required.
+	DialogueTasks []*ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	Records       []*ExecuteAITeacherSyncDialogueTranslateRequestRecords       `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequest) SetDialogueTasks(v []*ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) *ExecuteAITeacherSyncDialogueTranslateRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequest) SetRecords(v []*ExecuteAITeacherSyncDialogueTranslateRequestRecords) *ExecuteAITeacherSyncDialogueTranslateRequest {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequest) SetUserId(v string) *ExecuteAITeacherSyncDialogueTranslateRequest {
+	s.UserId = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) SetAssistant(v string) *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) SetAssistantTranslate(v string) *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) SetOrder(v int32) *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks) SetUser(v string) *ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestRecords) SetContent(v string) *ExecuteAITeacherSyncDialogueTranslateRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestRecords) SetIsOffTopicControl(v bool) *ExecuteAITeacherSyncDialogueTranslateRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestRecords) SetIsOnTopic(v bool) *ExecuteAITeacherSyncDialogueTranslateRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestRecords) SetOrder(v int32) *ExecuteAITeacherSyncDialogueTranslateRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateRequestRecords) SetRole(v string) *ExecuteAITeacherSyncDialogueTranslateRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateResponseBody struct {
+	// example:
+	//
+	// []
+	Data *ExecuteAITeacherSyncDialogueTranslateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetData(v *ExecuteAITeacherSyncDialogueTranslateResponseBodyData) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetErrCode(v string) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetErrMessage(v string) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetHttpStatusCode(v int32) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetRequestId(v string) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBody) SetSuccess(v bool) *ExecuteAITeacherSyncDialogueTranslateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateResponseBodyData struct {
+	// example:
+	//
+	// 太好了，谢谢你过来，莉莉。你喜欢吃肉吗？
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponseBodyData) SetResult(v string) *ExecuteAITeacherSyncDialogueTranslateResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type ExecuteAITeacherSyncDialogueTranslateResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteAITeacherSyncDialogueTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteAITeacherSyncDialogueTranslateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetHeaders(v map[string]*string) *ExecuteAITeacherSyncDialogueTranslateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetStatusCode(v int32) *ExecuteAITeacherSyncDialogueTranslateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetBody(v *ExecuteAITeacherSyncDialogueTranslateResponseBody) *ExecuteAITeacherSyncDialogueTranslateResponse {
+	s.Body = v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// In a career counseling session, we are going to discuss our dream jobs and the responsibilities associated with them. Alex, who dreams of becoming a professional travel blogger, will share the tasks and skills required for this role, while Jamie, aspiring to be a wildlife photographer, will outline the responsibilities and challenges of capturing nature\\"s moments. Both will explore how their interests align with the practical aspects of their chosen careers, discussing the potential for travel, creativity, and the impact of their work on society and the environment.
+	Background *string `json:"background,omitempty" xml:"background,omitempty"`
+	// This parameter is required.
+	DialogueTasks []*GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en-gb
+	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	// This parameter is required.
+	Records []*GetAITeacherExpansionDialogueSuggestionRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	RoleInfo *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo `json:"roleInfo,omitempty" xml:"roleInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// Hello Lily, could you please come to the kitchen for a moment?
+	StartSentence *string `json:"startSentence,omitempty" xml:"startSentence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Let\\"s talk about traffic rules.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetBackground(v string) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.Background = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetDialogueTasks(v []*GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetLanguageCode(v string) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetRecords(v []*GetAITeacherExpansionDialogueSuggestionRequestRecords) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.Records = v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetRoleInfo(v *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.RoleInfo = v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetStartSentence(v string) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.StartSentence = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetTopic(v string) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequest) SetUserId(v string) *GetAITeacherExpansionDialogueSuggestionRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) SetAssistant(v string) *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) SetAssistantTranslate(v string) *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) SetOrder(v int32) *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks) SetUser(v string) *GetAITeacherExpansionDialogueSuggestionRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) SetContent(v string) *GetAITeacherExpansionDialogueSuggestionRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) SetIsOffTopicControl(v bool) *GetAITeacherExpansionDialogueSuggestionRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) SetIsOnTopic(v bool) *GetAITeacherExpansionDialogueSuggestionRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) SetOrder(v int32) *GetAITeacherExpansionDialogueSuggestionRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRecords) SetRole(v string) *GetAITeacherExpansionDialogueSuggestionRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionRequestRoleInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Alex
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Jamie
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestRoleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionRequestRoleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo) SetAssistant(v string) *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo {
+	s.Assistant = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo) SetUser(v string) *GetAITeacherExpansionDialogueSuggestionRequestRoleInfo {
+	s.User = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionResponseBody struct {
+	// example:
+	//
+	// []
+	Data *GetAITeacherExpansionDialogueSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetData(v *GetAITeacherExpansionDialogueSuggestionResponseBodyData) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetErrCode(v string) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetErrMessage(v string) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetHttpStatusCode(v int32) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetRequestId(v string) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBody) SetSuccess(v bool) *GetAITeacherExpansionDialogueSuggestionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionResponseBodyData struct {
+	// example:
+	//
+	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
+	ChineseResult *string `json:"chineseResult,omitempty" xml:"chineseResult,omitempty"`
+	// example:
+	//
+	// Thanks, Lily. Do you like meat, Lily?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBodyData) SetChineseResult(v string) *GetAITeacherExpansionDialogueSuggestionResponseBodyData {
+	s.ChineseResult = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponseBodyData) SetEnglishResult(v string) *GetAITeacherExpansionDialogueSuggestionResponseBodyData {
+	s.EnglishResult = &v
+	return s
+}
+
+type GetAITeacherExpansionDialogueSuggestionResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAITeacherExpansionDialogueSuggestionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherExpansionDialogueSuggestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponse) SetHeaders(v map[string]*string) *GetAITeacherExpansionDialogueSuggestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponse) SetStatusCode(v int32) *GetAITeacherExpansionDialogueSuggestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAITeacherExpansionDialogueSuggestionResponse) SetBody(v *GetAITeacherExpansionDialogueSuggestionResponseBody) *GetAITeacherExpansionDialogueSuggestionResponse {
+	s.Body = v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionRequest struct {
+	// This parameter is required.
+	DialogueTasks []*GetAITeacherSyncDialogueSuggestionRequestDialogueTasks `json:"dialogueTasks,omitempty" xml:"dialogueTasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en-gb
+	LanguageCode *string `json:"languageCode,omitempty" xml:"languageCode,omitempty"`
+	// This parameter is required.
+	Records []*GetAITeacherSyncDialogueSuggestionRequestRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 886eba3702xxxxxxxxx4ba52a87a525
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequest) SetDialogueTasks(v []*GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) *GetAITeacherSyncDialogueSuggestionRequest {
+	s.DialogueTasks = v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequest) SetLanguageCode(v string) *GetAITeacherSyncDialogueSuggestionRequest {
+	s.LanguageCode = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequest) SetRecords(v []*GetAITeacherSyncDialogueSuggestionRequestRecords) *GetAITeacherSyncDialogueSuggestionRequest {
+	s.Records = v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequest) SetUserId(v string) *GetAITeacherSyncDialogueSuggestionRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionRequestDialogueTasks struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Why might some people think dog walking is a great job?
+	Assistant *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// 为什么有些人认为遛狗是份好差事?
+	AssistantTranslate *string `json:"assistantTranslate,omitempty" xml:"assistantTranslate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// They think it\\"s great because they won\\"t be stuck in an office.
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) SetAssistant(v string) *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks {
+	s.Assistant = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) SetAssistantTranslate(v string) *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks {
+	s.AssistantTranslate = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) SetOrder(v int32) *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks {
+	s.Order = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks) SetUser(v string) *GetAITeacherSyncDialogueSuggestionRequestDialogueTasks {
+	s.User = &v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionRequestRecords struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ask Mark if he has thought about what his dream job might be.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 跑题：true, 不跑题：false
+	IsOffTopicControl *bool `json:"isOffTopicControl,omitempty" xml:"isOffTopicControl,omitempty"`
+	// example:
+	//
+	// 扣题：true, 不扣题：false
+	IsOnTopic *bool `json:"isOnTopic,omitempty" xml:"isOnTopic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"order,omitempty" xml:"order,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 老师：assistant；学生：user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestRecords) SetContent(v string) *GetAITeacherSyncDialogueSuggestionRequestRecords {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestRecords) SetIsOffTopicControl(v bool) *GetAITeacherSyncDialogueSuggestionRequestRecords {
+	s.IsOffTopicControl = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestRecords) SetIsOnTopic(v bool) *GetAITeacherSyncDialogueSuggestionRequestRecords {
+	s.IsOnTopic = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestRecords) SetOrder(v int32) *GetAITeacherSyncDialogueSuggestionRequestRecords {
+	s.Order = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionRequestRecords) SetRole(v string) *GetAITeacherSyncDialogueSuggestionRequestRecords {
+	s.Role = &v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionResponseBody struct {
+	// example:
+	//
+	// []
+	Data *GetAITeacherSyncDialogueSuggestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetData(v *GetAITeacherSyncDialogueSuggestionResponseBodyData) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetErrCode(v string) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetErrMessage(v string) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetHttpStatusCode(v int32) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetRequestId(v string) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBody) SetSuccess(v bool) *GetAITeacherSyncDialogueSuggestionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionResponseBodyData struct {
+	// example:
+	//
+	// Thanks, Lily. Do you like meat, Lily?
+	EnglishResult *string `json:"englishResult,omitempty" xml:"englishResult,omitempty"`
+	// example:
+	//
+	// 谢谢莉莉.你喜欢吃肉吗，莉莉？
+	EnglishResult1 *string `json:"englishResult1,omitempty" xml:"englishResult1,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetEnglishResult(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
+	s.EnglishResult = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponseBodyData) SetEnglishResult1(v string) *GetAITeacherSyncDialogueSuggestionResponseBodyData {
+	s.EnglishResult1 = &v
+	return s
+}
+
+type GetAITeacherSyncDialogueSuggestionResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAITeacherSyncDialogueSuggestionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITeacherSyncDialogueSuggestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponse) SetHeaders(v map[string]*string) *GetAITeacherSyncDialogueSuggestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponse) SetStatusCode(v int32) *GetAITeacherSyncDialogueSuggestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAITeacherSyncDialogueSuggestionResponse) SetBody(v *GetAITeacherSyncDialogueSuggestionResponseBody) *GetAITeacherSyncDialogueSuggestionResponse {
+	s.Body = v
+	return s
+}
+
 type PersonalizedTextToImageAddInferenceJobRequest struct {
 	// example:
 	//
@@ -3293,6 +5734,662 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceList() (_resu
 	headers := make(map[string]*string)
 	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
 	_body, _err := client.AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 进行拓展练对话
+//
+// @param request - ExecuteAITeacherExpansionDialogueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherExpansionDialogueResponse
+func (client *Client) ExecuteAITeacherExpansionDialogueWithOptions(request *ExecuteAITeacherExpansionDialogueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherExpansionDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Background)) {
+		body["background"] = request.Background
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		body["languageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleInfo)) {
+		body["roleInfo"] = request.RoleInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSentence)) {
+		body["startSentence"] = request.StartSentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherExpansionDialogue"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/expansionPractice/executeExpansionTraining"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherExpansionDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 进行拓展练对话
+//
+// @param request - ExecuteAITeacherExpansionDialogueRequest
+//
+// @return ExecuteAITeacherExpansionDialogueResponse
+func (client *Client) ExecuteAITeacherExpansionDialogue(request *ExecuteAITeacherExpansionDialogueRequest) (_result *ExecuteAITeacherExpansionDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherExpansionDialogueResponse{}
+	_body, _err := client.ExecuteAITeacherExpansionDialogueWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练根据上下文进行润色
+//
+// @param request - ExecuteAITeacherExpansionDialogueRefineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherExpansionDialogueRefineResponse
+func (client *Client) ExecuteAITeacherExpansionDialogueRefineWithOptions(request *ExecuteAITeacherExpansionDialogueRefineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherExpansionDialogueRefineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Background)) {
+		body["background"] = request.Background
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		body["languageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleInfo)) {
+		body["roleInfo"] = request.RoleInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSentence)) {
+		body["startSentence"] = request.StartSentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherExpansionDialogueRefine"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/expansionPractice/refineByContext"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练根据上下文进行润色
+//
+// @param request - ExecuteAITeacherExpansionDialogueRefineRequest
+//
+// @return ExecuteAITeacherExpansionDialogueRefineResponse
+func (client *Client) ExecuteAITeacherExpansionDialogueRefine(request *ExecuteAITeacherExpansionDialogueRefineRequest) (_result *ExecuteAITeacherExpansionDialogueRefineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
+	_body, _err := client.ExecuteAITeacherExpansionDialogueRefineWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练语境翻译
+//
+// @param request - ExecuteAITeacherExpansionDialogueTranslateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherExpansionDialogueTranslateResponse
+func (client *Client) ExecuteAITeacherExpansionDialogueTranslateWithOptions(request *ExecuteAITeacherExpansionDialogueTranslateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherExpansionDialogueTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Background)) {
+		body["background"] = request.Background
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleInfo)) {
+		body["roleInfo"] = request.RoleInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSentence)) {
+		body["startSentence"] = request.StartSentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherExpansionDialogueTranslate"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/expansionPractice/translate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练语境翻译
+//
+// @param request - ExecuteAITeacherExpansionDialogueTranslateRequest
+//
+// @return ExecuteAITeacherExpansionDialogueTranslateResponse
+func (client *Client) ExecuteAITeacherExpansionDialogueTranslate(request *ExecuteAITeacherExpansionDialogueTranslateRequest) (_result *ExecuteAITeacherExpansionDialogueTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
+	_body, _err := client.ExecuteAITeacherExpansionDialogueTranslateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 语法检测
+//
+// @param request - ExecuteAITeacherGrammarCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherGrammarCheckResponse
+func (client *Client) ExecuteAITeacherGrammarCheckWithOptions(request *ExecuteAITeacherGrammarCheckRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherGrammarCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherGrammarCheck"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/common/grammarChecking"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherGrammarCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 语法检测
+//
+// @param request - ExecuteAITeacherGrammarCheckRequest
+//
+// @return ExecuteAITeacherGrammarCheckResponse
+func (client *Client) ExecuteAITeacherGrammarCheck(request *ExecuteAITeacherGrammarCheckRequest) (_result *ExecuteAITeacherGrammarCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherGrammarCheckResponse{}
+	_body, _err := client.ExecuteAITeacherGrammarCheckWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 进行同步练对话
+//
+// @param request - ExecuteAITeacherSyncDialogueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherSyncDialogueResponse
+func (client *Client) ExecuteAITeacherSyncDialogueWithOptions(request *ExecuteAITeacherSyncDialogueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherSyncDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		body["languageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherSyncDialogue"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/syncPractice/executeSyncTraining"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherSyncDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 进行同步练对话
+//
+// @param request - ExecuteAITeacherSyncDialogueRequest
+//
+// @return ExecuteAITeacherSyncDialogueResponse
+func (client *Client) ExecuteAITeacherSyncDialogue(request *ExecuteAITeacherSyncDialogueRequest) (_result *ExecuteAITeacherSyncDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherSyncDialogueResponse{}
+	_body, _err := client.ExecuteAITeacherSyncDialogueWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步练语境翻译
+//
+// @param request - ExecuteAITeacherSyncDialogueTranslateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAITeacherSyncDialogueTranslateResponse
+func (client *Client) ExecuteAITeacherSyncDialogueTranslateWithOptions(request *ExecuteAITeacherSyncDialogueTranslateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherSyncDialogueTranslateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteAITeacherSyncDialogueTranslate"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/syncPractice/translate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步练语境翻译
+//
+// @param request - ExecuteAITeacherSyncDialogueTranslateRequest
+//
+// @return ExecuteAITeacherSyncDialogueTranslateResponse
+func (client *Client) ExecuteAITeacherSyncDialogueTranslate(request *ExecuteAITeacherSyncDialogueTranslateRequest) (_result *ExecuteAITeacherSyncDialogueTranslateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
+	_body, _err := client.ExecuteAITeacherSyncDialogueTranslateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练小助手
+//
+// @param request - GetAITeacherExpansionDialogueSuggestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAITeacherExpansionDialogueSuggestionResponse
+func (client *Client) GetAITeacherExpansionDialogueSuggestionWithOptions(request *GetAITeacherExpansionDialogueSuggestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAITeacherExpansionDialogueSuggestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Background)) {
+		body["background"] = request.Background
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		body["languageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleInfo)) {
+		body["roleInfo"] = request.RoleInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSentence)) {
+		body["startSentence"] = request.StartSentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAITeacherExpansionDialogueSuggestion"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/expansionPractice/suggestion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拓展练小助手
+//
+// @param request - GetAITeacherExpansionDialogueSuggestionRequest
+//
+// @return GetAITeacherExpansionDialogueSuggestionResponse
+func (client *Client) GetAITeacherExpansionDialogueSuggestion(request *GetAITeacherExpansionDialogueSuggestionRequest) (_result *GetAITeacherExpansionDialogueSuggestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
+	_body, _err := client.GetAITeacherExpansionDialogueSuggestionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步练小助手
+//
+// @param request - GetAITeacherSyncDialogueSuggestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAITeacherSyncDialogueSuggestionResponse
+func (client *Client) GetAITeacherSyncDialogueSuggestionWithOptions(request *GetAITeacherSyncDialogueSuggestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAITeacherSyncDialogueSuggestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DialogueTasks)) {
+		body["dialogueTasks"] = request.DialogueTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LanguageCode)) {
+		body["languageCode"] = request.LanguageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAITeacherSyncDialogueSuggestion"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aiteacher/syncPractice/suggestion"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAITeacherSyncDialogueSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步练小助手
+//
+// @param request - GetAITeacherSyncDialogueSuggestionRequest
+//
+// @return GetAITeacherSyncDialogueSuggestionResponse
+func (client *Client) GetAITeacherSyncDialogueSuggestion(request *GetAITeacherSyncDialogueSuggestionRequest) (_result *GetAITeacherSyncDialogueSuggestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAITeacherSyncDialogueSuggestionResponse{}
+	_body, _err := client.GetAITeacherSyncDialogueSuggestionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
