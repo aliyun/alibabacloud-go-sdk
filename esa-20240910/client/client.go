@@ -1594,6 +1594,156 @@ func (s *ActivateClientCertificateResponse) SetBody(v *ActivateClientCertificate
 	return s
 }
 
+type ApplyCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com,blog.example.com
+	Domains *string `json:"Domains,omitempty" xml:"Domains,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ApplyCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCertificateRequest) SetDomains(v string) *ApplyCertificateRequest {
+	s.Domains = &v
+	return s
+}
+
+func (s *ApplyCertificateRequest) SetSiteId(v int64) *ApplyCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ApplyCertificateRequest) SetType(v string) *ApplyCertificateRequest {
+	s.Type = &v
+	return s
+}
+
+type ApplyCertificateResponseBody struct {
+	// example:
+	//
+	// 156A6B-677B1A-4297B7-9187B7-2B44792
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ApplyCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ApplyCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCertificateResponseBody) SetRequestId(v string) *ApplyCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyCertificateResponseBody) SetResult(v []*ApplyCertificateResponseBodyResult) *ApplyCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ApplyCertificateResponseBody) SetSiteName(v string) *ApplyCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ApplyCertificateResponseBody) SetTotalCount(v int64) *ApplyCertificateResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ApplyCertificateResponseBodyResult struct {
+	// example:
+	//
+	// *.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 30000478
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Applying
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ApplyCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCertificateResponseBodyResult) SetDomain(v string) *ApplyCertificateResponseBodyResult {
+	s.Domain = &v
+	return s
+}
+
+func (s *ApplyCertificateResponseBodyResult) SetId(v string) *ApplyCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ApplyCertificateResponseBodyResult) SetStatus(v string) *ApplyCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type ApplyCertificateResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCertificateResponse) SetHeaders(v map[string]*string) *ApplyCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyCertificateResponse) SetStatusCode(v int32) *ApplyCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyCertificateResponse) SetBody(v *ApplyCertificateResponseBody) *ApplyCertificateResponse {
+	s.Body = v
+	return s
+}
+
 type BatchCreateRecordsRequest struct {
 	// The list of DNS records to be created.
 	//
@@ -6022,6 +6172,235 @@ func (s *CreateListResponse) SetBody(v *CreateListResponseBody) *CreateListRespo
 	return s
 }
 
+type CreateOriginPoolRequest struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateOriginPool
+	Name    *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Origins []*CreateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateOriginPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolRequest) SetEnabled(v bool) *CreateOriginPoolRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequest) SetName(v string) *CreateOriginPoolRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequest) SetOrigins(v []*CreateOriginPoolRequestOrigins) *CreateOriginPoolRequest {
+	s.Origins = v
+	return s
+}
+
+func (s *CreateOriginPoolRequest) SetSiteId(v int64) *CreateOriginPoolRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateOriginPoolRequestOrigins struct {
+	Address  *string                                 `json:"Address,omitempty" xml:"Address,omitempty"`
+	AuthConf *CreateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	Enabled  *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Header   interface{}                             `json:"Header,omitempty" xml:"Header,omitempty"`
+	Name     *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32                                  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s CreateOriginPoolRequestOrigins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolRequestOrigins) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetAddress(v string) *CreateOriginPoolRequestOrigins {
+	s.Address = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetAuthConf(v *CreateOriginPoolRequestOriginsAuthConf) *CreateOriginPoolRequestOrigins {
+	s.AuthConf = v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetEnabled(v bool) *CreateOriginPoolRequestOrigins {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetHeader(v interface{}) *CreateOriginPoolRequestOrigins {
+	s.Header = v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetName(v string) *CreateOriginPoolRequestOrigins {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetType(v string) *CreateOriginPoolRequestOrigins {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOrigins) SetWeight(v int32) *CreateOriginPoolRequestOrigins {
+	s.Weight = &v
+	return s
+}
+
+type CreateOriginPoolRequestOriginsAuthConf struct {
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateOriginPoolRequestOriginsAuthConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolRequestOriginsAuthConf) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolRequestOriginsAuthConf) SetAccessKey(v string) *CreateOriginPoolRequestOriginsAuthConf {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOriginsAuthConf) SetAuthType(v string) *CreateOriginPoolRequestOriginsAuthConf {
+	s.AuthType = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOriginsAuthConf) SetRegion(v string) *CreateOriginPoolRequestOriginsAuthConf {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOriginsAuthConf) SetSecretKey(v string) *CreateOriginPoolRequestOriginsAuthConf {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *CreateOriginPoolRequestOriginsAuthConf) SetVersion(v string) *CreateOriginPoolRequestOriginsAuthConf {
+	s.Version = &v
+	return s
+}
+
+type CreateOriginPoolShrinkRequest struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CreateOriginPool
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateOriginPoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolShrinkRequest) SetEnabled(v bool) *CreateOriginPoolShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *CreateOriginPoolShrinkRequest) SetName(v string) *CreateOriginPoolShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOriginPoolShrinkRequest) SetOriginsShrink(v string) *CreateOriginPoolShrinkRequest {
+	s.OriginsShrink = &v
+	return s
+}
+
+func (s *CreateOriginPoolShrinkRequest) SetSiteId(v int64) *CreateOriginPoolShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateOriginPoolResponseBody struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOriginPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolResponseBody) SetId(v int64) *CreateOriginPoolResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOriginPoolResponseBody) SetRequestId(v string) *CreateOriginPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOriginPoolResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOriginPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOriginPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOriginPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOriginPoolResponse) SetHeaders(v map[string]*string) *CreateOriginPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOriginPoolResponse) SetStatusCode(v int32) *CreateOriginPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOriginPoolResponse) SetBody(v *CreateOriginPoolResponseBody) *CreateOriginPoolResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOriginProtectionRequest struct {
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -9180,6 +9559,7 @@ type CreateUserDeliveryTaskRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate. Default value: 0.
 	//
 	// example:
@@ -9234,6 +9614,11 @@ func (s *CreateUserDeliveryTaskRequest) SetDataCenter(v string) *CreateUserDeliv
 
 func (s *CreateUserDeliveryTaskRequest) SetDeliveryType(v string) *CreateUserDeliveryTaskRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *CreateUserDeliveryTaskRequest) SetDetails(v string) *CreateUserDeliveryTaskRequest {
+	s.Details = &v
 	return s
 }
 
@@ -9872,6 +10257,7 @@ type CreateUserDeliveryTaskShrinkRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate. Default value: 0.
 	//
 	// example:
@@ -9926,6 +10312,11 @@ func (s *CreateUserDeliveryTaskShrinkRequest) SetDataCenter(v string) *CreateUse
 
 func (s *CreateUserDeliveryTaskShrinkRequest) SetDeliveryType(v string) *CreateUserDeliveryTaskShrinkRequest {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *CreateUserDeliveryTaskShrinkRequest) SetDetails(v string) *CreateUserDeliveryTaskShrinkRequest {
+	s.Details = &v
 	return s
 }
 
@@ -12079,6 +12470,82 @@ func (s *DeleteListResponse) SetStatusCode(v int32) *DeleteListResponse {
 }
 
 func (s *DeleteListResponse) SetBody(v *DeleteListResponseBody) *DeleteListResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteOriginPoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DeleteOriginPool
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteOriginPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginPoolRequest) SetId(v int64) *DeleteOriginPoolRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DeleteOriginPoolRequest) SetSiteId(v int64) *DeleteOriginPoolRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteOriginPoolResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOriginPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginPoolResponseBody) SetRequestId(v string) *DeleteOriginPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOriginPoolResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOriginPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOriginPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOriginPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOriginPoolResponse) SetHeaders(v map[string]*string) *DeleteOriginPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOriginPoolResponse) SetStatusCode(v int32) *DeleteOriginPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOriginPoolResponse) SetBody(v *DeleteOriginPoolResponseBody) *DeleteOriginPoolResponse {
 	s.Body = v
 	return s
 }
@@ -15335,6 +15802,436 @@ func (s *GetCacheReserveSpecificationResponse) SetStatusCode(v int32) *GetCacheR
 }
 
 func (s *GetCacheReserveSpecificationResponse) SetBody(v *GetCacheReserveSpecificationResponseBody) *GetCacheReserveSpecificationResponse {
+	s.Body = v
+	return s
+}
+
+type GetCertificateRequest struct {
+	// The certificate ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d95
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateRequest) SetId(v string) *GetCertificateRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCertificateRequest) SetSiteId(v int64) *GetCertificateRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetCertificateResponseBody struct {
+	// The certificate content.
+	//
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The certificate information.
+	Result *GetCertificateResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The website ID.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The certificate status.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponseBody) SetCertificate(v string) *GetCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetResult(v *GetCertificateResponseBodyResult) *GetCertificateResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetSiteId(v int64) *GetCertificateResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetSiteName(v string) *GetCertificateResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetStatus(v string) *GetCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetCertificateResponseBodyResult struct {
+	// example:
+	//
+	// 2
+	ApplyCode *int64 `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
+	// example:
+	//
+	// canceled
+	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
+	// The certificate ID on Certificate Management Service.
+	//
+	// example:
+	//
+	// 30000478
+	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// The Common Name of the certificate.
+	//
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2020-05-12 02:00:53
+	CreateTime *string                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DCV        []*GetCertificateResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
+	// The SHA-256 fingerprint of the certificate.
+	//
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// The certificate ID on ESA.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1d95
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
+	// example:
+	//
+	// DigiCert
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The Common Name of the CA that issued the certificate.
+	//
+	// example:
+	//
+	// DigiCert Global Root CA
+	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2023-11-26T16:00:00Z
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
+	// example:
+	//
+	// 2023-11-26T16:00:00Z
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public-key algorithm of the certificate.
+	//
+	// example:
+	//
+	// ECDSA
+	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
+	// The region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// babaded901474b9693acf530e0fb1daa
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// ECDSA-SHA1
+	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
+	// The certificate status.
+	//
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The certificate type.
+	//
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the certificate was updated.
+	//
+	// example:
+	//
+	// 2022-09-22 05:33:13
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetCertificateResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponseBodyResult) SetApplyCode(v int64) *GetCertificateResponseBodyResult {
+	s.ApplyCode = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetApplyMessage(v string) *GetCertificateResponseBodyResult {
+	s.ApplyMessage = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetCasId(v string) *GetCertificateResponseBodyResult {
+	s.CasId = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetCommonName(v string) *GetCertificateResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetCreateTime(v string) *GetCertificateResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetDCV(v []*GetCertificateResponseBodyResultDCV) *GetCertificateResponseBodyResult {
+	s.DCV = v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetFingerprintSha256(v string) *GetCertificateResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetId(v string) *GetCertificateResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetIssuer(v string) *GetCertificateResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetIssuerCN(v string) *GetCertificateResponseBodyResult {
+	s.IssuerCN = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetName(v string) *GetCertificateResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetNotAfter(v string) *GetCertificateResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetNotBefore(v string) *GetCertificateResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetPubAlg(v string) *GetCertificateResponseBodyResult {
+	s.PubAlg = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetRegion(v string) *GetCertificateResponseBodyResult {
+	s.Region = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetSAN(v string) *GetCertificateResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetSerialNumber(v string) *GetCertificateResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetSigAlg(v string) *GetCertificateResponseBodyResult {
+	s.SigAlg = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetStatus(v string) *GetCertificateResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetType(v string) *GetCertificateResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResult) SetUpdateTime(v string) *GetCertificateResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetCertificateResponseBodyResultDCV struct {
+	// DCV ID。
+	//
+	// example:
+	//
+	// bababf7cdd1546a2ad04c0def1f4c980
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// http://www.example.com/.well-known/acme-challenge/pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// HTTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// pH20CqwS5L3ZnvkhI436DCzadKFuG7QcUcvB_4KsAow.KfzYo4LH3EgOt7a73G-RqZkbR0eYtLfEUmtmqGmr4FQ
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCertificateResponseBodyResultDCV) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponseBodyResultDCV) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponseBodyResultDCV) SetId(v string) *GetCertificateResponseBodyResultDCV {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResultDCV) SetKey(v string) *GetCertificateResponseBodyResultDCV {
+	s.Key = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResultDCV) SetStatus(v string) *GetCertificateResponseBodyResultDCV {
+	s.Status = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResultDCV) SetType(v string) *GetCertificateResponseBodyResultDCV {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCertificateResponseBodyResultDCV) SetValue(v string) *GetCertificateResponseBodyResultDCV {
+	s.Value = &v
+	return s
+}
+
+type GetCertificateResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCertificateResponse) SetHeaders(v map[string]*string) *GetCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCertificateResponse) SetStatusCode(v int32) *GetCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -18646,6 +19543,328 @@ func (s *GetListResponse) SetBody(v *GetListResponseBody) *GetListResponse {
 	return s
 }
 
+type GetOriginPoolRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GetOriginPool
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolRequest) SetId(v int64) *GetOriginPoolRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolRequest) SetSiteId(v int64) *GetOriginPoolRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginPoolResponseBody struct {
+	Enabled          *bool                                `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Id               *int64                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Origins          []*GetOriginPoolResponseBodyOrigins  `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	RecordName       *string                              `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	ReferenceLBCount *int32                               `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
+	References       *GetOriginPoolResponseBodyReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteId    *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetOriginPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBody) SetEnabled(v bool) *GetOriginPoolResponseBody {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetId(v int64) *GetOriginPoolResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetName(v string) *GetOriginPoolResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetOrigins(v []*GetOriginPoolResponseBodyOrigins) *GetOriginPoolResponseBody {
+	s.Origins = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetRecordName(v string) *GetOriginPoolResponseBody {
+	s.RecordName = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetReferenceLBCount(v int32) *GetOriginPoolResponseBody {
+	s.ReferenceLBCount = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetReferences(v *GetOriginPoolResponseBodyReferences) *GetOriginPoolResponseBody {
+	s.References = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetRequestId(v string) *GetOriginPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBody) SetSiteId(v int64) *GetOriginPoolResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+type GetOriginPoolResponseBodyOrigins struct {
+	Address  *string                                   `json:"Address,omitempty" xml:"Address,omitempty"`
+	AuthConf *GetOriginPoolResponseBodyOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	Enabled  *bool                                     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Header   interface{}                               `json:"Header,omitempty" xml:"Header,omitempty"`
+	Id       *int64                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32                                    `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s GetOriginPoolResponseBodyOrigins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyOrigins) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetAddress(v string) *GetOriginPoolResponseBodyOrigins {
+	s.Address = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetAuthConf(v *GetOriginPoolResponseBodyOriginsAuthConf) *GetOriginPoolResponseBodyOrigins {
+	s.AuthConf = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetEnabled(v bool) *GetOriginPoolResponseBodyOrigins {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetHeader(v interface{}) *GetOriginPoolResponseBodyOrigins {
+	s.Header = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetId(v int64) *GetOriginPoolResponseBodyOrigins {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetName(v string) *GetOriginPoolResponseBodyOrigins {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetType(v string) *GetOriginPoolResponseBodyOrigins {
+	s.Type = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOrigins) SetWeight(v int32) *GetOriginPoolResponseBodyOrigins {
+	s.Weight = &v
+	return s
+}
+
+type GetOriginPoolResponseBodyOriginsAuthConf struct {
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetOriginPoolResponseBodyOriginsAuthConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyOriginsAuthConf) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetAccessKey(v string) *GetOriginPoolResponseBodyOriginsAuthConf {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetAuthType(v string) *GetOriginPoolResponseBodyOriginsAuthConf {
+	s.AuthType = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetRegion(v string) *GetOriginPoolResponseBodyOriginsAuthConf {
+	s.Region = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetSecretKey(v string) *GetOriginPoolResponseBodyOriginsAuthConf {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyOriginsAuthConf) SetVersion(v string) *GetOriginPoolResponseBodyOriginsAuthConf {
+	s.Version = &v
+	return s
+}
+
+type GetOriginPoolResponseBodyReferences struct {
+	DnsRecords    []*GetOriginPoolResponseBodyReferencesDnsRecords    `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
+	IPARecords    []*GetOriginPoolResponseBodyReferencesIPARecords    `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	LoadBalancers []*GetOriginPoolResponseBodyReferencesLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+}
+
+func (s GetOriginPoolResponseBodyReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyReferences) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyReferences) SetDnsRecords(v []*GetOriginPoolResponseBodyReferencesDnsRecords) *GetOriginPoolResponseBodyReferences {
+	s.DnsRecords = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyReferences) SetIPARecords(v []*GetOriginPoolResponseBodyReferencesIPARecords) *GetOriginPoolResponseBodyReferences {
+	s.IPARecords = v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyReferences) SetLoadBalancers(v []*GetOriginPoolResponseBodyReferencesLoadBalancers) *GetOriginPoolResponseBodyReferences {
+	s.LoadBalancers = v
+	return s
+}
+
+type GetOriginPoolResponseBodyReferencesDnsRecords struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOriginPoolResponseBodyReferencesDnsRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyReferencesDnsRecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyReferencesDnsRecords) SetId(v int64) *GetOriginPoolResponseBodyReferencesDnsRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyReferencesDnsRecords) SetName(v string) *GetOriginPoolResponseBodyReferencesDnsRecords {
+	s.Name = &v
+	return s
+}
+
+type GetOriginPoolResponseBodyReferencesIPARecords struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOriginPoolResponseBodyReferencesIPARecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyReferencesIPARecords) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyReferencesIPARecords) SetId(v int64) *GetOriginPoolResponseBodyReferencesIPARecords {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyReferencesIPARecords) SetName(v string) *GetOriginPoolResponseBodyReferencesIPARecords {
+	s.Name = &v
+	return s
+}
+
+type GetOriginPoolResponseBodyReferencesLoadBalancers struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOriginPoolResponseBodyReferencesLoadBalancers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponseBodyReferencesLoadBalancers) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponseBodyReferencesLoadBalancers) SetId(v int64) *GetOriginPoolResponseBodyReferencesLoadBalancers {
+	s.Id = &v
+	return s
+}
+
+func (s *GetOriginPoolResponseBodyReferencesLoadBalancers) SetName(v string) *GetOriginPoolResponseBodyReferencesLoadBalancers {
+	s.Name = &v
+	return s
+}
+
+type GetOriginPoolResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOriginPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOriginPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOriginPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOriginPoolResponse) SetHeaders(v map[string]*string) *GetOriginPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOriginPoolResponse) SetStatusCode(v int32) *GetOriginPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOriginPoolResponse) SetBody(v *GetOriginPoolResponseBody) *GetOriginPoolResponse {
+	s.Body = v
+	return s
+}
+
 type GetOriginProtectionRequest struct {
 	// The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
 	//
@@ -21926,6 +23145,7 @@ type GetUserDeliveryTaskResponseBody struct {
 	//
 	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate.
 	//
 	// example:
@@ -21990,6 +23210,11 @@ func (s *GetUserDeliveryTaskResponseBody) SetDataCenter(v string) *GetUserDelive
 
 func (s *GetUserDeliveryTaskResponseBody) SetDeliveryType(v string) *GetUserDeliveryTaskResponseBody {
 	s.DeliveryType = &v
+	return s
+}
+
+func (s *GetUserDeliveryTaskResponseBody) SetDetails(v string) *GetUserDeliveryTaskResponseBody {
+	s.Details = &v
 	return s
 }
 
@@ -23226,6 +24451,396 @@ func (s *ListCacheReserveInstancesResponse) SetStatusCode(v int32) *ListCacheRes
 }
 
 func (s *ListCacheReserveInstancesResponse) SetBody(v *ListCacheReserveInstancesResponseBody) *ListCacheReserveInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCertificatesRequest struct {
+	// example:
+	//
+	// example
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 3
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 1
+	ValidOnly *bool `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
+}
+
+func (s ListCertificatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesRequest) SetKeyword(v string) *ListCertificatesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetPageNumber(v int64) *ListCertificatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetPageSize(v int64) *ListCertificatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetSiteId(v int64) *ListCertificatesRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCertificatesRequest) SetValidOnly(v bool) *ListCertificatesRequest {
+	s.ValidOnly = &v
+	return s
+}
+
+type ListCertificatesResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListCertificatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertificatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBody) SetPageNumber(v int64) *ListCertificatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetPageSize(v int64) *ListCertificatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetRequestId(v string) *ListCertificatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetResult(v []*ListCertificatesResponseBodyResult) *ListCertificatesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetSiteId(v int64) *ListCertificatesResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetSiteName(v string) *ListCertificatesResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBody) SetTotalCount(v int64) *ListCertificatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertificatesResponseBodyResult struct {
+	ApplyCode    *int64  `json:"ApplyCode,omitempty" xml:"ApplyCode,omitempty"`
+	ApplyMessage *string `json:"ApplyMessage,omitempty" xml:"ApplyMessage,omitempty"`
+	// example:
+	//
+	// 30000569
+	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2022-06-24 07:48:51
+	CreateTime *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DCV        []*ListCertificatesResponseBodyResultDCV `json:"DCV,omitempty" xml:"DCV,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456a****
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	// example:
+	//
+	// baba39055622c008b90285a8838e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// GlobalSign Organization Validation CA - SHA256 - G3
+	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-03-31 02:08:00
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-03-31 02:08:00
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// babab022c5e9b27bf9c64d7f4b16****
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2023-04-20 06:18:42
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListCertificatesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBodyResult) SetApplyCode(v int64) *ListCertificatesResponseBodyResult {
+	s.ApplyCode = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetApplyMessage(v string) *ListCertificatesResponseBodyResult {
+	s.ApplyMessage = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetCasId(v string) *ListCertificatesResponseBodyResult {
+	s.CasId = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetCommonName(v string) *ListCertificatesResponseBodyResult {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetCreateTime(v string) *ListCertificatesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetDCV(v []*ListCertificatesResponseBodyResultDCV) *ListCertificatesResponseBodyResult {
+	s.DCV = v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetFingerprintSha256(v string) *ListCertificatesResponseBodyResult {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetId(v string) *ListCertificatesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetIssuer(v string) *ListCertificatesResponseBodyResult {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetIssuerCN(v string) *ListCertificatesResponseBodyResult {
+	s.IssuerCN = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetName(v string) *ListCertificatesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetNotAfter(v string) *ListCertificatesResponseBodyResult {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetNotBefore(v string) *ListCertificatesResponseBodyResult {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetPubAlg(v string) *ListCertificatesResponseBodyResult {
+	s.PubAlg = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetRegion(v string) *ListCertificatesResponseBodyResult {
+	s.Region = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetSAN(v string) *ListCertificatesResponseBodyResult {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetSerialNumber(v string) *ListCertificatesResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetSigAlg(v string) *ListCertificatesResponseBodyResult {
+	s.SigAlg = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetStatus(v string) *ListCertificatesResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetType(v string) *ListCertificatesResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResult) SetUpdateTime(v string) *ListCertificatesResponseBodyResult {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListCertificatesResponseBodyResultDCV struct {
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListCertificatesResponseBodyResultDCV) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponseBodyResultDCV) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponseBodyResultDCV) SetId(v string) *ListCertificatesResponseBodyResultDCV {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResultDCV) SetKey(v string) *ListCertificatesResponseBodyResultDCV {
+	s.Key = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResultDCV) SetStatus(v string) *ListCertificatesResponseBodyResultDCV {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResultDCV) SetType(v string) *ListCertificatesResponseBodyResultDCV {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCertificatesResponseBodyResultDCV) SetValue(v string) *ListCertificatesResponseBodyResultDCV {
+	s.Value = &v
+	return s
+}
+
+type ListCertificatesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCertificatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesResponse) SetHeaders(v map[string]*string) *ListCertificatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertificatesResponse) SetStatusCode(v int32) *ListCertificatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *ListCertificatesResponse {
 	s.Body = v
 	return s
 }
@@ -27501,6 +29116,390 @@ func (s *ListManagedRulesGroupsResponse) SetStatusCode(v int32) *ListManagedRule
 }
 
 func (s *ListManagedRulesGroupsResponse) SetBody(v *ListManagedRulesGroupsResponseBody) *ListManagedRulesGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListOriginPoolsRequest struct {
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// ListOriginPools
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListOriginPoolsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsRequest) SetMatchType(v string) *ListOriginPoolsRequest {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListOriginPoolsRequest) SetName(v string) *ListOriginPoolsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOriginPoolsRequest) SetOrderBy(v string) *ListOriginPoolsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListOriginPoolsRequest) SetPageNumber(v int32) *ListOriginPoolsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginPoolsRequest) SetPageSize(v int32) *ListOriginPoolsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginPoolsRequest) SetSiteId(v int64) *ListOriginPoolsRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListOriginPoolsResponseBody struct {
+	OriginPools []*ListOriginPoolsResponseBodyOriginPools `json:"OriginPools,omitempty" xml:"OriginPools,omitempty" type:"Repeated"`
+	PageNumber  *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *int32                                    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBody) SetOriginPools(v []*ListOriginPoolsResponseBodyOriginPools) *ListOriginPoolsResponseBody {
+	s.OriginPools = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBody) SetPageNumber(v int32) *ListOriginPoolsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBody) SetPageSize(v int32) *ListOriginPoolsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBody) SetRequestId(v string) *ListOriginPoolsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBody) SetTotalCount(v int32) *ListOriginPoolsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBody) SetTotalPage(v int32) *ListOriginPoolsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPools struct {
+	Enabled          *bool                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Id               *int64                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Origins          []*ListOriginPoolsResponseBodyOriginPoolsOrigins  `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	RecordName       *string                                           `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	ReferenceLBCount *int32                                            `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
+	References       *ListOriginPoolsResponseBodyOriginPoolsReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
+	SiteId           *int64                                            `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPools) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetEnabled(v bool) *ListOriginPoolsResponseBodyOriginPools {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetId(v int64) *ListOriginPoolsResponseBodyOriginPools {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetName(v string) *ListOriginPoolsResponseBodyOriginPools {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetOrigins(v []*ListOriginPoolsResponseBodyOriginPoolsOrigins) *ListOriginPoolsResponseBodyOriginPools {
+	s.Origins = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetRecordName(v string) *ListOriginPoolsResponseBodyOriginPools {
+	s.RecordName = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetReferenceLBCount(v int32) *ListOriginPoolsResponseBodyOriginPools {
+	s.ReferenceLBCount = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetReferences(v *ListOriginPoolsResponseBodyOriginPoolsReferences) *ListOriginPoolsResponseBodyOriginPools {
+	s.References = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPools) SetSiteId(v int64) *ListOriginPoolsResponseBodyOriginPools {
+	s.SiteId = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
+	Address  *string                                                `json:"Address,omitempty" xml:"Address,omitempty"`
+	AuthConf *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	Enabled  *bool                                                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Header   interface{}                                            `json:"Header,omitempty" xml:"Header,omitempty"`
+	Id       *int64                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32                                                 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsOrigins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsOrigins) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetAddress(v string) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Address = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetAuthConf(v *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.AuthConf = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetEnabled(v bool) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetHeader(v interface{}) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Header = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetId(v int64) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetName(v string) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Name = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetType(v string) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Type = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetWeight(v int32) *ListOriginPoolsResponseBodyOriginPoolsOrigins {
+	s.Weight = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetAccessKey(v string) *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetAuthType(v string) *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf {
+	s.AuthType = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetRegion(v string) *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf {
+	s.Region = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetSecretKey(v string) *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) SetVersion(v string) *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf {
+	s.Version = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsReferences struct {
+	DnsRecords    []*ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords    `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
+	IPARecords    []*ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords    `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
+	LoadBalancers []*ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferences) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) SetDnsRecords(v []*ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) *ListOriginPoolsResponseBodyOriginPoolsReferences {
+	s.DnsRecords = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) SetIPARecords(v []*ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) *ListOriginPoolsResponseBodyOriginPoolsReferences {
+	s.IPARecords = v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) SetLoadBalancers(v []*ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers) *ListOriginPoolsResponseBodyOriginPoolsReferences {
+	s.LoadBalancers = v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) SetId(v int64) *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) SetName(v string) *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords {
+	s.Name = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) SetId(v int64) *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) SetName(v string) *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords {
+	s.Name = &v
+	return s
+}
+
+type ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers struct {
+	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers) SetId(v int64) *ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers {
+	s.Id = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers) SetName(v string) *ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers {
+	s.Name = &v
+	return s
+}
+
+type ListOriginPoolsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOriginPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListOriginPoolsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOriginPoolsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOriginPoolsResponse) SetHeaders(v map[string]*string) *ListOriginPoolsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOriginPoolsResponse) SetStatusCode(v int32) *ListOriginPoolsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOriginPoolsResponse) SetBody(v *ListOriginPoolsResponseBody) *ListOriginPoolsResponse {
 	s.Body = v
 	return s
 }
@@ -36296,6 +38295,235 @@ func (s *UpdateKvNamespaceResponse) SetBody(v *UpdateKvNamespaceResponseBody) *U
 	return s
 }
 
+type UpdateOriginPoolRequest struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateOriginPool
+	Id      *int64                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Origins []*UpdateOriginPoolRequestOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateOriginPoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolRequest) SetEnabled(v bool) *UpdateOriginPoolRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequest) SetId(v int64) *UpdateOriginPoolRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequest) SetOrigins(v []*UpdateOriginPoolRequestOrigins) *UpdateOriginPoolRequest {
+	s.Origins = v
+	return s
+}
+
+func (s *UpdateOriginPoolRequest) SetSiteId(v int64) *UpdateOriginPoolRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateOriginPoolRequestOrigins struct {
+	Address  *string                                 `json:"Address,omitempty" xml:"Address,omitempty"`
+	AuthConf *UpdateOriginPoolRequestOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
+	Enabled  *bool                                   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Header   interface{}                             `json:"Header,omitempty" xml:"Header,omitempty"`
+	Name     *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type     *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32                                  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s UpdateOriginPoolRequestOrigins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolRequestOrigins) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetAddress(v string) *UpdateOriginPoolRequestOrigins {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetAuthConf(v *UpdateOriginPoolRequestOriginsAuthConf) *UpdateOriginPoolRequestOrigins {
+	s.AuthConf = v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetEnabled(v bool) *UpdateOriginPoolRequestOrigins {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetHeader(v interface{}) *UpdateOriginPoolRequestOrigins {
+	s.Header = v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetName(v string) *UpdateOriginPoolRequestOrigins {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetType(v string) *UpdateOriginPoolRequestOrigins {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOrigins) SetWeight(v int32) *UpdateOriginPoolRequestOrigins {
+	s.Weight = &v
+	return s
+}
+
+type UpdateOriginPoolRequestOriginsAuthConf struct {
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AuthType  *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateOriginPoolRequestOriginsAuthConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolRequestOriginsAuthConf) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolRequestOriginsAuthConf) SetAccessKey(v string) *UpdateOriginPoolRequestOriginsAuthConf {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOriginsAuthConf) SetAuthType(v string) *UpdateOriginPoolRequestOriginsAuthConf {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOriginsAuthConf) SetRegion(v string) *UpdateOriginPoolRequestOriginsAuthConf {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOriginsAuthConf) SetSecretKey(v string) *UpdateOriginPoolRequestOriginsAuthConf {
+	s.SecretKey = &v
+	return s
+}
+
+func (s *UpdateOriginPoolRequestOriginsAuthConf) SetVersion(v string) *UpdateOriginPoolRequestOriginsAuthConf {
+	s.Version = &v
+	return s
+}
+
+type UpdateOriginPoolShrinkRequest struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UpdateOriginPool
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OriginsShrink *string `json:"Origins,omitempty" xml:"Origins,omitempty"`
+	// This parameter is required.
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateOriginPoolShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolShrinkRequest) SetEnabled(v bool) *UpdateOriginPoolShrinkRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateOriginPoolShrinkRequest) SetId(v int64) *UpdateOriginPoolShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateOriginPoolShrinkRequest) SetOriginsShrink(v string) *UpdateOriginPoolShrinkRequest {
+	s.OriginsShrink = &v
+	return s
+}
+
+func (s *UpdateOriginPoolShrinkRequest) SetSiteId(v int64) *UpdateOriginPoolShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateOriginPoolResponseBody struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateOriginPoolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolResponseBody) SetId(v int64) *UpdateOriginPoolResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateOriginPoolResponseBody) SetRequestId(v string) *UpdateOriginPoolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateOriginPoolResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateOriginPoolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateOriginPoolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateOriginPoolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateOriginPoolResponse) SetHeaders(v map[string]*string) *UpdateOriginPoolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateOriginPoolResponse) SetStatusCode(v int32) *UpdateOriginPoolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateOriginPoolResponse) SetBody(v *UpdateOriginPoolResponseBody) *UpdateOriginPoolResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateOriginProtectionRequest struct {
 	// The IP convergence status.
 	//
@@ -36485,6 +38713,8 @@ type UpdatePageRequest struct {
 	// text/html
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// The description of the custom error page.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -38077,6 +40307,7 @@ type UpdateUserDeliveryTaskRequest struct {
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Details      *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	// The discard rate. Default value: 0.
 	//
 	// example:
@@ -38111,6 +40342,11 @@ func (s UpdateUserDeliveryTaskRequest) GoString() string {
 
 func (s *UpdateUserDeliveryTaskRequest) SetBusinessType(v string) *UpdateUserDeliveryTaskRequest {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *UpdateUserDeliveryTaskRequest) SetDetails(v string) *UpdateUserDeliveryTaskRequest {
+	s.Details = &v
 	return s
 }
 
@@ -39891,6 +42127,62 @@ func (client *Client) ActivateClientCertificate(request *ActivateClientCertifica
 	runtime := &util.RuntimeOptions{}
 	_result = &ActivateClientCertificateResponse{}
 	_body, _err := client.ActivateClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请免费证书
+//
+// @param request - ApplyCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyCertificateResponse
+func (client *Client) ApplyCertificateWithOptions(request *ApplyCertificateRequest, runtime *util.RuntimeOptions) (_result *ApplyCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 申请免费证书
+//
+// @param request - ApplyCertificateRequest
+//
+// @return ApplyCertificateResponse
+func (client *Client) ApplyCertificate(request *ApplyCertificateRequest) (_result *ApplyCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyCertificateResponse{}
+	_body, _err := client.ApplyCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41812,6 +44104,84 @@ func (client *Client) CreateList(request *CreateListRequest) (_result *CreateLis
 
 // Summary:
 //
+// 新增源地址池
+//
+// @param tmpReq - CreateOriginPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOriginPoolResponse
+func (client *Client) CreateOriginPoolWithOptions(tmpReq *CreateOriginPoolRequest, runtime *util.RuntimeOptions) (_result *CreateOriginPoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateOriginPoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Origins)) {
+		request.OriginsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Origins, tea.String("Origins"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginsShrink)) {
+		query["Origins"] = request.OriginsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOriginPool"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOriginPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增源地址池
+//
+// @param request - CreateOriginPoolRequest
+//
+// @return CreateOriginPoolResponse
+func (client *Client) CreateOriginPool(request *CreateOriginPoolRequest) (_result *CreateOriginPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOriginPoolResponse{}
+	_body, _err := client.CreateOriginPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables origin protection.
 //
 // @param request - CreateOriginProtectionRequest
@@ -42791,6 +45161,10 @@ func (client *Client) CreateUserDeliveryTaskWithOptions(tmpReq *CreateUserDelive
 
 	if !tea.BoolValue(util.IsUnset(request.DeliveryType)) {
 		body["DeliveryType"] = request.DeliveryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		body["Details"] = request.Details
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DiscardRate)) {
@@ -43817,6 +46191,70 @@ func (client *Client) DeleteList(request *DeleteListRequest) (_result *DeleteLis
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteListResponse{}
 	_body, _err := client.DeleteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除源地址池
+//
+// @param request - DeleteOriginPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOriginPoolResponse
+func (client *Client) DeleteOriginPoolWithOptions(request *DeleteOriginPoolRequest, runtime *util.RuntimeOptions) (_result *DeleteOriginPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOriginPool"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteOriginPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除源地址池
+//
+// @param request - DeleteOriginPoolRequest
+//
+// @return DeleteOriginPoolResponse
+func (client *Client) DeleteOriginPool(request *DeleteOriginPoolRequest) (_result *DeleteOriginPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOriginPoolResponse{}
+	_body, _err := client.DeleteOriginPoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45526,6 +47964,62 @@ func (client *Client) GetCacheReserveSpecification() (_result *GetCacheReserveSp
 
 // Summary:
 //
+// Queries certificate information about a website.
+//
+// @param request - GetCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCertificateResponse
+func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, runtime *util.RuntimeOptions) (_result *GetCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCertificate"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries certificate information about a website.
+//
+// @param request - GetCertificateRequest
+//
+// @return GetCertificateResponse
+func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *GetCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCertificateResponse{}
+	_body, _err := client.GetCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询证书quota及用量
 //
 // @param request - GetCertificateQuotaRequest
@@ -46368,6 +48862,62 @@ func (client *Client) GetList(request *GetListRequest) (_result *GetListResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetListResponse{}
 	_body, _err := client.GetListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询特定源地址池
+//
+// @param request - GetOriginPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOriginPoolResponse
+func (client *Client) GetOriginPoolWithOptions(request *GetOriginPoolRequest, runtime *util.RuntimeOptions) (_result *GetOriginPoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOriginPool"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOriginPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询特定源地址池
+//
+// @param request - GetOriginPoolRequest
+//
+// @return GetOriginPoolResponse
+func (client *Client) GetOriginPool(request *GetOriginPoolRequest) (_result *GetOriginPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOriginPoolResponse{}
+	_body, _err := client.GetOriginPoolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47770,6 +50320,62 @@ func (client *Client) ListCacheReserveInstances(request *ListCacheReserveInstanc
 
 // Summary:
 //
+// 查询站点下证书列表
+//
+// @param request - ListCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificatesWithOptions(request *ListCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListCertificatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCertificates"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCertificatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点下证书列表
+//
+// @param request - ListCertificatesRequest
+//
+// @return ListCertificatesResponse
+func (client *Client) ListCertificates(request *ListCertificatesRequest) (_result *ListCertificatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertificatesResponse{}
+	_body, _err := client.ListCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询TLS密码套件列表
 //
 // @param request - ListCiphersRequest
@@ -48658,6 +51264,62 @@ func (client *Client) ListManagedRulesGroups(request *ListManagedRulesGroupsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManagedRulesGroupsResponse{}
 	_body, _err := client.ListManagedRulesGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询源地址池列表
+//
+// @param request - ListOriginPoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOriginPoolsResponse
+func (client *Client) ListOriginPoolsWithOptions(request *ListOriginPoolsRequest, runtime *util.RuntimeOptions) (_result *ListOriginPoolsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOriginPools"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOriginPoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询源地址池列表
+//
+// @param request - ListOriginPoolsRequest
+//
+// @return ListOriginPoolsResponse
+func (client *Client) ListOriginPools(request *ListOriginPoolsRequest) (_result *ListOriginPoolsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOriginPoolsResponse{}
+	_body, _err := client.ListOriginPoolsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51526,6 +54188,84 @@ func (client *Client) UpdateKvNamespace(request *UpdateKvNamespaceRequest) (_res
 
 // Summary:
 //
+// 修改监视器
+//
+// @param tmpReq - UpdateOriginPoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOriginPoolResponse
+func (client *Client) UpdateOriginPoolWithOptions(tmpReq *UpdateOriginPoolRequest, runtime *util.RuntimeOptions) (_result *UpdateOriginPoolResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateOriginPoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Origins)) {
+		request.OriginsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Origins, tea.String("Origins"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginsShrink)) {
+		query["Origins"] = request.OriginsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOriginPool"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateOriginPoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改监视器
+//
+// @param request - UpdateOriginPoolRequest
+//
+// @return UpdateOriginPoolResponse
+func (client *Client) UpdateOriginPool(request *UpdateOriginPoolRequest) (_result *UpdateOriginPoolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateOriginPoolResponse{}
+	_body, _err := client.UpdateOriginPoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables or disables IP convergence.
 //
 // @param request - UpdateOriginProtectionRequest
@@ -52379,6 +55119,10 @@ func (client *Client) UpdateUserDeliveryTaskWithOptions(request *UpdateUserDeliv
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		body["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Details)) {
+		body["Details"] = request.Details
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DiscardRate)) {
