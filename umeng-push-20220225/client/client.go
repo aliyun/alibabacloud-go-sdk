@@ -285,6 +285,7 @@ func (s *Body) SetUrl(v string) *Body {
 type ChannelProperties struct {
 	ChannelActivity         *string `json:"channelActivity,omitempty" xml:"channelActivity,omitempty"`
 	ChannelFcm              *string `json:"channelFcm,omitempty" xml:"channelFcm,omitempty"`
+	HarmonyChannelCategory  *string `json:"harmonyChannelCategory,omitempty" xml:"harmonyChannelCategory,omitempty"`
 	HuaweiChannelCategory   *string `json:"huaweiChannelCategory,omitempty" xml:"huaweiChannelCategory,omitempty"`
 	HuaweiChannelImportance *string `json:"huaweiChannelImportance,omitempty" xml:"huaweiChannelImportance,omitempty"`
 	// example:
@@ -327,6 +328,11 @@ func (s *ChannelProperties) SetChannelActivity(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetChannelFcm(v string) *ChannelProperties {
 	s.ChannelFcm = &v
+	return s
+}
+
+func (s *ChannelProperties) SetHarmonyChannelCategory(v string) *ChannelProperties {
+	s.HarmonyChannelCategory = &v
 	return s
 }
 
@@ -392,6 +398,107 @@ func (s *ChannelProperties) SetVivoPushMode(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetXiaomiChannelId(v string) *ChannelProperties {
 	s.XiaomiChannelId = &v
+	return s
+}
+
+type HarmonyBody struct {
+	Action    *string `json:"action,omitempty" xml:"action,omitempty"`
+	AddBadge  *int32  `json:"addBadge,omitempty" xml:"addBadge,omitempty"`
+	AfterOpen *string `json:"afterOpen,omitempty" xml:"afterOpen,omitempty"`
+	BigBody   *string `json:"bigBody,omitempty" xml:"bigBody,omitempty"`
+	Custom    *string `json:"custom,omitempty" xml:"custom,omitempty"`
+	Img       *string `json:"img,omitempty" xml:"img,omitempty"`
+	LargeIcon *string `json:"largeIcon,omitempty" xml:"largeIcon,omitempty"`
+	Text      *string `json:"text,omitempty" xml:"text,omitempty"`
+	Title     *string `json:"title,omitempty" xml:"title,omitempty"`
+	Uri       *string `json:"uri,omitempty" xml:"uri,omitempty"`
+}
+
+func (s HarmonyBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HarmonyBody) GoString() string {
+	return s.String()
+}
+
+func (s *HarmonyBody) SetAction(v string) *HarmonyBody {
+	s.Action = &v
+	return s
+}
+
+func (s *HarmonyBody) SetAddBadge(v int32) *HarmonyBody {
+	s.AddBadge = &v
+	return s
+}
+
+func (s *HarmonyBody) SetAfterOpen(v string) *HarmonyBody {
+	s.AfterOpen = &v
+	return s
+}
+
+func (s *HarmonyBody) SetBigBody(v string) *HarmonyBody {
+	s.BigBody = &v
+	return s
+}
+
+func (s *HarmonyBody) SetCustom(v string) *HarmonyBody {
+	s.Custom = &v
+	return s
+}
+
+func (s *HarmonyBody) SetImg(v string) *HarmonyBody {
+	s.Img = &v
+	return s
+}
+
+func (s *HarmonyBody) SetLargeIcon(v string) *HarmonyBody {
+	s.LargeIcon = &v
+	return s
+}
+
+func (s *HarmonyBody) SetText(v string) *HarmonyBody {
+	s.Text = &v
+	return s
+}
+
+func (s *HarmonyBody) SetTitle(v string) *HarmonyBody {
+	s.Title = &v
+	return s
+}
+
+func (s *HarmonyBody) SetUri(v string) *HarmonyBody {
+	s.Uri = &v
+	return s
+}
+
+type HarmonyPayload struct {
+	// This parameter is required.
+	DisplayType *string                `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	Extra       map[string]interface{} `json:"extra,omitempty" xml:"extra,omitempty"`
+	HarmonyBody *HarmonyBody           `json:"harmonyBody,omitempty" xml:"harmonyBody,omitempty"`
+}
+
+func (s HarmonyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HarmonyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *HarmonyPayload) SetDisplayType(v string) *HarmonyPayload {
+	s.DisplayType = &v
+	return s
+}
+
+func (s *HarmonyPayload) SetExtra(v map[string]interface{}) *HarmonyPayload {
+	s.Extra = v
+	return s
+}
+
+func (s *HarmonyPayload) SetHarmonyBody(v *HarmonyBody) *HarmonyPayload {
+	s.HarmonyBody = v
 	return s
 }
 
@@ -484,6 +591,7 @@ func (s *Message2ThirdChannel) SetTitle(v string) *Message2ThirdChannel {
 }
 
 type Policy struct {
+	ChannelStrategy map[string]*string `json:"channelStrategy,omitempty" xml:"channelStrategy,omitempty"`
 	// example:
 	//
 	// yyyy-MM-dd HH:mm:ss
@@ -505,6 +613,11 @@ func (s Policy) String() string {
 
 func (s Policy) GoString() string {
 	return s.String()
+}
+
+func (s *Policy) SetChannelStrategy(v map[string]*string) *Policy {
+	s.ChannelStrategy = v
+	return s
 }
 
 func (s *Policy) SetExpireTime(v string) *Policy {
@@ -864,6 +977,7 @@ type SendByAliasRequest struct {
 	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
 	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	HarmonyPayload      *HarmonyPayload      `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayload          *IosPayload          `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy              *Policy              `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
@@ -917,6 +1031,11 @@ func (s *SendByAliasRequest) SetDescription(v string) *SendByAliasRequest {
 	return s
 }
 
+func (s *SendByAliasRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByAliasRequest {
+	s.HarmonyPayload = v
+	return s
+}
+
 func (s *SendByAliasRequest) SetIosPayload(v *IosPayload) *SendByAliasRequest {
 	s.IosPayload = v
 	return s
@@ -964,6 +1083,7 @@ type SendByAliasShrinkRequest struct {
 	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
 	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HarmonyPayloadShrink      *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayloadShrink          *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	PolicyShrink              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
@@ -1014,6 +1134,11 @@ func (s *SendByAliasShrinkRequest) SetChannelPropertiesShrink(v string) *SendByA
 
 func (s *SendByAliasShrinkRequest) SetDescription(v string) *SendByAliasShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SendByAliasShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByAliasShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -1174,9 +1299,10 @@ type SendByAliasFileIdRequest struct {
 	// example:
 	//
 	// PF835431668603208261
-	FileId     *string     `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	FileId         *string         `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1228,6 +1354,11 @@ func (s *SendByAliasFileIdRequest) SetFileId(v string) *SendByAliasFileIdRequest
 	return s
 }
 
+func (s *SendByAliasFileIdRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByAliasFileIdRequest {
+	s.HarmonyPayload = v
+	return s
+}
+
 func (s *SendByAliasFileIdRequest) SetIosPayload(v *IosPayload) *SendByAliasFileIdRequest {
 	s.IosPayload = v
 	return s
@@ -1274,9 +1405,10 @@ type SendByAliasFileIdShrinkRequest struct {
 	// example:
 	//
 	// PF835431668603208261
-	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	FileId               *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	HarmonyPayloadShrink *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayloadShrink     *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1325,6 +1457,11 @@ func (s *SendByAliasFileIdShrinkRequest) SetDescription(v string) *SendByAliasFi
 
 func (s *SendByAliasFileIdShrinkRequest) SetFileId(v string) *SendByAliasFileIdShrinkRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *SendByAliasFileIdShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByAliasFileIdShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -1479,6 +1616,7 @@ type SendByAppRequest struct {
 	AndroidShortPayload *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
 	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
+	HarmonyPayload      *HarmonyPayload      `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayload          *IosPayload          `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy              *Policy              `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
@@ -1522,6 +1660,11 @@ func (s *SendByAppRequest) SetDescription(v string) *SendByAppRequest {
 	return s
 }
 
+func (s *SendByAppRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByAppRequest {
+	s.HarmonyPayload = v
+	return s
+}
+
 func (s *SendByAppRequest) SetIosPayload(v *IosPayload) *SendByAppRequest {
 	s.IosPayload = v
 	return s
@@ -1562,6 +1705,7 @@ type SendByAppShrinkRequest struct {
 	AndroidShortPayloadShrink *string `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
 	ChannelPropertiesShrink   *string `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HarmonyPayloadShrink      *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayloadShrink          *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	PolicyShrink              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
@@ -1602,6 +1746,11 @@ func (s *SendByAppShrinkRequest) SetChannelPropertiesShrink(v string) *SendByApp
 
 func (s *SendByAppShrinkRequest) SetDescription(v string) *SendByAppShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SendByAppShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByAppShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -1761,9 +1910,10 @@ type SendByDeviceRequest struct {
 	// example:
 	//
 	// ArdNyIzFCH2K3szXA8arpu0Y7ywOdA67mCSumtpnMnmf
-	DeviceTokens *string     `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
-	IosPayload   *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy       *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	DeviceTokens   *string         `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
+	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1807,6 +1957,11 @@ func (s *SendByDeviceRequest) SetDescription(v string) *SendByDeviceRequest {
 
 func (s *SendByDeviceRequest) SetDeviceTokens(v string) *SendByDeviceRequest {
 	s.DeviceTokens = &v
+	return s
+}
+
+func (s *SendByDeviceRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByDeviceRequest {
+	s.HarmonyPayload = v
 	return s
 }
 
@@ -1855,9 +2010,10 @@ type SendByDeviceShrinkRequest struct {
 	// example:
 	//
 	// ArdNyIzFCH2K3szXA8arpu0Y7ywOdA67mCSumtpnMnmf
-	DeviceTokens     *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
-	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	DeviceTokens         *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
+	HarmonyPayloadShrink *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayloadShrink     *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -1901,6 +2057,11 @@ func (s *SendByDeviceShrinkRequest) SetDescription(v string) *SendByDeviceShrink
 
 func (s *SendByDeviceShrinkRequest) SetDeviceTokens(v string) *SendByDeviceShrinkRequest {
 	s.DeviceTokens = &v
+	return s
+}
+
+func (s *SendByDeviceShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByDeviceShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -2060,9 +2221,10 @@ type SendByDeviceFileIdRequest struct {
 	// example:
 	//
 	// PF835431668603208261
-	FileId     *string     `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	FileId         *string         `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -2106,6 +2268,11 @@ func (s *SendByDeviceFileIdRequest) SetDescription(v string) *SendByDeviceFileId
 
 func (s *SendByDeviceFileIdRequest) SetFileId(v string) *SendByDeviceFileIdRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByDeviceFileIdRequest {
+	s.HarmonyPayload = v
 	return s
 }
 
@@ -2154,9 +2321,10 @@ type SendByDeviceFileIdShrinkRequest struct {
 	// example:
 	//
 	// PF835431668603208261
-	FileId           *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	FileId               *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	HarmonyPayloadShrink *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayloadShrink     *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -2200,6 +2368,11 @@ func (s *SendByDeviceFileIdShrinkRequest) SetDescription(v string) *SendByDevice
 
 func (s *SendByDeviceFileIdShrinkRequest) SetFileId(v string) *SendByDeviceFileIdShrinkRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *SendByDeviceFileIdShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByDeviceFileIdShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -2357,9 +2530,10 @@ type SendByFilterRequest struct {
 	// example:
 	//
 	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
-	Filter     *string     `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IosPayload *IosPayload `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	Policy     *Policy     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Filter         *string         `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -2406,6 +2580,11 @@ func (s *SendByFilterRequest) SetFilter(v string) *SendByFilterRequest {
 	return s
 }
 
+func (s *SendByFilterRequest) SetHarmonyPayload(v *HarmonyPayload) *SendByFilterRequest {
+	s.HarmonyPayload = v
+	return s
+}
+
 func (s *SendByFilterRequest) SetIosPayload(v *IosPayload) *SendByFilterRequest {
 	s.IosPayload = v
 	return s
@@ -2449,9 +2628,10 @@ type SendByFilterShrinkRequest struct {
 	// example:
 	//
 	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
-	Filter           *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IosPayloadShrink *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Filter               *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HarmonyPayloadShrink *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayloadShrink     *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// example:
 	//
 	// true
@@ -2495,6 +2675,11 @@ func (s *SendByFilterShrinkRequest) SetDescription(v string) *SendByFilterShrink
 
 func (s *SendByFilterShrinkRequest) SetFilter(v string) *SendByFilterShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *SendByFilterShrinkRequest) SetHarmonyPayloadShrink(v string) *SendByFilterShrinkRequest {
+	s.HarmonyPayloadShrink = &v
 	return s
 }
 
@@ -2982,6 +3167,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3013,6 +3202,10 @@ func (client *Client) SendByAliasWithOptions(tmpReq *SendByAliasRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
@@ -3116,6 +3309,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3147,6 +3344,10 @@ func (client *Client) SendByAliasFileIdWithOptions(tmpReq *SendByAliasFileIdRequ
 
 	if !tea.BoolValue(util.IsUnset(request.FileId)) {
 		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
@@ -3250,6 +3451,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3273,6 +3478,10 @@ func (client *Client) SendByAppWithOptions(tmpReq *SendByAppRequest, headers map
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
@@ -3376,6 +3585,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3403,6 +3616,10 @@ func (client *Client) SendByDeviceWithOptions(tmpReq *SendByDeviceRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceTokens)) {
 		body["DeviceTokens"] = request.DeviceTokens
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
@@ -3506,6 +3723,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3533,6 +3754,10 @@ func (client *Client) SendByDeviceFileIdWithOptions(tmpReq *SendByDeviceFileIdRe
 
 	if !tea.BoolValue(util.IsUnset(request.FileId)) {
 		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
@@ -3632,6 +3857,10 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 		request.ChannelPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelProperties, tea.String("ChannelProperties"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HarmonyPayload)) {
+		request.HarmonyPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HarmonyPayload, tea.String("HarmonyPayload"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.IosPayload)) {
 		request.IosPayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IosPayload, tea.String("IosPayload"), tea.String("json"))
 	}
@@ -3659,6 +3888,10 @@ func (client *Client) SendByFilterWithOptions(tmpReq *SendByFilterRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		body["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyPayloadShrink)) {
+		body["HarmonyPayload"] = request.HarmonyPayloadShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IosPayloadShrink)) {
