@@ -58755,6 +58755,144 @@ func (s *SubmitPackageJobResponse) SetBody(v *SubmitPackageJobResponseBody) *Sub
 	return s
 }
 
+type SubmitScreenMediaHighlightsJobRequest struct {
+	// example:
+	//
+	// {
+	//
+	// 	"MediaConfig": {
+	//
+	// 		"Volume": 1
+	//
+	// 	},
+	//
+	// 	"ProcessConfig": {
+	//
+	// 		"AllowTransition": true,
+	//
+	// 		"TransitionList": ["fadecolor"]
+	//
+	// 	}
+	//
+	// }
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"MediaArray": [
+	//
+	// 		"****9d46c886b45481030f6e****",
+	//
+	// 		"****6c886b4549d481030f6e****"
+	//
+	// 	]
+	//
+	// }
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "MediaURL": "http://xxx.oss-cn-shanghai.aliyuncs.com/xxx_{index}.mp4",
+	//
+	//   "Count": 1,
+	//
+	//   "Width": 1080,
+	//
+	//   "Height": 1920
+	//
+	// }
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitScreenMediaHighlightsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitScreenMediaHighlightsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitScreenMediaHighlightsJobRequest) SetEditingConfig(v string) *SubmitScreenMediaHighlightsJobRequest {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobRequest) SetInputConfig(v string) *SubmitScreenMediaHighlightsJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobRequest) SetOutputConfig(v string) *SubmitScreenMediaHighlightsJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobRequest) SetUserData(v string) *SubmitScreenMediaHighlightsJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitScreenMediaHighlightsJobResponseBody struct {
+	// example:
+	//
+	// ****20b48fb04483915d4f2cd8ac****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// ****36-3C1E-4417-BDB2-1E034F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitScreenMediaHighlightsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitScreenMediaHighlightsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitScreenMediaHighlightsJobResponseBody) SetJobId(v string) *SubmitScreenMediaHighlightsJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobResponseBody) SetRequestId(v string) *SubmitScreenMediaHighlightsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitScreenMediaHighlightsJobResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitScreenMediaHighlightsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitScreenMediaHighlightsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitScreenMediaHighlightsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitScreenMediaHighlightsJobResponse) SetHeaders(v map[string]*string) *SubmitScreenMediaHighlightsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobResponse) SetStatusCode(v int32) *SubmitScreenMediaHighlightsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitScreenMediaHighlightsJobResponse) SetBody(v *SubmitScreenMediaHighlightsJobResponseBody) *SubmitScreenMediaHighlightsJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitSmarttagJobRequest struct {
 	// The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
 	//
@@ -85935,6 +86073,80 @@ func (client *Client) SubmitPackageJob(request *SubmitPackageJobRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitPackageJobResponse{}
 	_body, _err := client.SubmitPackageJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交高燃混剪任务
+//
+// @param request - SubmitScreenMediaHighlightsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitScreenMediaHighlightsJobResponse
+func (client *Client) SubmitScreenMediaHighlightsJobWithOptions(request *SubmitScreenMediaHighlightsJobRequest, runtime *util.RuntimeOptions) (_result *SubmitScreenMediaHighlightsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EditingConfig)) {
+		body["EditingConfig"] = request.EditingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		body["InputConfig"] = request.InputConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitScreenMediaHighlightsJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitScreenMediaHighlightsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交高燃混剪任务
+//
+// @param request - SubmitScreenMediaHighlightsJobRequest
+//
+// @return SubmitScreenMediaHighlightsJobResponse
+func (client *Client) SubmitScreenMediaHighlightsJob(request *SubmitScreenMediaHighlightsJobRequest) (_result *SubmitScreenMediaHighlightsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitScreenMediaHighlightsJobResponse{}
+	_body, _err := client.SubmitScreenMediaHighlightsJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
