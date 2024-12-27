@@ -1242,6 +1242,44 @@ func (s *Dataset) SetUpdateTime(v string) *Dataset {
 	return s
 }
 
+type DatasetTaskStatus struct {
+	// example:
+	//
+	// 2024-06-29T14:50:13.011643661+08:00
+	LastSucceededTime *string `json:"LastSucceededTime,omitempty" xml:"LastSucceededTime,omitempty"`
+	// example:
+	//
+	// 2024-06-29T14:50:13.011643661+08:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DatasetTaskStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DatasetTaskStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DatasetTaskStatus) SetLastSucceededTime(v string) *DatasetTaskStatus {
+	s.LastSucceededTime = &v
+	return s
+}
+
+func (s *DatasetTaskStatus) SetStartTime(v string) *DatasetTaskStatus {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DatasetTaskStatus) SetStatus(v string) *DatasetTaskStatus {
+	s.Status = &v
+	return s
+}
+
 type Element struct {
 	ElementContents    []*ElementContent  `json:"ElementContents,omitempty" xml:"ElementContents,omitempty" type:"Repeated"`
 	ElementRelations   []*ElementRelation `json:"ElementRelations,omitempty" xml:"ElementRelations,omitempty" type:"Repeated"`
@@ -3740,6 +3778,109 @@ func (s *SimpleQuery) SetValue(v string) *SimpleQuery {
 	return s
 }
 
+type SmartCluster struct {
+	CreateTime   *string           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DatasetName  *string           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Description  *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string           `json:"Name,omitempty" xml:"Name,omitempty"`
+	ObjectId     *string           `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectStatus *string           `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
+	ObjectType   *string           `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	OwnerId      *string           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName  *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Rule         *SmartClusterRule `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	UpdateTime   *string           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s SmartCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartCluster) GoString() string {
+	return s.String()
+}
+
+func (s *SmartCluster) SetCreateTime(v string) *SmartCluster {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SmartCluster) SetDatasetName(v string) *SmartCluster {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SmartCluster) SetDescription(v string) *SmartCluster {
+	s.Description = &v
+	return s
+}
+
+func (s *SmartCluster) SetName(v string) *SmartCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *SmartCluster) SetObjectId(v string) *SmartCluster {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *SmartCluster) SetObjectStatus(v string) *SmartCluster {
+	s.ObjectStatus = &v
+	return s
+}
+
+func (s *SmartCluster) SetObjectType(v string) *SmartCluster {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *SmartCluster) SetOwnerId(v string) *SmartCluster {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SmartCluster) SetProjectName(v string) *SmartCluster {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SmartCluster) SetRule(v *SmartClusterRule) *SmartCluster {
+	s.Rule = v
+	return s
+}
+
+func (s *SmartCluster) SetUpdateTime(v string) *SmartCluster {
+	s.UpdateTime = &v
+	return s
+}
+
+type SmartClusterRule struct {
+	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0.5
+	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+}
+
+func (s SmartClusterRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartClusterRule) GoString() string {
+	return s.String()
+}
+
+func (s *SmartClusterRule) SetKeywords(v []*string) *SmartClusterRule {
+	s.Keywords = v
+	return s
+}
+
+func (s *SmartClusterRule) SetSensitivity(v float32) *SmartClusterRule {
+	s.Sensitivity = &v
+	return s
+}
+
 type Spec struct {
 	Backbone *CustomParams `json:"Backbone,omitempty" xml:"Backbone,omitempty"`
 	// example:
@@ -5317,21 +5458,54 @@ func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
 }
 
 type AddImageMosaicRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
+	//
 	// example:
 	//
 	// jpg
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The quality of the output image. This parameter applies only to JPG and WebP images. Valid values: 0 to 100. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	Quality *int32 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// Supported formats of input images include JPG, PNG, TIFF, JP2, and BMP.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI of the output image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputImage.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The bounding boxes and processing parameters.
+	//
 	// This parameter is required.
 	Targets []*AddImageMosaicRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
@@ -5380,24 +5554,54 @@ func (s *AddImageMosaicRequest) SetTargets(v []*AddImageMosaicRequestTargets) *A
 }
 
 type AddImageMosaicRequestTargets struct {
+	// The radius of the Gaussian blur. Valid values: 1 to 50. Default value: 3. Unit: pixels.
+	//
+	// >  This parameter takes effect only for a Gaussian blur.
+	//
 	// example:
 	//
 	// 3
 	BlurRadius *int32 `json:"BlurRadius,omitempty" xml:"BlurRadius,omitempty"`
+	// The position of the bounding box.
+	//
 	// This parameter is required.
 	Boundary *AddImageMosaicRequestTargetsBoundary `json:"Boundary,omitempty" xml:"Boundary,omitempty" type:"Struct"`
+	// The color of the color shape. You can specify a color by using a color code such as`#RRGGBB` or preset color names such as `red` and `white`. The default value is #FFFFFF, which is white.
+	//
+	// >  This parameter takes effect only for solid color shapes.
+	//
 	// example:
 	//
 	// #FFFFFF
 	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
+	// The radius of the mosaic. Default value: 5. Unit: pixels.
+	//
+	// >  This parameter does not take effect for Gaussian blurs and solid color shapes.
+	//
 	// example:
 	//
 	// 5
 	MosaicRadius *int32 `json:"MosaicRadius,omitempty" xml:"MosaicRadius,omitempty"`
+	// The standard deviation of the Gaussian blur. The value must be greater than 0. Default value: 5.
+	//
+	// >  This parameter takes effect only for a Gaussian blur.
+	//
 	// example:
 	//
 	// 5
 	Sigma *int32 `json:"Sigma,omitempty" xml:"Sigma,omitempty"`
+	// The type of the mosaic effect. Valid values:
+	//
+	// 	- square: squares.
+	//
+	// 	- diamond: diamonds.
+	//
+	// 	- hexagon: hexagons.
+	//
+	// 	- blur: Gaussian blurs.
+	//
+	// 	- pure: solid color shapes.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5445,28 +5649,62 @@ func (s *AddImageMosaicRequestTargets) SetType(v string) *AddImageMosaicRequestT
 }
 
 type AddImageMosaicRequestTargetsBoundary struct {
+	// The height of the bounding box. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+	//
+	// 	- An integer value greater than or equal to 0 indicates the height of the bounding box in pixels.
+	//
+	// 	- A decimal value within the range of [0,1) indicates the height of the bounding box as a ratio of its height to the image height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The reference position of the bounding box on the image. Valid values:
+	//
+	// 	- topright: the upper-right corner.
+	//
+	// 	- topleft: the upper-left corner. This is the default value.
+	//
+	// 	- bottomright: the lower-right corner.
+	//
+	// 	- bottomleft: the lower-left corner.
+	//
 	// example:
 	//
 	// topleft
 	ReferPos *string `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	// The width of the bounding box. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+	//
+	// 	- An integer value greater than or equal to 0 indicates the width of the bounding box in pixels.
+	//
+	// 	- A decimal value within the range of [0,1) indicates the width of the bounding box as a ratio of its width to the image width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal offset relative to the reference position. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+	//
+	// 	- An integer value greater than or equal to 0 indicates the horizontal offset in pixels.
+	//
+	// 	- A decimal value within the range of [0,1) indicates the horizontal offset as a ratio of the offset to the image width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical offset relative to the reference position. The value can be an integer greater than or equal to 0 or a decimal within the range of [0,1):
+	//
+	// 	- An integer value greater than or equal to 0 indicates the vertical offset in pixels.
+	//
+	// 	- A decimal value within the range of [0,1) indicates the vertical offset as a ratio of the offset to the image height.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5509,21 +5747,54 @@ func (s *AddImageMosaicRequestTargetsBoundary) SetY(v float32) *AddImageMosaicRe
 }
 
 type AddImageMosaicShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The encoding of the output image. By default, the output image uses the same encoding as the input image. Valid values: jpg, png, and webp.
+	//
 	// example:
 	//
 	// jpg
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The quality of the output image. This parameter applies only to JPG and WebP images. Valid values: 0 to 100. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	Quality *int32 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// Supported formats of input images include JPG, PNG, TIFF, JP2, and BMP.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI of the output image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputImage.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The bounding boxes and processing parameters.
+	//
 	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 }
@@ -5572,6 +5843,8 @@ func (s *AddImageMosaicShrinkRequest) SetTargetsShrink(v string) *AddImageMosaic
 }
 
 type AddImageMosaicResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FF*****
@@ -5621,20 +5894,28 @@ func (s *AddImageMosaicResponse) SetBody(v *AddImageMosaicResponseBody) *AddImag
 }
 
 type AddStoryFilesRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The objects that you want to add.
+	//
 	// This parameter is required.
 	Files []*AddStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5672,6 +5953,10 @@ func (s *AddStoryFilesRequest) SetProjectName(v string) *AddStoryFilesRequest {
 }
 
 type AddStoryFilesRequestFiles struct {
+	// The URI of the object.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -5692,20 +5977,28 @@ func (s *AddStoryFilesRequestFiles) SetURI(v string) *AddStoryFilesRequestFiles 
 }
 
 type AddStoryFilesShrinkRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The objects that you want to add.
+	//
 	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5743,7 +6036,10 @@ func (s *AddStoryFilesShrinkRequest) SetProjectName(v string) *AddStoryFilesShri
 }
 
 type AddStoryFilesResponseBody struct {
+	// The objects that were added.
 	Files []*AddStoryFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -5769,14 +6065,22 @@ func (s *AddStoryFilesResponseBody) SetRequestId(v string) *AddStoryFilesRespons
 }
 
 type AddStoryFilesResponseBodyFiles struct {
+	// The error code.
+	//
 	// example:
 	//
 	// ResourceNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message that is returned.
+	//
 	// example:
 	//
 	// The specified resource %s is not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The URI of the object.
+	//
+	// The OSS URI follows the `oss://{bucketname}/{objectname}` format, where `bucketname` is the name of the bucket in the same region as the current project and `objectname` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -5836,13 +6140,22 @@ func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryF
 }
 
 type AttachOSSBucketRequest struct {
+	// The description of the binding. The description must be 1 to 128 characters in length. By default, no description is applied.
+	//
+	// example:
+	//
+	// test-attachment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the OSS bucket in the same region as the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// examplebucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// The name of the project. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5875,6 +6188,8 @@ func (s *AttachOSSBucketRequest) SetProjectName(v string) *AttachOSSBucketReques
 }
 
 type AttachOSSBucketResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
@@ -5924,10 +6239,24 @@ func (s *AttachOSSBucketResponse) SetBody(v *AttachOSSBucketResponseBody) *Attac
 }
 
 type BatchDeleteFileMetaRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URIs of the OSS buckets in which the files whose metadata you want to delete are stored. You can specify up to 100 URIs.
+	//
 	// This parameter is required.
 	URIs []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
 }
@@ -5956,10 +6285,24 @@ func (s *BatchDeleteFileMetaRequest) SetURIs(v []*string) *BatchDeleteFileMetaRe
 }
 
 type BatchDeleteFileMetaShrinkRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URIs of the OSS buckets in which the files whose metadata you want to delete are stored. You can specify up to 100 URIs.
+	//
 	// This parameter is required.
 	URIsShrink *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
 }
@@ -5988,6 +6331,8 @@ func (s *BatchDeleteFileMetaShrinkRequest) SetURIsShrink(v string) *BatchDeleteF
 }
 
 type BatchDeleteFileMetaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3A82F6C9-5AC0-38F9-914F-F02623B3****
@@ -6037,14 +6382,20 @@ func (s *BatchDeleteFileMetaResponse) SetBody(v *BatchDeleteFileMetaResponseBody
 }
 
 type BatchGetFigureClusterRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The cluster IDs.
+	//
 	// This parameter is required.
 	ObjectIds []*string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty" type:"Repeated"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6077,14 +6428,20 @@ func (s *BatchGetFigureClusterRequest) SetProjectName(v string) *BatchGetFigureC
 }
 
 type BatchGetFigureClusterShrinkRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The cluster IDs.
+	//
 	// This parameter is required.
 	ObjectIdsShrink *string `json:"ObjectIds,omitempty" xml:"ObjectIds,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6117,7 +6474,10 @@ func (s *BatchGetFigureClusterShrinkRequest) SetProjectName(v string) *BatchGetF
 }
 
 type BatchGetFigureClusterResponseBody struct {
+	// The clusters.
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
@@ -6172,12 +6532,29 @@ func (s *BatchGetFigureClusterResponse) SetBody(v *BatchGetFigureClusterResponse
 }
 
 type BatchGetFileMetaRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The array of object URIs. You can specify up to 100 object URIs in an array.
+	//
 	// This parameter is required.
-	URIs       []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	URIs []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	// The fields to return. If you specify this parameter, only specified metadata fields are returned. You can use this parameter to control the size of the response.
+	//
+	// If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
@@ -6210,12 +6587,29 @@ func (s *BatchGetFileMetaRequest) SetWithFields(v []*string) *BatchGetFileMetaRe
 }
 
 type BatchGetFileMetaShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The array of object URIs. You can specify up to 100 object URIs in an array.
+	//
 	// This parameter is required.
-	URIsShrink       *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	URIsShrink *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	// The fields to return. If you specify this parameter, only specified metadata fields are returned. You can use this parameter to control the size of the response.
+	//
+	// If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
 
@@ -6248,7 +6642,10 @@ func (s *BatchGetFileMetaShrinkRequest) SetWithFieldsShrink(v string) *BatchGetF
 }
 
 type BatchGetFileMetaResponseBody struct {
+	// The metadata returned.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
@@ -6303,15 +6700,22 @@ func (s *BatchGetFileMetaResponse) SetBody(v *BatchGetFileMetaResponseBody) *Bat
 }
 
 type BatchIndexFileMetaRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The objects in Object Storage Service (OSS). Specify OSS objects by using a JSON array. You can specify up to 100 objects in an array.
+	//
 	// This parameter is required.
-	Files        []*InputFile  `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files []*InputFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6355,15 +6759,22 @@ func (s *BatchIndexFileMetaRequest) SetUserData(v string) *BatchIndexFileMetaReq
 }
 
 type BatchIndexFileMetaShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The objects in Object Storage Service (OSS). Specify OSS objects by using a JSON array. You can specify up to 100 objects in an array.
+	//
 	// This parameter is required.
-	FilesShrink        *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The notification settings. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6407,10 +6818,14 @@ func (s *BatchIndexFileMetaShrinkRequest) SetUserData(v string) *BatchIndexFileM
 }
 
 type BatchIndexFileMetaResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 387-1DAPFFZplUZhuCuhnB6I9H****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8F93E6D9-5AC0-49F9-914D-E02678A3****
@@ -6465,14 +6880,20 @@ func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) 
 }
 
 type BatchUpdateFileMetaRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files whose metadata you want to update.
+	//
 	// This parameter is required.
 	Files []*InputFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6505,14 +6926,20 @@ func (s *BatchUpdateFileMetaRequest) SetProjectName(v string) *BatchUpdateFileMe
 }
 
 type BatchUpdateFileMetaShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files whose metadata you want to update.
+	//
 	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6545,7 +6972,10 @@ func (s *BatchUpdateFileMetaShrinkRequest) SetProjectName(v string) *BatchUpdate
 }
 
 type BatchUpdateFileMetaResponseBody struct {
+	// The files whose metadata was updated.
 	Files []*BatchUpdateFileMetaResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F5BF215E-3237-0852-B9C6-F233D44A****
@@ -6571,12 +7001,30 @@ func (s *BatchUpdateFileMetaResponseBody) SetRequestId(v string) *BatchUpdateFil
 }
 
 type BatchUpdateFileMetaResponseBodyFiles struct {
+	// The error message returned when the value of the Success parameter is false.
+	//
 	// example:
 	//
 	// *error.OpError : InvalidArgument | Index KV count exceeded, should be no more than 100.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	URI     *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// Enumerated values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The URI of the file.
+	//
+	// example:
+	//
+	// oss://examplebucket/example.jpg
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s BatchUpdateFileMetaResponseBodyFiles) String() string {
@@ -6632,14 +7080,20 @@ func (s *BatchUpdateFileMetaResponse) SetBody(v *BatchUpdateFileMetaResponseBody
 }
 
 type CompareImageFacesRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName *string                         `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Source      *CompareImageFacesRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URLs of the two images for compression.
+	Source *CompareImageFacesRequestSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
 }
 
 func (s CompareImageFacesRequest) String() string {
@@ -6666,10 +7120,18 @@ func (s *CompareImageFacesRequest) SetSource(v *CompareImageFacesRequestSource) 
 }
 
 type CompareImageFacesRequestSource struct {
+	// The OSS URL of the image file.
+	//
+	// Specify the URL in the `oss://<bucket>/<object>` format. `<bucket>` specifies the name of the OSS bucket that is in the same region as the current project. `<object>` specifies path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object1
 	URI1 *string `json:"URI1,omitempty" xml:"URI1,omitempty"`
+	// The OSS URL of the image file.
+	//
+	// Specify the URL in the `oss://<bucket>/<object>` format. `<bucket>` specifies the name of the OSS bucket that is in the same region as the current project, and `<object>` specifies the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object2
@@ -6695,13 +7157,19 @@ func (s *CompareImageFacesRequestSource) SetURI2(v string) *CompareImageFacesReq
 }
 
 type CompareImageFacesShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URLs of the two images for compression.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
@@ -6729,10 +7197,14 @@ func (s *CompareImageFacesShrinkRequest) SetSourceShrink(v string) *CompareImage
 }
 
 type CompareImageFacesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F73AC982-2B9E-4ECD-AED5-F8331C5******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The face similarity. A larger value indicates a higher face similarity. Valid values: 0 to 1.
+	//
 	// example:
 	//
 	// 0.8848152756690983
@@ -6786,23 +7258,327 @@ func (s *CompareImageFacesResponse) SetBody(v *CompareImageFacesResponseBody) *C
 	return s
 }
 
+type ContextualAnswerRequest struct {
+	Files []*ContextualFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Messages []*ContextualMessage `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ContextualAnswerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualAnswerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualAnswerRequest) SetFiles(v []*ContextualFile) *ContextualAnswerRequest {
+	s.Files = v
+	return s
+}
+
+func (s *ContextualAnswerRequest) SetMessages(v []*ContextualMessage) *ContextualAnswerRequest {
+	s.Messages = v
+	return s
+}
+
+func (s *ContextualAnswerRequest) SetProjectName(v string) *ContextualAnswerRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type ContextualAnswerShrinkRequest struct {
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// This parameter is required.
+	MessagesShrink *string `json:"Messages,omitempty" xml:"Messages,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ContextualAnswerShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualAnswerShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualAnswerShrinkRequest) SetFilesShrink(v string) *ContextualAnswerShrinkRequest {
+	s.FilesShrink = &v
+	return s
+}
+
+func (s *ContextualAnswerShrinkRequest) SetMessagesShrink(v string) *ContextualAnswerShrinkRequest {
+	s.MessagesShrink = &v
+	return s
+}
+
+func (s *ContextualAnswerShrinkRequest) SetProjectName(v string) *ContextualAnswerShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type ContextualAnswerResponseBody struct {
+	Answer *Answer `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 22F081FB-90D7-525A-BFE4-D28DC906A28F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ContextualAnswerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualAnswerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualAnswerResponseBody) SetAnswer(v *Answer) *ContextualAnswerResponseBody {
+	s.Answer = v
+	return s
+}
+
+func (s *ContextualAnswerResponseBody) SetRequestId(v string) *ContextualAnswerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ContextualAnswerResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ContextualAnswerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ContextualAnswerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualAnswerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualAnswerResponse) SetHeaders(v map[string]*string) *ContextualAnswerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ContextualAnswerResponse) SetStatusCode(v int32) *ContextualAnswerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ContextualAnswerResponse) SetBody(v *ContextualAnswerResponseBody) *ContextualAnswerResponse {
+	s.Body = v
+	return s
+}
+
+type ContextualRetrievalRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	Messages []*ContextualMessage `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// false
+	RecallOnly      *bool     `json:"RecallOnly,omitempty" xml:"RecallOnly,omitempty"`
+	SmartClusterIds []*string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty" type:"Repeated"`
+}
+
+func (s ContextualRetrievalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualRetrievalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualRetrievalRequest) SetDatasetName(v string) *ContextualRetrievalRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ContextualRetrievalRequest) SetMessages(v []*ContextualMessage) *ContextualRetrievalRequest {
+	s.Messages = v
+	return s
+}
+
+func (s *ContextualRetrievalRequest) SetProjectName(v string) *ContextualRetrievalRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ContextualRetrievalRequest) SetRecallOnly(v bool) *ContextualRetrievalRequest {
+	s.RecallOnly = &v
+	return s
+}
+
+func (s *ContextualRetrievalRequest) SetSmartClusterIds(v []*string) *ContextualRetrievalRequest {
+	s.SmartClusterIds = v
+	return s
+}
+
+type ContextualRetrievalShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	MessagesShrink *string `json:"Messages,omitempty" xml:"Messages,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// false
+	RecallOnly            *bool   `json:"RecallOnly,omitempty" xml:"RecallOnly,omitempty"`
+	SmartClusterIdsShrink *string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty"`
+}
+
+func (s ContextualRetrievalShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualRetrievalShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualRetrievalShrinkRequest) SetDatasetName(v string) *ContextualRetrievalShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ContextualRetrievalShrinkRequest) SetMessagesShrink(v string) *ContextualRetrievalShrinkRequest {
+	s.MessagesShrink = &v
+	return s
+}
+
+func (s *ContextualRetrievalShrinkRequest) SetProjectName(v string) *ContextualRetrievalShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ContextualRetrievalShrinkRequest) SetRecallOnly(v bool) *ContextualRetrievalShrinkRequest {
+	s.RecallOnly = &v
+	return s
+}
+
+func (s *ContextualRetrievalShrinkRequest) SetSmartClusterIdsShrink(v string) *ContextualRetrievalShrinkRequest {
+	s.SmartClusterIdsShrink = &v
+	return s
+}
+
+type ContextualRetrievalResponseBody struct {
+	// example:
+	//
+	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*File `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s ContextualRetrievalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualRetrievalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualRetrievalResponseBody) SetRequestId(v string) *ContextualRetrievalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ContextualRetrievalResponseBody) SetResults(v []*File) *ContextualRetrievalResponseBody {
+	s.Results = v
+	return s
+}
+
+type ContextualRetrievalResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ContextualRetrievalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ContextualRetrievalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContextualRetrievalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ContextualRetrievalResponse) SetHeaders(v map[string]*string) *ContextualRetrievalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ContextualRetrievalResponse) SetStatusCode(v int32) *ContextualRetrievalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ContextualRetrievalResponse) SetBody(v *ContextualRetrievalResponseBody) *ContextualRetrievalResponse {
+	s.Body = v
+	return s
+}
+
 type CreateArchiveFileInspectionTaskRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
+	//
 	// example:
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://imm-apitest-fxf2/name.zip
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -6848,22 +7624,36 @@ func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateAr
 }
 
 type CreateArchiveFileInspectionTaskShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
+	//
 	// example:
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://imm-apitest-fxf2/name.zip
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -6909,14 +7699,20 @@ func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetUserData(v string) *Cr
 }
 
 type CreateArchiveFileInspectionTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ArchiveFileInspection-8475218e-d86e-4c66-b3cf-50e74d6c****
@@ -6976,23 +7772,38 @@ func (s *CreateArchiveFileInspectionTaskResponse) SetBody(v *CreateArchiveFileIn
 }
 
 type CreateBatchRequest struct {
+	// The processing templates.
+	//
 	// This parameter is required.
 	Actions []*CreateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The data source configurations.
+	//
 	// This parameter is required.
-	Input        *Input                          `json:"Input,omitempty" xml:"Input,omitempty"`
+	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+	//
+	// Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
 	Notification *CreateBatchRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key": "val"}
@@ -7038,13 +7849,17 @@ func (s *CreateBatchRequest) SetTags(v map[string]interface{}) *CreateBatchReque
 }
 
 type CreateBatchRequestActions struct {
+	// The policy configurations for handling failures.
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// doc/convert
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -7072,6 +7887,7 @@ func (s *CreateBatchRequestActions) SetParameters(v []*string) *CreateBatchReque
 }
 
 type CreateBatchRequestNotification struct {
+	// The Simple Message Queue notification message configurations.
 	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 
@@ -7089,23 +7905,38 @@ func (s *CreateBatchRequestNotification) SetMNS(v *MNS) *CreateBatchRequestNotif
 }
 
 type CreateBatchShrinkRequest struct {
+	// The processing templates.
+	//
 	// This parameter is required.
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// The data source configurations.
+	//
 	// This parameter is required.
-	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+	//
+	// Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key": "val"}
@@ -7151,10 +7982,14 @@ func (s *CreateBatchShrinkRequest) SetTagsShrink(v string) *CreateBatchShrinkReq
 }
 
 type CreateBatchResponseBody struct {
+	// The ID of the batch processing task.
+	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
@@ -7209,18 +8044,26 @@ func (s *CreateBatchResponse) SetBody(v *CreateBatchResponseBody) *CreateBatchRe
 }
 
 type CreateBindingRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the OSS bucket to which you bind the dataset.
+	//
+	// Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7253,7 +8096,10 @@ func (s *CreateBindingRequest) SetURI(v string) *CreateBindingRequest {
 }
 
 type CreateBindingResponseBody struct {
+	// The binding relationship.
 	Binding *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
@@ -7308,44 +8154,78 @@ func (s *CreateBindingResponse) SetBody(v *CreateBindingResponseBody) *CreateBin
 }
 
 type CreateCompressPointCloudTaskRequest struct {
+	// The compression algorithm. Valid values:
+	//
+	// 	- octree
+	//
+	// 	- kdtree
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// octree
-	CompressMethod   *string           `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
+	CompressMethod *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	KdtreeOption     *KdtreeOption     `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
-	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OctreeOption     *OctreeOption     `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// The k-d tree compression options.
+	KdtreeOption *KdtreeOption `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The octree compression options.
+	OctreeOption *OctreeOption `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// The PCD property fields and the compression order in which the data is decompressed after the compression is complete.
+	//
+	// 	- If octree of Point Cloud Library (PCL) is used for compression, ["xyz"] is supported.
+	//
+	// 	- If Draco k-dimensional (k-d) tree is used for compression, ["xyz"] and ["xyz", "intensity"] are supported.
+	//
 	// This parameter is required.
 	PointCloudFields []*string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty" type:"Repeated"`
+	// The file format. Set the value to the default value: pcd.
+	//
 	// example:
 	//
 	// pcd
 	PointCloudFileFormat *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URL of the PCD file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test/src/test.pcd
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"LabelKey": "Value"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS URL of the output file after compression.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test/tgt
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -7421,44 +8301,78 @@ func (s *CreateCompressPointCloudTaskRequest) SetUserData(v string) *CreateCompr
 }
 
 type CreateCompressPointCloudTaskShrinkRequest struct {
+	// The compression algorithm. Valid values:
+	//
+	// 	- octree
+	//
+	// 	- kdtree
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// octree
-	CompressMethod         *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
+	CompressMethod *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	KdtreeOptionShrink     *string `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OctreeOptionShrink     *string `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// The k-d tree compression options.
+	KdtreeOptionShrink *string `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The octree compression options.
+	OctreeOptionShrink *string `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
+	// The PCD property fields and the compression order in which the data is decompressed after the compression is complete.
+	//
+	// 	- If octree of Point Cloud Library (PCL) is used for compression, ["xyz"] is supported.
+	//
+	// 	- If Draco k-dimensional (k-d) tree is used for compression, ["xyz"] and ["xyz", "intensity"] are supported.
+	//
 	// This parameter is required.
 	PointCloudFieldsShrink *string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty"`
+	// The file format. Set the value to the default value: pcd.
+	//
 	// example:
 	//
 	// pcd
 	PointCloudFileFormat *string `json:"PointCloudFileFormat,omitempty" xml:"PointCloudFileFormat,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URL of the PCD file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test/src/test.pcd
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"LabelKey": "Value"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS URL of the output file after compression.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test/tgt
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -7534,14 +8448,20 @@ func (s *CreateCompressPointCloudTaskShrinkRequest) SetUserData(v string) *Creat
 }
 
 type CreateCompressPointCloudTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0B7-1LR4Wcue1aBhk2xT85MfL*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// PointCloudCompress-badda57d-a3ab-4e6d-938f-49b77ce****
@@ -7601,38 +8521,54 @@ func (s *CreateCompressPointCloudTaskResponse) SetBody(v *CreateCompressPointClo
 }
 
 type CreateCustomizedStoryRequest struct {
+	// The cover image of the story. You can specify an image as the cover image of the custom story.
+	//
 	// This parameter is required.
 	Cover *CreateCustomizedStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// The custom labels. You can specify labels to help you identify and retrieve the story.
+	//
 	// example:
 	//
 	// {"Bucket": "examplebucket"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files of the story. You can specify up to 100 files in a custom story.
+	//
 	// This parameter is required.
 	Files []*CreateCustomizedStoryRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name1
 	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Solo
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7690,6 +8626,8 @@ func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedS
 }
 
 type CreateCustomizedStoryRequestCover struct {
+	// The URI of the cover image.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7712,6 +8650,8 @@ func (s *CreateCustomizedStoryRequestCover) SetURI(v string) *CreateCustomizedSt
 }
 
 type CreateCustomizedStoryRequestFiles struct {
+	// The URIs of the files.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7734,38 +8674,54 @@ func (s *CreateCustomizedStoryRequestFiles) SetURI(v string) *CreateCustomizedSt
 }
 
 type CreateCustomizedStoryShrinkRequest struct {
+	// The cover image of the story. You can specify an image as the cover image of the custom story.
+	//
 	// This parameter is required.
 	CoverShrink *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// The custom labels. You can specify labels to help you identify and retrieve the story.
+	//
 	// example:
 	//
 	// {"Bucket": "examplebucket"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files of the story. You can specify up to 100 files in a custom story.
+	//
 	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name1
 	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Solo
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7823,10 +8779,14 @@ func (s *CreateCustomizedStoryShrinkRequest) SetStoryType(v string) *CreateCusto
 }
 
 type CreateCustomizedStoryResponseBody struct {
+	// The ID of the story.
+	//
 	// example:
 	//
 	// 563062c0b085733f34ab****
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC91D091-D49F-0ACD-95D5-F0621045****
@@ -7881,38 +8841,66 @@ func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponse
 }
 
 type CreateDatasetRequest struct {
+	// The maximum number of bindings for the dataset. Valid values: 1 to 10. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in the dataset. Default value: 10000000000.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in the dataset. Valid values: 1 to 100000000. Default value: 100000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in the dataset. Default value: 100000000000.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum total file size for the dataset. If the total file size of the dataset exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The name of the dataset. The dataset name must be unique in the same project. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 128 characters in length.
+	//
+	// 	- The name can contain only letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a letter or underscore (_).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The description of the dataset. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
 	// Official:AllFunction
@@ -7973,7 +8961,10 @@ func (s *CreateDatasetRequest) SetTemplateId(v string) *CreateDatasetRequest {
 }
 
 type CreateDatasetResponseBody struct {
+	// The information about the dataset.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D74B3A9-5AC0-49F9-914D-E01589D3****
@@ -8028,39 +9019,70 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDecodeBlindWatermarkTaskRequest struct {
+	// The quality of the output image.
+	//
+	// The higher the quality, the larger the image size and the higher the watermark resolution quality.
+	//
 	// example:
 	//
 	// 90
 	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+	//
+	// If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+	//
 	// example:
 	//
 	// FFT
-	Model        *string       `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The OSS URI of the image before the blind watermark is added.
+	//
+	// Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://imm-test/testcases/watermarktestbefore.jpg
 	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the image.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://target/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
+	//
 	// example:
 	//
 	// low
 	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// The OSS URI of the output image.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://target/targetobject.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The type of the watermark. Valid value: text.
+	//
+	// No image watermarks are supported.
+	//
 	// example:
 	//
 	// text
@@ -8121,39 +9143,70 @@ func (s *CreateDecodeBlindWatermarkTaskRequest) SetWatermarkType(v string) *Crea
 }
 
 type CreateDecodeBlindWatermarkTaskShrinkRequest struct {
+	// The quality of the output image.
+	//
+	// The higher the quality, the larger the image size and the higher the watermark resolution quality.
+	//
 	// example:
 	//
 	// 90
 	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// The watermark algorithm model.Valid values: FFT, FFT_FULL, DWT, and DWT_IBG. Default value: FFT.
+	//
+	// If this parameter is left empty, the DecodeBlindWatermark operation is called. Otherwise, the CreateDecodeBlindWatermarkTask operation is called.
+	//
 	// example:
 	//
 	// FFT
-	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The OSS URI of the image before the blind watermark is added.
+	//
+	// Do not specify this parameter when you set the Model parameter to DWT or DWT_IBG.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://imm-test/testcases/watermarktestbefore.jpg
 	OriginalImageURI *string `json:"OriginalImageURI,omitempty" xml:"OriginalImageURI,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the image.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://target/sampleobject.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The watermark strength level. The higher the strength level, the more resistant the watermarked image is to attacks, but the more the image is distorted. Valid values: low, medium, and high. Default value: low.
+	//
 	// example:
 	//
 	// low
 	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// The OSS URI of the output image.
+	//
+	// Specify the OSS URI in the `oss://<bucket>/<object>` format, where `<bucket>` is the name of the bucket in the same region as the current project and `<object>` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://target/targetobject.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The type of the watermark. Valid value: text.
+	//
+	// No image watermarks are supported.
+	//
 	// example:
 	//
 	// text
@@ -8214,14 +9267,20 @@ func (s *CreateDecodeBlindWatermarkTaskShrinkRequest) SetWatermarkType(v string)
 }
 
 type CreateDecodeBlindWatermarkTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 27C-1jyAP5qQI7RoI8lFFwvMrWtl0ft
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4A7A2D0E-D8B8-4DA0-8127-EB32C6600ADE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// DecodeBlindWatermark-78ac8f3b-59e0-45a6-9b67-32168c3f22b9
@@ -8281,24 +9340,34 @@ func (s *CreateDecodeBlindWatermarkTaskResponse) SetBody(v *CreateDecodeBlindWat
 }
 
 type CreateFacesSearchingTaskRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The number of the most similar faces that you want to return. Valid values: 1 to 100. Default value: 5.
+	//
 	// example:
 	//
 	// 100
-	MaxResult    *int64        `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	MaxResult *int64 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources     []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The images.
+	Sources []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -8344,6 +9413,10 @@ func (s *CreateFacesSearchingTaskRequest) SetUserData(v string) *CreateFacesSear
 }
 
 type CreateFacesSearchingTaskRequestSources struct {
+	// The OSS URI of the image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -8364,24 +9437,34 @@ func (s *CreateFacesSearchingTaskRequestSources) SetURI(v string) *CreateFacesSe
 }
 
 type CreateFacesSearchingTaskShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The number of the most similar faces that you want to return. Valid values: 1 to 100. Default value: 5.
+	//
 	// example:
 	//
 	// 100
-	MaxResult          *int64  `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	MaxResult *int64 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The images.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -8427,14 +9510,20 @@ func (s *CreateFacesSearchingTaskShrinkRequest) SetUserData(v string) *CreateFac
 }
 
 type CreateFacesSearchingTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1E79399-05F7-06D8-95FE-EBE17BA*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// CreateFacesSearchingTask-00bec802-073a-4b61-ba*****
@@ -8494,23 +9583,32 @@ func (s *CreateFacesSearchingTaskResponse) SetBody(v *CreateFacesSearchingTaskRe
 }
 
 type CreateFigureClusteringTaskRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
-	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -8551,23 +9649,32 @@ func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureC
 }
 
 type CreateFigureClusteringTaskShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -8608,14 +9715,20 @@ func (s *CreateFigureClusteringTaskShrinkRequest) SetUserData(v string) *CreateF
 }
 
 type CreateFigureClusteringTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// formatconvert-00bec802-073a-4b61-ba3b-39bc****
@@ -8675,34 +9788,48 @@ func (s *CreateFigureClusteringTaskResponse) SetBody(v *CreateFigureClusteringTa
 }
 
 type CreateFigureClustersMergingTaskRequest struct {
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the source group. You must specify either From or Froms, but not both.
+	//
 	// example:
 	//
 	// Cluster-2ab85905-23ba-4632-b2d8-1c21cfe****
-	From         *string       `json:"From,omitempty" xml:"From,omitempty"`
-	Froms        []*string     `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
+	Froms []*string `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	// The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"key":"val"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the destination clustering group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cluster-4a3a71c1-c092-4788-8826-2f65d17****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -8758,34 +9885,48 @@ func (s *CreateFigureClustersMergingTaskRequest) SetUserData(v string) *CreateFi
 }
 
 type CreateFigureClustersMergingTaskShrinkRequest struct {
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the source group. You must specify either From or Froms, but not both.
+	//
 	// example:
 	//
 	// Cluster-2ab85905-23ba-4632-b2d8-1c21cfe****
-	From               *string `json:"From,omitempty" xml:"From,omitempty"`
-	FromsShrink        *string `json:"Froms,omitempty" xml:"Froms,omitempty"`
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
+	FromsShrink *string `json:"Froms,omitempty" xml:"Froms,omitempty"`
+	// The notification message configurations. For more information, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"key":"val"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the destination clustering group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cluster-4a3a71c1-c092-4788-8826-2f65d17****
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -8841,14 +9982,20 @@ func (s *CreateFigureClustersMergingTaskShrinkRequest) SetUserData(v string) *Cr
 }
 
 type CreateFigureClustersMergingTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16E****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 92376fbb-171f-4259-913f-705f7ee0****
@@ -8908,29 +10055,54 @@ func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureCluster
 }
 
 type CreateFileCompressionTaskRequest struct {
+	// The format of the package. Default value: zip.
+	//
+	// >  Only the ZIP format is supported.
+	//
 	// example:
 	//
 	// zip
-	CompressedFormat *string           `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	CompressedFormat *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the inventory object that contains the objects to compress. The inventory object stores the objects to compress by using the same data structure of the Sources parameter in the JSON format. This parameter is suitable for specifying a large number of objects to compress.
+	//
+	// >  You must specify this parameter or the `Sources` parameter. The `URI` parameter is required and the `Alias` parameter is optional. You can specify up to 80,000 compression rule by using SourceManifestURI in one single call to the operation. The following line provides an example of the content within an inventory object.
+	//
+	//     [{"URI":"oss://<bucket>/<object>", "Alias":"/new-dir/new-name"}]
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object.json
-	SourceManifestURI *string                                    `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
-	Sources           []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	SourceManifestURI *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
+	// The objects to be packed and packing rules.
+	//
+	// >  You must specify this parameter or the SourceManifestURI parameter. The Sources parameter can hold up to 100 packing rules. If you want to include more than 100 packing rules, use the SourceManifestURI parameter.
+	Sources []*CreateFileCompressionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The OSS URI of the package. The object name part in the URI is used as the name of the package. Example: `name.zip`.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-target-object.zip
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -8986,11 +10158,40 @@ func (s *CreateFileCompressionTaskRequest) SetUserData(v string) *CreateFileComp
 }
 
 type CreateFileCompressionTaskRequestSources struct {
+	// Specifies the path of the object in the package, or renames the object in the package.
+	//
+	// 	- Leave this parameter empty to retain the original directory structure of the object in the package. For example, if the object is stored at `oss://test-bucket/test-dir/test-object.doc` and you do not specify this parameter, the path of the object in the package is `/test-dir/test-object.doc`.
+	//
+	// 	- Rename the object. For example, if the object is stored at `oss://test-bucket/test-object.jpg` and you set the **Alias*	- parameter to `test-rename-object.jpg`, the name of the object in the package is `test-rename-object.jpg`.
+	//
+	// 	- Specify a different path for the object in the package. For example, if the directory to be packed is `oss://test-bucket/test-dir/` and you set the **Alias*	- parameter to `/new-dir/`, all objects in the directory are placed in the `/new-dir/` path in the package.
+	//
+	// 	- Set the parameter to `/` to remove the original directory structure.
+	//
+	// >  Duplicate object names may cause a failure in extracting the objects from the package, depending on the packing tool that you use. We recommend that you avoid using duplicate object names when you rename objects in the packing task.
+	//
 	// example:
 	//
 	// /new-dir/
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Mode  *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The object matching rule. Valid values: `fullname` and `prefix`. Default value: `prefix`
+	//
+	// 	- `prefix`: matches objects by object name prefix.
+	//
+	// 	- `fullname`: exactly matches one single object by its full object name.
+	//
+	// example:
+	//
+	// fullname
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The OSS URI of the object or directory.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is a directory or object:
+	//
+	// When you pack a directory, `${Object}` is the path of the directory.
+	//
+	// 	- When you pack an object, `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -9021,29 +10222,54 @@ func (s *CreateFileCompressionTaskRequestSources) SetURI(v string) *CreateFileCo
 }
 
 type CreateFileCompressionTaskShrinkRequest struct {
+	// The format of the package. Default value: zip.
+	//
+	// >  Only the ZIP format is supported.
+	//
 	// example:
 	//
 	// zip
-	CompressedFormat       *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	CompressedFormat *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the inventory object that contains the objects to compress. The inventory object stores the objects to compress by using the same data structure of the Sources parameter in the JSON format. This parameter is suitable for specifying a large number of objects to compress.
+	//
+	// >  You must specify this parameter or the `Sources` parameter. The `URI` parameter is required and the `Alias` parameter is optional. You can specify up to 80,000 compression rule by using SourceManifestURI in one single call to the operation. The following line provides an example of the content within an inventory object.
+	//
+	//     [{"URI":"oss://<bucket>/<object>", "Alias":"/new-dir/new-name"}]
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object.json
 	SourceManifestURI *string `json:"SourceManifestURI,omitempty" xml:"SourceManifestURI,omitempty"`
-	SourcesShrink     *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The objects to be packed and packing rules.
+	//
+	// >  You must specify this parameter or the SourceManifestURI parameter. The Sources parameter can hold up to 100 packing rules. If you want to include more than 100 packing rules, use the SourceManifestURI parameter.
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The OSS URI of the package. The object name part in the URI is used as the name of the package. Example: `name.zip`.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-target-object.zip
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -9099,14 +10325,20 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetUserData(v string) *CreateFi
 }
 
 type CreateFileCompressionTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// FileCompression-3579a380-6f7a-4a9d-b9d2-65996*****
@@ -9166,26 +10398,48 @@ func (s *CreateFileCompressionTaskResponse) SetBody(v *CreateFileCompressionTask
 }
 
 type CreateFileUncompressionTaskRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The password that protects the package.
+	//
 	// example:
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName   *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The files to extract. If you do not specify this parameter, the entire package is decompressed.
 	SelectedFiles []*string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty" type:"Repeated"`
+	// The OSS URI of the package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-apitest-fxf2/name.zip
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI to which you want to extract files from the package or decompress the entire package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-dir/
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -9241,26 +10495,48 @@ func (s *CreateFileUncompressionTaskRequest) SetUserData(v string) *CreateFileUn
 }
 
 type CreateFileUncompressionTaskShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The password that protects the package.
+	//
 	// example:
 	//
 	// 123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName         *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The files to extract. If you do not specify this parameter, the entire package is decompressed.
 	SelectedFilesShrink *string `json:"SelectedFiles,omitempty" xml:"SelectedFiles,omitempty"`
+	// The OSS URI of the package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-apitest-fxf2/name.zip
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI to which you want to extract files from the package or decompress the entire package.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-dir/
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -9316,14 +10592,20 @@ func (s *CreateFileUncompressionTaskShrinkRequest) SetUserData(v string) *Create
 }
 
 type CreateFileUncompressionTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// FileUncompression-16ab5dd6-af02-480e-9ed7-a8d51b1*****
@@ -9383,34 +10665,50 @@ func (s *CreateFileUncompressionTaskResponse) SetBody(v *CreateFileUncompression
 }
 
 type CreateImageModerationTaskRequest struct {
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The time interval between two consecutive frames in a GIF or long image. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Scenes      []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The scenarios in which you want to apply the image moderation task.
+	Scenes []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the `oss://<Bucket>/<Object>` format. `<Bucket>` specifies the name of the OSS bucket that resides in the same region as the current project. `<Object>` specifies the complete path to the image file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The user data, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the user data is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -9471,34 +10769,50 @@ func (s *CreateImageModerationTaskRequest) SetUserData(v string) *CreateImageMod
 }
 
 type CreateImageModerationTaskShrinkRequest struct {
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The time interval between two consecutive frames in a GIF or long image. Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
+	//
 	// example:
 	//
 	// 10
 	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The scenarios in which you want to apply the image moderation task.
 	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the `oss://<Bucket>/<Object>` format. `<Bucket>` specifies the name of the OSS bucket that resides in the same region as the current project. `<Object>` specifies the complete path to the image file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The user data, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the user data is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -9559,14 +10873,20 @@ func (s *CreateImageModerationTaskShrinkRequest) SetUserData(v string) *CreateIm
 }
 
 type CreateImageModerationTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ImageModeration-179ef4f8-d583-4f0c-a293-7c0889c*****
@@ -9626,52 +10946,120 @@ func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTask
 }
 
 type CreateImageSplicingTaskRequest struct {
+	// The width or height with which the input images must align. Valid values: 1 to 4096. Unit: px.
+	//
+	// 	- If you set **Direction*	- to `vertical`, this parameter specifies the width with which the input images must align.
+	//
+	// 	- If you set **Direction*	- to `horizontal`, this parameter specifies the height with which the input images must align.
+	//
+	// >  If you do not specify this parameter, the width or height of the first input image is used.
+	//
 	// example:
 	//
 	// 192
 	Align *int64 `json:"Align,omitempty" xml:"Align,omitempty"`
+	// The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
+	//
 	// example:
 	//
 	// red
-	BackgroundColor  *string           `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	BackgroundColor *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The splicing method. Valid values:
+	//
+	// 	- vertical (default): All input images are vertically aligned and have the same width.
+	//
+	// 	- horizontal: All input images are horizontally aligned and have the same height.
+	//
 	// example:
 	//
 	// vertical
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The compression format of the output image. Valid values:
+	//
+	// 	- jpg (default)
+	//
+	// 	- png
+	//
+	// 	- webp
+	//
 	// example:
 	//
 	// jpg
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// The empty space or border around the edges of the output image. Default value: 0. Unit: px.
+	//
 	// example:
 	//
 	// 2
-	Margin       *int64        `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Margin *int64 `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	// The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The space between component images in the output image. Default value: 0. Unit: px.
+	//
 	// example:
 	//
 	// 2
 	Padding *int64 `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The compression quality of the output image. This parameter takes effect only for JPG and WebP images. Valid values: 0 to 100. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The scaling mode of the input images that are vertically or horizontally aligned. Valid values:
+	//
+	// 	- fit (default): Input images are scaled proportionally, and black edges are not retained.
+	//
+	// 	- stretch: Input images are stretched to fill the space.
+	//
+	// 	- horizon: Input images are horizontally stretched.
+	//
+	// 	- vertical: Input images are vertically stretched.
+	//
 	// example:
 	//
 	// stretch
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The input images. The images are sliced in the order of the input image URIs.
+	//
 	// This parameter is required.
 	Sources []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags    map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS bucket in which you want to store the output image.
+	//
+	// Specify the value in the oss://${bucketname}/${objectname} format. ${bucketname} specifies the name of the OSS bucket that resides in the same region as the current project. ${objectname} specifies the path to the output image.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputImage.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user data, which is returned as asynchronous notifications to help manage notifications within your system. The maximum length of the user data is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskRequest) String() string {
@@ -9758,11 +11146,31 @@ func (s *CreateImageSplicingTaskRequest) SetUserData(v string) *CreateImageSplic
 }
 
 type CreateImageSplicingTaskRequestSources struct {
+	// The rotation angle. Valid values:
+	//
+	// 	- 0 (default)
+	//
+	// 	- 90
+	//
+	// 	- 180
+	//
+	// 	- 270
+	//
 	// example:
 	//
 	// 90
 	Rotate *int64 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The Object Storage Service (OSS) bucket in which you store the input images.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the input images that have an extension.
+	//
+	// The following image formats are supported: jpg and png.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -9785,52 +11193,120 @@ func (s *CreateImageSplicingTaskRequestSources) SetURI(v string) *CreateImageSpl
 }
 
 type CreateImageSplicingTaskShrinkRequest struct {
+	// The width or height with which the input images must align. Valid values: 1 to 4096. Unit: px.
+	//
+	// 	- If you set **Direction*	- to `vertical`, this parameter specifies the width with which the input images must align.
+	//
+	// 	- If you set **Direction*	- to `horizontal`, this parameter specifies the height with which the input images must align.
+	//
+	// >  If you do not specify this parameter, the width or height of the first input image is used.
+	//
 	// example:
 	//
 	// 192
 	Align *int64 `json:"Align,omitempty" xml:"Align,omitempty"`
+	// The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
+	//
 	// example:
 	//
 	// red
-	BackgroundColor        *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	BackgroundColor *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The splicing method. Valid values:
+	//
+	// 	- vertical (default): All input images are vertically aligned and have the same width.
+	//
+	// 	- horizontal: All input images are horizontally aligned and have the same height.
+	//
 	// example:
 	//
 	// vertical
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The compression format of the output image. Valid values:
+	//
+	// 	- jpg (default)
+	//
+	// 	- png
+	//
+	// 	- webp
+	//
 	// example:
 	//
 	// jpg
 	ImageFormat *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	// The empty space or border around the edges of the output image. Default value: 0. Unit: px.
+	//
 	// example:
 	//
 	// 2
-	Margin             *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Margin *int64 `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	// The notification settings. For more information, click Notification. For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The space between component images in the output image. Default value: 0. Unit: px.
+	//
 	// example:
 	//
 	// 2
 	Padding *int64 `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The compression quality of the output image. This parameter takes effect only for JPG and WebP images. Valid values: 0 to 100. Default value: 80.
+	//
 	// example:
 	//
 	// 80
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The scaling mode of the input images that are vertically or horizontally aligned. Valid values:
+	//
+	// 	- fit (default): Input images are scaled proportionally, and black edges are not retained.
+	//
+	// 	- stretch: Input images are stretched to fill the space.
+	//
+	// 	- horizon: Input images are horizontally stretched.
+	//
+	// 	- vertical: Input images are vertically stretched.
+	//
 	// example:
 	//
 	// stretch
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The input images. The images are sliced in the order of the input image URIs.
+	//
 	// This parameter is required.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS bucket in which you want to store the output image.
+	//
+	// Specify the value in the oss://${bucketname}/${objectname} format. ${bucketname} specifies the name of the OSS bucket that resides in the same region as the current project. ${objectname} specifies the path to the output image.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputImage.jpg
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The user data, which is returned as asynchronous notifications to help manage notifications within your system. The maximum length of the user data is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskShrinkRequest) String() string {
@@ -9917,14 +11393,20 @@ func (s *CreateImageSplicingTaskShrinkRequest) SetUserData(v string) *CreateImag
 }
 
 type CreateImageSplicingTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 10C-1R6p7Km0H5Ieg38LKXTIvw*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 94D6F994-E298-037E-8E8B-0090F27*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ImageSplicing-537cc157-7645-444a-a631-c8db4d02*****
@@ -9984,20 +11466,50 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 }
 
 type CreateImageToPDFTaskRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The list of images. The sequence of image URIs in the list determines the order in which they are converted.
+	//
 	// This parameter is required.
 	Sources []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags    map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS URI of the output file.
+	//
+	// Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object with the extension included.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputDocument.pdf
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskRequest) String() string {
@@ -10044,11 +11556,31 @@ func (s *CreateImageToPDFTaskRequest) SetUserData(v string) *CreateImageToPDFTas
 }
 
 type CreateImageToPDFTaskRequestSources struct {
+	// The rotation angle. Valid values:
+	//
+	// 	- 0 (default)
+	//
+	// 	- 90
+	//
+	// 	- 180
+	//
+	// 	- 270
+	//
 	// example:
 	//
 	// 90
 	Rotate *int64 `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// The operation supports the following image formats: JPG, JP2, PNG, TIFF, WebP, BMP, and SVG.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.jpg
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -10071,20 +11603,50 @@ func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFT
 }
 
 type CreateImageToPDFTaskShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The list of images. The sequence of image URIs in the list determines the order in which they are converted.
+	//
 	// This parameter is required.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The OSS URI of the output file.
+	//
+	// Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object with the extension included.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://examplebucket/outputDocument.pdf
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskShrinkRequest) String() string {
@@ -10131,14 +11693,20 @@ func (s *CreateImageToPDFTaskShrinkRequest) SetUserData(v string) *CreateImageTo
 }
 
 type CreateImageToPDFTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ImageToPDF-cbe6ae3e-f8dc-4566-9da7-535d5d*****
@@ -10198,17 +11766,52 @@ func (s *CreateImageToPDFTaskResponse) SetBody(v *CreateImageToPDFTaskResponseBo
 }
 
 type CreateLocationDateClusteringTaskRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The date configurations for clustering.
+	//
+	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	//
 	// This parameter is required.
 	DateOptions *CreateLocationDateClusteringTaskRequestDateOptions `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
+	// The geolocation configurations for clustering.
+	//
+	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	//
 	// This parameter is required.
 	LocationOptions *CreateLocationDateClusteringTaskRequestLocationOptions `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty" type:"Struct"`
-	Notification    *Notification                                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
-	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateLocationDateClusteringTaskRequest) String() string {
@@ -10255,14 +11858,32 @@ func (s *CreateLocationDateClusteringTaskRequest) SetUserData(v string) *CreateL
 }
 
 type CreateLocationDateClusteringTaskRequestDateOptions struct {
+	// The maximum number of days allowed in a gap for a single spatiotemporal cluster. Valid values: 0 to 99999.
+	//
+	// For example, if travel photos were produced on March 4, 5, and 7, 2024, but not on Marh 6, 2024, and you set the parameter to 1, IMM considers the travel spanning the date range from March 4, 2024 to March 7, 2024 and includes photos within the data range in the same cluster.````
+	//
+	// We recommend that you set the parameter to a value within the range from 0 to 3.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	GapDays *int64 `json:"GapDays,omitempty" xml:"GapDays,omitempty"`
+	// The maximum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans more than the maximum number of days.
+	//
+	// For example, if you want to create travel photo clusters, you may want to exclude photos that were taken within 15 consecutive days in the same city, because it is likely that these photos were not taken during a travel. In this case, you can set the parameter to 15 to exclude this time range and location from the clustering task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 15
 	MaxDays *int64 `json:"MaxDays,omitempty" xml:"MaxDays,omitempty"`
+	// The minimum number of days that a single spatiotemporal cluster can span. Valid values: 1 to 99999. IMM does not create a cluster that spans less than the minimum number of days.
+	//
+	// For example, if you do not want a one-day tour cluster, you can set the parameter to 2.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10295,6 +11916,16 @@ func (s *CreateLocationDateClusteringTaskRequestDateOptions) SetMinDays(v int64)
 }
 
 type CreateLocationDateClusteringTaskRequestLocationOptions struct {
+	// The administrative division levels. You can specify multiple administrative division levels.
+	//
+	// For example, you uploaded photos that were taken from March 3, 2024 to March 5, 2024 in Hangzhou and photos that were taken from March 6, 2024 to March 8, 2024 in Jiaxing. When you call the operation and set the parameter to `["city", "province"]`, the following spatiotemporal clusters are created from these photos:
+	//
+	// 	- March 3, 2024 to March 5, 2024, Hangzhou
+	//
+	// 	- March 6, 2024 to March 8, 2024, Jiaxing
+	//
+	// 	- March 3, 2024 to March 8, 2024, Zhejiang
+	//
 	// This parameter is required.
 	LocationDateClusterLevels []*string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
 }
@@ -10313,17 +11944,52 @@ func (s *CreateLocationDateClusteringTaskRequestLocationOptions) SetLocationDate
 }
 
 type CreateLocationDateClusteringTaskShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The date configurations for clustering.
+	//
+	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	//
 	// This parameter is required.
 	DateOptionsShrink *string `json:"DateOptions,omitempty" xml:"DateOptions,omitempty"`
+	// The geolocation configurations for clustering.
+	//
+	// >  Adjusting these configurations affects existing spatiotemporal clusters for the dataset.
+	//
 	// This parameter is required.
 	LocationOptionsShrink *string `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty"`
-	NotificationShrink    *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateLocationDateClusteringTaskShrinkRequest) String() string {
@@ -10370,12 +12036,24 @@ func (s *CreateLocationDateClusteringTaskShrinkRequest) SetUserData(v string) *C
 }
 
 type CreateLocationDateClusteringTaskResponseBody struct {
+	// The event ID.
+	//
+	// example:
+	//
+	// 25B-1W2ChgujA3Q8MbBY6mSp2mh****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B121940C-9794-4EE3-8D6E-F8EC525F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// LocationDateClustering-c10dce07-1de7-4da7-abee-1a3aba7****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateLocationDateClusteringTaskResponseBody) String() string {
@@ -10431,24 +12109,38 @@ func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDate
 }
 
 type CreateMediaConvertTaskRequest struct {
-	AlignmentIndex   *int32            `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
+	// The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
+	AlignmentIndex *int32 `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+	//
 	// This parameter is required.
 	Sources []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The media processing tasks. You can specify multiple values for this parameter.
+	//
 	// This parameter is required.
 	Targets []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -10504,15 +12196,26 @@ func (s *CreateMediaConvertTaskRequest) SetUserData(v string) *CreateMediaConver
 }
 
 type CreateMediaConvertTaskRequestSources struct {
+	// The transcoding duration of the media. Unit: seconds. Default value: 0. A value of 0 specifies that the transcoding duration lasts until the end of the video.
+	//
 	// example:
 	//
 	// 0
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time of the media transcoding task. Unit: seconds. Valid values:
+	//
+	// 	- 0 (default): starts transcoding when the media starts playing.
+	//
+	// 	- n: starts transcoding n seconds after the media starts playing. n must be greater than 0.
+	//
 	// example:
 	//
 	// 0
-	StartTime *float64                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The subtitles. By default, this parameter is left empty.
 	Subtitles []*CreateMediaConvertTaskRequestSourcesSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -10548,14 +12251,20 @@ func (s *CreateMediaConvertTaskRequestSources) SetURI(v string) *CreateMediaConv
 }
 
 type CreateMediaConvertTaskRequestSourcesSubtitles struct {
+	// The subtitle language. If you specify this parameter, comply with the ISO 639-2 standard. This parameter is left empty by default.
+	//
 	// example:
 	//
 	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The time offset of the subtitle. Unit: seconds. Default value: 0.
+	//
 	// example:
 	//
 	// 10.5
 	TimeOffset *float64 `json:"TimeOffset,omitempty" xml:"TimeOffset,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket. Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension. The following subtitle formats are supported: srt, vtt, mov_text, ass, dvd_sub, and pgs.
+	//
 	// example:
 	//
 	// oss://test-bucket/subtitles
@@ -10586,23 +12295,61 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetURI(v string) *Create
 }
 
 type CreateMediaConvertTaskRequestTargets struct {
+	// The audio processing settings.
+	//
+	// >  If you leave Audio empty and the first audio stream exists, the first audio stream is directly copied to the output file.
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The type of the media container.
+	//
+	// 	- Valid values for audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, and flv.
+	//
+	// 	- Valid values only for audio containers: mp3, aac, flac, oga, ac3, and opus.
+	//
+	//     **
+	//
+	//     **Note*	- Specify Container and URI at the same time. If you want to extract subtitles, capture frames, capture image sprites, or rotate media images, set Container and URI to null. In this case, Segment, Video, Audio, and Speed do not take effect.
+	//
 	// example:
 	//
 	// mp4
-	Container *string                                      `json:"Container,omitempty" xml:"Container,omitempty"`
-	Image     *TargetImage                                 `json:"Image,omitempty" xml:"Image,omitempty"`
-	Segment   *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The frame capturing, sprite capturing, and media rotation settings.
+	Image *TargetImage `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The media segmentation settings. By default, no segmentation is performed.
+	Segment *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	// The playback speed of the media. Valid values: 0.5 to 2. Default value: 1.0.
+	//
+	// >  This parameter specifies the ratio of the non-regular playback speed of the transcoded media file to the default playback speed of the source media file.
+	//
 	// example:
 	//
 	// 1.0
-	Speed         *float32        `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StripMetadata *bool           `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
-	Subtitle      *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	Speed *float32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// Specifies whether to remove the metadata, such as `title` and `album`, from the media file. Default value: false.
+	StripMetadata *bool `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
+	// The subtitle processing settings.
+	//
+	// >  If you leave Subtitle empty and the first subtitle stream exists, the first subtitle stream is directly copied to the output file.
+	Subtitle *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// The URI of the OSS bucket in which you want to store the media transcoding output file.
+	//
+	// Specify the value in the `oss://${Bucket}/${Object}` format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the complete path to the file whose name contains an extension.
+	//
+	// 	- If the value of **URI*	- contains an extension, the endpoint of the OSS bucket matches the URI. If multiple media transcoding output files exist, the endpoints of the correspodning OSS buckets may be overwritten.****
+	//
+	// 	- If the value of **URI*	- does not contain an extension, the endpoint of the OSS bucket consists of the following parameters: **URI**, **Container**, and **Segment**. In the following examples, the value of **URI*	- is `oss://examplebucket/outputVideo`.
+	//
+	//     	- If the value of **Container*	- is `mp4` and the value of **Segment*	- is null, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.mp4`.
+	//
+	//     	- If the value of **Container*	- is `ts` and the value of **Format*	- in **Segment*	- is `hls`, the endpoint of the OSS bucket is `oss://examplebucket/outputVideo.m3u8`. In addition, multiple ts files prefixed with `oss://examplebucket/outputVideo` are generated.
+	//
 	// example:
 	//
 	// oss://test-bucket/targets
-	URI   *string      `json:"URI,omitempty" xml:"URI,omitempty"`
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The video processing settings.
+	//
+	// >  If you leave Video empty and the first video stream exists, the first video stream is directly copied to the output file.
 	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
@@ -10660,14 +12407,24 @@ func (s *CreateMediaConvertTaskRequestTargets) SetVideo(v *TargetVideo) *CreateM
 }
 
 type CreateMediaConvertTaskRequestTargetsSegment struct {
+	// The duration of the segment. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The media segmentation mode. Valid values:
+	//
+	// 	- hls
+	//
+	// 	- dash
+	//
 	// example:
 	//
 	// hls
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The start sequence number. You can specify this parameter only if you set Format to hls. Default value: 0.
+	//
 	// example:
 	//
 	// 5
@@ -10698,24 +12455,38 @@ func (s *CreateMediaConvertTaskRequestTargetsSegment) SetStartNumber(v int32) *C
 }
 
 type CreateMediaConvertTaskShrinkRequest struct {
-	AlignmentIndex         *int32  `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
+	// The sequence number of the main media file in the concatenation list of media files. The main media file provides the default transcoding settings, such as the resolution and the frame rate, for videos and audios. Default value: `0`. A value of `0` specifies that the main media file is aligned with the first media file in the concatenation list.
+	AlignmentIndex *int32 `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For more information, see "Notification". For information about the asynchronous notification format, see [Asynchronous notification format](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The source media files. If multiple files exist at the same time, the Concat feature is enabled. The video files are concatenated in the order of their URI inputs.
+	//
 	// This parameter is required.
 	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The media processing tasks. You can specify multiple values for this parameter.
+	//
 	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	// The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -10771,14 +12542,20 @@ func (s *CreateMediaConvertTaskShrinkRequest) SetUserData(v string) *CreateMedia
 }
 
 type CreateMediaConvertTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 0ED-1Bz8z71k5TtsUejT4UJ16Es****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFFE0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// MediaConvert-adb1ee28-c4c9-42a7-9f54-3b8eadcb****
@@ -10838,123 +12615,277 @@ func (s *CreateMediaConvertTaskResponse) SetBody(v *CreateMediaConvertTaskRespon
 }
 
 type CreateOfficeConversionTaskRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The ending page for document conversion. The default value is -1, which converts the file until the last page of the file.
+	//
+	// >
+	//
+	// 	- If the source is a spreadsheet file, specify the index number of the corresponding sheet instead.
+	//
+	// 	- If you convert a large number of pages within the document, we recommend that you split the pages into several document conversion tasks to prevent conversion timeouts.
+	//
+	// 	- This parameter takes effect only when you convert the file into an image. It does not take effect when you convert the file into a PDF or TXT file.
+	//
 	// example:
 	//
 	// -1
 	EndPage *int64 `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
+	// Specifies whether to return only the first resulting image when you convert a spreadsheet document to images. The number of rows and the number of columns in the first image are determined by the automatic splitting process. Valid values:
+	//
+	// 	- false (default): does not return only the first resulting image. All the resulting images are returned.
+	//
+	// 	- true: returns only the first resulting image. A thumbnail is generated.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// false
 	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	// Specifies whether to convert all rows of a spreadsheet document to one single image or a single-page PDF document when you convert the table document to an image or a PDF document. Valid values:
+	//
+	// 	- false (default): converts all rows of the document to multiple images or a multi-page PDF document. This is the default value.
+	//
+	// 	- true: converts all rows of the document to one single image or a single-page PDF document.
+	//
 	// example:
 	//
 	// false
 	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
+	// Specifies whether to convert all columns of a spreadsheet document to one single image or a single-page PDF document when you convert the spreadsheet file to an image or a PDF document. Valid values:
+	//
+	// 	- false (default): converts all columns of the document to multiple images or a multi-page PDF document.
+	//
+	// 	- true: converts all columns of the document to one single image or a single-page PDF document.
+	//
 	// example:
 	//
 	// false
 	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
+	// Specifies whether to retain line feeds in the output file when a document is converted to a text file. Valid values:
+	//
+	// 	- false (default): does not retain the line feeds.
+	//
+	// 	- true: retains the line feeds.
+	//
 	// example:
 	//
 	// false
 	HoldLineFeed *bool `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
+	// The dots per inch (DPI) of output images. Valid values: 96 to 600. Default value: 96.
+	//
 	// example:
 	//
 	// 96
 	ImageDPI *int64 `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
+	// Specifies whether to convert the document to a long image. Valid values:
+	//
+	// 	- false (default): does not convert the document to a long image.
+	//
+	// 	- true: converts the document to a long image.
+	//
+	// >  You can convert up to 20 pages of a document into a long image. If you convert more than 20 pages to a long image, an error may occur.
+	//
 	// example:
 	//
 	// false
 	LongPicture *bool `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
+	// Specifies whether to convert the document to a long text file. Valid values:
+	//
+	// 	- false (default): does not convert the document to a long text file. Each page of the document is converted to a text file.
+	//
+	// 	- true: converts the entire document to a long text file.
+	//
 	// example:
 	//
 	// false
 	LongText *bool `json:"LongText,omitempty" xml:"LongText,omitempty"`
+	// The maximum number of spreadsheet columns to be converted to an image. By default, all columns within the spreadsheet file are converted.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// 10
 	MaxSheetColumn *int64 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
+	// The maximum number of spreadsheet rows to be converted to an image. By default, all rows within the spreadsheet file are converted.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// 10
-	MaxSheetRow  *int64        `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	MaxSheetRow *int64 `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The numbers of pages to be converted. This parameter takes precedence over the StartPage and EndPage parameters. The value of this parameter can be in different formats:
+	//
+	// 	- If you specify pages separately by page number, separate page numbers with commas (,). Example: 1,2
+	//
+	// 	- If you specify consecutive pages by using a page range, connect the starting and ending page numbers with a hyphen (-). Example: 1,2-4,7
+	//
 	// example:
 	//
 	// 1,2-4,7
 	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// Specifies whether to place sheets of paper horizontally for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+	//
+	// 	- false (default): does not place sheets of paper horizontally. Paper sheets are placed vertically.
+	//
+	// 	- true: places sheets of paper horizontally.
+	//
 	// example:
 	//
 	// false
 	PaperHorizontal *bool `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
+	// The paper size for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+	//
+	// 	- A0
+	//
+	// 	- A2
+	//
+	// 	- A4 (default)
+	//
+	// >  This parameter takes effect only when the **FitToHeight*	- and **FitToWidth*	- parameters are specified.
+	//
 	// example:
 	//
 	// A4
 	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
+	// The password that protects the source document. To convert a password-protected document, specify this parameter.
+	//
 	// example:
 	//
 	// ********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
+	//
 	// example:
 	//
 	// 60
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+	//
+	// >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+	//
 	// example:
 	//
 	// 100
 	ScalePercentage *int64 `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
+	// The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
+	//
 	// example:
 	//
 	// 1
 	SheetCount *int64 `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
+	// The index number of the sheet to be converted to an image. The value ranges from 1 to the index number of the last sheet. By default, the conversion starts from the first sheet.
+	//
 	// example:
 	//
 	// 1
 	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
+	// Specifies whether to display comments in resulting images when a text document is converted to images. Valid values:
+	//
+	// 	- false (default): does not display comments in resulting images.
+	//
+	// 	- true: displays comments in resulting images.
+	//
 	// example:
 	//
 	// false
 	ShowComments *bool `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
+	// The name extension of the source file. By default, the type of the source file is determined based on the name extension of the source object in OSS. If the object in OSS does not have a name extension, you can specify this parameter. Valid values:
+	//
+	// 	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+	//
+	// 	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+	//
+	// 	- Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+	//
+	// 	- PDF documents: pdf
+	//
 	// example:
 	//
 	// doc
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required.
+	// The URI of the source file.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
-	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	SourceURI *string                                     `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Sources   []*CreateOfficeConversionTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	// The starting page for document conversion. Default value: 1.
+	//
+	// >
+	//
+	// 	- If the document is a spreadsheet file, specify the index number of the corresponding sheet instead.
+	//
+	// 	- This parameter takes effect only when you convert the file to an image format. It does not take effect when you convert the file into a PDF or TXT file.
+	//
 	// example:
 	//
 	// 1
 	StartPage *int64 `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
+	// The custom tags in dictionary format. You can use the custom tags to search for the task.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The format of the output file. Valid values:
+	//
+	// 	- png: a PNG image.
+	//
+	// 	- jpg: a JPG image.
+	//
+	// 	- pdf: a PDF file.
+	//
+	// 	- txt: a TXT file. You can specify this value to extract the text content of the source document. Only presentation, text, or spreadsheet documents can be converted to a TXT file. If the source document is a spreadsheet, only one TXT is created and sheet-related parameters do not take effect.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// png
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The address template of the output file.
+	//
+	// Specify the value in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI template](https://help.aliyun.com/document_detail/465762.html).
+	//
+	// >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+	//
 	// example:
 	//
 	// oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The prefix of the storage address of the output file.
+	//
+	// Specify the prefix in the `oss://${Bucket}/${Prefix}/` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Prefix}` is the prefix of the output file.
+	//
+	// >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+	//
 	// example:
 	//
 	// oss://bucket1/
-	TargetURIPrefix *string     `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
-	TrimPolicy      *TrimPolicy `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
+	TargetURIPrefix *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
+	// The trim policy for converting a spreadsheet file. Empty rows and columns may generate blank spaces in the output file if no appropriate trim policy is specified.
+	TrimPolicy *TrimPolicy `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"file_id": "abc"}
@@ -11089,6 +13020,11 @@ func (s *CreateOfficeConversionTaskRequest) SetSourceURI(v string) *CreateOffice
 	return s
 }
 
+func (s *CreateOfficeConversionTaskRequest) SetSources(v []*CreateOfficeConversionTaskRequestSources) *CreateOfficeConversionTaskRequest {
+	s.Sources = v
+	return s
+}
+
 func (s *CreateOfficeConversionTaskRequest) SetStartPage(v int64) *CreateOfficeConversionTaskRequest {
 	s.StartPage = &v
 	return s
@@ -11124,124 +13060,301 @@ func (s *CreateOfficeConversionTaskRequest) SetUserData(v string) *CreateOfficeC
 	return s
 }
 
+type CreateOfficeConversionTaskRequestSources struct {
+	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateOfficeConversionTaskRequestSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOfficeConversionTaskRequestSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOfficeConversionTaskRequestSources) SetRotate(v int64) *CreateOfficeConversionTaskRequestSources {
+	s.Rotate = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequestSources) SetURI(v string) *CreateOfficeConversionTaskRequestSources {
+	s.URI = &v
+	return s
+}
+
 type CreateOfficeConversionTaskShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The ending page for document conversion. The default value is -1, which converts the file until the last page of the file.
+	//
+	// >
+	//
+	// 	- If the source is a spreadsheet file, specify the index number of the corresponding sheet instead.
+	//
+	// 	- If you convert a large number of pages within the document, we recommend that you split the pages into several document conversion tasks to prevent conversion timeouts.
+	//
+	// 	- This parameter takes effect only when you convert the file into an image. It does not take effect when you convert the file into a PDF or TXT file.
+	//
 	// example:
 	//
 	// -1
 	EndPage *int64 `json:"EndPage,omitempty" xml:"EndPage,omitempty"`
+	// Specifies whether to return only the first resulting image when you convert a spreadsheet document to images. The number of rows and the number of columns in the first image are determined by the automatic splitting process. Valid values:
+	//
+	// 	- false (default): does not return only the first resulting image. All the resulting images are returned.
+	//
+	// 	- true: returns only the first resulting image. A thumbnail is generated.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// false
 	FirstPage *bool `json:"FirstPage,omitempty" xml:"FirstPage,omitempty"`
+	// Specifies whether to convert all rows of a spreadsheet document to one single image or a single-page PDF document when you convert the table document to an image or a PDF document. Valid values:
+	//
+	// 	- false (default): converts all rows of the document to multiple images or a multi-page PDF document. This is the default value.
+	//
+	// 	- true: converts all rows of the document to one single image or a single-page PDF document.
+	//
 	// example:
 	//
 	// false
 	FitToHeight *bool `json:"FitToHeight,omitempty" xml:"FitToHeight,omitempty"`
+	// Specifies whether to convert all columns of a spreadsheet document to one single image or a single-page PDF document when you convert the spreadsheet file to an image or a PDF document. Valid values:
+	//
+	// 	- false (default): converts all columns of the document to multiple images or a multi-page PDF document.
+	//
+	// 	- true: converts all columns of the document to one single image or a single-page PDF document.
+	//
 	// example:
 	//
 	// false
 	FitToWidth *bool `json:"FitToWidth,omitempty" xml:"FitToWidth,omitempty"`
+	// Specifies whether to retain line feeds in the output file when a document is converted to a text file. Valid values:
+	//
+	// 	- false (default): does not retain the line feeds.
+	//
+	// 	- true: retains the line feeds.
+	//
 	// example:
 	//
 	// false
 	HoldLineFeed *bool `json:"HoldLineFeed,omitempty" xml:"HoldLineFeed,omitempty"`
+	// The dots per inch (DPI) of output images. Valid values: 96 to 600. Default value: 96.
+	//
 	// example:
 	//
 	// 96
 	ImageDPI *int64 `json:"ImageDPI,omitempty" xml:"ImageDPI,omitempty"`
+	// Specifies whether to convert the document to a long image. Valid values:
+	//
+	// 	- false (default): does not convert the document to a long image.
+	//
+	// 	- true: converts the document to a long image.
+	//
+	// >  You can convert up to 20 pages of a document into a long image. If you convert more than 20 pages to a long image, an error may occur.
+	//
 	// example:
 	//
 	// false
 	LongPicture *bool `json:"LongPicture,omitempty" xml:"LongPicture,omitempty"`
+	// Specifies whether to convert the document to a long text file. Valid values:
+	//
+	// 	- false (default): does not convert the document to a long text file. Each page of the document is converted to a text file.
+	//
+	// 	- true: converts the entire document to a long text file.
+	//
 	// example:
 	//
 	// false
 	LongText *bool `json:"LongText,omitempty" xml:"LongText,omitempty"`
+	// The maximum number of spreadsheet columns to be converted to an image. By default, all columns within the spreadsheet file are converted.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// 10
 	MaxSheetColumn *int64 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
+	// The maximum number of spreadsheet rows to be converted to an image. By default, all rows within the spreadsheet file are converted.
+	//
+	// >  This parameter takes effect only when the **LongPicture*	- parameter is set to `true`.
+	//
 	// example:
 	//
 	// 10
-	MaxSheetRow        *int64  `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	MaxSheetRow *int64 `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The numbers of pages to be converted. This parameter takes precedence over the StartPage and EndPage parameters. The value of this parameter can be in different formats:
+	//
+	// 	- If you specify pages separately by page number, separate page numbers with commas (,). Example: 1,2
+	//
+	// 	- If you specify consecutive pages by using a page range, connect the starting and ending page numbers with a hyphen (-). Example: 1,2-4,7
+	//
 	// example:
 	//
 	// 1,2-4,7
 	Pages *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// Specifies whether to place sheets of paper horizontally for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+	//
+	// 	- false (default): does not place sheets of paper horizontally. Paper sheets are placed vertically.
+	//
+	// 	- true: places sheets of paper horizontally.
+	//
 	// example:
 	//
 	// false
 	PaperHorizontal *bool `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
+	// The paper size for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+	//
+	// 	- A0
+	//
+	// 	- A2
+	//
+	// 	- A4 (default)
+	//
+	// >  This parameter takes effect only when the **FitToHeight*	- and **FitToWidth*	- parameters are specified.
+	//
 	// example:
 	//
 	// A4
 	PaperSize *string `json:"PaperSize,omitempty" xml:"PaperSize,omitempty"`
+	// The password that protects the source document. To convert a password-protected document, specify this parameter.
+	//
 	// example:
 	//
 	// ********
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
+	//
 	// example:
 	//
 	// 60
 	Quality *int64 `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	// The percentage scale relative to the source document. Valid values: 20 to 200. The default value is 100, which indicates that the document is not scaled.
+	//
+	// >  A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+	//
 	// example:
 	//
 	// 100
 	ScalePercentage *int64 `json:"ScalePercentage,omitempty" xml:"ScalePercentage,omitempty"`
+	// The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
+	//
 	// example:
 	//
 	// 1
 	SheetCount *int64 `json:"SheetCount,omitempty" xml:"SheetCount,omitempty"`
+	// The index number of the sheet to be converted to an image. The value ranges from 1 to the index number of the last sheet. By default, the conversion starts from the first sheet.
+	//
 	// example:
 	//
 	// 1
 	SheetIndex *int64 `json:"SheetIndex,omitempty" xml:"SheetIndex,omitempty"`
+	// Specifies whether to display comments in resulting images when a text document is converted to images. Valid values:
+	//
+	// 	- false (default): does not display comments in resulting images.
+	//
+	// 	- true: displays comments in resulting images.
+	//
 	// example:
 	//
 	// false
 	ShowComments *bool `json:"ShowComments,omitempty" xml:"ShowComments,omitempty"`
+	// The name extension of the source file. By default, the type of the source file is determined based on the name extension of the source object in OSS. If the object in OSS does not have a name extension, you can specify this parameter. Valid values:
+	//
+	// 	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+	//
+	// 	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+	//
+	// 	- Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+	//
+	// 	- PDF documents: pdf
+	//
 	// example:
 	//
 	// doc
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required.
+	// The URI of the source file.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
-	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	SourceURI     *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	// The starting page for document conversion. Default value: 1.
+	//
+	// >
+	//
+	// 	- If the document is a spreadsheet file, specify the index number of the corresponding sheet instead.
+	//
+	// 	- This parameter takes effect only when you convert the file to an image format. It does not take effect when you convert the file into a PDF or TXT file.
+	//
 	// example:
 	//
 	// 1
 	StartPage *int64 `json:"StartPage,omitempty" xml:"StartPage,omitempty"`
+	// The custom tags in dictionary format. You can use the custom tags to search for the task.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The format of the output file. Valid values:
+	//
+	// 	- png: a PNG image.
+	//
+	// 	- jpg: a JPG image.
+	//
+	// 	- pdf: a PDF file.
+	//
+	// 	- txt: a TXT file. You can specify this value to extract the text content of the source document. Only presentation, text, or spreadsheet documents can be converted to a TXT file. If the source document is a spreadsheet, only one TXT is created and sheet-related parameters do not take effect.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// png
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The address template of the output file.
+	//
+	// Specify the value in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI template](https://help.aliyun.com/document_detail/465762.html).
+	//
+	// >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+	//
 	// example:
 	//
 	// oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}
 	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	// The prefix of the storage address of the output file.
+	//
+	// Specify the prefix in the `oss://${Bucket}/${Prefix}/` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Prefix}` is the prefix of the output file.
+	//
+	// >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+	//
 	// example:
 	//
 	// oss://bucket1/
-	TargetURIPrefix  *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
+	TargetURIPrefix *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
+	// The trim policy for converting a spreadsheet file. Empty rows and columns may generate blank spaces in the output file if no appropriate trim policy is specified.
 	TrimPolicyShrink *string `json:"TrimPolicy,omitempty" xml:"TrimPolicy,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"file_id": "abc"}
@@ -11376,6 +13489,11 @@ func (s *CreateOfficeConversionTaskShrinkRequest) SetSourceURI(v string) *Create
 	return s
 }
 
+func (s *CreateOfficeConversionTaskShrinkRequest) SetSourcesShrink(v string) *CreateOfficeConversionTaskShrinkRequest {
+	s.SourcesShrink = &v
+	return s
+}
+
 func (s *CreateOfficeConversionTaskShrinkRequest) SetStartPage(v int64) *CreateOfficeConversionTaskShrinkRequest {
 	s.StartPage = &v
 	return s
@@ -11412,14 +13530,20 @@ func (s *CreateOfficeConversionTaskShrinkRequest) SetUserData(v string) *CreateO
 }
 
 type CreateOfficeConversionTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 2C2-1I0EG57VR37J4rQ8oKG6C9*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FF3B7D81-66AE-47E0-BF69-157DCF18*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// formatconvert-00bec802-073a-4b61-ba3b-39bc2fdd*****
@@ -11479,41 +13603,78 @@ func (s *CreateOfficeConversionTaskResponse) SetBody(v *CreateOfficeConversionTa
 }
 
 type CreateProjectRequest struct {
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in each dataset. Default value: 10000000000.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in each dataset. Default value: 100000000000.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum size of files in each dataset. If the maximum size is exceeded, no indexes can be added. Unit: bytes. Default value: 90000000000000000.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The description of the project. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
+	//
 	// example:
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// The name of the project. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 128 characters in length
+	//
+	// 	- and can contain only letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a letter or an underscores (_).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the Resource Access Management (RAM) role. You must attach the RAM role to IMM to allow IMM to access other cloud resources, such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+	//
+	// You can also create a custom role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/477257.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
-	ServiceRole *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	Tag         []*CreateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The tags.
+	Tag []*CreateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the workflow template. You can leave this parameter empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
 	// Official:AllFunction
@@ -11584,7 +13745,17 @@ func (s *CreateProjectRequest) SetTemplateId(v string) *CreateProjectRequest {
 }
 
 type CreateProjectRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11607,41 +13778,78 @@ func (s *CreateProjectRequestTag) SetValue(v string) *CreateProjectRequestTag {
 }
 
 type CreateProjectShrinkRequest struct {
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in each dataset. Default value: 10000000000.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in each dataset. Default value: 100000000000.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum size of files in each dataset. If the maximum size is exceeded, no indexes can be added. Unit: bytes. Default value: 90000000000000000.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The description of the project. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
+	//
 	// example:
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// The name of the project. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 128 characters in length
+	//
+	// 	- and can contain only letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a letter or an underscores (_).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the Resource Access Management (RAM) role. You must attach the RAM role to IMM to allow IMM to access other cloud resources, such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+	//
+	// You can also create a custom role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/477257.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the workflow template. You can leave this parameter empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
 	// Official:AllFunction
@@ -11712,7 +13920,10 @@ func (s *CreateProjectShrinkRequest) SetTemplateId(v string) *CreateProjectShrin
 }
 
 type CreateProjectResponseBody struct {
+	// The project. For more information, click Project.
 	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F7D235C-76FF-4B65-800C-8238AE3F****
@@ -11767,13 +13978,40 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateSimilarImageClusteringTaskRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
-	DatasetName  *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
-	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateSimilarImageClusteringTaskRequest) String() string {
@@ -11810,13 +14048,40 @@ func (s *CreateSimilarImageClusteringTaskRequest) SetUserData(v string) *CreateS
 }
 
 type CreateSimilarImageClusteringTaskShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
-	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "User": "Jane"
+	//
+	// }
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
+	// example:
+	//
+	// test-data
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateSimilarImageClusteringTaskShrinkRequest) String() string {
@@ -11853,14 +14118,20 @@ func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetUserData(v string) *C
 }
 
 type CreateSimilarImageClusteringTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 3BF-1UhtFyrua71eOkFlqYq23Co****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// SimilarImageClustering-48d0a0f3-8459-47f4-b8af-ff49c64****
@@ -11920,71 +14191,110 @@ func (s *CreateSimilarImageClusteringTaskResponse) SetBody(v *CreateSimilarImage
 }
 
 type CreateStoryRequest struct {
+	// The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
+	//
+	// >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
 	Address *AddressForStory `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
+	//
 	// example:
 	//
 	// test
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. Labels specify the custom information of the story. This enables retrieval based on your business requirements.
+	//
 	// example:
 	//
 	// {"Bucket": "examplebucket"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. For information about how to obtain the name of a dataset, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than the value of MinFileCount. To provide the desired effect, the algorithm limits the maximum number of photo files to 1,500. If you set MaxFileCount to a value greater than 1,500, this parameter does not take effect.
+	//
 	// example:
 	//
 	// 3
 	MaxFileCount *int64 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	// The minimum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than 1. If the actual number of candidate photos is less than the value of this parameter, a null story is returned.
+	//
 	// example:
 	//
 	// 1
 	MinFileCount *int64 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The topic name of the asynchronous reverse notification.
+	//
 	// example:
 	//
 	// test-topic
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// The ID of the story. This parameter is optional. If you leave this parameter empty, IMM assigns a unique identifier to the story. You can query and update a story based on its ID. You can also manually create an ID for a story. After you create an ID for a story, you must specify this parameter to pass the ID into the system. This way, IMM can record the ID as the unique identifier of the story. If you pass an existing ID into the system, IMM updates the story that corresponds to the ID.
+	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The end time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+	//
 	// example:
 	//
 	// 2021-12-30T16:00:00Z
 	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// name1
 	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The start time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+	//
 	// example:
 	//
 	// 2016-12-30T16:00:00Z
 	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// Solo
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PeopleMemory
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// The tags. You can specify this parameter in one of the following scenarios:
+	//
+	// 	- Specify tags as custom data, which is returned in messages provided by Simple Message Queue.
+	//
+	// 	- Search for tasks by tag.
+	//
+	// 	- Specify tags as variables in destination URIs.
+	//
 	// example:
 	//
 	// {"key":"val"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -12085,71 +14395,110 @@ func (s *CreateStoryRequest) SetUserData(v string) *CreateStoryRequest {
 }
 
 type CreateStoryShrinkRequest struct {
+	// The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
+	//
+	// >  If you are located in Hong Kong (China), Macao (China), Taiwan (China), or overseas, you cannot specify an address in the Chinese mainland by using this parameter.
 	AddressShrink *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
+	//
 	// example:
 	//
 	// test
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. Labels specify the custom information of the story. This enables retrieval based on your business requirements.
+	//
 	// example:
 	//
 	// {"Bucket": "examplebucket"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. For information about how to obtain the name of a dataset, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than the value of MinFileCount. To provide the desired effect, the algorithm limits the maximum number of photo files to 1,500. If you set MaxFileCount to a value greater than 1,500, this parameter does not take effect.
+	//
 	// example:
 	//
 	// 3
 	MaxFileCount *int64 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	// The minimum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than 1. If the actual number of candidate photos is less than the value of this parameter, a null story is returned.
+	//
 	// example:
 	//
 	// 1
 	MinFileCount *int64 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The topic name of the asynchronous reverse notification.
+	//
 	// example:
 	//
 	// test-topic
 	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// The ID of the story. This parameter is optional. If you leave this parameter empty, IMM assigns a unique identifier to the story. You can query and update a story based on its ID. You can also manually create an ID for a story. After you create an ID for a story, you must specify this parameter to pass the ID into the system. This way, IMM can record the ID as the unique identifier of the story. If you pass an existing ID into the system, IMM updates the story that corresponds to the ID.
+	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The end time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+	//
 	// example:
 	//
 	// 2021-12-30T16:00:00Z
 	StoryEndTime *string `json:"StoryEndTime,omitempty" xml:"StoryEndTime,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// name1
 	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The start time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+	//
 	// example:
 	//
 	// 2016-12-30T16:00:00Z
 	StoryStartTime *string `json:"StoryStartTime,omitempty" xml:"StoryStartTime,omitempty"`
+	// The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// Solo
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PeopleMemory
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// The tags. You can specify this parameter in one of the following scenarios:
+	//
+	// 	- Specify tags as custom data, which is returned in messages provided by Simple Message Queue.
+	//
+	// 	- Search for tasks by tag.
+	//
+	// 	- Specify tags as variables in destination URIs.
+	//
 	// example:
 	//
 	// {"key":"val"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "testuid","Name": "test-user","Avatar": "http://test.com/testuid"}
@@ -12250,14 +14599,20 @@ func (s *CreateStoryShrinkRequest) SetUserData(v string) *CreateStoryShrinkReque
 }
 
 type CreateStoryResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 392-1CqzvESGTEeNZ2OWFbRKIM****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// CreateStory-4ef6ff43-edf3-4612-9cc4-0c7f9e19****
@@ -12317,23 +14672,38 @@ func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryRe
 }
 
 type CreateTriggerRequest struct {
+	// The processing templates.
+	//
 	// This parameter is required.
 	Actions []*CreateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The data source configurations.
+	//
 	// This parameter is required.
-	Input        *Input                            `json:"Input,omitempty" xml:"Input,omitempty"`
+	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+	//
+	// Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
 	Notification *CreateTriggerRequestNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key":"val"}
@@ -12379,13 +14749,17 @@ func (s *CreateTriggerRequest) SetTags(v map[string]interface{}) *CreateTriggerR
 }
 
 type CreateTriggerRequestActions struct {
+	// The policy configurations for handling failures.
 	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// doc/convert
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -12413,6 +14787,7 @@ func (s *CreateTriggerRequestActions) SetParameters(v []*string) *CreateTriggerR
 }
 
 type CreateTriggerRequestNotification struct {
+	// The Simple Message Queue notification message configurations.
 	MNS *MNS `json:"MNS,omitempty" xml:"MNS,omitempty"`
 }
 
@@ -12430,23 +14805,38 @@ func (s *CreateTriggerRequestNotification) SetMNS(v *MNS) *CreateTriggerRequestN
 }
 
 type CreateTriggerShrinkRequest struct {
+	// The processing templates.
+	//
 	// This parameter is required.
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// The data source configurations.
+	//
 	// This parameter is required.
-	InputShrink        *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+	//
+	// Activate and connect to EventBridge in the same region as the IMM project. For more information, see IMM events. Activate Simple Message Queue in the same region as the IMM project and configure a subscription.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key":"val"}
@@ -12492,7 +14882,14 @@ func (s *CreateTriggerShrinkRequest) SetTagsShrink(v string) *CreateTriggerShrin
 }
 
 type CreateTriggerResponseBody struct {
+	// The ID of the trigger.
+	//
+	// example:
+	//
+	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
@@ -12547,25 +14944,38 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 type CreateVideoLabelClassificationTaskRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the video file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket1/object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -12611,25 +15021,38 @@ func (s *CreateVideoLabelClassificationTaskRequest) SetUserData(v string) *Creat
 }
 
 type CreateVideoLabelClassificationTaskShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the video file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://bucket1/object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags, which can be used to search for and filter asynchronous tasks.
+	//
 	// example:
 	//
 	// {"test":"val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -12675,14 +15098,20 @@ func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetUserData(v string) 
 }
 
 type CreateVideoLabelClassificationTaskResponseBody struct {
+	// The event ID of the current task. You can use [EventBridge](https://www.alibabacloud.com/en/product/eventbridge) to query the ID and obtain the task information notification.
+	//
 	// example:
 	//
 	// 03F-1Qt1Yn5RZZ0Zh3ZdYlDblv7****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFFE0B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the current task. You can call the [GetTask](~~GetTask~~) operation to view the task information or the [GetVideoLabelClassificationResult](https://help.aliyun.com/document_detail/478224.html) operation to obtain the result of the video label detection task.
+	//
 	// example:
 	//
 	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec*****
@@ -12742,34 +15171,50 @@ func (s *CreateVideoLabelClassificationTaskResponse) SetBody(v *CreateVideoLabel
 }
 
 type CreateVideoModerationTaskRequest struct {
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
+	//
 	// example:
 	//
 	// 200
 	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Scenes      []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The scenarios of video moderation.
+	Scenes []*string `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// The OSS URI of the video.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags. The custom tags help you retrieve the task.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -12830,34 +15275,50 @@ func (s *CreateVideoModerationTaskRequest) SetUserData(v string) *CreateVideoMod
 }
 
 type CreateVideoModerationTaskShrinkRequest struct {
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The interval of capturing video frames. Unit: seconds. Valid values: 1 to 600. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The maximum number of frames that can be captured from the video. Valid values: 5 to 3600. Default value: 200.
+	//
 	// example:
 	//
 	// 200
 	MaxFrames *int64 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. For information about the asynchronous notification format, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The scenarios of video moderation.
 	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	// The OSS URI of the video.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The custom tags. The custom tags help you retrieve the task.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -12918,14 +15379,20 @@ func (s *CreateVideoModerationTaskShrinkRequest) SetUserData(v string) *CreateVi
 }
 
 type CreateVideoModerationTaskResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 2E6-1I0FGn0zFnl5AflRfhzClma*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// VideoModeration-9442a216-4691-4a48-846d-76daccaf*****
@@ -12985,12 +15452,16 @@ func (s *CreateVideoModerationTaskResponse) SetBody(v *CreateVideoModerationTask
 }
 
 type DeleteBatchRequest struct {
+	// The ID of the batch processing task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13018,6 +15489,8 @@ func (s *DeleteBatchRequest) SetProjectName(v string) *DeleteBatchRequest {
 }
 
 type DeleteBatchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 91AC8C98-0F36-49D2-8290-742E24******
@@ -13067,18 +15540,26 @@ func (s *DeleteBatchResponse) SetBody(v *DeleteBatchResponseBody) *DeleteBatchRe
 }
 
 type DeleteBindingRequest struct {
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the OSS bucket to which the dataset is bound.
+	//
+	// Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13111,6 +15592,8 @@ func (s *DeleteBindingRequest) SetURI(v string) *DeleteBindingRequest {
 }
 
 type DeleteBindingResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ACDFE467-C817-4B36-951A-6EB5A592****
@@ -13160,12 +15643,16 @@ func (s *DeleteBindingResponse) SetBody(v *DeleteBindingResponseBody) *DeleteBin
 }
 
 type DeleteDatasetRequest struct {
+	// The name of the dataset.[](https://help.aliyun.com/zh/imm/user-guide/create-datasets?spm=a2c4g.11186623.0.0.453e3cbf9vcZrq)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.0.i30)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13193,6 +15680,8 @@ func (s *DeleteDatasetRequest) SetProjectName(v string) *DeleteDatasetRequest {
 }
 
 type DeleteDatasetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564B8B-BA5C-4499-B196-D9B9E76E****
@@ -13242,10 +15731,28 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteFileMetaRequest struct {
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-datset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the file in OSS.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the path of the object with the extension included.
+	//
+	// The URI of the file in Photo and Drive Service must be in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13278,6 +15785,8 @@ func (s *DeleteFileMetaRequest) SetURI(v string) *DeleteFileMetaRequest {
 }
 
 type DeleteFileMetaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F82D6C9-5AC0-49F9-914D-F02678F3****
@@ -13327,11 +15836,29 @@ func (s *DeleteFileMetaResponse) SetBody(v *DeleteFileMetaResponseBody) *DeleteF
 }
 
 type DeleteLocationDateClusterRequest struct {
+	// The name of the dataset. For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the group to be deleted.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -13359,6 +15886,8 @@ func (s *DeleteLocationDateClusterRequest) SetProjectName(v string) *DeleteLocat
 }
 
 type DeleteLocationDateClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B121940C-9794-4EE3-8D6E-F8EC525F****
@@ -13408,6 +15937,8 @@ func (s *DeleteLocationDateClusterResponse) SetBody(v *DeleteLocationDateCluster
 }
 
 type DeleteProjectRequest struct {
+	// The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13430,6 +15961,8 @@ func (s *DeleteProjectRequest) SetProjectName(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
@@ -13479,18 +16012,24 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type DeleteStoryRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the story to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13523,6 +16062,8 @@ func (s *DeleteStoryRequest) SetProjectName(v string) *DeleteStoryRequest {
 }
 
 type DeleteStoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
@@ -13572,12 +16113,16 @@ func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryRe
 }
 
 type DeleteTriggerRequest struct {
+	// The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13605,6 +16150,8 @@ func (s *DeleteTriggerRequest) SetProjectName(v string) *DeleteTriggerRequest {
 }
 
 type DeleteTriggerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
@@ -13654,6 +16201,8 @@ func (s *DeleteTriggerResponse) SetBody(v *DeleteTriggerResponseBody) *DeleteTri
 }
 
 type DetachOSSBucketRequest struct {
+	// The OSS bucket that you want to unbind.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13676,6 +16225,8 @@ func (s *DetachOSSBucketRequest) SetOSSBucket(v string) *DetachOSSBucketRequest 
 }
 
 type DetachOSSBucketResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
@@ -13725,13 +16276,20 @@ func (s *DetachOSSBucketResponse) SetBody(v *DetachOSSBucketResponseBody) *Detac
 }
 
 type DetectImageBodiesRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The accuracy level of detecting and recognizing specific content in the image. Valid values: 0 to 1. Default value: 0.6. A higher sensitivity specifies that more image details can be detected.
+	//
 	// if can be null:
 	// true
 	//
@@ -13739,6 +16297,10 @@ type DetectImageBodiesRequest struct {
 	//
 	// 0.6
 	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -13774,13 +16336,20 @@ func (s *DetectImageBodiesRequest) SetSourceURI(v string) *DetectImageBodiesRequ
 }
 
 type DetectImageBodiesShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The accuracy level of detecting and recognizing specific content in the image. Valid values: 0 to 1. Default value: 0.6. A higher sensitivity specifies that more image details can be detected.
+	//
 	// if can be null:
 	// true
 	//
@@ -13788,6 +16357,10 @@ type DetectImageBodiesShrinkRequest struct {
 	//
 	// 0.6
 	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -13823,7 +16396,10 @@ func (s *DetectImageBodiesShrinkRequest) SetSourceURI(v string) *DetectImageBodi
 }
 
 type DetectImageBodiesResponseBody struct {
+	// The human bodies.
 	Bodies []*Body `json:"Bodies,omitempty" xml:"Bodies,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 501339F9-4B70-0CE2-AB8C-866C********
@@ -13878,13 +16454,22 @@ func (s *DetectImageBodiesResponse) SetBody(v *DetectImageBodiesResponseBody) *D
 }
 
 type DetectImageCarsRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13917,13 +16502,22 @@ func (s *DetectImageCarsRequest) SetSourceURI(v string) *DetectImageCarsRequest 
 }
 
 type DetectImageCarsShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image file.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13956,8 +16550,12 @@ func (s *DetectImageCarsShrinkRequest) SetSourceURI(v string) *DetectImageCarsSh
 }
 
 type DetectImageCarsResponseBody struct {
+	// The vehicles.
+	//
 	// This parameter is required.
 	Cars []*Car `json:"Cars,omitempty" xml:"Cars,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A8745209-DD0E-027E-8ABA-085E0C******
@@ -14012,13 +16610,22 @@ func (s *DetectImageCarsResponse) SetBody(v *DetectImageCarsResponseBody) *Detec
 }
 
 type DetectImageCodesRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14051,13 +16658,22 @@ func (s *DetectImageCodesRequest) SetSourceURI(v string) *DetectImageCodesReques
 }
 
 type DetectImageCodesShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the image file is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14090,8 +16706,12 @@ func (s *DetectImageCodesShrinkRequest) SetSourceURI(v string) *DetectImageCodes
 }
 
 type DetectImageCodesResponseBody struct {
+	// The barcodes or QR codes.
+	//
 	// This parameter is required.
 	Codes []*Codes `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -14146,17 +16766,44 @@ func (s *DetectImageCodesResponse) SetBody(v *DetectImageCodesResponseBody) *Det
 }
 
 type DetectImageCroppingRequest struct {
+	// The cropping ratios. You can specify up to five cropping ratios. Take note of the following requirements:
+	//
+	// 	- The ratio must be an integer between 0 and 20.
+	//
+	// 	- The ratio must range from 0.5 to 2.
+	//
+	// 	- If you leave this parameter empty, the default processing logic is `["auto"]`.
+	//
+	// >  Errors are reported in one of the following cases:\\
+	//
+	// You specify more than five cropping ratios.\\
+	//
+	// You pass an empty list to the system.\\
+	//
+	// You specify a ratio that is not an integer, such as `4.1:3`.\\
+	//
+	// The ratio is beyond the range of 0.5 to 2.
+	//
 	// example:
 	//
 	// ["1:1"]
-	AspectRatios     *string           `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
+	AspectRatios *string `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+	//
 	// example:
 	//
 	// oss://imm-test/testcases/facetest.jpg
@@ -14192,17 +16839,44 @@ func (s *DetectImageCroppingRequest) SetSourceURI(v string) *DetectImageCropping
 }
 
 type DetectImageCroppingShrinkRequest struct {
+	// The cropping ratios. You can specify up to five cropping ratios. Take note of the following requirements:
+	//
+	// 	- The ratio must be an integer between 0 and 20.
+	//
+	// 	- The ratio must range from 0.5 to 2.
+	//
+	// 	- If you leave this parameter empty, the default processing logic is `["auto"]`.
+	//
+	// >  Errors are reported in one of the following cases:\\
+	//
+	// You specify more than five cropping ratios.\\
+	//
+	// You pass an empty list to the system.\\
+	//
+	// You specify a ratio that is not an integer, such as `4.1:3`.\\
+	//
+	// The ratio is beyond the range of 0.5 to 2.
+	//
 	// example:
 	//
 	// ["1:1"]
-	AspectRatios           *string `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
+	AspectRatios *string `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+	//
 	// example:
 	//
 	// oss://imm-test/testcases/facetest.jpg
@@ -14238,7 +16912,10 @@ func (s *DetectImageCroppingShrinkRequest) SetSourceURI(v string) *DetectImageCr
 }
 
 type DetectImageCroppingResponseBody struct {
+	// The image croppings.
 	Croppings []*CroppingSuggestion `json:"Croppings,omitempty" xml:"Croppings,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91AC8C98-0F36-49D2-8290-742E24D*****
@@ -14293,14 +16970,26 @@ func (s *DetectImageCroppingResponse) SetBody(v *DetectImageCroppingResponseBody
 }
 
 type DetectImageFacesRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI   *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI of the image object.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageFacesRequest) String() string {
@@ -14327,14 +17016,26 @@ func (s *DetectImageFacesRequest) SetSourceURI(v string) *DetectImageFacesReques
 }
 
 type DetectImageFacesShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI   *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The OSS URI of the image object.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object.jpg
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectImageFacesShrinkRequest) String() string {
@@ -14361,7 +17062,10 @@ func (s *DetectImageFacesShrinkRequest) SetSourceURI(v string) *DetectImageFaces
 }
 
 type DetectImageFacesResponseBody struct {
+	// The faces.
 	Faces []*Figure `json:"Faces,omitempty" xml:"Faces,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -14416,19 +17120,30 @@ func (s *DetectImageFacesResponse) SetBody(v *DetectImageFacesResponseBody) *Det
 }
 
 type DetectImageLabelsRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immimagetest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-test/testcases/facetest.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The threshold of the label confidence. Labels whose confidence is lower than the specified threshold are not returned in the response. Valid values: 0 to 1. If you leave this parameter empty, the algorithm provides a default threshold.
+	//
 	// example:
 	//
 	// 1
@@ -14464,19 +17179,30 @@ func (s *DetectImageLabelsRequest) SetThreshold(v float32) *DetectImageLabelsReq
 }
 
 type DetectImageLabelsShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immimagetest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which you store the image.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-test/testcases/facetest.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The threshold of the label confidence. Labels whose confidence is lower than the specified threshold are not returned in the response. Valid values: 0 to 1. If you leave this parameter empty, the algorithm provides a default threshold.
+	//
 	// example:
 	//
 	// 1
@@ -14512,7 +17238,10 @@ func (s *DetectImageLabelsShrinkRequest) SetThreshold(v float32) *DetectImageLab
 }
 
 type DetectImageLabelsResponseBody struct {
+	// The labels that are detected.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91AC8C98-0F36-49D2-8290-742E24DF1F69
@@ -14567,13 +17296,22 @@ func (s *DetectImageLabelsResponse) SetBody(v *DetectImageLabelsResponseBody) *D
 }
 
 type DetectImageScoreRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.[](~~477051~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://bucketname/objectname
@@ -14604,13 +17342,22 @@ func (s *DetectImageScoreRequest) SetSourceURI(v string) *DetectImageScoreReques
 }
 
 type DetectImageScoreShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project.[](~~477051~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the input image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://bucketname/objectname
@@ -14641,7 +17388,10 @@ func (s *DetectImageScoreShrinkRequest) SetSourceURI(v string) *DetectImageScore
 }
 
 type DetectImageScoreResponseBody struct {
+	// The quality score of the image.
 	ImageScore *DetectImageScoreResponseBodyImageScore `json:"ImageScore,omitempty" xml:"ImageScore,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -14667,6 +17417,8 @@ func (s *DetectImageScoreResponseBody) SetRequestId(v string) *DetectImageScoreR
 }
 
 type DetectImageScoreResponseBodyImageScore struct {
+	// The overall quality score.
+	//
 	// example:
 	//
 	// 0.6
@@ -14716,13 +17468,22 @@ func (s *DetectImageScoreResponse) SetBody(v *DetectImageScoreResponseBody) *Det
 }
 
 type DetectImageTextsRequest struct {
+	// **If you have no special requirements, leave this field empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The Object Storage Service (OSS) URI of the file.
+	//
+	// Specify the URI in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of an OSS bucket that is in the same region as the current project. ${Object} specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14755,13 +17516,22 @@ func (s *DetectImageTextsRequest) SetSourceURI(v string) *DetectImageTextsReques
 }
 
 type DetectImageTextsShrinkRequest struct {
+	// **If you have no special requirements, leave this field empty.**
+	//
+	// The configurations of authorization chains. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The Object Storage Service (OSS) URI of the file.
+	//
+	// Specify the URI in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of an OSS bucket that is in the same region as the current project. ${Object} specifies the path of the object with the extension included.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14794,8 +17564,12 @@ func (s *DetectImageTextsShrinkRequest) SetSourceURI(v string) *DetectImageTexts
 }
 
 type DetectImageTextsResponseBody struct {
+	// OCR text blocks.
 	OCRContents []*OCRContents `json:"OCRContents,omitempty" xml:"OCRContents,omitempty" type:"Repeated"`
-	OCRTexts    *string        `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
+	// The full Optical Character Recognition (OCR) text, which is spliced by using the content of OCRContents.
+	OCRTexts *string `json:"OCRTexts,omitempty" xml:"OCRTexts,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
@@ -14855,9 +17629,24 @@ func (s *DetectImageTextsResponse) SetBody(v *DetectImageTextsResponseBody) *Det
 }
 
 type DetectMediaMetaRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the media object in Object Storage Service (OSS).
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.mp4
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectMediaMetaRequest) String() string {
@@ -14884,9 +17673,24 @@ func (s *DetectMediaMetaRequest) SetSourceURI(v string) *DetectMediaMetaRequest 
 }
 
 type DetectMediaMetaShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
+	// example:
+	//
+	// test-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the media object in Object Storage Service (OSS).
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// example:
+	//
+	// oss://examplebucket/sampleobject.mp4
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
 }
 
 func (s DetectMediaMetaShrinkRequest) String() string {
@@ -14913,86 +17717,132 @@ func (s *DetectMediaMetaShrinkRequest) SetSourceURI(v string) *DetectMediaMetaSh
 }
 
 type DetectMediaMetaResponseBody struct {
+	// The addresses.
+	//
+	// This parameter is returned only when address information is detected.
 	Addresses []*Address `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	// The album.
+	//
 	// example:
 	//
 	// unable
 	Album *string `json:"Album,omitempty" xml:"Album,omitempty"`
+	// The album artist.
+	//
 	// example:
 	//
 	// unable
 	AlbumArtist *string `json:"AlbumArtist,omitempty" xml:"AlbumArtist,omitempty"`
+	// The artist.
+	//
 	// example:
 	//
 	// unable
-	Artist       *string        `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	Artist *string `json:"Artist,omitempty" xml:"Artist,omitempty"`
+	// The audio streams.
 	AudioStreams []*AudioStream `json:"AudioStreams,omitempty" xml:"AudioStreams,omitempty" type:"Repeated"`
+	// The bitrate. Unit: bit/s.
+	//
 	// example:
 	//
 	// 13164131
 	Bitrate *int64 `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	// The composer.
+	//
 	// example:
 	//
 	// unable
 	Composer *string `json:"Composer,omitempty" xml:"Composer,omitempty"`
+	// The total duration of the video. Unit: seconds.
+	//
 	// example:
 	//
 	// 15.263000
 	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The full format name.
+	//
 	// example:
 	//
 	// QuickTime / MOV
 	FormatLongName *string `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
+	// The abbreviated format name.
+	//
 	// example:
 	//
 	// mov,mp4,m4a,3gp,3g2,mj2
 	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The language of the content. For more information, see the ISO 639-2 Alpha-3 codes for the representation of names of languages.
+	//
 	// example:
 	//
 	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The coordinate pair of the central point. The coordinate pair consists of latitude and longitude values. This parameter value must be in the "latitude,longitude" format. Valid values of the latitude: [-90,+90]. Valid values of the longitude: [-180,+180].
+	//
 	// example:
 	//
 	// +120.029003,+30.283095
 	LatLong *string `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
+	// The performer.
+	//
 	// example:
 	//
 	// unable
 	Performer *string `json:"Performer,omitempty" xml:"Performer,omitempty"`
+	// The time of recording. For more information about the time formats, see the RFC3339 Nano standard.
+	//
 	// example:
 	//
 	// 2022-04-24T02:39:57Z
 	ProduceTime *string `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
+	// The number of programs.
+	//
 	// example:
 	//
 	// 2
 	ProgramCount *int64 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2213B1A9-EB3D-4666-84E0-24980BC*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The size of the media object. Unit: bytes.
+	//
 	// example:
 	//
 	// 25115517
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The initial playback time.
+	//
 	// example:
 	//
 	// 0.000000
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of media streams.
+	//
 	// example:
 	//
 	// 2
-	StreamCount *int64            `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	Subtitles   []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	StreamCount *int64 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
+	// The subtitle streams.
+	Subtitles []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
+	// The title of the media object.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The video height in pixels.
+	//
 	// example:
 	//
 	// 1920
-	VideoHeight  *int64         `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	// The video streams.
 	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
+	// The video width in pixels.
+	//
 	// example:
 	//
 	// 1080
@@ -15157,12 +18007,16 @@ func (s *DetectMediaMetaResponse) SetBody(v *DetectMediaMetaResponseBody) *Detec
 }
 
 type DetectTextAnomalyRequest struct {
+	// The text to be detected. It can contain up to 10,000 characters (including punctuation marks). Only Chinese text can be detected.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15190,10 +18044,18 @@ func (s *DetectTextAnomalyRequest) SetProjectName(v string) *DetectTextAnomalyRe
 }
 
 type DetectTextAnomalyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 91AC8C98-0F36-49D2-8290-742E24DF*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the text contains anomalies. Valid values:
+	//
+	// 	- pass: the text does not contain anomalies.
+	//
+	// 	- block: the text contains anomalies.
+	//
 	// example:
 	//
 	// pass
@@ -15248,27 +18110,52 @@ func (s *DetectTextAnomalyResponse) SetBody(v *DetectTextAnomalyResponseBody) *D
 }
 
 type EncodeBlindWatermarkRequest struct {
+	// The text content of watermarks. It can be up to 256 characters in length.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter takes effect only if the input image format is JPG.
+	//
+	// The storage quality of the output image that carries the watermarks. Default value: 90. Valid values: 70 to 100. The higher the quality, the larger the image size and the higher the watermark resolution quality.
+	//
 	// example:
 	//
 	// 90
 	ImageQuality *int32 `json:"ImageQuality,omitempty" xml:"ImageQuality,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The Object Storage Service (OSS) URI of the image.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region with the current project. `${Object}` specifies the path of the object with the extension included.
+	//
+	// Supported image formats: JPG, PNG, BMP, TIFF, and WebP.
+	//
+	// Image size limit: 10,000 px maximum and 80 px x 80 px minimum.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://test-bucket/test-object.jpg
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The watermark strength level. The higher the strength, the more resistant the watermarked image is to attacks, but the more the image is distorted. Default value: low. Valid values: [low, medium, high].
+	//
 	// example:
 	//
 	// low
 	StrengthLevel *string `json:"StrengthLevel,omitempty" xml:"StrengthLevel,omitempty"`
+	// The URI of the output image in OSS.
+	//
+	// Specify the URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// >
+	//
+	// 	- The format of the output image is the same as that of the input image.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15316,6 +18203,8 @@ func (s *EncodeBlindWatermarkRequest) SetTargetURI(v string) *EncodeBlindWaterma
 }
 
 type EncodeBlindWatermarkResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8E0DD64B-28C6-4653-8FF7-93E4C234BCF0
@@ -15365,14 +18254,36 @@ func (s *EncodeBlindWatermarkResponse) SetBody(v *EncodeBlindWatermarkResponseBo
 }
 
 type ExtractDocumentTextRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+	//
+	// 	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+	//
+	// 	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+	//
+	// 	- Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+	//
+	// 	- PDF documents: pdf.
+	//
+	// example:
+	//
+	// docx
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15410,14 +18321,36 @@ func (s *ExtractDocumentTextRequest) SetSourceURI(v string) *ExtractDocumentText
 }
 
 type ExtractDocumentTextShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain. This parameter is optional. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/477051.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of the filename extension of the source data. By default, the filename extension of the source data is the same as the filename extension of the input document. If the input document has no extension, you can specify this parameter. Valid values:
+	//
+	// 	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+	//
+	// 	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+	//
+	// 	- Table documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+	//
+	// 	- PDF documents: pdf.
+	//
+	// example:
+	//
+	// docx
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The URI of the Object Storage Service (OSS) bucket in which the document is stored.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the file that has an extension.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15510,36 +18443,77 @@ func (s *ExtractDocumentTextResponse) SetBody(v *ExtractDocumentTextResponseBody
 }
 
 type FuzzyQueryRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the total number of files is greater than the value of MaxResults, you must specify NextToken.
+	//
+	// The file information is returned in alphabetical order starting from the value of NextToken.
+	//
+	// You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc (default): descending order.
+	//
+	// >
+	//
+	// 	- Separate multiple sorting methods with commas (,). Example: asc,desc.
+	//
+	// 	- The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+	//
+	// 	- If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
+	//
 	// example:
 	//
 	// asc,desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The query content. The value can be up to 1 MB in size.
+	//
 	// This parameter is required.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+	//
+	// 	- Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+	//
+	// 	- You can specify up to five sort fields.
+	//
+	// 	- The priority order of sorting is determined based on the order of the sort fields.
+	//
 	// example:
 	//
 	// Size,Filename
-	Sort       *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The fields that you want to include in the response. To help reduce the size of the response, include only necessary metadata fields.
+	//
+	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
@@ -15592,36 +18566,77 @@ func (s *FuzzyQueryRequest) SetWithFields(v []*string) *FuzzyQueryRequest {
 }
 
 type FuzzyQueryShrinkRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 200.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the total number of files is greater than the value of MaxResults, you must specify NextToken.
+	//
+	// The file information is returned in alphabetical order starting from the value of NextToken.
+	//
+	// You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting method. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc (default): descending order.
+	//
+	// >
+	//
+	// 	- Separate multiple sorting methods with commas (,). Example: asc,desc.
+	//
+	// 	- The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+	//
+	// 	- If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
+	//
 	// example:
 	//
 	// asc,desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The query content. The value can be up to 1 MB in size.
+	//
 	// This parameter is required.
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The sort field. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+	//
+	// 	- Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+	//
+	// 	- You can specify up to five sort fields.
+	//
+	// 	- The priority order of sorting is determined based on the order of the sort fields.
+	//
 	// example:
 	//
 	// Size,Filename
-	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The fields that you want to include in the response. To help reduce the size of the response, include only necessary metadata fields.
+	//
+	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
 
@@ -15674,18 +18689,28 @@ func (s *FuzzyQueryShrinkRequest) SetWithFieldsShrink(v string) *FuzzyQueryShrin
 }
 
 type FuzzyQueryResponseBody struct {
+	// The files.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// A pagination token.
+	//
+	// It can be used in the next request to retrieve a new page of results.
+	//
+	// If NextToken is empty, no next page exists.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
+	// The number of hits.
+	TotalHits *int64 `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s FuzzyQueryResponseBody) String() string {
@@ -15746,41 +18771,96 @@ func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryRespo
 }
 
 type GenerateVideoPlaylistRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The OSS path of the master playlist.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that is suffixed with .m3u8.
+	//
+	// >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
+	//
 	// example:
 	//
 	// oss://bucket/object/master.m3u8
-	MasterURI       *string       `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
-	Notification    *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OverwritePolicy *string       `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	MasterURI *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	// The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The overwrite policy when the media playlist exists. Valid values:
+	//
+	// 	- overwrite (default): overwrites an existing media playlist.
+	//
+	// 	- skip-existing: skips generation and retains the existing media playlist.
+	//
+	// example:
+	//
+	// overwrite
+	OverwritePolicy *string `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	// The project name.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The period of time during which the playlist is generated. Unit: seconds.
+	//
+	// 	- If you set this parameter to 0 (default) or leave this parameter empty, a playlist is generated until the end time of the source video.
+	//
+	// 	- If you set this parameter to a value greater than 0, a playlist is generated for the specified period of time from the start time that you specify.
+	//
+	// >  If you set this parameter to a value that exceeds the end time of a source video, use the default value.
+	//
 	// example:
 	//
 	// 0
 	SourceDuration *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	// The time when the playlist starts to generate. Unit: seconds.
+	//
+	// 	- If you set this parameter to 0 (default) or leave this parameter empty, the start time of the source video is used as the time when a playlist starts to generate.
+	//
+	// 	- If you set this parameter to a value greater than 0, the time when a playlist starts to generate is the specified point in time.
+	//
+	// >  If you use this parameter together with the **SourceDuration*	- parameter, a playlist can be generated based on the partial content of a source video.
+	//
 	// example:
 	//
 	// 0
-	SourceStartTime *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceStartTime *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	// The subtitle files. By default, this parameter is left empty. Up to two subtitle files are supported.
 	SourceSubtitles []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
+	// The OSS path of the video file.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	//
+	// >  Only OSS buckets of the Standard storage class are supported. OSS buckets for which hotlink protection whitelists are configured are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-test/testcases/video.mp4
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+	//
 	// example:
 	//
 	// {"key1": "value1", "key2": "value2"}
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+	//
+	// >  If more than one output is configured, the **MasterURI*	- parameter is required.
+	//
 	// This parameter is required.
-	Targets  []*GenerateVideoPlaylistRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	UserData *string                                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Targets []*GenerateVideoPlaylistRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The custom user information, which is returned in asynchronous notifications to help you handle the notifications in the system. The maximum length of a notification is 2048 bytes.
+	//
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GenerateVideoPlaylistRequest) String() string {
@@ -15852,11 +18932,23 @@ func (s *GenerateVideoPlaylistRequest) SetUserData(v string) *GenerateVideoPlayl
 }
 
 type GenerateVideoPlaylistRequestSourceSubtitles struct {
+	// The subtitle language. If you configure this parameter, the value must comply with the ISO 639-2 standard. By default, this parameter is left empty.
+	//
 	// example:
 	//
 	// eng
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The OSS path of the subtitle file.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file.
+	//
+	// >  The **MasterURI*	- parameter cannot be left empty, and the OSS path `oss://${Bucket}/${Object}` of a subtitle file must be in the directory specified by the **MasterURI*	- parameter or its subdirectory.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object/subtitle/eng.vtt
 	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -15879,26 +18971,63 @@ func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetURI(v string) *Generate
 }
 
 type GenerateVideoPlaylistRequestTargets struct {
+	// The audio processing configuration. If you set this parameter to null (default), audio processing is disabled. The generated TS files do not contain audio streams.
+	//
+	// >  The Audio and Subtitle parameters in the same output are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio information.
 	Audio *TargetAudio `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The playback duration of a single TS file. Unit: seconds. Default value: 10. Valid values: 5 to 15.
+	//
 	// example:
 	//
 	// 5
-	Duration        *float32   `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The array of the durations of the pre-transcoded TS files. The array can contain the durations of up to six pre-transcoded TS files. By default, this parameter is left empty. This parameter is independent of the **Duration*	- parameter.
 	InitialSegments []*float32 `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	// The pre-transcoding duration. Unit: seconds. Default value: 30.
+	//
+	// 	- If you set this parameter to 0, pre-transcoding is disabled.
+	//
+	// 	- If you set this parameter to a value that is less than 0 or greater than the duration of a source video, the entire video is pre-transcoded.
+	//
+	// 	- If you set this parameter to a value that is within the middle of the playback duration of a TS file, the transcoding continues until the end of the playback duration.
+	//
+	// >  This parameter is used to reduce the time spent in waiting for the initial playback of a video and improve the playback experience. If you want to replace the traditional video on demand (VOD) business scenario, you can try to pre-transcode the entire video.
+	//
 	// example:
 	//
 	// 30.0
-	InitialTranscode *float32           `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
-	Subtitle         *TargetSubtitle    `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	Tags             map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	InitialTranscode *float32 `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
+	// The subtitle processing configuration.
+	//
+	// >  The Subtitle and Video or Audio parameters in the same output are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
+	Subtitle *TargetSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+	//
+	// >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, use the value of the Tags parameter in the current level.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The number of TS files that are pre-transcoded when the live transcoding is triggered. By default, a 2-minute video is pre-transcoded.
+	//
+	// 	- Example: If you set the **Duration*	- parameter to 10, the value of the **TranscodeAhead*	- parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files in an asynchronous manner. Valid values: 10 to 30.
+	//
 	// example:
 	//
 	// 3
 	TranscodeAhead *int32 `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
+	// The prefix of the OSS path that is used to store the live transcoding files. The live transcoding files include a M3U8 file and multiple TS files.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path of the file that does not contain the file name extension.
+	//
+	// 	- Example: If the URI is oss://test-bucket/test-object/output-video, the output-video.m3u8 file and multiple output-video-${token}-${index}.ts files are generated in the oss://test-bucket/test-object/ directory. ${token} is a unique string generated based on the transcoding parameters. The ${token} parameter is included in the response of the operation. ${index} is the serial number of the generated TS files that are numbered starting from 0.
+	//
+	// >  If the **MasterURI*	- parameter is not left empty, the URI specified by this parameter must be in the directory specified by the **MasterURI*	- parameter or its subdirectory.
+	//
 	// example:
 	//
 	// oss://imm-test/testcases/video
-	URI   *string      `json:"URI,omitempty" xml:"URI,omitempty"`
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// The video processing configuration. If you set this parameter to null (default), video processing is disabled. The generated TS files do not contain video streams.
+	//
+	// >  The Video and Subtitle parameters in the same output are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
 	Video *TargetVideo `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
@@ -15956,41 +19085,96 @@ func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *Generate
 }
 
 type GenerateVideoPlaylistShrinkRequest struct {
+	// **If you do not have special requirements, leave this parameter empty.**
+	//
+	// The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The OSS path of the master playlist.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that is suffixed with .m3u8.
+	//
+	// >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
+	//
 	// example:
 	//
 	// oss://bucket/object/master.m3u8
-	MasterURI          *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	MasterURI *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	// The notification settings. To view details, click Notification. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	OverwritePolicy    *string `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	// The overwrite policy when the media playlist exists. Valid values:
+	//
+	// 	- overwrite (default): overwrites an existing media playlist.
+	//
+	// 	- skip-existing: skips generation and retains the existing media playlist.
+	//
+	// example:
+	//
+	// overwrite
+	OverwritePolicy *string `json:"OverwritePolicy,omitempty" xml:"OverwritePolicy,omitempty"`
+	// The project name.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The period of time during which the playlist is generated. Unit: seconds.
+	//
+	// 	- If you set this parameter to 0 (default) or leave this parameter empty, a playlist is generated until the end time of the source video.
+	//
+	// 	- If you set this parameter to a value greater than 0, a playlist is generated for the specified period of time from the start time that you specify.
+	//
+	// >  If you set this parameter to a value that exceeds the end time of a source video, use the default value.
+	//
 	// example:
 	//
 	// 0
 	SourceDuration *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	// The time when the playlist starts to generate. Unit: seconds.
+	//
+	// 	- If you set this parameter to 0 (default) or leave this parameter empty, the start time of the source video is used as the time when a playlist starts to generate.
+	//
+	// 	- If you set this parameter to a value greater than 0, the time when a playlist starts to generate is the specified point in time.
+	//
+	// >  If you use this parameter together with the **SourceDuration*	- parameter, a playlist can be generated based on the partial content of a source video.
+	//
 	// example:
 	//
 	// 0
-	SourceStartTime       *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
-	SourceSubtitlesShrink *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	SourceStartTime *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	// The subtitle files. By default, this parameter is left empty. Up to two subtitle files are supported.
+	SourceSubtitlesShrink *string `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	// The OSS path of the video file.
+	//
+	// The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+	//
+	// >  Only OSS buckets of the Standard storage class are supported. OSS buckets for which hotlink protection whitelists are configured are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://imm-test/testcases/video.mp4
 	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+	//
 	// example:
 	//
 	// {"key1": "value1", "key2": "value2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The live transcoding playlists. Up to 6 playlists are supported. Each output corresponds to at most one video media playlist and one or more subtitle media playlists.
+	//
+	// >  If more than one output is configured, the **MasterURI*	- parameter is required.
+	//
 	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The custom user information, which is returned in asynchronous notifications to help you handle the notifications in the system. The maximum length of a notification is 2048 bytes.
+	//
+	// example:
+	//
+	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GenerateVideoPlaylistShrinkRequest) String() string {
@@ -16062,21 +19246,35 @@ func (s *GenerateVideoPlaylistShrinkRequest) SetUserData(v string) *GenerateVide
 }
 
 type GenerateVideoPlaylistResponseBody struct {
-	// 转码文件列表。
+	// The audio media playlist files.
 	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
-	Duration      *float32                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	MasterURI     *string                                           `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	// The total duration of the generated video.
+	//
+	// example:
+	//
+	// 1082
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The OSS path of the master playlist.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object/master.m3u8
+	MasterURI *string `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 转码文件列表。
+	// The subtitle media playlist files.
 	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
+	// The token of the master playlist.
+	//
 	// example:
 	//
 	// 92376fbb-171f-4259-913f-705f7ee0****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 转码文件列表。
+	// The video media playlist files.
 	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
 }
 
@@ -16124,14 +19322,19 @@ func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoP
 }
 
 type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
+	// The number of audio channels.
+	//
+	// example:
+	//
+	// 1
 	Channels *int32 `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	// The token of the audio media playlist. You can use this parameter to generate the path of a TS file.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	// The OSS path of the audio media playlist.
 	//
 	// example:
 	//
@@ -16163,25 +19366,29 @@ func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *Gener
 }
 
 type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
-	// 字幕流编号，从0开始。
+	// The serial number of the subtitle stream. The value starts from 0.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// 视频源中字幕流的语言。
+	// The language of the subtitle stream.
+	//
+	// >  The language is derived from the subtitle stream information in the OSS path specified by the SourceURI parameter for a source video. If no language information exists in the source video, null is returned.
 	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	// The token of the subtitle media playlist. You can use this parameter to generate the path of a subtitle file.
+	//
+	// >  You can generate the path of a transcoded subtitle file based on the returned token value. The path must be in the oss://${Bucket}/${Object}-${Token}_${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token value, and ${Index} specifies the serial number of a subtitle file.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	// The OSS path of the subtitle media playlist.
 	//
 	// example:
 	//
@@ -16218,15 +19425,27 @@ func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetURI(v string) *Ge
 }
 
 type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
-	FrameRate  *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// The video frame rate.
+	//
+	// example:
+	//
+	// 25/1
+	FrameRate *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// The video resolution.
+	//
+	// example:
+	//
+	// 640x480
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	// The token of the video media playlist. You can use this parameter to generate the path of a TS file.
+	//
+	// >  You can generate the path of a transcoded TS file based on the value of this parameter. The path must be in the oss://${Bucket}/${Object}-${Token}-${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token, and ${Index} specifies the serial number of a TS file.
 	//
 	// example:
 	//
 	// affe0c6042f09722fec95a21b8b******
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	// The OSS path of the video media playlist.
 	//
 	// example:
 	//
@@ -16292,15 +19511,48 @@ func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponse
 }
 
 type GenerateWebofficeTokenRequest struct {
+	// Specifies whether to enable cache preview.
+	//
+	// 	- true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
+	//
+	// 	- false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
+	//
+	// >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
+	//
+	// >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
+	//
+	// >  Printing is not supported during cache preview.
+	//
 	// example:
 	//
 	// false
-	CachePreview     *bool             `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	CachePreview *bool `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+	//
+	// 	- true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
+	//
+	// 	- false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
+	//
 	// example:
 	//
 	// false
 	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI*	- parameter value.
+	//
+	// Supported extensions (only preview supported for .pdf):
+	//
+	// 	- Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+	//
+	// 	- Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+	//
+	// 	- Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+	//
+	// 	- PDF documents: .pdf
+	//
 	// example:
 	//
 	// test.pptx
@@ -16309,7 +19561,9 @@ type GenerateWebofficeTokenRequest struct {
 	//
 	// false
 	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+	//
+	// >  A notification is sent after the document is saved or renamed.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// example:
 	//
@@ -16318,7 +19572,30 @@ type GenerateWebofficeTokenRequest struct {
 	// example:
 	//
 	// 123456
-	Password   *string              `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The user permission settings in the JSON format.
+	//
+	// The parameter supports the following permission fields:
+	//
+	// Each field is of type Boolean and can have a value of true and false (the default value):
+	//
+	// 	- Readonly: grants the permission to preview the document. This field is optional.
+	//
+	// 	- Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
+	//
+	// 	- History: grants the permission to view historical versions. This field is optional.
+	//
+	// 	- Copy: grants the permission to copy the document. This field is optional.
+	//
+	// 	- Export: grants the permission to export the document as a PDF file. This field is optional.
+	//
+	// 	- Print: grants the permission to print the document. This field is optional.
+	//
+	// >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
+	//
+	// >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
+	//
+	// >  Printing is not supported during cache preview.
 	Permission *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
 	// example:
 	//
@@ -16339,8 +19616,11 @@ type GenerateWebofficeTokenRequest struct {
 	// example:
 	//
 	// oss://imm-test/test.pptx
-	SourceURI *string        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	User      *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
+	User *WebofficeUser `json:"User,omitempty" xml:"User,omitempty"`
+	// The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"file_id": "abc"}
@@ -16437,15 +19717,48 @@ func (s *GenerateWebofficeTokenRequest) SetWatermark(v *WebofficeWatermark) *Gen
 }
 
 type GenerateWebofficeTokenShrinkRequest struct {
+	// Specifies whether to enable cache preview.
+	//
+	// 	- true: enables cache preview. The document can be previewed only and cannot be collaboratively edited.
+	//
+	// 	- false: does not enable cache preview. The document can be collaboratively edited when it is being previewed.
+	//
+	// >  The pricing for document previews varies based on whether cache preview is enabled or disabled.
+	//
+	// >  If you specify this parameter, the Pemission.copy parameter does not take effect. >
+	//
+	// >  Printing is not supported during cache preview.
+	//
 	// example:
 	//
 	// false
-	CachePreview           *bool   `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	CachePreview *bool `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// Specifies whether to allow an upload of a document to the Object Storage Service (OSS) bucket. Valid values:
+	//
+	// 	- true: Documents can be directly uploaded to OSS. The uploaded document overwrites the existing document and a new version is generated for the document. Before you upload a new document, close the existing document if it is being edited. After the document is uploaded, wait for approximately 5 minutes before you open the document again so that the new version can successfully load. Upload a new document only when the existing is closed. Otherwise, the uploaded document is overwritten when the existing document is saved.
+	//
+	// 	- false: Documents cannot be directly uploaded to OSS. If you try to upload a document, an error is returned. This is the default value.
+	//
 	// example:
 	//
 	// false
 	ExternalUploaded *bool `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	// The name of the file. The extension must be included in the file name. By default, this parameter is set to the last depth level of the **SourceURI*	- parameter value.
+	//
+	// Supported extensions (only preview supported for .pdf):
+	//
+	// 	- Word documents: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+	//
+	// 	- Presentation documents: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+	//
+	// 	- Table documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+	//
+	// 	- PDF documents: .pdf
+	//
 	// example:
 	//
 	// test.pptx
@@ -16454,7 +19767,9 @@ type GenerateWebofficeTokenShrinkRequest struct {
 	//
 	// false
 	Hidecmb *bool `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	// The notification settings. Only Simple Message Queue messages are supported. For more information, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+	//
+	// >  A notification is sent after the document is saved or renamed.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	// example:
 	//
@@ -16463,7 +19778,30 @@ type GenerateWebofficeTokenShrinkRequest struct {
 	// example:
 	//
 	// 123456
-	Password         *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The user permission settings in the JSON format.
+	//
+	// The parameter supports the following permission fields:
+	//
+	// Each field is of type Boolean and can have a value of true and false (the default value):
+	//
+	// 	- Readonly: grants the permission to preview the document. This field is optional.
+	//
+	// 	- Rename: grants the permission to rename the document. Notification messages of a rename event can be sent only by using SMQ. This field is optional.
+	//
+	// 	- History: grants the permission to view historical versions. This field is optional.
+	//
+	// 	- Copy: grants the permission to copy the document. This field is optional.
+	//
+	// 	- Export: grants the permission to export the document as a PDF file. This field is optional.
+	//
+	// 	- Print: grants the permission to print the document. This field is optional.
+	//
+	// >  Only online preview is supported for PDF documents. When you call the operation on a PDF document, you can set Readonly only to true.
+	//
+	// >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
+	//
+	// >  Printing is not supported during cache preview.
 	PermissionShrink *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
 	// example:
 	//
@@ -16484,8 +19822,11 @@ type GenerateWebofficeTokenShrinkRequest struct {
 	// example:
 	//
 	// oss://imm-test/test.pptx
-	SourceURI  *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	// The user information. The user information that you want to display on the WebOffice page. If you do not specify this parameter, the user name displayed is Unknown.
 	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The user-defined data that you want to return in asynchronous messages. This parameter takes effect only when you specify the MNS settings in the Notification parameter. The maximum length of the value is 2,048 bytes.
+	//
 	// example:
 	//
 	// {"file_id": "abc"}
@@ -16676,12 +20017,16 @@ func (s *GenerateWebofficeTokenResponse) SetBody(v *GenerateWebofficeTokenRespon
 }
 
 type GetBatchRequest struct {
+	// The ID of the batch processing task. For more information about how to obtain the ID, see [CreateBatch](https://help.aliyun.com/document_detail/606694.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16709,7 +20054,10 @@ func (s *GetBatchRequest) SetProjectName(v string) *GetBatchRequest {
 }
 
 type GetBatchResponseBody struct {
+	// The information about the batch processing task.
 	Batch *DataIngestion `json:"Batch,omitempty" xml:"Batch,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -16764,18 +20112,26 @@ func (s *GetBatchResponse) SetBody(v *GetBatchResponseBody) *GetBatchResponse {
 }
 
 type GetBindingRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the OSS bucket to which you bind the dataset.
+	//
+	// Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16808,7 +20164,10 @@ func (s *GetBindingRequest) SetURI(v string) *GetBindingRequest {
 }
 
 type GetBindingResponseBody struct {
+	// The binding relationship.
 	Binding *Binding `json:"Binding,omitempty" xml:"Binding,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AEFCD467-C928-4A36-951A-6EB5A592****
@@ -16995,18 +20354,28 @@ func (s *GetDRMLicenseResponse) SetBody(v *GetDRMLicenseResponseBody) *GetDRMLic
 }
 
 type GetDatasetRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Specifies whether to enable real-time retrieval of file statistics. Default value: false.
+	//
+	// 	- If you set the value to true, FileCount and TotalFileSize in the response return true and valid values.
+	//
+	// 	- If you set the value to false, FileCount and TotalFileSize in the response return invalid values or 0.
+	//
 	// example:
 	//
 	// true
@@ -17037,7 +20406,10 @@ func (s *GetDatasetRequest) SetWithStatistics(v bool) *GetDatasetRequest {
 }
 
 type GetDatasetResponseBody struct {
+	// The dataset.
 	Dataset *Dataset `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D74B3A9-5AC0-49F9-914D-E01589D3****
@@ -17092,18 +20464,26 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 }
 
 type GetDecodeBlindWatermarkResultRequest struct {
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the task. You can obtain the ID of the task from the response of the CreateDecodeBlindWatermarkTask operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DecodeBlindWatermark-c09b0943-ed79-4983-8dbe-7a882574****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task.
+	//
+	// 	- Set the value to DecodeBlindWatermark.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17136,47 +20516,70 @@ func (s *GetDecodeBlindWatermarkResultRequest) SetTaskType(v string) *GetDecodeB
 }
 
 type GetDecodeBlindWatermarkResultResponseBody struct {
+	// The error code of the task.
+	//
 	// example:
 	//
 	// ResourceNotFound
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The watermark content.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2024-03-03T09:45:56.87Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 2C2-1I0EG57VR37J4rQ8oKG6C9*****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// The specified resource project is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 93126E40-0296-4129-95E3-AFAC709372E5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2024-03-03T09:44:31.029Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// DecodeBlindWatermark-c09b0943-ed79-4983-8dbe-7a882574****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// DecodeBlindWatermark
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The user data of the task.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -17281,18 +20684,24 @@ func (s *GetDecodeBlindWatermarkResultResponse) SetBody(v *GetDecodeBlindWaterma
 }
 
 type GetFigureClusterRequest struct {
+	// The dataset name.[](~~CreateDataset~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dataset001
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the face clustering task. You can obtain the ID from the face clustering information returned after you call the [QueryFigureClusters](~~QueryFigureClusters~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Cluster-1f2e1a2c-d5ee-4bc5-84f6-fef94ea****
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The project name.[](~~CreateProject~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17325,7 +20734,10 @@ func (s *GetFigureClusterRequest) SetProjectName(v string) *GetFigureClusterRequ
 }
 
 type GetFigureClusterResponseBody struct {
+	// The information about the face clustering task.
 	FigureCluster *FigureCluster `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
@@ -17380,11 +20792,33 @@ func (s *GetFigureClusterResponse) SetBody(v *GetFigureClusterResponseBody) *Get
 }
 
 type GetFileMetaRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the file. Make sure that the file is indexed****.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// Specify the URI of the file in Photo and Drive Service in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
 	URI        *string   `json:"URI,omitempty" xml:"URI,omitempty"`
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
@@ -17418,11 +20852,33 @@ func (s *GetFileMetaRequest) SetWithFields(v []*string) *GetFileMetaRequest {
 }
 
 type GetFileMetaShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URI of the file. Make sure that the file is indexed****.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
+	// Specify the URI of the file in Photo and Drive Service in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test-bucket/test-object
 	URI              *string `json:"URI,omitempty" xml:"URI,omitempty"`
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
@@ -17456,7 +20912,10 @@ func (s *GetFileMetaShrinkRequest) SetWithFieldsShrink(v string) *GetFileMetaShr
 }
 
 type GetFileMetaResponseBody struct {
+	// The metadata returned.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
@@ -17511,18 +20970,24 @@ func (s *GetFileMetaResponse) SetBody(v *GetFileMetaResponseBody) *GetFileMetaRe
 }
 
 type GetImageModerationResultRequest struct {
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17555,47 +21020,76 @@ func (s *GetImageModerationResultRequest) SetTaskType(v string) *GetImageModerat
 }
 
 type GetImageModerationResultResponseBody struct {
+	// The error code of the task.
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2023-04-03T09:44:32Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 1B6-1XBMX3BixLMILvXVGtlkr******
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// The specified resource TaskId is not found.
-	Message          *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The result of the image compliance detection task.
 	ModerationResult *GetImageModerationResultResponseBodyModerationResult `json:"ModerationResult,omitempty" xml:"ModerationResult,omitempty" type:"Struct"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E6A120B1-BEB3-0F63-A7C2-0783B6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2023-04-03T09:44:31.029Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- Running
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ImageModeration-ff207203-3f93-4645-a041-7b8f0f******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// ImageModeration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The custom information.
+	//
 	// example:
 	//
 	// {
@@ -17675,12 +21169,24 @@ func (s *GetImageModerationResultResponseBody) SetUserData(v string) *GetImageMo
 }
 
 type GetImageModerationResultResponseBodyModerationResult struct {
-	Categories []*string                                                   `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Frames     *GetImageModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
+	// List of categories.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The information about video and motion detection frames.
+	Frames *GetImageModerationResultResponseBodyModerationResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Struct"`
+	// The recommended operation. Valid values:
+	//
+	// 	- pass: The image has passed the check. No action is required.
+	//
+	// 	- review: The image contains suspected violations and requires human review.
+	//
+	// 	- block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+	//
 	// example:
 	//
 	// block
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -17716,7 +21222,10 @@ func (s *GetImageModerationResultResponseBodyModerationResult) SetURI(v string) 
 }
 
 type GetImageModerationResultResponseBodyModerationResultFrames struct {
+	// The violated frames.
 	BlockFrames []*GetImageModerationResultResponseBodyModerationResultFramesBlockFrames `json:"BlockFrames,omitempty" xml:"BlockFrames,omitempty" type:"Repeated"`
+	// The total number of detected frames.
+	//
 	// example:
 	//
 	// 30
@@ -17742,6 +21251,8 @@ func (s *GetImageModerationResultResponseBodyModerationResultFrames) SetTotalCou
 }
 
 type GetImageModerationResultResponseBodyModerationResultFramesBlockFrames struct {
+	// The label of the violation.
+	//
 	// example:
 	//
 	// {
@@ -17750,10 +21261,14 @@ type GetImageModerationResultResponseBodyModerationResultFramesBlockFrames struc
 	//
 	// }
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The offset of the frame.
+	//
 	// example:
 	//
 	// 2
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The confidence level of the violation.
+	//
 	// example:
 	//
 	// 30
@@ -17813,6 +21328,8 @@ func (s *GetImageModerationResultResponse) SetBody(v *GetImageModerationResultRe
 }
 
 type GetOSSBucketAttachmentRequest struct {
+	// The name of the OSS bucket.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -17835,16 +21352,35 @@ func (s *GetOSSBucketAttachmentRequest) SetOSSBucket(v string) *GetOSSBucketAtta
 }
 
 type GetOSSBucketAttachmentResponseBody struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the dataset was created.
+	//
+	// example:
+	//
+	// ""2023-12-19T17:29:34.790931971+08:00"
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the dataset.
+	//
+	// example:
+	//
+	// "Dataset"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the dataset was last updated.
+	//
+	// example:
+	//
+	// "2023-12-19T17:29:34.790931971+08:00"
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -17911,12 +21447,20 @@ func (s *GetOSSBucketAttachmentResponse) SetBody(v *GetOSSBucketAttachmentRespon
 }
 
 type GetProjectRequest struct {
+	// The name of the project. You can obtain the name from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Specifies whether to enable real-time retrieval of file statistics. Default value: false.
+	//
+	// 	- If you set the value to true, the returned values of FileCount and TotalFileSize in the response are valid.
+	//
+	// 	- If you set the value to false, the returned values of FileCount and TotalFileSize in the response are invalid or equal to 0.
+	//
 	// example:
 	//
 	// true
@@ -17942,7 +21486,10 @@ func (s *GetProjectRequest) SetWithStatistics(v bool) *GetProjectRequest {
 }
 
 type GetProjectResponseBody struct {
+	// The project.
 	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A022F78-B9A8-4ACC-BB6B-B3597553
@@ -17997,18 +21544,24 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetStoryRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18041,11 +21594,14 @@ func (s *GetStoryRequest) SetProjectName(v string) *GetStoryRequest {
 }
 
 type GetStoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1B3D5E0A-D8B8-4DA0-8127-ED32C851****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Story     *Story  `json:"Story,omitempty" xml:"Story,omitempty"`
+	// The information about the story.
+	Story *Story `json:"Story,omitempty" xml:"Story,omitempty"`
 }
 
 func (s GetStoryResponseBody) String() string {
@@ -18096,19 +21652,30 @@ func (s *GetStoryResponse) SetBody(v *GetStoryResponseBody) *GetStoryResponse {
 }
 
 type GetTaskRequest struct {
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
-	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestDefinition *bool   `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Specifies whether to return the initial request parameters that are used to create the task. Default value: False.
+	//
+	// example:
+	//
+	// True
+	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	// The ID of the task. You can obtain the ID of a task after you create the task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c2b277b9-0d30-4882-ad6d-ad661382****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. For information about valid values, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18146,52 +21713,104 @@ func (s *GetTaskRequest) SetTaskType(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
+	// The error code of the task.
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2021-12-24T03:01:49.480109219Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 2F6-1Bz99Xi93EnRpNEyLudILJm****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// The specified resource project is not found.
-	Message  *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Progress *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The task progress. Valid values: 0 to 100. Unit: %.
+	//
+	// >  This parameter is valid only if the task is in the `Running` state.``
+	//
+	// example:
+	//
+	// 100
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2021-12-24T03:01:41.662060377Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- RUNNING: The task is running.
+	//
+	// 	- Succeeded: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags. This parameter is returned only if you specified Tags when you created the task.
+	//
 	// example:
 	//
 	// {"test": "val1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// c2b277b9-0d30-4882-ad6d-ad661382****
-	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The initial request parameters used to create the task.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"ProjectName":"test-project",
+	//
+	// 	"CompressedFormat":"zip",
+	//
+	// 	"TargetURI":"oss://test-bucket/output/test.zip",
+	//
+	// 	"Sources":[{"URI":"oss://test-bucket/input/test.jpg"}]
+	//
+	// }
 	TaskRequestDefinition *string `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
+	// The type of the task. For more information, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+	//
 	// example:
 	//
 	// VideoLabelClassification
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The user data of the task.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -18306,12 +21925,16 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type GetTriggerRequest struct {
+	// The ID of the trigger. You can obtain the ID from the response parameters of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18339,11 +21962,14 @@ func (s *GetTriggerRequest) SetProjectName(v string) *GetTriggerRequest {
 }
 
 type GetTriggerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4A7A2D0E-D8B8-4DA0-8127-EB32C6******
-	RequestId *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Trigger   *DataIngestion `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The trigger information.
+	Trigger *DataIngestion `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
 func (s GetTriggerResponseBody) String() string {
@@ -18394,18 +22020,24 @@ func (s *GetTriggerResponse) SetBody(v *GetTriggerResponseBody) *GetTriggerRespo
 }
 
 type GetVideoLabelClassificationResultRequest struct {
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The task ID, which is obtained from response parameters of [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18438,47 +22070,70 @@ func (s *GetVideoLabelClassificationResultRequest) SetTaskType(v string) *GetVid
 }
 
 type GetVideoLabelClassificationResultResponseBody struct {
+	// The error code of the task.
+	//
 	// example:
 	//
 	// ResourceNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2021-12-24T03:00:42.134971294Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event ID.
+	//
 	// example:
 	//
 	// 2F6-1Bz99Xi93EnRpNEyLudILJm****
-	EventId *string  `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Labels  []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The error message of the task.
+	//
 	// example:
 	//
 	// The specified resource project is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F84C6D9-5AC0-49F9-914D-F02678E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2021-12-24T03:00:38.892462383Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// VideoLabelClassification-2f157087-91df-4fda-8c3e-232407ec****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the task.
+	//
 	// example:
 	//
 	// VideoLabelClassification
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The custom information.
+	//
 	// example:
 	//
 	// {"ID": "user1","Name": "test-user1","Avatar": "http://example.com?id=user1"}
@@ -18874,15 +22529,22 @@ func (s *GetVideoModerationResultResponse) SetBody(v *GetVideoModerationResultRe
 }
 
 type IndexFileMetaRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The file for which you want to create an index. The value must be in the JSON format.
+	//
 	// This parameter is required.
-	File         *InputFile    `json:"File,omitempty" xml:"File,omitempty"`
+	File *InputFile `json:"File,omitempty" xml:"File,omitempty"`
+	// The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	Notification *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18926,15 +22588,22 @@ func (s *IndexFileMetaRequest) SetUserData(v string) *IndexFileMetaRequest {
 }
 
 type IndexFileMetaShrinkRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The file for which you want to create an index. The value must be in the JSON format.
+	//
 	// This parameter is required.
-	FileShrink         *string `json:"File,omitempty" xml:"File,omitempty"`
+	FileShrink *string `json:"File,omitempty" xml:"File,omitempty"`
+	// The notification settings. For more information, click Notification. For information about the formats of asynchronous notifications, see the "Metadata indexing" section of the [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html) topic.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18978,10 +22647,14 @@ func (s *IndexFileMetaShrinkRequest) SetUserData(v string) *IndexFileMetaShrinkR
 }
 
 type IndexFileMetaResponseBody struct {
+	// The event ID.
+	//
 	// example:
 	//
 	// 30F-1D8FxFzDXKJH9YQdve4CjR****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -19036,32 +22709,70 @@ func (s *IndexFileMetaResponse) SetBody(v *IndexFileMetaResponseBody) *IndexFile
 }
 
 type ListBatchesRequest struct {
+	// The maximum number of results to return. Valid values: 0 to 100.
+	//
+	// If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// You do not need to specify this parameter in your initial request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- ASC: sorts the results in ascending order. This is the default sort order.
+	//
+	// 	- DES: sorts the results in descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- UpdateTime
+	//
 	// example:
 	//
 	// 2020-11-11T06:51:17.5Z
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The task status.
+	//
+	// 	- Ready: The task is newly created and ready.
+	//
+	// 	- Running: The task is running.
+	//
+	// 	- Failed: The task failed and cannot be automatically recovered.
+	//
+	// 	- Suspended: The task is suspended.
+	//
+	// 	- Succeeded: The task is successful.
+	//
 	// example:
 	//
 	// Succeed
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The custom tag. You can use this parameter to query tasks that have the specified tag.
+	//
 	// example:
 	//
 	// test=val1
@@ -19112,11 +22823,18 @@ func (s *ListBatchesRequest) SetTagSelector(v string) *ListBatchesRequest {
 }
 
 type ListBatchesResponseBody struct {
+	// The batch processing tasks.
 	Batches []*DataIngestion `json:"Batches,omitempty" xml:"Batches,omitempty" type:"Repeated"`
+	// The pagination token.
+	//
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
@@ -19176,20 +22894,34 @@ func (s *ListBatchesResponse) SetBody(v *ListBatchesResponseBody) *ListBatchesRe
 }
 
 type ListBindingsRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// 	- The maximum number of bindings to return. Valid values: 0 to 200.
+	//
+	// 	- If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 	- The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	//
+	// 	- The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// 	- You do not need to specify this parameter in your initial request.
+	//
 	// example:
 	//
 	// immtest:dataset001:examplebucket01
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19227,11 +22959,20 @@ func (s *ListBindingsRequest) SetProjectName(v string) *ListBindingsRequest {
 }
 
 type ListBindingsResponseBody struct {
+	// The bindings between the dataset and OSS buckets.
 	Bindings []*Binding `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
+	// 	- The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	//
+	// 	- The next request returns remaining results starting from the position marked by the NextToken parameter value.
+	//
+	// 	- This parameter has a non-empty value only when not all bindings are returned.
+	//
 	// example:
 	//
 	// immtest:dataset001:examplebucket01
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EFDFD356-C928-4A36-951A-6EB5A592****
@@ -19291,18 +23032,32 @@ func (s *ListBindingsResponse) SetBody(v *ListBindingsResponseBody) *ListBinding
 }
 
 type ListDatasetsRequest struct {
+	// The maximum number of datasets to return. Valid values: 0 to 200.
+	//
+	// If this parameter is left empty or set to 0, 100 datasets are returned.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. The list is returned in lexicographic order starting from the value of NextToken.
+	//
+	// >  The first time you call this operation in a query, set this parameter to null.
+	//
 	// example:
 	//
 	// 12345678:immtest:dataset002
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The dataset prefix.
+	//
 	// example:
 	//
 	// dataset
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19340,11 +23095,18 @@ func (s *ListDatasetsRequest) SetProjectName(v string) *ListDatasetsRequest {
 }
 
 type ListDatasetsResponseBody struct {
+	// The list of datasets.
 	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The pagination token. If the total number of datasets is greater than the value of MaxResults, you must specify this parameter. This parameter has a value only if not all the datasets that meet the conditions are returned.
+	//
+	// Pass this value as the value of NextToken in the next call to query subsequent datasets.
+	//
 	// example:
 	//
 	// 12345678:immtest:dataset002
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEEDE356-C928-4A36-951A-6EB5A592****
@@ -19404,13 +23166,26 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 }
 
 type ListProjectsRequest struct {
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 200. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. The operation returns the projects in lexicographical order starting from the location specified by NextToken.
+	//
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDAx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The prefix used by the projects that you want to query. The prefix must be up to 128 characters in length.
+	//
 	// example:
 	//
 	// immtest
-	Prefix *string                   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Tag    []*ListProjectsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The tags.
+	Tag []*ListProjectsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -19442,7 +23217,17 @@ func (s *ListProjectsRequest) SetTag(v []*ListProjectsRequestTag) *ListProjectsR
 }
 
 type ListProjectsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19465,12 +23250,25 @@ func (s *ListProjectsRequestTag) SetValue(v string) *ListProjectsRequestTag {
 }
 
 type ListProjectsShrinkRequest struct {
-	MaxResults *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 200. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. The operation returns the projects in lexicographical order starting from the location specified by NextToken.
+	//
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDAx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The prefix used by the projects that you want to query. The prefix must be up to 128 characters in length.
+	//
 	// example:
 	//
 	// immtest
-	Prefix    *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -19503,8 +23301,16 @@ func (s *ListProjectsShrinkRequest) SetTagShrink(v string) *ListProjectsShrinkRe
 }
 
 type ListProjectsResponseBody struct {
-	NextToken *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Projects  []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// MTIzNDU2Nzg6aW1tdGVzdDAx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The projects.
+	Projects []*Project `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4A7A2D0E-D8B8-4DA0-8127-EB32C660
@@ -19564,6 +23370,14 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListRegionsRequest struct {
+	// The language. Valid values:
+	//
+	// 	- zh-CN: Chinese.
+	//
+	// 	- en-US: English.
+	//
+	// 	- ja: Japanese.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -19586,7 +23400,10 @@ func (s *ListRegionsRequest) SetAcceptLanguage(v string) *ListRegionsRequest {
 }
 
 type ListRegionsResponseBody struct {
+	// The regions.
 	Regions []*RegionType `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7F7D235C-76FF-4B65-800C-8238AE3F****
@@ -19641,39 +23458,82 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListTasksRequest struct {
+	// The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
 	EndTimeRange *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
+	// The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// >  Leave this parameter empty in your first call to the operation.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- ASC: sorts the results in ascending order. This is the default sort order.
+	//
+	// 	- DES: sorts the results in descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Specifies whether to return request parameters in the initial request to create the task. Default value: False.
+	//
 	// example:
 	//
 	// True
 	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	// The field used to sort the results by. Valid values:
+	//
+	// 	- TaskId: sorts the results by task ID. This is the default sort field.
+	//
+	// 	- StartTime: sorts the results by task start time.
+	//
+	// 	- StartTime: sorts the results by task end time.
+	//
 	// example:
 	//
 	// TaskId
-	Sort           *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
 	StartTimeRange *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- Running: The task is running.
+	//
+	// 	- Succeeded: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The custom tags of tasks.
+	//
 	// example:
 	//
 	// test=val1
-	TagSelector *string   `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypes   []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+	TagSelector *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	// The task types.
+	TaskTypes []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -19740,38 +23600,81 @@ func (s *ListTasksRequest) SetTaskTypes(v []*string) *ListTasksRequest {
 }
 
 type ListTasksShrinkRequest struct {
+	// The range of task end time. You can specify this parameter to filter tasks that end within the specified range.
 	EndTimeRangeShrink *string `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
+	// The maximum number of results to return. Valid value range: (0, 100]. Default value: 100.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// >  Leave this parameter empty in your first call to the operation.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- ASC: sorts the results in ascending order. This is the default sort order.
+	//
+	// 	- DES: sorts the results in descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// Specifies whether to return request parameters in the initial request to create the task. Default value: False.
+	//
 	// example:
 	//
 	// True
 	RequestDefinition *bool `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	// The field used to sort the results by. Valid values:
+	//
+	// 	- TaskId: sorts the results by task ID. This is the default sort field.
+	//
+	// 	- StartTime: sorts the results by task start time.
+	//
+	// 	- StartTime: sorts the results by task end time.
+	//
 	// example:
 	//
 	// TaskId
-	Sort                 *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The range of task start time. You can specify this parameter to filter tasks that start within the specified range.
 	StartTimeRangeShrink *string `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- Running: The task is running.
+	//
+	// 	- Succeeded: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
 	// example:
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The custom tags of tasks.
+	//
 	// example:
 	//
 	// test=val1
-	TagSelector     *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TagSelector *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	// The task types.
 	TaskTypesShrink *string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty"`
 }
 
@@ -19839,23 +23742,34 @@ func (s *ListTasksShrinkRequest) SetTaskTypesShrink(v string) *ListTasksShrinkRe
 }
 
 type ListTasksResponseBody struct {
+	// The length of the returned result list.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter. This parameter has a value only when not all results are returned.
+	//
+	// You can specify the value of the NextToken parameter in the next request to list remaining results.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9847E7D0-A9A3-0053-84C6-BA16FFFA726E
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*TaskInfo `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tasks.
+	Tasks []*TaskInfo `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -19921,32 +23835,70 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListTriggersRequest struct {
+	// The maximum number of entries to return. Valid values: 0 to 100.
+	//
+	// Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// If the total number of triggers is greater than the value of MaxResults, you must specify NextToken.
+	//
+	// You do not need to specify this parameter for the first request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Default value: DESC.
+	//
+	// 	- ASC (default): ascending order.
+	//
+	// 	- DESC: descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- CreateTime: the point in time when the trigger is created.
+	//
+	// 	- UpdateTime: the most recent point in time when the trigger is updated.
+	//
 	// example:
 	//
 	// 2020-11-11T06:51:17.5Z
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The status of the trigger. Valid values:
+	//
+	// 	- Ready: The trigger is ready.
+	//
+	// 	- Running: The trigger is running.
+	//
+	// 	- Failed: The trigger failed and cannot be automatically recovered.
+	//
+	// 	- Suspended: The trigger is suspended.
+	//
+	// 	- Succeeded: The trigger is complete.
+	//
 	// example:
 	//
 	// Succeeded
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The custom tag. You can specify this parameter only if you specified Tags when you called the CreateTrigger operation.
+	//
 	// example:
 	//
 	// test=val1
@@ -19997,15 +23949,22 @@ func (s *ListTriggersRequest) SetTagSelector(v string) *ListTriggersRequest {
 }
 
 type ListTriggersResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F480BFAF-E778-5079-93AD-1E4631******
-	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Triggers  []*DataIngestion `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The triggers.
+	Triggers []*DataIngestion `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
 func (s ListTriggersResponseBody) String() string {
@@ -20061,34 +24020,84 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 }
 
 type QueryFigureClustersRequest struct {
+	// The time period during which the faces are grouped together.
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The custom labels, which can be used as query conditions.
+	//
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Default value: asc.
+	//
+	// Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. If you leave this parameter empty, the group ID is used as the sort field.
+	//
+	// Valid values:
+	//
+	// 	- ImageCount: the number of images.
+	//
+	// 	- VideoCount: the number of videos.
+	//
+	// 	- ProjectName: the name of the project.
+	//
+	// 	- DatasetName: the name of the dataset.
+	//
+	// 	- CreateTime: the point in time when the group is created.
+	//
+	// 	- UpdateTime: the most recent point in time when the group is updated.
+	//
+	// 	- Gender: the gender.
+	//
+	// 	- FaceCount: the number of faces.
+	//
+	// 	- GroupName: the name of the group.
+	//
 	// example:
 	//
 	// ImageCount
-	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The time period during which the faces in the group are updated.
 	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	// Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -20154,34 +24163,84 @@ func (s *QueryFigureClustersRequest) SetWithTotalCount(v bool) *QueryFigureClust
 }
 
 type QueryFigureClustersShrinkRequest struct {
+	// The time period during which the faces are grouped together.
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The custom labels, which can be used as query conditions.
+	//
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The maximum number of entries to return. Valid values: 0 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Default value: asc.
+	//
+	// Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. If you leave this parameter empty, the group ID is used as the sort field.
+	//
+	// Valid values:
+	//
+	// 	- ImageCount: the number of images.
+	//
+	// 	- VideoCount: the number of videos.
+	//
+	// 	- ProjectName: the name of the project.
+	//
+	// 	- DatasetName: the name of the dataset.
+	//
+	// 	- CreateTime: the point in time when the group is created.
+	//
+	// 	- UpdateTime: the most recent point in time when the group is updated.
+	//
+	// 	- Gender: the gender.
+	//
+	// 	- FaceCount: the number of faces.
+	//
+	// 	- GroupName: the name of the group.
+	//
 	// example:
 	//
 	// ImageCount
-	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The time period during which the faces in the group are updated.
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	// Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -20247,15 +24306,22 @@ func (s *QueryFigureClustersShrinkRequest) SetWithTotalCount(v bool) *QueryFigur
 }
 
 type QueryFigureClustersResponseBody struct {
+	// The face groups.
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of face groups that matches the current query conditions.
+	//
 	// example:
 	//
 	// 100
@@ -20320,34 +24386,87 @@ func (s *QueryFigureClustersResponse) SetBody(v *QueryFigureClustersResponseBody
 }
 
 type QueryLocationDateClustersRequest struct {
-	Address         *Address   `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address information.
+	Address *Address `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The time range during which the spatiotemporal clustering groups are generated.
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	// The custom labels, which can be used as query conditions.
+	//
 	// example:
 	//
 	// key=value
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
-	DatasetName                       *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	LocationDateClusterEndTimeRange   *TimeRange `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
-	LocationDateClusterLevels         []*string  `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The time range when the clustering groups are ended.
+	LocationDateClusterEndTimeRange *TimeRange `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
+	// The administrative level of the spatiotemporal clustering groups to be queried.
+	LocationDateClusterLevels []*string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty" type:"Repeated"`
+	// The time range when the clustering groups are started.
 	LocationDateClusterStartTimeRange *TimeRange `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
-	MaxResults                        *int32     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The number of entries per page. Valid values: [1,100]. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// MzQNjmY2MzYxNhNjk2ZNjEu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
+	//
+	// example:
+	//
+	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The sorting order.
+	//
+	// Default value: asc. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The condition by which the results are sorted.
+	//
+	// Valid values:
+	//
+	// 	- LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
+	//
+	// 	- CreateTime: by the creation time of the spatiotemporal clustering groups.
+	//
+	// 	- UpdateTime: by the update time of the spatiotemporal clustering groups.
+	//
+	// 	- LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
+	//
 	// example:
 	//
 	// LocationDateClusterStartTime
-	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Title           *string    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The title of spatiotemporal clustering. Fuzzy matching is performed.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time range during which the spatiotemporal clustering groups are updated.
 	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
 }
 
@@ -20435,34 +24554,87 @@ func (s *QueryLocationDateClustersRequest) SetUpdateTimeRange(v *TimeRange) *Que
 }
 
 type QueryLocationDateClustersShrinkRequest struct {
-	AddressShrink         *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The address information.
+	AddressShrink *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The time range during which the spatiotemporal clustering groups are generated.
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
+	// The custom labels, which can be used as query conditions.
+	//
 	// example:
 	//
 	// key=value
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
-	DatasetName                             *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	LocationDateClusterEndTimeRangeShrink   *string `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
-	LocationDateClusterLevelsShrink         *string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty"`
+	//
+	// example:
+	//
+	// test-dataset
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The time range when the clustering groups are ended.
+	LocationDateClusterEndTimeRangeShrink *string `json:"LocationDateClusterEndTimeRange,omitempty" xml:"LocationDateClusterEndTimeRange,omitempty"`
+	// The administrative level of the spatiotemporal clustering groups to be queried.
+	LocationDateClusterLevelsShrink *string `json:"LocationDateClusterLevels,omitempty" xml:"LocationDateClusterLevels,omitempty"`
+	// The time range when the clustering groups are started.
 	LocationDateClusterStartTimeRangeShrink *string `json:"LocationDateClusterStartTimeRange,omitempty" xml:"LocationDateClusterStartTimeRange,omitempty"`
-	MaxResults                              *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The number of entries per page. Valid values: [1,100]. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// MzQNjmY2MzYxNhNjk2ZNjEu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ObjectId  *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The ID of the group that you want to query. Specify this parameter if you want to obtain the information about a specific spatiotemporal clustering group. Otherwise, leave this parameter empty and use other parameters to query the groups that meet the matching conditions.
+	//
+	// example:
+	//
+	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The sorting order.
+	//
+	// Default value: asc. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The condition by which the results are sorted.
+	//
+	// Valid values:
+	//
+	// 	- LocationDateClusterEndTime: by the end time of the spatiotemporal clustering groups.
+	//
+	// 	- CreateTime: by the creation time of the spatiotemporal clustering groups.
+	//
+	// 	- UpdateTime: by the update time of the spatiotemporal clustering groups.
+	//
+	// 	- LocationDateClusterStartTime: by the start time of the spatiotemporal clustering groups. This is the default value.
+	//
 	// example:
 	//
 	// LocationDateClusterStartTime
-	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	Title                 *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The title of spatiotemporal clustering. Fuzzy matching is performed.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The time range during which the spatiotemporal clustering groups are updated.
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
 }
 
@@ -20550,11 +24722,16 @@ func (s *QueryLocationDateClustersShrinkRequest) SetUpdateTimeRangeShrink(v stri
 }
 
 type QueryLocationDateClustersResponseBody struct {
+	// The list of spatiotemporal groups.
 	LocationDateClusters []*LocationDateCluster `json:"LocationDateClusters,omitempty" xml:"LocationDateClusters,omitempty" type:"Repeated"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// MzQNjmY2MzYxNhNjk2ZNjEu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7055FCF7-4D7B-098E-BD4D-DD2932B0****
@@ -20614,26 +24791,60 @@ func (s *QueryLocationDateClustersResponse) SetBody(v *QueryLocationDateClusters
 }
 
 type QuerySimilarImageClustersRequest struct {
+	// The custom tags, which are used to filter tasks.
+	//
 	// example:
 	//
 	// {"key": "val"}
 	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The number of entries per page. Value range: 0 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// If the total number of clusters is greater than the value of MaxResults, you must specify this parameter. The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// >  The first time you call this operation in a query, set this parameter to null.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KClVwZGF0ZVRpbWUQARgBIs8ECgkAAJLUwUCAQ****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- asc: ascending order.
+	//
+	// 	- desc: descending order. This is the default value.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sorting field.
+	//
+	// 	- CreateTime: the time when the clusters were created.
+	//
+	// 	- UpdateTime: the time when the clusters were updated. This is the default value.
+	//
 	// example:
 	//
 	// UpdateTime
@@ -20684,14 +24895,21 @@ func (s *QuerySimilarImageClustersRequest) SetSort(v string) *QuerySimilarImageC
 }
 
 type QuerySimilarImageClustersResponseBody struct {
+	// The pagination token. If the total number of clusters is greater than the value of MaxResults, this token can be used to retrieve the next page. This parameter has a value only if not all the clusters that meet the condition are returned.
+	//
+	// Pass this value as the value of NextToken in the next query to return the subsequent clusters.
+	//
 	// example:
 	//
 	// CAESEgoQCg4KClVwZGF0ZVRpbWUQARgBIs8ECgkAAJLUwUCAQ****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA995EFD-083D-4F40-BE8A-BDF75FFF****
-	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of similar image clusters.
 	SimilarImageClusters []*SimilarImageCluster `json:"SimilarImageClusters,omitempty" xml:"SimilarImageClusters,omitempty" type:"Repeated"`
 }
 
@@ -20748,55 +24966,102 @@ func (s *QuerySimilarImageClustersResponse) SetBody(v *QuerySimilarImageClusters
 }
 
 type QueryStoriesRequest struct {
+	// The time range in which stories were created.
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The custom labels in key-value pairs.
+	//
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
-	DatasetName      *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The IDs of the face clusters.
 	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
+	// The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the story.
+	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- asc: in ascending order.
+	//
+	// 	- desc: in descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- CreateTime: sorts by story creation time.
+	//
+	// 	- StoryName: sorts by story name.
+	//
+	// 	- StoryStartTime: sorts by story start time.
+	//
+	// 	- StoryEndTime: sorts by story end time.
+	//
 	// example:
 	//
 	// CreateTime
-	Sort              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The time range for the creation time of the last photo or video in the story.
 	StoryEndTimeRange *TimeRange `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// name1
-	StoryName           *string    `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The time range for the creation time of the first photo or video in the story.
 	StoryStartTimeRange *TimeRange `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
+	// The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// SeasonHighlights
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// TimeMemory
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// Specifies whether to return empty stories. Valid values:
+	//
+	// 	- true (The default value)
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -20892,55 +25157,102 @@ func (s *QueryStoriesRequest) SetWithEmptyStories(v bool) *QueryStoriesRequest {
 }
 
 type QueryStoriesShrinkRequest struct {
+	// The time range in which stories were created.
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
-	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The custom labels in key-value pairs.
+	//
+	// example:
+	//
+	// key=value
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
-	DatasetName            *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The IDs of the face clusters.
 	FigureClusterIdsShrink *string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty"`
+	// The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpw****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the story.
+	//
 	// example:
 	//
 	// id1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- asc: in ascending order.
+	//
+	// 	- desc: in descending order.
+	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The sort field. Valid values:
+	//
+	// 	- CreateTime: sorts by story creation time.
+	//
+	// 	- StoryName: sorts by story name.
+	//
+	// 	- StoryStartTime: sorts by story start time.
+	//
+	// 	- StoryEndTime: sorts by story end time.
+	//
 	// example:
 	//
 	// CreateTime
-	Sort                    *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The time range for the creation time of the last photo or video in the story.
 	StoryEndTimeRangeShrink *string `json:"StoryEndTimeRange,omitempty" xml:"StoryEndTimeRange,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// name1
-	StoryName                 *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	StoryName *string `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	// The time range for the creation time of the first photo or video in the story.
 	StoryStartTimeRangeShrink *string `json:"StoryStartTimeRange,omitempty" xml:"StoryStartTimeRange,omitempty"`
+	// The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// SeasonHighlights
 	StorySubType *string `json:"StorySubType,omitempty" xml:"StorySubType,omitempty"`
+	// The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+	//
 	// example:
 	//
 	// TimeMemory
 	StoryType *string `json:"StoryType,omitempty" xml:"StoryType,omitempty"`
+	// Specifies whether to return empty stories. Valid values:
+	//
+	// 	- true (The default value)
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -21036,15 +25348,20 @@ func (s *QueryStoriesShrinkRequest) SetWithEmptyStories(v bool) *QueryStoriesShr
 }
 
 type QueryStoriesResponseBody struct {
+	// The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3Qx****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
-	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Stories   []*Story `json:"Stories,omitempty" xml:"Stories,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The stories.
+	Stories []*Story `json:"Stories,omitempty" xml:"Stories,omitempty" type:"Repeated"`
 }
 
 func (s QueryStoriesResponseBody) String() string {
@@ -21105,7 +25422,10 @@ type RefreshWebofficeTokenRequest struct {
 	// example:
 	//
 	// 99d1b8b478b641c1b3372f5bd6********
-	AccessToken      *string           `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// This parameter is required.
 	//
@@ -21155,7 +25475,10 @@ type RefreshWebofficeTokenShrinkRequest struct {
 	// example:
 	//
 	// 99d1b8b478b641c1b3372f5bd6********
-	AccessToken            *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// This parameter is required.
 	//
@@ -21285,20 +25608,28 @@ func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponse
 }
 
 type RemoveStoryFilesRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files that you want to delete.
+	//
 	// This parameter is required.
 	Files []*RemoveStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21336,6 +25667,10 @@ func (s *RemoveStoryFilesRequest) SetProjectName(v string) *RemoveStoryFilesRequ
 }
 
 type RemoveStoryFilesRequestFiles struct {
+	// The URI of the Object Storage Service (OSS) bucket where you store the files that you want to delete.
+	//
+	// Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the files that have an extension.
+	//
 	// example:
 	//
 	// oss://bucket1/object
@@ -21356,20 +25691,28 @@ func (s *RemoveStoryFilesRequestFiles) SetURI(v string) *RemoveStoryFilesRequest
 }
 
 type RemoveStoryFilesShrinkRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The files that you want to delete.
+	//
 	// This parameter is required.
 	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21407,6 +25750,8 @@ func (s *RemoveStoryFilesShrinkRequest) SetProjectName(v string) *RemoveStoryFil
 }
 
 type RemoveStoryFilesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -21456,12 +25801,16 @@ func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *Rem
 }
 
 type ResumeBatchRequest struct {
+	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21489,6 +25838,8 @@ func (s *ResumeBatchRequest) SetProjectName(v string) *ResumeBatchRequest {
 }
 
 type ResumeBatchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D2C628B8-35DF-473C-8A41-757F30******
@@ -21538,12 +25889,16 @@ func (s *ResumeBatchResponse) SetBody(v *ResumeBatchResponseBody) *ResumeBatchRe
 }
 
 type ResumeTriggerRequest struct {
+	// The ID of the trigger. You can obtain the ID from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21571,6 +25926,8 @@ func (s *ResumeTriggerRequest) SetProjectName(v string) *ResumeTriggerRequest {
 }
 
 type ResumeTriggerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FEDC9B1F-30F2-4C1F-8ED2-B7860187****
@@ -21620,19 +25977,30 @@ func (s *ResumeTriggerResponse) SetBody(v *ResumeTriggerResponseBody) *ResumeTri
 }
 
 type SearchImageFigureClusterRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the image.
+	//
+	// Specify the OSS URI in the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -21668,19 +26036,30 @@ func (s *SearchImageFigureClusterRequest) SetSourceURI(v string) *SearchImageFig
 }
 
 type SearchImageFigureClusterShrinkRequest struct {
+	// **If you have no special requirements, leave this parameter empty.**
+	//
+	// The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The OSS URI of the image.
+	//
+	// Specify the OSS URI in the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://test-bucket/test-object
@@ -21716,7 +26095,10 @@ func (s *SearchImageFigureClusterShrinkRequest) SetSourceURI(v string) *SearchIm
 }
 
 type SearchImageFigureClusterResponseBody struct {
+	// The face clusters.
 	Clusters []*SearchImageFigureClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C2734912-E6D5-052C-AC67-6A9FD02*****
@@ -21742,11 +26124,16 @@ func (s *SearchImageFigureClusterResponseBody) SetRequestId(v string) *SearchIma
 }
 
 type SearchImageFigureClusterResponseBodyClusters struct {
+	// The bounding box of the face.
 	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// The ID of the face cluster that contains faces similar to the face within the bounding box.
+	//
 	// example:
 	//
 	// Cluster-ca730577-06b1-42c7-a25b-8f2c7******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The similarity between the face within the bounding box and the face cluster. Valid value: 0 to 1.
+	//
 	// example:
 	//
 	// 0.87413794
@@ -21806,31 +26193,46 @@ func (s *SearchImageFigureClusterResponse) SetBody(v *SearchImageFigureClusterRe
 }
 
 type SemanticQueryRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immDatatest
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of entries to return. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 10
-	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The types of the media that you want to query. Default value:
+	//
+	// ["image"]
 	MediaTypes []*string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty" type:"Repeated"`
+	// This parameter is no longer available.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The content of the query that you input.
+	//
 	// This parameter is required.
-	Query           *string   `json:"Query,omitempty" xml:"Query,omitempty"`
-	SmartClusterIds []*string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty" type:"Repeated"`
-	WithFields      []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
+	//
+	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s SemanticQueryRequest) String() string {
@@ -21871,42 +26273,52 @@ func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
 	return s
 }
 
-func (s *SemanticQueryRequest) SetSmartClusterIds(v []*string) *SemanticQueryRequest {
-	s.SmartClusterIds = v
-	return s
-}
-
 func (s *SemanticQueryRequest) SetWithFields(v []*string) *SemanticQueryRequest {
 	s.WithFields = v
 	return s
 }
 
 type SemanticQueryShrinkRequest struct {
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immDatatest
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The maximum number of entries to return. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 10
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The types of the media that you want to query. Default value:
+	//
+	// ["image"]
 	MediaTypesShrink *string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty"`
+	// This parameter is no longer available.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The content of the query that you input.
+	//
 	// This parameter is required.
-	Query                 *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SmartClusterIdsShrink *string `json:"SmartClusterIds,omitempty" xml:"SmartClusterIds,omitempty"`
-	WithFieldsShrink      *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
+	//
+	// If you do not specify this parameter or set the value to null, all existing metadata fields are returned.
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
 
 func (s SemanticQueryShrinkRequest) String() string {
@@ -21947,18 +26359,16 @@ func (s *SemanticQueryShrinkRequest) SetQuery(v string) *SemanticQueryShrinkRequ
 	return s
 }
 
-func (s *SemanticQueryShrinkRequest) SetSmartClusterIdsShrink(v string) *SemanticQueryShrinkRequest {
-	s.SmartClusterIdsShrink = &v
-	return s
-}
-
 func (s *SemanticQueryShrinkRequest) SetWithFieldsShrink(v string) *SemanticQueryShrinkRequest {
 	s.WithFieldsShrink = &v
 	return s
 }
 
 type SemanticQueryResponseBody struct {
+	// The files.
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
@@ -22013,34 +26423,88 @@ func (s *SemanticQueryResponse) SetBody(v *SemanticQueryResponseBody) *SemanticQ
 }
 
 type SimpleQueryRequest struct {
+	// The aggregations.
+	//
+	// >  If you perform an aggregate query, the aggregation returned in the response contains only statistical results, not the actual metadata.
 	Aggregations []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 	- If the Aggregations parameter is not specified, this parameter specifies the maximum number of files that can be returned. Valid values: 1 to 100.
+	//
+	// 	- If the Aggregations parameter is specified, this parameter specifies the maximum number of aggregation groups that can be returned. Valid values: 0 to 2000.
+	//
+	// 	- If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	//
+	// The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// You do not need to specify this parameter in your initial request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- asc: sorts the results in ascending order.
+	//
+	// 	- desc: sorts the results in descending order. This is the default value.
+	//
+	// 	- You can specify multiple sort orders that are separated by commas. Example: asc,desc.
+	//
+	// 	- The number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if the value of the Sort parameter is Size,Filename, you can set the Order parameter to desc,asc.
+	//
+	// 	- If the number of sort orders is less than the number of sort fields, the sort fields for which no sorting orders are explicitly specified use the asc order by default. For example, if you set Sort to Size,Filename and Order to asc, the Filename field defaults to the value of asc.
+	//
 	// example:
 	//
 	// asc,desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
-	ProjectName *string      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query       *SimpleQuery `json:"Query,omitempty" xml:"Query,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The query conditions.
+	Query *SimpleQuery `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+	//
+	// >
+	//
+	// 	- If you specify multiple sort fields, separate them with commas (,), as in Size,Filename.
+	//
+	// 	- You can specify up to five sort fields.
+	//
+	// 	- The order of the sort fields determines their precedence in the sorting process.
+	//
 	// example:
 	//
 	// Size,Filename
-	Sort       *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+	//
+	// If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
 	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	// Specifies whether to return the total number of hits. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// if can be null:
 	// true
 	WithoutTotalHits *bool `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
@@ -22105,10 +26569,30 @@ func (s *SimpleQueryRequest) SetWithoutTotalHits(v bool) *SimpleQueryRequest {
 }
 
 type SimpleQueryRequestAggregations struct {
+	// The name of the field. For more information about supported fields, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+	//
 	// example:
 	//
 	// Size
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The operator.
+	//
+	// Enumerated values:
+	//
+	// 	- average: calculates the average number.
+	//
+	// 	- min: finds the minimum value.
+	//
+	// 	- max: finds the maximum value.
+	//
+	// 	- count: counts the number of results.
+	//
+	// 	- distinct: counts the number of distinct results.
+	//
+	// 	- sum: calculates the sum of all matching results..
+	//
+	// 	- group: counts the number of results by group. The results are sorted by the count number in descending order.
+	//
 	// example:
 	//
 	// sum
@@ -22134,34 +26618,88 @@ func (s *SimpleQueryRequestAggregations) SetOperation(v string) *SimpleQueryRequ
 }
 
 type SimpleQueryShrinkRequest struct {
+	// The aggregations.
+	//
+	// >  If you perform an aggregate query, the aggregation returned in the response contains only statistical results, not the actual metadata.
 	AggregationsShrink *string `json:"Aggregations,omitempty" xml:"Aggregations,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 	- If the Aggregations parameter is not specified, this parameter specifies the maximum number of files that can be returned. Valid values: 1 to 100.
+	//
+	// 	- If the Aggregations parameter is specified, this parameter specifies the maximum number of aggregation groups that can be returned. Valid values: 0 to 2000.
+	//
+	// 	- If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	//
+	// The next call to the operation returns results lexicographically after the NextToken parameter value.
+	//
+	// You do not need to specify this parameter in your initial request.
+	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sort order. Valid values:
+	//
+	// 	- asc: sorts the results in ascending order.
+	//
+	// 	- desc: sorts the results in descending order. This is the default value.
+	//
+	// 	- You can specify multiple sort orders that are separated by commas. Example: asc,desc.
+	//
+	// 	- The number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if the value of the Sort parameter is Size,Filename, you can set the Order parameter to desc,asc.
+	//
+	// 	- If the number of sort orders is less than the number of sort fields, the sort fields for which no sorting orders are explicitly specified use the asc order by default. For example, if you set Sort to Size,Filename and Order to asc, the Filename field defaults to the value of asc.
+	//
 	// example:
 	//
 	// asc,desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The query conditions.
 	QueryShrink *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+	//
+	// >
+	//
+	// 	- If you specify multiple sort fields, separate them with commas (,), as in Size,Filename.
+	//
+	// 	- You can specify up to five sort fields.
+	//
+	// 	- The order of the sort fields determines their precedence in the sorting process.
+	//
 	// example:
 	//
 	// Size,Filename
-	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+	//
+	// If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
 	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+	// Specifies whether to return the total number of hits. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// if can be null:
 	// true
 	WithoutTotalHits *bool `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
@@ -22226,19 +26764,34 @@ func (s *SimpleQueryShrinkRequest) SetWithoutTotalHits(v bool) *SimpleQueryShrin
 }
 
 type SimpleQueryResponseBody struct {
+	// The aggregations. This parameter is returned only when the value of the Aggregations request parameter is not empty.
 	Aggregations []*SimpleQueryResponseBodyAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
-	Files        []*File                                `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The files. This parameter is returned only when the value of the Aggregations request parameter is empty.
+	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+	//
+	// It can be used in the next request to retrieve a new page of results.
+	//
+	// If NextToken is empty, no next page exists.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MTIzNDU2Nzg6aW1tdGVzdDpleGFtcGxlYnVja2V0OmRhdGFzZXQwMDE6b3NzOi8vZXhhbXBsZWJ1Y2tldC9zYW1wbGVvYmplY3QxLmpwZw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2C5C1E0F-D8B8-4DA0-8127-EC32C771****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
+	// The number of total hits.
+	//
+	// example:
+	//
+	// 10
+	TotalHits *int64 `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s SimpleQueryResponseBody) String() string {
@@ -22275,15 +26828,22 @@ func (s *SimpleQueryResponseBody) SetTotalHits(v int64) *SimpleQueryResponseBody
 }
 
 type SimpleQueryResponseBodyAggregations struct {
+	// The name of the field.
+	//
 	// example:
 	//
 	// Size
-	Field  *string                                      `json:"Field,omitempty" xml:"Field,omitempty"`
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The grouped aggregations. This parameter is returned only when the group operator is specified in the Aggregations request parameter.
 	Groups []*SimpleQueryResponseBodyAggregationsGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The operator.
+	//
 	// example:
 	//
 	// sum
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The statistical result.
+	//
 	// example:
 	//
 	// 200
@@ -22319,10 +26879,14 @@ func (s *SimpleQueryResponseBodyAggregations) SetValue(v float64) *SimpleQueryRe
 }
 
 type SimpleQueryResponseBodyAggregationsGroups struct {
+	// The number of results in the grouped aggregation.
+	//
 	// example:
 	//
 	// 5
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The value for the grouped aggregation.
+	//
 	// example:
 	//
 	// 100
@@ -22377,12 +26941,16 @@ func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryRe
 }
 
 type SuspendBatchRequest struct {
+	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22410,6 +26978,8 @@ func (s *SuspendBatchRequest) SetProjectName(v string) *SuspendBatchRequest {
 }
 
 type SuspendBatchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// EC564A9A-BA5C-4499-A087-D9B9E76E*****
@@ -22459,12 +27029,16 @@ func (s *SuspendBatchResponse) SetBody(v *SuspendBatchResponseBody) *SuspendBatc
 }
 
 type SuspendTriggerRequest struct {
+	// The ID of the trigger.[](~~479912~~)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22492,6 +27066,8 @@ func (s *SuspendTriggerRequest) SetProjectName(v string) *SuspendTriggerRequest 
 }
 
 type SuspendTriggerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0BC1F0C9-8E99-46C6-B502-10DED******
@@ -22541,20 +27117,28 @@ func (s *SuspendTriggerResponse) SetBody(v *SuspendTriggerResponseBody) *Suspend
 }
 
 type UpdateBatchRequest struct {
+	// The processing templates.
 	Actions []*UpdateBatchRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input *Input  `json:"Input,omitempty" xml:"Input,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input data source.
+	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key":"val"}
@@ -22595,10 +27179,13 @@ func (s *UpdateBatchRequest) SetTags(v map[string]interface{}) *UpdateBatchReque
 }
 
 type UpdateBatchRequestActions struct {
+	// The name of the template.
+	//
 	// example:
 	//
 	// doc/convert
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -22621,20 +27208,28 @@ func (s *UpdateBatchRequestActions) SetParameters(v []*string) *UpdateBatchReque
 }
 
 type UpdateBatchShrinkRequest struct {
+	// The processing templates.
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// The ID of the batch processing task. You can obtain the ID of the batch processing task from the response of the [CreateBatch](https://help.aliyun.com/document_detail/606694.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// batch-4eb9223f-3e88-42d3-a578-3f2852******
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input data source.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"key":"val"}
@@ -22675,6 +27270,8 @@ func (s *UpdateBatchShrinkRequest) SetTagsShrink(v string) *UpdateBatchShrinkReq
 }
 
 type UpdateBatchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// CB4D73A3-BAF4-4A9D-A631-15F219AF****
@@ -22867,11 +27464,25 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 }
 
 type UpdateFigureClusterRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The information about the cluster.
+	//
 	// This parameter is required.
 	FigureCluster *FigureClusterForReq `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -22899,11 +27510,25 @@ func (s *UpdateFigureClusterRequest) SetProjectName(v string) *UpdateFigureClust
 }
 
 type UpdateFigureClusterShrinkRequest struct {
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The information about the cluster.
+	//
 	// This parameter is required.
 	FigureClusterShrink *string `json:"FigureCluster,omitempty" xml:"FigureCluster,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -22931,6 +27556,8 @@ func (s *UpdateFigureClusterShrinkRequest) SetProjectName(v string) *UpdateFigur
 }
 
 type UpdateFigureClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5F74C5C9-5AC0-49F9-914D-E01589D3****
@@ -22980,11 +27607,25 @@ func (s *UpdateFigureClusterResponse) SetBody(v *UpdateFigureClusterResponseBody
 }
 
 type UpdateFileMetaRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The file whose metadata you want to update. The value must be in the JSON format.
+	//
 	// This parameter is required.
 	File *InputFile `json:"File,omitempty" xml:"File,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -23012,11 +27653,25 @@ func (s *UpdateFileMetaRequest) SetProjectName(v string) *UpdateFileMetaRequest 
 }
 
 type UpdateFileMetaShrinkRequest struct {
+	// The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The file whose metadata you want to update. The value must be in the JSON format.
+	//
 	// This parameter is required.
 	FileShrink *string `json:"File,omitempty" xml:"File,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -23044,6 +27699,8 @@ func (s *UpdateFileMetaShrinkRequest) SetProjectName(v string) *UpdateFileMetaSh
 }
 
 type UpdateFileMetaResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D53E6C9-5AC0-48F9-825F-D02678E3****
@@ -23093,15 +27750,48 @@ func (s *UpdateFileMetaResponse) SetBody(v *UpdateFileMetaResponseBody) *UpdateF
 }
 
 type UpdateLocationDateClusterRequest struct {
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom ID of the cluster. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. For example, you can pass the custom ID to map a URI to an ID. We recommend that you specify a globally unique value. The value can be up to 1,024 bytes in size.
+	//
+	// example:
+	//
+	// member-id-0001
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. The parameter stores custom key-value labels, which can be used to filter data. You can specify up to 100 custom labels for a cluster.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "UserScore": "5"
+	//
+	// }
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the cluster that you want to update.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the cluster. The name can be used to search for the cluster. The value can be up to 1,024 bytes in size.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateLocationDateClusterRequest) String() string {
@@ -23143,15 +27833,48 @@ func (s *UpdateLocationDateClusterRequest) SetTitle(v string) *UpdateLocationDat
 }
 
 type UpdateLocationDateClusterShrinkRequest struct {
-	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom ID of the cluster. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. For example, you can pass the custom ID to map a URI to an ID. We recommend that you specify a globally unique value. The value can be up to 1,024 bytes in size.
+	//
+	// example:
+	//
+	// member-id-0001
+	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom labels. The parameter stores custom key-value labels, which can be used to filter data. You can specify up to 100 custom labels for a cluster.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "UserScore": "5"
+	//
+	// }
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.[](~~478160~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-dataset
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the cluster that you want to update.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// location-date-cluster-71dd4f32-9597-4085-a2ab-3a7b0fd0aff9
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.[](~~478153~~)
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the cluster. The name can be used to search for the cluster. The value can be up to 1,024 bytes in size.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateLocationDateClusterShrinkRequest) String() string {
@@ -23193,6 +27916,8 @@ func (s *UpdateLocationDateClusterShrinkRequest) SetTitle(v string) *UpdateLocat
 }
 
 type UpdateLocationDateClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 52B017A8-FEF5-0A61-BAEE-234A8AD8****
@@ -23242,41 +27967,72 @@ func (s *UpdateLocationDateClusterResponse) SetBody(v *UpdateLocationDateCluster
 }
 
 type UpdateProjectRequest struct {
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in each dataset.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in a dataset.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum size of files in each dataset. If the maximum size is exceeded, indexes can no longer be added. Unit: bytes.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The description of the project. The description must be 1 to 256 characters in length.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of datasets in the project. Valid values: 1 to 1000000000.
+	//
 	// example:
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the Resource Access Management (RAM) role. You must grant the RAM role to Intelligent Media Management (IMM) before IMM can access other cloud resources such as Object Storage Service (OSS).
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
-	ServiceRole *string                    `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	Tag         []*UpdateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
+	// The tags.
+	Tag []*UpdateProjectRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
@@ -23347,7 +28103,17 @@ func (s *UpdateProjectRequest) SetTemplateId(v string) *UpdateProjectRequest {
 }
 
 type UpdateProjectRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23370,41 +28136,72 @@ func (s *UpdateProjectRequestTag) SetValue(v string) *UpdateProjectRequestTag {
 }
 
 type UpdateProjectShrinkRequest struct {
+	// The maximum number of bindings for each dataset. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// 10
 	DatasetMaxBindCount *int64 `json:"DatasetMaxBindCount,omitempty" xml:"DatasetMaxBindCount,omitempty"`
+	// The maximum number of metadata entities in each dataset.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 10000000000
 	DatasetMaxEntityCount *int64 `json:"DatasetMaxEntityCount,omitempty" xml:"DatasetMaxEntityCount,omitempty"`
+	// The maximum number of files in each dataset. Valid values: 1 to 100000000.
+	//
 	// example:
 	//
 	// 100000000
 	DatasetMaxFileCount *int64 `json:"DatasetMaxFileCount,omitempty" xml:"DatasetMaxFileCount,omitempty"`
+	// The maximum number of metadata relationships in a dataset.
+	//
+	// >  This is a precautionary setting that does not impose practical limitations.
+	//
 	// example:
 	//
 	// 100000000000
 	DatasetMaxRelationCount *int64 `json:"DatasetMaxRelationCount,omitempty" xml:"DatasetMaxRelationCount,omitempty"`
+	// The maximum size of files in each dataset. If the maximum size is exceeded, indexes can no longer be added. Unit: bytes.
+	//
 	// example:
 	//
 	// 90000000000000000
 	DatasetMaxTotalFileSize *int64 `json:"DatasetMaxTotalFileSize,omitempty" xml:"DatasetMaxTotalFileSize,omitempty"`
+	// The description of the project. The description must be 1 to 256 characters in length.
+	//
 	// example:
 	//
 	// immtest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum number of datasets in the project. Valid values: 1 to 1000000000.
+	//
 	// example:
 	//
 	// 1000000000
 	ProjectMaxDatasetCount *int64 `json:"ProjectMaxDatasetCount,omitempty" xml:"ProjectMaxDatasetCount,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the Resource Access Management (RAM) role. You must grant the RAM role to Intelligent Media Management (IMM) before IMM can access other cloud resources such as Object Storage Service (OSS).
+	//
+	// You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
 	ServiceRole *string `json:"ServiceRole,omitempty" xml:"ServiceRole,omitempty"`
-	TagShrink   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+	//
 	// example:
 	//
 	// AliyunIMMDefaultRole
@@ -23475,7 +28272,10 @@ func (s *UpdateProjectShrinkRequest) SetTemplateId(v string) *UpdateProjectShrin
 }
 
 type UpdateProjectResponseBody struct {
+	// The project. For more information, see "Project".
 	Project *Project `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D33C3574-4093-448E-86E7-15BE2BD3****
@@ -23530,33 +28330,46 @@ func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdatePro
 }
 
 type UpdateStoryRequest struct {
+	// The cover image of the story.
 	Cover *UpdateStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	// The custom ID.
+	//
 	// example:
 	//
 	// test
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom tags. You can specify up to 100 custom tags.
+	//
 	// example:
 	//
 	// {"key": "value"}
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdata
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// newstory
@@ -23607,6 +28420,10 @@ func (s *UpdateStoryRequest) SetStoryName(v string) *UpdateStoryRequest {
 }
 
 type UpdateStoryRequestCover struct {
+	// The URI of the cover image.
+	//
+	// Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+	//
 	// example:
 	//
 	// oss://bucket1/object
@@ -23627,33 +28444,46 @@ func (s *UpdateStoryRequestCover) SetURI(v string) *UpdateStoryRequestCover {
 }
 
 type UpdateStoryShrinkRequest struct {
+	// The cover image of the story.
 	CoverShrink *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
+	// The custom ID.
+	//
 	// example:
 	//
 	// test
 	CustomId *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	// The custom tags. You can specify up to 100 custom tags.
+	//
 	// example:
 	//
 	// {"key": "value"}
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	// The name of the dataset.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdata
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The ID of the story.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The name of the project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// immtest
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the story.
+	//
 	// example:
 	//
 	// newstory
@@ -23704,6 +28534,8 @@ func (s *UpdateStoryShrinkRequest) SetStoryName(v string) *UpdateStoryShrinkRequ
 }
 
 type UpdateStoryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6E93D6C9-5AC0-49F9-914D-E02678D3****
@@ -23753,20 +28585,28 @@ func (s *UpdateStoryResponse) SetBody(v *UpdateStoryResponseBody) *UpdateStoryRe
 }
 
 type UpdateTriggerRequest struct {
+	// The processing templates.
 	Actions []*UpdateTriggerRequestActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
+	// The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Input *Input  `json:"Input,omitempty" xml:"Input,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input data source.
+	Input *Input `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
@@ -23807,10 +28647,13 @@ func (s *UpdateTriggerRequest) SetTags(v map[string]interface{}) *UpdateTriggerR
 }
 
 type UpdateTriggerRequestActions struct {
+	// The template name.
+	//
 	// example:
 	//
 	// doc/convert
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template parameters.
 	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -23833,20 +28676,28 @@ func (s *UpdateTriggerRequestActions) SetParameters(v []*string) *UpdateTriggerR
 }
 
 type UpdateTriggerShrinkRequest struct {
+	// The processing templates.
 	ActionsShrink *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
+	// The ID of the trigger. You can obtain the ID of the trigger from the response of the [CreateTrigger](https://help.aliyun.com/document_detail/479912.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// trigger-9f72636a-0f0c-4baf-ae78-38b27b******
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The input data source.
 	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The custom tags. You can search for or filter asynchronous tasks by custom tag.
+	//
 	// example:
 	//
 	// {"test": "val1"}
@@ -23887,6 +28738,8 @@ func (s *UpdateTriggerShrinkRequest) SetTagsShrink(v string) *UpdateTriggerShrin
 }
 
 type UpdateTriggerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A022F78-B9A8-4ACC-BB6B-B35975******
@@ -23987,7 +28840,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 图片打马赛克算子
+// Adds mosaics, Gaussian blurs, or solid color shapes to blur one or more areas of an image for privacy protection and saves the output image to the specified path in Object Storage Service (OSS).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- The operation accepts JPG and PNG images with a maximum side length of 30,000 pixels and a total of up to 250 million pixels.
 //
 // @param tmpReq - AddImageMosaicRequest
 //
@@ -24063,7 +28924,15 @@ func (client *Client) AddImageMosaicWithOptions(tmpReq *AddImageMosaicRequest, r
 
 // Summary:
 //
-// 图片打马赛克算子
+// Adds mosaics, Gaussian blurs, or solid color shapes to blur one or more areas of an image for privacy protection and saves the output image to the specified path in Object Storage Service (OSS).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- The operation accepts JPG and PNG images with a maximum side length of 30,000 pixels and a total of up to 250 million pixels.
 //
 // @param request - AddImageMosaicRequest
 //
@@ -24081,7 +28950,7 @@ func (client *Client) AddImageMosaic(request *AddImageMosaicRequest) (_result *A
 
 // Summary:
 //
-// 为故事新增文件
+// Adds objects to a story.
 //
 // @param tmpReq - AddStoryFilesRequest
 //
@@ -24141,7 +29010,7 @@ func (client *Client) AddStoryFilesWithOptions(tmpReq *AddStoryFilesRequest, run
 
 // Summary:
 //
-// 为故事新增文件
+// Adds objects to a story.
 //
 // @param request - AddStoryFilesRequest
 //
@@ -24159,7 +29028,15 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 
 // Summary:
 //
-// 绑定ossbucket
+// Binds an Object Storage Service (OSS) bucket to the specified project. The binding enables you to use IMM features by using the x-oss-process parameter.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- To use data processing capabilities of IMM based on the x-oss-process parameter, you must bind an OSS bucket to an IMM project. For more information, see [x-oss-process](https://help.aliyun.com/document_detail/2391270.html).
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
 //
 // @param request - AttachOSSBucketRequest
 //
@@ -24209,7 +29086,15 @@ func (client *Client) AttachOSSBucketWithOptions(request *AttachOSSBucketRequest
 
 // Summary:
 //
-// 绑定ossbucket
+// Binds an Object Storage Service (OSS) bucket to the specified project. The binding enables you to use IMM features by using the x-oss-process parameter.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- To use data processing capabilities of IMM based on the x-oss-process parameter, you must bind an OSS bucket to an IMM project. For more information, see [x-oss-process](https://help.aliyun.com/document_detail/2391270.html).
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
 //
 // @param request - AttachOSSBucketRequest
 //
@@ -24227,7 +29112,19 @@ func (client *Client) AttachOSSBucket(request *AttachOSSBucketRequest) (_result 
 
 // Summary:
 //
-// 批量删除文件元信息
+// Deletes the metadata of multiple files from a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- A successful deletion message is returned regardless of whether the metadata of the file exists in the dataset.
+//
+// >
+//
+// 	- If you delete the metadata of a file from a dataset, the file stored in Object Storage Service (OSS) or Photo and Drive Service is **not*	- deleted. If you want to delete the file, use the operations provided by OSS or Photo and Drive Service.
+//
+// 	- Metadata deletion affects existing face groups and stories but does not affect existing spatiotemporal groups.
 //
 // @param tmpReq - BatchDeleteFileMetaRequest
 //
@@ -24283,7 +29180,19 @@ func (client *Client) BatchDeleteFileMetaWithOptions(tmpReq *BatchDeleteFileMeta
 
 // Summary:
 //
-// 批量删除文件元信息
+// Deletes the metadata of multiple files from a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- A successful deletion message is returned regardless of whether the metadata of the file exists in the dataset.
+//
+// >
+//
+// 	- If you delete the metadata of a file from a dataset, the file stored in Object Storage Service (OSS) or Photo and Drive Service is **not*	- deleted. If you want to delete the file, use the operations provided by OSS or Photo and Drive Service.
+//
+// 	- Metadata deletion affects existing face groups and stories but does not affect existing spatiotemporal groups.
 //
 // @param request - BatchDeleteFileMetaRequest
 //
@@ -24301,7 +29210,7 @@ func (client *Client) BatchDeleteFileMeta(request *BatchDeleteFileMetaRequest) (
 
 // Summary:
 //
-// 批量获取分组信息
+// Queries face clusters.
 //
 // @param tmpReq - BatchGetFigureClusterRequest
 //
@@ -24357,7 +29266,7 @@ func (client *Client) BatchGetFigureClusterWithOptions(tmpReq *BatchGetFigureClu
 
 // Summary:
 //
-// 批量获取分组信息
+// Queries face clusters.
 //
 // @param request - BatchGetFigureClusterRequest
 //
@@ -24375,7 +29284,15 @@ func (client *Client) BatchGetFigureCluster(request *BatchGetFigureClusterReques
 
 // Summary:
 //
-// 批量获取文件元信息
+// Queries metadata of multiple objects or files in the specified dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, feel free to join the DingTalk chat group (ID: 31690030817) and share your questions with us.
 //
 // @param tmpReq - BatchGetFileMetaRequest
 //
@@ -24439,7 +29356,15 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 
 // Summary:
 //
-// 批量获取文件元信息
+// Queries metadata of multiple objects or files in the specified dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, feel free to join the DingTalk chat group (ID: 31690030817) and share your questions with us.
 //
 // @param request - BatchGetFileMetaRequest
 //
@@ -24457,7 +29382,17 @@ func (client *Client) BatchGetFileMeta(request *BatchGetFileMetaRequest) (_resul
 
 // Summary:
 //
-// 批量索引文件元信息
+// Indexes metadata of multiple objects into the specified dataset. The process involves data processing operations such as label detection, face detection, and location detection. Metadata indexing helps meet diverse data retrieval requirements.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Data processing operations supported for metadata processing vary with workflow templates. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+//
+// 	- Metadata indexing poses limits on the total number and size of objects. For more information about these limits, see [Limits](https://help.aliyun.com/document_detail/475569.html). For more information about how to create
+//
+// 	- Metadata indexing is available in specific regions. For information about regions that support metadata indexing, see the "Data management and indexing" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic.
 //
 // @param tmpReq - BatchIndexFileMetaRequest
 //
@@ -24525,7 +29460,17 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 
 // Summary:
 //
-// 批量索引文件元信息
+// Indexes metadata of multiple objects into the specified dataset. The process involves data processing operations such as label detection, face detection, and location detection. Metadata indexing helps meet diverse data retrieval requirements.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Data processing operations supported for metadata processing vary with workflow templates. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+//
+// 	- Metadata indexing poses limits on the total number and size of objects. For more information about these limits, see [Limits](https://help.aliyun.com/document_detail/475569.html). For more information about how to create
+//
+// 	- Metadata indexing is available in specific regions. For information about regions that support metadata indexing, see the "Data management and indexing" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic.
 //
 // @param request - BatchIndexFileMetaRequest
 //
@@ -24543,7 +29488,13 @@ func (client *Client) BatchIndexFileMeta(request *BatchIndexFileMetaRequest) (_r
 
 // Summary:
 //
-// 批量更新文件元信息
+// Updates some metadata items of files indexed into a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- You cannot call this operation to update all metadata. You can update only metadata fields such as CustomLabels, CustomId, and Figures. For more information, see the "Request parameters" section of this topic.
 //
 // @param tmpReq - BatchUpdateFileMetaRequest
 //
@@ -24599,7 +29550,13 @@ func (client *Client) BatchUpdateFileMetaWithOptions(tmpReq *BatchUpdateFileMeta
 
 // Summary:
 //
-// 批量更新文件元信息
+// Updates some metadata items of files indexed into a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- You cannot call this operation to update all metadata. You can update only metadata fields such as CustomLabels, CustomId, and Figures. For more information, see the "Request parameters" section of this topic.
 //
 // @param request - BatchUpdateFileMetaRequest
 //
@@ -24617,7 +29574,13 @@ func (client *Client) BatchUpdateFileMeta(request *BatchUpdateFileMetaRequest) (
 
 // Summary:
 //
-// 以脸搜分组
+// Compares the similarity of the largest faces in two images. The largest face refers to the largest face frame in an image after face detection.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- For the input image, only the face with the largest face frame in the image is used for face comparison. The face frame detection result is consistent with the responses of the [DetectImageFaces](https://help.aliyun.com/document_detail/478213.html) operation.
 //
 // @param tmpReq - CompareImageFacesRequest
 //
@@ -24677,7 +29640,13 @@ func (client *Client) CompareImageFacesWithOptions(tmpReq *CompareImageFacesRequ
 
 // Summary:
 //
-// 以脸搜分组
+// Compares the similarity of the largest faces in two images. The largest face refers to the largest face frame in an image after face detection.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- For the input image, only the face with the largest face frame in the image is used for face comparison. The face frame detection result is consistent with the responses of the [DetectImageFaces](https://help.aliyun.com/document_detail/478213.html) operation.
 //
 // @param request - CompareImageFacesRequest
 //
@@ -24695,7 +29664,191 @@ func (client *Client) CompareImageFaces(request *CompareImageFacesRequest) (_res
 
 // Summary:
 //
-// 创建查看压缩包内文件列表任务
+// AI 助手二期，问答API
+//
+// @param tmpReq - ContextualAnswerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContextualAnswerResponse
+func (client *Client) ContextualAnswerWithOptions(tmpReq *ContextualAnswerRequest, runtime *util.RuntimeOptions) (_result *ContextualAnswerResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ContextualAnswerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Messages)) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, tea.String("Messages"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessagesShrink)) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContextualAnswer"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ContextualAnswerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI 助手二期，问答API
+//
+// @param request - ContextualAnswerRequest
+//
+// @return ContextualAnswerResponse
+func (client *Client) ContextualAnswer(request *ContextualAnswerRequest) (_result *ContextualAnswerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ContextualAnswerResponse{}
+	_body, _err := client.ContextualAnswerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// AI助手二期，检索API
+//
+// @param tmpReq - ContextualRetrievalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContextualRetrievalResponse
+func (client *Client) ContextualRetrievalWithOptions(tmpReq *ContextualRetrievalRequest, runtime *util.RuntimeOptions) (_result *ContextualRetrievalResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ContextualRetrievalShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Messages)) {
+		request.MessagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Messages, tea.String("Messages"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SmartClusterIds)) {
+		request.SmartClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SmartClusterIds, tea.String("SmartClusterIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallOnly)) {
+		query["RecallOnly"] = request.RecallOnly
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MessagesShrink)) {
+		body["Messages"] = request.MessagesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmartClusterIdsShrink)) {
+		body["SmartClusterIds"] = request.SmartClusterIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContextualRetrieval"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ContextualRetrievalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// AI助手二期，检索API
+//
+// @param request - ContextualRetrievalRequest
+//
+// @return ContextualRetrievalResponse
+func (client *Client) ContextualRetrieval(request *ContextualRetrievalRequest) (_result *ContextualRetrievalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ContextualRetrievalResponse{}
+	_body, _err := client.ContextualRetrievalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an archive file inspection task to preview the files in a package without decompressing the package.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk chat group (ID: 31690030817) and share your questions with us.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports a package that contains up to 80,000 files.
+//
+// 	- The operation supports ZIP or RAR packages up to 200 GB in size, or 7z packages up to 50 GB in size.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateArchiveFileInspectionTaskRequest
 //
@@ -24767,7 +29920,23 @@ func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateA
 
 // Summary:
 //
-// 创建查看压缩包内文件列表任务
+// Creates an archive file inspection task to preview the files in a package without decompressing the package.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk chat group (ID: 31690030817) and share your questions with us.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports a package that contains up to 80,000 files.
+//
+// 	- The operation supports ZIP or RAR packages up to 200 GB in size, or 7z packages up to 50 GB in size.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateArchiveFileInspectionTaskRequest
 //
@@ -24785,7 +29954,11 @@ func (client *Client) CreateArchiveFileInspectionTask(request *CreateArchiveFile
 
 // Summary:
 //
-// 创建数据接入
+// Creates a batch processing task to perform a data processing operation, such as transcoding or format conversion, on multiple existing files at a time.
+//
+// Description:
+//
+// If you want to create a batch processing task to process data in [OSS](https://help.aliyun.com/document_detail/99372.html), make sure that you have bound the dataset to the OSS bucket where the data is stored. For more information about how to bind a dataset to a bucket, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param tmpReq - CreateBatchRequest
 //
@@ -24865,7 +30038,11 @@ func (client *Client) CreateBatchWithOptions(tmpReq *CreateBatchRequest, runtime
 
 // Summary:
 //
-// 创建数据接入
+// Creates a batch processing task to perform a data processing operation, such as transcoding or format conversion, on multiple existing files at a time.
+//
+// Description:
+//
+// If you want to create a batch processing task to process data in [OSS](https://help.aliyun.com/document_detail/99372.html), make sure that you have bound the dataset to the OSS bucket where the data is stored. For more information about how to bind a dataset to a bucket, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - CreateBatchRequest
 //
@@ -24883,7 +30060,21 @@ func (client *Client) CreateBatch(request *CreateBatchRequest) (_result *CreateB
 
 // Summary:
 //
-// 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
+// Creates a binding relationship between a dataset and an Object Storage Service (OSS) bucket. This allows for the automatic synchronization of incremental and full data and indexing.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// Before you create a binding relationship, make sure that the project and the dataset that you want to use exist.
+//
+// 	- For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
+//
+// >  The CreateBinding operation works by using the [workflow template](https://help.aliyun.com/document_detail/466304.html) that is specified when you created the project or dataset.
+//
+// After you create a binding relationship between a dataset and an OSS bucket, IMM scans the existing objects in the bucket and extracts metadata based on the scanning result. Then, IMM creates an index from the extracted metadata. If new objects are added to the OSS bucket, IMM constantly tracks and scans the objects and updates the index. For objects whose index is created in this way, you can call the [SimpleQuery](https://help.aliyun.com/document_detail/478175.html) operation to query, manage, and collect statistics from the objects.
 //
 // @param request - CreateBindingRequest
 //
@@ -24933,7 +30124,21 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 
 // Summary:
 //
-// 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
+// Creates a binding relationship between a dataset and an Object Storage Service (OSS) bucket. This allows for the automatic synchronization of incremental and full data and indexing.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// Before you create a binding relationship, make sure that the project and the dataset that you want to use exist.
+//
+// 	- For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For information about how to create a dataset, see [CreateDataset](https://help.aliyun.com/document_detail/478160.html).
+//
+// >  The CreateBinding operation works by using the [workflow template](https://help.aliyun.com/document_detail/466304.html) that is specified when you created the project or dataset.
+//
+// After you create a binding relationship between a dataset and an OSS bucket, IMM scans the existing objects in the bucket and extracts metadata based on the scanning result. Then, IMM creates an index from the extracted metadata. If new objects are added to the OSS bucket, IMM constantly tracks and scans the objects and updates the index. For objects whose index is created in this way, you can call the [SimpleQuery](https://help.aliyun.com/document_detail/478175.html) operation to query, manage, and collect statistics from the objects.
 //
 // @param request - CreateBindingRequest
 //
@@ -24951,7 +30156,19 @@ func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *Cre
 
 // Summary:
 //
-// 创建点云压缩任务
+// Compresses point cloud data (PCD) in Object Storage Service (OSS) to reduce the amount of data transferred over networks.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- This operation supports only Point Cloud Data (PCD) files.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications. >
 //
 // @param tmpReq - CreateCompressPointCloudTaskRequest
 //
@@ -25063,7 +30280,19 @@ func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateComp
 
 // Summary:
 //
-// 创建点云压缩任务
+// Compresses point cloud data (PCD) in Object Storage Service (OSS) to reduce the amount of data transferred over networks.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- This operation supports only Point Cloud Data (PCD) files.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications. >
 //
 // @param request - CreateCompressPointCloudTaskRequest
 //
@@ -25081,7 +30310,13 @@ func (client *Client) CreateCompressPointCloudTask(request *CreateCompressPointC
 
 // Summary:
 //
-// 创建自定义故事
+// Creates a story based on the specified images and videos.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
 //
 // @param tmpReq - CreateCustomizedStoryRequest
 //
@@ -25165,7 +30400,13 @@ func (client *Client) CreateCustomizedStoryWithOptions(tmpReq *CreateCustomizedS
 
 // Summary:
 //
-// 创建自定义故事
+// Creates a story based on the specified images and videos.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
 //
 // @param request - CreateCustomizedStoryRequest
 //
@@ -25183,7 +30424,17 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- A dataset name must be unique within the same project.
+//
+// 	- A project has an upper limit on the number of datasets that can be created in the project. You can call the [GetProjcet](https://help.aliyun.com/document_detail/478155.html) operation to query the dataset limit of the project.
+//
+// 	- After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
 //
 // @param request - CreateDatasetRequest
 //
@@ -25257,7 +30508,17 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- A dataset name must be unique within the same project.
+//
+// 	- A project has an upper limit on the number of datasets that can be created in the project. You can call the [GetProjcet](https://help.aliyun.com/document_detail/478155.html) operation to query the dataset limit of the project.
+//
+// 	- After creating a dataset, you can call the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) operation to index metadata. Metadata indexing enhances [data retrieval efficiency and statistics collection](https://help.aliyun.com/document_detail/478175.html), and enables intelligent data management.
 //
 // @param request - CreateDatasetRequest
 //
@@ -25275,7 +30536,17 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// 提取盲水印
+// Decodes the blind watermark in an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+//
+// 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateDecodeBlindWatermarkTaskRequest
 //
@@ -25355,7 +30626,17 @@ func (client *Client) CreateDecodeBlindWatermarkTaskWithOptions(tmpReq *CreateDe
 
 // Summary:
 //
-// 提取盲水印
+// Decodes the blind watermark in an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+//
+// 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- A blind watermark can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateDecodeBlindWatermarkTaskRequest
 //
@@ -25373,7 +30654,15 @@ func (client *Client) CreateDecodeBlindWatermarkTask(request *CreateDecodeBlindW
 
 // Summary:
 //
-// 以脸搜图
+// Searches the dataset for the specified number of images most similar to the specified image or face and returns face IDs and boundaries in descending order of similarity.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The operation searches for faces within the face boundary in each input image.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFacesSearchingTaskRequest
 //
@@ -25445,7 +30734,15 @@ func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSea
 
 // Summary:
 //
-// 以脸搜图
+// Searches the dataset for the specified number of images most similar to the specified image or face and returns face IDs and boundaries in descending order of similarity.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The operation searches for faces within the face boundary in each input image.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateFacesSearchingTaskRequest
 //
@@ -25463,7 +30760,25 @@ func (client *Client) CreateFacesSearchingTask(request *CreateFacesSearchingTask
 
 // Summary:
 //
-// 聚类
+// Creates a face clustering task to cluster faces of different persons in images by person based on the intelligent algorithms.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the CreateBinding operation or manually by calling the IndexFileMeta or BatchIndexFileMeta operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset. You can regularly call this operation to process incremental files.
+//
+//     After the clustering task is completed, you can call the GetFigureCluster or BatchGetFigureCluster  operation to query information about a specific cluster. You can also call the QueryFigureClusters operation to query all face clusters of the specified dataset.
+//
+// 	- Removing image information from the dataset causes changes to face clusters. When images that contain all faces in a cluster are removed, the cluster is deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFigureClusteringTaskRequest
 //
@@ -25531,7 +30846,25 @@ func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigure
 
 // Summary:
 //
-// 聚类
+// Creates a face clustering task to cluster faces of different persons in images by person based on the intelligent algorithms.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the CreateBinding operation or manually by calling the IndexFileMeta or BatchIndexFileMeta operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset. You can regularly call this operation to process incremental files.
+//
+//     After the clustering task is completed, you can call the GetFigureCluster or BatchGetFigureCluster  operation to query information about a specific cluster. You can also call the QueryFigureClusters operation to query all face clusters of the specified dataset.
+//
+// 	- Removing image information from the dataset causes changes to face clusters. When images that contain all faces in a cluster are removed, the cluster is deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateFigureClusteringTaskRequest
 //
@@ -25549,7 +30882,17 @@ func (client *Client) CreateFigureClusteringTask(request *CreateFigureClustering
 
 // Summary:
 //
-// 合并聚类
+// Merges two or more face clustering groups into one face clustering group.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
+//
+// 	- If you merge unrelated groups, the feature values of the target groups are affected. As a result, the incremental data may be inaccurately grouped when you create a face clustering task.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFigureClustersMergingTaskRequest
 //
@@ -25633,7 +30976,17 @@ func (client *Client) CreateFigureClustersMergingTaskWithOptions(tmpReq *CreateF
 
 // Summary:
 //
-// 合并聚类
+// Merges two or more face clustering groups into one face clustering group.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
+//
+// 	- If you merge unrelated groups, the feature values of the target groups are affected. As a result, the incremental data may be inaccurately grouped when you create a face clustering task.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateFigureClustersMergingTaskRequest
 //
@@ -25651,7 +31004,27 @@ func (client *Client) CreateFigureClustersMergingTask(request *CreateFigureClust
 
 // Summary:
 //
-// 压缩/打包下载API
+// Creates a file packing task.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk group (ID: 88490020073) and share your questions with us.
+//
+// >  The operation supports file packing only. Compression support will be added later.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- A call to the operation can pack up to 80,000 objects into a package.
+//
+// 	- The total size of all objects to be packed into a package cannot exceed 200 GB.
+//
+// 	- The operation can pack only Standard objects in Object Storage Service (OSS). To pack an object in another storage class, you must first [convert the storage class of the object](https://help.aliyun.com/document_detail/90090.html).
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFileCompressionTaskRequest
 //
@@ -25735,7 +31108,27 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 
 // Summary:
 //
-// 压缩/打包下载API
+// Creates a file packing task.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk group (ID: 88490020073) and share your questions with us.
+//
+// >  The operation supports file packing only. Compression support will be added later.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- A call to the operation can pack up to 80,000 objects into a package.
+//
+// 	- The total size of all objects to be packed into a package cannot exceed 200 GB.
+//
+// 	- The operation can pack only Standard objects in Object Storage Service (OSS). To pack an object in another storage class, you must first [convert the storage class of the object](https://help.aliyun.com/document_detail/90090.html).
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateFileCompressionTaskRequest
 //
@@ -25753,7 +31146,25 @@ func (client *Client) CreateFileCompressionTask(request *CreateFileCompressionTa
 
 // Summary:
 //
-// 在线解压API
+// Extracts the specified files from a ZIP, RAR, or 7z package to the specified directory or decompresses the entire package.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk group (ID: 88490020073) and share your questions with us.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports a package that contains up to 80,000 files.
+//
+// 	- The operation supports ZIP or RAR packages up to 200 GB in size, or 7z packages up to 50 GB in size.
+//
+// 	- The operation extracts files in streams to the specified directory. If the file extraction task is interrupted by a corrupt file, files that have been extracted are not deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateFileUncompressionTaskRequest
 //
@@ -25837,7 +31248,25 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 
 // Summary:
 //
-// 在线解压API
+// Extracts the specified files from a ZIP, RAR, or 7z package to the specified directory or decompresses the entire package.
+//
+// Description:
+//
+// >  The operation is in public preview. For any inquires, join our DingTalk group (ID: 88490020073) and share your questions with us.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports a package that contains up to 80,000 files.
+//
+// 	- The operation supports ZIP or RAR packages up to 200 GB in size, or 7z packages up to 50 GB in size.
+//
+// 	- The operation extracts files in streams to the specified directory. If the file extraction task is interrupted by a corrupt file, files that have been extracted are not deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateFileUncompressionTaskRequest
 //
@@ -25855,7 +31284,39 @@ func (client *Client) CreateFileUncompressionTask(request *CreateFileUncompressi
 
 // Summary:
 //
-// 创建图片检测
+// Creates an image moderation task to ensure image content compliance. You can call this operation to identify inappropriate content, such as pornography, violence, terrorism, politically sensitive content, undesirable scenes, unauthorized logos, and non-compliant ads.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The image for which you want to create a content moderation task must meet the following requirements:
+//
+//     	- The image URL supports the HTTP and HTTPS protocols.
+//
+//     	- The image is in one of the following formats: PNG, JPG, JPEG, BMP, GIF, and WebP
+//
+//     	- The image size is limited to 20 MB for synchronous and asynchronous calls, with a maximum height or width of 30,000 pixels. The total number of pixels cannot exceed 250 million. GIF images are limited to 4,194,304 pixels, with a maximum height or width of 30,000 pixels.
+//
+//     	- The image download time is limited to 3 seconds. If the download takes longer, a timeout error occurs.
+//
+//     	- To ensure effective moderation, we recommend that you submit an image with dimensions of at least 256 × 256 pixels.
+//
+//     	- The response time of the CreateImageModerationTask operation varies based on the duration of the image download. Make sure that the image is stored in a stable and reliable service. We recommend that you store images on Alibaba Cloud Object Storage Service (OSS) or cache them on Alibaba Cloud CDN.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478241.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
+//
+// >  The detection result is sent as an asynchronous notification. The Suggestion field of the notification can have one of the following values:
+//
+// 	- pass: No non-compliant content is found.
+//
+// 	- block: Non-compliant content is detected. The Categories field value indicates the non-compliance categories. For more information, see Content moderation results.
+//
+// 	- review: A manual review is needed. After the manual review is finished, another asynchronous notification is sent to inform you about the review result. >
 //
 // @param tmpReq - CreateImageModerationTaskRequest
 //
@@ -25947,7 +31408,39 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 
 // Summary:
 //
-// 创建图片检测
+// Creates an image moderation task to ensure image content compliance. You can call this operation to identify inappropriate content, such as pornography, violence, terrorism, politically sensitive content, undesirable scenes, unauthorized logos, and non-compliant ads.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The image for which you want to create a content moderation task must meet the following requirements:
+//
+//     	- The image URL supports the HTTP and HTTPS protocols.
+//
+//     	- The image is in one of the following formats: PNG, JPG, JPEG, BMP, GIF, and WebP
+//
+//     	- The image size is limited to 20 MB for synchronous and asynchronous calls, with a maximum height or width of 30,000 pixels. The total number of pixels cannot exceed 250 million. GIF images are limited to 4,194,304 pixels, with a maximum height or width of 30,000 pixels.
+//
+//     	- The image download time is limited to 3 seconds. If the download takes longer, a timeout error occurs.
+//
+//     	- To ensure effective moderation, we recommend that you submit an image with dimensions of at least 256 × 256 pixels.
+//
+//     	- The response time of the CreateImageModerationTask operation varies based on the duration of the image download. Make sure that the image is stored in a stable and reliable service. We recommend that you store images on Alibaba Cloud Object Storage Service (OSS) or cache them on Alibaba Cloud CDN.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478241.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
+//
+// >  The detection result is sent as an asynchronous notification. The Suggestion field of the notification can have one of the following values:
+//
+// 	- pass: No non-compliant content is found.
+//
+// 	- block: Non-compliant content is detected. The Categories field value indicates the non-compliance categories. For more information, see Content moderation results.
+//
+// 	- review: A manual review is needed. After the manual review is finished, another asynchronous notification is sent to inform you about the review result. >
 //
 // @param request - CreateImageModerationTaskRequest
 //
@@ -25965,7 +31458,17 @@ func (client *Client) CreateImageModerationTask(request *CreateImageModerationTa
 
 // Summary:
 //
-// 图片拼接
+// Creates an image splicing task. You can call this operation to splice multiple images into one based on a given rule and save the final image into an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the project that you want to use exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- You can call this operation to splice up to eight images. Each side of an image cannot exceed 32,876 pixels, and the total number of pixels of the image cannot exceed 1 billion.
+//
+// 	- The CreateImageSplicingTask operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period elapses, the task information is no longer retrievable. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateImageSplicingTaskRequest
 //
@@ -26081,7 +31584,17 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 
 // Summary:
 //
-// 图片拼接
+// Creates an image splicing task. You can call this operation to splice multiple images into one based on a given rule and save the final image into an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the project that you want to use exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- You can call this operation to splice up to eight images. Each side of an image cannot exceed 32,876 pixels, and the total number of pixels of the image cannot exceed 1 billion.
+//
+// 	- The CreateImageSplicingTask operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period elapses, the task information is no longer retrievable. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can also obtain information about the task based on notifications.
 //
 // @param request - CreateImageSplicingTaskRequest
 //
@@ -26099,7 +31612,17 @@ func (client *Client) CreateImageSplicingTask(request *CreateImageSplicingTaskRe
 
 // Summary:
 //
-// 图片转PDF
+// Converts multiple images into one single PDF file and stores the PDF file to the specified path in Object Storage Service (OSS).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- You can specify up to 100 images in a call to the operation.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateImageToPDFTaskRequest
 //
@@ -26183,7 +31706,17 @@ func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTa
 
 // Summary:
 //
-// 图片转PDF
+// Converts multiple images into one single PDF file and stores the PDF file to the specified path in Object Storage Service (OSS).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- You can specify up to 100 images in a call to the operation.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateImageToPDFTaskRequest
 //
@@ -26201,7 +31734,25 @@ func (client *Client) CreateImageToPDFTask(request *CreateImageToPDFTaskRequest)
 
 // Summary:
 //
-// 创建时空聚类任务
+// Creates a spatiotemporal clustering task to cluster photos and videos based on geolocation and time information. Spatiotemporal clustering allows you to group photos and videos taken during a travel or at different places by their spatial and temporal similarity. Based on spatiotemporal clustering, you can develop media capabilities such as media file categorization, photo collections, and image and video-based stories.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset.****`` You can regularly call this operation to process incremental files.
+//
+// 	- After a spatiotemporal clustering task is complete, you can call the [QueryLocationDateClusters](https://help.aliyun.com/document_detail/478189.html) operation to query the spatiotemporal clustering result.
+//
+// 	- Removing metadata from a dataset does not affect existing spatiotemporal clusters for the dataset. To delete a spatiotemporal cluster, call the [DeleteLocationDateCluster](https://help.aliyun.com/document_detail/478191.html) operation.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateLocationDateClusteringTaskRequest
 //
@@ -26285,7 +31836,25 @@ func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *Create
 
 // Summary:
 //
-// 创建时空聚类任务
+// Creates a spatiotemporal clustering task to cluster photos and videos based on geolocation and time information. Spatiotemporal clustering allows you to group photos and videos taken during a travel or at different places by their spatial and temporal similarity. Based on spatiotemporal clustering, you can develop media capabilities such as media file categorization, photo collections, and image and video-based stories.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset.****`` You can regularly call this operation to process incremental files.
+//
+// 	- After a spatiotemporal clustering task is complete, you can call the [QueryLocationDateClusters](https://help.aliyun.com/document_detail/478189.html) operation to query the spatiotemporal clustering result.
+//
+// 	- Removing metadata from a dataset does not affect existing spatiotemporal clusters for the dataset. To delete a spatiotemporal cluster, call the [DeleteLocationDateCluster](https://help.aliyun.com/document_detail/478191.html) operation.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateLocationDateClusteringTaskRequest
 //
@@ -26303,7 +31872,27 @@ func (client *Client) CreateLocationDateClusteringTask(request *CreateLocationDa
 
 // Summary:
 //
-// 创建转码服务
+// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- By default, only one type of video, audio, and subtitle streams is processed when you call this operation to process media transcoding. However, you can specify the number of video, audio, or subtitle streams that you want to process.
+//
+// 	- When you use this operation to execute a media merging task, up to 11 media files are supported. In this case, the parameters that involve media transcoding and frame capturing apply to the merged media data.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
+//
+//     **
+//
+//     ****
 //
 // @param tmpReq - CreateMediaConvertTaskRequest
 //
@@ -26395,7 +31984,27 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 
 // Summary:
 //
-// 创建转码服务
+// Creates an asynchronous media transcoding task to provide audio and video file processing abilities, such as media transcoding, media splicing, video frame capturing, and video to GIF conversion.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- By default, only one type of video, audio, and subtitle streams is processed when you call this operation to process media transcoding. However, you can specify the number of video, audio, or subtitle streams that you want to process.
+//
+// 	- When you use this operation to execute a media merging task, up to 11 media files are supported. In this case, the parameters that involve media transcoding and frame capturing apply to the merged media data.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
+//
+//     **
+//
+//     ****
 //
 // @param request - CreateMediaConvertTaskRequest
 //
@@ -26413,7 +32022,47 @@ func (client *Client) CreateMediaConvertTask(request *CreateMediaConvertTaskRequ
 
 // Summary:
 //
-// 创建文档转换任务
+// Creates a document format conversion task to convert the format of a document stored in an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports the following input formats:
+//
+//     	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+//
+//     	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+//
+//     	- Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+//
+//     	- PDF documents: pdf
+//
+// 	- The operation supports the following output formats:
+//
+//     	- Image files: png and jpg
+//
+//     	- Text files: txt
+//
+//     	- PDF files: pdf
+//
+// 	- Each input document can be up to 200 MB in size.
+//
+// 	- The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+//
+// 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
+//
+//     	- Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
+//
+//     	- In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).
+//
+//     	- In the region in which the IMM project is located, create an ApsaraMQ for RocketMQ 4.0 instance, a topic, and a group to receive task notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For more information about how to use ApsaraMQ for RocketMQ, see [Call HTTP SDKs to send and subscribe to messages](https://help.aliyun.com/document_detail/169009.html).
+//
+//     	- In the region in which the IMM project is located, use [EventBridge](https://www.aliyun.com/product/aliware/eventbridge) to receive task information notifications. For more information, see [IMM events](https://help.aliyun.com/document_detail/205730.html).
 //
 // @param tmpReq - CreateOfficeConversionTaskRequest
 //
@@ -26433,6 +32082,10 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
 		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
+		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
@@ -26568,8 +32221,14 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 		query["UserData"] = request.UserData
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
+		body["Sources"] = request.SourcesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateOfficeConversionTask"),
@@ -26593,7 +32252,47 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 
 // Summary:
 //
-// 创建文档转换任务
+// Creates a document format conversion task to convert the format of a document stored in an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- The operation supports the following input formats:
+//
+//     	- Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
+//
+//     	- Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+//
+//     	- Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+//
+//     	- PDF documents: pdf
+//
+// 	- The operation supports the following output formats:
+//
+//     	- Image files: png and jpg
+//
+//     	- Text files: txt
+//
+//     	- PDF files: pdf
+//
+// 	- Each input document can be up to 200 MB in size.
+//
+// 	- The maximum conversion time is 120 seconds. If the document is large in size or contains complex content, the conversion may time out.
+//
+// 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can use one of the following methods to query task information:
+//
+//     	- Call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.``
+//
+//     	- In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task information notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For information about SMQ SDKs, see [Use queues](https://help.aliyun.com/document_detail/32449.html).
+//
+//     	- In the region in which the IMM project is located, create an ApsaraMQ for RocketMQ 4.0 instance, a topic, and a group to receive task notifications. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html). For more information about how to use ApsaraMQ for RocketMQ, see [Call HTTP SDKs to send and subscribe to messages](https://help.aliyun.com/document_detail/169009.html).
+//
+//     	- In the region in which the IMM project is located, use [EventBridge](https://www.aliyun.com/product/aliware/eventbridge) to receive task information notifications. For more information, see [IMM events](https://help.aliyun.com/document_detail/205730.html).
 //
 // @param request - CreateOfficeConversionTaskRequest
 //
@@ -26611,7 +32310,23 @@ func (client *Client) CreateOfficeConversionTask(request *CreateOfficeConversion
 
 // Summary:
 //
-// 创建项目
+// Creates a project.
+//
+// Description:
+//
+//   The name of a project must be unique in a region.
+//
+// 	- By default, you can create up to 100 projects in a region. If you want to request a quota increase to create more projects, submit a ticket or join the DingTalk chat group (ID: 88490020073).
+//
+// 	- After you create a project, you can create other Intelligent Media Management (IMM) resources in the project. For more information, see the following links:
+//
+//     	- [CreateDataset](https://help.aliyun.com/document_detail/478160.html)
+//
+//     	- [CreateTrigger](https://help.aliyun.com/document_detail/479912.html)
+//
+//     	- [CreateBatch](https://help.aliyun.com/document_detail/606694.html)
+//
+//     	- [CreateBinding](https://help.aliyun.com/document_detail/478202.html)
 //
 // @param tmpReq - CreateProjectRequest
 //
@@ -26699,7 +32414,23 @@ func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, run
 
 // Summary:
 //
-// 创建项目
+// Creates a project.
+//
+// Description:
+//
+//   The name of a project must be unique in a region.
+//
+// 	- By default, you can create up to 100 projects in a region. If you want to request a quota increase to create more projects, submit a ticket or join the DingTalk chat group (ID: 88490020073).
+//
+// 	- After you create a project, you can create other Intelligent Media Management (IMM) resources in the project. For more information, see the following links:
+//
+//     	- [CreateDataset](https://help.aliyun.com/document_detail/478160.html)
+//
+//     	- [CreateTrigger](https://help.aliyun.com/document_detail/479912.html)
+//
+//     	- [CreateBatch](https://help.aliyun.com/document_detail/606694.html)
+//
+//     	- [CreateBinding](https://help.aliyun.com/document_detail/478202.html)
 //
 // @param request - CreateProjectRequest
 //
@@ -26717,7 +32448,25 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// 创建相似图片聚类任务
+// Clusters images indexed into a dataset by similarity. Image clustering is suitable for image deduplication and selection. For example, you can use image clustering to filter photos in your album that are taken in continuous shooting mode.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note that*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset.****`` You can regularly call this operation to process incremental files.
+//
+// 	- After clustering is completed, you can call the [QuerySimilarImageClusters](https://help.aliyun.com/document_detail/611304.html) operation to query image clustering results.
+//
+// 	- An image cluster contains at lest two images. Removing similar images from the dataset affects existing image clusters. If image deletion reduces the number of images in a cluster to less than 2, the cluster is automatically deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateSimilarImageClusteringTaskRequest
 //
@@ -26785,7 +32534,25 @@ func (client *Client) CreateSimilarImageClusteringTaskWithOptions(tmpReq *Create
 
 // Summary:
 //
-// 创建相似图片聚类任务
+// Clusters images indexed into a dataset by similarity. Image clustering is suitable for image deduplication and selection. For example, you can use image clustering to filter photos in your album that are taken in continuous shooting mode.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+//     **
+//
+//     **Note that*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Each call to the operation incrementally processes metadata in the dataset.****`` You can regularly call this operation to process incremental files.
+//
+// 	- After clustering is completed, you can call the [QuerySimilarImageClusters](https://help.aliyun.com/document_detail/611304.html) operation to query image clustering results.
+//
+// 	- An image cluster contains at lest two images. Removing similar images from the dataset affects existing image clusters. If image deletion reduces the number of images in a cluster to less than 2, the cluster is automatically deleted.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateSimilarImageClusteringTaskRequest
 //
@@ -26803,7 +32570,15 @@ func (client *Client) CreateSimilarImageClusteringTask(request *CreateSimilarIma
 
 // Summary:
 //
-// 创建一个 Story
+// Creates a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateStoryRequest
 //
@@ -26929,7 +32704,15 @@ func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime
 
 // Summary:
 //
-// 创建一个 Story
+// Creates a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) to query information about the task. If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateStoryRequest
 //
@@ -26947,7 +32730,11 @@ func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateS
 
 // Summary:
 //
-// 创建数据接入
+// Creates a trigger. A trigger can trigger Intelligent Media Management (IMM) based on events such as events in Object Storage Service (OSS) to process files, such as images, videos, and documents based on data processing templates.
+//
+// Description:
+//
+// If you want to create a trigger to process data in [OSS](https://help.aliyun.com/document_detail/99372.html), make sure that you have bound the dataset to the OSS bucket where the data is stored. For more information about how to bind a dataset to a bucket, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param tmpReq - CreateTriggerRequest
 //
@@ -27027,7 +32814,11 @@ func (client *Client) CreateTriggerWithOptions(tmpReq *CreateTriggerRequest, run
 
 // Summary:
 //
-// 创建数据接入
+// Creates a trigger. A trigger can trigger Intelligent Media Management (IMM) based on events such as events in Object Storage Service (OSS) to process files, such as images, videos, and documents based on data processing templates.
+//
+// Description:
+//
+// If you want to create a trigger to process data in [OSS](https://help.aliyun.com/document_detail/99372.html), make sure that you have bound the dataset to the OSS bucket where the data is stored. For more information about how to bind a dataset to a bucket, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - CreateTriggerRequest
 //
@@ -27045,7 +32836,23 @@ func (client *Client) CreateTrigger(request *CreateTriggerRequest) (_result *Cre
 
 // Summary:
 //
-// 检测视频中的内容
+// Detects the scene, object, and event tag information of video content. Scene information includes categories such as natural landscapes, life scenes, and disaster scenes. Event information includes categories such as talent shows, office events, performances, and production events. Object information includes categories such as tableware, electronic products, furniture, and transportation. Video tag detection supports more than 30 tag categories and thousands of tags.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/2747104.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- For more information about video label detection, see [Video label detection](https://help.aliyun.com/document_detail/477189.html).
+//
+// 	- This operation supports multiple video formats, such as MP4, MPEG-TS, MKV, MOV, AVI, FLV, and M3U8.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateVideoLabelClassificationTaskRequest
 //
@@ -27121,7 +32928,23 @@ func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *Crea
 
 // Summary:
 //
-// 检测视频中的内容
+// Detects the scene, object, and event tag information of video content. Scene information includes categories such as natural landscapes, life scenes, and disaster scenes. Event information includes categories such as talent shows, office events, performances, and production events. Object information includes categories such as tableware, electronic products, furniture, and transportation. Video tag detection supports more than 30 tag categories and thousands of tags.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/2747104.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+//     **
+//
+//     **Note*	- Asynchronous processing does not guarantee timely task completion.
+//
+// 	- For more information about video label detection, see [Video label detection](https://help.aliyun.com/document_detail/477189.html).
+//
+// 	- This operation supports multiple video formats, such as MP4, MPEG-TS, MKV, MOV, AVI, FLV, and M3U8.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is retained only for seven days and cannot be retrieved when the retention period elapses. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateVideoLabelClassificationTaskRequest
 //
@@ -27139,7 +32962,33 @@ func (client *Client) CreateVideoLabelClassificationTask(request *CreateVideoLab
 
 // Summary:
 //
-// 创建视频检测
+// Detects risky or non-compliant content from videos. You can use this operation in scenarios such as intelligent pornography detection, terrorist content and political bias detection, ad violation detection, and logo detection.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- The detection result is sent as an asynchronous notification. The Suggestion parameter in asynchronous notifications supports the following values:
+//
+//     	- pass: No non-compliant content is found.
+//
+//     	- block: Non-compliant content is detected. The Categories field value indicates the non-compliance category. For more information, see [Content moderation results](https://help.aliyun.com/document_detail/2743995.html).
+//
+//     	- review: A manual review is needed before an asynchronous notification is sent to inform you about the result.
+//
+// 	- The following video frame requirements apply:
+//
+//     	- The URLs for video frames must use HTTP or HTTPS.
+//
+//     	- Video frames must be in PNG, JPG, JPEG, BMP, GIF, or WebP format.
+//
+//     	- The size of a video frame cannot exceed 10 MB.
+//
+//     	- The recommended resolution for video frames is not lower than 256 × 256 pixels. A frame resolution lower than the recommended resolution may affect detection accuracy.
+//
+//     	- The response time of the operation varies based on the amount of time required to download frames. Make sure that video frames to detect are stored in a reliable and stable service. We recommend that you store video frames in OSS or cache video frames on Alibaba Cloud CDN.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param tmpReq - CreateVideoModerationTaskRequest
 //
@@ -27231,7 +33080,33 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 
 // Summary:
 //
-// 创建视频检测
+// Detects risky or non-compliant content from videos. You can use this operation in scenarios such as intelligent pornography detection, terrorist content and political bias detection, ad violation detection, and logo detection.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- The detection result is sent as an asynchronous notification. The Suggestion parameter in asynchronous notifications supports the following values:
+//
+//     	- pass: No non-compliant content is found.
+//
+//     	- block: Non-compliant content is detected. The Categories field value indicates the non-compliance category. For more information, see [Content moderation results](https://help.aliyun.com/document_detail/2743995.html).
+//
+//     	- review: A manual review is needed before an asynchronous notification is sent to inform you about the result.
+//
+// 	- The following video frame requirements apply:
+//
+//     	- The URLs for video frames must use HTTP or HTTPS.
+//
+//     	- Video frames must be in PNG, JPG, JPEG, BMP, GIF, or WebP format.
+//
+//     	- The size of a video frame cannot exceed 10 MB.
+//
+//     	- The recommended resolution for video frames is not lower than 256 × 256 pixels. A frame resolution lower than the recommended resolution may affect detection accuracy.
+//
+//     	- The response time of the operation varies based on the amount of time required to download frames. Make sure that video frames to detect are stored in a reliable and stable service. We recommend that you store video frames in OSS or cache video frames on Alibaba Cloud CDN.
+//
+// 	- This operation is an asynchronous operation. After a task is executed, the task information is saved only for seven days. When the retention period ends, the task information can no longer be retrieved. You can call the [GetTask](https://help.aliyun.com/document_detail/478241.html) or [ListTasks](https://help.aliyun.com/document_detail/478242.html) operation to query information about the task.`` If you specify [Notification](https://help.aliyun.com/document_detail/2743997.html), you can obtain information about the task based on notifications.
 //
 // @param request - CreateVideoModerationTaskRequest
 //
@@ -27249,7 +33124,13 @@ func (client *Client) CreateVideoModerationTask(request *CreateVideoModerationTa
 
 // Summary:
 //
-// 删除数据接入实例
+// Deletes a batch processing task.
+//
+// Description:
+//
+//   You can delete only a batch processing task that is in one of the following states: Ready, Failed, Suspended, and Succeeded.
+//
+// 	- Before you delete a batch processing task, you can call the [GetBatch](https://help.aliyun.com/document_detail/479922.html) operation to query the task status. This ensures a successful deletion.
 //
 // @param request - DeleteBatchRequest
 //
@@ -27295,7 +33176,13 @@ func (client *Client) DeleteBatchWithOptions(request *DeleteBatchRequest, runtim
 
 // Summary:
 //
-// 删除数据接入实例
+// Deletes a batch processing task.
+//
+// Description:
+//
+//   You can delete only a batch processing task that is in one of the following states: Ready, Failed, Suspended, and Succeeded.
+//
+// 	- Before you delete a batch processing task, you can call the [GetBatch](https://help.aliyun.com/document_detail/479922.html) operation to query the task status. This ensures a successful deletion.
 //
 // @param request - DeleteBatchRequest
 //
@@ -27313,7 +33200,13 @@ func (client *Client) DeleteBatch(request *DeleteBatchRequest) (_result *DeleteB
 
 // Summary:
 //
-// 删除绑定
+// Deletes the binding between a dataset and an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- If you delete a binding, new changes in the OSS bucket are not synchronized to the dataset. Exercise caution when you perform this operation.
 //
 // @param request - DeleteBindingRequest
 //
@@ -27363,7 +33256,13 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 
 // Summary:
 //
-// 删除绑定
+// Deletes the binding between a dataset and an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- If you delete a binding, new changes in the OSS bucket are not synchronized to the dataset. Exercise caution when you perform this operation.
 //
 // @param request - DeleteBindingRequest
 //
@@ -27381,7 +33280,13 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 
 // Summary:
 //
-// 删除媒体集
+// Deletes a dataset.
+//
+// Description:
+//
+//   Before you delete a dataset, make sure that you have deleted all indexes in the dataset. For more information about how to delete indexes, see [DeleteFileMeta](https://help.aliyun.com/document_detail/478172.html) and [BatchDeleteFileMeta](https://help.aliyun.com/document_detail/478173.html).
+//
+// 	- Before you [delete a dataset](https://help.aliyun.com/document_detail/478160.html), make sure that you have deleted all bindings between the dataset and Object Storage Service (OSS) buckets. For more information about how to delete a binding, see [DeleteBinding](https://help.aliyun.com/document_detail/478205.html). The [DeleteBinding](https://help.aliyun.com/document_detail/478205.html) operation does not delete an index that is manually created, even if you set the `Cleanup` parameter to `true`. To delete indexes that are manually created, you must call the [DeleteFileMeta](https://help.aliyun.com/document_detail/478172.html) or [BatchDeleteFileMeta](https://help.aliyun.com/document_detail/478173.html) operation. For more information about the differences between automatically and manually created indexes, see [Create a metadata index](https://help.aliyun.com/document_detail/478166.html).
 //
 // @param request - DeleteDatasetRequest
 //
@@ -27427,7 +33332,13 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 
 // Summary:
 //
-// 删除媒体集
+// Deletes a dataset.
+//
+// Description:
+//
+//   Before you delete a dataset, make sure that you have deleted all indexes in the dataset. For more information about how to delete indexes, see [DeleteFileMeta](https://help.aliyun.com/document_detail/478172.html) and [BatchDeleteFileMeta](https://help.aliyun.com/document_detail/478173.html).
+//
+// 	- Before you [delete a dataset](https://help.aliyun.com/document_detail/478160.html), make sure that you have deleted all bindings between the dataset and Object Storage Service (OSS) buckets. For more information about how to delete a binding, see [DeleteBinding](https://help.aliyun.com/document_detail/478205.html). The [DeleteBinding](https://help.aliyun.com/document_detail/478205.html) operation does not delete an index that is manually created, even if you set the `Cleanup` parameter to `true`. To delete indexes that are manually created, you must call the [DeleteFileMeta](https://help.aliyun.com/document_detail/478172.html) or [BatchDeleteFileMeta](https://help.aliyun.com/document_detail/478173.html) operation. For more information about the differences between automatically and manually created indexes, see [Create a metadata index](https://help.aliyun.com/document_detail/478166.html).
 //
 // @param request - DeleteDatasetRequest
 //
@@ -27445,7 +33356,19 @@ func (client *Client) DeleteDataset(request *DeleteDatasetRequest) (_result *Del
 
 // Summary:
 //
-// 删除文件元信息
+// Removes the metadata of a file from a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- A successful deletion message is returned regardless of whether the metadata of the file exists in the dataset.
+//
+// >
+//
+// 	- The objects stored in Object Storage Service (OSS) or Photo and Drive Service are **not*	- deleted if you delete metadata from a dataset. If you want to delete the file, call the corresponding operations of OSS and Photo and Drive Service.
+//
+// 	- When you delete file metadata, the corresponding face clustering group information and story (if any) are changed, but the spatiotemporal clustering is not changed.
 //
 // @param request - DeleteFileMetaRequest
 //
@@ -27495,7 +33418,19 @@ func (client *Client) DeleteFileMetaWithOptions(request *DeleteFileMetaRequest, 
 
 // Summary:
 //
-// 删除文件元信息
+// Removes the metadata of a file from a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- A successful deletion message is returned regardless of whether the metadata of the file exists in the dataset.
+//
+// >
+//
+// 	- The objects stored in Object Storage Service (OSS) or Photo and Drive Service are **not*	- deleted if you delete metadata from a dataset. If you want to delete the file, call the corresponding operations of OSS and Photo and Drive Service.
+//
+// 	- When you delete file metadata, the corresponding face clustering group information and story (if any) are changed, but the spatiotemporal clustering is not changed.
 //
 // @param request - DeleteFileMetaRequest
 //
@@ -27513,7 +33448,15 @@ func (client *Client) DeleteFileMeta(request *DeleteFileMetaRequest) (_result *D
 
 // Summary:
 //
-// 删除时空聚类
+// Deletes a spatiotemporal cluster.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- Before you call this operation, you must call the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to perform spatiotemporal clustering.
+//
+// 	- A successful deletion is returned regardless of whether a spatiotemporal clustering group ID exists.
 //
 // @param request - DeleteLocationDateClusterRequest
 //
@@ -27565,7 +33508,15 @@ func (client *Client) DeleteLocationDateClusterWithOptions(request *DeleteLocati
 
 // Summary:
 //
-// 删除时空聚类
+// Deletes a spatiotemporal cluster.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- Before you call this operation, you must call the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to perform spatiotemporal clustering.
+//
+// 	- A successful deletion is returned regardless of whether a spatiotemporal clustering group ID exists.
 //
 // @param request - DeleteLocationDateClusterRequest
 //
@@ -27583,7 +33534,13 @@ func (client *Client) DeleteLocationDateCluster(request *DeleteLocationDateClust
 
 // Summary:
 //
-// 删除项目
+// Deletes a project.
+//
+// Description:
+//
+//   Before you delete a project, make sure that all resources in the project, such as datasets, bindings, batch processing tasks, and triggers, are deleted. For more information, see [DeleteDataset](https://help.aliyun.com/document_detail/478164.html), [DeleteBatch](https://help.aliyun.com/document_detail/479918.html), and [DeleteTrigger](https://help.aliyun.com/document_detail/479915.html).
+//
+// 	- After a project is deleted, all resources used by the project are recycled, and all related data is lost and cannot be recovered.
 //
 // @param request - DeleteProjectRequest
 //
@@ -27625,7 +33582,13 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 
 // Summary:
 //
-// 删除项目
+// Deletes a project.
+//
+// Description:
+//
+//   Before you delete a project, make sure that all resources in the project, such as datasets, bindings, batch processing tasks, and triggers, are deleted. For more information, see [DeleteDataset](https://help.aliyun.com/document_detail/478164.html), [DeleteBatch](https://help.aliyun.com/document_detail/479918.html), and [DeleteTrigger](https://help.aliyun.com/document_detail/479915.html).
+//
+// 	- After a project is deleted, all resources used by the project are recycled, and all related data is lost and cannot be recovered.
 //
 // @param request - DeleteProjectRequest
 //
@@ -27643,7 +33606,15 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 
 // Summary:
 //
-// 删除一个 Story
+// Deletes a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param request - DeleteStoryRequest
 //
@@ -27693,7 +33664,15 @@ func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, runtim
 
 // Summary:
 //
-// 删除一个 Story
+// Deletes a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param request - DeleteStoryRequest
 //
@@ -27711,7 +33690,11 @@ func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteS
 
 // Summary:
 //
-// 删除数据接入实例
+// Deletes a trigger.
+//
+// Description:
+//
+// You can delete a trigger only if the trigger is in one of the following states: Ready, Failed, Suspended, and Succeeded. You cannot delete a trigger that is in the Running state.
 //
 // @param request - DeleteTriggerRequest
 //
@@ -27757,7 +33740,11 @@ func (client *Client) DeleteTriggerWithOptions(request *DeleteTriggerRequest, ru
 
 // Summary:
 //
-// 删除数据接入实例
+// Deletes a trigger.
+//
+// Description:
+//
+// You can delete a trigger only if the trigger is in one of the following states: Ready, Failed, Suspended, and Succeeded. You cannot delete a trigger that is in the Running state.
 //
 // @param request - DeleteTriggerRequest
 //
@@ -27775,7 +33762,13 @@ func (client *Client) DeleteTrigger(request *DeleteTriggerRequest) (_result *Del
 
 // Summary:
 //
-// 解绑ossbucket
+// Unbinds an Object Storage Service (OSS) bucket from the corresponding project.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that the project is bound to a bucket. For more information, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - DetachOSSBucketRequest
 //
@@ -27817,7 +33810,13 @@ func (client *Client) DetachOSSBucketWithOptions(request *DetachOSSBucketRequest
 
 // Summary:
 //
-// 解绑ossbucket
+// Unbinds an Object Storage Service (OSS) bucket from the corresponding project.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that the project is bound to a bucket. For more information, see [AttachOSSBucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - DetachOSSBucketRequest
 //
@@ -27835,7 +33834,13 @@ func (client *Client) DetachOSSBucket(request *DetachOSSBucketRequest) (_result 
 
 // Summary:
 //
-// 人体检测算子
+// Detects human body information, such as the confidence level and body bounding box, in an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that an Intelligent Media Management (IMM) project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageBodiesRequest
 //
@@ -27895,7 +33900,13 @@ func (client *Client) DetectImageBodiesWithOptions(tmpReq *DetectImageBodiesRequ
 
 // Summary:
 //
-// 人体检测算子
+// Detects human body information, such as the confidence level and body bounding box, in an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that an Intelligent Media Management (IMM) project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageBodiesRequest
 //
@@ -27913,7 +33924,11 @@ func (client *Client) DetectImageBodies(request *DetectImageBodiesRequest) (_res
 
 // Summary:
 //
-// 检测图片中车辆信息
+// Detects the outline data, attributes, and license plate information of vehicles in an image. The vehicle attributes include the vehicle color (CarColor) and vehicle type (CarType). The license plate information includes the recognition content (Content) and plate frame (Boundary).
+//
+// Description:
+//
+//   For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageCarsRequest
 //
@@ -27969,7 +33984,11 @@ func (client *Client) DetectImageCarsWithOptions(tmpReq *DetectImageCarsRequest,
 
 // Summary:
 //
-// 检测图片中车辆信息
+// Detects the outline data, attributes, and license plate information of vehicles in an image. The vehicle attributes include the vehicle color (CarColor) and vehicle type (CarType). The license plate information includes the recognition content (Content) and plate frame (Boundary).
+//
+// Description:
+//
+//   For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageCarsRequest
 //
@@ -27987,7 +34006,11 @@ func (client *Client) DetectImageCars(request *DetectImageCarsRequest) (_result 
 
 // Summary:
 //
-// 获取图片二维码检测
+// Detects barcodes and QR codes in an image.
+//
+// Description:
+//
+//   For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageCodesRequest
 //
@@ -28043,7 +34066,11 @@ func (client *Client) DetectImageCodesWithOptions(tmpReq *DetectImageCodesReques
 
 // Summary:
 //
-// 获取图片二维码检测
+// Detects barcodes and QR codes in an image.
+//
+// Description:
+//
+//   For information about the image encoding formats supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageCodesRequest
 //
@@ -28061,7 +34088,7 @@ func (client *Client) DetectImageCodes(request *DetectImageCodesRequest) (_resul
 
 // Summary:
 //
-// 获取图片裁剪信息
+// Detects the cropping area that produces the optimal visual effect based on a given image ratio by using AI model capabilities.
 //
 // @param tmpReq - DetectImageCroppingRequest
 //
@@ -28121,7 +34148,7 @@ func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCropping
 
 // Summary:
 //
-// 获取图片裁剪信息
+// Detects the cropping area that produces the optimal visual effect based on a given image ratio by using AI model capabilities.
 //
 // @param request - DetectImageCroppingRequest
 //
@@ -28139,7 +34166,13 @@ func (client *Client) DetectImageCropping(request *DetectImageCroppingRequest) (
 
 // Summary:
 //
-// 获取图片人脸信息
+// Detects faces from an image, including face boundary information, attributes, and quality. The boundary information includes the distance from the y-coordinate of the vertex to the top edge (Top), distance from the x-coordinate of the vertex to the left edge (Left), height (Height), and width (Width). Face attributes include the age (Age), age standard deviation (AgeSD), gender (Gender), emotion (Emotion), mouth opening (Mouth), beard (Beard), hat wearing (Hat), mask wearing (Mask), glasses wearing (Glasses), head orientation (HeadPose), attractiveness (Attractive), and confidence levels for preceding attributes. Quality information includes the face quality score (FaceQuality) and face resolution (Sharpness).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageFacesRequest
 //
@@ -28195,7 +34228,13 @@ func (client *Client) DetectImageFacesWithOptions(tmpReq *DetectImageFacesReques
 
 // Summary:
 //
-// 获取图片人脸信息
+// Detects faces from an image, including face boundary information, attributes, and quality. The boundary information includes the distance from the y-coordinate of the vertex to the top edge (Top), distance from the x-coordinate of the vertex to the left edge (Left), height (Height), and width (Width). Face attributes include the age (Age), age standard deviation (AgeSD), gender (Gender), emotion (Emotion), mouth opening (Mouth), beard (Beard), hat wearing (Hat), mask wearing (Mask), glasses wearing (Glasses), head orientation (HeadPose), attractiveness (Attractive), and confidence levels for preceding attributes. Quality information includes the face quality score (FaceQuality) and face resolution (Sharpness).
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageFacesRequest
 //
@@ -28213,7 +34252,17 @@ func (client *Client) DetectImageFaces(request *DetectImageFacesRequest) (_resul
 
 // Summary:
 //
-// 检测图像中的内容
+// Detects scene, object, and event information in an image. Scene information includes natural landscapes, daily life, and disasters. Event information includes talent shows, office events, performances, and production events. Object information includes tableware, electronics, furniture, and transportation. The DetectImageLabels operation supports more than 30 different categories and thousands of labels.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that an IMM [project](https://help.aliyun.com/document_detail/478273.html) is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For more information about the features of this operation, see [Image label detection](https://help.aliyun.com/document_detail/477179.html).
+//
+// 	- For more information about the input images supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageLabelsRequest
 //
@@ -28273,7 +34322,17 @@ func (client *Client) DetectImageLabelsWithOptions(tmpReq *DetectImageLabelsRequ
 
 // Summary:
 //
-// 检测图像中的内容
+// Detects scene, object, and event information in an image. Scene information includes natural landscapes, daily life, and disasters. Event information includes talent shows, office events, performances, and production events. Object information includes tableware, electronics, furniture, and transportation. The DetectImageLabels operation supports more than 30 different categories and thousands of labels.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that an IMM [project](https://help.aliyun.com/document_detail/478273.html) is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- For more information about the features of this operation, see [Image label detection](https://help.aliyun.com/document_detail/477179.html).
+//
+// 	- For more information about the input images supported by this operation, see [Limits on images](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageLabelsRequest
 //
@@ -28291,7 +34350,15 @@ func (client *Client) DetectImageLabels(request *DetectImageLabelsRequest) (_res
 
 // Summary:
 //
-// 获取图片打分
+// Calculates the aesthetics quality score of an image based on metrics such as the composition, brightness, contrast, color, and resolution. The operation returns a score within the range from 0 to 1. A higher score indicates better image quality.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478273.html).[](~~478152~~)
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param tmpReq - DetectImageScoreRequest
 //
@@ -28347,7 +34414,15 @@ func (client *Client) DetectImageScoreWithOptions(tmpReq *DetectImageScoreReques
 
 // Summary:
 //
-// 获取图片打分
+// Calculates the aesthetics quality score of an image based on metrics such as the composition, brightness, contrast, color, and resolution. The operation returns a score within the range from 0 to 1. A higher score indicates better image quality.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478273.html).[](~~478152~~)
+//
+// 	- For information about the image encoding formats supported by this operation, see [Limits](https://help.aliyun.com/document_detail/475569.html).
 //
 // @param request - DetectImageScoreRequest
 //
@@ -28365,7 +34440,19 @@ func (client *Client) DetectImageScore(request *DetectImageScoreRequest) (_resul
 
 // Summary:
 //
-// 进行图片光学字符检测
+// Recognizes and extracts text content from an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The size of the image cannot exceed 20 MB.
+//
+// 	- The shortest side of the image is not less than 20 px, and the longest side is not more than 30,000 px.
+//
+// 	- The aspect ratio of the image is less than 1:2.
+//
+// 	- We recommend that you do not use an image that is smaller than 15 px × 15 px in size. Otherwise, the recognition rate is low.
 //
 // @param tmpReq - DetectImageTextsRequest
 //
@@ -28421,7 +34508,19 @@ func (client *Client) DetectImageTextsWithOptions(tmpReq *DetectImageTextsReques
 
 // Summary:
 //
-// 进行图片光学字符检测
+// Recognizes and extracts text content from an image.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The size of the image cannot exceed 20 MB.
+//
+// 	- The shortest side of the image is not less than 20 px, and the longest side is not more than 30,000 px.
+//
+// 	- The aspect ratio of the image is less than 1:2.
+//
+// 	- We recommend that you do not use an image that is smaller than 15 px × 15 px in size. Otherwise, the recognition rate is low.
 //
 // @param request - DetectImageTextsRequest
 //
@@ -28439,7 +34538,13 @@ func (client *Client) DetectImageTexts(request *DetectImageTextsRequest) (_resul
 
 // Summary:
 //
-// 获取媒体文件信息
+// Queries media metadata, including the media format and stream information.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
 //
 // @param tmpReq - DetectMediaMetaRequest
 //
@@ -28495,7 +34600,13 @@ func (client *Client) DetectMediaMetaWithOptions(tmpReq *DetectMediaMetaRequest,
 
 // Summary:
 //
-// 获取媒体文件信息
+// Queries media metadata, including the media format and stream information.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478152.html).
 //
 // @param request - DetectMediaMetaRequest
 //
@@ -28513,7 +34624,13 @@ func (client *Client) DetectMediaMeta(request *DetectMediaMetaRequest) (_result 
 
 // Summary:
 //
-// 检测文本
+// Detects whether specified text contains anomalies, such as pornography, advertisements, excessive junk content, politically sensitive content, and abuse.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// >  The text compliance detection feature only supports Chinese characters.
 //
 // @param request - DetectTextAnomalyRequest
 //
@@ -28559,7 +34676,13 @@ func (client *Client) DetectTextAnomalyWithOptions(request *DetectTextAnomalyReq
 
 // Summary:
 //
-// 检测文本
+// Detects whether specified text contains anomalies, such as pornography, advertisements, excessive junk content, politically sensitive content, and abuse.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// >  The text compliance detection feature only supports Chinese characters.
 //
 // @param request - DetectTextAnomalyRequest
 //
@@ -28577,7 +34700,21 @@ func (client *Client) DetectTextAnomaly(request *DetectTextAnomalyRequest) (_res
 
 // Summary:
 //
-// 嵌入图片盲水印算子
+// Embeds specific textual information into an image as watermarks. These watermarks are visually imperceptible and do not affect the aesthetics of the image or the integrity of the original data. The watermarks can be extracted by using the CreateDecodeBlindWatermarkTask operation.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+//
+// 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- You can embed only text as blind watermarks to an image.
+//
+// 	- The format of the output image is the same as that of the input image.
+//
+// 	- The watermarks can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- Pure black and white images and images with low resolution (roughly less than 200 px × 200 px,) are not supported.
 //
 // @param request - EncodeBlindWatermarkRequest
 //
@@ -28639,7 +34776,21 @@ func (client *Client) EncodeBlindWatermarkWithOptions(request *EncodeBlindWaterm
 
 // Summary:
 //
-// 嵌入图片盲水印算子
+// Embeds specific textual information into an image as watermarks. These watermarks are visually imperceptible and do not affect the aesthetics of the image or the integrity of the original data. The watermarks can be extracted by using the CreateDecodeBlindWatermarkTask operation.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the billing of Intelligent Media Management (IMM).
+//
+// 	- Make sure that an IMM project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- You can embed only text as blind watermarks to an image.
+//
+// 	- The format of the output image is the same as that of the input image.
+//
+// 	- The watermarks can still be extracted even if attacks, such as compression, scaling, cropping, rotation, and color transformation, are performed on the image.
+//
+// 	- Pure black and white images and images with low resolution (roughly less than 200 px × 200 px,) are not supported.
 //
 // @param request - EncodeBlindWatermarkRequest
 //
@@ -28657,7 +34808,19 @@ func (client *Client) EncodeBlindWatermark(request *EncodeBlindWatermarkRequest)
 
 // Summary:
 //
-// 提取文档中的文本
+// Extracts the text from the document body.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478273.html).[](~~478152~~)
+//
+// 	- The following document formats are supported: Word, Excel, PPT, PDF, and TXT.
+//
+// 	- The document cannot exceed 200 MB in size. The size of the extracted text cannot exceed 2 MB in size (approximately 1.2 million letters).
+//
+// >  If the format of the document is complex or the document body is too large, a timeout error may occur. In this case, we recommend that you call the CreateOfficeConversionTask operation to convert the document to the TXT format before you call the ExtractDocumentText operation.
 //
 // @param tmpReq - ExtractDocumentTextRequest
 //
@@ -28717,7 +34880,19 @@ func (client *Client) ExtractDocumentTextWithOptions(tmpReq *ExtractDocumentText
 
 // Summary:
 //
-// 提取文档中的文本
+// Extracts the text from the document body.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the specified project exists in the current region. For more information, see [Project management](https://help.aliyun.com/document_detail/478273.html).[](~~478152~~)
+//
+// 	- The following document formats are supported: Word, Excel, PPT, PDF, and TXT.
+//
+// 	- The document cannot exceed 200 MB in size. The size of the extracted text cannot exceed 2 MB in size (approximately 1.2 million letters).
+//
+// >  If the format of the document is complex or the document body is too large, a timeout error may occur. In this case, we recommend that you call the CreateOfficeConversionTask operation to convert the document to the TXT format before you call the ExtractDocumentText operation.
 //
 // @param request - ExtractDocumentTextRequest
 //
@@ -28735,7 +34910,17 @@ func (client *Client) ExtractDocumentText(request *ExtractDocumentTextRequest) (
 
 // Summary:
 //
-// 对 Dataset 内的元数据进行模糊搜索。
+// Queries the extracted file metadata, including the file name, labels, path, custom tags, text, and other fields. If the value of a metadata field of a file matches the specified string, the metadata of the file is returned.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 88490020073) and share your questions with us.
+//
+// 	- For information about the fields that you can use as query conditions, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
 //
 // @param tmpReq - FuzzyQueryRequest
 //
@@ -28811,7 +34996,17 @@ func (client *Client) FuzzyQueryWithOptions(tmpReq *FuzzyQueryRequest, runtime *
 
 // Summary:
 //
-// 对 Dataset 内的元数据进行模糊搜索。
+// Queries the extracted file metadata, including the file name, labels, path, custom tags, text, and other fields. If the value of a metadata field of a file matches the specified string, the metadata of the file is returned.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 88490020073) and share your questions with us.
+//
+// 	- For information about the fields that you can use as query conditions, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
 //
 // @param request - FuzzyQueryRequest
 //
@@ -28829,7 +35024,23 @@ func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQuer
 
 // Summary:
 //
-// 创建实时转码任务
+// Generates a live transcoding playlist and converts video files into M3U8 files. After a playlist is generated, the videos in the playlist are immediately played and the video files are transcoded based on the playback progress. Compared with offline transcoding, online transcoding significantly reduces the time spent in waiting for the videos to be transcoded and reduces transcoding and storage costs.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the project that you want to use is available in the current region. For more information, see [Project Management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- By default, you can call this operation to process only one video, audio, or subtitle track. You can specify the number of the video, audio, or subtitle tracks that you want to process.
+//
+// 	- You can call this operation to generate a media playlist and a master playlist. For more information, see the parameter description.
+//
+// 	- This operation is a synchronous operation. Synchronous or asynchronous transcoding is triggered only during playback or pre-transcoding. You can configure the [Notification](https://help.aliyun.com/document_detail/2743997.html) parameter to obtain the transcoding task result.
+//
+// 	- For information about the feature description of this operation, see [Live transcoding](https://help.aliyun.com/document_detail/477192.html).
+//
+// 	- The data processing capability of Object Storage Service (OSS) also provides the playlist generation feature. However, this feature can generate only a media playlist, and related parameters are simplified.
 //
 // @param tmpReq - GenerateVideoPlaylistRequest
 //
@@ -28937,7 +35148,23 @@ func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlay
 
 // Summary:
 //
-// 创建实时转码任务
+// Generates a live transcoding playlist and converts video files into M3U8 files. After a playlist is generated, the videos in the playlist are immediately played and the video files are transcoded based on the playback progress. Compared with offline transcoding, online transcoding significantly reduces the time spent in waiting for the videos to be transcoded and reduces transcoding and storage costs.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the project that you want to use is available in the current region. For more information, see [Project Management](https://help.aliyun.com/document_detail/478152.html).
+//
+// 	- By default, you can call this operation to process only one video, audio, or subtitle track. You can specify the number of the video, audio, or subtitle tracks that you want to process.
+//
+// 	- You can call this operation to generate a media playlist and a master playlist. For more information, see the parameter description.
+//
+// 	- This operation is a synchronous operation. Synchronous or asynchronous transcoding is triggered only during playback or pre-transcoding. You can configure the [Notification](https://help.aliyun.com/document_detail/2743997.html) parameter to obtain the transcoding task result.
+//
+// 	- For information about the feature description of this operation, see [Live transcoding](https://help.aliyun.com/document_detail/477192.html).
+//
+// 	- The data processing capability of Object Storage Service (OSS) also provides the playlist generation feature. However, this feature can generate only a media playlist, and related parameters are simplified.
 //
 // @param request - GenerateVideoPlaylistRequest
 //
@@ -28955,7 +35182,35 @@ func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistReques
 
 // Summary:
 //
-// 获取文档预览编辑凭证
+// Generates an access token for document preview or editing.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The operation generates an access token that is valid for 30 minutes and a refresh token that is valid for 1 day.
+//
+// 	- The returned expiration time is in UTC.
+//
+// 	- The operation supports the following input formats:
+//
+//     	- Word files: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+//
+//     	- Presentation files: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+//
+//     	- Spreadsheet documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+//
+//     	- PDF files: .pdf
+//
+// 	- The operation supports an input document that is up to 200 MB in size.
+//
+// 	- The operation supports an input document that contains up to 5,000 pages.
+//
+// 	- For a project created before December 1, 2023, you are charged for previewing or editing a document in the project based on the number of times the document is opened. For a project created on or after December 1, 2023, you are charged based on the number of API operation calls made for previewing or editing a document. If you want to switch to API call-based billing for document previewing and editing, use a project created on or after December 1, 2023. In API call-based billing, one API call allows only one user to use the feature. If multiple users use the information returned by the API call, only the last user has access to the document and the access permissions of other users are revoked.
+//
+// 	- You can use the NotifyTopicName parameter to specify a Simple Message Queue (SMQ) topic in the same region as the IMM project for getting notified of file save operations. For more information, see [Use queues](https://help.aliyun.com/document_detail/32449.html). For more information about the JSON example of the Message field, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+//
+// >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
 //
 // @param tmpReq - GenerateWebofficeTokenRequest
 //
@@ -29079,7 +35334,35 @@ func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWeboffic
 
 // Summary:
 //
-// 获取文档预览编辑凭证
+// Generates an access token for document preview or editing.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The operation generates an access token that is valid for 30 minutes and a refresh token that is valid for 1 day.
+//
+// 	- The returned expiration time is in UTC.
+//
+// 	- The operation supports the following input formats:
+//
+//     	- Word files: .doc, .docx, .txt, .dot, .wps, .wpt, .dotx, .docm, .dotm, and .rtf
+//
+//     	- Presentation files: .ppt, .pptx, .pptm, .ppsx, .ppsm, .pps, .potx, .potm, .dpt, and .dps
+//
+//     	- Spreadsheet documents: .et, .xls, .xlt, .xlsx, .xlsm, .xltx, .xltm, and .csv
+//
+//     	- PDF files: .pdf
+//
+// 	- The operation supports an input document that is up to 200 MB in size.
+//
+// 	- The operation supports an input document that contains up to 5,000 pages.
+//
+// 	- For a project created before December 1, 2023, you are charged for previewing or editing a document in the project based on the number of times the document is opened. For a project created on or after December 1, 2023, you are charged based on the number of API operation calls made for previewing or editing a document. If you want to switch to API call-based billing for document previewing and editing, use a project created on or after December 1, 2023. In API call-based billing, one API call allows only one user to use the feature. If multiple users use the information returned by the API call, only the last user has access to the document and the access permissions of other users are revoked.
+//
+// 	- You can use the NotifyTopicName parameter to specify a Simple Message Queue (SMQ) topic in the same region as the IMM project for getting notified of file save operations. For more information, see [Use queues](https://help.aliyun.com/document_detail/32449.html). For more information about the JSON example of the Message field, see [WebOffice message example](https://help.aliyun.com/document_detail/2743999.html).
+//
+// >  To manage multiple versions of the document, you must enable versioning for the bucket that stores the document and set the History parameter to true.
 //
 // @param request - GenerateWebofficeTokenRequest
 //
@@ -29097,7 +35380,7 @@ func (client *Client) GenerateWebofficeToken(request *GenerateWebofficeTokenRequ
 
 // Summary:
 //
-// 获取数据接入实例
+// Queries the information about a batch processing task.
 //
 // @param request - GetBatchRequest
 //
@@ -29143,7 +35426,7 @@ func (client *Client) GetBatchWithOptions(request *GetBatchRequest, runtime *uti
 
 // Summary:
 //
-// 获取数据接入实例
+// Queries the information about a batch processing task.
 //
 // @param request - GetBatchRequest
 //
@@ -29161,7 +35444,13 @@ func (client *Client) GetBatch(request *GetBatchRequest) (_result *GetBatchRespo
 
 // Summary:
 //
-// 获取一个绑定任务的运行详情。
+// Queries the binding relationship between a specific dataset and an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the binding relationship that you want to query exists. For information about how to create a binding relationship, see [CreateBinding](https://help.aliyun.com/document_detail/478202.html).
 //
 // @param request - GetBindingRequest
 //
@@ -29211,7 +35500,13 @@ func (client *Client) GetBindingWithOptions(request *GetBindingRequest, runtime 
 
 // Summary:
 //
-// 获取一个绑定任务的运行详情。
+// Queries the binding relationship between a specific dataset and an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Make sure that the binding relationship that you want to query exists. For information about how to create a binding relationship, see [CreateBinding](https://help.aliyun.com/document_detail/478202.html).
 //
 // @param request - GetBindingRequest
 //
@@ -29311,7 +35606,13 @@ func (client *Client) GetDRMLicense(request *GetDRMLicenseRequest) (_result *Get
 
 // Summary:
 //
-// 获取媒体集信息
+// Queries a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The GetDataset operation supports real-time retrieval of file statistics. You can specify WithStatistics to enable real-time retrieval of file statistics.
 //
 // @param request - GetDatasetRequest
 //
@@ -29361,7 +35662,13 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 
 // Summary:
 //
-// 获取媒体集信息
+// Queries a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- The GetDataset operation supports real-time retrieval of file statistics. You can specify WithStatistics to enable real-time retrieval of file statistics.
 //
 // @param request - GetDatasetRequest
 //
@@ -29379,7 +35686,13 @@ func (client *Client) GetDataset(request *GetDatasetRequest) (_result *GetDatase
 
 // Summary:
 //
-// 获取提取水印的结果
+// Queries the result of an invisible watermark parsing task.
+//
+// Description:
+//
+//   Before you call this operation, make sure that an Intelligent Media Management (IMM) project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- Before you call this operation, make sure that an invisible watermark task is created and the task ID is obtained.``
 //
 // @param request - GetDecodeBlindWatermarkResultRequest
 //
@@ -29429,7 +35742,13 @@ func (client *Client) GetDecodeBlindWatermarkResultWithOptions(request *GetDecod
 
 // Summary:
 //
-// 获取提取水印的结果
+// Queries the result of an invisible watermark parsing task.
+//
+// Description:
+//
+//   Before you call this operation, make sure that an Intelligent Media Management (IMM) project is created. For information about how to create a project, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- Before you call this operation, make sure that an invisible watermark task is created and the task ID is obtained.``
 //
 // @param request - GetDecodeBlindWatermarkResultRequest
 //
@@ -29447,7 +35766,13 @@ func (client *Client) GetDecodeBlindWatermarkResult(request *GetDecodeBlindWater
 
 // Summary:
 //
-// 获取聚类
+// Obtains basic information about face clustering, including the creation time, number of images, and cover.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Before you call this operation, make sure that a face clustering task is created to group all faces in a dataset. For information about how to create a face clustering task, see [CreateFigureClusteringTask](~~CreateFigureClusteringTask~~). For information about how to create a dataset, see [CreateDataset](~~CreateDataset~~).
 //
 // @param request - GetFigureClusterRequest
 //
@@ -29497,7 +35822,13 @@ func (client *Client) GetFigureClusterWithOptions(request *GetFigureClusterReque
 
 // Summary:
 //
-// 获取聚类
+// Obtains basic information about face clustering, including the creation time, number of images, and cover.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Before you call this operation, make sure that a face clustering task is created to group all faces in a dataset. For information about how to create a face clustering task, see [CreateFigureClusteringTask](~~CreateFigureClusteringTask~~). For information about how to create a dataset, see [CreateDataset](~~CreateDataset~~).
 //
 // @param request - GetFigureClusterRequest
 //
@@ -29515,7 +35846,15 @@ func (client *Client) GetFigureCluster(request *GetFigureClusterRequest) (_resul
 
 // Summary:
 //
-// 获取文件元信息
+// Queries metadata of a file whose metadata is indexed into the dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 31690030817) and share your questions with us.
 //
 // @param tmpReq - GetFileMetaRequest
 //
@@ -29575,7 +35914,15 @@ func (client *Client) GetFileMetaWithOptions(tmpReq *GetFileMetaRequest, runtime
 
 // Summary:
 //
-// 获取文件元信息
+// Queries metadata of a file whose metadata is indexed into the dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 31690030817) and share your questions with us.
 //
 // @param request - GetFileMetaRequest
 //
@@ -29593,7 +35940,7 @@ func (client *Client) GetFileMeta(request *GetFileMetaRequest) (_result *GetFile
 
 // Summary:
 //
-// 获取图片审核任务结果
+// Queries an image compliance detection task.
 //
 // @param request - GetImageModerationResultRequest
 //
@@ -29643,7 +35990,7 @@ func (client *Client) GetImageModerationResultWithOptions(request *GetImageModer
 
 // Summary:
 //
-// 获取图片审核任务结果
+// Queries an image compliance detection task.
 //
 // @param request - GetImageModerationResultRequest
 //
@@ -29661,7 +36008,13 @@ func (client *Client) GetImageModerationResult(request *GetImageModerationResult
 
 // Summary:
 //
-// 获取绑定的ossbucket
+// Queries the name of the project bound to an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Before you call this operation, make sure that [the project whose name you want to query is bound to the specified OSS bucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - GetOSSBucketAttachmentRequest
 //
@@ -29703,7 +36056,13 @@ func (client *Client) GetOSSBucketAttachmentWithOptions(request *GetOSSBucketAtt
 
 // Summary:
 //
-// 获取绑定的ossbucket
+// Queries the name of the project bound to an Object Storage Service (OSS) bucket.
+//
+// Description:
+//
+//   **Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).**
+//
+// 	- Before you call this operation, make sure that [the project whose name you want to query is bound to the specified OSS bucket](https://help.aliyun.com/document_detail/478206.html).
 //
 // @param request - GetOSSBucketAttachmentRequest
 //
@@ -29721,7 +36080,11 @@ func (client *Client) GetOSSBucketAttachment(request *GetOSSBucketAttachmentRequ
 
 // Summary:
 //
-// 获取项目信息
+// Queries the basic information, datasets, and file statistics of a project.
+//
+// Description:
+//
+// When you call this operation, you can enable the real-time retrieval of file statistics based on your business requirements. For more information, see the "Request parameters" section of this topic.
 //
 // @param request - GetProjectRequest
 //
@@ -29767,7 +36130,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 
 // Summary:
 //
-// 获取项目信息
+// Queries the basic information, datasets, and file statistics of a project.
+//
+// Description:
+//
+// When you call this operation, you can enable the real-time retrieval of file statistics based on your business requirements. For more information, see the "Request parameters" section of this topic.
 //
 // @param request - GetProjectRequest
 //
@@ -29785,7 +36152,15 @@ func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjec
 
 // Summary:
 //
-// 返回一个 Story 的详细信息
+// Queries a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param request - GetStoryRequest
 //
@@ -29835,7 +36210,15 @@ func (client *Client) GetStoryWithOptions(request *GetStoryRequest, runtime *uti
 
 // Summary:
 //
-// 返回一个 Story 的详细信息
+// Queries a story.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param request - GetStoryRequest
 //
@@ -29853,7 +36236,11 @@ func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryRespo
 
 // Summary:
 //
-// 获取任务信息
+// Queries information about an asynchronous task. Intelligent Media Management (IMM) has multiple asynchronous data processing capabilities, each of which has its own operation for creating tasks. For example, you can call the CreateFigureClusteringTask operation to create a face clustering task and the CreateFileCompressionTask operation to create a file compression task. The GetTask operation is a general operation. You can call this operation to query information about asynchronous tasks by task ID or type.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.
 //
 // @param request - GetTaskRequest
 //
@@ -29907,7 +36294,11 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 
 // Summary:
 //
-// 获取任务信息
+// Queries information about an asynchronous task. Intelligent Media Management (IMM) has multiple asynchronous data processing capabilities, each of which has its own operation for creating tasks. For example, you can call the CreateFigureClusteringTask operation to create a face clustering task and the CreateFileCompressionTask operation to create a file compression task. The GetTask operation is a general operation. You can call this operation to query information about asynchronous tasks by task ID or type.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.
 //
 // @param request - GetTaskRequest
 //
@@ -29925,7 +36316,7 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 
 // Summary:
 //
-// 获取数据接入实例
+// Queries the information about a trigger.
 //
 // @param request - GetTriggerRequest
 //
@@ -29971,7 +36362,7 @@ func (client *Client) GetTriggerWithOptions(request *GetTriggerRequest, runtime 
 
 // Summary:
 //
-// 获取数据接入实例
+// Queries the information about a trigger.
 //
 // @param request - GetTriggerRequest
 //
@@ -29989,7 +36380,13 @@ func (client *Client) GetTrigger(request *GetTriggerRequest) (_result *GetTrigge
 
 // Summary:
 //
-// 获取视频标签检测任务结果
+// Queries the results of a video label detection task.
+//
+// Description:
+//
+//   Before you call this operation, make sure that a [project](https://help.aliyun.com/document_detail/478273.html) is created on Intelligent Media Management (IMM). For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- Before you call this operation, make sure that a video label detection task is created and the `TaskId` of the task is obtained. For more information, see [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
 //
 // @param request - GetVideoLabelClassificationResultRequest
 //
@@ -30039,7 +36436,13 @@ func (client *Client) GetVideoLabelClassificationResultWithOptions(request *GetV
 
 // Summary:
 //
-// 获取视频标签检测任务结果
+// Queries the results of a video label detection task.
+//
+// Description:
+//
+//   Before you call this operation, make sure that a [project](https://help.aliyun.com/document_detail/478273.html) is created on Intelligent Media Management (IMM). For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+//
+// 	- Before you call this operation, make sure that a video label detection task is created and the `TaskId` of the task is obtained. For more information, see [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
 //
 // @param request - GetVideoLabelClassificationResultRequest
 //
@@ -30125,7 +36528,25 @@ func (client *Client) GetVideoModerationResult(request *GetVideoModerationResult
 
 // Summary:
 //
-// 添加文件元信息
+// Creates an index from metadata extracted by using techniques such as label recognition, face detection, and location detection from input files. You can retrieve data from the same dataset by using multiple methods.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- For information about how to create indexes from metadata, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+//
+// 	- For information about the limits on the maximum number and size of index files that you can create, see the "Limits on datasets" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic. For information about how to create a dataset, see the "CreateDataset" topic.
+//
+// 	- For information about the regions in which you can create index files from metadata, see the "Datasets and indexes" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic.
+//
+// 	- After you create an index from metadata, you can try [simple query](https://help.aliyun.com/document_detail/478175.html) to retrieve data. For information about other query capabilities, see [Query and statistics](https://help.aliyun.com/document_detail/2402363.html). You can also [create a face clustering task](https://help.aliyun.com/document_detail/478180.html) to group faces. For information about other clustering capabilities, see [Intelligent management](https://help.aliyun.com/document_detail/2402365.html).
+//
+// **
+//
+// **Usage notes**
+//
+// 	- The IndexFileMeta operation is asynchronous, indicating that it takes some time to process the data after a request is submitted. After the processing is complete, the metadata is stored in your dataset. The amount of time it takes for this process varies based on [the workflow template, the operator](https://help.aliyun.com/document_detail/466304.html), and the content of the file, ranging from several seconds to several minutes or even longer. You can subscribe to [Simple Message Service](https://help.aliyun.com/document_detail/2743997.html) for task completion notifications.
 //
 // @param tmpReq - IndexFileMetaRequest
 //
@@ -30193,7 +36614,25 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 
 // Summary:
 //
-// 添加文件元信息
+// Creates an index from metadata extracted by using techniques such as label recognition, face detection, and location detection from input files. You can retrieve data from the same dataset by using multiple methods.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- For information about how to create indexes from metadata, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+//
+// 	- For information about the limits on the maximum number and size of index files that you can create, see the "Limits on datasets" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic. For information about how to create a dataset, see the "CreateDataset" topic.
+//
+// 	- For information about the regions in which you can create index files from metadata, see the "Datasets and indexes" section of the [Limits](https://help.aliyun.com/document_detail/475569.html) topic.
+//
+// 	- After you create an index from metadata, you can try [simple query](https://help.aliyun.com/document_detail/478175.html) to retrieve data. For information about other query capabilities, see [Query and statistics](https://help.aliyun.com/document_detail/2402363.html). You can also [create a face clustering task](https://help.aliyun.com/document_detail/478180.html) to group faces. For information about other clustering capabilities, see [Intelligent management](https://help.aliyun.com/document_detail/2402365.html).
+//
+// **
+//
+// **Usage notes**
+//
+// 	- The IndexFileMeta operation is asynchronous, indicating that it takes some time to process the data after a request is submitted. After the processing is complete, the metadata is stored in your dataset. The amount of time it takes for this process varies based on [the workflow template, the operator](https://help.aliyun.com/document_detail/466304.html), and the content of the file, ranging from several seconds to several minutes or even longer. You can subscribe to [Simple Message Service](https://help.aliyun.com/document_detail/2743997.html) for task completion notifications.
 //
 // @param request - IndexFileMetaRequest
 //
@@ -30211,7 +36650,7 @@ func (client *Client) IndexFileMeta(request *IndexFileMetaRequest) (_result *Ind
 
 // Summary:
 //
-// 列出数据接入实例
+// Queries batch processing tasks. You can query batch processing tasks based on conditions such task tags and status. The results can be sorted.
 //
 // @param request - ListBatchesRequest
 //
@@ -30277,7 +36716,7 @@ func (client *Client) ListBatchesWithOptions(request *ListBatchesRequest, runtim
 
 // Summary:
 //
-// 列出数据接入实例
+// Queries batch processing tasks. You can query batch processing tasks based on conditions such task tags and status. The results can be sorted.
 //
 // @param request - ListBatchesRequest
 //
@@ -30295,7 +36734,11 @@ func (client *Client) ListBatches(request *ListBatchesRequest) (_result *ListBat
 
 // Summary:
 //
-// 列出绑定
+// Queries bindings between a dataset and Object Storage Service (OSS) buckets.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
 //
 // @param request - ListBindingsRequest
 //
@@ -30349,7 +36792,11 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 
 // Summary:
 //
-// 列出绑定
+// Queries bindings between a dataset and Object Storage Service (OSS) buckets.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
 //
 // @param request - ListBindingsRequest
 //
@@ -30367,7 +36814,7 @@ func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListB
 
 // Summary:
 //
-// 列出媒体集列表
+// Queries a list of datasets. You can query the list by dataset prefix.
 //
 // @param request - ListDatasetsRequest
 //
@@ -30421,7 +36868,7 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 
 // Summary:
 //
-// 列出媒体集列表
+// Queries a list of datasets. You can query the list by dataset prefix.
 //
 // @param request - ListDatasetsRequest
 //
@@ -30439,7 +36886,11 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// 获取项目列表
+// Queries projects. You can call this operation to query the basic information, datasets, and file statistics of multiple projects at the same time.
+//
+// Description:
+//
+// The ListProjects operation supports pagination. When you call this operation, you must specify the token that is obtained from the previous query as the value of NextToken. You must also specify MaxResults to limit the number of entries to return.
 //
 // @param tmpReq - ListProjectsRequest
 //
@@ -30499,7 +36950,11 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 
 // Summary:
 //
-// 获取项目列表
+// Queries projects. You can call this operation to query the basic information, datasets, and file statistics of multiple projects at the same time.
+//
+// Description:
+//
+// The ListProjects operation supports pagination. When you call this operation, you must specify the token that is obtained from the previous query as the value of NextToken. You must also specify MaxResults to limit the number of entries to return.
 //
 // @param request - ListProjectsRequest
 //
@@ -30517,7 +36972,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// 获取地区列表
+// Queries the regions where Intelligent Media Management (IMM) is available and the supported languages.
 //
 // @param request - ListRegionsRequest
 //
@@ -30559,7 +37014,7 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 
 // Summary:
 //
-// 获取地区列表
+// Queries the regions where Intelligent Media Management (IMM) is available and the supported languages.
 //
 // @param request - ListRegionsRequest
 //
@@ -30577,7 +37032,11 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 
 // Summary:
 //
-// 获取任务信息列表
+// Lists tasks based on specific conditions, such as by time range and by tag.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -30673,7 +37132,11 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 
 // Summary:
 //
-// 获取任务信息列表
+// Lists tasks based on specific conditions, such as by time range and by tag.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).
 //
 // @param request - ListTasksRequest
 //
@@ -30691,7 +37154,7 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 
 // Summary:
 //
-// 列出数据接入实例
+// Queries triggers by tag or status.
 //
 // @param request - ListTriggersRequest
 //
@@ -30757,7 +37220,7 @@ func (client *Client) ListTriggersWithOptions(request *ListTriggersRequest, runt
 
 // Summary:
 //
-// 列出数据接入实例
+// Queries triggers by tag or status.
 //
 // @param request - ListTriggersRequest
 //
@@ -30775,7 +37238,13 @@ func (client *Client) ListTriggers(request *ListTriggersRequest) (_result *ListT
 
 // Summary:
 //
-// 查询聚类分组
+// Queries face groups based on given conditions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that a face clustering task is created to group all faces in a dataset. For information about how to create a face clustering task, see [CreateFigureClusteringTask](~~CreateFigureClusteringTask~~). For information about how to create a dataset, see [CreateDataset](~~CreateDataset~~).
 //
 // @param tmpReq - QueryFigureClustersRequest
 //
@@ -30863,7 +37332,13 @@ func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClusters
 
 // Summary:
 //
-// 查询聚类分组
+// Queries face groups based on given conditions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that a face clustering task is created to group all faces in a dataset. For information about how to create a face clustering task, see [CreateFigureClusteringTask](~~CreateFigureClusteringTask~~). For information about how to create a dataset, see [CreateDataset](~~CreateDataset~~).
 //
 // @param request - QueryFigureClustersRequest
 //
@@ -30881,7 +37356,13 @@ func (client *Client) QueryFigureClusters(request *QueryFigureClustersRequest) (
 
 // Summary:
 //
-// 查找时空分组
+// Queries a list of spatiotemporal clustering groups. Multiple conditions are supported. For more information, see the request parameters.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, you must call the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to perform spatiotemporal clustering.
 //
 // @param tmpReq - QueryLocationDateClustersRequest
 //
@@ -31005,7 +37486,13 @@ func (client *Client) QueryLocationDateClustersWithOptions(tmpReq *QueryLocation
 
 // Summary:
 //
-// 查找时空分组
+// Queries a list of spatiotemporal clustering groups. Multiple conditions are supported. For more information, see the request parameters.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, you must call the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to perform spatiotemporal clustering.
 //
 // @param request - QueryLocationDateClustersRequest
 //
@@ -31023,7 +37510,13 @@ func (client *Client) QueryLocationDateClusters(request *QueryLocationDateCluste
 
 // Summary:
 //
-// 查找相似图片分组
+// You can call this operation to query the list of similar image clusters.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, you must call the [CreateSimilarImageClusteringTask](https://help.aliyun.com/document_detail/611302.html) operation to cluster similar images in the dataset.
 //
 // @param request - QuerySimilarImageClustersRequest
 //
@@ -31089,7 +37582,13 @@ func (client *Client) QuerySimilarImageClustersWithOptions(request *QuerySimilar
 
 // Summary:
 //
-// 查找相似图片分组
+// You can call this operation to query the list of similar image clusters.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, you must call the [CreateSimilarImageClusteringTask](https://help.aliyun.com/document_detail/611302.html) operation to cluster similar images in the dataset.
 //
 // @param request - QuerySimilarImageClustersRequest
 //
@@ -31107,7 +37606,15 @@ func (client *Client) QuerySimilarImageClusters(request *QuerySimilarImageCluste
 
 // Summary:
 //
-// 查找 Story
+// Queries stories based on the specified conditions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param tmpReq - QueryStoriesRequest
 //
@@ -31227,7 +37734,15 @@ func (client *Client) QueryStoriesWithOptions(tmpReq *QueryStoriesRequest, runti
 
 // Summary:
 //
-// 查找 Story
+// Queries stories based on the specified conditions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- Before you call this operation, make sure that you have called the [CreateStory](https://help.aliyun.com/document_detail/478193.html) or [CreateCustomizedStory](https://help.aliyun.com/document_detail/478196.html) operation to create a story.
 //
 // @param request - QueryStoriesRequest
 //
@@ -31245,7 +37760,21 @@ func (client *Client) QueryStories(request *QueryStoriesRequest) (_result *Query
 
 // Summary:
 //
-// 刷新文档预览编辑凭证
+// Refreshes the access credential of WebOffice. The access credential of WebOffice is valid for 30 minutes. After the credential expires, you cannot access Weboffice. To access Weboffice again, call this operation to obtain a new credential. The new credential is also valid for 30 minutes.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- For more information, see [WebOffice billing](https://help.aliyun.com/document_detail/2639703.html).
+//
+// 	- The access token returned by this operation is valid for 30 minutes. After the access token expires, you cannot use it to access the document.
+//
+// 	- The refresh token returned by this operation is valid for one day. You need to use the refresh token for the next call to the operation before the refresh token expires. After the validity period elapses, the refresh token is invalid.
+//
+// 	- The returned expiration time is displayed in UTC.
+//
+// >  An access token is used to actually access a document, whereas a refresh token is used to avoid repeated access configurations.
 //
 // @param tmpReq - RefreshWebofficeTokenRequest
 //
@@ -31305,7 +37834,21 @@ func (client *Client) RefreshWebofficeTokenWithOptions(tmpReq *RefreshWebofficeT
 
 // Summary:
 //
-// 刷新文档预览编辑凭证
+// Refreshes the access credential of WebOffice. The access credential of WebOffice is valid for 30 minutes. After the credential expires, you cannot access Weboffice. To access Weboffice again, call this operation to obtain a new credential. The new credential is also valid for 30 minutes.
+//
+// Description:
+//
+// Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of IMM.****
+//
+// 	- For more information, see [WebOffice billing](https://help.aliyun.com/document_detail/2639703.html).
+//
+// 	- The access token returned by this operation is valid for 30 minutes. After the access token expires, you cannot use it to access the document.
+//
+// 	- The refresh token returned by this operation is valid for one day. You need to use the refresh token for the next call to the operation before the refresh token expires. After the validity period elapses, the refresh token is invalid.
+//
+// 	- The returned expiration time is displayed in UTC.
+//
+// >  An access token is used to actually access a document, whereas a refresh token is used to avoid repeated access configurations.
 //
 // @param request - RefreshWebofficeTokenRequest
 //
@@ -31323,7 +37866,7 @@ func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenReques
 
 // Summary:
 //
-// 为故事移除文件
+// Deletes files from a story.
 //
 // @param tmpReq - RemoveStoryFilesRequest
 //
@@ -31383,7 +37926,7 @@ func (client *Client) RemoveStoryFilesWithOptions(tmpReq *RemoveStoryFilesReques
 
 // Summary:
 //
-// 为故事移除文件
+// Deletes files from a story.
 //
 // @param request - RemoveStoryFilesRequest
 //
@@ -31401,7 +37944,11 @@ func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_resul
 
 // Summary:
 //
-// 恢复一个挂起的数据接入任务
+// Resumes a batch processing task that is in the Suspended or Failed state.
+//
+// Description:
+//
+// You can resume a batch processing task only when the task is in the Suspended or Failed state. A batch processing task continues to provide services after you resume the task.
 //
 // @param request - ResumeBatchRequest
 //
@@ -31447,7 +37994,11 @@ func (client *Client) ResumeBatchWithOptions(request *ResumeBatchRequest, runtim
 
 // Summary:
 //
-// 恢复一个挂起的数据接入任务
+// Resumes a batch processing task that is in the Suspended or Failed state.
+//
+// Description:
+//
+// You can resume a batch processing task only when the task is in the Suspended or Failed state. A batch processing task continues to provide services after you resume the task.
 //
 // @param request - ResumeBatchRequest
 //
@@ -31465,7 +38016,11 @@ func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeB
 
 // Summary:
 //
-// 恢复一个挂起的数据接入任务
+// Resumes a trigger that is in the Suspended or Failed state.
+//
+// Description:
+//
+// You can resume only a trigger that is in the Suspended or Failed state. After you resume a trigger, the trigger continues to provide services as expected.
 //
 // @param request - ResumeTriggerRequest
 //
@@ -31511,7 +38066,11 @@ func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, ru
 
 // Summary:
 //
-// 恢复一个挂起的数据接入任务
+// Resumes a trigger that is in the Suspended or Failed state.
+//
+// Description:
+//
+// You can resume only a trigger that is in the Suspended or Failed state. After you resume a trigger, the trigger continues to provide services as expected.
 //
 // @param request - ResumeTriggerRequest
 //
@@ -31529,7 +38088,13 @@ func (client *Client) ResumeTrigger(request *ResumeTriggerRequest) (_result *Res
 
 // Summary:
 //
-// 以脸搜分组
+// Queries face clusters that contain a specific face in an image. Each face cluster contains information such as bounding boxes and similarity.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have created a face clustering task by calling the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
 //
 // @param tmpReq - SearchImageFigureClusterRequest
 //
@@ -31589,7 +38154,13 @@ func (client *Client) SearchImageFigureClusterWithOptions(tmpReq *SearchImageFig
 
 // Summary:
 //
-// 以脸搜分组
+// Queries face clusters that contain a specific face in an image. Each face cluster contains information such as bounding boxes and similarity.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/88317.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have created a face clustering task by calling the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
 //
 // @param request - SearchImageFigureClusterRequest
 //
@@ -31607,7 +38178,37 @@ func (client *Client) SearchImageFigureCluster(request *SearchImageFigureCluster
 
 // Summary:
 //
-// 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+// Queries metadata in a dataset by inputting natural language.
+//
+// Description:
+//
+// ### [](#)Precautions
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).***	- Each time you call this operation, you are charged for semantic understanding and query fees.
+//
+// 	- Before you call this operation, make sure that the file that you want to use is indexed into the dataset that you use. To index a file into a dataset, you can call one of the following operations: [CreateBinding](https://help.aliyun.com/document_detail/478202.html), [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html), and [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html).
+//
+// 	- The response provided in this example is for reference only. The categories and content of metadata vary based on configurations of [workflow templates](https://help.aliyun.com/document_detail/466304.html). If you have questions, search for and join the DingTalk group numbered 21714099.
+//
+// ### [](#)Usage limits
+//
+// 	- Each time you call this operation, up to 1,000 metadata files are returned.
+//
+// 	- Pagination is not supported.
+//
+// 	- The natural language processing capability may not always produce completely accurate results.
+//
+// ### [](#)Usage methods
+//
+// You can query files within a dataset by using natural language keywords. Key information supported for understanding includes labels (Labels.LabelName), time (ProduceTime), and location (Address.AddressLine). For example, if you use `2023 Hangzhou scenery` as the query criterion, the operation intelligently breaks the query criterion down into the following sub-criteria, and returns the files that meet all the sub-criteria:
+//
+// 	- ProduceTime: 00:00 on January 1, 2023 to 00:00 on December 31, 2023.
+//
+// 	- Address.AddressLine: `Hangzhou`
+//
+// 	- Labels.LabelName: `scenery`.
+//
+// When you call this operation, you can configure a [workflow template](https://help.aliyun.com/document_detail/466304.html) that includes the `ImageEmbeddingExtraction` operator. This allows the operation to return image content when the query you input matches the image content, thereby achieving intelligent image retrieval.``
 //
 // @param tmpReq - SemanticQueryRequest
 //
@@ -31623,10 +38224,6 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.MediaTypes)) {
 		request.MediaTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MediaTypes, tea.String("MediaTypes"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.SmartClusterIds)) {
-		request.SmartClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SmartClusterIds, tea.String("SmartClusterIds"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
@@ -31658,10 +38255,6 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 		query["Query"] = request.Query
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SmartClusterIdsShrink)) {
-		query["SmartClusterIds"] = request.SmartClusterIdsShrink
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
 		query["WithFields"] = request.WithFieldsShrink
 	}
@@ -31691,7 +38284,37 @@ func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, run
 
 // Summary:
 //
-// 通过输入自然语言文字，对 Dataset 内的元数据进行查询与统计分析
+// Queries metadata in a dataset by inputting natural language.
+//
+// Description:
+//
+// ### [](#)Precautions
+//
+// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).***	- Each time you call this operation, you are charged for semantic understanding and query fees.
+//
+// 	- Before you call this operation, make sure that the file that you want to use is indexed into the dataset that you use. To index a file into a dataset, you can call one of the following operations: [CreateBinding](https://help.aliyun.com/document_detail/478202.html), [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html), and [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html).
+//
+// 	- The response provided in this example is for reference only. The categories and content of metadata vary based on configurations of [workflow templates](https://help.aliyun.com/document_detail/466304.html). If you have questions, search for and join the DingTalk group numbered 21714099.
+//
+// ### [](#)Usage limits
+//
+// 	- Each time you call this operation, up to 1,000 metadata files are returned.
+//
+// 	- Pagination is not supported.
+//
+// 	- The natural language processing capability may not always produce completely accurate results.
+//
+// ### [](#)Usage methods
+//
+// You can query files within a dataset by using natural language keywords. Key information supported for understanding includes labels (Labels.LabelName), time (ProduceTime), and location (Address.AddressLine). For example, if you use `2023 Hangzhou scenery` as the query criterion, the operation intelligently breaks the query criterion down into the following sub-criteria, and returns the files that meet all the sub-criteria:
+//
+// 	- ProduceTime: 00:00 on January 1, 2023 to 00:00 on December 31, 2023.
+//
+// 	- Address.AddressLine: `Hangzhou`
+//
+// 	- Labels.LabelName: `scenery`.
+//
+// When you call this operation, you can configure a [workflow template](https://help.aliyun.com/document_detail/466304.html) that includes the `ImageEmbeddingExtraction` operator. This allows the operation to return image content when the query you input matches the image content, thereby achieving intelligent image retrieval.``
 //
 // @param request - SemanticQueryRequest
 //
@@ -31709,7 +38332,213 @@ func (client *Client) SemanticQuery(request *SemanticQueryRequest) (_result *Sem
 
 // Summary:
 //
-// 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+// Queries files in a dataset by performing a simple query operation. The operation supports logical expressions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 31690030817) and share your questions with us.
+//
+// **Limits**
+//
+// 	- Each query returns information about up to 100 files.
+//
+// 	- Each query returns up to 2,000 aggregations.
+//
+// 	- A subquery supports up to 100 conditions.
+//
+// 	- A subquery can have a maximum nesting depth of 5 levels.
+//
+// **Example query conditions**
+//
+// 	- Retrieve JPEG images larger than 1,000 pixels:
+//
+// <!---->
+//
+//     {
+//
+//       "SubQueries":[
+//
+//         {
+//
+//           "Field":"ContentType",
+//
+//           "Value": "image/jpeg",
+//
+//           "Operation":"eq"
+//
+//         },
+//
+//         {
+//
+//           "Field":"ImageWidth",
+//
+//           "Value":"1000",
+//
+//           "Operation":"gt"
+//
+//         }
+//
+//       ],
+//
+//       "Operation":"and"
+//
+//     }
+//
+// 	- Search `oss://examplebucket/path/` for objects that have the `TV` or `Stereo` label and are larger than 10 MB in size:
+//
+// >  This query requires matching files to have the `TV` or `Stereo` label. The two labels are specified as separate objects in the `Labels` fields.
+//
+// ```
+//
+// {
+//
+//   "SubQueries": [
+//
+//     {
+//
+//       "Field": "URI",
+//
+//       "Value": "oss://examplebucket/path/",
+//
+//       "Operation": "prefix"
+//
+//     },
+//
+//     {
+//
+//       "Field": "Size",
+//
+//       "Value": "1048576",
+//
+//       "Operation": "gt"
+//
+//     },
+//
+//     {
+//
+//       "SubQueries": [
+//
+//         {
+//
+//           "Field": "Labels.LabelName",
+//
+//           "Value": "TV",
+//
+//           "Operation": "eq"
+//
+//         },
+//
+//         {
+//
+//           "Field": "Labels.LabelName",
+//
+//           "Value": "Stereo",
+//
+//           "Operation": "eq"
+//
+//         }
+//
+//       ],
+//
+//       "Operation": "or"
+//
+//     }
+//
+//   ],
+//
+//   "Operation": "and"
+//
+// }
+//
+//
+//
+// ```
+//
+// 	- Exclude images that contain a face of a male over the age of 36:
+//
+// >  In this example query, an image will be excluded from the query results if it contains a face of a male over the age of 36. This query is different from excluding an image that contains a male face or a face of a person over the age of 36. In this query, you need to use the `nested` operator to specify that the conditions are met on the same element.
+//
+//     {
+//
+//     	"Operation": "not",
+//
+//     	"SubQueries": [{
+//
+//     		"Operation": "nested",
+//
+//     		"SubQueries": [{
+//
+//     			"Operation": "and",
+//
+//     			"SubQueries": [{
+//
+//     				"Field": "Figures.Age",
+//
+//     				"Operation": "gt",
+//
+//     				"Value": "36"
+//
+//     			}, {
+//
+//     				"Field": "Figures.Gender",
+//
+//     				"Operation": "eq",
+//
+//     				"Value": "male"
+//
+//     			}]
+//
+//     		}]
+//
+//     	}]
+//
+//     }
+//
+// 	- Query JPEG images that have both custom labels and system labels:
+//
+// <!---->
+//
+//     {
+//
+//       "SubQueries":[
+//
+//         {
+//
+//           "Field":"ContentType",
+//
+//           "Value": "image/jpeg",
+//
+//           "Operation":"eq"
+//
+//         },
+//
+//         {
+//
+//           "Field":"CustomLabels.test",
+//
+//           "Operation":"exist"
+//
+//         },
+//
+//         {
+//
+//           "Field":"Labels.LabelName",
+//
+//           "Operation":"exist"
+//
+//         }
+//
+//       ],
+//
+//       "Operation":"and"
+//
+//     }
+//
+// You can also perform aggregate operations to collect and analyze different data based on the specified conditions. For example, you can calculate the sum, count, average value, or maximum value of all files that meet the query conditions. You can also calculate the size distribution of images that meet the query conditions.
 //
 // @param tmpReq - SimpleQueryRequest
 //
@@ -31801,7 +38630,213 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 
 // Summary:
 //
-// 通过 JSON 结构的查询语言，对 Dataset 内的元数据进行查询与统计分析。
+// Queries files in a dataset by performing a simple query operation. The operation supports logical expressions.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have indexed file metadata into the dataset automatically by calling the [CreateBinding](https://help.aliyun.com/document_detail/478202.html) operation or manually by calling the [IndexFileMeta](https://help.aliyun.com/document_detail/478166.html) or [BatchIndexFileMeta](https://help.aliyun.com/document_detail/478167.html) operation.
+//
+// 	- The sample response is provided for reference only. The metadata type and content in your response may differ based on factors such as the [workflow template configurations](https://help.aliyun.com/document_detail/466304.html). For any inquiries, join the DingTalk chat group (ID: 31690030817) and share your questions with us.
+//
+// **Limits**
+//
+// 	- Each query returns information about up to 100 files.
+//
+// 	- Each query returns up to 2,000 aggregations.
+//
+// 	- A subquery supports up to 100 conditions.
+//
+// 	- A subquery can have a maximum nesting depth of 5 levels.
+//
+// **Example query conditions**
+//
+// 	- Retrieve JPEG images larger than 1,000 pixels:
+//
+// <!---->
+//
+//     {
+//
+//       "SubQueries":[
+//
+//         {
+//
+//           "Field":"ContentType",
+//
+//           "Value": "image/jpeg",
+//
+//           "Operation":"eq"
+//
+//         },
+//
+//         {
+//
+//           "Field":"ImageWidth",
+//
+//           "Value":"1000",
+//
+//           "Operation":"gt"
+//
+//         }
+//
+//       ],
+//
+//       "Operation":"and"
+//
+//     }
+//
+// 	- Search `oss://examplebucket/path/` for objects that have the `TV` or `Stereo` label and are larger than 10 MB in size:
+//
+// >  This query requires matching files to have the `TV` or `Stereo` label. The two labels are specified as separate objects in the `Labels` fields.
+//
+// ```
+//
+// {
+//
+//   "SubQueries": [
+//
+//     {
+//
+//       "Field": "URI",
+//
+//       "Value": "oss://examplebucket/path/",
+//
+//       "Operation": "prefix"
+//
+//     },
+//
+//     {
+//
+//       "Field": "Size",
+//
+//       "Value": "1048576",
+//
+//       "Operation": "gt"
+//
+//     },
+//
+//     {
+//
+//       "SubQueries": [
+//
+//         {
+//
+//           "Field": "Labels.LabelName",
+//
+//           "Value": "TV",
+//
+//           "Operation": "eq"
+//
+//         },
+//
+//         {
+//
+//           "Field": "Labels.LabelName",
+//
+//           "Value": "Stereo",
+//
+//           "Operation": "eq"
+//
+//         }
+//
+//       ],
+//
+//       "Operation": "or"
+//
+//     }
+//
+//   ],
+//
+//   "Operation": "and"
+//
+// }
+//
+//
+//
+// ```
+//
+// 	- Exclude images that contain a face of a male over the age of 36:
+//
+// >  In this example query, an image will be excluded from the query results if it contains a face of a male over the age of 36. This query is different from excluding an image that contains a male face or a face of a person over the age of 36. In this query, you need to use the `nested` operator to specify that the conditions are met on the same element.
+//
+//     {
+//
+//     	"Operation": "not",
+//
+//     	"SubQueries": [{
+//
+//     		"Operation": "nested",
+//
+//     		"SubQueries": [{
+//
+//     			"Operation": "and",
+//
+//     			"SubQueries": [{
+//
+//     				"Field": "Figures.Age",
+//
+//     				"Operation": "gt",
+//
+//     				"Value": "36"
+//
+//     			}, {
+//
+//     				"Field": "Figures.Gender",
+//
+//     				"Operation": "eq",
+//
+//     				"Value": "male"
+//
+//     			}]
+//
+//     		}]
+//
+//     	}]
+//
+//     }
+//
+// 	- Query JPEG images that have both custom labels and system labels:
+//
+// <!---->
+//
+//     {
+//
+//       "SubQueries":[
+//
+//         {
+//
+//           "Field":"ContentType",
+//
+//           "Value": "image/jpeg",
+//
+//           "Operation":"eq"
+//
+//         },
+//
+//         {
+//
+//           "Field":"CustomLabels.test",
+//
+//           "Operation":"exist"
+//
+//         },
+//
+//         {
+//
+//           "Field":"Labels.LabelName",
+//
+//           "Operation":"exist"
+//
+//         }
+//
+//       ],
+//
+//       "Operation":"and"
+//
+//     }
+//
+// You can also perform aggregate operations to collect and analyze different data based on the specified conditions. For example, you can calculate the sum, count, average value, or maximum value of all files that meet the query conditions. You can also calculate the size distribution of images that meet the query conditions.
 //
 // @param request - SimpleQueryRequest
 //
@@ -31819,7 +38854,11 @@ func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQ
 
 // Summary:
 //
-// 挂起一个数据接入任务
+// Suspends a batch processing task.
+//
+// Description:
+//
+// You can suspend a batch processing task that is in the Running state. You can call the [ResumeBatch](https://help.aliyun.com/document_detail/479914.html) operation to resume a batch processing task that is suspended.
 //
 // @param request - SuspendBatchRequest
 //
@@ -31865,7 +38904,11 @@ func (client *Client) SuspendBatchWithOptions(request *SuspendBatchRequest, runt
 
 // Summary:
 //
-// 挂起一个数据接入任务
+// Suspends a batch processing task.
+//
+// Description:
+//
+// You can suspend a batch processing task that is in the Running state. You can call the [ResumeBatch](https://help.aliyun.com/document_detail/479914.html) operation to resume a batch processing task that is suspended.
 //
 // @param request - SuspendBatchRequest
 //
@@ -31883,7 +38926,11 @@ func (client *Client) SuspendBatch(request *SuspendBatchRequest) (_result *Suspe
 
 // Summary:
 //
-// 挂起一个数据接入任务
+// Suspends a running trigger.
+//
+// Description:
+//
+// The operation can be used to suspend a trigger only in the Running state. If you want to resume a suspended trigger, call the [ResumeTrigger](https://help.aliyun.com/document_detail/479919.html) operation.
 //
 // @param request - SuspendTriggerRequest
 //
@@ -31929,7 +38976,11 @@ func (client *Client) SuspendTriggerWithOptions(request *SuspendTriggerRequest, 
 
 // Summary:
 //
-// 挂起一个数据接入任务
+// Suspends a running trigger.
+//
+// Description:
+//
+// The operation can be used to suspend a trigger only in the Running state. If you want to resume a suspended trigger, call the [ResumeTrigger](https://help.aliyun.com/document_detail/479919.html) operation.
 //
 // @param request - SuspendTriggerRequest
 //
@@ -31947,7 +38998,13 @@ func (client *Client) SuspendTrigger(request *SuspendTriggerRequest) (_result *S
 
 // Summary:
 //
-// 更新数据接入实例
+// Updates information about a batch processing task, including the input data source, data processing settings, and tags.
+//
+// Description:
+//
+//   You can update only a batch processing task that is in the Ready or Failed state. The update operation does not change the status of the batch processing task.
+//
+// 	- If you update a batch processing task that is in progress, the task is not automatically resumed after the update is complete. You must call the [ResumeBatch](https://help.aliyun.com/document_detail/479914.html) operation to resume the task.
 //
 // @param tmpReq - UpdateBatchRequest
 //
@@ -32019,7 +39076,13 @@ func (client *Client) UpdateBatchWithOptions(tmpReq *UpdateBatchRequest, runtime
 
 // Summary:
 //
-// 更新数据接入实例
+// Updates information about a batch processing task, including the input data source, data processing settings, and tags.
+//
+// Description:
+//
+//   You can update only a batch processing task that is in the Ready or Failed state. The update operation does not change the status of the batch processing task.
+//
+// 	- If you update a batch processing task that is in progress, the task is not automatically resumed after the update is complete. You must call the [ResumeBatch](https://help.aliyun.com/document_detail/479914.html) operation to resume the task.
 //
 // @param request - UpdateBatchRequest
 //
@@ -32129,7 +39192,17 @@ func (client *Client) UpdateDataset(request *UpdateDatasetRequest) (_result *Upd
 
 // Summary:
 //
-// 更新聚类
+// Updates information about a face cluster, such as the cluster name and labels.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
+//
+// 	- The operation updates only the cover image, cluster name, and tags.
+//
+// 	- After the operation is successful, you can call the [GetFigureCluster](https://help.aliyun.com/document_detail/478182.html) or [BatchGetFigureCluster](https://help.aliyun.com/document_detail/2248450.html) operation to query the updated cluster.
 //
 // @param tmpReq - UpdateFigureClusterRequest
 //
@@ -32185,7 +39258,17 @@ func (client *Client) UpdateFigureClusterWithOptions(tmpReq *UpdateFigureCluster
 
 // Summary:
 //
-// 更新聚类
+// Updates information about a face cluster, such as the cluster name and labels.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateFigureClusteringTask](https://help.aliyun.com/document_detail/478180.html) operation to cluster all faces in the dataset.
+//
+// 	- The operation updates only the cover image, cluster name, and tags.
+//
+// 	- After the operation is successful, you can call the [GetFigureCluster](https://help.aliyun.com/document_detail/478182.html) or [BatchGetFigureCluster](https://help.aliyun.com/document_detail/2248450.html) operation to query the updated cluster.
 //
 // @param request - UpdateFigureClusterRequest
 //
@@ -32203,7 +39286,13 @@ func (client *Client) UpdateFigureCluster(request *UpdateFigureClusterRequest) (
 
 // Summary:
 //
-// 更新文件元信息
+// Updates the partial metadata of the indexed files in a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- You cannot call this operation to update all metadata. You can update only metadata specified by CustomLabels, CustomId, and Figures. For more information, see the "Request parameters" section of this topic.
 //
 // @param tmpReq - UpdateFileMetaRequest
 //
@@ -32259,7 +39348,13 @@ func (client *Client) UpdateFileMetaWithOptions(tmpReq *UpdateFileMetaRequest, r
 
 // Summary:
 //
-// 更新文件元信息
+// Updates the partial metadata of the indexed files in a dataset.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- You cannot call this operation to update all metadata. You can update only metadata specified by CustomLabels, CustomId, and Figures. For more information, see the "Request parameters" section of this topic.
 //
 // @param request - UpdateFileMetaRequest
 //
@@ -32277,7 +39372,13 @@ func (client *Client) UpdateFileMeta(request *UpdateFileMetaRequest) (_result *U
 
 // Summary:
 //
-// 更新时空聚类
+// Updates a spatiotemporal cluster.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to create spatiotemporal clusters in the project.
 //
 // @param tmpReq - UpdateLocationDateClusterRequest
 //
@@ -32345,7 +39446,13 @@ func (client *Client) UpdateLocationDateClusterWithOptions(tmpReq *UpdateLocatio
 
 // Summary:
 //
-// 更新时空聚类
+// Updates a spatiotemporal cluster.
+//
+// Description:
+//
+//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/477042.html) of Intelligent Media Management (IMM).****
+//
+// 	- Before you call this operation, make sure that you have called the [CreateLocationDateClusteringTask](https://help.aliyun.com/document_detail/478188.html) operation to create spatiotemporal clusters in the project.
 //
 // @param request - UpdateLocationDateClusterRequest
 //
@@ -32363,7 +39470,15 @@ func (client *Client) UpdateLocationDateCluster(request *UpdateLocationDateClust
 
 // Summary:
 //
-// 更新项目
+// Updates information about a project.
+//
+// Description:
+//
+//   Before you call this operation, make sure that the project exists. For information about how to create a project, see "CreateProject".
+//
+// 	- When you call this operation, you need to specify only the parameters that you want to update. The parameters that you do not specify remain unchanged after you call this operation.
+//
+// 	- Wait for up to 5 minutes for the update to take effect.
 //
 // @param tmpReq - UpdateProjectRequest
 //
@@ -32451,7 +39566,15 @@ func (client *Client) UpdateProjectWithOptions(tmpReq *UpdateProjectRequest, run
 
 // Summary:
 //
-// 更新项目
+// Updates information about a project.
+//
+// Description:
+//
+//   Before you call this operation, make sure that the project exists. For information about how to create a project, see "CreateProject".
+//
+// 	- When you call this operation, you need to specify only the parameters that you want to update. The parameters that you do not specify remain unchanged after you call this operation.
+//
+// 	- Wait for up to 5 minutes for the update to take effect.
 //
 // @param request - UpdateProjectRequest
 //
@@ -32469,7 +39592,7 @@ func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *Upd
 
 // Summary:
 //
-// 更新故事
+// Updates the information about a story, such as the story name and cover image.
 //
 // @param tmpReq - UpdateStoryRequest
 //
@@ -32545,7 +39668,7 @@ func (client *Client) UpdateStoryWithOptions(tmpReq *UpdateStoryRequest, runtime
 
 // Summary:
 //
-// 更新故事
+// Updates the information about a story, such as the story name and cover image.
 //
 // @param request - UpdateStoryRequest
 //
@@ -32563,7 +39686,13 @@ func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateS
 
 // Summary:
 //
-// 更新数据接入实例
+// Updates information about a trigger, such as the input data source, data processing settings, and tags.
+//
+// Description:
+//
+//   You can update only a trigger that is in the Ready or Failed state. The update operation does not change the trigger status.
+//
+// 	- After you update a trigger, the uncompleted tasks under the original trigger are no longer executed. You can call the [ResumeTrigger](https://help.aliyun.com/document_detail/479916.html) operation to resume the execution of the trigger.
 //
 // @param tmpReq - UpdateTriggerRequest
 //
@@ -32635,7 +39764,13 @@ func (client *Client) UpdateTriggerWithOptions(tmpReq *UpdateTriggerRequest, run
 
 // Summary:
 //
-// 更新数据接入实例
+// Updates information about a trigger, such as the input data source, data processing settings, and tags.
+//
+// Description:
+//
+//   You can update only a trigger that is in the Ready or Failed state. The update operation does not change the trigger status.
+//
+// 	- After you update a trigger, the uncompleted tasks under the original trigger are no longer executed. You can call the [ResumeTrigger](https://help.aliyun.com/document_detail/479916.html) operation to resume the execution of the trigger.
 //
 // @param request - UpdateTriggerRequest
 //
