@@ -23217,6 +23217,8 @@ func (s *SearchHistoricalSnapshotsResponse) SetBody(v *SearchHistoricalSnapshots
 type StartHanaDatabaseAsyncRequest struct {
 	// The ID of the SAP HANA instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cl-000a9ipe******sme
@@ -23230,6 +23232,8 @@ type StartHanaDatabaseAsyncRequest struct {
 	// HXE
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23362,6 +23366,8 @@ func (s *StartHanaDatabaseAsyncResponse) SetBody(v *StartHanaDatabaseAsyncRespon
 type StopHanaDatabaseAsyncRequest struct {
 	// The ID of the SAP HANA instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cl-000dw******45ijer
@@ -23375,6 +23381,8 @@ type StopHanaDatabaseAsyncRequest struct {
 	// BWP
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25830,6 +25838,8 @@ func (s *UpdateHanaInstanceResponse) SetBody(v *UpdateHanaInstanceResponseBody) 
 type UpdateHanaRetentionSettingRequest struct {
 	// The ID of the SAP HANA instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cl-00024vyjj******srrq
@@ -25875,6 +25885,8 @@ type UpdateHanaRetentionSettingRequest struct {
 	// I|0|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The ID of the backup vault.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
