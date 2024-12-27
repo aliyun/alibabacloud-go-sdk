@@ -14,6 +14,8 @@ type CheckCommercialStatusRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -101,7 +103,9 @@ func (s *CheckCommercialStatusResponse) SetBody(v *CheckCommercialStatusResponse
 }
 
 type GetTagKeyRequest struct {
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
 	//
 	// example:
 	//
@@ -127,7 +131,9 @@ type GetTagKeyRequest struct {
 	//
 	// createOrder
 	SpanName *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
 	//
 	// example:
 	//
@@ -244,7 +250,9 @@ func (s *GetTagKeyResponse) SetBody(v *GetTagKeyResponseBody) *GetTagKeyResponse
 }
 
 type GetTagValRequest struct {
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  This value is of the LONG type, and precision loss may occur during serialization or deserialization. Do not set this parameter to a value greater than 9007199254740991.
 	//
 	// example:
 	//
@@ -268,13 +276,17 @@ type GetTagValRequest struct {
 	//
 	// createOrder
 	SpanName *string `json:"SpanName,omitempty" xml:"SpanName,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  This value is of the LONG type, and precision loss may occur during serialization or deserialization. Do not set this parameter to a value greater than 9007199254740991.
 	//
 	// example:
 	//
 	// 1575561600000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The tag key.
+	//
+	// You can call the [GetTagKey](https://help.aliyun.com/document_detail/2399667.html) operation to obtain a tag key.
 	//
 	// This parameter is required.
 	//
@@ -398,12 +410,18 @@ func (s *GetTagValResponse) SetBody(v *GetTagValResponseBody) *GetTagValResponse
 }
 
 type GetTraceRequest struct {
-	// The type of the application. You can set the value to **XTRACE*	- or leave this parameter unspecified.
+	// The type of the application. You can leave this parameter empty or set this parameter to `XTRACE`. We recommend that you leave this parameter empty.
+	//
+	// 	- If you leave this parameter empty, traces reported to Managed Service for OpenTelemetry and Application Real-Time Monitoring Service (ARMS) can be queried.
+	//
+	// 	- If you set this parameter to `XTRACE`, only traces reported to Managed Service for OpenTelemetry can be queried.
 	//
 	// example:
 	//
 	// XTRACE
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType    *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
 	// This parameter is required.
@@ -412,7 +430,9 @@ type GetTraceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The unique ID of the trace.
+	// The trace ID, which is the unique identifier of the trace.
+	//
+	// You can obtain the trace ID on the **Trace Explorer*	- page in the Managed Service for OpenTelemetry console or by calling the [SearchTraces](https://help.aliyun.com/document_detail/2399674.html~) operation.
 	//
 	// This parameter is required.
 	//
@@ -435,6 +455,16 @@ func (s *GetTraceRequest) SetAppType(v string) *GetTraceRequest {
 	return s
 }
 
+func (s *GetTraceRequest) SetPageNumber(v int64) *GetTraceRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetTraceRequest) SetPageSize(v string) *GetTraceRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *GetTraceRequest) SetRegionId(v string) *GetTraceRequest {
 	s.RegionId = &v
 	return s
@@ -452,7 +482,7 @@ type GetTraceResponseBody struct {
 	//
 	// 1E2B6A4C-6B83-4062-8B6F-AEEC1F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the trace.
+	// The spans that are contained in the trace.
 	Spans *GetTraceResponseBodySpans `json:"Spans,omitempty" xml:"Spans,omitempty" type:"Struct"`
 }
 
@@ -492,7 +522,7 @@ func (s *GetTraceResponseBodySpans) SetSpan(v []*GetTraceResponseBodySpansSpan) 
 }
 
 type GetTraceResponseBodySpansSpan struct {
-	// The time used to call the trace. Unit: milliseconds.
+	// The duration of the span. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -500,15 +530,15 @@ type GetTraceResponseBodySpansSpan struct {
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Indicates whether the span has child spans. Valid values:
 	//
-	// - true: The span has child spans.
+	// 	- `true`
 	//
-	// - false: The span has no child spans.
+	// 	- `false`
 	//
 	// example:
 	//
 	// false
 	HaveStack *bool `json:"HaveStack,omitempty" xml:"HaveStack,omitempty"`
-	// The log events in the trace.
+	// The log events.
 	LogEventList *GetTraceResponseBodySpansSpanLogEventList `json:"LogEventList,omitempty" xml:"LogEventList,omitempty" type:"Struct"`
 	// The name of the span.
 	//
@@ -522,7 +552,7 @@ type GetTraceResponseBodySpansSpan struct {
 	//
 	// fec891bb8f8XXX
 	ParentSpanId *string `json:"ParentSpanId,omitempty" xml:"ParentSpanId,omitempty"`
-	// The status code.
+	// The response code.
 	//
 	// example:
 	//
@@ -534,7 +564,7 @@ type GetTraceResponseBodySpansSpan struct {
 	//
 	// 1.1
 	RpcId *string `json:"RpcId,omitempty" xml:"RpcId,omitempty"`
-	// The IP address of the server where the span resides.
+	// The IP address of the server on which the span resides.
 	//
 	// example:
 	//
@@ -546,13 +576,14 @@ type GetTraceResponseBodySpansSpan struct {
 	//
 	// server1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Span ID.
+	// The span ID.
 	//
 	// example:
 	//
 	// fec891bb8f8XXX
-	SpanId *string `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
-	// The tags in the span.
+	SpanId     *string `json:"SpanId,omitempty" xml:"SpanId,omitempty"`
+	StatusCode *int64  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The tags.
 	TagEntryList *GetTraceResponseBodySpansSpanTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Struct"`
 	// The timestamp when the span was generated. Unit: microseconds.
 	//
@@ -560,7 +591,7 @@ type GetTraceResponseBodySpansSpan struct {
 	//
 	// 1689845513298000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The unique ID of the trace.
+	// The trace ID, which is the unique identifier of the trace.
 	//
 	// example:
 	//
@@ -626,6 +657,11 @@ func (s *GetTraceResponseBodySpansSpan) SetSpanId(v string) *GetTraceResponseBod
 	return s
 }
 
+func (s *GetTraceResponseBodySpansSpan) SetStatusCode(v int64) *GetTraceResponseBodySpansSpan {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetTraceResponseBodySpansSpan) SetTagEntryList(v *GetTraceResponseBodySpansSpanTagEntryList) *GetTraceResponseBodySpansSpan {
 	s.TagEntryList = v
 	return s
@@ -659,9 +695,9 @@ func (s *GetTraceResponseBodySpansSpanLogEventList) SetLogEvent(v []*GetTraceRes
 }
 
 type GetTraceResponseBodySpansSpanLogEventListLogEvent struct {
-	// The tags in the log event.
+	// The tags.
 	TagEntryList *GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList `json:"TagEntryList,omitempty" xml:"TagEntryList,omitempty" type:"Struct"`
-	// The timestamp when the log event was generated.
+	// The timestamp when the log event was generated. Unit: microseconds.
 	//
 	// example:
 	//
@@ -705,13 +741,13 @@ func (s *GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryList) SetTagEn
 }
 
 type GetTraceResponseBodySpansSpanLogEventListLogEventTagEntryListTagEntry struct {
-	// The tag key in the log event.
+	// The tag key of the log event.
 	//
 	// example:
 	//
 	// logLevel
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value in the log event.
+	// The tag value of the log event.
 	//
 	// example:
 	//
@@ -755,13 +791,13 @@ func (s *GetTraceResponseBodySpansSpanTagEntryList) SetTagEntry(v []*GetTraceRes
 }
 
 type GetTraceResponseBodySpansSpanTagEntryListTagEntry struct {
-	// The tag key in the span.
+	// The tag key of the span.
 	//
 	// example:
 	//
 	// logLevel
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value in the span.
+	// The tag value of the span.
 	//
 	// example:
 	//
@@ -817,13 +853,13 @@ func (s *GetTraceResponse) SetBody(v *GetTraceResponseBody) *GetTraceResponse {
 }
 
 type ListIpOrHostsRequest struct {
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// example:
 	//
 	// 1583723776974
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -831,13 +867,13 @@ type ListIpOrHostsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the application. If you do not set this parameter, the IP addresses of all applications in the specified region are returned.
+	// The name of the service. If you do not specify this parameter, the IP addresses of all applications in the specified region are returned.
 	//
 	// example:
 	//
 	// service1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// example:
 	//
@@ -876,7 +912,7 @@ func (s *ListIpOrHostsRequest) SetStartTime(v int64) *ListIpOrHostsRequest {
 type ListIpOrHostsResponseBody struct {
 	// The IP addresses.
 	IpNames *ListIpOrHostsResponseBodyIpNames `json:"IpNames,omitempty" xml:"IpNames,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -949,7 +985,11 @@ func (s *ListIpOrHostsResponse) SetBody(v *ListIpOrHostsResponseBody) *ListIpOrH
 }
 
 type ListServicesRequest struct {
-	// The type of the application. You can set the value to **XTRACE*	- or leave this parameter unspecified.
+	// The type of the application. You can leave this parameter empty or set this parameter to `XTRACE`. We recommend that you leave this parameter empty.
+	//
+	// 	- If you leave this parameter empty, applications monitored by Managed Service for OpenTelemetry or Application Real-Time Monitoring Service (ARMS) can be queried.
+	//
+	// 	- If you set this parameter to `XTRACE`, only applications monitored by Managed Service for OpenTelemetry can be queried.
 	//
 	// example:
 	//
@@ -1103,7 +1143,7 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ListSpanNamesRequest struct {
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// example:
 	//
@@ -1123,7 +1163,7 @@ type ListSpanNamesRequest struct {
 	//
 	// service 1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// example:
 	//
@@ -1322,7 +1362,9 @@ type QueryMetricRequest struct {
 	//
 	// RT
 	Dimensions []*string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
 	//
 	// This parameter is required.
 	//
@@ -1388,7 +1430,9 @@ type QueryMetricRequest struct {
 	//
 	// testefgag12
 	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
+	//
+	// >  The value of this parameter is of the LONG type. Precision loss may occur during serialization or deserialization. The value must be less than or equal to 9007199254740991.
 	//
 	// This parameter is required.
 	//
@@ -1563,7 +1607,7 @@ type SearchTracesRequest struct {
 	//
 	// XTRACE
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The timestamp of the end time of the time range to query. The timestamp is accurate to milliseconds.
+	// The end of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -1571,7 +1615,7 @@ type SearchTracesRequest struct {
 	//
 	// 1575622455686
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time more than which is used to call the trace. Unit: milliseconds. For example, a value of 100 specifies to return the traces that more than 100 milliseconds are used to call.
+	// The minimum value of an execution duration. Unit: seconds. For example, a value of 2 indicates that the traces whose execution duration is more than 2 seconds are queried.
 	//
 	// example:
 	//
@@ -1589,7 +1633,7 @@ type SearchTracesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -1613,7 +1657,7 @@ type SearchTracesRequest struct {
 	//
 	// false
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The IP address that corresponds to the span.
+	// The IP address of the server on which the span is running.
 	//
 	// example:
 	//
@@ -1625,14 +1669,15 @@ type SearchTracesRequest struct {
 	//
 	// service 1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The timestamp of the start time of the time range to query. The timestamp is accurate to milliseconds.
+	// The beginning of the time range to query. The value is a timestamp that is accurate to milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1575561600000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	// The list of the tags.
 	Tag []*SearchTracesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -1697,6 +1742,11 @@ func (s *SearchTracesRequest) SetServiceName(v string) *SearchTracesRequest {
 
 func (s *SearchTracesRequest) SetStartTime(v int64) *SearchTracesRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *SearchTracesRequest) SetStatusCode(v string) *SearchTracesRequest {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1774,7 +1824,7 @@ type SearchTracesResponseBodyPageBean struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -1786,7 +1836,7 @@ type SearchTracesResponseBodyPageBean struct {
 	//
 	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the trace.
+	// The information about the traces that are returned.
 	TraceInfos *SearchTracesResponseBodyPageBeanTraceInfos `json:"TraceInfos,omitempty" xml:"TraceInfos,omitempty" type:"Struct"`
 }
 
@@ -1836,43 +1886,44 @@ func (s *SearchTracesResponseBodyPageBeanTraceInfos) SetTraceInfo(v []*SearchTra
 }
 
 type SearchTracesResponseBodyPageBeanTraceInfosTraceInfo struct {
-	// The time used to call the trace. Unit: milliseconds.
+	// The execution duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 100
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the span.
+	// The span name.
 	//
 	// example:
 	//
 	// /api
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
-	// The IP address of the server where the span resides.
+	// The IP address or name of the server on which the span is running.
 	//
 	// example:
 	//
 	// 192.163.XXX.XXX
 	ServiceIp *string `json:"ServiceIp,omitempty" xml:"ServiceIp,omitempty"`
-	// The name of the application.
+	// The service name.
 	//
 	// example:
 	//
 	// service1
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The map of tags.
+	StatusCode  *int64  `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The tag information.
 	//
 	// example:
 	//
 	// {"env":"dev"}
 	TagMap map[string]interface{} `json:"TagMap,omitempty" xml:"TagMap,omitempty"`
-	// The time when the span was generated. Unit: microseconds.
+	// The timestamp when the span was generated. Unit: millisecond.
 	//
 	// example:
 	//
 	// 1575561600000000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The ID of the trace.
+	// The trace ID.
 	//
 	// example:
 	//
@@ -1905,6 +1956,11 @@ func (s *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo) SetServiceIp(v str
 
 func (s *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo) SetServiceName(v string) *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo) SetStatusCode(v int64) *SearchTracesResponseBodyPageBeanTraceInfosTraceInfo {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2238,6 +2294,14 @@ func (client *Client) GetTraceWithOptions(request *GetTraceRequest, runtime *uti
 		query["AppType"] = request.AppType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -2289,7 +2353,7 @@ func (client *Client) GetTrace(request *GetTraceRequest) (_result *GetTraceRespo
 
 // Summary:
 //
-// Queries the IP addresses of an application.
+// Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
 //
 // @param request - ListIpOrHostsRequest
 //
@@ -2343,7 +2407,7 @@ func (client *Client) ListIpOrHostsWithOptions(request *ListIpOrHostsRequest, ru
 
 // Summary:
 //
-// Queries the IP addresses of an application.
+// Queries IP addresses or hostnames in trace data. You can obtain all IP addresses of an application or in a region.
 //
 // @param request - ListIpOrHostsRequest
 //
@@ -2497,7 +2561,7 @@ func (client *Client) ListSpanNames(request *ListSpanNamesRequest) (_result *Lis
 
 // Summary:
 //
-// 开通xtrace和对应的sls
+// Activates Managed Service for OpenTelemetry.
 //
 // @param request - OpenXtraceServiceRequest
 //
@@ -2539,7 +2603,7 @@ func (client *Client) OpenXtraceServiceWithOptions(request *OpenXtraceServiceReq
 
 // Summary:
 //
-// 开通xtrace和对应的sls
+// Activates Managed Service for OpenTelemetry.
 //
 // @param request - OpenXtraceServiceRequest
 //
@@ -2712,6 +2776,10 @@ func (client *Client) SearchTracesWithOptions(request *SearchTracesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCode)) {
+		query["StatusCode"] = request.StatusCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
