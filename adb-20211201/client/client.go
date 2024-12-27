@@ -2094,6 +2094,106 @@ func (s *AllocateClusterPublicConnectionResponse) SetBody(v *AllocateClusterPubl
 	return s
 }
 
+type ApplyAdviceByIdRequest struct {
+	// example:
+	//
+	// 20221101
+	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// example:
+	//
+	// 0baf1f52-53df-487f-8292-99a03716****
+	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ApplyAdviceByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAdviceByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAdviceByIdRequest) SetAdviceDate(v int64) *ApplyAdviceByIdRequest {
+	s.AdviceDate = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetAdviceId(v string) *ApplyAdviceByIdRequest {
+	s.AdviceId = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetDBClusterId(v string) *ApplyAdviceByIdRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdRequest) SetRegionId(v string) *ApplyAdviceByIdRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ApplyAdviceByIdResponseBody struct {
+	// example:
+	//
+	// 5DC10091-348D-12B1-906D-AB49D658012E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyAdviceByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAdviceByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAdviceByIdResponseBody) SetRequestId(v string) *ApplyAdviceByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyAdviceByIdResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyAdviceByIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyAdviceByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAdviceByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAdviceByIdResponse) SetHeaders(v map[string]*string) *ApplyAdviceByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyAdviceByIdResponse) SetStatusCode(v int32) *ApplyAdviceByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyAdviceByIdResponse) SetBody(v *ApplyAdviceByIdResponseBody) *ApplyAdviceByIdResponse {
+	s.Body = v
+	return s
+}
+
 type AttachUserENIRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -2167,6 +2267,106 @@ func (s *AttachUserENIResponse) SetStatusCode(v int32) *AttachUserENIResponse {
 }
 
 func (s *AttachUserENIResponse) SetBody(v *AttachUserENIResponseBody) *AttachUserENIResponse {
+	s.Body = v
+	return s
+}
+
+type BatchApplyAdviceByIdListRequest struct {
+	// example:
+	//
+	// 20221115
+	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// example:
+	//
+	// c2589ff3-e86c-4f19-80c8-2aeb7dd9****,53414470-ebf4-4a53-a312-8a1ad8fd****,6e8dce84-fec8-4b0b-9c04-b0cea12c****,b3b9703d-55ca-47e0-96dd-6a4a9dbf****
+	AdviceIdList *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s BatchApplyAdviceByIdListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchApplyAdviceByIdListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetAdviceDate(v int64) *BatchApplyAdviceByIdListRequest {
+	s.AdviceDate = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetAdviceIdList(v string) *BatchApplyAdviceByIdListRequest {
+	s.AdviceIdList = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetDBClusterId(v string) *BatchApplyAdviceByIdListRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListRequest) SetRegionId(v string) *BatchApplyAdviceByIdListRequest {
+	s.RegionId = &v
+	return s
+}
+
+type BatchApplyAdviceByIdListResponseBody struct {
+	// example:
+	//
+	// 86F92D26-B774-5FA1-8E53-82CBEEEBB012
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchApplyAdviceByIdListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchApplyAdviceByIdListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchApplyAdviceByIdListResponseBody) SetRequestId(v string) *BatchApplyAdviceByIdListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchApplyAdviceByIdListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchApplyAdviceByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchApplyAdviceByIdListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchApplyAdviceByIdListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchApplyAdviceByIdListResponse) SetHeaders(v map[string]*string) *BatchApplyAdviceByIdListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListResponse) SetStatusCode(v int32) *BatchApplyAdviceByIdListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchApplyAdviceByIdListResponse) SetBody(v *BatchApplyAdviceByIdListResponseBody) *BatchApplyAdviceByIdListResponse {
 	s.Body = v
 	return s
 }
@@ -2764,6 +2964,229 @@ func (s *CheckSampleDataSetResponse) SetStatusCode(v int32) *CheckSampleDataSetR
 }
 
 func (s *CheckSampleDataSetResponse) SetBody(v *CheckSampleDataSetResponseBody) *CheckSampleDataSetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAPSJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-xxxxx
+	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"EntireInstance":true}
+	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-xxxxx
+	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
+	// example:
+	//
+	// ******
+	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
+	// example:
+	//
+	// ******
+	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	// example:
+	//
+	// {}
+	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-xxxxx
+	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	// example:
+	//
+	// ******
+	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	// example:
+	//
+	// xxxx
+	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// example:
+	//
+	// 1
+	TargetTableMode *string `json:"TargetTableMode,omitempty" xml:"TargetTableMode,omitempty"`
+}
+
+func (s CreateAPSJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAPSJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAPSJobRequest) SetApsJobName(v string) *CreateAPSJobRequest {
+	s.ApsJobName = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetDbList(v string) *CreateAPSJobRequest {
+	s.DbList = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetDestinationEndpointInstanceID(v string) *CreateAPSJobRequest {
+	s.DestinationEndpointInstanceID = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetDestinationEndpointPassword(v string) *CreateAPSJobRequest {
+	s.DestinationEndpointPassword = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetDestinationEndpointUserName(v string) *CreateAPSJobRequest {
+	s.DestinationEndpointUserName = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetPartitionList(v string) *CreateAPSJobRequest {
+	s.PartitionList = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetRegionId(v string) *CreateAPSJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetSourceEndpointInstanceID(v string) *CreateAPSJobRequest {
+	s.SourceEndpointInstanceID = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetSourceEndpointPassword(v string) *CreateAPSJobRequest {
+	s.SourceEndpointPassword = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetSourceEndpointRegion(v string) *CreateAPSJobRequest {
+	s.SourceEndpointRegion = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetSourceEndpointUserName(v string) *CreateAPSJobRequest {
+	s.SourceEndpointUserName = &v
+	return s
+}
+
+func (s *CreateAPSJobRequest) SetTargetTableMode(v string) *CreateAPSJobRequest {
+	s.TargetTableMode = &v
+	return s
+}
+
+type CreateAPSJobResponseBody struct {
+	// example:
+	//
+	// aps-bj1xxxxxx
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D1B8ED33-5E9B-512D-B188-1579ED6xxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAPSJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAPSJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAPSJobResponseBody) SetApsJobId(v string) *CreateAPSJobResponseBody {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *CreateAPSJobResponseBody) SetCode(v string) *CreateAPSJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAPSJobResponseBody) SetHttpStatusCode(v int32) *CreateAPSJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAPSJobResponseBody) SetMessage(v string) *CreateAPSJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAPSJobResponseBody) SetRequestId(v string) *CreateAPSJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAPSJobResponseBody) SetSuccess(v bool) *CreateAPSJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAPSJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAPSJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAPSJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAPSJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAPSJobResponse) SetHeaders(v map[string]*string) *CreateAPSJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAPSJobResponse) SetStatusCode(v int32) *CreateAPSJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAPSJobResponse) SetBody(v *CreateAPSJobResponseBody) *CreateAPSJobResponse {
 	s.Body = v
 	return s
 }
@@ -7527,6 +7950,106 @@ func (s *DescribeAdbMySqlTablesResponse) SetStatusCode(v int32) *DescribeAdbMySq
 }
 
 func (s *DescribeAdbMySqlTablesResponse) SetBody(v *DescribeAdbMySqlTablesResponseBody) *DescribeAdbMySqlTablesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAdviceServiceEnabledRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-2ze0vp0j6t3to****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAdviceServiceEnabledRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdviceServiceEnabledRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdviceServiceEnabledRequest) SetDBClusterId(v string) *DescribeAdviceServiceEnabledRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAdviceServiceEnabledRequest) SetRegionId(v string) *DescribeAdviceServiceEnabledRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAdviceServiceEnabledResponseBody struct {
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E031AABF-BD56-5966-A063-4283EF18DB45
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// False
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DescribeAdviceServiceEnabledResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdviceServiceEnabledResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdviceServiceEnabledResponseBody) SetMessage(v string) *DescribeAdviceServiceEnabledResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAdviceServiceEnabledResponseBody) SetRequestId(v string) *DescribeAdviceServiceEnabledResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAdviceServiceEnabledResponseBody) SetResult(v bool) *DescribeAdviceServiceEnabledResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DescribeAdviceServiceEnabledResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdviceServiceEnabledResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAdviceServiceEnabledResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdviceServiceEnabledResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdviceServiceEnabledResponse) SetHeaders(v map[string]*string) *DescribeAdviceServiceEnabledResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAdviceServiceEnabledResponse) SetStatusCode(v int32) *DescribeAdviceServiceEnabledResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAdviceServiceEnabledResponse) SetBody(v *DescribeAdviceServiceEnabledResponseBody) *DescribeAdviceServiceEnabledResponse {
 	s.Body = v
 	return s
 }
@@ -33538,6 +34061,78 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 
 // Summary:
 //
+// 应用单条优化建议
+//
+// @param request - ApplyAdviceByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyAdviceByIdResponse
+func (client *Client) ApplyAdviceByIdWithOptions(request *ApplyAdviceByIdRequest, runtime *util.RuntimeOptions) (_result *ApplyAdviceByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdviceDate)) {
+		query["AdviceDate"] = request.AdviceDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdviceId)) {
+		query["AdviceId"] = request.AdviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyAdviceById"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyAdviceByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用单条优化建议
+//
+// @param request - ApplyAdviceByIdRequest
+//
+// @return ApplyAdviceByIdResponse
+func (client *Client) ApplyAdviceById(request *ApplyAdviceByIdRequest) (_result *ApplyAdviceByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyAdviceByIdResponse{}
+	_body, _err := client.ApplyAdviceByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
 //
 // Description:
@@ -33597,6 +34192,78 @@ func (client *Client) AttachUserENI(request *AttachUserENIRequest) (_result *Att
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachUserENIResponse{}
 	_body, _err := client.AttachUserENIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量应用优化建议
+//
+// @param request - BatchApplyAdviceByIdListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchApplyAdviceByIdListResponse
+func (client *Client) BatchApplyAdviceByIdListWithOptions(request *BatchApplyAdviceByIdListRequest, runtime *util.RuntimeOptions) (_result *BatchApplyAdviceByIdListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdviceDate)) {
+		query["AdviceDate"] = request.AdviceDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdviceIdList)) {
+		query["AdviceIdList"] = request.AdviceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchApplyAdviceByIdList"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchApplyAdviceByIdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量应用优化建议
+//
+// @param request - BatchApplyAdviceByIdListRequest
+//
+// @return BatchApplyAdviceByIdListResponse
+func (client *Client) BatchApplyAdviceByIdList(request *BatchApplyAdviceByIdListRequest) (_result *BatchApplyAdviceByIdListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchApplyAdviceByIdListResponse{}
+	_body, _err := client.BatchApplyAdviceByIdListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33949,6 +34616,110 @@ func (client *Client) CheckSampleDataSet(request *CheckSampleDataSetRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckSampleDataSetResponse{}
 	_body, _err := client.CheckSampleDataSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一站式链路
+//
+// @param request - CreateAPSJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAPSJobResponse
+func (client *Client) CreateAPSJobWithOptions(request *CreateAPSJobRequest, runtime *util.RuntimeOptions) (_result *CreateAPSJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobName)) {
+		body["ApsJobName"] = request.ApsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		body["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointInstanceID)) {
+		body["DestinationEndpointInstanceID"] = request.DestinationEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointPassword)) {
+		body["DestinationEndpointPassword"] = request.DestinationEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointUserName)) {
+		body["DestinationEndpointUserName"] = request.DestinationEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionList)) {
+		body["PartitionList"] = request.PartitionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointInstanceID)) {
+		body["SourceEndpointInstanceID"] = request.SourceEndpointInstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointPassword)) {
+		body["SourceEndpointPassword"] = request.SourceEndpointPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointRegion)) {
+		body["SourceEndpointRegion"] = request.SourceEndpointRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
+		body["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetTableMode)) {
+		body["TargetTableMode"] = request.TargetTableMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAPSJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAPSJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一站式链路
+//
+// @param request - CreateAPSJobRequest
+//
+// @return CreateAPSJobResponse
+func (client *Client) CreateAPSJob(request *CreateAPSJobRequest) (_result *CreateAPSJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAPSJobResponse{}
+	_body, _err := client.CreateAPSJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36041,6 +36812,70 @@ func (client *Client) DescribeAdbMySqlTables(request *DescribeAdbMySqlTablesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdbMySqlTablesResponse{}
 	_body, _err := client.DescribeAdbMySqlTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询建议服务是否开启
+//
+// @param request - DescribeAdviceServiceEnabledRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdviceServiceEnabledResponse
+func (client *Client) DescribeAdviceServiceEnabledWithOptions(request *DescribeAdviceServiceEnabledRequest, runtime *util.RuntimeOptions) (_result *DescribeAdviceServiceEnabledResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAdviceServiceEnabled"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAdviceServiceEnabledResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询建议服务是否开启
+//
+// @param request - DescribeAdviceServiceEnabledRequest
+//
+// @return DescribeAdviceServiceEnabledResponse
+func (client *Client) DescribeAdviceServiceEnabled(request *DescribeAdviceServiceEnabledRequest) (_result *DescribeAdviceServiceEnabledResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAdviceServiceEnabledResponse{}
+	_body, _err := client.DescribeAdviceServiceEnabledWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
