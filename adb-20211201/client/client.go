@@ -3353,6 +3353,233 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
+type CreateApsHiveJobRequest struct {
+	// example:
+	//
+	// -
+	AdvancedConfig   *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 40
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16
+	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// This parameter is required.
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// example:
+	//
+	// 8
+	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// *
+	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
+	// example:
+	//
+	// abc
+	SyncDenyExpression *string `json:"SyncDenyExpression,omitempty" xml:"SyncDenyExpression,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx-20240224100253
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s CreateApsHiveJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsHiveJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsHiveJobRequest) SetAdvancedConfig(v string) *CreateApsHiveJobRequest {
+	s.AdvancedConfig = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetConflictStrategy(v string) *CreateApsHiveJobRequest {
+	s.ConflictStrategy = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetDBClusterId(v string) *CreateApsHiveJobRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetDatasourceId(v int64) *CreateApsHiveJobRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetFullComputeUnit(v string) *CreateApsHiveJobRequest {
+	s.FullComputeUnit = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetOssLocation(v string) *CreateApsHiveJobRequest {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetParallelism(v int32) *CreateApsHiveJobRequest {
+	s.Parallelism = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetRegionId(v string) *CreateApsHiveJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetResourceGroup(v string) *CreateApsHiveJobRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetSyncAllowExpression(v string) *CreateApsHiveJobRequest {
+	s.SyncAllowExpression = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetSyncDenyExpression(v string) *CreateApsHiveJobRequest {
+	s.SyncDenyExpression = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetTargetType(v string) *CreateApsHiveJobRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateApsHiveJobRequest) SetWorkloadName(v string) *CreateApsHiveJobRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type CreateApsHiveJobResponseBody struct {
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2895BB82-B2C1-408E-AA73-DB8D59******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateApsHiveJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsHiveJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsHiveJobResponseBody) SetCode(v string) *CreateApsHiveJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponseBody) SetData(v string) *CreateApsHiveJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponseBody) SetHttpStatusCode(v string) *CreateApsHiveJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponseBody) SetMessage(v string) *CreateApsHiveJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponseBody) SetRequestId(v string) *CreateApsHiveJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponseBody) SetSuccess(v bool) *CreateApsHiveJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateApsHiveJobResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApsHiveJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApsHiveJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsHiveJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsHiveJobResponse) SetHeaders(v map[string]*string) *CreateApsHiveJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApsHiveJobResponse) SetStatusCode(v int32) *CreateApsHiveJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApsHiveJobResponse) SetBody(v *CreateApsHiveJobResponseBody) *CreateApsHiveJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBClusterRequest struct {
 	// The ID of the backup set that you want to use to restore data.
 	//
@@ -4531,6 +4758,289 @@ func (s *CreateElasticPlanResponse) SetBody(v *CreateElasticPlanResponseBody) *C
 	return s
 }
 
+type CreateLakeStorageRequest struct {
+	// -
+	//
+	// example:
+	//
+	// ******
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	Permissions []*CreateLakeStorageRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateLakeStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeStorageRequest) SetClientToken(v string) *CreateLakeStorageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequest) SetDBClusterId(v string) *CreateLakeStorageRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequest) SetDescription(v string) *CreateLakeStorageRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequest) SetPermissions(v []*CreateLakeStorageRequestPermissions) *CreateLakeStorageRequest {
+	s.Permissions = v
+	return s
+}
+
+func (s *CreateLakeStorageRequest) SetRegionId(v string) *CreateLakeStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateLakeStorageRequestPermissions struct {
+	// 具有该权限的账户或RAM用户ID
+	//
+	// example:
+	//
+	// -
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 表示是否允许读取湖存储的权限
+	//
+	// example:
+	//
+	// -
+	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
+	// 指定权限的账户类型
+	//
+	// example:
+	//
+	// -
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 表示是否允许向湖存储写入数据的权限
+	//
+	// example:
+	//
+	// -
+	Write *bool `json:"Write,omitempty" xml:"Write,omitempty"`
+}
+
+func (s CreateLakeStorageRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeStorageRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeStorageRequestPermissions) SetAccount(v string) *CreateLakeStorageRequestPermissions {
+	s.Account = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequestPermissions) SetRead(v bool) *CreateLakeStorageRequestPermissions {
+	s.Read = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequestPermissions) SetType(v string) *CreateLakeStorageRequestPermissions {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateLakeStorageRequestPermissions) SetWrite(v bool) *CreateLakeStorageRequestPermissions {
+	s.Write = &v
+	return s
+}
+
+type CreateLakeStorageShrinkRequest struct {
+	// -
+	//
+	// example:
+	//
+	// ******
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateLakeStorageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeStorageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeStorageShrinkRequest) SetClientToken(v string) *CreateLakeStorageShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateLakeStorageShrinkRequest) SetDBClusterId(v string) *CreateLakeStorageShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateLakeStorageShrinkRequest) SetDescription(v string) *CreateLakeStorageShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLakeStorageShrinkRequest) SetPermissionsShrink(v string) *CreateLakeStorageShrinkRequest {
+	s.PermissionsShrink = &v
+	return s
+}
+
+func (s *CreateLakeStorageShrinkRequest) SetRegionId(v string) *CreateLakeStorageShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateLakeStorageResponseBody struct {
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateLakeStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeStorageResponseBody) SetCode(v string) *CreateLakeStorageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponseBody) SetData(v string) *CreateLakeStorageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponseBody) SetHttpStatusCode(v int32) *CreateLakeStorageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponseBody) SetMessage(v string) *CreateLakeStorageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponseBody) SetRequestId(v string) *CreateLakeStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponseBody) SetSuccess(v bool) *CreateLakeStorageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateLakeStorageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLakeStorageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLakeStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeStorageResponse) SetHeaders(v map[string]*string) *CreateLakeStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLakeStorageResponse) SetStatusCode(v int32) *CreateLakeStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLakeStorageResponse) SetBody(v *CreateLakeStorageResponseBody) *CreateLakeStorageResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOssSubDirectoryRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -5436,6 +5946,289 @@ func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
 }
 
 func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteApsDatasoureRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteApsDatasoureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsDatasoureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsDatasoureRequest) SetDBClusterId(v string) *DeleteApsDatasoureRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureRequest) SetDatasourceId(v int64) *DeleteApsDatasoureRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureRequest) SetRegionId(v string) *DeleteApsDatasoureRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteApsDatasoureResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 7
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FAE98A4F-****-****-BF6D-67EEAC9C39DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteApsDatasoureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsDatasoureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetCode(v string) *DeleteApsDatasoureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetData(v string) *DeleteApsDatasoureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetHttpStatusCode(v string) *DeleteApsDatasoureResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetMessage(v string) *DeleteApsDatasoureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetRequestId(v string) *DeleteApsDatasoureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponseBody) SetSuccess(v string) *DeleteApsDatasoureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteApsDatasoureResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApsDatasoureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApsDatasoureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsDatasoureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsDatasoureResponse) SetHeaders(v map[string]*string) *DeleteApsDatasoureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponse) SetStatusCode(v int32) *DeleteApsDatasoureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApsDatasoureResponse) SetBody(v *DeleteApsDatasoureResponseBody) *DeleteApsDatasoureResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteApsJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-*****
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteApsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsJobRequest) SetApsJobId(v string) *DeleteApsJobRequest {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *DeleteApsJobRequest) SetRegionId(v string) *DeleteApsJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteApsJobResponseBody struct {
+	// example:
+	//
+	// aps-*****
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// OK
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ****-****-5D14-AC9F-*********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteApsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsJobResponseBody) SetApsJobId(v string) *DeleteApsJobResponseBody {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetCode(v string) *DeleteApsJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetErrCode(v string) *DeleteApsJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetErrMessage(v string) *DeleteApsJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetHttpStatusCode(v int32) *DeleteApsJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetMessage(v string) *DeleteApsJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetRequestId(v string) *DeleteApsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteApsJobResponseBody) SetSuccess(v bool) *DeleteApsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteApsJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApsJobResponse) SetHeaders(v map[string]*string) *DeleteApsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApsJobResponse) SetStatusCode(v int32) *DeleteApsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApsJobResponse) SetBody(v *DeleteApsJobResponseBody) *DeleteApsJobResponse {
 	s.Body = v
 	return s
 }
@@ -6409,6 +7202,245 @@ func (s *DeleteSparkTemplateFileResponse) SetStatusCode(v int32) *DeleteSparkTem
 }
 
 func (s *DeleteSparkTemplateFileResponse) SetBody(v *DeleteSparkTemplateFileResponseBody) *DeleteSparkTemplateFileResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAPSADBInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAPSADBInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAPSADBInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAPSADBInstancesRequest) SetPageNumber(v int32) *DescribeAPSADBInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesRequest) SetPageSize(v int32) *DescribeAPSADBInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesRequest) SetRegionId(v string) *DescribeAPSADBInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAPSADBInstancesResponseBody struct {
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// -
+	Items []*DescribeAPSADBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAPSADBInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAPSADBInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetCode(v string) *DescribeAPSADBInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetHttpStatusCode(v int32) *DescribeAPSADBInstancesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetItems(v []*DescribeAPSADBInstancesResponseBodyItems) *DescribeAPSADBInstancesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetMessage(v string) *DescribeAPSADBInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetPageNumber(v string) *DescribeAPSADBInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetPageSize(v string) *DescribeAPSADBInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetRequestId(v string) *DescribeAPSADBInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetSuccess(v bool) *DescribeAPSADBInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBody) SetTotalCount(v string) *DescribeAPSADBInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAPSADBInstancesResponseBodyItems struct {
+	// example:
+	//
+	// 16ACU
+	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
+	// example:
+	//
+	// adb_test
+	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// example:
+	//
+	// am-bp1********
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// Running
+	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// example:
+	//
+	// 24ACU
+	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
+	// example:
+	//
+	// 24ACU
+	StorageResource *int64 `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeAPSADBInstancesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAPSADBInstancesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetComputeResource(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.ComputeResource = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetDBClusterDescription(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.DBClusterDescription = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetDBClusterId(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetDBClusterStatus(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.DBClusterStatus = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetReservedACU(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.ReservedACU = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetStorageResource(v int64) *DescribeAPSADBInstancesResponseBodyItems {
+	s.StorageResource = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponseBodyItems) SetZoneId(v string) *DescribeAPSADBInstancesResponseBodyItems {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeAPSADBInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAPSADBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAPSADBInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAPSADBInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAPSADBInstancesResponse) SetHeaders(v map[string]*string) *DescribeAPSADBInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponse) SetStatusCode(v int32) *DescribeAPSADBInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAPSADBInstancesResponse) SetBody(v *DescribeAPSADBInstancesResponseBody) *DescribeAPSADBInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -8795,6 +9827,2001 @@ func (s *DescribeApsActionLogsResponse) SetStatusCode(v int32) *DescribeApsActio
 }
 
 func (s *DescribeApsActionLogsResponse) SetBody(v *DescribeApsActionLogsResponseBody) *DescribeApsActionLogsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsDatasourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeApsDatasourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceRequest) SetDBClusterId(v string) *DescribeApsDatasourceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceRequest) SetDatasourceId(v int64) *DescribeApsDatasourceRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceRequest) SetRegionId(v string) *DescribeApsDatasourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBody struct {
+	// -
+	ApsDatasource *DescribeApsDatasourceResponseBodyApsDatasource `json:"ApsDatasource,omitempty" xml:"ApsDatasource,omitempty" type:"Struct"`
+	// example:
+	//
+	// ******-**D8-5***-A***-****587
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBody) SetApsDatasource(v *DescribeApsDatasourceResponseBodyApsDatasource) *DescribeApsDatasourceResponseBody {
+	s.ApsDatasource = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBody) SetRequestId(v string) *DescribeApsDatasourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasource struct {
+	// example:
+	//
+	// 2024-04-12T15:03:38Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// -
+	DatabricksInfo *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// test
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// example:
+	//
+	// kafka-2024***
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// example:
+	//
+	// KAFKA
+	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// example:
+	//
+	// -
+	HiveInfo *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	KafkaInfo *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	PolarDBMysqlInfo *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	RdsMysqlInfo *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	SlsInfo *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetCreateTime(v string) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetDBClusterId(v string) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetDatabricksInfo(v *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.DatabricksInfo = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetDatasourceDescription(v string) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetDatasourceName(v string) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetDatasourceType(v string) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetHiveInfo(v *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.HiveInfo = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetKafkaInfo(v *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.KafkaInfo = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetPolarDBMysqlInfo(v *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.PolarDBMysqlInfo = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetRdsMysqlInfo(v *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.RdsMysqlInfo = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetSlsInfo(v *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) *DescribeApsDatasourceResponseBodyApsDatasource {
+	s.SlsInfo = v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo struct {
+	// example:
+	//
+	// ******
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// example:
+	//
+	// -
+	WorkspaceURL *string `json:"workspaceURL,omitempty" xml:"workspaceURL,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) SetAccessToken(v string) *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) SetWorkspaceURL(v string) *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo {
+	s.WorkspaceURL = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo struct {
+	// example:
+	//
+	// -
+	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
+	// hive meta store url。
+	//
+	// example:
+	//
+	// -
+	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
+	// example:
+	//
+	// sg-******
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// example:
+	//
+	// vsw-******
+	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) SetEmrClusterId(v string) *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo {
+	s.EmrClusterId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) SetMetaStoreUri(v string) *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo {
+	s.MetaStoreUri = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) SetSecurityGroup(v string) *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) SetVswitch(v string) *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo {
+	s.Vswitch = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo struct {
+	// example:
+	//
+	// -
+	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
+	// kafka topic
+	//
+	// example:
+	//
+	// [{\\"value\\": \\"hongxian_test\\"}]
+	KafkaTopic *string `json:"KafkaTopic,omitempty" xml:"KafkaTopic,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) SetKafkaClusterId(v string) *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo {
+	s.KafkaClusterId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) SetKafkaTopic(v string) *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo {
+	s.KafkaTopic = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo struct {
+	// -
+	//
+	// example:
+	//
+	// -
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetAcross(v bool) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.Across = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetAcrossRole(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetAcrossUid(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetConnectUrl(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetInstanceId(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetRegionId(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetSecurityGroup(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetUserName(v string) *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo struct {
+	// -
+	//
+	// example:
+	//
+	// -
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetConnectUrl(v string) *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetInstanceId(v string) *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetRegionId(v string) *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetSecurityGroup(v string) *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetUserName(v string) *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// example:
+	//
+	// test
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// example:
+	//
+	// 123456
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// example:
+	//
+	// ***
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// example:
+	//
+	// ***
+	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetAcross(v bool) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.Across = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetAcrossRole(v string) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetAcrossUid(v string) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetProject(v string) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.Project = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetSourceRegionId(v string) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo) SetStore(v string) *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo {
+	s.Store = &v
+	return s
+}
+
+type DescribeApsDatasourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsDatasourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsDatasourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourceResponse) SetHeaders(v map[string]*string) *DescribeApsDatasourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponse) SetStatusCode(v int32) *DescribeApsDatasourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsDatasourceResponse) SetBody(v *DescribeApsDatasourceResponseBody) *DescribeApsDatasourceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsDatasourcesRequest struct {
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// example:
+	//
+	// SLS
+	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// example:
+	//
+	// 2024-01-30
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-01-01
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeApsDatasourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourcesRequest) SetDBClusterId(v string) *DescribeApsDatasourcesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetDatasourceName(v string) *DescribeApsDatasourcesRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetDatasourceType(v string) *DescribeApsDatasourcesRequest {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetEndTime(v string) *DescribeApsDatasourcesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetPageNumber(v int32) *DescribeApsDatasourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetPageSize(v int32) *DescribeApsDatasourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetRegionId(v string) *DescribeApsDatasourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesRequest) SetStartTime(v string) *DescribeApsDatasourcesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeApsDatasourcesResponseBody struct {
+	// -
+	//
+	// example:
+	//
+	// -
+	ApsDatasources []*DescribeApsDatasourcesResponseBodyApsDatasources `json:"ApsDatasources,omitempty" xml:"ApsDatasources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******-5213-******-B608-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApsDatasourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourcesResponseBody) SetApsDatasources(v []*DescribeApsDatasourcesResponseBodyApsDatasources) *DescribeApsDatasourcesResponseBody {
+	s.ApsDatasources = v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBody) SetPageNumber(v string) *DescribeApsDatasourcesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBody) SetPageSize(v string) *DescribeApsDatasourcesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBody) SetRequestId(v string) *DescribeApsDatasourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBody) SetTotalCount(v string) *DescribeApsDatasourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApsDatasourcesResponseBodyApsDatasources struct {
+	// example:
+	//
+	// 2024-01-10 14:44:33
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// example:
+	//
+	// SLS
+	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// example:
+	//
+	// false
+	HasJob *bool `json:"HasJob,omitempty" xml:"HasJob,omitempty"`
+}
+
+func (s DescribeApsDatasourcesResponseBodyApsDatasources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourcesResponseBodyApsDatasources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetCreateTime(v string) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetDatasourceDescription(v string) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetDatasourceId(v int64) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetDatasourceName(v string) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetDatasourceType(v string) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponseBodyApsDatasources) SetHasJob(v bool) *DescribeApsDatasourcesResponseBodyApsDatasources {
+	s.HasJob = &v
+	return s
+}
+
+type DescribeApsDatasourcesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsDatasourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsDatasourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsDatasourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsDatasourcesResponse) SetHeaders(v map[string]*string) *DescribeApsDatasourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponse) SetStatusCode(v int32) *DescribeApsDatasourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsDatasourcesResponse) SetBody(v *DescribeApsDatasourcesResponseBody) *DescribeApsDatasourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsHiveWorkloadRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+}
+
+func (s DescribeApsHiveWorkloadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsHiveWorkloadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsHiveWorkloadRequest) SetDBClusterId(v string) *DescribeApsHiveWorkloadRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadRequest) SetRegionId(v string) *DescribeApsHiveWorkloadRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadRequest) SetWorkloadId(v string) *DescribeApsHiveWorkloadRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+type DescribeApsHiveWorkloadResponseBody struct {
+	// example:
+	//
+	// -
+	ApsWorkload *DescribeApsHiveWorkloadResponseBodyApsWorkload `json:"ApsWorkload,omitempty" xml:"ApsWorkload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 86F92D26-B774-5FA1-8E53-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApsHiveWorkloadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsHiveWorkloadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsHiveWorkloadResponseBody) SetApsWorkload(v *DescribeApsHiveWorkloadResponseBodyApsWorkload) *DescribeApsHiveWorkloadResponseBody {
+	s.ApsWorkload = v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBody) SetRequestId(v string) *DescribeApsHiveWorkloadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
+	// example:
+	//
+	// test.adv.config=value
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// example:
+	//
+	// Intercept
+	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// example:
+	//
+	// -
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 8
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// sls-******
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// example:
+	//
+	// -
+	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
+	// example:
+	//
+	// 16
+	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// hive meta store url。
+	//
+	// example:
+	//
+	// -
+	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
+	// example:
+	//
+	// oss://******
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// example:
+	//
+	// 2
+	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// COMPLETED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// abc
+	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
+	// example:
+	//
+	// def
+	SyncDenyExpression *string `json:"SyncDenyExpression,omitempty" xml:"SyncDenyExpression,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// vsw-******
+	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// example:
+	//
+	// test
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// example:
+	//
+	// test
+	WorkloadTypeName *string `json:"WorkloadTypeName,omitempty" xml:"WorkloadTypeName,omitempty"`
+}
+
+func (s DescribeApsHiveWorkloadResponseBodyApsWorkload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsHiveWorkloadResponseBodyApsWorkload) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetAdvancedConfig(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.AdvancedConfig = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetConflictStrategy(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.ConflictStrategy = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetCreateTime(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetDBClusterId(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetDatasourceId(v int64) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetDatasourceName(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetEmrClusterId(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.EmrClusterId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetFullComputeUnit(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.FullComputeUnit = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetMetaStoreUri(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.MetaStoreUri = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetOssLocation(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetParallelism(v int64) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.Parallelism = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetRegionId(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetResourceGroup(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetState(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetSyncAllowExpression(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.SyncAllowExpression = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetSyncDenyExpression(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.SyncDenyExpression = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetTargetType(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetVswitch(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.Vswitch = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetWorkloadId(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetWorkloadName(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.WorkloadName = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponseBodyApsWorkload) SetWorkloadTypeName(v string) *DescribeApsHiveWorkloadResponseBodyApsWorkload {
+	s.WorkloadTypeName = &v
+	return s
+}
+
+type DescribeApsHiveWorkloadResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsHiveWorkloadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsHiveWorkloadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsHiveWorkloadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsHiveWorkloadResponse) SetHeaders(v map[string]*string) *DescribeApsHiveWorkloadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponse) SetStatusCode(v int32) *DescribeApsHiveWorkloadResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsHiveWorkloadResponse) SetBody(v *DescribeApsHiveWorkloadResponseBody) *DescribeApsHiveWorkloadResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsJobDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeApsJobDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobDetailRequest) SetApsJobId(v string) *DescribeApsJobDetailRequest {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailRequest) SetRegionId(v string) *DescribeApsJobDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeApsJobDetailResponseBody struct {
+	// example:
+	//
+	// -
+	APSJobDetail *DescribeApsJobDetailResponseBodyAPSJobDetail `json:"APSJobDetail,omitempty" xml:"APSJobDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// ******-E606-4A42-BF6D-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApsJobDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobDetailResponseBody) SetAPSJobDetail(v *DescribeApsJobDetailResponseBodyAPSJobDetail) *DescribeApsJobDetailResponseBody {
+	s.APSJobDetail = v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBody) SetRequestId(v string) *DescribeApsJobDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApsJobDetailResponseBodyAPSJobDetail struct {
+	// example:
+	//
+	// {}
+	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// example:
+	//
+	// amv-******
+	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
+	// example:
+	//
+	// {}
+	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// example:
+	//
+	// pc-*******
+	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	TargetTableMode *string `json:"TargetTableMode,omitempty" xml:"TargetTableMode,omitempty"`
+}
+
+func (s DescribeApsJobDetailResponseBodyAPSJobDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobDetailResponseBodyAPSJobDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetDbList(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.DbList = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetDestinationEndpointInstanceID(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.DestinationEndpointInstanceID = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetDestinationEndpointRegion(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.DestinationEndpointRegion = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetPartitionList(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.PartitionList = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetSourceEndpointInstanceID(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.SourceEndpointInstanceID = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetSourceEndpointRegion(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.SourceEndpointRegion = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetStatus(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponseBodyAPSJobDetail) SetTargetTableMode(v string) *DescribeApsJobDetailResponseBodyAPSJobDetail {
+	s.TargetTableMode = &v
+	return s
+}
+
+type DescribeApsJobDetailResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsJobDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobDetailResponse) SetHeaders(v map[string]*string) *DescribeApsJobDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponse) SetStatusCode(v int32) *DescribeApsJobDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsJobDetailResponse) SetBody(v *DescribeApsJobDetailResponseBody) *DescribeApsJobDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsJobsRequest struct {
+	// example:
+	//
+	// aps-xxxxx
+	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// example:
+	//
+	// 2022-04-23T01:10Z
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// example:
+	//
+	// 2022-03-23T01:10Z
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeApsJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobsRequest) SetApsJobName(v string) *DescribeApsJobsRequest {
+	s.ApsJobName = &v
+	return s
+}
+
+func (s *DescribeApsJobsRequest) SetCreateTimeEnd(v string) *DescribeApsJobsRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *DescribeApsJobsRequest) SetCreateTimeStart(v string) *DescribeApsJobsRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *DescribeApsJobsRequest) SetPageNumber(v int32) *DescribeApsJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsJobsRequest) SetPageSize(v int32) *DescribeApsJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsJobsRequest) SetRegionId(v string) *DescribeApsJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeApsJobsResponseBody struct {
+	// example:
+	//
+	// -
+	APSJobs []*DescribeApsJobsResponseBodyAPSJobs `json:"APSJobs,omitempty" xml:"APSJobs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ok
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ok
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******-7F9D-5DBD-993E-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApsJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobsResponseBody) SetAPSJobs(v []*DescribeApsJobsResponseBodyAPSJobs) *DescribeApsJobsResponseBody {
+	s.APSJobs = v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetCode(v string) *DescribeApsJobsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetHttpStatusCode(v int32) *DescribeApsJobsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetMessage(v string) *DescribeApsJobsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetPageNumber(v string) *DescribeApsJobsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetPageSize(v string) *DescribeApsJobsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetRequestId(v string) *DescribeApsJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetSuccess(v bool) *DescribeApsJobsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBody) SetTotalCount(v string) *DescribeApsJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApsJobsResponseBodyAPSJobs struct {
+	// example:
+	//
+	// aps-******
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// data-sync-******
+	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// example:
+	//
+	// 2022-06-28 15:00:04
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 0
+	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	// example:
+	//
+	// amv-*******
+	DestinationInstanceID *string `json:"DestinationInstanceID,omitempty" xml:"DestinationInstanceID,omitempty"`
+	// example:
+	//
+	// OK
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Projress   *string `json:"Projress,omitempty" xml:"Projress,omitempty"`
+	// example:
+	//
+	// pc-******
+	SourceInstanceID *string `json:"SourceInstanceID,omitempty" xml:"SourceInstanceID,omitempty"`
+	// example:
+	//
+	// -
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// -
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+}
+
+func (s DescribeApsJobsResponseBodyAPSJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobsResponseBodyAPSJobs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetApsJobId(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetApsJobName(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.ApsJobName = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetCreateTime(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetDelay(v int64) *DescribeApsJobsResponseBodyAPSJobs {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetDestinationInstanceID(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.DestinationInstanceID = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetErrMessage(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetProjress(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.Projress = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetSourceInstanceID(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.SourceInstanceID = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetStatus(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponseBodyAPSJobs) SetSubStatus(v string) *DescribeApsJobsResponseBodyAPSJobs {
+	s.SubStatus = &v
+	return s
+}
+
+type DescribeApsJobsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsJobsResponse) SetHeaders(v map[string]*string) *DescribeApsJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsJobsResponse) SetStatusCode(v int32) *DescribeApsJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsJobsResponse) SetBody(v *DescribeApsJobsResponseBody) *DescribeApsJobsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsMigrationWorkloadsRequest struct {
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2021-07-20T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// oss://******
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2021-06-20T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// test
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s DescribeApsMigrationWorkloadsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsMigrationWorkloadsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetDBClusterId(v string) *DescribeApsMigrationWorkloadsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetEndTime(v string) *DescribeApsMigrationWorkloadsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetOssLocation(v string) *DescribeApsMigrationWorkloadsRequest {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetPageNumber(v int32) *DescribeApsMigrationWorkloadsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetPageSize(v int32) *DescribeApsMigrationWorkloadsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetStartTime(v string) *DescribeApsMigrationWorkloadsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsRequest) SetWorkloadName(v string) *DescribeApsMigrationWorkloadsRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type DescribeApsMigrationWorkloadsResponseBody struct {
+	// -
+	MigrationWorkloads []*DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads `json:"MigrationWorkloads,omitempty" xml:"MigrationWorkloads,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******-3EEC-57F0-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApsMigrationWorkloadsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsMigrationWorkloadsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBody) SetMigrationWorkloads(v []*DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) *DescribeApsMigrationWorkloadsResponseBody {
+	s.MigrationWorkloads = v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBody) SetPageNumber(v int32) *DescribeApsMigrationWorkloadsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBody) SetPageSize(v int32) *DescribeApsMigrationWorkloadsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBody) SetRequestId(v string) *DescribeApsMigrationWorkloadsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBody) SetTotalCount(v int32) *DescribeApsMigrationWorkloadsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
+	// example:
+	//
+	// -
+	AcuCount *int32 `json:"AcuCount,omitempty" xml:"AcuCount,omitempty"`
+	// example:
+	//
+	// 2021-06-21T02:15:16Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// -
+	FailedMsg *string `json:"FailedMsg,omitempty" xml:"FailedMsg,omitempty"`
+	// example:
+	//
+	// 123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxRT *string `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
+	// example:
+	//
+	// 2021-06-21T02:15:16Z
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// TEST-001
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// oss://******
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// example:
+	//
+	// COMPLETED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// OSS
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// test
+	WorkloadSubType *string `json:"WorkloadSubType,omitempty" xml:"WorkloadSubType,omitempty"`
+}
+
+func (s DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetAcuCount(v int32) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.AcuCount = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetCreateTime(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetFailedMsg(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.FailedMsg = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetId(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetMaxRT(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.MaxRT = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetModifyTime(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetName(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetOssLocation(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetState(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetTargetType(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads) SetWorkloadSubType(v string) *DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads {
+	s.WorkloadSubType = &v
+	return s
+}
+
+type DescribeApsMigrationWorkloadsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsMigrationWorkloadsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsMigrationWorkloadsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsMigrationWorkloadsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsMigrationWorkloadsResponse) SetHeaders(v map[string]*string) *DescribeApsMigrationWorkloadsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponse) SetStatusCode(v int32) *DescribeApsMigrationWorkloadsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsMigrationWorkloadsResponse) SetBody(v *DescribeApsMigrationWorkloadsResponseBody) *DescribeApsMigrationWorkloadsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApsProgressRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+}
+
+func (s DescribeApsProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsProgressRequest) SetDBClusterId(v string) *DescribeApsProgressRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApsProgressRequest) SetRegionId(v string) *DescribeApsProgressRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApsProgressRequest) SetWorkloadId(v string) *DescribeApsProgressRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+type DescribeApsProgressResponseBody struct {
+	// example:
+	//
+	// -
+	ApsHiveProgress []*DescribeApsProgressResponseBodyApsHiveProgress `json:"ApsHiveProgress,omitempty" xml:"ApsHiveProgress,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	SuccessPercentage *int32 `json:"SuccessPercentage,omitempty" xml:"SuccessPercentage,omitempty"`
+	// example:
+	//
+	// 10
+	SuccessTableCount *int32 `json:"SuccessTableCount,omitempty" xml:"SuccessTableCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalTableCount *int32 `json:"TotalTableCount,omitempty" xml:"TotalTableCount,omitempty"`
+}
+
+func (s DescribeApsProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsProgressResponseBody) SetApsHiveProgress(v []*DescribeApsProgressResponseBodyApsHiveProgress) *DescribeApsProgressResponseBody {
+	s.ApsHiveProgress = v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBody) SetRequestId(v string) *DescribeApsProgressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBody) SetSuccessPercentage(v int32) *DescribeApsProgressResponseBody {
+	s.SuccessPercentage = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBody) SetSuccessTableCount(v int32) *DescribeApsProgressResponseBody {
+	s.SuccessTableCount = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBody) SetTotalTableCount(v int32) *DescribeApsProgressResponseBody {
+	s.TotalTableCount = &v
+	return s
+}
+
+type DescribeApsProgressResponseBodyApsHiveProgress struct {
+	// example:
+	//
+	// test
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// 95
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 2
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// test
+	TbName *string `json:"TbName,omitempty" xml:"TbName,omitempty"`
+}
+
+func (s DescribeApsProgressResponseBodyApsHiveProgress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsProgressResponseBodyApsHiveProgress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsProgressResponseBodyApsHiveProgress) SetDbName(v string) *DescribeApsProgressResponseBodyApsHiveProgress {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBodyApsHiveProgress) SetProgress(v string) *DescribeApsProgressResponseBodyApsHiveProgress {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBodyApsHiveProgress) SetSpeed(v string) *DescribeApsProgressResponseBodyApsHiveProgress {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponseBodyApsHiveProgress) SetTbName(v string) *DescribeApsProgressResponseBodyApsHiveProgress {
+	s.TbName = &v
+	return s
+}
+
+type DescribeApsProgressResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApsProgressResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApsProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApsProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApsProgressResponse) SetHeaders(v map[string]*string) *DescribeApsProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApsProgressResponse) SetStatusCode(v int32) *DescribeApsProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApsProgressResponse) SetBody(v *DescribeApsProgressResponseBody) *DescribeApsProgressResponse {
 	s.Body = v
 	return s
 }
@@ -18225,6 +21252,156 @@ func (s *DescribeExcessivePrimaryKeysResponse) SetBody(v *DescribeExcessivePrima
 	return s
 }
 
+type DescribeInclinedNodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-wz9jd******d1765
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeInclinedNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedNodesRequest) SetDBClusterId(v string) *DescribeInclinedNodesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetLang(v string) *DescribeInclinedNodesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetOwnerAccount(v string) *DescribeInclinedNodesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetOwnerId(v int64) *DescribeInclinedNodesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetRegionId(v string) *DescribeInclinedNodesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetResourceOwnerAccount(v string) *DescribeInclinedNodesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesRequest) SetResourceOwnerId(v int64) *DescribeInclinedNodesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeInclinedNodesResponseBody struct {
+	Items []*DescribeInclinedNodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C0BF6685-0519-543E-90F8-DB8949E4D5F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInclinedNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedNodesResponseBody) SetItems(v []*DescribeInclinedNodesResponseBodyItems) *DescribeInclinedNodesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeInclinedNodesResponseBody) SetRequestId(v string) *DescribeInclinedNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInclinedNodesResponseBodyItems struct {
+	// example:
+	//
+	// 90.5
+	DiskUsageRatio *string `json:"DiskUsageRatio,omitempty" xml:"DiskUsageRatio,omitempty"`
+	// example:
+	//
+	// Node1
+	Node *string `json:"Node,omitempty" xml:"Node,omitempty"`
+}
+
+func (s DescribeInclinedNodesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedNodesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedNodesResponseBodyItems) SetDiskUsageRatio(v string) *DescribeInclinedNodesResponseBodyItems {
+	s.DiskUsageRatio = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesResponseBodyItems) SetNode(v string) *DescribeInclinedNodesResponseBodyItems {
+	s.Node = &v
+	return s
+}
+
+type DescribeInclinedNodesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInclinedNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInclinedNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedNodesResponse) SetHeaders(v map[string]*string) *DescribeInclinedNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInclinedNodesResponse) SetStatusCode(v int32) *DescribeInclinedNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInclinedNodesResponse) SetBody(v *DescribeInclinedNodesResponseBody) *DescribeInclinedNodesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeJobResourceUsageRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -23633,6 +26810,124 @@ func (s *ExistRunningSQLEngineResponse) SetBody(v *ExistRunningSQLEngineResponse
 	return s
 }
 
+type GetApsManagedDatabasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetApsManagedDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApsManagedDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApsManagedDatabasesRequest) SetDBClusterId(v string) *GetApsManagedDatabasesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesRequest) SetRegionId(v string) *GetApsManagedDatabasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetApsManagedDatabasesResponseBody struct {
+	// example:
+	//
+	// -
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetApsManagedDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApsManagedDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApsManagedDatabasesResponseBody) SetData(v string) *GetApsManagedDatabasesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponseBody) SetHttpStatusCode(v int32) *GetApsManagedDatabasesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponseBody) SetMessage(v string) *GetApsManagedDatabasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponseBody) SetRequestId(v string) *GetApsManagedDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponseBody) SetSuccess(v bool) *GetApsManagedDatabasesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetApsManagedDatabasesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApsManagedDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApsManagedDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApsManagedDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApsManagedDatabasesResponse) SetHeaders(v map[string]*string) *GetApsManagedDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponse) SetStatusCode(v int32) *GetApsManagedDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApsManagedDatabasesResponse) SetBody(v *GetApsManagedDatabasesResponseBody) *GetApsManagedDatabasesResponse {
+	s.Body = v
+	return s
+}
+
 type GetCreateTableSQLRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -24042,6 +27337,356 @@ func (s *GetDatabaseObjectsResponse) SetStatusCode(v int32) *GetDatabaseObjectsR
 }
 
 func (s *GetDatabaseObjectsResponse) SetBody(v *GetDatabaseObjectsResponseBody) *GetDatabaseObjectsResponse {
+	s.Body = v
+	return s
+}
+
+type GetLakeStorageRequest struct {
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetLakeStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLakeStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLakeStorageRequest) SetDBClusterId(v string) *GetLakeStorageRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *GetLakeStorageRequest) SetLakeStorageId(v string) *GetLakeStorageRequest {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *GetLakeStorageRequest) SetRegionId(v string) *GetLakeStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetLakeStorageResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Data *GetLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLakeStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLakeStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLakeStorageResponseBody) SetCode(v string) *GetLakeStorageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBody) SetData(v *GetLakeStorageResponseBodyData) *GetLakeStorageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLakeStorageResponseBody) SetHttpStatusCode(v int32) *GetLakeStorageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBody) SetMessage(v string) *GetLakeStorageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBody) SetRequestId(v string) *GetLakeStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBody) SetSuccess(v bool) *GetLakeStorageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLakeStorageResponseBodyData struct {
+	// 湖存储被创建的时间
+	//
+	// example:
+	//
+	// 2023-05-15T07:24:58Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 创建湖存储的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// a test db
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 湖存储中数据的总存储量
+	//
+	// example:
+	//
+	// 1
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// 用于识别特定湖存储的唯一标识符
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// 最后操作湖存储的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
+	// 拥有湖存储资源的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// -
+	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	Permissions []*GetLakeStorageResponseBodyDataPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// 指定要操作的湖存储所在区域的ID
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 湖存储中所有库表的总数据行数
+	//
+	// example:
+	//
+	// -
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// 湖存储中库表的总数量
+	//
+	// example:
+	//
+	// -
+	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	// 湖存储最后一次更新的时间
+	//
+	// example:
+	//
+	// 2024-10-14T02:28:41Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetLakeStorageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLakeStorageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetLakeStorageResponseBodyData) SetCreateTime(v string) *GetLakeStorageResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetCreatorUid(v string) *GetLakeStorageResponseBodyData {
+	s.CreatorUid = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetDBClusterId(v string) *GetLakeStorageResponseBodyData {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetDescription(v string) *GetLakeStorageResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetFileSize(v string) *GetLakeStorageResponseBodyData {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetLakeStorageId(v string) *GetLakeStorageResponseBodyData {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetOperatorUid(v string) *GetLakeStorageResponseBodyData {
+	s.OperatorUid = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetOwnerUid(v string) *GetLakeStorageResponseBodyData {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetPartitionCount(v string) *GetLakeStorageResponseBodyData {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetPermissions(v []*GetLakeStorageResponseBodyDataPermissions) *GetLakeStorageResponseBodyData {
+	s.Permissions = v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetRegionId(v string) *GetLakeStorageResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetRowCount(v int64) *GetLakeStorageResponseBodyData {
+	s.RowCount = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetTableCount(v int32) *GetLakeStorageResponseBodyData {
+	s.TableCount = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyData) SetUpdateTime(v string) *GetLakeStorageResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetLakeStorageResponseBodyDataPermissions struct {
+	// 具有该权限的账户或RAM用户ID
+	//
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 表示是否允许读取湖存储的权限
+	//
+	// example:
+	//
+	// true
+	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
+	// 指定权限的账户类型
+	//
+	// example:
+	//
+	// -
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 表示是否允许向湖存储写入数据的权限
+	//
+	// example:
+	//
+	// true
+	Write *bool `json:"Write,omitempty" xml:"Write,omitempty"`
+}
+
+func (s GetLakeStorageResponseBodyDataPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLakeStorageResponseBodyDataPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *GetLakeStorageResponseBodyDataPermissions) SetAccount(v string) *GetLakeStorageResponseBodyDataPermissions {
+	s.Account = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyDataPermissions) SetRead(v bool) *GetLakeStorageResponseBodyDataPermissions {
+	s.Read = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyDataPermissions) SetType(v string) *GetLakeStorageResponseBodyDataPermissions {
+	s.Type = &v
+	return s
+}
+
+func (s *GetLakeStorageResponseBodyDataPermissions) SetWrite(v bool) *GetLakeStorageResponseBodyDataPermissions {
+	s.Write = &v
+	return s
+}
+
+type GetLakeStorageResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLakeStorageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLakeStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLakeStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLakeStorageResponse) SetHeaders(v map[string]*string) *GetLakeStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLakeStorageResponse) SetStatusCode(v int32) *GetLakeStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLakeStorageResponse) SetBody(v *GetLakeStorageResponseBody) *GetLakeStorageResponse {
 	s.Body = v
 	return s
 }
@@ -28039,6 +31684,1557 @@ func (s *KillSparkSQLEngineResponse) SetBody(v *KillSparkSQLEngineResponseBody) 
 	return s
 }
 
+type ListApsLifecycleStrategyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2024-01-02T11:22Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2024-01-01T11:22Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListApsLifecycleStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsLifecycleStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetDBClusterId(v string) *ListApsLifecycleStrategyRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetEndTime(v string) *ListApsLifecycleStrategyRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetPageNumber(v string) *ListApsLifecycleStrategyRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetPageSize(v string) *ListApsLifecycleStrategyRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetRegionId(v string) *ListApsLifecycleStrategyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyRequest) SetStartTime(v string) *ListApsLifecycleStrategyRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListApsLifecycleStrategyResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          []*ListApsLifecycleStrategyResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListApsLifecycleStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsLifecycleStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetCode(v string) *ListApsLifecycleStrategyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetHttpStatusCode(v int32) *ListApsLifecycleStrategyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetItems(v []*ListApsLifecycleStrategyResponseBodyItems) *ListApsLifecycleStrategyResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetMessage(v string) *ListApsLifecycleStrategyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetPageNumber(v int32) *ListApsLifecycleStrategyResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetPageSize(v int32) *ListApsLifecycleStrategyResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetRequestId(v string) *ListApsLifecycleStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetSuccess(v bool) *ListApsLifecycleStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBody) SetTotalCount(v int64) *ListApsLifecycleStrategyResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApsLifecycleStrategyResponseBodyItems struct {
+	// example:
+	//
+	// aps-******
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// 2021-06-30T02:44:27Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2021-07-03T06:33:00Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// -
+	OperationTables []*ListApsLifecycleStrategyResponseBodyItemsOperationTables `json:"OperationTables,omitempty" xml:"OperationTables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 5
+	StrategyDatabases *int64 `json:"StrategyDatabases,omitempty" xml:"StrategyDatabases,omitempty"`
+	// example:
+	//
+	// test
+	StrategyDesc *string `json:"StrategyDesc,omitempty" xml:"StrategyDesc,omitempty"`
+	// example:
+	//
+	// test
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// example:
+	//
+	// 5
+	StrategyTables *int64 `json:"StrategyTables,omitempty" xml:"StrategyTables,omitempty"`
+	// example:
+	//
+	// KEEP_BY_TIME
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// example:
+	//
+	// 10
+	StrategyValue *string `json:"StrategyValue,omitempty" xml:"StrategyValue,omitempty"`
+}
+
+func (s ListApsLifecycleStrategyResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsLifecycleStrategyResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetApsJobId(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetCreatedTime(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetDBClusterId(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetModifiedTime(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetOperationTables(v []*ListApsLifecycleStrategyResponseBodyItemsOperationTables) *ListApsLifecycleStrategyResponseBodyItems {
+	s.OperationTables = v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStatus(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyDatabases(v int64) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyDatabases = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyDesc(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyDesc = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyName(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyName = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyTables(v int64) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyTables = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyType(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyType = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyValue(v string) *ListApsLifecycleStrategyResponseBodyItems {
+	s.StrategyValue = &v
+	return s
+}
+
+type ListApsLifecycleStrategyResponseBodyItemsOperationTables struct {
+	// example:
+	//
+	// test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	ProcessAll *string   `json:"ProcessAll,omitempty" xml:"ProcessAll,omitempty"`
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+}
+
+func (s ListApsLifecycleStrategyResponseBodyItemsOperationTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsLifecycleStrategyResponseBodyItemsOperationTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItemsOperationTables) SetDatabaseName(v string) *ListApsLifecycleStrategyResponseBodyItemsOperationTables {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItemsOperationTables) SetProcessAll(v string) *ListApsLifecycleStrategyResponseBodyItemsOperationTables {
+	s.ProcessAll = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponseBodyItemsOperationTables) SetTableNames(v []*string) *ListApsLifecycleStrategyResponseBodyItemsOperationTables {
+	s.TableNames = v
+	return s
+}
+
+type ListApsLifecycleStrategyResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApsLifecycleStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApsLifecycleStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsLifecycleStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsLifecycleStrategyResponse) SetHeaders(v map[string]*string) *ListApsLifecycleStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponse) SetStatusCode(v int32) *ListApsLifecycleStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApsLifecycleStrategyResponse) SetBody(v *ListApsLifecycleStrategyResponseBody) *ListApsLifecycleStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type ListApsOptimizationStrategyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListApsOptimizationStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationStrategyRequest) SetDBClusterId(v string) *ListApsOptimizationStrategyRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyRequest) SetRegionId(v string) *ListApsOptimizationStrategyRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListApsOptimizationStrategyResponseBody struct {
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Data []*ListApsOptimizationStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListApsOptimizationStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetCode(v string) *ListApsOptimizationStrategyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetData(v []*ListApsOptimizationStrategyResponseBodyData) *ListApsOptimizationStrategyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetHttpStatusCode(v int32) *ListApsOptimizationStrategyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetMessage(v string) *ListApsOptimizationStrategyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetRequestId(v string) *ListApsOptimizationStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBody) SetSuccess(v bool) *ListApsOptimizationStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListApsOptimizationStrategyResponseBodyData struct {
+	// example:
+	//
+	// amv-23xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// off
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// test
+	StrategyDesc *string `json:"StrategyDesc,omitempty" xml:"StrategyDesc,omitempty"`
+	// example:
+	//
+	// test
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// example:
+	//
+	// StrategyValue
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+}
+
+func (s ListApsOptimizationStrategyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationStrategyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationStrategyResponseBodyData) SetDBClusterId(v string) *ListApsOptimizationStrategyResponseBodyData {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBodyData) SetStatus(v string) *ListApsOptimizationStrategyResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBodyData) SetStrategyDesc(v string) *ListApsOptimizationStrategyResponseBodyData {
+	s.StrategyDesc = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBodyData) SetStrategyName(v string) *ListApsOptimizationStrategyResponseBodyData {
+	s.StrategyName = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponseBodyData) SetStrategyType(v string) *ListApsOptimizationStrategyResponseBodyData {
+	s.StrategyType = &v
+	return s
+}
+
+type ListApsOptimizationStrategyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApsOptimizationStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApsOptimizationStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationStrategyResponse) SetHeaders(v map[string]*string) *ListApsOptimizationStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponse) SetStatusCode(v int32) *ListApsOptimizationStrategyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApsOptimizationStrategyResponse) SetBody(v *ListApsOptimizationStrategyResponseBody) *ListApsOptimizationStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type ListApsOptimizationTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2022-09-30T00:15Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2022-01-23T02:18Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// StrategyValue
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+}
+
+func (s ListApsOptimizationTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationTasksRequest) SetDBClusterId(v string) *ListApsOptimizationTasksRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetEndTime(v string) *ListApsOptimizationTasksRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetPageNumber(v int32) *ListApsOptimizationTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetPageSize(v int32) *ListApsOptimizationTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetRegionId(v string) *ListApsOptimizationTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetStartTime(v string) *ListApsOptimizationTasksRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksRequest) SetStrategyType(v string) *ListApsOptimizationTasksRequest {
+	s.StrategyType = &v
+	return s
+}
+
+type ListApsOptimizationTasksResponseBody struct {
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// -
+	Items []*ListApsOptimizationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListApsOptimizationTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetCode(v string) *ListApsOptimizationTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetHttpStatusCode(v int32) *ListApsOptimizationTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetItems(v []*ListApsOptimizationTasksResponseBodyItems) *ListApsOptimizationTasksResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetMessage(v string) *ListApsOptimizationTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetPageNumber(v int32) *ListApsOptimizationTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetPageSize(v int32) *ListApsOptimizationTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetRequestId(v string) *ListApsOptimizationTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetSuccess(v bool) *ListApsOptimizationTasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBody) SetTotalCount(v int64) *ListApsOptimizationTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApsOptimizationTasksResponseBodyItems struct {
+	// example:
+	//
+	// 2
+	ComputeUnit *string `json:"ComputeUnit,omitempty" xml:"ComputeUnit,omitempty"`
+	// example:
+	//
+	// 2022-01-23T02:18Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// 2022-09-30T00:15Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// StrategyValue
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// example:
+	//
+	// test
+	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
+	// example:
+	//
+	// 1000
+	TaskDuration *int64 `json:"TaskDuration,omitempty" xml:"TaskDuration,omitempty"`
+	// example:
+	//
+	// sj-hz******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// -
+	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
+	// example:
+	//
+	// RUNNING
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s ListApsOptimizationTasksResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationTasksResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetComputeUnit(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.ComputeUnit = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetCreatedTime(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetDBClusterId(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetModifiedTime(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetStrategyType(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.StrategyType = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetTaskDesc(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.TaskDesc = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetTaskDuration(v int64) *ListApsOptimizationTasksResponseBodyItems {
+	s.TaskDuration = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetTaskId(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetTaskMessage(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.TaskMessage = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponseBodyItems) SetTaskStatus(v string) *ListApsOptimizationTasksResponseBodyItems {
+	s.TaskStatus = &v
+	return s
+}
+
+type ListApsOptimizationTasksResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApsOptimizationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApsOptimizationTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApsOptimizationTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApsOptimizationTasksResponse) SetHeaders(v map[string]*string) *ListApsOptimizationTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponse) SetStatusCode(v int32) *ListApsOptimizationTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApsOptimizationTasksResponse) SetBody(v *ListApsOptimizationTasksResponseBody) *ListApsOptimizationTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListResultExportJobHistoryRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-7xv5ty5m9o4v****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database account.
+	//
+	// example:
+	//
+	// test1
+	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2023-05-25T06:54:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+	//
+	// 	- `Field` specifies the field that is used to sort the SQL statements. Valid values:
+	//
+	//     	- `CreateTime`: the time when the result set export job was created.
+	//
+	//     	- `Status`: the execution status.
+	//
+	//     	- `DatabaseUser`: the name of the database account.
+	//
+	//     	- `TimeCost`: the execution duration.
+	//
+	//     	- `ResourceGroup`: the name of the resource group.
+	//
+	//     	- `ExportRows`: the number of exported rows.
+	//
+	//     	- `Progress`: the export progress.
+	//
+	// 	- `Type` specifies the sorting order. Valid values (case-insensitive):
+	//
+	//     	- `Desc`: descending order.
+	//
+	//     	- `Asc`: ascending order.
+	Order *ListResultExportJobHistoryRequestOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The page number. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-01-01T12:01:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+}
+
+func (s ListResultExportJobHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryRequest) SetDBClusterId(v string) *ListResultExportJobHistoryRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetDatabaseUser(v string) *ListResultExportJobHistoryRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetEndTime(v string) *ListResultExportJobHistoryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetOrder(v *ListResultExportJobHistoryRequestOrder) *ListResultExportJobHistoryRequest {
+	s.Order = v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetPageNumber(v string) *ListResultExportJobHistoryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetPageSize(v string) *ListResultExportJobHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetRegionId(v string) *ListResultExportJobHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetResourceGroup(v string) *ListResultExportJobHistoryRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetStartTime(v string) *ListResultExportJobHistoryRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequest) SetStatusList(v []*string) *ListResultExportJobHistoryRequest {
+	s.StatusList = v
+	return s
+}
+
+type ListResultExportJobHistoryRequestOrder struct {
+	// The field that is used to sort the SQL statements. Valid values:
+	//
+	// 	- CreateTime
+	//
+	// 	- DatabaseUser
+	//
+	// 	- TimeCost
+	//
+	// 	- ResourceGroup
+	//
+	// 	- Status
+	//
+	// 	- Progress
+	//
+	// 	- ExportRows
+	//
+	// example:
+	//
+	// DatabaseUser
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The sorting order. Valid values (case-insensitive):
+	//
+	// 	- **Desc**: descending order.
+	//
+	// 	- **Asc**: ascending order.
+	//
+	// example:
+	//
+	// Desc
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListResultExportJobHistoryRequestOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryRequestOrder) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryRequestOrder) SetField(v string) *ListResultExportJobHistoryRequestOrder {
+	s.Field = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryRequestOrder) SetType(v string) *ListResultExportJobHistoryRequestOrder {
+	s.Type = &v
+	return s
+}
+
+type ListResultExportJobHistoryShrinkRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-7xv5ty5m9o4v****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database account.
+	//
+	// example:
+	//
+	// test1
+	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2023-05-25T06:54:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+	//
+	// 	- `Field` specifies the field that is used to sort the SQL statements. Valid values:
+	//
+	//     	- `CreateTime`: the time when the result set export job was created.
+	//
+	//     	- `Status`: the execution status.
+	//
+	//     	- `DatabaseUser`: the name of the database account.
+	//
+	//     	- `TimeCost`: the execution duration.
+	//
+	//     	- `ResourceGroup`: the name of the resource group.
+	//
+	//     	- `ExportRows`: the number of exported rows.
+	//
+	//     	- `Progress`: the export progress.
+	//
+	// 	- `Type` specifies the sorting order. Valid values (case-insensitive):
+	//
+	//     	- `Desc`: descending order.
+	//
+	//     	- `Asc`: ascending order.
+	OrderShrink *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-01-01T12:01:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+	StatusListShrink *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+}
+
+func (s ListResultExportJobHistoryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetDBClusterId(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetDatabaseUser(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetEndTime(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetOrderShrink(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.OrderShrink = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetPageNumber(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetPageSize(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetRegionId(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetResourceGroup(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetStartTime(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryShrinkRequest) SetStatusListShrink(v string) *ListResultExportJobHistoryShrinkRequest {
+	s.StatusListShrink = &v
+	return s
+}
+
+type ListResultExportJobHistoryResponseBody struct {
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The queried execution records.
+	Items []*ListResultExportJobHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, an **OK*	- message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 174
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResultExportJobHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetCode(v string) *ListResultExportJobHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetHttpStatusCode(v int32) *ListResultExportJobHistoryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetItems(v []*ListResultExportJobHistoryResponseBodyItems) *ListResultExportJobHistoryResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetMessage(v string) *ListResultExportJobHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetPageNumber(v int32) *ListResultExportJobHistoryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetPageSize(v int32) *ListResultExportJobHistoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetRequestId(v string) *ListResultExportJobHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetSuccess(v bool) *ListResultExportJobHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBody) SetTotalCount(v int64) *ListResultExportJobHistoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResultExportJobHistoryResponseBodyItems struct {
+	// The RAM user ID.
+	//
+	// example:
+	//
+	// 120010511678****
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The time when the result set export job was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ	- format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-04-01T09:50:18Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// example:
+	//
+	// amv-7xv5ty5m9o4v****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database account that is associated with the RAM user.
+	//
+	// example:
+	//
+	// ram_user
+	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	// The end time of the result set export job. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
+	// example:
+	//
+	// 2023-06-15T02:13:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The engine that is used to execute the result set export job. Only XIHE is returned.
+	//
+	// example:
+	//
+	// XIHE
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The unique identifier of the result set export job.
+	//
+	// example:
+	//
+	// export_2024051319271219802100800401300****
+	ExportJobId *string `json:"ExportJobId,omitempty" xml:"ExportJobId,omitempty"`
+	// The complete URL of the path to store the exported result set.
+	ExportPath *string `json:"ExportPath,omitempty" xml:"ExportPath,omitempty"`
+	// The number of exported rows. This parameter is returned only when the request was successful.
+	//
+	// example:
+	//
+	// 10000
+	ExportRows *string `json:"ExportRows,omitempty" xml:"ExportRows,omitempty"`
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	// The returned message. This parameter is returned only when the request failed.
+	//
+	// example:
+	//
+	// Failed to execute SQL
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The query ID that can be used for diagnostics.
+	//
+	// >  You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612495.html) operation to query the execution information about a query.
+	//
+	// example:
+	//
+	// 202306121421111720161451770345339****
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The progress of the result set export job. Unit: %. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 30
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The name of the resource group that runs the result set export job.
+	//
+	// example:
+	//
+	// test
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// lake_db
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The SQL statement that is used in the result set export job.
+	//
+	// example:
+	//
+	// SELECT 	- FROM `ADB_SampleData_TPCH`.`supplier` LIMIT 20
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The start time of the result set export job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-07-03T04:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status of the result set export job. Valid values:
+	//
+	// 1.  **SUBMITTED**
+	//
+	// 2.  **RUNNING**
+	//
+	// 3.  **SUCCEEDED**
+	//
+	// 4.  **FAILED**
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The amount of time consumed to export execution records. Unit: milliseconds.
+	//
+	// >  The value is the duration between the time when the result set export job starts and the time when the result set export job ends.
+	//
+	// example:
+	//
+	// 560
+	TimeCost *int64 `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+}
+
+func (s ListResultExportJobHistoryResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetAliUid(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetCreateTime(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetDBClusterId(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetDatabaseUser(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetEndTime(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetEngine(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Engine = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetExportJobId(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ExportJobId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetExportPath(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ExportPath = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetExportRows(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ExportRows = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetExportType(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetIsExpired(v bool) *ListResultExportJobHistoryResponseBodyItems {
+	s.IsExpired = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetMessage(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Message = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetProcessId(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetProgress(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetResourceGroup(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetSchema(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Schema = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetSql(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Sql = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetStartTime(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetStatus(v string) *ListResultExportJobHistoryResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponseBodyItems) SetTimeCost(v int64) *ListResultExportJobHistoryResponseBodyItems {
+	s.TimeCost = &v
+	return s
+}
+
+type ListResultExportJobHistoryResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResultExportJobHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResultExportJobHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResultExportJobHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResultExportJobHistoryResponse) SetHeaders(v map[string]*string) *ListResultExportJobHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponse) SetStatusCode(v int32) *ListResultExportJobHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResultExportJobHistoryResponse) SetBody(v *ListResultExportJobHistoryResponseBody) *ListResultExportJobHistoryResponse {
+	s.Body = v
+	return s
+}
+
 type ListSparkAppAttemptsRequest struct {
 	// The ID of the Spark application.
 	//
@@ -29425,6 +34621,830 @@ func (s *ModifyAccountPrivilegesResponse) SetStatusCode(v int32) *ModifyAccountP
 }
 
 func (s *ModifyAccountPrivilegesResponse) SetBody(v *ModifyAccountPrivilegesResponseBody) *ModifyAccountPrivilegesResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApsDatasoureRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// sls-******
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	KafkaInfo *ModifyApsDatasoureRequestKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
+	// Lakehouse ID。
+	//
+	// example:
+	//
+	// 123
+	LakehouseId *ModifyApsDatasoureRequestLakehouseId `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	PolarDBMysqlInfo *ModifyApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// -
+	RdsMysqlInfo *ModifyApsDatasoureRequestRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// -
+	SlsInfo *ModifyApsDatasoureRequestSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
+}
+
+func (s ModifyApsDatasoureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequest) SetDBClusterId(v string) *ModifyApsDatasoureRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetDatasourceDescription(v string) *ModifyApsDatasoureRequest {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetDatasourceId(v int64) *ModifyApsDatasoureRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetDatasourceName(v string) *ModifyApsDatasoureRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetKafkaInfo(v *ModifyApsDatasoureRequestKafkaInfo) *ModifyApsDatasoureRequest {
+	s.KafkaInfo = v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetLakehouseId(v *ModifyApsDatasoureRequestLakehouseId) *ModifyApsDatasoureRequest {
+	s.LakehouseId = v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetPolarDBMysqlInfo(v *ModifyApsDatasoureRequestPolarDBMysqlInfo) *ModifyApsDatasoureRequest {
+	s.PolarDBMysqlInfo = v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetRdsMysqlInfo(v *ModifyApsDatasoureRequestRdsMysqlInfo) *ModifyApsDatasoureRequest {
+	s.RdsMysqlInfo = v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetRegionId(v string) *ModifyApsDatasoureRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequest) SetSlsInfo(v *ModifyApsDatasoureRequestSlsInfo) *ModifyApsDatasoureRequest {
+	s.SlsInfo = v
+	return s
+}
+
+type ModifyApsDatasoureRequestKafkaInfo struct {
+	// example:
+	//
+	// -
+	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
+	// example:
+	//
+	// test-topic
+	KafkaTopic *string `json:"KafkaTopic,omitempty" xml:"KafkaTopic,omitempty"`
+}
+
+func (s ModifyApsDatasoureRequestKafkaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequestKafkaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequestKafkaInfo) SetKafkaClusterId(v string) *ModifyApsDatasoureRequestKafkaInfo {
+	s.KafkaClusterId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestKafkaInfo) SetKafkaTopic(v string) *ModifyApsDatasoureRequestKafkaInfo {
+	s.KafkaTopic = &v
+	return s
+}
+
+type ModifyApsDatasoureRequestLakehouseId struct {
+	// example:
+	//
+	// sg-******
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// vpc id。
+	//
+	// example:
+	//
+	// vpc-******
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-******
+	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+}
+
+func (s ModifyApsDatasoureRequestLakehouseId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequestLakehouseId) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequestLakehouseId) SetSecurityGroup(v string) *ModifyApsDatasoureRequestLakehouseId {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestLakehouseId) SetVpcId(v string) *ModifyApsDatasoureRequestLakehouseId {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestLakehouseId) SetVswitch(v string) *ModifyApsDatasoureRequestLakehouseId {
+	s.Vswitch = &v
+	return s
+}
+
+type ModifyApsDatasoureRequestPolarDBMysqlInfo struct {
+	// -
+	//
+	// example:
+	//
+	// -
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ModifyApsDatasoureRequestPolarDBMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequestPolarDBMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) SetConnectUrl(v string) *ModifyApsDatasoureRequestPolarDBMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) SetPassword(v string) *ModifyApsDatasoureRequestPolarDBMysqlInfo {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) SetRegionId(v string) *ModifyApsDatasoureRequestPolarDBMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) SetUserName(v string) *ModifyApsDatasoureRequestPolarDBMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type ModifyApsDatasoureRequestRdsMysqlInfo struct {
+	// -
+	//
+	// example:
+	//
+	// -
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ModifyApsDatasoureRequestRdsMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequestRdsMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequestRdsMysqlInfo) SetConnectUrl(v string) *ModifyApsDatasoureRequestRdsMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestRdsMysqlInfo) SetPassword(v string) *ModifyApsDatasoureRequestRdsMysqlInfo {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestRdsMysqlInfo) SetRegionId(v string) *ModifyApsDatasoureRequestRdsMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestRdsMysqlInfo) SetUserName(v string) *ModifyApsDatasoureRequestRdsMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type ModifyApsDatasoureRequestSlsInfo struct {
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// example:
+	//
+	// test-role
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// example:
+	//
+	// 123456
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+}
+
+func (s ModifyApsDatasoureRequestSlsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureRequestSlsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureRequestSlsInfo) SetAcross(v bool) *ModifyApsDatasoureRequestSlsInfo {
+	s.Across = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestSlsInfo) SetAcrossRole(v string) *ModifyApsDatasoureRequestSlsInfo {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestSlsInfo) SetAcrossUid(v string) *ModifyApsDatasoureRequestSlsInfo {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureRequestSlsInfo) SetSourceRegionId(v string) *ModifyApsDatasoureRequestSlsInfo {
+	s.SourceRegionId = &v
+	return s
+}
+
+type ModifyApsDatasoureShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// test
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// sls-******
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// -
+	//
+	// example:
+	//
+	// -
+	KafkaInfoShrink *string `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty"`
+	// Lakehouse ID。
+	//
+	// example:
+	//
+	// 123
+	LakehouseIdShrink *string `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
+	// example:
+	//
+	// -
+	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
+	// example:
+	//
+	// -
+	RdsMysqlInfoShrink *string `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// -
+	SlsInfoShrink *string `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty"`
+}
+
+func (s ModifyApsDatasoureShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetDBClusterId(v string) *ModifyApsDatasoureShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetDatasourceDescription(v string) *ModifyApsDatasoureShrinkRequest {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetDatasourceId(v int64) *ModifyApsDatasoureShrinkRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetDatasourceName(v string) *ModifyApsDatasoureShrinkRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetKafkaInfoShrink(v string) *ModifyApsDatasoureShrinkRequest {
+	s.KafkaInfoShrink = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetLakehouseIdShrink(v string) *ModifyApsDatasoureShrinkRequest {
+	s.LakehouseIdShrink = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetPolarDBMysqlInfoShrink(v string) *ModifyApsDatasoureShrinkRequest {
+	s.PolarDBMysqlInfoShrink = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetRdsMysqlInfoShrink(v string) *ModifyApsDatasoureShrinkRequest {
+	s.RdsMysqlInfoShrink = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetRegionId(v string) *ModifyApsDatasoureShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureShrinkRequest) SetSlsInfoShrink(v string) *ModifyApsDatasoureShrinkRequest {
+	s.SlsInfoShrink = &v
+	return s
+}
+
+type ModifyApsDatasoureResponseBody struct {
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 150
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// A3EB3BCD-D974-52D4-B75C-BB06505916CB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApsDatasoureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetCode(v string) *ModifyApsDatasoureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetData(v string) *ModifyApsDatasoureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetHttpStatusCode(v string) *ModifyApsDatasoureResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetMessage(v string) *ModifyApsDatasoureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetRequestId(v string) *ModifyApsDatasoureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponseBody) SetSuccess(v string) *ModifyApsDatasoureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApsDatasoureResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApsDatasoureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApsDatasoureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsDatasoureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsDatasoureResponse) SetHeaders(v map[string]*string) *ModifyApsDatasoureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponse) SetStatusCode(v int32) *ModifyApsDatasoureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApsDatasoureResponse) SetBody(v *ModifyApsDatasoureResponseBody) *ModifyApsDatasoureResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApsJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-bj1xxxxxx
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"EntireInstance":true}
+	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// example:
+	//
+	// {}
+	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyApsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsJobRequest) SetApsJobId(v string) *ModifyApsJobRequest {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *ModifyApsJobRequest) SetDbList(v string) *ModifyApsJobRequest {
+	s.DbList = &v
+	return s
+}
+
+func (s *ModifyApsJobRequest) SetPartitionList(v string) *ModifyApsJobRequest {
+	s.PartitionList = &v
+	return s
+}
+
+func (s *ModifyApsJobRequest) SetRegionId(v string) *ModifyApsJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyApsJobResponseBody struct {
+	// example:
+	//
+	// aps-bj1xxxxxx
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// OK
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsJobResponseBody) SetApsJobId(v string) *ModifyApsJobResponseBody {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetCode(v string) *ModifyApsJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetErrCode(v string) *ModifyApsJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetErrMessage(v string) *ModifyApsJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetHttpStatusCode(v int32) *ModifyApsJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetMessage(v string) *ModifyApsJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetRequestId(v string) *ModifyApsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApsJobResponseBody) SetSuccess(v bool) *ModifyApsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApsJobResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsJobResponse) SetHeaders(v map[string]*string) *ModifyApsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApsJobResponse) SetStatusCode(v int32) *ModifyApsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApsJobResponse) SetBody(v *ModifyApsJobResponseBody) *ModifyApsJobResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApsWorkloadNameRequest struct {
+	// This parameter is required.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// This parameter is required.
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s ModifyApsWorkloadNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsWorkloadNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsWorkloadNameRequest) SetDBClusterId(v string) *ModifyApsWorkloadNameRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameRequest) SetRegionId(v string) *ModifyApsWorkloadNameRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameRequest) SetWorkloadId(v string) *ModifyApsWorkloadNameRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameRequest) SetWorkloadName(v string) *ModifyApsWorkloadNameRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type ModifyApsWorkloadNameResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApsWorkloadNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsWorkloadNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetCode(v string) *ModifyApsWorkloadNameResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetData(v string) *ModifyApsWorkloadNameResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetHttpStatusCode(v int32) *ModifyApsWorkloadNameResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetMessage(v string) *ModifyApsWorkloadNameResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetRequestId(v string) *ModifyApsWorkloadNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponseBody) SetSuccess(v bool) *ModifyApsWorkloadNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApsWorkloadNameResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApsWorkloadNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApsWorkloadNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsWorkloadNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsWorkloadNameResponse) SetHeaders(v map[string]*string) *ModifyApsWorkloadNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponse) SetStatusCode(v int32) *ModifyApsWorkloadNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApsWorkloadNameResponse) SetBody(v *ModifyApsWorkloadNameResponseBody) *ModifyApsWorkloadNameResponse {
 	s.Body = v
 	return s
 }
@@ -32854,6 +38874,151 @@ func (s *SetSparkAppLogRootPathResponse) SetBody(v *SetSparkAppLogRootPathRespon
 	return s
 }
 
+type StartApsJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s StartApsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartApsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartApsJobRequest) SetApsJobId(v string) *StartApsJobRequest {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *StartApsJobRequest) SetRegionId(v string) *StartApsJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type StartApsJobResponseBody struct {
+	// example:
+	//
+	// aps-******
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// OK
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartApsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartApsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartApsJobResponseBody) SetApsJobId(v string) *StartApsJobResponseBody {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetCode(v string) *StartApsJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetErrCode(v string) *StartApsJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetErrMessage(v string) *StartApsJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetHttpStatusCode(v int32) *StartApsJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetMessage(v string) *StartApsJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetRequestId(v string) *StartApsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartApsJobResponseBody) SetSuccess(v bool) *StartApsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartApsJobResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartApsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartApsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartApsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartApsJobResponse) SetHeaders(v map[string]*string) *StartApsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartApsJobResponse) SetStatusCode(v int32) *StartApsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartApsJobResponse) SetBody(v *StartApsJobResponseBody) *StartApsJobResponse {
+	s.Body = v
+	return s
+}
+
 type StartSparkReplSessionRequest struct {
 	// This parameter is required.
 	//
@@ -33216,6 +39381,215 @@ func (s *StartSparkSQLEngineResponse) SetStatusCode(v int32) *StartSparkSQLEngin
 }
 
 func (s *StartSparkSQLEngineResponse) SetBody(v *StartSparkSQLEngineResponseBody) *StartSparkSQLEngineResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitResultExportJobRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp10a0ng21t5****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The engine that is used to execute the result set export job. Set the value to XIHE.
+	//
+	// example:
+	//
+	// XIHE
+	Engine     *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group that runs the result set export job.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The SQL statement that is used in the result set export job. You can specify only SELECT statements. If you specify other SQL statements, the request fails.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT 	- FROM `fotor_com_datastore_resource`.`fotor_ai_create_task` where `date` = \\"2023-05-13\\" LIMIT 10;
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tpch_oss
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s SubmitResultExportJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitResultExportJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitResultExportJobRequest) SetDBClusterId(v string) *SubmitResultExportJobRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetEngine(v string) *SubmitResultExportJobRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetExportType(v string) *SubmitResultExportJobRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetRegionId(v string) *SubmitResultExportJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetResourceGroup(v string) *SubmitResultExportJobRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetSQL(v string) *SubmitResultExportJobRequest {
+	s.SQL = &v
+	return s
+}
+
+func (s *SubmitResultExportJobRequest) SetSchema(v string) *SubmitResultExportJobRequest {
+	s.Schema = &v
+	return s
+}
+
+type SubmitResultExportJobResponseBody struct {
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the result set export job.
+	//
+	// example:
+	//
+	// export_202405131927121980210080040****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, an **OK*	- message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitResultExportJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitResultExportJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitResultExportJobResponseBody) SetCode(v string) *SubmitResultExportJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponseBody) SetData(v string) *SubmitResultExportJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponseBody) SetHttpStatusCode(v int32) *SubmitResultExportJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponseBody) SetMessage(v string) *SubmitResultExportJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponseBody) SetRequestId(v string) *SubmitResultExportJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponseBody) SetSuccess(v bool) *SubmitResultExportJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitResultExportJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitResultExportJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitResultExportJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitResultExportJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitResultExportJobResponse) SetHeaders(v map[string]*string) *SubmitResultExportJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitResultExportJobResponse) SetStatusCode(v int32) *SubmitResultExportJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitResultExportJobResponse) SetBody(v *SubmitResultExportJobResponseBody) *SubmitResultExportJobResponse {
 	s.Body = v
 	return s
 }
@@ -33739,6 +40113,509 @@ func (s *UnbindDBResourceGroupWithUserResponse) SetStatusCode(v int32) *UnbindDB
 }
 
 func (s *UnbindDBResourceGroupWithUserResponse) SetBody(v *UnbindDBResourceGroupWithUserResponseBody) *UnbindDBResourceGroupWithUserResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLakeStorageRequest struct {
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 用于识别特定湖存储的唯一标识符
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	Permissions []*UpdateLakeStorageRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateLakeStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageRequest) SetDBClusterId(v string) *UpdateLakeStorageRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequest) SetDescription(v string) *UpdateLakeStorageRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequest) SetLakeStorageId(v string) *UpdateLakeStorageRequest {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequest) SetPermissions(v []*UpdateLakeStorageRequestPermissions) *UpdateLakeStorageRequest {
+	s.Permissions = v
+	return s
+}
+
+func (s *UpdateLakeStorageRequest) SetRegionId(v string) *UpdateLakeStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateLakeStorageRequestPermissions struct {
+	// 具有该权限的账户或RAM用户ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 表示是否允许读取湖存储的权限
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
+	// 指定权限的账户类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SUB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 表示是否允许向湖存储写入数据的权限
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Write *bool `json:"Write,omitempty" xml:"Write,omitempty"`
+}
+
+func (s UpdateLakeStorageRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageRequestPermissions) SetAccount(v string) *UpdateLakeStorageRequestPermissions {
+	s.Account = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequestPermissions) SetRead(v bool) *UpdateLakeStorageRequestPermissions {
+	s.Read = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequestPermissions) SetType(v string) *UpdateLakeStorageRequestPermissions {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateLakeStorageRequestPermissions) SetWrite(v bool) *UpdateLakeStorageRequestPermissions {
+	s.Write = &v
+	return s
+}
+
+type UpdateLakeStorageShrinkRequest struct {
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 用于识别特定湖存储的唯一标识符
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateLakeStorageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageShrinkRequest) SetDBClusterId(v string) *UpdateLakeStorageShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageShrinkRequest) SetDescription(v string) *UpdateLakeStorageShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLakeStorageShrinkRequest) SetLakeStorageId(v string) *UpdateLakeStorageShrinkRequest {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageShrinkRequest) SetPermissionsShrink(v string) *UpdateLakeStorageShrinkRequest {
+	s.PermissionsShrink = &v
+	return s
+}
+
+func (s *UpdateLakeStorageShrinkRequest) SetRegionId(v string) *UpdateLakeStorageShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateLakeStorageResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Data *UpdateLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateLakeStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageResponseBody) SetCode(v string) *UpdateLakeStorageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBody) SetData(v *UpdateLakeStorageResponseBodyData) *UpdateLakeStorageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBody) SetHttpStatusCode(v int32) *UpdateLakeStorageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBody) SetMessage(v string) *UpdateLakeStorageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBody) SetRequestId(v string) *UpdateLakeStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBody) SetSuccess(v bool) *UpdateLakeStorageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateLakeStorageResponseBodyData struct {
+	// 湖存储被创建的时间
+	//
+	// example:
+	//
+	// 2023-05-15T07:24:58Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 创建湖存储的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// 用于指定和挂载到特定ADB主实例的湖存储
+	//
+	// example:
+	//
+	// amv-23xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// 对湖存储的描述信息
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 湖存储中数据的总存储量
+	//
+	// example:
+	//
+	// 142
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// 用于识别特定湖存储的唯一标识符
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// 最后操作湖存储的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
+	// 拥有湖存储资源的用户账号的唯一标识符
+	//
+	// example:
+	//
+	// 123456
+	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 0
+	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// 设置湖存储的读/写权限和账户级别权限的数组
+	//
+	// example:
+	//
+	// -
+	Permissions []*UpdateLakeStorageResponseBodyDataPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// 指定要操作的湖存储所在区域的ID
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 湖存储中所有库表的总数据行数
+	//
+	// example:
+	//
+	// >=
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// 湖存储中库表的总数量
+	//
+	// example:
+	//
+	// 1234
+	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	// 湖存储最后一次更新的时间
+	//
+	// example:
+	//
+	// 2024-07-01T09:22:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s UpdateLakeStorageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetCreateTime(v string) *UpdateLakeStorageResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetCreatorUid(v string) *UpdateLakeStorageResponseBodyData {
+	s.CreatorUid = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetDBClusterId(v string) *UpdateLakeStorageResponseBodyData {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetDescription(v string) *UpdateLakeStorageResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetFileSize(v string) *UpdateLakeStorageResponseBodyData {
+	s.FileSize = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetLakeStorageId(v string) *UpdateLakeStorageResponseBodyData {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetOperatorUid(v string) *UpdateLakeStorageResponseBodyData {
+	s.OperatorUid = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetOwnerUid(v string) *UpdateLakeStorageResponseBodyData {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetPartitionCount(v string) *UpdateLakeStorageResponseBodyData {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetPermissions(v []*UpdateLakeStorageResponseBodyDataPermissions) *UpdateLakeStorageResponseBodyData {
+	s.Permissions = v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetRegionId(v string) *UpdateLakeStorageResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetRowCount(v int64) *UpdateLakeStorageResponseBodyData {
+	s.RowCount = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetTableCount(v int32) *UpdateLakeStorageResponseBodyData {
+	s.TableCount = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyData) SetUpdateTime(v string) *UpdateLakeStorageResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+type UpdateLakeStorageResponseBodyDataPermissions struct {
+	// 具有该权限的账户或RAM用户ID
+	//
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// 表示是否允许读取湖存储的权限
+	//
+	// example:
+	//
+	// true
+	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
+	// 指定权限的账户类型
+	//
+	// example:
+	//
+	// SUB
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 表示是否允许向湖存储写入数据的权限
+	//
+	// example:
+	//
+	// false
+	Write *bool `json:"Write,omitempty" xml:"Write,omitempty"`
+}
+
+func (s UpdateLakeStorageResponseBodyDataPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageResponseBodyDataPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageResponseBodyDataPermissions) SetAccount(v string) *UpdateLakeStorageResponseBodyDataPermissions {
+	s.Account = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyDataPermissions) SetRead(v bool) *UpdateLakeStorageResponseBodyDataPermissions {
+	s.Read = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyDataPermissions) SetType(v string) *UpdateLakeStorageResponseBodyDataPermissions {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponseBodyDataPermissions) SetWrite(v bool) *UpdateLakeStorageResponseBodyDataPermissions {
+	s.Write = &v
+	return s
+}
+
+type UpdateLakeStorageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLakeStorageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLakeStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLakeStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLakeStorageResponse) SetHeaders(v map[string]*string) *UpdateLakeStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLakeStorageResponse) SetStatusCode(v int32) *UpdateLakeStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLakeStorageResponse) SetBody(v *UpdateLakeStorageResponseBody) *UpdateLakeStorageResponse {
 	s.Body = v
 	return s
 }
@@ -34817,6 +41694,114 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
+// 创建Hive数据迁移链路。
+//
+// @param request - CreateApsHiveJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApsHiveJobResponse
+func (client *Client) CreateApsHiveJobWithOptions(request *CreateApsHiveJobRequest, runtime *util.RuntimeOptions) (_result *CreateApsHiveJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedConfig)) {
+		body["AdvancedConfig"] = request.AdvancedConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConflictStrategy)) {
+		body["ConflictStrategy"] = request.ConflictStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullComputeUnit)) {
+		body["FullComputeUnit"] = request.FullComputeUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssLocation)) {
+		body["OssLocation"] = request.OssLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		body["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		body["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncAllowExpression)) {
+		body["SyncAllowExpression"] = request.SyncAllowExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncDenyExpression)) {
+		body["SyncDenyExpression"] = request.SyncDenyExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadName)) {
+		body["WorkloadName"] = request.WorkloadName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApsHiveJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateApsHiveJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Hive数据迁移链路。
+//
+// @param request - CreateApsHiveJobRequest
+//
+// @return CreateApsHiveJobResponse
+func (client *Client) CreateApsHiveJob(request *CreateApsHiveJobRequest) (_result *CreateApsHiveJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApsHiveJobResponse{}
+	_body, _err := client.CreateApsHiveJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
 //
 // Description:
@@ -35235,6 +42220,90 @@ func (client *Client) CreateElasticPlan(request *CreateElasticPlanRequest) (_res
 
 // Summary:
 //
+// 创建湖存储
+//
+// @param tmpReq - CreateLakeStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLakeStorageResponse
+func (client *Client) CreateLakeStorageWithOptions(tmpReq *CreateLakeStorageRequest, runtime *util.RuntimeOptions) (_result *CreateLakeStorageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLakeStorageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permissions)) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, tea.String("Permissions"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionsShrink)) {
+		body["Permissions"] = request.PermissionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLakeStorage"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLakeStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建湖存储
+//
+// @param request - CreateLakeStorageRequest
+//
+// @return CreateLakeStorageResponse
+func (client *Client) CreateLakeStorage(request *CreateLakeStorageRequest) (_result *CreateLakeStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLakeStorageResponse{}
+	_body, _err := client.CreateLakeStorageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an Object Storage Service (OSS) subdirectory.
 //
 // Description:
@@ -35576,6 +42645,138 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
 	_body, _err := client.DeleteAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除APS数据源
+//
+// @param request - DeleteApsDatasoureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApsDatasoureResponse
+func (client *Client) DeleteApsDatasoureWithOptions(request *DeleteApsDatasoureRequest, runtime *util.RuntimeOptions) (_result *DeleteApsDatasoureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApsDatasoure"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApsDatasoureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除APS数据源
+//
+// @param request - DeleteApsDatasoureRequest
+//
+// @return DeleteApsDatasoureResponse
+func (client *Client) DeleteApsDatasoure(request *DeleteApsDatasoureRequest) (_result *DeleteApsDatasoureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApsDatasoureResponse{}
+	_body, _err := client.DeleteApsDatasoureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除aps任务
+//
+// @param request - DeleteApsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApsJobResponse
+func (client *Client) DeleteApsJobWithOptions(request *DeleteApsJobRequest, runtime *util.RuntimeOptions) (_result *DeleteApsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobId)) {
+		body["ApsJobId"] = request.ApsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApsJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除aps任务
+//
+// @param request - DeleteApsJobRequest
+//
+// @return DeleteApsJobResponse
+func (client *Client) DeleteApsJob(request *DeleteApsJobRequest) (_result *DeleteApsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApsJobResponse{}
+	_body, _err := client.DeleteApsJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36220,6 +43421,62 @@ func (client *Client) DeleteSparkTemplateFile(request *DeleteSparkTemplateFileRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSparkTemplateFileResponse{}
 	_body, _err := client.DeleteSparkTemplateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取APS联邦分析ADB实例列表
+//
+// @param request - DescribeAPSADBInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAPSADBInstancesResponse
+func (client *Client) DescribeAPSADBInstancesWithOptions(request *DescribeAPSADBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeAPSADBInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAPSADBInstances"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAPSADBInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取APS联邦分析ADB实例列表
+//
+// @param request - DescribeAPSADBInstancesRequest
+//
+// @return DescribeAPSADBInstancesResponse
+func (client *Client) DescribeAPSADBInstances(request *DescribeAPSADBInstancesRequest) (_result *DescribeAPSADBInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAPSADBInstancesResponse{}
+	_body, _err := client.DescribeAPSADBInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37088,6 +44345,526 @@ func (client *Client) DescribeApsActionLogs(request *DescribeApsActionLogsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApsActionLogsResponse{}
 	_body, _err := client.DescribeApsActionLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS数据源详情
+//
+// @param request - DescribeApsDatasourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsDatasourceResponse
+func (client *Client) DescribeApsDatasourceWithOptions(request *DescribeApsDatasourceRequest, runtime *util.RuntimeOptions) (_result *DescribeApsDatasourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsDatasource"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsDatasourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS数据源详情
+//
+// @param request - DescribeApsDatasourceRequest
+//
+// @return DescribeApsDatasourceResponse
+func (client *Client) DescribeApsDatasource(request *DescribeApsDatasourceRequest) (_result *DescribeApsDatasourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsDatasourceResponse{}
+	_body, _err := client.DescribeApsDatasourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS数据源列表
+//
+// @param request - DescribeApsDatasourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsDatasourcesResponse
+func (client *Client) DescribeApsDatasourcesWithOptions(request *DescribeApsDatasourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeApsDatasourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		body["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceType)) {
+		body["DatasourceType"] = request.DatasourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsDatasources"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsDatasourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS数据源列表
+//
+// @param request - DescribeApsDatasourcesRequest
+//
+// @return DescribeApsDatasourcesResponse
+func (client *Client) DescribeApsDatasources(request *DescribeApsDatasourcesRequest) (_result *DescribeApsDatasourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsDatasourcesResponse{}
+	_body, _err := client.DescribeApsDatasourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS Hive工作负载
+//
+// @param request - DescribeApsHiveWorkloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsHiveWorkloadResponse
+func (client *Client) DescribeApsHiveWorkloadWithOptions(request *DescribeApsHiveWorkloadRequest, runtime *util.RuntimeOptions) (_result *DescribeApsHiveWorkloadResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsHiveWorkload"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsHiveWorkloadResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS Hive工作负载
+//
+// @param request - DescribeApsHiveWorkloadRequest
+//
+// @return DescribeApsHiveWorkloadResponse
+func (client *Client) DescribeApsHiveWorkload(request *DescribeApsHiveWorkloadRequest) (_result *DescribeApsHiveWorkloadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsHiveWorkloadResponse{}
+	_body, _err := client.DescribeApsHiveWorkloadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeApsJobDetail。
+//
+// @param request - DescribeApsJobDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsJobDetailResponse
+func (client *Client) DescribeApsJobDetailWithOptions(request *DescribeApsJobDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeApsJobDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobId)) {
+		body["ApsJobId"] = request.ApsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsJobDetail"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsJobDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DescribeApsJobDetail。
+//
+// @param request - DescribeApsJobDetailRequest
+//
+// @return DescribeApsJobDetailResponse
+func (client *Client) DescribeApsJobDetail(request *DescribeApsJobDetailRequest) (_result *DescribeApsJobDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsJobDetailResponse{}
+	_body, _err := client.DescribeApsJobDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一站式链路列表
+//
+// @param request - DescribeApsJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsJobsResponse
+func (client *Client) DescribeApsJobsWithOptions(request *DescribeApsJobsRequest, runtime *util.RuntimeOptions) (_result *DescribeApsJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobName)) {
+		body["ApsJobName"] = request.ApsJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		body["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		body["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsJobs"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一站式链路列表
+//
+// @param request - DescribeApsJobsRequest
+//
+// @return DescribeApsJobsResponse
+func (client *Client) DescribeApsJobs(request *DescribeApsJobsRequest) (_result *DescribeApsJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsJobsResponse{}
+	_body, _err := client.DescribeApsJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS迁移任务列表。
+//
+// @param request - DescribeApsMigrationWorkloadsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsMigrationWorkloadsResponse
+func (client *Client) DescribeApsMigrationWorkloadsWithOptions(request *DescribeApsMigrationWorkloadsRequest, runtime *util.RuntimeOptions) (_result *DescribeApsMigrationWorkloadsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssLocation)) {
+		body["OssLocation"] = request.OssLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadName)) {
+		body["WorkloadName"] = request.WorkloadName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsMigrationWorkloads"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsMigrationWorkloadsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询APS迁移任务列表。
+//
+// @param request - DescribeApsMigrationWorkloadsRequest
+//
+// @return DescribeApsMigrationWorkloadsResponse
+func (client *Client) DescribeApsMigrationWorkloads(request *DescribeApsMigrationWorkloadsRequest) (_result *DescribeApsMigrationWorkloadsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsMigrationWorkloadsResponse{}
+	_body, _err := client.DescribeApsMigrationWorkloadsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询aps任务进展。
+//
+// @param request - DescribeApsProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApsProgressResponse
+func (client *Client) DescribeApsProgressWithOptions(request *DescribeApsProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeApsProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApsProgress"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApsProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询aps任务进展。
+//
+// @param request - DescribeApsProgressRequest
+//
+// @return DescribeApsProgressResponse
+func (client *Client) DescribeApsProgress(request *DescribeApsProgressRequest) (_result *DescribeApsProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApsProgressResponse{}
+	_body, _err := client.DescribeApsProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39489,6 +47266,90 @@ func (client *Client) DescribeExcessivePrimaryKeys(request *DescribeExcessivePri
 
 // Summary:
 //
+// 查询存储节点磁盘水位
+//
+// @param request - DescribeInclinedNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInclinedNodesResponse
+func (client *Client) DescribeInclinedNodesWithOptions(request *DescribeInclinedNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeInclinedNodesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInclinedNodes"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInclinedNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询存储节点磁盘水位
+//
+// @param request - DescribeInclinedNodesRequest
+//
+// @return DescribeInclinedNodesResponse
+func (client *Client) DescribeInclinedNodes(request *DescribeInclinedNodesRequest) (_result *DescribeInclinedNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInclinedNodesResponse{}
+	_body, _err := client.DescribeInclinedNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取作业资源使用统计
 //
 // Description:
@@ -41561,6 +49422,70 @@ func (client *Client) ExistRunningSQLEngine(request *ExistRunningSQLEngineReques
 
 // Summary:
 //
+// 获取当前ADB实例管理的所有Aps任务生成的湖存储数据库列表，主要用于在创建生命周期管理策略时，获取库列表信息。
+//
+// @param request - GetApsManagedDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApsManagedDatabasesResponse
+func (client *Client) GetApsManagedDatabasesWithOptions(request *GetApsManagedDatabasesRequest, runtime *util.RuntimeOptions) (_result *GetApsManagedDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApsManagedDatabases"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApsManagedDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前ADB实例管理的所有Aps任务生成的湖存储数据库列表，主要用于在创建生命周期管理策略时，获取库列表信息。
+//
+// @param request - GetApsManagedDatabasesRequest
+//
+// @return GetApsManagedDatabasesResponse
+func (client *Client) GetApsManagedDatabases(request *GetApsManagedDatabasesRequest) (_result *GetApsManagedDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApsManagedDatabasesResponse{}
+	_body, _err := client.GetApsManagedDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the table creation statement for tables.
 //
 // @param request - GetCreateTableSQLRequest
@@ -41736,6 +49661,76 @@ func (client *Client) GetDatabaseObjects(request *GetDatabaseObjectsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDatabaseObjectsResponse{}
 	_body, _err := client.GetDatabaseObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取湖存储
+//
+// @param request - GetLakeStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLakeStorageResponse
+func (client *Client) GetLakeStorageWithOptions(request *GetLakeStorageRequest, runtime *util.RuntimeOptions) (_result *GetLakeStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LakeStorageId)) {
+		query["LakeStorageId"] = request.LakeStorageId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLakeStorage"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLakeStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取湖存储
+//
+// @param request - GetLakeStorageRequest
+//
+// @return GetLakeStorageResponse
+func (client *Client) GetLakeStorage(request *GetLakeStorageRequest) (_result *GetLakeStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLakeStorageResponse{}
+	_body, _err := client.GetLakeStorageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43703,6 +51698,340 @@ func (client *Client) KillSparkSQLEngine(request *KillSparkSQLEngineRequest) (_r
 
 // Summary:
 //
+// 获取当前ADB实例生命周期管理策略列表
+//
+// @param request - ListApsLifecycleStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApsLifecycleStrategyResponse
+func (client *Client) ListApsLifecycleStrategyWithOptions(request *ListApsLifecycleStrategyRequest, runtime *util.RuntimeOptions) (_result *ListApsLifecycleStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApsLifecycleStrategy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApsLifecycleStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前ADB实例生命周期管理策略列表
+//
+// @param request - ListApsLifecycleStrategyRequest
+//
+// @return ListApsLifecycleStrategyResponse
+func (client *Client) ListApsLifecycleStrategy(request *ListApsLifecycleStrategyRequest) (_result *ListApsLifecycleStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApsLifecycleStrategyResponse{}
+	_body, _err := client.ListApsLifecycleStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前ADB实例湖存储优化策略列表。
+//
+// @param request - ListApsOptimizationStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApsOptimizationStrategyResponse
+func (client *Client) ListApsOptimizationStrategyWithOptions(request *ListApsOptimizationStrategyRequest, runtime *util.RuntimeOptions) (_result *ListApsOptimizationStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApsOptimizationStrategy"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApsOptimizationStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前ADB实例湖存储优化策略列表。
+//
+// @param request - ListApsOptimizationStrategyRequest
+//
+// @return ListApsOptimizationStrategyResponse
+func (client *Client) ListApsOptimizationStrategy(request *ListApsOptimizationStrategyRequest) (_result *ListApsOptimizationStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApsOptimizationStrategyResponse{}
+	_body, _err := client.ListApsOptimizationStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定类型湖存储优化策略执行过的任务列表。湖存储优化策略会周期性调度执行优化任务。
+//
+// @param request - ListApsOptimizationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApsOptimizationTasksResponse
+func (client *Client) ListApsOptimizationTasksWithOptions(request *ListApsOptimizationTasksRequest, runtime *util.RuntimeOptions) (_result *ListApsOptimizationTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyType)) {
+		body["StrategyType"] = request.StrategyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApsOptimizationTasks"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApsOptimizationTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定类型湖存储优化策略执行过的任务列表。湖存储优化策略会周期性调度执行优化任务。
+//
+// @param request - ListApsOptimizationTasksRequest
+//
+// @return ListApsOptimizationTasksResponse
+func (client *Client) ListApsOptimizationTasks(request *ListApsOptimizationTasksRequest) (_result *ListApsOptimizationTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApsOptimizationTasksResponse{}
+	_body, _err := client.ListApsOptimizationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+//
+// @param tmpReq - ListResultExportJobHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResultExportJobHistoryResponse
+func (client *Client) ListResultExportJobHistoryWithOptions(tmpReq *ListResultExportJobHistoryRequest, runtime *util.RuntimeOptions) (_result *ListResultExportJobHistoryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListResultExportJobHistoryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Order)) {
+		request.OrderShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Order, tea.String("Order"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StatusList)) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, tea.String("StatusList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		body["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderShrink)) {
+		body["Order"] = request.OrderShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		body["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusListShrink)) {
+		body["StatusList"] = request.StatusListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResultExportJobHistory"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResultExportJobHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution records of result set export jobs of a Resource Access Management (RAM) user.
+//
+// @param request - ListResultExportJobHistoryRequest
+//
+// @return ListResultExportJobHistoryResponse
+func (client *Client) ListResultExportJobHistory(request *ListResultExportJobHistoryRequest) (_result *ListResultExportJobHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResultExportJobHistoryResponse{}
+	_body, _err := client.ListResultExportJobHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about retry attempts of a Spark application.
 //
 // Description:
@@ -44332,6 +52661,268 @@ func (client *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPrivilegesResponse{}
 	_body, _err := client.ModifyAccountPrivilegesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑APS数据源
+//
+// @param tmpReq - ModifyApsDatasoureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApsDatasoureResponse
+func (client *Client) ModifyApsDatasoureWithOptions(tmpReq *ModifyApsDatasoureRequest, runtime *util.RuntimeOptions) (_result *ModifyApsDatasoureResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyApsDatasoureShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.KafkaInfo)) {
+		request.KafkaInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KafkaInfo, tea.String("KafkaInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LakehouseId)) {
+		request.LakehouseIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LakehouseId, tea.String("LakehouseId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PolarDBMysqlInfo)) {
+		request.PolarDBMysqlInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolarDBMysqlInfo, tea.String("PolarDBMysqlInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RdsMysqlInfo)) {
+		request.RdsMysqlInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RdsMysqlInfo, tea.String("RdsMysqlInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SlsInfo)) {
+		request.SlsInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SlsInfo, tea.String("SlsInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceDescription)) {
+		body["DatasourceDescription"] = request.DatasourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		body["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaInfoShrink)) {
+		body["KafkaInfo"] = request.KafkaInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LakehouseIdShrink)) {
+		body["LakehouseId"] = request.LakehouseIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarDBMysqlInfoShrink)) {
+		body["PolarDBMysqlInfo"] = request.PolarDBMysqlInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsMysqlInfoShrink)) {
+		body["RdsMysqlInfo"] = request.RdsMysqlInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsInfoShrink)) {
+		body["SlsInfo"] = request.SlsInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApsDatasoure"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApsDatasoureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑APS数据源
+//
+// @param request - ModifyApsDatasoureRequest
+//
+// @return ModifyApsDatasoureResponse
+func (client *Client) ModifyApsDatasoure(request *ModifyApsDatasoureRequest) (_result *ModifyApsDatasoureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApsDatasoureResponse{}
+	_body, _err := client.ModifyApsDatasoureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改aps任务
+//
+// @param request - ModifyApsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApsJobResponse
+func (client *Client) ModifyApsJobWithOptions(request *ModifyApsJobRequest, runtime *util.RuntimeOptions) (_result *ModifyApsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobId)) {
+		body["ApsJobId"] = request.ApsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbList)) {
+		body["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionList)) {
+		body["PartitionList"] = request.PartitionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApsJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改aps任务
+//
+// @param request - ModifyApsJobRequest
+//
+// @return ModifyApsJobResponse
+func (client *Client) ModifyApsJob(request *ModifyApsJobRequest) (_result *ModifyApsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApsJobResponse{}
+	_body, _err := client.ModifyApsJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the AnalyticDB Pipeline Service (APS) workload name.
+//
+// @param request - ModifyApsWorkloadNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApsWorkloadNameResponse
+func (client *Client) ModifyApsWorkloadNameWithOptions(request *ModifyApsWorkloadNameRequest, runtime *util.RuntimeOptions) (_result *ModifyApsWorkloadNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadName)) {
+		body["WorkloadName"] = request.WorkloadName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApsWorkloadName"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApsWorkloadNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the AnalyticDB Pipeline Service (APS) workload name.
+//
+// @param request - ModifyApsWorkloadNameRequest
+//
+// @return ModifyApsWorkloadNameResponse
+func (client *Client) ModifyApsWorkloadName(request *ModifyApsWorkloadNameRequest) (_result *ModifyApsWorkloadNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApsWorkloadNameResponse{}
+	_body, _err := client.ModifyApsWorkloadNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46141,6 +54732,70 @@ func (client *Client) SetSparkAppLogRootPath(request *SetSparkAppLogRootPathRequ
 
 // Summary:
 //
+// 启动aps任务
+//
+// @param request - StartApsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartApsJobResponse
+func (client *Client) StartApsJobWithOptions(request *StartApsJobRequest, runtime *util.RuntimeOptions) (_result *StartApsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobId)) {
+		body["ApsJobId"] = request.ApsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartApsJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartApsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动aps任务
+//
+// @param request - StartApsJobRequest
+//
+// @return StartApsJobResponse
+func (client *Client) StartApsJob(request *StartApsJobRequest) (_result *StartApsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartApsJobResponse{}
+	_body, _err := client.StartApsJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动一个可交互Session
 //
 // @param request - StartSparkReplSessionRequest
@@ -46300,6 +54955,90 @@ func (client *Client) StartSparkSQLEngine(request *StartSparkSQLEngineRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StartSparkSQLEngineResponse{}
 	_body, _err := client.StartSparkSQLEngineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an SQL query and exports a result set.
+//
+// @param request - SubmitResultExportJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitResultExportJobResponse
+func (client *Client) SubmitResultExportJobWithOptions(request *SubmitResultExportJobRequest, runtime *util.RuntimeOptions) (_result *SubmitResultExportJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		body["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		body["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		body["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SQL)) {
+		body["SQL"] = request.SQL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		body["Schema"] = request.Schema
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitResultExportJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitResultExportJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an SQL query and exports a result set.
+//
+// @param request - SubmitResultExportJobRequest
+//
+// @return SubmitResultExportJobResponse
+func (client *Client) SubmitResultExportJob(request *SubmitResultExportJobRequest) (_result *SubmitResultExportJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitResultExportJobResponse{}
+	_body, _err := client.SubmitResultExportJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46628,6 +55367,88 @@ func (client *Client) UnbindDBResourceGroupWithUser(request *UnbindDBResourceGro
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindDBResourceGroupWithUserResponse{}
 	_body, _err := client.UnbindDBResourceGroupWithUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新湖存储
+//
+// @param tmpReq - UpdateLakeStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLakeStorageResponse
+func (client *Client) UpdateLakeStorageWithOptions(tmpReq *UpdateLakeStorageRequest, runtime *util.RuntimeOptions) (_result *UpdateLakeStorageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateLakeStorageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permissions)) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, tea.String("Permissions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LakeStorageId)) {
+		body["LakeStorageId"] = request.LakeStorageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionsShrink)) {
+		body["Permissions"] = request.PermissionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLakeStorage"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLakeStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新湖存储
+//
+// @param request - UpdateLakeStorageRequest
+//
+// @return UpdateLakeStorageResponse
+func (client *Client) UpdateLakeStorage(request *UpdateLakeStorageRequest) (_result *UpdateLakeStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLakeStorageResponse{}
+	_body, _err := client.UpdateLakeStorageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
