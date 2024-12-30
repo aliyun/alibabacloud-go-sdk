@@ -23688,6 +23688,7 @@ type ListOperationPlansResponseBodyPlans struct {
 	//
 	// cluster
 	TargetType *string `json:"target_type,omitempty" xml:"target_type,omitempty"`
+	TaskId     *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 	// The plan type. Valid values:
 	//
 	// 	- cluster_upgrade
@@ -23743,6 +23744,11 @@ func (s *ListOperationPlansResponseBodyPlans) SetTargetId(v string) *ListOperati
 
 func (s *ListOperationPlansResponseBodyPlans) SetTargetType(v string) *ListOperationPlansResponseBodyPlans {
 	s.TargetType = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetTaskId(v string) *ListOperationPlansResponseBodyPlans {
+	s.TaskId = &v
 	return s
 }
 
@@ -24410,7 +24416,7 @@ func (s *MigrateClusterResponse) SetBody(v *MigrateClusterResponseBody) *Migrate
 }
 
 type ModifyClusterRequest struct {
-	// The network access control lists (ACLs) of the SLB instance associated with the API server if the cluster is a registered cluster.
+	// The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	// The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. This parameter is available only for ACK managed clusters.
 	ApiServerCustomCertSans *ModifyClusterRequestApiServerCustomCertSans `json:"api_server_custom_cert_sans,omitempty" xml:"api_server_custom_cert_sans,omitempty" type:"Struct"`
@@ -24437,15 +24443,16 @@ type ModifyClusterRequest struct {
 	// example:
 	//
 	// cluster-new-name
-	ClusterName        *string                                 `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
+	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
+	// The control plane configurations of an ACK dedicated cluster.
 	ControlPlaneConfig *ModifyClusterRequestControlPlaneConfig `json:"control_plane_config,omitempty" xml:"control_plane_config,omitempty" type:"Struct"`
-	// Specifies whether to enable cluster deletion protection. If this option is enabled, the cluster cannot be deleted in the console or by calling API operations. Valid values:
+	// Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. Valid values:
 	//
 	// 	- `true`: enables cluster deletion protection.
 	//
 	// 	- `false`: disables cluster deletion protection.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
@@ -24467,7 +24474,7 @@ type ModifyClusterRequest struct {
 	//
 	// 	- `false`: does not remap the test domain name of the cluster.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
@@ -24485,7 +24492,7 @@ type ModifyClusterRequest struct {
 	//
 	// 	- `false`: disables instance deletion protection.
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
@@ -24495,7 +24502,7 @@ type ModifyClusterRequest struct {
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
 	// The automatic O\\&M policy of the cluster.
 	OperationPolicy *ModifyClusterRequestOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
-	// The cluster resource group ID.
+	// The resource group ID of the cluster.
 	//
 	// example:
 	//
@@ -24503,15 +24510,15 @@ type ModifyClusterRequest struct {
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// The storage configurations of system events.
 	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
-	// The vSwitches of the control planes. This parameter can be used to change the vSwitches of the control planes in an ACK managed cluster. Take note of the following items:
+	// The vSwitches of the control plane. This parameter can be used to change the vSwitches of the control plane in an ACK managed cluster. Take note of the following items:
 	//
-	// 	- This parameter overwrites the existing configuration. You must specify all vSwitches of the control planes.
+	// 	- This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
 	//
-	// 	- The control planes restart during the update process. Exercise caution when you perform this operation.
+	// 	- The control plane restarts during the change process. Exercise caution when you perform this operation.
 	//
-	// 	- Make sure that all security groups of the cluster, including the security groups of the control planes, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
+	// 	- Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
 	//
-	// 	- If the new vSwitches of the control planes are configured with an access control list (ACL), ensure that the ACL allows communication between the new vSwitches and the CIDR blocks of cluster nodes and container networks.
+	// 	- If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
@@ -24614,7 +24621,7 @@ type ModifyClusterRequestApiServerCustomCertSans struct {
 	//
 	// append
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The SANs.
+	// The list of SANs.
 	SubjectAlternativeNames []*string `json:"subject_alternative_names,omitempty" xml:"subject_alternative_names,omitempty" type:"Repeated"`
 }
 
@@ -24637,30 +24644,216 @@ func (s *ModifyClusterRequestApiServerCustomCertSans) SetSubjectAlternativeNames
 }
 
 type ModifyClusterRequestControlPlaneConfig struct {
-	AutoRenew                  *bool     `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod            *int64    `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	ChargeType                 *string   `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
-	CloudMonitorFlags          *bool     `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
-	CpuPolicy                  *string   `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
-	DeploymentsetId            *string   `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	ImageId                    *string   `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	ImageType                  *string   `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	InstanceTypes              []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	KeyPair                    *string   `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword              *string   `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	NodePortRange              *string   `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	Period                     *int64    `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                 *string   `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Runtime                    *string   `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	SecurityHardeningOs        *bool     `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	Size                       *int64    `json:"size,omitempty" xml:"size,omitempty"`
-	SocEnabled                 *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
-	SystemDiskBurstingEnabled  *bool     `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	SystemDiskCategory         *string   `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel *string   `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskProvisionedIops  *int64    `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	SystemDiskSize             *int64    `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	SystemDiskSnapshotPolicyId *string   `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+	//
+	// 	- `true`: enables auto-renewal.
+	//
+	// 	- `false`: disables auto-renewal.
+	//
+	// Default value: `false`.
+	//
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	// The auto-renewal period of the instance. Valid values: 1, 2, 3, 6, and 12.
+	//
+	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- `PrePaid`: subscription.
+	//
+	// 	- `PostPaid`: pay-as-you-go.
+	//
+	// Default value: `PostPaid`.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"charge_type,omitempty" xml:"charge_type,omitempty"`
+	// Specifies whether to install the CloudMonitor agent. Valid values:
+	//
+	// 	- `true`: installs the CloudMonitor agent.
+	//
+	// 	- `false`: does not install the CloudMonitor agent.
+	//
+	// example:
+	//
+	// true
+	CloudMonitorFlags *bool `json:"cloud_monitor_flags,omitempty" xml:"cloud_monitor_flags,omitempty"`
+	// The CPU management policy of nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
+	//
+	// 	- `static`: allows pods with specific resource characteristics on the node to be granted with enhanced CPU affinity and exclusivity.
+	//
+	// 	- `none`: specifies that the default CPU affinity is used.
+	//
+	// Default value: `none`.
+	//
+	// example:
+	//
+	// none
+	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// The ID of the deployment set.
+	//
+	// example:
+	//
+	// ds-bp10b35imuam5amw****
+	DeploymentsetId *string `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	// The custom image ID. You must configure this parameter if you use a custom image.
+	//
+	// example:
+	//
+	// aliyun_3_x64_20G_alibase_20240819.vhd
+	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	// The type of the OS image. Valid values:
+	//
+	// 	- `AliyunLinux3`: Alibaba Cloud Linux 3.
+	//
+	// 	- `Custom`: the custom image.
+	//
+	// example:
+	//
+	// AliyunLinux3
+	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	// The instance type. For more information, see [Overview of ECS instance families](https://help.aliyun.com/document_detail/25378.html).
+	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	// The name of the key pair. You must configure either this parameter or the `login_password` parameter.
+	//
+	// example:
+	//
+	// ack
+	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	// The password for SSH logon. You must configure either this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. To log on with a password, you must specify this parameter during the scale-out.
+	//
+	// example:
+	//
+	// Ack@2000.
+	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	// The node port range.
+	//
+	// example:
+	//
+	// 30000-32767
+	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
+	// The subscription duration of the instance. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`.
+	//
+	// If `PeriodUnit=Month` is specified, the valid values are 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+	//
+	// example:
+	//
+	// 1
+	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+	// The billing cycle of the instance. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`.
+	//
+	// Valid value: `Month`.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	// The type of the container runtime. Valid values:
+	//
+	// 	- `containerd`: supports all Kubernetes versions. We recommend that you set the parameter to this value.
+	//
+	// Default value: containerd.
+	//
+	// example:
+	//
+	// containerd
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// Specifies whether to enable Alibaba Cloud Linux Security Hardening. Valid values:
+	//
+	// 	- `true`: enables Alibaba Cloud Linux Security Hardening.
+	//
+	// 	- `false`: disables Alibaba Cloud Linux Security Hardening.
+	//
+	// Default value: `false`.
+	//
+	// example:
+	//
+	// true
+	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
+	// The number of control plane nodes. If you want to scale out the control plane in an ACK dedicated cluster, set this parameter to the desired number of nodes. This parameter must be greater than the current number of nodes.
+	//
+	// example:
+	//
+	// 5
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// Specifies whether to enable Multi-Level Protection Scheme (MLPS) security hardening. For more information, see [ACK security hardening based on MLPS](https://help.aliyun.com/document_detail/196148.html).
+	//
+	// Valid values:
+	//
+	// 	- `true`: enables MLPS security hardening.
+	//
+	// 	- `false`: disables MLPS security hardening.
+	//
+	// Default value: `false`.
+	//
+	// example:
+	//
+	// false
+	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
+	// Specifies whether to enable the burst feature for the system disk. Valid values:
+	//
+	// 	- `true`: enables the burst feature.
+	//
+	// 	- `false`: disables the burst feature.
+	//
+	// This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	//
+	// example:
+	//
+	// true
+	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	// The type of the node system disk. Valid values:
+	//
+	// 	- `cloud`: basic disk.
+	//
+	// 	- `cloud_efficiency`: ultra disk.
+	//
+	// 	- `cloud_ssd`: standard SSD.
+	//
+	// 	- `cloud_essd`: enhanced SSD (ESSD).
+	//
+	// 	- `cloud_auto`: ESSD AutoPL disk.
+	//
+	// 	- `cloud_essd_entry`: ESSD Entry disk.
+	//
+	// example:
+	//
+	// cloud_essd
+	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	// The performance level (PL) of the system disk that you want to use for the node. This parameter is effective only for ESSDs. This parameter is related to the disk size. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	//
+	// example:
+	//
+	// PL1
+	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	// The preset read/write input/output operations per second (IOPS) of the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS} Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+	//
+	// This parameter is effective only when `system_disk_category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	//
+	// example:
+	//
+	// 1000
+	SystemDiskProvisionedIops *int64 `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
+	// The type of the system disk. Valid values: [40,500]. Unit: GiB.
+	//
+	// example:
+	//
+	// 120
+	SystemDiskSize *int64 `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	// The ID of the automatic snapshot policy applied to the node system disk.
+	//
+	// example:
+	//
+	// sp-2zej1nogjvovnz4z****
+	SystemDiskSnapshotPolicyId *string `json:"system_disk_snapshot_policy_id,omitempty" xml:"system_disk_snapshot_policy_id,omitempty"`
 }
 
 func (s ModifyClusterRequestControlPlaneConfig) String() string {
@@ -24810,11 +25003,11 @@ func (s *ModifyClusterRequestOperationPolicy) SetClusterAutoUpgrade(v *ModifyClu
 }
 
 type ModifyClusterRequestOperationPolicyClusterAutoUpgrade struct {
-	// The automatic update frequency. For more information, see [Update frequency](https://help.aliyun.com/document_detail/2712866.html).
+	// The frequency of automatic cluster updates. For more information, see [Update frequency](https://help.aliyun.com/document_detail/2712866.html).
 	//
 	// Valid values:
 	//
-	// 	- patch: specifies the latest patch version.
+	// 	- patch: the latest patch version.
 	//
 	// 	- stables: the second-latest minor version.
 	//
