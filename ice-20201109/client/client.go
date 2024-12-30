@@ -695,6 +695,136 @@ func (s *AppInfoDTOPlatforms) SetType(v int64) *AppInfoDTOPlatforms {
 	return s
 }
 
+type Channel struct {
+	AccessPolicy             *bool                      `json:"AccessPolicy,omitempty" xml:"AccessPolicy,omitempty"`
+	AccessToken              *string                    `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	Arn                      *string                    `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	ChannelName              *string                    `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	ChannelTier              *string                    `json:"ChannelTier,omitempty" xml:"ChannelTier,omitempty"`
+	FillerSourceLocationName *string                    `json:"FillerSourceLocationName,omitempty" xml:"FillerSourceLocationName,omitempty"`
+	FillerSourceName         *string                    `json:"FillerSourceName,omitempty" xml:"FillerSourceName,omitempty"`
+	GmtCreate                *string                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified              *string                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	OutPutConfigList         []*ChannelOutPutConfigList `json:"OutPutConfigList,omitempty" xml:"OutPutConfigList,omitempty" type:"Repeated"`
+	PlaybackMode             *string                    `json:"PlaybackMode,omitempty" xml:"PlaybackMode,omitempty"`
+	State                    *int32                     `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s Channel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Channel) GoString() string {
+	return s.String()
+}
+
+func (s *Channel) SetAccessPolicy(v bool) *Channel {
+	s.AccessPolicy = &v
+	return s
+}
+
+func (s *Channel) SetAccessToken(v string) *Channel {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *Channel) SetArn(v string) *Channel {
+	s.Arn = &v
+	return s
+}
+
+func (s *Channel) SetChannelName(v string) *Channel {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *Channel) SetChannelTier(v string) *Channel {
+	s.ChannelTier = &v
+	return s
+}
+
+func (s *Channel) SetFillerSourceLocationName(v string) *Channel {
+	s.FillerSourceLocationName = &v
+	return s
+}
+
+func (s *Channel) SetFillerSourceName(v string) *Channel {
+	s.FillerSourceName = &v
+	return s
+}
+
+func (s *Channel) SetGmtCreate(v string) *Channel {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *Channel) SetGmtModified(v string) *Channel {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *Channel) SetOutPutConfigList(v []*ChannelOutPutConfigList) *Channel {
+	s.OutPutConfigList = v
+	return s
+}
+
+func (s *Channel) SetPlaybackMode(v string) *Channel {
+	s.PlaybackMode = &v
+	return s
+}
+
+func (s *Channel) SetState(v int32) *Channel {
+	s.State = &v
+	return s
+}
+
+type ChannelOutPutConfigList struct {
+	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	ManifestName     *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
+	ManifestSettings *string `json:"ManifestSettings,omitempty" xml:"ManifestSettings,omitempty"`
+	PlaybackUrl      *string `json:"PlaybackUrl,omitempty" xml:"PlaybackUrl,omitempty"`
+	SourceGroupName  *string `json:"SourceGroupName,omitempty" xml:"SourceGroupName,omitempty"`
+}
+
+func (s ChannelOutPutConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelOutPutConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelOutPutConfigList) SetChannelName(v string) *ChannelOutPutConfigList {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ChannelOutPutConfigList) SetFormat(v string) *ChannelOutPutConfigList {
+	s.Format = &v
+	return s
+}
+
+func (s *ChannelOutPutConfigList) SetManifestName(v string) *ChannelOutPutConfigList {
+	s.ManifestName = &v
+	return s
+}
+
+func (s *ChannelOutPutConfigList) SetManifestSettings(v string) *ChannelOutPutConfigList {
+	s.ManifestSettings = &v
+	return s
+}
+
+func (s *ChannelOutPutConfigList) SetPlaybackUrl(v string) *ChannelOutPutConfigList {
+	s.PlaybackUrl = &v
+	return s
+}
+
+func (s *ChannelOutPutConfigList) SetSourceGroupName(v string) *ChannelOutPutConfigList {
+	s.SourceGroupName = &v
+	return s
+}
+
 type LicenseInstanceAppDTO struct {
 	AppId            *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	BeginOn          *string                                `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
@@ -822,6 +952,360 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionImp(v string) *Lice
 
 func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *LicenseInstanceAppDTOLicenseConfigs {
 	s.SubscriptionPkg = &v
+	return s
+}
+
+type Program struct {
+	AdBreaks           []*ProgramAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	Arn                *string            `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	ChannelName        *string            `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	ClipRange          *string            `json:"ClipRange,omitempty" xml:"ClipRange,omitempty"`
+	GmtCreate          *string            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ProgramName        *string            `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName *string            `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName         *string            `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType         *string            `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Transition         *string            `json:"Transition,omitempty" xml:"Transition,omitempty"`
+}
+
+func (s Program) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Program) GoString() string {
+	return s.String()
+}
+
+func (s *Program) SetAdBreaks(v []*ProgramAdBreaks) *Program {
+	s.AdBreaks = v
+	return s
+}
+
+func (s *Program) SetArn(v string) *Program {
+	s.Arn = &v
+	return s
+}
+
+func (s *Program) SetChannelName(v string) *Program {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *Program) SetClipRange(v string) *Program {
+	s.ClipRange = &v
+	return s
+}
+
+func (s *Program) SetGmtCreate(v string) *Program {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *Program) SetGmtModified(v string) *Program {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *Program) SetProgramName(v string) *Program {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *Program) SetSourceLocationName(v string) *Program {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *Program) SetSourceName(v string) *Program {
+	s.SourceName = &v
+	return s
+}
+
+func (s *Program) SetSourceType(v string) *Program {
+	s.SourceType = &v
+	return s
+}
+
+func (s *Program) SetTransition(v string) *Program {
+	s.Transition = &v
+	return s
+}
+
+type ProgramAdBreaks struct {
+	ChannelName          *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OffsetMillis         *int64  `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	ProgramName          *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
+	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+}
+
+func (s ProgramAdBreaks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProgramAdBreaks) GoString() string {
+	return s.String()
+}
+
+func (s *ProgramAdBreaks) SetChannelName(v string) *ProgramAdBreaks {
+	s.ChannelName = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetMessageType(v string) *ProgramAdBreaks {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetOffsetMillis(v int64) *ProgramAdBreaks {
+	s.OffsetMillis = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetProgramName(v string) *ProgramAdBreaks {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetSourceLocationName(v string) *ProgramAdBreaks {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetSourceName(v string) *ProgramAdBreaks {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetSpliceInsertSettings(v string) *ProgramAdBreaks {
+	s.SpliceInsertSettings = &v
+	return s
+}
+
+func (s *ProgramAdBreaks) SetTimeSignalSettings(v string) *ProgramAdBreaks {
+	s.TimeSignalSettings = &v
+	return s
+}
+
+type ScheduleData struct {
+	AdBreaks                   []*ScheduleDataAdBreaks `json:"AdBreaks,omitempty" xml:"AdBreaks,omitempty" type:"Repeated"`
+	ApproximateDurationSeconds *int64                  `json:"ApproximateDurationSeconds,omitempty" xml:"ApproximateDurationSeconds,omitempty"`
+	ApproximateStartTime       *string                 `json:"ApproximateStartTime,omitempty" xml:"ApproximateStartTime,omitempty"`
+	EntryType                  *string                 `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
+	ProgramName                *string                 `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
+	SourceLocationName         *string                 `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName                 *string                 `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType                 *string                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ScheduleData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduleData) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduleData) SetAdBreaks(v []*ScheduleDataAdBreaks) *ScheduleData {
+	s.AdBreaks = v
+	return s
+}
+
+func (s *ScheduleData) SetApproximateDurationSeconds(v int64) *ScheduleData {
+	s.ApproximateDurationSeconds = &v
+	return s
+}
+
+func (s *ScheduleData) SetApproximateStartTime(v string) *ScheduleData {
+	s.ApproximateStartTime = &v
+	return s
+}
+
+func (s *ScheduleData) SetEntryType(v string) *ScheduleData {
+	s.EntryType = &v
+	return s
+}
+
+func (s *ScheduleData) SetProgramName(v string) *ScheduleData {
+	s.ProgramName = &v
+	return s
+}
+
+func (s *ScheduleData) SetSourceLocationName(v string) *ScheduleData {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ScheduleData) SetSourceName(v string) *ScheduleData {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ScheduleData) SetSourceType(v string) *ScheduleData {
+	s.SourceType = &v
+	return s
+}
+
+type ScheduleDataAdBreaks struct {
+	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OffsetMillis         *string `json:"OffsetMillis,omitempty" xml:"OffsetMillis,omitempty"`
+	SourceLocationName   *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SpliceInsertSettings *string `json:"SpliceInsertSettings,omitempty" xml:"SpliceInsertSettings,omitempty"`
+	TimeSignalSettings   *string `json:"TimeSignalSettings,omitempty" xml:"TimeSignalSettings,omitempty"`
+}
+
+func (s ScheduleDataAdBreaks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScheduleDataAdBreaks) GoString() string {
+	return s.String()
+}
+
+func (s *ScheduleDataAdBreaks) SetMessageType(v string) *ScheduleDataAdBreaks {
+	s.MessageType = &v
+	return s
+}
+
+func (s *ScheduleDataAdBreaks) SetOffsetMillis(v string) *ScheduleDataAdBreaks {
+	s.OffsetMillis = &v
+	return s
+}
+
+func (s *ScheduleDataAdBreaks) SetSourceLocationName(v string) *ScheduleDataAdBreaks {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *ScheduleDataAdBreaks) SetSourceName(v string) *ScheduleDataAdBreaks {
+	s.SourceName = &v
+	return s
+}
+
+func (s *ScheduleDataAdBreaks) SetSpliceInsertSettings(v string) *ScheduleDataAdBreaks {
+	s.SpliceInsertSettings = &v
+	return s
+}
+
+func (s *ScheduleDataAdBreaks) SetTimeSignalSettings(v string) *ScheduleDataAdBreaks {
+	s.TimeSignalSettings = &v
+	return s
+}
+
+type Source struct {
+	Arn                       *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	GmtCreate                 *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified               *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HttpPackageConfigurations *string `json:"HttpPackageConfigurations,omitempty" xml:"HttpPackageConfigurations,omitempty"`
+	SourceLocationName        *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	SourceName                *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	SourceType                *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	State                     *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s Source) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Source) GoString() string {
+	return s.String()
+}
+
+func (s *Source) SetArn(v string) *Source {
+	s.Arn = &v
+	return s
+}
+
+func (s *Source) SetGmtCreate(v string) *Source {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *Source) SetGmtModified(v string) *Source {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *Source) SetHttpPackageConfigurations(v string) *Source {
+	s.HttpPackageConfigurations = &v
+	return s
+}
+
+func (s *Source) SetSourceLocationName(v string) *Source {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *Source) SetSourceName(v string) *Source {
+	s.SourceName = &v
+	return s
+}
+
+func (s *Source) SetSourceType(v string) *Source {
+	s.SourceType = &v
+	return s
+}
+
+func (s *Source) SetState(v int32) *Source {
+	s.State = &v
+	return s
+}
+
+type SourceLocation struct {
+	Arn                           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	BaseUrl                       *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	GmtCreate                     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SegmentDeliveryConfigurations *string `json:"SegmentDeliveryConfigurations,omitempty" xml:"SegmentDeliveryConfigurations,omitempty"`
+	SourceLocationName            *string `json:"SourceLocationName,omitempty" xml:"SourceLocationName,omitempty"`
+	State                         *int32  `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s SourceLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceLocation) GoString() string {
+	return s.String()
+}
+
+func (s *SourceLocation) SetArn(v string) *SourceLocation {
+	s.Arn = &v
+	return s
+}
+
+func (s *SourceLocation) SetBaseUrl(v string) *SourceLocation {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *SourceLocation) SetGmtCreate(v string) *SourceLocation {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *SourceLocation) SetGmtModified(v string) *SourceLocation {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *SourceLocation) SetSegmentDeliveryConfigurations(v string) *SourceLocation {
+	s.SegmentDeliveryConfigurations = &v
+	return s
+}
+
+func (s *SourceLocation) SetSourceLocationName(v string) *SourceLocation {
+	s.SourceLocationName = &v
+	return s
+}
+
+func (s *SourceLocation) SetState(v int32) *SourceLocation {
+	s.State = &v
 	return s
 }
 
@@ -56637,7 +57121,8 @@ type SubmitMediaAiAnalysisJobRequest struct {
 	// example:
 	//
 	// {"MediaType":"video","Media":"https://xxx.com/your_movie.mp4"}
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s SubmitMediaAiAnalysisJobRequest) String() string {
@@ -56655,6 +57140,11 @@ func (s *SubmitMediaAiAnalysisJobRequest) SetAnalysisParams(v string) *SubmitMed
 
 func (s *SubmitMediaAiAnalysisJobRequest) SetInput(v string) *SubmitMediaAiAnalysisJobRequest {
 	s.Input = &v
+	return s
+}
+
+func (s *SubmitMediaAiAnalysisJobRequest) SetUserData(v string) *SubmitMediaAiAnalysisJobRequest {
+	s.UserData = &v
 	return s
 }
 
@@ -85577,6 +86067,10 @@ func (client *Client) SubmitMediaAiAnalysisJobWithOptions(request *SubmitMediaAi
 
 	if !tea.BoolValue(util.IsUnset(request.Input)) {
 		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
 	}
 
 	req := &openapi.OpenApiRequest{
