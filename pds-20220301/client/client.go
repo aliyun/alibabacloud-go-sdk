@@ -9,77 +9,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AIAssistantSession struct {
-	ClientId     *string   `json:"client_id,omitempty" xml:"client_id,omitempty"`
-	CreatedAt    *int64    `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	CustomLabels []*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty" type:"Repeated"`
-	DomainId     *string   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	ExpiredAt    *int64    `json:"expired_at,omitempty" xml:"expired_at,omitempty"`
-	Name         *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SessionId    *string   `json:"session_id,omitempty" xml:"session_id,omitempty"`
-	Status       *string   `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt    *int64    `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UserId       *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
-}
-
-func (s AIAssistantSession) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AIAssistantSession) GoString() string {
-	return s.String()
-}
-
-func (s *AIAssistantSession) SetClientId(v string) *AIAssistantSession {
-	s.ClientId = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetCreatedAt(v int64) *AIAssistantSession {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetCustomLabels(v []*string) *AIAssistantSession {
-	s.CustomLabels = v
-	return s
-}
-
-func (s *AIAssistantSession) SetDomainId(v string) *AIAssistantSession {
-	s.DomainId = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetExpiredAt(v int64) *AIAssistantSession {
-	s.ExpiredAt = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetName(v string) *AIAssistantSession {
-	s.Name = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetSessionId(v string) *AIAssistantSession {
-	s.SessionId = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetStatus(v string) *AIAssistantSession {
-	s.Status = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetUpdatedAt(v int64) *AIAssistantSession {
-	s.UpdatedAt = &v
-	return s
-}
-
-func (s *AIAssistantSession) SetUserId(v string) *AIAssistantSession {
-	s.UserId = &v
-	return s
-}
-
 type AccountAccessTokenResponse struct {
 	AccessToken        *string            `json:"access_token,omitempty" xml:"access_token,omitempty"`
 	Avatar             *string            `json:"avatar,omitempty" xml:"avatar,omitempty"`
@@ -242,6 +171,8 @@ type AccountLinkInfo struct {
 	DomainId           *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
 	Extra              *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	Identity           *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	LastLoginTime      *int64  `json:"last_login_time,omitempty" xml:"last_login_time,omitempty"`
+	Status             *string `json:"status,omitempty" xml:"status,omitempty"`
 	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -280,6 +211,16 @@ func (s *AccountLinkInfo) SetExtra(v string) *AccountLinkInfo {
 
 func (s *AccountLinkInfo) SetIdentity(v string) *AccountLinkInfo {
 	s.Identity = &v
+	return s
+}
+
+func (s *AccountLinkInfo) SetLastLoginTime(v int64) *AccountLinkInfo {
+	s.LastLoginTime = &v
+	return s
+}
+
+func (s *AccountLinkInfo) SetStatus(v string) *AccountLinkInfo {
+	s.Status = &v
 	return s
 }
 
@@ -350,6 +291,47 @@ func (s *Activity) SetTotalResourceCount(v int64) *Activity {
 
 func (s *Activity) SetUserId(v string) *Activity {
 	s.UserId = &v
+	return s
+}
+
+type AddStoryFile struct {
+	ErrorCode    *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
+	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
+	// example:
+	//
+	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 642a88dd06e49d9c0a14411ebae606f70edd9a59
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s AddStoryFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFile) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFile) SetErrorCode(v string) *AddStoryFile {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddStoryFile) SetErrorMessage(v string) *AddStoryFile {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddStoryFile) SetFileId(v string) *AddStoryFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *AddStoryFile) SetRevisionId(v string) *AddStoryFile {
+	s.RevisionId = &v
 	return s
 }
 
@@ -1460,6 +1442,109 @@ func (s *BaseDriveResponse) SetUpdatedAt(v string) *BaseDriveResponse {
 
 func (s *BaseDriveResponse) SetUsedSize(v int64) *BaseDriveResponse {
 	s.UsedSize = &v
+	return s
+}
+
+type BaseFileListInheritPermissionResponse struct {
+	FileId *string               `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Member *FilePermissionMember `json:"member,omitempty" xml:"member,omitempty"`
+}
+
+func (s BaseFileListInheritPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseFileListInheritPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseFileListInheritPermissionResponse) SetFileId(v string) *BaseFileListInheritPermissionResponse {
+	s.FileId = &v
+	return s
+}
+
+func (s *BaseFileListInheritPermissionResponse) SetMember(v *FilePermissionMember) *BaseFileListInheritPermissionResponse {
+	s.Member = v
+	return s
+}
+
+type BaseFileUserPermissionResponse struct {
+	CanAccess          *bool   `json:"can_access,omitempty" xml:"can_access,omitempty"`
+	CreatedAt          *int64  `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator            *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	DisinheritSubGroup *bool   `json:"disinherit_sub_group,omitempty" xml:"disinherit_sub_group,omitempty"`
+	// example:
+	//
+	// bj23
+	DomainId     *string   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DriveId      *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	ExpireTime   *int64    `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	FileFullPath *string   `json:"file_full_path,omitempty" xml:"file_full_path,omitempty"`
+	FileId       *string   `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Identity     *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
+	RoleId       *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+}
+
+func (s BaseFileUserPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseFileUserPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseFileUserPermissionResponse) SetCanAccess(v bool) *BaseFileUserPermissionResponse {
+	s.CanAccess = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetCreatedAt(v int64) *BaseFileUserPermissionResponse {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetCreator(v string) *BaseFileUserPermissionResponse {
+	s.Creator = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetDisinheritSubGroup(v bool) *BaseFileUserPermissionResponse {
+	s.DisinheritSubGroup = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetDomainId(v string) *BaseFileUserPermissionResponse {
+	s.DomainId = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetDriveId(v string) *BaseFileUserPermissionResponse {
+	s.DriveId = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetExpireTime(v int64) *BaseFileUserPermissionResponse {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetFileFullPath(v string) *BaseFileUserPermissionResponse {
+	s.FileFullPath = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetFileId(v string) *BaseFileUserPermissionResponse {
+	s.FileId = &v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetIdentity(v *Identity) *BaseFileUserPermissionResponse {
+	s.Identity = v
+	return s
+}
+
+func (s *BaseFileUserPermissionResponse) SetRoleId(v string) *BaseFileUserPermissionResponse {
+	s.RoleId = &v
 	return s
 }
 
@@ -3396,6 +3481,7 @@ func (s *FaceThumbnail) SetFaceThumbnail(v string) *FaceThumbnail {
 }
 
 type File struct {
+	ActionList         []*string           `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
 	Category           *string             `json:"category,omitempty" xml:"category,omitempty"`
 	ContentHash        *string             `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	ContentHashName    *string             `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
@@ -3409,11 +3495,13 @@ type File struct {
 	FileExtension      *string             `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
 	FileId             *string             `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	Hidden             *bool               `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	IdPath             *string             `json:"id_path,omitempty" xml:"id_path,omitempty"`
 	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
 	Labels             []*string           `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
 	LocalCreatedAt     *string             `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
 	LocalModifiedAt    *string             `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
 	Name               *string             `json:"name,omitempty" xml:"name,omitempty"`
+	NamePath           *string             `json:"name_path,omitempty" xml:"name_path,omitempty"`
 	ParentFileId       *string             `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
 	RevisionId         *string             `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
 	Size               *int64              `json:"size,omitempty" xml:"size,omitempty"`
@@ -3435,6 +3523,11 @@ func (s File) String() string {
 
 func (s File) GoString() string {
 	return s.String()
+}
+
+func (s *File) SetActionList(v []*string) *File {
+	s.ActionList = v
+	return s
 }
 
 func (s *File) SetCategory(v string) *File {
@@ -3502,6 +3595,11 @@ func (s *File) SetHidden(v bool) *File {
 	return s
 }
 
+func (s *File) SetIdPath(v string) *File {
+	s.IdPath = &v
+	return s
+}
+
 func (s *File) SetImageMediaMetadata(v *ImageMediaMetadata) *File {
 	s.ImageMediaMetadata = v
 	return s
@@ -3524,6 +3622,11 @@ func (s *File) SetLocalModifiedAt(v string) *File {
 
 func (s *File) SetName(v string) *File {
 	s.Name = &v
+	return s
+}
+
+func (s *File) SetNamePath(v string) *File {
+	s.NamePath = &v
 	return s
 }
 
@@ -3969,6 +4072,175 @@ func (s *Group) SetGroupName(v string) *Group {
 
 func (s *Group) SetUpdatedAt(v int64) *Group {
 	s.UpdatedAt = &v
+	return s
+}
+
+type HotDriveFile struct {
+	// example:
+	//
+	// 2
+	ActionCount *int64    `json:"action_count,omitempty" xml:"action_count,omitempty"`
+	ActionList  []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// doc
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// 1727059860000
+	CountAt *int64 `json:"count_at,omitempty" xml:"count_at,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 666ff36c22278f023ec
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// a.jpg
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 666ff36c22278f023ec
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s HotDriveFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotDriveFile) GoString() string {
+	return s.String()
+}
+
+func (s *HotDriveFile) SetActionCount(v int64) *HotDriveFile {
+	s.ActionCount = &v
+	return s
+}
+
+func (s *HotDriveFile) SetActionList(v []*string) *HotDriveFile {
+	s.ActionList = v
+	return s
+}
+
+func (s *HotDriveFile) SetCategory(v string) *HotDriveFile {
+	s.Category = &v
+	return s
+}
+
+func (s *HotDriveFile) SetCountAt(v int64) *HotDriveFile {
+	s.CountAt = &v
+	return s
+}
+
+func (s *HotDriveFile) SetDriveId(v string) *HotDriveFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HotDriveFile) SetFileId(v string) *HotDriveFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *HotDriveFile) SetName(v string) *HotDriveFile {
+	s.Name = &v
+	return s
+}
+
+func (s *HotDriveFile) SetRevisionId(v string) *HotDriveFile {
+	s.RevisionId = &v
+	return s
+}
+
+type HotKnowledgeBaseFile struct {
+	// example:
+	//
+	// 1
+	ActionCount *int64    `json:"action_count,omitempty" xml:"action_count,omitempty"`
+	ActionList  []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// image
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// 1727578860000
+	CountAt *int64 `json:"count_at,omitempty" xml:"count_at,omitempty"`
+	// example:
+	//
+	// 1
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// 666ff36c22278f023ec
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// 4jTsp3AgW
+	KnowledgeBaseId *string `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
+	// example:
+	//
+	// a.jpg
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 666ff36c22278f023ec
+	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s HotKnowledgeBaseFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotKnowledgeBaseFile) GoString() string {
+	return s.String()
+}
+
+func (s *HotKnowledgeBaseFile) SetActionCount(v int64) *HotKnowledgeBaseFile {
+	s.ActionCount = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetActionList(v []*string) *HotKnowledgeBaseFile {
+	s.ActionList = v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetCategory(v string) *HotKnowledgeBaseFile {
+	s.Category = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetCountAt(v int64) *HotKnowledgeBaseFile {
+	s.CountAt = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetDriveId(v string) *HotKnowledgeBaseFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetFileId(v string) *HotKnowledgeBaseFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetKnowledgeBaseId(v string) *HotKnowledgeBaseFile {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetName(v string) *HotKnowledgeBaseFile {
+	s.Name = &v
+	return s
+}
+
+func (s *HotKnowledgeBaseFile) SetRevisionId(v string) *HotKnowledgeBaseFile {
+	s.RevisionId = &v
 	return s
 }
 
@@ -4526,6 +4798,166 @@ func (s *JWTPayload) SetSubType(v string) *JWTPayload {
 	return s
 }
 
+type KnowledgeBase struct {
+	CoverUri        *string     `json:"cover_uri,omitempty" xml:"cover_uri,omitempty"`
+	CreatedAt       *int64      `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description     *string     `json:"description,omitempty" xml:"description,omitempty"`
+	FileFilter      *string     `json:"file_filter,omitempty" xml:"file_filter,omitempty"`
+	KnowledgeBaseId *string     `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
+	LinkRuleList    []*LinkRule `json:"link_rule_list,omitempty" xml:"link_rule_list,omitempty" type:"Repeated"`
+	Name            *string     `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerId         *string     `json:"owner_id,omitempty" xml:"owner_id,omitempty"`
+	OwnerName       *string     `json:"owner_name,omitempty" xml:"owner_name,omitempty"`
+	OwnerType       *string     `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	UpdatedAt       *int64      `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s KnowledgeBase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeBase) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeBase) SetCoverUri(v string) *KnowledgeBase {
+	s.CoverUri = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetCreatedAt(v int64) *KnowledgeBase {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetDescription(v string) *KnowledgeBase {
+	s.Description = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetFileFilter(v string) *KnowledgeBase {
+	s.FileFilter = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetKnowledgeBaseId(v string) *KnowledgeBase {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetLinkRuleList(v []*LinkRule) *KnowledgeBase {
+	s.LinkRuleList = v
+	return s
+}
+
+func (s *KnowledgeBase) SetName(v string) *KnowledgeBase {
+	s.Name = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetOwnerId(v string) *KnowledgeBase {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetOwnerName(v string) *KnowledgeBase {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetOwnerType(v string) *KnowledgeBase {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *KnowledgeBase) SetUpdatedAt(v int64) *KnowledgeBase {
+	s.UpdatedAt = &v
+	return s
+}
+
+type KnowledgeCategory struct {
+	CreatedAt                 *int64    `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description               *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Keywords                  []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
+	KnowledgeBaseId           *string   `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
+	KnowledgeBaseName         *string   `json:"knowledge_base_name,omitempty" xml:"knowledge_base_name,omitempty"`
+	KnowledgeCategoryId       *string   `json:"knowledge_category_id,omitempty" xml:"knowledge_category_id,omitempty"`
+	Name                      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Owner                     *string   `json:"owner,omitempty" xml:"owner,omitempty"`
+	OwnerType                 *string   `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	ParentKnowledgeCategoryId *string   `json:"parent_knowledge_category_id,omitempty" xml:"parent_knowledge_category_id,omitempty"`
+	Status                    *string   `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt                 *int64    `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s KnowledgeCategory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeCategory) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeCategory) SetCreatedAt(v int64) *KnowledgeCategory {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetDescription(v string) *KnowledgeCategory {
+	s.Description = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetKeywords(v []*string) *KnowledgeCategory {
+	s.Keywords = v
+	return s
+}
+
+func (s *KnowledgeCategory) SetKnowledgeBaseId(v string) *KnowledgeCategory {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetKnowledgeBaseName(v string) *KnowledgeCategory {
+	s.KnowledgeBaseName = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetKnowledgeCategoryId(v string) *KnowledgeCategory {
+	s.KnowledgeCategoryId = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetName(v string) *KnowledgeCategory {
+	s.Name = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetOwner(v string) *KnowledgeCategory {
+	s.Owner = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetOwnerType(v string) *KnowledgeCategory {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetParentKnowledgeCategoryId(v string) *KnowledgeCategory {
+	s.ParentKnowledgeCategoryId = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetStatus(v string) *KnowledgeCategory {
+	s.Status = &v
+	return s
+}
+
+func (s *KnowledgeCategory) SetUpdatedAt(v int64) *KnowledgeCategory {
+	s.UpdatedAt = &v
+	return s
+}
+
 type KnowledgeFile struct {
 	CreatorId            *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
 	DriveId              *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
@@ -4696,6 +5128,53 @@ func (s *LinkInfo) SetIdentity(v string) *LinkInfo {
 
 func (s *LinkInfo) SetType(v string) *LinkInfo {
 	s.Type = &v
+	return s
+}
+
+type LinkRule struct {
+	LinkType     *string `json:"link_type,omitempty" xml:"link_type,omitempty"`
+	SrcDriveId   *string `json:"src_drive_id,omitempty" xml:"src_drive_id,omitempty"`
+	SrcDriveName *string `json:"src_drive_name,omitempty" xml:"src_drive_name,omitempty"`
+	SrcFileId    *string `json:"src_file_id,omitempty" xml:"src_file_id,omitempty"`
+	SrcFileName  *string `json:"src_file_name,omitempty" xml:"src_file_name,omitempty"`
+	SrcValid     *bool   `json:"src_valid,omitempty" xml:"src_valid,omitempty"`
+}
+
+func (s LinkRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LinkRule) GoString() string {
+	return s.String()
+}
+
+func (s *LinkRule) SetLinkType(v string) *LinkRule {
+	s.LinkType = &v
+	return s
+}
+
+func (s *LinkRule) SetSrcDriveId(v string) *LinkRule {
+	s.SrcDriveId = &v
+	return s
+}
+
+func (s *LinkRule) SetSrcDriveName(v string) *LinkRule {
+	s.SrcDriveName = &v
+	return s
+}
+
+func (s *LinkRule) SetSrcFileId(v string) *LinkRule {
+	s.SrcFileId = &v
+	return s
+}
+
+func (s *LinkRule) SetSrcFileName(v string) *LinkRule {
+	s.SrcFileName = &v
+	return s
+}
+
+func (s *LinkRule) SetSrcValid(v bool) *LinkRule {
+	s.SrcValid = &v
 	return s
 }
 
@@ -5522,6 +6001,7 @@ type ShareLink struct {
 	Expiration        *string   `json:"expiration,omitempty" xml:"expiration,omitempty"`
 	Expired           *bool     `json:"expired,omitempty" xml:"expired,omitempty"`
 	FileIdList        []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	OfficeEditable    *bool     `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
 	PreviewCount      *int64    `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
 	PreviewLimit      *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	ReportCount       *int64    `json:"report_count,omitempty" xml:"report_count,omitempty"`
@@ -5607,6 +6087,11 @@ func (s *ShareLink) SetExpired(v bool) *ShareLink {
 
 func (s *ShareLink) SetFileIdList(v []*string) *ShareLink {
 	s.FileIdList = v
+	return s
+}
+
+func (s *ShareLink) SetOfficeEditable(v bool) *ShareLink {
+	s.OfficeEditable = &v
 	return s
 }
 
@@ -5966,22 +6451,29 @@ func (s *TimeRange) SetStart(v string) *TimeRange {
 }
 
 type Token struct {
-	AccessToken    *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
-	Avatar         *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	DefaultDriveId *string `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
-	DeviceId       *string `json:"device_id,omitempty" xml:"device_id,omitempty"`
-	DeviceName     *string `json:"device_name,omitempty" xml:"device_name,omitempty"`
-	DomainId       *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	ExpireTime     *string `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
-	ExpiresIn      *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	IsFirstLogin   *bool   `json:"is_first_login,omitempty" xml:"is_first_login,omitempty"`
-	NickName       *string `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
-	RefreshToken   *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
-	Role           *string `json:"role,omitempty" xml:"role,omitempty"`
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	TokenType      *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
-	UserId         *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName       *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	AccessToken        *string            `json:"access_token,omitempty" xml:"access_token,omitempty"`
+	Avatar             *string            `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	DefaultDriveId     *string            `json:"default_drive_id,omitempty" xml:"default_drive_id,omitempty"`
+	DefaultSboxDriveId *string            `json:"default_sbox_drive_id,omitempty" xml:"default_sbox_drive_id,omitempty"`
+	DeviceId           *string            `json:"device_id,omitempty" xml:"device_id,omitempty"`
+	DeviceName         *string            `json:"device_name,omitempty" xml:"device_name,omitempty"`
+	DomainId           *string            `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	ExistLink          []*LinkInfo        `json:"exist_link,omitempty" xml:"exist_link,omitempty" type:"Repeated"`
+	ExpireTime         *string            `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	ExpiresIn          *int64             `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	IsFirstLogin       *bool              `json:"is_first_login,omitempty" xml:"is_first_login,omitempty"`
+	NeedLink           *bool              `json:"need_link,omitempty" xml:"need_link,omitempty"`
+	NeedRpVerify       *bool              `json:"need_rp_verify,omitempty" xml:"need_rp_verify,omitempty"`
+	NickName           *string            `json:"nick_name,omitempty" xml:"nick_name,omitempty"`
+	PinSetup           *bool              `json:"pin_setup,omitempty" xml:"pin_setup,omitempty"`
+	RefreshToken       *string            `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
+	Role               *string            `json:"role,omitempty" xml:"role,omitempty"`
+	State              *string            `json:"state,omitempty" xml:"state,omitempty"`
+	Status             *string            `json:"status,omitempty" xml:"status,omitempty"`
+	TokenType          *string            `json:"token_type,omitempty" xml:"token_type,omitempty"`
+	UserData           map[string]*string `json:"user_data,omitempty" xml:"user_data,omitempty"`
+	UserId             *string            `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName           *string            `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s Token) String() string {
@@ -6007,6 +6499,11 @@ func (s *Token) SetDefaultDriveId(v string) *Token {
 	return s
 }
 
+func (s *Token) SetDefaultSboxDriveId(v string) *Token {
+	s.DefaultSboxDriveId = &v
+	return s
+}
+
 func (s *Token) SetDeviceId(v string) *Token {
 	s.DeviceId = &v
 	return s
@@ -6019,6 +6516,11 @@ func (s *Token) SetDeviceName(v string) *Token {
 
 func (s *Token) SetDomainId(v string) *Token {
 	s.DomainId = &v
+	return s
+}
+
+func (s *Token) SetExistLink(v []*LinkInfo) *Token {
+	s.ExistLink = v
 	return s
 }
 
@@ -6037,8 +6539,23 @@ func (s *Token) SetIsFirstLogin(v bool) *Token {
 	return s
 }
 
+func (s *Token) SetNeedLink(v bool) *Token {
+	s.NeedLink = &v
+	return s
+}
+
+func (s *Token) SetNeedRpVerify(v bool) *Token {
+	s.NeedRpVerify = &v
+	return s
+}
+
 func (s *Token) SetNickName(v string) *Token {
 	s.NickName = &v
+	return s
+}
+
+func (s *Token) SetPinSetup(v bool) *Token {
+	s.PinSetup = &v
 	return s
 }
 
@@ -6052,6 +6569,11 @@ func (s *Token) SetRole(v string) *Token {
 	return s
 }
 
+func (s *Token) SetState(v string) *Token {
+	s.State = &v
+	return s
+}
+
 func (s *Token) SetStatus(v string) *Token {
 	s.Status = &v
 	return s
@@ -6059,6 +6581,11 @@ func (s *Token) SetStatus(v string) *Token {
 
 func (s *Token) SetTokenType(v string) *Token {
 	s.TokenType = &v
+	return s
+}
+
+func (s *Token) SetUserData(v map[string]*string) *Token {
+	s.UserData = v
 	return s
 }
 
@@ -7641,7 +8168,9 @@ type AddStoryFilesResponseBody struct {
 	// example:
 	//
 	// 1
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	DriveId   *string         `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Files     []*AddStoryFile `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	RequestId *string         `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
@@ -7658,6 +8187,16 @@ func (s AddStoryFilesResponseBody) GoString() string {
 
 func (s *AddStoryFilesResponseBody) SetDriveId(v string) *AddStoryFilesResponseBody {
 	s.DriveId = &v
+	return s
+}
+
+func (s *AddStoryFilesResponseBody) SetFiles(v []*AddStoryFile) *AddStoryFilesResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *AddStoryFilesResponseBody) SetRequestId(v string) *AddStoryFilesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8396,6 +8935,8 @@ func (s *CancelShareLinkResponse) SetStatusCode(v int32) *CancelShareLinkRespons
 type ClearRecyclebinRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -8933,45 +9474,45 @@ func (s *CreateCustomizedStoryResponse) SetBody(v *CreateCustomizedStoryResponse
 }
 
 type CreateDomainRequest struct {
-	// The description of the domain.
+	// domain 描述
 	//
 	// example:
 	//
-	// domain for test
+	// 你好企业网盘开发环境
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the domain.
+	// If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test_domain
+	// 你好企业网盘
 	DomainName *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
-	// Specifies whether to enable the default drive feature. A value of true specifies that all users are assigned a drive by default on the first logon. Default value: false.
+	// https
 	//
 	// example:
 	//
 	// true
 	InitDriveEnable *bool `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
-	// The size of the default drive. Unit: bytes. You must specify init_drive_size if you set init_drive_enable to true. Default value: 0. A value of 0 specifies that the size of the default drive is 0 bytes and you cannot upload files to the drive. To initialize the default drive, set init_drive_size to 0. A value of -1 specifies that the size is unlimited.
+	// http
 	//
 	// example:
 	//
 	// 1073741824
 	InitDriveSize *int64 `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
-	// The ID of the parent domain. If you want to create a child domain, specify parent_domain_id. In most cases, you do not need to create a child domain. If you want to perform secondary operations based on Drive and Photo Service, contact the customer service.
+	// Create domain.
 	//
 	// example:
 	//
 	// bj1
 	ParentDomainId *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
-	// The total storage quota for all drives in the domain. A value of 0 specifies that the quota is unlimited.
+	// The ID of the parent domain. If you want to create a child domain, specify parent_domain_id. In most cases, you do not need to create a child domain. If you want to perform secondary operations based on Drive and Photo Service, contact the customer service.
 	//
 	// example:
 	//
 	// 1099511627776
 	SizeQuota *int64 `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
-	// The largest number of users that can be created in the domain. A value of 0 specifies that the number is unlimited.
+	// The information about the domain.
 	//
 	// example:
 	//
@@ -10162,13 +10703,15 @@ type CreateShareLinkRequest struct {
 	// example:
 	//
 	// ["520b217f13adf4fc24f2191991b1664ce045b393"]
-	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	FileIdList     []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	OfficeEditable *bool     `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
 	//
 	// example:
 	//
 	// 100
 	PreviewLimit *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
+	RequireLogin *bool  `json:"require_login,omitempty" xml:"require_login,omitempty"`
 	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
 	//
 	// example:
@@ -10255,8 +10798,18 @@ func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequ
 	return s
 }
 
+func (s *CreateShareLinkRequest) SetOfficeEditable(v bool) *CreateShareLinkRequest {
+	s.OfficeEditable = &v
+	return s
+}
+
 func (s *CreateShareLinkRequest) SetPreviewLimit(v int64) *CreateShareLinkRequest {
 	s.PreviewLimit = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetRequireLogin(v bool) *CreateShareLinkRequest {
+	s.RequireLogin = &v
 	return s
 }
 
@@ -11855,11 +12408,15 @@ func (s *FileDeleteUserTagsResponse) SetStatusCode(v int32) *FileDeleteUserTagsR
 type FileListPermissionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13194,6 +13751,8 @@ func (s *GetLinkInfoResponse) SetBody(v *AccountLinkInfo) *GetLinkInfoResponse {
 
 type GetLinkInfoByUserIdRequest struct {
 	// The user ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15262,11 +15821,15 @@ type ListAssignmentRequest struct {
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The ID of the managed resource, such as a group ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 105***b82
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the managed resource. Set the value to RT_Group, which specifies that the administrators of a group are queried.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16726,6 +17289,7 @@ func (s *ListMyDrivesResponse) SetBody(v *ListMyDrivesResponseBody) *ListMyDrive
 }
 
 type ListMyGroupDriveRequest struct {
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
@@ -16746,6 +17310,11 @@ func (s ListMyGroupDriveRequest) String() string {
 
 func (s ListMyGroupDriveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMyGroupDriveRequest) SetDriveName(v string) *ListMyGroupDriveRequest {
+	s.DriveName = &v
+	return s
 }
 
 func (s *ListMyGroupDriveRequest) SetLimit(v int32) *ListMyGroupDriveRequest {
@@ -20218,22 +20787,44 @@ func (s *TrashFileResponse) SetBody(v *TrashFileResponseBody) *TrashFileResponse
 }
 
 type UnLinkAccountRequest struct {
+	// Additional information for the unique account identifier. For example, when the account is a phone number, this field should be filled with the area code of the phone, such as 86 for Mainland China. If not provided, it defaults to 86.
+	//
 	// example:
 	//
 	// 1
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// Unique identifier of the account, such as a phone number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 139****
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	// Account type
+	//
+	// mobile: Phone number
+	//
+	// email: Email address
+	//
+	// ding: DingTalk
+	//
+	// ram: Alibaba Cloud RAM User
+	//
+	// wechat: WeCom
+	//
+	// ldap: LDAP account
+	//
+	// custom: Custom account
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mobile
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// User identifier
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21103,7 +21694,8 @@ type UpdateShareLinkRequest struct {
 	// example:
 	//
 	// 2020-06-28T11:33:00.000+08:00
-	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	Expiration     *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	OfficeEditable *bool   `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
 	// The number of times that the shared files are previewed. The value must be greater than or equal to 0.
 	//
 	// example:
@@ -21208,6 +21800,11 @@ func (s *UpdateShareLinkRequest) SetDownloadLimit(v int64) *UpdateShareLinkReque
 
 func (s *UpdateShareLinkRequest) SetExpiration(v string) *UpdateShareLinkRequest {
 	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateShareLinkRequest) SetOfficeEditable(v bool) *UpdateShareLinkRequest {
+	s.OfficeEditable = &v
 	return s
 }
 
@@ -21634,7 +22231,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 
 	client.Spi = gatewayClient
-	client.SignatureAlgorithm = tea.String("v2")
 	
 	client.EndpointRule = tea.String("")
 	return nil
@@ -22496,11 +23092,11 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 
 // Summary:
 //
-// Create domain.
+// test_domain
 //
 // Description:
 //
-// If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+// The description of the domain.
 //
 // @param request - CreateDomainRequest
 //
@@ -22569,11 +23165,11 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 
 // Summary:
 //
-// Create domain.
+// test_domain
 //
 // Description:
 //
-// If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+// The description of the domain.
 //
 // @param request - CreateDomainRequest
 //
@@ -23151,8 +23747,16 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 		body["file_id_list"] = request.FileIdList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OfficeEditable)) {
+		body["office_editable"] = request.OfficeEditable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PreviewLimit)) {
 		body["preview_limit"] = request.PreviewLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireLogin)) {
+		body["require_login"] = request.RequireLogin
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaveLimit)) {
@@ -27353,6 +27957,10 @@ func (client *Client) ListMyGroupDriveWithOptions(request *ListMyGroupDriveReque
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveName)) {
+		body["drive_name"] = request.DriveName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Limit)) {
 		body["limit"] = request.Limit
 	}
@@ -29450,7 +30058,7 @@ func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileRe
 
 // Summary:
 //
-// 取消账号绑定
+// Unlink Account Binding
 //
 // @param request - UnLinkAccountRequest
 //
@@ -29507,7 +30115,7 @@ func (client *Client) UnLinkAccountWithOptions(request *UnLinkAccountRequest, he
 
 // Summary:
 //
-// 取消账号绑定
+// Unlink Account Binding
 //
 // @param request - UnLinkAccountRequest
 //
@@ -30151,6 +30759,10 @@ func (client *Client) UpdateShareLinkWithOptions(request *UpdateShareLinkRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
 		body["expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeEditable)) {
+		body["office_editable"] = request.OfficeEditable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreviewCount)) {
