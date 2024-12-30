@@ -421,7 +421,6 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 type AddUserRequest struct {
-	// Deprecated
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// This parameter is required.
 	//
@@ -3959,6 +3958,247 @@ func (s *DeleteUserTagMetaResponse) SetBody(v *DeleteUserTagMetaResponseBody) *D
 	return s
 }
 
+type GetDataSourceConnectionInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7AAB95D-*****-****-*4FC0C976
+	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+}
+
+func (s GetDataSourceConnectionInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceConnectionInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceConnectionInfoRequest) SetDsId(v string) *GetDataSourceConnectionInfoRequest {
+	s.DsId = &v
+	return s
+}
+
+type GetDataSourceConnectionInfoResponseBody struct {
+	// example:
+	//
+	// 7AAB95D-*****-****-*4FC0C976
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetDataSourceConnectionInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataSourceConnectionInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceConnectionInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceConnectionInfoResponseBody) SetRequestId(v string) *GetDataSourceConnectionInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBody) SetResult(v *GetDataSourceConnectionInfoResponseBodyResult) *GetDataSourceConnectionInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBody) SetSuccess(v bool) *GetDataSourceConnectionInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataSourceConnectionInfoResponseBodyResult struct {
+	// example:
+	//
+	// 172.**.**.48
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 0
+	AuthLevel *string `json:"AuthLevel,omitempty" xml:"AuthLevel,omitempty"`
+	// example:
+	//
+	// U240****0880C6095
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// a201c85c-******
+	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// example:
+	//
+	// mysql
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// example:
+	//
+	// 5.7
+	DsVersion *string `json:"DsVersion,omitempty" xml:"DsVersion,omitempty"`
+	// example:
+	//
+	// rm*********t44ju1
+	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	// example:
+	//
+	// rm*********t44ju1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// U240****0880C6095
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// example:
+	//
+	// true
+	NoSasl *bool `json:"NoSasl,omitempty" xml:"NoSasl,omitempty"`
+	// example:
+	//
+	// dataphin
+	ParentDsType *string `json:"ParentDsType,omitempty" xml:"ParentDsType,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// prod-ossdoc
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// example:
+	//
+	// Analysis
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// 0327
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	// example:
+	//
+	// 0de6**2-d**-4720-8836-0cc****1394c
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDataSourceConnectionInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceConnectionInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetAddress(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.Address = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetAuthLevel(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.AuthLevel = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetCreatorId(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetDsId(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.DsId = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetDsType(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.DsType = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetDsVersion(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.DsVersion = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetInstance(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.Instance = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetInstanceId(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetModifyUser(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetNoSasl(v bool) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.NoSasl = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetParentDsType(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.ParentDsType = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetPort(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.Port = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetProject(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.Project = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetSchema(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.Schema = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetShowName(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.ShowName = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponseBodyResult) SetWorkspaceId(v string) *GetDataSourceConnectionInfoResponseBodyResult {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDataSourceConnectionInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDataSourceConnectionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDataSourceConnectionInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataSourceConnectionInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataSourceConnectionInfoResponse) SetHeaders(v map[string]*string) *GetDataSourceConnectionInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponse) SetStatusCode(v int32) *GetDataSourceConnectionInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataSourceConnectionInfoResponse) SetBody(v *GetDataSourceConnectionInfoResponseBody) *GetDataSourceConnectionInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetMailTaskStatusRequest struct {
 	// This parameter is required.
 	//
@@ -5409,6 +5649,184 @@ func (s *ListDataLevelPermissionWhiteListResponse) SetStatusCode(v int32) *ListD
 }
 
 func (s *ListDataLevelPermissionWhiteListResponse) SetBody(v *ListDataLevelPermissionWhiteListResponseBody) *ListDataLevelPermissionWhiteListResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataSourceRequest struct {
+	// example:
+	//
+	// mysql
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95296e95-******c7d-8af9-dedf0ad0****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceRequest) SetDsType(v string) *ListDataSourceRequest {
+	s.DsType = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetWorkspaceId(v string) *ListDataSourceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListDataSourceResponseBody struct {
+	// example:
+	//
+	// 7FC9A6A6-****-5CED-B*****E891E4075
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListDataSourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponseBody) SetRequestId(v string) *ListDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetResult(v []*ListDataSourceResponseBodyResult) *ListDataSourceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetSuccess(v bool) *ListDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataSourceResponseBodyResult struct {
+	// example:
+	//
+	// 281*****-485******-8
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// system
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// example:
+	//
+	// 7FC9A6A6-****-5CED-B*****E891E4075
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// odps
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// example:
+	//
+	// 2024-04-16 13:17:39
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-08-15 10:06:31
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// dataphin
+	ParentDsType *string `json:"ParentDsType,omitempty" xml:"ParentDsType,omitempty"`
+	// example:
+	//
+	// 0327
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+}
+
+func (s ListDataSourceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponseBodyResult) SetCreatorId(v string) *ListDataSourceResponseBodyResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetCreatorName(v string) *ListDataSourceResponseBodyResult {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetDatasourceId(v string) *ListDataSourceResponseBodyResult {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetDsType(v string) *ListDataSourceResponseBodyResult {
+	s.DsType = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetGmtCreate(v string) *ListDataSourceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetGmtModified(v string) *ListDataSourceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetParentDsType(v string) *ListDataSourceResponseBodyResult {
+	s.ParentDsType = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyResult) SetShowName(v string) *ListDataSourceResponseBodyResult {
+	s.ShowName = &v
+	return s
+}
+
+type ListDataSourceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponse) SetHeaders(v map[string]*string) *ListDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceResponse) SetStatusCode(v int32) *ListDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourceResponse) SetBody(v *ListDataSourceResponseBody) *ListDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -8250,6 +8668,7 @@ type QueryAuditLogResponseBodyResult struct {
 	//
 	// CREATE
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	TargetId     *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	TargetName   *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// example:
 	//
@@ -8286,6 +8705,11 @@ func (s *QueryAuditLogResponseBodyResult) SetOperatorName(v string) *QueryAuditL
 
 func (s *QueryAuditLogResponseBodyResult) SetOperatorType(v string) *QueryAuditLogResponseBodyResult {
 	s.OperatorType = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetTargetId(v string) *QueryAuditLogResponseBodyResult {
+	s.TargetId = &v
 	return s
 }
 
@@ -11997,6 +12421,95 @@ func (s *QueryDatasetListResponse) SetBody(v *QueryDatasetListResponseBody) *Que
 	return s
 }
 
+type QueryDatasetSmartqStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+}
+
+func (s QueryDatasetSmartqStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDatasetSmartqStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDatasetSmartqStatusRequest) SetCubeId(v string) *QueryDatasetSmartqStatusRequest {
+	s.CubeId = &v
+	return s
+}
+
+type QueryDatasetSmartqStatusResponseBody struct {
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDatasetSmartqStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDatasetSmartqStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDatasetSmartqStatusResponseBody) SetRequestId(v string) *QueryDatasetSmartqStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDatasetSmartqStatusResponseBody) SetResult(v bool) *QueryDatasetSmartqStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryDatasetSmartqStatusResponseBody) SetSuccess(v bool) *QueryDatasetSmartqStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDatasetSmartqStatusResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDatasetSmartqStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDatasetSmartqStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDatasetSmartqStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDatasetSmartqStatusResponse) SetHeaders(v map[string]*string) *QueryDatasetSmartqStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDatasetSmartqStatusResponse) SetStatusCode(v int32) *QueryDatasetSmartqStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDatasetSmartqStatusResponse) SetBody(v *QueryDatasetSmartqStatusResponseBody) *QueryDatasetSmartqStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDatasetSwitchInfoRequest struct {
 	// This parameter is required.
 	//
@@ -12365,6 +12878,115 @@ func (s *QueryEmbeddedStatusResponse) SetStatusCode(v int32) *QueryEmbeddedStatu
 }
 
 func (s *QueryEmbeddedStatusResponse) SetBody(v *QueryEmbeddedStatusResponseBody) *QueryEmbeddedStatusResponse {
+	s.Body = v
+	return s
+}
+
+type QueryLlmCubeWithThemeListByUserIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adsdasd-***********-123wdasd
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdRequest) SetUserId(v string) *QueryLlmCubeWithThemeListByUserIdRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryLlmCubeWithThemeListByUserIdResponseBody struct {
+	// example:
+	//
+	// 2EE822B***************F-F5B42DDADC12
+	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryLlmCubeWithThemeListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponseBody) SetRequestId(v string) *QueryLlmCubeWithThemeListByUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponseBody) SetResult(v *QueryLlmCubeWithThemeListByUserIdResponseBodyResult) *QueryLlmCubeWithThemeListByUserIdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponseBody) SetSuccess(v bool) *QueryLlmCubeWithThemeListByUserIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryLlmCubeWithThemeListByUserIdResponseBodyResult struct {
+	CubeIds  map[string]*string `json:"CubeIds,omitempty" xml:"CubeIds,omitempty"`
+	ThemeIds map[string]*string `json:"ThemeIds,omitempty" xml:"ThemeIds,omitempty"`
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponseBodyResult) SetCubeIds(v map[string]*string) *QueryLlmCubeWithThemeListByUserIdResponseBodyResult {
+	s.CubeIds = v
+	return s
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponseBodyResult) SetThemeIds(v map[string]*string) *QueryLlmCubeWithThemeListByUserIdResponseBodyResult {
+	s.ThemeIds = v
+	return s
+}
+
+type QueryLlmCubeWithThemeListByUserIdResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLlmCubeWithThemeListByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryLlmCubeWithThemeListByUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponse) SetHeaders(v map[string]*string) *QueryLlmCubeWithThemeListByUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponse) SetStatusCode(v int32) *QueryLlmCubeWithThemeListByUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryLlmCubeWithThemeListByUserIdResponse) SetBody(v *QueryLlmCubeWithThemeListByUserIdResponseBody) *QueryLlmCubeWithThemeListByUserIdResponse {
 	s.Body = v
 	return s
 }
@@ -14041,6 +14663,138 @@ func (s *QuerySharesToUserListResponse) SetStatusCode(v int32) *QuerySharesToUse
 }
 
 func (s *QuerySharesToUserListResponse) SetBody(v *QuerySharesToUserListResponseBody) *QuerySharesToUserListResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySmartqPermissionByCubeIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95c4d**************3852e202
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QuerySmartqPermissionByCubeIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmartqPermissionByCubeIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmartqPermissionByCubeIdRequest) SetCubeId(v string) *QuerySmartqPermissionByCubeIdRequest {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdRequest) SetUserId(v string) *QuerySmartqPermissionByCubeIdRequest {
+	s.UserId = &v
+	return s
+}
+
+type QuerySmartqPermissionByCubeIdResponseBody struct {
+	// example:
+	//
+	// 617277******************ABA47E31
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QuerySmartqPermissionByCubeIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySmartqPermissionByCubeIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmartqPermissionByCubeIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBody) SetRequestId(v string) *QuerySmartqPermissionByCubeIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBody) SetResult(v *QuerySmartqPermissionByCubeIdResponseBodyResult) *QuerySmartqPermissionByCubeIdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBody) SetSuccess(v bool) *QuerySmartqPermissionByCubeIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySmartqPermissionByCubeIdResponseBodyResult struct {
+	// example:
+	//
+	// 7c7223ae-****-3c744528014b
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// example:
+	//
+	// test
+	CubeName    *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	HasPerssion *bool   `json:"HasPerssion,omitempty" xml:"HasPerssion,omitempty"`
+}
+
+func (s QuerySmartqPermissionByCubeIdResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmartqPermissionByCubeIdResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBodyResult) SetCubeId(v string) *QuerySmartqPermissionByCubeIdResponseBodyResult {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBodyResult) SetCubeName(v string) *QuerySmartqPermissionByCubeIdResponseBodyResult {
+	s.CubeName = &v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponseBodyResult) SetHasPerssion(v bool) *QuerySmartqPermissionByCubeIdResponseBodyResult {
+	s.HasPerssion = &v
+	return s
+}
+
+type QuerySmartqPermissionByCubeIdResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmartqPermissionByCubeIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySmartqPermissionByCubeIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmartqPermissionByCubeIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponse) SetHeaders(v map[string]*string) *QuerySmartqPermissionByCubeIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponse) SetStatusCode(v int32) *QuerySmartqPermissionByCubeIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySmartqPermissionByCubeIdResponse) SetBody(v *QuerySmartqPermissionByCubeIdResponseBody) *QuerySmartqPermissionByCubeIdResponse {
 	s.Body = v
 	return s
 }
@@ -15995,7 +16749,8 @@ type QueryWorksBloodRelationshipResponseBodyResult struct {
 	// example:
 	//
 	// 3
-	ComponentType *int32 `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	ComponentType       *int32  `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	ComponentTypeCnName *string `json:"ComponentTypeCnName,omitempty" xml:"ComponentTypeCnName,omitempty"`
 	// The type of the image component.
 	//
 	// example:
@@ -16032,6 +16787,11 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) SetComponentName(v strin
 
 func (s *QueryWorksBloodRelationshipResponseBodyResult) SetComponentType(v int32) *QueryWorksBloodRelationshipResponseBodyResult {
 	s.ComponentType = &v
+	return s
+}
+
+func (s *QueryWorksBloodRelationshipResponseBodyResult) SetComponentTypeCnName(v string) *QueryWorksBloodRelationshipResponseBodyResult {
+	s.ComponentTypeCnName = &v
 	return s
 }
 
@@ -16076,7 +16836,8 @@ type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
 	// example:
 	//
 	// number
-	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType   *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The type of the field. Valid values:
 	//
 	// 	- string: string type
@@ -16142,6 +16903,11 @@ func (s *QueryWorksBloodRelationshipResponseBodyResultQueryParams) SetCaption(v 
 
 func (s *QueryWorksBloodRelationshipResponseBodyResultQueryParams) SetDataType(v string) *QueryWorksBloodRelationshipResponseBodyResultQueryParams {
 	s.DataType = &v
+	return s
+}
+
+func (s *QueryWorksBloodRelationshipResponseBodyResultQueryParams) SetExpression(v string) *QueryWorksBloodRelationshipResponseBodyResultQueryParams {
+	s.Expression = &v
 	return s
 }
 
@@ -18075,6 +18841,277 @@ func (s *SetDataLevelPermissionWhiteListResponse) SetBody(v *SetDataLevelPermiss
 	return s
 }
 
+type SmartqAuthTransferRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ASDHASD*************12EASDA
+	OriginUserId *string `json:"OriginUserId,omitempty" xml:"OriginUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12313********dasfa,ASDASF*****SDAFEEG
+	TargetUserIds *string `json:"TargetUserIds,omitempty" xml:"TargetUserIds,omitempty"`
+}
+
+func (s SmartqAuthTransferRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthTransferRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthTransferRequest) SetOriginUserId(v string) *SmartqAuthTransferRequest {
+	s.OriginUserId = &v
+	return s
+}
+
+func (s *SmartqAuthTransferRequest) SetTargetUserIds(v string) *SmartqAuthTransferRequest {
+	s.TargetUserIds = &v
+	return s
+}
+
+type SmartqAuthTransferResponseBody struct {
+	// example:
+	//
+	// D787E1*****************5DF8D885
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SmartqAuthTransferResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthTransferResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthTransferResponseBody) SetRequestId(v string) *SmartqAuthTransferResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SmartqAuthTransferResponseBody) SetResult(v bool) *SmartqAuthTransferResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *SmartqAuthTransferResponseBody) SetSuccess(v bool) *SmartqAuthTransferResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SmartqAuthTransferResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmartqAuthTransferResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SmartqAuthTransferResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthTransferResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthTransferResponse) SetHeaders(v map[string]*string) *SmartqAuthTransferResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SmartqAuthTransferResponse) SetStatusCode(v int32) *SmartqAuthTransferResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SmartqAuthTransferResponse) SetBody(v *SmartqAuthTransferResponseBody) *SmartqAuthTransferResponse {
+	s.Body = v
+	return s
+}
+
+type SmartqAuthorizeRequest struct {
+	// example:
+	//
+	// 2099-12-31
+	ExpireDay *string `json:"ExpireDay,omitempty" xml:"ExpireDay,omitempty"`
+	// example:
+	//
+	// wasdasd*******1235235sd,ASDAS*********ASDAW123
+	LlmCubeThemes *string `json:"LlmCubeThemes,omitempty" xml:"LlmCubeThemes,omitempty"`
+	// example:
+	//
+	// wasdasd*******1235235sd,ASDAS*********ASDAW123
+	LlmCubes *string `json:"LlmCubes,omitempty" xml:"LlmCubes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	OperationType *int32 `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wasdasd*******1235235sd,ASDAS*********ASDAW123
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s SmartqAuthorizeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthorizeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthorizeRequest) SetExpireDay(v string) *SmartqAuthorizeRequest {
+	s.ExpireDay = &v
+	return s
+}
+
+func (s *SmartqAuthorizeRequest) SetLlmCubeThemes(v string) *SmartqAuthorizeRequest {
+	s.LlmCubeThemes = &v
+	return s
+}
+
+func (s *SmartqAuthorizeRequest) SetLlmCubes(v string) *SmartqAuthorizeRequest {
+	s.LlmCubes = &v
+	return s
+}
+
+func (s *SmartqAuthorizeRequest) SetOperationType(v int32) *SmartqAuthorizeRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *SmartqAuthorizeRequest) SetUserIds(v string) *SmartqAuthorizeRequest {
+	s.UserIds = &v
+	return s
+}
+
+type SmartqAuthorizeResponseBody struct {
+	// example:
+	//
+	// 617277C****************ABA47E31
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*SmartqAuthorizeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SmartqAuthorizeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthorizeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthorizeResponseBody) SetRequestId(v string) *SmartqAuthorizeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SmartqAuthorizeResponseBody) SetResult(v []*SmartqAuthorizeResponseBodyResult) *SmartqAuthorizeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *SmartqAuthorizeResponseBody) SetSuccess(v bool) *SmartqAuthorizeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SmartqAuthorizeResponseBodyResult struct {
+	// example:
+	//
+	// INVALID_FILE_FORMAT
+	DetailMessage *string `json:"DetailMessage,omitempty" xml:"DetailMessage,omitempty"`
+	// example:
+	//
+	// 617277C****************ABA47E31
+	LlmCube *string `json:"LlmCube,omitempty" xml:"LlmCube,omitempty"`
+	// example:
+	//
+	// 617277C****************ABA47E31
+	LlmCubeTheme *string `json:"LlmCubeTheme,omitempty" xml:"LlmCubeTheme,omitempty"`
+	// example:
+	//
+	// 617277C****************ABA47E31
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SmartqAuthorizeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthorizeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthorizeResponseBodyResult) SetDetailMessage(v string) *SmartqAuthorizeResponseBodyResult {
+	s.DetailMessage = &v
+	return s
+}
+
+func (s *SmartqAuthorizeResponseBodyResult) SetLlmCube(v string) *SmartqAuthorizeResponseBodyResult {
+	s.LlmCube = &v
+	return s
+}
+
+func (s *SmartqAuthorizeResponseBodyResult) SetLlmCubeTheme(v string) *SmartqAuthorizeResponseBodyResult {
+	s.LlmCubeTheme = &v
+	return s
+}
+
+func (s *SmartqAuthorizeResponseBodyResult) SetUserId(v string) *SmartqAuthorizeResponseBodyResult {
+	s.UserId = &v
+	return s
+}
+
+type SmartqAuthorizeResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmartqAuthorizeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SmartqAuthorizeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SmartqAuthorizeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SmartqAuthorizeResponse) SetHeaders(v map[string]*string) *SmartqAuthorizeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SmartqAuthorizeResponse) SetStatusCode(v int32) *SmartqAuthorizeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SmartqAuthorizeResponse) SetBody(v *SmartqAuthorizeResponseBody) *SmartqAuthorizeResponse {
+	s.Body = v
+	return s
+}
+
 type SmartqQueryAbilityRequest struct {
 	// This parameter is required.
 	//
@@ -19094,12 +20131,11 @@ func (s *UpdateUserTagValueResponse) SetBody(v *UpdateUserTagValueResponseBody) 
 }
 
 type UpdateWorkspaceUserRoleRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 25
-	RoleId *int64 `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleId  *int64  `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	RoleIds *string `json:"RoleIds,omitempty" xml:"RoleIds,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -19124,6 +20160,11 @@ func (s UpdateWorkspaceUserRoleRequest) GoString() string {
 
 func (s *UpdateWorkspaceUserRoleRequest) SetRoleId(v int64) *UpdateWorkspaceUserRoleRequest {
 	s.RoleId = &v
+	return s
+}
+
+func (s *UpdateWorkspaceUserRoleRequest) SetRoleIds(v string) *UpdateWorkspaceUserRoleRequest {
+	s.RoleIds = &v
 	return s
 }
 
@@ -21720,6 +22761,66 @@ func (client *Client) DeleteUserTagMeta(request *DeleteUserTagMetaRequest) (_res
 
 // Summary:
 //
+// 获取数据源信息
+//
+// @param request - GetDataSourceConnectionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataSourceConnectionInfoResponse
+func (client *Client) GetDataSourceConnectionInfoWithOptions(request *GetDataSourceConnectionInfoRequest, runtime *util.RuntimeOptions) (_result *GetDataSourceConnectionInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DsId)) {
+		query["DsId"] = request.DsId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataSourceConnectionInfo"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataSourceConnectionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据源信息
+//
+// @param request - GetDataSourceConnectionInfoRequest
+//
+// @return GetDataSourceConnectionInfoResponse
+func (client *Client) GetDataSourceConnectionInfo(request *GetDataSourceConnectionInfoRequest) (_result *GetDataSourceConnectionInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataSourceConnectionInfoResponse{}
+	_body, _err := client.GetDataSourceConnectionInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 组织内查看邮件任务运行状态
 //
 // @param request - GetMailTaskStatusRequest
@@ -22239,6 +23340,70 @@ func (client *Client) ListDataLevelPermissionWhiteList(request *ListDataLevelPer
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataLevelPermissionWhiteListResponse{}
 	_body, _err := client.ListDataLevelPermissionWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定空间下的所有数据源
+//
+// @param request - ListDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataSourceResponse
+func (client *Client) ListDataSourceWithOptions(request *ListDataSourceRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DsType)) {
+		query["DsType"] = request.DsType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSource"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定空间下的所有数据源
+//
+// @param request - ListDataSourceRequest
+//
+// @return ListDataSourceResponse
+func (client *Client) ListDataSource(request *ListDataSourceRequest) (_result *ListDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceResponse{}
+	_body, _err := client.ListDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24051,6 +25216,66 @@ func (client *Client) QueryDatasetList(request *QueryDatasetListRequest) (_resul
 
 // Summary:
 //
+// 查看数据集是否开通智能问数
+//
+// @param request - QueryDatasetSmartqStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDatasetSmartqStatusResponse
+func (client *Client) QueryDatasetSmartqStatusWithOptions(request *QueryDatasetSmartqStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetSmartqStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CubeId)) {
+		query["CubeId"] = request.CubeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDatasetSmartqStatus"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDatasetSmartqStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看数据集是否开通智能问数
+//
+// @param request - QueryDatasetSmartqStatusRequest
+//
+// @return QueryDatasetSmartqStatusResponse
+func (client *Client) QueryDatasetSmartqStatus(request *QueryDatasetSmartqStatusRequest) (_result *QueryDatasetSmartqStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDatasetSmartqStatusResponse{}
+	_body, _err := client.QueryDatasetSmartqStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取指定数据集的行级权限开关状态。
 //
 // @param request - QueryDatasetSwitchInfoRequest
@@ -24209,6 +25434,66 @@ func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmbeddedStatusResponse{}
 	_body, _err := client.QueryEmbeddedStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户有哪些数据集和分析主题的问数授权
+//
+// @param request - QueryLlmCubeWithThemeListByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLlmCubeWithThemeListByUserIdResponse
+func (client *Client) QueryLlmCubeWithThemeListByUserIdWithOptions(request *QueryLlmCubeWithThemeListByUserIdRequest, runtime *util.RuntimeOptions) (_result *QueryLlmCubeWithThemeListByUserIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryLlmCubeWithThemeListByUserId"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryLlmCubeWithThemeListByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户有哪些数据集和分析主题的问数授权
+//
+// @param request - QueryLlmCubeWithThemeListByUserIdRequest
+//
+// @return QueryLlmCubeWithThemeListByUserIdResponse
+func (client *Client) QueryLlmCubeWithThemeListByUserId(request *QueryLlmCubeWithThemeListByUserIdRequest) (_result *QueryLlmCubeWithThemeListByUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryLlmCubeWithThemeListByUserIdResponse{}
+	_body, _err := client.QueryLlmCubeWithThemeListByUserIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24605,6 +25890,70 @@ func (client *Client) QuerySharesToUserList(request *QuerySharesToUserListReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySharesToUserListResponse{}
 	_body, _err := client.QuerySharesToUserListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户是否有某个智能问数数据集权限
+//
+// @param request - QuerySmartqPermissionByCubeIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmartqPermissionByCubeIdResponse
+func (client *Client) QuerySmartqPermissionByCubeIdWithOptions(request *QuerySmartqPermissionByCubeIdRequest, runtime *util.RuntimeOptions) (_result *QuerySmartqPermissionByCubeIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CubeId)) {
+		query["CubeId"] = request.CubeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmartqPermissionByCubeId"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmartqPermissionByCubeIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户是否有某个智能问数数据集权限
+//
+// @param request - QuerySmartqPermissionByCubeIdRequest
+//
+// @return QuerySmartqPermissionByCubeIdResponse
+func (client *Client) QuerySmartqPermissionByCubeId(request *QuerySmartqPermissionByCubeIdRequest) (_result *QuerySmartqPermissionByCubeIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmartqPermissionByCubeIdResponse{}
+	_body, _err := client.QuerySmartqPermissionByCubeIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25881,6 +27230,146 @@ func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermi
 
 // Summary:
 //
+// 将指定用户的问数权限同步给其他用户
+//
+// @param request - SmartqAuthTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmartqAuthTransferResponse
+func (client *Client) SmartqAuthTransferWithOptions(request *SmartqAuthTransferRequest, runtime *util.RuntimeOptions) (_result *SmartqAuthTransferResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OriginUserId)) {
+		query["OriginUserId"] = request.OriginUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserIds)) {
+		query["TargetUserIds"] = request.TargetUserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmartqAuthTransfer"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SmartqAuthTransferResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 将指定用户的问数权限同步给其他用户
+//
+// @param request - SmartqAuthTransferRequest
+//
+// @return SmartqAuthTransferResponse
+func (client *Client) SmartqAuthTransfer(request *SmartqAuthTransferRequest) (_result *SmartqAuthTransferResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SmartqAuthTransferResponse{}
+	_body, _err := client.SmartqAuthTransferWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量管理智能问数的授权
+//
+// @param request - SmartqAuthorizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmartqAuthorizeResponse
+func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest, runtime *util.RuntimeOptions) (_result *SmartqAuthorizeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireDay)) {
+		query["ExpireDay"] = request.ExpireDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LlmCubeThemes)) {
+		query["LlmCubeThemes"] = request.LlmCubeThemes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LlmCubes)) {
+		query["LlmCubes"] = request.LlmCubes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SmartqAuthorize"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SmartqAuthorizeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量管理智能问数的授权
+//
+// @param request - SmartqAuthorizeRequest
+//
+// @return SmartqAuthorizeResponse
+func (client *Client) SmartqAuthorize(request *SmartqAuthorizeRequest) (_result *SmartqAuthorizeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SmartqAuthorizeResponse{}
+	_body, _err := client.SmartqAuthorizeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 问数能力开放
 //
 // @param request - SmartqQueryAbilityRequest
@@ -26472,6 +27961,10 @@ func (client *Client) UpdateWorkspaceUserRoleWithOptions(request *UpdateWorkspac
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
 		query["RoleId"] = request.RoleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleIds)) {
+		query["RoleIds"] = request.RoleIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
