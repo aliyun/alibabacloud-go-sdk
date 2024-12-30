@@ -618,8 +618,9 @@ type CreateCloudResourceRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string                          `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	Tag                            []*CreateCloudResourceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tags to add to the resource.
+	Tag []*CreateCloudResourceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateCloudResourceRequest) String() string {
@@ -1016,7 +1017,17 @@ func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *C
 }
 
 type CreateCloudResourceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TagKey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TagValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1078,8 +1089,9 @@ type CreateCloudResourceShrinkRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string                                `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	Tag                            []*CreateCloudResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The tags to add to the resource.
+	Tag []*CreateCloudResourceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateCloudResourceShrinkRequest) String() string {
@@ -1126,7 +1138,17 @@ func (s *CreateCloudResourceShrinkRequest) SetTag(v []*CreateCloudResourceShrink
 }
 
 type CreateCloudResourceShrinkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TagKey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TagValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10409,11 +10431,11 @@ type DescribeCertsRequest struct {
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
@@ -10507,23 +10529,23 @@ func (s *DescribeCertsResponseBody) SetTotalCount(v int64) *DescribeCertsRespons
 }
 
 type DescribeCertsResponseBodyCerts struct {
-	// The time when the certificate becomes valid.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The time when the certificate expires.
+	// The effective time.
 	//
 	// example:
 	//
 	// 1976256836582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+	// The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-ap-southeast-1" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-ap-southeast-1.
 	//
 	// example:
 	//
-	// 1234567-cn-hangzhou
+	// 123-ap-southeast-1
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
 	//
@@ -10537,7 +10559,7 @@ type DescribeCertsResponseBodyCerts struct {
 	//
 	// *.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The domain name that is added to WAF.
+	// The domain that is supported by the certificate.
 	//
 	// example:
 	//
@@ -13353,7 +13375,8 @@ type DescribeDefenseResourceTemplatesRequest struct {
 	// example:
 	//
 	// 20111098
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the protection rule. Valid values:
 	//
 	// 	- **defense**: defense rule. This is the default value.
@@ -13363,7 +13386,8 @@ type DescribeDefenseResourceTemplatesRequest struct {
 	// example:
 	//
 	// whitelist
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType     *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeDefenseResourceTemplatesRequest) String() string {
@@ -13404,8 +13428,18 @@ func (s *DescribeDefenseResourceTemplatesRequest) SetRuleId(v int64) *DescribeDe
 	return s
 }
 
+func (s *DescribeDefenseResourceTemplatesRequest) SetRuleName(v string) *DescribeDefenseResourceTemplatesRequest {
+	s.RuleName = &v
+	return s
+}
+
 func (s *DescribeDefenseResourceTemplatesRequest) SetRuleType(v string) *DescribeDefenseResourceTemplatesRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceTemplatesRequest) SetTemplateName(v string) *DescribeDefenseResourceTemplatesRequest {
+	s.TemplateName = &v
 	return s
 }
 
@@ -13657,9 +13691,8 @@ type DescribeDefenseResourcesRequest struct {
 	// example:
 	//
 	// rg-acfm***q
-	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tags of the resources that you want to query. You can specify up to 20 tags.
-	Tag []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceManagerResourceGroupId *string                               `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Tag                            []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDefenseResourcesRequest) String() string {
@@ -13706,14 +13739,10 @@ func (s *DescribeDefenseResourcesRequest) SetTag(v []*DescribeDefenseResourcesRe
 }
 
 type DescribeDefenseResourcesRequestTag struct {
-	// The key of the tag.
-	//
 	// example:
 	//
 	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
 	// example:
 	//
 	// TagValue1
@@ -13745,7 +13774,7 @@ type DescribeDefenseResourcesResponseBody struct {
 	//
 	// 618F2626-DB27-5187-8C6C-4E61A491DF29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The protected objects.
+	// An array of protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries that are returned.
 	//
@@ -13779,37 +13808,37 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
-	// The status of the tracking cookie.
+	// 跟踪cookie开关状态。
 	//
-	// 	- **0:*	- disabled.
+	// - **0**：表示关闭。
 	//
-	// 	- **1:*	- enabled.
+	// - **1**：表示开启。
 	//
 	// example:
 	//
 	// 1
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// The status of the secure attribute in the tracking cookie.
+	// 跟踪cookie的secure属性状态。
 	//
-	// 	- **0:*	- disabled.
+	// - **0**：表示关闭。
 	//
-	// 	- **1:*	- enabled.
+	// - **1**：表示开启。
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute in the slider CAPTCHA cookie.
+	// 滑块cookie的secure属性状态。
 	//
-	// 	- **0:*	- disabled.
+	// - **0**：表示关闭。
 	//
-	// 	- **1:*	- enabled.
+	// - **1**：表示开启。
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The custom XFF headers that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF headers are used as the originating IP addresses of clients.
+	// An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
 	//
@@ -13817,27 +13846,27 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
+	// The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The time when the protected object was created. Unit: milliseconds.
+	// The creation time of the protected object. Unit: seconds.
 	//
 	// example:
 	//
 	// 1652149203187
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the protected object was modified. Unit: milliseconds.
+	// The most recent modification time of the protected object. Unit: seconds.
 	//
 	// example:
 	//
 	// 1665633032000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// 多账号统一管理场景中防护对象资产归属账号。
 	//
 	// example:
 	//
 	// 135*********46
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The pattern in which the protected object is protected.
+	// The protection pattern.
 	//
 	// example:
 	//
@@ -13861,7 +13890,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// test
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -13873,7 +13902,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	// Indicates whether the X-Forwarded-For (XFF) proxy is enabled.
+	// Indicates whether the X-Forwarded-For (XFF) header is used.
 	//
 	// example:
 	//
@@ -15066,7 +15095,9 @@ type DescribeDefenseTemplatesRequest struct {
 	// example:
 	//
 	// 12345
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateIds  *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of the protection template. Valid values:
 	//
 	// 	- **user_default**: default template.
@@ -15134,6 +15165,16 @@ func (s *DescribeDefenseTemplatesRequest) SetResourceType(v string) *DescribeDef
 
 func (s *DescribeDefenseTemplatesRequest) SetTemplateId(v int64) *DescribeDefenseTemplatesRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeDefenseTemplatesRequest) SetTemplateIds(v string) *DescribeDefenseTemplatesRequest {
+	s.TemplateIds = &v
+	return s
+}
+
+func (s *DescribeDefenseTemplatesRequest) SetTemplateName(v string) *DescribeDefenseTemplatesRequest {
+	s.TemplateName = &v
 	return s
 }
 
@@ -32263,7 +32304,7 @@ type ModifyDefaultHttpsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -34334,7 +34375,9 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of manual bypass. Valid values:
 	//
 	// 	- **on**: enabled.
@@ -34364,6 +34407,16 @@ func (s *ModifyHybridCloudClusterBypassStatusRequest) SetClusterResourceId(v str
 
 func (s *ModifyHybridCloudClusterBypassStatusRequest) SetInstanceId(v string) *ModifyHybridCloudClusterBypassStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterBypassStatusRequest) SetRegionId(v string) *ModifyHybridCloudClusterBypassStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterBypassStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudClusterBypassStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -36107,7 +36160,7 @@ type SyncProductInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -41177,8 +41230,16 @@ func (client *Client) DescribeDefenseResourceTemplatesWithOptions(request *Descr
 		query["RuleId"] = request.RuleId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		query["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41679,6 +41740,14 @@ func (client *Client) DescribeDefenseTemplatesWithOptions(request *DescribeDefen
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		query["TemplateIds"] = request.TemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
@@ -47418,7 +47487,7 @@ func (client *Client) ModifyCloudResource(request *ModifyCloudResourceRequest) (
 
 // Summary:
 //
-// Modifies the default SSL and Transport Layer Security (TLS) settings.
+// Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
 //
 // @param request - ModifyDefaultHttpsRequest
 //
@@ -47488,7 +47557,7 @@ func (client *Client) ModifyDefaultHttpsWithOptions(request *ModifyDefaultHttpsR
 
 // Summary:
 //
-// Modifies the default SSL and Transport Layer Security (TLS) settings.
+// Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
 //
 // @param request - ModifyDefaultHttpsRequest
 //
@@ -48257,6 +48326,14 @@ func (client *Client) ModifyHybridCloudClusterBypassStatusWithOptions(request *M
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleStatus)) {
@@ -49262,7 +49339,7 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 
 // Summary:
 //
-// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
 //
 // Description:
 //
@@ -49316,7 +49393,7 @@ func (client *Client) SyncProductInstanceWithOptions(request *SyncProductInstanc
 
 // Summary:
 //
-// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances with Web Application Firewall (WAF).
 //
 // Description:
 //
