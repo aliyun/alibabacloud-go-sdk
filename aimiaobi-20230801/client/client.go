@@ -4396,7 +4396,7 @@ type FetchImageTaskResponseBodyDataTaskInfoListImageList struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
-	// https://a-hbr-temp-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/r-000aham3nsx9gc7a8r5l.csv?Expires=1678260131&OSSAccessKeyId=LTAIjGotF8wXIEjy&Signature=WpMfqBnjeR0w5UL1xFAd1J556Pw%3D
+	// http://www.example.com/xxx.png
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -22793,6 +22793,530 @@ func (s *RunAbbreviationContentResponse) SetBody(v *RunAbbreviationContentRespon
 	return s
 }
 
+type RunBookIntroductionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3YQRatoe8phnpIsIE6z7DTPknhG8Fj
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0f56f98a-f2d8-47ec-98e9-1cbdcffa9539
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-vtmox6g2bhq2qv5c
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunBookIntroductionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionRequest) SetDocId(v string) *RunBookIntroductionRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunBookIntroductionRequest) SetSessionId(v string) *RunBookIntroductionRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookIntroductionRequest) SetWorkspaceId(v string) *RunBookIntroductionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunBookIntroductionResponseBody struct {
+	Header  *RunBookIntroductionResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunBookIntroductionResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBody) SetHeader(v *RunBookIntroductionResponseBodyHeader) *RunBookIntroductionResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBody) SetPayload(v *RunBookIntroductionResponseBodyPayload) *RunBookIntroductionResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBody) SetRequestId(v string) *RunBookIntroductionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunBookIntroductionResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// finished
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 411c4dfa-2168-4379-a902-675d67f453f8
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// d3be9981-ca2d-4e17-bf31-1c0a628e9f99
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 46e5c2b5-0877-4f09-bd91-ab0cf314e48b
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetErrorCode(v string) *RunBookIntroductionResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetErrorMessage(v string) *RunBookIntroductionResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetEvent(v string) *RunBookIntroductionResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetEventInfo(v string) *RunBookIntroductionResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetSessionId(v string) *RunBookIntroductionResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetTaskId(v string) *RunBookIntroductionResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyHeader) SetTraceId(v string) *RunBookIntroductionResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunBookIntroductionResponseBodyPayload struct {
+	Output *RunBookIntroductionResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunBookIntroductionResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunBookIntroductionResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyPayload) SetOutput(v *RunBookIntroductionResponseBodyPayloadOutput) *RunBookIntroductionResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayload) SetUsage(v *RunBookIntroductionResponseBodyPayloadUsage) *RunBookIntroductionResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunBookIntroductionResponseBodyPayloadOutput struct {
+	KeyPoint *string `json:"KeyPoint,omitempty" xml:"KeyPoint,omitempty"`
+	Summary  *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutput) SetKeyPoint(v string) *RunBookIntroductionResponseBodyPayloadOutput {
+	s.KeyPoint = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutput) SetSummary(v string) *RunBookIntroductionResponseBodyPayloadOutput {
+	s.Summary = &v
+	return s
+}
+
+type RunBookIntroductionResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadUsage) SetInputTokens(v int64) *RunBookIntroductionResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunBookIntroductionResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunBookIntroductionResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunBookIntroductionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunBookIntroductionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunBookIntroductionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookIntroductionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponse) SetHeaders(v map[string]*string) *RunBookIntroductionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunBookIntroductionResponse) SetStatusCode(v int32) *RunBookIntroductionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponse) SetBody(v *RunBookIntroductionResponseBody) *RunBookIntroductionResponse {
+	s.Body = v
+	return s
+}
+
+type RunBookSmartCardRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunBookSmartCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardRequest) SetDocId(v string) *RunBookSmartCardRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunBookSmartCardRequest) SetSessionId(v string) *RunBookSmartCardRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookSmartCardRequest) SetWorkspaceId(v string) *RunBookSmartCardRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunBookSmartCardResponseBody struct {
+	Header  *RunBookSmartCardResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunBookSmartCardResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunBookSmartCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponseBody) SetHeader(v *RunBookSmartCardResponseBodyHeader) *RunBookSmartCardResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBody) SetPayload(v *RunBookSmartCardResponseBodyPayload) *RunBookSmartCardResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBody) SetRequestId(v string) *RunBookSmartCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunBookSmartCardResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// finished
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1a0e898717105546647125853d4f54
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunBookSmartCardResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetErrorCode(v string) *RunBookSmartCardResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetErrorMessage(v string) *RunBookSmartCardResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetEvent(v string) *RunBookSmartCardResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetEventInfo(v string) *RunBookSmartCardResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetSessionId(v string) *RunBookSmartCardResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetTaskId(v string) *RunBookSmartCardResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyHeader) SetTraceId(v string) *RunBookSmartCardResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunBookSmartCardResponseBodyPayload struct {
+	Output *RunBookSmartCardResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunBookSmartCardResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunBookSmartCardResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponseBodyPayload) SetOutput(v *RunBookSmartCardResponseBodyPayloadOutput) *RunBookSmartCardResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyPayload) SetUsage(v *RunBookSmartCardResponseBodyPayloadUsage) *RunBookSmartCardResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunBookSmartCardResponseBodyPayloadOutput struct {
+	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s RunBookSmartCardResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponseBodyPayloadOutput) SetContent(v string) *RunBookSmartCardResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyPayloadOutput) SetTags(v []*string) *RunBookSmartCardResponseBodyPayloadOutput {
+	s.Tags = v
+	return s
+}
+
+type RunBookSmartCardResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 101
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunBookSmartCardResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponseBodyPayloadUsage) SetInputTokens(v int64) *RunBookSmartCardResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunBookSmartCardResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunBookSmartCardResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunBookSmartCardResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunBookSmartCardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunBookSmartCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookSmartCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookSmartCardResponse) SetHeaders(v map[string]*string) *RunBookSmartCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunBookSmartCardResponse) SetStatusCode(v int32) *RunBookSmartCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunBookSmartCardResponse) SetBody(v *RunBookSmartCardResponseBody) *RunBookSmartCardResponse {
+	s.Body = v
+	return s
+}
+
 type RunContinueContentRequest struct {
 	// This parameter is required.
 	//
@@ -25041,6 +25565,268 @@ func (s *RunDocQaResponse) SetStatusCode(v int32) *RunDocQaResponse {
 }
 
 func (s *RunDocQaResponse) SetBody(v *RunDocQaResponseBody) *RunDocQaResponse {
+	s.Body = v
+	return s
+}
+
+type RunDocSmartCardRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunDocSmartCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardRequest) SetDocId(v string) *RunDocSmartCardRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunDocSmartCardRequest) SetSessionId(v string) *RunDocSmartCardRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocSmartCardRequest) SetWorkspaceId(v string) *RunDocSmartCardRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunDocSmartCardResponseBody struct {
+	Header  *RunDocSmartCardResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunDocSmartCardResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunDocSmartCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponseBody) SetHeader(v *RunDocSmartCardResponseBodyHeader) *RunDocSmartCardResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBody) SetPayload(v *RunDocSmartCardResponseBodyPayload) *RunDocSmartCardResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBody) SetRequestId(v string) *RunDocSmartCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunDocSmartCardResponseBodyHeader struct {
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// finished
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 07181f55-2311-48af-8048-132a77dee020
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 8d55b429d7c6d321fcff54823e8d317b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0abb781c17337107444473701ed7c3
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunDocSmartCardResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetErrorCode(v string) *RunDocSmartCardResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetErrorMessage(v string) *RunDocSmartCardResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetEvent(v string) *RunDocSmartCardResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetEventInfo(v string) *RunDocSmartCardResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetSessionId(v string) *RunDocSmartCardResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetTaskId(v string) *RunDocSmartCardResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyHeader) SetTraceId(v string) *RunDocSmartCardResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunDocSmartCardResponseBodyPayload struct {
+	Output *RunDocSmartCardResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunDocSmartCardResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunDocSmartCardResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponseBodyPayload) SetOutput(v *RunDocSmartCardResponseBodyPayloadOutput) *RunDocSmartCardResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyPayload) SetUsage(v *RunDocSmartCardResponseBodyPayloadUsage) *RunDocSmartCardResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunDocSmartCardResponseBodyPayloadOutput struct {
+	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Tags    []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s RunDocSmartCardResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponseBodyPayloadOutput) SetContent(v string) *RunDocSmartCardResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyPayloadOutput) SetTags(v []*string) *RunDocSmartCardResponseBodyPayloadOutput {
+	s.Tags = v
+	return s
+}
+
+type RunDocSmartCardResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 101
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunDocSmartCardResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponseBodyPayloadUsage) SetInputTokens(v int64) *RunDocSmartCardResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunDocSmartCardResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunDocSmartCardResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunDocSmartCardResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunDocSmartCardResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunDocSmartCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunDocSmartCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunDocSmartCardResponse) SetHeaders(v map[string]*string) *RunDocSmartCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunDocSmartCardResponse) SetStatusCode(v int32) *RunDocSmartCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunDocSmartCardResponse) SetBody(v *RunDocSmartCardResponseBody) *RunDocSmartCardResponse {
 	s.Body = v
 	return s
 }
@@ -30198,8 +30984,9 @@ type RunStepByStepWritingRequestWritingConfig struct {
 	// example:
 	//
 	// Writing
-	Step *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
-	Tags []*RunStepByStepWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Step              *string                                         `json:"Step,omitempty" xml:"Step,omitempty"`
+	SummaryReturnType *string                                         `json:"SummaryReturnType,omitempty" xml:"SummaryReturnType,omitempty"`
+	Tags              []*RunStepByStepWritingRequestWritingConfigTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// true
@@ -30236,6 +31023,11 @@ func (s *RunStepByStepWritingRequestWritingConfig) SetScene(v string) *RunStepBy
 
 func (s *RunStepByStepWritingRequestWritingConfig) SetStep(v string) *RunStepByStepWritingRequestWritingConfig {
 	s.Step = &v
+	return s
+}
+
+func (s *RunStepByStepWritingRequestWritingConfig) SetSummaryReturnType(v string) *RunStepByStepWritingRequestWritingConfig {
+	s.SummaryReturnType = &v
 	return s
 }
 
@@ -38761,6 +39553,218 @@ func (s *UpdateMaterialDocumentResponse) SetBody(v *UpdateMaterialDocumentRespon
 	return s
 }
 
+type UploadBookRequest struct {
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	Docs []*UploadBookRequestDocs `json:"Docs,omitempty" xml:"Docs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-ipe7d81yq4sl5jmk
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UploadBookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookRequest) SetCategoryId(v string) *UploadBookRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UploadBookRequest) SetDocs(v []*UploadBookRequestDocs) *UploadBookRequest {
+	s.Docs = v
+	return s
+}
+
+func (s *UploadBookRequest) SetWorkspaceId(v string) *UploadBookRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UploadBookRequestDocs struct {
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// http://xxx/ccc.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s UploadBookRequestDocs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookRequestDocs) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookRequestDocs) SetDocName(v string) *UploadBookRequestDocs {
+	s.DocName = &v
+	return s
+}
+
+func (s *UploadBookRequestDocs) SetFileUrl(v string) *UploadBookRequestDocs {
+	s.FileUrl = &v
+	return s
+}
+
+type UploadBookShrinkRequest struct {
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	DocsShrink *string `json:"Docs,omitempty" xml:"Docs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-ipe7d81yq4sl5jmk
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UploadBookShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookShrinkRequest) SetCategoryId(v string) *UploadBookShrinkRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *UploadBookShrinkRequest) SetDocsShrink(v string) *UploadBookShrinkRequest {
+	s.DocsShrink = &v
+	return s
+}
+
+func (s *UploadBookShrinkRequest) SetWorkspaceId(v string) *UploadBookShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UploadBookResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UploadBookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UploadBookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookResponseBody) SetCode(v string) *UploadBookResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadBookResponseBody) SetData(v *UploadBookResponseBodyData) *UploadBookResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UploadBookResponseBody) SetHttpStatusCode(v int32) *UploadBookResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UploadBookResponseBody) SetMessage(v string) *UploadBookResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UploadBookResponseBody) SetRequestId(v string) *UploadBookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UploadBookResponseBody) SetSuccess(v bool) *UploadBookResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UploadBookResponseBodyData struct {
+	DocIds     []*string `json:"DocIds,omitempty" xml:"DocIds,omitempty" type:"Repeated"`
+	ExistedIds []*string `json:"ExistedIds,omitempty" xml:"ExistedIds,omitempty" type:"Repeated"`
+}
+
+func (s UploadBookResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookResponseBodyData) SetDocIds(v []*string) *UploadBookResponseBodyData {
+	s.DocIds = v
+	return s
+}
+
+func (s *UploadBookResponseBodyData) SetExistedIds(v []*string) *UploadBookResponseBodyData {
+	s.ExistedIds = v
+	return s
+}
+
+type UploadBookResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UploadBookResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UploadBookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadBookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadBookResponse) SetHeaders(v map[string]*string) *UploadBookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadBookResponse) SetStatusCode(v int32) *UploadBookResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UploadBookResponse) SetBody(v *UploadBookResponseBody) *UploadBookResponse {
+	s.Body = v
+	return s
+}
+
 type UploadDocRequest struct {
 	// example:
 	//
@@ -45435,6 +46439,142 @@ func (client *Client) RunAbbreviationContent(request *RunAbbreviationContentRequ
 
 // Summary:
 //
+// 书籍导读接口
+//
+// @param request - RunBookIntroductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookIntroductionResponse
+func (client *Client) RunBookIntroductionWithOptions(request *RunBookIntroductionRequest, runtime *util.RuntimeOptions) (_result *RunBookIntroductionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunBookIntroduction"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunBookIntroductionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 书籍导读接口
+//
+// @param request - RunBookIntroductionRequest
+//
+// @return RunBookIntroductionResponse
+func (client *Client) RunBookIntroduction(request *RunBookIntroductionRequest) (_result *RunBookIntroductionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunBookIntroductionResponse{}
+	_body, _err := client.RunBookIntroductionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 书籍智能卡片接口
+//
+// @param request - RunBookSmartCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookSmartCardResponse
+func (client *Client) RunBookSmartCardWithOptions(request *RunBookSmartCardRequest, runtime *util.RuntimeOptions) (_result *RunBookSmartCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunBookSmartCard"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunBookSmartCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 书籍智能卡片接口
+//
+// @param request - RunBookSmartCardRequest
+//
+// @return RunBookSmartCardResponse
+func (client *Client) RunBookSmartCard(request *RunBookSmartCardRequest) (_result *RunBookSmartCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunBookSmartCardResponse{}
+	_body, _err := client.RunBookSmartCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 内容续写
 //
 // @param request - RunContinueContentRequest
@@ -45908,6 +47048,74 @@ func (client *Client) RunDocQa(request *RunDocQaRequest) (_result *RunDocQaRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &RunDocQaResponse{}
 	_body, _err := client.RunDocQaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档智能卡片接口
+//
+// @param request - RunDocSmartCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocSmartCardResponse
+func (client *Client) RunDocSmartCardWithOptions(request *RunDocSmartCardRequest, runtime *util.RuntimeOptions) (_result *RunDocSmartCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunDocSmartCard"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunDocSmartCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档智能卡片接口
+//
+// @param request - RunDocSmartCardRequest
+//
+// @return RunDocSmartCardResponse
+func (client *Client) RunDocSmartCard(request *RunDocSmartCardRequest) (_result *RunDocSmartCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunDocSmartCardResponse{}
+	_body, _err := client.RunDocSmartCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48420,6 +49628,80 @@ func (client *Client) UpdateMaterialDocument(request *UpdateMaterialDocumentRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMaterialDocumentResponse{}
 	_body, _err := client.UpdateMaterialDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读上传书籍
+//
+// @param tmpReq - UploadBookRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadBookResponse
+func (client *Client) UploadBookWithOptions(tmpReq *UploadBookRequest, runtime *util.RuntimeOptions) (_result *UploadBookResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UploadBookShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Docs)) {
+		request.DocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Docs, tea.String("Docs"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocsShrink)) {
+		body["Docs"] = request.DocsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadBook"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadBookResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读上传书籍
+//
+// @param request - UploadBookRequest
+//
+// @return UploadBookResponse
+func (client *Client) UploadBook(request *UploadBookRequest) (_result *UploadBookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadBookResponse{}
+	_body, _err := client.UploadBookWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
