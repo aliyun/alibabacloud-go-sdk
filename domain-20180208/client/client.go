@@ -912,7 +912,8 @@ type CreateFixedPriceSelectedOrderResponseBodyModule struct {
 	// example:
 	//
 	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain           *string   `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainBlockTrade []*string `json:"DomainBlockTrade,omitempty" xml:"DomainBlockTrade,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 31199295f2074ce895645d386cb22c36
@@ -933,6 +934,11 @@ func (s CreateFixedPriceSelectedOrderResponseBodyModule) GoString() string {
 
 func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetDomain(v string) *CreateFixedPriceSelectedOrderResponseBodyModule {
 	s.Domain = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetDomainBlockTrade(v []*string) *CreateFixedPriceSelectedOrderResponseBodyModule {
+	s.DomainBlockTrade = v
 	return s
 }
 
