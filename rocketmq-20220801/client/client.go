@@ -27,7 +27,8 @@ type DataTopicLagMapValue struct {
 	// example:
 	//
 	// 12
-	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+	DeliveryDuration     *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+	LastConsumeTimestamp *int64 `json:"lastConsumeTimestamp,omitempty" xml:"lastConsumeTimestamp,omitempty"`
 }
 
 func (s DataTopicLagMapValue) String() string {
@@ -50,6 +51,11 @@ func (s *DataTopicLagMapValue) SetInflightCount(v int64) *DataTopicLagMapValue {
 
 func (s *DataTopicLagMapValue) SetDeliveryDuration(v int64) *DataTopicLagMapValue {
 	s.DeliveryDuration = &v
+	return s
+}
+
+func (s *DataTopicLagMapValue) SetLastConsumeTimestamp(v int64) *DataTopicLagMapValue {
+	s.LastConsumeTimestamp = &v
 	return s
 }
 
@@ -2410,6 +2416,100 @@ func (s *DeleteConsumerGroupSubscriptionResponse) SetStatusCode(v int32) *Delete
 }
 
 func (s *DeleteConsumerGroupSubscriptionResponse) SetBody(v *DeleteConsumerGroupSubscriptionResponseBody) *DeleteConsumerGroupSubscriptionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDisasterRecoveryPlanResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteDisasterRecoveryPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDisasterRecoveryPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetAccessDeniedDetail(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetCode(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetData(v bool) *DeleteDisasterRecoveryPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetDynamicCode(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetDynamicMessage(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetHttpStatusCode(v int32) *DeleteDisasterRecoveryPlanResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetMessage(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetRequestId(v string) *DeleteDisasterRecoveryPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *DeleteDisasterRecoveryPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDisasterRecoveryPlanResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDisasterRecoveryPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDisasterRecoveryPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDisasterRecoveryPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDisasterRecoveryPlanResponse) SetHeaders(v map[string]*string) *DeleteDisasterRecoveryPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponse) SetStatusCode(v int32) *DeleteDisasterRecoveryPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDisasterRecoveryPlanResponse) SetBody(v *DeleteDisasterRecoveryPlanResponseBody) *DeleteDisasterRecoveryPlanResponse {
 	s.Body = v
 	return s
 }
@@ -10105,6 +10205,230 @@ func (s *ListMessagesResponse) SetBody(v *ListMessagesResponseBody) *ListMessage
 	return s
 }
 
+type ListMetricMetaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListMetricMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricMetaRequest) SetPageNumber(v int32) *ListMetricMetaRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMetricMetaRequest) SetPageSize(v int32) *ListMetricMetaRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListMetricMetaResponseBody struct {
+	// example:
+	//
+	// Topic.NotFound
+	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListMetricMetaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// The topic already exists.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 8B459455-4A35-5796-BA9D-98EF1AB9A931
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMetricMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricMetaResponseBody) SetCode(v string) *ListMetricMetaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetData(v *ListMetricMetaResponseBodyData) *ListMetricMetaResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetDynamicCode(v string) *ListMetricMetaResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetDynamicMessage(v string) *ListMetricMetaResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetHttpStatusCode(v int32) *ListMetricMetaResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetMessage(v string) *ListMetricMetaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetRequestId(v string) *ListMetricMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBody) SetSuccess(v bool) *ListMetricMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMetricMetaResponseBodyData struct {
+	List []*ListMetricMetaResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListMetricMetaResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricMetaResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricMetaResponseBodyData) SetList(v []*ListMetricMetaResponseBodyDataList) *ListMetricMetaResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListMetricMetaResponseBodyData) SetPageNumber(v int64) *ListMetricMetaResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBodyData) SetPageSize(v int64) *ListMetricMetaResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBodyData) SetTotalCount(v int64) *ListMetricMetaResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMetricMetaResponseBodyDataList struct {
+	// example:
+	//
+	// Bug
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// Using Serverless Devs to deploy the infrastructure of project:get-userinfo-v1-infrastructure-as-template-project
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// SendMessageCountPerInstance
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+}
+
+func (s ListMetricMetaResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricMetaResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricMetaResponseBodyDataList) SetCategory(v string) *ListMetricMetaResponseBodyDataList {
+	s.Category = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBodyDataList) SetDescription(v string) *ListMetricMetaResponseBodyDataList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMetricMetaResponseBodyDataList) SetMetricName(v string) *ListMetricMetaResponseBodyDataList {
+	s.MetricName = &v
+	return s
+}
+
+type ListMetricMetaResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMetricMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMetricMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetricMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetricMetaResponse) SetHeaders(v map[string]*string) *ListMetricMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMetricMetaResponse) SetStatusCode(v int32) *ListMetricMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMetricMetaResponse) SetBody(v *ListMetricMetaResponseBody) *ListMetricMetaResponse {
+	s.Body = v
+	return s
+}
+
 type ListRegionsResponseBody struct {
 	// The error code.
 	//
@@ -11872,6 +12196,194 @@ func (s *ResetConsumeOffsetResponse) SetStatusCode(v int32) *ResetConsumeOffsetR
 }
 
 func (s *ResetConsumeOffsetResponse) SetBody(v *ResetConsumeOffsetResponseBody) *ResetConsumeOffsetResponse {
+	s.Body = v
+	return s
+}
+
+type StartDisasterRecoveryItemResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StartDisasterRecoveryItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDisasterRecoveryItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetAccessDeniedDetail(v string) *StartDisasterRecoveryItemResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetCode(v string) *StartDisasterRecoveryItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetData(v bool) *StartDisasterRecoveryItemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetDynamicCode(v string) *StartDisasterRecoveryItemResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetDynamicMessage(v string) *StartDisasterRecoveryItemResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetHttpStatusCode(v int32) *StartDisasterRecoveryItemResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetMessage(v string) *StartDisasterRecoveryItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetRequestId(v string) *StartDisasterRecoveryItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponseBody) SetSuccess(v bool) *StartDisasterRecoveryItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartDisasterRecoveryItemResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartDisasterRecoveryItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartDisasterRecoveryItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartDisasterRecoveryItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartDisasterRecoveryItemResponse) SetHeaders(v map[string]*string) *StartDisasterRecoveryItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponse) SetStatusCode(v int32) *StartDisasterRecoveryItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartDisasterRecoveryItemResponse) SetBody(v *StartDisasterRecoveryItemResponseBody) *StartDisasterRecoveryItemResponse {
+	s.Body = v
+	return s
+}
+
+type StopDisasterRecoveryItemResponseBody struct {
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s StopDisasterRecoveryItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDisasterRecoveryItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetAccessDeniedDetail(v string) *StopDisasterRecoveryItemResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetCode(v string) *StopDisasterRecoveryItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetData(v bool) *StopDisasterRecoveryItemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetDynamicCode(v string) *StopDisasterRecoveryItemResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetDynamicMessage(v string) *StopDisasterRecoveryItemResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetHttpStatusCode(v int32) *StopDisasterRecoveryItemResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetMessage(v string) *StopDisasterRecoveryItemResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetRequestId(v string) *StopDisasterRecoveryItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponseBody) SetSuccess(v bool) *StopDisasterRecoveryItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopDisasterRecoveryItemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopDisasterRecoveryItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopDisasterRecoveryItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopDisasterRecoveryItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopDisasterRecoveryItemResponse) SetHeaders(v map[string]*string) *StopDisasterRecoveryItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponse) SetStatusCode(v int32) *StopDisasterRecoveryItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopDisasterRecoveryItemResponse) SetBody(v *StopDisasterRecoveryItemResponseBody) *StopDisasterRecoveryItemResponse {
 	s.Body = v
 	return s
 }
@@ -14566,6 +15078,56 @@ func (client *Client) DeleteConsumerGroupSubscription(instanceId *string, consum
 
 // Summary:
 //
+// 删除容灾计划
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDisasterRecoveryPlanResponse
+func (client *Client) DeleteDisasterRecoveryPlanWithOptions(planId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDisasterRecoveryPlanResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDisasterRecoveryPlan"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDisasterRecoveryPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除容灾计划
+//
+// @return DeleteDisasterRecoveryPlanResponse
+func (client *Client) DeleteDisasterRecoveryPlan(planId *string) (_result *DeleteDisasterRecoveryPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDisasterRecoveryPlanResponse{}
+	_body, _err := client.DeleteDisasterRecoveryPlanWithOptions(planId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a ApsaraMQ for RocketMQ instance.
 //
 // Description:
@@ -16010,6 +16572,74 @@ func (client *Client) ListMessages(instanceId *string, topicName *string, reques
 
 // Summary:
 //
+// 查询监控项列表
+//
+// @param request - ListMetricMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetricMetaResponse
+func (client *Client) ListMetricMetaWithOptions(request *ListMetricMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMetricMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMetricMeta"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/monitor/metrics/meta"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMetricMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询监控项列表
+//
+// @param request - ListMetricMetaRequest
+//
+// @return ListMetricMetaResponse
+func (client *Client) ListMetricMeta(request *ListMetricMetaRequest) (_result *ListMetricMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMetricMetaResponse{}
+	_body, _err := client.ListMetricMetaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries regions in which ApsaraMQ for RocketMQ is available.
 //
 // @param headers - map
@@ -16423,6 +17053,106 @@ func (client *Client) ResetConsumeOffset(instanceId *string, consumerGroupId *st
 	headers := make(map[string]*string)
 	_result = &ResetConsumeOffsetResponse{}
 	_body, _err := client.ResetConsumeOffsetWithOptions(instanceId, consumerGroupId, topicName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用容灾计划条目
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDisasterRecoveryItemResponse
+func (client *Client) StartDisasterRecoveryItemWithOptions(planId *string, itemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartDisasterRecoveryItemResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartDisasterRecoveryItem"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId)) + "/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartDisasterRecoveryItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用容灾计划条目
+//
+// @return StartDisasterRecoveryItemResponse
+func (client *Client) StartDisasterRecoveryItem(planId *string, itemId *string) (_result *StartDisasterRecoveryItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartDisasterRecoveryItemResponse{}
+	_body, _err := client.StartDisasterRecoveryItemWithOptions(planId, itemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停用容灾计划条目
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDisasterRecoveryItemResponse
+func (client *Client) StopDisasterRecoveryItemWithOptions(planId *string, itemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopDisasterRecoveryItemResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopDisasterRecoveryItem"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/disaster_recovery/" + tea.StringValue(openapiutil.GetEncodeParam(planId)) + "/items/" + tea.StringValue(openapiutil.GetEncodeParam(itemId)) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopDisasterRecoveryItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停用容灾计划条目
+//
+// @return StopDisasterRecoveryItemResponse
+func (client *Client) StopDisasterRecoveryItem(planId *string, itemId *string) (_result *StopDisasterRecoveryItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopDisasterRecoveryItemResponse{}
+	_body, _err := client.StopDisasterRecoveryItemWithOptions(planId, itemId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
