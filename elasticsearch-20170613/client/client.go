@@ -34092,7 +34092,8 @@ type UpgradeEngineVersionRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun         *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	UpdateStrategy *string `json:"updateStrategy,omitempty" xml:"updateStrategy,omitempty"`
 }
 
 func (s UpgradeEngineVersionRequest) String() string {
@@ -34125,6 +34126,11 @@ func (s *UpgradeEngineVersionRequest) SetClientToken(v string) *UpgradeEngineVer
 
 func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *UpgradeEngineVersionRequest) SetUpdateStrategy(v string) *UpgradeEngineVersionRequest {
+	s.UpdateStrategy = &v
 	return s
 }
 
@@ -48015,6 +48021,10 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
+		query["updateStrategy"] = request.UpdateStrategy
 	}
 
 	body := map[string]interface{}{}
