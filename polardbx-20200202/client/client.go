@@ -4706,7 +4706,8 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	// example:
 	//
 	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
 	// 主可用区。
 	//
 	// This parameter is required.
@@ -4956,6 +4957,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetPayType(v string)
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetPort(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetPrimaryInstanceId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.PrimaryInstanceId = &v
 	return s
 }
 
@@ -7224,7 +7230,8 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	// example:
 	//
 	// Prepaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType           *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryInstanceId *string `json:"PrimaryInstanceId,omitempty" xml:"PrimaryInstanceId,omitempty"`
 	// 主可用区。
 	//
 	// This parameter is required.
@@ -7425,6 +7432,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetNodes(v []*DescribeDBIns
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetPayType(v string) *DescribeDBInstancesResponseBodyDBInstances {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetPrimaryInstanceId(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.PrimaryInstanceId = &v
 	return s
 }
 
@@ -9517,6 +9529,437 @@ func (s *DescribeSecurityIpsResponse) SetStatusCode(v int32) *DescribeSecurityIp
 }
 
 func (s *DescribeSecurityIpsResponse) SetBody(v *DescribeSecurityIpsResponseBody) *DescribeSecurityIpsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSlowLogRecordsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polarx_cn
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-bjxxxxxxxx
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// testdb
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// pxc-i-mezcj4ejdz
+	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-11-22T02:22Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-10-09T02:26
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSlowLogRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSlowLogRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetCharacterType(v string) *DescribeSlowLogRecordsRequest {
+	s.CharacterType = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetDBInstanceName(v string) *DescribeSlowLogRecordsRequest {
+	s.DBInstanceName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetDBName(v string) *DescribeSlowLogRecordsRequest {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetDBNodeIds(v string) *DescribeSlowLogRecordsRequest {
+	s.DBNodeIds = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetEndTime(v string) *DescribeSlowLogRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetPage(v int32) *DescribeSlowLogRecordsRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetPageSize(v int32) *DescribeSlowLogRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetRegionId(v string) *DescribeSlowLogRecordsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSlowLogRecordsResponseBody struct {
+	// example:
+	//
+	// pxc-********
+	DBInstanceId *string                                    `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Items        []*DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSlowLogRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSlowLogRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetDBInstanceId(v string) *DescribeSlowLogRecordsResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetItems(v []*DescribeSlowLogRecordsResponseBodyItems) *DescribeSlowLogRecordsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetPageNumber(v string) *DescribeSlowLogRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetPageRecordCount(v string) *DescribeSlowLogRecordsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetRequestId(v string) *DescribeSlowLogRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBody) SetTotalCount(v string) *DescribeSlowLogRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSlowLogRecordsResponseBodyItems struct {
+	// example:
+	//
+	// pxc-i-xxxx
+	CNname *string `json:"CNname,omitempty" xml:"CNname,omitempty"`
+	// example:
+	//
+	// dcdev
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// tddl:5.4.19-20240927
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// 0
+	Fail *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// example:
+	//
+	// 1
+	Frows *string `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	// example:
+	//
+	// ****[****] @ [1XX.XX.XX.XX]
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// example:
+	//
+	// pxc-xdb-s-xxxx
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// example:
+	//
+	// 0
+	IsBind *string `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	// example:
+	//
+	// 1
+	LockTimeMS *string `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
+	// example:
+	//
+	// ["1"]
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// 10
+	ParseRowCounts *string `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
+	// example:
+	//
+	// 2024-11-22T02:22:22.444Z
+	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// example:
+	//
+	// 3.000
+	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	// example:
+	//
+	// 3000.000
+	QueryTimeMS *string `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
+	// example:
+	//
+	// 20
+	ReturnRowCounts *string `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	// example:
+	//
+	// 1
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// 1
+	SCNT *string `json:"SCNT,omitempty" xml:"SCNT,omitempty"`
+	// example:
+	//
+	// c8df07e5d45cd68da8b4771c2016e20b
+	SQLHash *string `json:"SQLHash,omitempty" xml:"SQLHash,omitempty"`
+	// example:
+	//
+	// select 	- from test
+	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// example:
+	//
+	// select
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// example:
+	//
+	// 0
+	TooLong *string `json:"TooLong,omitempty" xml:"TooLong,omitempty"`
+	// example:
+	//
+	// 17a5c5c840006000
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// example:
+	//
+	// XA
+	TransactionPolicy *string `json:"TransactionPolicy,omitempty" xml:"TransactionPolicy,omitempty"`
+	// example:
+	//
+	// 17a5c5c840006000
+	TrxId *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
+	// example:
+	//
+	// TP
+	WT *string `json:"WT,omitempty" xml:"WT,omitempty"`
+}
+
+func (s DescribeSlowLogRecordsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSlowLogRecordsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetCNname(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.CNname = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetDBName(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetExtension(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.Extension = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetFail(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.Fail = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetFrows(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.Frows = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetHostAddress(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetInsName(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetIsBind(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.IsBind = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetLockTimeMS(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.LockTimeMS = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetParams(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.Params = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetParseRowCounts(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.ParseRowCounts = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetQueryStartTime(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.QueryStartTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetQueryTime(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetQueryTimeMS(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.QueryTimeMS = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetReturnRowCounts(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.ReturnRowCounts = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetRows(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.Rows = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetSCNT(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.SCNT = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLHash(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.SQLHash = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLText(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.SQLText = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetSqlType(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetTooLong(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.TooLong = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetTraceId(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.TraceId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetTransactionPolicy(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.TransactionPolicy = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetTrxId(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.TrxId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyItems) SetWT(v string) *DescribeSlowLogRecordsResponseBodyItems {
+	s.WT = &v
+	return s
+}
+
+type DescribeSlowLogRecordsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSlowLogRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSlowLogRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSlowLogRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSlowLogRecordsResponse) SetHeaders(v map[string]*string) *DescribeSlowLogRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponse) SetStatusCode(v int32) *DescribeSlowLogRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsResponseBody) *DescribeSlowLogRecordsResponse {
 	s.Body = v
 	return s
 }
@@ -16512,6 +16955,98 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityIpsResponse{}
 	_body, _err := client.DescribeSecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 慢SQL明细
+//
+// @param request - DescribeSlowLogRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowLogRecordsResponse
+func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CharacterType)) {
+		query["CharacterType"] = request.CharacterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceName)) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBName)) {
+		query["DBName"] = request.DBName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBNodeIds)) {
+		query["DBNodeIds"] = request.DBNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSlowLogRecords"),
+		Version:     tea.String("2020-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSlowLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 慢SQL明细
+//
+// @param request - DescribeSlowLogRecordsRequest
+//
+// @return DescribeSlowLogRecordsResponse
+func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequest) (_result *DescribeSlowLogRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSlowLogRecordsResponse{}
+	_body, _err := client.DescribeSlowLogRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
