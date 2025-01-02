@@ -1,3 +1,7 @@
+2025-01-02 Version: v1.10.0
+- Support API GetDialogAnalysisResult.
+
+
 2024-12-25 Version: v1.9.0
 - Support API RealTimeDialog.
 - Update API CreateDialog: update param body.
