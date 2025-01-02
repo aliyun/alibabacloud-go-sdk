@@ -802,7 +802,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// cluster_ha
-	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	SubSeriesCode *string                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	Tags          []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -886,6 +887,11 @@ func (s *CreateInstanceRequest) SetServiceCode(v string) *CreateInstanceRequest 
 
 func (s *CreateInstanceRequest) SetSubSeriesCode(v string) *CreateInstanceRequest {
 	s.SubSeriesCode = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest {
+	s.Tags = v
 	return s
 }
 
@@ -1213,6 +1219,29 @@ func (s *CreateInstanceRequestProductInfo) SetStorageEncryption(v bool) *CreateI
 
 func (s *CreateInstanceRequestProductInfo) SetStorageSecretKey(v string) *CreateInstanceRequestProductInfo {
 	s.StorageSecretKey = &v
+	return s
+}
+
+type CreateInstanceRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateInstanceRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestTags) SetKey(v string) *CreateInstanceRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateInstanceRequestTags) SetValue(v string) *CreateInstanceRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -14608,6 +14637,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SubSeriesCode)) {
 		body["subSeriesCode"] = request.SubSeriesCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{

@@ -1,3 +1,7 @@
+2025-01-02 Version: v1.6.1
+- Update API CreateInstance: update param body.
+
+
 2024-12-31 Version: v1.6.0
 - Support API AddDisasterRecoveryItem.
 - Support API DeleteDisasterRecoveryPlan.
